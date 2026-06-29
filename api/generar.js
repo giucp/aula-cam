@@ -4,7 +4,7 @@
 
 // Si al probar da error de "modelo no encontrado", cambia esta línea por el
 // modelo exacto que uses en el lab-bot y vuelves a desplegar.
-const MODEL = "gemini-2.0-flash";
+const MODEL = "gemini-2.5-flash";
 
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
