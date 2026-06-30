@@ -14,7 +14,7 @@
 // Si no hay contexto ni PDFs, cae al modo anterior (solo título). La clave de
 // Gemini NO va aquí: va en Vercel como variable de entorno GEMINI_API_KEY.
 
-const MODEL = "gemini-2.5-flash";
+const MODEL = "gemini-2.5-flash-lite";
 const MAX_PDFS = 3;                       // cuántos PDFs leer por generación
 const MAX_PDF_BYTES = 8 * 1024 * 1024;    // por archivo
 const MAX_TOTAL_BYTES = 15 * 1024 * 1024; // suma de todos
