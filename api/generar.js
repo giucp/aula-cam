@@ -200,6 +200,16 @@ function supabaseCfg() {
   const key = process.env.SUPABASE_SERVICE_KEY;
   return url && key ? { url: url.replace(/\/+$/, ""), key } : null;
 }
+
+// Una o varias API keys de Gemini (cuentas free distintas, para sumar cupo).
+// Acepta GEMINI_API_KEYS separadas por coma, o la GEMINI_API_KEY de siempre.
+function geminiKeys() {
+  const multi = String(process.env.GEMINI_API_KEYS || "")
+    .split(",").map((s) => s.trim()).filter(Boolean);
+  if (multi.length) return multi;
+  const single = String(process.env.GEMINI_API_KEY || "").trim();
+  return single ? [single] : [];
+}
 function claveCache(o) {
   const s = [o.materia || "", o.tema || "", o.modo || "", o.grado || "", o.cantidad || ""]
     .join("|").toLowerCase();
@@ -280,8 +290,8 @@ export default async function handler(req, res) {
     const { materia, tema, grado = "4to grado", cantidad = 5, contexto, token } = req.body || {};
     if (!tema) return res.status(400).json({ error: "Falta el campo 'tema'" });
 
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) return res.status(500).json({ error: "Falta GEMINI_API_KEY en Vercel" });
+    const keys = geminiKeys();
+    if (!keys.length) return res.status(500).json({ error: "Falta GEMINI_API_KEY en Vercel" });
 
     const modo = MODOS_VALIDOS.has(req.body && req.body.modo) ? req.body.modo : "retos";
     const n = Math.min(Math.max(parseInt(cantidad, 10) || 5, 1), 10);
@@ -320,7 +330,7 @@ export default async function handler(req, res) {
       parts.push({ inline_data: { mime_type: f.mime, data: f.data } });
     }
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${apiKey}`;
+    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
     const payload = {
       contents: [{ parts }],
       generationConfig: {
@@ -328,7 +338,19 @@ export default async function handler(req, res) {
         responseMimeType: "application/json", // fuerza a Gemini a devolver JSON limpio
       },
     };
-    const { data, status } = await pedirAGemini(url, payload);
+    // Probamos con cada key (cada una = una cuenta free de ~20 req/min). Ante un
+    // 429 pasamos a la siguiente → así sumamos el cupo de todas. Arranque al azar
+    // para repartir la carga entre las keys.
+    let data = null,
+      status = 0;
+    const inicio = keys.length > 1 ? Math.floor(Math.random() * keys.length) : 0;
+    for (let k = 0; k < keys.length; k++) {
+      const key = keys[(inicio + k) % keys.length];
+      const r = await pedirAGemini(`${endpoint}?key=${key}`, payload);
+      data = r.data;
+      status = r.status;
+      if (status !== 429) break; // 429 → probamos con la siguiente key
+    }
 
     if (!data) throw new Error("El modelo no respondió. Intenta de nuevo.");
     if (data.error) {
