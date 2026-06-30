@@ -325,10 +325,11 @@ export default async function handler(req, res) {
     if (!data) throw new Error("El modelo no respondió. Intenta de nuevo.");
     if (data.error) {
       if (status === 429) {
-        // límite por minuto: mensaje amable + código para que el front lo distinga
+        // límite de cuota/tasa: mensaje amable + código + detalle real de Gemini (para diagnóstico)
         return res.status(429).json({
           error: "Hay mucha demanda en este momento. Espera unos segundos y vuelve a intentar.",
           code: 429,
+          detalle: (data.error && data.error.message) || null,
         });
       }
       throw new Error(data.error.message);
