@@ -19,6 +19,7 @@ const MAX_PDFS = 3;                       // cuántos PDFs leer por generación
 const MAX_PDF_BYTES = 8 * 1024 * 1024;    // por archivo
 const MAX_TOTAL_BYTES = 15 * 1024 * 1024; // suma de todos
 const DL_TIMEOUT_MS = 9000;               // timeout por descarga
+const dormir = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // ───────── helpers de texto ─────────
 function recortar(s, max) {
@@ -163,6 +164,29 @@ Forma EXACTA del JSON:
 ${jsonOnly}`;
 }
 
+// Llama a Gemini con reintentos: ante 429 (límite por minuto) o 503 (saturado)
+// espera un poco y reintenta, en vez de fallarle al niño de una.
+async function pedirAGemini(url, payload, intentos = 3) {
+  let ultimo = { data: null, status: 0 };
+  for (let i = 0; i < intentos; i++) {
+    const r = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    let data = null;
+    try { data = await r.json(); } catch (e) { data = null; }
+    const status = (data && data.error && data.error.code) || r.status;
+    ultimo = { data, status };
+    if ((status === 429 || status === 503) && i < intentos - 1) {
+      await dormir(900 * (i + 1)); // backoff corto: 0.9s, 1.8s
+      continue;
+    }
+    return ultimo;
+  }
+  return ultimo;
+}
+
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -198,20 +222,26 @@ export default async function handler(req, res) {
     }
 
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${apiKey}`;
-    const r = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [{ parts }],
-        generationConfig: {
-          temperature: 0.9,
-          responseMimeType: "application/json", // fuerza a Gemini a devolver JSON limpio
-        },
-      }),
-    });
+    const payload = {
+      contents: [{ parts }],
+      generationConfig: {
+        temperature: 0.9,
+        responseMimeType: "application/json", // fuerza a Gemini a devolver JSON limpio
+      },
+    };
+    const { data, status } = await pedirAGemini(url, payload);
 
-    const data = await r.json();
-    if (data.error) throw new Error(data.error.message);
+    if (!data) throw new Error("El modelo no respondió. Intenta de nuevo.");
+    if (data.error) {
+      if (status === 429) {
+        // límite por minuto: mensaje amable + código para que el front lo distinga
+        return res.status(429).json({
+          error: "Hay mucha demanda en este momento. Espera unos segundos y vuelve a intentar.",
+          code: 429,
+        });
+      }
+      throw new Error(data.error.message);
+    }
 
     const texto = data?.candidates?.[0]?.content?.parts?.[0]?.text || "{}";
     const limpio = texto.replace(/```json|```/g, "").trim();
