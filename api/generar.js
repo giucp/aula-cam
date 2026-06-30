@@ -16,7 +16,10 @@
 
 import crypto from "node:crypto";
 
-const MODEL = "gemini-2.5-flash-lite";
+// Modelo por modo: ejercicios (retos/quiz) con el flash completo (mejor en
+// matemática); resumen/examen con flash-lite (más rápido y barato).
+const MODEL_EJERCICIOS = "gemini-2.5-flash";
+const MODEL_TEXTO = "gemini-2.5-flash-lite";
 const MAX_PDFS = 3;                       // cuántos PDFs leer por generación
 const MAX_PDF_BYTES = 8 * 1024 * 1024;    // por archivo
 const MAX_TOTAL_BYTES = 15 * 1024 * 1024; // suma de todos
@@ -184,7 +187,7 @@ ${jsonOnly}`;
   return base + `Crea ${n} ejercicios de práctica NUEVOS para reforzar el MISMO tema y nivel, distintos entre sí${tienePdf ? " y distintos a los del documento, pero del mismo estilo" : ""}.
 - Claros, resolubles y con dificultad acorde a la edad.
 - Si el tema es de matemática o lógica: RESUELVE y VERIFICA cada ejercicio antes de entregarlo. Elige los números para que la respuesta sea EXACTA (un entero, salvo que el tema sea de decimales/fracciones). La respuesta debe cumplir TODAS las condiciones del enunciado, y el enunciado debe coincidir con la respuesta final.
-- "pista": orienta sin dar la respuesta. "solucion": el resultado CORRECTO con una explicación breve y clara. NO escribas en la solución tu ensayo y error ni cambies el enunciado dentro de la solución; si al verificar no cuadra, ajusta el enunciado ANTES de entregar.
+- "pista": orienta sin dar la respuesta. "solucion": SOLO el resultado correcto y una explicación breve y clara. NUNCA escribas "Ups", "error", "ajustemos", "revisemos" ni cambies el enunciado dentro de la solución. Si un ejercicio no te cuadra, descártalo y crea otro distinto que SÍ cuadre.
 Forma EXACTA del JSON:
 {"ejercicios":[{"enunciado":"...","pista":"...","solucion":"...","figura":""}]}
 ${figuraNota}
@@ -336,15 +339,16 @@ export default async function handler(req, res) {
       parts.push({ inline_data: { mime_type: f.mime, data: f.data } });
     }
 
-    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
     const esEjercicio = modo === "retos" || modo === "quiz";
+    const model = esEjercicio ? MODEL_EJERCICIOS : MODEL_TEXTO;
+    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
     const genCfg = {
       temperature: esEjercicio ? 0.7 : 0.9, // más bajo en ejercicios → más correcto
       responseMimeType: "application/json", // fuerza a Gemini a devolver JSON limpio
     };
     // Pensar antes de responder mejora MUCHO la matemática (retos/quiz). Razona
     // aparte y la "solucion" sale limpia y correcta (no ensayo y error encima).
-    if (esEjercicio) genCfg.thinkingConfig = { thinkingBudget: 2048 };
+    if (esEjercicio) genCfg.thinkingConfig = { thinkingBudget: 4096 };
     const payload = { contents: [{ parts }], generationConfig: genCfg };
     // Probamos con cada key (cada una = una cuenta free de ~20 req/min). Ante un
     // 429 pasamos a la siguiente → así sumamos el cupo de todas. Arranque al azar
