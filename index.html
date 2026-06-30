@@ -470,7 +470,7 @@
     else if(modo==="examen")  renderExamen(res, d.preguntas||[]);
     else if(modo==="quiz")    renderQuiz(res, d.preguntas||[]);
     else                      renderRetos(res, d.ejercicios||[]);
-    renderFooter(res);
+    if(modo!=="quiz") renderFooter(res);   // el quiz cierra con su nota + mensaje
     res.scrollIntoView({behavior:"smooth",block:"nearest"});
   }
 
@@ -565,10 +565,29 @@
           const exp=c.querySelector(".qexp"); if(exp) exp.classList.add("show");
           estado.resp++; if(j===correcta) estado.ok++;
           score.textContent=`Puntaje: ${estado.ok}/${estado.total}`;
+          if(estado.resp===estado.total) mostrarResultadoQuiz(res, estado);
         };
       });
       res.appendChild(c);
     });
+  }
+
+  // nota (sobre 20) + mensaje de motivación al terminar el quiz
+  function mostrarResultadoQuiz(res, estado){
+    const pct = estado.total ? estado.ok/estado.total : 0;
+    const nota = Math.max(1, Math.round(pct*20));
+    let msg;
+    if(pct>=0.9)      msg="¡Excelente! 🌟 Dominaste el tema.";
+    else if(pct>=0.7) msg="¡Muy bien! 💪 Vas por buen camino.";
+    else if(pct>=0.5) msg="¡Bien! 📚 Sigue practicando un poquito más.";
+    else              msg="¡No te rindas! 🙌 Repasa y vuelve a intentarlo.";
+    const c=document.createElement("div"); c.className="card";
+    c.style.animationDelay="0.05s";
+    c.innerHTML=`<span class="tag t3">🎉 ¡Terminaste!</span>
+      <p class="q">Nota: ${nota}/20 · acertaste ${estado.ok} de ${estado.total}</p>
+      <div class="sumKey"><b>${escapeHtml(msg)}</b></div>`;
+    res.appendChild(c);
+    c.scrollIntoView({behavior:"smooth",block:"nearest"});
   }
 
   // ───────── vistas auxiliares ─────────

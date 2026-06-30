@@ -125,7 +125,7 @@ function armarPrompt({ modo, material, tienePdf, grado, tema, materia, n }) {
   const pdfNota = tienePdf
     ? `\nTe adjunto la(s) guía(s)/hoja(s) en PDF con la teoría y los ejercicios reales del tema. Léelas con atención y básate en su contenido.\n`
     : ``;
-  const base = `Eres un docente de ${grado} en Venezuela, cálido y claro. Escribe en español de Venezuela, con palabras apropiadas para ${grado}.\n\n${ctx}${pdfNota}\n`;
+  const base = `Eres un docente de ${grado} en Venezuela, cálido y claro. Escribe en español neutro y claro, con palabras apropiadas para ${grado}. No uses jerga regional ni saludos coloquiales como "chamos", "chamo", "épale" o "pana"; dirígete al alumno de forma sencilla y neutra.\n\n${ctx}${pdfNota}\n`;
   const jsonOnly = `Responde ÚNICAMENTE con JSON válido, sin texto adicional ni markdown.`;
 
   if (modo === "resumen") {
