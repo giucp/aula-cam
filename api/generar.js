@@ -255,7 +255,7 @@ async function cacheSet(clave, fila) {
 
 // Llama a Gemini con reintentos: ante 429 (límite por minuto) o 503 (saturado)
 // espera un poco y reintenta, en vez de fallarle al niño de una.
-async function pedirAGemini(url, payload, intentos = 3) {
+async function pedirAGemini(url, payload, intentos = 2) {
   let ultimo = { data: null, status: 0 };
   for (let i = 0; i < intentos; i++) {
     const r = await fetch(url, {
@@ -354,7 +354,8 @@ export default async function handler(req, res) {
       const r = await pedirAGemini(`${endpoint}?key=${key}`, payload);
       data = r.data;
       status = r.status;
-      if (status !== 429) break; // 429 → probamos con la siguiente key
+      // 429 (cupo) o 503 (saturado) → probamos con la siguiente key; si no, listo.
+      if (status !== 429 && status !== 503) break;
     }
 
     if (!data) throw new Error("El modelo no respondió. Intenta de nuevo.");
