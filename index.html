@@ -177,6 +177,15 @@
   .qexp.show{display:block;animation:pop .3s ease}
   .qexp b{font-family:"Fredoka"}
 
+  /* figura (SVG dibujado por la IA) */
+  .figura{display:flex;justify-content:center;margin:6px 0}
+  .figura img{max-width:100%;height:auto;max-height:280px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px}
+  /* botón "generar otros" */
+  .otrosWrap{display:flex;justify-content:center;margin-top:4px}
+  .otros{border:2px solid var(--line);background:#fff;cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:1rem;color:var(--ink);padding:11px 20px;border-radius:14px;box-shadow:var(--shadow-xs);transition:all .14s}
+  .otros:hover{border-color:#A9E6DE}
+  .otros:active{transform:scale(.97)}
+
   @media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}.card{opacity:1;transform:none}}
   :focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:8px}
 </style>
@@ -418,7 +427,8 @@
   function checkReady(){ $("#btnGen").disabled = !temaActual(); }
 
   // ───────── GENERAR ─────────
-  $("#btnGen").onclick = async ()=>{
+  $("#btnGen").onclick = ()=>generar(false);
+  async function generar(nocache){
     const tema = temaActual(); if(!tema) return;
     const mo = MODOS.find(m=>m.id===modoSel) || MODOS[0];
     const esLibre = !!$("#otro").value.trim();
@@ -431,7 +441,7 @@
         body:JSON.stringify({
           materia:(materiaSel&&materiaSel.nombre)||"General",
           tema, grado:gradoDeSesion()||"4to grado", cantidad, contexto, modo:modoSel,
-          token:(SESION&&SESION.token)||null
+          token:(SESION&&SESION.token)||null, nocache: !!nocache
         })});
       let d;
       try { d = await r.json(); }
@@ -472,10 +482,10 @@
     const res=$("#results"); res.innerHTML="";
     renderBanner(res, d.fuentes, d.basadoEnMaterial);
     const modo = d.modo || modoSel;
-    if(modo==="resumen")      renderResumen(res, d);
-    else if(modo==="examen")  renderExamen(res, d.preguntas||[]);
-    else if(modo==="quiz")    renderQuiz(res, d.preguntas||[]);
-    else                      renderRetos(res, d.ejercicios||[]);
+    if(modo==="resumen")       renderResumen(res, d);
+    else if(modo==="examen"){  renderExamen(res, d.preguntas||[]); renderOtros(res); }
+    else if(modo==="quiz")     renderQuiz(res, d.preguntas||[]);   // "otros" se agrega al terminar
+    else {                     renderRetos(res, d.ejercicios||[]); renderOtros(res); }
     if(modo!=="quiz") renderFooter(res);   // el quiz cierra con su nota + mensaje
     res.scrollIntoView({behavior:"smooth",block:"nearest"});
   }
@@ -508,6 +518,7 @@
       const c=tarjeta(i);
       c.innerHTML=`<span class="tag">🎯 Reto ${i+1}</span>
         <p class="q">${escapeHtml(e.enunciado||"")}</p>
+        ${figuraHTML(e.figura)}
         <div class="reveals">
           ${e.pista?`<button class="mini hint">💡 Pista</button>`:``}
           <button class="mini ans">✅ Ver respuesta</button>
@@ -559,6 +570,7 @@
       const letras="ABCDE";
       c.innerHTML=`<span class="tag t3">🎮 Pregunta ${i+1}</span>
         <p class="q">${escapeHtml(p.pregunta||"")}</p>
+        ${figuraHTML(p.figura)}
         <div class="opts">${opciones.map((o,j)=>`<button class="opt"><span class="letra">${letras[j]||"•"}</span><span>${escapeHtml(o)}</span></button>`).join("")}</div>
         ${p.explicacion?`<div class="qexp"><b>¿Por qué?</b> ${escapeHtml(p.explicacion)}</div>`:``}`;
       const btns=[...c.querySelectorAll(".opt")];
@@ -593,6 +605,7 @@
       <p class="q">Nota: ${nota}/20 · acertaste ${estado.ok} de ${estado.total}</p>
       <div class="sumKey"><b>${escapeHtml(msg)}</b></div>`;
     res.appendChild(c);
+    renderOtros(res);
     c.scrollIntoView({behavior:"smooth",block:"nearest"});
   }
 
@@ -607,6 +620,22 @@
   }
   function errBox(titulo, detalle){
     return `<div class="err"><span class="ico">😅</span><div>${escapeHtml(titulo)}${detalle?`<small>${escapeHtml(detalle)}</small>`:""}</div></div>`;
+  }
+  // botón para regenerar SIN caché — variedad bajo demanda (retos/examen/quiz)
+  function renderOtros(res){
+    const wrap=document.createElement("div"); wrap.className="otrosWrap";
+    const b=document.createElement("button"); b.className="otros";
+    b.textContent="🔄 Generar otros";
+    b.onclick=()=>generar(true);
+    wrap.appendChild(b); res.appendChild(wrap);
+  }
+  // figura SVG segura: se rendea como imagen (data URI) → los scripts del SVG NO se ejecutan así
+  function figuraHTML(svg){
+    if(!svg || typeof svg!=="string") return "";
+    const s=svg.trim();
+    if(!/^<svg[\s>]/i.test(s) || s.length>20000) return "";
+    const limpio=s.replace(/<script[\s\S]*?<\/script>/gi,"").replace(/\son\w+\s*=\s*("[^"]*"|'[^']*')/gi,"");
+    return `<div class="figura"><img src="data:image/svg+xml;utf8,${encodeURIComponent(limpio)}" alt="figura del ejercicio" loading="lazy"></div>`;
   }
 
   // ───────── helpers de datos ─────────

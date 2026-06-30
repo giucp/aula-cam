@@ -14,6 +14,8 @@
 // Si no hay contexto ni PDFs, cae al modo anterior (solo título). La clave de
 // Gemini NO va aquí: va en Vercel como variable de entorno GEMINI_API_KEY.
 
+import crypto from "node:crypto";
+
 const MODEL = "gemini-2.5-flash-lite";
 const MAX_PDFS = 3;                       // cuántos PDFs leer por generación
 const MAX_PDF_BYTES = 8 * 1024 * 1024;    // por archivo
@@ -128,6 +130,7 @@ function armarPrompt({ modo, material, tienePdf, grado, tema, materia, n }) {
     : ``;
   const base = `Eres un docente de ${grado} en Venezuela, cálido y claro. Escribe en español neutro y claro, con palabras apropiadas para ${grado}. No uses jerga regional ni saludos coloquiales como "chamos", "chamo", "épale" o "pana"; dirígete al alumno de forma sencilla y neutra.\n\n${ctx}${pdfNota}\n`;
   const jsonOnly = `Responde ÚNICAMENTE con JSON válido, sin texto adicional ni markdown.`;
+  const figuraNota = `Si un ejercicio necesita una figura para entenderse (por ejemplo: estrellas mágicas con números, pirámides numéricas, conteo de cubos, secuencias o patrones de figuras), incluye en "figura" un dibujo en SVG simple y autocontenido que la represente, coherente con el enunciado y la solución (usa viewBox; solo formas, líneas, números y texto; SIN <script>, SIN <image>, SIN recursos externos). Si el ejercicio NO necesita figura, deja "figura":"" (cadena vacía).`;
 
   if (modo === "resumen") {
     return base + `Hazle al alumno un RESUMEN del tema para que le sea fácil de entender y recordar: claro, corto, con tono cálido y motivador.
@@ -148,9 +151,10 @@ ${jsonOnly}`;
   if (modo === "quiz") {
     return base + `Crea ${n} preguntas de opción múltiple sobre el tema, apropiadas para ${grado}. Cada una con 3 o 4 opciones, UNA sola correcta, y una explicación breve del porqué.
 Forma EXACTA del JSON:
-{"preguntas":[{"pregunta":"...","opciones":["opción A","opción B","opción C"],"correcta":0,"explicacion":"..."}]}
+{"preguntas":[{"pregunta":"...","opciones":["opción A","opción B","opción C"],"correcta":0,"explicacion":"...","figura":""}]}
 - "correcta" es el índice (empezando en 0) de la opción correcta dentro de "opciones".
 - Las opciones incorrectas deben ser creíbles, no absurdas.
+${figuraNota}
 ${jsonOnly}`;
   }
 
@@ -160,8 +164,57 @@ ${jsonOnly}`;
 - Si el tema es de matemática o lógica, usa números concretos y resultados verificables.
 - La "pista" orienta sin dar la respuesta; la "solucion" es correcta y breve.
 Forma EXACTA del JSON:
-{"ejercicios":[{"enunciado":"...","pista":"...","solucion":"..."}]}
+{"ejercicios":[{"enunciado":"...","pista":"...","solucion":"...","figura":""}]}
+${figuraNota}
 ${jsonOnly}`;
+}
+
+// ───────── caché en Supabase (opcional) ─────────
+// Si no hay SUPABASE_URL/SUPABASE_SERVICE_KEY en el entorno, el caché se
+// desactiva solo y todo funciona igual (solo que sin ahorro). Cuando estén
+// configuradas, un mismo (materia+tema+modo+grado+cantidad) se reusa y NO
+// vuelve a llamar a Gemini ni a bajar PDFs. Tabla: cache_generaciones.
+function supabaseCfg() {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_KEY;
+  return url && key ? { url: url.replace(/\/+$/, ""), key } : null;
+}
+function claveCache(o) {
+  const s = [o.materia || "", o.tema || "", o.modo || "", o.grado || "", o.cantidad || ""]
+    .join("|").toLowerCase();
+  return crypto.createHash("sha1").update(s).digest("hex");
+}
+async function cacheGet(clave) {
+  const cfg = supabaseCfg();
+  if (!cfg) return null;
+  try {
+    const r = await fetch(`${cfg.url}/rest/v1/cache_generaciones?clave=eq.${clave}&select=contenido`, {
+      headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}` },
+    });
+    if (!r.ok) return null;
+    const rows = await r.json();
+    return (Array.isArray(rows) && rows[0] && rows[0].contenido) || null;
+  } catch (e) {
+    return null;
+  }
+}
+async function cacheSet(clave, fila) {
+  const cfg = supabaseCfg();
+  if (!cfg) return;
+  try {
+    await fetch(`${cfg.url}/rest/v1/cache_generaciones`, {
+      method: "POST",
+      headers: {
+        apikey: cfg.key,
+        Authorization: `Bearer ${cfg.key}`,
+        "Content-Type": "application/json",
+        Prefer: "resolution=merge-duplicates",
+      },
+      body: JSON.stringify({ clave, ...fila }),
+    });
+  } catch (e) {
+    /* el caché nunca debe romper la generación */
+  }
 }
 
 // Llama a Gemini con reintentos: ante 429 (límite por minuto) o 503 (saturado)
@@ -203,6 +256,16 @@ export default async function handler(req, res) {
 
     const modo = MODOS_VALIDOS.has(req.body && req.body.modo) ? req.body.modo : "retos";
     const n = Math.min(Math.max(parseInt(cantidad, 10) || 5, 1), 10);
+
+    // 1) caché: si ya generamos esto antes, lo devolvemos al instante (sin Gemini ni PDFs).
+    //    nocache=true (botón "generar otros") salta la lectura y luego sobrescribe.
+    const clave = claveCache({ materia, tema, modo, grado, cantidad: n });
+    const noCache = !!(req.body && req.body.nocache);
+    if (!noCache) {
+      const hit = await cacheGet(clave);
+      if (hit) return res.status(200).json({ ...hit, cacheado: true });
+    }
+
     const material = armarMaterial(contexto);
 
     // Descarga los PDFs reales del tema (no rompe si falla alguno).
@@ -247,14 +310,17 @@ export default async function handler(req, res) {
     const limpio = texto.replace(/```json|```/g, "").trim();
     const parsed = JSON.parse(limpio);
 
-    return res.status(200).json({
+    const respuesta = {
       tema,
       materia: materia || null,
       modo,
       basadoEnMaterial: !!material || pdfs.length > 0,
       fuentes: pdfs.map((p) => p.nombre), // PDFs que Gemini realmente leyó
       ...parsed,
-    });
+    };
+    // 2) guardamos en caché para la próxima vez (no rompe si Supabase no está)
+    await cacheSet(clave, { materia: materia || null, tema, modo, grado, cantidad: n, contenido: respuesta });
+    return res.status(200).json(respuesta);
   } catch (e) {
     return res.status(500).json({ error: String(e.message || e) });
   }
