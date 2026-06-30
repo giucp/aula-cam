@@ -450,7 +450,7 @@
 
   // ───────── GENERAR ─────────
   $("#btnGen").onclick = ()=>generar(false);
-  async function generar(nocache){
+  async function generar(nocache, reintento){
     const tema = temaActual(); if(!tema) return;
     const mo = MODOS.find(m=>m.id===modoSel) || MODOS[0];
     const esLibre = !!$("#otro").value.trim();
@@ -472,13 +472,18 @@
       if(d.error){ const er=new Error(d.error); er.code=d.code; er.retryAfter=d.retryAfter; throw er; }
       render(d);
     }catch(e){
+      if(e.code===503 && !reintento){
+        cool = -1;                              // reintento en curso: no tocar el botón en finally
+        await new Promise(r=>setTimeout(r,1500));
+        return generar(nocache, true);          // saturación transitoria: reintentamos solos una vez
+      }
       if(e.code===429){
         cool = Math.min(Math.max(e.retryAfter||10, 5), 60);
         res.innerHTML = errBox(`Llegaste al límite gratis del momento. Espera ${cool} segundos y vuelve a intentar. ⏳`);
       }else{
         res.innerHTML = errBox("Uy, no llegó. Intenta otra vez en un momentico.", String(e.message||e));
       }
-    }finally{ if(cool>0){ enfriar(btn, cool); } else { btn.disabled=false; } }
+    }finally{ if(cool>0){ enfriar(btn, cool); } else if(cool===0){ btn.disabled=false; } }
   };
 
   // contexto real del tema (lo que la alumna está viendo)

@@ -369,6 +369,13 @@ export default async function handler(req, res) {
           detalle: (data.error && data.error.message) || null,
         });
       }
+      if (status === 503) {
+        // modelo saturado (transitorio): el front reintenta solo una vez
+        return res.status(503).json({
+          error: "El servicio está ocupado en este momento. Intenta de nuevo en unos segundos.",
+          code: 503,
+        });
+      }
       throw new Error(data.error.message);
     }
 
