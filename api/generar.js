@@ -175,6 +175,7 @@ Forma EXACTA del JSON:
 {"preguntas":[{"pregunta":"...","opciones":["opción A","opción B","opción C"],"correcta":0,"explicacion":"...","figura":""}]}
 - "correcta" es el índice (empezando en 0) de la opción correcta dentro de "opciones".
 - Las opciones incorrectas deben ser creíbles, no absurdas.
+- Si la pregunta involucra cálculo, RESUÉLVELA y verifica que la opción marcada como "correcta" es de verdad la correcta.
 ${figuraNota}
 ${jsonOnly}`;
   }
@@ -182,8 +183,8 @@ ${jsonOnly}`;
   // retos (por defecto)
   return base + `Crea ${n} ejercicios de práctica NUEVOS para reforzar el MISMO tema y nivel, distintos entre sí${tienePdf ? " y distintos a los del documento, pero del mismo estilo" : ""}.
 - Claros, resolubles y con dificultad acorde a la edad.
-- Si el tema es de matemática o lógica, usa números concretos y resultados verificables.
-- La "pista" orienta sin dar la respuesta; la "solucion" es correcta y breve.
+- Si el tema es de matemática o lógica: RESUELVE y VERIFICA cada ejercicio antes de entregarlo. Elige los números para que la respuesta sea EXACTA (un entero, salvo que el tema sea de decimales/fracciones). La respuesta debe cumplir TODAS las condiciones del enunciado, y el enunciado debe coincidir con la respuesta final.
+- "pista": orienta sin dar la respuesta. "solucion": el resultado CORRECTO con una explicación breve y clara. NO escribas en la solución tu ensayo y error ni cambies el enunciado dentro de la solución; si al verificar no cuadra, ajusta el enunciado ANTES de entregar.
 Forma EXACTA del JSON:
 {"ejercicios":[{"enunciado":"...","pista":"...","solucion":"...","figura":""}]}
 ${figuraNota}
@@ -336,13 +337,15 @@ export default async function handler(req, res) {
     }
 
     const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
-    const payload = {
-      contents: [{ parts }],
-      generationConfig: {
-        temperature: 0.9,
-        responseMimeType: "application/json", // fuerza a Gemini a devolver JSON limpio
-      },
+    const esEjercicio = modo === "retos" || modo === "quiz";
+    const genCfg = {
+      temperature: esEjercicio ? 0.7 : 0.9, // más bajo en ejercicios → más correcto
+      responseMimeType: "application/json", // fuerza a Gemini a devolver JSON limpio
     };
+    // Pensar antes de responder mejora MUCHO la matemática (retos/quiz). Razona
+    // aparte y la "solucion" sale limpia y correcta (no ensayo y error encima).
+    if (esEjercicio) genCfg.thinkingConfig = { thinkingBudget: 2048 };
+    const payload = { contents: [{ parts }], generationConfig: genCfg };
     // Probamos con cada key (cada una = una cuenta free de ~20 req/min). Ante un
     // 429 pasamos a la siguiente → así sumamos el cupo de todas. Arranque al azar
     // para repartir la carga entre las keys.
