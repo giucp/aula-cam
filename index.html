@@ -457,6 +457,7 @@
     const contexto = esLibre ? null : construirContexto(tema);
     ultimoContexto = contexto;
     const res = $("#results"); const btn=$("#btnGen"); btn.disabled=true;
+    let cool=0;
     res.innerHTML = vistaCargando(tema, mo, fotos.length>0);
     try{
       const r = await fetch(API_GENERAR,{method:"POST",headers:{"Content-Type":"application/json"},
@@ -468,15 +469,16 @@
       let d;
       try { d = await r.json(); }
       catch(_){ throw new Error("El servidor tardó demasiado o se cayó. Prueba de nuevo en un momentico."); }
-      if(d.error){ const er=new Error(d.error); er.code=d.code; throw er; }
+      if(d.error){ const er=new Error(d.error); er.code=d.code; er.retryAfter=d.retryAfter; throw er; }
       render(d);
     }catch(e){
-      const demanda = e.code===429 || /quota|rate|demanda|exceeded/i.test(String(e.message));
-      const msg = demanda
-        ? "Hay mucha demanda ahora mismo. Espera unos segundos y vuelve a intentar. ⏳"
-        : "Uy, no llegó. Intenta otra vez en un momentico.";
-      res.innerHTML = errBox(msg, String(e.message||e));
-    }finally{ btn.disabled=false; }
+      if(e.code===429){
+        cool = Math.min(Math.max(e.retryAfter||10, 5), 60);
+        res.innerHTML = errBox(`Llegaste al límite gratis del momento. Espera ${cool} segundos y vuelve a intentar. ⏳`);
+      }else{
+        res.innerHTML = errBox("Uy, no llegó. Intenta otra vez en un momentico.", String(e.message||e));
+      }
+    }finally{ if(cool>0){ enfriar(btn, cool); } else { btn.disabled=false; } }
   };
 
   // contexto real del tema (lo que la alumna está viendo)
@@ -684,6 +686,16 @@
   });
   function errBox(titulo, detalle){
     return `<div class="err"><span class="ico">😅</span><div>${escapeHtml(titulo)}${detalle?`<small>${escapeHtml(detalle)}</small>`:""}</div></div>`;
+  }
+  // tras un 429 (límite por minuto), bloquea el botón con cuenta regresiva para no empeorar el límite
+  function enfriar(btn, segs){
+    const txt = (MODOS.find(m=>m.id===modoSel)||MODOS[0]).verbo;
+    let s = segs; btn.disabled=true; btn.textContent=`⏳ Espera ${s}s…`;
+    const id=setInterval(()=>{
+      s--;
+      if(s<=0){ clearInterval(id); btn.textContent=txt; btn.disabled = !temaActual(); }
+      else btn.textContent=`⏳ Espera ${s}s…`;
+    },1000);
   }
   // botón para regenerar SIN caché — variedad bajo demanda (retos/examen/quiz)
   function renderOtros(res){

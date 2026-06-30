@@ -252,13 +252,21 @@ async function pedirAGemini(url, payload, intentos = 3) {
     try { data = await r.json(); } catch (e) { data = null; }
     const status = (data && data.error && data.error.code) || r.status;
     ultimo = { data, status };
-    if ((status === 429 || status === 503) && i < intentos - 1) {
+    // Solo reintentamos en 503 (saturación transitoria). En 429 (límite por
+    // minuto) NO reintentamos: reintentar gastaría más cuota y la empeora.
+    if (status === 503 && i < intentos - 1) {
       await dormir(900 * (i + 1)); // backoff corto: 0.9s, 1.8s
       continue;
     }
     return ultimo;
   }
   return ultimo;
+}
+
+// Saca los segundos que Gemini pide esperar ("Please retry in 7.05s.").
+function segReintento(msg) {
+  const m = String(msg || "").match(/retry in\s+([\d.]+)\s*s/i);
+  return m ? Math.ceil(parseFloat(m[1])) : null;
 }
 
 export default async function handler(req, res) {
@@ -325,10 +333,11 @@ export default async function handler(req, res) {
     if (!data) throw new Error("El modelo no respondió. Intenta de nuevo.");
     if (data.error) {
       if (status === 429) {
-        // límite de cuota/tasa: mensaje amable + código + detalle real de Gemini (para diagnóstico)
+        // límite por minuto: mensaje amable + código + segundos que pide esperar + detalle.
         return res.status(429).json({
           error: "Hay mucha demanda en este momento. Espera unos segundos y vuelve a intentar.",
           code: 429,
+          retryAfter: segReintento(data.error && data.error.message),
           detalle: (data.error && data.error.message) || null,
         });
       }
