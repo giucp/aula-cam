@@ -202,13 +202,18 @@ function supabaseCfg() {
 }
 
 // Una o varias API keys de Gemini (cuentas free distintas, para sumar cupo).
-// Acepta GEMINI_API_KEYS separadas por coma, o la GEMINI_API_KEY de siempre.
+// Combina la GEMINI_API_KEY de siempre + las de GEMINI_API_KEYS (separadas por
+// coma), sin duplicar. Así sumar keys es solo agregar GEMINI_API_KEYS con las
+// nuevas, sin tocar la original.
 function geminiKeys() {
-  const multi = String(process.env.GEMINI_API_KEYS || "")
-    .split(",").map((s) => s.trim()).filter(Boolean);
-  if (multi.length) return multi;
-  const single = String(process.env.GEMINI_API_KEY || "").trim();
-  return single ? [single] : [];
+  const out = [];
+  const add = (s) => {
+    s = String(s || "").trim();
+    if (s && !out.includes(s)) out.push(s);
+  };
+  add(process.env.GEMINI_API_KEY);
+  String(process.env.GEMINI_API_KEYS || "").split(",").forEach(add);
+  return out;
 }
 function claveCache(o) {
   const s = [o.materia || "", o.tema || "", o.modo || "", o.grado || "", o.cantidad || ""]
