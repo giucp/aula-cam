@@ -21,7 +21,25 @@ const MAX_PDFS = 3;                       // cuántos PDFs leer por generación
 const MAX_PDF_BYTES = 8 * 1024 * 1024;    // por archivo
 const MAX_TOTAL_BYTES = 15 * 1024 * 1024; // suma de todos
 const DL_TIMEOUT_MS = 9000;               // timeout por descarga
+const MAX_FOTOS = 3;                       // fotos de cuaderno por generación
+const MIME_FOTOS = new Set(["image/jpeg", "image/png", "image/webp"]);
 const dormir = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// Sanea las fotos del cuaderno que manda el frontend: {mime, data(base64)}.
+function limpiarFotos(fotos) {
+  if (!Array.isArray(fotos)) return [];
+  const out = [];
+  for (const f of fotos) {
+    if (out.length >= MAX_FOTOS) break;
+    if (!f || typeof f !== "object") continue;
+    const mime = String(f.mime || "");
+    const data = typeof f.data === "string" ? f.data : "";
+    if (!MIME_FOTOS.has(mime)) continue;
+    if (!data || data.length > 6_000_000) continue; // ~4.5MB en binario
+    out.push({ mime, data });
+  }
+  return out;
+}
 
 // ───────── helpers de texto ─────────
 function recortar(s, max) {
@@ -121,14 +139,17 @@ async function juntarPdfs(contexto, token) {
 // ───────── prompt ─────────
 const MODOS_VALIDOS = new Set(["retos", "resumen", "examen", "quiz"]);
 
-function armarPrompt({ modo, material, tienePdf, grado, tema, materia, n }) {
+function armarPrompt({ modo, material, tienePdf, tieneFotos, grado, tema, materia, n }) {
   const ctx = material
     ? `Este es el material REAL del aula del alumno (lo que está viendo):\n\n${material}\n`
     : `Tema: "${tema}" (materia: ${materia || "General"}).\n`;
   const pdfNota = tienePdf
     ? `\nTe adjunto la(s) guía(s)/hoja(s) en PDF con la teoría y los ejercicios reales del tema. Léelas con atención y básate en su contenido.\n`
     : ``;
-  const base = `Eres un docente de ${grado} en Venezuela, cálido y claro. Escribe en español neutro y claro, con palabras apropiadas para ${grado}. No uses jerga regional ni saludos coloquiales como "chamos", "chamo", "épale" o "pana"; dirígete al alumno de forma sencilla y neutra.\n\n${ctx}${pdfNota}\n`;
+  const fotosNota = tieneFotos
+    ? `\nEl alumno también adjuntó fotos de sus apuntes del cuaderno, tomados en sus clases presenciales. Léelas con atención y úsalas como información complementaria al material del aula. La letra de un niño puede ser difícil de leer: interpreta y aprovecha lo que puedas con razonable seguridad, y NO inventes lo que sea ilegible.\n`
+    : ``;
+  const base = `Eres un docente de ${grado} en Venezuela, cálido y claro. Escribe en español neutro y claro, con palabras apropiadas para ${grado}. No uses jerga regional ni saludos coloquiales como "chamos", "chamo", "épale" o "pana"; dirígete al alumno de forma sencilla y neutra.\n\n${ctx}${pdfNota}${fotosNota}\n`;
   const jsonOnly = `Responde ÚNICAMENTE con JSON válido, sin texto adicional ni markdown.`;
   const figuraNota = `Si un ejercicio necesita una figura para entenderse (por ejemplo: estrellas mágicas con números, pirámides numéricas, conteo de cubos, secuencias o patrones de figuras), incluye en "figura" un dibujo en SVG simple y autocontenido que la represente, coherente con el enunciado y la solución (usa viewBox; solo formas, líneas, números y texto; SIN <script>, SIN <image>, SIN recursos externos). Si el ejercicio NO necesita figura, deja "figura":"" (cadena vacía).`;
 
@@ -257,10 +278,14 @@ export default async function handler(req, res) {
     const modo = MODOS_VALIDOS.has(req.body && req.body.modo) ? req.body.modo : "retos";
     const n = Math.min(Math.max(parseInt(cantidad, 10) || 5, 1), 10);
 
+    // Fotos del cuaderno (apuntes de clase presencial): personales del alumno, complementan el material.
+    const fotos = limpiarFotos(req.body && req.body.fotos);
+    const tieneFotos = fotos.length > 0;
+
     // 1) caché: si ya generamos esto antes, lo devolvemos al instante (sin Gemini ni PDFs).
-    //    nocache=true (botón "generar otros") salta la lectura y luego sobrescribe.
+    //    nocache=true (botón "generar otros") salta la lectura. Con fotos NO se cachea (son personales).
     const clave = claveCache({ materia, tema, modo, grado, cantidad: n });
-    const noCache = !!(req.body && req.body.nocache);
+    const noCache = !!(req.body && req.body.nocache) || tieneFotos;
     if (!noCache) {
       const hit = await cacheGet(clave);
       if (hit) return res.status(200).json({ ...hit, cacheado: true });
@@ -276,12 +301,15 @@ export default async function handler(req, res) {
       pdfs = [];
     }
 
-    const prompt = armarPrompt({ modo, material, tienePdf: pdfs.length > 0, grado, tema, materia, n });
+    const prompt = armarPrompt({ modo, material, tienePdf: pdfs.length > 0, tieneFotos, grado, tema, materia, n });
 
-    // Partes del request: el prompt + cada PDF como inline_data.
+    // Partes del request: el prompt + cada PDF + cada foto del cuaderno como inline_data.
     const parts = [{ text: prompt }];
     for (const p of pdfs) {
       parts.push({ inline_data: { mime_type: "application/pdf", data: p.buf.toString("base64") } });
+    }
+    for (const f of fotos) {
+      parts.push({ inline_data: { mime_type: f.mime, data: f.data } });
     }
 
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${apiKey}`;
@@ -314,12 +342,15 @@ export default async function handler(req, res) {
       tema,
       materia: materia || null,
       modo,
-      basadoEnMaterial: !!material || pdfs.length > 0,
+      basadoEnMaterial: !!material || pdfs.length > 0 || tieneFotos,
       fuentes: pdfs.map((p) => p.nombre), // PDFs que Gemini realmente leyó
+      apuntes: tieneFotos, // usó fotos del cuaderno del alumno
       ...parsed,
     };
-    // 2) guardamos en caché para la próxima vez (no rompe si Supabase no está)
-    await cacheSet(clave, { materia: materia || null, tema, modo, grado, cantidad: n, contenido: respuesta });
+    // 2) guardamos en caché para la próxima vez — SALVO si usó fotos (resultado personal del alumno)
+    if (!tieneFotos) {
+      await cacheSet(clave, { materia: materia || null, tema, modo, grado, cantidad: n, contenido: respuesta });
+    }
     return res.status(200).json(respuesta);
   } catch (e) {
     return res.status(500).json({ error: String(e.message || e) });

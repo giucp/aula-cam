@@ -186,6 +186,16 @@
   .otros:hover{border-color:#A9E6DE}
   .otros:active{transform:scale(.97)}
 
+  /* fotos del cuaderno (apuntes) */
+  .ayuda{color:var(--muted);font-weight:600;font-size:.9rem;margin:-6px 0 11px;line-height:1.45}
+  .fotos{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:11px}
+  .thumb{position:relative;width:74px;height:74px;border-radius:13px;overflow:hidden;border:2px solid var(--line);box-shadow:var(--shadow-xs)}
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .thumb button{position:absolute;top:3px;right:3px;width:22px;height:22px;border-radius:50%;border:none;background:rgba(59,43,74,.8);color:#fff;font-weight:800;cursor:pointer;line-height:1;display:grid;place-items:center;font-size:1rem;padding:0}
+  .addFoto{display:inline-flex;align-items:center;gap:8px;border:2px dashed #D9C7DA;background:#fff;color:var(--grape);font-family:"Fredoka";font-weight:600;font-size:.96rem;padding:11px 16px;border-radius:14px;cursor:pointer;transition:all .14s}
+  .addFoto:hover{border-color:var(--grape)}
+  .addFoto:active{transform:scale(.97)}
+
   @media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}.card{opacity:1;transform:none}}
   :focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:8px}
 </style>
@@ -252,6 +262,15 @@
           </div>
         </div>
 
+        <div class="paso">
+          <p class="lbl">📓 Mis apuntes <span style="color:var(--muted);font-weight:600">(opcional)</span></p>
+          <p class="ayuda">¿Tomaste apuntes en clase? Súmale fotos de tu cuaderno y la IA también las usará para este tema.</p>
+          <div class="fotos" id="fotos"></div>
+          <label class="addFoto" id="addFoto">📷 Agregar foto
+            <input id="fotoInput" type="file" accept="image/*" capture="environment" multiple hidden />
+          </label>
+        </div>
+
         <hr class="sep" />
         <button class="go" id="btnGen" disabled>✨ Crear mis retos</button>
       </div>
@@ -290,6 +309,8 @@
   let cantidad = 5;
   let modoSel = "retos";
   let ultimoContexto = null;
+  let fotos = [];          // fotos del cuaderno (apuntes), solo del momento
+  const MAX_FOTOS = 3;
 
   // ───────── arranque ─────────
   const guardada = store.get("sesion");
@@ -356,10 +377,11 @@
   }
 
   function verMaterias(){ $("#paneTemas").classList.add("hidden"); $("#paneMaterias").classList.remove("hidden"); }
-  $("#btnBack").onclick = ()=>{ temaSel=null; $("#results").innerHTML=""; verMaterias(); };
+  $("#btnBack").onclick = ()=>{ temaSel=null; $("#results").innerHTML=""; fotos=[]; pintarFotos(); verMaterias(); };
 
   function abrirMateria(m){
     materiaSel=m; temaSel=null; $("#otro").value=""; $("#results").innerHTML="";
+    fotos=[]; pintarFotos();
     lapsoMap = construirLapsoMap(m);
     $("#tituloMateria").textContent = `${iconMateria(m.nombre)}  ${limpiaNombreMateria(m.nombre)}`;
     const temas = temasPracticables(m);
@@ -435,13 +457,13 @@
     const contexto = esLibre ? null : construirContexto(tema);
     ultimoContexto = contexto;
     const res = $("#results"); const btn=$("#btnGen"); btn.disabled=true;
-    res.innerHTML = vistaCargando(tema, mo);
+    res.innerHTML = vistaCargando(tema, mo, fotos.length>0);
     try{
       const r = await fetch(API_GENERAR,{method:"POST",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({
           materia:(materiaSel&&materiaSel.nombre)||"General",
           tema, grado:gradoDeSesion()||"4to grado", cantidad, contexto, modo:modoSel,
-          token:(SESION&&SESION.token)||null, nocache: !!nocache
+          token:(SESION&&SESION.token)||null, nocache: !!nocache, fotos
         })});
       let d;
       try { d = await r.json(); }
@@ -480,7 +502,7 @@
   // ───────── RENDER (despacha según el modo) ─────────
   function render(d){
     const res=$("#results"); res.innerHTML="";
-    renderBanner(res, d.fuentes, d.basadoEnMaterial);
+    renderBanner(res, d.fuentes, d.basadoEnMaterial, d.apuntes);
     const modo = d.modo || modoSel;
     if(modo==="resumen")       renderResumen(res, d);
     else if(modo==="examen"){  renderExamen(res, d.preguntas||[]); renderOtros(res); }
@@ -490,21 +512,23 @@
     res.scrollIntoView({behavior:"smooth",block:"nearest"});
   }
 
-  function renderBanner(res, fuentes, basado){
+  function renderBanner(res, fuentes, basado, apuntes){
     const pdfs = Array.isArray(fuentes) ? fuentes : [];
     const acts = (ultimoContexto && ultimoContexto.actividades) ? ultimoContexto.actividades : [];
+    const apunte = apuntes ? `<li>📓 + tus apuntes del cuaderno</li>` : "";
+    let html = "";
     if(pdfs.length){
-      const b=document.createElement("div"); b.className="basado";
       const items = pdfs.slice(0,4).map(f=>`<li>${escapeHtml(f)}</li>`).join("");
-      b.innerHTML=`<p class="t">📄 Basado en tus guías de clase</p><ul>${items}</ul>`;
-      res.appendChild(b);
+      html = `<p class="t">📄 Basado en tus guías de clase</p><ul>${items}${apunte}</ul>`;
+    }else if(apuntes){
+      const items = acts.slice(0,4).map(a=>`<li>${escapeHtml(a.nombre)}</li>`).join("");
+      html = `<p class="t">📓 Basado en tus apuntes del cuaderno</p>${items?`<ul>${items}</ul>`:""}`;
     }else if(basado && acts.length){
-      const b=document.createElement("div"); b.className="basado";
       const items = acts.slice(0,4).map(a=>`<li>${escapeHtml(a.nombre)}</li>`).join("");
       const extra = acts.length>4 ? `<li>…y ${acts.length-4} más</li>` : "";
-      b.innerHTML=`<p class="t">🔗 Basado en tu clase</p><ul>${items}${extra}</ul>`;
-      res.appendChild(b);
+      html = `<p class="t">🔗 Basado en tu clase</p><ul>${items}${extra}</ul>`;
     }
+    if(html){ const b=document.createElement("div"); b.className="basado"; b.innerHTML=html; res.appendChild(b); }
   }
   function renderFooter(res){
     const f=document.createElement("p"); f.className="footer";
@@ -612,12 +636,52 @@
   // ───────── vistas auxiliares ─────────
   function tarjeta(i){ const c=document.createElement("div"); c.className="card"; c.style.animationDelay=(i*0.08)+"s"; return c; }
   function vacio(t){ const d=document.createElement("div"); d.className="empty"; d.textContent=t; return d; }
-  function vistaCargando(tema, mo){
+  function vistaCargando(tema, mo, conFotos){
+    const extra = conFotos ? " y leyendo tus apuntes" : "";
     return `<div class="loading"><div class="brain">🧠</div>
-      <div>${escapeHtml(mo.carga)} de <b>${escapeHtml(tema)}</b>…</div>
+      <div>${escapeHtml(mo.carga)} de <b>${escapeHtml(tema)}</b>${extra}…</div>
       <div class="dots"><span></span><span></span><span></span></div></div>
       ${[0,1,2].map(()=>`<div class="skel"><div class="bar s"></div><div class="bar m"></div><div class="bar l"></div></div>`).join("")}`;
   }
+
+  // ───────── fotos del cuaderno (apuntes) ─────────
+  // Comprime la imagen en el teléfono (más liviana = más rápido y barato) y la deja en base64.
+  function comprimirImagen(file, maxLado=1600, calidad=0.82){
+    return new Promise((resolve,reject)=>{
+      const img=new Image(); const url=URL.createObjectURL(file);
+      img.onload=()=>{
+        URL.revokeObjectURL(url);
+        let w=img.naturalWidth||img.width, h=img.naturalHeight||img.height;
+        const m=Math.max(w,h); if(m>maxLado){ const r=maxLado/m; w=Math.round(w*r); h=Math.round(h*r); }
+        const c=document.createElement("canvas"); c.width=w; c.height=h;
+        c.getContext("2d").drawImage(img,0,0,w,h);
+        const dataUrl=c.toDataURL("image/jpeg", calidad);
+        resolve({ mime:"image/jpeg", data:dataUrl.split(",")[1] });
+      };
+      img.onerror=()=>{ URL.revokeObjectURL(url); reject(new Error("no se pudo leer la imagen")); };
+      img.src=url;
+    });
+  }
+  function pintarFotos(){
+    const cont=$("#fotos"); if(!cont) return; cont.innerHTML="";
+    fotos.forEach((f,i)=>{
+      const d=document.createElement("div"); d.className="thumb";
+      d.innerHTML=`<img src="data:${f.mime};base64,${f.data}" alt="apunte ${i+1}"><button title="Quitar" aria-label="Quitar foto">×</button>`;
+      d.querySelector("button").onclick=()=>{ fotos.splice(i,1); pintarFotos(); };
+      cont.appendChild(d);
+    });
+    const add=$("#addFoto"); if(add) add.classList.toggle("hidden", fotos.length>=MAX_FOTOS);
+  }
+  $("#fotoInput").addEventListener("change", async (e)=>{
+    const files=[...(e.target.files||[])];
+    for(const f of files){
+      if(fotos.length>=MAX_FOTOS) break;
+      if(!/^image\//.test(f.type||"")) continue;
+      try{ fotos.push(await comprimirImagen(f)); }catch(_){}
+    }
+    e.target.value="";
+    pintarFotos();
+  });
   function errBox(titulo, detalle){
     return `<div class="err"><span class="ico">😅</span><div>${escapeHtml(titulo)}${detalle?`<small>${escapeHtml(detalle)}</small>`:""}</div></div>`;
   }
