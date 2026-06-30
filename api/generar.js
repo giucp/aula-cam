@@ -340,8 +340,6 @@ export default async function handler(req, res) {
     }
 
     const esEjercicio = modo === "retos" || modo === "quiz";
-    const model = esEjercicio ? MODEL_EJERCICIOS : MODEL_TEXTO;
-    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
     const genCfg = {
       temperature: esEjercicio ? 0.7 : 0.9, // más bajo en ejercicios → más correcto
       responseMimeType: "application/json", // fuerza a Gemini a devolver JSON limpio
@@ -350,19 +348,25 @@ export default async function handler(req, res) {
     // aparte y la "solucion" sale limpia y correcta (no ensayo y error encima).
     if (esEjercicio) genCfg.thinkingConfig = { thinkingBudget: 4096 };
     const payload = { contents: [{ parts }], generationConfig: genCfg };
-    // Probamos con cada key (cada una = una cuenta free de ~20 req/min). Ante un
-    // 429 pasamos a la siguiente → así sumamos el cupo de todas. Arranque al azar
-    // para repartir la carga entre las keys.
+    // Modelo preferido por modo + el otro de respaldo. Cada modelo tiene su PROPIO
+    // cupo free, así que si el preferido se agota, el otro suele seguir andando.
+    const modelos = esEjercicio
+      ? [MODEL_EJERCICIOS, MODEL_TEXTO] // retos/quiz: flash; respaldo flash-lite
+      : [MODEL_TEXTO, MODEL_EJERCICIOS]; // resumen/examen: flash-lite; respaldo flash
+    // Probamos modelos × keys (cada key = una cuenta, ~20 req/min). Ante 429 (cupo)
+    // o 503 (saturado) seguimos con la próxima key; agotadas todas, el próximo modelo.
     let data = null,
       status = 0;
-    const inicio = keys.length > 1 ? Math.floor(Math.random() * keys.length) : 0;
-    for (let k = 0; k < keys.length; k++) {
-      const key = keys[(inicio + k) % keys.length];
-      const r = await pedirAGemini(`${endpoint}?key=${key}`, payload);
-      data = r.data;
-      status = r.status;
-      // 429 (cupo) o 503 (saturado) → probamos con la siguiente key; si no, listo.
-      if (status !== 429 && status !== 503) break;
+    buscar: for (const m of modelos) {
+      const ep = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`;
+      const inicio = keys.length > 1 ? Math.floor(Math.random() * keys.length) : 0;
+      for (let k = 0; k < keys.length; k++) {
+        const key = keys[(inicio + k) % keys.length];
+        const r = await pedirAGemini(`${ep}?key=${key}`, payload);
+        data = r.data;
+        status = r.status;
+        if (status !== 429 && status !== 503) break buscar; // éxito o error no recuperable
+      }
     }
 
     if (!data) throw new Error("El modelo no respondió. Intenta de nuevo.");
