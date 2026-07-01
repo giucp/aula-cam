@@ -1,5 +1,6 @@
 {
   "functions": {
-    "api/generar.js": { "maxDuration": 60 }
+    "api/generar.js": { "maxDuration": 60 },
+    "api/capturar.js": { "maxDuration": 60 }
   }
 }
