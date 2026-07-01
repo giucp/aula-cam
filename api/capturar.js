@@ -52,12 +52,20 @@ async function listarCursosSitio(token) {
   return [];
 }
 
-// ───────── grado desde el shortname (ej "4G" → "4to grado") ─────────
-const ORD = { 1: "1er grado", 2: "2do grado", 3: "3er grado", 4: "4to grado", 5: "5to grado", 6: "6to grado" };
+// ───────── grado desde el shortname (ej "4G" → "4to grado", "1A" → "1er año") ─────────
+// El colegio usa sufijo G = grado (primaria) y A = año (bachillerato/media).
+const ORD_G = { 1: "1er grado", 2: "2do grado", 3: "3er grado", 4: "4to grado", 5: "5to grado", 6: "6to grado" };
+const ORD_A = { 1: "1er año", 2: "2do año", 3: "3er año", 4: "4to año", 5: "5to año" };
 function gradoDe(shortname, fullname) {
-  const m = String(shortname || fullname || "").match(/(\d+)/);
-  const n = m ? parseInt(m[1], 10) : null;
-  return n && ORD[n] ? ORD[n] : (shortname || "otro");
+  const s = String(shortname || fullname || "");
+  const m = s.match(/(\d+)\s*([GA])\b/i);
+  if (m) {
+    const n = parseInt(m[1], 10);
+    const tabla = m[2].toUpperCase() === "A" ? ORD_A : ORD_G;
+    if (tabla[n]) return tabla[n];
+  }
+  const d = s.match(/(\d+)/);
+  return d && ORD_G[d[1]] ? ORD_G[d[1]] : (shortname || "otro");
 }
 
 // ───────── descarga de PDFs (mismo criterio que generar.js) ─────────
