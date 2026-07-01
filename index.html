@@ -144,15 +144,36 @@
   .chip:active{transform:scale(.96)}
   .chip[aria-pressed="true"]{background:linear-gradient(180deg,#FF8158,var(--mango));border-color:transparent;color:#fff;box-shadow:var(--shadow-sm)}
 
-  /* modos (¿qué quieres hacer?) */
-  .modos{display:flex;flex-wrap:wrap;gap:9px}
-  .modo{border:2px solid var(--line);background:#fff;color:var(--ink);font-family:"Nunito";font-weight:800;font-size:.92rem;
-    padding:10px 14px;border-radius:15px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
-    box-shadow:var(--shadow-xs);transition:transform .12s,border-color .15s,background .15s,color .15s}
-  .modo .mi{font-size:1.1rem}
+  /* modos = pasos de la ruta de aprendizaje (lista vertical) */
+  .modos{display:flex;flex-direction:column;gap:10px}
+  .modo{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:2px solid var(--line);background:#fff;color:var(--ink);
+    font-family:"Nunito";cursor:pointer;padding:12px 14px;border-radius:16px;box-shadow:var(--shadow-xs);
+    transition:transform .12s,border-color .15s,background .15s,color .15s;position:relative}
   .modo:hover{border-color:#A9E6DE}
-  .modo:active{transform:scale(.96)}
+  .modo:active{transform:scale(.99)}
   .modo[aria-pressed="true"]{background:linear-gradient(180deg,#1ECAB8,var(--teal));border-color:transparent;color:#fff;box-shadow:var(--shadow-sm)}
+  .pmNum{flex:none;width:26px;height:26px;border-radius:50%;background:var(--sun);color:var(--ink);display:grid;place-items:center;font-family:"Fredoka";font-weight:700;font-size:.85rem}
+  .modo[aria-pressed="true"] .pmNum{background:rgba(255,255,255,.9);color:var(--teal-dark)}
+  .pmIcon{flex:none;font-size:1.4rem}
+  .pmTxt{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+  .pmNom{font-family:"Fredoka";font-weight:600;font-size:1.02rem}
+  .pmDesc{font-weight:600;font-size:.82rem;color:var(--muted);line-height:1.3}
+  .modo[aria-pressed="true"] .pmDesc{color:rgba(255,255,255,.92)}
+  .pmEstado{flex:none;display:flex;align-items:center;gap:7px}
+  .pmCheck{color:var(--ok);font-weight:800;font-size:1.15rem}
+  .modo[aria-pressed="true"] .pmCheck{color:#fff}
+  .pmRec{background:#FFF1CF;color:#8a5a00;font-family:"Fredoka";font-weight:600;font-size:.72rem;padding:3px 9px;border-radius:999px;white-space:nowrap}
+  .modo[aria-pressed="true"] .pmRec{background:rgba(255,255,255,.92);color:var(--mango-dark)}
+
+  /* landing */
+  .comoPasos{display:flex;flex-direction:column;gap:15px}
+  .comoPaso{display:flex;gap:12px;align-items:flex-start}
+  .comoPaso .n{flex:none;background:var(--sun);color:var(--ink);width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-family:"Fredoka";font-weight:700;font-size:.85rem;box-shadow:var(--shadow-xs);margin-top:2px}
+  .comoPaso b{font-family:"Fredoka";font-weight:600;font-size:1rem;display:block;margin-bottom:2px}
+  .comoPaso small{color:var(--muted);font-weight:600;font-size:.9rem;line-height:1.45}
+  .panelPadres{margin-top:16px;background:#FBF7FB;box-shadow:none}
+  .lblPadres{font-family:"Fredoka";font-weight:600;color:var(--ink);margin:0 0 8px}
+  .txtPadres{color:var(--muted);font-weight:600;font-size:.92rem;line-height:1.55;margin:0}
 
   .paso{margin-top:18px}
   .count{display:flex;gap:7px}
@@ -270,8 +291,29 @@
 <body>
 <div class="wrap">
 
+  <!-- ╔═══ LANDING ═══╗ -->
+  <section id="vLanding">
+    <p class="hi">Aula CAM</p>
+    <h1>Tu aula virtual, convertida en práctica <span class="star">✨</span></h1>
+    <p class="sub">Aula CAM toma lo que tus maestros suben al aula virtual y lo convierte en resúmenes, retos, quiz y exámenes de práctica hechos para ti.</p>
+    <div class="panel">
+      <p class="lbl">¿Cómo funciona?</p>
+      <div class="comoPasos">
+        <div class="comoPaso"><span class="n">1</span><div><b>Entra con tu usuario del aula virtual</b><small>El mismo de siempre, nada nuevo que memorizar.</small></div></div>
+        <div class="comoPaso"><span class="n">2</span><div><b>Escoge tu materia y tu tema</b><small>Verás los mismos temas que están viendo en clase.</small></div></div>
+        <div class="comoPaso"><span class="n">3</span><div><b>Aprende, practica y ponte a prueba</b><small>La IA crea ejercicios a partir de tus propias guías de clase, y te guía paso a paso: primero entiendes, luego practicas, y al final simulas tu examen.</small></div></div>
+      </div>
+      <button class="go" id="btnEntrarLanding" style="margin-top:18px">Entrar a practicar</button>
+    </div>
+    <div class="panel panelPadres">
+      <p class="lblPadres">Para los padres</p>
+      <p class="txtPadres">Aula CAM se conecta al aula virtual del colegio con el usuario del alumno únicamente para leer sus materias y guías. La clave se usa una sola vez para conectarse y no se guarda. Los ejercicios se generan a partir del material real que asignan los docentes, y la app registra el avance del niño (temas practicados y resultados de sus quizzes) solo para guiar su aprendizaje.</p>
+    </div>
+  </section>
+
   <!-- ╔═══ LOGIN ═══╗ -->
-  <section id="vLogin">
+  <section id="vLogin" class="hidden">
+    <button class="back" id="btnVolverLanding">‹ Volver</button>
     <p class="hi">Aula CAM</p>
     <h1>Mis Retos <span class="star">✨</span></h1>
     <p class="sub">Entra con tu usuario y clave del aula virtual y aprende con cosas hechas para ti.</p>
@@ -382,13 +424,15 @@
   const API_GENERAR  = "https://aula-cam.vercel.app/api/generar";
   const API_CURRICULO = "https://aula-cam.vercel.app/api/curriculo";
   const API_ERRORES  = "https://aula-cam.vercel.app/api/errores";
+  const API_ACTIVIDAD = "https://aula-cam.vercel.app/api/actividad";
 
   // modos de salida
+  // Ruta de aprendizaje: los 4 pasos EN ORDEN (ids internos intactos; solo cambia lo visible).
   const MODOS = [
-    { id:"retos",   icon:"🎯", label:"Retos",   verbo:"✨ Crear mis retos", carga:"Inventando retos",   conteo:true  },
-    { id:"resumen", icon:"📝", label:"Resumen", verbo:"📝 Hacer resumen",   carga:"Armando tu resumen", conteo:false },
-    { id:"examen",  icon:"📋", label:"Examen",  verbo:"📋 Crear examen",    carga:"Preparando preguntas", conteo:true },
-    { id:"quiz",    icon:"🎮", label:"Quiz",    verbo:"🎮 Crear quiz",      carga:"Armando tu quiz",    conteo:true  },
+    { id:"resumen", icon:"📝", nombre:"Aprende",          desc:"Lee un resumen que te explica el tema paso a paso",        verbo:"📝 Hacer resumen",     carga:"Armando tu resumen",   conteo:false },
+    { id:"retos",   icon:"🎯", nombre:"Practica",         desc:"Ejercicios con pistas y sin nota, para agarrar confianza", verbo:"✨ Crear mis retos",    carga:"Inventando retos",     conteo:true  },
+    { id:"quiz",    icon:"🎮", nombre:"Demuestra",        desc:"Un quiz con nota: mira cuánto dominas ya",                 verbo:"🎮 Crear quiz",        carga:"Armando tu quiz",      conteo:true  },
+    { id:"examen",  icon:"📋", nombre:"Simula tu examen", desc:"Preguntas como las que te pueden poner en clase",          verbo:"📋 Crear examen",      carga:"Preparando preguntas", conteo:true  },
   ];
 
   // almacenamiento seguro: localStorage si existe, si no, memoria
@@ -412,6 +456,7 @@
   let fotos = [];          // fotos del cuaderno (apuntes), solo del momento
   const MAX_FOTOS = 3;
   let MIS_ERRORES = [];    // preguntas de quiz falladas (para "repasar mis errores")
+  let PROGRESO = new Map();// clave norm(materia)+"|"+norm(tema) → {modos:Set, quizMejor:number|null}
 
   // (el arranque corre al FINAL del script, cuando todas las consts/funciones ya existen)
 
@@ -450,6 +495,7 @@
 
   // ───────── HOME ─────────
   function entrarHome(){
+    $("#vLanding").classList.add("hidden");
     $("#vLogin").classList.add("hidden");
     $("#vHome").classList.remove("hidden");
     origen = "actual";
@@ -468,20 +514,28 @@
     pintarMaterias();
     verMaterias();
     cargarErrores();
+    cargarProgreso();
   }
+
+  // navegación landing ↔ login
+  function verLanding(){ $("#vHome").classList.add("hidden"); $("#vLogin").classList.add("hidden"); $("#vLanding").classList.remove("hidden"); window.scrollTo({top:0}); }
+  function verLogin(){ $("#vLanding").classList.add("hidden"); $("#vHome").classList.add("hidden"); $("#vLogin").classList.remove("hidden"); window.scrollTo({top:0}); }
+  $("#btnEntrarLanding").onclick = ()=>{ $("#loginMsg").innerHTML=""; verLogin(); };
+  $("#btnVolverLanding").onclick = ()=>{ $("#user").value=""; $("#pass").value=""; verLanding(); };
 
   $("#btnSalir").onclick = ()=>{
     store.del("sesion"); SESION=null; origen="actual";
     materiaSel=null; temaSel=null; $("#results").innerHTML="";
-    $("#vHome").classList.add("hidden"); $("#vLogin").classList.remove("hidden");
+    MIS_ERRORES=[]; PROGRESO=new Map();
     $("#user").value=""; $("#loginMsg").innerHTML="";
+    verLanding();
   };
 
   // sesión vencida (token expirado): cerrar y volver al login con aviso amable
   function sesionVencida(){
     store.del("sesion"); SESION=null; origen="actual"; materiaSel=null; temaSel=null;
-    $("#results").innerHTML="";
-    $("#vHome").classList.add("hidden"); $("#vLogin").classList.remove("hidden");
+    $("#results").innerHTML=""; MIS_ERRORES=[]; PROGRESO=new Map();
+    verLogin();
     $("#loginMsg").innerHTML = errBox("Tu sesión venció. Entra de nuevo, por favor.");
   }
   // refresca las materias en segundo plano (por si la maestra subió algo nuevo),
@@ -564,6 +618,51 @@
     try{ await fetch(API_ERRORES,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"guardar",usuario_id:SESION.id,errores})}); }catch(_){}
   }
 
+  // ───────── progreso por tema (ruta de aprendizaje) ─────────
+  async function cargarProgreso(){
+    PROGRESO = new Map();
+    if(!SESION || SESION.id==null){ return; }
+    try{
+      const r=await fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"resumen",usuario_id:SESION.id})});
+      const d=await r.json().catch(()=>null);
+      const prog=(d&&Array.isArray(d.progreso))?d.progreso:[];
+      prog.forEach(row=>{
+        PROGRESO.set(norm(row.materia||"")+"|"+norm(row.tema||""),
+          { modos:new Set(row.modos||[]), quizMejor:(typeof row.quizMejor==="number"?row.quizMejor:null) });
+      });
+    }catch(e){ PROGRESO=new Map(); }
+    repintarProgreso();
+  }
+  // registra que el niño hizo una actividad; actualiza PROGRESO al instante + guarda (fire-and-forget)
+  function registrarActividad(meta, modo, extra){
+    if(!SESION || SESION.id==null) return;
+    const mat=(meta&&meta.materia)||null, tema=(meta&&meta.tema)||null;
+    if(!tema) return;
+    const key=norm(mat||"")+"|"+norm(tema);
+    let p=PROGRESO.get(key); if(!p){ p={modos:new Set(),quizMejor:null}; PROGRESO.set(key,p); }
+    p.modos.add(modo);
+    if(modo==="quiz" && extra && Number.isInteger(extra.total) && extra.total>0 && Number.isInteger(extra.aciertos)){
+      const v=extra.aciertos/extra.total; if(p.quizMejor==null || v>p.quizMejor) p.quizMejor=v;
+    }
+    repintarProgreso();
+    const body={accion:"guardar",usuario_id:SESION.id,materia:mat,tema,grado:(meta&&meta.grado)||gradoActivo(),modo};
+    if(modo==="quiz" && extra){ body.aciertos=extra.aciertos; body.total=extra.total; }
+    try{ fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}); }catch(_){}
+  }
+  // marca ✓ (hecho) / ⭐ (dominado ≥80%) en los chips del panel abierto
+  function marcarChips(){
+    const mat=(materiaSel&&materiaSel.nombre)||"";
+    $("#grupos").querySelectorAll(".chip").forEach(c=>{
+      const tema=c.dataset.tema||"";
+      const pr=PROGRESO.get(norm(mat)+"|"+norm(tema));
+      const marca = pr ? ((pr.quizMejor!=null && pr.quizMejor>=0.8) ? " ⭐" : " ✓") : "";
+      c.textContent = tema + marca;
+    });
+  }
+  function repintarProgreso(){
+    if($("#paneTemas") && !$("#paneTemas").classList.contains("hidden")){ pintarModos(); marcarChips(); }
+  }
+
   // grilla de materias (sirve para las actuales y para las del próximo año)
   function gridMaterias(lista){
     const g = $("#gridMaterias"); g.innerHTML="";
@@ -628,8 +727,7 @@
       $("#sinTemas").classList.toggle("hidden", temas.length>0);
       pintarGrupos(temas);
     }
-    pintarModos();
-    setModo(modoPorDefecto({nombre:m.nombre}));   // por defecto según el tipo de materia
+    setModo("resumen");   // al abrir (sin tema) se preselecciona "Aprende"
     checkReady();
     $("#paneMaterias").classList.add("hidden"); $("#paneTemas").classList.remove("hidden");
     window.scrollTo({top:0,behavior:"smooth"});
@@ -642,7 +740,7 @@
     const mkChip=(t)=>{
       const b=document.createElement("button"); b.className="chip"; b.setAttribute("aria-pressed","false");
       b.textContent=t; b.dataset.tema=t;
-      b.onclick=()=>{ temaSel=(temaSel===t)?null:t; $("#otro").value=""; pintarChips(); checkReady(); };
+      b.onclick=()=>{ temaSel=(temaSel===t)?null:t; $("#otro").value=""; alSeleccionarTema(); };
       return b;
     };
     grupos.forEach((g,idx)=>{
@@ -656,6 +754,7 @@
         cont.appendChild(chips);
       }
     });
+    marcarChips();
   }
 
   // crea un lapso desplegable (acordeón) y devuelve el contenedor donde poner los chips
@@ -685,7 +784,7 @@
       const b=document.createElement("button");
       b.className="chip"; b.setAttribute("aria-pressed","false");
       b.textContent=t.seccion; b.dataset.tema=t.seccion;
-      b.onclick=()=>{ temaSel=(temaSel===t.seccion)?null:t.seccion; $("#otro").value=""; pintarChips(); checkReady(); };
+      b.onclick=()=>{ temaSel=(temaSel===t.seccion)?null:t.seccion; $("#otro").value=""; alSeleccionarTema(); };
       return b;
     };
     orden.forEach((lap,idx)=>{
@@ -699,16 +798,35 @@
         cont.appendChild(chips);
       }
     });
+    marcarChips();
   }
   function pintarChips(){ $("#grupos").querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed", String(c.dataset.tema===temaSel))); }
 
-  // modos
+  // ───────── ruta de aprendizaje ─────────
+  // Devuelve {modo, motivo} — motivo es el texto corto del badge.
+  function pasoSugerido(materia, tema){
+    const p = PROGRESO.get(norm(materia)+"|"+norm(tema));
+    if(!p || !p.modos.size)        return { modo:"resumen", motivo:"Empieza aquí" };
+    if(!p.modos.has("retos"))      return { modo:"retos",   motivo:"Te toca practicar" };
+    if(!p.modos.has("quiz"))       return { modo:"quiz",    motivo:"Ponte a prueba" };
+    if((p.quizMejor ?? 0) < 0.8)   return { modo:"quiz",    motivo:"Repite y sube tu nota" };
+    if(!p.modos.has("examen"))     return { modo:"examen",  motivo:"¡Listo para el examen!" };
+    return { modo:"examen", motivo:"Tema dominado ⭐" };
+  }
   function pintarModos(){
     const cont = $("#modos"); cont.innerHTML="";
-    MODOS.forEach(mo=>{
+    const mat=(materiaSel&&materiaSel.nombre)||"";
+    const tema=temaActual();
+    const p = tema ? PROGRESO.get(norm(mat)+"|"+norm(tema)) : null;
+    const sug = tema ? pasoSugerido(mat, tema) : null;
+    MODOS.forEach((mo,idx)=>{
+      const hecho = p && p.modos.has(mo.id);
+      const esSug = sug && sug.modo===mo.id;
       const b=document.createElement("button");
-      b.className="modo"; b.dataset.modo=mo.id; b.setAttribute("aria-pressed","false");
-      b.innerHTML=`<span class="mi">${mo.icon}</span> ${mo.label}`;
+      b.className="modo"; b.dataset.modo=mo.id; b.setAttribute("aria-pressed", String(mo.id===modoSel));
+      b.innerHTML=`<span class="pmNum">${idx+1}</span><span class="pmIcon">${mo.icon}</span>`+
+        `<span class="pmTxt"><span class="pmNom">${mo.nombre}</span><span class="pmDesc">${mo.desc}</span></span>`+
+        `<span class="pmEstado">${esSug?`<span class="pmRec">✨ ${escapeHtml(sug.motivo)}</span>`:``}${hecho?`<span class="pmCheck">✓</span>`:``}</span>`;
       b.onclick=()=>setModo(mo.id);
       cont.appendChild(b);
     });
@@ -716,12 +834,19 @@
   function setModo(id){
     modoSel = id;
     const mo = MODOS.find(m=>m.id===id) || MODOS[0];
-    $("#modos").querySelectorAll(".modo").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.modo===id)));
     $("#pasoCantidad").classList.toggle("hidden", !mo.conteo);   // el resumen no lleva cantidad
     $("#btnGen").textContent = mo.verbo;
+    pintarModos();
+  }
+  // al elegir un tema, recalcula el paso sugerido y lo preselecciona (chips)
+  function alSeleccionarTema(){
+    pintarChips(); checkReady();
+    const tema=temaActual();
+    if(tema) setModo(pasoSugerido((materiaSel&&materiaSel.nombre)||"", tema).modo);
+    else pintarModos();
   }
 
-  $("#otro").addEventListener("input", ()=>{ if($("#otro").value.trim()){ temaSel=null; pintarChips(); } checkReady(); });
+  $("#otro").addEventListener("input", ()=>{ if($("#otro").value.trim()){ temaSel=null; } pintarChips(); checkReady(); pintarModos(); });
   $("#count").querySelectorAll("button").forEach(btn=>{
     btn.onclick=()=>{ cantidad=Number(btn.dataset.n); $("#count").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b===btn))); };
   });
@@ -837,10 +962,11 @@
     const res=$("#results"); res.innerHTML="";
     renderBanner(res, d.fuentes, d.basadoEnMaterial, d.apuntes);
     const modo = d.modo || modoSel;
-    if(modo==="resumen")       renderResumen(res, d);
-    else if(modo==="examen"){  renderExamen(res, d.preguntas||[]); renderOtros(res); }
-    else if(modo==="quiz")     renderQuiz(res, d.preguntas||[], {materia:d.materia, tema:d.tema, grado:gradoActivo()});   // "otros" se agrega al terminar
-    else {                     renderRetos(res, d.ejercicios||[]); renderOtros(res); }
+    const meta = { materia:d.materia, tema:d.tema, grado:gradoActivo() };
+    if(modo==="resumen"){      renderResumen(res, d); registrarActividad(meta, "resumen"); }
+    else if(modo==="examen"){  renderExamen(res, d.preguntas||[], meta); renderOtros(res); }
+    else if(modo==="quiz")     renderQuiz(res, d.preguntas||[], meta);   // "otros" se agrega al terminar
+    else {                     renderRetos(res, d.ejercicios||[], meta); renderOtros(res); }
     if(modo!=="quiz") renderFooter(res);   // el quiz cierra con su nota + mensaje
     res.scrollIntoView({behavior:"smooth",block:"nearest"});
   }
@@ -869,8 +995,9 @@
     res.appendChild(f);
   }
 
-  function renderRetos(res, ejercicios){
+  function renderRetos(res, ejercicios, meta){
     if(!ejercicios.length){ res.appendChild(vacio("No llegaron retos. Intenta otra vez.")); return; }
+    let registrado=false;
     ejercicios.forEach((e,i)=>{
       const c=tarjeta(i);
       c.innerHTML=`<span class="tag">🎯 Reto ${i+1}</span>
@@ -884,12 +1011,14 @@
         <div class="reveal ans"><b>Respuesta:</b> ${escapeHtml(e.solucion||"")}</div>`;
       const h=c.querySelector(".mini.hint"), a=c.querySelector(".mini.ans");
       if(h) h.onclick=()=>{ c.querySelector(".reveal.hint").classList.add("show"); h.disabled=true; };
-      a.onclick=()=>{ c.querySelector(".reveal.ans").classList.add("show"); a.disabled=true; };
+      a.onclick=()=>{ c.querySelector(".reveal.ans").classList.add("show"); a.disabled=true;
+        if(!registrado){ registrado=true; registrarActividad(meta, "retos"); } };
       res.appendChild(c);
     });
   }
 
-  function renderExamen(res, preguntas){
+  function renderExamen(res, preguntas, meta){
+    let registrado=false;
     if(!preguntas.length){ res.appendChild(vacio("No llegaron preguntas. Intenta otra vez.")); return; }
     preguntas.forEach((p,i)=>{
       const c=tarjeta(i);
@@ -898,7 +1027,8 @@
         <div class="reveals"><button class="mini ans">✅ Ver respuesta</button></div>
         <div class="reveal ans"><b>Respuesta:</b> ${escapeHtml(p.respuesta||"")}${p.explicacion?`<div class="comoRes"><b>✏️ Cómo se resuelve:</b> ${escapeHtml(p.explicacion)}</div>`:``}</div>`;
       const a=c.querySelector(".mini.ans");
-      a.onclick=()=>{ c.querySelector(".reveal.ans").classList.add("show"); a.disabled=true; };
+      a.onclick=()=>{ c.querySelector(".reveal.ans").classList.add("show"); a.disabled=true;
+        if(!registrado){ registrado=true; registrarActividad(meta, "examen"); } };
       res.appendChild(c);
     });
   }
@@ -971,6 +1101,8 @@
   function mostrarResultadoQuiz(res, estado, meta){
     // guarda lo que falló para "repasar mis errores" y refresca el contador
     if(estado.fallidas && estado.fallidas.length){ guardarErrores(estado.fallidas, meta).then(cargarErrores); }
+    // registra el quiz con su nota (alimenta la ruta de aprendizaje y las marcas ⭐)
+    registrarActividad(meta, "quiz", { aciertos:estado.ok, total:estado.total });
     const pct = estado.total ? estado.ok/estado.total : 0;
     const nota = Math.max(1, Math.round(pct*20));
     let msg;
@@ -1087,7 +1219,6 @@
     if(s.includes("primer")) return 1; if(s.includes("segundo")) return 2; if(s.includes("tercer")) return 3; return 9; }
 
   function esNumerica(nombre){ return /matemát|matemat|lógic|logic|olimpiad/i.test(nombre||""); }
-  function modoPorDefecto(m){ return esNumerica(m&&m.nombre) ? "retos" : "resumen"; }
 
   // grado de la sesión: G = grado (primaria), A = año (bachillerato)
   const ORDN={1:"1er",2:"2do",3:"3er",4:"4to",5:"5to",6:"6to"};
@@ -1166,9 +1297,10 @@
         if(viejo) refrescarMaterias();
       }
     }catch(e){
-      // si algo falla al restaurar la sesión, NO congelar: volver al login
+      // si algo falla al restaurar la sesión, NO congelar: mostrar la landing
       SESION=null; try{ store.del("sesion"); }catch(_){}
-      $("#vHome").classList.add("hidden"); $("#vLogin").classList.remove("hidden");
+      $("#vHome").classList.add("hidden"); $("#vLogin").classList.add("hidden");
+      $("#vLanding").classList.remove("hidden");
     }
   })();
 </script>
