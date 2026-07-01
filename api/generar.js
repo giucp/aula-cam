@@ -235,7 +235,10 @@ function geminiKeys() {
 }
 function claveCache(o) {
   const ver = PROMPT_VER[o.modo] || "";
-  const s = [o.materia || "", o.tema || "", o.modo || "", o.grado || "", o.cantidad || "", ver]
+  // El resumen no usa "cantidad": la ignoramos en la clave para no fragmentar el
+  // caché (si no, cambiar la cantidad en otro modo regeneraría el resumen con IA).
+  const cant = o.modo === "resumen" ? "" : o.cantidad || "";
+  const s = [o.materia || "", o.tema || "", o.modo || "", o.grado || "", cant, ver]
     .join("|").toLowerCase();
   return crypto.createHash("sha1").update(s).digest("hex");
 }

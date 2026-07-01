@@ -570,6 +570,33 @@
   function temaActual(){ return $("#otro").value.trim() || temaSel; }
   function checkReady(){ $("#btnGen").disabled = !temaActual(); }
 
+  // ───────── caché local (en el teléfono) ─────────
+  // Guarda lo ya generado en este aparato para no repetir llamadas (ni a la IA
+  // ni a Supabase) cuando la alumna vuelve a un modo/tema que ya vio. Se salta
+  // con "Generar otros" y con fotos (resultados personales). Clave igual a la del
+  // servidor (el resumen ignora "cantidad").
+  const CACHE_LOCAL_KEY = "gen_cache_v1";
+  const CACHE_LOCAL_MAX = 60;
+  function claveLocal(tema){
+    const cant = modoSel === "resumen" ? "" : cantidad;
+    return [ (materiaSel&&materiaSel.nombre)||"General", tema, modoSel,
+             gradoDeSesion()||"4to grado", cant ].join("|").toLowerCase();
+  }
+  function cacheLocalGet(k){
+    const all = store.get(CACHE_LOCAL_KEY) || {};
+    return (all[k] && all[k].d) ? all[k].d : null;
+  }
+  function cacheLocalSet(k, d){
+    const all = store.get(CACHE_LOCAL_KEY) || {};
+    all[k] = { d, t: Date.now() };
+    const keys = Object.keys(all);
+    if(keys.length > CACHE_LOCAL_MAX){                 // conserva los más nuevos
+      keys.sort((a,b)=>(all[a].t||0)-(all[b].t||0));
+      keys.slice(0, keys.length - CACHE_LOCAL_MAX).forEach(old=>delete all[old]);
+    }
+    store.set(CACHE_LOCAL_KEY, all);
+  }
+
   // ───────── GENERAR ─────────
   $("#btnGen").onclick = ()=>generar(false);
   async function generar(nocache, reintento){
@@ -578,6 +605,14 @@
     const esLibre = !!$("#otro").value.trim();
     const contexto = esLibre ? null : construirContexto(tema);
     ultimoContexto = contexto;
+    // 1) caché local: si ya lo generó en este aparato, lo mostramos al instante
+    //    (sin red). "Generar otros" (nocache) y las fotos lo saltan.
+    const usaFotos = fotos.length>0;
+    const ckLocal = claveLocal(tema);
+    if(!nocache && !usaFotos){
+      const local = cacheLocalGet(ckLocal);
+      if(local){ render(local); return; }
+    }
     const res = $("#results"); const btn=$("#btnGen"); btn.disabled=true;
     let cool=0;
     res.innerHTML = vistaCargando(tema, mo, fotos.length>0);
@@ -592,6 +627,7 @@
       try { d = await r.json(); }
       catch(_){ throw new Error("El servidor tardó demasiado o se cayó. Prueba de nuevo en un momentico."); }
       if(d.error){ const er=new Error(d.error); er.code=d.code; er.retryAfter=d.retryAfter; throw er; }
+      if(!usaFotos) cacheLocalSet(ckLocal, d);   // guarda para no repetir la llamada la próxima vez
       render(d);
     }catch(e){
       if(e.code===503 && !reintento){
