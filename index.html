@@ -4,6 +4,16 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Mis Retos · Aula CAM</title>
+<meta name="description" content="Practica y aprende con tu aula virtual: retos, resúmenes, exámenes y quiz." />
+<!-- PWA / instalar como app -->
+<link rel="manifest" href="/manifest.webmanifest" />
+<meta name="theme-color" content="#FF6B3D" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Aula CAM" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -57,6 +67,23 @@
     font-family:"Fredoka";font-weight:600;font-size:.78rem;padding:4px 11px;border-radius:999px;margin-top:8px}
   .salir{background:#fff;border:2px solid var(--line);border-radius:13px;color:var(--muted);font-family:"Nunito";font-weight:800;cursor:pointer;font-size:.86rem;padding:9px 13px;transition:all .15s;white-space:nowrap}
   .salir:hover{color:var(--mango);border-color:#FFCDBB}
+  .cuentaAcc{display:flex;gap:8px;flex:none}
+
+  /* selector de cuentas (perfiles) en el login */
+  #cuentas{margin-bottom:18px}
+  .cuentaList{display:flex;flex-direction:column;gap:10px}
+  .cuentaBtn{display:flex;align-items:center;gap:13px;width:100%;text-align:left;cursor:pointer;
+    background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:12px 14px;
+    box-shadow:var(--shadow-xs);transition:all .14s;font-family:"Nunito"}
+  .cuentaBtn:hover{border-color:var(--c,#A9E6DE);transform:translateY(-1px)}
+  .cuentaBtn:active{transform:scale(.99)}
+  .cuentaAv{flex:none;width:44px;height:44px;border-radius:50%;background:var(--c,#12B5A4);color:#fff;
+    display:grid;place-items:center;font-family:"Fredoka";font-weight:600;font-size:1.25rem}
+  .cuentaNom{flex:1;font-weight:800;font-size:1.05rem;color:var(--ink)}
+  .cuentaX{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;
+    color:var(--muted);font-weight:800;font-size:.9rem;background:#F6EEF3}
+  .cuentaX:hover{background:#FFE0E8;color:var(--bad)}
+  .otraLbl{margin-top:2px;color:var(--muted);font-weight:700}
 
   /* materias grid */
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:13px}
@@ -216,6 +243,8 @@
     <p class="hi">Aula CAM</p>
     <h1>Mis Retos <span class="star">✨</span></h1>
     <p class="sub">Entra con tu usuario y clave del aula virtual y aprende con cosas hechas para ti.</p>
+    <div id="cuentas" class="hidden"></div>
+    <p class="lbl otraLbl hidden" id="otraLbl">o entra con otra cuenta</p>
     <div class="panel">
       <div class="field">
         <p class="lbl"><span class="n">1</span> Usuario</p>
@@ -236,7 +265,10 @@
         <h1 id="saludo">¡Hola! 👋</h1>
         <span class="gradoBadge" id="gradoBadge"></span>
       </div>
-      <button class="salir" id="btnSalir">Salir</button>
+      <div class="cuentaAcc">
+        <button class="salir" id="btnCambiar">Cambiar</button>
+        <button class="salir" id="btnSalir">Salir</button>
+      </div>
     </div>
 
     <!-- paso A: materias -->
@@ -289,6 +321,11 @@
 </div>
 
 <script>
+  // ───────── PWA: registrar el service worker (instalar como app) ─────────
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
+  }
+
   // ───────── config ─────────
   const API_MOODLE  = "https://aula-cam.vercel.app/api/moodle";
   const API_GENERAR = "https://aula-cam.vercel.app/api/generar";
@@ -310,7 +347,8 @@
   };
 
   const $ = (s)=>document.querySelector(s);
-  let SESION = null;
+  let SESION = null;       // cuenta activa
+  let CUENTAS = [];        // perfiles guardados en este aparato [{id,nombre,token,materias}]
   let materiaSel = null;
   let lapsoMap = {};
   let temaSel = null;
@@ -320,9 +358,68 @@
   let fotos = [];          // fotos del cuaderno (apuntes), solo del momento
   const MAX_FOTOS = 3;
 
+  // ───────── cuentas (perfiles) ─────────
+  // Varias alumnas en el mismo aparato: todas quedan guardadas y se cambia entre
+  // ellas al instante, sin volver a escribir clave. La activa se recuerda.
+  function cargarCuentas(){
+    let arr = store.get("cuentas");
+    if(!Array.isArray(arr)){
+      // migración desde la versión de una sola sesión
+      const vieja = store.get("sesion");
+      arr = (vieja && vieja.materias)
+        ? [{ id: vieja.id || ("u_"+((vieja.nombre||"cuenta").toLowerCase())), ...vieja }]
+        : [];
+      if(arr.length){ store.set("cuentas", arr); store.set("activa", arr[0].id); }
+      store.del("sesion");
+    }
+    CUENTAS = arr;
+  }
+  function guardarCuentas(){ store.set("cuentas", CUENTAS); }
+  function setActiva(id){ if(id==null) store.del("activa"); else store.set("activa", id); }
+
+  function usarCuenta(id){
+    const c = CUENTAS.find(x=>String(x.id)===String(id));
+    if(!c) return;
+    SESION = c; setActiva(c.id);
+    materiaSel=null; temaSel=null; fotos=[]; $("#results").innerHTML="";
+    entrarHome();
+  }
+  function quitarCuenta(id){
+    CUENTAS = CUENTAS.filter(c=>String(c.id)!==String(id));
+    guardarCuentas();
+    if(SESION && String(SESION.id)===String(id)){ SESION=null; setActiva(null); }
+    pintarCuentas();
+  }
+  function pintarCuentas(){
+    const box = $("#cuentas"); if(!box) return;
+    const hay = CUENTAS.length>0;
+    box.classList.toggle("hidden", !hay);
+    $("#otraLbl").classList.toggle("hidden", !hay);
+    box.innerHTML = "";
+    if(!hay) return;
+    const t = document.createElement("p"); t.className="lbl"; t.textContent="¿Quién eres?";
+    box.appendChild(t);
+    const list = document.createElement("div"); list.className="cuentaList";
+    CUENTAS.forEach(c=>{
+      const primer = (c.nombre||"").split(" ")[0] || "Cuenta";
+      const ini = (primer[0]||"?").toUpperCase();
+      const b = document.createElement("button"); b.className="cuentaBtn";
+      b.style.setProperty("--c", colorCuenta(c.nombre||primer));
+      b.innerHTML = `<span class="cuentaAv">${escapeHtml(ini)}</span>`+
+                    `<span class="cuentaNom">${escapeHtml(primer)}</span>`+
+                    `<span class="cuentaX" title="Quitar esta cuenta">✕</span>`;
+      b.onclick = (e)=>{ if(e.target.closest(".cuentaX")){ e.stopPropagation(); quitarCuenta(c.id); } else { usarCuenta(c.id); } };
+      list.appendChild(b);
+    });
+    box.appendChild(list);
+  }
+
   // ───────── arranque ─────────
-  const guardada = store.get("sesion");
-  if(guardada && guardada.materias){ SESION = guardada; entrarHome(); }
+  cargarCuentas();
+  const idActiva = store.get("activa");
+  const act = CUENTAS.find(c=>String(c.id)===String(idActiva));
+  if(act){ SESION = act; entrarHome(); }
+  else { pintarCuentas(); }
 
   // ───────── LOGIN ─────────
   $("#btnLogin").onclick = hacerLogin;
@@ -341,9 +438,16 @@
         body:JSON.stringify({ username:user, password:pass })});
       const d = await r.json();
       if(d.error) throw new Error(d.error);
-      SESION = { nombre:(d.usuario&&d.usuario.nombre)||"", token:d.token, materias:d.materias||[] };
-      store.set("sesion", SESION);
-      $("#pass").value = "";
+      const cuenta = {
+        id: (d.usuario && d.usuario.id!=null) ? d.usuario.id : ("u_"+user.toLowerCase()),
+        nombre:(d.usuario&&d.usuario.nombre)||user, token:d.token, materias:d.materias||[]
+      };
+      // reemplaza la cuenta si ya existía (token/materias frescos), si no la agrega
+      const i = CUENTAS.findIndex(c=>String(c.id)===String(cuenta.id));
+      if(i>=0) CUENTAS[i]=cuenta; else CUENTAS.push(cuenta);
+      guardarCuentas();
+      SESION = cuenta; setActiva(cuenta.id);
+      $("#user").value=""; $("#pass").value="";
       entrarHome();
     }catch(e){
       const txtErr = /invalid|inválid|incorrect/i.test(String(e.message))
@@ -366,10 +470,20 @@
     verMaterias();
   }
 
-  $("#btnSalir").onclick = ()=>{
-    store.del("sesion"); SESION=null; materiaSel=null; temaSel=null;
+  // "Cambiar": vuelve al selector de cuentas SIN cerrar ninguna (para cambiar de
+  // perfil o agregar otra alumna).
+  $("#btnCambiar").onclick = ()=>{
+    materiaSel=null; temaSel=null; $("#results").innerHTML="";
     $("#vHome").classList.add("hidden"); $("#vLogin").classList.remove("hidden");
-    $("#user").value=""; $("#loginMsg").innerHTML="";
+    $("#loginMsg").innerHTML=""; pintarCuentas();
+  };
+  // "Salir": cierra SOLO la cuenta activa (las demás siguen guardadas).
+  $("#btnSalir").onclick = ()=>{
+    if(SESION) CUENTAS = CUENTAS.filter(c=>String(c.id)!==String(SESION.id));
+    guardarCuentas(); SESION=null; setActiva(null);
+    materiaSel=null; temaSel=null; $("#results").innerHTML="";
+    $("#vHome").classList.add("hidden"); $("#vLogin").classList.remove("hidden");
+    $("#user").value=""; $("#loginMsg").innerHTML=""; pintarCuentas();
   };
 
   function pintarMaterias(){
@@ -801,6 +915,13 @@
       ["olimpiad","#FFB703"]];
     for(const [k,c] of map){ if(n.includes(k)) return c; }
     return "#FF6B3D";
+  }
+  // Color por perfil (según el nombre) para que las cuentas se distingan.
+  function colorCuenta(nombre){
+    const pal=["#12B5A4","#7C4DFF","#FF6B3D","#3A8DFF","#E84CA0","#1FA86A","#F4A300"];
+    const s=(nombre||"").toLowerCase(); let h=0;
+    for(let i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0;
+    return pal[h%pal.length];
   }
   function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 </script>
