@@ -4,23 +4,30 @@
 // NO usa la IA: guarda el material tal cual (estructura + PDFs en base64).
 //
 // Protegido por CAPTURA_SECRET (variable de entorno en Vercel). NO es para los
-// niños: es una herramienta de administración. Devuelve 403 si el secreto no
-// coincide, y también si Supabase no está configurado.
+// niños: es una herramienta de administración. 403 si el secreto no coincide.
+//
+// Como capturar un grado entero no entra en el límite de 60s de Vercel, trabaja
+// POR TANDAS (paginado): cada llamada captura unas pocas materias y devuelve
+// "siguiente" (el índice desde donde seguir) o null si ya terminó. El cliente
+// repite en un bucle hasta que "siguiente" sea null.
 //
 // Uso (POST JSON):
-//   { "secret":"…", "username":"…", "password":"…" }        (o "token":"…")
-//   opcional: { "descubrir": true }  → además REPORTA (sin descargar) qué otros
-//   cursos/grados ve la cuenta, para saber si se pueden capturar más adelante.
+//   Capturar (paginado):
+//     { "secret":"…", "username":"…", "password":"…", "desde":0, "max":2 }   (o "token":"…")
+//   Descubrir (solo reporte, sin guardar): qué otros cursos/grados ve la cuenta:
+//     { "secret":"…", "username":"…", "password":"…", "descubrir":true }
 //
-// Reejecutable sin costo extra: los PDFs se deduplican por sha1 y las materias
-// se hacen upsert, así correrlo de nuevo solo completa lo que falte.
+// Reejecutable sin costo extra: los PDFs se deduplican por sha1 y las materias se
+// hacen upsert.
 
 import crypto from "node:crypto";
 
 const BASE = "https://aulacam.uearzobispomendez.edu.ve";
-const DL_TIMEOUT_MS = 9000;
+const DL_TIMEOUT_MS = 7000;
 const MAX_PDF_BYTES = 8 * 1024 * 1024;
-const TIME_BUDGET_MS = 55000; // dejamos margen bajo el maxDuration:60 de Vercel
+const PDF_BUDGET_MS = 50000;   // no empezar a bajar PDFs pasado esto (margen bajo los 60s)
+const DISC_BUDGET_MS = 50000;  // tope de tiempo para el modo "descubrir"
+const MAX_POR_TANDA = 5;       // tope duro de materias por llamada
 
 // ───────── Moodle Web Services ─────────
 async function callWS(token, wsfunction, params = {}) {
@@ -121,9 +128,10 @@ async function guardarCurriculo(cfg, row) {
 }
 
 // ───────── captura de un curso (materia) ─────────
-async function capturarCurso(c, token, cfg, r, hastaMs) {
+async function capturarCurso(c, token, cfg, r, pdfDeadline) {
   const contenido = await callWS(token, "core_course_get_contents", { courseid: c.id });
   const grado = gradoDe(c.shortname, c.fullname);
+  let omitidos = 0;
   const temas = [];
   for (const s of contenido || []) {
     const modulos = [];
@@ -136,23 +144,20 @@ async function capturarCurso(c, token, cfg, r, hastaMs) {
         descripcionHtml: m.description || null, url: m.url || null,
         archivos: archivos.map((a) => ({ nombre: a.nombre, modificado: a.modificado })),
       };
-      // Guardar el PDF (si es resource/page con PDF) mientras quede presupuesto de tiempo.
-      if ((m.modname === "resource" || m.modname === "page") && Date.now() < hastaMs) {
-        const src = (archivos[0] && archivos[0].url) || m.url;
-        const buf = await pdfDeModulo(m.modname, src, token);
-        if (buf) {
-          const sha1 = crypto.createHash("sha1").update(buf).digest("hex");
-          if (await archivoExiste(cfg, sha1)) {
-            r.pdfsExistentes++;
-          } else {
-            await guardarArchivo(cfg, sha1, m.name, buf);
-            r.pdfsNuevos++;
+      if (m.modname === "resource" || m.modname === "page") {
+        if (Date.now() < pdfDeadline) {
+          const src = (archivos[0] && archivos[0].url) || m.url;
+          const buf = await pdfDeModulo(m.modname, src, token);
+          if (buf) {
+            const sha1 = crypto.createHash("sha1").update(buf).digest("hex");
+            if (await archivoExiste(cfg, sha1)) { r.pdfsExistentes++; }
+            else { await guardarArchivo(cfg, sha1, m.name, buf); r.pdfsNuevos++; }
+            mod.pdf = sha1;
+            r.pdfs++;
           }
-          mod.pdf = sha1;
-          r.pdfs++;
+        } else {
+          omitidos++; // se acabó el tiempo: re-correr esta tanda con max=1 lo completa
         }
-      } else if (m.modname === "resource" || m.modname === "page") {
-        r.pdfsOmitidos++; // se acabó el tiempo: quedó sin bajar (re-correr lo completa)
       }
       modulos.push(mod);
     }
@@ -165,7 +170,8 @@ async function capturarCurso(c, token, cfg, r, hastaMs) {
   r.materias++;
   r.secciones += temas.length;
   r.grados[grado] = (r.grados[grado] || 0) + 1;
-  r.cursos.push({ id: c.id, materia: c.fullname, grado, secciones: temas.length });
+  r.cursos.push({ id: c.id, materia: c.fullname, grado, secciones: temas.length, pdfOmitidos: omitidos });
+  if (omitidos) r.pdfsOmitidos += omitidos;
 }
 
 export default async function handler(req, res) {
@@ -175,53 +181,65 @@ export default async function handler(req, res) {
   if (req.method === "OPTIONS") return res.status(200).end();
   if (req.method !== "POST") return res.status(405).json({ error: "Solo POST" });
 
-  const { username, password, token: tokenIn, secret, descubrir } = req.body || {};
+  const { username, password, token: tokenIn, secret, descubrir, desde = 0, max = 2 } = req.body || {};
   if (!process.env.CAPTURA_SECRET || secret !== process.env.CAPTURA_SECRET) {
     return res.status(403).json({ error: "No autorizado" });
   }
   const cfg = supabaseCfg();
   if (!cfg) return res.status(500).json({ error: "Falta configurar SUPABASE_URL / SUPABASE_SERVICE_KEY" });
 
-  const hastaMs = Date.now() + TIME_BUDGET_MS;
+  const inicio = Date.now();
   try {
     const token = tokenIn || (await getToken(username, password));
     const info = await callWS(token, "core_webservice_get_site_info");
     const userid = info.userid;
-    const mios = await callWS(token, "core_enrol_get_users_courses", { userid });
+    const mios = (await callWS(token, "core_enrol_get_users_courses", { userid })).slice()
+      .sort((a, b) => a.id - b.id); // orden estable para paginar
 
-    const r = { grados: {}, materias: 0, secciones: 0, pdfs: 0, pdfsNuevos: 0, pdfsExistentes: 0, pdfsOmitidos: 0, cursos: [], errores: [] };
-    for (const c of mios) {
-      if (Date.now() > hastaMs) { r.errores.push(`Sin tiempo para "${c.fullname}" (re-correr lo completa)`); continue; }
-      try { await capturarCurso(c, token, cfg, r, hastaMs); }
-      catch (e) { r.errores.push(`"${c.fullname}": ${String(e.message || e)}`); }
-    }
-
-    // Reporte (sin descargar) de otros cursos/grados que vería la cuenta.
-    let descubiertos = null;
+    // ── modo DESCUBRIR: solo reporta qué otros cursos/grados ve la cuenta ──
     if (descubrir) {
-      descubiertos = [];
+      const descubiertos = [];
+      let deTotal = 0, revisados = 0, cortado = false;
       try {
         const all = await listarCursosSitio(token);
         const otros = all.filter((c) => !mios.some((m) => m.id === c.id));
+        deTotal = otros.length;
         for (const c of otros) {
-          const base = { id: c.id, materia: c.fullname || c.displayname, shortname: c.shortname, grado: gradoDe(c.shortname, c.fullname) };
-          try {
-            const cont = await callWS(token, "core_course_get_contents", { courseid: c.id });
-            descubiertos.push({ ...base, accesible: true, secciones: (cont || []).length });
-          } catch (e) {
-            descubiertos.push({ ...base, accesible: false });
-          }
+          if (Date.now() - inicio > DISC_BUDGET_MS) { cortado = true; break; }
+          revisados++;
+          const b = { id: c.id, materia: c.fullname || c.displayname, shortname: c.shortname, grado: gradoDe(c.shortname, c.fullname) };
+          try { const cont = await callWS(token, "core_course_get_contents", { courseid: c.id }); descubiertos.push({ ...b, accesible: true, secciones: (cont || []).length }); }
+          catch (e) { descubiertos.push({ ...b, accesible: false }); }
         }
       } catch (e) {
-        descubiertos = [{ error: String(e.message || e) }];
+        return res.status(200).json({ ok: true, usuario: { id: userid, nombre: info.fullname }, descubrirError: String(e.message || e) });
       }
+      return res.status(200).json({
+        ok: true, usuario: { id: userid, nombre: info.fullname, sitio: info.sitename },
+        misCursos: mios.length, otrosVistos: deTotal, revisados, cortadoPorTiempo: cortado,
+        accesibles: descubiertos.filter((d) => d.accesible).length, descubiertos,
+      });
     }
 
+    // ── modo CAPTURA paginada ──
+    const desdeN = Math.max(0, parseInt(desde, 10) || 0);
+    const maxN = Math.min(Math.max(parseInt(max, 10) || 2, 1), MAX_POR_TANDA);
+    const tanda = mios.slice(desdeN, desdeN + maxN);
+    const pdfDeadline = inicio + PDF_BUDGET_MS;
+    const r = { grados: {}, materias: 0, secciones: 0, pdfs: 0, pdfsNuevos: 0, pdfsExistentes: 0, pdfsOmitidos: 0, cursos: [], errores: [] };
+    for (const c of tanda) {
+      try { await capturarCurso(c, token, cfg, r, pdfDeadline); }
+      catch (e) { r.errores.push(`"${c.fullname}": ${String(e.message || e)}`); }
+    }
+    const siguiente = desdeN + tanda.length;
     return res.status(200).json({
       ok: true,
       usuario: { id: userid, nombre: info.fullname, sitio: info.sitename },
+      total: mios.length,
+      desde: desdeN,
+      capturadas: tanda.length,
+      siguiente: siguiente < mios.length ? siguiente : null, // null = ya terminó este grado
       resumen: r,
-      descubiertos,
     });
   } catch (e) {
     return res.status(500).json({ error: String(e.message || e) });
