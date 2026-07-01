@@ -144,7 +144,7 @@ const MODOS_VALIDOS = new Set(["retos", "resumen", "examen", "quiz"]);
 // Versión del prompt por modo: al subirla, el caché de ese modo se invalida
 // (los resúmenes viejos y flacos no se vuelven a servir). Mismo criterio que el
 // frontend para saber si un tema es "numérico" (matemática/lógica/olimpiada).
-const PROMPT_VER = { resumen: "2" };
+const PROMPT_VER = { resumen: "2", examen: "2" };
 function esNumerica(txt) {
   return /matemát|matemat|lógic|logic|olimpiad/i.test(txt || "");
 }
@@ -179,10 +179,12 @@ ${jsonOnly}`;
   }
 
   if (modo === "examen") {
-    return base + `Crea ${n} posibles preguntas de examen sobre el tema, cada una con su respuesta correcta, para que el alumno se autoevalúe. Variadas, claras y que cubran lo importante del tema.
+    return base + `Crea ${n} preguntas de examen sobre el tema, para que el alumno se autoevalúe y APRENDA a resolverlas. Variadas, claras y que cubran lo importante del tema.
 Forma EXACTA del JSON:
-{"preguntas":[{"pregunta":"...","respuesta":"..."}]}
-- La respuesta debe ser correcta y breve.
+{"preguntas":[{"pregunta":"...","respuesta":"...","explicacion":"..."}]}
+- "respuesta": la respuesta correcta, breve.
+- "explicacion": explica CÓMO se llega a esa respuesta (el procedimiento paso a paso o el razonamiento), claro y apropiado para ${grado}. Es OBLIGATORIO: siempre enseña cómo obtenerla, no solo el resultado.
+- Si la pregunta involucra cálculo, RESUÉLVELA y verifica que la respuesta y el procedimiento son correctos.
 ${jsonOnly}`;
   }
 
@@ -360,9 +362,9 @@ export default async function handler(req, res) {
     }
 
     const esEjercicio = modo === "retos" || modo === "quiz";
-    // El resumen de un tema numérico también lleva cálculos (ejemplos resueltos):
-    // conviene el modelo completo + thinking para que salgan correctos.
-    const necesitaMate = esEjercicio || (modo === "resumen" && numerica);
+    // El resumen y el examen de un tema numérico llevan cálculos (ejemplos/
+    // procedimientos): conviene el modelo completo + thinking para que salgan bien.
+    const necesitaMate = esEjercicio || ((modo === "resumen" || modo === "examen") && numerica);
     const genCfg = {
       temperature: esEjercicio ? 0.7 : necesitaMate ? 0.8 : 0.9, // más bajo con cálculo → más correcto
       responseMimeType: "application/json", // fuerza a Gemini a devolver JSON limpio
