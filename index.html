@@ -67,33 +67,41 @@
     font-family:"Fredoka";font-weight:600;font-size:.78rem;padding:4px 11px;border-radius:999px;margin-top:8px}
   .salir{background:#fff;border:2px solid var(--line);border-radius:13px;color:var(--muted);font-family:"Nunito";font-weight:800;cursor:pointer;font-size:.86rem;padding:9px 13px;transition:all .15s;white-space:nowrap}
   .salir:hover{color:var(--mango);border-color:#FFCDBB}
-  .cuentaAcc{display:flex;gap:8px;flex:none}
 
-  /* selector de cuentas (perfiles) en el login */
-  #cuentas{margin-bottom:18px}
-  .cuentaList{display:flex;flex-direction:column;gap:10px}
-  .cuentaBtn{display:flex;align-items:center;gap:13px;width:100%;text-align:left;cursor:pointer;
-    background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:12px 14px;
-    box-shadow:var(--shadow-xs);transition:all .14s;font-family:"Nunito"}
-  .cuentaBtn:hover{border-color:var(--c,#A9E6DE);transform:translateY(-1px)}
-  .cuentaBtn:active{transform:scale(.99)}
-  .cuentaAv{flex:none;width:44px;height:44px;border-radius:50%;background:var(--c,#12B5A4);color:#fff;
-    display:grid;place-items:center;font-family:"Fredoka";font-weight:600;font-size:1.25rem}
-  .cuentaNom{flex:1;font-weight:800;font-size:1.05rem;color:var(--ink)}
-  .cuentaX{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;
-    color:var(--muted);font-weight:800;font-size:.9rem;background:#F6EEF3}
-  .cuentaX:hover{background:#FFE0E8;color:var(--bad)}
-  .otraLbl{margin-top:2px;color:var(--muted);font-weight:700}
+  /* avatar del usuario (home) */
+  .who{display:flex;align-items:flex-start;gap:12px;min-width:0}
+  .avatar{flex:none;width:46px;height:46px;border-radius:50%;background:var(--c,#12B5A4);color:#fff;
+    display:grid;place-items:center;font-family:"Fredoka";font-weight:600;font-size:1.4rem;box-shadow:var(--shadow-xs);margin-top:6px}
 
-  /* materias grid */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:13px}
-  .mat{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px 15px;cursor:pointer;text-align:left;
-    font-family:"Nunito";font-weight:800;color:var(--ink);font-size:.98rem;line-height:1.22;
-    box-shadow:var(--shadow-xs);transition:transform .14s,box-shadow .2s;display:flex;flex-direction:column;gap:10px;overflow:hidden}
-  .mat::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:var(--c,var(--mango))}
-  .mat:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm)}
+  /* tarjeta destacada: adelantar próximo año */
+  .destacada{display:flex;align-items:center;gap:14px;width:100%;text-align:left;cursor:pointer;border:none;
+    background:linear-gradient(120deg,#7C4DFF,#9B5DE5);color:#fff;border-radius:20px;padding:16px 18px;margin-bottom:22px;
+    box-shadow:0 14px 26px -12px rgba(124,77,255,.7);transition:transform .14s,box-shadow .2s}
+  .destacada:hover{transform:translateY(-2px)}
+  .destacada:active{transform:scale(.99)}
+  .destacada[disabled]{opacity:.6;cursor:default}
+  .dIcon{font-size:1.9rem;flex:none}
+  .dTxt{flex:1;display:flex;flex-direction:column;gap:2px;font-family:"Nunito";min-width:0}
+  .dTxt b{font-family:"Fredoka";font-weight:600;font-size:1.12rem}
+  .dTxt small{opacity:.92;font-weight:700;font-size:.9rem}
+  .dArrow{font-family:"Fredoka";font-size:1.7rem;opacity:.9;flex:none}
+
+  /* título de sección / banner del próximo año */
+  .secTitle{font-family:"Fredoka";font-weight:600;font-size:1.05rem;color:var(--ink);margin:0 0 14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .volver{background:none;border:none;color:var(--mango);font-family:"Fredoka";font-weight:600;cursor:pointer;font-size:1rem;padding:0}
+  .volver:hover{text-decoration:underline}
+  .proxTag{background:rgba(124,77,255,.12);color:var(--grape);font-family:"Fredoka";font-weight:600;font-size:.85rem;padding:4px 11px;border-radius:999px}
+
+  /* materias grid (tarjetas compactas horizontales) */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+  @media(min-width:560px){.grid{grid-template-columns:repeat(3,1fr)}}
+  .mat{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 14px 13px 16px;cursor:pointer;text-align:left;
+    font-family:"Nunito";font-weight:800;color:var(--ink);font-size:.95rem;line-height:1.18;
+    box-shadow:var(--shadow-xs);transition:transform .14s,box-shadow .2s;display:flex;flex-direction:row;align-items:center;gap:11px;overflow:hidden}
+  .mat::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--c,var(--mango))}
+  .mat:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
   .mat:active{transform:scale(.97)}
-  .mat .em{font-size:1.8rem;width:50px;height:50px;border-radius:15px;display:grid;place-items:center;
+  .mat .em{flex:none;font-size:1.35rem;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
     background:color-mix(in srgb,var(--c,var(--mango)) 15%,#fff)}
 
   /* back */
@@ -243,8 +251,6 @@
     <p class="hi">Aula CAM</p>
     <h1>Mis Retos <span class="star">✨</span></h1>
     <p class="sub">Entra con tu usuario y clave del aula virtual y aprende con cosas hechas para ti.</p>
-    <div id="cuentas" class="hidden"></div>
-    <p class="lbl otraLbl hidden" id="otraLbl">o entra con otra cuenta</p>
     <div class="panel">
       <div class="field">
         <p class="lbl"><span class="n">1</span> Usuario</p>
@@ -260,20 +266,27 @@
   <!-- ╔═══ HOME ═══╗ -->
   <section id="vHome" class="hidden">
     <div class="topbar">
-      <div>
-        <p class="hi">Aprende a tu manera</p>
-        <h1 id="saludo">¡Hola! 👋</h1>
-        <span class="gradoBadge" id="gradoBadge"></span>
+      <div class="who">
+        <span class="avatar" id="avatar">?</span>
+        <div>
+          <p class="hi">Aula CAM</p>
+          <h1 id="saludo">¡Hola!</h1>
+          <span class="gradoBadge" id="gradoBadge"></span>
+        </div>
       </div>
-      <div class="cuentaAcc">
-        <button class="salir" id="btnCambiar">Cambiar</button>
-        <button class="salir" id="btnSalir">Salir</button>
-      </div>
+      <button class="salir" id="btnSalir">Salir</button>
     </div>
 
     <!-- paso A: materias -->
     <div id="paneMaterias">
-      <p class="lbl"><span class="n">1</span> Escoge una materia</p>
+      <div id="destacadaWrap">
+        <button class="destacada" id="btnProximo">
+          <span class="dIcon">🚀</span>
+          <span class="dTxt"><b>Adelántate en vacaciones</b><small id="proxSub">Practica el próximo año</small></span>
+          <span class="dArrow">›</span>
+        </button>
+      </div>
+      <div class="secTitle" id="materiasHead">📚 Tus materias</div>
       <div class="grid" id="gridMaterias"></div>
     </div>
 
@@ -302,7 +315,7 @@
           </div>
         </div>
 
-        <div class="paso">
+        <div class="paso" id="pasoFotos">
           <p class="lbl">📓 Mis apuntes <span style="color:var(--muted);font-weight:600">(opcional)</span></p>
           <p class="ayuda">¿Tomaste apuntes en clase? Súmale fotos de tu cuaderno y la IA también las usará para este tema.</p>
           <div class="fotos" id="fotos"></div>
@@ -327,8 +340,9 @@
   }
 
   // ───────── config ─────────
-  const API_MOODLE  = "https://aula-cam.vercel.app/api/moodle";
-  const API_GENERAR = "https://aula-cam.vercel.app/api/generar";
+  const API_MOODLE   = "https://aula-cam.vercel.app/api/moodle";
+  const API_GENERAR  = "https://aula-cam.vercel.app/api/generar";
+  const API_CURRICULO = "https://aula-cam.vercel.app/api/curriculo";
 
   // modos de salida
   const MODOS = [
@@ -347,8 +361,9 @@
   };
 
   const $ = (s)=>document.querySelector(s);
-  let SESION = null;       // cuenta activa
-  let CUENTAS = [];        // perfiles guardados en este aparato [{id,nombre,token,materias}]
+  let SESION = null;
+  let origen = "actual";   // "actual" = materias del grado; "proximo" = adelantar próximo año
+  let proximoGrado = "";
   let materiaSel = null;
   let lapsoMap = {};
   let temaSel = null;
@@ -358,68 +373,20 @@
   let fotos = [];          // fotos del cuaderno (apuntes), solo del momento
   const MAX_FOTOS = 3;
 
-  // ───────── cuentas (perfiles) ─────────
-  // Varias alumnas en el mismo aparato: todas quedan guardadas y se cambia entre
-  // ellas al instante, sin volver a escribir clave. La activa se recuerda.
-  function cargarCuentas(){
-    let arr = store.get("cuentas");
-    if(!Array.isArray(arr)){
-      // migración desde la versión de una sola sesión
-      const vieja = store.get("sesion");
-      arr = (vieja && vieja.materias)
-        ? [{ id: vieja.id || ("u_"+((vieja.nombre||"cuenta").toLowerCase())), ...vieja }]
-        : [];
-      if(arr.length){ store.set("cuentas", arr); store.set("activa", arr[0].id); }
-      store.del("sesion");
-    }
-    CUENTAS = arr;
-  }
-  function guardarCuentas(){ store.set("cuentas", CUENTAS); }
-  function setActiva(id){ if(id==null) store.del("activa"); else store.set("activa", id); }
-
-  function usarCuenta(id){
-    const c = CUENTAS.find(x=>String(x.id)===String(id));
-    if(!c) return;
-    SESION = c; setActiva(c.id);
-    materiaSel=null; temaSel=null; fotos=[]; $("#results").innerHTML="";
-    entrarHome();
-  }
-  function quitarCuenta(id){
-    CUENTAS = CUENTAS.filter(c=>String(c.id)!==String(id));
-    guardarCuentas();
-    if(SESION && String(SESION.id)===String(id)){ SESION=null; setActiva(null); }
-    pintarCuentas();
-  }
-  function pintarCuentas(){
-    const box = $("#cuentas"); if(!box) return;
-    const hay = CUENTAS.length>0;
-    box.classList.toggle("hidden", !hay);
-    $("#otraLbl").classList.toggle("hidden", !hay);
-    box.innerHTML = "";
-    if(!hay) return;
-    const t = document.createElement("p"); t.className="lbl"; t.textContent="¿Quién eres?";
-    box.appendChild(t);
-    const list = document.createElement("div"); list.className="cuentaList";
-    CUENTAS.forEach(c=>{
-      const primer = (c.nombre||"").split(" ")[0] || "Cuenta";
-      const ini = (primer[0]||"?").toUpperCase();
-      const b = document.createElement("button"); b.className="cuentaBtn";
-      b.style.setProperty("--c", colorCuenta(c.nombre||primer));
-      b.innerHTML = `<span class="cuentaAv">${escapeHtml(ini)}</span>`+
-                    `<span class="cuentaNom">${escapeHtml(primer)}</span>`+
-                    `<span class="cuentaX" title="Quitar esta cuenta">✕</span>`;
-      b.onclick = (e)=>{ if(e.target.closest(".cuentaX")){ e.stopPropagation(); quitarCuenta(c.id); } else { usarCuenta(c.id); } };
-      list.appendChild(b);
-    });
-    box.appendChild(list);
-  }
-
   // ───────── arranque ─────────
-  cargarCuentas();
-  const idActiva = store.get("activa");
-  const act = CUENTAS.find(c=>String(c.id)===String(idActiva));
-  if(act){ SESION = act; entrarHome(); }
-  else { pintarCuentas(); }
+  (function arrancar(){
+    let s = store.get("sesion");
+    if(!(s && s.materias)){
+      // migración desde la versión multi-perfil (cuentas/activa)
+      const cuentas = store.get("cuentas"); const activa = store.get("activa");
+      if(Array.isArray(cuentas) && cuentas.length){
+        s = cuentas.find(c=>String(c.id)===String(activa)) || cuentas[0];
+        if(s && s.materias) store.set("sesion", s);
+      }
+      store.del("cuentas"); store.del("activa");
+    }
+    if(s && s.materias){ SESION = s; entrarHome(); }
+  })();
 
   // ───────── LOGIN ─────────
   $("#btnLogin").onclick = hacerLogin;
@@ -438,15 +405,11 @@
         body:JSON.stringify({ username:user, password:pass })});
       const d = await r.json();
       if(d.error) throw new Error(d.error);
-      const cuenta = {
+      SESION = {
         id: (d.usuario && d.usuario.id!=null) ? d.usuario.id : ("u_"+user.toLowerCase()),
         nombre:(d.usuario&&d.usuario.nombre)||user, token:d.token, materias:d.materias||[]
       };
-      // reemplaza la cuenta si ya existía (token/materias frescos), si no la agrega
-      const i = CUENTAS.findIndex(c=>String(c.id)===String(cuenta.id));
-      if(i>=0) CUENTAS[i]=cuenta; else CUENTAS.push(cuenta);
-      guardarCuentas();
-      SESION = cuenta; setActiva(cuenta.id);
+      store.set("sesion", SESION);
       $("#user").value=""; $("#pass").value="";
       entrarHome();
     }catch(e){
@@ -461,41 +424,68 @@
   function entrarHome(){
     $("#vLogin").classList.add("hidden");
     $("#vHome").classList.remove("hidden");
+    origen = "actual";
     const primer = (SESION.nombre||"").split(" ")[0] || "";
+    $("#avatar").textContent = (primer[0]||"?").toUpperCase();
+    $("#avatar").style.setProperty("--c", colorCuenta(SESION.nombre||primer));
     $("#saludo").innerHTML = `¡Hola, ${escapeHtml(primer)}! 👋`;
     const g = gradoDeSesion();
     $("#gradoBadge").innerHTML = g ? `🎓 ${escapeHtml(g)}` : "";
     $("#gradoBadge").classList.toggle("hidden", !g);
+    // tarjeta "adelantar próximo año" (solo si hay grado siguiente)
+    const prox = siguienteGradoLabel();
+    const wrap = $("#destacadaWrap");
+    if(prox){ $("#proxSub").textContent = `Practica ${prox}`; wrap.classList.remove("hidden"); }
+    else wrap.classList.add("hidden");
     pintarMaterias();
     verMaterias();
   }
 
-  // "Cambiar": vuelve al selector de cuentas SIN cerrar ninguna (para cambiar de
-  // perfil o agregar otra alumna).
-  $("#btnCambiar").onclick = ()=>{
-    materiaSel=null; temaSel=null; $("#results").innerHTML="";
-    $("#vHome").classList.add("hidden"); $("#vLogin").classList.remove("hidden");
-    $("#loginMsg").innerHTML=""; pintarCuentas();
-  };
-  // "Salir": cierra SOLO la cuenta activa (las demás siguen guardadas).
   $("#btnSalir").onclick = ()=>{
-    if(SESION) CUENTAS = CUENTAS.filter(c=>String(c.id)!==String(SESION.id));
-    guardarCuentas(); SESION=null; setActiva(null);
+    store.del("sesion"); SESION=null; origen="actual";
     materiaSel=null; temaSel=null; $("#results").innerHTML="";
     $("#vHome").classList.add("hidden"); $("#vLogin").classList.remove("hidden");
-    $("#user").value=""; $("#loginMsg").innerHTML=""; pintarCuentas();
+    $("#user").value=""; $("#loginMsg").innerHTML="";
   };
 
-  function pintarMaterias(){
+  // grilla de materias (sirve para las actuales y para las del próximo año)
+  function gridMaterias(lista){
     const g = $("#gridMaterias"); g.innerHTML="";
-    SESION.materias.forEach(m=>{
-      const b=document.createElement("button");
-      b.className="mat";
+    lista.forEach(m=>{
+      const b=document.createElement("button"); b.className="mat";
       b.style.setProperty("--c", colorMateria(m.nombre));
       b.innerHTML=`<span class="em">${iconMateria(m.nombre)}</span><span>${escapeHtml(limpiaNombreMateria(m.nombre))}</span>`;
       b.onclick=()=>abrirMateria(m);
       g.appendChild(b);
     });
+  }
+  function pintarMaterias(){
+    origen = "actual";
+    $("#destacadaWrap").classList.toggle("hidden", !siguienteGradoLabel());
+    $("#materiasHead").innerHTML = "📚 Tus materias";
+    gridMaterias(SESION.materias||[]);
+  }
+
+  // ───────── adelantar próximo año (lee el currículo guardado) ─────────
+  $("#btnProximo").onclick = entrarProximo;
+  async function entrarProximo(){
+    const grado = siguienteGradoLabel();
+    if(!grado) return;
+    const btn = $("#btnProximo"); btn.disabled = true;
+    try{
+      const r = await fetch(API_CURRICULO,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ grado })});
+      const d = await r.json();
+      const mats = (d.materias||[]).map(m=>({ nombre:m.materia, nombreCorto:m.nombre_corto, grupos:(m.temas&&m.temas.grupos)||[], _proximo:true }));
+      origen = "proximo"; proximoGrado = grado;
+      $("#destacadaWrap").classList.add("hidden");
+      $("#materiasHead").innerHTML = `<button class="volver" id="volverActual">‹ Mis materias</button><span class="proxTag">🚀 ${escapeHtml(grado)} · próximo año</span>`;
+      $("#volverActual").onclick = ()=>{ pintarMaterias(); window.scrollTo({top:0,behavior:"smooth"}); };
+      if(!mats.length){ $("#gridMaterias").innerHTML = `<div class="empty">Todavía no tenemos ${escapeHtml(grado)} cargado. ¡Pronto!</div>`; }
+      else gridMaterias(mats);
+      window.scrollTo({top:0,behavior:"smooth"});
+    }catch(e){
+      $("#gridMaterias").innerHTML = errBox("No pudimos cargar el próximo año. Intenta otra vez.", String(e.message||e));
+    }finally{ btn.disabled=false; }
   }
 
   function verMaterias(){ $("#paneTemas").classList.add("hidden"); $("#paneMaterias").classList.remove("hidden"); }
@@ -504,16 +494,45 @@
   function abrirMateria(m){
     materiaSel=m; temaSel=null; $("#otro").value=""; $("#results").innerHTML="";
     fotos=[]; pintarFotos();
-    lapsoMap = construirLapsoMap(m);
+    const esProx = origen==="proximo";
     $("#tituloMateria").textContent = `${iconMateria(m.nombre)}  ${limpiaNombreMateria(m.nombre)}`;
-    const temas = temasPracticables(m);
-    $("#sinTemas").classList.toggle("hidden", temas.length>0);
-    pintarGrupos(temas);
+    // las fotos del cuaderno solo aplican a las materias actuales
+    $("#pasoFotos").classList.toggle("hidden", esProx);
+    if(esProx){
+      lapsoMap = {};
+      const grupos = m.grupos||[];
+      pintarGruposProximo(grupos);
+      const hay = grupos.some(g=>(g.temas||[]).length);
+      $("#sinTemas").classList.toggle("hidden", hay);
+    }else{
+      lapsoMap = construirLapsoMap(m);
+      const temas = temasPracticables(m);
+      $("#sinTemas").classList.toggle("hidden", temas.length>0);
+      pintarGrupos(temas);
+    }
     pintarModos();
-    setModo(modoPorDefecto(m));   // por defecto según el tipo de materia
+    setModo(modoPorDefecto({nombre:m.nombre}));   // por defecto según el tipo de materia
     checkReady();
     $("#paneMaterias").classList.add("hidden"); $("#paneTemas").classList.remove("hidden");
     window.scrollTo({top:0,behavior:"smooth"});
+  }
+
+  // temas del próximo año (vienen del currículo guardado: grupos por lapso con strings)
+  function pintarGruposProximo(grupos){
+    const cont = $("#grupos"); cont.innerHTML="";
+    const varios = grupos.length>1;
+    grupos.forEach(g=>{
+      const wrap=document.createElement("div"); wrap.className="lapso";
+      if(varios && g.lapso){ const h=document.createElement("h3"); h.textContent=g.lapso; wrap.appendChild(h); }
+      const chips=document.createElement("div"); chips.className="chips";
+      (g.temas||[]).forEach(t=>{
+        const b=document.createElement("button"); b.className="chip"; b.setAttribute("aria-pressed","false");
+        b.textContent=t; b.dataset.tema=t;
+        b.onclick=()=>{ temaSel=(temaSel===t)?null:t; $("#otro").value=""; pintarChips(); checkReady(); };
+        chips.appendChild(b);
+      });
+      wrap.appendChild(chips); cont.appendChild(wrap);
+    });
   }
 
   // temas agrupados por lapso
@@ -580,7 +599,7 @@
   function claveLocal(tema){
     const cant = modoSel === "resumen" ? "" : cantidad;
     return [ (materiaSel&&materiaSel.nombre)||"General", tema, modoSel,
-             gradoDeSesion()||"4to grado", cant ].join("|").toLowerCase();
+             gradoActivo(), cant ].join("|").toLowerCase();
   }
   function cacheLocalGet(k){
     const all = store.get(CACHE_LOCAL_KEY) || {};
@@ -602,12 +621,14 @@
   async function generar(nocache, reintento){
     const tema = temaActual(); if(!tema) return;
     const mo = MODOS.find(m=>m.id===modoSel) || MODOS[0];
+    const esProx = origen==="proximo";
     const esLibre = !!$("#otro").value.trim();
-    const contexto = esLibre ? null : construirContexto(tema);
+    // en próximo año no hay actividades/PDFs del aula: generación por título/tema
+    const contexto = (esProx || esLibre) ? null : construirContexto(tema);
     ultimoContexto = contexto;
     // 1) caché local: si ya lo generó en este aparato, lo mostramos al instante
     //    (sin red). "Generar otros" (nocache) y las fotos lo saltan.
-    const usaFotos = fotos.length>0;
+    const usaFotos = !esProx && fotos.length>0;
     const ckLocal = claveLocal(tema);
     if(!nocache && !usaFotos){
       const local = cacheLocalGet(ckLocal);
@@ -620,8 +641,8 @@
       const r = await fetch(API_GENERAR,{method:"POST",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({
           materia:(materiaSel&&materiaSel.nombre)||"General",
-          tema, grado:gradoDeSesion()||"4to grado", cantidad, contexto, modo:modoSel,
-          token:(SESION&&SESION.token)||null, nocache: !!nocache, fotos
+          tema, grado:gradoActivo(), cantidad, contexto, modo:modoSel,
+          token:(!esProx && SESION && SESION.token)||null, nocache: !!nocache, fotos: esProx?[]:fotos
         })});
       let d;
       try { d = await r.json(); }
@@ -916,20 +937,32 @@
   function esNumerica(nombre){ return /matemát|matemat|lógic|logic|olimpiad/i.test(nombre||""); }
   function modoPorDefecto(m){ return esNumerica(m&&m.nombre) ? "retos" : "resumen"; }
 
-  function gradoDeSesion(){
-    const ord={1:"1er",2:"2do",3:"3er",4:"4to",5:"5to",6:"6to"};
+  // grado de la sesión: G = grado (primaria), A = año (bachillerato)
+  const ORDN={1:"1er",2:"2do",3:"3er",4:"4to",5:"5to",6:"6to"};
+  function infoGrado(){
     for(const m of (SESION&&SESION.materias)||[]){
-      const txt=`${m.nombreCorto||""} ${m.nombre||""}`;
-      const mm=txt.match(/\b([1-6])\s*(?:G|grado)\b/i);
-      if(mm) return `${ord[mm[1]]||mm[1]+"º"} grado`;
+      const mm=`${m.nombreCorto||""} ${m.nombre||""}`.match(/\b([1-6])\s*([GA])\b/i);
+      if(mm) return { n:+mm[1], tipo:mm[2].toUpperCase() };
     }
-    return "";
+    return null;
   }
+  function gradoDeSesion(){
+    const g=infoGrado(); if(!g) return "";
+    return g.tipo==="A" ? `${ORDN[g.n]} año` : `${ORDN[g.n]} grado`;
+  }
+  // el grado que le toca el próximo año (6to grado → 1er año; 5to año no tiene siguiente)
+  function siguienteGradoLabel(){
+    const g=infoGrado(); if(!g) return null;
+    if(g.tipo==="G") return g.n<6 ? `${ORDN[g.n+1]} grado` : "1er año";
+    return g.n<5 ? `${ORDN[g.n+1]} año` : null;
+  }
+  // grado con el que se genera/cachea según el modo (actual vs próximo año)
+  function gradoActivo(){ return origen==="proximo" ? (proximoGrado||"") : (gradoDeSesion()||"4to grado"); }
 
   // ───────── helpers de texto / estilo ─────────
   function norm(s){ return String(s||"").replace(/\s+/g," ").trim().toLowerCase(); }
   function stripHtml(s){ return String(s==null?"":s).replace(/<[^>]+>/g," ").replace(/&nbsp;/g," ").replace(/&amp;/g,"&").replace(/&[a-z]+;/g," ").replace(/\s+/g," ").trim(); }
-  function limpiaNombreMateria(s){ return String(s||"").replace(/\s*\b[1-6]\s*G\b\s*$/i,"").trim() || String(s||""); }
+  function limpiaNombreMateria(s){ return String(s||"").replace(/\s*\b[1-6]\s*[GA]\b\s*$/i,"").trim() || String(s||""); }
 
   function iconMateria(nombre){
     const n=(nombre||"").toLowerCase();

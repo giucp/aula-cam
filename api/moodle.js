@@ -22,6 +22,39 @@ async function callWS(token, wsfunction, params = {}) {
   return data;
 }
 
+// ───────── registro de usuario en Supabase (opcional, no bloquea el login) ─────────
+function supabaseCfg() {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_KEY;
+  return url && key ? { url: url.replace(/\/+$/, ""), key } : null;
+}
+const ORD_G = { 1: "1er grado", 2: "2do grado", 3: "3er grado", 4: "4to grado", 5: "5to grado", 6: "6to grado" };
+const ORD_A = { 1: "1er año", 2: "2do año", 3: "3er año", 4: "4to año", 5: "5to año" };
+// Deriva grado ("4to grado" / "1er año") y token ("4G" / "1A") del shortname de un curso.
+function gradoDeCursos(courses) {
+  for (const c of courses || []) {
+    const m = String(c.shortname || c.fullname || "").match(/([1-6])\s*([GA])\b/i);
+    if (m) {
+      const n = parseInt(m[1], 10), t = m[2].toUpperCase();
+      return { grado: (t === "A" ? ORD_A : ORD_G)[n] || null, corto: `${n}${t}` };
+    }
+  }
+  return { grado: null, corto: null };
+}
+// Crea/actualiza la fila del niño y suma un acceso (vía RPC). Nunca rompe el login.
+async function registrarAcceso(userid, nombre, courses) {
+  const cfg = supabaseCfg();
+  if (!cfg || userid == null) return;
+  const { grado, corto } = gradoDeCursos(courses);
+  try {
+    await fetch(`${cfg.url}/rest/v1/rpc/registrar_acceso`, {
+      method: "POST",
+      headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ p_id: userid, p_nombre: nombre || null, p_grado: grado, p_nombre_corto: corto }),
+    });
+  } catch (e) { /* el registro nunca debe romper el login */ }
+}
+
 // Intercambia usuario+clave por un token del servicio móvil.
 async function getToken(username, password) {
   const body = new URLSearchParams({
@@ -81,6 +114,9 @@ export default async function handler(req, res) {
         })),
       });
     }
+
+    // Registrar el acceso del niño en la BD (su "espacio"); no bloquea si falla.
+    await registrarAcceso(userid, info.fullname, courses);
 
     return res.status(200).json({
       usuario: { id: userid, nombre: info.fullname, sitio: info.sitename },
