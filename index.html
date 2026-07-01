@@ -92,17 +92,18 @@
   .volver:hover{text-decoration:underline}
   .proxTag{background:rgba(124,77,255,.12);color:var(--grape);font-family:"Fredoka";font-weight:600;font-size:.85rem;padding:4px 11px;border-radius:999px}
 
-  /* materias grid (tarjetas compactas horizontales) */
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
-  @media(min-width:560px){.grid{grid-template-columns:repeat(3,1fr)}}
-  .mat{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 14px 13px 16px;cursor:pointer;text-align:left;
-    font-family:"Nunito";font-weight:800;color:var(--ink);font-size:.95rem;line-height:1.18;
-    box-shadow:var(--shadow-xs);transition:transform .14s,box-shadow .2s;display:flex;flex-direction:row;align-items:center;gap:11px;overflow:hidden}
+  /* materias: lista de tarjetas anchas (legibles, sin cortar nombres largos) */
+  .grid{display:flex;flex-direction:column;gap:10px}
+  .mat{position:relative;display:flex;align-items:center;gap:13px;width:100%;text-align:left;cursor:pointer;
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;overflow:hidden;
+    box-shadow:var(--shadow-xs);transition:transform .14s,box-shadow .2s}
   .mat::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--c,var(--mango))}
   .mat:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
-  .mat:active{transform:scale(.97)}
-  .mat .em{flex:none;font-size:1.35rem;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
-    background:color-mix(in srgb,var(--c,var(--mango)) 15%,#fff)}
+  .mat:active{transform:scale(.99)}
+  .mat .em{flex:none;width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:1.45rem;
+    background:color-mix(in srgb,var(--c,var(--mango)) 16%,#fff)}
+  .mat .nom{flex:1;min-width:0;font-family:"Nunito";font-weight:800;color:var(--ink);font-size:1rem;line-height:1.25}
+  .mat .chev{flex:none;color:var(--muted);font-family:"Fredoka";font-size:1.4rem;opacity:.5;padding-right:2px}
 
   /* back */
   .back{background:none;border:none;color:var(--mango);font-family:"Fredoka";font-weight:600;cursor:pointer;font-size:1rem;
@@ -454,7 +455,7 @@
     lista.forEach(m=>{
       const b=document.createElement("button"); b.className="mat";
       b.style.setProperty("--c", colorMateria(m.nombre));
-      b.innerHTML=`<span class="em">${iconMateria(m.nombre)}</span><span>${escapeHtml(limpiaNombreMateria(m.nombre))}</span>`;
+      b.innerHTML=`<span class="em">${iconMateria(m.nombre)}</span><span class="nom">${escapeHtml(limpiaNombreMateria(m.nombre))}</span><span class="chev">›</span>`;
       b.onclick=()=>abrirMateria(m);
       g.appendChild(b);
     });
