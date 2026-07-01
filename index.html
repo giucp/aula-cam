@@ -157,6 +157,14 @@
   .sumPts{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
   .sumPts li{position:relative;padding-left:30px;font-weight:700;line-height:1.5}
   .sumPts li::before{content:"✦";position:absolute;left:4px;top:0;color:var(--teal);font-size:1rem}
+  .sumIntro{font-weight:700;line-height:1.55;margin:0 0 2px;color:var(--ink)}
+  .sumSec{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
+  .sumSec h3{font-family:"Fredoka";font-weight:600;font-size:1.08rem;margin:0 0 6px;color:var(--teal)}
+  .sumSec p{margin:0 0 8px;font-weight:600;line-height:1.55;white-space:pre-line}
+  .sumPasos{margin:8px 0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+  .sumPasos li{font-weight:700;line-height:1.5}
+  .sumEj{margin-top:6px;background:#EAF8F1;border:1px solid #B9E8D0;border-radius:12px;padding:11px 14px;font-weight:700;line-height:1.55;color:#13694A;white-space:pre-line}
+  .sumEj b{font-family:"Fredoka"}
   .sumKey{margin-top:16px;background:#FFF8E6;border:1px solid #FFE7A8;border-radius:14px;padding:13px 15px;font-weight:700;line-height:1.5}
   .sumKey b{font-family:"Fredoka"}
 
@@ -578,12 +586,29 @@
   }
 
   function renderResumen(res, d){
-    const puntos = Array.isArray(d.puntos) ? d.puntos : [];
     const c=document.createElement("div"); c.className="sumCard";
-    c.innerHTML=`<span class="tag t2">📝 Resumen</span>
-      ${d.titulo?`<h2>${escapeHtml(d.titulo)}</h2>`:``}
-      <ul class="sumPts">${puntos.map(p=>`<li>${escapeHtml(p)}</li>`).join("")}</ul>
-      ${d.idea_clave?`<div class="sumKey"><b>💡 Lo más importante:</b> ${escapeHtml(d.idea_clave)}</div>`:``}`;
+    let html=`<span class="tag t2">📝 Resumen</span>`;
+    if(d.titulo) html+=`<h2>${escapeHtml(d.titulo)}</h2>`;
+    if(d.intro)  html+=`<p class="sumIntro">${escapeHtml(d.intro)}</p>`;
+    const secciones = Array.isArray(d.secciones) ? d.secciones : [];
+    if(secciones.length){
+      html+=secciones.map(s=>{
+        const pasos = Array.isArray(s.pasos) ? s.pasos : [];
+        return `<div class="sumSec">
+          ${s.titulo?`<h3>${escapeHtml(s.titulo)}</h3>`:``}
+          ${s.explicacion?`<p>${escapeHtml(s.explicacion)}</p>`:``}
+          ${pasos.length?`<ol class="sumPasos">${pasos.map(p=>`<li>${escapeHtml(p)}</li>`).join("")}</ol>`:``}
+          ${s.ejemplo?`<div class="sumEj"><b>✏️ Ejemplo:</b> ${escapeHtml(s.ejemplo)}</div>`:``}
+        </div>`;
+      }).join("");
+    }
+    // compat: resúmenes viejos (cacheados) traen "puntos" en vez de "secciones"
+    const puntos = Array.isArray(d.puntos) ? d.puntos : [];
+    if(!secciones.length && puntos.length){
+      html+=`<ul class="sumPts">${puntos.map(p=>`<li>${escapeHtml(p)}</li>`).join("")}</ul>`;
+    }
+    if(d.idea_clave) html+=`<div class="sumKey"><b>💡 Lo más importante:</b> ${escapeHtml(d.idea_clave)}</div>`;
+    c.innerHTML=html;
     res.appendChild(c);
   }
 

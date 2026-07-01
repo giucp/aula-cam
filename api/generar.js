@@ -141,8 +141,15 @@ async function juntarPdfs(contexto, token) {
 
 // ───────── prompt ─────────
 const MODOS_VALIDOS = new Set(["retos", "resumen", "examen", "quiz"]);
+// Versión del prompt por modo: al subirla, el caché de ese modo se invalida
+// (los resúmenes viejos y flacos no se vuelven a servir). Mismo criterio que el
+// frontend para saber si un tema es "numérico" (matemática/lógica/olimpiada).
+const PROMPT_VER = { resumen: "2" };
+function esNumerica(txt) {
+  return /matemát|matemat|lógic|logic|olimpiad/i.test(txt || "");
+}
 
-function armarPrompt({ modo, material, tienePdf, tieneFotos, grado, tema, materia, n }) {
+function armarPrompt({ modo, material, tienePdf, tieneFotos, grado, tema, materia, n, numerica }) {
   const ctx = material
     ? `Este es el material REAL del aula del alumno (lo que está viendo):\n\n${material}\n`
     : `Tema: "${tema}" (materia: ${materia || "General"}).\n`;
@@ -157,10 +164,17 @@ function armarPrompt({ modo, material, tienePdf, tieneFotos, grado, tema, materi
   const figuraNota = `Si un ejercicio necesita una figura para entenderse (por ejemplo: estrellas mágicas con números, pirámides numéricas, conteo de cubos, secuencias o patrones de figuras), incluye en "figura" un dibujo en SVG simple y autocontenido que la represente, coherente con el enunciado y la solución (usa viewBox; solo formas, líneas, números y texto; SIN <script>, SIN <image>, SIN recursos externos). Si el ejercicio NO necesita figura, deja "figura":"" (cadena vacía).`;
 
   if (modo === "resumen") {
-    return base + `Hazle al alumno un RESUMEN del tema para que le sea fácil de entender y recordar: claro, corto, con tono cálido y motivador.
+    const enfoqueMate = numerica
+      ? `\nComo es un tema de matemática o lógica, es OBLIGATORIO enseñar los PROCEDIMIENTOS concretos, no solo definiciones. Según lo que pida el tema, explica cosas como: cómo pasar del enunciado en palabras a la operación o ecuación (qué representa cada dato), cómo despejar o resolver PASO A PASO, cómo distinguir y plantear los distintos casos (por ejemplo, regla de tres DIRECTA vs. INVERSA: cómo se reconoce cada una y cómo se redacta), y cómo comprobar que el resultado está bien. Cada procedimiento con sus pasos y un ejemplo numérico resuelto y CORRECTO (verifica los cálculos; usa números que den exacto).\n`
+      : ``;
+    return base + `Explícale el tema al alumno con un RESUMEN DE ESTUDIO nutritivo: NO una lista de frases sueltas y generales, sino una explicación que de verdad le enseñe a ENTENDER y a HACER. Tono cálido y motivador, pero con contenido suficiente para resolver dudas o vacíos que traiga del colegio o de una clase en la que se distrajo.
+Cubre los subtemas y PROCESOS importantes del tema (no generalidades vagas). Para cada proceso o procedimiento, explica el CÓMO paso a paso e incluye un ejemplo resuelto.${enfoqueMate}
 Forma EXACTA del JSON:
-{"titulo":"título del tema","puntos":["idea simple 1","idea simple 2","..."],"idea_clave":"la idea más importante en una sola frase"}
-- Entre 4 y 7 puntos, cada uno una frase corta y concreta.
+{"titulo":"título del tema","intro":"1 o 2 frases que dicen de qué trata y para qué sirve","secciones":[{"titulo":"nombre del subtema o proceso","explicacion":"explicación clara y completa, no superficial","pasos":["paso 1","paso 2"],"ejemplo":"un ejemplo resuelto concreto que muestre el proceso"}],"idea_clave":"la idea más importante en una sola frase"}
+- Entre 3 y 5 secciones.
+- "pasos": los pasos ordenados del procedimiento. Si la sección es solo conceptual (no un procedimiento), deja "pasos":[].
+- "ejemplo": un ejemplo resuelto y correcto; si la sección no lo necesita, deja "ejemplo":"".
+- Lenguaje apropiado para ${grado}, simple pero SIN quedarte en lo superficial.
 ${jsonOnly}`;
   }
 
@@ -220,7 +234,8 @@ function geminiKeys() {
   return out;
 }
 function claveCache(o) {
-  const s = [o.materia || "", o.tema || "", o.modo || "", o.grado || "", o.cantidad || ""]
+  const ver = PROMPT_VER[o.modo] || "";
+  const s = [o.materia || "", o.tema || "", o.modo || "", o.grado || "", o.cantidad || "", ver]
     .join("|").toLowerCase();
   return crypto.createHash("sha1").update(s).digest("hex");
 }
@@ -328,7 +343,9 @@ export default async function handler(req, res) {
       pdfs = [];
     }
 
-    const prompt = armarPrompt({ modo, material, tienePdf: pdfs.length > 0, tieneFotos, grado, tema, materia, n });
+    // ¿el tema es numérico? (por materia o por el título del tema)
+    const numerica = esNumerica(materia) || esNumerica(tema);
+    const prompt = armarPrompt({ modo, material, tienePdf: pdfs.length > 0, tieneFotos, grado, tema, materia, n, numerica });
 
     // Partes del request: el prompt + cada PDF + cada foto del cuaderno como inline_data.
     const parts = [{ text: prompt }];
@@ -340,19 +357,22 @@ export default async function handler(req, res) {
     }
 
     const esEjercicio = modo === "retos" || modo === "quiz";
+    // El resumen de un tema numérico también lleva cálculos (ejemplos resueltos):
+    // conviene el modelo completo + thinking para que salgan correctos.
+    const necesitaMate = esEjercicio || (modo === "resumen" && numerica);
     const genCfg = {
-      temperature: esEjercicio ? 0.7 : 0.9, // más bajo en ejercicios → más correcto
+      temperature: esEjercicio ? 0.7 : necesitaMate ? 0.8 : 0.9, // más bajo con cálculo → más correcto
       responseMimeType: "application/json", // fuerza a Gemini a devolver JSON limpio
     };
-    // Pensar antes de responder mejora MUCHO la matemática (retos/quiz). Razona
-    // aparte y la "solucion" sale limpia y correcta (no ensayo y error encima).
-    if (esEjercicio) genCfg.thinkingConfig = { thinkingBudget: 4096 };
+    // Pensar antes de responder mejora MUCHO la matemática (retos/quiz y resumen
+    // numérico). Razona aparte y los cálculos salen limpios y correctos.
+    if (necesitaMate) genCfg.thinkingConfig = { thinkingBudget: 4096 };
     const payload = { contents: [{ parts }], generationConfig: genCfg };
     // Modelo preferido por modo + el otro de respaldo. Cada modelo tiene su PROPIO
     // cupo free, así que si el preferido se agota, el otro suele seguir andando.
-    const modelos = esEjercicio
-      ? [MODEL_EJERCICIOS, MODEL_TEXTO] // retos/quiz: flash; respaldo flash-lite
-      : [MODEL_TEXTO, MODEL_EJERCICIOS]; // resumen/examen: flash-lite; respaldo flash
+    const modelos = necesitaMate
+      ? [MODEL_EJERCICIOS, MODEL_TEXTO] // con cálculo: flash; respaldo flash-lite
+      : [MODEL_TEXTO, MODEL_EJERCICIOS]; // texto puro: flash-lite; respaldo flash
     // Probamos modelos × keys (cada key = una cuenta, ~20 req/min). Ante 429 (cupo)
     // o 503 (saturado) seguimos con la próxima key; agotadas todas, el próximo modelo.
     let data = null,
