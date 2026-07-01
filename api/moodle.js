@@ -69,8 +69,7 @@ async function getToken(username, password) {
 }
 
 export default async function handler(req, res) {
-  // CORS: por ahora abierto; cuando tengas el dominio de la PWA, cámbialo a ese origen.
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Origin", "https://aula-cam.vercel.app");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   if (req.method === "OPTIONS") return res.status(200).end();
@@ -89,31 +88,31 @@ export default async function handler(req, res) {
     // 2) Materias en las que está inscrita (esto define su grado).
     const courses = await callWS(token, "core_enrol_get_users_courses", { userid });
 
-    // 3) Contenidos (temas + módulos) de cada materia.
-    const materias = [];
-    for (const c of courses) {
-      const contenido = await callWS(token, "core_course_get_contents", { courseid: c.id });
-      materias.push({
-        id: c.id,
-        nombre: c.fullname,
-        nombreCorto: c.shortname,
-        temas: contenido.map((s) => ({
-          seccion: s.name,
-          resumenHtml: s.summary || null,
-          modulos: (s.modules || []).map((m) => ({
-            id: m.id,
-            nombre: m.name,
-            tipo: m.modname,                 // assign, resource, page, label, url, forum...
-            descripcionHtml: m.description || null,
-            url: m.url || null,
-            // pistas de "fecha" para detectar cambios más adelante:
-            archivos: (m.contents || [])
-              .filter((f) => f.type === "file")
-              .map((f) => ({ nombre: f.filename, modificado: f.timemodified, url: f.fileurl })),
-          })),
+    // 3) Contenidos (temas + módulos) de cada materia — EN PARALELO (mucho más
+    //    rápido que curso por curso contra un servidor escolar lento).
+    const contenidos = await Promise.all(
+      courses.map((c) => callWS(token, "core_course_get_contents", { courseid: c.id }))
+    );
+    const materias = courses.map((c, i) => ({
+      id: c.id,
+      nombre: c.fullname,
+      nombreCorto: c.shortname,
+      temas: (contenidos[i] || []).map((s) => ({
+        seccion: s.name,
+        resumenHtml: s.summary || null,
+        modulos: (s.modules || []).map((m) => ({
+          id: m.id,
+          nombre: m.name,
+          tipo: m.modname,                 // assign, resource, page, label, url, forum...
+          descripcionHtml: m.description || null,
+          url: m.url || null,
+          // pistas de "fecha" para detectar cambios (firma de contenido en la caché):
+          archivos: (m.contents || [])
+            .filter((f) => f.type === "file")
+            .map((f) => ({ nombre: f.filename, modificado: f.timemodified, url: f.fileurl })),
         })),
-      });
-    }
+      })),
+    }));
 
     // Registrar el acceso del niño en la BD (su "espacio"); no bloquea si falla.
     await registrarAcceso(userid, info.fullname, courses);
@@ -125,6 +124,10 @@ export default async function handler(req, res) {
       materias,
     });
   } catch (e) {
+    // Token guardado vencido/ inválido → 401 claro para que el front vuelva al login.
+    if (/invalidtoken|expired|accessexception/i.test(String(e.message))) {
+      return res.status(401).json({ error: "Tu sesión venció. Entra de nuevo.", code: 401 });
+    }
     return res.status(500).json({ error: String(e.message || e) });
   }
 }

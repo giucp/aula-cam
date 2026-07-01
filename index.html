@@ -403,7 +403,8 @@
       if(d.error) throw new Error(d.error);
       SESION = {
         id: (d.usuario && d.usuario.id!=null) ? d.usuario.id : ("u_"+user.toLowerCase()),
-        nombre:(d.usuario&&d.usuario.nombre)||user, token:d.token, materias:d.materias||[]
+        nombre:(d.usuario&&d.usuario.nombre)||user, token:d.token, materias:d.materias||[],
+        fetched: Date.now()
       };
       store.set("sesion", SESION);
       $("#user").value=""; $("#pass").value="";
@@ -443,6 +444,31 @@
     $("#vHome").classList.add("hidden"); $("#vLogin").classList.remove("hidden");
     $("#user").value=""; $("#loginMsg").innerHTML="";
   };
+
+  // sesión vencida (token expirado): cerrar y volver al login con aviso amable
+  function sesionVencida(){
+    store.del("sesion"); SESION=null; origen="actual"; materiaSel=null; temaSel=null;
+    $("#results").innerHTML="";
+    $("#vHome").classList.add("hidden"); $("#vLogin").classList.remove("hidden");
+    $("#loginMsg").innerHTML = errBox("Tu sesión venció. Entra de nuevo, por favor.");
+  }
+  // refresca las materias en segundo plano (por si la maestra subió algo nuevo),
+  // usando el token guardado. Si el token venció → vuelve al login. No bloquea la app.
+  async function refrescarMaterias(){
+    if(!SESION || !SESION.token) return;
+    try{
+      const r = await fetch(API_MOODLE,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ token: SESION.token })});
+      const d = await r.json().catch(()=>null);
+      if(d && d.code===401){ sesionVencida(); return; }
+      if(d && Array.isArray(d.materias) && d.materias.length){
+        SESION.materias = d.materias;
+        if(d.token) SESION.token = d.token;
+        SESION.fetched = Date.now();
+        store.set("sesion", SESION);
+        if(origen==="actual" && !$("#paneMaterias").classList.contains("hidden")) pintarMaterias();
+      }
+    }catch(e){ /* sin conexión: seguimos con lo cacheado */ }
+  }
 
   // grilla de materias (sirve para las actuales y para las del próximo año)
   function gridMaterias(lista){
@@ -614,10 +640,16 @@
   // servidor (el resumen ignora "cantidad").
   const CACHE_LOCAL_KEY = "gen_cache_v1";
   const CACHE_LOCAL_MAX = 60;
-  function claveLocal(tema){
+  // firma barata del contenido del tema (misma idea que el backend): si la maestra
+  // actualiza el material, cambia la firma → clave nueva → se regenera solo.
+  function firmaLocal(contexto){
+    const acts = contexto && Array.isArray(contexto.actividades) ? contexto.actividades : [];
+    return acts.map(a=>`${a.archivoUrl||a.nombre||""}:${a.modificado||""}`).join("~");
+  }
+  function claveLocal(tema, firma){
     const cant = modoSel === "resumen" ? "" : cantidad;
     return [ (materiaSel&&materiaSel.nombre)||"General", tema, modoSel,
-             gradoActivo(), cant ].join("|").toLowerCase();
+             gradoActivo(), cant, firma||"" ].join("|").toLowerCase();
   }
   function cacheLocalGet(k){
     const all = store.get(CACHE_LOCAL_KEY) || {};
@@ -647,7 +679,7 @@
     // 1) caché local: si ya lo generó en este aparato, lo mostramos al instante
     //    (sin red). "Generar otros" (nocache) y las fotos lo saltan.
     const usaFotos = !esProx && fotos.length>0;
-    const ckLocal = claveLocal(tema);
+    const ckLocal = claveLocal(tema, firmaLocal(contexto));
     if(!nocache && !usaFotos){
       const local = cacheLocalGet(ckLocal);
       if(local){ render(local); return; }
@@ -692,7 +724,8 @@
       .filter(m=>!ignorar.has(m.tipo))
       .map(m=>({
         nombre:m.nombre, tipo:m.tipo, descripcion:stripHtml(m.descripcionHtml),
-        archivoUrl:(m.archivos && m.archivos[0] && m.archivos[0].url) || null
+        archivoUrl:(m.archivos && m.archivos[0] && m.archivos[0].url) || null,
+        modificado:(m.archivos && m.archivos[0] && m.archivos[0].modificado) || null
       }));
     return {
       materia: materiaSel.nombre,
@@ -1025,7 +1058,12 @@
         }
         store.del("cuentas"); store.del("activa");
       }
-      if(s && s.materias){ SESION = s; entrarHome(); }
+      if(s && s.materias){
+        SESION = s; entrarHome();
+        // refresco en segundo plano si la sesión guardada ya tiene sus horas
+        const viejo = !s.fetched || (Date.now() - s.fetched > 4*3600*1000);
+        if(viejo) refrescarMaterias();
+      }
     }catch(e){
       // si algo falla al restaurar la sesión, NO congelar: volver al login
       SESION=null; try{ store.del("sesion"); }catch(_){}

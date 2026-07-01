@@ -240,9 +240,33 @@ function claveCache(o) {
   // El resumen no usa "cantidad": la ignoramos en la clave para no fragmentar el
   // caché (si no, cambiar la cantidad en otro modo regeneraría el resumen con IA).
   const cant = o.modo === "resumen" ? "" : o.cantidad || "";
-  const s = [o.materia || "", o.tema || "", o.modo || "", o.grado || "", cant, ver]
+  const s = [o.materia || "", o.tema || "", o.modo || "", o.grado || "", cant, o.firma || "", ver]
     .join("|").toLowerCase();
   return crypto.createHash("sha1").update(s).digest("hex");
+}
+// Firma barata del contenido del tema (URLs + fecha de modificación de los
+// archivos). Si la maestra sube/actualiza una guía, la firma cambia → clave nueva
+// → se regenera solo con el contenido nuevo (antes la caché quedaba "ciega").
+function firmaContenido(contexto) {
+  const acts = contexto && Array.isArray(contexto.actividades) ? contexto.actividades : [];
+  return acts.map((a) => `${a.archivoUrl || a.nombre || ""}:${a.modificado || ""}`).join("~");
+}
+// Valida que la generación tenga la forma mínima esperada, para NO cachear (ni
+// mostrar) resultados vacíos o rotos que envenenarían el tema para todos.
+function esValido(modo, d) {
+  if (!d || typeof d !== "object") return false;
+  if (modo === "resumen") {
+    return (Array.isArray(d.secciones) && d.secciones.length >= 2) ||
+           (Array.isArray(d.puntos) && d.puntos.length >= 3);
+  }
+  const arr = modo === "retos" ? d.ejercicios : d.preguntas;
+  if (!Array.isArray(arr) || !arr.length) return false;
+  if (modo === "retos") return arr.every((e) => e && String(e.enunciado || "").trim());
+  if (modo === "examen") return arr.every((p) => p && String(p.pregunta || "").trim());
+  if (modo === "quiz") return arr.every((p) =>
+    p && Array.isArray(p.opciones) && p.opciones.length >= 2 &&
+    Number.isInteger(p.correcta) && p.correcta >= 0 && p.correcta < p.opciones.length);
+  return true;
 }
 async function cacheGet(clave) {
   const cfg = supabaseCfg();
@@ -309,7 +333,7 @@ function segReintento(msg) {
 }
 
 export default async function handler(req, res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Origin", "https://aula-cam.vercel.app");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   if (req.method === "OPTIONS") return res.status(200).end();
@@ -331,7 +355,9 @@ export default async function handler(req, res) {
 
     // 1) caché: si ya generamos esto antes, lo devolvemos al instante (sin Gemini ni PDFs).
     //    nocache=true (botón "generar otros") salta la lectura. Con fotos NO se cachea (son personales).
-    const clave = claveCache({ materia, tema, modo, grado, cantidad: n });
+    //    La firma del contenido entra en la clave → si la maestra actualiza el material, se regenera.
+    const firma = firmaContenido(contexto);
+    const clave = claveCache({ materia, tema, modo, grado, cantidad: n, firma });
     const noCache = !!(req.body && req.body.nocache) || tieneFotos;
     if (!noCache) {
       const hit = await cacheGet(clave);
@@ -415,18 +441,30 @@ export default async function handler(req, res) {
       throw new Error(data.error.message);
     }
 
-    const texto = data?.candidates?.[0]?.content?.parts?.[0]?.text || "{}";
-    const limpio = texto.replace(/```json|```/g, "").trim();
-    const parsed = JSON.parse(limpio);
+    let parsed;
+    try {
+      const texto = data?.candidates?.[0]?.content?.parts?.[0]?.text || "{}";
+      const limpio = texto.replace(/```json|```/g, "").trim();
+      parsed = JSON.parse(limpio);
+    } catch (e) {
+      // Gemini devolvió algo que no es JSON: no cacheamos y pedimos reintentar.
+      return res.status(502).json({ error: "No pudimos armar la actividad. Intenta de nuevo.", code: 502 });
+    }
+    // Si salió vacío o malformado, NO lo cacheamos (evita envenenar el tema para todos).
+    if (!esValido(modo, parsed)) {
+      return res.status(502).json({ error: "No salió bien esta vez. Intenta de nuevo.", code: 502 });
+    }
 
+    // parsed va PRIMERO, pero nuestras claves de control van al final para que una
+    // alucinación de Gemini (ej. un "modo" inventado) NO pise las nuestras.
     const respuesta = {
+      ...parsed,
       tema,
       materia: materia || null,
       modo,
       basadoEnMaterial: !!material || pdfs.length > 0 || tieneFotos,
       fuentes: pdfs.map((p) => p.nombre), // PDFs que Gemini realmente leyó
       apuntes: tieneFotos, // usó fotos del cuaderno del alumno
-      ...parsed,
     };
     // 2) guardamos en caché para la próxima vez — SALVO si usó fotos (resultado personal del alumno)
     if (!tieneFotos) {
