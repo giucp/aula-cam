@@ -144,7 +144,7 @@ const MODOS_VALIDOS = new Set(["retos", "resumen", "examen", "quiz"]);
 // Versión del prompt por modo: al subirla, el caché de ese modo se invalida
 // (los resúmenes viejos y flacos no se vuelven a servir). Mismo criterio que el
 // frontend para saber si un tema es "numérico" (matemática/lógica/olimpiada).
-const PROMPT_VER = { resumen: "2", examen: "2" };
+const PROMPT_VER = { resumen: "2", examen: "2", quiz: "2" };
 function esNumerica(txt) {
   return /matemát|matemat|lógic|logic|olimpiad/i.test(txt || "");
 }
@@ -189,11 +189,15 @@ ${jsonOnly}`;
   }
 
   if (modo === "quiz") {
-    return base + `Crea ${n} preguntas de opción múltiple sobre el tema, apropiadas para ${grado}. Cada una con 3 o 4 opciones, UNA sola correcta, y una explicación breve del porqué.
+    const expNota = numerica
+      ? `explica el procedimiento PASO A PASO para llegar a la respuesta correcta (así el alumno aprende a resolverlo, no solo cuál era)`
+      : `da la respuesta correcta con una aclaración clara y, si ayuda, una breve recomendación de qué repasar`;
+    return base + `Crea ${n} preguntas de opción múltiple sobre el tema, apropiadas para ${grado}. Cada una con 3 o 4 opciones, UNA sola correcta.
 Forma EXACTA del JSON:
 {"preguntas":[{"pregunta":"...","opciones":["opción A","opción B","opción C"],"correcta":0,"explicacion":"...","figura":""}]}
 - "correcta" es el índice (empezando en 0) de la opción correcta dentro de "opciones".
 - Las opciones incorrectas deben ser creíbles, no absurdas.
+- "explicacion": ${expNota}. Sirve para repasar el error, así que enseña de verdad.
 - Si la pregunta involucra cálculo, RESUÉLVELA y verifica que la opción marcada como "correcta" es de verdad la correcta.
 ${figuraNota}
 ${jsonOnly}`;
