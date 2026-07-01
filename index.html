@@ -110,11 +110,18 @@
     padding:6px 2px;margin:0 0 10px;display:inline-flex;align-items:center;gap:6px}
   .back:hover{text-decoration:underline}
 
-  /* lapso groups + chips */
-  .lapso{margin:2px 0 14px}
-  .lapso h3{font-family:"Fredoka";font-weight:600;font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;color:var(--grape);margin:0 0 9px;display:flex;align-items:center;gap:7px}
-  .lapso h3::before{content:"";width:9px;height:9px;border-radius:3px;background:var(--grape);opacity:.55}
+  /* lapsos como acordeón (menú desplegable) + chips */
   .chips{display:flex;flex-wrap:wrap;gap:9px}
+  .lapso{border:1px solid var(--line);border-radius:14px;background:#fff;margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow-xs)}
+  .lapHead{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;background:#fff;border:none;
+    padding:13px 15px;font-family:"Fredoka";font-weight:600;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--grape)}
+  .lapHead:hover{background:#FBF7FB}
+  .lapHead:active{background:#F6EEF6}
+  .lapRight{display:inline-flex;align-items:center;gap:9px;color:var(--muted);font-weight:600;font-size:.78rem;letter-spacing:0;text-transform:none}
+  .lapChevron{transition:transform .22s;font-size:.8rem}
+  .lapso .chips{display:none;padding:0 14px 14px}
+  .lapso.open .chips{display:flex}
+  .lapso.open .lapChevron{transform:rotate(180deg)}
   .chip{border:2px solid var(--line);background:#fff;color:var(--ink);font-family:"Nunito";font-weight:700;font-size:.92rem;
     padding:9px 14px;border-radius:14px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
     box-shadow:var(--shadow-xs);transition:transform .12s,border-color .15s,background .15s,color .15s}
@@ -505,25 +512,42 @@
     window.scrollTo({top:0,behavior:"smooth"});
   }
 
-  // temas del próximo año (vienen del currículo guardado: grupos por lapso con strings)
+  // temas del próximo año (currículo guardado: grupos por lapso con strings) — acordeón
   function pintarGruposProximo(grupos){
     const cont = $("#grupos"); cont.innerHTML="";
     const varios = grupos.length>1;
-    grupos.forEach(g=>{
-      const wrap=document.createElement("div"); wrap.className="lapso";
-      if(varios && g.lapso){ const h=document.createElement("h3"); h.textContent=g.lapso; wrap.appendChild(h); }
-      const chips=document.createElement("div"); chips.className="chips";
-      (g.temas||[]).forEach(t=>{
-        const b=document.createElement("button"); b.className="chip"; b.setAttribute("aria-pressed","false");
-        b.textContent=t; b.dataset.tema=t;
-        b.onclick=()=>{ temaSel=(temaSel===t)?null:t; $("#otro").value=""; pintarChips(); checkReady(); };
-        chips.appendChild(b);
-      });
-      wrap.appendChild(chips); cont.appendChild(wrap);
+    const mkChip=(t)=>{
+      const b=document.createElement("button"); b.className="chip"; b.setAttribute("aria-pressed","false");
+      b.textContent=t; b.dataset.tema=t;
+      b.onclick=()=>{ temaSel=(temaSel===t)?null:t; $("#otro").value=""; pintarChips(); checkReady(); };
+      return b;
+    };
+    grupos.forEach((g,idx)=>{
+      const temas=g.temas||[];
+      if(varios && g.lapso){
+        const chips=crearLapso(cont, g.lapso, temas.length, idx===0);
+        temas.forEach(t=>chips.appendChild(mkChip(t)));
+      }else{
+        const chips=document.createElement("div"); chips.className="chips";
+        temas.forEach(t=>chips.appendChild(mkChip(t)));
+        cont.appendChild(chips);
+      }
     });
   }
 
-  // temas agrupados por lapso
+  // crea un lapso desplegable (acordeón) y devuelve el contenedor donde poner los chips
+  function crearLapso(cont, titulo, n, abierto){
+    const wrap=document.createElement("div"); wrap.className="lapso"+(abierto?" open":"");
+    const head=document.createElement("button"); head.type="button"; head.className="lapHead";
+    head.setAttribute("aria-expanded", String(!!abierto));
+    head.innerHTML=`<span>${escapeHtml(titulo)}</span><span class="lapRight">${n} ${n===1?"tema":"temas"} <span class="lapChevron">▾</span></span>`;
+    const chips=document.createElement("div"); chips.className="chips";
+    head.onclick=()=>{ const op=wrap.classList.toggle("open"); head.setAttribute("aria-expanded", String(op)); };
+    wrap.appendChild(head); wrap.appendChild(chips); cont.appendChild(wrap);
+    return chips;
+  }
+
+  // temas agrupados por lapso (cada lapso es un menú desplegable; abre el 1º)
   function pintarGrupos(temas){
     const cont = $("#grupos"); cont.innerHTML="";
     const grupos = new Map();
@@ -534,18 +558,23 @@
     });
     const orden = [...grupos.keys()].sort((a,b)=>ordenLapso(a)-ordenLapso(b));
     const varios = orden.length>1;
-    orden.forEach(lap=>{
-      const wrap=document.createElement("div"); wrap.className="lapso";
-      if(varios){ const h=document.createElement("h3"); h.textContent=lap; wrap.appendChild(h); }
-      const chips=document.createElement("div"); chips.className="chips";
-      grupos.get(lap).forEach(t=>{
-        const b=document.createElement("button");
-        b.className="chip"; b.setAttribute("aria-pressed","false");
-        b.textContent=t.seccion; b.dataset.tema=t.seccion;
-        b.onclick=()=>{ temaSel=(temaSel===t.seccion)?null:t.seccion; $("#otro").value=""; pintarChips(); checkReady(); };
-        chips.appendChild(b);
-      });
-      wrap.appendChild(chips); cont.appendChild(wrap);
+    const mkChip=(t)=>{
+      const b=document.createElement("button");
+      b.className="chip"; b.setAttribute("aria-pressed","false");
+      b.textContent=t.seccion; b.dataset.tema=t.seccion;
+      b.onclick=()=>{ temaSel=(temaSel===t.seccion)?null:t.seccion; $("#otro").value=""; pintarChips(); checkReady(); };
+      return b;
+    };
+    orden.forEach((lap,idx)=>{
+      const items=grupos.get(lap);
+      if(varios){
+        const chips=crearLapso(cont, lap, items.length, idx===0);
+        items.forEach(t=>chips.appendChild(mkChip(t)));
+      }else{
+        const chips=document.createElement("div"); chips.className="chips";
+        items.forEach(t=>chips.appendChild(mkChip(t)));
+        cont.appendChild(chips);
+      }
     });
   }
   function pintarChips(){ $("#grupos").querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed", String(c.dataset.tema===temaSel))); }
