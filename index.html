@@ -374,20 +374,7 @@
   let fotos = [];          // fotos del cuaderno (apuntes), solo del momento
   const MAX_FOTOS = 3;
 
-  // ───────── arranque ─────────
-  (function arrancar(){
-    let s = store.get("sesion");
-    if(!(s && s.materias)){
-      // migración desde la versión multi-perfil (cuentas/activa)
-      const cuentas = store.get("cuentas"); const activa = store.get("activa");
-      if(Array.isArray(cuentas) && cuentas.length){
-        s = cuentas.find(c=>String(c.id)===String(activa)) || cuentas[0];
-        if(s && s.materias) store.set("sesion", s);
-      }
-      store.del("cuentas"); store.del("activa");
-    }
-    if(s && s.materias){ SESION = s; entrarHome(); }
-  })();
+  // (el arranque corre al FINAL del script, cuando todas las consts/funciones ya existen)
 
   // ───────── LOGIN ─────────
   $("#btnLogin").onclick = hacerLogin;
@@ -994,6 +981,27 @@
     return pal[h%pal.length];
   }
   function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+
+  // ───────── arranque (al final: todas las consts/funciones ya están definidas) ─────────
+  (function arrancar(){
+    try{
+      let s = store.get("sesion");
+      if(!(s && s.materias)){
+        // migración desde la versión multi-perfil (cuentas/activa)
+        const cuentas = store.get("cuentas"); const activa = store.get("activa");
+        if(Array.isArray(cuentas) && cuentas.length){
+          s = cuentas.find(c=>String(c.id)===String(activa)) || cuentas[0];
+          if(s && s.materias) store.set("sesion", s);
+        }
+        store.del("cuentas"); store.del("activa");
+      }
+      if(s && s.materias){ SESION = s; entrarHome(); }
+    }catch(e){
+      // si algo falla al restaurar la sesión, NO congelar: volver al login
+      SESION=null; try{ store.del("sesion"); }catch(_){}
+      $("#vHome").classList.add("hidden"); $("#vLogin").classList.remove("hidden");
+    }
+  })();
 </script>
 </body>
 </html>
