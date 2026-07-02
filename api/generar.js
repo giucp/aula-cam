@@ -145,7 +145,7 @@ const MODOS_VALIDOS = new Set(["retos", "resumen", "examen", "quiz"]);
 // Versión del prompt por modo: al subirla, el caché de ese modo se invalida
 // (los resúmenes viejos y flacos no se vuelven a servir). Mismo criterio que el
 // frontend para saber si un tema es "numérico" (matemática/lógica/olimpiada).
-const PROMPT_VER = { resumen: "3", retos: "2", examen: "3", quiz: "3" };
+const PROMPT_VER = { resumen: "3", retos: "3", examen: "4", quiz: "4" };
 function esNumerica(txt) {
   return /matemát|matemat|lógic|logic|olimpiad/i.test(txt || "");
 }
@@ -169,7 +169,12 @@ FORMATO (muy importante): la app muestra tu texto TAL CUAL, sin interpretar Mark
 
 ${ctx}${pdfNota}${fotosNota}\n`;
   const jsonOnly = `Responde ÚNICAMENTE con JSON válido, sin texto adicional ni markdown.`;
-  const figuraNota = `Si un ejercicio necesita una figura para entenderse (por ejemplo: estrellas mágicas con números, pirámides numéricas, conteo de cubos, secuencias o patrones de figuras), incluye en "figura" un dibujo en SVG simple y autocontenido que la represente, coherente con el enunciado y la solución (usa viewBox; solo formas, líneas, números y texto; SIN <script>, SIN <image>, SIN recursos externos). Si el ejercicio NO necesita figura, deja "figura":"" (cadena vacía).`;
+  const figuraNota = `Usa "figura" SOLO cuando el ejercicio es visual/geométrico y la figura ayuda de verdad a entenderlo (por ejemplo: estrellas mágicas con números, pirámides numéricas, conteo de cubos, secuencias o patrones de figuras). En ese caso incluye un dibujo en SVG simple y autocontenido, coherente con el enunciado y con la solución verificada (usa viewBox; solo formas, líneas, números y texto; SIN <script>, SIN <image>, SIN recursos externos). NUNCA uses figura para acertijos de deducción, ordenamiento o ubicación (quién se sienta dónde, en qué orden va algo): esos se explican con palabras. En la duda, deja "figura":"" (cadena vacía).`;
+  // Reglas específicas para acertijos de deducción/lógica (donde el modelo suele
+  // inventar acertijos sin solución única o razonar mal). Solo en temas numéricos/lógicos.
+  const reglasDeduccion = numerica
+    ? `\nSi el ejercicio es de deducción, ordenamiento o ubicación (quién se sienta dónde, en qué orden va algo, acertijos con pistas): es OBLIGATORIO que el acertijo tenga UNA sola solución posible. Resuélvelo por completo y COMPRUEBA que la respuesta cumple TODAS las pistas y que ninguna otra disposición también las cumpliría; si tuviera varias soluciones o ninguna, deséchalo y crea otro que SÍ tenga solución única. La explicación debe ser correcta y coincidir EXACTAMENTE con la respuesta, sin pasos contradictorios (no afirmes ubicaciones que no se deducen de las pistas).\n`
+    : ``;
 
   if (modo === "resumen") {
     const enfoqueMate = numerica
@@ -193,7 +198,7 @@ Forma EXACTA del JSON:
 - "respuesta": la respuesta correcta, breve.
 - "explicacion": explica CÓMO se llega a esa respuesta (el procedimiento paso a paso o el razonamiento), claro y apropiado para ${grado}. Es OBLIGATORIO: siempre enseña cómo obtenerla, no solo el resultado.
 - Si la pregunta involucra cálculo, RESUÉLVELA y verifica que la respuesta y el procedimiento son correctos.
-${jsonOnly}`;
+${reglasDeduccion}${jsonOnly}`;
   }
 
   if (modo === "quiz") {
@@ -208,7 +213,7 @@ Forma EXACTA del JSON:
 - "explicacion": ${expNota}. Sirve para repasar el error, así que enseña de verdad.
 - Si la pregunta involucra cálculo, RESUÉLVELA y verifica que la opción marcada como "correcta" es de verdad la correcta.
 ${figuraNota}
-${jsonOnly}`;
+${reglasDeduccion}${jsonOnly}`;
   }
 
   // retos (por defecto)
@@ -219,7 +224,7 @@ ${jsonOnly}`;
 Forma EXACTA del JSON:
 {"ejercicios":[{"enunciado":"...","pista":"...","solucion":"...","figura":""}]}
 ${figuraNota}
-${jsonOnly}`;
+${reglasDeduccion}${jsonOnly}`;
 }
 
 // ───────── caché en Supabase (opcional) ─────────
