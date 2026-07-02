@@ -873,7 +873,7 @@
     grupos.forEach((g,idx)=>{
       const temas=g.temas||[];
       if(varios && g.lapso){
-        const chips=crearLapso(cont, g.lapso, temas.length, idx===0);
+        const chips=crearLapso(cont, g.lapso, temas.length, false);
         temas.forEach(t=>chips.appendChild(mkChip(t)));
       }else{
         const chips=document.createElement("div"); chips.className="chips";
@@ -896,7 +896,7 @@
     return chips;
   }
 
-  // temas agrupados por lapso (cada lapso es un menú desplegable; abre el 1º)
+  // temas agrupados por lapso (cada lapso es un menú desplegable; todos cerrados al inicio)
   function pintarGrupos(temas){
     const cont = $("#grupos"); cont.innerHTML="";
     const grupos = new Map();
@@ -917,7 +917,7 @@
     orden.forEach((lap,idx)=>{
       const items=grupos.get(lap);
       if(varios){
-        const chips=crearLapso(cont, lap, items.length, idx===0);
+        const chips=crearLapso(cont, lap, items.length, false);
         items.forEach(t=>chips.appendChild(mkChip(t)));
       }else{
         const chips=document.createElement("div"); chips.className="chips";
