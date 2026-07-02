@@ -199,14 +199,18 @@
     }
     const chips=document.createElement("div"); chips.className="chips";
     del.forEach(h=>{
-      const b=document.createElement("button"); b.className="chip";
-      b.textContent=`${iconMateria(h.materia)} ${limpiaNombreMateria(h.materia)}`;
-      b.onclick=()=>irAPractica(h.materia);
+      const enAula=esMateriaAula(h.materia);
+      // materia del aula → botón que lleva a practicar; propia (caligrafía…) → chip simple
+      const b=document.createElement(enAula?"button":"span"); b.className="chip"+(enAula?"":" propia");
+      b.innerHTML=`${iconMateria(h.materia)} ${escapeHtml(limpiaNombreMateria(h.materia))}`;
+      if(enAula) b.onclick=()=>irAPractica(h.materia);
       chips.appendChild(b);
     });
     cont.appendChild(chips);
-    const hint=document.createElement("p"); hint.className="wHint"; hint.textContent="Toca una materia para repasarla ✨";
-    cont.appendChild(hint);
+    if(del.some(h=>esMateriaAula(h.materia))){
+      const hint=document.createElement("p"); hint.className="wHint"; hint.textContent="Toca una materia para repasarla ✨";
+      cont.appendChild(hint);
+    }
   }
   function pintarTareasResumen(){
     const cont=$("#tareasResumen"); cont.innerHTML="";
@@ -270,10 +274,10 @@
     $("#formTarea").classList.remove("hidden");
     $("#tDesc").value=""; $("#tFecha").value=""; tipoSel="tarea"; tMatSel=""; $("#tMsg").innerHTML="";
     const cont=$("#tMaterias"); cont.innerHTML="";
-    ((SESION&&SESION.materias)||[]).forEach(m=>{
+    materiasParaFormularios().forEach(nombre=>{
       const b=document.createElement("button"); b.className="chip"; b.setAttribute("aria-pressed","false");
-      b.textContent=limpiaNombreMateria(m.nombre);
-      b.onclick=()=>{ tMatSel=(tMatSel===m.nombre)?"":m.nombre;
+      b.textContent=`${iconMateria(nombre)} ${limpiaNombreMateria(nombre)}`;
+      b.onclick=()=>{ tMatSel=(tMatSel===nombre)?"":nombre;
         cont.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed", String(c===b && !!tMatSel))); };
       cont.appendChild(b);
     });
@@ -315,34 +319,74 @@
       cont.appendChild(row);
     }
   }
-  let EDIT_HORARIO=null;   // {1:[nombres en orden], … 5:[…]}
+  // materias base (del aula) + las "propias" que el niño agregó (caligrafía, lectura…)
+  function materiasBase(){ return ((SESION&&SESION.materias)||[]).map(m=>m.nombre); }
+  function esMateriaAula(nombre){ return materiasBase().some(x=>norm(x)===norm(nombre)); }
+  function unicasPorNombre(lista){
+    const seen=new Set(), out=[];
+    lista.forEach(n=>{ const k=norm(n); if(n && !seen.has(k)){ seen.add(k); out.push(n); } });
+    return out;
+  }
+  // materias propias ya guardadas (aparecen en el horario pero no vienen del aula)
+  function materiasExtraGuardadas(){
+    const base=materiasBase().map(norm);
+    return unicasPorNombre(HORARIO.map(h=>h.materia).filter(m=>m && !base.includes(norm(m))));
+  }
+  // pool completo de materias para los formularios (aula + propias)
+  function materiasParaFormularios(){ return unicasPorNombre([...materiasBase(), ...materiasExtraGuardadas()]); }
+
+  let EDIT_HORARIO=null, EDIT_DIA=1, EDIT_EXTRAS=[];   // {1:[nombres],…5:[…]} + día activo + propias nuevas
+  function poolEditor(){ return unicasPorNombre([...materiasBase(), ...materiasExtraGuardadas(), ...EDIT_EXTRAS]); }
   function abrirEditorHorario(){
     EDIT_HORARIO={};
-    for(let d=1; d<=5; d++){
-      EDIT_HORARIO[d]=HORARIO.filter(h=>h.dia===d).sort((a,b)=>(a.orden||0)-(b.orden||0)).map(h=>h.materia);
-    }
-    const cont=$("#horarioEditorDias"); cont.innerHTML="";
-    const mats=((SESION&&SESION.materias)||[]).map(m=>m.nombre);
-    for(let d=1; d<=5; d++){
-      const box=document.createElement("div"); box.className="heDia";
-      const tit=document.createElement("p"); tit.className="lblMini"; tit.textContent=DIAS_CORT[d]; box.appendChild(tit);
-      const chips=document.createElement("div"); chips.className="chips";
-      const pintaTodos=()=>chips.querySelectorAll(".chip").forEach(c=>c._pinta && c._pinta());
-      mats.forEach(nombre=>{
-        const b=document.createElement("button"); b.className="chip";
-        b._pinta=()=>{ const i=EDIT_HORARIO[d].indexOf(nombre);
-          b.setAttribute("aria-pressed", String(i>=0));
-          b.textContent=(i>=0?`${i+1}º `:"")+limpiaNombreMateria(nombre); };
-        b._pinta();
-        b.onclick=()=>{ const i=EDIT_HORARIO[d].indexOf(nombre);
-          if(i>=0) EDIT_HORARIO[d].splice(i,1); else EDIT_HORARIO[d].push(nombre);
-          pintaTodos(); };
-        chips.appendChild(b);
-      });
-      box.appendChild(chips); cont.appendChild(box);
-    }
+    for(let d=1; d<=5; d++) EDIT_HORARIO[d]=HORARIO.filter(h=>h.dia===d).sort((a,b)=>(a.orden||0)-(b.orden||0)).map(h=>h.materia);
+    EDIT_DIA=1; EDIT_EXTRAS=[];
     $("#horarioEditor").classList.remove("hidden");
+    renderEditorHorario();
     $("#horarioEditor").scrollIntoView({behavior:"smooth", block:"start"});
+  }
+  function renderEditorHorario(){
+    const cont=$("#horarioEditorDias"); cont.innerHTML="";
+    // 1) selector de día (pills) — se ve UN día a la vez, con contador de materias
+    const sel=document.createElement("div"); sel.className="heDiaSel";
+    for(let d=1; d<=5; d++){
+      const cnt=(EDIT_HORARIO[d]||[]).length;
+      const b=document.createElement("button"); b.className="heDiaPill"+(d===EDIT_DIA?" on":"");
+      b.innerHTML=`${DIAS_CORT[d].slice(0,3)}${cnt?`<span class="hePillN">${cnt}</span>`:""}`;
+      b.onclick=()=>{ EDIT_DIA=d; renderEditorHorario(); };
+      sel.appendChild(b);
+    }
+    cont.appendChild(sel);
+    // 2) guía del día
+    const sub=document.createElement("p"); sub.className="ayuda";
+    sub.textContent=`Toca las materias del ${DIAS_CORT[EDIT_DIA].toLowerCase()}, en el orden en que las tienes. Toca de nuevo para quitarla.`;
+    cont.appendChild(sub);
+    // 3) chips SOLO del día elegido
+    const chips=document.createElement("div"); chips.className="chips";
+    poolEditor().forEach(nombre=>{
+      const dia=EDIT_HORARIO[EDIT_DIA];
+      const i=dia.indexOf(nombre);
+      const b=document.createElement("button"); b.className="chip";
+      b.setAttribute("aria-pressed", String(i>=0));
+      b.innerHTML=`${i>=0?`<span class="chipN">${i+1}º</span>`:""}${iconMateria(nombre)} ${escapeHtml(limpiaNombreMateria(nombre))}`;
+      b.onclick=()=>{ const j=dia.indexOf(nombre); if(j>=0) dia.splice(j,1); else dia.push(nombre); renderEditorHorario(); };
+      chips.appendChild(b);
+    });
+    cont.appendChild(chips);
+    // 4) agregar una materia propia (no está en el aula: caligrafía, lectura…)
+    const add=document.createElement("div"); add.className="heAdd";
+    const inp=document.createElement("input"); inp.type="text"; inp.maxLength=40; inp.placeholder="Otra materia (ej: Caligrafía, Lectura)";
+    const btn=document.createElement("button"); btn.className="otros"; btn.textContent="＋ Agregar";
+    const agregar=()=>{
+      const v=inp.value.trim(); if(!v) return;
+      if(!poolEditor().some(x=>norm(x)===norm(v))) EDIT_EXTRAS.push(v);
+      const dia=EDIT_HORARIO[EDIT_DIA];
+      if(!dia.some(x=>norm(x)===norm(v))) dia.push(v);   // la suma directo al día actual
+      inp.value=""; renderEditorHorario();
+    };
+    btn.onclick=agregar;
+    inp.addEventListener("keydown", e=>{ if(e.key==="Enter"){ e.preventDefault(); agregar(); } });
+    add.appendChild(inp); add.appendChild(btn); cont.appendChild(add);
   }
   $("#btnEditarHorario").onclick=()=>{ verTab("agenda"); abrirEditorHorario(); };
   $("#btnEditarHorario2").onclick=abrirEditorHorario;
@@ -527,10 +571,10 @@
     $("#formNota").classList.remove("hidden");
     $("#nDesc").value=""; $("#nNota").value=""; $("#nFecha").value=""; nMatSel=""; $("#nMsg").innerHTML="";
     const cont=$("#nMaterias"); cont.innerHTML="";
-    ((SESION&&SESION.materias)||[]).forEach(m=>{
+    materiasParaFormularios().forEach(nombre=>{
       const b=document.createElement("button"); b.className="chip"; b.setAttribute("aria-pressed","false");
-      b.textContent=limpiaNombreMateria(m.nombre);
-      b.onclick=()=>{ nMatSel=(nMatSel===m.nombre)?"":m.nombre;
+      b.textContent=`${iconMateria(nombre)} ${limpiaNombreMateria(nombre)}`;
+      b.onclick=()=>{ nMatSel=(nMatSel===nombre)?"":nombre;
         cont.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed", String(c===b && !!nMatSel))); };
       cont.appendChild(b);
     });
@@ -1387,7 +1431,8 @@
       ["inglés","🔤"],["ingles","🔤"],["natural","🔬"],["social","🌎"],["físic","⚽"],["fisic","⚽"],
       ["estétic","🎨"],["estetic","🎨"],["arte","🎨"],["músic","🎵"],["music","🎵"],["religi","✝️"],
       ["informát","💻"],["informat","💻"],["robót","🤖"],["robot","🤖"],["emocional","💗"],
-      ["lideraz","🎤"],["comunic","🎤"],["olimpiad","🏅"]];
+      ["lideraz","🎤"],["comunic","🎤"],["olimpiad","🏅"],
+      ["caligraf","✍️"],["lectura","📚"],["escritura","✏️"],["dibujo","🖍️"],["valores","💛"]];
     for(const [k,e] of map){ if(n.includes(k)) return e; }
     return "📘";
   }
