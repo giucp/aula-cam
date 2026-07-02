@@ -191,6 +191,8 @@
   .err{background:#FFF2EE;border:2px solid #FFD3C5;border-radius:18px;padding:16px;color:var(--ink);font-weight:700;margin-top:14px;display:flex;gap:11px;align-items:flex-start}
   .err .ico{font-size:1.4rem;line-height:1}
   .err small{display:block;margin-top:6px;color:var(--muted);font-weight:600;font-size:.8rem;word-break:break-word}
+  .aviso{background:#EAF8F6;border:2px solid #BEE9E1;border-radius:18px;padding:16px;color:var(--ink);font-weight:700;margin-top:14px;display:flex;gap:11px;align-items:flex-start}
+  .aviso .ico{font-size:1.4rem;line-height:1}
   .empty{color:var(--muted);font-weight:700;padding:8px 2px 0;line-height:1.5}
 
   /* "basado en tu clase" banner */

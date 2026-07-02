@@ -55,6 +55,41 @@ async function registrarAcceso(userid, nombre, courses) {
   } catch (e) { /* el registro nunca debe romper el login */ }
 }
 
+// ───────── control de acceso (código de invitación) ─────────
+// El candado está APAGADO mientras no exista la env ACCESO_CODIGO. Al ponerla, solo
+// entran los usuarios ya autorizados (usuarios.autorizado=true) o quien traiga el
+// código correcto en su primer login (ahí queda autorizado para siempre).
+// Fail-open: si Supabase no responde, no bloqueamos (mejor no dejar afuera a un niño
+// por un hipo de infraestructura; siguen necesitando clave real del aula).
+async function estaAutorizado(userid) {
+  const cfg = supabaseCfg();
+  if (!cfg || userid == null) return true;
+  try {
+    const r = await fetch(`${cfg.url}/rest/v1/usuarios?id=eq.${userid}&select=autorizado`, {
+      headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}` },
+    });
+    if (!r.ok) return true;
+    const rows = await r.json();
+    return !!(Array.isArray(rows) && rows[0] && rows[0].autorizado);
+  } catch (e) { return true; }
+}
+// Marca al usuario como autorizado (upsert: crea la fila si no existe).
+async function autorizar(userid, nombre, courses) {
+  const cfg = supabaseCfg();
+  if (!cfg || userid == null) return;
+  const { grado, corto } = gradoDeCursos(courses);
+  try {
+    await fetch(`${cfg.url}/rest/v1/usuarios`, {
+      method: "POST",
+      headers: {
+        apikey: cfg.key, Authorization: `Bearer ${cfg.key}`,
+        "Content-Type": "application/json", Prefer: "resolution=merge-duplicates",
+      },
+      body: JSON.stringify({ id: userid, nombre: nombre || null, grado, nombre_corto: corto, autorizado: true }),
+    });
+  } catch (e) { /* no romper el login */ }
+}
+
 // Intercambia usuario+clave por un token del servicio móvil.
 async function getToken(username, password) {
   const body = new URLSearchParams({
@@ -87,6 +122,29 @@ export default async function handler(req, res) {
 
     // 2) Materias en las que está inscrita (esto define su grado).
     const courses = await callWS(token, "core_enrol_get_users_courses", { userid });
+
+    // 2.5) CONTROL DE ACCESO: si el candado está activo (existe ACCESO_CODIGO), solo
+    //      pasan los ya autorizados o quien traiga el código correcto. Se chequea
+    //      ANTES de bajar el contenido pesado.
+    const CODIGO = process.env.ACCESO_CODIGO;
+    if (CODIGO) {
+      let ok = await estaAutorizado(userid);
+      if (!ok) {
+        const codigo = String((req.body && req.body.codigo) || "").trim();
+        if (codigo && codigo === CODIGO) {
+          await autorizar(userid, info.fullname, courses);
+          ok = true;
+        }
+      }
+      if (!ok) {
+        // registrar al niño como pendiente (para que el admin lo vea) y pedir el código
+        await registrarAcceso(userid, info.fullname, courses);
+        return res.status(403).json({
+          error: "Necesitas un código de acceso para tu primera vez. Pídeselo al administrador.",
+          code: "sin_acceso",
+        });
+      }
+    }
 
     // 3) Contenidos (temas + módulos) de cada materia — EN PARALELO (mucho más
     //    rápido que curso por curso contra un servidor escolar lento).

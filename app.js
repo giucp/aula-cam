@@ -53,6 +53,7 @@
   async function hacerLogin(){
     const user = $("#user").value.trim();
     const pass = $("#pass").value;
+    const codigo = ($("#codigo") && $("#codigo").value.trim()) || "";
     const msg = $("#loginMsg");
     if(!user || !pass){ msg.innerHTML = errBox("Escribe tu usuario y tu clave."); return; }
     const btn = $("#btnLogin");
@@ -60,8 +61,17 @@
     msg.innerHTML = "";
     try{
       const r = await fetch(API_MOODLE,{method:"POST",headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({ username:user, password:pass })});
+        body:JSON.stringify({ username:user, password:pass, codigo })});
       const d = await r.json();
+      // primer login sin código (o código equivocado): pedirlo con buena onda, sin rojo
+      if(d.code==="sin_acceso"){
+        $("#codigoWrap").classList.remove("hidden");
+        msg.innerHTML = avisoBox(codigo
+          ? "Ese código no es válido. Revísalo con quien te dio el acceso."
+          : "Necesitas un código de acceso para tu primera vez. Escríbelo abajo. 🔑");
+        const inp=$("#codigo"); if(inp) inp.focus();
+        return;
+      }
       if(d.error) throw new Error(d.error);
       SESION = {
         id: (d.usuario && d.usuario.id!=null) ? d.usuario.id : ("u_"+user.toLowerCase()),
@@ -69,7 +79,8 @@
         fetched: Date.now()
       };
       store.set("sesion", SESION);
-      $("#user").value=""; $("#pass").value="";
+      $("#user").value=""; $("#pass").value=""; if($("#codigo")) $("#codigo").value="";
+      $("#codigoWrap").classList.add("hidden");
       entrarHome();
     }catch(e){
       const txtErr = /invalid|inválid|incorrect/i.test(String(e.message))
@@ -605,7 +616,7 @@
   // navegación landing ↔ login
   function verLanding(){ $("#vHome").classList.add("hidden"); $("#vLogin").classList.add("hidden"); $("#vLanding").classList.remove("hidden"); window.scrollTo({top:0}); }
   function verLogin(){ $("#vLanding").classList.add("hidden"); $("#vHome").classList.add("hidden"); $("#vLogin").classList.remove("hidden"); window.scrollTo({top:0}); }
-  $("#btnEntrarLanding").onclick = ()=>{ $("#loginMsg").innerHTML=""; verLogin(); };
+  $("#btnEntrarLanding").onclick = ()=>{ $("#loginMsg").innerHTML=""; if($("#codigo")) $("#codigo").value=""; $("#codigoWrap").classList.add("hidden"); verLogin(); };
   $("#btnVolverLanding").onclick = ()=>{ $("#user").value=""; $("#pass").value=""; verLanding(); };
 
   $("#btnSalir").onclick = ()=>{
@@ -617,11 +628,11 @@
   };
 
   // sesión vencida (token expirado): cerrar y volver al login con aviso amable
-  function sesionVencida(){
+  function sesionVencida(mensaje){
     store.del("sesion"); SESION=null; origen="actual"; materiaSel=null; temaSel=null;
     $("#results").innerHTML=""; MIS_ERRORES=[]; PROGRESO=new Map();
     verLogin();
-    $("#loginMsg").innerHTML = errBox("Tu sesión venció. Entra de nuevo, por favor.");
+    $("#loginMsg").innerHTML = errBox(mensaje || "Tu sesión venció. Entra de nuevo, por favor.");
   }
   // refresca las materias en segundo plano (por si la maestra subió algo nuevo),
   // usando el token guardado. Si el token venció → vuelve al login. No bloquea la app.
@@ -631,6 +642,7 @@
       const r = await fetch(API_MOODLE,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ token: SESION.token })});
       const d = await r.json().catch(()=>null);
       if(d && d.code===401){ sesionVencida(); return; }
+      if(d && d.code==="sin_acceso"){ sesionVencida("Tu acceso fue pausado. Habla con el administrador."); return; }
       if(d && Array.isArray(d.materias) && d.materias.length){
         SESION.materias = d.materias;
         if(d.token) SESION.token = d.token;
@@ -1346,6 +1358,9 @@
   });
   function errBox(titulo, detalle){
     return `<div class="err"><span class="ico">😅</span><div>${escapeHtml(titulo)}${detalle?`<small>${escapeHtml(detalle)}</small>`:""}</div></div>`;
+  }
+  function avisoBox(titulo){
+    return `<div class="aviso"><span class="ico">🔑</span><div>${escapeHtml(titulo)}</div></div>`;
   }
   // tras un 429 (límite por minuto), bloquea el botón con cuenta regresiva para no empeorar el límite
   function enfriar(btn, segs){
