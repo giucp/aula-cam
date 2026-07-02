@@ -145,7 +145,7 @@ const MODOS_VALIDOS = new Set(["retos", "resumen", "examen", "quiz"]);
 // Versión del prompt por modo: al subirla, el caché de ese modo se invalida
 // (los resúmenes viejos y flacos no se vuelven a servir). Mismo criterio que el
 // frontend para saber si un tema es "numérico" (matemática/lógica/olimpiada).
-const PROMPT_VER = { resumen: "2", examen: "2", quiz: "2" };
+const PROMPT_VER = { resumen: "3", retos: "2", examen: "3", quiz: "3" };
 function esNumerica(txt) {
   return /matemát|matemat|lógic|logic|olimpiad/i.test(txt || "");
 }
@@ -160,7 +160,14 @@ function armarPrompt({ modo, material, tienePdf, tieneFotos, grado, tema, materi
   const fotosNota = tieneFotos
     ? `\nEl alumno también adjuntó fotos de sus apuntes del cuaderno, tomados en sus clases presenciales. Léelas con atención y úsalas como información complementaria al material del aula. La letra de un niño puede ser difícil de leer: interpreta y aprovecha lo que puedas con razonable seguridad, y NO inventes lo que sea ilegible.\n`
     : ``;
-  const base = `Eres un docente de ${grado} en Venezuela, cálido y claro. Escribe en español neutro y claro, con palabras apropiadas para ${grado}. No uses jerga regional ni saludos coloquiales como "chamos", "chamo", "épale" o "pana"; dirígete al alumno de forma sencilla y neutra.\n\n${ctx}${pdfNota}${fotosNota}\n`;
+  const base = `Eres un docente de ${grado} en Venezuela, cálido y claro. Escribe en español neutro y claro, con palabras apropiadas para ${grado}. No uses jerga regional ni saludos coloquiales como "chamos", "chamo", "épale" o "pana"; dirígete al alumno de forma sencilla y neutra.
+
+FORMATO (muy importante): la app muestra tu texto TAL CUAL, sin interpretar Markdown ni respetar alineaciones. Escribe SIEMPRE en texto plano y respeta estas reglas en TODOS los campos de texto:
+- NO uses Markdown: nada de **negritas**, *asteriscos*, títulos con #, comillas invertidas ni viñetas con símbolos.
+- NUNCA dibujes mesas, tableros, cuadrículas, figuras ni diagramas con caracteres o "arte ASCII" (guiones, barras, corchetes): en la app se ven rotos. Si necesitas mostrar una disposición (por ejemplo quién se sienta dónde, o el orden de algo), descríbela con palabras, de forma breve y clara.
+- Sé CONCISO: incluye solo los pasos necesarios y evita el relleno (no escribas frases como "leemos el problema" o "dibujamos la mesa").
+
+${ctx}${pdfNota}${fotosNota}\n`;
   const jsonOnly = `Responde ÚNICAMENTE con JSON válido, sin texto adicional ni markdown.`;
   const figuraNota = `Si un ejercicio necesita una figura para entenderse (por ejemplo: estrellas mágicas con números, pirámides numéricas, conteo de cubos, secuencias o patrones de figuras), incluye en "figura" un dibujo en SVG simple y autocontenido que la represente, coherente con el enunciado y la solución (usa viewBox; solo formas, líneas, números y texto; SIN <script>, SIN <image>, SIN recursos externos). Si el ejercicio NO necesita figura, deja "figura":"" (cadena vacía).`;
 

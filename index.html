@@ -868,7 +868,7 @@
   // ni a Supabase) cuando la alumna vuelve a un modo/tema que ya vio. Se salta
   // con "Generar otros" y con fotos (resultados personales). Clave igual a la del
   // servidor (el resumen ignora "cantidad").
-  const CACHE_LOCAL_KEY = "gen_cache_v1";
+  const CACHE_LOCAL_KEY = "gen_cache_v2";  // v2: purga contenido viejo con ASCII/Markdown
   const CACHE_LOCAL_MAX = 60;
   // firma barata del contenido del tema (misma idea que el backend): si la maestra
   // actualiza el material, cambia la firma → clave nueva → se regenera solo.
