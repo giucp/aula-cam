@@ -53,7 +53,6 @@
   async function hacerLogin(){
     const user = $("#user").value.trim();
     const pass = $("#pass").value;
-    const codigo = ($("#codigo") && $("#codigo").value.trim()) || "";
     const msg = $("#loginMsg");
     if(!user || !pass){ msg.innerHTML = errBox("Escribe tu usuario y tu clave."); return; }
     const btn = $("#btnLogin");
@@ -61,26 +60,24 @@
     msg.innerHTML = "";
     try{
       const r = await fetch(API_MOODLE,{method:"POST",headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({ username:user, password:pass, codigo })});
+        body:JSON.stringify({ username:user, password:pass })});
       const d = await r.json();
-      // primer login sin código (o código equivocado): pedirlo con buena onda, sin rojo
-      if(d.code==="sin_acceso"){
-        $("#codigoWrap").classList.remove("hidden");
-        msg.innerHTML = avisoBox(codigo
-          ? "Ese código no es válido. Revísalo con quien te dio el acceso."
-          : "Necesitas un código de acceso para tu primera vez. Escríbelo abajo. 🔑");
-        const inp=$("#codigo"); if(inp) inp.focus();
+      if(d.error) throw new Error(d.error);
+      // logueó bien, pero el admin aún no lo habilitó → pantalla "acceso en revisión"
+      if(d.pendiente){
+        tokenPendiente = d.token || null;
+        nombrePendiente = (d.usuario && d.usuario.nombre) || user;
+        $("#user").value=""; $("#pass").value="";
+        verPendiente(nombrePendiente);
         return;
       }
-      if(d.error) throw new Error(d.error);
       SESION = {
         id: (d.usuario && d.usuario.id!=null) ? d.usuario.id : ("u_"+user.toLowerCase()),
         nombre:(d.usuario&&d.usuario.nombre)||user, token:d.token, materias:d.materias||[],
         fetched: Date.now()
       };
       store.set("sesion", SESION);
-      $("#user").value=""; $("#pass").value=""; if($("#codigo")) $("#codigo").value="";
-      $("#codigoWrap").classList.add("hidden");
+      $("#user").value=""; $("#pass").value="";
       entrarHome();
     }catch(e){
       const txtErr = /invalid|inválid|incorrect/i.test(String(e.message))
@@ -94,6 +91,7 @@
   function entrarHome(){
     $("#vLanding").classList.add("hidden");
     $("#vLogin").classList.add("hidden");
+    $("#vPendiente").classList.add("hidden");
     $("#vHome").classList.remove("hidden");
     origen = "actual";
     const primer = (SESION.nombre||"").split(" ")[0] || "";
@@ -613,10 +611,33 @@
     }finally{ btn.disabled=false; }
   };
 
-  // navegación landing ↔ login
-  function verLanding(){ $("#vHome").classList.add("hidden"); $("#vLogin").classList.add("hidden"); $("#vLanding").classList.remove("hidden"); window.scrollTo({top:0}); }
-  function verLogin(){ $("#vLanding").classList.add("hidden"); $("#vHome").classList.add("hidden"); $("#vLogin").classList.remove("hidden"); window.scrollTo({top:0}); }
-  $("#btnEntrarLanding").onclick = ()=>{ $("#loginMsg").innerHTML=""; if($("#codigo")) $("#codigo").value=""; $("#codigoWrap").classList.add("hidden"); verLogin(); };
+  // navegación landing ↔ login ↔ "acceso en revisión"
+  function ocultarVistas(){ ["#vLanding","#vLogin","#vHome","#vPendiente"].forEach(id=>$(id).classList.add("hidden")); }
+  function verLanding(){ ocultarVistas(); $("#vLanding").classList.remove("hidden"); window.scrollTo({top:0}); }
+  function verLogin(){ ocultarVistas(); $("#vLogin").classList.remove("hidden"); window.scrollTo({top:0}); }
+  // pantalla cuando logueó bien pero el admin todavía no lo habilitó
+  let tokenPendiente=null, nombrePendiente="";
+  function verPendiente(nombre){
+    ocultarVistas();
+    const primer=(nombre||"").split(" ")[0]||"";
+    $("#pendNombre").textContent = primer ? `¡Hola, ${primer}!` : "¡Hola!";
+    $("#vPendiente").classList.remove("hidden"); window.scrollTo({top:0});
+  }
+  $("#btnReintentar").onclick = async ()=>{
+    if(!tokenPendiente){ verLogin(); return; }
+    const btn=$("#btnReintentar"); btn.disabled=true; const txt=btn.textContent; btn.textContent="Revisando…";
+    try{
+      const r = await fetch(API_MOODLE,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ token: tokenPendiente })});
+      const d = await r.json();
+      if(d.error) throw new Error(d.error);
+      if(d.pendiente){ btn.textContent="Todavía no 😅 Prueba en un rato"; setTimeout(()=>{btn.textContent=txt;btn.disabled=false;},2600); return; }
+      SESION = { id:(d.usuario&&d.usuario.id!=null)?d.usuario.id:("u_"+(nombrePendiente||"x").toLowerCase()),
+        nombre:(d.usuario&&d.usuario.nombre)||nombrePendiente, token:d.token, materias:d.materias||[], fetched:Date.now() };
+      store.set("sesion", SESION); tokenPendiente=null; entrarHome();
+    }catch(e){ btn.textContent="No se pudo, reintenta"; setTimeout(()=>{btn.textContent=txt;btn.disabled=false;},2600); }
+  };
+  $("#btnSalirPend").onclick = ()=>{ tokenPendiente=null; verLanding(); };
+  $("#btnEntrarLanding").onclick = ()=>{ $("#loginMsg").innerHTML=""; verLogin(); };
   $("#btnVolverLanding").onclick = ()=>{ $("#user").value=""; $("#pass").value=""; verLanding(); };
 
   $("#btnSalir").onclick = ()=>{
@@ -642,7 +663,7 @@
       const r = await fetch(API_MOODLE,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ token: SESION.token })});
       const d = await r.json().catch(()=>null);
       if(d && d.code===401){ sesionVencida(); return; }
-      if(d && d.code==="sin_acceso"){ sesionVencida("Tu acceso fue pausado. Habla con el administrador."); return; }
+      if(d && d.pendiente){ sesionVencida("Tu acceso fue pausado. Habla con el administrador."); return; }
       if(d && Array.isArray(d.materias) && d.materias.length){
         SESION.materias = d.materias;
         if(d.token) SESION.token = d.token;

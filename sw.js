@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v8"; // v8: control de acceso por código de invitación
+const VERSION = "aulacam-v9"; // v9: acceso por habilitacion manual (autorizado true/false)
 const SHELL = [
   "/",
   "/index.html",
