@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v6"; // v6: editor de horario rediseñado + materias propias
+const VERSION = "aulacam-v7"; // v7: materias en mayúscula + fila "agregar" arreglada en móvil
 const SHELL = [
   "/",
   "/index.html",

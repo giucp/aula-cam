@@ -374,14 +374,19 @@
     });
     cont.appendChild(chips);
     // 4) agregar una materia propia (no está en el aula: caligrafía, lectura…)
+    const addLbl=document.createElement("p"); addLbl.className="heAddLbl";
+    addLbl.textContent="¿Falta una materia? (caligrafía, lectura…)";
+    cont.appendChild(addLbl);
     const add=document.createElement("div"); add.className="heAdd";
-    const inp=document.createElement("input"); inp.type="text"; inp.maxLength=40; inp.placeholder="Otra materia (ej: Caligrafía, Lectura)";
-    const btn=document.createElement("button"); btn.className="otros"; btn.textContent="＋ Agregar";
+    const inp=document.createElement("input"); inp.type="text"; inp.maxLength=40;
+    inp.placeholder="Escribe el nombre"; inp.autocapitalize="characters";
+    const btn=document.createElement("button"); btn.className="heAddBtn"; btn.textContent="＋ Agregar";
     const agregar=()=>{
       const v=inp.value.trim(); if(!v) return;
-      if(!poolEditor().some(x=>norm(x)===norm(v))) EDIT_EXTRAS.push(v);
+      const V=v.toUpperCase();                        // en MAYÚSCULAS, como las demás
+      if(!poolEditor().some(x=>norm(x)===norm(V))) EDIT_EXTRAS.push(V);
       const dia=EDIT_HORARIO[EDIT_DIA];
-      if(!dia.some(x=>norm(x)===norm(v))) dia.push(v);   // la suma directo al día actual
+      if(!dia.some(x=>norm(x)===norm(V))) dia.push(V); // la suma directo al día actual
       inp.value=""; renderEditorHorario();
     };
     btn.onclick=agregar;
@@ -1423,7 +1428,9 @@
   // ───────── helpers de texto / estilo ─────────
   function norm(s){ return String(s||"").replace(/\s+/g," ").trim().toLowerCase(); }
   function stripHtml(s){ return String(s==null?"":s).replace(/<[^>]+>/g," ").replace(/&nbsp;/g," ").replace(/&amp;/g,"&").replace(/&[a-z]+;/g," ").replace(/\s+/g," ").trim(); }
-  function limpiaNombreMateria(s){ return String(s||"").replace(/\s*\b[1-6]\s*[GA]\b\s*$/i,"").trim() || String(s||""); }
+  // nombre de materia para mostrar: sin el sufijo de grado y en MAYÚSCULAS (uniforme
+  // con las del aula, que ya vienen así). Solo display — el matching usa norm().
+  function limpiaNombreMateria(s){ return (String(s||"").replace(/\s*\b[1-6]\s*[GA]\b\s*$/i,"").trim() || String(s||"")).toUpperCase(); }
 
   function iconMateria(nombre){
     const n=(nombre||"").toLowerCase();

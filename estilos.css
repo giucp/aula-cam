@@ -368,8 +368,15 @@
   .chip .chipN{background:var(--teal);color:#fff;font-size:.72rem;font-weight:700;border-radius:7px;padding:1px 6px;margin-right:6px}
   .chip[aria-pressed="true"] .chipN{background:rgba(255,255,255,.32)}
   .chip.propia{cursor:default;background:#F7F2FA;border-style:dashed}
-  .heAdd{display:flex;gap:8px;margin-top:14px}
-  .heAdd input{flex:1;font-family:"Nunito";font-weight:700;font-size:.95rem;color:var(--ink);
-    padding:11px 13px;border:2px solid var(--line);border-radius:13px;background:#FFFDFB;outline:none}
+  .heAddLbl{font-family:"Fredoka";font-weight:600;font-size:.85rem;color:var(--muted);margin:18px 2px 8px}
+  .heAdd{display:flex;gap:8px;align-items:stretch}
+  .heAdd input{flex:1 1 auto;min-width:0;box-sizing:border-box;font-family:"Nunito";font-weight:700;font-size:.95rem;
+    color:var(--ink);padding:12px 14px;border:2px solid var(--line);border-radius:13px;background:#FFFDFB;outline:none;
+    transition:border-color .15s,box-shadow .15s}
+  .heAdd input::placeholder{color:#BBA9C0;font-weight:600}
   .heAdd input:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(18,181,164,.14)}
-  .heAdd .otros{white-space:nowrap}
+  .heAddBtn{flex:0 0 auto;border:none;cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:.95rem;color:#fff;
+    background:linear-gradient(180deg,#34C6A6,#12B5A4);padding:0 18px;border-radius:13px;white-space:nowrap;
+    box-shadow:0 10px 18px -10px rgba(18,181,164,.6);transition:transform .12s,filter .2s}
+  .heAddBtn:hover{filter:brightness(1.05)}
+  .heAddBtn:active{transform:scale(.97)}
