@@ -1,0 +1,119 @@
+// api/agenda.js — Función serverless de Vercel (runtime Node)
+// Escritorio diario del alumno: horario semanal + tareas (con tipo tarea/trabajo/
+// examen). Identificado por usuario_id (userid de Moodle), mismo patrón de riesgo
+// aceptado que errores/actividad (app familiar; futuro: validar token).
+//
+// Acciones (POST JSON):
+//   { accion:"todo",        usuario_id }                        → { horario:[], tareas:[] }
+//   { accion:"horario_set", usuario_id, items:[{dia,materia,orden}] } → reemplaza el horario
+//   { accion:"tarea_guardar", usuario_id, tarea:{materia,descripcion,tipo,fecha} } → crea
+//   { accion:"tarea_hecha",  usuario_id, id, hecha }            → marca hecha / pendiente
+//   { accion:"tarea_borrar", usuario_id, id }                   → borra
+// Si las tablas no existen aún (falta correr supabase-agenda.sql), degrada:
+// devuelve listas vacías / ok:false sin romper la app.
+
+function supabaseCfg() {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_KEY;
+  return url && key ? { url: url.replace(/\/+$/, ""), key } : null;
+}
+function hdr(cfg, extra) {
+  return { apikey: cfg.key, Authorization: `Bearer ${cfg.key}`, "Content-Type": "application/json", ...extra };
+}
+
+const TIPOS = new Set(["tarea", "trabajo", "examen"]);
+// fecha "YYYY-MM-DD" o null (evita basura en la columna date)
+function fechaValida(s) {
+  return typeof s === "string" && /^\d{4}-\d{2}-\d{2}$/.test(s) ? s : null;
+}
+
+export default async function handler(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "https://aula-cam.vercel.app");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  if (req.method === "OPTIONS") return res.status(200).end();
+  if (req.method !== "POST") return res.status(405).json({ error: "Solo POST" });
+
+  const cfg = supabaseCfg();
+  const { accion, usuario_id } = req.body || {};
+  const uid = parseInt(usuario_id, 10);
+  if (!cfg || !Number.isInteger(uid)) {
+    return res.status(200).json({ ok: false, horario: [], tareas: [] }); // degrada sin romper
+  }
+
+  try {
+    if (accion === "todo") {
+      const [h, t] = await Promise.all([
+        fetch(`${cfg.url}/rest/v1/horario?usuario_id=eq.${uid}&select=dia,materia,orden&order=dia,orden`, { headers: hdr(cfg) }),
+        fetch(`${cfg.url}/rest/v1/tareas?usuario_id=eq.${uid}&select=id,materia,descripcion,tipo,fecha,hecha&order=hecha,fecha.asc.nullslast,id.desc&limit=200`, { headers: hdr(cfg) }),
+      ]);
+      return res.status(200).json({
+        ok: true,
+        horario: h.ok ? await h.json() : [],
+        tareas: t.ok ? await t.json() : [],
+      });
+    }
+
+    if (accion === "horario_set") {
+      const items = (Array.isArray(req.body.items) ? req.body.items : [])
+        .map((x) => ({
+          usuario_id: uid,
+          dia: parseInt(x && x.dia, 10),
+          materia: String((x && x.materia) || "").trim().slice(0, 80),
+          orden: parseInt(x && x.orden, 10) || 1,
+        }))
+        .filter((x) => Number.isInteger(x.dia) && x.dia >= 1 && x.dia <= 7 && x.materia);
+      // reemplazo completo: borrar lo del usuario e insertar lo nuevo
+      const del = await fetch(`${cfg.url}/rest/v1/horario?usuario_id=eq.${uid}`, { method: "DELETE", headers: hdr(cfg) });
+      if (!del.ok) throw new Error(`delete horario: HTTP ${del.status}`);
+      if (items.length) {
+        const ins = await fetch(`${cfg.url}/rest/v1/horario`, { method: "POST", headers: hdr(cfg), body: JSON.stringify(items) });
+        if (!ins.ok) throw new Error(`insert horario: HTTP ${ins.status} ${await ins.text()}`);
+      }
+      return res.status(200).json({ ok: true, guardadas: items.length });
+    }
+
+    if (accion === "tarea_guardar") {
+      const t = req.body.tarea || {};
+      const fila = {
+        usuario_id: uid,
+        materia: String(t.materia || "").trim().slice(0, 80) || null,
+        descripcion: String(t.descripcion || "").trim().slice(0, 300),
+        tipo: TIPOS.has(t.tipo) ? t.tipo : "tarea",
+        fecha: fechaValida(t.fecha),
+      };
+      if (!fila.descripcion) return res.status(400).json({ error: "Falta la descripción" });
+      const r = await fetch(`${cfg.url}/rest/v1/tareas`, {
+        method: "POST", headers: hdr(cfg, { Prefer: "return=representation" }), body: JSON.stringify(fila),
+      });
+      if (!r.ok) throw new Error(`insert tarea: HTTP ${r.status} ${await r.text()}`);
+      const rows = await r.json();
+      return res.status(200).json({ ok: true, tarea: rows[0] || null });
+    }
+
+    if (accion === "tarea_hecha") {
+      const id = parseInt(req.body.id, 10);
+      if (!Number.isInteger(id)) return res.status(400).json({ error: "Falta id" });
+      const r = await fetch(`${cfg.url}/rest/v1/tareas?id=eq.${id}&usuario_id=eq.${uid}`, {
+        method: "PATCH", headers: hdr(cfg), body: JSON.stringify({ hecha: !!req.body.hecha }),
+      });
+      if (!r.ok) throw new Error(`patch tarea: HTTP ${r.status}`);
+      return res.status(200).json({ ok: true });
+    }
+
+    if (accion === "tarea_borrar") {
+      const id = parseInt(req.body.id, 10);
+      if (!Number.isInteger(id)) return res.status(400).json({ error: "Falta id" });
+      const r = await fetch(`${cfg.url}/rest/v1/tareas?id=eq.${id}&usuario_id=eq.${uid}`, {
+        method: "DELETE", headers: hdr(cfg),
+      });
+      if (!r.ok) throw new Error(`delete tarea: HTTP ${r.status}`);
+      return res.status(200).json({ ok: true });
+    }
+
+    return res.status(400).json({ error: "Acción inválida" });
+  } catch (e) {
+    // tablas sin crear u otro fallo → no romper la app
+    return res.status(200).json({ ok: false, error: String(e.message || e), horario: [], tareas: [] });
+  }
+}
