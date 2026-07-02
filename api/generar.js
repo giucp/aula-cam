@@ -240,6 +240,64 @@ function supabaseCfg() {
   return url && key ? { url: url.replace(/\/+$/, ""), key } : null;
 }
 
+// ───────── límite DIARIO de gasto de IA por alumno (opcional) ─────────
+// Cada llamada REAL a Gemini (NO las de caché ni las curadas, que cuestan $0) se
+// estima en dólares y se suma al gasto de HOY del alumno. Si supera su tope diario
+// (usuarios.ia_limite_dia_usd), la app deja de generar con IA para ese niño hasta el
+// día siguiente (el cupo se reinicia cada día) — pero SIGUE sirviendo guías revisadas y
+// lo ya cacheado (gratis). Las hijas / cuentas elegidas llevan ia_ilimitado=true → nunca
+// se les corta. Sin Supabase o sin usuario_id, no se limita (fail-open, como el resto de la app).
+// Precio por 1M de tokens (Gemini 2.5, nivel de pago). Actualizar si Google cambia tarifas.
+const PRECIO_IA = {
+  "gemini-2.5-flash": { in: 0.30, out: 2.50 },
+  "gemini-2.5-flash-lite": { in: 0.10, out: 0.40 },
+};
+const LIMITE_DIA_USD = 0.20; // tope diario por defecto si la fila no trae ia_limite_dia_usd
+function costoUSD(model, usage) {
+  const p = PRECIO_IA[model] || PRECIO_IA["gemini-2.5-flash"];
+  const inp = (usage && usage.promptTokenCount) || 0;
+  const out = ((usage && usage.candidatesTokenCount) || 0) + ((usage && usage.thoughtsTokenCount) || 0);
+  return (inp * p.in + out * p.out) / 1e6;
+}
+// Día civil de Venezuela (UTC-4, sin horario de verano) como "YYYY-MM-DD".
+function diaIA() {
+  return new Date(Date.now() - 4 * 3600 * 1000).toISOString().slice(0, 10);
+}
+// ¿El alumno todavía tiene presupuesto de IA HOY? Fail-open: ante cualquier duda
+// (sin id, sin Supabase, error, sin fila aún) devuelve permitido=true (no cortar por un hipo).
+async function presupuestoIA(usuarioId) {
+  const cfg = supabaseCfg();
+  if (!cfg || usuarioId == null) return { permitido: true };
+  try {
+    const r = await fetch(
+      `${cfg.url}/rest/v1/usuarios?id=eq.${encodeURIComponent(usuarioId)}&select=ia_ilimitado,ia_limite_dia_usd,ia_gasto_dia_usd,ia_dia`,
+      { headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}` } }
+    );
+    if (!r.ok) return { permitido: true };
+    const rows = await r.json();
+    const u = Array.isArray(rows) && rows[0];
+    if (!u || u.ia_ilimitado) return { permitido: true }; // sin fila, o hijas/elegidos
+    const limite = u.ia_limite_dia_usd == null ? LIMITE_DIA_USD : Number(u.ia_limite_dia_usd);
+    const gasto = u.ia_dia === diaIA() ? Number(u.ia_gasto_dia_usd || 0) : 0; // día nuevo → 0
+    return { permitido: gasto < limite, limite, gasto };
+  } catch (e) {
+    return { permitido: true };
+  }
+}
+// Suma el costo (USD) de una generación al gasto de HOY del alumno (atómico vía RPC).
+// Nunca rompe la generación.
+async function registrarGastoIA(usuarioId, usd) {
+  const cfg = supabaseCfg();
+  if (!cfg || usuarioId == null || !(usd > 0)) return;
+  try {
+    await fetch(`${cfg.url}/rest/v1/rpc/sumar_gasto_ia`, {
+      method: "POST",
+      headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ p_id: usuarioId, p_usd: usd }),
+    });
+  } catch (e) { /* el registro de gasto nunca debe romper la generación */ }
+}
+
 // ───────── contenido curado (revisado a mano) ─────────
 // Bancos que el administrador cargó a mano en la tabla contenido_curado. Se sirven
 // ANTES del caché de Gemini y sin consumir cupo. Nunca rompen: ante cualquier fallo
@@ -441,6 +499,8 @@ export default async function handler(req, res) {
   try {
     const { materia, tema, grado = "4to grado", cantidad = 5, contexto, token } = req.body || {};
     if (!tema) return res.status(400).json({ error: "Falta el campo 'tema'" });
+    // Para el límite de gasto de IA por alumno (lo manda el front, igual que en errores/actividad).
+    const usuarioId = req.body && req.body.usuario_id != null ? req.body.usuario_id : null;
 
     const { keys, pagas } = geminiKeys();
     if (!keys.length) return res.status(500).json({ error: "Falta GEMINI_API_KEY en Vercel" });
@@ -492,6 +552,16 @@ export default async function handler(req, res) {
     if (!noCache) {
       const hit = await cacheGet(clave);
       if (hit) return res.status(200).json({ ...hit, cacheado: true });
+    }
+
+    // LÍMITE DE IA: llegamos acá solo si NO hubo guía curada ni caché (o si se saltaron
+    //   a propósito con "Con IA"/fotos) → esta generación SÍ cuesta plata. Si el alumno
+    //   ya gastó su presupuesto de HOY, no generamos: le queda la guía revisada y lo ya
+    //   cacheado (gratis), y mañana se le reinicia el cupo. Las hijas / cuentas con
+    //   ia_ilimitado nunca entran acá.
+    const presu = await presupuestoIA(usuarioId);
+    if (!presu.permitido) {
+      return res.status(200).json({ limiteIA: true, tema, materia: materia || null, modo });
     }
 
     const material = armarMaterial(contexto);
@@ -546,13 +616,15 @@ export default async function handler(req, res) {
     const ini = gratis.length > 1 ? Math.floor(Math.random() * gratis.length) : 0;
     const ordenKeys = [...keys.slice(0, pagas), ...gratis.map((_, i) => gratis[(ini + i) % gratis.length])];
     let data = null,
-      status = 0;
+      status = 0,
+      modeloUsado = modelos[0];
     buscar: for (const m of modelos) {
       const ep = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`;
       for (const key of ordenKeys) {
         const r = await pedirAGemini(`${ep}?key=${key}`, payload);
         data = r.data;
         status = r.status;
+        modeloUsado = m;
         if (status !== 429 && status !== 503) break buscar; // éxito o error no recuperable
       }
     }
@@ -607,6 +679,8 @@ export default async function handler(req, res) {
     if (!tieneFotos) {
       await cacheSet(clave, { materia: materia || null, tema, modo, grado, cantidad: n, contenido: respuesta });
     }
+    // 3) sumamos el costo estimado de esta generación al gasto de HOY del alumno (límite de IA).
+    await registrarGastoIA(usuarioId, costoUSD(modeloUsado, data.usageMetadata));
     return res.status(200).json(respuesta);
   } catch (e) {
     return res.status(500).json({ error: String(e.message || e) });

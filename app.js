@@ -1096,7 +1096,8 @@
     res.innerHTML = vistaCargando(tema, mo, usaFotos);
     try{
       const body = { materia:mat, tema, grado:gr, cantidad, contexto, modo:modoSel,
-        token:(!esProx && SESION && SESION.token)||null, fotos: esProx?[]:fotos };
+        token:(!esProx && SESION && SESION.token)||null, fotos: esProx?[]:fotos,
+        usuario_id:(SESION&&SESION.id)||null };
       if(via==="guia"){ body.soloCurado=true; body.vistos=vistosDe(mat,tema,modoSel,gr); }
       else { body.sinCurado=true; body.nocache=!!opts.nocache; }
       // refuerzo activo + fotos = son fotos del EXAMEN CORREGIDO (la IA ataca lo que falló)
@@ -1106,6 +1107,8 @@
       try { d = await r.json(); }
       catch(_){ throw new Error("El servidor tardó demasiado o se cayó. Prueba de nuevo en un momentico."); }
       if(d.error){ const er=new Error(d.error); er.code=d.code; er.retryAfter=d.retryAfter; throw er; }
+      // el alumno ya gastó su presupuesto de IA del mes → seguir con guías/lo cacheado
+      if(d.limiteIA){ renderLimite(res); return; }
       // guía agotada, o el tema no tiene guía → ofrecer seguir con IA
       if(d.sinItems || d.sinBanco){ renderHandoff(res, d); return; }
       if(via==="guia" && d.curado) acumularVistos(mat,tema,modoSel,gr,d);
@@ -1123,6 +1126,16 @@
         res.innerHTML = errBox("Uy, no llegó. Intenta otra vez en un momentico.", String(e.message||e));
       }
     }finally{ if(cool>0){ enfriar(btnGen, cool); } else if(cool===0){ pintarAcciones(); } }
+  }
+  // el alumno llegó a su tope diario de práctica con IA: mensaje amable (no queda
+  // bloqueado — sigue teniendo las guías revisadas 📗 y todo lo que ya practicó; mañana
+  // se le reinicia el cupo).
+  function renderLimite(res){
+    res.innerHTML="";
+    const box=document.createElement("div"); box.className="handoff";
+    box.innerHTML=`<p class="hoTit">Por hoy ya practicaste bastante con IA 🎈</p><p class="hoSub">¡Mañana tienes más! Mientras tanto puedes seguir con las Guías revisadas 📗 y con todo lo que ya practicaste.</p>`;
+    res.appendChild(box);
+    res.scrollIntoView({behavior:"smooth",block:"nearest"});
   }
   // guía agotada o tema sin guía: mensaje + botón para seguir con IA
   function renderHandoff(res, d){
