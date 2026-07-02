@@ -327,3 +327,27 @@
   .hsDia{font-family:"Fredoka";font-weight:600;color:var(--ink);min-width:86px}
   .hsMats{color:var(--muted);font-weight:600;font-size:.92rem;line-height:1.4}
   .heDia{margin-bottom:6px}
+
+  /* ═══ fase 2: novedades 🆕 + notas de exámenes ═══ */
+  .nuevoBadge{font-size:.8rem;background:#FFF1EA;border-radius:9px;padding:2px 7px;margin-left:6px}
+  .novItem{width:100%;display:flex;align-items:center;gap:12px;text-align:left;border:none;cursor:pointer;
+    background:none;padding:10px 2px;border-bottom:1.5px solid var(--line);transition:opacity .12s}
+  .novItem:last-child{border-bottom:none}
+  .novItem:active{opacity:.7}
+  .novItem .dIcon{font-size:1.3rem}
+  .novItem .dTxt b{display:block;font-family:"Fredoka";font-weight:600;color:var(--ink);font-size:.98rem}
+  .novItem .dTxt small{color:var(--muted);font-weight:600;line-height:1.3;display:block;margin-top:1px}
+  .novItem .dArrow{margin-left:auto;color:var(--muted);font-size:1.3rem}
+  .novN{background:#FFF1EA;color:var(--mango-dark);border-radius:9px;padding:1px 8px;font-size:.78rem;margin-left:6px}
+
+  .notaBadge{min-width:44px;text-align:center;font-family:"Fredoka";font-weight:600;font-size:1.05rem;
+    border-radius:12px;padding:7px 8px;align-self:flex-start}
+  .notaBadge.buena{background:#E7F7EF;color:var(--ok)}
+  .notaBadge.media{background:#FFF6E0;color:#B07D00}
+  .notaBadge.floja{background:#FDEDF1;color:var(--bad)}
+  .notaChip{pointer-events:none}
+  .notaChip.buena{border-color:#BFE8D2;color:var(--ok)}
+  .notaChip.media{border-color:#F2E2AE;color:#B07D00}
+  .notaChip.floja{border-color:#F6C6D2;color:var(--bad)}
+  .otros.refuerzo{margin-top:8px;font-size:.9rem;padding:8px 14px;border-color:#F6C6D2}
+  .otros.refuerzo:hover{border-color:var(--bad)}

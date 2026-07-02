@@ -97,12 +97,13 @@
     const wrap = $("#destacadaWrap");
     if(prox){ $("#proxSub").textContent = `Practica ${prox}`; wrap.classList.remove("hidden"); }
     else wrap.classList.add("hidden");
+    detectarNovedades();                 // 🆕 módulos nuevos vs. lo último visto acá (antes de pintar)
     pintarMaterias();
     verMaterias();
     cargarErrores();
     cargarProgreso();
     cargarCuradoInfo(gradoDeSesion());   // qué temas tienen guía revisada (sello 📗 + botón)
-    cargarAgenda();                      // horario + tareas para el escritorio
+    cargarAgenda();                      // horario + tareas + notas para el escritorio
     verTab("inicio");                    // el día arranca en el escritorio
   }
 
@@ -113,21 +114,21 @@
     $("#tabAgenda").classList.toggle("hidden", id!=="agenda");
     document.querySelectorAll("#navbar .navBtn").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.tab===id)));
     if(id==="inicio") pintarEscritorio();
-    if(id==="agenda"){ pintarTareas(); pintarHorarioSemana(); }
+    if(id==="agenda"){ pintarTareas(); pintarNotas(); pintarHorarioSemana(); }
     window.scrollTo({top:0});
   }
   document.querySelectorAll("#navbar .navBtn").forEach(b=>b.onclick=()=>verTab(b.dataset.tab));
 
   // ───────── agenda: datos (horario + tareas en Supabase) ─────────
-  let HORARIO=[], TAREAS=[];
+  let HORARIO=[], TAREAS=[], NOTAS=[];
   async function apiAgenda(body){
     const r=await fetch(API_AGENDA,{method:"POST",headers:{"Content-Type":"application/json"},
       body:JSON.stringify({...body, usuario_id:(SESION&&SESION.id)||null})});
     return r.json();
   }
   async function cargarAgenda(){
-    try{ const d=await apiAgenda({accion:"todo"}); HORARIO=d.horario||[]; TAREAS=d.tareas||[]; }
-    catch(_){ HORARIO=[]; TAREAS=[]; }
+    try{ const d=await apiAgenda({accion:"todo"}); HORARIO=d.horario||[]; TAREAS=d.tareas||[]; NOTAS=d.notas||[]; }
+    catch(_){ HORARIO=[]; TAREAS=[]; NOTAS=[]; }
     if(!$("#tabInicio").classList.contains("hidden")) pintarEscritorio();
   }
 
@@ -162,8 +163,10 @@
     const f=`${DIAS_NOM[d.getDay()]} ${d.getDate()} de ${MESES[d.getMonth()]}`;
     $("#fechaHoy").textContent=f[0].toUpperCase()+f.slice(1);
     pintarExamenBanner();
+    pintarNovedadesInicio();
     pintarHorarioInicio();
     pintarTareasResumen();
+    pintarNotasInicio();
   }
   // pegamento examen→simulacro: si anotó un examen a ≤3 días, se lo recordamos
   function pintarExamenBanner(){
@@ -361,6 +364,150 @@
     }finally{ btn.disabled=false; }
   };
 
+  // ───────── novedades del aula (🆕, sin servidor) ─────────
+  // Compara los módulos del aula contra el último snapshot visto en este aparato:
+  // módulo nuevo o archivo más reciente → 🆕 en la materia y lista en el escritorio.
+  // Se marca visto al ABRIR la materia. La primera vez solo guarda la base (sin 🆕).
+  const SNAP_KEY="aula_snap_v1";
+  let NOVEDADES={};                       // materiaId → [{tema, nombre}]
+  function snapDeMateria(m){
+    const out={};
+    (m.temas||[]).forEach(t=>(t.modulos||[]).forEach(mod=>{
+      let mx=0; (mod.archivos||[]).forEach(f=>{ if((f.modificado||0)>mx) mx=f.modificado; });
+      out[mod.id]=mx;
+    }));
+    return out;
+  }
+  function detectarNovedades(){
+    if(!SESION || !Array.isArray(SESION.materias)) return;
+    const snaps=store.get(SNAP_KEY)||{};
+    NOVEDADES={};
+    let base=false;
+    SESION.materias.forEach(m=>{
+      if(m.id==null) return;
+      const nuevo=snapDeMateria(m);
+      const viejo=snaps[m.id];
+      if(!viejo){ snaps[m.id]=nuevo; base=true; return; }   // primera vez: base silenciosa
+      const items=[];
+      (m.temas||[]).forEach(t=>(t.modulos||[]).forEach(mod=>{
+        if(mod.tipo==="label"||mod.tipo==="subsection") return;
+        if(!(mod.id in viejo) || (nuevo[mod.id]||0)>(viejo[mod.id]||0)){
+          items.push({tema:t.seccion||"", nombre:mod.nombre||""});
+        }
+      }));
+      if(items.length) NOVEDADES[m.id]=items;
+    });
+    if(base) store.set(SNAP_KEY, snaps);
+  }
+  function marcarAulaVista(m){
+    if(!m || m.id==null || !NOVEDADES[m.id]) return;
+    const snaps=store.get(SNAP_KEY)||{};
+    snaps[m.id]=snapDeMateria(m);
+    store.set(SNAP_KEY, snaps);
+    delete NOVEDADES[m.id];
+    gridMaterias((SESION&&SESION.materias)||[]);   // quita el 🆕 para cuando vuelva
+  }
+  function pintarNovedadesInicio(){
+    const box=$("#novedadesWrap"); if(!box) return; box.innerHTML="";
+    const ids=Object.keys(NOVEDADES); if(!ids.length) return;
+    const w=document.createElement("div"); w.className="widget";
+    w.innerHTML=`<div class="wHead"><span class="wTit">🆕 Nuevo en tu aula</span></div>`;
+    ids.forEach(id=>{
+      const m=((SESION&&SESION.materias)||[]).find(x=>String(x.id)===String(id)); if(!m) return;
+      const items=NOVEDADES[id];
+      const b=document.createElement("button"); b.className="novItem";
+      const detalle=items.slice(0,2).map(i=>escapeHtml(i.nombre)).join(" · ")+(items.length>2?` · y ${items.length-2} más`:"");
+      b.innerHTML=`<span class="dIcon">${iconMateria(m.nombre)}</span><span class="dTxt"><b>${escapeHtml(limpiaNombreMateria(m.nombre))} <span class="novN">${items.length} ${items.length===1?"novedad":"novedades"}</span></b><small>${detalle}</small></span><span class="dArrow">›</span>`;
+      b.onclick=()=>{ verTab("materias"); abrirMateria(m); };
+      w.appendChild(b);
+    });
+    box.appendChild(w);
+  }
+
+  // ───────── notas de exámenes (registro manual sobre 20) ─────────
+  const NOTA_REFUERZO=14;                 // por debajo de esto sugerimos reforzar
+  function colorNota(n){ return n>=16?"buena":(n>=NOTA_REFUERZO?"media":"floja"); }
+  function filaNota(t){
+    const div=document.createElement("div"); div.className="tarea";
+    const fecha=t.fecha?`<span class="tFechaBadge">${escapeHtml(t.fecha.slice(0,10))}</span>`:"";
+    div.innerHTML=`<span class="notaBadge ${colorNota(Number(t.nota))}">${escapeHtml(String(t.nota))}</span>
+      <div class="tBody"><p class="tDescTxt">${escapeHtml(t.descripcion||"Examen")}</p>
+      <p class="tMeta">${escapeHtml(limpiaNombreMateria(t.materia||"")||"General")} ${fecha}</p></div>
+      <button class="tBorrar" aria-label="Borrar">×</button>`;
+    if(Number(t.nota)<NOTA_REFUERZO && t.materia){
+      const ref=document.createElement("button"); ref.className="otros refuerzo"; ref.textContent="💪 Reforzar →";
+      ref.onclick=()=>irAPractica(t.materia);
+      div.querySelector(".tBody").appendChild(ref);
+    }
+    div.querySelector(".tBorrar").onclick=async()=>{
+      NOTAS=NOTAS.filter(x=>x!==t); pintarNotas(); pintarEscritorio();
+      try{ await apiAgenda({accion:"nota_borrar", id:t.id}); }catch(_){}
+    };
+    return div;
+  }
+  function pintarNotas(){
+    const cont=$("#notasList"); if(!cont) return; cont.innerHTML="";
+    if(!NOTAS.length){
+      cont.innerHTML=`<p class="wVacio">Cuando te entreguen un examen, anota aquí la nota. Así ves cómo vas en cada materia y te decimos qué reforzar. 🎓</p>`;
+      return;
+    }
+    NOTAS.forEach(t=>cont.appendChild(filaNota(t)));
+  }
+  // escritorio: últimas notas + sugerencia de refuerzo (solo si hay notas)
+  function pintarNotasInicio(){
+    const box=$("#notasInicio"); if(!box) return; box.innerHTML="";
+    if(!NOTAS.length) return;
+    const w=document.createElement("div"); w.className="widget";
+    w.innerHTML=`<div class="wHead"><span class="wTit">🎓 Últimas notas</span><button class="wLink" id="btnVerNotas">Ver todas</button></div>`;
+    const chips=document.createElement("div"); chips.className="chips";
+    NOTAS.slice(0,3).forEach(t=>{
+      const s=document.createElement("span"); s.className=`chip notaChip ${colorNota(Number(t.nota))}`;
+      s.textContent=`${limpiaNombreMateria(t.materia||"")||"General"}: ${t.nota}`;
+      chips.appendChild(s);
+    });
+    w.appendChild(chips);
+    // la última nota floja por materia → empuje a reforzar
+    const floja=NOTAS.find(t=>Number(t.nota)<NOTA_REFUERZO && t.materia);
+    if(floja){
+      const b=document.createElement("button"); b.className="otros refuerzo";
+      b.textContent=`💪 ${limpiaNombreMateria(floja.materia)} se puede reforzar →`;
+      b.onclick=()=>irAPractica(floja.materia);
+      w.appendChild(b);
+    }
+    box.appendChild(w);
+    const link=w.querySelector("#btnVerNotas"); if(link) link.onclick=()=>verTab("agenda");
+  }
+  let nMatSel="";
+  function abrirFormNota(){
+    $("#formNota").classList.remove("hidden");
+    $("#nDesc").value=""; $("#nNota").value=""; $("#nFecha").value=""; nMatSel=""; $("#nMsg").innerHTML="";
+    const cont=$("#nMaterias"); cont.innerHTML="";
+    ((SESION&&SESION.materias)||[]).forEach(m=>{
+      const b=document.createElement("button"); b.className="chip"; b.setAttribute("aria-pressed","false");
+      b.textContent=limpiaNombreMateria(m.nombre);
+      b.onclick=()=>{ nMatSel=(nMatSel===m.nombre)?"":m.nombre;
+        cont.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed", String(c===b && !!nMatSel))); };
+      cont.appendChild(b);
+    });
+    $("#nDesc").focus();
+  }
+  $("#btnNuevaNota").onclick=abrirFormNota;
+  $("#btnCancelarNota").onclick=()=>$("#formNota").classList.add("hidden");
+  $("#btnGuardarNota").onclick=async()=>{
+    const valor=Number($("#nNota").value);
+    if(!Number.isFinite(valor) || valor<0 || valor>20){ $("#nMsg").innerHTML=`<p class="wVacio" style="color:var(--bad)">La nota va de 0 a 20.</p>`; return; }
+    const btn=$("#btnGuardarNota"); btn.disabled=true; $("#nMsg").innerHTML="";
+    try{
+      const d=await apiAgenda({accion:"nota_guardar", nota:{descripcion:$("#nDesc").value.trim(), materia:nMatSel, nota:valor, fecha:$("#nFecha").value||null}});
+      if(!d || !d.ok || !d.nota) throw new Error((d&&d.error)||"no se pudo guardar");
+      NOTAS.unshift(d.nota);
+      $("#formNota").classList.add("hidden");
+      pintarNotas(); pintarEscritorio();
+    }catch(e){
+      $("#nMsg").innerHTML=`<p class="wVacio" style="color:var(--bad)">No se pudo guardar. Revisa tu conexión e intenta de nuevo.</p>`;
+    }finally{ btn.disabled=false; }
+  };
+
   // navegación landing ↔ login
   function verLanding(){ $("#vHome").classList.add("hidden"); $("#vLogin").classList.add("hidden"); $("#vLanding").classList.remove("hidden"); window.scrollTo({top:0}); }
   function verLogin(){ $("#vLanding").classList.add("hidden"); $("#vHome").classList.add("hidden"); $("#vLogin").classList.remove("hidden"); window.scrollTo({top:0}); }
@@ -395,7 +542,9 @@
         if(d.token) SESION.token = d.token;
         SESION.fetched = Date.now();
         store.set("sesion", SESION);
+        detectarNovedades();   // el material fresco puede traer 🆕
         if(origen==="actual" && !$("#paneMaterias").classList.contains("hidden")) pintarMaterias();
+        if(!$("#tabInicio").classList.contains("hidden")) pintarEscritorio();
       }
     }catch(e){ /* sin conexión: seguimos con lo cacheado */ }
   }
@@ -514,7 +663,8 @@
     lista.forEach(m=>{
       const b=document.createElement("button"); b.className="mat";
       b.style.setProperty("--c", colorMateria(m.nombre));
-      b.innerHTML=`<span class="em">${iconMateria(m.nombre)}</span><span class="nom">${escapeHtml(limpiaNombreMateria(m.nombre))}</span><span class="chev">›</span>`;
+      const nuevo = (m.id!=null && NOVEDADES[m.id]) ? `<span class="nuevoBadge">🆕</span>` : "";
+      b.innerHTML=`<span class="em">${iconMateria(m.nombre)}</span><span class="nom">${escapeHtml(limpiaNombreMateria(m.nombre))}</span>${nuevo}<span class="chev">›</span>`;
       b.onclick=()=>abrirMateria(m);
       g.appendChild(b);
     });
@@ -558,6 +708,7 @@
     materiaSel=m; temaSel=null; clearOtro(); $("#results").innerHTML="";
     fotos=[]; pintarFotos();
     const esProx = origen==="proximo";
+    if(!esProx) marcarAulaVista(m);   // abrirla marca las novedades 🆕 como vistas
     $("#tituloMateria").textContent = `${iconMateria(m.nombre)}  ${limpiaNombreMateria(m.nombre)}`;
     // las fotos del cuaderno solo aplican a las materias actuales
     $("#pasoFotos").classList.toggle("hidden", esProx);

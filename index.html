@@ -81,6 +81,9 @@
       <!-- aviso de examen próximo (alimentado por las tareas tipo examen) -->
       <div id="examenBanner"></div>
 
+      <!-- novedades del aula (módulos nuevos o actualizados desde la última vez) -->
+      <div id="novedadesWrap"></div>
+
       <!-- qué toca mañana (o el lunes) -->
       <div class="widget">
         <div class="wHead"><span class="wTit" id="horarioTit">📅 Mañana toca</span><button class="wLink" id="btnEditarHorario">Editar</button></div>
@@ -92,6 +95,9 @@
         <div class="wHead"><span class="wTit">📝 Mis tareas</span><button class="wLink" id="btnVerAgenda">Ver todas</button></div>
         <div id="tareasResumen"></div>
       </div>
+
+      <!-- últimas notas + refuerzo (solo si hay notas registradas) -->
+      <div id="notasInicio"></div>
     </div>
 
     <!-- ═══ pestaña AGENDA: tareas + horario ═══ -->
@@ -117,6 +123,25 @@
           </div>
         </div>
         <div id="tareasList"></div>
+      </div>
+
+      <div class="widget">
+        <div class="wHead"><span class="wTit">🎓 Notas de exámenes</span><button class="wLink" id="btnNuevaNota">＋ Anotar</button></div>
+        <div id="formNota" class="hidden">
+          <div class="field"><input id="nDesc" type="text" maxlength="120" placeholder="¿De qué fue? (ej: examen de fracciones)" /></div>
+          <p class="lblMini">Materia</p>
+          <div class="chips" id="nMaterias"></div>
+          <p class="lblMini">Nota (sobre 20)</p>
+          <div class="field"><input id="nNota" type="number" min="0" max="20" step="0.5" placeholder="ej: 16" /></div>
+          <p class="lblMini">¿Cuándo te la entregaron?</p>
+          <div class="field"><input id="nFecha" type="date" /></div>
+          <div id="nMsg"></div>
+          <div class="acciones" style="margin-top:12px">
+            <button class="go guia" id="btnGuardarNota">Guardar</button>
+            <button class="otros" id="btnCancelarNota">Cancelar</button>
+          </div>
+        </div>
+        <div id="notasList"></div>
       </div>
 
       <div class="widget">

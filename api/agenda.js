@@ -43,14 +43,16 @@ export default async function handler(req, res) {
 
   try {
     if (accion === "todo") {
-      const [h, t] = await Promise.all([
+      const [h, t, n] = await Promise.all([
         fetch(`${cfg.url}/rest/v1/horario?usuario_id=eq.${uid}&select=dia,materia,orden&order=dia,orden`, { headers: hdr(cfg) }),
         fetch(`${cfg.url}/rest/v1/tareas?usuario_id=eq.${uid}&select=id,materia,descripcion,tipo,fecha,hecha&order=hecha,fecha.asc.nullslast,id.desc&limit=200`, { headers: hdr(cfg) }),
+        fetch(`${cfg.url}/rest/v1/notas?usuario_id=eq.${uid}&select=id,materia,descripcion,nota,fecha&order=fecha.desc.nullslast,id.desc&limit=100`, { headers: hdr(cfg) }),
       ]);
       return res.status(200).json({
         ok: true,
         horario: h.ok ? await h.json() : [],
         tareas: t.ok ? await t.json() : [],
+        notas: n.ok ? await n.json() : [],
       });
     }
 
@@ -98,6 +100,37 @@ export default async function handler(req, res) {
         method: "PATCH", headers: hdr(cfg), body: JSON.stringify({ hecha: !!req.body.hecha }),
       });
       if (!r.ok) throw new Error(`patch tarea: HTTP ${r.status}`);
+      return res.status(200).json({ ok: true });
+    }
+
+    if (accion === "nota_guardar") {
+      const t = req.body.nota || {};
+      const valor = Number(t.nota);
+      if (!Number.isFinite(valor) || valor < 0 || valor > 20) {
+        return res.status(400).json({ error: "La nota debe ser un número entre 0 y 20" });
+      }
+      const fila = {
+        usuario_id: uid,
+        materia: String(t.materia || "").trim().slice(0, 80) || null,
+        descripcion: String(t.descripcion || "").trim().slice(0, 120) || null,
+        nota: Math.round(valor * 10) / 10,
+        fecha: fechaValida(t.fecha),
+      };
+      const r = await fetch(`${cfg.url}/rest/v1/notas`, {
+        method: "POST", headers: hdr(cfg, { Prefer: "return=representation" }), body: JSON.stringify(fila),
+      });
+      if (!r.ok) throw new Error(`insert nota: HTTP ${r.status} ${await r.text()}`);
+      const rows = await r.json();
+      return res.status(200).json({ ok: true, nota: rows[0] || null });
+    }
+
+    if (accion === "nota_borrar") {
+      const id = parseInt(req.body.id, 10);
+      if (!Number.isInteger(id)) return res.status(400).json({ error: "Falta id" });
+      const r = await fetch(`${cfg.url}/rest/v1/notas?id=eq.${id}&usuario_id=eq.${uid}`, {
+        method: "DELETE", headers: hdr(cfg),
+      });
+      if (!r.ok) throw new Error(`delete nota: HTTP ${r.status}`);
       return res.status(200).json({ ok: true });
     }
 
