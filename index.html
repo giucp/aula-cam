@@ -960,7 +960,7 @@
   // ───────── RENDER (despacha según el modo) ─────────
   function render(d){
     const res=$("#results"); res.innerHTML="";
-    renderBanner(res, d.fuentes, d.basadoEnMaterial, d.apuntes);
+    renderBanner(res, d.fuentes, d.basadoEnMaterial, d.apuntes, d.curado);
     const modo = d.modo || modoSel;
     const meta = { materia:d.materia, tema:d.tema, grado:gradoActivo() };
     if(modo==="resumen"){      renderResumen(res, d); registrarActividad(meta, "resumen"); }
@@ -971,12 +971,16 @@
     res.scrollIntoView({behavior:"smooth",block:"nearest"});
   }
 
-  function renderBanner(res, fuentes, basado, apuntes){
+  function renderBanner(res, fuentes, basado, apuntes, curado){
     const pdfs = Array.isArray(fuentes) ? fuentes : [];
     const acts = (ultimoContexto && ultimoContexto.actividades) ? ultimoContexto.actividades : [];
     const apunte = apuntes ? `<li>📓 + tus apuntes del cuaderno</li>` : "";
     let html = "";
-    if(pdfs.length){
+    if(curado){
+      // banco revisado por una persona (no solo generado): señal de confianza para padres
+      const items = pdfs.slice(0,4).map(f=>`<li>${escapeHtml(f)}</li>`).join("");
+      html = `<p class="t">✅ Guía de estudio revisada</p>${items?`<ul>${items}</ul>`:""}`;
+    }else if(pdfs.length){
       const items = pdfs.slice(0,4).map(f=>`<li>${escapeHtml(f)}</li>`).join("");
       html = `<p class="t">📄 Basado en tus guías de clase</p><ul>${items}${apunte}</ul>`;
     }else if(apuntes){

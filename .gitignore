@@ -1,0 +1,11 @@
+# Secretos locales de curaduría — JAMÁS commitear
+.env.local
+
+# Material sensible de las sesiones de curaduría (fotos de cuadernos de menores y
+# PDFs del colegio). Los bancos .json curados SÍ se commitean (son el activo).
+curado/fotos/
+curado/material/
+
+# Node / Vercel
+node_modules/
+.vercel/

@@ -15,6 +15,7 @@
 // Gemini NO va aquí: va en Vercel como variable de entorno GEMINI_API_KEY.
 
 import crypto from "node:crypto";
+import { normCurado } from "../herramientas/normcurado.mjs";
 
 // Modelo por modo: ejercicios (retos/quiz) con el flash completo (mejor en
 // matemática); resumen/examen con flash-lite (más rápido y barato).
@@ -225,6 +226,66 @@ function supabaseCfg() {
   return url && key ? { url: url.replace(/\/+$/, ""), key } : null;
 }
 
+// ───────── contenido curado (revisado a mano) ─────────
+// Bancos que el administrador cargó a mano en la tabla contenido_curado. Se sirven
+// ANTES del caché de Gemini y sin consumir cupo. Nunca rompen: ante cualquier fallo
+// de lectura, devolvemos null y el flujo sigue con el caché/Gemini de siempre.
+async function curadoGet(materia, tema, modo, grado) {
+  const cfg = supabaseCfg();
+  if (!cfg) return null;
+  try {
+    const q =
+      `materia_norm=eq.${encodeURIComponent(normCurado(materia))}` +
+      `&tema_norm=eq.${encodeURIComponent(normCurado(tema))}` +
+      `&modo=eq.${encodeURIComponent(modo)}` +
+      `&grado=eq.${encodeURIComponent(grado)}` +
+      `&select=contenido,fuentes&limit=1`;
+    const r = await fetch(`${cfg.url}/rest/v1/contenido_curado?${q}`, {
+      headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}` },
+    });
+    if (!r.ok) return null;
+    const rows = await r.json();
+    return (Array.isArray(rows) && rows[0]) || null;
+  } catch (e) {
+    return null;
+  }
+}
+// Baraja una copia (Fisher–Yates); NO muta el array original.
+function barajar(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+// Baraja las opciones de una pregunta de quiz y recalcula "correcta" (los bancos se
+// escriben a mano y tienden a dejar la correcta en la misma posición). No muta.
+function barajarOpciones(p) {
+  const opciones = Array.isArray(p.opciones) ? p.opciones : [];
+  if (opciones.length < 2 || !Number.isInteger(p.correcta) || p.correcta < 0 || p.correcta >= opciones.length) return p;
+  const correctaTxt = opciones[p.correcta];
+  const mezcladas = barajar(opciones);
+  const idx = mezcladas.indexOf(correctaTxt);
+  return { ...p, opciones: mezcladas, correcta: idx >= 0 ? idx : p.correcta };
+}
+// Arma la respuesta a servir desde un banco curado, o null si hay que caer a Gemini
+// (banco vacío, o "generar otros" sobre un banco chico → Gemini da variedad real).
+function servirCurado(modo, curado, n, nocache) {
+  const cont = curado && curado.contenido;
+  if (modo === "resumen") {
+    // el resumen curado es el documento completo; "generar otros" no aplica.
+    return cont && typeof cont === "object" && !Array.isArray(cont) ? cont : null;
+  }
+  const items = cont && Array.isArray(cont.items) ? cont.items : [];
+  if (!items.length) return null;
+  if (nocache && items.length < 2 * n) return null; // banco chico: mejor Gemini
+  let muestra = barajar(items).slice(0, n);
+  if (modo === "quiz") muestra = muestra.map(barajarOpciones);
+  if (modo === "retos") return { ejercicios: muestra };
+  return { preguntas: muestra }; // quiz | examen
+}
+
 // Una o varias API keys de Gemini (cuentas free distintas, para sumar cupo).
 // Combina la GEMINI_API_KEY de siempre + las de GEMINI_API_KEYS (separadas por
 // coma), sin duplicar. Así sumar keys es solo agregar GEMINI_API_KEYS con las
@@ -356,13 +417,36 @@ export default async function handler(req, res) {
     // Fotos del cuaderno (apuntes de clase presencial): personales del alumno, complementan el material.
     const fotos = limpiarFotos(req.body && req.body.fotos);
     const tieneFotos = fotos.length > 0;
+    const nocache = !!(req.body && req.body.nocache);
+
+    // 0) CONTENIDO CURADO: bancos revisados a mano por el administrador. Se sirven
+    //    ANTES del caché de Gemini (y sin gastar cupo). Solo si NO hay fotos (las
+    //    fotos son apuntes personales del alumno → van directo a Gemini). Si el banco
+    //    no alcanza para "generar otros", servirCurado devuelve null y caemos a Gemini.
+    if (!tieneFotos) {
+      const curado = await curadoGet(materia, tema, modo, grado);
+      if (curado) {
+        const servido = servirCurado(modo, curado, n, nocache);
+        if (servido) {
+          return res.status(200).json({
+            ...servido,
+            tema,
+            materia: materia || null,
+            modo,
+            curado: true,
+            basadoEnMaterial: true,
+            fuentes: Array.isArray(curado.fuentes) ? curado.fuentes : [],
+          });
+        }
+      }
+    }
 
     // 1) caché: si ya generamos esto antes, lo devolvemos al instante (sin Gemini ni PDFs).
     //    nocache=true (botón "generar otros") salta la lectura. Con fotos NO se cachea (son personales).
     //    La firma del contenido entra en la clave → si la maestra actualiza el material, se regenera.
     const firma = firmaContenido(contexto);
     const clave = claveCache({ materia, tema, modo, grado, cantidad: n, firma });
-    const noCache = !!(req.body && req.body.nocache) || tieneFotos;
+    const noCache = nocache || tieneFotos;
     if (!noCache) {
       const hit = await cacheGet(clave);
       if (hit) return res.status(200).json({ ...hit, cacheado: true });
