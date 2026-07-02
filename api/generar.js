@@ -281,21 +281,32 @@ function barajarOpciones(p) {
   const idx = mezcladas.indexOf(correctaTxt);
   return { ...p, opciones: mezcladas, correcta: idx >= 0 ? idx : p.correcta };
 }
-// Arma la respuesta a servir desde un banco curado, o null si hay que caer a Gemini
-// (banco vacío, o "generar otros" sobre un banco chico → Gemini da variedad real).
-function servirCurado(modo, curado, n, nocache) {
+// Firma estable de un item de banco (para no repetir): hash corto del texto principal.
+function sigItem(modo, it) {
+  const base = modo === "retos" ? (it && it.enunciado) : (it && it.pregunta);
+  return crypto.createHash("sha1").update(String(base || "")).digest("hex").slice(0, 10);
+}
+// Elige qué servir desde un banco curado, SIN repetir lo ya visto:
+//  - resumen → { doc } (el documento completo; no aplica "no repetir").
+//  - retos/quiz/examen → hasta n items NO vistos (baraja quiz), cada uno marcado con
+//    _sig para que el cliente lleve la cuenta. { items, wrap, quedan } o { agotado:true }.
+//  - null si no hay banco utilizable.
+function servirCurado(modo, curado, n, vistos) {
   const cont = curado && curado.contenido;
   if (modo === "resumen") {
-    // el resumen curado es el documento completo; "generar otros" no aplica.
-    return cont && typeof cont === "object" && !Array.isArray(cont) ? cont : null;
+    return cont && typeof cont === "object" && !Array.isArray(cont) ? { doc: cont } : null;
   }
   const items = cont && Array.isArray(cont.items) ? cont.items : [];
   if (!items.length) return null;
-  if (nocache && items.length < 2 * n) return null; // banco chico: mejor Gemini
-  let muestra = barajar(items).slice(0, n);
-  if (modo === "quiz") muestra = muestra.map(barajarOpciones);
-  if (modo === "retos") return { ejercicios: muestra };
-  return { preguntas: muestra }; // quiz | examen
+  const yaVistos = vistos instanceof Set ? vistos : new Set();
+  const frescos = items.filter((it) => !yaVistos.has(sigItem(modo, it)));
+  if (!frescos.length) return { agotado: true }; // ya vio todos los de la guía
+  const elegidos = barajar(frescos).slice(0, n);
+  const muestra = elegidos.map((it) => {
+    const base = modo === "quiz" ? barajarOpciones(it) : it;
+    return { ...base, _sig: sigItem(modo, it) };
+  });
+  return { items: muestra, wrap: modo === "retos" ? "ejercicios" : "preguntas", quedan: frescos.length - elegidos.length };
 }
 
 // Una o varias API keys de Gemini. Devuelve { keys, pagas }:
@@ -439,26 +450,34 @@ export default async function handler(req, res) {
     const fotos = limpiarFotos(req.body && req.body.fotos);
     const tieneFotos = fotos.length > 0;
     const nocache = !!(req.body && req.body.nocache);
+    // Dos caminos explícitos desde la app: "Guía revisada" (soloCurado) y "Con IA"
+    // (sinCurado). "vistos" = firmas de los items que el alumno YA vio (para no
+    // repetir dentro de la guía).
+    const soloCurado = !!(req.body && req.body.soloCurado);
+    const sinCurado = !!(req.body && req.body.sinCurado);
+    const vistos = new Set(Array.isArray(req.body && req.body.vistos) ? req.body.vistos.map(String) : []);
 
-    // 0) CONTENIDO CURADO: bancos revisados a mano por el administrador. Se sirven
-    //    ANTES del caché de Gemini (y sin gastar cupo). Solo si NO hay fotos (las
-    //    fotos son apuntes personales del alumno → van directo a Gemini). Si el banco
-    //    no alcanza para "generar otros", servirCurado devuelve null y caemos a Gemini.
-    if (!tieneFotos) {
+    // 0) CONTENIDO CURADO: bancos revisados a mano. Se sirven ANTES del caché/Gemini
+    //    (sin gastar cupo). "Con IA" (sinCurado) y las fotos lo saltan a propósito.
+    //    Dentro de la guía NO se repite: solo items no vistos; al agotarse, se avisa.
+    if (!tieneFotos && !sinCurado) {
       const curado = await curadoGet(materia, tema, modo, grado);
       if (curado) {
-        const servido = servirCurado(modo, curado, n, nocache);
-        if (servido) {
-          return res.status(200).json({
-            ...servido,
-            tema,
-            materia: materia || null,
-            modo,
-            curado: true,
-            basadoEnMaterial: true,
-            fuentes: Array.isArray(curado.fuentes) ? curado.fuentes : [],
-          });
+        const s = servirCurado(modo, curado, n, vistos);
+        const comun = {
+          tema, materia: materia || null, modo, curado: true,
+          basadoEnMaterial: true, fuentes: Array.isArray(curado.fuentes) ? curado.fuentes : [],
+        };
+        if (s && s.doc) return res.status(200).json({ ...s.doc, ...comun });
+        if (s && s.items) return res.status(200).json({ [s.wrap]: s.items, ...comun, agotado: s.quedan <= 0 });
+        if (s && s.agotado && soloCurado) {
+          // ya vio TODA la guía y pidió solo la guía → avisamos para ofrecer IA.
+          return res.status(200).json({ ...comun, agotado: true, sinItems: true });
         }
+        // s.agotado sin soloCurado → cae a Gemini para seguir practicando.
+      } else if (soloCurado) {
+        // pidió la guía pero este tema/modo aún no tiene banco curado.
+        return res.status(200).json({ tema, materia: materia || null, modo, curado: false, sinBanco: true });
       }
     }
 
