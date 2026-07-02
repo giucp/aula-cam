@@ -369,23 +369,20 @@ function servirCurado(modo, curado, n, vistos) {
   return { items: muestra, wrap: modo === "retos" ? "ejercicios" : "preguntas", quedan: frescos.length - elegidos.length };
 }
 
-// Una o varias API keys de Gemini. Devuelve { keys, pagas }:
-//  - keys: todas, SIN duplicar, con la(s) PAGA(s) al principio.
-//  - pagas: cuántas de las primeras son de pago (mejores límites → casi no dan 429).
-// GEMINI_API_KEY_PAGA (coma-separadas) van primero y se prueban ANTES que las gratis;
-// las gratis siguen siendo GEMINI_API_KEY + GEMINI_API_KEYS. Retrocompatible: si no
-// hay GEMINI_API_KEY_PAGA, pagas=0 y todo funciona como antes.
+// Una o varias API keys de Gemini. Devuelve { gratis, pagas } (arreglos, sin duplicar).
+// ESTRATEGIA DE COSTO: primero se agota lo GRATIS (cada key gratis tiene su cupo de
+// ~20/min por modelo) y la(s) key(s) de PAGO quedan de RESPALDO al final — solo pagan
+// cuando todo lo gratis dio 429/503. La rotación es transparente para el niño (el loop
+// pasa a la siguiente key en el mismo request), así que gratis-primero no empeora la UX.
+// GEMINI_API_KEY_PAGA (coma-separadas) = las de pago; GEMINI_API_KEY + GEMINI_API_KEYS
+// = las gratis (si la paga aparece también ahí, se saca de las gratis para no repetirla).
+// Retrocompatible: sin GEMINI_API_KEY_PAGA, pagas=[] y todo funciona como antes.
 function geminiKeys() {
-  const out = [];
-  const add = (s) => {
-    s = String(s || "").trim();
-    if (s && !out.includes(s)) out.push(s);
-  };
-  String(process.env.GEMINI_API_KEY_PAGA || "").split(",").forEach(add);
-  const pagas = out.length;
-  add(process.env.GEMINI_API_KEY);
-  String(process.env.GEMINI_API_KEYS || "").split(",").forEach(add);
-  return { keys: out, pagas };
+  const limpiar = (s) => String(s || "").split(",").map((k) => k.trim()).filter(Boolean);
+  const pagas = [...new Set(limpiar(process.env.GEMINI_API_KEY_PAGA))];
+  const gratis = [...new Set([...limpiar(process.env.GEMINI_API_KEY), ...limpiar(process.env.GEMINI_API_KEYS)])]
+    .filter((k) => !pagas.includes(k));
+  return { gratis, pagas };
 }
 function claveCache(o) {
   const ver = PROMPT_VER[o.modo] || "";
@@ -502,8 +499,8 @@ export default async function handler(req, res) {
     // Para el límite de gasto de IA por alumno (lo manda el front, igual que en errores/actividad).
     const usuarioId = req.body && req.body.usuario_id != null ? req.body.usuario_id : null;
 
-    const { keys, pagas } = geminiKeys();
-    if (!keys.length) return res.status(500).json({ error: "Falta GEMINI_API_KEY en Vercel" });
+    const { gratis, pagas } = geminiKeys();
+    if (!gratis.length && !pagas.length) return res.status(500).json({ error: "Falta GEMINI_API_KEY en Vercel" });
 
     const modo = MODOS_VALIDOS.has(req.body && req.body.modo) ? req.body.modo : "retos";
     const n = Math.min(Math.max(parseInt(cantidad, 10) || 5, 1), 10);
@@ -606,18 +603,18 @@ export default async function handler(req, res) {
     const modelos = necesitaMate
       ? [MODEL_EJERCICIOS, MODEL_TEXTO] // con cálculo: flash; respaldo flash-lite
       : [MODEL_TEXTO, MODEL_EJERCICIOS]; // texto puro: flash-lite; respaldo flash
-    // Probamos modelos × keys (cada key = una cuenta, ~20 req/min). Ante 429 (cupo)
-    // o 503 (saturado) seguimos con la próxima key; agotadas todas, el próximo modelo.
-    // Orden de intento de las keys: las PAGAS primero, en orden (mejores límites →
-    // casi no dan 429, mejor experiencia); las gratis después, arrancando en una al
-    // azar para repartir su cupo de ~20/min. Si se agota la paga (llega a su tope de
-    // gasto), rota solo a las gratis.
-    const gratis = keys.slice(pagas);
+    // Probamos modelos × keys. Ante 429 (cupo) o 503 (saturado) seguimos con la
+    // próxima key; agotadas todas, el próximo modelo. ESTRATEGIA DE COSTO: primero
+    // TODAS las gratis (arrancando en una al azar, para repartir su cupo de ~20/min
+    // entre requests) y la PAGA al FINAL como respaldo — solo gasta plata cuando lo
+    // gratis se agotó o está saturado. La rotación pasa dentro del mismo request,
+    // así que el niño no nota nada.
     const ini = gratis.length > 1 ? Math.floor(Math.random() * gratis.length) : 0;
-    const ordenKeys = [...keys.slice(0, pagas), ...gratis.map((_, i) => gratis[(ini + i) % gratis.length])];
+    const ordenKeys = [...gratis.map((_, i) => gratis[(ini + i) % gratis.length]), ...pagas];
     let data = null,
       status = 0,
-      modeloUsado = modelos[0];
+      modeloUsado = modelos[0],
+      keyUsada = null;
     buscar: for (const m of modelos) {
       const ep = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`;
       for (const key of ordenKeys) {
@@ -625,9 +622,12 @@ export default async function handler(req, res) {
         data = r.data;
         status = r.status;
         modeloUsado = m;
+        keyUsada = key;
         if (status !== 429 && status !== 503) break buscar; // éxito o error no recuperable
       }
     }
+    // ¿la sirvió la key de pago? (true = esta generación costó plata de verdad)
+    const usoPaga = keyUsada != null && pagas.includes(keyUsada);
 
     if (!data) throw new Error("El modelo no respondió. Intenta de nuevo.");
     if (data.error) {
@@ -674,12 +674,16 @@ export default async function handler(req, res) {
       basadoEnMaterial: !!material || pdfs.length > 0 || tieneFotos,
       fuentes: pdfs.map((p) => p.nombre), // PDFs que Gemini realmente leyó
       apuntes: tieneFotos, // usó fotos del cuaderno del alumno
+      iaVia: usoPaga ? "paga" : "gratis", // diagnóstico: qué tipo de key sirvió esta generación
     };
     // 2) guardamos en caché para la próxima vez — SALVO si usó fotos (resultado personal del alumno)
     if (!tieneFotos) {
       await cacheSet(clave, { materia: materia || null, tema, modo, grado, cantidad: n, contenido: respuesta });
     }
-    // 3) sumamos el costo estimado de esta generación al gasto de HOY del alumno (límite de IA).
+    // 3) sumamos el costo estimado al gasto de HOY del alumno (límite de IA). Cuenta
+    //    AUNQUE la haya servido una key gratis: el cupo diario es un freno de USO por
+    //    niño (las gratis también se agotan y son compartidas entre todos); si contara
+    //    solo la paga, un niño podría vaciar el cupo gratis de los demás sin frenarse.
     await registrarGastoIA(usuarioId, costoUSD(modeloUsado, data.usageMetadata));
     return res.status(200).json(respuesta);
   } catch (e) {
