@@ -298,19 +298,23 @@ function servirCurado(modo, curado, n, nocache) {
   return { preguntas: muestra }; // quiz | examen
 }
 
-// Una o varias API keys de Gemini (cuentas free distintas, para sumar cupo).
-// Combina la GEMINI_API_KEY de siempre + las de GEMINI_API_KEYS (separadas por
-// coma), sin duplicar. Así sumar keys es solo agregar GEMINI_API_KEYS con las
-// nuevas, sin tocar la original.
+// Una o varias API keys de Gemini. Devuelve { keys, pagas }:
+//  - keys: todas, SIN duplicar, con la(s) PAGA(s) al principio.
+//  - pagas: cuántas de las primeras son de pago (mejores límites → casi no dan 429).
+// GEMINI_API_KEY_PAGA (coma-separadas) van primero y se prueban ANTES que las gratis;
+// las gratis siguen siendo GEMINI_API_KEY + GEMINI_API_KEYS. Retrocompatible: si no
+// hay GEMINI_API_KEY_PAGA, pagas=0 y todo funciona como antes.
 function geminiKeys() {
   const out = [];
   const add = (s) => {
     s = String(s || "").trim();
     if (s && !out.includes(s)) out.push(s);
   };
+  String(process.env.GEMINI_API_KEY_PAGA || "").split(",").forEach(add);
+  const pagas = out.length;
   add(process.env.GEMINI_API_KEY);
   String(process.env.GEMINI_API_KEYS || "").split(",").forEach(add);
-  return out;
+  return { keys: out, pagas };
 }
 function claveCache(o) {
   const ver = PROMPT_VER[o.modo] || "";
@@ -425,7 +429,7 @@ export default async function handler(req, res) {
     const { materia, tema, grado = "4to grado", cantidad = 5, contexto, token } = req.body || {};
     if (!tema) return res.status(400).json({ error: "Falta el campo 'tema'" });
 
-    const keys = geminiKeys();
+    const { keys, pagas } = geminiKeys();
     if (!keys.length) return res.status(500).json({ error: "Falta GEMINI_API_KEY en Vercel" });
 
     const modo = MODOS_VALIDOS.has(req.body && req.body.modo) ? req.body.modo : "retos";
@@ -511,13 +515,18 @@ export default async function handler(req, res) {
       : [MODEL_TEXTO, MODEL_EJERCICIOS]; // texto puro: flash-lite; respaldo flash
     // Probamos modelos × keys (cada key = una cuenta, ~20 req/min). Ante 429 (cupo)
     // o 503 (saturado) seguimos con la próxima key; agotadas todas, el próximo modelo.
+    // Orden de intento de las keys: las PAGAS primero, en orden (mejores límites →
+    // casi no dan 429, mejor experiencia); las gratis después, arrancando en una al
+    // azar para repartir su cupo de ~20/min. Si se agota la paga (llega a su tope de
+    // gasto), rota solo a las gratis.
+    const gratis = keys.slice(pagas);
+    const ini = gratis.length > 1 ? Math.floor(Math.random() * gratis.length) : 0;
+    const ordenKeys = [...keys.slice(0, pagas), ...gratis.map((_, i) => gratis[(ini + i) % gratis.length])];
     let data = null,
       status = 0;
     buscar: for (const m of modelos) {
       const ep = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`;
-      const inicio = keys.length > 1 ? Math.floor(Math.random() * keys.length) : 0;
-      for (let k = 0; k < keys.length; k++) {
-        const key = keys[(inicio + k) % keys.length];
+      for (const key of ordenKeys) {
         const r = await pedirAGemini(`${ep}?key=${key}`, payload);
         data = r.data;
         status = r.status;
