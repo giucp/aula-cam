@@ -314,7 +314,12 @@ function claveCache(o) {
 // → se regenera solo con el contenido nuevo (antes la caché quedaba "ciega").
 function firmaContenido(contexto) {
   const acts = contexto && Array.isArray(contexto.actividades) ? contexto.actividades : [];
-  return acts.map((a) => `${a.archivoUrl || a.nombre || ""}:${a.modificado || ""}`).join("~");
+  const base = acts.map((a) => `${a.archivoUrl || a.nombre || ""}:${a.modificado || ""}`).join("~");
+  // Tema libre: los "datos clave" que escribió el alumno distinguen el contenido, así
+  // dos temas libres con el mismo título pero distinta descripción NO comparten caché.
+  // Vacío para temas del aula → la clave queda idéntica a la de antes (no invalida caché).
+  const datos = (contexto && contexto.datosClave) || "";
+  return datos ? `d:${datos}~${base}` : base;
 }
 // Valida que la generación tenga la forma mínima esperada, para NO cachear (ni
 // mostrar) resultados vacíos o rotos que envenenarían el tema para todos.

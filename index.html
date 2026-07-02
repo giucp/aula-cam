@@ -49,10 +49,11 @@
   .lbl .n{background:var(--sun);color:var(--ink);width:25px;height:25px;border-radius:50%;display:grid;place-items:center;font-size:.85rem;font-weight:700;box-shadow:var(--shadow-xs)}
 
   /* inputs */
-  .field input{width:100%;font-family:"Nunito",sans-serif;font-weight:700;font-size:1rem;color:var(--ink);
+  .field input,.field textarea{width:100%;font-family:"Nunito",sans-serif;font-weight:700;font-size:1rem;color:var(--ink);
     padding:14px 15px;border:2px solid var(--line);border-radius:15px;background:#FFFDFB;outline:none;transition:border-color .15s,box-shadow .15s}
-  .field input::placeholder{color:#BBA9C0;font-weight:600}
-  .field input:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(18,181,164,.14)}
+  .field textarea{resize:vertical;line-height:1.45;box-sizing:border-box}
+  .field input::placeholder,.field textarea::placeholder{color:#BBA9C0;font-weight:600}
+  .field input:focus,.field textarea:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(18,181,164,.14)}
 
   .go{margin-top:6px;width:100%;border:none;cursor:pointer;font-family:"Fredoka",sans-serif;font-weight:600;font-size:1.18rem;color:#fff;
     padding:16px;border-radius:18px;background:linear-gradient(180deg,#FF8158,var(--mango));box-shadow:0 14px 24px -11px rgba(232,81,31,.72);
@@ -380,6 +381,10 @@
         <div id="grupos"></div>
         <div id="sinTemas" class="empty hidden">Esta materia aún no tiene temas para practicar. Puedes escribir uno abajo. 👇</div>
         <div class="field" style="margin-top:14px"><input id="otro" type="text" placeholder="…o escribe otro tema" autocomplete="off" /></div>
+        <div class="field hidden" id="otroDatosWrap" style="margin-top:10px">
+          <textarea id="otroDatos" rows="3" placeholder="¿De qué trata? Escríbele a la IA lo que sepas: subtemas, palabras clave, un ejemplo del cuaderno… (opcional, pero ayuda mucho si no hay material en el aula)"></textarea>
+          <p class="ayuda" style="margin:8px 2px 0">Y si tienes apuntes, súmale fotos del cuaderno más abajo. 📷</p>
+        </div>
 
         <div class="paso">
           <p class="lbl"><span class="n">2</span> ¿Qué quieres hacer?</p>
@@ -709,7 +714,7 @@
   $("#btnBack").onclick = ()=>{ temaSel=null; $("#results").innerHTML=""; fotos=[]; pintarFotos(); verMaterias(); };
 
   function abrirMateria(m){
-    materiaSel=m; temaSel=null; $("#otro").value=""; $("#results").innerHTML="";
+    materiaSel=m; temaSel=null; clearOtro(); $("#results").innerHTML="";
     fotos=[]; pintarFotos();
     const esProx = origen==="proximo";
     $("#tituloMateria").textContent = `${iconMateria(m.nombre)}  ${limpiaNombreMateria(m.nombre)}`;
@@ -740,7 +745,7 @@
     const mkChip=(t)=>{
       const b=document.createElement("button"); b.className="chip"; b.setAttribute("aria-pressed","false");
       b.textContent=t; b.dataset.tema=t;
-      b.onclick=()=>{ temaSel=(temaSel===t)?null:t; $("#otro").value=""; alSeleccionarTema(); };
+      b.onclick=()=>{ temaSel=(temaSel===t)?null:t; clearOtro(); alSeleccionarTema(); };
       return b;
     };
     grupos.forEach((g,idx)=>{
@@ -784,7 +789,7 @@
       const b=document.createElement("button");
       b.className="chip"; b.setAttribute("aria-pressed","false");
       b.textContent=t.seccion; b.dataset.tema=t.seccion;
-      b.onclick=()=>{ temaSel=(temaSel===t.seccion)?null:t.seccion; $("#otro").value=""; alSeleccionarTema(); };
+      b.onclick=()=>{ temaSel=(temaSel===t.seccion)?null:t.seccion; clearOtro(); alSeleccionarTema(); };
       return b;
     };
     orden.forEach((lap,idx)=>{
@@ -846,7 +851,11 @@
     else pintarModos();
   }
 
-  $("#otro").addEventListener("input", ()=>{ if($("#otro").value.trim()){ temaSel=null; } pintarChips(); checkReady(); pintarModos(); });
+  // el campo "datos clave" solo aparece cuando hay un tema libre escrito
+  function toggleOtroDatos(){ const w=$("#otroDatosWrap"); if(w) w.classList.toggle("hidden", !$("#otro").value.trim()); }
+  // limpia el tema libre y sus datos clave (al elegir un chip o cambiar de materia)
+  function clearOtro(){ const o=$("#otro"); if(o) o.value=""; const d=$("#otroDatos"); if(d) d.value=""; toggleOtroDatos(); }
+  $("#otro").addEventListener("input", ()=>{ if($("#otro").value.trim()){ temaSel=null; } toggleOtroDatos(); pintarChips(); checkReady(); pintarModos(); });
   $("#count").querySelectorAll("button").forEach(btn=>{
     btn.onclick=()=>{ cantidad=Number(btn.dataset.n); $("#count").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b===btn))); };
   });
@@ -865,7 +874,9 @@
   // actualiza el material, cambia la firma → clave nueva → se regenera solo.
   function firmaLocal(contexto){
     const acts = contexto && Array.isArray(contexto.actividades) ? contexto.actividades : [];
-    return acts.map(a=>`${a.archivoUrl||a.nombre||""}:${a.modificado||""}`).join("~");
+    const base = acts.map(a=>`${a.archivoUrl||a.nombre||""}:${a.modificado||""}`).join("~");
+    const datos = (contexto && contexto.datosClave) || "";   // tema libre: distingue por datos clave
+    return datos ? `d:${datos}~${base}` : base;               // vacío para temas del aula → clave igual que antes
   }
   function claveLocal(tema, firma){
     const cant = modoSel === "resumen" ? "" : cantidad;
@@ -894,8 +905,13 @@
     const mo = MODOS.find(m=>m.id===modoSel) || MODOS[0];
     const esProx = origen==="proximo";
     const esLibre = !!$("#otro").value.trim();
-    // en próximo año no hay actividades/PDFs del aula: generación por título/tema
-    const contexto = (esProx || esLibre) ? null : construirContexto(tema);
+    // tema libre: la IA no tiene PDFs del aula, así que le pasamos lo que la niña/mamá
+    // escriba en "datos clave" como contexto (más las fotos del cuaderno). Próximo año:
+    // sin actividades/PDFs → generación por título.
+    const datosClave = ($("#otroDatos") && $("#otroDatos").value.trim()) || "";
+    const contexto = esProx ? null
+      : esLibre ? { materia:(materiaSel&&materiaSel.nombre)||"General", tema, resumen:datosClave, datosClave }
+      : construirContexto(tema);
     ultimoContexto = contexto;
     // 1) caché local: si ya lo generó en este aparato, lo mostramos al instante
     //    (sin red). "Generar otros" (nocache) y las fotos lo saltan.
