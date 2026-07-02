@@ -1,0 +1,90 @@
+{
+  "materia": "MATEMÁTICAS 6G",
+  "tema": "Ecuaciones",
+  "grado": "6to grado",
+  "resumen": {
+    "titulo": "Ecuaciones de primer grado",
+    "intro": "Una ecuación es como una balanza: los dos lados valen lo mismo. Resolverla es descubrir el número escondido, llamado incógnita (casi siempre la letra x), que hace verdadera la igualdad.",
+    "secciones": [
+      {
+        "titulo": "Qué es una ecuación y qué es resolverla",
+        "explicacion": "Una ecuación es una igualdad que tiene un número desconocido llamado incógnita, que se escribe con una letra (casi siempre x). Resolver la ecuación es encontrar el valor de x que hace que los dos lados sean iguales; ese valor se llama solución. Lo mejor es que siempre puedes COMPROBAR: reemplazas la x por el número que hallaste y verificas que los dos lados dan lo mismo.",
+        "pasos": ["Identifica la incógnita (la letra).", "Busca el valor que hace verdadera la igualdad.", "Comprueba: reemplaza la x y revisa que los dos lados sean iguales."],
+        "ejemplo": "En x + 3 = 7 la solución es x = 4, porque 4 + 3 = 7. Comprobación: 4 + 3 = 7. Correcto."
+      },
+      {
+        "titulo": "La regla de la balanza",
+        "explicacion": "Imagina una balanza en equilibrio: si a un lado le agregas o le quitas algo, tienes que hacer lo mismo del otro lado para que siga equilibrada. Con las ecuaciones es igual: lo que le haces a un lado (sumar, restar, multiplicar o dividir) se lo haces también al otro. Así la igualdad se mantiene mientras dejas la x sola.",
+        "pasos": ["Lo que sumas a un lado, súmalo también al otro.", "Lo que restas a un lado, réstalo también al otro.", "Lo que multiplicas o divides a un lado, hazlo también al otro."],
+        "ejemplo": "Si x - 5 = 2, sumo 5 a los dos lados: x - 5 + 5 = 2 + 5, y queda x = 7. Comprobación: 7 - 5 = 2. Correcto."
+      },
+      {
+        "titulo": "Despejar con sumas y restas",
+        "explicacion": "Cuando un número está sumando junto a la x, pasa al otro lado restando; cuando está restando, pasa al otro lado sumando. Es el atajo de la regla de la balanza. La meta es dejar la x sola de un lado.",
+        "pasos": ["Mira qué número acompaña a la x sumando o restando.", "Pásalo al otro lado con la operación contraria: lo que suma pasa restando, lo que resta pasa sumando.", "Resuelve la operación que queda.", "Comprueba."],
+        "ejemplo": "x + 8 = 20 se resuelve así: x = 20 - 8, entonces x = 12. Comprobación: 12 + 8 = 20. Correcto."
+      },
+      {
+        "titulo": "Despejar con multiplicación y división",
+        "explicacion": "Cuando un número está multiplicando a la x, pasa al otro lado dividiendo; cuando está dividiendo, pasa al otro lado multiplicando. Elige siempre números que den resultados exactos.",
+        "pasos": ["Mira el número que multiplica o divide a la x.", "Si multiplica, pásalo dividiendo; si divide, pásalo multiplicando.", "Haz la operación.", "Comprueba."],
+        "ejemplo": "5x = 45 se resuelve así: x = 45 ÷ 5, entonces x = 9. Comprobación: 5 × 9 = 45. Y en x ÷ 3 = 6: x = 6 × 3, entonces x = 18. Comprobación: 18 ÷ 3 = 6."
+      },
+      {
+        "titulo": "Ecuaciones de dos pasos y problemas con palabras",
+        "explicacion": "Muchas ecuaciones mezclan operaciones, por ejemplo 2x + 3 = 11. Primero despejas lo que está sumando o restando, y al final lo que está multiplicando o dividiendo. En los problemas contados con palabras, primero traduces el enunciado a una ecuación (llamas x a lo que no conoces) y después la resuelves.",
+        "pasos": ["Primero pasa al otro lado el número que suma o resta.", "Después pasa el número que multiplica o divide.", "En un problema: llama x a lo que no conoces y escribe la ecuación que dice el enunciado.", "Resuelve y comprueba con el enunciado."],
+        "ejemplo": "2x + 3 = 11 se resuelve así: 2x = 11 - 3, o sea 2x = 8, entonces x = 8 ÷ 2 = 4. Comprobación: 2 × 4 + 3 = 11. Problema: 'El doble de un número más 5 es 17' se traduce a 2x + 5 = 17, entonces 2x = 12 y x = 6."
+      }
+    ],
+    "idea_clave": "Lo que le haces a un lado de la ecuación, hazlo también al otro; así despejas la x sin romper la igualdad."
+  },
+  "retos": [
+    { "enunciado": "Resuelve la ecuación: x + 6 = 10", "pista": "El 6 está sumando junto a la x; pásalo al otro lado con la operación contraria.", "solucion": "x = 4. Paso el 6 restando: x = 10 - 6 = 4. Comprobación: 4 + 6 = 10.", "figura": "" },
+    { "enunciado": "Resuelve la ecuación: x + 12 = 20", "pista": "Deja la x sola pasando el 12 al otro lado.", "solucion": "x = 8. Paso el 12 restando: x = 20 - 12 = 8. Comprobación: 8 + 12 = 20.", "figura": "" },
+    { "enunciado": "Resuelve la ecuación: x - 7 = 5", "pista": "El 7 está restando; para pasarlo al otro lado usa la operación contraria.", "solucion": "x = 12. Paso el 7 sumando: x = 5 + 7 = 12. Comprobación: 12 - 7 = 5.", "figura": "" },
+    { "enunciado": "Resuelve la ecuación: x - 9 = 11", "pista": "¿Qué número, al quitarle 9, da 11?", "solucion": "x = 20. Paso el 9 sumando: x = 11 + 9 = 20. Comprobación: 20 - 9 = 11.", "figura": "" },
+    { "enunciado": "Resuelve la ecuación: 3x = 21", "pista": "El 3 multiplica a la x; pásalo al otro lado dividiendo.", "solucion": "x = 7. Divido: x = 21 ÷ 3 = 7. Comprobación: 3 × 7 = 21.", "figura": "" },
+    { "enunciado": "Resuelve la ecuación: 7x = 56", "pista": "Para dejar la x sola, deshaz la multiplicación.", "solucion": "x = 8. Divido: x = 56 ÷ 7 = 8. Comprobación: 7 × 8 = 56.", "figura": "" },
+    { "enunciado": "Resuelve la ecuación: x ÷ 4 = 5", "pista": "La x está dividida entre 4; pasa el 4 al otro lado multiplicando.", "solucion": "x = 20. Multiplico: x = 5 × 4 = 20. Comprobación: 20 ÷ 4 = 5.", "figura": "" },
+    { "enunciado": "Resuelve la ecuación: x ÷ 6 = 3", "pista": "Deshaz la división multiplicando por 6.", "solucion": "x = 18. Multiplico: x = 3 × 6 = 18. Comprobación: 18 ÷ 6 = 3.", "figura": "" },
+    { "enunciado": "Resuelve la ecuación: 2x + 4 = 16", "pista": "Primero quita lo que suma, y al final deshaz la multiplicación.", "solucion": "x = 6. Resto 4: 2x = 16 - 4 = 12. Divido entre 2: x = 6. Comprobación: 2 × 6 + 4 = 16.", "figura": "" },
+    { "enunciado": "Resuelve la ecuación: 3x + 5 = 20", "pista": "Paso 1: el número que suma. Paso 2: el número que multiplica.", "solucion": "x = 5. Resto 5: 3x = 20 - 5 = 15. Divido entre 3: x = 5. Comprobación: 3 × 5 + 5 = 20.", "figura": "" },
+    { "enunciado": "Resuelve la ecuación: 4x - 3 = 17", "pista": "El 3 está restando: pásalo sumando; luego deshaz la multiplicación.", "solucion": "x = 5. Sumo 3: 4x = 17 + 3 = 20. Divido entre 4: x = 5. Comprobación: 4 × 5 - 3 = 17.", "figura": "" },
+    { "enunciado": "Resuelve la ecuación: 5x - 8 = 27", "pista": "Primero suma para quitar el 8, después divide.", "solucion": "x = 7. Sumo 8: 5x = 27 + 8 = 35. Divido entre 5: x = 7. Comprobación: 5 × 7 - 8 = 27.", "figura": "" },
+    { "enunciado": "Resuelve la ecuación: 2x + 9 = 25", "pista": "Quita primero el 9 que suma.", "solucion": "x = 8. Resto 9: 2x = 25 - 9 = 16. Divido entre 2: x = 8. Comprobación: 2 × 8 + 9 = 25.", "figura": "" },
+    { "enunciado": "Resuelve la ecuación: 6x + 7 = 43", "pista": "Dos pasos: primero el que suma, después el que multiplica.", "solucion": "x = 6. Resto 7: 6x = 43 - 7 = 36. Divido entre 6: x = 6. Comprobación: 6 × 6 + 7 = 43.", "figura": "" },
+    { "enunciado": "El triple de un número es 27. ¿Cuál es el número?", "pista": "Llama x al número; 'el triple' es 3x. Escribe la ecuación.", "solucion": "x = 9. La ecuación es 3x = 27, entonces x = 27 ÷ 3 = 9. Comprobación: 3 × 9 = 27.", "figura": "" },
+    { "enunciado": "Un número sumado con su doble da 30. ¿Cuál es el número?", "pista": "El número es x y su doble es 2x; júntalos: x + 2x.", "solucion": "x = 10. La ecuación es x + 2x = 30, o sea 3x = 30, entonces x = 10. Comprobación: 10 + 20 = 30.", "figura": "" }
+  ],
+  "quiz": [
+    { "pregunta": "¿Cuál es la solución de x + 5 = 12?", "opciones": ["7", "17", "6", "8"], "correcta": 0, "explicacion": "El 5 suma, así que pasa restando: x = 12 - 5 = 7. Comprobación: 7 + 5 = 12.", "figura": "" },
+    { "pregunta": "Resuelve x - 4 = 10", "opciones": ["14", "6", "40", "7"], "correcta": 0, "explicacion": "El 4 resta, así que pasa sumando: x = 10 + 4 = 14. Comprobación: 14 - 4 = 10.", "figura": "" },
+    { "pregunta": "¿Cuánto vale x en 6x = 54?", "opciones": ["9", "48", "60", "8"], "correcta": 0, "explicacion": "El 6 multiplica, así que pasa dividiendo: x = 54 ÷ 6 = 9. Comprobación: 6 × 9 = 54.", "figura": "" },
+    { "pregunta": "Resuelve x ÷ 5 = 4", "opciones": ["20", "9", "1", "45"], "correcta": 0, "explicacion": "El 5 divide, así que pasa multiplicando: x = 4 × 5 = 20. Comprobación: 20 ÷ 5 = 4.", "figura": "" },
+    { "pregunta": "¿Cuál es la solución de 2x + 6 = 14?", "opciones": ["4", "10", "8", "5"], "correcta": 0, "explicacion": "Resto 6: 2x = 14 - 6 = 8. Divido entre 2: x = 4. Comprobación: 2 × 4 + 6 = 14.", "figura": "" },
+    { "pregunta": "Resuelve 3x - 2 = 13", "opciones": ["5", "11", "15", "3"], "correcta": 0, "explicacion": "Sumo 2: 3x = 13 + 2 = 15. Divido entre 3: x = 5. Comprobación: 3 × 5 - 2 = 13.", "figura": "" },
+    { "pregunta": "El doble de un número es 18. ¿Cuál es el número?", "opciones": ["9", "16", "36", "20"], "correcta": 0, "explicacion": "La ecuación es 2x = 18, entonces x = 18 ÷ 2 = 9. Comprobación: 2 × 9 = 18.", "figura": "" },
+    { "pregunta": "¿Qué número cumple x + 15 = 15?", "opciones": ["0", "30", "1", "15"], "correcta": 0, "explicacion": "Paso el 15 restando: x = 15 - 15 = 0. Comprobación: 0 + 15 = 15.", "figura": "" },
+    { "pregunta": "Resuelve 5x + 10 = 35", "opciones": ["5", "7", "9", "45"], "correcta": 0, "explicacion": "Resto 10: 5x = 35 - 10 = 25. Divido entre 5: x = 5. (Cuidado: 35 ÷ 5 = 7 es el error de olvidar restar el 10). Comprobación: 5 × 5 + 10 = 35.", "figura": "" },
+    { "pregunta": "El triple de un número, más 4, es 19. ¿Cuál es el número?", "opciones": ["5", "6", "15", "7"], "correcta": 0, "explicacion": "La ecuación es 3x + 4 = 19. Resto 4: 3x = 15. Divido entre 3: x = 5. Comprobación: 3 × 5 + 4 = 19.", "figura": "" },
+    { "pregunta": "Resuelve x ÷ 2 + 3 = 8", "opciones": ["10", "5", "16", "22"], "correcta": 0, "explicacion": "Resto 3: x ÷ 2 = 5. Multiplico por 2: x = 10. Comprobación: 10 ÷ 2 + 3 = 8.", "figura": "" },
+    { "pregunta": "¿Cuánto vale x en 8x - 5 = 19?", "opciones": ["3", "2", "24", "4"], "correcta": 0, "explicacion": "Sumo 5: 8x = 19 + 5 = 24. Divido entre 8: x = 3. Comprobación: 8 × 3 - 5 = 19.", "figura": "" },
+    { "pregunta": "Si a un número le sumo 7 y obtengo 7, ¿cuál es el número?", "opciones": ["0", "7", "14", "1"], "correcta": 0, "explicacion": "La ecuación es x + 7 = 7. Paso el 7 restando: x = 7 - 7 = 0.", "figura": "" },
+    { "pregunta": "Resuelve 10x = 90", "opciones": ["9", "80", "100", "8"], "correcta": 0, "explicacion": "El 10 multiplica, así que pasa dividiendo: x = 90 ÷ 10 = 9. Comprobación: 10 × 9 = 90.", "figura": "" },
+    { "pregunta": "Resuelve 4x + 4 = 24", "opciones": ["5", "6", "7", "20"], "correcta": 0, "explicacion": "Resto 4: 4x = 24 - 4 = 20. Divido entre 4: x = 5. Comprobación: 4 × 5 + 4 = 24.", "figura": "" },
+    { "pregunta": "¿Cuál es la solución de x - 8 = 0?", "opciones": ["8", "0", "1", "16"], "correcta": 0, "explicacion": "Paso el 8 sumando: x = 0 + 8 = 8. Comprobación: 8 - 8 = 0.", "figura": "" }
+  ],
+  "examen": [
+    { "pregunta": "Resuelve la ecuación x + 9 = 21.", "respuesta": "x = 12", "explicacion": "El 9 está sumando, así que pasa restando: x = 21 - 9 = 12. Comprobación: 12 + 9 = 21." },
+    { "pregunta": "Resuelve la ecuación 7x = 63.", "respuesta": "x = 9", "explicacion": "El 7 multiplica a la x, así que pasa dividiendo: x = 63 ÷ 7 = 9. Comprobación: 7 × 9 = 63." },
+    { "pregunta": "Resuelve la ecuación x ÷ 3 = 7.", "respuesta": "x = 21", "explicacion": "El 3 divide a la x, así que pasa multiplicando: x = 7 × 3 = 21. Comprobación: 21 ÷ 3 = 7." },
+    { "pregunta": "Resuelve la ecuación 2x + 7 = 19.", "respuesta": "x = 6", "explicacion": "Primero paso el 7 restando: 2x = 19 - 7 = 12. Luego el 2 dividiendo: x = 12 ÷ 2 = 6. Comprobación: 2 × 6 + 7 = 19." },
+    { "pregunta": "Resuelve la ecuación 5x - 4 = 26.", "respuesta": "x = 6", "explicacion": "Paso el 4 sumando: 5x = 26 + 4 = 30. Luego el 5 dividiendo: x = 30 ÷ 5 = 6. Comprobación: 5 × 6 - 4 = 26." },
+    { "pregunta": "El doble de un número más 3 es 15. ¿Cuál es el número?", "respuesta": "6", "explicacion": "La ecuación es 2x + 3 = 15. Resto 3: 2x = 12. Divido entre 2: x = 6. Comprobación: 2 × 6 + 3 = 15." },
+    { "pregunta": "Resuelve la ecuación 4x + 4 = 24.", "respuesta": "x = 5", "explicacion": "Resto 4: 4x = 24 - 4 = 20. Divido entre 4: x = 5. Comprobación: 4 × 5 + 4 = 24." },
+    { "pregunta": "Un número menos 6 es igual a 10. ¿Cuál es el número?", "respuesta": "16", "explicacion": "La ecuación es x - 6 = 10. Paso el 6 sumando: x = 10 + 6 = 16. Comprobación: 16 - 6 = 10." },
+    { "pregunta": "Resuelve la ecuación 3x = 45 y comprueba tu respuesta.", "respuesta": "x = 15", "explicacion": "El 3 multiplica, así que pasa dividiendo: x = 45 ÷ 3 = 15. Comprobación: 3 × 15 = 45." },
+    { "pregunta": "Resuelve la ecuación 6x - 10 = 26.", "respuesta": "x = 6", "explicacion": "Sumo 10: 6x = 26 + 10 = 36. Divido entre 6: x = 6. Comprobación: 6 × 6 - 10 = 26." }
+  ]
+}

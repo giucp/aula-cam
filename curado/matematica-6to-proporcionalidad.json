@@ -1,0 +1,90 @@
+{
+  "materia": "MATEMÁTICAS 6G",
+  "tema": "Proporcionalidad, regla de tres, porcentaje, interés simple",
+  "grado": "6to grado",
+  "resumen": {
+    "titulo": "Proporcionalidad, regla de tres, porcentaje e interés simple",
+    "intro": "Muchos problemas de la vida diaria se resuelven comparando cantidades que cambian juntas: precios, descuentos, velocidades, intereses. Aquí aprenderás razones y proporciones, la regla de tres, el porcentaje y el interés simple, paso a paso.",
+    "secciones": [
+      {
+        "titulo": "Razón y proporción",
+        "explicacion": "Una razón compara dos cantidades dividiéndolas; por ejemplo, la razón de 3 a 4 se escribe 3/4 o 3:4. Una proporción es una igualdad entre dos razones: a/b = c/d. La propiedad más útil es que, en una proporción, los productos cruzados son iguales: a × d = b × c. Gracias a eso podemos hallar un valor que falta.",
+        "pasos": ["Una razón compara dos cantidades dividiéndolas (por ejemplo 3/4).", "Una proporción dice que dos razones son iguales: a/b = c/d.", "Propiedad clave: multiplicando en cruz, a × d = b × c.", "Si falta un valor, se despeja usando la multiplicación en cruz."],
+        "ejemplo": "¿Se cumple 3/4 = 6/8? Multiplico en cruz: 3 × 8 = 24 y 4 × 6 = 24. Como los dos productos son iguales, sí es una proporción."
+      },
+      {
+        "titulo": "Regla de tres simple directa",
+        "explicacion": "Se usa cuando dos magnitudes aumentan o disminuyen JUNTAS: si una sube, la otra sube (más cuadernos, más dinero). Se reconoce por eso. Para resolverla, se plantea una proporción con los datos ordenados y se multiplica en cruz.",
+        "pasos": ["Comprueba que sea directa: si una cantidad sube, la otra también sube.", "Ordena los datos: lo conocido junto a lo conocido.", "Multiplica en cruz los dos datos que se cruzan con la incógnita.", "Divide ese resultado entre el dato que queda."],
+        "ejemplo": "Si 3 cuadernos cuestan 12 Bs, ¿cuánto cuestan 5 cuadernos? Es directa (más cuadernos, más dinero): x = (12 × 5) ÷ 3 = 20 Bs. Comprobación: cada cuaderno cuesta 12 ÷ 3 = 4 Bs, y 5 × 4 = 20 Bs."
+      },
+      {
+        "titulo": "Regla de tres simple inversa",
+        "explicacion": "Se usa cuando una magnitud aumenta y la otra DISMINUYE: si una sube, la otra baja (más obreros, menos días). Aquí NO se multiplica en cruz: se multiplican los dos datos de la magnitud que está completa y se divide entre el otro dato conocido.",
+        "pasos": ["Comprueba que sea inversa: si una cantidad sube, la otra baja.", "Multiplica los dos datos de la magnitud que tienes completa.", "Divide ese producto entre el otro dato conocido.", "El resultado es el valor que falta."],
+        "ejemplo": "Si 4 obreros hacen un trabajo en 6 días, ¿en cuántos días lo hacen 8 obreros? Es inversa (más obreros, menos días): multiplico 4 × 6 = 24 y divido entre 8: 24 ÷ 8 = 3 días."
+      },
+      {
+        "titulo": "Porcentaje",
+        "explicacion": "Un porcentaje es una parte de cada 100. 'El 25%' significa 25 de cada 100. Para calcular el porcentaje de una cantidad, la multiplicas por el número del porcentaje y divides entre 100. Sirve para descuentos (se resta) y aumentos (se suma).",
+        "pasos": ["'x%' significa x de cada 100, es decir x ÷ 100.", "El x% de una cantidad = cantidad × x ÷ 100.", "Descuento: calculas el porcentaje y lo RESTAS del precio.", "Aumento: calculas el porcentaje y lo SUMAS al precio."],
+        "ejemplo": "El 20% de 150 = 150 × 20 ÷ 100 = 30. Si un artículo de 150 Bs tiene 20% de descuento, pagas 150 − 30 = 120 Bs."
+      },
+      {
+        "titulo": "Interés simple",
+        "explicacion": "El interés simple es lo que se gana (o se paga) por guardar o prestar un dinero durante un tiempo. Se calcula con la fórmula I = C × r × t ÷ 100, donde C es el capital (dinero inicial), r es la tasa en porcentaje y t es el tiempo. El monto final es el capital más el interés: C + I. La tasa y el tiempo deben estar en la misma unidad (por ejemplo, tasa anual con años).",
+        "pasos": ["Identifica el capital C, la tasa r (en %) y el tiempo t.", "Aplica la fórmula I = C × r × t ÷ 100.", "El monto total es C + I.", "Cuida que la tasa y el tiempo usen la misma unidad de tiempo."],
+        "ejemplo": "Un capital de 500 Bs al 10% anual durante 2 años produce: I = 500 × 10 × 2 ÷ 100 = 100 Bs de interés. El monto final es 500 + 100 = 600 Bs."
+      }
+    ],
+    "idea_clave": "Primero identifica el tipo de relación (directa, inversa o porcentaje): de ahí sale el método para resolver."
+  },
+  "retos": [
+    { "enunciado": "Halla el término que falta en la proporción: 2/5 = x/20", "pista": "Multiplica en cruz: 5 × x = 2 × 20, y luego despeja x.", "solucion": "x = 8. Multiplico en cruz: 5x = 2 × 20 = 40, entonces x = 40 ÷ 5 = 8. Comprobación: 8/20 = 2/5.", "figura": "" },
+    { "enunciado": "Halla el término que falta en la proporción: 3/4 = 9/x", "pista": "Multiplica en cruz: 3 × x = 4 × 9.", "solucion": "x = 12. Multiplico en cruz: 3x = 4 × 9 = 36, entonces x = 36 ÷ 3 = 12. Comprobación: 9/12 = 3/4.", "figura": "" },
+    { "enunciado": "Si 4 lápices cuestan 8 Bs, ¿cuánto cuestan 7 lápices?", "pista": "Es directa (más lápices, más dinero). Halla primero cuánto cuesta uno.", "solucion": "14 Bs. Cada lápiz cuesta 8 ÷ 4 = 2 Bs, y 7 × 2 = 14 Bs.", "figura": "" },
+    { "enunciado": "Un carro recorre 120 km en 2 horas. Al mismo ritmo, ¿cuántos km recorre en 5 horas?", "pista": "Directa. Halla cuántos km hace en 1 hora.", "solucion": "300 km. En 1 hora recorre 120 ÷ 2 = 60 km, y 5 × 60 = 300 km.", "figura": "" },
+    { "enunciado": "Si 6 panes cuestan 18 Bs, ¿cuánto cuestan 10 panes?", "pista": "Directa. Precio de un pan primero.", "solucion": "30 Bs. Cada pan cuesta 18 ÷ 6 = 3 Bs, y 10 × 3 = 30 Bs.", "figura": "" },
+    { "enunciado": "3 obreros pintan una pared en 8 horas. ¿En cuántas horas la pintan 6 obreros?", "pista": "Es inversa (más obreros, menos horas). Multiplica 3 × 8 y divide entre 6.", "solucion": "4 horas. Multiplico 3 × 8 = 24 y divido entre 6: 24 ÷ 6 = 4 horas.", "figura": "" },
+    { "enunciado": "Un depósito se llena con 5 llaves en 12 minutos. ¿En cuántos minutos se llena con 10 llaves?", "pista": "Inversa (más llaves, menos tiempo). Multiplica 5 × 12 y divide entre 10.", "solucion": "6 minutos. Multiplico 5 × 12 = 60 y divido entre 10: 60 ÷ 10 = 6 minutos.", "figura": "" },
+    { "enunciado": "Cierta comida alcanza para 4 días con 6 personas. ¿Para cuántos días alcanza con 8 personas?", "pista": "Inversa (más personas, menos días). Multiplica 6 × 4 y divide entre 8.", "solucion": "3 días. Multiplico 6 × 4 = 24 y divido entre 8: 24 ÷ 8 = 3 días.", "figura": "" },
+    { "enunciado": "Calcula el 10% de 250.", "pista": "El x% de una cantidad = cantidad × x ÷ 100.", "solucion": "25. Calculo 250 × 10 ÷ 100 = 25.", "figura": "" },
+    { "enunciado": "Calcula el 25% de 80.", "pista": "Multiplica por 25 y divide entre 100.", "solucion": "20. Calculo 80 × 25 ÷ 100 = 20.", "figura": "" },
+    { "enunciado": "Calcula el 50% de 90.", "pista": "El 50% es la mitad.", "solucion": "45. Calculo 90 × 50 ÷ 100 = 45 (la mitad de 90).", "figura": "" },
+    { "enunciado": "Una camisa cuesta 200 Bs y tiene 15% de descuento. ¿Cuánto pagas?", "pista": "Calcula el 15% y RÉSTALO del precio.", "solucion": "170 Bs. El descuento es 200 × 15 ÷ 100 = 30 Bs, y 200 − 30 = 170 Bs.", "figura": "" },
+    { "enunciado": "Un producto de 400 Bs sube 20%. ¿Cuál es el nuevo precio?", "pista": "Calcula el 20% y SÚMALO al precio.", "solucion": "480 Bs. El aumento es 400 × 20 ÷ 100 = 80 Bs, y 400 + 80 = 480 Bs.", "figura": "" },
+    { "enunciado": "¿Cuál es el interés simple de 800 Bs al 5% anual durante 2 años?", "pista": "Usa I = C × r × t ÷ 100.", "solucion": "80 Bs. I = 800 × 5 × 2 ÷ 100 = 80 Bs.", "figura": "" },
+    { "enunciado": "Prestas 1000 Bs al 10% anual. ¿Cuánto interés ganas en 3 años?", "pista": "I = C × r × t ÷ 100, con t = 3.", "solucion": "300 Bs. I = 1000 × 10 × 3 ÷ 100 = 300 Bs.", "figura": "" },
+    { "enunciado": "Depositas 600 Bs al 5% anual durante 4 años. ¿Cuánto dinero tendrás al final?", "pista": "Primero el interés, y súmalo al capital.", "solucion": "720 Bs. El interés es 600 × 5 × 4 ÷ 100 = 120 Bs, y el monto final es 600 + 120 = 720 Bs.", "figura": "" }
+  ],
+  "quiz": [
+    { "pregunta": "¿Cuál es el 20% de 300?", "opciones": ["60", "30", "600", "15"], "correcta": 0, "explicacion": "El 20% de 300 = 300 × 20 ÷ 100 = 60.", "figura": "" },
+    { "pregunta": "En la proporción 5/8 = x/24, ¿cuánto vale x?", "opciones": ["15", "3", "19", "12"], "correcta": 0, "explicacion": "Multiplico en cruz: 8x = 5 × 24 = 120, entonces x = 120 ÷ 8 = 15. Comprobación: 15/24 = 5/8.", "figura": "" },
+    { "pregunta": "Si 2 kg de arroz cuestan 6 Bs, ¿cuánto cuestan 5 kg?", "opciones": ["15", "11", "30", "10"], "correcta": 0, "explicacion": "Es directa: cada kg cuesta 6 ÷ 2 = 3 Bs, y 5 × 3 = 15 Bs.", "figura": "" },
+    { "pregunta": "4 obreros terminan una obra en 9 días. ¿En cuántos días la terminan 6 obreros?", "opciones": ["6", "14", "3", "54"], "correcta": 0, "explicacion": "Es inversa (más obreros, menos días): 4 × 9 = 36, y 36 ÷ 6 = 6 días.", "figura": "" },
+    { "pregunta": "¿Cuánto es el 50% de 120?", "opciones": ["60", "70", "240", "50"], "correcta": 0, "explicacion": "El 50% es la mitad: 120 ÷ 2 = 60. También 120 × 50 ÷ 100 = 60.", "figura": "" },
+    { "pregunta": "Un artículo de 100 Bs tiene 30% de descuento. ¿Cuánto pagas?", "opciones": ["70", "30", "130", "60"], "correcta": 0, "explicacion": "El descuento es 100 × 30 ÷ 100 = 30 Bs, y 100 − 30 = 70 Bs.", "figura": "" },
+    { "pregunta": "¿Cuál es el interés simple de 200 Bs al 10% anual en 1 año?", "opciones": ["20", "10", "220", "2"], "correcta": 0, "explicacion": "I = 200 × 10 × 1 ÷ 100 = 20 Bs.", "figura": "" },
+    { "pregunta": "Una relación entre dos magnitudes es INVERSA cuando…", "opciones": ["si una aumenta, la otra disminuye", "las dos aumentan juntas", "las dos son siempre iguales", "ninguna de las dos cambia"], "correcta": 0, "explicacion": "En una relación inversa, al aumentar una magnitud la otra disminuye (por ejemplo, más obreros, menos días).", "figura": "" },
+    { "pregunta": "El 100% de un número es…", "opciones": ["el número completo", "la mitad del número", "el doble del número", "cero"], "correcta": 0, "explicacion": "El 100% significa 'todo': el 100% de un número es el número entero.", "figura": "" },
+    { "pregunta": "Si 3 metros de tela cuestan 15 Bs, ¿cuánto cuesta 1 metro?", "opciones": ["5", "45", "12", "18"], "correcta": 0, "explicacion": "Es directa: 15 ÷ 3 = 5 Bs por metro.", "figura": "" },
+    { "pregunta": "¿Cuánto es el 5% de 400?", "opciones": ["20", "5", "80", "40"], "correcta": 0, "explicacion": "El 5% de 400 = 400 × 5 ÷ 100 = 20.", "figura": "" },
+    { "pregunta": "Un capital de 1000 Bs al 8% anual, ¿cuánto interés da en 1 año?", "opciones": ["80", "8", "1080", "800"], "correcta": 0, "explicacion": "I = 1000 × 8 × 1 ÷ 100 = 80 Bs.", "figura": "" },
+    { "pregunta": "Para hallar el término que falta en una proporción a/b = c/d se usa…", "opciones": ["la multiplicación en cruz (a × d = b × c)", "sumar todos los números", "restar b menos a", "dividir a entre d"], "correcta": 0, "explicacion": "En toda proporción los productos cruzados son iguales: a × d = b × c. Con eso se despeja el valor que falta.", "figura": "" },
+    { "pregunta": "Si 10 personas consumen unas provisiones en 6 días, ¿en cuántos días las consumen 5 personas?", "opciones": ["12", "3", "30", "11"], "correcta": 0, "explicacion": "Es inversa (menos personas, más días): 10 × 6 = 60, y 60 ÷ 5 = 12 días.", "figura": "" },
+    { "pregunta": "Un pantalón de 250 Bs sube 10%. ¿Cuál es el nuevo precio?", "opciones": ["275", "25", "225", "260"], "correcta": 0, "explicacion": "El aumento es 250 × 10 ÷ 100 = 25 Bs, y 250 + 25 = 275 Bs.", "figura": "" },
+    { "pregunta": "¿Cuánto es el 75% de 40?", "opciones": ["30", "25", "10", "35"], "correcta": 0, "explicacion": "El 75% de 40 = 40 × 75 ÷ 100 = 30.", "figura": "" }
+  ],
+  "examen": [
+    { "pregunta": "Calcula el 15% de 200.", "respuesta": "30", "explicacion": "El 15% de 200 = 200 × 15 ÷ 100 = 30." },
+    { "pregunta": "Halla el término que falta en la proporción 4/9 = 8/x.", "respuesta": "x = 18", "explicacion": "Multiplico en cruz: 4x = 9 × 8 = 72, entonces x = 72 ÷ 4 = 18. Comprobación: 8/18 = 4/9." },
+    { "pregunta": "Si 5 kg de azúcar cuestan 20 Bs, ¿cuánto cuestan 8 kg?", "respuesta": "32 Bs", "explicacion": "Es directa: cada kg cuesta 20 ÷ 5 = 4 Bs, y 8 × 4 = 32 Bs." },
+    { "pregunta": "6 obreros construyen un muro en 10 días. ¿En cuántos días lo construyen 12 obreros?", "respuesta": "5 días", "explicacion": "Es inversa (más obreros, menos días): 6 × 10 = 60, y 60 ÷ 12 = 5 días." },
+    { "pregunta": "Un artículo cuesta 500 Bs y tiene 20% de descuento. ¿Cuánto pagas?", "respuesta": "400 Bs", "explicacion": "El descuento es 500 × 20 ÷ 100 = 100 Bs, y 500 − 100 = 400 Bs." },
+    { "pregunta": "¿Cuál es el interés simple de 1000 Bs al 6% anual durante 2 años?", "respuesta": "120 Bs", "explicacion": "I = 1000 × 6 × 2 ÷ 100 = 120 Bs." },
+    { "pregunta": "Un producto de 300 Bs aumenta 25%. ¿Cuál es el nuevo precio?", "respuesta": "375 Bs", "explicacion": "El aumento es 300 × 25 ÷ 100 = 75 Bs, y 300 + 75 = 375 Bs." },
+    { "pregunta": "¿Es una proporción 6/10 = 9/15?", "respuesta": "Sí, es una proporción", "explicacion": "Multiplico en cruz: 6 × 15 = 90 y 10 × 9 = 90. Como los dos productos son iguales, sí es una proporción." },
+    { "pregunta": "Depositas 800 Bs al 5% anual. ¿Cuánto dinero tendrás en 3 años, contando capital más interés?", "respuesta": "920 Bs", "explicacion": "El interés es 800 × 5 × 3 ÷ 100 = 120 Bs, y el monto final es 800 + 120 = 920 Bs." },
+    { "pregunta": "La comida de una granja alcanza para 8 días con 10 vacas. ¿Para cuántos días alcanza con 16 vacas?", "respuesta": "5 días", "explicacion": "Es inversa (más vacas, menos días): 10 × 8 = 80, y 80 ÷ 16 = 5 días." }
+  ]
+}
