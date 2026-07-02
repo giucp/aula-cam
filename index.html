@@ -61,6 +61,16 @@
   .go:hover{filter:brightness(1.04)}
   .go:active{transform:translateY(2px) scale(.99)}
   .go:disabled{background:#E9DFE6;color:#B7A6BD;box-shadow:none;cursor:not-allowed}
+  /* dos caminos: Guía revisada (verde = lo nuestro) y Con IA (naranja) */
+  .acciones{display:flex;gap:10px;margin-top:6px}
+  .acciones .go{margin-top:0;flex:1;min-width:0;font-size:1.06rem;padding:15px}
+  .go.guia{background:linear-gradient(180deg,#34C6A6,#12B5A4);box-shadow:0 14px 24px -11px rgba(18,181,164,.6)}
+  .handoff{background:#F4FBF9;border:2px solid #BEE9E1;border-radius:18px;padding:20px 16px;text-align:center;margin-top:6px}
+  .handoff .hoTit{font-family:"Fredoka";font-weight:600;font-size:1.12rem;color:var(--ink);margin:0 0 4px}
+  .handoff .hoSub{color:var(--muted);font-weight:600;margin:0 0 14px;line-height:1.4}
+  .handoff .go{max-width:280px;margin:0 auto}
+  .otros.ia{border-color:#FFCDBB}
+  .otros.ia:hover{border-color:var(--mango)}
 
   /* top bar (home) */
   .topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px}
@@ -270,7 +280,7 @@
   .figura{display:flex;justify-content:center;margin:6px 0}
   .figura img{max-width:100%;height:auto;max-height:280px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px}
   /* botón "generar otros" */
-  .otrosWrap{display:flex;justify-content:center;margin-top:4px}
+  .otrosWrap{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:4px}
   .otros{border:2px solid var(--line);background:#fff;cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:1rem;color:var(--ink);padding:11px 20px;border-radius:14px;box-shadow:var(--shadow-xs);transition:all .14s}
   .otros:hover{border-color:#A9E6DE}
   .otros:active{transform:scale(.97)}
@@ -410,7 +420,10 @@
         </div>
 
         <hr class="sep" />
-        <button class="go" id="btnGen" disabled>✨ Crear mis retos</button>
+        <div class="acciones">
+          <button class="go guia hidden" id="btnGuia" disabled>📗 Guía revisada</button>
+          <button class="go" id="btnGen" disabled>✨ Crear mis retos</button>
+        </div>
       </div>
       <div class="results" id="results" aria-live="polite"></div>
     </div>
@@ -430,6 +443,7 @@
   const API_CURRICULO = "https://aula-cam.vercel.app/api/curriculo";
   const API_ERRORES  = "https://aula-cam.vercel.app/api/errores";
   const API_ACTIVIDAD = "https://aula-cam.vercel.app/api/actividad";
+  const API_CURADO_INFO = "https://aula-cam.vercel.app/api/curado-info";
 
   // modos de salida
   // Ruta de aprendizaje: los 4 pasos EN ORDEN (ids internos intactos; solo cambia lo visible).
@@ -520,6 +534,7 @@
     verMaterias();
     cargarErrores();
     cargarProgreso();
+    cargarCuradoInfo(gradoDeSesion());   // qué temas tienen guía revisada (sello 📗 + botón)
   }
 
   // navegación landing ↔ login
@@ -661,11 +676,12 @@
       const tema=c.dataset.tema||"";
       const pr=PROGRESO.get(norm(mat)+"|"+norm(tema));
       const marca = pr ? ((pr.quizMejor!=null && pr.quizMejor>=0.8) ? " ⭐" : " ✓") : "";
-      c.textContent = tema + marca;
+      const guia = temaTieneGuia(mat, tema) ? " 📗" : "";
+      c.textContent = tema + marca + guia;
     });
   }
   function repintarProgreso(){
-    if($("#paneTemas") && !$("#paneTemas").classList.contains("hidden")){ pintarModos(); marcarChips(); }
+    if($("#paneTemas") && !$("#paneTemas").classList.contains("hidden")){ pintarModos(); marcarChips(); pintarAcciones(); }
   }
 
   // grilla de materias (sirve para las actuales y para las del próximo año)
@@ -698,6 +714,7 @@
       const d = await r.json();
       const mats = (d.materias||[]).map(m=>({ nombre:m.materia, nombreCorto:m.nombre_corto, grupos:(m.temas&&m.temas.grupos)||[], _proximo:true }));
       origen = "proximo"; proximoGrado = grado;
+      cargarCuradoInfo(grado);   // guía revisada del próximo grado (si la hubiera)
       $("#destacadaWrap").classList.add("hidden");
       $("#erroresWrap").classList.add("hidden");
       $("#materiasHead").innerHTML = `<button class="volver" id="volverActual">‹ Mis materias</button><span class="proxTag">🚀 ${escapeHtml(grado)} · próximo año</span>`;
@@ -840,8 +857,8 @@
     modoSel = id;
     const mo = MODOS.find(m=>m.id===id) || MODOS[0];
     $("#pasoCantidad").classList.toggle("hidden", !mo.conteo);   // el resumen no lleva cantidad
-    $("#btnGen").textContent = mo.verbo;
     pintarModos();
+    pintarAcciones();   // ajusta los botones "Guía revisada" / "Con IA" según el tema+modo
   }
   // al elegir un tema, recalcula el paso sugerido y lo preselecciona (chips)
   function alSeleccionarTema(){
@@ -861,7 +878,7 @@
   });
 
   function temaActual(){ return $("#otro").value.trim() || temaSel; }
-  function checkReady(){ $("#btnGen").disabled = !temaActual(); }
+  function checkReady(){ pintarAcciones(); }
 
   // ───────── caché local (en el teléfono) ─────────
   // Guarda lo ya generado en este aparato para no repetir llamadas (ni a la IA
@@ -898,50 +915,99 @@
     store.set(CACHE_LOCAL_KEY, all);
   }
 
+  // ───────── contenido curado (guía revisada por nosotros) ─────────
+  // normaliza IGUAL que el servidor (herramientas/normcurado.mjs) para casar temas.
+  function normCurado(s){
+    return String(s||"").replace(/\b[1-6]\s*[GA]\b/gi," ")
+      .normalize("NFD").replace(/[̀-ͯ]/g,"")
+      .replace(/\s+/g," ").trim().toLowerCase();
+  }
+  let CURADO_INFO = {};              // grado -> { "mnorm||tnorm": [modos] }
+  async function cargarCuradoInfo(grado){
+    if(!grado || CURADO_INFO[grado]!==undefined) return;
+    CURADO_INFO[grado] = {};         // marca "en curso" para no pedirlo dos veces
+    try{
+      const r = await fetch(API_CURADO_INFO,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({grado})});
+      const d = await r.json(); CURADO_INFO[grado] = d.temas||{};
+    }catch(_){ CURADO_INFO[grado] = {}; }
+    repintarProgreso();              // repinta chips para mostrar el sello 📗
+  }
+  function modosCurados(mat, tema){
+    const map = CURADO_INFO[gradoActivo()]||{};
+    return map[`${normCurado(mat)}||${normCurado(tema)}`] || [];
+  }
+  function temaTieneGuia(mat, tema){ return modosCurados(mat, tema).length>0; }
+  function temaModoCurado(){
+    const mat=(materiaSel&&materiaSel.nombre)||""; const tema=temaActual();
+    return !!tema && modosCurados(mat, tema).includes(modoSel);
+  }
+  // "vistos": firmas de items de la guía ya mostrados, para NO repetir (por tema+modo).
+  const VISTOS_KEY = "curado_vistos_v1";
+  function vistosKey(mat,tema,modo,grado){ return [normCurado(mat),normCurado(tema),modo,grado].join("|"); }
+  function vistosDe(mat,tema,modo,grado){ const all=store.get(VISTOS_KEY)||{}; return all[vistosKey(mat,tema,modo,grado)]||[]; }
+  function acumularVistos(mat,tema,modo,grado,d){
+    const sigs=(d.preguntas||d.ejercicios||[]).map(x=>x&&x._sig).filter(Boolean);
+    if(!sigs.length) return;
+    const all=store.get(VISTOS_KEY)||{}; const k=vistosKey(mat,tema,modo,grado);
+    const set=new Set(all[k]||[]); sigs.forEach(s=>set.add(s)); all[k]=[...set];
+    store.set(VISTOS_KEY, all);
+  }
+  // muestra/oculta el botón "Guía revisada" y ajusta el de "Con IA" según el tema+modo
+  function pintarAcciones(){
+    const tema=temaActual();
+    const btnGuia=$("#btnGuia"), btnGen=$("#btnGen"); if(!btnGen) return;
+    const mo=MODOS.find(m=>m.id===modoSel)||MODOS[0];
+    const hayGuia = temaModoCurado() && !(fotos.length>0);
+    if(btnGuia){ btnGuia.classList.toggle("hidden", !hayGuia); btnGuia.disabled = !tema; }
+    btnGen.textContent = hayGuia ? "✨ Con IA" : mo.verbo;
+    btnGen.disabled = !tema;
+  }
+
   // ───────── GENERAR ─────────
-  $("#btnGen").onclick = ()=>generar(false);
-  async function generar(nocache, reintento){
+  $("#btnGuia").onclick = ()=>generar({via:"guia"});
+  $("#btnGen").onclick  = ()=>generar({via:"ia"});
+  async function generar(opts){
+    opts = opts||{};
     const tema = temaActual(); if(!tema) return;
     const mo = MODOS.find(m=>m.id===modoSel) || MODOS[0];
     const esProx = origen==="proximo";
     const esLibre = !!$("#otro").value.trim();
-    // tema libre: la IA no tiene PDFs del aula, así que le pasamos lo que la niña/mamá
-    // escriba en "datos clave" como contexto (más las fotos del cuaderno). Próximo año:
-    // sin actividades/PDFs → generación por título.
+    const usaFotos = !esProx && fotos.length>0;
+    // dos caminos: "guia" (soloCurado, sin repetir) o "ia" (sinCurado, Gemini).
+    // Con fotos del cuaderno → siempre IA (son apuntes personales de la niña).
+    let via = opts.via || (temaModoCurado() ? "guia" : "ia");
+    if(usaFotos) via = "ia";
+    const mat=(materiaSel&&materiaSel.nombre)||"General"; const gr=gradoActivo();
+    // tema libre: pasamos "datos clave" como contexto para la IA (más fotos).
     const datosClave = ($("#otroDatos") && $("#otroDatos").value.trim()) || "";
     const contexto = esProx ? null
-      : esLibre ? { materia:(materiaSel&&materiaSel.nombre)||"General", tema, resumen:datosClave, datosClave }
+      : esLibre ? { materia:mat, tema, resumen:datosClave, datosClave }
       : construirContexto(tema);
     ultimoContexto = contexto;
-    // 1) caché local: si ya lo generó en este aparato, lo mostramos al instante
-    //    (sin red). "Generar otros" (nocache) y las fotos lo saltan.
-    const usaFotos = !esProx && fotos.length>0;
-    const ckLocal = claveLocal(tema, firmaLocal(contexto));
-    if(!nocache && !usaFotos){
-      const local = cacheLocalGet(ckLocal);
-      if(local){ render(local); return; }
-    }
-    const res = $("#results"); const btn=$("#btnGen"); btn.disabled=true;
+
+    const res=$("#results"); const btnGuia=$("#btnGuia"), btnGen=$("#btnGen");
+    if(btnGuia) btnGuia.disabled=true; btnGen.disabled=true;
     let cool=0;
-    res.innerHTML = vistaCargando(tema, mo, fotos.length>0);
+    res.innerHTML = vistaCargando(tema, mo, usaFotos);
     try{
-      const r = await fetch(API_GENERAR,{method:"POST",headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({
-          materia:(materiaSel&&materiaSel.nombre)||"General",
-          tema, grado:gradoActivo(), cantidad, contexto, modo:modoSel,
-          token:(!esProx && SESION && SESION.token)||null, nocache: !!nocache, fotos: esProx?[]:fotos
-        })});
+      const body = { materia:mat, tema, grado:gr, cantidad, contexto, modo:modoSel,
+        token:(!esProx && SESION && SESION.token)||null, fotos: esProx?[]:fotos };
+      if(via==="guia"){ body.soloCurado=true; body.vistos=vistosDe(mat,tema,modoSel,gr); }
+      else { body.sinCurado=true; body.nocache=!!opts.nocache; }
+      const r = await fetch(API_GENERAR,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
       let d;
       try { d = await r.json(); }
       catch(_){ throw new Error("El servidor tardó demasiado o se cayó. Prueba de nuevo en un momentico."); }
       if(d.error){ const er=new Error(d.error); er.code=d.code; er.retryAfter=d.retryAfter; throw er; }
-      if(!usaFotos) cacheLocalSet(ckLocal, d);   // guarda para no repetir la llamada la próxima vez
+      // guía agotada, o el tema no tiene guía → ofrecer seguir con IA
+      if(d.sinItems || d.sinBanco){ renderHandoff(res, d); return; }
+      if(via==="guia" && d.curado) acumularVistos(mat,tema,modoSel,gr,d);
       render(d);
     }catch(e){
-      if(e.code===503 && !reintento){
-        cool = -1;                              // reintento en curso: no tocar el botón en finally
+      if(e.code===503 && !opts._retry){
+        cool = -1;
         await new Promise(r=>setTimeout(r,1500));
-        return generar(nocache, true);          // saturación transitoria: reintentamos solos una vez
+        return generar({...opts,_retry:true});   // saturación transitoria: reintenta una vez
       }
       if(e.code===429){
         cool = Math.min(Math.max(e.retryAfter||10, 5), 60);
@@ -949,8 +1015,20 @@
       }else{
         res.innerHTML = errBox("Uy, no llegó. Intenta otra vez en un momentico.", String(e.message||e));
       }
-    }finally{ if(cool>0){ enfriar(btn, cool); } else if(cool===0){ btn.disabled=false; } }
-  };
+    }finally{ if(cool>0){ enfriar(btnGen, cool); } else if(cool===0){ pintarAcciones(); } }
+  }
+  // guía agotada o tema sin guía: mensaje + botón para seguir con IA
+  function renderHandoff(res, d){
+    res.innerHTML="";
+    const box=document.createElement("div"); box.className="handoff";
+    const tit = d.sinBanco ? "Este tema todavía no tiene guía revisada 📗" : "¡Completaste toda la guía revisada! 🎉";
+    const sub = d.sinBanco ? "¿Quieres practicar con ejercicios generados por IA?" : "¿Quieres seguir practicando con ejercicios nuevos hechos por IA?";
+    box.innerHTML=`<p class="hoTit">${tit}</p><p class="hoSub">${sub}</p>`;
+    const b=document.createElement("button"); b.className="go"; b.textContent="✨ Seguir con IA";
+    b.onclick=()=>generar({via:"ia", nocache:true});
+    box.appendChild(b); res.appendChild(box);
+    res.scrollIntoView({behavior:"smooth",block:"nearest"});
+  }
 
   // contexto real del tema (lo que la alumna está viendo)
   function construirContexto(tema){
@@ -974,7 +1052,9 @@
   }
 
   // ───────── RENDER (despacha según el modo) ─────────
+  let ultimoCurado=false, ultimoAgotado=false;   // para el botón "otros" (guía vs IA)
   function render(d){
+    ultimoCurado = !!d.curado; ultimoAgotado = !!d.agotado;
     const res=$("#results"); res.innerHTML="";
     renderBanner(res, d.fuentes, d.basadoEnMaterial, d.apuntes, d.curado);
     const modo = d.modo || modoSel;
@@ -1178,6 +1258,7 @@
       cont.appendChild(d);
     });
     const add=$("#addFoto"); if(add) add.classList.toggle("hidden", fotos.length>=MAX_FOTOS);
+    pintarAcciones();   // con fotos → solo "Con IA" (los apuntes son personales)
   }
   $("#fotoInput").addEventListener("change", async (e)=>{
     const files=[...(e.target.files||[])];
@@ -1203,12 +1284,20 @@
     },1000);
   }
   // botón para regenerar SIN caché — variedad bajo demanda (retos/examen/quiz)
+  function botonOtros(txt, fn, alt){
+    const b=document.createElement("button"); b.className="otros"+(alt?" ia":"");
+    b.textContent=txt; b.onclick=fn; return b;
+  }
   function renderOtros(res){
     const wrap=document.createElement("div"); wrap.className="otrosWrap";
-    const b=document.createElement("button"); b.className="otros";
-    b.textContent="🔄 Generar otros";
-    b.onclick=()=>generar(true);
-    wrap.appendChild(b); res.appendChild(wrap);
+    if(ultimoCurado){
+      // lo mostrado vino de nuestra guía: "otra de la guía" (sin repetir) o pasar a IA
+      wrap.appendChild(botonOtros("📗 Otra de la guía", ()=>generar({via:"guia"})));
+      wrap.appendChild(botonOtros("✨ Con IA", ()=>generar({via:"ia", nocache:true}), true));
+    }else{
+      wrap.appendChild(botonOtros("✨ Otros con IA", ()=>generar({via:"ia", nocache:true})));
+    }
+    res.appendChild(wrap);
   }
   // figura SVG segura: se rendea como imagen (data URI) → los scripts del SVG NO se ejecutan así
   function figuraHTML(svg){
