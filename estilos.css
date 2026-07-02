@@ -351,3 +351,8 @@
   .notaChip.floja{border-color:#F6C6D2;color:var(--bad)}
   .otros.refuerzo{margin-top:8px;font-size:.9rem;padding:8px 14px;border-color:#F6C6D2}
   .otros.refuerzo:hover{border-color:var(--bad)}
+
+  /* banner de refuerzo (llegó desde una nota floja) */
+  #refuerzoBanner{background:#FDF3F5;border:2px solid #F6C6D2;border-radius:16px;padding:13px 14px;margin-bottom:14px}
+  #refuerzoBanner .refTit{font-family:"Fredoka";font-weight:600;color:var(--bad);margin:0 0 4px;font-size:1rem}
+  #refuerzoBanner .refTxt{color:var(--muted);font-weight:600;font-size:.9rem;line-height:1.45;margin:0}

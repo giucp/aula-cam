@@ -427,6 +427,34 @@
   // ───────── notas de exámenes (registro manual sobre 20) ─────────
   const NOTA_REFUERZO=14;                 // por debajo de esto sugerimos reforzar
   function colorNota(n){ return n>=16?"buena":(n>=NOTA_REFUERZO?"media":"floja"); }
+  // promedio por materia: [{materia, prom, n, ultima}] ordenado de peor a mejor
+  function promediosPorMateria(){
+    const acc={};
+    NOTAS.forEach(t=>{
+      if(!t.materia) return;
+      const k=norm(t.materia);
+      if(!acc[k]) acc[k]={materia:t.materia, suma:0, n:0, ultima:Number(t.nota)}; // NOTAS viene fecha desc → la 1ª es la última
+      acc[k].suma+=Number(t.nota); acc[k].n++;
+    });
+    return Object.values(acc)
+      .map(a=>({materia:a.materia, prom:Math.round((a.suma/a.n)*10)/10, n:a.n, ultima:a.ultima}))
+      .sort((a,b)=>a.prom-b.prom);
+  }
+  function chipPromedio(p){
+    const s=document.createElement("span"); s.className=`chip notaChip ${colorNota(p.prom)}`;
+    s.textContent=`${limpiaNombreMateria(p.materia)||"General"}: ${p.prom}${p.n>1?` (${p.n})`:""}`;
+    return s;
+  }
+  // resumen de promedios arriba de la lista de notas (pestaña Agenda)
+  function pintarPromedios(){
+    const box=$("#notasProm"); if(!box) return; box.innerHTML="";
+    const proms=promediosPorMateria(); if(!proms.length) return;
+    const tit=document.createElement("p"); tit.className="lblMini"; tit.textContent="Promedio por materia";
+    box.appendChild(tit);
+    const chips=document.createElement("div"); chips.className="chips";
+    proms.forEach(p=>chips.appendChild(chipPromedio(p)));
+    box.appendChild(chips);
+  }
   function filaNota(t){
     const div=document.createElement("div"); div.className="tarea";
     const fecha=t.fecha?`<span class="tFechaBadge">${escapeHtml(t.fecha.slice(0,10))}</span>`:"";
@@ -436,7 +464,7 @@
       <button class="tBorrar" aria-label="Borrar">×</button>`;
     if(Number(t.nota)<NOTA_REFUERZO && t.materia){
       const ref=document.createElement("button"); ref.className="otros refuerzo"; ref.textContent="💪 Reforzar →";
-      ref.onclick=()=>irAPractica(t.materia);
+      ref.onclick=()=>irARefuerzo(t);
       div.querySelector(".tBody").appendChild(ref);
     }
     div.querySelector(".tBorrar").onclick=async()=>{
@@ -446,6 +474,7 @@
     return div;
   }
   function pintarNotas(){
+    pintarPromedios();
     const cont=$("#notasList"); if(!cont) return; cont.innerHTML="";
     if(!NOTAS.length){
       cont.innerHTML=`<p class="wVacio">Cuando te entreguen un examen, anota aquí la nota. Así ves cómo vas en cada materia y te decimos qué reforzar. 🎓</p>`;
@@ -453,30 +482,46 @@
     }
     NOTAS.forEach(t=>cont.appendChild(filaNota(t)));
   }
-  // escritorio: últimas notas + sugerencia de refuerzo (solo si hay notas)
+  // escritorio: PROMEDIO por materia + sugerencia de refuerzo (solo si hay notas)
   function pintarNotasInicio(){
     const box=$("#notasInicio"); if(!box) return; box.innerHTML="";
     if(!NOTAS.length) return;
     const w=document.createElement("div"); w.className="widget";
-    w.innerHTML=`<div class="wHead"><span class="wTit">🎓 Últimas notas</span><button class="wLink" id="btnVerNotas">Ver todas</button></div>`;
+    w.innerHTML=`<div class="wHead"><span class="wTit">🎓 Mis notas</span><button class="wLink" id="btnVerNotas">Ver todas</button></div>`;
     const chips=document.createElement("div"); chips.className="chips";
-    NOTAS.slice(0,3).forEach(t=>{
-      const s=document.createElement("span"); s.className=`chip notaChip ${colorNota(Number(t.nota))}`;
-      s.textContent=`${limpiaNombreMateria(t.materia||"")||"General"}: ${t.nota}`;
-      chips.appendChild(s);
-    });
+    const proms=promediosPorMateria();
+    proms.slice(0,4).forEach(p=>chips.appendChild(chipPromedio(p)));
     w.appendChild(chips);
-    // la última nota floja por materia → empuje a reforzar
+    // la nota más reciente floja → empuje a reforzar (con fotos del examen)
     const floja=NOTAS.find(t=>Number(t.nota)<NOTA_REFUERZO && t.materia);
     if(floja){
       const b=document.createElement("button"); b.className="otros refuerzo";
       b.textContent=`💪 ${limpiaNombreMateria(floja.materia)} se puede reforzar →`;
-      b.onclick=()=>irAPractica(floja.materia);
+      b.onclick=()=>irARefuerzo(floja);
       w.appendChild(b);
     }
     box.appendChild(w);
     const link=w.querySelector("#btnVerNotas"); if(link) link.onclick=()=>verTab("agenda");
   }
+  // ───────── refuerzo desde una nota floja (con fotos del examen corregido) ─────────
+  // Al tocar "Reforzar" en una nota, se abre la materia en modo refuerzo: un banner
+  // invita a subir fotos del EXAMEN CORREGIDO (van a la IA al momento, NO se guardan)
+  // y la generación ataca justo las preguntas que salieron mal.
+  let REFUERZO=null;   // {materia, desc}
+  function irARefuerzo(t){
+    REFUERZO={ materia:t.materia, desc:(t.descripcion||"tu examen") };
+    irAPractica(t.materia, "retos");   // reforzar = practicar
+    pintarRefuerzoBanner();
+  }
+  function pintarRefuerzoBanner(){
+    const b=$("#refuerzoBanner"); if(!b) return;
+    if(!REFUERZO){ b.classList.add("hidden"); b.innerHTML=""; return; }
+    b.innerHTML=`<p class="refTit">💪 Reforzando: ${escapeHtml(REFUERZO.desc)}</p>
+      <p class="refTxt">Escoge el tema del examen y, si puedes, 📸 súbele fotos del examen corregido en "Mis apuntes": la práctica atacará justo lo que salió mal. Las fotos no se guardan.</p>`;
+    b.classList.remove("hidden");
+  }
+  function limpiarRefuerzo(){ REFUERZO=null; pintarRefuerzoBanner(); }
+
   let nMatSel="";
   function abrirFormNota(){
     $("#formNota").classList.remove("hidden");
@@ -702,13 +747,16 @@
   }
 
   function verMaterias(){ $("#paneTemas").classList.add("hidden"); $("#paneErrores").classList.add("hidden"); $("#paneMaterias").classList.remove("hidden"); }
-  $("#btnBack").onclick = ()=>{ temaSel=null; $("#results").innerHTML=""; fotos=[]; pintarFotos(); verMaterias(); };
+  $("#btnBack").onclick = ()=>{ temaSel=null; $("#results").innerHTML=""; fotos=[]; pintarFotos(); limpiarRefuerzo(); verMaterias(); };
 
   function abrirMateria(m){
     materiaSel=m; temaSel=null; clearOtro(); $("#results").innerHTML="";
     fotos=[]; pintarFotos();
     const esProx = origen==="proximo";
     if(!esProx) marcarAulaVista(m);   // abrirla marca las novedades 🆕 como vistas
+    // banner de refuerzo: solo si esta materia es la de la nota floja
+    if(REFUERZO && norm(m.nombre)!==norm(REFUERZO.materia||"")) limpiarRefuerzo();
+    else pintarRefuerzoBanner();
     $("#tituloMateria").textContent = `${iconMateria(m.nombre)}  ${limpiaNombreMateria(m.nombre)}`;
     // las fotos del cuaderno solo aplican a las materias actuales
     $("#pasoFotos").classList.toggle("hidden", esProx);
@@ -969,6 +1017,8 @@
         token:(!esProx && SESION && SESION.token)||null, fotos: esProx?[]:fotos };
       if(via==="guia"){ body.soloCurado=true; body.vistos=vistosDe(mat,tema,modoSel,gr); }
       else { body.sinCurado=true; body.nocache=!!opts.nocache; }
+      // refuerzo activo + fotos = son fotos del EXAMEN CORREGIDO (la IA ataca lo que falló)
+      if(REFUERZO && usaFotos) body.examenFoto=true;
       const r = await fetch(API_GENERAR,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
       let d;
       try { d = await r.json(); }

@@ -150,16 +150,18 @@ function esNumerica(txt) {
   return /matemát|matemat|lógic|logic|olimpiad/i.test(txt || "");
 }
 
-function armarPrompt({ modo, material, tienePdf, tieneFotos, grado, tema, materia, n, numerica }) {
+function armarPrompt({ modo, material, tienePdf, tieneFotos, fotosExamen, grado, tema, materia, n, numerica }) {
   const ctx = material
     ? `Este es el material REAL del aula del alumno (lo que está viendo):\n\n${material}\n`
     : `Tema: "${tema}" (materia: ${materia || "General"}).\n`;
   const pdfNota = tienePdf
     ? `\nTe adjunto la(s) guía(s)/hoja(s) en PDF con la teoría y los ejercicios reales del tema. Léelas con atención y básate en su contenido.\n`
     : ``;
-  const fotosNota = tieneFotos
-    ? `\nEl alumno también adjuntó fotos de sus apuntes del cuaderno, tomados en sus clases presenciales. Léelas con atención y úsalas como información complementaria al material del aula. La letra de un niño puede ser difícil de leer: interpreta y aprovecha lo que puedas con razonable seguridad, y NO inventes lo que sea ilegible.\n`
-    : ``;
+  const fotosNota = !tieneFotos
+    ? ``
+    : fotosExamen
+    ? `\nEl alumno adjuntó fotos de su EXAMEN CORREGIDO por el docente. Analízalas con atención: identifica las preguntas donde se equivocó o perdió puntos (marcas, tachaduras, correcciones del docente, puntajes bajos) y ENFOCA lo que generes en reforzar EXACTAMENTE esos puntos débiles: mismos tipos de pregunta y mismos conceptos donde falló, con dificultad similar a la del examen. Lo que ya respondió bien no necesita refuerzo (inclúyelo solo de repaso ligero si sobra espacio). NO inventes lo que sea ilegible.\n`
+    : `\nEl alumno también adjuntó fotos de sus apuntes del cuaderno, tomados en sus clases presenciales. Léelas con atención y úsalas como información complementaria al material del aula. La letra de un niño puede ser difícil de leer: interpreta y aprovecha lo que puedas con razonable seguridad, y NO inventes lo que sea ilegible.\n`;
   const base = `Eres un docente de ${grado} en Venezuela, cálido y claro. Escribe en español neutro y claro, con palabras apropiadas para ${grado}. No uses jerga regional ni saludos coloquiales como "chamos", "chamo", "épale" o "pana"; dirígete al alumno de forma sencilla y neutra.
 
 FORMATO (muy importante): la app muestra tu texto TAL CUAL, sin interpretar Markdown ni respetar alineaciones. Escribe SIEMPRE en texto plano y respeta estas reglas en TODOS los campos de texto:
@@ -504,7 +506,9 @@ export default async function handler(req, res) {
 
     // ¿el tema es numérico? (por materia o por el título del tema)
     const numerica = esNumerica(materia) || esNumerica(tema);
-    const prompt = armarPrompt({ modo, material, tienePdf: pdfs.length > 0, tieneFotos, grado, tema, materia, n, numerica });
+    // examenFoto: las fotos son de un examen corregido (modo refuerzo) → la IA ataca lo que falló
+    const fotosExamen = tieneFotos && !!(req.body && req.body.examenFoto);
+    const prompt = armarPrompt({ modo, material, tienePdf: pdfs.length > 0, tieneFotos, fotosExamen, grado, tema, materia, n, numerica });
 
     // Partes del request: el prompt + cada PDF + cada foto del cuaderno como inline_data.
     const parts = [{ text: prompt }];
