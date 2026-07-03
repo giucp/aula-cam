@@ -860,11 +860,18 @@
     window.scrollTo({top:0,behavior:"smooth"});
   }
 
-  // temas del próximo año (currículo guardado: grupos por lapso con strings) — acordeón
+  // temas del próximo año (currículo guardado: grupos por lapso) — acordeón.
+  // Cada tema puede ser un string (temario viejo) o {t:"título", d:"enfoque"}: el
+  // "enfoque" (subtemas, nivel, errores típicos) se guarda en PROX_DESC y se manda
+  // como contexto a la IA para que genere ESPECÍFICO y no genérico.
+  let PROX_DESC = {};
   function pintarGruposProximo(grupos){
     const cont = $("#grupos"); cont.innerHTML="";
+    PROX_DESC = {};
     const varios = grupos.length>1;
-    const mkChip=(t)=>{
+    const mkChip=(x)=>{
+      const t = (x && typeof x==="object") ? x.t : x;
+      if(x && typeof x==="object" && x.d) PROX_DESC[norm(t)] = x.d;
       const b=document.createElement("button"); b.className="chip"; b.setAttribute("aria-pressed","false");
       b.textContent=t; b.dataset.tema=t;
       b.onclick=()=>{ temaSel=(temaSel===t)?null:t; clearOtro(); alSeleccionarTema(); };
@@ -1085,7 +1092,10 @@
     const mat=(materiaSel&&materiaSel.nombre)||"General"; const gr=gradoActivo();
     // tema libre: pasamos "datos clave" como contexto para la IA (más fotos).
     const datosClave = ($("#otroDatos") && $("#otroDatos").value.trim()) || "";
-    const contexto = esProx ? null
+    // próximo año: el "enfoque" del tema (subtemas, nivel, errores típicos del
+    // temario) va como contexto para que la IA genere específico, no genérico.
+    const descProx = esProx ? (PROX_DESC[norm(tema)] || "") : "";
+    const contexto = esProx ? (descProx ? { materia:mat, tema, resumen:descProx, datosClave:descProx } : null)
       : esLibre ? { materia:mat, tema, resumen:datosClave, datosClave }
       : construirContexto(tema);
     ultimoContexto = contexto;
@@ -1484,7 +1494,10 @@
   function iconMateria(nombre){
     const n=(nombre||"").toLowerCase();
     const map=[["lógic","🧠"],["logic","🧠"],["matemát","🔢"],["matemat","🔢"],["lenguaje","📖"],["castellano","📖"],
-      ["inglés","🔤"],["ingles","🔤"],["natural","🔬"],["social","🌎"],["físic","⚽"],["fisic","⚽"],
+      ["lengua","📖"],["inglés","🔤"],["ingles","🔤"],["natural","🔬"],["social","🌎"],
+      ["educación f","⚽"],["educacion f","⚽"],["físic","🧲"],["fisic","🧲"],["químic","⚗️"],["quimic","⚗️"],
+      ["biolog","🌱"],["geograf","🗺️"],["historia","🗺️"],["metodolog","🔍"],["orientac","🧭"],
+      ["electrón","⚡"],["electron","⚡"],["puente","🌉"],
       ["estétic","🎨"],["estetic","🎨"],["arte","🎨"],["músic","🎵"],["music","🎵"],["religi","✝️"],
       ["informát","💻"],["informat","💻"],["robót","🤖"],["robot","🤖"],["emocional","💗"],
       ["lideraz","🎤"],["comunic","🎤"],["olimpiad","🏅"],
@@ -1495,8 +1508,11 @@
   function colorMateria(nombre){
     const n=(nombre||"").toLowerCase();
     const map=[["lógic","#7C4DFF"],["logic","#7C4DFF"],["matemát","#12B5A4"],["matemat","#12B5A4"],
-      ["lenguaje","#FF6B3D"],["inglés","#3A8DFF"],["ingles","#3A8DFF"],["natural","#1FA86A"],["social","#F2934A"],
-      ["físic","#EF476F"],["fisic","#EF476F"],["estétic","#E84CA0"],["estetic","#E84CA0"],["arte","#E84CA0"],
+      ["lenguaje","#FF6B3D"],["lengua","#FF6B3D"],["inglés","#3A8DFF"],["ingles","#3A8DFF"],["natural","#1FA86A"],["social","#F2934A"],
+      ["educación f","#EF476F"],["educacion f","#EF476F"],["físic","#D7263D"],["fisic","#D7263D"],
+      ["químic","#0FA3B1"],["quimic","#0FA3B1"],["biolog","#1FA86A"],["geograf","#F2934A"],["historia","#F2934A"],
+      ["metodolog","#5A6B8C"],["orientac","#6C7BD1"],["electrón","#F4A300"],["electron","#F4A300"],["puente","#8E5AE8"],
+      ["estétic","#E84CA0"],["estetic","#E84CA0"],["arte","#E84CA0"],
       ["músic","#9B5DE5"],["music","#9B5DE5"],["religi","#6C7BD1"],["informát","#2DA8B8"],["informat","#2DA8B8"],
       ["robót","#5A6B8C"],["robot","#5A6B8C"],["emocional","#FF74A3"],["lideraz","#F4A300"],["comunic","#F4A300"],
       ["olimpiad","#FFB703"]];

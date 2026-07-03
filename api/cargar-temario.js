@@ -48,6 +48,8 @@ export default async function handler(req, res) {
     for (const [grado, lista] of Object.entries(TEMARIO)) {
       for (const m of lista) {
         const totalTemas = (m.grupos || []).reduce((s, g) => s + ((g.temas || []).length), 0);
+        // Los temas pueden ser string (formato viejo) o {t,d} (con enfoque para la IA);
+        // se guardan tal cual — el front acepta ambos y usa "d" como contexto.
         await upsert(cfg, {
           grado,
           materia_id: m.id,
