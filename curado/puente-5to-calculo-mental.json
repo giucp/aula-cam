@@ -1,0 +1,111 @@
+{
+  "materia": "Puente a 5to grado",
+  "tema": "Cálculo mental y estimación",
+  "grado": "5to grado",
+  "fuentes": ["Guía de refuerzo Aula CAM: llegar firme a 5to grado"],
+  "resumen": {
+    "titulo": "Calcular de cabeza y estimar: tus superpoderes con los números",
+    "intro": "Calcular mentalmente (sin lápiz ni calculadora) y estimar (saber 'más o menos cuánto da') te hacen más rápida en clase y te salvan de errores: si tu cuenta escrita da algo muy lejos de tu estimación, algo salió mal. Aquí aprendes los trucos.",
+    "secciones": [
+      {
+        "titulo": "Redondear: la base de todo",
+        "explicacion": "Redondear es llevar un número al valor 'redondo' más cercano. A la decena: miras las unidades; si son 5 o más, subes a la decena siguiente; si son menos de 5, bajas. 47 → 50 (porque 7 ≥ 5) y 42 → 40 (porque 2 < 5). A la centena es igual pero mirando las decenas: 128 → 100 (porque 28 < 50) y 172 → 200 (porque 72 ≥ 50).",
+        "pasos": [
+          "Decide a qué redondeas: decena o centena.",
+          "Mira la cifra siguiente: 5 o más → sube; menos de 5 → baja.",
+          "Reemplaza el resto por ceros."
+        ],
+        "ejemplo": "Redondear 86 a la decena: las unidades son 6 (≥5), así que sube a 90."
+      },
+      {
+        "titulo": "Estimar sumas y restas",
+        "explicacion": "Para estimar una suma o resta, redondea los números a valores fáciles y opera con ellos. No da el resultado exacto, pero sí uno muy cercano, suficiente para saber si tu cuenta escrita 'tiene sentido'. Por ejemplo: 49 + 32 ≈ 50 + 30 = 80 (el exacto es 81, quedó cerquita).",
+        "pasos": [
+          "Redondea cada número a la decena (o centena) más cercana.",
+          "Suma o resta los números redondeados de cabeza.",
+          "Usa el resultado como control: el exacto debe quedar cerca."
+        ],
+        "ejemplo": "198 + 305: redondeo a 200 + 300 = 500. El exacto es 503: la estimación avisó por dónde viene."
+      },
+      {
+        "titulo": "Trucos de suma y resta mental",
+        "explicacion": "Truco 1, COMPENSAR: para sumar 29, suma 30 y quita 1 (34 + 29 = 34 + 30 − 1 = 63). Truco 2, DESCOMPONER: parte un número en decenas y unidades y súmalas por separado (46 + 23 = 46 + 20 + 3 = 69). Truco 3, COMPLETAR LA DECENA: para 38 + 7, lleva 38 a 40 con 2 y agrega los 5 que sobran: 45.",
+        "pasos": [
+          "Números que terminan en 9: suma la decena redonda y resta 1.",
+          "Números grandes: suma primero las decenas, luego las unidades.",
+          "Busca completar decenas: son más fáciles de manejar."
+        ],
+        "ejemplo": "99 + 56: sumo 100 + 56 = 156 y quito 1: 155."
+      },
+      {
+        "titulo": "Trucos de multiplicación mental",
+        "explicacion": "Por 10 se agrega un cero (23 × 10 = 230). Por 5: multiplica por 10 y saca la mitad (18 × 5 = 180 ÷ 2 = 90). Por 4: doble del doble (15 × 4 = 30 → 60). Por 9: multiplica por 10 y resta el número (9 × 14 = 140 − 14 = 126). Y recuerda que 25 × 4 = 100: esa pareja aparece muchísimo.",
+        "pasos": [
+          "×10 → agrega un cero; ×100 → dos ceros.",
+          "×5 → ×10 y la mitad. ×4 → doble del doble.",
+          "×9 → ×10 menos el número una vez."
+        ],
+        "ejemplo": "16 × 5: hago 16 × 10 = 160 y la mitad: 80."
+      },
+      {
+        "titulo": "Usar la estimación para atrapar errores",
+        "explicacion": "Este es el superpoder: ANTES de aceptar un resultado, pregúntate si es razonable. Si compras 3 cosas de 19 Bs, la cuenta ronda los 60 Bs (3 × 20); si tu resultado dice 27 Bs, algo se cayó. Estimar no reemplaza la cuenta exacta: la VIGILA.",
+        "pasos": [
+          "Antes de calcular, estima el tamaño del resultado.",
+          "Haz la cuenta exacta.",
+          "Compara: si están muy lejos, revisa la cuenta."
+        ],
+        "ejemplo": "512 − 289: estimo 500 − 300 = 200. Si mi resta escrita me diera 323, la reviso: el exacto es 223, cerca de la estimación."
+      }
+    ],
+    "idea_clave": "Redondea para estimar (5 o más sube, menos de 5 baja), usa trucos para calcular de cabeza (compensar, descomponer, ×5 = ×10 y mitad) y compara siempre tu resultado exacto con la estimación para atrapar errores."
+  },
+  "retos": [
+    { "enunciado": "Redondea 47 a la decena más cercana.", "pista": "Mira las unidades: ¿7 es 5 o más?", "solucion": "50. Las unidades son 7 (5 o más), así que sube: 47 → 50.", "figura": "" },
+    { "enunciado": "Redondea 42 a la decena más cercana.", "pista": "Mira las unidades: ¿2 llega a 5?", "solucion": "40. Las unidades son 2 (menos de 5), así que baja: 42 → 40.", "figura": "" },
+    { "enunciado": "Redondea 128 a la centena más cercana.", "pista": "Mira las decenas: ¿28 llega a 50?", "solucion": "100. Las dos últimas cifras son 28 (menos de 50), así que baja: 128 → 100.", "figura": "" },
+    { "enunciado": "Redondea 172 a la centena más cercana.", "pista": "¿72 es 50 o más?", "solucion": "200. 72 es 50 o más, así que sube: 172 → 200.", "figura": "" },
+    { "enunciado": "Estima 49 + 32 redondeando a la decena.", "pista": "49 ≈ 50 y 32 ≈ 30.", "solucion": "80. 50 + 30 = 80 (el exacto es 81, quedó cerca).", "figura": "" },
+    { "enunciado": "Estima 198 + 305 redondeando a la centena.", "pista": "198 ≈ 200 y 305 ≈ 300.", "solucion": "500. 200 + 300 = 500 (el exacto es 503).", "figura": "" },
+    { "enunciado": "Calcula de cabeza con el truco de compensar: 34 + 29", "pista": "Suma 30 y quita 1.", "solucion": "63. 34 + 30 = 64, menos 1 = 63.", "figura": "" },
+    { "enunciado": "Calcula de cabeza: 99 + 56", "pista": "Suma 100 y quita 1.", "solucion": "155. 100 + 56 = 156, menos 1 = 155.", "figura": "" },
+    { "enunciado": "Calcula de cabeza descomponiendo: 46 + 23", "pista": "Suma primero 20 y luego 3.", "solucion": "69. 46 + 20 = 66, y 66 + 3 = 69.", "figura": "" },
+    { "enunciado": "Calcula de cabeza: 38 + 7 completando la decena.", "pista": "Lleva 38 a 40 con 2, y agrega lo que sobra.", "solucion": "45. 38 + 2 = 40, y quedan 5 por sumar: 40 + 5 = 45.", "figura": "" },
+    { "enunciado": "Calcula de cabeza: 23 × 10", "pista": "Multiplicar por 10 es agregar un cero.", "solucion": "230. 23 × 10 = 230.", "figura": "" },
+    { "enunciado": "Calcula de cabeza con el truco del 5: 18 × 5", "pista": "Haz ×10 y saca la mitad.", "solucion": "90. 18 × 10 = 180, y la mitad es 90.", "figura": "" },
+    { "enunciado": "Calcula de cabeza con doble del doble: 15 × 4", "pista": "Duplica 15 dos veces.", "solucion": "60. 15 → 30 → 60.", "figura": "" },
+    { "enunciado": "Calcula de cabeza con el truco del 9: 14 × 9", "pista": "Haz ×10 y resta el número una vez.", "solucion": "126. 14 × 10 = 140, menos 14 = 126.", "figura": "" },
+    { "enunciado": "Compras 3 juguetes de 19 Bs cada uno. Estima cuánto gastarás redondeando el precio a la decena.", "pista": "19 ≈ 20.", "solucion": "60 Bs aproximadamente. 3 × 20 = 60 (el exacto es 57, quedó cerca).", "figura": "" },
+    { "enunciado": "Hiciste la resta 512 − 289 y te dio 323. Estima con centenas y di si el resultado es razonable.", "pista": "500 − 300 = ?", "solucion": "No es razonable. La estimación da 500 − 300 = 200, y 323 queda lejos; al revisar, la resta correcta es 223.", "figura": "" }
+  ],
+  "quiz": [
+    { "pregunta": "¿Cuánto es 47 redondeado a la decena más cercana?", "opciones": ["50", "40", "45", "47"], "correcta": 0, "explicacion": "Las unidades son 7 (5 o más), así que sube a 50.", "figura": "" },
+    { "pregunta": "¿Cuánto es 83 redondeado a la decena más cercana?", "opciones": ["80", "90", "85", "100"], "correcta": 0, "explicacion": "Las unidades son 3 (menos de 5), así que baja a 80.", "figura": "" },
+    { "pregunta": "¿Cuánto es 350 redondeado a la centena más cercana?", "opciones": ["400", "300", "350", "500"], "correcta": 0, "explicacion": "Las dos últimas cifras son 50, y con 50 o más se sube: 350 → 400.", "figura": "" },
+    { "pregunta": "Estimando con decenas, ¿cuánto da 51 + 38 aproximadamente?", "opciones": ["90", "80", "100", "70"], "correcta": 0, "explicacion": "51 ≈ 50 y 38 ≈ 40: 50 + 40 = 90 (el exacto es 89).", "figura": "" },
+    { "pregunta": "Para sumar 29 de cabeza, el truco de compensar dice:", "opciones": ["Suma 30 y quita 1", "Suma 20 y quita 9", "Suma 29 de una vez", "Suma 30 y agrega 1"], "correcta": 0, "explicacion": "29 = 30 − 1: sumar la decena redonda y quitar 1 es mucho más fácil.", "figura": "" },
+    { "pregunta": "¿Cuánto es 45 + 29 de cabeza?", "opciones": ["74", "75", "64", "73"], "correcta": 0, "explicacion": "45 + 30 = 75, menos 1 = 74.", "figura": "" },
+    { "pregunta": "¿Cuánto es 99 + 43 de cabeza?", "opciones": ["142", "143", "132", "152"], "correcta": 0, "explicacion": "100 + 43 = 143, menos 1 = 142.", "figura": "" },
+    { "pregunta": "¿Cuánto es 24 × 10?", "opciones": ["240", "24", "2400", "34"], "correcta": 0, "explicacion": "Multiplicar por 10 es agregar un cero: 240.", "figura": "" },
+    { "pregunta": "Con el truco del 5, ¿cuánto es 16 × 5?", "opciones": ["80", "85", "160", "75"], "correcta": 0, "explicacion": "16 × 10 = 160 y la mitad es 80.", "figura": "" },
+    { "pregunta": "Con doble del doble, ¿cuánto es 13 × 4?", "opciones": ["52", "48", "26", "56"], "correcta": 0, "explicacion": "13 → 26 → 52.", "figura": "" },
+    { "pregunta": "Con el truco del 9, ¿cuánto es 12 × 9?", "opciones": ["108", "118", "98", "112"], "correcta": 0, "explicacion": "12 × 10 = 120, menos 12 = 108.", "figura": "" },
+    { "pregunta": "¿Cuánto es 25 × 4?", "opciones": ["100", "75", "125", "90"], "correcta": 0, "explicacion": "25 × 4 = 100: una pareja que conviene saber de memoria.", "figura": "" },
+    { "pregunta": "Compras 4 cuadernos de 21 Bs. Estimando con decenas, ¿cuánto gastarás aproximadamente?", "opciones": ["80 Bs", "60 Bs", "100 Bs", "40 Bs"], "correcta": 0, "explicacion": "21 ≈ 20 y 4 × 20 = 80 (el exacto es 84, cerca).", "figura": "" },
+    { "pregunta": "Tu suma escrita de 195 + 214 te dio 309. La estimación con centenas (200 + 200 = 400) te dice que:", "opciones": ["Hay que revisar: 309 queda lejos de 400", "Está perfecta", "La estimación está mal hecha", "Da igual, las estimaciones no sirven"], "correcta": 0, "explicacion": "El exacto es 409; el 309 tiene un error de centena. La estimación sirvió de alarma.", "figura": "" },
+    { "pregunta": "¿Cuánto es 62 − 29 de cabeza?", "opciones": ["33", "43", "32", "31"], "correcta": 0, "explicacion": "Resta 30 y devuelve 1: 62 − 30 = 32, más 1 = 33.", "figura": "" },
+    { "pregunta": "¿Para qué sirve estimar ANTES de hacer la cuenta exacta?", "opciones": ["Para saber por dónde debe venir el resultado y atrapar errores", "Para no tener que hacer nunca la cuenta exacta", "Para que la cuenta dé más grande", "Solo sirve en los exámenes"], "correcta": 0, "explicacion": "La estimación es el control de calidad: si el resultado exacto queda lejos de ella, casi seguro hay un error que revisar.", "figura": "" }
+  ],
+  "examen": [
+    { "pregunta": "Redondea 76 a la decena más cercana.", "respuesta": "80", "explicacion": "Las unidades son 6 (5 o más), así que sube: 76 → 80." },
+    { "pregunta": "Redondea 234 a la centena más cercana.", "respuesta": "200", "explicacion": "Las dos últimas cifras son 34 (menos de 50), así que baja: 234 → 200." },
+    { "pregunta": "Estima 48 + 27 redondeando a la decena.", "respuesta": "80", "explicacion": "48 ≈ 50 y 27 ≈ 30: 50 + 30 = 80 (el exacto es 75, cercano)." },
+    { "pregunta": "Calcula de cabeza: 56 + 29.", "respuesta": "85", "explicacion": "Compensando: 56 + 30 = 86, menos 1 = 85." },
+    { "pregunta": "Calcula de cabeza: 99 + 78.", "respuesta": "177", "explicacion": "100 + 78 = 178, menos 1 = 177." },
+    { "pregunta": "Calcula de cabeza: 14 × 5.", "respuesta": "70", "explicacion": "14 × 10 = 140 y la mitad es 70." },
+    { "pregunta": "Calcula de cabeza: 16 × 4.", "respuesta": "64", "explicacion": "Doble del doble: 16 → 32 → 64." },
+    { "pregunta": "Calcula de cabeza: 15 × 9.", "respuesta": "135", "explicacion": "15 × 10 = 150, menos 15 = 135." },
+    { "pregunta": "Compras 5 helados de 11 Bs. Estima el gasto redondeando a la decena y di el exacto.", "respuesta": "Estimación 50 Bs; exacto 55 Bs", "explicacion": "11 ≈ 10 y 5 × 10 = 50; el exacto es 5 × 11 = 55, cerca de la estimación." },
+    { "pregunta": "Tu resta 703 − 398 te dio 205. Estima con centenas y di si ese resultado es razonable.", "respuesta": "No es razonable: la estimación da 300 y 205 queda lejos", "explicacion": "Estimando: 700 − 400 = 300. Como 205 queda lejos de 300, hay que revisar la cuenta: la resta correcta es 703 − 398 = 305, que sí queda cerca de la estimación." }
+  ]
+}

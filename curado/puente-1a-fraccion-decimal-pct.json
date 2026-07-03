@@ -1,0 +1,111 @@
+{
+  "materia": "Puente al Bachillerato",
+  "tema": "Fracciones, decimales y porcentajes son lo mismo",
+  "grado": "1er año",
+  "fuentes": ["Guía de refuerzo Aula CAM: del 6to grado al 1er año"],
+  "resumen": {
+    "titulo": "Un mismo número con tres trajes: fracción, decimal y porcentaje",
+    "intro": "En bachillerato vas a saltar todo el tiempo entre fracciones, decimales y porcentajes: en Matemática, en Física y hasta en las notas. La clave es entender que muchas veces son EL MISMO número escrito de tres maneras, y aprender a cambiarle el traje en segundos.",
+    "secciones": [
+      {
+        "titulo": "Las tres formas y los equivalentes que hay que saberse",
+        "explicacion": "Una fracción (3/4), un decimal (0,75) y un porcentaje (75%) pueden representar exactamente la misma cantidad. Hay una lista corta de equivalentes que conviene saber de memoria porque aparecen en todos lados: 1/2 = 0,5 = 50%; 1/4 = 0,25 = 25%; 3/4 = 0,75 = 75%; 1/5 = 0,2 = 20%; 1/10 = 0,1 = 10%; 1 entero = 1,0 = 100%.",
+        "pasos": [
+          "Memoriza los equivalentes clásicos (1/2, 1/4, 3/4, 1/5, 1/10).",
+          "Cuando veas uno, piensa en sus otros dos trajes.",
+          "100% es el entero completo; más de 100% es más de un entero."
+        ],
+        "ejemplo": "Sacaste 15 puntos de 20 en un examen: 15/20 = 3/4 = 0,75 = 75% del examen correcto."
+      },
+      {
+        "titulo": "De fracción a decimal y de decimal a porcentaje",
+        "explicacion": "De fracción a decimal: DIVIDE el numerador entre el denominador (3/5 = 3 ÷ 5 = 0,6). De decimal a porcentaje: MULTIPLICA por 100, que es correr la coma dos lugares a la derecha (0,6 → 60%). Encadenando las dos, pasas de fracción a porcentaje: 3/5 = 0,6 = 60%.",
+        "pasos": [
+          "Fracción → decimal: numerador ÷ denominador.",
+          "Decimal → porcentaje: corre la coma 2 lugares a la derecha (×100).",
+          "Fracción → porcentaje: haz los dos pasos seguidos."
+        ],
+        "ejemplo": "1/8 = 1 ÷ 8 = 0,125 = 12,5%."
+      },
+      {
+        "titulo": "El camino de vuelta: de porcentaje a fracción",
+        "explicacion": "Un porcentaje es una fracción con denominador 100: 40% = 40/100. Después se simplifica dividiendo arriba y abajo por el mismo número: 40/100 = 4/10 = 2/5. Y de porcentaje a decimal: divide entre 100, o sea corre la coma dos lugares a la izquierda (40% = 0,4).",
+        "pasos": [
+          "Porcentaje → fracción: escribe el número sobre 100.",
+          "Simplifica dividiendo arriba y abajo por el mismo número.",
+          "Porcentaje → decimal: corre la coma 2 lugares a la izquierda."
+        ],
+        "ejemplo": "25% = 25/100 = 1/4 (dividiendo arriba y abajo entre 25). Y 25% = 0,25."
+      },
+      {
+        "titulo": "Porcentaje de una cantidad (regla general y atajos)",
+        "explicacion": "La regla general para hallar el x% de una cantidad: multiplica la cantidad por x y divide entre 100. Por ejemplo, 15% de 200 = (15 × 200) ÷ 100 = 30. Y los atajos de siempre: 50% es la mitad, 25% la cuarta parte, 10% dividir entre 10, 20% dividir entre 5. Con el 10% puedes armar casi todo: el 30% es tres veces el 10%.",
+        "pasos": [
+          "Regla general: (porcentaje × cantidad) ÷ 100.",
+          "Atajos: 50% mitad, 25% cuarta parte, 10% ÷10, 20% ÷5.",
+          "Combina: 30% = 10% × 3; 15% = 10% + la mitad del 10%."
+        ],
+        "ejemplo": "15% de 200: el 10% es 20 y su mitad es 10, así que 20 + 10 = 30. (Con la regla general: 15 × 200 ÷ 100 = 30, igual.)"
+      },
+      {
+        "titulo": "Fracciones con signo: el signo también viaja",
+        "explicacion": "En bachillerato las fracciones pueden ser negativas: -1/2 está a la izquierda del cero, igual que los enteros negativos. Las reglas que ya sabes se mantienen: para sumar, común denominador (cuidando el signo de cada una); para multiplicar, la regla de signos de siempre (signos iguales positivo, distintos negativo). El signo 'viaja' con el número en cada paso.",
+        "pasos": [
+          "Trata el signo como parte del número: -1/2 es 'menos un medio'.",
+          "Suma/resta: común denominador y opera los numeradores CON su signo.",
+          "Multiplica/divide: primero decide el signo (regla de signos), luego opera."
+        ],
+        "ejemplo": "-1/2 + 3/2 = 2/2 = 1 (los numeradores: -1 + 3 = 2). Y (-1/2) × (1/3) = -1/6 (signos distintos → negativo)."
+      }
+    ],
+    "idea_clave": "Fracción, decimal y porcentaje son el mismo número con distinto traje: fracción→decimal dividiendo, decimal→porcentaje corriendo la coma 2 lugares, porcentaje→fracción poniendo sobre 100 y simplificando; y el x% de una cantidad es (x × cantidad) ÷ 100."
+  },
+  "retos": [
+    { "enunciado": "Escribe 3/5 como decimal y como porcentaje.", "pista": "Divide 3 entre 5 y luego corre la coma.", "solucion": "0,6 y 60%. 3 ÷ 5 = 0,6, y 0,6 × 100 = 60%.", "figura": "" },
+    { "enunciado": "Escribe 1/8 como decimal.", "pista": "Divide 1 entre 8.", "solucion": "0,125. 1 ÷ 8 = 0,125.", "figura": "" },
+    { "enunciado": "Escribe 0,75 como fracción simplificada.", "pista": "0,75 = 75/100; simplifica.", "solucion": "3/4. 75/100 dividido arriba y abajo entre 25 da 3/4.", "figura": "" },
+    { "enunciado": "Escribe 40% como fracción simplificada.", "pista": "Pon 40 sobre 100 y simplifica.", "solucion": "2/5. 40/100 = 4/10 = 2/5.", "figura": "" },
+    { "enunciado": "Escribe 0,3 como porcentaje.", "pista": "Corre la coma dos lugares a la derecha.", "solucion": "30%. 0,3 × 100 = 30%.", "figura": "" },
+    { "enunciado": "Escribe 85% como decimal.", "pista": "Corre la coma dos lugares a la izquierda.", "solucion": "0,85. 85 ÷ 100 = 0,85.", "figura": "" },
+    { "enunciado": "¿Cuánto es 15% de 200?", "pista": "Regla general: (15 × 200) ÷ 100. O usa el 10% + su mitad.", "solucion": "30. (15 × 200) ÷ 100 = 3000 ÷ 100 = 30.", "figura": "" },
+    { "enunciado": "¿Cuánto es 20% de 45?", "pista": "El 20% es dividir entre 5.", "solucion": "9. 45 ÷ 5 = 9.", "figura": "" },
+    { "enunciado": "¿Cuánto es 30% de 80?", "pista": "Halla el 10% y multiplícalo por 3.", "solucion": "24. El 10% de 80 es 8, y 8 × 3 = 24.", "figura": "" },
+    { "enunciado": "¿Cuánto es 75% de 32?", "pista": "El 75% son tres cuartas partes.", "solucion": "24. La cuarta parte de 32 es 8, y 8 × 3 = 24.", "figura": "" },
+    { "enunciado": "Calcula: -1/2 + 3/2", "pista": "Mismo denominador: opera los numeradores con su signo.", "solucion": "1. Los numeradores: -1 + 3 = 2, queda 2/2 = 1.", "figura": "" },
+    { "enunciado": "Calcula: (-1/2) × (1/3)", "pista": "Signos distintos → negativo; multiplica derecho con derecho.", "solucion": "-1/6. 1×1 = 1 y 2×3 = 6; signos distintos → -1/6.", "figura": "" },
+    { "enunciado": "Calcula: (-3/4) × (-4/3)", "pista": "Signos iguales → positivo; simplifica en cruz.", "solucion": "1. 3×4 = 12 y 4×3 = 12, queda 12/12 = 1; dos signos menos → positivo.", "figura": "" },
+    { "enunciado": "Un juego cuesta 60 Bs y tiene 25% de descuento. ¿Cuánto pagas?", "pista": "Calcula el descuento (la cuarta parte) y réstalo.", "solucion": "45 Bs. El 25% de 60 es 15; pagas 60 − 15 = 45 Bs.", "figura": "" },
+    { "enunciado": "Sacaste 15 de 20 puntos. ¿Qué porcentaje del examen respondiste bien?", "pista": "15/20 simplificado es un equivalente clásico.", "solucion": "75%. 15/20 = 3/4 = 0,75 = 75%.", "figura": "" },
+    { "enunciado": "Ordena de menor a mayor: 0,4 ; 1/2 ; 35%", "pista": "Pasa todos al mismo traje (por ejemplo decimal).", "solucion": "35% < 0,4 < 1/2. En decimal: 0,35 < 0,40 < 0,50.", "figura": "" }
+  ],
+  "quiz": [
+    { "pregunta": "¿Cómo se escribe 3/5 como porcentaje?", "opciones": ["60%", "35%", "53%", "0,6%"], "correcta": 0, "explicacion": "3 ÷ 5 = 0,6 y la coma corre dos lugares: 60%.", "figura": "" },
+    { "pregunta": "¿Cómo se escribe 0,25 como fracción simplificada?", "opciones": ["1/4", "1/25", "2/5", "25/10"], "correcta": 0, "explicacion": "0,25 = 25/100, y dividiendo arriba y abajo entre 25 queda 1/4.", "figura": "" },
+    { "pregunta": "¿Cómo se escribe 20% como fracción simplificada?", "opciones": ["1/5", "1/20", "2/10", "1/2"], "correcta": 0, "explicacion": "20/100 = 2/10 = 1/5.", "figura": "" },
+    { "pregunta": "¿Cómo se escribe 7/10 como decimal?", "opciones": ["0,7", "7,10", "0,07", "1,7"], "correcta": 0, "explicacion": "7 ÷ 10 = 0,7.", "figura": "" },
+    { "pregunta": "¿Cuánto es 15% de 300?", "opciones": ["45", "30", "15", "50"], "correcta": 0, "explicacion": "(15 × 300) ÷ 100 = 45. (O: el 10% es 30 y el 5% es 15; 30 + 15 = 45.)", "figura": "" },
+    { "pregunta": "¿Cuánto es 20% de 60?", "opciones": ["12", "20", "30", "6"], "correcta": 0, "explicacion": "El 20% es dividir entre 5: 60 ÷ 5 = 12.", "figura": "" },
+    { "pregunta": "¿Cuánto es 75% de 40?", "opciones": ["30", "35", "10", "75"], "correcta": 0, "explicacion": "El 75% son tres cuartos: la cuarta parte de 40 es 10, y 10 × 3 = 30.", "figura": "" },
+    { "pregunta": "¿Cuál de estos NO equivale a 1/2?", "opciones": ["0,2", "0,5", "50%", "5/10"], "correcta": 0, "explicacion": "1/2 = 0,5 = 50% = 5/10. El distinto es 0,2, que equivale a 1/5 (20%).", "figura": "" },
+    { "pregunta": "¿Cuánto es -1/2 + 1/2?", "opciones": ["0", "1", "-1", "1/4"], "correcta": 0, "explicacion": "Un número y su opuesto se cancelan: -1/2 + 1/2 = 0.", "figura": "" },
+    { "pregunta": "¿Cuánto es (-2/3) × (3/4)?", "opciones": ["-1/2", "1/2", "-6/7", "-5/7"], "correcta": 0, "explicacion": "2×3 = 6 y 3×4 = 12: queda 6/12 = 1/2; signos distintos → -1/2.", "figura": "" },
+    { "pregunta": "Un pantalón de 80 Bs tiene 30% de descuento. ¿Cuánto es el descuento?", "opciones": ["24 Bs", "30 Bs", "8 Bs", "56 Bs"], "correcta": 0, "explicacion": "El 10% de 80 es 8, y el 30% es 8 × 3 = 24 Bs.", "figura": "" },
+    { "pregunta": "¿Qué porcentaje del examen es sacar 10 puntos de 20?", "opciones": ["50%", "10%", "20%", "25%"], "correcta": 0, "explicacion": "10/20 = 1/2 = 50%.", "figura": "" },
+    { "pregunta": "¿Cuál es MAYOR?", "opciones": ["0,7", "65%", "3/5", "1/2"], "correcta": 0, "explicacion": "En decimal: 0,7 contra 0,65, 0,6 y 0,5 → gana 0,7.", "figura": "" },
+    { "pregunta": "¿Cómo se escribe 1,5 como porcentaje?", "opciones": ["150%", "15%", "1,5%", "50%"], "correcta": 0, "explicacion": "1,5 × 100 = 150%. Más de 100% significa más de un entero.", "figura": "" },
+    { "pregunta": "¿Cuánto es 10% de 90 más 50% de 90?", "opciones": ["54", "60", "45", "9"], "correcta": 0, "explicacion": "El 10% de 90 es 9 y el 50% es 45; 9 + 45 = 54.", "figura": "" },
+    { "pregunta": "¿Cuál equivale a 3/4?", "opciones": ["75%", "34%", "0,34", "43%"], "correcta": 0, "explicacion": "3 ÷ 4 = 0,75 = 75%.", "figura": "" }
+  ],
+  "examen": [
+    { "pregunta": "Escribe 2/5 como decimal y como porcentaje.", "respuesta": "0,4 y 40%", "explicacion": "2 ÷ 5 = 0,4, y corriendo la coma dos lugares: 40%." },
+    { "pregunta": "Escribe 60% como fracción simplificada.", "respuesta": "3/5", "explicacion": "60/100 = 6/10 = 3/5." },
+    { "pregunta": "Escribe 0,9 como porcentaje y como fracción.", "respuesta": "90% y 9/10", "explicacion": "0,9 × 100 = 90%, y 0,9 = 9/10." },
+    { "pregunta": "¿Cuánto es 15% de 400?", "respuesta": "60", "explicacion": "(15 × 400) ÷ 100 = 60. (O: 10% es 40 y 5% es 20; 40 + 20 = 60.)" },
+    { "pregunta": "¿Cuánto es 20% de 35?", "respuesta": "7", "explicacion": "El 20% es dividir entre 5: 35 ÷ 5 = 7." },
+    { "pregunta": "¿Cuánto es 75% de 24?", "respuesta": "18", "explicacion": "La cuarta parte de 24 es 6, y 6 × 3 = 18." },
+    { "pregunta": "Calcula: -1/4 + 3/4.", "respuesta": "1/2", "explicacion": "Numeradores con signo: -1 + 3 = 2, queda 2/4 = 1/2." },
+    { "pregunta": "Calcula: (-1/2) × (-2/5).", "respuesta": "1/5", "explicacion": "1×2 = 2 y 2×5 = 10: queda 2/10 = 1/5; dos signos menos (signos iguales) → positivo." },
+    { "pregunta": "Una camisa de 50 Bs tiene 20% de descuento. ¿Cuánto pagas?", "respuesta": "40 Bs", "explicacion": "El 20% de 50 es 50 ÷ 5 = 10; pagas 50 − 10 = 40 Bs." },
+    { "pregunta": "Sacaste 16 puntos de 20 en un examen. ¿Qué porcentaje respondiste bien?", "respuesta": "80%", "explicacion": "16/20 = 4/5 = 0,8 = 80%." }
+  ]
+}

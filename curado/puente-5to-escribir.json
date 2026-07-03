@@ -1,0 +1,112 @@
+{
+  "materia": "Puente a 5to grado",
+  "tema": "Escribir un texto ordenado (borrador y revisión)",
+  "grado": "5to grado",
+  "fuentes": ["Guía de refuerzo Aula CAM: llegar firme a 5to grado"],
+  "resumen": {
+    "titulo": "Escribir bien: pensar, ordenar, escribir y revisar",
+    "intro": "En 5to grado vas a escribir cada vez más: cuentos, resúmenes, respuestas largas. Escribir bien no es magia, es un método de cuatro pasos: pensar las ideas, ordenarlas, escribir el borrador y REVISAR antes de entregar. El secreto que casi nadie usa: nadie escribe perfecto de una; los buenos escritores corrigen.",
+    "secciones": [
+      {
+        "titulo": "Antes de escribir: lluvia de ideas",
+        "explicacion": "No empieces a escribir de una. Primero piensa: ¿sobre qué voy a escribir? ¿qué quiero contar? Anota en una esquina todas las ideas que se te ocurran (palabras sueltas, sin oraciones completas). Después elige las mejores y decide en qué ORDEN van: qué va primero, qué va en el medio, cómo termina.",
+        "pasos": [
+          "Anota todas las ideas que se te ocurran (palabras sueltas).",
+          "Tacha las que no van y elige las mejores.",
+          "Numera el orden: qué va primero, qué después, cómo cierra."
+        ],
+        "ejemplo": "Para escribir sobre 'mi mascota': anoto perro - Toby - juega pelota - lo baño los sábados - ronca - lo quiero mucho. Elijo y ordeno: 1) quién es, 2) qué hace, 3) por qué lo quiero."
+      },
+      {
+        "titulo": "El texto con inicio, desarrollo y cierre",
+        "explicacion": "Un texto ordenado tiene tres partes: el INICIO presenta de qué vas a hablar; el DESARROLLO cuenta los detalles (es la parte más larga); y el CIERRE termina la idea (una conclusión, cómo acaba la historia, o qué sientes). Un texto sin cierre queda 'cortado', como una película que se apaga a la mitad.",
+        "pasos": [
+          "Inicio: presenta el tema o los personajes en 1 o 2 oraciones.",
+          "Desarrollo: cuenta los hechos o detalles en orden.",
+          "Cierre: termina con una conclusión o un final claro."
+        ],
+        "ejemplo": "Inicio: 'Mi mascota se llama Toby y es un perro juguetón.' Desarrollo: qué hace, cómo jugamos. Cierre: 'Por eso Toby es mi mejor amigo.'"
+      },
+      {
+        "titulo": "Oraciones claras y conectores",
+        "explicacion": "Las oraciones cortas y claras se entienden mejor que una oración larguísima llena de 'y... y... y...'. Cada oración empieza con MAYÚSCULA y termina con PUNTO. Para unir las ideas sin repetir 'y', usa conectores: primero, después, luego, entonces, porque, por eso, al final.",
+        "pasos": [
+          "Escribe oraciones cortas: una idea por oración.",
+          "Empieza con mayúscula y cierra con punto. Siempre.",
+          "Une las ideas con conectores variados (primero, después, porque, por eso)."
+        ],
+        "ejemplo": "En vez de 'fuimos a la playa y comimos y jugamos y nos bañamos y volvimos', mejor: 'Fuimos a la playa. Primero nos bañamos y después jugamos pelota. Al final comimos empanadas.'"
+      },
+      {
+        "titulo": "Revisar: el paso que te hace mejor que el resto",
+        "explicacion": "El borrador nunca es la versión final. Cuando termines, RELEE tu texto (mejor en voz baja, como si lo leyeras a otra persona) y busca: ¿se entiende?, ¿falta alguna mayúscula o punto?, ¿repetí mucho una palabra?, ¿alguna palabra está mal escrita? Corrige y recién entonces pasa en limpio.",
+        "pasos": [
+          "Relee tu texto completo, despacio.",
+          "Marca lo que suene raro o esté confuso.",
+          "Revisa mayúsculas, puntos y ortografía.",
+          "Corrige y pasa en limpio la versión final."
+        ],
+        "ejemplo": "Al releer notas que escribiste 'mi ermano', que faltó un punto y que usaste 'después' tres veces seguidas. Corriges: 'mi hermano', agregas el punto y cambias un 'después' por 'luego'."
+      },
+      {
+        "titulo": "Trucos contra la repetición",
+        "explicacion": "Repetir la misma palabra muchas veces hace pesado el texto. Trucos: usa sinónimos (perro → cachorro, mascota), usa pronombres (Toby → él), o reorganiza la oración. También evita empezar todas las oraciones igual ('Yo fui... Yo comí... Yo jugué...').",
+        "pasos": [
+          "Detecta la palabra repetida releyendo.",
+          "Cámbiala por un sinónimo o un pronombre.",
+          "Varía el comienzo de las oraciones."
+        ],
+        "ejemplo": "En vez de 'Toby come. Toby juega. Toby duerme.', mejor: 'Toby come y juega todo el día. Por la noche, él duerme a los pies de mi cama.'"
+      }
+    ],
+    "idea_clave": "Escribir bien es un método: lluvia de ideas, ordenarlas en inicio-desarrollo-cierre, oraciones cortas con mayúscula y punto unidas por conectores, y SIEMPRE releer y corregir antes de entregar."
+  },
+  "retos": [
+    { "enunciado": "Corrige esta oración: 'ayer fui al parque con mi mamá'", "pista": "Mira cómo empieza y cómo termina.", "solucion": "'Ayer fui al parque con mi mamá.' Faltaban la mayúscula inicial (Ayer) y el punto final.", "figura": "" },
+    { "enunciado": "Ordena estas tres partes de un texto: CIERRE: 'Por eso amo los sábados.' / INICIO: 'El sábado es mi día favorito.' / DESARROLLO: 'Ese día juego con mis primas y comemos torta.'", "pista": "Primero se presenta, luego se cuenta, al final se cierra.", "solucion": "1º 'El sábado es mi día favorito.' (inicio) 2º 'Ese día juego con mis primas y comemos torta.' (desarrollo) 3º 'Por eso amo los sábados.' (cierre).", "figura": "" },
+    { "enunciado": "Une estas dos ideas con un conector de causa: 'Llevé paraguas.' / 'Estaba lloviendo.'", "pista": "El conector 'porque' explica la causa.", "solucion": "'Llevé paraguas porque estaba lloviendo.' El conector porque une la acción con su causa.", "figura": "" },
+    { "enunciado": "Mejora esta oración larga separándola: 'fuimos a la playa y comimos y jugamos y nos bañamos y volvimos'", "pista": "Corta en oraciones y usa conectores como primero, después, al final.", "solucion": "Por ejemplo: 'Fuimos a la playa. Primero nos bañamos y después jugamos. Al final comimos y volvimos a casa.' Oraciones cortas + conectores en vez de tanta 'y'.", "figura": "" },
+    { "enunciado": "¿Qué le falta a este texto? 'Mi gata se llama Luna. Le gusta dormir en la ventana y perseguir moscas.'", "pista": "Tiene inicio y desarrollo. ¿Y la tercera parte?", "solucion": "Le falta el CIERRE. Por ejemplo: 'Por eso Luna es la reina de la casa.' Sin cierre, el texto queda cortado.", "figura": "" },
+    { "enunciado": "Haz una mini lluvia de ideas (4 palabras o frases cortas) para escribir sobre 'mi comida favorita'.", "pista": "Palabras sueltas: cuál es, cómo sabe, cuándo la comes, con quién.", "solucion": "Por ejemplo: arepa - queso - desayuno los domingos - la hace mi abuela. Cualquier lista de palabras que luego puedas ordenar sirve.", "figura": "" },
+    { "enunciado": "Arregla la repetición: 'Mi perro come. Mi perro juega. Mi perro duerme.'", "pista": "Usa 'él' o une las oraciones.", "solucion": "Por ejemplo: 'Mi perro come y juega todo el día. Por la noche, él duerme.' Se unen ideas y se usa el pronombre él para no repetir.", "figura": "" },
+    { "enunciado": "Corrige las mayúsculas: 'maría y yo vivimos en mérida. nos gusta el chocolate.'", "pista": "Nombres propios y comienzos de oración.", "solucion": "'María y yo vivimos en Mérida. Nos gusta el chocolate.' Mayúscula en nombres propios (María, Mérida) y al empezar cada oración (Nos).", "figura": "" },
+    { "enunciado": "Elige el mejor conector: 'Estudié mucho; ___, me fue bien en el examen.' (opciones: por eso / porque / pero)", "pista": "¿Lo segundo es consecuencia de lo primero?", "solucion": "'Por eso': 'Estudié mucho; por eso me fue bien.' Indica consecuencia. ('Porque' daría la causa al revés y 'pero' indicaría algo en contra.)", "figura": "" },
+    { "enunciado": "Escribe un INICIO de una oración para un texto sobre tu juego favorito.", "pista": "Presenta el tema: cuál es y una pincelada.", "solucion": "Por ejemplo: 'Mi juego favorito es el escondite, y ahora te cuento por qué.' Cualquier oración que presente el tema funciona como inicio.", "figura": "" },
+    { "enunciado": "¿Cuál de estas dos versiones está mejor y por qué? A: 'me gusta el helado de fresa' / B: 'Me gusta el helado de fresa.'", "pista": "Compara el comienzo y el final.", "solucion": "La B. Empieza con mayúscula y termina con punto; la A no tiene ninguna de las dos cosas.", "figura": "" },
+    { "enunciado": "Encuentra la palabra mal escrita y corrígela: 'Mi ermano mayor me ayuda con las tareas.'", "pista": "Una palabra de familia lleva una letra muda.", "solucion": "'ermano' → 'hermano' (lleva h). La oración queda: 'Mi hermano mayor me ayuda con las tareas.'", "figura": "" },
+    { "enunciado": "Ordena estas ideas numeradas para un texto sobre 'cómo hago mi arepa': a) la como calientica, b) amaso la harina con agua, c) la pongo en el budare, d) primero me lavo las manos.", "pista": "Piensa el orden REAL en que pasan las cosas.", "solucion": "d → b → c → a: primero me lavo las manos, amaso la harina, la pongo en el budare y al final me la como calientica. En un texto instructivo el orden de los pasos manda.", "figura": "" },
+    { "enunciado": "¿Qué se hace PRIMERO: el borrador o la versión final? ¿Por qué?", "pista": "Uno se corrige, el otro se entrega.", "solucion": "El borrador. Es la primera versión, donde está permitido equivocarse; después se relee, se corrige y recién entonces se pasa en limpio la versión final.", "figura": "" },
+    { "enunciado": "Al releer tu texto encuentras 'despues' sin tilde tres veces. ¿Qué dos cosas corriges?", "pista": "Una es de ortografía y la otra de repetición.", "solucion": "1) La tilde: 'después'. 2) La repetición: cambiar alguno por otro conector (luego, más tarde, al final).", "figura": "" },
+    { "enunciado": "Escribe un CIERRE de una oración para un texto sobre tu mejor amiga o amigo.", "pista": "Una oración que termine la idea con sentimiento o conclusión.", "solucion": "Por ejemplo: 'Por todo eso, es mi mejor amiga y quiero que lo sea siempre.' Cualquier oración que concluya el texto sirve de cierre.", "figura": "" }
+  ],
+  "quiz": [
+    { "pregunta": "¿Cuál es el orden correcto para escribir un buen texto?", "opciones": ["Pensar ideas, ordenarlas, escribir borrador, revisar", "Escribir de una y entregar rapidito", "Revisar primero y escribir después", "Copiar de un libro y cambiar una palabra"], "correcta": 0, "explicacion": "Primero se piensa y ordena, luego se escribe el borrador y SIEMPRE se revisa antes de entregar.", "figura": "" },
+    { "pregunta": "¿Cuáles son las tres partes de un texto ordenado?", "opciones": ["Inicio, desarrollo y cierre", "Título, dibujo y firma", "Mayúscula, coma y punto", "Sujeto, verbo y predicado"], "correcta": 0, "explicacion": "El inicio presenta, el desarrollo cuenta los detalles y el cierre termina la idea.", "figura": "" },
+    { "pregunta": "¿Cuál oración está escrita correctamente?", "opciones": ["Ayer jugué con mi prima.", "ayer jugué con mi prima.", "Ayer jugué con mi prima", "ayer jugué con mi prima"], "correcta": 0, "explicacion": "Toda oración empieza con mayúscula Y termina con punto; las otras opciones fallan en una o en las dos.", "figura": "" },
+    { "pregunta": "¿Qué conector indica CAUSA?", "opciones": ["porque", "después", "primero", "al final"], "correcta": 0, "explicacion": "'Porque' explica la causa ('Llevé paraguas porque llovía'); los otros indican orden en el tiempo.", "figura": "" },
+    { "pregunta": "¿Qué conector indica CONSECUENCIA?", "opciones": ["por eso", "porque", "antes", "aunque"], "correcta": 0, "explicacion": "'Por eso' introduce el resultado: 'Estudié mucho; por eso me fue bien.'", "figura": "" },
+    { "pregunta": "¿Qué es una lluvia de ideas?", "opciones": ["Anotar todas las ideas que se te ocurren antes de escribir", "Escribir con mala letra", "Copiar las ideas de un compañero", "Escribir el texto final directamente"], "correcta": 0, "explicacion": "Es el paso previo a escribir: anotar palabras e ideas sueltas para después elegir y ordenar las mejores.", "figura": "" },
+    { "pregunta": "A este texto le falta algo: 'Mi gata se llama Luna. Duerme en la ventana y persigue moscas.' ¿Qué le falta?", "opciones": ["El cierre", "El inicio", "El desarrollo", "No le falta nada"], "correcta": 0, "explicacion": "Presenta (inicio) y cuenta detalles (desarrollo), pero no termina la idea: falta un cierre como 'Por eso la quiero tanto.'", "figura": "" },
+    { "pregunta": "¿Cuál es la mejor forma de arreglar 'Mi perro come. Mi perro juega. Mi perro duerme.'?", "opciones": ["Mi perro come y juega todo el día; por la noche, él duerme.", "Mi perro come. Mi perro juega mucho. Mi perro duerme.", "mi perro come y juega y duerme", "Dejarlo igual, está perfecto"], "correcta": 0, "explicacion": "Une las ideas y usa el pronombre 'él' para no repetir 'mi perro' tres veces.", "figura": "" },
+    { "pregunta": "¿Qué palabras llevan mayúscula en 'maría vive en mérida'?", "opciones": ["María y Mérida", "Solo maría", "Solo mérida", "Ninguna"], "correcta": 0, "explicacion": "Los nombres propios de personas (María) y de lugares (Mérida) siempre llevan mayúscula (y también la primera palabra de la oración).", "figura": "" },
+    { "pregunta": "¿Qué haces JUSTO después de terminar el borrador?", "opciones": ["Releerlo y corregirlo", "Entregarlo de una", "Botarlo y empezar otro", "Decorarlo con colores"], "correcta": 0, "explicacion": "El borrador se relee (mejor en voz baja), se marcan los errores y se corrige antes de pasar en limpio.", "figura": "" },
+    { "pregunta": "¿Cuál de estas cosas se busca al REVISAR un texto?", "opciones": ["Mayúsculas, puntos, ortografía y que se entienda", "Que tenga muchas palabras difíciles", "Que sea lo más largo posible", "Que no tenga espacios"], "correcta": 0, "explicacion": "Revisar es comprobar que se entiende y que mayúsculas, puntuación y ortografía estén bien.", "figura": "" },
+    { "pregunta": "¿Cuál es un buen truco para no repetir la misma palabra?", "opciones": ["Usar un sinónimo o un pronombre", "Escribirla en mayúscula", "Ponerla entre comillas", "Repetirla más veces para que se note"], "correcta": 0, "explicacion": "Sinónimos (perro → cachorro) y pronombres (Toby → él) hacen el texto más variado y liviano.", "figura": "" },
+    { "pregunta": "En un texto que da instrucciones (como una receta), ¿qué es lo MÁS importante?", "opciones": ["El orden correcto de los pasos", "Que rime", "Usar palabras en inglés", "Que sea muy corto"], "correcta": 0, "explicacion": "En un instructivo, los pasos en orden son la clave: lavarse las manos va antes de amasar, y el budare antes de comer.", "figura": "" },
+    { "pregunta": "¿Cuál oración usa bien un conector?", "opciones": ["Primero hice la tarea y después salí a jugar.", "Primero hice la tarea y primero salí a jugar.", "Después hice la tarea y ya.", "Hice la tarea porque salí a jugar."], "correcta": 0, "explicacion": "'Primero... después...' ordena bien los hechos en el tiempo. La última opción invierte la causa (salir a jugar no causó la tarea).", "figura": "" },
+    { "pregunta": "¿Por qué conviene leer tu texto EN VOZ BAJA al revisarlo?", "opciones": ["Porque el oído atrapa lo que suena raro o confuso", "Para molestar menos al vecino", "Porque así se lee más rápido", "No sirve de nada leerlo"], "correcta": 0, "explicacion": "Al 'escucharte' leyendo notas oraciones cortadas, repeticiones y partes confusas que el ojo se salta.", "figura": "" },
+    { "pregunta": "¿Cuál es el INICIO más claro para un texto sobre tu deporte favorito?", "opciones": ["Mi deporte favorito es el fútbol, y te voy a contar por qué.", "Y entonces metí un gol.", "Por eso me gusta tanto.", "Fin."], "correcta": 0, "explicacion": "El inicio presenta el tema. Las otras opciones son un pedazo del desarrollo, un cierre, o un final suelto.", "figura": "" }
+  ],
+  "examen": [
+    { "pregunta": "Nombra los cuatro pasos para escribir un buen texto.", "respuesta": "Pensar las ideas, ordenarlas, escribir el borrador y revisar", "explicacion": "Primero lluvia de ideas, luego se ordenan (inicio-desarrollo-cierre), se escribe el borrador y se revisa antes de pasar en limpio." },
+    { "pregunta": "¿Cuáles son las tres partes de un texto y qué hace cada una?", "respuesta": "Inicio (presenta), desarrollo (cuenta los detalles) y cierre (termina la idea)", "explicacion": "El inicio dice de qué se va a hablar, el desarrollo es la parte más larga con los hechos en orden, y el cierre concluye para que el texto no quede cortado." },
+    { "pregunta": "Corrige: 'el sábado fuimos a casa de mi abuela'", "respuesta": "El sábado fuimos a casa de mi abuela.", "explicacion": "Faltaban la mayúscula inicial (El) y el punto final." },
+    { "pregunta": "Escribe una oración usando el conector 'porque'.", "respuesta": "Por ejemplo: 'Me abrigué porque hacía frío.'", "explicacion": "'Porque' une una acción con su causa; cualquier oración con esa estructura es válida." },
+    { "pregunta": "¿Qué diferencia hay entre el borrador y la versión final?", "respuesta": "El borrador es la primera versión con errores permitidos; la final ya está corregida", "explicacion": "El borrador se escribe libre, luego se relee y corrige (mayúsculas, puntos, ortografía, repeticiones) y de ahí sale la versión final que se entrega." },
+    { "pregunta": "Arregla la repetición: 'Ana canta. Ana baila. Ana pinta.'", "respuesta": "Por ejemplo: 'Ana canta y baila; también le gusta pintar.'", "explicacion": "Se unen las ideas en una sola oración para no empezar tres veces con 'Ana'." },
+    { "pregunta": "¿Qué cuatro cosas revisas antes de entregar un texto?", "respuesta": "Que se entienda, mayúsculas, puntos y ortografía", "explicacion": "Se relee buscando partes confusas, mayúsculas al inicio y en nombres propios, puntos al final de cada oración y palabras mal escritas." },
+    { "pregunta": "Escribe un cierre de una oración para un texto sobre tus vacaciones.", "respuesta": "Por ejemplo: 'Fueron las mejores vacaciones de mi vida.'", "explicacion": "El cierre concluye la idea con una conclusión o sentimiento; cualquier oración final con ese papel es válida." },
+    { "pregunta": "Nombra tres conectores que ordenan hechos en el tiempo.", "respuesta": "Primero, después y al final (también: luego, entonces, más tarde)", "explicacion": "Los conectores de tiempo ordenan los hechos y evitan repetir 'y... y... y...'." },
+    { "pregunta": "¿Por qué NO conviene entregar el texto sin releerlo?", "respuesta": "Porque el primer borrador siempre tiene errores que se atrapan releyendo", "explicacion": "Al releer (mejor en voz baja) se encuentran mayúsculas y puntos olvidados, palabras repetidas o mal escritas y oraciones confusas; corregirlos mejora mucho el texto." }
+  ]
+}

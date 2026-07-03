@@ -1,0 +1,112 @@
+{
+  "materia": "Puente al Bachillerato",
+  "tema": "Jerarquía de operaciones y paréntesis (PEMDAS)",
+  "grado": "1er año",
+  "fuentes": ["Guía de refuerzo Aula CAM: del 6to grado al 1er año"],
+  "resumen": {
+    "titulo": "El orden de las operaciones: quién va primero",
+    "intro": "Cuando una cuenta mezcla sumas, multiplicaciones, paréntesis y potencias, NO se resuelve de izquierda a derecha: hay un orden fijo que todos usamos para llegar al mismo resultado. En bachillerato lo vas a usar en todas las materias con números.",
+    "secciones": [
+      {
+        "titulo": "Por qué hace falta un orden",
+        "explicacion": "Mira esta cuenta: 2 + 3 × 4. Si la resuelves de izquierda a derecha da 20 (2+3=5, 5×4=20), pero si haces primero la multiplicación da 14 (3×4=12, 2+12=14). Para que no haya dos respuestas, la matemática tiene una regla: la multiplicación va PRIMERO. La respuesta correcta es 14. Ese acuerdo de orden es la jerarquía de operaciones.",
+        "pasos": [
+          "Nunca resuelvas de corrido de izquierda a derecha si hay operaciones mezcladas.",
+          "Pregúntate primero: ¿qué operación tiene prioridad aquí?",
+          "Resuelve por renglones: una operación por paso."
+        ],
+        "ejemplo": "2 + 3 × 4: primero 3 × 4 = 12, después 2 + 12 = 14."
+      },
+      {
+        "titulo": "El orden completo (PEMDAS)",
+        "explicacion": "El orden es: 1º PARÉNTESIS, 2º POTENCIAS (exponentes), 3º MULTIPLICACIONES y DIVISIONES, 4º SUMAS y RESTAS. Ojo con un detalle importante: multiplicación y división tienen la MISMA prioridad entre sí, y se resuelven en el orden en que aparecen, de izquierda a derecha. Lo mismo pasa con suma y resta.",
+        "pasos": [
+          "1º Paréntesis.",
+          "2º Potencias.",
+          "3º Multiplicaciones y divisiones, de izquierda a derecha.",
+          "4º Sumas y restas, de izquierda a derecha."
+        ],
+        "ejemplo": "20 − 10 ÷ 2: primero la división, 10 ÷ 2 = 5; después la resta, 20 − 5 = 15."
+      },
+      {
+        "titulo": "Los paréntesis mandan",
+        "explicacion": "Lo que está entre paréntesis se resuelve PRIMERO, sin importar qué operación sea. Los paréntesis sirven justamente para cambiar el orden natural: 2 + 3 × 4 = 14, pero (2 + 3) × 4 = 20, porque el paréntesis obliga a sumar primero. Si hay paréntesis dentro de paréntesis, se resuelve del más interno hacia afuera.",
+        "pasos": [
+          "Busca los paréntesis y resuelve lo de adentro primero.",
+          "Si hay varios niveles, empieza por el más interno.",
+          "Cuando el paréntesis quede en un solo número, sigue con el resto del orden."
+        ],
+        "ejemplo": "18 ÷ (9 − 6): primero el paréntesis, 9 − 6 = 3; después 18 ÷ 3 = 6."
+      },
+      {
+        "titulo": "Izquierda a derecha en el mismo nivel (el error clásico)",
+        "explicacion": "Cuando quedan solo multiplicaciones y divisiones (o solo sumas y restas), se resuelven en el orden en que aparecen, de izquierda a derecha. El error clásico: en 24 ÷ 6 × 2 muchos hacen primero 6 × 2 = 12 y responden 24 ÷ 12 = 2. Está MAL: se va de izquierda a derecha, 24 ÷ 6 = 4 y luego 4 × 2 = 8.",
+        "pasos": [
+          "Si solo quedan × y ÷, resuelve la que aparece primero (más a la izquierda).",
+          "Si solo quedan + y −, igual: de izquierda a derecha.",
+          "No 'saltes' operaciones del mismo nivel."
+        ],
+        "ejemplo": "10 − 4 + 2: de izquierda a derecha, 10 − 4 = 6 y 6 + 2 = 8. (Hacer primero 4 + 2 daría 4, que está mal.)"
+      },
+      {
+        "titulo": "Con potencias: paso a paso por renglones",
+        "explicacion": "Las potencias se resuelven después de los paréntesis y antes de multiplicar. En 2 × 3², primero la potencia: 3² = 9, y luego 2 × 9 = 18 (no 6² = 36). El mejor hábito para no perderse: escribir la cuenta de nuevo en cada renglón, resolviendo UNA operación por vez, hasta llegar al resultado.",
+        "pasos": [
+          "Resuelve la potencia antes que la multiplicación: 2 × 3² = 2 × 9.",
+          "Copia el resto de la cuenta igualito en cada renglón.",
+          "Termina con sumas y restas al final."
+        ],
+        "ejemplo": "7 + (10 − 2²) × 3 → 7 + (10 − 4) × 3 → 7 + 6 × 3 → 7 + 18 → 25."
+      }
+    ],
+    "idea_clave": "El orden es: paréntesis, potencias, multiplicación/división, suma/resta — y dentro del mismo nivel se resuelve de izquierda a derecha, un paso por renglón."
+  },
+  "retos": [
+    { "enunciado": "Calcula: 2 + 3 × 4", "pista": "La multiplicación va antes que la suma.", "solucion": "14. Primero 3 × 4 = 12, después 2 + 12 = 14.", "figura": "" },
+    { "enunciado": "Calcula: 20 - 10 ÷ 2", "pista": "La división va antes que la resta.", "solucion": "15. Primero 10 ÷ 2 = 5, después 20 − 5 = 15.", "figura": "" },
+    { "enunciado": "Calcula: (2 + 3) × 4", "pista": "El paréntesis se resuelve primero.", "solucion": "20. Primero 2 + 3 = 5, después 5 × 4 = 20.", "figura": "" },
+    { "enunciado": "Calcula: 18 ÷ (9 - 6)", "pista": "Primero lo de adentro del paréntesis.", "solucion": "6. Primero 9 − 6 = 3, después 18 ÷ 3 = 6.", "figura": "" },
+    { "enunciado": "Calcula: 5 × 2 + 12 ÷ 4", "pista": "Resuelve la multiplicación y la división antes de sumar.", "solucion": "13. 5 × 2 = 10 y 12 ÷ 4 = 3; después 10 + 3 = 13.", "figura": "" },
+    { "enunciado": "Calcula: 3 × 3 + 4", "pista": "Multiplicación antes que suma.", "solucion": "13. 3 × 3 = 9, después 9 + 4 = 13.", "figura": "" },
+    { "enunciado": "Calcula: 2 × 3²", "pista": "La potencia va antes que la multiplicación.", "solucion": "18. Primero 3² = 9, después 2 × 9 = 18. (Hacer 2×3 primero daría 6² = 36, que está mal.)", "figura": "" },
+    { "enunciado": "Calcula: (1 + 2)²", "pista": "Primero el paréntesis, luego la potencia.", "solucion": "9. Primero 1 + 2 = 3, después 3² = 9.", "figura": "" },
+    { "enunciado": "Calcula: 24 ÷ 6 × 2", "pista": "× y ÷ tienen la misma prioridad: de izquierda a derecha.", "solucion": "8. Primero 24 ÷ 6 = 4, después 4 × 2 = 8. (Hacer primero 6 × 2 daría 2, que está mal.)", "figura": "" },
+    { "enunciado": "Calcula: 10 - 4 + 2", "pista": "+ y − tienen la misma prioridad: de izquierda a derecha.", "solucion": "8. Primero 10 − 4 = 6, después 6 + 2 = 8.", "figura": "" },
+    { "enunciado": "Calcula: 6 + 4 × 5 - 8", "pista": "Primero la multiplicación, luego de izquierda a derecha.", "solucion": "18. 4 × 5 = 20; después 6 + 20 = 26 y 26 − 8 = 18.", "figura": "" },
+    { "enunciado": "Calcula: 36 ÷ (2 × 3)", "pista": "El paréntesis primero, aunque sea una multiplicación.", "solucion": "6. Primero 2 × 3 = 6, después 36 ÷ 6 = 6.", "figura": "" },
+    { "enunciado": "Calcula: (8 - 3) × (4 + 1)", "pista": "Resuelve cada paréntesis por separado.", "solucion": "25. 8 − 3 = 5 y 4 + 1 = 5; después 5 × 5 = 25.", "figura": "" },
+    { "enunciado": "Calcula: 2³ - 3", "pista": "Primero la potencia: 2³ = 2×2×2.", "solucion": "5. 2³ = 8, después 8 − 3 = 5.", "figura": "" },
+    { "enunciado": "Calcula: 7 + (10 - 2²) × 3", "pista": "Dentro del paréntesis también manda la potencia.", "solucion": "25. 2² = 4; el paréntesis queda 10 − 4 = 6; después 6 × 3 = 18 y 7 + 18 = 25.", "figura": "" },
+    { "enunciado": "Calcula: 40 - 5 × 2³", "pista": "Potencia, luego multiplicación, luego resta.", "solucion": "0. 2³ = 8; después 5 × 8 = 40; y 40 − 40 = 0.", "figura": "" }
+  ],
+  "quiz": [
+    { "pregunta": "¿Cuánto es 2 + 3 × 4?", "opciones": ["14", "20", "24", "9"], "correcta": 0, "explicacion": "La multiplicación va primero: 3 × 4 = 12, y 2 + 12 = 14. (20 es el error de ir de izquierda a derecha.)", "figura": "" },
+    { "pregunta": "¿Cuánto es 20 - 10 ÷ 2?", "opciones": ["15", "5", "10", "25"], "correcta": 0, "explicacion": "Primero 10 ÷ 2 = 5, después 20 − 5 = 15. (5 es el error de restar primero.)", "figura": "" },
+    { "pregunta": "¿Cuánto es (2 + 3) × 4?", "opciones": ["20", "14", "11", "24"], "correcta": 0, "explicacion": "El paréntesis manda: 2 + 3 = 5, y 5 × 4 = 20.", "figura": "" },
+    { "pregunta": "¿Cuánto es 24 ÷ 6 × 2?", "opciones": ["8", "2", "12", "4"], "correcta": 0, "explicacion": "Mismo nivel → de izquierda a derecha: 24 ÷ 6 = 4, y 4 × 2 = 8. (2 es el error de multiplicar primero.)", "figura": "" },
+    { "pregunta": "¿Cuánto es 10 - 4 + 2?", "opciones": ["8", "4", "12", "6"], "correcta": 0, "explicacion": "De izquierda a derecha: 10 − 4 = 6, y 6 + 2 = 8. (4 es el error de sumar primero.)", "figura": "" },
+    { "pregunta": "¿Cuánto es 2 × 3²?", "opciones": ["18", "36", "12", "8"], "correcta": 0, "explicacion": "La potencia va primero: 3² = 9, y 2 × 9 = 18. (36 es el error de multiplicar antes de la potencia.)", "figura": "" },
+    { "pregunta": "¿Cuánto es 18 ÷ (9 - 6)?", "opciones": ["6", "2", "-4", "3"], "correcta": 0, "explicacion": "Primero el paréntesis: 9 − 6 = 3, después 18 ÷ 3 = 6.", "figura": "" },
+    { "pregunta": "¿Qué se resuelve PRIMERO en 5 + (7 - 2) × 3?", "opciones": ["El paréntesis (7 - 2)", "La suma 5 + 7", "La multiplicación 2 × 3", "Se va de izquierda a derecha"], "correcta": 0, "explicacion": "Los paréntesis siempre van primero: 7 − 2 = 5; luego 5 × 3 = 15 y 5 + 15 = 20.", "figura": "" },
+    { "pregunta": "¿Cuánto es 5 + (7 - 2) × 3?", "opciones": ["20", "36", "16", "30"], "correcta": 0, "explicacion": "Paréntesis: 5; multiplicación: 5 × 3 = 15; suma: 5 + 15 = 20. (36 es el error de sumar primero 5+7.)", "figura": "" },
+    { "pregunta": "¿Cuánto es (1 + 2)²?", "opciones": ["9", "5", "3", "6"], "correcta": 0, "explicacion": "Primero el paréntesis: 3; después la potencia: 3² = 9. (5 es el error de hacer 1 + 2².)", "figura": "" },
+    { "pregunta": "¿Cuánto es 30 - 2 × 5 + 4?", "opciones": ["24", "144", "16", "34"], "correcta": 0, "explicacion": "Multiplicación primero: 2 × 5 = 10; luego de izquierda a derecha: 30 − 10 = 20 y 20 + 4 = 24.", "figura": "" },
+    { "pregunta": "¿Cuánto es 2³ + 1?", "opciones": ["9", "7", "16", "5"], "correcta": 0, "explicacion": "2³ = 2 × 2 × 2 = 8, y 8 + 1 = 9.", "figura": "" },
+    { "pregunta": "¿Cuánto es 36 ÷ (2 × 3)?", "opciones": ["6", "54", "12", "3"], "correcta": 0, "explicacion": "El paréntesis primero: 2 × 3 = 6; después 36 ÷ 6 = 6. (54 es el error de dividir primero 36÷2 y multiplicar por 3.)", "figura": "" },
+    { "pregunta": "¿Cuánto es (8 - 3) × (4 + 1)?", "opciones": ["25", "9", "45", "13"], "correcta": 0, "explicacion": "Cada paréntesis por separado: 5 y 5; después 5 × 5 = 25.", "figura": "" },
+    { "pregunta": "¿Cuánto es 40 - 5 × 2³?", "opciones": ["0", "280", "30", "24"], "correcta": 0, "explicacion": "Potencia: 2³ = 8; multiplicación: 5 × 8 = 40; resta: 40 − 40 = 0. (280 es el error de restar primero.)", "figura": "" },
+    { "pregunta": "En una cuenta SIN paréntesis con + − × ÷, ¿qué se resuelve primero?", "opciones": ["Las multiplicaciones y divisiones", "Las sumas y restas", "Lo que esté más a la izquierda, sea lo que sea", "Las sumas antes que las restas"], "correcta": 0, "explicacion": "Sin paréntesis ni potencias, primero van × y ÷ (en orden de izquierda a derecha entre ellas) y al final + y −.", "figura": "" }
+  ],
+  "examen": [
+    { "pregunta": "Calcula: 4 + 5 × 2.", "respuesta": "14", "explicacion": "La multiplicación va primero: 5 × 2 = 10, después 4 + 10 = 14." },
+    { "pregunta": "Calcula: 30 - 12 ÷ 3.", "respuesta": "26", "explicacion": "Primero la división: 12 ÷ 3 = 4; después 30 − 4 = 26." },
+    { "pregunta": "Calcula: (4 + 5) × 2.", "respuesta": "18", "explicacion": "El paréntesis primero: 4 + 5 = 9; después 9 × 2 = 18." },
+    { "pregunta": "Calcula: 40 ÷ 4 × 5.", "respuesta": "50", "explicacion": "Mismo nivel → de izquierda a derecha: 40 ÷ 4 = 10, y 10 × 5 = 50." },
+    { "pregunta": "Calcula: 15 - 6 + 3.", "respuesta": "12", "explicacion": "De izquierda a derecha: 15 − 6 = 9, y 9 + 3 = 12." },
+    { "pregunta": "Calcula: 4 × 2².", "respuesta": "16", "explicacion": "La potencia primero: 2² = 4; después 4 × 4 = 16." },
+    { "pregunta": "Calcula: (10 - 4) ÷ 2.", "respuesta": "3", "explicacion": "El paréntesis primero: 10 − 4 = 6; después 6 ÷ 2 = 3." },
+    { "pregunta": "Calcula: 3 + 2 × (8 - 5).", "respuesta": "9", "explicacion": "Paréntesis: 8 − 5 = 3; multiplicación: 2 × 3 = 6; suma: 3 + 6 = 9." },
+    { "pregunta": "Calcula: 5² - 4 × 3.", "respuesta": "13", "explicacion": "Potencia: 5² = 25; multiplicación: 4 × 3 = 12; resta: 25 − 12 = 13." },
+    { "pregunta": "Explica por qué 2 + 3 × 4 NO es 20.", "respuesta": "Porque la multiplicación se resuelve antes que la suma", "explicacion": "Por la jerarquía de operaciones, primero 3 × 4 = 12 y después 2 + 12 = 14. El 20 sale de sumar primero, que rompe el orden correcto." }
+  ]
+}

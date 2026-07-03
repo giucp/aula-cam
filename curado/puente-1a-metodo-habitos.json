@@ -1,0 +1,113 @@
+{
+  "materia": "Puente al Bachillerato",
+  "tema": "El método científico y los hábitos de estudio",
+  "grado": "1er año",
+  "fuentes": ["Guía de refuerzo Aula CAM: del 6to grado al 1er año"],
+  "resumen": {
+    "titulo": "Pensar como científico y estudiar como grande",
+    "intro": "En 1er año aparecen materias nuevas como Física, Química, Biología y Metodología, con varios profesores distintos. Dos herramientas te van a salvar el año: el método científico (la forma en que la ciencia responde preguntas) y buenos hábitos de estudio (porque ya no alcanza con estudiar la noche anterior).",
+    "secciones": [
+      {
+        "titulo": "Qué cambia al llegar a bachillerato",
+        "explicacion": "En primaria tenías una maestra para casi todo; en 1er año vas a tener un profesor por materia, cada uno con sus tareas, sus fechas y su forma de evaluar. Nadie te va a recordar todo: la organización pasa a ser TU responsabilidad. La buena noticia: con una agenda y un método de estudio, se puede con todo.",
+        "pasos": [
+          "Anota TODO en una agenda: tareas, exámenes y fechas, el mismo día que los asignan.",
+          "Ten un cuaderno por materia (o secciones bien separadas).",
+          "Revisa tu agenda cada tarde: ¿qué toca mañana? ¿qué se acerca?"
+        ],
+        "ejemplo": "El profesor de Física anuncia un examen para el viernes que viene. Lo anotas de una vez y planificas repasar un poco cada día, en vez de enterarte el jueves por la noche."
+      },
+      {
+        "titulo": "El método científico paso a paso",
+        "explicacion": "El método científico es el camino que sigue la ciencia para responder preguntas de forma confiable. Sus pasos son: 1) OBSERVAR algo que llama la atención; 2) hacer una PREGUNTA; 3) proponer una HIPÓTESIS (una posible respuesta); 4) EXPERIMENTAR para ponerla a prueba; 5) ANALIZAR los resultados; 6) sacar una CONCLUSIÓN (¿la hipótesis se confirmó o no?).",
+        "pasos": [
+          "Observación → Pregunta → Hipótesis → Experimento → Análisis → Conclusión.",
+          "La hipótesis se propone ANTES del experimento (es lo que vas a poner a prueba).",
+          "La conclusión responde la pregunta usando lo que mostró el experimento."
+        ],
+        "ejemplo": "Observas que una planta del patio creció más que otra igual. Pregunta: ¿influye la luz? Hipótesis: 'con más luz crece más'. Experimento: dos plantas iguales, una al sol y otra a la sombra, misma agua. Análisis: la del sol creció más. Conclusión: la luz sí influyó."
+      },
+      {
+        "titulo": "Qué hace buena a una hipótesis",
+        "explicacion": "Una hipótesis es una posible respuesta que se puede PONER A PRUEBA. No es una adivinanza loca ni una opinión de gustos: es una afirmación clara que un experimento puede confirmar o rechazar. 'Las plantas con más luz crecen más' es una buena hipótesis porque se puede comprobar. 'El helado de chocolate es el más rico' no lo es: es un gusto personal, no algo comprobable.",
+        "pasos": [
+          "Escríbela como afirmación clara (no como pregunta).",
+          "Pregúntate: ¿puedo diseñar una prueba que la confirme o la rechace?",
+          "Si el experimento la rechaza, no fallaste: aprendiste algo (así avanza la ciencia)."
+        ],
+        "ejemplo": "Buena: 'El agua con sal tarda más en hervir que el agua sola' (se puede probar con dos ollas). Mala: 'La playa es mejor que la montaña' (es un gusto, no se puede poner a prueba)."
+      },
+      {
+        "titulo": "Cómo estudiar de verdad (no solo releer)",
+        "explicacion": "Releer el cuaderno mil veces rinde poco. Lo que funciona es la práctica ACTIVA: taparte el cuaderno y tratar de explicar el tema con tus palabras, hacerte preguntas, resolver ejercicios, y hacer un resumen propio. Y mejor repartir el estudio en varios días cortos (repaso espaciado) que una maratón la noche anterior: el cerebro fija más cuando repite con descanso de por medio.",
+        "pasos": [
+          "Haz tu propio resumen o esquema del tema (con tus palabras).",
+          "Practica sin mirar: explícalo en voz alta o resuelve ejercicios.",
+          "Repasa un rato HOY, otro MAÑANA y otro antes del examen (espaciado).",
+          "Lo que no te salga sin mirar, márcalo: eso es lo que toca repasar."
+        ],
+        "ejemplo": "Para un examen del martes: el jueves haces el resumen, el sábado resuelves ejercicios sin mirar el cuaderno, y el lunes repasas solo lo que marcaste difícil. Tres ratos cortos rinden más que una noche entera."
+      },
+      {
+        "titulo": "Preparar un examen sin pánico",
+        "explicacion": "El pánico antes del examen casi siempre viene de empezar tarde. El plan anti-pánico: enterarte de la fecha y anotarla, repartir el contenido en los días disponibles, practicar con ejercicios parecidos a los del examen, y dormir bien la noche anterior (el cerebro ordena lo aprendido mientras duermes; trasnochar estudiando suele empeorar el resultado).",
+        "pasos": [
+          "Anota la fecha apenas anuncien el examen y cuenta los días.",
+          "Reparte los temas: un poco cada día, empezando por el más difícil.",
+          "El día antes: solo repaso ligero de lo marcado y a dormir temprano.",
+          "En el examen: lee todo primero y empieza por lo que sabes seguro."
+        ],
+        "ejemplo": "Examen de Matemática en 5 días con 3 temas: día 1 y 2 el tema difícil, día 3 y 4 los otros dos, día 5 repaso ligero y descanso. Nada de trasnochar el último día."
+      }
+    ],
+    "idea_clave": "El método científico va de observar a concluir pasando por una hipótesis que se pone a prueba; y para estudiar en bachillerato: agenda al día, práctica activa (explicar y resolver sin mirar) y repaso repartido en varios días, no todo la víspera."
+  },
+  "retos": [
+    { "enunciado": "Ordena estos pasos del método científico: experimento, observación, conclusión, hipótesis.", "pista": "Empieza por lo que ves y termina por lo que respondes.", "solucion": "Observación → hipótesis → experimento → conclusión. Primero observas, luego propones una posible respuesta, la pruebas con el experimento y cierras con la conclusión.", "figura": "" },
+    { "enunciado": "Notas que el pan se pone duro más rápido fuera de la bolsa. Escribe una hipótesis para investigarlo.", "pista": "Una afirmación clara que se pueda poner a prueba.", "solucion": "Por ejemplo: 'El pan guardado en bolsa cerrada se endurece más lento que el pan al aire libre'. Es una afirmación comprobable: puedes dejar dos panes iguales, uno en bolsa y otro afuera, y comparar.", "figura": "" },
+    { "enunciado": "¿Cuál es la hipótesis en este caso? 'María cree que el agua con sal tarda más en hervir, y pone dos ollas a calentar para comprobarlo.'", "pista": "La hipótesis es la idea que se va a poner a prueba.", "solucion": "'El agua con sal tarda más en hervir que el agua sola'. Eso es lo que María propone antes de probar; las dos ollas son el experimento.", "figura": "" },
+    { "enunciado": "Di si esta afirmación sirve como hipótesis científica y por qué: 'El helado de chocolate es el más sabroso de todos.'", "pista": "¿Se puede diseñar una prueba que la confirme o rechace?", "solucion": "No sirve. Es una opinión de gustos: no hay experimento que pueda confirmarla o rechazarla para todos. Una hipótesis debe ser comprobable.", "figura": "" },
+    { "enunciado": "En el experimento de las dos plantas (una al sol, otra a la sombra), ¿por qué las dos deben recibir la MISMA cantidad de agua?", "pista": "Piensa qué pasaría si una recibe más agua que la otra.", "solucion": "Para que la única diferencia sea la luz. Si una recibiera más agua, no sabrías si creció más por la luz o por el agua: el experimento debe cambiar UNA sola cosa a la vez.", "figura": "" },
+    { "enunciado": "Tu experimento rechaza tu hipótesis: las plantas de sombra crecieron igual que las de sol. ¿Eso significa que fallaste?", "pista": "Piensa qué aprendiste con el resultado.", "solucion": "No. Un resultado que rechaza la hipótesis también es un descubrimiento: aprendiste que la luz no era la causa en ese caso. La ciencia avanza igual cuando la hipótesis se rechaza.", "figura": "" },
+    { "enunciado": "El profesor anuncia hoy (lunes) un examen para el lunes que viene. ¿Qué es lo PRIMERO que deberías hacer?", "pista": "Antes de estudiar, hay un paso de organización.", "solucion": "Anotarlo en la agenda con la fecha, hoy mismo. Después ya puedes contar los días y repartir los temas para no estudiar todo la víspera.", "figura": "" },
+    { "enunciado": "Tienes 3 temas para un examen en 6 días. Propón un plan de estudio repartido.", "pista": "Un poco cada día y repaso al final; el tema difícil primero.", "solucion": "Por ejemplo: días 1-2 el tema más difícil, día 3 el segundo, día 4 el tercero, día 5 ejercicios de repaso de los tres, día 6 repaso ligero de lo marcado y dormir temprano.", "figura": "" },
+    { "enunciado": "¿Qué es más efectivo para fijar un tema: releer el cuaderno 5 veces, o taparlo y explicar el tema con tus palabras? ¿Por qué?", "pista": "Uno es pasivo, el otro te obliga a recordar.", "solucion": "Taparlo y explicarlo. Al recordar sin mirar, el cerebro trabaja y fija de verdad; releyendo solo te suena familiar pero no lo puedes reproducir en el examen.", "figura": "" },
+    { "enunciado": "Un compañero piensa trasnochar toda la noche antes del examen para estudiar más. ¿Qué le recomendarías?", "pista": "¿Qué hace el cerebro mientras duermes?", "solucion": "Que no lo haga: mientras duermes el cerebro ordena y fija lo aprendido. Trasnochar llega cansado y rinde peor. Mejor repaso ligero el día antes y dormir bien.", "figura": "" },
+    { "enunciado": "Observas que tu bicicleta amanece con la rueda baja cada semana. Formula la PREGUNTA y una HIPÓTESIS.", "pista": "La pregunta empieza con '¿por qué...?'; la hipótesis es una posible respuesta.", "solucion": "Pregunta: '¿Por qué la rueda pierde aire?'. Hipótesis posible: 'La rueda tiene un agujero pequeño que deja salir el aire'. Se puede probar sumergiendo la cámara en agua y buscando burbujas.", "figura": "" },
+    { "enunciado": "En bachillerato tendrás un profesor por materia. Nombra 2 hábitos que te ayudan a no perderte con tantas materias.", "pista": "Piensa en la agenda y los cuadernos.", "solucion": "Por ejemplo: anotar todas las tareas y fechas en una agenda el mismo día que las asignan, y llevar un cuaderno (o sección) separado por materia. También revisar la agenda cada tarde.", "figura": "" },
+    { "enunciado": "¿Cuál de los pasos del método científico responde la pregunta inicial: la hipótesis o la conclusión?", "pista": "Una se propone al inicio, la otra cierra el proceso.", "solucion": "La conclusión. La hipótesis es la posible respuesta que propones ANTES de probar; la conclusión es la respuesta final apoyada en los resultados del experimento.", "figura": "" },
+    { "enunciado": "Diseña un experimento sencillo para probar: 'El agua con sal tarda más en hervir que el agua sola.'", "pista": "Dos recipientes, una sola diferencia, y algo que medir.", "solucion": "Dos ollas iguales con la MISMA cantidad de agua y el MISMO fuego; a una se le agrega sal. Se mide con un reloj cuánto tarda cada una en hervir y se comparan los tiempos.", "figura": "" },
+    { "enunciado": "Hiciste tu resumen y al practicar sin mirar te trabaste en 2 puntos. ¿Qué haces con esos 2 puntos?", "pista": "El checklist de estudiar: marcar y volver.", "solucion": "Marcarlos y dedicarles el próximo repaso SOLO a ellos (releer esa parte, hacer un ejercicio de eso, explicarlo de nuevo sin mirar). Lo que ya sale bien solo necesita repaso ligero.", "figura": "" },
+    { "enunciado": "¿Por qué conviene empezar el examen leyendo todas las preguntas y respondiendo primero las que sabes seguro?", "pista": "Piensa en el tiempo y en los nervios.", "solucion": "Porque aseguras esos puntos, ganas confianza y administras el tiempo: no te quedas trancado en una pregunta difícil mientras se te van las fáciles sin responder.", "figura": "" }
+  ],
+  "quiz": [
+    { "pregunta": "¿Cuál es el orden correcto del método científico?", "opciones": ["Observación, hipótesis, experimento, conclusión", "Hipótesis, observación, conclusión, experimento", "Experimento, hipótesis, observación, conclusión", "Conclusión, experimento, hipótesis, observación"], "correcta": 0, "explicacion": "Se parte de observar, se propone una hipótesis, se pone a prueba con un experimento y se cierra con la conclusión.", "figura": "" },
+    { "pregunta": "¿Qué es una hipótesis?", "opciones": ["Una posible respuesta que se puede poner a prueba", "El resultado final del experimento", "Una pregunta sin respuesta", "Una opinión personal sobre un tema"], "correcta": 0, "explicacion": "La hipótesis es la posible respuesta que propones ANTES de experimentar, y debe poder comprobarse o rechazarse.", "figura": "" },
+    { "pregunta": "¿Cuál de estas afirmaciones SÍ sirve como hipótesis científica?", "opciones": ["Las plantas con más luz crecen más rápido", "El azul es el color más bonito", "La pizza es mejor que la hamburguesa", "Mi equipo va a ganar porque es el mejor"], "correcta": 0, "explicacion": "Es la única que se puede poner a prueba con un experimento; las otras son gustos u opiniones.", "figura": "" },
+    { "pregunta": "En el experimento de las dos plantas (sol vs sombra), ¿qué debe mantenerse IGUAL en ambas?", "opciones": ["El agua, la tierra y el tipo de planta", "La cantidad de luz", "Nada, cada planta a su manera", "Solo el tamaño de la maceta"], "correcta": 0, "explicacion": "Todo debe ser igual MENOS la luz (lo que estás probando). Si cambias dos cosas a la vez, no sabes cuál causó la diferencia.", "figura": "" },
+    { "pregunta": "Tu experimento muestra lo contrario a tu hipótesis. ¿Qué corresponde hacer?", "opciones": ["Aceptar el resultado y sacar una conclusión con lo aprendido", "Repetirlo hasta que dé lo que esperabas", "Cambiar los resultados para que cuadren", "Abandonar la ciencia"], "correcta": 0, "explicacion": "Un resultado en contra también enseña: la conclusión honesta es parte del método. Maquillar resultados no es ciencia.", "figura": "" },
+    { "pregunta": "¿Qué paso va justo DESPUÉS de proponer la hipótesis?", "opciones": ["El experimento", "La conclusión", "La observación", "Publicar el resultado"], "correcta": 0, "explicacion": "La hipótesis se pone a prueba con el experimento; con sus resultados se llega a la conclusión.", "figura": "" },
+    { "pregunta": "¿Cuál es la forma MÁS efectiva de estudiar un tema?", "opciones": ["Explicarlo con tus palabras sin mirar el cuaderno", "Releer el cuaderno muchas veces seguidas", "Copiar el cuaderno completo otra vez", "Escuchar música mientras miras las páginas"], "correcta": 0, "explicacion": "Recordar activamente (explicar, resolver sin mirar) fija mucho más que releer, que solo da sensación de 'me suena'.", "figura": "" },
+    { "pregunta": "¿Qué es el repaso espaciado?", "opciones": ["Estudiar un poco varios días, con descanso entre repasos", "Estudiar todo la noche anterior sin parar", "Repasar solo lo fácil", "Dejar espacios en blanco en el cuaderno"], "correcta": 0, "explicacion": "Repartir el estudio en varios días cortos fija más que una maratón: el cerebro consolida entre repaso y repaso.", "figura": "" },
+    { "pregunta": "La noche antes del examen, ¿qué conviene más?", "opciones": ["Repaso ligero y dormir temprano", "Trasnochar estudiando todo desde cero", "No hacer nada en toda la semana y confiar", "Estudiar hasta las 3 am con café"], "correcta": 0, "explicacion": "El sueño consolida lo aprendido; llegar descansado rinde más que llegar trasnochado con todo 'fresco' pero revuelto.", "figura": "" },
+    { "pregunta": "Anuncian un examen para dentro de una semana. ¿Cuál es el primer paso inteligente?", "opciones": ["Anotarlo en la agenda y repartir los temas en los días", "Esperar al día anterior para ver cuánto cae", "Preguntar el mismo día del examen qué temas entran", "Estudiar todo hoy y no volver a verlo"], "correcta": 0, "explicacion": "Anotar y planificar permite estudiar por partes (repaso espaciado) y llegar sin pánico.", "figura": "" },
+    { "pregunta": "¿Por qué en bachillerato la agenda se vuelve tan importante?", "opciones": ["Porque cada materia tiene su profesor, sus tareas y sus fechas", "Porque los profesores la revisan y la califican", "Porque está prohibido usar el cuaderno", "No es importante, con la memoria basta"], "correcta": 0, "explicacion": "Con muchos profesores nadie te centraliza los recordatorios: la organización pasa a ser tuya, y la agenda es la herramienta.", "figura": "" },
+    { "pregunta": "¿Cuál de estos es un ejemplo de OBSERVACIÓN (el primer paso del método)?", "opciones": ["Notar que el hielo se derrite más rápido al sol", "Concluir que la sal acelera el derretimiento", "Suponer que el color afecta la temperatura", "Medir los resultados de un experimento"], "correcta": 0, "explicacion": "Observar es notar el fenómeno que dispara la pregunta; concluir y suponer son pasos posteriores.", "figura": "" },
+    { "pregunta": "En un experimento cambias la cantidad de sal Y la cantidad de agua a la vez. ¿Cuál es el problema?", "opciones": ["No sabrás cuál de los dos cambios causó el resultado", "Ninguno, así se prueban dos cosas más rápido", "Que gastas más sal", "Que el experimento queda más divertido"], "correcta": 0, "explicacion": "Un buen experimento cambia UNA sola cosa a la vez; si cambias dos, el resultado queda sin explicación clara.", "figura": "" },
+    { "pregunta": "Al practicar sin mirar, hay un punto que no te sale. ¿Qué haces?", "opciones": ["Marcarlo y dedicarle el próximo repaso", "Ignorarlo y confiar en la suerte", "Releer todo el cuaderno desde el principio", "Estudiar solo lo que ya sabes"], "correcta": 0, "explicacion": "Lo que no sale sin mirar es exactamente lo que hay que repasar; lo que ya sale solo necesita repaso ligero.", "figura": "" },
+    { "pregunta": "¿Qué responde la CONCLUSIÓN de un experimento?", "opciones": ["La pregunta inicial, usando los resultados", "Cuánto costó el experimento", "Qué opina la mayoría de la gente", "La nota que te pondrá el profesor"], "correcta": 0, "explicacion": "La conclusión vuelve a la pregunta del inicio y la responde con la evidencia del experimento (confirmando o rechazando la hipótesis).", "figura": "" },
+    { "pregunta": "Durante el examen, ¿qué estrategia conviene?", "opciones": ["Leer todo primero y empezar por lo que sabes seguro", "Responder en orden aunque te tranques media hora en la 1", "Empezar por la más difícil para quitártela de encima", "Responder al azar rapidito y salir primero"], "correcta": 0, "explicacion": "Asegurar primero los puntos que dominas administra el tiempo y baja los nervios; lo difícil se ataca después.", "figura": "" }
+  ],
+  "examen": [
+    { "pregunta": "Nombra en orden los pasos del método científico.", "respuesta": "Observación, pregunta, hipótesis, experimento, análisis y conclusión", "explicacion": "Se observa algo, se formula una pregunta, se propone una hipótesis, se pone a prueba con un experimento, se analizan los resultados y se concluye." },
+    { "pregunta": "¿Qué es una hipótesis y qué requisito debe cumplir?", "respuesta": "Una posible respuesta a la pregunta, que se pueda poner a prueba", "explicacion": "Se propone antes del experimento y debe ser comprobable: un experimento tiene que poder confirmarla o rechazarla. Las opiniones de gusto no sirven como hipótesis." },
+    { "pregunta": "Da un ejemplo de hipótesis comprobable sobre plantas.", "respuesta": "Por ejemplo: 'Las plantas que reciben más luz crecen más rápido'", "explicacion": "Es una afirmación clara que se puede probar con dos plantas iguales en condiciones iguales, cambiando solo la luz." },
+    { "pregunta": "¿Por qué un experimento debe cambiar UNA sola cosa a la vez?", "respuesta": "Para saber qué causó el resultado", "explicacion": "Si cambias dos o más cosas (por ejemplo luz Y agua), no puedes saber cuál de ellas produjo la diferencia que observaste." },
+    { "pregunta": "Si el experimento rechaza tu hipótesis, ¿el trabajo fue un fracaso? Explica.", "respuesta": "No: también se aprende cuando la hipótesis se rechaza", "explicacion": "Descartar una explicación es un avance; la conclusión honesta (a favor o en contra) es parte del método científico." },
+    { "pregunta": "¿Qué es el repaso espaciado y por qué funciona mejor que estudiar todo la víspera?", "respuesta": "Estudiar en varios días cortos con descanso entre repasos", "explicacion": "El cerebro consolida lo aprendido entre repaso y repaso (y mientras duermes); una maratón la noche anterior deja todo revuelto y cansancio para el examen." },
+    { "pregunta": "Nombra 3 hábitos de organización para manejar muchas materias y profesores.", "respuesta": "Agenda al día, cuaderno por materia y revisión diaria de la agenda", "explicacion": "Anotar tareas y fechas el mismo día, separar los apuntes por materia y revisar cada tarde qué toca mañana evita sorpresas y olvidos." },
+    { "pregunta": "¿Qué es la práctica activa al estudiar? Da un ejemplo.", "respuesta": "Recordar sin mirar: explicar el tema con tus palabras o resolver ejercicios", "explicacion": "En vez de releer pasivamente, te obligas a reproducir el contenido (explicarlo en voz alta, hacerte preguntas, resolver sin cuaderno): eso fija de verdad." },
+    { "pregunta": "Arma un plan de 5 días para un examen con 2 temas.", "respuesta": "Días 1-2 el tema difícil, días 3-4 el otro, día 5 repaso ligero y dormir temprano", "explicacion": "Se reparte el contenido, se practica activamente cada día y el último día solo se repasa lo marcado como difícil, priorizando el descanso." },
+    { "pregunta": "¿Por qué NO conviene trasnochar la noche antes del examen?", "respuesta": "Porque el sueño consolida lo aprendido y el cansancio baja el rendimiento", "explicacion": "Mientras duermes el cerebro ordena y fija lo estudiado; trasnochar llega con sueño y rinde peor que un repaso ligero más una buena noche de descanso." }
+  ]
+}
