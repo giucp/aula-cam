@@ -356,18 +356,18 @@ export const TEMARIO = {
         { t: "Juegos tradicionales", d: "Juegos venezolanos y su valor cultural. Error típico: no conocer las reglas tradicionales." },
       ]},
     ]},
-    { id: 970, materia: "Puente a 6to grado", nombre_corto: "PUENTE 5G", grupos: [
+    { id: 970, materia: "Puente a 5to grado", nombre_corto: "PUENTE 5G", grupos: [
       { lapso: "Refuerzo para llegar firme", temas: [
         { t: "Dominar las tablas de multiplicar (fluidez)",
           d: "Recordar las tablas del 1 al 12 con rapidez y sin contar con los dedos; esto sostiene TODO lo que viene (fracciones, división larga, m.c.m.). Trucos por patrones (×9, ×5, cuadrados). Error típico: fallar las del 6, 7 y 8. Practicar con retos cronometrados suaves." },
         { t: "Problemas de varios pasos: entender antes de calcular",
-          d: "Leer un problema, subrayar datos y la pregunta, decidir las operaciones EN ORDEN y comprobar si la respuesta tiene sentido. Es la base del razonamiento de 6to. Error típico: operar los números sin entender qué se pide." },
+          d: "Leer un problema, subrayar datos y la pregunta, decidir las operaciones EN ORDEN y comprobar si la respuesta tiene sentido. Es la base del razonamiento de 5to. Error típico: operar los números sin entender qué se pide." },
         { t: "Fracciones y decimales en la vida real",
           d: "Reforzar fracciones (mitad, tercio, cuarto), pasarlas a decimales y usarlas en dinero, recetas y medidas; equivalencias 1/2=0,5=50%. Error típico: no conectar fracción, decimal y porcentaje como lo mismo escrito distinto." },
         { t: "Cálculo mental y estimación",
           d: "Estimar resultados antes de calcular para detectar errores; redondear para sumar/restar rápido; descomponer números. Error típico: dar por buena una respuesta absurda por no estimar." },
         { t: "Escribir un texto ordenado (borrador y revisión)",
-          d: "Planear ideas, escribir un párrafo con inicio-desarrollo-cierre y RELEER para corregir ortografía y puntuación. Prepara la producción escrita de 6to. Error típico: entregar sin releer." },
+          d: "Planear ideas, escribir un párrafo con inicio-desarrollo-cierre y RELEER para corregir ortografía y puntuación. Prepara la producción escrita de 5to. Error típico: entregar sin releer." },
       ]},
     ]},
   ],

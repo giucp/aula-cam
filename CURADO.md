@@ -70,6 +70,60 @@ Todas las claves de modo son OPCIONALES (se puede curar solo resumen+quiz de un 
 > Tamaños: quiz y retos 12–15, examen 10. El servido toma una MUESTRA aleatoria de la
 > cantidad que pide el niño; con bancos así, "generar otros" da variedad real sin gastar IA.
 
+## CHECKLIST OBLIGATORIO de cada banco (seguirlo SIEMPRE, en orden)
+Cada vez que el admin diga "vamos a crear el contenido de X", Claude debe ejecutar estas
+4 fases COMPLETAS y reportar el resultado de cada una. Nació de errores reales que llegaron
+a producción (2026-07-02): decirle "en 6to grado" a una niña que va a 5to, y un ejemplo
+ambiguo de la regla de signos ("un negativo, impar" sin aclarar que se cuentan los SIGNOS).
+
+### Fase 1 — ANTES de escribir (contexto)
+- [ ] **¿Quién LEE esto?** Definir explícitamente el lector: grado que CURSA hoy y grado
+      del contenido. En "adelántate", el niño VA HACIA ese grado → el texto habla de ESE
+      grado como su futuro inmediato ("En 5to grado verás..."), nunca del siguiente.
+      El nombre de la materia/tema también debe respetar esa perspectiva.
+- [ ] **Título/materia/grado EXACTOS**: copiar el `tema` letra por letra del temario o del
+      aula (no reescribirlo de memoria); `materia` y `grado` con los strings exactos que
+      manda la app. Confirmar la clave con `filasDeBanco` ANTES de redactar el resto.
+- [ ] Si hay material real (PDFs/fotos/temario con enfoque `d`), leerlo primero: define
+      nivel, notación y estilo.
+
+### Fase 2 — MIENTRAS se escribe (regla de oro por ítem)
+- [ ] **Prueba del niño**: releer cada explicación/ejemplo preguntando "¿un niño de ese
+      grado entiende esto SIN ayuda y SIN ambigüedad?". Cazar palabras que puedan referirse
+      a dos cosas (ej.: "par/impar" ¿del número o de la cantidad de signos?) y explicitar
+      SIEMPRE el referente ("hay DOS signos negativos → cantidad par → positivo").
+- [ ] Cada ejemplo se explica solo: incluye qué se hace, el cálculo y el porqué, sin
+      depender de haber leído otra sección.
+- [ ] Toda solución/explicación: respuesta primero, procedimiento después, y COMPROBACIÓN
+      cuando sea numérico. La pista orienta sin regalar.
+- [ ] Distractores del quiz = errores típicos reales (no opciones absurdas).
+- [ ] Texto plano siempre: sin Markdown, sin tablas/dibujos ASCII, sin jerga regional.
+- [ ] Consistencia de datos dentro de cada ítem (si el enunciado dice 3 cuadernos de
+      15 Bs, la solución usa 3 y 15, no otros números).
+
+### Fase 3 — DESPUÉS de escribir (verificación mecánica, no opcional)
+- [ ] **Estructura**: pasar cada banco por `filasDeBanco` (o `cargar-curado.mjs --solo=`)
+      → 4/4 modos válidos, claves normalizadas correctas, sin avisos.
+- [ ] **Matemática por script**: recomputar TODA la aritmética verificable (productos,
+      signos, %, fracciones de cantidad, ecuaciones, valor numérico) comparando contra la
+      respuesta escrita. Los ítems que el script no pueda parsear se listan y se verifican
+      A MANO uno por uno (decir cuántos fueron).
+- [ ] **Grep de perspectiva**: buscar en los archivos menciones de grado ("4to", "5to",
+      "6to", "1er año"...) y confirmar una por una que corresponden al lector definido en
+      Fase 1. Igual con nombres propios y géneros si aplica.
+- [ ] **Lectura completa final** de los 4 modos (no solo el resumen) en "modo padre
+      exigente": buscando ambigüedades, erratas, frases confusas o incompletas.
+
+### Fase 4 — SUBIR y VERIFICAR en vivo
+- [ ] Subir (`cargar-curado.mjs --solo=` o `POST /api/cargar-curado`) y confirmar N/4 por
+      banco y la clave normalizada exacta.
+- [ ] Probar `POST /api/generar` con `soloCurado:true` y los strings EXACTOS que manda la
+      app (materia/tema/grado) → debe venir `curado:true` en al menos 2 modos.
+- [ ] Si se RENOMBRÓ una materia o tema ya subido: las filas viejas quedan huérfanas en
+      `contenido_curado` → dar al admin el SQL de limpieza (delete por materia_norm/tema_norm viejos).
+- [ ] Commitear los `.json` y reportar al admin: qué se verificó por script, qué a mano,
+      y qué quedó sin verificar (ser explícito, sin maquillar).
+
 ## Seguridad de la sesión
 - **Nunca** imprimir contraseñas ni tokens en la conversación ni en logs.
 - **Nunca** commitear `.env.local`, `curado/fotos/`, `curado/material/`.

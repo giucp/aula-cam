@@ -1,11 +1,11 @@
 {
-  "materia": "Puente a 6to grado",
+  "materia": "Puente a 5to grado",
   "tema": "Problemas de varios pasos: entender antes de calcular",
   "grado": "5to grado",
-  "fuentes": ["Guía de refuerzo Aula CAM: llegar firme a 6to grado"],
+  "fuentes": ["Guía de refuerzo Aula CAM: llegar firme a 5to grado"],
   "resumen": {
     "titulo": "Resolver problemas: entender primero, calcular después",
-    "intro": "En 6to grado los problemas ya no se resuelven con una sola cuenta: piden dos o más pasos. Lo importante no es calcular rápido, sino ENTENDER qué te preguntan y en qué orden resolver. Aquí aprendes un método que sirve para cualquier problema.",
+    "intro": "En 5to grado los problemas ya no se resuelven con una sola cuenta: piden dos o más pasos. Lo importante no es calcular rápido, sino ENTENDER qué te preguntan y en qué orden resolver. Aquí aprendes un método que sirve para cualquier problema.",
     "secciones": [
       {
         "titulo": "Los cuatro pasos para resolver cualquier problema",
