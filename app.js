@@ -1077,6 +1077,8 @@
     if(btnGuia){ btnGuia.classList.toggle("hidden", !hayGuia); btnGuia.disabled = !tema; }
     btnGen.textContent = hayGuia ? "✨ Con IA" : mo.verbo;
     btnGen.disabled = !tema;
+    // la explicación "¿cuál elijo?" solo tiene sentido cuando hay las dos opciones
+    const info=$("#accInfo"); if(info){ info.classList.toggle("hidden", !hayGuia); if(!hayGuia) info.open=false; }
   }
 
   // ───────── GENERAR ─────────
@@ -1205,11 +1207,11 @@
     const pdfs = Array.isArray(fuentes) ? fuentes : [];
     const acts = (ultimoContexto && ultimoContexto.actividades) ? ultimoContexto.actividades : [];
     const apunte = apuntes ? `<li>📓 + tus apuntes del cuaderno</li>` : "";
-    let html = "";
+    let html = "", esIA = !curado;
     if(curado){
-      // banco revisado por una persona (no solo generado): señal de confianza para padres
+      // banco preparado y revisado por nosotros: se aclara su origen (base sólida) como señal de confianza
       const items = pdfs.slice(0,4).map(f=>`<li>${escapeHtml(f)}</li>`).join("");
-      html = `<p class="t">✅ Guía de estudio revisada</p>${items?`<ul>${items}</ul>`:""}`;
+      html = `<p class="t">✅ Guía de estudio revisada</p><p class="sub">La preparamos nosotros con una IA más avanzada y la revisamos para que sea correcta y completa: es tu base sólida del tema.</p>${items?`<ul>${items}</ul>`:""}`;
     }else if(pdfs.length){
       const items = pdfs.slice(0,4).map(f=>`<li>${escapeHtml(f)}</li>`).join("");
       html = `<p class="t">📄 Basado en tus guías de clase</p><ul>${items}${apunte}</ul>`;
@@ -1220,8 +1222,13 @@
       const items = acts.slice(0,4).map(a=>`<li>${escapeHtml(a.nombre)}</li>`).join("");
       const extra = acts.length>4 ? `<li>…y ${acts.length-4} más</li>` : "";
       html = `<p class="t">🔗 Basado en tu clase</p><ul>${items}${extra}</ul>`;
+    }else{
+      // IA pura (tema del próximo año por título, o tema sin guía): que quede claro que es al momento
+      html = `<p class="t">✨ Creado con IA en el momento</p><p class="sub">Contenido nuevo hecho por inteligencia artificial, distinto cada vez. Ideal para practicar más.</p>`;
     }
-    if(html){ const b=document.createElement("div"); b.className="basado"; b.innerHTML=html; res.appendChild(b); }
+    // cuando es IA con material real, se agrega la aclaración de que la actividad se generó al momento
+    if(esIA && (pdfs.length || apuntes || (basado && acts.length))) html += `<p class="sub ia">✨ Ejercicios creados con IA en el momento.</p>`;
+    if(html){ const b=document.createElement("div"); b.className="basado"+(esIA?" ia":""); b.innerHTML=html; res.appendChild(b); }
   }
   function renderFooter(res){
     const f=document.createElement("p"); f.className="footer";

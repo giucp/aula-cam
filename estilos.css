@@ -200,6 +200,22 @@
   .basado .t{font-family:"Fredoka";font-weight:600;color:var(--teal-dark);font-size:.92rem;display:flex;align-items:center;gap:8px;margin:0 0 7px}
   .basado ul{margin:0;padding-left:20px;color:var(--ink);font-weight:600;font-size:.9rem;line-height:1.5}
   .basado li{margin:2px 0}
+  .basado .sub{color:var(--muted);font-weight:600;font-size:.82rem;line-height:1.4;margin:0 0 6px}
+  .basado ul + .sub, .basado .sub.ia{margin:7px 0 0}
+  /* banner naranja cuando el contenido es generado por IA (contraste con la guia verde) */
+  .basado.ia{background:linear-gradient(180deg,#FFF3EC,#FFE9DE);border-color:#FFD3BE}
+  .basado.ia .t{color:#C85A2B}
+  .basado .sub.ia{color:#C85A2B}
+  /* explicacion desplegable "cual elijo" bajo los botones de accion */
+  .accInfo{margin-top:8px}
+  .accInfo summary{cursor:pointer;list-style:none;text-align:center;padding:7px;font-family:"Fredoka";font-weight:600;font-size:.92rem;color:var(--teal-dark)}
+  .accInfo summary::-webkit-details-marker{display:none}
+  .accInfo[open] summary{margin-bottom:2px}
+  .accInfoBody{background:#FBFDFC;border:1px solid var(--line);border-radius:14px;padding:12px 14px;color:var(--ink);line-height:1.5;font-size:.9rem}
+  .accInfoBody p{margin:0 0 9px;font-weight:600}
+  .accInfoBody p:last-child{margin:0}
+  .accInfoBody .tagG{display:block;color:var(--teal-dark);font-weight:700}
+  .accInfoBody .tagIA{display:block;color:#C85A2B;font-weight:700}
 
   /* card base (retos / examen) */
   .card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow-sm);
