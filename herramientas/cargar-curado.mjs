@@ -37,7 +37,9 @@ function cfg() {
 }
 
 async function upsert(c, fila) {
-  const r = await fetch(`${c.url}/rest/v1/contenido_curado`, {
+  // on_conflict apunta al índice único del banco: sin él, merge-duplicates solo
+  // resuelve por la PK (id) y RE-subir un banco existente daba 409 duplicate key.
+  const r = await fetch(`${c.url}/rest/v1/contenido_curado?on_conflict=materia_norm,tema_norm,modo,grado`, {
     method: "POST",
     headers: {
       apikey: c.key, Authorization: `Bearer ${c.key}`,
