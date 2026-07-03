@@ -814,6 +814,10 @@
       const r = await fetch(API_CURRICULO,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ grado })});
       const d = await r.json();
       const mats = (d.materias||[]).map(m=>({ nombre:m.materia, nombreCorto:m.nombre_corto, grupos:(m.temas&&m.temas.grupos)||[], _proximo:true }));
+      // El "Puente" (refuerzo del salto de grado) va PRIMERO: es lo primero que
+      // conviene que hagan los niños. Orden estable → el resto queda como venía.
+      const esPuente = m=>/puente/i.test(m.nombre||"") ? 0 : 1;
+      mats.sort((a,b)=>esPuente(a)-esPuente(b));
       origen = "proximo"; proximoGrado = grado;
       cargarCuradoInfo(grado);   // guía revisada del próximo grado (si la hubiera)
       $("#destacadaWrap").classList.add("hidden");
