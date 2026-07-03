@@ -1,0 +1,112 @@
+{
+  "materia": "Puente a 6to grado",
+  "tema": "Dominar las tablas de multiplicar (fluidez)",
+  "grado": "5to grado",
+  "fuentes": ["Guía de refuerzo Aula CAM: llegar firme a 6to grado"],
+  "resumen": {
+    "titulo": "Las tablas de multiplicar con trucos para no fallar",
+    "intro": "Saber las tablas de memoria y con rapidez es la base de casi todo lo que viene: divisiones, fracciones, mínimo común múltiplo y problemas. Aquí no solo las repasas: aprendes trucos para recordarlas sin contar con los dedos.",
+    "secciones": [
+      {
+        "titulo": "Qué es multiplicar y por qué el orden no importa",
+        "explicacion": "Multiplicar es sumar un número varias veces: 4 × 3 significa 'cuatro veces tres', o sea 3 + 3 + 3 + 3 = 12. Una idea que te ahorra la mitad del esfuerzo: el orden no cambia el resultado (propiedad conmutativa), así que 4 × 3 es igual a 3 × 4. Si te sabes una, te sabes la otra.",
+        "pasos": [
+          "Piensa a × b como 'a veces b'.",
+          "Recuerda que a × b = b × a.",
+          "Si olvidas un resultado, súmalo rápido a partir de uno que sí sepas."
+        ],
+        "ejemplo": "Si sabes que 6 × 4 = 24, entonces 4 × 6 también es 24, sin volver a pensarlo."
+      },
+      {
+        "titulo": "Trucos de las tablas fáciles: 2, 5, 10 y 4",
+        "explicacion": "Algunas tablas tienen trucos rapidísimos. La del 2 es el doble. La del 10 es agregar un cero. La del 5 termina siempre en 0 o 5 (es la mitad de la del 10). La del 4 es doble del doble.",
+        "pasos": [
+          "×2: duplica el número (7×2 = 14).",
+          "×10: agrégale un cero (7×10 = 70).",
+          "×5: haz ×10 y toma la mitad (7×5 = 70/2 = 35).",
+          "×4: duplica dos veces (7×4 = 7→14→28)."
+        ],
+        "ejemplo": "8 × 5: hago 8 × 10 = 80 y tomo la mitad, 40. Así 8 × 5 = 40."
+      },
+      {
+        "titulo": "El truco de la tabla del 9",
+        "explicacion": "La tabla del 9 tiene un patrón muy útil: las decenas suben de 1 en 1 (desde 0) y las unidades bajan de 1 en 1 (desde 9), y las dos cifras del resultado SIEMPRE suman 9. También puedes hacer ×10 y restar el número una vez.",
+        "pasos": [
+          "Método rápido: 9×n = 10×n − n.",
+          "Comprobación: las cifras del resultado suman 9.",
+          "Ejemplo: 9×6 = 60 − 6 = 54, y 5 + 4 = 9."
+        ],
+        "ejemplo": "9 × 7: hago 70 − 7 = 63. Comprobación: 6 + 3 = 9. Correcto."
+      },
+      {
+        "titulo": "Las que más cuestan: 6, 7 y 8",
+        "explicacion": "Los productos del 6, 7 y 8 son los que más se olvidan. Ayuda apoyarse en las tablas que ya dominas y sumar o restar una vez. También vale la pena memorizar bien unos cuantos 'difíciles' clave: 6×7 = 42, 6×8 = 48, 7×8 = 56, 8×8 = 64.",
+        "pasos": [
+          "Apóyate en una tabla vecina: 6×7 = 5×7 + 7 = 35 + 7 = 42.",
+          "O usa el conmutativo para elegir la versión más fácil.",
+          "Memoriza los 'difíciles' clave repitiéndolos a diario."
+        ],
+        "ejemplo": "7 × 8: si no lo recuerdo, hago 7 × 8 = 7 × 4 + 7 × 4 = 28 + 28 = 56."
+      },
+      {
+        "titulo": "Factor que falta y comprobar con la división",
+        "explicacion": "Muchos ejercicios te dan el resultado y te piden el número que falta: 6 × ? = 48. Eso se resuelve dividiendo: 48 ÷ 6 = 8. Multiplicación y división son operaciones contrarias, así que siempre puedes comprobar una con la otra.",
+        "pasos": [
+          "Si falta un factor, divide el resultado entre el factor que sí tienes.",
+          "Comprueba multiplicando de nuevo.",
+          "Recuerda: si a × b = c, entonces c ÷ a = b."
+        ],
+        "ejemplo": "4 × ? = 32 → 32 ÷ 4 = 8. Comprobación: 4 × 8 = 32."
+      }
+    ],
+    "idea_clave": "El orden no cambia el producto (a×b = b×a), cada tabla tiene su truco (×2 doble, ×5 mitad de ×10, ×9 = 10n − n), y el factor que falta se halla dividiendo."
+  },
+  "retos": [
+    { "enunciado": "Calcula: 7 × 8", "pista": "Un difícil clave; si no lo recuerdas, 7×4 + 7×4.", "solucion": "56. 7 × 8 = 56 (o 28 + 28 = 56).", "figura": "" },
+    { "enunciado": "Calcula: 6 × 7", "pista": "Apóyate en 5×7 y suma un 7.", "solucion": "42. 5×7 = 35 y 35 + 7 = 42, así que 6 × 7 = 42.", "figura": "" },
+    { "enunciado": "Calcula: 9 × 6 usando el truco del 9", "pista": "9×n = 10×n − n.", "solucion": "54. 10×6 = 60 y 60 − 6 = 54. Comprobación: 5 + 4 = 9.", "figura": "" },
+    { "enunciado": "Calcula: 8 × 8", "pista": "Es un difícil clave para memorizar.", "solucion": "64. 8 × 8 = 64.", "figura": "" },
+    { "enunciado": "Halla el número que falta: 4 × ? = 32", "pista": "Divide el resultado entre 4.", "solucion": "8. 32 ÷ 4 = 8. Comprobación: 4 × 8 = 32.", "figura": "" },
+    { "enunciado": "Halla el número que falta: 6 × ? = 48", "pista": "Divide 48 entre 6.", "solucion": "8. 48 ÷ 6 = 8. Comprobación: 6 × 8 = 48.", "figura": "" },
+    { "enunciado": "Calcula: 7 × 9 usando el truco del 9", "pista": "70 menos 7.", "solucion": "63. 10×7 = 70 y 70 − 7 = 63. Comprobación: 6 + 3 = 9.", "figura": "" },
+    { "enunciado": "Si 8 × 3 = 24, ¿cuánto es 3 × 8?", "pista": "El orden no cambia el resultado.", "solucion": "24. Por la propiedad conmutativa, 3 × 8 = 8 × 3 = 24.", "figura": "" },
+    { "enunciado": "Calcula: 5 × 7 usando el truco del 5", "pista": "Haz ×10 y toma la mitad.", "solucion": "35. 10×7 = 70 y la mitad es 35, así que 5 × 7 = 35.", "figura": "" },
+    { "enunciado": "Calcula: 4 × 6 duplicando dos veces", "pista": "6 → doble → doble.", "solucion": "24. 6 → 12 → 24, así que 4 × 6 = 24.", "figura": "" },
+    { "enunciado": "Calcula: 12 × 3", "pista": "3 docenas.", "solucion": "36. 12 × 3 = 36.", "figura": "" },
+    { "enunciado": "Calcula: 11 × 7", "pista": "La del 11 (hasta 9) repite la cifra.", "solucion": "77. 11 × 7 = 77.", "figura": "" },
+    { "enunciado": "Calcula: 9 × 9 usando el truco del 9", "pista": "90 menos 9.", "solucion": "81. 10×9 = 90 y 90 − 9 = 81. Comprobación: 8 + 1 = 9.", "figura": "" },
+    { "enunciado": "Halla el número que falta: ? × 6 = 54", "pista": "Divide 54 entre 6.", "solucion": "9. 54 ÷ 6 = 9. Comprobación: 9 × 6 = 54.", "figura": "" },
+    { "enunciado": "Calcula: 7 × 7", "pista": "Es un difícil clave.", "solucion": "49. 7 × 7 = 49.", "figura": "" },
+    { "enunciado": "Calcula: 8 × 4 duplicando dos veces", "pista": "Duplica el 8 dos veces.", "solucion": "32. 8 × 4 = 8 × 2 × 2: duplico 8 → 16 y otra vez → 32. Comprobación: 8 × 4 = 32.", "figura": "" }
+  ],
+  "quiz": [
+    { "pregunta": "¿Cuánto es 7 × 8?", "opciones": ["56", "54", "48", "63"], "correcta": 0, "explicacion": "7 × 8 = 56 (uno de los productos clave a memorizar).", "figura": "" },
+    { "pregunta": "¿Cuánto es 6 × 7?", "opciones": ["42", "48", "36", "49"], "correcta": 0, "explicacion": "6 × 7 = 42 (o 5×7 + 7 = 35 + 7).", "figura": "" },
+    { "pregunta": "¿Cuánto es 9 × 8?", "opciones": ["72", "81", "64", "76"], "correcta": 0, "explicacion": "Truco del 9: 80 − 8 = 72. Comprobación: 7 + 2 = 9.", "figura": "" },
+    { "pregunta": "¿Cuánto es 8 × 8?", "opciones": ["64", "56", "72", "16"], "correcta": 0, "explicacion": "8 × 8 = 64.", "figura": "" },
+    { "pregunta": "¿Qué número falta? 7 × ? = 63", "opciones": ["9", "8", "7", "6"], "correcta": 0, "explicacion": "63 ÷ 7 = 9. Comprobación: 7 × 9 = 63.", "figura": "" },
+    { "pregunta": "¿Cuánto es 5 × 9?", "opciones": ["45", "40", "54", "35"], "correcta": 0, "explicacion": "×5 es la mitad de ×10: 90 ÷ 2 = 45.", "figura": "" },
+    { "pregunta": "Si 6 × 9 = 54, ¿cuánto es 9 × 6?", "opciones": ["54", "45", "63", "56"], "correcta": 0, "explicacion": "El orden no cambia el producto: 9 × 6 = 54.", "figura": "" },
+    { "pregunta": "¿Cuánto es 4 × 7?", "opciones": ["28", "24", "32", "21"], "correcta": 0, "explicacion": "×4 es duplicar dos veces: 7 → 14 → 28.", "figura": "" },
+    { "pregunta": "¿Cuánto es 8 × 6?", "opciones": ["48", "42", "56", "54"], "correcta": 0, "explicacion": "8 × 6 = 48 (o 8×3 + 8×3 = 24 + 24).", "figura": "" },
+    { "pregunta": "¿Qué número falta? ? × 8 = 56", "opciones": ["7", "6", "8", "9"], "correcta": 0, "explicacion": "56 ÷ 8 = 7. Comprobación: 7 × 8 = 56.", "figura": "" },
+    { "pregunta": "¿Cuánto es 9 × 4?", "opciones": ["36", "32", "45", "40"], "correcta": 0, "explicacion": "Truco del 9: 40 − 4 = 36.", "figura": "" },
+    { "pregunta": "¿Cuánto es 7 × 7?", "opciones": ["49", "42", "56", "48"], "correcta": 0, "explicacion": "7 × 7 = 49.", "figura": "" },
+    { "pregunta": "¿Cuánto es 6 × 8?", "opciones": ["48", "54", "42", "56"], "correcta": 0, "explicacion": "6 × 8 = 48.", "figura": "" },
+    { "pregunta": "¿Cuánto es 12 × 4?", "opciones": ["48", "44", "36", "40"], "correcta": 0, "explicacion": "12 × 4 = 48 (4 docenas).", "figura": "" },
+    { "pregunta": "¿Qué número falta? 9 × ? = 72", "opciones": ["8", "9", "7", "6"], "correcta": 0, "explicacion": "72 ÷ 9 = 8. Comprobación: 9 × 8 = 72.", "figura": "" },
+    { "pregunta": "¿Cuánto es 8 × 7?", "opciones": ["56", "54", "48", "64"], "correcta": 0, "explicacion": "8 × 7 = 56 (igual que 7 × 8).", "figura": "" }
+  ],
+  "examen": [
+    { "pregunta": "Calcula: 7 × 6.", "respuesta": "42", "explicacion": "7 × 6 = 42 (o 7×5 + 7 = 35 + 7)." },
+    { "pregunta": "Calcula: 8 × 9.", "respuesta": "72", "explicacion": "Truco del 9: 10×8 − 8 = 80 − 8 = 72." },
+    { "pregunta": "Calcula: 6 × 6.", "respuesta": "36", "explicacion": "6 × 6 = 36." },
+    { "pregunta": "¿Qué número falta? 8 × ? = 64.", "respuesta": "8", "explicacion": "64 ÷ 8 = 8. Comprobación: 8 × 8 = 64." },
+    { "pregunta": "Calcula: 5 × 8 usando el truco del 5.", "respuesta": "40", "explicacion": "×5 es la mitad de ×10: 80 ÷ 2 = 40." },
+    { "pregunta": "Si 7 × 9 = 63, ¿cuánto es 9 × 7?", "respuesta": "63", "explicacion": "El orden no cambia el producto: 9 × 7 = 63." },
+    { "pregunta": "Calcula: 9 × 5.", "respuesta": "45", "explicacion": "Truco del 9: 50 − 5 = 45. Comprobación: 4 + 5 = 9." },
+    { "pregunta": "¿Qué número falta? ? × 7 = 49.", "respuesta": "7", "explicacion": "49 ÷ 7 = 7. Comprobación: 7 × 7 = 49." },
+    { "pregunta": "Calcula: 4 × 9.", "respuesta": "36", "explicacion": "Truco del 9: 40 − 4 = 36." },
+    { "pregunta": "Calcula: 8 × 3.", "respuesta": "24", "explicacion": "8 × 3 = 24 (o duplicar 3 tres veces: 3→6→12→24)." }
+  ]
+}

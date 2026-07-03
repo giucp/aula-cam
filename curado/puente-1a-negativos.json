@@ -1,0 +1,111 @@
+{
+  "materia": "Puente al Bachillerato",
+  "tema": "Números negativos: la regla de signos con confianza",
+  "grado": "1er año",
+  "fuentes": ["Guía de refuerzo Aula CAM: del 6to grado al 1er año"],
+  "resumen": {
+    "titulo": "Números negativos sin miedo: la regla de signos",
+    "intro": "En primaria trabajabas casi siempre con números positivos. En bachillerato aparecen los negativos todo el tiempo (temperaturas bajo cero, deudas, alturas bajo el nivel del mar). Aquí vas a entenderlos de verdad y a manejar la regla de signos con seguridad.",
+    "secciones": [
+      {
+        "titulo": "Qué es un número negativo y la recta numérica",
+        "explicacion": "Un número negativo es menor que cero: está a la izquierda del cero en la recta numérica. Una idea que ayuda mucho: piensa el positivo como TENER y el negativo como DEBER. Así, +5 es tener 5 y -5 es deber 5. Cuanto más a la izquierda, más pequeño es el número: por eso -8 es MENOR que -3 (deber 8 es peor que deber 3).",
+        "pasos": [
+          "Dibuja mentalmente la recta: ...-3, -2, -1, 0, 1, 2, 3...",
+          "A la derecha los números crecen; a la izquierda decrecen.",
+          "Para comparar dos negativos, el mayor es el que está más cerca del cero."
+        ],
+        "ejemplo": "¿Cuál es mayor, -2 o -6? El -2, porque está más cerca del cero (deber 2 es mejor que deber 6)."
+      },
+      {
+        "titulo": "Sumar y restar con la idea de deber y tener",
+        "explicacion": "Sumar es juntar. Si juntas dos deudas, la deuda crece: (-5) + (-3) = -8 (debes 5 y debes 3, en total debes 8). Si mezclas tener con deber, se cancelan y queda lo que sobra del más grande: (-7) + 4 = -3 (debes 7, tienes 4, todavía debes 3). Restar un número es lo mismo que sumar su opuesto.",
+        "pasos": [
+          "Mismos signos: suma las cantidades y conserva el signo.",
+          "Signos distintos: resta la menor de la mayor y pon el signo del número más grande (en tamaño).",
+          "Si dudas, tradúcelo a deber/tener y piensa qué queda."
+        ],
+        "ejemplo": "(-9) + 4: debes 9 y tienes 4, te quedan por deber 5, así que es -5."
+      },
+      {
+        "titulo": "Restar un negativo: menos por menos suma",
+        "explicacion": "Restar un negativo se convierte en sumar: a - (-b) = a + b. Quitar una deuda es como recibir dinero. Por eso 8 - (-5) = 8 + 5 = 13. Este es el paso donde más se equivoca quien viene de primaria: dos signos menos seguidos se transforman en un más.",
+        "pasos": [
+          "Cuando veas − (− …), reemplázalo por + …",
+          "Luego resuelve la suma normal.",
+          "Comprueba con deber/tener: quitar una deuda te deja mejor."
+        ],
+        "ejemplo": "-4 - (-6) = -4 + 6 = 2. Debías 4, te perdonan una deuda de 6: terminas teniendo 2."
+      },
+      {
+        "titulo": "Multiplicar y dividir: la regla de los signos",
+        "explicacion": "Para multiplicar o dividir, primero calculas con los números como si fueran positivos y después decides el signo con esta regla: signos IGUALES dan POSITIVO (+·+ = +, −·− = +) y signos DISTINTOS dan NEGATIVO (+·− = −, −·+ = −). Un truco para varios factores: cuenta cuántos signos negativos hay; si son pares, el resultado es positivo; si son impares, negativo.",
+        "pasos": [
+          "Multiplica o divide los números sin mirar el signo.",
+          "Cuenta los signos negativos.",
+          "Cantidad par de negativos → resultado positivo. Cantidad impar → negativo."
+        ],
+        "ejemplo": "(-4) × (-5) = 20 (dos negativos, par → positivo). (-6) × 3 = -18 (un negativo, impar → negativo)."
+      },
+      {
+        "titulo": "Valor absoluto: la distancia al cero",
+        "explicacion": "El valor absoluto de un número es su distancia al cero, sin importar el signo, así que SIEMPRE es positivo (o cero). Se escribe con dos barras: |-9| = 9 y |9| = 9. Sirve para hablar de 'qué tan grande' es un número sin fijarse en si es deuda o ganancia.",
+        "pasos": [
+          "Mira el número dentro de las barras.",
+          "Quítale el signo: el resultado es positivo.",
+          "El valor absoluto de 0 es 0."
+        ],
+        "ejemplo": "|-12| = 12 y |7| = 7. Aunque -12 sea menor que 7, su valor absoluto (12) es mayor porque está más lejos del cero."
+      }
+    ],
+    "idea_clave": "Piensa los negativos como deudas: sumar deudas las agranda, restar un negativo es quitar una deuda (suma), y en la multiplicación/división signos iguales dan positivo y distintos dan negativo."
+  },
+  "retos": [
+    { "enunciado": "Calcula: (-5) + (-3)", "pista": "Son dos deudas; júntalas y conserva el signo.", "solucion": "-8. Debes 5 y debes 3, en total debes 8: (-5)+(-3) = -8.", "figura": "" },
+    { "enunciado": "Calcula: (-7) + 4", "pista": "Tienes una deuda de 7 y una ganancia de 4; ¿qué queda?", "solucion": "-3. Debes 7 y tienes 4; te quedan 3 por deber: (-7)+4 = -3.", "figura": "" },
+    { "enunciado": "Calcula: 6 + (-9)", "pista": "Signos distintos: resta y pon el signo del más grande.", "solucion": "-3. Tienes 6 y debes 9; sobra deuda de 3: 6+(-9) = -3.", "figura": "" },
+    { "enunciado": "Calcula: 8 - (-5)", "pista": "Restar un negativo se convierte en sumar.", "solucion": "13. 8-(-5) = 8+5 = 13. Quitar una deuda de 5 te deja mejor.", "figura": "" },
+    { "enunciado": "Calcula: -4 - (-6)", "pista": "Cambia − (−6) por +6.", "solucion": "2. -4-(-6) = -4+6 = 2.", "figura": "" },
+    { "enunciado": "Calcula: (-3) - (-3)", "pista": "Restar un negativo suma; ¿cuánto es -3 + 3?", "solucion": "0. -3-(-3) = -3+3 = 0.", "figura": "" },
+    { "enunciado": "Calcula: (-6) × 3", "pista": "Un solo signo negativo: impar.", "solucion": "-18. 6×3 = 18 y hay un negativo (impar) → -18.", "figura": "" },
+    { "enunciado": "Calcula: (-4) × (-5)", "pista": "Dos negativos: par.", "solucion": "20. 4×5 = 20 y hay dos negativos (par) → +20.", "figura": "" },
+    { "enunciado": "Calcula: 7 × (-2)", "pista": "Signos distintos.", "solucion": "-14. 7×2 = 14 y signos distintos → -14.", "figura": "" },
+    { "enunciado": "Calcula: (-20) ÷ (-4)", "pista": "Dos negativos: par.", "solucion": "5. 20÷4 = 5 y dos negativos (par) → +5.", "figura": "" },
+    { "enunciado": "Calcula: (-18) ÷ 6", "pista": "Un solo negativo: impar.", "solucion": "-3. 18÷6 = 3 y un negativo (impar) → -3.", "figura": "" },
+    { "enunciado": "Calcula: 15 ÷ (-3)", "pista": "Signos distintos.", "solucion": "-5. 15÷3 = 5 y signos distintos → -5.", "figura": "" },
+    { "enunciado": "Calcula: (-2) × (-3) × (-1)", "pista": "Cuenta cuántos negativos hay.", "solucion": "-6. 2×3×1 = 6 y hay tres negativos (impar) → -6.", "figura": "" },
+    { "enunciado": "Calcula: -10 + (-5) - (-8)", "pista": "Primero cambia -(-8) por +8, luego opera de izquierda a derecha.", "solucion": "-7. -10+(-5) = -15; -15-(-8) = -15+8 = -7.", "figura": "" },
+    { "enunciado": "Calcula el valor absoluto: |-9|", "pista": "Es la distancia al cero, siempre positiva.", "solucion": "9. El valor absoluto quita el signo: |-9| = 9.", "figura": "" },
+    { "enunciado": "¿Cuál es mayor, -8 o -3?", "pista": "El mayor es el que está más cerca del cero.", "solucion": "-3 es mayor. Está más cerca del cero; deber 3 es mejor que deber 8, así que -3 > -8.", "figura": "" }
+  ],
+  "quiz": [
+    { "pregunta": "¿Cuánto es (-6) + (-4)?", "opciones": ["-10", "-2", "10", "2"], "correcta": 0, "explicacion": "Dos deudas se juntan: debes 6 y debes 4, en total debes 10 → -10.", "figura": "" },
+    { "pregunta": "¿Cuánto es (-8) + 5?", "opciones": ["-3", "3", "-13", "13"], "correcta": 0, "explicacion": "Debes 8 y tienes 5; te queda deuda de 3 → -3.", "figura": "" },
+    { "pregunta": "¿Cuánto es 4 - (-7)?", "opciones": ["11", "-3", "-11", "3"], "correcta": 0, "explicacion": "Restar un negativo suma: 4-(-7) = 4+7 = 11.", "figura": "" },
+    { "pregunta": "¿Cuánto es -2 - (-9)?", "opciones": ["7", "-11", "-7", "11"], "correcta": 0, "explicacion": "-2-(-9) = -2+9 = 7.", "figura": "" },
+    { "pregunta": "¿Cuánto es (-5) × 4?", "opciones": ["-20", "20", "-1", "-9"], "correcta": 0, "explicacion": "5×4 = 20 y signos distintos → -20.", "figura": "" },
+    { "pregunta": "¿Cuánto es (-7) × (-3)?", "opciones": ["21", "-21", "-10", "10"], "correcta": 0, "explicacion": "7×3 = 21 y dos negativos (par) → +21.", "figura": "" },
+    { "pregunta": "¿Cuánto es (-24) ÷ 6?", "opciones": ["-4", "4", "-18", "18"], "correcta": 0, "explicacion": "24÷6 = 4 y signos distintos → -4.", "figura": "" },
+    { "pregunta": "¿Cuánto es (-30) ÷ (-5)?", "opciones": ["6", "-6", "-25", "25"], "correcta": 0, "explicacion": "30÷5 = 6 y dos negativos (par) → +6.", "figura": "" },
+    { "pregunta": "¿Cuál de estos números es el MENOR?", "opciones": ["-9", "-4", "0", "3"], "correcta": 0, "explicacion": "El menor está más a la izquierda en la recta: -9 es el más pequeño.", "figura": "" },
+    { "pregunta": "¿Cuánto vale |-15|?", "opciones": ["15", "-15", "0", "1"], "correcta": 0, "explicacion": "El valor absoluto es la distancia al cero, siempre positiva: |-15| = 15.", "figura": "" },
+    { "pregunta": "El resultado de (-2) × (-2) × (-2) es:", "opciones": ["-8", "8", "-6", "6"], "correcta": 0, "explicacion": "2×2×2 = 8 y hay tres negativos (impar) → -8.", "figura": "" },
+    { "pregunta": "La temperatura era -3°C y bajó 5°C más. ¿En cuánto quedó?", "opciones": ["-8°C", "2°C", "-2°C", "8°C"], "correcta": 0, "explicacion": "Bajar es restar/sumar deuda de frío: -3 + (-5) = -8°C.", "figura": "" },
+    { "pregunta": "¿Cuánto es 0 - 7?", "opciones": ["-7", "7", "0", "-1"], "correcta": 0, "explicacion": "Quitarle 7 a nada deja una deuda de 7: 0-7 = -7.", "figura": "" },
+    { "pregunta": "¿Cuál afirmación es CORRECTA?", "opciones": ["-1 es mayor que -5", "-5 es mayor que -1", "-5 es igual a 5", "-1 es menor que -5"], "correcta": 0, "explicacion": "-1 está más cerca del cero que -5, así que -1 > -5.", "figura": "" },
+    { "pregunta": "¿Cuánto es -6 + 6?", "opciones": ["0", "12", "-12", "1"], "correcta": 0, "explicacion": "Un número y su opuesto se cancelan: -6+6 = 0.", "figura": "" },
+    { "pregunta": "Un buzo está a -12 m y sube 4 m. ¿A qué profundidad queda?", "opciones": ["-8 m", "-16 m", "8 m", "16 m"], "correcta": 0, "explicacion": "Subir suma: -12 + 4 = -8 m (sigue bajo el agua).", "figura": "" }
+  ],
+  "examen": [
+    { "pregunta": "Calcula: (-9) + (-6).", "respuesta": "-15", "explicacion": "Dos deudas se suman y se conserva el signo: -9 + -6 = -15." },
+    { "pregunta": "Calcula: 5 + (-12).", "respuesta": "-7", "explicacion": "Tienes 5 y debes 12; sobra deuda de 7 → -7." },
+    { "pregunta": "Calcula: 10 - (-4).", "respuesta": "14", "explicacion": "Restar un negativo suma: 10-(-4) = 10+4 = 14." },
+    { "pregunta": "Calcula: -3 - (-8).", "respuesta": "5", "explicacion": "-3-(-8) = -3+8 = 5." },
+    { "pregunta": "Calcula: (-8) × (-6).", "respuesta": "48", "explicacion": "8×6 = 48 y dos negativos (par) → +48." },
+    { "pregunta": "Calcula: 9 × (-4).", "respuesta": "-36", "explicacion": "9×4 = 36 y signos distintos → -36." },
+    { "pregunta": "Calcula: (-45) ÷ (-9).", "respuesta": "5", "explicacion": "45÷9 = 5 y dos negativos (par) → +5." },
+    { "pregunta": "Calcula: (-28) ÷ 7.", "respuesta": "-4", "explicacion": "28÷7 = 4 y signos distintos → -4." },
+    { "pregunta": "¿Cuál es mayor, -7 o -2? Explica por qué.", "respuesta": "-2", "explicacion": "-2 está más cerca del cero en la recta numérica, y todo número más a la derecha es mayor; por eso -2 > -7." },
+    { "pregunta": "Calcula el valor absoluto: |-20|.", "respuesta": "20", "explicacion": "El valor absoluto es la distancia al cero, siempre positiva: |-20| = 20." }
+  ]
+}

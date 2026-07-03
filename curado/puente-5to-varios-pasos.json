@@ -1,0 +1,112 @@
+{
+  "materia": "Puente a 6to grado",
+  "tema": "Problemas de varios pasos: entender antes de calcular",
+  "grado": "5to grado",
+  "fuentes": ["Guía de refuerzo Aula CAM: llegar firme a 6to grado"],
+  "resumen": {
+    "titulo": "Resolver problemas: entender primero, calcular después",
+    "intro": "En 6to grado los problemas ya no se resuelven con una sola cuenta: piden dos o más pasos. Lo importante no es calcular rápido, sino ENTENDER qué te preguntan y en qué orden resolver. Aquí aprendes un método que sirve para cualquier problema.",
+    "secciones": [
+      {
+        "titulo": "Los cuatro pasos para resolver cualquier problema",
+        "explicacion": "Antes de tocar los números, sigue siempre el mismo método: 1) Lee con calma y subraya los datos; 2) identifica QUÉ te preguntan (la pregunta final); 3) decide qué operaciones y en qué orden; 4) calcula y comprueba si la respuesta tiene sentido. La mayoría de los errores vienen de operar sin entender.",
+        "pasos": [
+          "Lee todo el problema, sin apurarte.",
+          "Subraya los datos numéricos y encierra la pregunta.",
+          "Piensa el plan: qué calcular primero y qué después.",
+          "Resuelve por pasos y revisa si el resultado es razonable."
+        ],
+        "ejemplo": "Compro 3 cuadernos de 15 Bs y pago con 50 Bs. Pregunta: el vuelto. Plan: primero el gasto (3 × 15), luego el vuelto (50 − gasto)."
+      },
+      {
+        "titulo": "Problemas de dos pasos",
+        "explicacion": "Un problema de dos pasos necesita una operación para hallar un resultado intermedio y otra para llegar a la respuesta final. La clave es no quedarte en el primer resultado: ese casi nunca es la respuesta. Pregúntate siempre '¿esto que calculé ya responde lo que me piden?'.",
+        "pasos": [
+          "Haz la primera operación para el dato intermedio.",
+          "Usa ese resultado en la segunda operación.",
+          "Verifica que respondes exactamente lo que pregunta el problema."
+        ],
+        "ejemplo": "Una caja trae 24 galletas; se reparten en 4 platos iguales y de un plato se comen 2. En ese plato quedan: 24 ÷ 4 = 6, y 6 − 2 = 4 galletas."
+      },
+      {
+        "titulo": "Cuidado con los datos que sobran y las palabras trampa",
+        "explicacion": "A veces el problema trae un dato que no necesitas: no todos los números se usan. Y ojo con las 'palabras clave': no siempre 'más' significa sumar ni 'menos' restar. Lo que manda es entender la situación, no reaccionar a una palabra.",
+        "pasos": [
+          "Revisa si todos los datos hacen falta para la pregunta.",
+          "No te dejes llevar solo por una palabra ('más', 'menos').",
+          "Piensa la situación completa antes de elegir la operación."
+        ],
+        "ejemplo": "'Ana tiene 12 años y 8 láminas; regala 3 láminas. ¿Cuántas le quedan?' La edad (12) sobra; solo importa 8 − 3 = 5."
+      },
+      {
+        "titulo": "Estimar para revisar el resultado",
+        "explicacion": "Antes o después de calcular, estima: redondea los números y calcula 'más o menos' cuánto debería dar. Si tu resultado exacto está muy lejos de la estimación, seguramente hay un error. Estimar es tu red de seguridad.",
+        "pasos": [
+          "Redondea los números a valores fáciles.",
+          "Haz la cuenta aproximada mentalmente.",
+          "Compara con tu resultado exacto: deben parecerse."
+        ],
+        "ejemplo": "Si 3 cuadernos cuestan 15 Bs cada uno, estimo 3 × 15 ≈ 45; el vuelto de 50 debe ser pequeño (unos 5). Si me diera 35 de vuelto, revisaría."
+      },
+      {
+        "titulo": "Escribir la respuesta completa",
+        "explicacion": "La respuesta no es solo un número: acompáñala de lo que representa (bolívares, galletas, personas). Eso te obliga a revisar que respondiste la pregunta y no otra cosa.",
+        "pasos": [
+          "Vuelve a leer la pregunta.",
+          "Escribe el número con su unidad o su significado.",
+          "Confirma que eso es exactamente lo que se pedía."
+        ],
+        "ejemplo": "No basta 'da 4'; mejor 'quedan 4 galletas en ese plato'."
+      }
+    ],
+    "idea_clave": "Entiende antes de calcular: lee, subraya los datos, identifica la pregunta y el orden de los pasos; en problemas de dos pasos usa el resultado intermedio para llegar al final, descarta datos que sobran y estima para revisar."
+  },
+  "retos": [
+    { "enunciado": "Compras 3 cuadernos de 15 Bs cada uno y pagas con 50 Bs. ¿Cuánto vuelto recibes?", "pista": "Primero el gasto total, luego el vuelto.", "solucion": "5 Bs. Gasto: 3 × 15 = 45; vuelto: 50 − 45 = 5 Bs.", "figura": "" },
+    { "enunciado": "Una caja trae 24 galletas. Se reparten en 4 platos iguales y de un plato se comen 2. ¿Cuántas quedan en ese plato?", "pista": "Primero cuántas por plato, luego resta las comidas.", "solucion": "4 galletas. 24 ÷ 4 = 6 por plato; 6 − 2 = 4.", "figura": "" },
+    { "enunciado": "En un salón hay 6 filas de 5 pupitres. Si faltan 3 alumnos, ¿cuántos alumnos hay presentes?", "pista": "Primero el total de pupitres, luego resta los que faltan.", "solucion": "27 alumnos. 6 × 5 = 30 pupitres; 30 − 3 = 27 presentes.", "figura": "" },
+    { "enunciado": "Un libro tiene 120 páginas. Leíste 45 el lunes y 30 el martes. ¿Cuántas te faltan?", "pista": "Suma lo leído y réstalo del total.", "solucion": "45 páginas. Leído: 45 + 30 = 75; faltan: 120 − 75 = 45.", "figura": "" },
+    { "enunciado": "Compras 4 jugos de 8 Bs y 2 panes de 6 Bs. ¿Cuánto gastas en total?", "pista": "Calcula cada compra por separado y súmalas.", "solucion": "44 Bs. Jugos: 4 × 8 = 32; panes: 2 × 6 = 12; total: 32 + 12 = 44 Bs.", "figura": "" },
+    { "enunciado": "Reparten 60 caramelos entre 5 niños en partes iguales; luego cada niño regala 4. ¿Con cuántos queda cada niño?", "pista": "Primero cuántos recibe cada uno, luego resta lo que regala.", "solucion": "8 caramelos. 60 ÷ 5 = 12 cada uno; 12 − 4 = 8.", "figura": "" },
+    { "enunciado": "Ana tiene 12 años y 8 láminas; regala 3 láminas. ¿Cuántas láminas le quedan?", "pista": "Cuidado: hay un dato que sobra.", "solucion": "5 láminas. La edad (12) no se usa; solo 8 − 3 = 5.", "figura": "" },
+    { "enunciado": "Un autobús lleva 40 pasajeros. En una parada bajan 12 y suben 7. ¿Cuántos pasajeros van ahora?", "pista": "Primero resta los que bajan, luego suma los que suben.", "solucion": "35 pasajeros. 40 − 12 = 28; 28 + 7 = 35.", "figura": "" },
+    { "enunciado": "Una docena de huevos cuesta 24 Bs. ¿Cuánto cuestan 3 huevos?", "pista": "Primero el precio de un huevo (una docena son 12).", "solucion": "6 Bs. Un huevo: 24 ÷ 12 = 2 Bs; tres huevos: 3 × 2 = 6 Bs.", "figura": "" },
+    { "enunciado": "Tienes 100 Bs. Compras 2 helados de 18 Bs cada uno. ¿Cuánto te queda?", "pista": "Primero el gasto, luego lo que queda.", "solucion": "64 Bs. Gasto: 2 × 18 = 36; queda: 100 − 36 = 64 Bs.", "figura": "" },
+    { "enunciado": "En una granja hay 8 gallinas y cada una pone 3 huevos al día. ¿Cuántos huevos hay en 2 días?", "pista": "Primero los huevos de un día, luego por 2 días.", "solucion": "48 huevos. En un día: 8 × 3 = 24; en dos días: 24 × 2 = 48.", "figura": "" },
+    { "enunciado": "Un salón tiene 28 alumnos. Se forman equipos de 4. ¿Cuántos equipos se forman?", "pista": "Es una división directa.", "solucion": "7 equipos. 28 ÷ 4 = 7.", "figura": "" },
+    { "enunciado": "María ahorra 25 Bs cada semana durante 4 semanas y luego gasta 30 Bs. ¿Cuánto le queda?", "pista": "Primero el ahorro total, luego resta el gasto.", "solucion": "70 Bs. Ahorro: 25 × 4 = 100; queda: 100 − 30 = 70 Bs.", "figura": "" },
+    { "enunciado": "Una pizza se corta en 8 porciones. Si hay 3 pizzas y se comen 10 porciones, ¿cuántas quedan?", "pista": "Primero el total de porciones, luego resta lo comido.", "solucion": "14 porciones. Total: 3 × 8 = 24; quedan: 24 − 10 = 14.", "figura": "" },
+    { "enunciado": "Un tren tiene 6 vagones con 20 asientos cada uno. Si van ocupados 100 asientos, ¿cuántos están libres?", "pista": "Primero el total de asientos, luego resta los ocupados.", "solucion": "20 asientos libres. Total: 6 × 20 = 120; libres: 120 − 100 = 20.", "figura": "" },
+    { "enunciado": "Compras 5 cajas con 12 lápices cada una y las repartes entre 3 salones en partes iguales. ¿Cuántos lápices recibe cada salón?", "pista": "Primero el total de lápices, luego reparte entre 3.", "solucion": "20 lápices. Total: 5 × 12 = 60; cada salón: 60 ÷ 3 = 20.", "figura": "" }
+  ],
+  "quiz": [
+    { "pregunta": "Compras 4 panes de 6 Bs y pagas con 50 Bs. ¿Cuánto vuelto recibes?", "opciones": ["26 Bs", "24 Bs", "30 Bs", "20 Bs"], "correcta": 0, "explicacion": "Gasto: 4 × 6 = 24; vuelto: 50 − 24 = 26 Bs.", "figura": "" },
+    { "pregunta": "Se reparten 36 lápices entre 6 niños. Luego cada niño presta 2. ¿Con cuántos queda cada niño?", "opciones": ["4", "6", "2", "8"], "correcta": 0, "explicacion": "36 ÷ 6 = 6 cada uno; 6 − 2 = 4.", "figura": "" },
+    { "pregunta": "Hay 5 mesas con 4 sillas cada una. Si faltan 2 sillas, ¿cuántas sillas hay?", "opciones": ["18", "20", "22", "16"], "correcta": 0, "explicacion": "5 × 4 = 20 sillas; 20 − 2 = 18.", "figura": "" },
+    { "pregunta": "Un cuaderno tiene 80 hojas. Usaste 25 y luego 15. ¿Cuántas hojas te quedan?", "opciones": ["40", "50", "55", "30"], "correcta": 0, "explicacion": "Usadas: 25 + 15 = 40; quedan: 80 − 40 = 40.", "figura": "" },
+    { "pregunta": "Pedro tiene 9 años y 20 figuritas; regala 6. ¿Cuántas figuritas le quedan?", "opciones": ["14", "11", "26", "3"], "correcta": 0, "explicacion": "La edad sobra; solo 20 − 6 = 14 figuritas.", "figura": "" },
+    { "pregunta": "Compras 3 bolsas con 10 dulces cada una y comes 8. ¿Cuántos dulces quedan?", "opciones": ["22", "30", "24", "18"], "correcta": 0, "explicacion": "Total: 3 × 10 = 30; quedan: 30 − 8 = 22.", "figura": "" },
+    { "pregunta": "Un autobús lleva 45 pasajeros; bajan 15 y suben 10. ¿Cuántos van ahora?", "opciones": ["40", "50", "35", "20"], "correcta": 0, "explicacion": "45 − 15 = 30; 30 + 10 = 40.", "figura": "" },
+    { "pregunta": "6 cajas traen 8 galletas cada una. Se reparten entre 4 amigos por igual. ¿Cuántas recibe cada uno?", "opciones": ["12", "10", "14", "8"], "correcta": 0, "explicacion": "Total: 6 × 8 = 48; cada amigo: 48 ÷ 4 = 12.", "figura": "" },
+    { "pregunta": "Ahorras 20 Bs por semana durante 5 semanas y gastas 40 Bs. ¿Cuánto te queda?", "opciones": ["60 Bs", "100 Bs", "80 Bs", "50 Bs"], "correcta": 0, "explicacion": "Ahorro: 20 × 5 = 100; queda: 100 − 40 = 60 Bs.", "figura": "" },
+    { "pregunta": "Una torta se parte en 12 porciones; hay 2 tortas y se comen 9 porciones. ¿Cuántas quedan?", "opciones": ["15", "12", "18", "21"], "correcta": 0, "explicacion": "Total: 2 × 12 = 24; quedan: 24 − 9 = 15.", "figura": "" },
+    { "pregunta": "Tienes 200 Bs y compras 4 cuadernos de 35 Bs. ¿Cuánto te queda?", "opciones": ["60 Bs", "140 Bs", "70 Bs", "40 Bs"], "correcta": 0, "explicacion": "Gasto: 4 × 35 = 140; queda: 200 − 140 = 60 Bs.", "figura": "" },
+    { "pregunta": "Estimando: 3 juguetes de 19 Bs cada uno cuestan APROXIMADAMENTE...", "opciones": ["60 Bs", "30 Bs", "90 Bs", "120 Bs"], "correcta": 0, "explicacion": "Redondeo 19 ≈ 20; 3 × 20 = 60 Bs aproximadamente.", "figura": "" },
+    { "pregunta": "En 7 días una vaca da 4 litros de leche por día. ¿Cuántos litros en total?", "opciones": ["28", "11", "24", "21"], "correcta": 0, "explicacion": "7 × 4 = 28 litros.", "figura": "" },
+    { "pregunta": "Reparten 90 stickers entre 9 niños; luego cada uno pega 5. ¿Cuántos le quedan a cada niño?", "opciones": ["5", "10", "45", "4"], "correcta": 0, "explicacion": "90 ÷ 9 = 10 cada uno; 10 − 5 = 5.", "figura": "" },
+    { "pregunta": "Un cine tiene 8 filas de 15 butacas. Si hay 100 personas, ¿cuántas butacas quedan vacías?", "opciones": ["20", "25", "15", "30"], "correcta": 0, "explicacion": "Total: 8 × 15 = 120; vacías: 120 − 100 = 20.", "figura": "" },
+    { "pregunta": "Compras 6 refrescos de 7 Bs y 3 galletas de 4 Bs. ¿Cuánto gastas?", "opciones": ["54 Bs", "42 Bs", "50 Bs", "58 Bs"], "correcta": 0, "explicacion": "Refrescos: 6 × 7 = 42; galletas: 3 × 4 = 12; total: 42 + 12 = 54 Bs.", "figura": "" }
+  ],
+  "examen": [
+    { "pregunta": "Compras 5 lápices de 8 Bs cada uno y pagas con 50 Bs. ¿Cuánto vuelto recibes?", "respuesta": "10 Bs", "explicacion": "Gasto: 5 × 8 = 40; vuelto: 50 − 40 = 10 Bs." },
+    { "pregunta": "Se reparten 48 galletas en 6 platos iguales y de un plato se comen 3. ¿Cuántas quedan en ese plato?", "respuesta": "5 galletas", "explicacion": "48 ÷ 6 = 8 por plato; 8 − 3 = 5." },
+    { "pregunta": "Hay 7 filas de 6 sillas y faltan 5 sillas. ¿Cuántas sillas hay?", "respuesta": "37 sillas", "explicacion": "7 × 6 = 42; 42 − 5 = 37." },
+    { "pregunta": "Un libro tiene 150 páginas; lees 60 y luego 40. ¿Cuántas te faltan?", "respuesta": "50 páginas", "explicacion": "Leído: 60 + 40 = 100; faltan: 150 − 100 = 50." },
+    { "pregunta": "Luis tiene 10 años y 15 canicas; pierde 4. ¿Cuántas canicas le quedan?", "respuesta": "11 canicas", "explicacion": "La edad sobra; solo 15 − 4 = 11 canicas." },
+    { "pregunta": "Compras 3 cajas con 12 chocolates cada una y comes 10. ¿Cuántos quedan?", "respuesta": "26 chocolates", "explicacion": "Total: 3 × 12 = 36; quedan: 36 − 10 = 26." },
+    { "pregunta": "Ahorras 30 Bs por semana durante 4 semanas y gastas 50 Bs. ¿Cuánto te queda?", "respuesta": "70 Bs", "explicacion": "Ahorro: 30 × 4 = 120; queda: 120 − 50 = 70 Bs." },
+    { "pregunta": "Un autobús lleva 50 pasajeros; bajan 20 y suben 8. ¿Cuántos van ahora?", "respuesta": "38 pasajeros", "explicacion": "50 − 20 = 30; 30 + 8 = 38." },
+    { "pregunta": "5 cajas traen 6 manzanas cada una; se reparten entre 3 familias por igual. ¿Cuántas recibe cada familia?", "respuesta": "10 manzanas", "explicacion": "Total: 5 × 6 = 30; cada familia: 30 ÷ 3 = 10." },
+    { "pregunta": "Tienes 100 Bs y compras 4 empanadas de 12 Bs. ¿Cuánto te queda?", "respuesta": "52 Bs", "explicacion": "Gasto: 4 × 12 = 48; queda: 100 − 48 = 52 Bs." }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "materia": "Puente al Bachillerato",
+  "tema": "De la aritmética al álgebra: qué significa la letra",
+  "grado": "1er año",
+  "fuentes": ["Guía de refuerzo Aula CAM: del 6to grado al 1er año"],
+  "resumen": {
+    "titulo": "El álgebra: cuando las letras representan números",
+    "intro": "El álgebra es el gran salto de 6to a 1er año. La idea central es sencilla pero poderosa: una letra representa un número que no conocemos o que puede cambiar. Entender esto bien te abre la puerta a todo el bachillerato.",
+    "secciones": [
+      {
+        "titulo": "Qué representa una letra",
+        "explicacion": "En álgebra usamos letras (casi siempre x, pero puede ser cualquiera) para representar un número desconocido o que puede tomar distintos valores. No es una unidad ni una cosa: es un número que todavía no sabemos. Por ejemplo, si digo 'x manzanas', x es cuántas manzanas hay, un número.",
+        "pasos": [
+          "Cuando veas una letra, léela como 'un número cualquiera'.",
+          "La misma letra en una expresión representa el MISMO número.",
+          "Letras distintas pueden representar números distintos."
+        ],
+        "ejemplo": "Si x = 5, entonces 'x + 2' vale 7. Si x = 10, 'x + 2' vale 12. La letra cambia, la regla (sumar 2) se mantiene."
+      },
+      {
+        "titulo": "Término, coeficiente y parte literal",
+        "explicacion": "Un término es un pedazo de una expresión separado por + o −. En un término como 7x, el número que multiplica a la letra (el 7) se llama COEFICIENTE, y la letra (x) es la PARTE LITERAL. Si una letra aparece sola, como x, su coeficiente es 1 (aunque no se escriba). Un número solo, como 5, se llama término independiente.",
+        "pasos": [
+          "Separa la expresión por los signos + y −.",
+          "En cada término, el número de adelante es el coeficiente.",
+          "La letra (o letras) es la parte literal; un número sin letra es término independiente."
+        ],
+        "ejemplo": "En 7x + 3, hay dos términos: 7x (coeficiente 7, parte literal x) y 3 (término independiente). En x, el coeficiente es 1."
+      },
+      {
+        "titulo": "Términos semejantes: cuándo se pueden juntar",
+        "explicacion": "Dos términos son SEMEJANTES si tienen exactamente la misma parte literal (la misma letra). Solo los términos semejantes se pueden sumar o restar, y para hacerlo sumas/restas los coeficientes y dejas la letra igual. No puedes juntar 3x con 5 porque no son semejantes: uno tiene letra y el otro no.",
+        "pasos": [
+          "Fíjate en la parte literal de cada término.",
+          "Agrupa los que tengan la misma letra.",
+          "Suma o resta solo los coeficientes; la parte literal no cambia."
+        ],
+        "ejemplo": "3x + 5x = 8x (se juntan, misma letra). Pero 3x + 5 se queda igual, porque no son semejantes."
+      },
+      {
+        "titulo": "Reducir términos semejantes",
+        "explicacion": "Reducir es simplificar una expresión juntando todos los términos semejantes. Cuidado con los signos: cada término se lleva su signo. Recuerda que una letra sola tiene coeficiente 1 (x es 1x) y que un término restado resta su coeficiente.",
+        "pasos": [
+          "Identifica los grupos de términos semejantes.",
+          "Suma o resta los coeficientes de cada grupo, respetando el signo.",
+          "Escribe el resultado con cada grupo una sola vez."
+        ],
+        "ejemplo": "6m − m = 5m (m es 1m, y 6 − 1 = 5). Y 2a + 3b + 4a = 6a + 3b (se juntan las a; la b se queda sola)."
+      },
+      {
+        "titulo": "Valor numérico: darle un número a la letra",
+        "explicacion": "Hallar el valor numérico de una expresión es reemplazar la letra por un número dado y calcular el resultado. Sustituyes con cuidado (respetando la jerarquía de operaciones) y obtienes un número. También sirve al revés: traducir frases a expresiones ('el doble de un número' es 2x, 'un número aumentado en 5' es x + 5).",
+        "pasos": [
+          "Escribe la expresión y el valor que te dan para la letra.",
+          "Reemplaza cada letra por ese número (entre paréntesis ayuda).",
+          "Resuelve las operaciones en el orden correcto."
+        ],
+        "ejemplo": "Valor numérico de 2x + 5 para x = 3: 2·(3) + 5 = 6 + 5 = 11."
+      }
+    ],
+    "idea_clave": "Una letra es un número desconocido: solo se juntan términos con la MISMA letra (sumando sus coeficientes), y para hallar el valor numérico se reemplaza la letra por el número dado y se calcula."
+  },
+  "retos": [
+    { "enunciado": "Reduce: 3x + 5x", "pista": "Misma letra: suma los coeficientes.", "solucion": "8x. Ambos términos tienen x, así que 3 + 5 = 8 y queda 8x.", "figura": "" },
+    { "enunciado": "Reduce: 7a - 2a", "pista": "Misma letra: resta los coeficientes.", "solucion": "5a. 7 − 2 = 5, con la misma parte literal: 5a.", "figura": "" },
+    { "enunciado": "Reduce: 4x + 3 + 2x", "pista": "Junta solo los términos con x; el 3 no es semejante.", "solucion": "6x + 3. Se juntan 4x + 2x = 6x; el 3 se queda solo: 6x + 3.", "figura": "" },
+    { "enunciado": "Halla el valor numérico de 2x + 5 para x = 3", "pista": "Reemplaza la x por 3 y calcula.", "solucion": "11. 2·(3) + 5 = 6 + 5 = 11.", "figura": "" },
+    { "enunciado": "Halla el valor numérico de 3n - 4 para n = 6", "pista": "Sustituye n por 6.", "solucion": "14. 3·(6) − 4 = 18 − 4 = 14.", "figura": "" },
+    { "enunciado": "¿Cuál es el coeficiente del término 7y?", "pista": "Es el número que multiplica a la letra.", "solucion": "7. En 7y, el coeficiente es 7 y la parte literal es y.", "figura": "" },
+    { "enunciado": "Escribe como expresión: 'el doble de un número'", "pista": "Doble es multiplicar por 2.", "solucion": "2x. 'El doble de un número' se escribe 2x (o 2n, la letra da igual).", "figura": "" },
+    { "enunciado": "Escribe como expresión: 'un número aumentado en 7'", "pista": "Aumentar es sumar.", "solucion": "x + 7. 'Aumentado en 7' significa sumarle 7 al número.", "figura": "" },
+    { "enunciado": "Escribe como expresión: '5 menos que un número'", "pista": "Al número le quitas 5.", "solucion": "x − 5. '5 menos que un número' es x − 5 (el número primero, luego se resta 5).", "figura": "" },
+    { "enunciado": "Reduce: 6m - m", "pista": "Recuerda que m sola vale 1m.", "solucion": "5m. m es 1m, así que 6 − 1 = 5: queda 5m.", "figura": "" },
+    { "enunciado": "Halla el valor numérico de 4x para x = 4", "pista": "Multiplica.", "solucion": "16. 4·(4) = 16.", "figura": "" },
+    { "enunciado": "Reduce: 2a + 3b + 4a", "pista": "Junta las a; la b no tiene semejante.", "solucion": "6a + 3b. 2a + 4a = 6a; la 3b se queda: 6a + 3b.", "figura": "" },
+    { "enunciado": "Halla el valor numérico de 10 - 2x para x = 3", "pista": "Reemplaza y respeta el orden (primero la multiplicación).", "solucion": "4. 10 − 2·(3) = 10 − 6 = 4.", "figura": "" },
+    { "enunciado": "Escribe como expresión: 'la mitad de un número'", "pista": "La mitad es dividir entre 2.", "solucion": "x/2. 'La mitad de un número' se escribe x ÷ 2, es decir x/2.", "figura": "" },
+    { "enunciado": "Reduce: 8y + 2 - 3y", "pista": "Junta las y; el 2 va aparte.", "solucion": "5y + 2. 8y − 3y = 5y; el 2 se queda: 5y + 2.", "figura": "" },
+    { "enunciado": "Halla el valor numérico de x + y para x = 7, y = 5", "pista": "Cada letra es un número distinto.", "solucion": "12. Reemplazas: 7 + 5 = 12.", "figura": "" }
+  ],
+  "quiz": [
+    { "pregunta": "¿Cuánto es 4x + 6x?", "opciones": ["10x", "10", "24x", "10x²"], "correcta": 0, "explicacion": "Misma letra: se suman los coeficientes, 4 + 6 = 10, y queda 10x.", "figura": "" },
+    { "pregunta": "¿Cuánto es 9a - 3a?", "opciones": ["6a", "6", "12a", "3a"], "correcta": 0, "explicacion": "9 − 3 = 6 con la misma parte literal: 6a.", "figura": "" },
+    { "pregunta": "¿Cuál es el resultado de 5x + 2 + 3x?", "opciones": ["8x + 2", "10x", "8x², 2", "7x"], "correcta": 0, "explicacion": "Se juntan 5x + 3x = 8x; el 2 no es semejante y se queda: 8x + 2.", "figura": "" },
+    { "pregunta": "El valor numérico de 3x + 1 para x = 4 es:", "opciones": ["13", "12", "7", "34"], "correcta": 0, "explicacion": "3·(4) + 1 = 12 + 1 = 13.", "figura": "" },
+    { "pregunta": "¿Cuál es el coeficiente en el término 6m?", "opciones": ["6", "m", "1", "6m"], "correcta": 0, "explicacion": "El coeficiente es el número que multiplica a la letra: 6.", "figura": "" },
+    { "pregunta": "¿Qué pareja son términos SEMEJANTES?", "opciones": ["3x y 5x", "3x y 5", "3x y 5y", "3 y 5x"], "correcta": 0, "explicacion": "Son semejantes los que tienen la misma parte literal: 3x y 5x (ambos con x).", "figura": "" },
+    { "pregunta": "'El triple de un número' se escribe:", "opciones": ["3x", "x + 3", "x/3", "x - 3"], "correcta": 0, "explicacion": "Triple es multiplicar por 3: 3x.", "figura": "" },
+    { "pregunta": "'Un número disminuido en 4' se escribe:", "opciones": ["x - 4", "x + 4", "4 - x", "4x"], "correcta": 0, "explicacion": "Disminuir es restar: x − 4.", "figura": "" },
+    { "pregunta": "El valor numérico de 20 - 3x para x = 5 es:", "opciones": ["5", "17", "85", "35"], "correcta": 0, "explicacion": "20 − 3·(5) = 20 − 15 = 5.", "figura": "" },
+    { "pregunta": "¿Cuánto es 7y - y?", "opciones": ["6y", "7", "0", "7y"], "correcta": 0, "explicacion": "y vale 1y, así que 7 − 1 = 6: queda 6y.", "figura": "" },
+    { "pregunta": "¿Cuál expresión NO se puede reducir más?", "opciones": ["2x + 5", "3x + 4x", "6a - a", "x + x"], "correcta": 0, "explicacion": "2x + 5 tiene términos NO semejantes (uno con letra y otro sin), así que ya está reducida.", "figura": "" },
+    { "pregunta": "Reduce: 5a + 2b + 3a", "opciones": ["8a + 2b", "10ab", "8a + 2a", "7ab"], "correcta": 0, "explicacion": "5a + 3a = 8a; la 2b se queda: 8a + 2b.", "figura": "" },
+    { "pregunta": "El valor numérico de x² para x = 3 es:", "opciones": ["9", "6", "5", "23"], "correcta": 0, "explicacion": "x² significa x·x = 3·3 = 9.", "figura": "" },
+    { "pregunta": "Si un cuaderno cuesta x bolívares, ¿cuánto cuestan 4 cuadernos?", "opciones": ["4x", "x + 4", "x/4", "4 + x"], "correcta": 0, "explicacion": "Cuatro veces el precio: 4·x = 4x.", "figura": "" },
+    { "pregunta": "El valor numérico de 2(x + 1) para x = 3 es:", "opciones": ["8", "7", "6", "9"], "correcta": 0, "explicacion": "Primero el paréntesis: x + 1 = 4; luego 2·4 = 8.", "figura": "" },
+    { "pregunta": "'Un número más su doble' se escribe:", "opciones": ["x + 2x", "2x", "x + 2", "x·2x"], "correcta": 0, "explicacion": "El número es x y su doble es 2x; juntos: x + 2x (que además se reduce a 3x).", "figura": "" }
+  ],
+  "examen": [
+    { "pregunta": "Reduce: 8x + 4x.", "respuesta": "12x", "explicacion": "Misma letra: 8 + 4 = 12, así que 12x." },
+    { "pregunta": "Reduce: 10a - 6a.", "respuesta": "4a", "explicacion": "10 − 6 = 4 con la misma parte literal: 4a." },
+    { "pregunta": "Reduce: 5x + 7 + 2x.", "respuesta": "7x + 7", "explicacion": "Se juntan 5x + 2x = 7x; el 7 no es semejante y se queda: 7x + 7." },
+    { "pregunta": "Halla el valor numérico de 4x - 3 para x = 5.", "respuesta": "17", "explicacion": "4·(5) − 3 = 20 − 3 = 17." },
+    { "pregunta": "Halla el valor numérico de 2x + y para x = 3, y = 4.", "respuesta": "10", "explicacion": "2·(3) + 4 = 6 + 4 = 10." },
+    { "pregunta": "¿Cuál es el coeficiente del término 12z?", "respuesta": "12", "explicacion": "El coeficiente es el número que multiplica a la letra: 12." },
+    { "pregunta": "Escribe como expresión: 'el doble de un número, aumentado en 3'.", "respuesta": "2x + 3", "explicacion": "El doble del número es 2x; aumentado en 3 es sumar 3: 2x + 3." },
+    { "pregunta": "Reduce: 6m + 3n + 2m.", "respuesta": "8m + 3n", "explicacion": "Se juntan 6m + 2m = 8m; la 3n se queda: 8m + 3n." },
+    { "pregunta": "Halla el valor numérico de 15 - 2x para x = 4.", "respuesta": "7", "explicacion": "15 − 2·(4) = 15 − 8 = 7." },
+    { "pregunta": "¿Por qué 4x + 5 no se puede reducir a un solo término?", "respuesta": "Porque no son términos semejantes", "explicacion": "4x tiene parte literal x y 5 es un término independiente (sin letra); solo se juntan términos con la misma parte literal, así que 4x + 5 queda igual." }
+  ]
+}

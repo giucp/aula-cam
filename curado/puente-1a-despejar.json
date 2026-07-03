@@ -1,0 +1,111 @@
+{
+  "materia": "Puente al Bachillerato",
+  "tema": "Despejar: resolver ecuaciones de primer grado paso a paso",
+  "grado": "1er año",
+  "fuentes": ["Guía de refuerzo Aula CAM: del 6to grado al 1er año"],
+  "resumen": {
+    "titulo": "Resolver ecuaciones: encontrar el valor de la incógnita",
+    "intro": "Una ecuación es una igualdad con un número desconocido (la incógnita, casi siempre x). Resolverla es 'despejar': dejar la x sola de un lado para descubrir su valor. Con dos ideas y mucha práctica, este tema deja de dar miedo.",
+    "secciones": [
+      {
+        "titulo": "Qué es una ecuación y qué es resolverla",
+        "explicacion": "Una ecuación dice que dos lados valen lo mismo (por eso el signo =). La incógnita es la letra cuyo valor no conocemos. Resolver la ecuación es hallar el número que hace verdadera la igualdad. La gran ventaja: SIEMPRE puedes comprobar reemplazando la x por tu resultado y viendo que ambos lados dan igual.",
+        "pasos": [
+          "Identifica la incógnita (la letra).",
+          "Tu meta es dejar la x sola de un lado.",
+          "Al final, comprueba reemplazando la x por el valor hallado."
+        ],
+        "ejemplo": "En x + 6 = 10, la incógnita es x. La solución es 4, porque 4 + 6 = 10 (comprobado)."
+      },
+      {
+        "titulo": "La idea de la balanza",
+        "explicacion": "Una ecuación es como una balanza equilibrada: los dos lados pesan lo mismo. Si haces algo a un lado, DEBES hacer lo mismo al otro para que siga equilibrada. Si sumas 3 a la izquierda, sumas 3 a la derecha; si divides entre 2 un lado, divides el otro. Así la igualdad se mantiene mientras despejas.",
+        "pasos": [
+          "Piensa siempre: lo que hago de un lado, lo hago del otro.",
+          "Usa esa regla para ir quitando lo que acompaña a la x.",
+          "El objetivo es que a la x no le quede nada al lado."
+        ],
+        "ejemplo": "En x + 6 = 10, resto 6 a AMBOS lados: x + 6 − 6 = 10 − 6, y queda x = 4."
+      },
+      {
+        "titulo": "El atajo: pasar al otro lado cambiando la operación",
+        "explicacion": "Como consecuencia de la balanza, hay un atajo muy usado: un número puede 'pasar' al otro lado de la igualdad, pero cambiando su operación por la contraria. Lo que suma pasa restando; lo que resta pasa sumando; lo que multiplica pasa dividiendo; lo que divide pasa multiplicando. Este es el paso donde más se equivoca la gente: hay que CAMBIAR la operación.",
+        "pasos": [
+          "Lo que está sumando junto a la x, pásalo restando (y al revés).",
+          "Lo que está multiplicando a la x, pásalo dividiendo (y al revés).",
+          "Deja la x sola y calcula el otro lado."
+        ],
+        "ejemplo": "En 3x = 21, el 3 multiplica, así que pasa dividiendo: x = 21 ÷ 3 = 7."
+      },
+      {
+        "titulo": "Ecuaciones de dos pasos: ax + b = c",
+        "explicacion": "Cuando la x tiene un número que la multiplica Y otro que se suma o resta, se despeja en dos pasos: PRIMERO quitas el que está sumando o restando (pasa al otro lado), y DESPUÉS quitas el que multiplica (pasa dividiendo). Es el orden inverso al de las operaciones.",
+        "pasos": [
+          "Pasa primero el término que suma o resta (queda ax = número).",
+          "Luego pasa el coeficiente dividiendo (queda x = número).",
+          "Comprueba reemplazando en la ecuación original."
+        ],
+        "ejemplo": "2x + 3 = 11: paso el 3 restando → 2x = 8; paso el 2 dividiendo → x = 4. Comprobación: 2·4 + 3 = 11."
+      },
+      {
+        "titulo": "Comprobar y plantear desde un enunciado",
+        "explicacion": "Comprobar es reemplazar tu resultado en la ecuación original y ver que ambos lados coinciden; si no coinciden, hubo un error al despejar (casi siempre un signo). Además, muchas ecuaciones nacen de un problema en palabras: llamas x a lo desconocido, escribes la igualdad y luego despejas.",
+        "pasos": [
+          "Reemplaza la x por tu resultado en la ecuación original.",
+          "Calcula ambos lados: deben dar lo mismo.",
+          "Para problemas: llama x a lo que buscas, arma la ecuación y resuélvela."
+        ],
+        "ejemplo": "'Un número más 8 es 20': x + 8 = 20 → x = 12. Comprobación: 12 + 8 = 20."
+      }
+    ],
+    "idea_clave": "Para despejar, deja la x sola pasando cada número al otro lado con la operación contraria (suma↔resta, multiplica↔divide); en ax + b = c quita primero el que suma/resta y luego el que multiplica, y siempre comprueba."
+  },
+  "retos": [
+    { "enunciado": "Resuelve: x + 7 = 12", "pista": "El 7 suma; pásalo restando.", "solucion": "x = 5. x = 12 − 7 = 5. Comprobación: 5 + 7 = 12.", "figura": "" },
+    { "enunciado": "Resuelve: x - 4 = 9", "pista": "El 4 resta; pásalo sumando.", "solucion": "x = 13. x = 9 + 4 = 13. Comprobación: 13 − 4 = 9.", "figura": "" },
+    { "enunciado": "Resuelve: 3x = 21", "pista": "El 3 multiplica; pásalo dividiendo.", "solucion": "x = 7. x = 21 ÷ 3 = 7. Comprobación: 3·7 = 21.", "figura": "" },
+    { "enunciado": "Resuelve: x/2 = 6", "pista": "El 2 divide; pásalo multiplicando.", "solucion": "x = 12. x = 6 · 2 = 12. Comprobación: 12 ÷ 2 = 6.", "figura": "" },
+    { "enunciado": "Resuelve: 2x + 3 = 11", "pista": "Primero quita el 3, luego el 2.", "solucion": "x = 4. Paso el 3 restando: 2x = 8; paso el 2 dividiendo: x = 4. Comprobación: 2·4 + 3 = 11.", "figura": "" },
+    { "enunciado": "Resuelve: 5x - 2 = 18", "pista": "Primero pasa el 2 sumando.", "solucion": "x = 4. 5x = 18 + 2 = 20; x = 20 ÷ 5 = 4. Comprobación: 5·4 − 2 = 18.", "figura": "" },
+    { "enunciado": "Resuelve: x + 15 = 8", "pista": "El 15 suma; pásalo restando (el resultado será negativo).", "solucion": "x = -7. x = 8 − 15 = -7. Comprobación: -7 + 15 = 8.", "figura": "" },
+    { "enunciado": "Resuelve: 4x = -20", "pista": "El 4 multiplica; pásalo dividiendo (ojo con el signo).", "solucion": "x = -5. x = -20 ÷ 4 = -5. Comprobación: 4·(-5) = -20.", "figura": "" },
+    { "enunciado": "Resuelve: 3x + 1 = 10", "pista": "Quita el 1, luego el 3.", "solucion": "x = 3. 3x = 10 − 1 = 9; x = 9 ÷ 3 = 3. Comprobación: 3·3 + 1 = 10.", "figura": "" },
+    { "enunciado": "Resuelve: 2x - 7 = 1", "pista": "Pasa el 7 sumando primero.", "solucion": "x = 4. 2x = 1 + 7 = 8; x = 8 ÷ 2 = 4. Comprobación: 2·4 − 7 = 1.", "figura": "" },
+    { "enunciado": "Resuelve: 10 - x = 3", "pista": "Pasa la x al otro lado sumando y el 3 al otro restando.", "solucion": "x = 7. 10 − x = 3 → 10 − 3 = x → x = 7. Comprobación: 10 − 7 = 3.", "figura": "" },
+    { "enunciado": "Resuelve: 6x = 0", "pista": "El 6 multiplica; pásalo dividiendo.", "solucion": "x = 0. x = 0 ÷ 6 = 0. Comprobación: 6·0 = 0.", "figura": "" },
+    { "enunciado": "Resuelve: x/3 = 5", "pista": "El 3 divide; pásalo multiplicando.", "solucion": "x = 15. x = 5 · 3 = 15. Comprobación: 15 ÷ 3 = 5.", "figura": "" },
+    { "enunciado": "Resuelve: 7x - 4 = 24", "pista": "Pasa el 4 sumando, luego el 7 dividiendo.", "solucion": "x = 4. 7x = 24 + 4 = 28; x = 28 ÷ 7 = 4. Comprobación: 7·4 − 4 = 24.", "figura": "" },
+    { "enunciado": "Resuelve: 2x + 8 = 8", "pista": "Pasa el 8 restando.", "solucion": "x = 0. 2x = 8 − 8 = 0; x = 0 ÷ 2 = 0. Comprobación: 2·0 + 8 = 8.", "figura": "" },
+    { "enunciado": "Resuelve: 9 = x + 2", "pista": "La x puede estar a la derecha; despéjala igual.", "solucion": "x = 7. 9 − 2 = x → x = 7. Comprobación: 7 + 2 = 9.", "figura": "" }
+  ],
+  "quiz": [
+    { "pregunta": "¿Cuál es la solución de x + 9 = 15?", "opciones": ["6", "24", "-6", "5"], "correcta": 0, "explicacion": "El 9 suma, pasa restando: x = 15 − 9 = 6. Comprobación: 6 + 9 = 15.", "figura": "" },
+    { "pregunta": "¿Cuál es la solución de x - 5 = 10?", "opciones": ["15", "5", "-5", "50"], "correcta": 0, "explicacion": "El 5 resta, pasa sumando: x = 10 + 5 = 15.", "figura": "" },
+    { "pregunta": "¿Cuál es la solución de 4x = 32?", "opciones": ["8", "28", "36", "128"], "correcta": 0, "explicacion": "El 4 multiplica, pasa dividiendo: x = 32 ÷ 4 = 8.", "figura": "" },
+    { "pregunta": "¿Cuál es la solución de x/5 = 4?", "opciones": ["20", "9", "-1", "0.8"], "correcta": 0, "explicacion": "El 5 divide, pasa multiplicando: x = 4 · 5 = 20.", "figura": "" },
+    { "pregunta": "¿Cuál es la solución de 2x + 6 = 14?", "opciones": ["4", "10", "8", "40"], "correcta": 0, "explicacion": "2x = 14 − 6 = 8; x = 8 ÷ 2 = 4.", "figura": "" },
+    { "pregunta": "¿Cuál es la solución de 3x - 5 = 7?", "opciones": ["4", "12", "2", "36"], "correcta": 0, "explicacion": "3x = 7 + 5 = 12; x = 12 ÷ 3 = 4.", "figura": "" },
+    { "pregunta": "¿Cuál es la solución de x + 20 = 12?", "opciones": ["-8", "8", "32", "-32"], "correcta": 0, "explicacion": "x = 12 − 20 = -8. Comprobación: -8 + 20 = 12.", "figura": "" },
+    { "pregunta": "¿Cuál es la solución de 5x = -35?", "opciones": ["-7", "7", "-30", "-175"], "correcta": 0, "explicacion": "x = -35 ÷ 5 = -7. Comprobación: 5·(-7) = -35.", "figura": "" },
+    { "pregunta": "Al resolver x + 4 = 9, ¿qué se hace con el 4?", "opciones": ["Pasa restando", "Pasa sumando", "Pasa multiplicando", "Se queda igual"], "correcta": 0, "explicacion": "El 4 está sumando, así que pasa al otro lado restando: x = 9 − 4 = 5.", "figura": "" },
+    { "pregunta": "¿Cuál es la solución de 6x + 3 = 3?", "opciones": ["0", "1", "-1", "6"], "correcta": 0, "explicacion": "6x = 3 − 3 = 0; x = 0 ÷ 6 = 0.", "figura": "" },
+    { "pregunta": "¿Cuál es la solución de 2x - 9 = 1?", "opciones": ["5", "4", "10", "-4"], "correcta": 0, "explicacion": "2x = 1 + 9 = 10; x = 10 ÷ 2 = 5.", "figura": "" },
+    { "pregunta": "¿Cuál es la solución de x/4 = 3?", "opciones": ["12", "7", "0.75", "1"], "correcta": 0, "explicacion": "El 4 divide, pasa multiplicando: x = 3 · 4 = 12.", "figura": "" },
+    { "pregunta": "Para comprobar que x = 5 resuelve 2x + 1 = 11, reemplazas y obtienes:", "opciones": ["11 = 11, correcto", "10 = 11, incorrecto", "5 = 11, incorrecto", "6 = 11, incorrecto"], "correcta": 0, "explicacion": "2·(5) + 1 = 10 + 1 = 11, igual al lado derecho: la solución es correcta.", "figura": "" },
+    { "pregunta": "Un número más 8 da 20. ¿Cuál es el número?", "opciones": ["12", "28", "8", "160"], "correcta": 0, "explicacion": "x + 8 = 20 → x = 20 − 8 = 12.", "figura": "" },
+    { "pregunta": "¿Cuál es la solución de 7x - 4 = 3?", "opciones": ["1", "7", "-1", "0"], "correcta": 0, "explicacion": "7x = 3 + 4 = 7; x = 7 ÷ 7 = 1.", "figura": "" },
+    { "pregunta": "¿Cuál es la solución de 12 = 3x?", "opciones": ["4", "9", "36", "15"], "correcta": 0, "explicacion": "El 3 multiplica, pasa dividiendo: x = 12 ÷ 3 = 4.", "figura": "" }
+  ],
+  "examen": [
+    { "pregunta": "Resuelve: x + 11 = 20.", "respuesta": "x = 9", "explicacion": "El 11 suma, pasa restando: x = 20 − 11 = 9. Comprobación: 9 + 11 = 20." },
+    { "pregunta": "Resuelve: x - 6 = 14.", "respuesta": "x = 20", "explicacion": "El 6 resta, pasa sumando: x = 14 + 6 = 20." },
+    { "pregunta": "Resuelve: 5x = 45.", "respuesta": "x = 9", "explicacion": "El 5 multiplica, pasa dividiendo: x = 45 ÷ 5 = 9." },
+    { "pregunta": "Resuelve: x/3 = 7.", "respuesta": "x = 21", "explicacion": "El 3 divide, pasa multiplicando: x = 7 · 3 = 21." },
+    { "pregunta": "Resuelve: 2x + 5 = 17.", "respuesta": "x = 6", "explicacion": "2x = 17 − 5 = 12; x = 12 ÷ 2 = 6. Comprobación: 2·6 + 5 = 17." },
+    { "pregunta": "Resuelve: 4x - 3 = 13.", "respuesta": "x = 4", "explicacion": "4x = 13 + 3 = 16; x = 16 ÷ 4 = 4." },
+    { "pregunta": "Resuelve: x + 10 = 4.", "respuesta": "x = -6", "explicacion": "x = 4 − 10 = -6. Comprobación: -6 + 10 = 4." },
+    { "pregunta": "Resuelve: 3x = -18.", "respuesta": "x = -6", "explicacion": "x = -18 ÷ 3 = -6. Comprobación: 3·(-6) = -18." },
+    { "pregunta": "Resuelve: 6x - 4 = 20.", "respuesta": "x = 4", "explicacion": "6x = 20 + 4 = 24; x = 24 ÷ 6 = 4." },
+    { "pregunta": "El doble de un número menos 3 es igual a 9. ¿Cuál es el número?", "respuesta": "x = 6", "explicacion": "Se plantea 2x − 3 = 9; 2x = 12; x = 6. Comprobación: 2·6 − 3 = 9." }
+  ]
+}

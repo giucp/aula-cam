@@ -1,0 +1,111 @@
+{
+  "materia": "Puente a 6to grado",
+  "tema": "Fracciones y decimales en la vida real",
+  "grado": "5to grado",
+  "fuentes": ["Guía de refuerzo Aula CAM: llegar firme a 6to grado"],
+  "resumen": {
+    "titulo": "Fracciones, decimales y porcentajes: el mismo número escrito distinto",
+    "intro": "Fracciones, decimales y porcentajes aparecen todo el tiempo: en el dinero, en las recetas, en las rebajas. La gran idea de este tema es que muchas veces son el MISMO número escrito de tres formas distintas, y aprender a pasar de una a otra te hace la vida más fácil.",
+    "secciones": [
+      {
+        "titulo": "Qué es una fracción",
+        "explicacion": "Una fracción representa partes de un todo. El número de abajo (denominador) dice en cuántas partes iguales se parte el entero, y el de arriba (numerador) dice cuántas de esas partes tomas. En 3/4, el entero se parte en 4 y tomas 3.",
+        "pasos": [
+          "El denominador (abajo): en cuántas partes se divide el entero.",
+          "El numerador (arriba): cuántas partes tomas.",
+          "Cuantas más partes (denominador mayor), más pequeña es cada parte."
+        ],
+        "ejemplo": "Una pizza cortada en 4 y comes 3 pedazos: comiste 3/4 de la pizza."
+      },
+      {
+        "titulo": "La fracción de una cantidad",
+        "explicacion": "Sacar una fracción de una cantidad es muy útil (la mitad de algo, tres cuartos de algo). El truco: DIVIDES entre el denominador y MULTIPLICAS por el numerador. Para 3/4 de 12: divides 12 ÷ 4 = 3 (eso es un cuarto) y multiplicas 3 × 3 = 9.",
+        "pasos": [
+          "Divide la cantidad entre el denominador (hallas una parte).",
+          "Multiplica ese resultado por el numerador.",
+          "Ese es el valor de la fracción de la cantidad."
+        ],
+        "ejemplo": "3/4 de 12: 12 ÷ 4 = 3, y 3 × 3 = 9. Entonces 3/4 de 12 es 9."
+      },
+      {
+        "titulo": "Fracciones equivalentes y comparar",
+        "explicacion": "Dos fracciones son equivalentes si valen lo mismo aunque se escriban distinto: 1/2 = 2/4 = 5/10. Para compararlas con el mismo entero, recuerda que a MAYOR denominador, MENOR es cada parte: por eso 1/2 es mayor que 1/3 (partir en 2 da pedazos más grandes que partir en 3).",
+        "pasos": [
+          "Amplías multiplicando arriba y abajo por el mismo número.",
+          "Simplificas dividiendo arriba y abajo por el mismo número.",
+          "Con igual numerador, la de menor denominador es la mayor."
+        ],
+        "ejemplo": "1/2 y 1/3: como 2 es menor que 3, cada mitad es más grande que cada tercio, así que 1/2 > 1/3."
+      },
+      {
+        "titulo": "Fracción, decimal y porcentaje son lo mismo",
+        "explicacion": "Muchos números tienen tres 'trajes': fracción, decimal y porcentaje. Los más usados conviene sabérselos de memoria: 1/2 = 0,5 = 50%; 1/4 = 0,25 = 25%; 3/4 = 0,75 = 75%; 1/10 = 0,1 = 10%. Para pasar de fracción a decimal, divides el numerador entre el denominador.",
+        "pasos": [
+          "De fracción a decimal: divide arriba entre abajo (1/4 = 1 ÷ 4 = 0,25).",
+          "De decimal a porcentaje: multiplica por 100 (0,25 → 25%).",
+          "Memoriza los clásicos: 1/2, 1/4, 3/4, 1/10."
+        ],
+        "ejemplo": "1/4 de una torta es lo mismo que 0,25 de la torta o el 25% de la torta."
+      },
+      {
+        "titulo": "Porcentaje de una cantidad",
+        "explicacion": "El porcentaje es una fracción con denominador 100: 25% significa 25 de cada 100. Para hallar el porcentaje de una cantidad, la forma más fácil es usar los equivalentes conocidos: el 50% es la mitad, el 25% es la cuarta parte, el 10% es dividir entre 10.",
+        "pasos": [
+          "50% → mitad (divide entre 2).",
+          "25% → cuarta parte (divide entre 4).",
+          "10% → divide entre 10."
+        ],
+        "ejemplo": "25% de 40: es la cuarta parte, 40 ÷ 4 = 10. Y 10% de 40 es 40 ÷ 10 = 4."
+      }
+    ],
+    "idea_clave": "Para la fracción de una cantidad divides entre el denominador y multiplicas por el numerador; y recuerda que 1/2 = 0,5 = 50%, 1/4 = 0,25 = 25% y 3/4 = 0,75 = 75% son el mismo número escrito distinto."
+  },
+  "retos": [
+    { "enunciado": "¿Cuánto es 1/2 de 10?", "pista": "La mitad es dividir entre 2.", "solucion": "5. 1/2 de 10 = 10 ÷ 2 = 5.", "figura": "" },
+    { "enunciado": "¿Cuánto es 1/4 de 20?", "pista": "La cuarta parte es dividir entre 4.", "solucion": "5. 1/4 de 20 = 20 ÷ 4 = 5.", "figura": "" },
+    { "enunciado": "¿Cuánto es 3/4 de 12?", "pista": "Divide entre 4 y multiplica por 3.", "solucion": "9. 12 ÷ 4 = 3 y 3 × 3 = 9.", "figura": "" },
+    { "enunciado": "¿Cuánto es 2/3 de 9?", "pista": "Divide entre 3 y multiplica por 2.", "solucion": "6. 9 ÷ 3 = 3 y 3 × 2 = 6.", "figura": "" },
+    { "enunciado": "Escribe 1/4 como número decimal.", "pista": "Divide 1 entre 4.", "solucion": "0,25. 1 ÷ 4 = 0,25.", "figura": "" },
+    { "enunciado": "Escribe 1/2 como porcentaje.", "pista": "La mitad de 100.", "solucion": "50%. 1/2 equivale a 0,5, que es 50%.", "figura": "" },
+    { "enunciado": "¿Cuánto es 25% de 40?", "pista": "El 25% es la cuarta parte.", "solucion": "10. 25% de 40 = 40 ÷ 4 = 10.", "figura": "" },
+    { "enunciado": "¿Cuánto es 10% de 80?", "pista": "El 10% es dividir entre 10.", "solucion": "8. 10% de 80 = 80 ÷ 10 = 8.", "figura": "" },
+    { "enunciado": "¿Qué fracción es mayor, 1/2 o 1/3?", "pista": "A menor denominador, partes más grandes.", "solucion": "1/2. Partir en 2 da pedazos más grandes que partir en 3, así que 1/2 > 1/3.", "figura": "" },
+    { "enunciado": "Escribe una fracción equivalente a 1/2 con denominador 4.", "pista": "Multiplica arriba y abajo por 2.", "solucion": "2/4. Multiplico numerador y denominador por 2: 1/2 = 2/4.", "figura": "" },
+    { "enunciado": "¿Cuánto es 0,5 de 8?", "pista": "0,5 es lo mismo que la mitad.", "solucion": "4. 0,5 de 8 = 8 ÷ 2 = 4.", "figura": "" },
+    { "enunciado": "Escribe 3/4 como porcentaje.", "pista": "Recuerda el equivalente clásico.", "solucion": "75%. 3/4 equivale a 0,75, que es 75%.", "figura": "" },
+    { "enunciado": "¿Cuánto es 50% de 30?", "pista": "El 50% es la mitad.", "solucion": "15. 50% de 30 = 30 ÷ 2 = 15.", "figura": "" },
+    { "enunciado": "Una pizza se corta en 8 y comes 4 pedazos. ¿Qué fracción comiste? Simplifícala.", "pista": "4 de 8; simplifica dividiendo entre 4.", "solucion": "1/2. Comiste 4/8, que simplificado es 1/2.", "figura": "" },
+    { "enunciado": "Escribe 1/10 como decimal.", "pista": "Divide 1 entre 10.", "solucion": "0,1. 1 ÷ 10 = 0,1.", "figura": "" },
+    { "enunciado": "¿Cuánto es 3/5 de 20?", "pista": "Divide entre 5 y multiplica por 3.", "solucion": "12. 20 ÷ 5 = 4 y 4 × 3 = 12.", "figura": "" }
+  ],
+  "quiz": [
+    { "pregunta": "¿Cuánto es 1/2 de 16?", "opciones": ["8", "4", "32", "2"], "correcta": 0, "explicacion": "La mitad: 16 ÷ 2 = 8.", "figura": "" },
+    { "pregunta": "¿Cuánto es 1/4 de 12?", "opciones": ["3", "4", "6", "48"], "correcta": 0, "explicacion": "La cuarta parte: 12 ÷ 4 = 3.", "figura": "" },
+    { "pregunta": "¿Cuánto es 3/4 de 20?", "opciones": ["15", "5", "16", "80"], "correcta": 0, "explicacion": "20 ÷ 4 = 5 y 5 × 3 = 15.", "figura": "" },
+    { "pregunta": "¿Cómo se escribe 1/2 en decimal?", "opciones": ["0,5", "0,2", "0,25", "1,2"], "correcta": 0, "explicacion": "1 ÷ 2 = 0,5.", "figura": "" },
+    { "pregunta": "¿A qué porcentaje equivale 1/4?", "opciones": ["25%", "50%", "75%", "14%"], "correcta": 0, "explicacion": "1/4 = 0,25 = 25%.", "figura": "" },
+    { "pregunta": "¿Cuánto es 25% de 80?", "opciones": ["20", "25", "40", "8"], "correcta": 0, "explicacion": "El 25% es la cuarta parte: 80 ÷ 4 = 20.", "figura": "" },
+    { "pregunta": "¿Cuánto es 10% de 150?", "opciones": ["15", "10", "50", "1,5"], "correcta": 0, "explicacion": "El 10% es dividir entre 10: 150 ÷ 10 = 15.", "figura": "" },
+    { "pregunta": "¿Qué fracción es MAYOR?", "opciones": ["1/2", "1/4", "1/5", "1/10"], "correcta": 0, "explicacion": "Con numerador 1, la de menor denominador es la mayor: 1/2.", "figura": "" },
+    { "pregunta": "¿Cuál fracción equivale a 1/2?", "opciones": ["3/6", "2/3", "1/3", "3/4"], "correcta": 0, "explicacion": "3/6 se simplifica dividiendo entre 3: queda 1/2.", "figura": "" },
+    { "pregunta": "¿Cuánto es 50% de 24?", "opciones": ["12", "24", "6", "48"], "correcta": 0, "explicacion": "El 50% es la mitad: 24 ÷ 2 = 12.", "figura": "" },
+    { "pregunta": "¿Cómo se escribe 3/4 en decimal?", "opciones": ["0,75", "0,34", "0,5", "3,4"], "correcta": 0, "explicacion": "3 ÷ 4 = 0,75.", "figura": "" },
+    { "pregunta": "Comiste 2/6 de un chocolate. Simplificado es:", "opciones": ["1/3", "1/2", "2/3", "1/6"], "correcta": 0, "explicacion": "2/6 dividido entre 2 arriba y abajo da 1/3.", "figura": "" },
+    { "pregunta": "¿Cuánto es 2/3 de 15?", "opciones": ["10", "5", "6", "45"], "correcta": 0, "explicacion": "15 ÷ 3 = 5 y 5 × 2 = 10.", "figura": "" },
+    { "pregunta": "¿A qué equivale 0,25?", "opciones": ["1/4", "1/2", "1/25", "2/5"], "correcta": 0, "explicacion": "0,25 es la cuarta parte de 1, o sea 1/4 (también 25%).", "figura": "" },
+    { "pregunta": "Un descuento del 50% en un juguete de 40 Bs. ¿Cuánto pagas?", "opciones": ["20 Bs", "40 Bs", "10 Bs", "30 Bs"], "correcta": 0, "explicacion": "50% de 40 = 20 (el descuento); pagas 40 − 20 = 20 Bs.", "figura": "" },
+    { "pregunta": "¿Cuánto es 1/5 de 25?", "opciones": ["5", "4", "20", "10"], "correcta": 0, "explicacion": "La quinta parte: 25 ÷ 5 = 5.", "figura": "" }
+  ],
+  "examen": [
+    { "pregunta": "¿Cuánto es 1/2 de 18?", "respuesta": "9", "explicacion": "La mitad: 18 ÷ 2 = 9." },
+    { "pregunta": "¿Cuánto es 3/4 de 16?", "respuesta": "12", "explicacion": "16 ÷ 4 = 4 y 4 × 3 = 12." },
+    { "pregunta": "Escribe 1/4 como decimal y como porcentaje.", "respuesta": "0,25 y 25%", "explicacion": "1 ÷ 4 = 0,25, y 0,25 × 100 = 25%." },
+    { "pregunta": "¿Cuánto es 25% de 60?", "respuesta": "15", "explicacion": "El 25% es la cuarta parte: 60 ÷ 4 = 15." },
+    { "pregunta": "¿Cuánto es 10% de 90?", "respuesta": "9", "explicacion": "El 10% es dividir entre 10: 90 ÷ 10 = 9." },
+    { "pregunta": "¿Qué fracción es mayor, 1/3 o 1/6? Explica.", "respuesta": "1/3", "explicacion": "Con el mismo numerador, la de menor denominador es mayor: partir en 3 da pedazos más grandes que partir en 6, así que 1/3 > 1/6." },
+    { "pregunta": "Escribe una fracción equivalente a 1/2 con denominador 6.", "respuesta": "3/6", "explicacion": "Multiplico numerador y denominador por 3: 1/2 = 3/6." },
+    { "pregunta": "¿Cuánto es 2/5 de 20?", "respuesta": "8", "explicacion": "20 ÷ 5 = 4 y 4 × 2 = 8." },
+    { "pregunta": "¿Cuánto es 50% de 46?", "respuesta": "23", "explicacion": "El 50% es la mitad: 46 ÷ 2 = 23." },
+    { "pregunta": "Un pantalón cuesta 80 Bs con 25% de descuento. ¿Cuánto es el descuento?", "respuesta": "20 Bs", "explicacion": "25% de 80 = 80 ÷ 4 = 20 Bs de descuento." }
+  ]
+}
