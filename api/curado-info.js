@@ -25,7 +25,8 @@ export default async function handler(req, res) {
   try {
     const { grado } = req.body || {};
     const filtro = grado ? `grado=eq.${encodeURIComponent(grado)}&` : "";
-    const r = await fetch(`${cfg.url}/rest/v1/contenido_curado?${filtro}select=materia_norm,tema_norm,modo`, {
+    // candado: el sello "revisado" de las alumnas solo mira el contenido del aula, nunca Cumbre.
+    const r = await fetch(`${cfg.url}/rest/v1/contenido_curado?${filtro}programa=eq.aula&select=materia_norm,tema_norm,modo`, {
       headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}` },
     });
     if (!r.ok) return res.status(200).json({ temas: {} });

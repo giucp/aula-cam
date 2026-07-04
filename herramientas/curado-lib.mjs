@@ -9,7 +9,10 @@ import { normCurado } from "./normcurado.mjs";
 const GRADOS_CONOCIDOS = new Set([
   "1er grado", "2do grado", "3er grado", "4to grado", "5to grado", "6to grado",
   "1er año", "2do año", "3er año", "4to año", "5to año",
+  "Cumbre Matemática 1er año",
 ]);
+// Programas conocidos: 'aula' (temario venezolano, lo de siempre) y 'cumbre' (élite).
+const PROGRAMAS_CONOCIDOS = new Set(["aula", "cumbre"]);
 const esStr = (s) => typeof s === "string" && s.trim().length > 0;
 
 // Valida un modo del banco. { ok:true, contenido } o { ok:false, motivo }.
@@ -55,6 +58,10 @@ export function filasDeBanco(doc, ahoraISO) {
 
   const avisos = [];
   if (!GRADOS_CONOCIDOS.has(doc.grado)) avisos.push(`grado "${doc.grado}" no está en la lista conocida — se sube igual`);
+  // programa: 'aula' por defecto (retrocompatible con todos los bancos ya existentes);
+  // 'cumbre' para el currículo de élite. Aísla ambos mundos en la misma tabla.
+  const programa = esStr(doc.programa) ? doc.programa.trim().toLowerCase() : "aula";
+  if (!PROGRAMAS_CONOCIDOS.has(programa)) avisos.push(`programa "${programa}" desconocido — se sube igual`);
   const materia_norm = normCurado(doc.materia);
   const tema_norm = normCurado(doc.tema);
   const fuentes = Array.isArray(doc.fuentes) ? doc.fuentes.filter(esStr) : null;
@@ -68,12 +75,12 @@ export function filasDeBanco(doc, ahoraISO) {
     const v = validarModo(modo, doc[modo]);
     if (!v.ok) { avisos.push(`modo ${modo} omitido: ${v.motivo}`); continue; }
     filas.push({
-      materia_norm, tema_norm, modo, grado: doc.grado,
+      materia_norm, tema_norm, modo, grado: doc.grado, programa,
       contenido: v.contenido,
       fuentes: fuentes && fuentes.length ? fuentes : null,
       actualizado: ahora,
     });
   }
   if (!algun) throw new Error("no trae ningún modo (resumen/retos/quiz/examen)");
-  return { filas, avisos, materia_norm, tema_norm, grado: doc.grado };
+  return { filas, avisos, materia_norm, tema_norm, grado: doc.grado, programa };
 }

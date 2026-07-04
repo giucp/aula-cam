@@ -311,6 +311,7 @@ async function curadoGet(materia, tema, modo, grado) {
       `&tema_norm=eq.${encodeURIComponent(normCurado(tema))}` +
       `&modo=eq.${encodeURIComponent(modo)}` +
       `&grado=eq.${encodeURIComponent(grado)}` +
+      `&programa=eq.aula` + // candado: las alumnas solo ven contenido del aula, nunca Cumbre
       `&select=contenido,fuentes&limit=1`;
     const r = await fetch(`${cfg.url}/rest/v1/contenido_curado?${q}`, {
       headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}` },
