@@ -1,0 +1,302 @@
+{
+  "programa": "cumbre",
+  "materia": "Informática",
+  "grado": "Cumbre Informática 1er año",
+  "dominio": "Pensamiento computacional",
+  "tema": "Qué es pensar como una computadora: instrucciones exactas y sin ambigüedad",
+  "referencias": [
+    "CSTA K-12 Computer Science Standards (grades 6-8): Algorithms & Programming — expresar algoritmos como secuencias precisas de pasos",
+    "K-12 Computer Science Framework — Algorithms: los seres humanos y las máquinas siguen instrucciones; la precisión importa",
+    "UK Computing Key Stage 3 — comprender algoritmos como secuencias de instrucciones sin ambigüedad",
+    "CS Unplugged / Bebras — actividades 'sin computadora': dictar instrucciones (Rutas, Dibujo por instrucciones, el sándwich robot)"
+  ],
+  "resumen": {
+    "titulo": "Pensar como una computadora: decir EXACTAMENTE lo que quieres",
+    "intro": "Imagina que le das una orden a un ayudante que es rapidísimo pero que no piensa, no adivina y no tiene sentido común: hace al pie de la letra lo que le dices, ni más ni menos. Ese ayudante es la computadora. Aprender informática empieza aquí: no en teclear ni en programas raros, sino en aprender a explicar una tarea de forma tan clara y ordenada que hasta alguien que no entiende nada del mundo pueda hacerla bien. A eso lo llamamos pensar como una computadora, y lo mejor es que se practica SIN computadora: con recetas, con instrucciones para llegar a un lugar, con armar un sándwich. Cuando dominas esto, programar después es solo escribir estas mismas ideas en un idioma que la máquina entiende.",
+    "secciones": [
+      {
+        "titulo": "La computadora hace EXACTAMENTE lo que le dices",
+        "explicacion": "La primera idea, y la más importante de todo el año, es esta: la computadora no adivina lo que quieres, hace lo que le dices. Nosotros los humanos rellenamos huecos todo el tiempo. Si un amigo te dice 'pásame eso', tú miras hacia dónde apunta, piensas qué necesita y le pasas el lápiz. La computadora no hace nada de eso. Ella toma tus palabras al pie de la letra: literalmente, sin interpretar. Si le dices algo incompleto o confuso, no se detiene a pensar 'seguro quiso decir otra cosa'; simplemente hace lo que dijiste, aunque el resultado sea un desastre. Por eso no es que la computadora sea tonta ni inteligente: es OBEDIENTE de una manera extrema. Entender esto cambia cómo le hablas: dejas de suponer que te va a entender y empiezas a decir todo, absolutamente todo, de forma explícita (dicho con todas las letras, sin dejar nada sobreentendido).",
+        "pasos": [],
+        "ejemplo": "Le pides a un robot que 'sirva agua'. Un humano llenaría un vaso hasta un dedo del borde. El robot, si no le dijiste cuánto ni dónde, podría verter el agua directo sobre la mesa hasta que se acabe la jarra. No se equivocó: hizo justo lo que la orden decía. El error fue de la orden, no del robot."
+      },
+      {
+        "titulo": "Qué es un algoritmo (una receta paso a paso)",
+        "explicacion": "Ahora una palabra grande que vas a usar todo el año: ALGORITMO. Suena complicado, pero es de lo más cotidiano: un algoritmo es una lista de pasos, en orden, para lograr una tarea. Nada más. Una receta de cocina es un algoritmo (los pasos para hacer una torta). Las instrucciones para armar un mueble son un algoritmo. Cómo te cepillas los dientes cada mañana es un algoritmo que ya te sabes de memoria. La palabra viene de Al-Juarismi, un matemático de hace más de mil años, pero la idea es tan vieja como cocinar. Lo importante para informática es que un buen algoritmo tiene que ser tan claro que cualquiera pueda seguirlo y llegar SIEMPRE al mismo resultado, sin dudar en ningún paso.",
+        "pasos": [
+          "Un algoritmo tiene un objetivo (qué queremos lograr).",
+          "Tiene pasos (las acciones concretas que hay que hacer).",
+          "Los pasos van en un orden.",
+          "Cada paso tiene que estar claro para quien lo va a ejecutar."
+        ],
+        "ejemplo": "Algoritmo para preparar un vaso de jugo en polvo: 1) Toma un vaso. 2) Echa dos cucharadas de polvo. 3) Agrega agua hasta llenar el vaso. 4) Revuelve con una cuchara hasta que no queden grumos. 5) Listo. Cualquiera que siga estos cinco pasos obtiene el mismo jugo."
+      },
+      {
+        "titulo": "Qué es una instrucción",
+        "explicacion": "Si el algoritmo es la receta completa, una INSTRUCCIÓN es cada paso suelto: una sola orden que dice qué hacer. 'Echa dos cucharadas de polvo' es una instrucción. 'Revuelve' es otra. Un algoritmo, entonces, es un conjunto de instrucciones puestas en orden. Que quede clara esta pareja de palabras te va a ordenar la cabeza todo el año: la instrucción es el ladrillo, el algoritmo es la pared hecha con esos ladrillos. Una buena instrucción es concreta: dice una acción que se puede hacer sin tener que preguntar nada más. Si al leer una instrucción tienes que detenerte a pensar '¿y esto cómo?', es que todavía no está lo bastante clara.",
+        "pasos": [],
+        "ejemplo": "'Camina hasta la esquina' es una instrucción (una acción concreta). 'Llega a mi casa' NO es una buena instrucción, es más bien un objetivo enorme que hay que partir en muchas instrucciones pequeñas: gira a la derecha, camina tres cuadras, cruza la calle, etc."
+      },
+      {
+        "titulo": "El enemigo número uno: la ambigüedad",
+        "explicacion": "Aquí aparece la palabra clave de todo el tema: AMBIGÜEDAD. Algo es ambiguo cuando se puede entender de más de una manera. Para un humano la ambigüedad casi no molesta, porque usamos el contexto para elegir el significado correcto. Pero para la computadora la ambigüedad es veneno: como no interpreta, si una orden se puede entender de dos formas, puede tomar la que menos esperabas, y todo se rompe. Por eso, pensar como una computadora es, sobre todo, cazar ambigüedades antes de que causen problemas. Cada vez que escribes un paso, hazte la pregunta de oro: '¿esto se puede entender de otra forma distinta a la que yo quiero?'. Si la respuesta es sí, hay que arreglarlo.",
+        "pasos": [
+          "Lee cada instrucción como si fueras un extraño malintencionado que busca entenderla al revés.",
+          "Pregunta: ¿esta palabra o este paso puede significar dos cosas distintas?",
+          "Si puede, reescríbelo para que solo signifique una."
+        ],
+        "ejemplo": "'Ponte la ropa que está sobre la silla.' ¿Qué ropa? ¿Toda la que hay en la silla, o una prenda en particular? ¿Y si hay ropa de varias personas? La orden es ambigua. Una versión sin ambigüedad: 'Ponte la camisa azul que está sobre la silla de tu cuarto.'"
+      },
+      {
+        "titulo": "Instrucciones precisas contra instrucciones vagas",
+        "explicacion": "Una instrucción VAGA deja cosas sin decir y obliga a suponer; una instrucción PRECISA dice exactamente cuánto, qué, dónde y cómo, sin dejar nada al azar. Los humanos entendemos las vagas porque completamos con sentido común, pero al escribir para una computadora (o para un ayudante que obedece al pie de la letra) tenemos que volver todo preciso. Precisar suele significar cambiar palabras 'elásticas' —un poco, bastante, cerca, luego— por datos exactos: dos cucharadas, tres cuadras, a la derecha, durante cinco minutos. No es que hablar preciso sea 'más elegante': es que sin precisión la máquina no puede actuar bien.",
+        "pasos": [
+          "Busca palabras elásticas: 'un poco', 'bastante', 'cerca', 'algunos', 'rápido'.",
+          "Cámbialas por cantidades o referencias exactas: '200 gramos', 'tres pasos', 'la puerta verde'.",
+          "Revisa que no quede ninguna decisión sin instrucción."
+        ],
+        "ejemplo": "Vaga: 'Echa un poco de sal y cocina hasta que esté listo.' Precisa: 'Echa media cucharadita de sal y cocina durante ocho minutos.' La segunda la puede seguir cualquiera y siempre da el mismo resultado."
+      },
+      {
+        "titulo": "El orden de los pasos cambia todo",
+        "explicacion": "Un algoritmo no es solo un montón de instrucciones: es un montón de instrucciones EN ORDEN. Ese orden se llama SECUENCIA, y cambiarlo puede arruinar el resultado aunque cada paso, por separado, sea correcto. La computadora ejecuta los pasos de arriba hacia abajo, uno tras otro, en el orden en que los escribiste, sin reordenarlos por ti. Así que dos algoritmos con exactamente las mismas instrucciones pueden dar resultados totalmente distintos solo por el orden. Antes de dar por buena una lista de pasos, léela en el orden en que está y comprueba que cada paso tenga sentido justo en ese momento: que no le falte algo que debía haber pasado antes.",
+        "pasos": [
+          "Lee los pasos en orden, del primero al último.",
+          "En cada paso, pregunta: ¿ya pasó todo lo que este paso necesita?",
+          "Si un paso necesita algo que todavía no se hizo, está mal ubicado."
+        ],
+        "ejemplo": "Para hacer un sándwich: si el orden es 1) cierra el sándwich, 2) pon el jamón, 3) unta la mantequilla, sale un desastre. El orden correcto es untar la mantequilla, poner el jamón y por último cerrar. Mismas acciones, orden distinto, resultado totalmente distinto."
+      },
+      {
+        "titulo": "El truco unplugged: dictar cómo dibujar algo",
+        "explicacion": "Una forma clásica (y sin computadora) de entrenar este pensamiento es el juego del dibujo dictado. Tú tienes un dibujo simple y un compañero no lo ve; tienes que describírselo SOLO con palabras para que él lo reproduzca, sin señalar ni mostrar. Es durísimo, y por eso enseña tanto: descubres al instante cuántas cosas dabas por obvias. '¿Dónde empiezo? ¿De qué tamaño? ¿En qué parte de la hoja?' Cada duda de tu compañero es una ambigüedad que tu instrucción no cerró. Cuando el dibujo le sale igual al tuyo, es porque lograste instrucciones precisas y ordenadas: exactamente lo que la computadora necesita.",
+        "pasos": [
+          "Empieza siempre por lo general y luego lo detallado (primero el marco, luego lo de adentro).",
+          "Da posiciones con referencias claras: 'en el centro de la hoja', 'a dos dedos del borde de arriba'.",
+          "Da tamaños comparando: 'un círculo del tamaño de una moneda'.",
+          "Un paso a la vez; espera a que termine antes de dar el siguiente."
+        ],
+        "ejemplo": "Para dictar una casa simple: 1) En el centro de la hoja dibuja un cuadrado del tamaño de tu palma. 2) Sobre el borde de arriba del cuadrado, dibuja un triángulo del mismo ancho (el techo). 3) En el centro del cuadrado, dibuja un rectángulo pequeño vertical (la puerta). Sin ambigüedad, sale una casa reconocible."
+      },
+      {
+        "titulo": "Otro clásico: dar instrucciones para llegar a un lugar",
+        "explicacion": "Explicar una ruta es otro algoritmo cotidiano perfecto para practicar. Cuando le explicas a alguien cómo llegar del colegio a tu casa, estás escribiendo un algoritmo de navegación: una secuencia de instrucciones precisas. Los errores típicos son justo los que la computadora no perdona: decir 'gira ahí' sin decir hacia qué lado, o 'sigue derecho un rato' sin decir cuántas cuadras, o saltarte una vuelta porque para ti es obvia. Una buena ruta dice en cada esquina qué hacer, con datos exactos, y no da por sabido nada. Fíjate cómo aparecen todas las ideas juntas: instrucciones (cada indicación), precisión (cuadras y lados exactos), ausencia de ambigüedad (izquierda o derecha, sin dudas) y orden (las vueltas en la secuencia correcta).",
+        "pasos": [
+          "Marca un punto de partida claro ('saliendo de la puerta principal del colegio').",
+          "Da cada giro con el lado exacto (izquierda o derecha) y una referencia visible.",
+          "Di cuántas cuadras o cuánta distancia entre giro y giro.",
+          "Termina con una señal para reconocer el destino ('la casa de portón rojo')."
+        ],
+        "ejemplo": "'Saliendo de la puerta principal del colegio, gira a la derecha. Camina dos cuadras hasta la panadería. En la panadería gira a la izquierda y camina una cuadra. Mi casa es la del portón rojo, a mano derecha.' Cualquiera llega; nada queda a la suposición."
+      },
+      {
+        "titulo": "Cómo revisar tu propio algoritmo",
+        "explicacion": "Escribir un algoritmo es la mitad del trabajo; la otra mitad es PROBARLO. Los mejores programadores del mundo revisan sus pasos poniéndose en el lugar de la máquina obediente: recorren cada instrucción al pie de la letra, sin usar su sentido común, y ven si algo falla. A esto se le llama 'ejecutar el algoritmo con la cabeza' o hacer una prueba en seco (seguir los pasos en papel, como si tú fueras la computadora). Es la forma más rápida de cazar ambigüedades, pasos vagos y desórdenes ANTES de que causen un problema real. Si al hacer de máquina el algoritmo te lleva al resultado correcto sin que tengas que adivinar nada, entonces está bien hecho.",
+        "pasos": [
+          "Ponte en modo 'máquina obediente': apaga tu sentido común.",
+          "Ejecuta cada instrucción exactamente como está escrita, en orden.",
+          "Cada vez que dudes o tengas que suponer algo, marca ese paso: ahí hay un error.",
+          "Corrige los pasos marcados y vuelve a probar desde el inicio."
+        ],
+        "ejemplo": "Algoritmo: '1) Abre la lata. 2) Vierte la sopa en la olla. 3) Calienta.' Al hacer de máquina notas: ¿con qué abro la lata? ¿cuánto tiempo caliento? ¿a qué fuego? Esos huecos que tu cabeza rellenaría sola son justo lo que hay que precisar."
+      }
+    ],
+    "idea_clave": "La computadora hace EXACTAMENTE lo que le dices, sin adivinar. Por eso pensar como una computadora es escribir algoritmos: listas de instrucciones precisas, sin ambigüedad y en el orden correcto, tan claras que cualquiera (o cualquier máquina) llegue siempre al mismo resultado. Y todo esto se entrena sin computadora, con tareas de todos los días."
+  },
+  "practica": [
+    {
+      "enunciado": "Escribe un algoritmo (lista de pasos numerados) para lavarse las manos, pensando que lo va a seguir un robot que hace todo al pie de la letra y no sabe nada. Debe tener al menos cinco pasos.",
+      "pista": "No des nada por obvio. Piensa qué haría un robot que no sabe qué es el jabón ni de dónde sale el agua. Incluye abrir el grifo, mojarse, usar jabón, frotar un tiempo concreto, enjuagar y cerrar el grifo.",
+      "solucion": "Un ejemplo válido: 1) Abre el grifo del lavamanos. 2) Pon las dos manos bajo el chorro de agua hasta mojarlas por completo. 3) Toma jabón y frótalo entre las manos. 4) Frota las palmas, el dorso y entre los dedos durante veinte segundos. 5) Pon las manos bajo el chorro y enjuaga hasta que no quede jabón. 6) Cierra el grifo. 7) Sécate las manos con la toalla. Lo importante: los pasos van en orden y cada uno es una acción concreta, con datos precisos como 'veinte segundos'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "La siguiente instrucción es ambigua: 'Corta la fruta en trozos.' Explica por qué es ambigua y reescríbela de forma precisa.",
+      "pista": "Pregúntate qué cosas quedaron sin decir: ¿qué fruta?, ¿de qué tamaño los trozos?, ¿cuántos?, ¿con qué la corto? Cada hueco es una ambigüedad.",
+      "solucion": "Es ambigua porque no dice cuál fruta, ni el tamaño o número de trozos, ni con qué herramienta. La computadora (o el robot) no sabría qué hacer. Una versión precisa: 'Con un cuchillo, corta la manzana en ocho trozos del mismo tamaño.' Ahora la acción, el objeto, la herramienta y el tamaño están dichos con claridad; cualquiera hace lo mismo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Estos pasos para hacer una taza de té están DESORDENADOS: (a) Bebe el té. (b) Echa agua caliente en la taza. (c) Pon la bolsita de té en la taza. (d) Deja reposar tres minutos. (e) Saca la bolsita. Ordénalos correctamente.",
+      "pista": "Recorre la tarea de verdad: ¿qué tiene que estar ya hecho antes de cada paso? No puedes sacar la bolsita antes de ponerla, ni beber antes de preparar.",
+      "solucion": "El orden correcto es: c, b, d, e, a. Es decir: 1) Pon la bolsita de té en la taza. 2) Echa agua caliente en la taza. 3) Deja reposar tres minutos. 4) Saca la bolsita. 5) Bebe el té. Las instrucciones eran las mismas, pero solo este orden lleva al resultado correcto: la secuencia importa.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero escribió esta ruta: 'Sal del colegio, camina un rato y gira ahí; después sigue hasta que veas mi casa.' Encuentra tres problemas que la hacen imposible de seguir sin adivinar, y arréglalos.",
+      "pista": "Busca palabras elásticas ('un rato', 'ahí') y datos que faltan (hacia qué lado gira, cómo reconocer la casa).",
+      "solucion": "Problemas: (1) 'camina un rato' no dice cuántas cuadras (vago); (2) 'gira ahí' no dice hacia qué lado ni dónde (ambiguo); (3) 'hasta que veas mi casa' no dice cómo es la casa para reconocerla. Versión arreglada: 'Saliendo de la puerta del colegio, camina tres cuadras hacia el norte. En la farmacia gira a la izquierda y camina una cuadra. Mi casa es la de portón amarillo, a mano derecha.' Ahora todo es preciso, sin ambigüedad y en orden.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe un algoritmo de exactamente cuatro pasos para dictarle a un compañero (que no lo ve) cómo dibujar un semáforo: un rectángulo vertical con tres círculos dentro. No puedes señalar ni mostrarle nada.",
+      "pista": "Empieza por lo general (el rectángulo) y luego lo de adentro (los círculos), de arriba hacia abajo. Da posiciones y tamaños con referencias claras.",
+      "solucion": "Un ejemplo válido: 1) En el centro de la hoja, dibuja un rectángulo vertical más alto que ancho, del tamaño de tu dedo pulgar. 2) Dentro del rectángulo, en la parte de arriba, dibuja un círculo pequeño. 3) Debajo de ese círculo, en el centro del rectángulo, dibuja otro círculo del mismo tamaño. 4) Debajo del segundo, en la parte de abajo, dibuja un tercer círculo igual. Al ir de lo general a lo detallado y dar posiciones claras, el compañero dibuja un semáforo reconocible.",
+      "figura": "<svg viewBox=\"0 0 120 220\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"40\" y=\"20\" width=\"40\" height=\"110\" rx=\"6\" fill=\"none\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><circle cx=\"60\" cy=\"42\" r=\"12\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><circle cx=\"60\" cy=\"75\" r=\"12\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><circle cx=\"60\" cy=\"108\" r=\"12\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/></svg>"
+    },
+    {
+      "enunciado": "Cambia esta instrucción vaga por una precisa: 'Riega la planta cuando haga falta con un poco de agua.'",
+      "pista": "Las palabras elásticas son 'cuando haga falta' y 'un poco'. Cámbialas por algo que se pueda medir y decidir sin dudar.",
+      "solucion": "Una versión precisa: 'Cada dos días, echa medio vaso de agua en la base de la planta.' Cambiamos 'cuando haga falta' por una regla clara ('cada dos días') y 'un poco' por una cantidad medible ('medio vaso'). Ahora cualquiera la sigue igual, sin adivinar.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un robot recibe este algoritmo para servir cereal: '1) Echa el cereal en el plato. 2) Echa la leche.' Haz de máquina obediente (prueba en seco) y encuentra al menos dos pasos que faltan o que están mal para que funcione de verdad.",
+      "pista": "Ejecuta cada paso al pie de la letra, sin usar tu sentido común. ¿Tienes un plato listo? ¿Está la caja de cereal abierta? ¿Cuánto echas de cada cosa?",
+      "solucion": "Al hacer de máquina se ven los huecos: falta un paso inicial 'Pon un plato hondo sobre la mesa' (el robot no tiene plato) y falta 'Abre la caja de cereal' antes de echarlo. Además los pasos son vagos: no dicen cuánto cereal ni cuánta leche. Un algoritmo corregido: 1) Pon un plato hondo sobre la mesa. 2) Abre la caja de cereal. 3) Echa una taza de cereal en el plato. 4) Abre el envase de leche. 5) Echa media taza de leche sobre el cereal. La prueba en seco reveló los pasos que un humano rellenaría solo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica con tus palabras la diferencia entre una INSTRUCCIÓN y un ALGORITMO, y da un ejemplo cotidiano de cada uno.",
+      "pista": "Piensa en un ladrillo y una pared. ¿Cuál es la pieza suelta y cuál el conjunto ordenado de piezas?",
+      "solucion": "Una instrucción es un solo paso, una sola orden concreta (por ejemplo: 'bate dos huevos'). Un algoritmo es un conjunto de instrucciones puestas en orden para lograr una tarea completa (por ejemplo: la receta entera para hacer una tortilla, que empieza por batir los huevos y sigue con muchos pasos más). La instrucción es la pieza; el algoritmo es la construcción hecha con esas piezas en el orden correcto.",
+      "figura": ""
+    },
+    {
+      "enunciado": "La frase 'Espera a tu hermano en el banco' es ambigua por culpa de una sola palabra. Identifica la palabra ambigua, explica las dos cosas que puede significar y reescribe la frase de dos maneras distintas, una para cada significado.",
+      "pista": "Hay una palabra que nombra dos cosas totalmente distintas del mundo real. Piénsalo: ¿dónde se sienta la gente y dónde se guarda el dinero?",
+      "solucion": "La palabra ambigua es 'banco'. Puede significar el asiento de una plaza o la entidad donde se guarda dinero. Versión 1 (asiento): 'Espera a tu hermano sentado en el banco de madera de la plaza.' Versión 2 (entidad): 'Espera a tu hermano en la entrada del banco de la avenida principal.' Este tipo de palabra, que significa dos cosas, es un ejemplo perfecto de por qué la ambigüedad rompe las instrucciones.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Inventa un algoritmo de cinco a siete pasos para que un robot obediente prepare un sándwich de jamón y queso. Luego señala en tu propio algoritmo un lugar donde, si cambiaras el orden de dos pasos, saldría mal.",
+      "pista": "Piensa qué pasa primero y qué después. El clásico error es cerrar el pan antes de poner el relleno. Escribe los pasos y después busca dos que no se puedan intercambiar.",
+      "solucion": "Un ejemplo válido: 1) Toma dos rebanadas de pan y ponlas sobre el plato. 2) Unta mantequilla en una cara de cada rebanada. 3) Sobre una rebanada, coloca una loncha de jamón. 4) Encima del jamón, coloca una loncha de queso. 5) Tapa con la otra rebanada, con la mantequilla hacia adentro. 6) Corta el sándwich por la mitad. Lugar sensible al orden: si el paso 5 (tapar) se hiciera ANTES de los pasos 3 y 4 (poner jamón y queso), el relleno quedaría fuera del sándwich. El orden de esos pasos no se puede intercambiar sin arruinar el resultado.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué hace realmente una computadora cuando le das una orden?",
+      "opciones": [
+        "Adivina lo que probablemente querías y lo hace",
+        "Hace exactamente lo que le dices, ni más ni menos",
+        "Corrige tus errores usando sentido común",
+        "Elige la interpretación más útil de tu orden"
+      ],
+      "correcta": 1,
+      "explicacion": "La computadora es obediente al extremo: toma tus palabras al pie de la letra y no adivina ni corrige. Suponer que 'va a entender lo que quise decir' es justo el error que hay que quitarse."
+    },
+    {
+      "pregunta": "¿Qué es un algoritmo?",
+      "opciones": [
+        "Un programa de computadora muy difícil",
+        "Una lista de pasos, en orden, para lograr una tarea",
+        "Una parte interna de la computadora",
+        "Una sola orden o acción"
+      ],
+      "correcta": 1,
+      "explicacion": "Un algoritmo es simplemente una secuencia ordenada de pasos para lograr algo, como una receta. No necesita computadora: una receta de cocina o cepillarse los dientes también son algoritmos. Una sola orden es una instrucción, no un algoritmo completo."
+    },
+    {
+      "pregunta": "¿Cuál es la diferencia entre una instrucción y un algoritmo?",
+      "opciones": [
+        "Son exactamente lo mismo",
+        "La instrucción es un solo paso; el algoritmo es un conjunto ordenado de instrucciones",
+        "El algoritmo es un solo paso; la instrucción es la lista completa",
+        "La instrucción es para humanos y el algoritmo para máquinas"
+      ],
+      "correcta": 1,
+      "explicacion": "La instrucción es el ladrillo (un paso, una acción concreta) y el algoritmo es la pared (muchas instrucciones puestas en orden). Confundir cuál es la pieza y cuál el conjunto es el error común."
+    },
+    {
+      "pregunta": "Se dice que una instrucción es AMBIGUA cuando...",
+      "opciones": [
+        "Es muy larga y difícil de leer",
+        "Se puede entender de más de una manera distinta",
+        "Está escrita con palabras técnicas",
+        "Tiene más de tres pasos"
+      ],
+      "correcta": 1,
+      "explicacion": "Ambiguo significa que se puede entender de más de una forma. Para un humano no es grave porque usa el contexto; para la computadora es veneno, porque puede tomar la interpretación equivocada. La longitud o las palabras técnicas no tienen que ver con la ambigüedad."
+    },
+    {
+      "pregunta": "¿Cuál de estas es una instrucción PRECISA?",
+      "opciones": [
+        "Camina un rato y gira cerca de la tienda",
+        "Echa un poco de sal",
+        "Camina tres cuadras y gira a la derecha en la esquina de la farmacia",
+        "Cocina hasta que se vea listo"
+      ],
+      "correcta": 2,
+      "explicacion": "La opción correcta usa datos exactos: 'tres cuadras', 'a la derecha', 'la farmacia'. Las otras tienen palabras elásticas ('un rato', 'un poco', 'cerca', 'listo') que obligan a adivinar y por eso son vagas."
+    },
+    {
+      "pregunta": "Tienes los pasos correctos para hacer un sándwich, pero los pones en mal orden: primero cierras el pan y después pones el jamón. ¿Qué enseña esto?",
+      "opciones": [
+        "Que el orden de los pasos no importa si los pasos son correctos",
+        "Que el orden de los pasos (la secuencia) cambia el resultado",
+        "Que faltaba una instrucción",
+        "Que las instrucciones eran ambiguas"
+      ],
+      "correcta": 1,
+      "explicacion": "Las instrucciones eran correctas y no faltaba ninguna: el problema fue el ORDEN. La computadora ejecuta los pasos en la secuencia en que están, así que un mal orden arruina el resultado aunque cada paso esté bien."
+    },
+    {
+      "pregunta": "Le dices a un robot 'sirve agua' sin decir cuánta ni dónde, y termina derramando toda la jarra sobre la mesa. ¿De quién fue el error?",
+      "opciones": [
+        "Del robot, porque debió darse cuenta de lo que querías",
+        "De la orden, porque era vaga e incompleta",
+        "De nadie, es imposible de evitar",
+        "Del agua, que era demasiada"
+      ],
+      "correcta": 1,
+      "explicacion": "El robot hizo exactamente lo que la orden decía; el error estuvo en la orden, que no precisó cuánta agua ni dónde. La computadora no corrige nuestros huecos: si la orden es incompleta, el resultado sale mal."
+    },
+    {
+      "pregunta": "En el juego de dictar un dibujo sin que el compañero lo vea, ¿por qué conviene empezar por lo general antes que por los detalles?",
+      "opciones": [
+        "Porque así el dibujo se ve más bonito",
+        "Porque da un marco donde ubicar después los detalles, evitando dudas de posición",
+        "Porque los detalles no importan",
+        "Porque es más rápido dibujar detalles primero"
+      ],
+      "correcta": 1,
+      "explicacion": "Empezar por lo general (el marco, la forma grande) le da al compañero una referencia clara para ubicar los detalles después. Si empiezas por un detalle suelto, no sabe dónde va y aparecen ambigüedades de posición."
+    },
+    {
+      "pregunta": "¿Qué significa hacer una 'prueba en seco' de un algoritmo?",
+      "opciones": [
+        "Ejecutarlo en la computadora rápidamente",
+        "Recorrer los pasos tú mismo, como si fueras la máquina obediente, para ver si algo falla",
+        "Borrar los pasos que no sirven",
+        "Escribirlo sin usar lápiz"
+      ],
+      "correcta": 1,
+      "explicacion": "Una prueba en seco es seguir el algoritmo paso a paso poniéndote en el lugar de la máquina, sin usar tu sentido común. Es la forma más rápida de cazar ambigüedades, pasos vagos o desórdenes antes de que causen problemas."
+    },
+    {
+      "pregunta": "La frase 'Espera a tu hermano en el banco' es ambigua. ¿Por qué?",
+      "opciones": [
+        "Porque no dice a qué hora esperar",
+        "Porque la palabra 'banco' puede significar el asiento o la entidad de dinero",
+        "Porque no dice quién es el hermano",
+        "Porque 'esperar' es una acción poco clara"
+      ],
+      "correcta": 1,
+      "explicacion": "La palabra 'banco' tiene dos significados distintos (asiento o entidad financiera), así que la frase se puede entender de dos maneras. Ese doble significado es justo lo que hace ambigua a la instrucción."
+    },
+    {
+      "pregunta": "¿Por qué se practica el 'pensar como una computadora' con recetas, rutas y sándwiches, sin usar computadora?",
+      "opciones": [
+        "Porque las computadoras son muy caras",
+        "Porque lo importante es la lógica de instrucciones precisas y ordenadas, y eso se entrena en tareas de todos los días",
+        "Porque no se puede programar todavía",
+        "Porque las recetas son más divertidas"
+      ],
+      "correcta": 1,
+      "explicacion": "El corazón del tema no es teclear, es aprender a dar instrucciones precisas, sin ambigüedad y en orden. Eso se entrena perfectamente con tareas cotidianas; después, programar es escribir esas mismas ideas en un idioma que la máquina entiende."
+    },
+    {
+      "pregunta": "Estás escribiendo un paso de un algoritmo. ¿Cuál es la 'pregunta de oro' que debes hacerte para evitar problemas?",
+      "opciones": [
+        "¿Este paso suena bonito?",
+        "¿Este paso se puede entender de otra forma distinta a la que quiero?",
+        "¿Este paso es corto?",
+        "¿Este paso usa palabras difíciles?"
+      ],
+      "correcta": 1,
+      "explicacion": "La pregunta clave es si el paso se puede entender de otra manera; si la respuesta es sí, hay una ambigüedad que arreglar. Cazar esas ambigüedades antes de tiempo es la esencia de pensar como una computadora."
+    }
+  ]
+}

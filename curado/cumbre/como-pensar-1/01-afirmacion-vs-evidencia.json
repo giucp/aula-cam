@@ -1,0 +1,316 @@
+{
+  "programa": "cumbre",
+  "materia": "Cómo Pensar",
+  "grado": "Cumbre Cómo Pensar 1er año",
+  "dominio": "Preguntar e investigar",
+  "tema": "La gran pregunta: cómo sabemos lo que sabemos (afirmación vs. evidencia)",
+  "referencias": [
+    "IB Theory of Knowledge (ToK) — knowledge questions, justification of belief, distinguishing claims from evidence",
+    "NGSS Science & Engineering Practices — Practice 7: Engaging in argument from evidence",
+    "Facione, marco de pensamiento crítico (Delphi/APA) — evaluación de afirmaciones, análisis de argumentos y evidencia",
+    "News/Media & Data Literacy (marcos de alfabetización mediática) — distinguir hecho, opinión y evidencia; verificar fuentes"
+  ],
+  "resumen": {
+    "titulo": "¿Cómo lo sabes? Separar lo que se afirma de lo que se prueba",
+    "intro": "Todos los días te llegan frases que suenan seguras: 'esta bebida te da energía', 'ese equipo es el mejor', 'quedarte con el pelo mojado te enferma'. La pregunta más poderosa que puedes aprender a hacer no es larga ni complicada: es '¿cómo lo sabes?'. Con esa sola pregunta empiezas a separar lo que alguien AFIRMA de lo que de verdad puede PROBAR. Este tema te da un juego de herramientas para no tragarte cualquier cosa que te digan, y también para que TÚ hables con más cuidado: en vez de 'yo creo que', poder decir 'yo sé que, porque...'. No se trata de desconfiar de todo el mundo, sino de saber cuándo una idea está bien sostenida y cuándo está flotando en el aire.",
+    "secciones": [
+      {
+        "titulo": "Una afirmación es algo que alguien dice que es verdad",
+        "explicacion": "Empecemos por la palabra base de todo el tema: AFIRMACIÓN (en inglés la verás como 'claim'). Una afirmación es simplemente una frase que dice que algo es de cierta manera, o sea, algo que se presenta como verdadero. 'Está lloviendo' es una afirmación. 'Los gatos duermen más que los perros' es una afirmación. 'Mi hermano rompió el vaso' es una afirmación. Lo importante es esto: una afirmación, por sí sola, todavía no está probada. Es solo alguien plantando una bandera y diciendo 'esto es así'. Puede ser verdad o puede ser falsa; que alguien la diga con mucha seguridad no la vuelve verdadera. Aprender a NOTAR las afirmaciones (cuándo alguien está afirmando algo, incluido tú mismo) es el primer paso: si no las ves, no puedes examinarlas.",
+        "pasos": [
+          "Escucha o lee la frase.",
+          "Pregúntate: '¿esta frase está diciendo que algo es cierto?'. Si la respuesta es sí, es una afirmación.",
+          "Recuerda: que sea una afirmación no dice todavía si es verdadera o falsa. Solo dice que alguien la está planteando."
+        ],
+        "ejemplo": "'Beber agua fría después de correr es malo para el corazón.' Eso es una afirmación: presenta algo como verdadero. Que suene seria y que alguien la repita mucho no la prueba; falta ver si hay algo que la sostenga.",
+        "figura": ""
+      },
+      {
+        "titulo": "Hecho, opinión y afirmación: no son lo mismo",
+        "explicacion": "Tres palabras se confunden todo el tiempo, así que vamos a separarlas con calma. Un HECHO es algo que es verdad y que se puede comprobar mirando el mundo: 'el agua hierve al calentarla lo suficiente' es un hecho, cualquiera puede verificarlo. Una OPINIÓN es lo que a alguien le gusta, prefiere o siente: 'la pizza es la mejor comida' es una opinión, no se puede comprobar como verdadera o falsa porque depende del gusto de cada quien. ¿Y la afirmación? Una afirmación es la frase que alguien lanza, que TODAVÍA no sabemos en qué grupo cae: podría terminar siendo un hecho (si se comprueba) o quedar como una opinión disfrazada de hecho. La clave para distinguir hecho de opinión es preguntarte: '¿esto se puede comprobar con evidencia, o depende del gusto de cada persona?'. Cuidado con la trampa: mucha gente presenta una opinión con tono de hecho ('está claro que...', 'obviamente...') para que suene más fuerte de lo que es.",
+        "pasos": [
+          "Pregúntate: '¿esto se podría comprobar mirando el mundo, midiendo o revisando?'. Si sí, va camino de ser un HECHO.",
+          "Pregúntate: '¿esto depende del gusto o preferencia de cada persona?'. Si sí, es una OPINIÓN.",
+          "Ojo con las opiniones disfrazadas: si dice 'obviamente' o 'todos saben' pero en realidad depende del gusto, sigue siendo opinión."
+        ],
+        "ejemplo": "'Caracas está en Venezuela' es un HECHO (se comprueba en un mapa). 'Caracas es la ciudad más linda del país' es una OPINIÓN (depende del gusto). 'Caracas es la ciudad más grande del país' es una afirmación comprobable: se puede verificar con datos de población, y resulta ser verdadera, así que es un hecho.",
+        "figura": ""
+      },
+      {
+        "titulo": "Evidencia: lo que sostiene una afirmación",
+        "explicacion": "Ahora la pieza central del tema: la EVIDENCIA. Evidencia es cualquier cosa que sirva para mostrar que una afirmación es verdadera (o falsa): pruebas, datos, mediciones, cosas que se pueden observar, resultados de experimentos, registros. Piénsalo como el cimiento de una casa: la afirmación es la casa, la evidencia es lo que la sostiene para que no se caiga. Una afirmación SIN evidencia es una casa sin cimiento: puede verse bien un rato, pero no te puedes confiar. Por eso la pregunta mágica de todo el tema es '¿cómo lo sabes?', que es otra forma de decir '¿cuál es tu evidencia?'. Cuando alguien afirma algo, tienes derecho a pedir el cimiento. Y cuidado: repetir la afirmación con otras palabras NO es evidencia. Si alguien dice 'esto funciona porque sí funciona', no te dio evidencia, solo repitió la afirmación.",
+        "pasos": [
+          "Frente a una afirmación, pregunta: '¿cómo lo sabes?' o '¿en qué te basas?'.",
+          "Fíjate si lo que responden es de verdad un apoyo (una prueba, un dato, una observación) o solo la misma afirmación repetida.",
+          "Si no hay ningún apoyo, la afirmación se queda 'en el aire': anótala como 'no probada', ni la creas ni la rechaces de una."
+        ],
+        "ejemplo": "Afirmación: 'dormir bien mejora las notas'. Evidencia posible: un estudio donde estudiantes que durmieron 8 horas sacaron en promedio mejores notas que los que durmieron 5. Eso es un cimiento. En cambio, 'mejora las notas porque el sueño es bueno' no es evidencia: solo repite la idea con otras palabras.",
+        "figura": ""
+      },
+      {
+        "titulo": "La pregunta que lo destraba todo: '¿cómo lo sabes?'",
+        "explicacion": "Si te quedas con una sola idea de este tema, que sea esta pregunta: '¿cómo lo sabes?'. Es cortita pero abre todo. Cuando alguien afirma algo y le preguntas cómo lo sabe, pueden pasar varias cosas, y todas son útiles. Puede darte una buena razón o una prueba (genial, ahora la afirmación tiene cimiento y puedes revisarlo). Puede darte una razón débil o inventada (ahora sabes que la afirmación no está bien sostenida). O puede no tener respuesta ('no sé, lo escuché por ahí') y ahí ya aprendiste que era solo un rumor. Lo bonito es que también te la puedes hacer a TI MISMO. Antes de repetir algo, pregúntate '¿yo cómo sé esto?'. Muchas veces descubrirás que en realidad no lo sabes, solo lo diste por hecho. Hacerte esa pregunta te vuelve mucho más difícil de engañar, y también más honesto.",
+        "pasos": [
+          "Ante cualquier afirmación (de otros o tuya), detente y pregunta: '¿cómo lo sabes?'.",
+          "Escucha la respuesta y clasifícala: ¿es una prueba real, una razón débil, o un 'no sé'?",
+          "Según eso, decide cuánto confiar en la afirmación. No hace falta un sí/no: puede quedar en 'todavía no me consta'."
+        ],
+        "ejemplo": "Un amigo dice: 'ese profesor reprueba a todos'. Preguntas: '¿cómo lo sabes?'. Si responde 'porque el año pasado 25 de 30 alumnos reprobaron y vi las notas', hay evidencia. Si responde 'me lo dijeron', solo hay un rumor. Misma afirmación, muy distinto cimiento.",
+        "figura": ""
+      },
+      {
+        "titulo": "'Creo que' vs. 'sé que porque...'",
+        "explicacion": "Hay una diferencia enorme entre dos formas de hablar que suenan parecidas. 'Creo que va a llover' quiere decir que tienes una impresión, una corazonada, algo que sientes pero que no puedes sostener con pruebas firmes. 'Sé que va a llover porque el cielo está oscuro, el viento cambió y el pronóstico marca 90% de lluvia' es distinto: pusiste razones, evidencia, un porqué. La palabra clave es 'porque': te obliga a mostrar el cimiento. Un buen pensador no anda diciendo 'sé' a cada rato; usa 'creo' o 'me parece' cuando de verdad solo tiene una impresión, y guarda el 'sé que, porque...' para cuando tiene con qué respaldarlo. Ser honesto sobre cuánto sabes de verdad no es debilidad: es exactamente lo que hace la gente que piensa bien. Decir 'no estoy seguro' cuando no lo estás es una fortaleza, no una vergüenza.",
+        "pasos": [
+          "Antes de decir 'sé que...', revisa: ¿tengo un 'porque' con evidencia detrás?",
+          "Si solo tienes una impresión, di 'creo' o 'me parece': es más honesto.",
+          "Si tienes evidencia, dila: 'sé que X porque Y'. Así el otro puede revisar tu cimiento."
+        ],
+        "ejemplo": "Débil: 'sé que ese celular es el mejor'. Fuerte y honesto: 'creo que ese celular es bueno; sé que su batería dura más porque una revista midió 12 horas contra 8 del otro'. Fíjate cómo el 'porque' con una medición cambia todo.",
+        "figura": ""
+      },
+      {
+        "titulo": "No toda evidencia pesa igual: niveles de evidencia",
+        "explicacion": "Aquí llega una idea que casi nadie te explica pero que es oro puro: hay evidencia FUERTE y evidencia DÉBIL. No es que una sirva y la otra no; es que unas pesan más que otras a la hora de convencernos. Vamos de la más débil a la más fuerte. Lo más débil es un RUMOR: 'lo dijeron por ahí', sin fuente. Un poco más arriba está una ANÉCDOTA: el caso de una sola persona ('a mi tío le funcionó'); sirve como pista, pero un caso puede ser suerte o casualidad. Más fuerte es una OBSERVACIÓN CUIDADOSA o una MEDICIÓN: algo que alguien miró con atención y anotó. Aún más fuerte es un EXPERIMENTO bien hecho, donde se compara y se controla para no engañarse. Y muy fuerte es cuando MUCHOS estudios distintos, hechos por distintas personas, llegan al mismo resultado. La regla práctica: mientras más se pueda repetir, medir y comprobar por otros, más fuerte es la evidencia. Un solo caso llamativo pesa mucho menos que muchas mediciones que coinciden.",
+        "pasos": [
+          "Cuando te den evidencia, pregúntate en qué nivel cae: ¿rumor, anécdota, observación/medición, experimento, o muchos estudios que coinciden?",
+          "Recuerda que un caso suelto (anécdota) puede ser casualidad: no basta para dar algo por seguro.",
+          "Dale más peso a lo que se puede repetir y comprobar, y a lo que confirman varias fuentes distintas."
+        ],
+        "ejemplo": "'Este jarabe cura la gripe.' Evidencia débil: 'a mi prima le funcionó' (una anécdota; pudo mejorar sola, la gripe pasa igual en unos días). Evidencia fuerte: varios estudios con cientos de personas, comparando quienes tomaron el jarabe con quienes no. La anécdota es una pista; los estudios son un cimiento.",
+        "figura": ""
+      },
+      {
+        "titulo": "Afirmación fuerte, evidencia fuerte",
+        "explicacion": "Existe una regla muy sensata que usan los científicos y que te va a servir toda la vida: mientras MÁS grande o sorprendente sea una afirmación, MÁS fuerte tiene que ser la evidencia para creerla. Piénsalo así. Si un amigo te dice 'me comí una arepa en el desayuno', le crees enseguida: es algo común, no necesita pruebas. Pero si te dice 'vi un dinosaurio vivo caminando por la calle', ahí NO te alcanza con su palabra: eso es tan grande, tan fuera de lo normal, que pedirías fotos, testigos, algo muy fuerte antes de creerlo. Y con razón. Una afirmación normal pide poca evidencia; una afirmación extraordinaria pide evidencia extraordinaria. Esto te protege de dos errores opuestos: creerte cosas increíbles solo porque alguien las dijo con seguridad, y también rechazar cosas comunes exigiendo pruebas absurdas. La evidencia que pides debe estar a la altura de lo que se afirma.",
+        "pasos": [
+          "Mide qué tan grande o sorprendente es la afirmación.",
+          "Si es común y corriente, con evidencia sencilla basta.",
+          "Si es enorme o va contra lo que ya sabemos, exige evidencia fuerte antes de creerla: cuanto más grande la afirmación, más alto el listón."
+        ],
+        "ejemplo": "'Estudié dos horas anoche' (afirmación pequeña, le crees con su palabra) frente a 'inventé una pila que da energía gratis para siempre' (afirmación enorme; para creerla necesitarías que muchos expertos la prueben y repitan, no solo la palabra de quien la vende).",
+        "figura": ""
+      },
+      {
+        "titulo": "Cuidado con lo que suena a evidencia pero no lo es",
+        "explicacion": "Muchas frases se DISFRAZAN de evidencia para colarse, y conviene reconocerlas. Primera trampa: 'lo dice mucha gente' o 'todo el mundo lo sabe'. Que muchos lo repitan no lo vuelve verdad; antes se creía que el Sol giraba alrededor de la Tierra y lo creía todo el mundo. Segunda trampa: 'lo dijo un famoso' o 'salió en internet'. Que alguien conocido lo diga, o que esté publicado, no es lo mismo que estar probado; hay que ver en qué se basó. Tercera trampa: 'siempre se ha hecho así'. Que algo sea viejo o costumbre no prueba que sea verdad o que sea lo mejor. Cuarta trampa: repetir la afirmación con voz muy segura, como si la seguridad fuera prueba. Ninguna de estas cosas es evidencia de verdad. La evidencia de verdad muestra POR QUÉ algo es cierto (datos, observaciones, experimentos), no solo QUIÉN lo dice ni CUÁNTOS lo dicen.",
+        "pasos": [
+          "Desconfía de 'todos lo saben', 'lo dijo un famoso', 'salió publicado' y 'siempre fue así' como si fueran pruebas: no lo son por sí solos.",
+          "Pregunta en qué se basó la persona o la fuente, no solo quién es.",
+          "Recuerda: la seguridad con la que alguien habla no mide qué tan cierto es lo que dice."
+        ],
+        "ejemplo": "'Este producto adelgaza, lo usa una actriz famosa.' Que una famosa lo use no es evidencia de que funcione: no sabemos si adelgazó por eso, por dieta, por otra cosa, o si siquiera lo usa. Falta lo importante: mediciones comparando personas que lo usan y personas que no.",
+        "figura": ""
+      },
+      {
+        "titulo": "Cómo se ve todo junto: pensar con evidencia",
+        "explicacion": "Vamos a juntar las piezas en una sola forma de pensar que puedes usar frente a cualquier frase que te llegue. Primero, DETECTA la afirmación (¿qué se está diciendo que es verdad?). Segundo, pregunta '¿cómo lo sabes?' para buscar la evidencia. Tercero, MIRA la evidencia y pésala: ¿es fuerte o débil?, ¿es del nivel que pide esta afirmación? Cuarto, DECIDE con honestidad cuánto creerla: puede quedar en 'sí, bien probada', en 'no, sin cimiento', o en 'todavía no sé, necesito más'. Este último es una respuesta perfectamente válida y muy madura. No se trata de ganar discusiones ni de ser el que desconfía de todo, sino de ajustar cuánto crees a cuánta evidencia hay. Cuando piensas así, es muchísimo más difícil que te engañen, y además tú hablas mejor: das razones en vez de solo afirmar.",
+        "pasos": [
+          "Detecta la afirmación: ¿qué se dice que es verdad?",
+          "Pregunta '¿cómo lo sabes?' y busca la evidencia.",
+          "Pesa la evidencia: nivel (rumor, anécdota, medición, experimento, muchos estudios) y si está a la altura de la afirmación.",
+          "Decide con honestidad: creer, no creer, o 'aún no sé, necesito más'."
+        ],
+        "ejemplo": "Te llega: 'los videojuegos vuelven violentos a los niños'. Afirmación detectada. ¿Cómo lo saben? Buscas: hay estudios, y muchos no encuentran esa relación clara. Pesas: es una afirmación grande y la evidencia no la sostiene con fuerza. Decides: 'no está probado como lo dicen; hace falta más y mejor evidencia'. Eso es pensar con evidencia.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "Una afirmación es solo alguien diciendo que algo es verdad; la evidencia es lo que la sostiene. La pregunta '¿cómo lo sabes?' separa una de la otra. No toda evidencia pesa igual (un rumor no vale lo que muchos estudios que coinciden), y cuanto más grande es una afirmación, más fuerte debe ser su evidencia. Ajusta cuánto crees a cuánta evidencia hay, y sé honesto: 'creo' cuando solo intuyes, 'sé que porque...' cuando tienes con qué respaldarlo."
+  },
+  "practica": [
+    {
+      "enunciado": "Lee estas tres frases y di cuál es un HECHO, cuál una OPINIÓN y cuál una afirmación que habría que comprobar: (a) 'El helado de chocolate es más rico que el de vainilla.' (b) 'El agua se congela cuando baja mucho la temperatura.' (c) 'Mi ciudad tuvo más lluvia este año que el pasado.'",
+      "pista": "Pregúntate en cada una: ¿depende del gusto de cada persona (opinión), se puede comprobar mirando el mundo y ya sabemos que es cierto (hecho), o se podría comprobar con datos pero primero habría que revisarlos (afirmación por comprobar)?",
+      "solucion": "(a) OPINIÓN: 'más rico' depende del gusto de cada quien, no se puede comprobar como verdadero o falso. (b) HECHO: es comprobable y ya sabemos que es cierto (el agua se congela al enfriarse lo suficiente). (c) Afirmación por comprobar: se puede verificar, pero hace falta mirar los datos de lluvia de los dos años antes de darla por cierta.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un anuncio dice: 'Nuestra pasta de dientes es la número uno recomendada.' ¿Qué preguntas harías para saber si esa afirmación tiene evidencia de verdad?",
+      "pista": "Usa la pregunta mágica '¿cómo lo sabes?' y piensa qué falta: ¿quién la recomienda?, ¿cuántos?, ¿comparada con qué?",
+      "solucion": "Buenas preguntas: '¿Recomendada por quién exactamente?', '¿Cuántas personas o expertos, y comparada con cuáles otras pastas?', '¿Hay algún estudio o solo lo dice el propio anuncio?'. La frase suena a evidencia ('número uno') pero no muestra el cimiento: no dice quién la recomienda ni con qué la compararon. Sin eso, es una afirmación en el aire.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Tu amigo afirma: 'Estudiar con música te hace rendir peor en los exámenes.' Ordena de MÁS DÉBIL a MÁS FUERTE estos tres posibles apoyos: (1) 'A mí me pasó una vez.' (2) 'Lo leí en un comentario de internet.' (3) 'Varios estudios midieron a cientos de estudiantes y coincidieron.'",
+      "pista": "Piensa en los niveles de evidencia: un comentario suelto sin fuente, un solo caso personal, y muchos estudios que coinciden. ¿Cuál se puede repetir y comprobar mejor?",
+      "solucion": "De más débil a más fuerte: (2) el comentario de internet (rumor, sin fuente clara), luego (1) tu amigo una vez (anécdota, un solo caso que pudo ser casualidad), y lo más fuerte (3) varios estudios con cientos de estudiantes que coinciden (se puede repetir, medir y confirmar por distintas personas). La regla: mientras más se pueda repetir y comprobar, más fuerte es la evidencia.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Reescribe esta frase para que sea más honesta según la evidencia que hay: 'Sé que va a ganar mi equipo el sábado.' (Supón que solo tienes la corazonada de que juegan bien.)",
+      "pista": "Si solo tienes una impresión y no una prueba, cambia el 'sé' por 'creo' o 'me parece'. Y si tienes alguna razón, agrégala con 'porque'.",
+      "solucion": "Una versión honesta: 'Creo que mi equipo puede ganar, porque últimamente ha jugado bien, pero no lo sé seguro.' Cambiamos 'sé' por 'creo' porque solo hay una corazonada, no una prueba de que ganarán (nadie puede saber el resultado antes). Si hay alguna razón (buen juego reciente), se dice con 'porque', pero sin exagerar a 'sé'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Alguien afirma: 'Un hombre de mi barrio vivió 130 años.' ¿Por qué esta afirmación pide evidencia MÁS fuerte que si dijera 'un hombre de mi barrio vivió 80 años'?",
+      "pista": "Recuerda la regla: afirmación grande o sorprendente, evidencia fuerte. ¿Cuál de las dos edades está muy fuera de lo normal?",
+      "solucion": "Vivir 80 años es común, así que con poca evidencia (la palabra de alguien) basta. Vivir 130 años sería un récord mundial nunca visto de forma confirmada: es una afirmación enorme y fuera de lo normal, así que pide evidencia fuerte (documentos de nacimiento, registros oficiales revisados). Cuanto más grande la afirmación, más alto el listón de evidencia; la palabra de una persona no alcanza para algo tan extraordinario.",
+      "figura": ""
+    },
+    {
+      "enunciado": "En una conversación, alguien dice: 'Eso es verdad porque lo cree todo el mundo.' Explica por qué eso NO es una buena evidencia y da un ejemplo histórico.",
+      "pista": "Piensa si el número de personas que creen algo hace que sea cierto. Recuerda ideas que 'todos creían' y luego resultaron falsas.",
+      "solucion": "Que mucha gente crea algo no lo vuelve verdadero: es la trampa de 'todos lo saben'. La verdad no se decide por votación, sino por evidencia. Ejemplo histórico: durante siglos casi todo el mundo creía que el Sol giraba alrededor de la Tierra, y era falso; la Tierra gira alrededor del Sol. La cantidad de creyentes no cambió el hecho; lo que lo aclaró fueron observaciones y mediciones cuidadosas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Distingue la afirmación de la evidencia en esta frase: 'Esta planta necesita mucha luz, porque cuando la puse en un rincón oscuro se le pusieron las hojas amarillas y al moverla a la ventana se recuperó en una semana.'",
+      "pista": "La afirmación es lo que se sostiene (la conclusión). La evidencia es la observación que se da como apoyo, normalmente después del 'porque'.",
+      "solucion": "Afirmación: 'esta planta necesita mucha luz'. Evidencia: la observación de que en el rincón oscuro se le amarillaron las hojas y en la ventana se recuperó en una semana. Aquí sí hay un cimiento: una observación concreta que apoya la afirmación. (Es evidencia razonable, aunque un solo caso; sería aún más fuerte repitiéndolo con varias plantas.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Tu prima dice: 'Los aviones son más peligrosos que los carros, me da mucho miedo volar.' ¿Está mezclando algo? Separa lo que es sentimiento/opinión de lo que sería una afirmación comprobable, y di cómo se comprobaría.",
+      "pista": "El miedo es un sentimiento y es válido, pero no prueba nada sobre el peligro real. La parte de 'más peligrosos' sí se puede comprobar con datos.",
+      "solucion": "Hay dos cosas mezcladas. El miedo a volar es un sentimiento, es real y respetable, pero no es evidencia de peligro. La afirmación comprobable es 'los aviones son más peligrosos que los carros', y esa se revisa con datos: comparar accidentes por cada viaje o por distancia recorrida. Al mirar esos datos se ve que volar es en realidad más seguro por distancia que ir en carro. Sentir miedo y ser peligroso son cosas distintas; solo la segunda se decide con evidencia.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe una afirmación tuya sobre algo cotidiano y luego, debajo, escribe qué evidencia la sostiene y de qué nivel es (rumor, anécdota, observación/medición, experimento, o varios estudios).",
+      "pista": "No hay una única respuesta correcta. Lo importante es que la evidencia de verdad apoye la afirmación y que identifiques honestamente su nivel.",
+      "solucion": "Ejemplo válido. Afirmación: 'en mi casa el agua tarda más en hervir en la olla grande que en la pequeña'. Evidencia: 'lo medí con un reloj tres veces y siempre la olla grande tardó más'. Nivel: observación/medición repetida (más fuerte que una anécdota de una sola vez, porque se repitió y se midió). Lo clave es que la evidencia realmente apoye la afirmación y que reconozcas su nivel sin inflarlo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un titular dice: 'Científicos descubren que el chocolate cura el resfriado.' ¿Qué señales te dirían que hay que dudar y qué preguntarías antes de creerlo y repetirlo?",
+      "pista": "Es una afirmación grande (curar una enfermedad). Piensa qué evidencia pediría una afirmación así, y desconfía del titular que no muestra el estudio.",
+      "solucion": "Señales para dudar: es una afirmación grande (curar algo), un titular llamativo, y 'científicos' en general no dice quién ni dónde. Preguntas antes de creer y repetir: '¿Quién hizo el estudio y dónde se publicó?', '¿A cuántas personas y comparado con qué?', '¿Otros estudios lo confirman?', '¿El titular dice lo mismo que el estudio o lo exagera?'. Una afirmación así de fuerte necesita evidencia fuerte y confirmada por varios; un solo titular no basta.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué es, exactamente, una afirmación (claim)?",
+      "opciones": [
+        "Una frase que dice que algo es verdad, pero que por sí sola todavía no está probada.",
+        "Algo que ya está comprobado y es seguro que es verdad.",
+        "Una pregunta que le haces a alguien.",
+        "Un gusto personal que no se puede discutir."
+      ],
+      "correcta": 0,
+      "explicacion": "Una afirmación solo plantea que algo es cierto; puede ser verdadera o falsa y aún no está probada. No es lo mismo que un hecho ya comprobado (opción 2), ni una pregunta (opción 3), ni necesariamente un gusto (opción 4, eso sería una opinión)."
+    },
+    {
+      "pregunta": "'La pizza es la mejor comida del mundo.' ¿Qué tipo de frase es?",
+      "opciones": [
+        "Un hecho comprobable.",
+        "Una opinión, porque depende del gusto de cada persona.",
+        "Evidencia científica.",
+        "Una afirmación que se puede medir con un experimento."
+      ],
+      "correcta": 1,
+      "explicacion": "'La mejor' depende del gusto de cada quien, así que es una opinión: no se puede comprobar como verdadera o falsa. No es un hecho ni algo medible, por más que suene seguro."
+    },
+    {
+      "pregunta": "¿Cuál es la pregunta clave para saber si una afirmación tiene apoyo?",
+      "opciones": [
+        "¿Quién lo dijo?",
+        "¿Cuánta gente lo cree?",
+        "¿Cómo lo sabes?",
+        "¿Desde cuándo se dice?"
+      ],
+      "correcta": 2,
+      "explicacion": "'¿Cómo lo sabes?' pide directamente la evidencia, el cimiento de la afirmación. Quién lo dijo, cuánta gente lo cree o desde cuándo se dice no prueban que sea verdad: son justamente las trampas que hay que evitar."
+    },
+    {
+      "pregunta": "¿Cuál de estos es evidencia de VERDAD para la afirmación 'esta medicina baja la fiebre'?",
+      "opciones": [
+        "La receta la firma un doctor famoso.",
+        "Un estudio midió la temperatura de muchos pacientes antes y después, comparando con otros que no la tomaron.",
+        "Mucha gente la compra.",
+        "Sale en un comercial muy convincente."
+      ],
+      "correcta": 1,
+      "explicacion": "La evidencia real muestra POR QUÉ algo funciona: aquí, mediciones comparando quienes la tomaron con quienes no. Que la firme un famoso, que se venda mucho o que tenga buen comercial no prueba que funcione: son apoyos falsos que solo dicen quién o cuántos, no el porqué."
+    },
+    {
+      "pregunta": "¿Cuál de estas afirmaciones necesita la evidencia MÁS fuerte antes de creerla?",
+      "opciones": [
+        "'Ayer desayuné pan.'",
+        "'Me demoré 20 minutos en llegar a la escuela.'",
+        "'Vi un fantasma real en mi cuarto anoche.'",
+        "'Hoy hace calor.'"
+      ],
+      "correcta": 2,
+      "explicacion": "Ver un fantasma es una afirmación extraordinaria, muy fuera de lo normal, así que pide evidencia extraordinaria antes de creerla. Las otras son cosas comunes y corrientes que se aceptan con evidencia sencilla. Regla: cuanto más grande la afirmación, más fuerte debe ser la evidencia."
+    },
+    {
+      "pregunta": "Ordena de MÁS DÉBIL a MÁS FUERTE: rumor 'lo escuché por ahí', anécdota 'a mi tío le funcionó', y 'muchos estudios distintos coinciden'. ¿Cuál es el orden correcto?",
+      "opciones": [
+        "Muchos estudios, anécdota, rumor.",
+        "Rumor, anécdota, muchos estudios.",
+        "Anécdota, rumor, muchos estudios.",
+        "Todos pesan exactamente igual."
+      ],
+      "correcta": 1,
+      "explicacion": "El rumor es lo más débil (sin fuente), la anécdota es un solo caso que puede ser casualidad, y muchos estudios que coinciden es lo más fuerte porque se puede repetir y confirmar por distintas personas. No todos pesan igual: mientras más se pueda comprobar y repetir, más fuerte es la evidencia."
+    },
+    {
+      "pregunta": "¿Cuál frase es más honesta cuando solo tienes una corazonada, sin pruebas?",
+      "opciones": [
+        "'Sé con seguridad que va a pasar.'",
+        "'Es un hecho comprobado que va a pasar.'",
+        "'Me parece que puede pasar, pero no estoy seguro.'",
+        "'Obviamente va a pasar, todos lo saben.'"
+      ],
+      "correcta": 2,
+      "explicacion": "Si solo tienes una impresión, lo honesto es usar 'me parece' o 'creo' y admitir la duda. Decir 'sé', 'es un hecho' u 'obviamente' finge una seguridad que no tienes. Reconocer que no estás seguro es una fortaleza del buen pensador, no una debilidad."
+    },
+    {
+      "pregunta": "'Este remedio funciona porque funciona.' ¿Por qué esto NO es dar evidencia?",
+      "opciones": [
+        "Porque repite la misma afirmación con otras palabras, sin mostrar ninguna prueba.",
+        "Porque los remedios nunca funcionan.",
+        "Porque no lo dijo un científico.",
+        "Porque la frase es demasiado corta."
+      ],
+      "correcta": 0,
+      "explicacion": "Repetir la afirmación ('funciona porque funciona') no aporta ningún cimiento: no hay dato, medición ni observación. La evidencia tendría que mostrar el porqué (por ejemplo, un estudio comparando pacientes). La longitud de la frase o quién la dijo no es el problema."
+    },
+    {
+      "pregunta": "Un amigo dice: 'Ese canal siempre miente, lo sabe todo el mundo.' ¿Cuál es la mejor respuesta de un buen pensador?",
+      "opciones": [
+        "'Tienes razón, si lo dice todo el mundo será verdad.'",
+        "'¿Cómo lo sabes? ¿Puedes mostrarme algún caso concreto en que hayan mentido?'",
+        "'Es imposible que un canal mienta.'",
+        "'A mí me cae bien, así que no miente.'"
+      ],
+      "correcta": 1,
+      "explicacion": "Pedir '¿cómo lo sabes?' y un caso concreto busca la evidencia detrás de la afirmación. 'Lo sabe todo el mundo' es la trampa de la mayoría (no prueba nada), y decir que es imposible o basarse en si te cae bien tampoco es evidencia."
+    },
+    {
+      "pregunta": "¿Cuál de estas SÍ es una diferencia real entre un hecho y una opinión?",
+      "opciones": [
+        "El hecho se puede comprobar mirando el mundo; la opinión depende del gusto de cada persona.",
+        "El hecho lo dice mucha gente; la opinión, poca.",
+        "El hecho es más largo; la opinión más corta.",
+        "El hecho siempre es más interesante que la opinión."
+      ],
+      "correcta": 0,
+      "explicacion": "La diferencia real es esa: un hecho es comprobable con el mundo (medir, revisar, observar), y una opinión depende del gusto o preferencia. Cuánta gente lo diga, el largo de la frase o lo interesante que sea no distinguen un hecho de una opinión."
+    },
+    {
+      "pregunta": "'Este producto adelgaza: lo usa una actriz muy famosa.' ¿Qué falla tiene este apoyo?",
+      "opciones": [
+        "Ninguna, si es famosa debe ser verdad.",
+        "Que una famosa lo use no prueba que funcione: falta medir a personas que lo usan frente a personas que no.",
+        "Que las actrices nunca dicen la verdad.",
+        "Que el producto es demasiado caro."
+      ],
+      "correcta": 1,
+      "explicacion": "Que un famoso lo use es la trampa de la autoridad/fama: no muestra el porqué. Quizá adelgazó por otra cosa, o ni lo usa. La evidencia real serían mediciones comparando quienes lo usan con quienes no. El precio o desconfiar de todas las actrices no viene al caso."
+    },
+    {
+      "pregunta": "Después de pesar la evidencia, descubres que una afirmación grande tiene solo apoyos débiles. ¿Cuál es la actitud más sensata?",
+      "opciones": [
+        "Creerla igual, para no quedar como desconfiado.",
+        "Rechazarla para siempre y burlarte de quien la crea.",
+        "Dejarla en 'todavía no me consta, hace falta más y mejor evidencia'.",
+        "Repetirla con seguridad para convencer a otros."
+      ],
+      "correcta": 2,
+      "explicacion": "Lo maduro es ajustar cuánto crees a cuánta evidencia hay: si es una afirmación grande con apoyos débiles, queda en suspenso ('aún no me consta'), no hace falta un sí o no rotundo. Creerla igual o repetirla sin base sería tragarse algo sin cimiento; burlarse no es necesario ni ayuda a pensar."
+    }
+  ]
+}

@@ -1,0 +1,310 @@
+{
+  "programa": "cumbre",
+  "materia": "Matemática",
+  "grado": "Cumbre Matemática 1er año",
+  "dominio": "Números y Álgebra",
+  "tema": "Cuadrados, cubos, raíces cuadradas y cúbicas",
+  "referencias": [
+    "Singapore MOE Secondary 1 (N1: squares, cubes, square roots and cube roots, index notation, roots by prime factorisation)",
+    "IB MYP Year 1 — Number: powers, roots and perfect squares/cubes",
+    "UK KS3 / GCSE — square and cube numbers, estimating surds between integers, roots by factor trees, common errors",
+    "Japan MEXT Grade 7 — Positive numbers: powers and square roots"
+  ],
+  "resumen": {
+    "titulo": "Elevar y volver atrás: cuadrados, cubos y sus raíces",
+    "intro": "En el tema anterior descubriste que todo número está hecho de primos, sus 'átomos'. Ahora vamos a usar esa misma idea para algo que parece magia: sacar raíces de números enormes sin calculadora. Pero primero lo básico y desde cero: qué es elevar un número al cuadrado y al cubo (multiplicarlo por sí mismo), cómo se escribe corto con potencias, y qué es la operación al revés (la raíz). Es una de las herramientas que más vas a reutilizar: áreas de cuadrados, volúmenes de cubos, el teorema de Pitágoras que verás pronto… todo empieza aquí.",
+    "secciones": [
+      {
+        "titulo": "Elevar al cuadrado: qué es y de dónde viene el nombre",
+        "explicacion": "Elevar un número AL CUADRADO significa multiplicarlo por sí mismo UNA vez: tomas el número y lo multiplicas por el mismo número. Por ejemplo, elevar 5 al cuadrado es 5 × 5 = 25. ¿Y por qué se llama 'cuadrado'? Por una imagen muy concreta: si armas un cuadrado (la figura) de 5 fichas de lado, para llenarlo entero necesitas 5 filas de 5 fichas, o sea 5 × 5 = 25 fichas. El resultado, 25, es literalmente cuántas fichas caben en ese cuadrado; por eso a 25 lo llamamos 'el cuadrado de 5'. Cualquier número que salga de multiplicar un entero por sí mismo (como 25, que sale de 5×5) se llama CUADRADO PERFECTO. Los primeros son 1, 4, 9, 16, 25, 36, 49, 64, 81 y 100, que vienen de 1×1, 2×2, 3×3, y así hasta 10×10.",
+        "pasos": [
+          "Para elevar un número al cuadrado, multiplícalo por sí mismo (n × n).",
+          "El resultado se llama 'el cuadrado' de ese número.",
+          "Si el número de partida era entero, el resultado es un CUADRADO PERFECTO."
+        ],
+        "ejemplo": "El cuadrado de 7 es 7 × 7 = 49. El de 9 es 9 × 9 = 81. Un cuadrado de lado 7 se llena con 7 filas de 7 fichas = 49 fichas.",
+        "figura": "<svg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"40\" y=\"40\" width=\"120\" height=\"120\" fill=\"#12B5A4\" fill-opacity=\"0.15\" stroke=\"#12B5A4\" stroke-width=\"2\"/><text x=\"100\" y=\"108\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"20\" font-weight=\"700\" fill=\"#0E9486\">área = 5²= 25</text><text x=\"100\" y=\"178\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"15\" fill=\"#3B2B4A\">lado = 5</text><text x=\"22\" y=\"104\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"15\" fill=\"#3B2B4A\">5</text></svg>"
+      },
+      {
+        "titulo": "Notación de potencias: base y exponente",
+        "explicacion": "Escribir '5 × 5' está bien, pero hay una forma más corta y elegante: la POTENCIA. Una potencia es una manera abreviada de escribir una multiplicación del mismo número repetido. En vez de 5 × 5 escribimos 5², que se lee 'cinco al cuadrado' o 'cinco elevado a 2'. Ese número tiene dos partes con nombre propio: la BASE es el número grande de abajo (el 5), que es lo que se multiplica; y el EXPONENTE es el número pequeño de arriba (el 2), que dice CUÁNTAS veces se multiplica la base por sí misma. Así, 5² son dos cincos multiplicados (5×5), y 5³ son tres cincos (5×5×5). Ya usaste esta notación en el tema de primos, cuando escribías 60 = 2² × 3 × 5; es exactamente la misma idea. Cuidado con la trampa más común de todas: 5² NO es 5 × 2 = 10. El exponente NO se multiplica con la base; dice cuántos factores hay. 5² = 5 × 5 = 25.",
+        "pasos": [
+          "Identifica la BASE: el número de abajo, lo que se multiplica.",
+          "Identifica el EXPONENTE: el número pequeño de arriba, cuántas veces se repite la base.",
+          "Desarrolla: escribe la base multiplicada por sí misma esa cantidad de veces, y calcula."
+        ],
+        "ejemplo": "En 2⁴, la base es 2 y el exponente es 4, así que 2⁴ = 2 × 2 × 2 × 2 = 16. Y en 3², la base es 3 y el exponente 2: 3² = 3 × 3 = 9 (no 3 × 2 = 6)."
+      },
+      {
+        "titulo": "Elevar al cubo: la versión en tres dimensiones",
+        "explicacion": "Elevar un número AL CUBO significa multiplicarlo por sí mismo DOS veces, o sea usarlo como factor tres veces seguidas: se escribe con exponente 3. Por ejemplo, elevar 4 al cubo es 4³ = 4 × 4 × 4 = 64. El nombre también viene de una figura, pero ahora en tres dimensiones: un CUBO (como un dado) de 4 fichas de arista se llena con 4 × 4 × 4 = 64 cubitos. Por eso 64 es 'el cubo de 4'. Un número que sale de multiplicar un entero tres veces por sí mismo se llama CUBO PERFECTO. Los primeros son 1, 8, 27, 64, 125 y 216, que vienen de 1³, 2³, 3³, 4³, 5³ y 6³. Fíjate en la diferencia: el cuadrado repite el factor 2 veces (una figura plana, con área); el cubo lo repite 3 veces (un cuerpo sólido, con volumen).",
+        "pasos": [
+          "Para elevar al cubo, multiplica el número por sí mismo dos veces (n × n × n).",
+          "Se escribe con exponente 3.",
+          "Si el número de partida era entero, el resultado es un CUBO PERFECTO."
+        ],
+        "ejemplo": "El cubo de 3 es 3³ = 3 × 3 × 3 = 27. El cubo de 5 es 5³ = 5 × 5 × 5 = 125. Un dado de arista 3 se llena con 27 cubitos.",
+        "figura": "<svg viewBox=\"0 0 220 200\" xmlns=\"http://www.w3.org/2000/svg\"><polygon points=\"60,60 140,60 140,140 60,140\" fill=\"#7C4DFF\" fill-opacity=\"0.15\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><polygon points=\"60,60 90,35 170,35 140,60\" fill=\"#7C4DFF\" fill-opacity=\"0.25\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><polygon points=\"140,60 170,35 170,115 140,140\" fill=\"#7C4DFF\" fill-opacity=\"0.20\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><text x=\"100\" y=\"105\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#5A3AAF\">3³ = 27</text><text x=\"100\" y=\"178\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" fill=\"#3B2B4A\">arista = 3 → volumen = 27</text></svg>"
+      },
+      {
+        "titulo": "Deshacer la operación: la raíz cuadrada",
+        "explicacion": "Toda operación tiene su operación 'al revés' que la deshace, como sumar y restar. La que deshace elevar al cuadrado se llama RAÍZ CUADRADA. Elevar al cuadrado va hacia adelante (te doy 5, te devuelvo 25); la raíz cuadrada va hacia atrás (te doy 25, te pregunto de qué número salió). En palabras: la raíz cuadrada de 25 pregunta '¿qué número, multiplicado por sí mismo, da 25?', y la respuesta es 5, porque 5 × 5 = 25. Se escribe con un símbolo especial llamado RADICAL, que es la 'casita' √: √25 = 5. Todo lo que va debajo del techo del radical es de lo que estás sacando la raíz. Como es la operación inversa, siempre puedes COMPROBAR una raíz elevando al cuadrado: si dices √49 = 7, verifica que 7² = 49, y en efecto 7 × 7 = 49. Otro error clásico que debes evitar: la raíz cuadrada NO es dividir entre 2. √36 no es 18; es 6, porque 6 × 6 = 36 (mientras que 6² sí sería 36, no 36÷2).",
+        "pasos": [
+          "Pregúntate: '¿qué número, multiplicado por sí mismo, da el número de adentro?'.",
+          "Ese número es la raíz cuadrada.",
+          "Comprueba SIEMPRE elevándolo al cuadrado: debe darte de nuevo el número de adentro."
+        ],
+        "ejemplo": "√81 = 9, porque 9 × 9 = 81. Comprobación: 9² = 81 ✓. Y √144 = 12, porque 12 × 12 = 144. Comprobación: 12² = 144 ✓."
+      },
+      {
+        "titulo": "La raíz cúbica: deshacer el cubo",
+        "explicacion": "Del mismo modo, la operación que deshace elevar al cubo se llama RAÍZ CÚBICA. Si la raíz cuadrada busca el número que se repite en PAREJAS (dos factores iguales), la raíz cúbica busca el que se repite en TRÍOS (tres factores iguales). En palabras: la raíz cúbica de 8 pregunta '¿qué número, multiplicado por sí mismo tres veces, da 8?', y la respuesta es 2, porque 2 × 2 × 2 = 8. Se escribe con el mismo radical, pero con un numerito 3 metido en la esquina de la casita: ∛8 = 2. A ese numerito de la esquina se le llama ÍNDICE, y es el que te avisa qué tipo de raíz es: sin número (o con un 2 invisible) es raíz cuadrada; con un 3 es raíz cúbica. Igual que antes, siempre puedes comprobar elevando al cubo.",
+        "pasos": [
+          "Mira el ÍNDICE de la raíz: un 3 significa que buscas un factor que se repita tres veces.",
+          "Pregúntate: '¿qué número, multiplicado por sí mismo dos veces (tres factores iguales), da el número de adentro?'.",
+          "Comprueba elevando al cubo: debe devolverte el número de adentro."
+        ],
+        "ejemplo": "∛27 = 3, porque 3 × 3 × 3 = 27. Comprobación: 3³ = 27 ✓. Y ∛125 = 5, porque 5 × 5 × 5 = 125. Comprobación: 5³ = 125 ✓."
+      },
+      {
+        "titulo": "El superpoder heredado: raíces por factorización en primos",
+        "explicacion": "Aquí conectamos directo con el tema anterior. Sacar √49 es fácil de memoria, pero ¿cómo sacas √576 sin calculadora? Con los primos. Recuerda que factorizar es romper un número en sus primos (los átomos). La clave es esta: un CUADRADO PERFECTO tiene TODOS sus primos en parejas, es decir, todos los exponentes de su factorización son pares; y un CUBO PERFECTO los tiene en tríos, con todos los exponentes múltiplos de 3. ¿Por qué? Porque si un número es n × n, cada primo que estaba en n aparece dos veces en el resultado. Entonces, para la raíz cuadrada tomas UN primo de cada pareja (partes cada exponente por la mitad) y los multiplicas; para la raíz cúbica tomas uno de cada trío (partes cada exponente entre 3). Este es exactamente el mismo método que viste al final del tema de primos, ahora explicado paso a paso.",
+        "pasos": [
+          "Factoriza el número en primos, con notación de potencias.",
+          "Para √ (raíz cuadrada): comprueba que todos los exponentes sean pares; divide cada exponente entre 2 y multiplica las potencias que quedan.",
+          "Para ∛ (raíz cúbica): comprueba que todos los exponentes sean múltiplos de 3; divide cada exponente entre 3 y multiplica.",
+          "Comprueba el resultado elevándolo al cuadrado (o al cubo)."
+        ],
+        "ejemplo": "√576: como 576 = 2⁶ × 3², divido los exponentes entre 2 → 2³ × 3¹ = 8 × 3 = 24. Entonces √576 = 24. Comprobación: 24² = 576 ✓.  ∛1728: como 1728 = 2⁶ × 3³, divido entre 3 → 2² × 3¹ = 4 × 3 = 12. Entonces ∛1728 = 12. Comprobación: 12³ = 1728 ✓."
+      },
+      {
+        "titulo": "Perfectos y no perfectos: cuándo la raíz es 'redonda'",
+        "explicacion": "No todo número tiene una raíz cuadrada entera. Los que sí (como 25, 49, 144) son los CUADRADOS PERFECTOS: su raíz es un entero exacto. Pero la mayoría no lo son: √50, por ejemplo, no da un entero, porque no existe ningún número entero que multiplicado por sí mismo dé exactamente 50. Con la factorización sabes al instante cuál es cuál: si al factorizar queda algún primo SIN pareja (un exponente impar), el número NO es cuadrado perfecto. Y lo mejor: sabes EXACTAMENTE qué le falta. Si a un número le sobra un 7 solitario, multiplicándolo por 7 ese primo consigue pareja y el número se vuelve cuadrado perfecto. Esta es una pregunta muy típica en los mejores exámenes: '¿por cuál número mínimo hay que multiplicar para que sea cuadrado perfecto?'. La respuesta es: por el producto de los primos que quedaron sin pareja.",
+        "pasos": [
+          "Factoriza el número en primos.",
+          "Mira los exponentes: si todos son pares, ES cuadrado perfecto.",
+          "Si alguno es impar, NO lo es; el número que le falta es el producto de los primos que quedaron desemparejados."
+        ],
+        "ejemplo": "¿Es 392 cuadrado perfecto? 392 = 2³ × 7². El 7 tiene pareja, pero el 2 tiene exponente 3 (impar), le falta un 2. No es cuadrado perfecto. Multiplicando por 2: 392 × 2 = 784 = 2⁴ × 7², y ahora √784 = 2² × 7 = 28. Comprobación: 28² = 784 ✓."
+      },
+      {
+        "titulo": "Cuando no es exacta: estimar una raíz entre dos enteros",
+        "explicacion": "Si la raíz no es exacta, todavía puedes decir con precisión entre qué dos enteros cae, sin calculadora. La idea es 'atrapar' el número entre dos cuadrados perfectos vecinos. Por ejemplo, ¿cuánto vale más o menos √50? Busco los cuadrados perfectos justo antes y justo después de 50: el 49 (que es 7²) está antes, y el 64 (que es 8²) está después. Como 50 está entre 49 y 64, su raíz está entre 7 y 8. Y como 50 está pegadito a 49, √50 es apenas un poquito más que 7. Esto es lo que se llama estimar, y es una destreza muy valorada porque muestra que ENTIENDES qué es una raíz, no solo que sabes apretar botones. Con las raíces cúbicas es igual, pero atrapando el número entre dos cubos perfectos.",
+        "pasos": [
+          "Busca el cuadrado perfecto inmediatamente MENOR que tu número y el inmediatamente MAYOR.",
+          "La raíz de tu número cae entre las raíces de esos dos cuadrados.",
+          "Mira a cuál de los dos está más cerca el número para afinar tu estimación."
+        ],
+        "ejemplo": "√70 está entre 8 y 9, porque 64 = 8² es el cuadrado justo antes de 70 y 81 = 9² el justo después. Como 70 está más cerca de 64, √70 es un poco más de 8 (el valor real es 8,37...)."
+      },
+      {
+        "titulo": "Para qué sirve: áreas de cuadrados y volúmenes de cubos",
+        "explicacion": "Todo esto no es abstracto: es la matemática de medir el mundo. El ÁREA de un cuadrado (cuánta superficie ocupa) se calcula elevando su lado al cuadrado, porque, como vimos, un cuadrado de lado L se llena con L filas de L fichas: área = L². Por eso, si conoces el área y quieres el lado, haces la operación al revés: lado = √área. De la misma forma, el VOLUMEN de un cubo (cuánto espacio ocupa por dentro) es su arista al cubo: volumen = arista³; y si conoces el volumen y buscas la arista, usas la raíz cúbica: arista = ∛volumen. Esta ida y vuelta —cuadrado para adelante, raíz cuadrada para atrás; cubo para adelante, raíz cúbica para atrás— es una de las parejas de operaciones que más vas a usar en geometría y física.",
+        "pasos": [
+          "Área de un cuadrado = lado × lado = lado².",
+          "Lado de un cuadrado = √área.",
+          "Volumen de un cubo = arista × arista × arista = arista³.",
+          "Arista de un cubo = ∛volumen."
+        ],
+        "ejemplo": "Un piso cuadrado tiene 169 m² de área. Su lado mide √169 = 13 m, porque 13 × 13 = 169. Comprobación: 13² = 169 ✓. Y un cubo de 64 cm³ de volumen tiene aristas de ∛64 = 4 cm, porque 4 × 4 × 4 = 64. Comprobación: 4³ = 64 ✓."
+      }
+    ],
+    "idea_clave": "Elevar al cuadrado es multiplicar un número por sí mismo (área de un cuadrado); al cubo, tres veces (volumen de un cubo). La raíz cuadrada y la cúbica son las operaciones que las deshacen. Con la factorización en primos del tema anterior sacas cualquier raíz exacta sin calculadora: mitad de cada exponente para √, un tercio para ∛; y si un exponente queda impar, el número no es cuadrado perfecto."
+  },
+  "practica": [
+    {
+      "enunciado": "Calcula, escribiendo el desarrollo completo: 6², 4³ y 2⁵. Di en cada caso cuál es la base y cuál el exponente.",
+      "pista": "Recuerda: la base es el número de abajo (lo que se multiplica) y el exponente el de arriba (cuántas veces). El exponente NO se multiplica con la base.",
+      "solucion": "6²: base 6, exponente 2 → 6 × 6 = 36. 4³: base 4, exponente 3 → 4 × 4 × 4 = 64. 2⁵: base 2, exponente 5 → 2 × 2 × 2 × 2 × 2 = 32. (Comprobación: 6×6=36 ✓, 4×4=16 y 16×4=64 ✓, 2×2×2×2×2=32 ✓.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Sin usar calculadora, halla √441 factorizando en primos.",
+      "pista": "Factoriza 441. Empieza por el criterio del 3 (4+4+1=9, múltiplo de 3). Si todos los exponentes son pares, divide cada uno entre 2 y multiplica.",
+      "solucion": "441 = 3 × 147 = 3 × 3 × 49 = 3² × 7². Los exponentes (2 y 2) son pares. Divido cada uno entre 2 → 3¹ × 7¹ = 3 × 7 = 21. Entonces √441 = 21. (Comprobación: 21² = 441 ✓.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un mosaico cuadrado está formado por baldosas cuadraditas iguales, colocadas en un patrón cuadrado perfecto. En total tiene 196 baldosas. ¿Cuántas baldosas hay en cada lado del mosaico?",
+      "pista": "Si el patrón es un cuadrado, el total es (baldosas por lado)². Para hallar cuántas van por lado, haz la operación al revés: la raíz cuadrada de 196.",
+      "solucion": "Buscamos el lado tal que lado² = 196, o sea √196. Factorizando: 196 = 2² × 7². Mitad de cada exponente → 2 × 7 = 14. Hay 14 baldosas por lado. (Comprobación: 14 × 14 = 196 baldosas en total ✓.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Sin calculadora, halla ∛3375 usando factorización en primos.",
+      "pista": "3375 termina en 5, así que se divide entre 5; y la suma de sus cifras (3+3+7+5=18) es múltiplo de 3. Para la raíz cúbica, los exponentes deben ser múltiplos de 3; divide cada uno entre 3.",
+      "solucion": "3375 = 3 × 1125 = 3 × 3 × 375 = 3 × 3 × 3 × 125 = 3³ × 5³. Los exponentes (3 y 3) son múltiplos de 3. Divido cada uno entre 3 → 3¹ × 5¹ = 3 × 5 = 15. Entonces ∛3375 = 15. (Comprobación: 15³ = 15 × 15 × 15 = 3375 ✓.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "¿Es 900 un cuadrado perfecto? Si lo es, di cuánto vale √900; si no, explica por qué.",
+      "pista": "Factoriza 900. Un cuadrado perfecto tiene TODOS los exponentes pares. Revisa si alguno queda impar.",
+      "solucion": "900 = 2² × 3² × 5². Los tres exponentes son pares, así que SÍ es cuadrado perfecto. Mitad de cada exponente → 2 × 3 × 5 = 30, entonces √900 = 30. (Comprobación: 30² = 900 ✓.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "El número 392 no es cuadrado perfecto. Halla el número MÁS PEQUEÑO por el que hay que multiplicarlo para que lo sea, y calcula la raíz cuadrada del resultado.",
+      "pista": "Factoriza 392 y busca cuál primo quedó con exponente impar (sin pareja). Multiplicar por ese primo le da la pareja que le falta.",
+      "solucion": "392 = 2³ × 7². El 7 tiene pareja (exponente 2), pero el 2 tiene exponente 3 (impar): le falta un 2. El número más pequeño es 2. Al multiplicar: 392 × 2 = 784 = 2⁴ × 7². Ahora sí es cuadrado perfecto, y √784 = 2² × 7 = 4 × 7 = 28. (Comprobación: 28² = 784 ✓.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Entre qué dos números enteros consecutivos se encuentra √130? No uses calculadora.",
+      "pista": "Atrapa 130 entre dos cuadrados perfectos vecinos. Piensa: 11² = 121 y 12² = 144.",
+      "solucion": "El cuadrado perfecto justo antes de 130 es 121 = 11², y el justo después es 144 = 12². Como 130 está entre 121 y 144, se cumple que √130 está entre 11 y 12. (Como 130 está más cerca de 121, √130 es un poco más de 11; el valor real es 11,40...)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una caja con forma de cubo tiene un volumen de 216 cm³. ¿Cuánto mide su arista? ¿Y cuál sería el área de una de sus caras cuadradas?",
+      "pista": "El volumen de un cubo es arista³, así que la arista es la raíz cúbica del volumen. Una cara es un cuadrado de lado igual a la arista; su área es ese lado al cuadrado.",
+      "solucion": "Arista = ∛216. Factorizando: 216 = 2³ × 3³, y dividiendo los exponentes entre 3 → 2 × 3 = 6. La arista mide 6 cm. (Comprobación: 6³ = 216 ✓.) Cada cara es un cuadrado de lado 6, con área 6² = 36 cm². (Comprobación: 6 × 6 = 36 ✓.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica con tus palabras por qué 5² NO es igual a 10, y por qué √36 NO es igual a 18.",
+      "pista": "Recuerda qué significa el exponente y qué significa la raíz. Ninguna de las dos operaciones es 'multiplicar por 2' ni 'dividir entre 2'.",
+      "solucion": "5² significa multiplicar 5 por SÍ MISMO (5 × 5 = 25), no multiplicar 5 por el exponente 2 (eso daría 10, que es un error muy común). El exponente dice cuántos factores hay, no es un factor más. De igual modo, √36 pregunta '¿qué número por sí mismo da 36?', y la respuesta es 6, porque 6 × 6 = 36; no es 36 ÷ 2 = 18. Comprobación de que 6 es correcto: 6² = 36 ✓; y 18 no puede ser, porque 18 × 18 = 324, no 36.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Sin calculadora, halla √1296 usando factorización en primos. (Pista de tamaño: la respuesta es un número de dos cifras.)",
+      "pista": "1296 es par y la suma de sus cifras (1+2+9+6=18) es múltiplo de 9. Al factorizar te quedan potencias de 2 y de 3. Divide cada exponente entre 2.",
+      "solucion": "1296 = 2⁴ × 3⁴ (árbol: 1296 = 16 × 81 = 2⁴ × 3⁴). Los exponentes (4 y 4) son pares. Mitad de cada uno → 2² × 3² = 4 × 9 = 36. Entonces √1296 = 36. (Comprobación: 36² = 1296 ✓.)",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuánto vale 5²?",
+      "opciones": [
+        "10",
+        "25",
+        "7",
+        "52"
+      ],
+      "correcta": 1,
+      "explicacion": "5² significa 5 × 5 = 25 (multiplicar 5 por sí mismo). El error más común es hacer 5 × 2 = 10: el exponente NO se multiplica con la base, solo dice cuántas veces se repite."
+    },
+    {
+      "pregunta": "¿Cuánto vale 2³?",
+      "opciones": [
+        "6",
+        "9",
+        "8",
+        "5"
+      ],
+      "correcta": 2,
+      "explicacion": "2³ = 2 × 2 × 2 = 8. Cuidado: no es 2 × 3 = 6 (eso sería confundir el exponente con un factor). El exponente 3 indica que hay tres factores iguales a 2."
+    },
+    {
+      "pregunta": "En la potencia 7⁴, ¿cuál es la base y cuál el exponente?",
+      "opciones": [
+        "Base 4, exponente 7",
+        "Base 7, exponente 4",
+        "Base 7, exponente 7",
+        "Base 28, exponente 1"
+      ],
+      "correcta": 1,
+      "explicacion": "La base es el número de abajo (7), lo que se multiplica; el exponente es el número pequeño de arriba (4), cuántas veces. Así, 7⁴ = 7 × 7 × 7 × 7."
+    },
+    {
+      "pregunta": "¿Cuánto es √64?",
+      "opciones": [
+        "32",
+        "8",
+        "16",
+        "6"
+      ],
+      "correcta": 1,
+      "explicacion": "√64 = 8, porque 8 × 8 = 64. El error de responder 32 viene de dividir 64 entre 2: la raíz cuadrada NO es dividir entre 2, es buscar el número que multiplicado por sí mismo da 64."
+    },
+    {
+      "pregunta": "¿Cuánto es ∛64?",
+      "opciones": [
+        "8",
+        "4",
+        "16",
+        "21"
+      ],
+      "correcta": 1,
+      "explicacion": "∛64 = 4, porque 4 × 4 × 4 = 64. El distractor 8 es la RAÍZ CUADRADA de 64 (8×8=64), no la cúbica; hay que fijarse en el índice 3 del radical: busca un factor que se repita TRES veces."
+    },
+    {
+      "pregunta": "¿Cuál de estos números es un cuadrado perfecto?",
+      "opciones": [
+        "50",
+        "72",
+        "81",
+        "90"
+      ],
+      "correcta": 2,
+      "explicacion": "81 = 9 × 9 = 9², así que es cuadrado perfecto. Los otros no son el resultado de multiplicar un entero por sí mismo (50, 72 y 90 caen entre dos cuadrados perfectos, pero no lo son)."
+    },
+    {
+      "pregunta": "¿Cuál de estos números es un cubo perfecto?",
+      "opciones": [
+        "100",
+        "64",
+        "36",
+        "50"
+      ],
+      "correcta": 1,
+      "explicacion": "64 = 4 × 4 × 4 = 4³, un cubo perfecto. Ojo: 100 y 36 sí son cuadrados perfectos (10² y 6²), pero no cubos. 64 tiene la doble gracia de ser ambos (8² y 4³)."
+    },
+    {
+      "pregunta": "Usando que 576 = 2⁶ × 3², ¿cuánto es √576?",
+      "opciones": [
+        "288",
+        "24",
+        "48",
+        "36"
+      ],
+      "correcta": 1,
+      "explicacion": "Para la raíz cuadrada se divide cada exponente entre 2: 2³ × 3¹ = 8 × 3 = 24. (Comprobación: 24² = 576 ✓.) El 288 sale de dividir 576 entre 2, que NO es sacar la raíz."
+    },
+    {
+      "pregunta": "Un piso cuadrado tiene un área de 121 m². ¿Cuánto mide su lado?",
+      "opciones": [
+        "11 m",
+        "60,5 m",
+        "12 m",
+        "10 m"
+      ],
+      "correcta": 0,
+      "explicacion": "El lado de un cuadrado es √área. √121 = 11, porque 11 × 11 = 121. (Comprobación: 11² = 121 ✓.) El 60,5 viene de dividir 121 entre 2, que no corresponde a la raíz."
+    },
+    {
+      "pregunta": "El número 45 no es cuadrado perfecto. Sabiendo que 45 = 3² × 5, ¿por cuál número MÁS PEQUEÑO hay que multiplicarlo para que lo sea?",
+      "opciones": [
+        "3",
+        "5",
+        "9",
+        "45"
+      ],
+      "correcta": 1,
+      "explicacion": "El 3 ya tiene pareja (exponente 2), pero el 5 está solo (exponente 1). Multiplicando por 5: 45 × 5 = 225 = 3² × 5², y √225 = 3 × 5 = 15. El primo desemparejado es el 5, así que el número mínimo es 5."
+    },
+    {
+      "pregunta": "¿Entre qué dos números enteros se encuentra √90?",
+      "opciones": [
+        "Entre 8 y 9",
+        "Entre 9 y 10",
+        "Entre 44 y 46",
+        "Entre 44 y 45"
+      ],
+      "correcta": 1,
+      "explicacion": "Se atrapa 90 entre cuadrados perfectos vecinos: 81 = 9² está antes y 100 = 10² después. Como 90 está entre 81 y 100, √90 está entre 9 y 10. Las opciones cercanas a 45 salen de dividir 90 entre 2, que no es la raíz."
+    },
+    {
+      "pregunta": "Un cubo tiene un volumen de 27 cm³. ¿Cuánto mide su arista?",
+      "opciones": [
+        "9 cm",
+        "3 cm",
+        "13,5 cm",
+        "5,2 cm"
+      ],
+      "correcta": 1,
+      "explicacion": "La arista de un cubo es ∛volumen. ∛27 = 3, porque 3 × 3 × 3 = 27. (Comprobación: 3³ = 27 ✓.) El 9 confunde raíz cúbica con cuadrada, y 13,5 sale de dividir 27 entre 2."
+    }
+  ]
+}

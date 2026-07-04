@@ -1,0 +1,321 @@
+{
+  "programa": "cumbre",
+  "materia": "Inglés",
+  "grado": "Cumbre Inglés 1er año",
+  "dominio": "Hablar de mí y de otros",
+  "tema": "Puedo saludar, presentarme y despedirme (greetings; verb to be)",
+  "referencias": [
+    "MCER/CEFR A1 — puede establecer contactos sociales básicos: saludar y despedirse, presentarse y presentar a otros, preguntar cómo está alguien",
+    "Cambridge A2 Key for Schools — greetings, introductions, verb to be en presente",
+    "IB Language Acquisition (Emergent/Phase 1) — funciones comunicativas de saludo y presentación personal",
+    "Communicative Language Teaching (CLT) — enseñar por funciones 'can-do' y no por reglas gramaticales sueltas"
+  ],
+  "resumen": {
+    "titulo": "Las primeras palabras en inglés: saludar y decir quién soy",
+    "intro": "Antes de aprender reglas complicadas, en cualquier idioma lo primero que se necesita es poder mirar a alguien a los ojos y decir 'hola, me llamo...'. En esta guía vas a aprender exactamente eso en inglés: cómo saludar según el momento del día, cómo decir tu nombre, cómo preguntar el nombre de otra persona y cómo despedirte. Y en el camino vas a conocer el verbo más importante del inglés, el verbo 'to be' (ser o estar), que aparece en casi todas las frases. No hace falta que sepas nada de inglés todavía: aquí empezamos desde cero y te explicamos el porqué de cada cosa. Entre paréntesis vas a ver siempre la traducción y, cuando ayude, cómo se pronuncia aproximadamente en español.",
+    "secciones": [
+      {
+        "titulo": "Saludos informales: para amigos y gente de confianza",
+        "explicacion": "Un SALUDO es la palabra o frase que usamos para empezar a hablar con alguien. En inglés, igual que en español, hay saludos INFORMALES (relajados, para amigos, familia, compañeros de tu edad) y saludos FORMALES (más respetuosos, para adultos que no conoces, profesores, alguien mayor). Empecemos por los informales porque son los más fáciles y los que más vas a usar con gente de tu edad. El más común es 'Hi' (que significa 'hola', y se pronuncia parecido a 'jái'). También existe 'Hello' (también 'hola', pero un poquito más neutro; se dice 'jelóu'). 'Hi' es más rápido y amistoso; 'Hello' sirve para todo. La diferencia con el español es que en inglés la letra H al principio casi siempre suena como una 'j' suave y suave de aire, no como la 'h' muda del español.",
+        "pasos": [
+          "Con un amigo o alguien de tu edad, usa 'Hi' (hola).",
+          "Si quieres algo neutro que sirva siempre, usa 'Hello' (hola).",
+          "Recuerda que la H suena como una 'j' suave: 'Hi' = 'jái', 'Hello' = 'jelóu'."
+        ],
+        "ejemplo": "Ves a tu amigo en el recreo y le dices: 'Hi!' (¡Hola!). Él te responde: 'Hello!' (¡Hola!)."
+      },
+      {
+        "titulo": "Saludos según la hora del día: Good morning, afternoon, evening",
+        "explicacion": "El inglés tiene saludos especiales que dependen de la HORA del día. Son un poco más formales y educados, y quedan muy bien con adultos o cuando quieres sonar cortés. Todos empiezan con la palabra 'Good' (que significa 'bueno' y se dice 'gud'). 'Good morning' significa 'buenos días' y se usa en la MAÑANA, más o menos hasta el mediodía (se dice 'gud mórning'). 'Good afternoon' significa 'buenas tardes' y se usa desde el mediodía hasta el atardecer (se dice 'gud afternún'). 'Good evening' significa 'buenas noches' pero SOLO como saludo al LLEGAR de noche, cuando cae el sol (se dice 'gud ívning'). Cuidado con una trampa muy común: 'Good night' (buenas noches) NO es un saludo para llegar, sino una DESPEDIDA para cuando te vas a dormir o te despides de noche. Por eso 'evening' se usa para saludar de noche y 'night' para despedirse de noche.",
+        "pasos": [
+          "En la mañana: 'Good morning' (buenos días).",
+          "Desde el mediodía hasta el atardecer: 'Good afternoon' (buenas tardes).",
+          "Al anochecer, cuando llegas: 'Good evening' (buenas noches, al saludar).",
+          "OJO: 'Good night' es solo para despedirte de noche o antes de dormir, no para saludar."
+        ],
+        "ejemplo": "Llegas al colegio a las 8 de la mañana y saludas a tu profesora: 'Good morning!' (¡Buenos días!). En la noche, antes de irte a dormir, dices: 'Good night!' (¡Buenas noches!)."
+      },
+      {
+        "titulo": "Despedidas: Goodbye, Bye, See you",
+        "explicacion": "Cuando terminas de hablar con alguien y te vas, usas una DESPEDIDA. La despedida más completa y neutra es 'Goodbye' (que significa 'adiós' y se dice 'gudbái'). En el día a día casi nadie dice la palabra entera; la mayoría dice 'Bye' (que es la versión corta de 'Goodbye', significa 'chau' o 'adiós', y se dice 'bái'). Muy común también es 'See you' (que literalmente significa 'te veo', pero se usa como 'nos vemos'; se dice 'síi yú'). A menudo se le agrega cuándo: 'See you later' (nos vemos más tarde), 'See you tomorrow' (nos vemos mañana). Todas son formas amistosas de despedirte. Y recuerda: para despedirte de noche también sirve 'Good night' (buenas noches).",
+        "pasos": [
+          "Formal o neutro: 'Goodbye' (adiós).",
+          "Informal y cortito: 'Bye' (chau).",
+          "Amistoso: 'See you' (nos vemos), o 'See you later' (nos vemos más tarde)."
+        ],
+        "ejemplo": "Terminas de jugar con tu amiga y le dices: 'Bye! See you tomorrow!' (¡Chau! ¡Nos vemos mañana!)."
+      },
+      {
+        "titulo": "El verbo to be: el verbo más importante del inglés",
+        "explicacion": "Ahora viene la pieza clave de todo. Un VERBO es una palabra que dice una acción o un estado (correr, tener, ser). El verbo 'to be' significa a la vez 'ser' Y 'estar' en español: por eso es tan importante, porque el inglés usa la MISMA palabra para las dos ideas. Con 'to be' dices quién eres ('I am a student' = soy un estudiante) y también cómo estás ('I am happy' = estoy feliz). Lo raro para nosotros es que en inglés el verbo CAMBIA de forma según quién habla, aunque no tan libremente como en español. Un PRONOMBRE es la palabra que reemplaza a la persona: I (yo), you (tú/usted/ustedes), he (él), she (ella), it (eso, para cosas o animales), we (nosotros), they (ellos/ellas). El verbo 'to be' tiene solo TRES formas en presente: am, is, are. Y a cada pronombre le toca una. Verlo ordenado hace que todo encaje.",
+        "pasos": [
+          "I (yo) va con AM: I am (yo soy / yo estoy).",
+          "He (él), she (ella), it (eso) van con IS: he is, she is, it is.",
+          "You (tú/ustedes), we (nosotros), they (ellos) van con ARE: you are, we are, they are.",
+          "Solo hay tres formas para memorizar: am, is, are."
+        ],
+        "ejemplo": "I am Ana (Yo soy Ana). She is my friend (Ella es mi amiga). We are students (Nosotros somos estudiantes)."
+      },
+      {
+        "titulo": "Por qué se dice 'I am' y nunca 'I is'",
+        "explicacion": "Esta es una de las dudas más frecuentes, así que la aclaramos de una vez. En inglés cada pronombre tiene ASIGNADA su forma del verbo 'to be', como una llave que solo abre una cerradura. Al pronombre 'I' (yo) le corresponde SIEMPRE 'am', a ninguna otra le toca 'am'. Por eso 'I am' es correcto e 'I is' o 'I are' están mal: es como ponerle la llave equivocada a la cerradura. No hay que buscarle una razón lógica más profunda; es una regla fija del idioma que se memoriza, igual que en español decimos 'yo soy' y no 'yo es'. La buena noticia es que 'am' solo se usa con 'I', así que en cuanto ves o piensas 'I', ya sabes que sigue 'am'. Del mismo modo, 'is' es solo para una persona o cosa (he, she, it) y 'are' es para varios o para 'you'.",
+        "pasos": [
+          "Cada pronombre tiene UNA forma fija: I → am, he/she/it → is, you/we/they → are.",
+          "Nunca mezcles: 'I is' y 'I are' están mal; lo correcto es 'I am'.",
+          "Piensa en la asignación como una llave: cada llave abre solo su cerradura."
+        ],
+        "ejemplo": "Correcto: I am from Venezuela (Soy de Venezuela). Incorrecto: 'I is from Venezuela' o 'I are from Venezuela'."
+      },
+      {
+        "titulo": "Las contracciones: I'm, you're, he's...",
+        "explicacion": "En inglés, al hablar y al escribir de forma relajada, se juntan el pronombre y el verbo 'to be' en una sola palabra más corta: eso se llama CONTRACCIÓN. Una contracción es la unión de dos palabras quitando una letra, y en su lugar se pone un apóstrofo (esta marquita: '). Por ejemplo, 'I am' se convierte en 'I'm' (se dice 'áim'): se quitó la 'a' de 'am' y el apóstrofo ocupa su lugar. Las contracciones significan exactamente lo mismo que la forma larga; solo son más rápidas y naturales, y así habla la gente todos los días. Es importante que las reconozcas para no confundirte al leer o escuchar. La lista completa es: I am → I'm, you are → you're, he is → he's, she is → she's, it is → it's, we are → we're, they are → they're.",
+        "pasos": [
+          "Junta el pronombre y el verbo, quita una letra y pon un apóstrofo (').",
+          "I am → I'm; you are → you're; he is → he's; she is → she's.",
+          "it is → it's; we are → we're; they are → they're.",
+          "Significan lo mismo que la forma larga: solo son más cortas."
+        ],
+        "ejemplo": "En vez de 'I am Pedro' puedes decir 'I'm Pedro' (Soy Pedro). En vez de 'She is happy', 'She's happy' (Ella está feliz)."
+      },
+      {
+        "titulo": "Presentarme: My name is..., I'm..., Nice to meet you",
+        "explicacion": "Presentarse es decir quién eres para que la otra persona te conozca. Hay dos formas muy usadas y las dos son correctas. La primera es 'My name is...' (que significa 'Mi nombre es...' y se dice 'mai néim is'): la palabra 'name' significa 'nombre' (se dice 'néim') y 'my' significa 'mi'. La segunda, más corta y natural entre gente joven, es 'I'm...' seguido de tu nombre ('I'm Ana' = 'Soy Ana'). Cuando conoces a alguien por primera vez, la frase de cortesía es 'Nice to meet you' (que significa 'Mucho gusto' o 'Encantado de conocerte', y se dice 'nais tu mít yú'). Se dice justo después de saber el nombre del otro. La respuesta típica es 'Nice to meet you, too' ('Mucho gusto también', el 'too' significa 'también').",
+        "pasos": [
+          "Di tu nombre con 'My name is...' (Mi nombre es...) o con 'I'm...' (Soy...).",
+          "Al conocer a alguien por primera vez, agrega 'Nice to meet you' (Mucho gusto).",
+          "Si te lo dicen a ti primero, responde 'Nice to meet you, too' (Mucho gusto también)."
+        ],
+        "ejemplo": "'Hi! My name is Laura. Nice to meet you.' (¡Hola! Mi nombre es Laura. Mucho gusto.) — 'Nice to meet you, too!' (¡Mucho gusto también!)."
+      },
+      {
+        "titulo": "Preguntar el nombre: What's your name?",
+        "explicacion": "Para conocer el nombre de la otra persona se pregunta 'What is your name?', que significa '¿Cómo te llamas?' (aunque literalmente sería '¿Cuál es tu nombre?'). La palabra 'what' significa 'qué/cuál' (se dice 'guát') y 'your' significa 'tu' (se dice 'yór'). En la vida real casi siempre se usa la contracción: 'What's your name?' ('guáts yór néim'), donde 'What's' es la unión de 'What is'. Para responder usas lo que ya aprendiste: 'My name is...' o 'I'm...'. Fíjate en algo importante del inglés: cuando preguntas algo con 'to be', el verbo (is) se pone ANTES del sujeto (your name). En español decimos '¿Cuál es tu nombre?' y en inglés el orden es parecido: 'What is your name?'.",
+        "pasos": [
+          "Pregunta: 'What's your name?' (¿Cómo te llamas? / ¿Cuál es tu nombre?).",
+          "'What's' es la contracción de 'What is'.",
+          "Responde con 'My name is...' o 'I'm...'."
+        ],
+        "ejemplo": "'What's your name?' (¿Cómo te llamas?) — 'My name is Carlos.' o 'I'm Carlos.' (Me llamo Carlos.)."
+      },
+      {
+        "titulo": "Preguntar cómo está alguien: How are you?",
+        "explicacion": "Después de saludar, lo educado es preguntar cómo está la persona. La pregunta es 'How are you?', que significa '¿Cómo estás?' (se dice 'jáu ar yú'): 'how' significa 'cómo' (se dice 'jáu'). Aquí ves de nuevo el verbo 'to be': con 'you' va 'are', por eso es 'How ARE you' y no 'How is you'. Las respuestas más comunes son: 'I'm fine, thank you' (Estoy bien, gracias), 'I'm good' (Estoy bien), o 'Very well, thanks' (Muy bien, gracias). La palabra 'fine' significa 'bien' (se dice 'fáin') y 'thank you' significa 'gracias' (se dice 'zénk yú'). Es de buena educación devolver la pregunta con 'And you?' (¿Y tú?). Fíjate que respondes con 'I'm' porque hablas de ti mismo (I → am → I'm).",
+        "pasos": [
+          "Pregunta: 'How are you?' (¿Cómo estás?). Con 'you' va 'are'.",
+          "Responde: 'I'm fine, thank you.' o 'I'm good.' (Estoy bien, gracias.).",
+          "Devuelve la cortesía: 'And you?' (¿Y tú?)."
+        ],
+        "ejemplo": "'Hi! How are you?' (¡Hola! ¿Cómo estás?) — 'I'm fine, thank you. And you?' (Estoy bien, gracias. ¿Y tú?)."
+      },
+      {
+        "titulo": "Todo junto: una conversación completa de principio a fin",
+        "explicacion": "Ahora que conoces las piezas, veamos cómo encajan en una conversación real. Presentarse en inglés casi siempre sigue el mismo orden: primero un saludo, luego preguntar cómo está el otro, después los nombres, la frase de cortesía 'Nice to meet you' y al final la despedida. Si te aprendes este pequeño guion, puedes tener tu primera conversación completa en inglés hoy mismo. Practícalo en voz alta: decirlo, y no solo leerlo, es lo que hace que se te pegue. Cambia los nombres por el tuyo y el de un compañero.",
+        "pasos": [
+          "Saluda: 'Hi!' o 'Good morning!'",
+          "Pregunta cómo está: 'How are you?' y responde a tu vez.",
+          "Di tu nombre y pregunta el suyo: 'My name is... What's your name?'",
+          "Cortesía: 'Nice to meet you.'",
+          "Despídete: 'Bye! See you later!'"
+        ],
+        "ejemplo": "Ana: 'Hi! How are you?' — Beto: 'I'm fine, thank you. And you?' — Ana: 'I'm good. My name is Ana. What's your name?' — Beto: 'I'm Beto. Nice to meet you!' — Ana: 'Nice to meet you, too! Bye, see you later!' (Traducción: 'Hola, ¿cómo estás?' — 'Bien, gracias, ¿y tú?' — 'Bien. Me llamo Ana. ¿Cómo te llamas?' — 'Soy Beto. ¡Mucho gusto!' — '¡Mucho gusto también! Chau, nos vemos.')."
+      }
+    ],
+    "idea_clave": "Para saludar y presentarte en inglés necesitas dos cosas: los saludos correctos según el momento (Hi/Hello siempre; Good morning/afternoon/evening por la hora) y el verbo 'to be', que significa 'ser' y 'estar'. Recuerda su regla de oro: I am, he/she/it is, you/we/they are — cada pronombre con su forma fija, por eso se dice 'I am' y nunca 'I is'. Con 'My name is...' o 'I'm...' te presentas, con 'What's your name?' y 'How are you?' abres una conversación, y con 'Bye' o 'See you' te despides."
+  },
+  "practica": [
+    {
+      "enunciado": "Completa con la forma correcta del verbo 'to be' (am, is, are): 'I ___ a student. She ___ my teacher. We ___ friends.'",
+      "pista": "Recuerda la regla fija: I va con am; he/she/it van con is; you/we/they van con are. Mira el pronombre de cada frase.",
+      "solucion": "I AM a student. She IS my teacher. We ARE friends. (Yo soy estudiante. Ella es mi profesora. Nosotros somos amigos.) Cada pronombre lleva su forma: I→am, She→is, We→are.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe estas frases usando contracciones: 'I am Ana.' / 'You are my friend.' / 'He is happy.'",
+      "pista": "Una contracción junta el pronombre y el verbo con un apóstrofo (') y quita una letra. I am → I'm.",
+      "solucion": "'I'm Ana.' / 'You're my friend.' / 'He's happy.' (Soy Ana. / Eres mi amigo. / Él está feliz.) Significan exactamente lo mismo que la forma larga, solo son más cortas y naturales al hablar.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ordena este diálogo para que tenga sentido. Las líneas están mezcladas: (a) 'I'm fine, thank you. And you?' (b) 'Hi! How are you?' (c) 'I'm good. Nice to meet you!'",
+      "pista": "Toda conversación empieza con un saludo. Piensa: primero se saluda y se pregunta cómo está el otro, luego el otro responde y devuelve la cortesía, y al final se cierra.",
+      "solucion": "Orden correcto: (b) 'Hi! How are you?' → (a) 'I'm fine, thank you. And you?' → (c) 'I'm good. Nice to meet you!' Primero el saludo con la pregunta, luego la respuesta que devuelve la pregunta con 'And you?', y al final la respuesta final con la cortesía.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Traduce al inglés: '¿Cómo te llamas?' y responde con tu nombre (usa 'Miguel').",
+      "pista": "La pregunta usa 'What's' (What is) + 'your name'. Para responder usa 'My name is...' o 'I'm...'.",
+      "solucion": "Pregunta: 'What's your name?' Respuesta: 'My name is Miguel.' o 'I'm Miguel.' (¿Cómo te llamas? — Me llamo Miguel.) 'What's' es la contracción de 'What is'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "¿Qué saludo usarías en cada momento? (a) Llegas al colegio a las 8 de la mañana. (b) Ves a tu mejor amigo en el recreo. (c) Saludas a un adulto a las 4 de la tarde.",
+      "pista": "Por la mañana hay un saludo con 'Good...'. Con un amigo, uno informal y cortito. Por la tarde, otro con 'Good...'.",
+      "solucion": "(a) 'Good morning!' (Buenos días, por la mañana). (b) 'Hi!' (Hola, informal para un amigo). (c) 'Good afternoon!' (Buenas tardes, desde el mediodía hasta el atardecer).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Traduce al inglés: 'Ella es mi amiga y ellos son estudiantes.'",
+      "pista": "'Ella' es 'She' (va con is). 'Ellos' es 'They' (va con are). 'Amiga' es 'friend', 'estudiantes' es 'students'. 'Mi' es 'my'.",
+      "solucion": "'She is my friend and they are students.' (o con contracciones: 'She's my friend and they're students.'). She→is porque es una persona; they→are porque son varios.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige el error en cada frase: 'I is from Venezuela.' y 'She are my teacher.'",
+      "pista": "Cada pronombre tiene su forma fija. Revisa qué forma le toca a 'I' y qué forma le toca a 'She'.",
+      "solucion": "'I AM from Venezuela.' (I siempre va con am, nunca con is). 'She IS my teacher.' (he/she/it van con is, no con are). Traducción: Soy de Venezuela / Ella es mi profesora.",
+      "figura": ""
+    },
+    {
+      "enunciado": "¿'Good night' es un saludo para llegar o una despedida? Explica cuándo se usa.",
+      "pista": "Hay una trampa: para SALUDAR de noche cuando llegas se usa 'Good evening'. 'Good night' es otra cosa.",
+      "solucion": "'Good night' (Buenas noches) es una DESPEDIDA: se usa cuando te vas de noche o antes de irte a dormir, NO para saludar al llegar. Para saludar de noche al llegar se usa 'Good evening'. Esta es una confusión muy común.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Completa el mini-diálogo: 'Hi! ___ ___ ___?' (pregunta cómo está) — 'I'm fine, thank you. ___ ___?' (devuelve la pregunta).",
+      "pista": "La pregunta de cómo está alguien usa 'How are you?'. Para devolverla se usan dos palabritas cortas: 'And you?'.",
+      "solucion": "'Hi! How are you?' — 'I'm fine, thank you. And you?' (¡Hola! ¿Cómo estás? — Estoy bien, gracias. ¿Y tú?). Recuerda: con 'you' va 'are', por eso es 'How are you'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe una conversación completa de presentación entre dos personas: Sofía y Luis. Debe tener saludo, cómo están, nombres, 'Nice to meet you' y despedida.",
+      "pista": "Sigue el orden que aprendiste: saludo → cómo estás → nombres → Nice to meet you → despedida. Usa contracciones donde puedas.",
+      "solucion": "Sofía: 'Hi! How are you?' — Luis: 'I'm fine, thank you. And you?' — Sofía: 'I'm good. My name is Sofía. What's your name?' — Luis: 'I'm Luis. Nice to meet you!' — Sofía: 'Nice to meet you, too! Bye, see you later!' (Cualquier versión con ese orden y esas piezas es correcta.)",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál es la forma correcta del verbo 'to be' para el pronombre 'I' (yo)?",
+      "opciones": [
+        "I am",
+        "I is",
+        "I are",
+        "I be"
+      ],
+      "correcta": 0,
+      "explicacion": "Con 'I' se usa SIEMPRE 'am': I am (yo soy / yo estoy). 'I is' e 'I are' son errores típicos por confundir las formas; 'I be' no existe en presente. Cada pronombre tiene su forma fija y a 'I' le toca 'am'."
+    },
+    {
+      "pregunta": "Se acabó la clase y te despides de un amigo por la tarde. ¿Qué frase suena natural?",
+      "opciones": [
+        "Good morning!",
+        "Bye! See you tomorrow!",
+        "Nice to meet you!",
+        "How are you?"
+      ],
+      "correcta": 1,
+      "explicacion": "'Bye! See you tomorrow!' (¡Chau! ¡Nos vemos mañana!) es una despedida. 'Good morning' es un saludo de mañana (además es tarde), 'Nice to meet you' se usa al conocer a alguien, y 'How are you?' es para preguntar cómo está, no para despedirse."
+    },
+    {
+      "pregunta": "¿Cuál es la contracción correcta de 'She is'?",
+      "opciones": [
+        "She're",
+        "Shes",
+        "She's",
+        "She'is"
+      ],
+      "correcta": 2,
+      "explicacion": "'She is' se contrae en 'She's': se quita la 'i' de 'is' y el apóstrofo ocupa su lugar. 'She're' mezcla mal (are es de you/we/they), 'Shes' olvida el apóstrofo y 'She'is' no quita ninguna letra."
+    },
+    {
+      "pregunta": "Alguien te dice 'How are you?'. ¿Cuál es una respuesta correcta?",
+      "opciones": [
+        "My name is Ana.",
+        "I'm fine, thank you.",
+        "I have twelve.",
+        "Nice to meet you."
+      ],
+      "correcta": 1,
+      "explicacion": "'How are you?' pregunta cómo estás, así que se responde con tu estado: 'I'm fine, thank you' (Estoy bien, gracias). 'My name is Ana' responde a otra pregunta (el nombre), y las otras no encajan con 'cómo estás'."
+    },
+    {
+      "pregunta": "¿Qué saludo usas al LLEGAR a un lugar a las 9 de la mañana?",
+      "opciones": [
+        "Good night!",
+        "Good afternoon!",
+        "Good evening!",
+        "Good morning!"
+      ],
+      "correcta": 3,
+      "explicacion": "En la mañana se saluda con 'Good morning!' (Buenos días). 'Good afternoon' es desde el mediodía, 'Good evening' es al anochecer, y 'Good night' no es un saludo de llegada sino una despedida de noche."
+    },
+    {
+      "pregunta": "Completa: 'They ___ my friends.' (Ellos son mis amigos.)",
+      "opciones": [
+        "is",
+        "am",
+        "are",
+        "be"
+      ],
+      "correcta": 2,
+      "explicacion": "'They' (ellos/ellas) va con 'are': They are my friends. 'is' es solo para he/she/it (uno solo), 'am' es solo para 'I', y 'be' no se usa así en presente."
+    },
+    {
+      "pregunta": "¿Cómo se pregunta el nombre de alguien en inglés?",
+      "opciones": [
+        "How are you?",
+        "What's your name?",
+        "Where are you?",
+        "Who you are?"
+      ],
+      "correcta": 1,
+      "explicacion": "'What's your name?' (¿Cómo te llamas? / ¿Cuál es tu nombre?) es la pregunta correcta; 'What's' es la contracción de 'What is'. 'How are you?' pregunta cómo estás, no el nombre; las otras dos están mal formadas o preguntan otra cosa."
+    },
+    {
+      "pregunta": "¿Cuál de estas frases tiene el verbo 'to be' MAL usado?",
+      "opciones": [
+        "You are my teacher.",
+        "He is happy.",
+        "We is students.",
+        "I am from Venezuela."
+      ],
+      "correcta": 2,
+      "explicacion": "'We is students' está mal: 'We' (nosotros) va con 'are', no con 'is'. Lo correcto es 'We are students'. Las otras tres usan la forma correcta: you→are, he→is, I→am."
+    },
+    {
+      "pregunta": "Conoces a alguien por primera vez y ya sabes su nombre. ¿Qué le dices por cortesía?",
+      "opciones": [
+        "See you later.",
+        "Good night.",
+        "Nice to meet you.",
+        "How old are you?"
+      ],
+      "correcta": 2,
+      "explicacion": "'Nice to meet you' (Mucho gusto / Encantado de conocerte) es la frase de cortesía justo al conocer a alguien. 'See you later' y 'Good night' son despedidas, y 'How old are you?' pregunta la edad."
+    },
+    {
+      "pregunta": "¿Qué significa la contracción 'I'm' y de qué dos palabras viene?",
+      "opciones": [
+        "Viene de 'I am' y significa 'yo soy/estoy'.",
+        "Viene de 'I is' y significa 'yo es'.",
+        "Viene de 'I are' y significa 'yo son'.",
+        "Es una palabra suelta sin significado."
+      ],
+      "correcta": 0,
+      "explicacion": "'I'm' es la contracción de 'I am' (se quita la 'a' y va el apóstrofo). Significa 'yo soy' o 'yo estoy'. Como 'I' solo va con 'am', 'I is' e 'I are' no existen, así que las otras opciones son errores típicos."
+    },
+    {
+      "pregunta": "¿Cuál es una despedida en inglés?",
+      "opciones": [
+        "Hello!",
+        "Good morning!",
+        "Goodbye!",
+        "Nice to meet you!"
+      ],
+      "correcta": 2,
+      "explicacion": "'Goodbye!' (Adiós) es una despedida; su versión corta es 'Bye'. 'Hello' y 'Good morning' son saludos para empezar, y 'Nice to meet you' se dice al conocer a alguien, no al irse."
+    },
+    {
+      "pregunta": "Completa el diálogo: 'What's your name?' — '___ Pablo.'",
+      "opciones": [
+        "I have",
+        "My name is",
+        "How is",
+        "You are"
+      ],
+      "correcta": 1,
+      "explicacion": "Para decir tu nombre usas 'My name is Pablo' (Mi nombre es Pablo) o 'I'm Pablo'. 'I have' significa 'yo tengo' (no se usa para el nombre), 'How is' y 'You are' no encajan como respuesta al nombre."
+    }
+  ]
+}

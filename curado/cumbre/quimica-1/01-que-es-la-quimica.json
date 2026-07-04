@@ -1,0 +1,315 @@
+{
+  "programa": "cumbre",
+  "materia": "Química",
+  "grado": "Cumbre Química 1er año",
+  "dominio": "Pensar como químico",
+  "tema": "Qué es la química: la ciencia de las sustancias y sus transformaciones",
+  "referencias": [
+    "UK KS3 (Year 7) — States of matter, elements/compounds/mixtures, physical vs chemical changes",
+    "Japan MEXT Grade 7 Science — Properties of matter and changes of state",
+    "Singapore Lower Secondary Science — Matter, physical and chemical changes, separating mixtures",
+    "IB MYP Sciences Year 1 — Introduction to chemistry: substances, properties and change"
+  ],
+  "resumen": {
+    "titulo": "La química: de qué está hecho todo y cómo se transforma",
+    "intro": "Mira a tu alrededor un momento. El aire que respiras, el agua que bebes, la mesa, tu propio cuerpo, una llama, una fruta que se pudre: TODO eso está hecho de 'materia', y todo eso puede cambiar. La química es la ciencia que se pregunta dos cosas muy simples pero enormes: ¿de qué está hecho el mundo? y ¿por qué y cómo se transforma? En este resumen vas a aprender a mirar el mundo con ojos de químico: reconocer sustancias, describir sus propiedades y, sobre todo, distinguir cuándo algo solo cambia de forma y cuándo nace algo completamente nuevo. No necesitas saber nada de antes; empezamos desde cero.",
+    "secciones": [
+      {
+        "titulo": "¿Qué es la materia? Empecemos por la base",
+        "explicacion": "Antes de hablar de química necesitamos una palabra clave: MATERIA. Materia es todo lo que ocupa un lugar en el espacio y tiene masa; dicho en fácil: materia es todo lo que puedes tocar, pesar o llenar un recipiente con ello. Una piedra es materia, el agua es materia, y aunque no lo parezca, el aire también es materia (por eso puedes inflar un globo: el aire lo llena y lo empuja). ¿Qué NO es materia? Cosas que no pesan ni ocupan espacio, como la luz, el calor, el sonido o una idea: esas son formas de energía o de información, no materia. Entonces, la primera gran idea es que la química estudia la MATERIA: de qué está hecha y cómo cambia.",
+        "pasos": [
+          "Pregúntate de cualquier cosa: ¿ocupa espacio? ¿tiene masa (se puede pesar)?",
+          "Si la respuesta a las dos es sí, es materia (una mesa, el agua, el aire de un globo).",
+          "Si no ocupa espacio ni tiene masa, no es materia (la luz de una lámpara, el sonido de una campana)."
+        ],
+        "ejemplo": "Un globo desinflado y el mismo globo inflado pesan distinto: el inflado pesa un poquito más porque adentro hay aire, y el aire es materia. Eso demuestra que el aire, aunque no lo veas, ocupa espacio y tiene masa.",
+        "figura": ""
+      },
+      {
+        "titulo": "Sustancia: el 'material puro' del que algo está hecho",
+        "explicacion": "La palabra SUSTANCIA se usa muchísimo en química, así que vamos a fijarla bien. Una sustancia es un tipo de materia con una composición definida y siempre la misma, y por eso tiene propiedades propias que la identifican. El agua pura es una sustancia: sea de un río, de la lluvia o de una botella, sigue siendo agua, con la misma 'receta' y el mismo comportamiento (hierve y se congela a las mismas temperaturas). La sal de cocina es otra sustancia; el azúcar es otra; el oro es otra. Piensa en una sustancia como un 'material puro', hecho de una sola cosa. En cambio, cuando mezclas varias sustancias tienes una MEZCLA: el agua de mar es una mezcla (agua más sal más otras cosas), y una limonada es una mezcla (agua, azúcar y jugo de limón). La diferencia importa: una sustancia pura es siempre 'la misma cosa'; una mezcla puede tener más o menos de cada ingrediente.",
+        "pasos": [
+          "Pregúntate: ¿esto está hecho de un solo material siempre igual, o de varios mezclados?",
+          "Si es un solo material con receta fija (agua pura, sal pura, oro), es una sustancia.",
+          "Si son varios materiales juntos que podrían venir en distintas proporciones (agua de mar, ensalada, aire), es una mezcla."
+        ],
+        "ejemplo": "El agua destilada de una botella y el agua de un charco son 'agua', pero el charco es una MEZCLA (agua con tierra, hojas y microbios). Si dejas evaporar el agua del charco, queda un residuo; si evaporas agua destilada, no queda casi nada. Ese residuo delata que había otras sustancias mezcladas.",
+        "figura": ""
+      },
+      {
+        "titulo": "Los tres estados de la materia: sólido, líquido y gas",
+        "explicacion": "Una misma sustancia puede presentarse de tres maneras, llamadas ESTADOS de la materia. En estado SÓLIDO tiene forma propia y no se deja aplastar fácil (un cubito de hielo, una piedra): sus partículas están muy juntas y ordenadas, casi sin moverse de su sitio. En estado LÍQUIDO no tiene forma propia sino que toma la forma del recipiente, pero sí ocupa un volumen fijo (el agua llena la forma del vaso): sus partículas están juntas pero pueden deslizarse unas sobre otras. En estado GASEOSO no tiene ni forma ni volumen fijos: se expande y llena todo el recipiente (el vapor de agua, el aire): sus partículas están muy separadas y se mueven rápido y libres. Lo interesante es que la MISMA sustancia puede pasar de un estado a otro solo cambiando la temperatura, y sigue siendo la misma sustancia.",
+        "pasos": [
+          "Sólido: forma fija y volumen fijo; partículas muy juntas y ordenadas.",
+          "Líquido: forma que se adapta al recipiente, volumen fijo; partículas juntas pero que resbalan.",
+          "Gas: sin forma ni volumen fijos, llena todo; partículas separadas y veloces.",
+          "Para pasar de uno a otro se agrega o se quita calor (temperatura)."
+        ],
+        "ejemplo": "El agua es el ejemplo perfecto: como hielo es sólida, como agua de la canilla es líquida, y como vapor (al hervir) es gas. Pasa de uno a otro solo con el calor, pero en los tres casos sigue siendo agua: la MISMA sustancia en distintos estados.",
+        "figura": "<svg viewBox=\"0 0 360 160\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"10\" y=\"20\" width=\"100\" height=\"120\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"2\"/><rect x=\"130\" y=\"20\" width=\"100\" height=\"120\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"2\"/><rect x=\"250\" y=\"20\" width=\"100\" height=\"120\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"2\"/><circle cx=\"35\" cy=\"105\" r=\"7\" fill=\"#12B5A4\"/><circle cx=\"55\" cy=\"105\" r=\"7\" fill=\"#12B5A4\"/><circle cx=\"75\" cy=\"105\" r=\"7\" fill=\"#12B5A4\"/><circle cx=\"35\" cy=\"125\" r=\"7\" fill=\"#12B5A4\"/><circle cx=\"55\" cy=\"125\" r=\"7\" fill=\"#12B5A4\"/><circle cx=\"75\" cy=\"125\" r=\"7\" fill=\"#12B5A4\"/><circle cx=\"150\" cy=\"110\" r=\"7\" fill=\"#12B5A4\"/><circle cx=\"172\" cy=\"120\" r=\"7\" fill=\"#12B5A4\"/><circle cx=\"195\" cy=\"108\" r=\"7\" fill=\"#12B5A4\"/><circle cx=\"210\" cy=\"125\" r=\"7\" fill=\"#12B5A4\"/><circle cx=\"160\" cy=\"128\" r=\"7\" fill=\"#12B5A4\"/><circle cx=\"270\" cy=\"45\" r=\"7\" fill=\"#12B5A4\"/><circle cx=\"320\" cy=\"70\" r=\"7\" fill=\"#12B5A4\"/><circle cx=\"290\" cy=\"110\" r=\"7\" fill=\"#12B5A4\"/><circle cx=\"335\" cy=\"120\" r=\"7\" fill=\"#12B5A4\"/><circle cx=\"260\" cy=\"95\" r=\"7\" fill=\"#12B5A4\"/><text x=\"60\" y=\"15\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">Solido</text><text x=\"180\" y=\"15\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">Liquido</text><text x=\"300\" y=\"15\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">Gas</text></svg>"
+      },
+      {
+        "titulo": "Propiedades: cómo describimos e identificamos una sustancia",
+        "explicacion": "Una PROPIEDAD es una característica que podemos observar o medir de una sustancia, y que nos sirve para describirla y reconocerla. Igual que a una persona la describes por su altura, su color de ojos y su voz, a una sustancia la describes por sus propiedades: su color, su olor, si es duro o blando, si se disuelve en agua, a qué temperatura hierve o se derrite, cuánto pesa un pedazo de cierto tamaño (eso último se llama densidad). Las propiedades son la 'huella dactilar' de cada sustancia: como el agua pura SIEMPRE hierve a 100 grados Celsius al nivel del mar, esa propiedad ayuda a reconocerla y a saber si está pura. Cuando dos sustancias parecen iguales a simple vista (la sal y el azúcar, ambas blancas y en granitos), son sus propiedades las que las distinguen: el azúcar es dulce y se quema al calentarlo; la sal es salada y no se quema igual.",
+        "pasos": [
+          "Observa: color, olor, brillo, estado, si es duro o blando.",
+          "Mide: temperatura a la que hierve o se derrite, si se disuelve en agua, la densidad.",
+          "Compara esas propiedades con las de sustancias conocidas para identificarla."
+        ],
+        "ejemplo": "Tienes dos polvos blancos sin etiqueta. Pruebas: uno se disuelve en agua y sabe salado (sal); el otro se disuelve, sabe dulce y, al calentarlo, se pone marrón y huele a caramelo (azúcar). Las PROPIEDADES te dijeron cuál era cuál sin necesidad de la etiqueta.",
+        "figura": ""
+      },
+      {
+        "titulo": "Cambio físico: cambia la forma, no la sustancia",
+        "explicacion": "Ahora llegamos al corazón de la química: los cambios. Un CAMBIO FÍSICO es aquel en el que la sustancia cambia de forma, de tamaño o de estado, pero SIGUE SIENDO LA MISMA sustancia. No nace nada nuevo. La clave para reconocerlo es que, en principio, se puede deshacer (es reversible) y al final tienes lo mismo que al principio. Cuando el agua se congela y se vuelve hielo, sigue siendo agua: si lo dejas al sol, vuelve a ser agua líquida. Cuando rompes un papel en pedacitos, sigue siendo papel; cuando disuelves azúcar en agua, el azúcar no desaparece (sigue ahí, dulce), solo se repartió entre el agua, y si dejas evaporar el agua, el azúcar reaparece. En todos esos casos cambia el aspecto, pero la sustancia es la misma de antes.",
+        "pasos": [
+          "Pregúntate: ¿al final tengo la MISMA sustancia que al principio, solo que con otra forma o estado?",
+          "Si sí, es un cambio FÍSICO (fundir, congelar, hervir, romper, doblar, disolver).",
+          "Pista extra: casi siempre se puede revertir para recuperar lo que tenías."
+        ],
+        "ejemplo": "Derretir un cubo de hielo es un cambio físico: el hielo (agua sólida) se vuelve agua líquida, pero sigue siendo agua. Si la vuelves a meter al congelador, tienes hielo otra vez. No nació ninguna sustancia nueva.",
+        "figura": ""
+      },
+      {
+        "titulo": "Cambio químico: nace una sustancia nueva",
+        "explicacion": "Un CAMBIO QUÍMICO (también llamado reacción química) es aquel en el que las sustancias de partida se transforman en OTRAS sustancias distintas, con propiedades diferentes. Aquí sí nace algo nuevo. En un cambio químico, a las sustancias con las que empiezas se les llama REACTIVOS (los ingredientes que reaccionan) y a las nuevas que se forman se les llama PRODUCTOS (el resultado). Lo importante es que los productos ya no son iguales a los reactivos: tienen otro color, otro olor, otras propiedades. Cuando la madera se quema, los reactivos (madera y oxígeno del aire) se convierten en productos totalmente distintos: ceniza, humo y gases. Y algo revelador: ese cambio casi nunca se puede deshacer; no puedes 'volver a armar' la madera a partir de la ceniza. Cuando un clavo de hierro se oxida, el hierro reacciona con el oxígeno y el agua del aire y se forma una sustancia nueva, el óxido (esa capa marrón y frágil), que ya no es hierro.",
+        "pasos": [
+          "Identifica los REACTIVOS (con qué empiezas) y observa qué queda al final.",
+          "Pregúntate: ¿lo que queda es una sustancia NUEVA, con propiedades distintas?",
+          "Si sí, es un cambio QUÍMICO. Lo nuevo que se forma son los PRODUCTOS.",
+          "Pista extra: suele ser difícil o imposible de revertir."
+        ],
+        "ejemplo": "Quemar un fósforo es un cambio químico: la madera y el aire (reactivos) se transforman en humo, gases y una punta negra carbonizada (productos). No puedes 'desquemar' el fósforo para recuperarlo. Nació algo nuevo.",
+        "figura": ""
+      },
+      {
+        "titulo": "Las señales de que ocurrió un cambio químico",
+        "explicacion": "¿Cómo saber, mirando, si nació una sustancia nueva? La materia nos avisa con ciertas SEÑALES. Ninguna sola es prueba absoluta, pero cuando ves una o varias juntas, es muy probable que haya ocurrido un cambio químico. Son las pistas que usa un químico para sospechar que hubo reacción. Ojo: hervir agua produce burbujas de vapor sin ser cambio químico, y disolver algo puede cambiar el color un poco; por eso decimos SEÑALES (indicios), no pruebas infalibles. Lo más seguro es preguntarse siempre: ¿la sustancia final es realmente distinta de la inicial?",
+        "pasos": [
+          "Cambio de color permanente (una fruta cortada que se pone marrón).",
+          "Aparición de burbujas o de un gas por una reacción (no por hervir), como las burbujas al mezclar bicarbonato con vinagre.",
+          "Formación de un sólido cuando mezclas dos líquidos (se llama precipitado).",
+          "Desprendimiento de luz o de calor, o que se ponga frío (una vela ardiendo da luz y calor).",
+          "Aparición de un olor nuevo (comida que se pudre y empieza a oler mal)."
+        ],
+        "ejemplo": "Mezclas bicarbonato de sodio con vinagre y al instante burbujea con fuerza: se está formando un gas nuevo (dióxido de carbono) que antes no estaba. Esa efervescencia repentina es una señal clásica de cambio químico.",
+        "figura": ""
+      },
+      {
+        "titulo": "La química en tu vida diaria",
+        "explicacion": "La química no vive solo en un laboratorio: está en tu casa todo el tiempo, y reconocerla te ayuda a entender el mundo. Cocinar es pura química: cuando el pan se dora o la carne se cocina, ocurren cambios químicos que crean sabores y colores nuevos. Digerir la comida es química: tu cuerpo transforma lo que comes en sustancias que puede aprovechar. Las pilas funcionan por reacciones químicas que producen electricidad. El jabón limpia porque su química atrapa la grasa. Hasta la fotosíntesis, con la que las plantas fabrican su alimento a partir de luz, agua y aire, es química. Aprender química es, en el fondo, aprender a leer una parte enorme de cómo funciona la realidad.",
+        "pasos": [],
+        "ejemplo": "Cuando dejas un aguacate cortado al aire y en minutos se pone marrón, estás viendo química en vivo: el aguacate reacciona con el oxígeno del aire y se forma una sustancia nueva de color marrón. Por eso, si le echas jugo de limón, se pone marrón más lento: el limón dificulta esa reacción.",
+        "figura": ""
+      },
+      {
+        "titulo": "Química y física: primas hermanas, no iguales",
+        "explicacion": "La química y la física son dos ciencias muy cercanas, y a veces se confunden, así que vale la pena separarlas. Ambas estudian la materia y la energía, pero se hacen preguntas distintas. La QUÍMICA se concentra en DE QUÉ están hechas las sustancias y en cómo se transforman unas en otras (cuando cambia la sustancia misma). La FÍSICA se concentra en cómo se comporta y se mueve la materia y la energía, SIN que la sustancia deje de ser la que es: por qué caen las cosas, cómo viaja la luz, cómo funciona un imán, por qué un objeto se calienta. Una regla práctica para ti: si en el proceso NACE una sustancia nueva, estás en terreno de la química; si la sustancia sigue siendo la misma y solo cambia su movimiento, su forma o su energía, es más bien física. Por eso derretir hielo (sigue siendo agua) es un cambio físico, y quemar madera (nace ceniza) es un cambio químico.",
+        "pasos": [
+          "¿Nace una sustancia nueva? Es tema de química (un cambio químico).",
+          "¿La sustancia sigue siendo la misma y solo cambia su forma, estado o movimiento? Se acerca más a la física (un cambio físico).",
+          "Recuerda que se solapan: muchas cosas necesitan de las dos ciencias a la vez."
+        ],
+        "ejemplo": "Un vaso de agua que se cae y se derrama: la física explica por qué cae y cómo se esparce; la sustancia sigue siendo agua, así que no hubo química. Pero si esa agua apagara un trozo de sodio y produjera una reacción, ahí entraría la química, porque se formarían sustancias nuevas.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "La química estudia de qué está hecha la materia (las sustancias y sus propiedades) y cómo se transforma. La gran distinción es esta: en un cambio FÍSICO la sustancia sigue siendo la misma (solo cambia de forma o estado, como el hielo que se derrite); en un cambio QUÍMICO nace una sustancia NUEVA con propiedades distintas (como la madera que al arder se vuelve ceniza). Aprende a buscar las señales de que algo nuevo se formó, y estarás pensando como químico."
+  },
+  "practica": [
+    {
+      "enunciado": "Clasifica cada situación como cambio físico o cambio químico, y explica en una frase por qué: (a) doblar un alambre de cobre, (b) freír un huevo, (c) hervir agua, (d) que un trozo de fruta se pudra.",
+      "pista": "Pregúntate en cada caso: al final, ¿sigo teniendo la misma sustancia (físico) o nació una sustancia nueva con otras propiedades (químico)?",
+      "solucion": "(a) FÍSICO: el alambre solo cambia de forma, sigue siendo cobre. (b) QUÍMICO: la clara pasa de transparente y líquida a blanca y sólida de forma irreversible; se formaron sustancias nuevas. (c) FÍSICO: el agua pasa de líquida a vapor, pero sigue siendo agua (si el vapor se enfría, vuelve a ser agua). (d) QUÍMICO: la fruta se transforma en sustancias nuevas (cambia el color, aparece mal olor) y no se puede revertir.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero dice: 'Cuando el agua hierve y salen burbujas, es un cambio químico porque aparece un gas'. ¿Tiene razón? Corrige su idea.",
+      "pista": "Fíjate en QUÉ sustancia forman esas burbujas. ¿Es una sustancia nueva o es la misma agua en otro estado?",
+      "solucion": "No tiene razón. Las burbujas al hervir son vapor de agua, es decir, la MISMA agua pasando de líquida a gas: un cambio FÍSICO (cambio de estado). No nació una sustancia nueva; es agua tanto antes como después. Las burbujas solo indican cambio químico cuando el gas es una sustancia distinta que se forma por una reacción (como el gas que sale al mezclar vinagre con bicarbonato).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Define con tus propias palabras qué es una 'sustancia' y da un ejemplo de una sustancia pura y un ejemplo de una mezcla que veas en tu casa.",
+      "pista": "Una sustancia es un material puro, siempre con la misma 'receta'. Una mezcla junta varias sustancias que pueden venir en distintas proporciones.",
+      "solucion": "Una sustancia es un tipo de materia hecho de un solo material, siempre con la misma composición y las mismas propiedades. Ejemplo de sustancia pura: el azúcar de mesa, o el agua destilada, o la sal. Ejemplo de mezcla: una limonada (agua + azúcar + jugo de limón), o el aire, o el agua de mar. En la mezcla puedo poner más o menos de cada ingrediente; en la sustancia pura, no: siempre es 'la misma cosa'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Nombra tres propiedades que podrías medir u observar para diferenciar la sal del azúcar, sabiendo que ambas son polvos blancos.",
+      "pista": "Piensa en cosas que puedas observar (sabor, qué pasa al calentar) o medir (si se disuelve, a qué temperatura funde).",
+      "solucion": "Ejemplos válidos: (1) el SABOR: la sal es salada, el azúcar es dulce. (2) Qué pasa al CALENTAR fuerte: el azúcar se derrite, se pone marrón y huele a caramelo (se quema); la sal aguanta mucho más sin cambiar así. (3) La temperatura a la que se FUNDE, o cómo se disuelven en agua. Todas esas son propiedades que actúan como 'huella dactilar' de cada sustancia y permiten distinguirlas aunque se vean igual.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ordena estos tres estados del agua de partículas MÁS juntas a MÁS separadas: vapor de agua, hielo, agua líquida. Explica brevemente.",
+      "pista": "Piensa en cuánta libertad tienen las partículas en un sólido, en un líquido y en un gas.",
+      "solucion": "De más juntas a más separadas: hielo (sólido) → agua líquida → vapor (gas). En el hielo las partículas están muy juntas y ordenadas, casi sin moverse; en el agua líquida están juntas pero pueden deslizarse; en el vapor están muy separadas y se mueven rápido y libres. Es la misma sustancia (agua) en los tres casos: solo cambia cuánto se separan y se mueven sus partículas según la temperatura.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Al mezclar bicarbonato de sodio con vinagre, la mezcla burbujea con fuerza y se enfría un poco. Identifica los REACTIVOS y nombra dos señales de que ocurrió un cambio químico.",
+      "pista": "Los reactivos son las sustancias con las que empiezas. Las señales son las pistas de que nació algo nuevo (burbujas de un gas, cambio de temperatura...).",
+      "solucion": "Los REACTIVOS son el bicarbonato de sodio y el vinagre (con lo que empezamos). Dos señales de cambio químico: (1) la aparición de burbujas de un GAS nuevo (dióxido de carbono) que antes no estaba, y (2) el cambio de TEMPERATURA (la mezcla se enfría), que indica que hubo una reacción. Como se formó una sustancia nueva (el gas), fue un cambio químico.",
+      "figura": ""
+    },
+    {
+      "enunciado": "¿Por qué, una vez ocurrido un cambio químico, las sustancias de partida ya no las tenemos igual? Explica con el ejemplo de quemar madera qué son 'reactivos' y qué son 'productos'.",
+      "pista": "En un cambio químico, los reactivos (lo que entra) se transforman en productos (lo que sale), que son sustancias distintas.",
+      "solucion": "Porque en un cambio químico los reactivos se transforman en sustancias DISTINTAS. Al quemar madera, los REACTIVOS son la madera y el oxígeno del aire; los PRODUCTOS son la ceniza, el humo y los gases que se forman. Los productos ya no son madera ni oxígeno: son sustancias nuevas con otras propiedades, y por eso no puedes 'desquemar' la ceniza para recuperar la madera. El cambio químico consumió los reactivos y creó productos nuevos.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Decide si cada afirmación es sobre química o sobre física: (a) explicar por qué una manzana cae al suelo; (b) explicar por qué una manzana cortada se pone marrón. Justifica.",
+      "pista": "Recuerda la regla: si nace una sustancia nueva, es química; si la sustancia sigue igual y solo cambia su movimiento o forma, es física.",
+      "solucion": "(a) FÍSICA: explicar por qué la manzana cae trata del movimiento y la fuerza de gravedad; la manzana sigue siendo la misma manzana, no nace ninguna sustancia nueva. (b) QUÍMICA: que se ponga marrón ocurre porque la manzana reacciona con el oxígeno del aire y se forma una sustancia nueva de color marrón; hubo un cambio químico. La pista clave es si aparece o no una sustancia nueva.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Menciona dos cambios químicos que ocurran mientras se cocina, y explica en cada uno qué señal delata que nació una sustancia nueva.",
+      "pista": "Piensa en cosas que al cocinarse cambian de color, olor o textura de forma que no se puede deshacer.",
+      "solucion": "Ejemplos válidos: (1) DORAR el pan o una tostada: la superficie cambia de color (se vuelve dorada/marrón) y aparece un olor nuevo, y no se puede volver atrás; se formaron sustancias nuevas responsables del sabor tostado. (2) FREÍR un huevo: la clara pasa de transparente y líquida a blanca y sólida de forma irreversible; ese cambio permanente indica que se formaron sustancias nuevas. En ambos, el cambio de color/olor/textura irreversible es la señal de cambio químico.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Tienes un vaso con agua salada. ¿Separar la sal del agua dejando que el agua se evapore es un cambio físico o químico? ¿Y qué te dice esto sobre si el agua salada era una sustancia pura o una mezcla?",
+      "pista": "Si al final recuperas las mismas sustancias que tenías (agua y sal por separado), no nació nada nuevo. Y si se pueden separar por evaporación, es porque estaban solo mezcladas.",
+      "solucion": "Es un cambio FÍSICO: al evaporar el agua, esta se va como vapor (sigue siendo agua) y la sal queda en el fondo (sigue siendo sal). No nació ninguna sustancia nueva; solo separaste dos que estaban juntas. Y precisamente por eso sabemos que el agua salada era una MEZCLA (agua + sal), no una sustancia pura: las mezclas se pueden separar por métodos físicos como la evaporación, sin reacción química.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál de estas opciones NO es materia?",
+      "opciones": [
+        "El aire dentro de un globo",
+        "La luz de una linterna",
+        "Un vaso de agua",
+        "Una piedra"
+      ],
+      "correcta": 1,
+      "explicacion": "La luz no ocupa espacio ni tiene masa: es una forma de energía, no materia. El aire sí es materia (por eso llena e infla el globo), igual que el agua y la piedra. Materia es todo lo que ocupa espacio y tiene masa."
+    },
+    {
+      "pregunta": "¿Qué es un cambio físico?",
+      "opciones": [
+        "Un cambio en el que nace una sustancia nueva",
+        "Un cambio en el que la sustancia sigue siendo la misma, solo cambia de forma o estado",
+        "Un cambio que siempre libera humo",
+        "Un cambio que solo ocurre en el laboratorio"
+      ],
+      "correcta": 1,
+      "explicacion": "En un cambio físico la sustancia no se transforma en otra: sigue siendo la misma, aunque cambie de forma, tamaño o estado (como el hielo que se derrite y sigue siendo agua). Que nazca una sustancia nueva es, en cambio, un cambio químico."
+    },
+    {
+      "pregunta": "¿Cuál de estos es un cambio QUÍMICO?",
+      "opciones": [
+        "Derretir un cubo de hielo",
+        "Romper un papel en pedazos",
+        "Quemar un trozo de madera",
+        "Disolver azúcar en agua"
+      ],
+      "correcta": 2,
+      "explicacion": "Quemar madera crea sustancias nuevas (ceniza, humo, gases) y no se puede deshacer: es un cambio químico. Derretir hielo, romper papel y disolver azúcar son cambios físicos, porque la sustancia sigue siendo la misma (el azúcar disuelto sigue siendo azúcar y reaparece si evaporas el agua)."
+    },
+    {
+      "pregunta": "Cuando el agua hierve y salen burbujas, ¿qué está pasando?",
+      "opciones": [
+        "Un cambio químico, porque aparece un gas nuevo",
+        "Un cambio físico: el agua líquida se convierte en vapor de agua",
+        "Se está destruyendo el agua para siempre",
+        "El agua se convierte en aire"
+      ],
+      "correcta": 1,
+      "explicacion": "Las burbujas al hervir son vapor de agua: la MISMA agua pasando de líquida a gas, un cambio físico de estado. No nace una sustancia nueva; si el vapor se enfría, vuelve a ser agua líquida. El agua no se destruye ni se vuelve aire."
+    },
+    {
+      "pregunta": "¿Cuál de estas es una SUSTANCIA pura y no una mezcla?",
+      "opciones": [
+        "El agua de mar",
+        "Una limonada",
+        "El azúcar de mesa",
+        "El aire"
+      ],
+      "correcta": 2,
+      "explicacion": "El azúcar de mesa es una sustancia pura: un solo material con composición fija. El agua de mar (agua + sal + otras cosas), la limonada (agua + azúcar + limón) y el aire (varios gases) son mezclas, porque juntan varias sustancias y pueden venir en distintas proporciones."
+    },
+    {
+      "pregunta": "En un cambio químico, ¿cómo se llaman las sustancias NUEVAS que se forman?",
+      "opciones": [
+        "Reactivos",
+        "Productos",
+        "Mezclas",
+        "Propiedades"
+      ],
+      "correcta": 1,
+      "explicacion": "Las sustancias nuevas que se forman se llaman PRODUCTOS. Las sustancias con las que se empieza (las que reaccionan) se llaman reactivos. Por ejemplo, al quemar madera: reactivos = madera y oxígeno; productos = ceniza, humo y gases."
+    },
+    {
+      "pregunta": "¿Cuál de estas NO es una señal típica de que ocurrió un cambio químico?",
+      "opciones": [
+        "Aparece un olor nuevo (comida que se pudre)",
+        "Se forma un gas por una reacción (efervescencia)",
+        "El objeto solo cambió de forma pero es la misma sustancia",
+        "Se desprende luz y calor"
+      ],
+      "correcta": 2,
+      "explicacion": "Si el objeto solo cambió de forma y sigue siendo la misma sustancia, es un cambio FÍSICO, no químico. Un olor nuevo, un gas que aparece por reacción, y el desprendimiento de luz o calor sí son señales de que nació una sustancia nueva."
+    },
+    {
+      "pregunta": "En los tres estados de la materia, ¿en cuál están las partículas MÁS separadas y en movimiento más libre?",
+      "opciones": [
+        "Sólido",
+        "Líquido",
+        "Gas",
+        "En los tres están igual"
+      ],
+      "correcta": 2,
+      "explicacion": "En el gas las partículas están muy separadas y se mueven rápido y libres, por eso un gas llena todo el recipiente. En el sólido están muy juntas y ordenadas, y en el líquido están juntas pero pueden deslizarse. No están igual en los tres: depende del estado."
+    },
+    {
+      "pregunta": "Una manzana cortada se pone marrón al dejarla al aire. ¿Qué tipo de cambio es y por qué?",
+      "opciones": [
+        "Cambio físico, porque solo cambia el color",
+        "Cambio químico, porque la manzana reacciona con el oxígeno y se forma una sustancia nueva marrón",
+        "No es ningún cambio",
+        "Cambio físico, porque se puede revertir fácilmente"
+      ],
+      "correcta": 1,
+      "explicacion": "Es un cambio químico: la manzana reacciona con el oxígeno del aire y se forma una sustancia nueva de color marrón, que no estaba antes y no se puede quitar. Un simple cambio de color permanente por reacción con el aire es una señal clásica de cambio químico."
+    },
+    {
+      "pregunta": "¿Qué es una 'propiedad' de una sustancia?",
+      "opciones": [
+        "El precio al que se vende",
+        "Una característica que se puede observar o medir y sirve para identificarla",
+        "El recipiente donde se guarda",
+        "La cantidad que tienes de ella"
+      ],
+      "correcta": 1,
+      "explicacion": "Una propiedad es una característica que se observa o mide (color, olor, si se disuelve, a qué temperatura hierve o funde, densidad) y que sirve como 'huella dactilar' para identificar la sustancia. El precio, el recipiente o la cantidad no son propiedades de la sustancia en sí."
+    },
+    {
+      "pregunta": "¿Cuál de estas preguntas la responde principalmente la QUÍMICA, y no la física?",
+      "opciones": [
+        "¿Por qué un objeto pesado cae al suelo?",
+        "¿Cómo viaja la luz de una estrella hasta nosotros?",
+        "¿En qué se transforma la madera cuando se quema?",
+        "¿Por qué un imán atrae ciertos metales?"
+      ],
+      "correcta": 2,
+      "explicacion": "Preguntar en qué se transforma la madera al quemarse es química: trata de cómo una sustancia se convierte en otras nuevas. La caída de un objeto, el viaje de la luz y el magnetismo son temas de física: la sustancia sigue siendo la misma, solo cambia su movimiento o su energía."
+    },
+    {
+      "pregunta": "Separar la sal del agua salada dejando evaporar el agua es un cambio físico. ¿Qué nos dice esto sobre el agua salada?",
+      "opciones": [
+        "Que el agua salada era una sustancia pura",
+        "Que el agua salada era una mezcla, porque se separa por un método físico",
+        "Que la sal desapareció para siempre",
+        "Que ocurrió una reacción química"
+      ],
+      "correcta": 1,
+      "explicacion": "Que se pueda separar por evaporación (un método físico, sin reacción) demuestra que el agua salada era una MEZCLA de dos sustancias: agua y sal. Al evaporar, el agua se va como vapor (sigue siendo agua) y la sal queda en el fondo (sigue siendo sal); no desaparece ni hay reacción química."
+    }
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "programa": "cumbre",
+  "materia": "Biología",
+  "grado": "Cumbre Biología 1er año",
+  "dominio": "La unidad de la vida: la célula",
+  "tema": "¿Qué significa estar vivo? Las siete funciones vitales (MRS GREN)",
+  "referencias": [
+    "UK KS3 Science (Year 7) — Characteristics of living organisms (MRS GREN / life processes)",
+    "Cambridge Lower Secondary & IGCSE Biology — The characteristics of living organisms",
+    "Japan MEXT Grade 7 Science — Living things and their environment (observación de seres vivos)",
+    "Singapore MOE Lower Secondary Science — Diversity and characteristics of living things"
+  ],
+  "resumen": {
+    "titulo": "Lo vivo y lo no vivo: las siete señales de la vida",
+    "intro": "Parece la pregunta más fácil del mundo: ¿esto está vivo o no? Un perro sí, una piedra no. Pero cuando lo pensás en serio, se complica: un carro se mueve, ¿está vivo? El fuego crece y 'come' madera, ¿está vivo? Una semilla seca no se mueve ni respira a la vista, ¿está muerta? Para no depender de la intuición, los biólogos crearon una lista de comprobación: siete cosas que TODOS los seres vivos hacen. Un ORGANISMO (esta es la primera palabra técnica: un organismo es cualquier ser vivo completo, sea una bacteria, una planta, un hongo o vos) es algo que cumple las siete. Si algo falla aunque sea en una, no está vivo. Esas siete cosas se llaman FUNCIONES VITALES: 'vital' viene de vida, así que una función vital es una tarea que un ser vivo tiene que hacer para estar vivo. En este resumen vas a aprender las siete, una por una, con ejemplos, y también los casos tramposos que confunden a todo el mundo.",
+    "secciones": [
+      {
+        "titulo": "El truco para acordarte: MRS GREN",
+        "explicacion": "Las siete funciones vitales son muchas para memorizar sueltas, así que en el mundo se usa un truco llamado ACRÓNIMO. Un acrónimo es una palabra formada con la primera letra de cada cosa que querés recordar; sirve de 'gancho' para la memoria. El acrónimo más famoso para esto es MRS GREN, que suena como el nombre de una señora en inglés (Mrs. Green, 'la señora Green'). OJO: MRS GREN está en INGLÉS, porque nació en los libros ingleses; cada letra es la inicial de una función vital en inglés, y acá te la traducimos al español. Aunque la palabra sea en inglés, el gancho funciona igual de bien: te acordás de 'Mrs Gren' y de ahí sacás las siete. Vamos a ver qué significa cada letra, y después dedicamos una sección a cada función para entenderla de verdad.",
+        "pasos": [
+          "M = Movement = Movimiento.",
+          "R = Respiration = Respiración.",
+          "S = Sensitivity = Sensibilidad.",
+          "G = Growth = Crecimiento.",
+          "R = Reproduction = Reproducción.",
+          "E = Excretion = Excreción.",
+          "N = Nutrition = Nutrición."
+        ],
+        "ejemplo": "Si te preguntan en un examen 'nombra las siete funciones vitales', escribís M-R-S-G-R-E-N en el margen y ya tenés las siete iniciales delante; solo te falta traducir cada una. Ese es todo el poder de un buen acrónimo.",
+        "figura": ""
+      },
+      {
+        "titulo": "M — Movimiento",
+        "explicacion": "MOVIMIENTO significa que un ser vivo puede cambiar de posición o mover alguna de sus partes por sí mismo, usando su propia energía. La clave está en 'por sí mismo': una hoja que vuela con el viento no se mueve sola, la mueve el viento; en cambio un gato que camina, un pez que nada o vos que levantás el brazo se mueven usando energía de adentro. 'Pero las plantas no se mueven', pensarás. Sí lo hacen, solo que muy despacio: un girasol gira su flor siguiendo al Sol durante el día, y las raíces crecen buscando el agua. El movimiento no siempre es correr; a veces es lento o es solo una parte del cuerpo. Lo importante es que salga del propio organismo.",
+        "pasos": [],
+        "ejemplo": "Un caballo galopa por el campo (movimiento rápido y evidente). Una planta de poroto tuerce su tallo hacia la ventana para recibir más luz (movimiento lento, pero también es movimiento propio).",
+        "figura": ""
+      },
+      {
+        "titulo": "R — Respiración",
+        "explicacion": "Acá viene la trampa más grande del tema, así que leé con calma. En biología, RESPIRACIÓN no significa 'respirar' (inhalar y exhalar aire). Respirar aire es solo la puerta de entrada; la RESPIRACIÓN de verdad es lo que pasa DENTRO de cada célula: es el proceso por el cual el organismo saca energía de la comida. Pensalo así: la comida es como leña, pero la leña sola no calienta; hay que quemarla para liberar su energía. Las células hacen algo parecido: combinan el alimento (sobre todo el azúcar llamado glucosa) con el oxígeno, y de ahí liberan la energía que el cuerpo necesita para todo lo demás: moverse, crecer, mantenerse caliente. Por eso la respiración es una función vital central: es la que da la energía para las otras. Y por eso también las plantas respiran (sacan energía de su azúcar), aunque no tengan pulmones ni 'respiren' como nosotros.",
+        "pasos": [],
+        "ejemplo": "Cuando corrés, tus músculos gastan mucha energía, así que tus células necesitan quemar más glucosa con más oxígeno: por eso jadeás, para meter aire más rápido. El jadeo es la puerta; la respiración de verdad ocurre adentro de tus células musculares, liberando la energía para seguir corriendo.",
+        "figura": ""
+      },
+      {
+        "titulo": "S — Sensibilidad",
+        "explicacion": "SENSIBILIDAD es la capacidad de DARSE CUENTA de lo que pasa alrededor y RESPONDER a ello. Un ser vivo detecta cambios en su entorno —luz, calor, ruido, olor, peligro, contacto— y hace algo en consecuencia. A cada uno de esos cambios que detecta lo llamamos ESTÍMULO (un estímulo es cualquier cambio en el ambiente capaz de provocar una respuesta), y a lo que el organismo hace lo llamamos RESPUESTA. Vos tenés cinco sentidos para captar estímulos; pero la sensibilidad no es exclusiva de los animales. Las plantas también responden: crecen hacia la luz, cierran sus hojas si las tocás (como la 'planta vergonzosa'), abren sus flores de día. Sin sensibilidad, un organismo no podría buscar comida, huir del peligro ni encontrar pareja.",
+        "pasos": [],
+        "ejemplo": "Tocás algo caliente sin querer (estímulo: calor) y retirás la mano de golpe antes de pensarlo (respuesta). La lombriz se esconde bajo tierra cuando prendés una luz sobre ella (estímulo: luz; respuesta: alejarse).",
+        "figura": ""
+      },
+      {
+        "titulo": "G — Crecimiento",
+        "explicacion": "CRECIMIENTO es el aumento permanente de tamaño de un organismo, hecho con material propio que él mismo construye a partir de su alimento. Fijate en dos palabras: 'permanente' y 'propio'. Permanente, porque un ser vivo crece y se queda grande, no se infla y se desinfla. Propio, porque el ser vivo fabrica su propio cuerpo nuevo con lo que come: un bebé se vuelve niño, un niño se vuelve adulto, una semilla se vuelve árbol, todo con material que el organismo mismo produce. Esto es clave para distinguir la vida de las trampas: hay cosas no vivas que parecen 'crecer' (un cristal de sal, una llama, una bola de nieve rodando), pero solo se agrandan pegándose material de afuera, sin fabricar nada por dentro. Eso no es crecimiento biológico.",
+        "pasos": [],
+        "ejemplo": "Un cachorro nace pequeño y en un año es un perro adulto, porque su cuerpo construyó huesos, músculos y órganos nuevos a partir de la comida. Una semilla de girasol se transforma en una planta de dos metros con el material que fabrica al alimentarse.",
+        "figura": ""
+      },
+      {
+        "titulo": "R — Reproducción",
+        "explicacion": "REPRODUCCIÓN es la capacidad de un ser vivo de producir NUEVOS seres vivos parecidos a él, o sea de tener descendencia. Es la única función vital que no hace falta para mantener vivo a UN individuo (un animal puede vivir toda su vida sin reproducirse), pero sí es indispensable para que la ESPECIE no desaparezca: si ningún organismo tuviera hijos, ese tipo de ser vivo se extinguiría. Por eso cuenta como función vital de la vida en general. La reproducción tiene dos grandes formas: una en la que hacen falta dos progenitores (un padre y una madre, como en los perros o en vos), y otra en la que un solo organismo se copia a sí mismo (como una bacteria que se parte en dos, o una planta que echa un brote nuevo). En ambos casos, el resultado es un nuevo organismo del mismo tipo.",
+        "pasos": [],
+        "ejemplo": "Una gata tiene una camada de gatitos (dos progenitores). Una planta de fresa lanza un tallo rastrero que echa raíces y forma una planta nueva idéntica (un solo progenitor). En los dos casos aparecen nuevos seres vivos de la misma clase.",
+        "figura": ""
+      },
+      {
+        "titulo": "E — Excreción",
+        "explicacion": "EXCRECIÓN es sacar del cuerpo los DESECHOS que produce el propio organismo al funcionar. Cuando las células respiran, crecen y trabajan, generan basura química que, si se acumula, envenena al cuerpo; la excreción es el sistema de limpieza que la elimina. CUIDADO con una confusión muy común: excreción NO es lo mismo que hacer caca. La caca (heces) es sobre todo comida que no se digirió, que nunca llegó a entrar de verdad al cuerpo; eliminarla se llama 'egestión'. La excreción, en cambio, saca desechos que SÍ produjeron las células, como el dióxido de carbono (un gas que sobra de la respiración y que botás al exhalar) o la urea (un desecho que sale en la orina y el sudor). En pocas palabras: excretás lo que tu cuerpo fabricó como basura, no lo que simplemente no digeriste.",
+        "pasos": [],
+        "ejemplo": "Al exhalar botás dióxido de carbono, un desecho que tus células produjeron al respirar: eso es excreción. Al sudar en un día caluroso eliminás agua y algo de urea: también es excreción. Las plantas excretan oxígeno como desecho durante el día.",
+        "figura": ""
+      },
+      {
+        "titulo": "N — Nutrición",
+        "explicacion": "NUTRICIÓN es conseguir el alimento que da la materia y la energía para vivir: para respirar (sacar energía), crecer (fabricar cuerpo nuevo) y moverse. Sin nutrición, ninguna de las otras funciones tendría con qué trabajar. Hay dos maneras muy distintas de nutrirse, y conviene tenerlas claras. Los ANIMALES (y los hongos) se nutren comiendo a otros seres vivos o restos de ellos: no pueden fabricar su propia comida, así que la buscan; a esto se le dice nutrición heterótrofa ('hétero' = otro: se alimentan de otros). Las PLANTAS, en cambio, fabrican su propio alimento usando la luz del Sol, el agua y el dióxido de carbono del aire, en un proceso llamado fotosíntesis; a esto se le dice nutrición autótrofa ('auto' = uno mismo: se alimentan por sí mismas). Que las plantas fabriquen su comida no significa que no se nutran: se nutren, solo que de una forma distinta.",
+        "pasos": [],
+        "ejemplo": "Un león caza y come una cebra: nutrición heterótrofa (consigue el alimento comiendo a otro). Un manzano usa la luz del Sol para fabricar azúcar en sus hojas: nutrición autótrofa (fabrica su propio alimento).",
+        "figura": ""
+      },
+      {
+        "titulo": "Los casos tramposos: carro, fuego, cristal, río",
+        "explicacion": "Ahora que conocés las siete funciones, usá la lista como examen para desenmascarar a los impostores. La regla es simple y estricta: para estar vivo hay que cumplir las SIETE, no algunas. Casi todos los 'casos tramposos' cumplen una o dos y fallan en el resto, y ahí se los descubre. Un carro se MUEVE y hasta 'consume' gasolina, pero no crece, no se reproduce, no siente ni tiene descendencia: falla en casi todas, no está vivo. El FUEGO parece que 'crece', 'respira' (consume oxígeno) y hasta se 'reproduce' (una chispa enciende otra), pero no se nutre para construir su propio cuerpo, no responde a estímulos con un fin, no tiene células y su 'crecimiento' es solo consumir lo de afuera: no está vivo. Un CRISTAL de sal aumenta de tamaño, pero solo pegándose sal de afuera, sin fabricar nada por dentro: falla en las demás. Un RÍO se mueve y hasta 'lleva' cosas, pero nada más: no está vivo. La lección: parecerse en una función no basta; la vida exige el paquete completo.",
+        "pasos": [
+          "Tomá el candidato (carro, fuego, cristal, río, robot...).",
+          "Recorré MRS GREN preguntando '¿hace esto por sí mismo, de verdad?'.",
+          "Si falla aunque sea en una función, no está vivo.",
+          "Ojo con los parecidos: moverse o 'agrandarse' no alcanza; hay que cumplir las siete."
+        ],
+        "ejemplo": "El fuego: Movimiento aparente sí, 'consume oxígeno' parece respiración, hasta 'se propaga' como reproducción... pero no se nutre para hacer su propio cuerpo, no tiene sensibilidad real, no está hecho de células. Falla en varias → NO está vivo. Es el impostor clásico y por eso se pregunta tanto.",
+        "figura": ""
+      },
+      {
+        "titulo": "El caso de la semilla y de las cosas 'dormidas'",
+        "explicacion": "Hay un caso opuesto al del fuego: cosas que SÍ están vivas pero que a simple vista parecen muertas. Una semilla seca no se mueve, no crece ni parece respirar; sin embargo está viva, solo que en un estado de reposo llamado LATENCIA (latencia es cuando un organismo baja sus funciones al mínimo para sobrevivir en condiciones malas, como falta de agua). En cuanto la semilla recibe agua, tierra y calor, despierta y empieza a cumplir todas las funciones: crece, se nutre, respira. Lo mismo pasa con un oso que hiberna o con una bacteria congelada: no están muertos, están 'en pausa'. La enseñanza es importante: un ser vivo no tiene que estar haciendo las siete funciones EN ESTE INSTANTE para estar vivo; alcanza con que sea CAPAZ de hacerlas cuando las condiciones lo permitan.",
+        "pasos": [],
+        "ejemplo": "Una semilla de frijol guardada en un frasco parece un objeto muerto; la ponés en tierra húmeda y a los pocos días brota una plantita. Estaba viva todo el tiempo, en latencia, esperando las condiciones para activar sus funciones vitales.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "Todo ser vivo (organismo) cumple SIETE funciones vitales, que se recuerdan con el acrónimo inglés MRS GREN: Movimiento, Respiración (sacar energía de la comida dentro de las células), Sensibilidad (detectar y responder a estímulos), Crecimiento (agrandarse con material propio), Reproducción (producir nuevos seres vivos), Excreción (eliminar los desechos que produce el cuerpo) y Nutrición (conseguir alimento). Algo está vivo solo si es capaz de cumplir las SIETE; parecerse en una sola —como el fuego que 'crece'— no basta."
+  },
+  "practica": [
+    {
+      "enunciado": "Escribe las siete funciones vitales a partir del acrónimo MRS GREN, poniendo cada letra con su nombre en español.",
+      "pista": "Recorré las letras M-R-S-G-R-E-N una por una. Recordá que la primera R es de energía dentro de la célula y la segunda R es de tener descendencia.",
+      "solucion": "M = Movimiento, R = Respiración, S = Sensibilidad, G = Crecimiento (Growth), R = Reproducción, E = Excreción, N = Nutrición. Son siete en total. MRS GREN es un acrónimo en inglés (Mrs. Green) y por eso las iniciales corresponden a las palabras inglesas Movement, Respiration, Sensitivity, Growth, Reproduction, Excretion, Nutrition.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un amigo dice: 'El fuego está vivo, porque crece, se mueve y hasta consume oxígeno para respirar'. Explica con las funciones vitales por qué el fuego NO está vivo.",
+      "pista": "No alcanza con parecerse en una o dos funciones: hay que cumplir las SIETE de verdad. Preguntate si el fuego se nutre para construir su propio cuerpo, si siente y responde con un fin, si está hecho de células.",
+      "solucion": "El fuego solo IMITA algunas funciones: parece crecer y moverse, y consume oxígeno, pero (1) no se nutre para fabricar su propio cuerpo, solo consume lo que hay afuera; (2) su 'crecimiento' es agrandarse quemando material externo, no construir cuerpo propio; (3) no tiene sensibilidad real (no detecta y responde con un propósito); (4) no está formado por células; (5) no tiene verdadera reproducción ni descendencia. Como falla en varias funciones vitales, el fuego NO está vivo. La regla es que hay que cumplir las siete, no solo parecerse en una.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Clasifica cada acción como una función vital y di cuál es: (a) un perro retira la pata al pisar una piedra puntiaguda; (b) una planta fabrica azúcar con la luz del Sol; (c) exhalas dióxido de carbono.",
+      "pista": "Fijate qué está haciendo el organismo: ¿detecta y responde a algo? ¿consigue o fabrica alimento? ¿elimina un desecho que produjo su cuerpo?",
+      "solucion": "(a) Sensibilidad: el perro detecta un estímulo (dolor/presión) y responde retirando la pata. (b) Nutrición: la planta fabrica su propio alimento (nutrición autótrofa, por fotosíntesis). (c) Excreción: el dióxido de carbono es un desecho que producen tus células al respirar, y lo eliminas al exhalar.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica por qué en biología la 'respiración' NO es lo mismo que respirar aire, y qué es en realidad.",
+      "pista": "Pensá en la comida como leña. ¿Qué hay que hacerle a la leña para que dé calor? ¿Dónde ocurre eso en el cuerpo?",
+      "solucion": "Respirar aire (inhalar y exhalar) es solo la puerta de entrada del oxígeno. La RESPIRACIÓN como función vital es el proceso que ocurre DENTRO de cada célula: el organismo combina el alimento (glucosa) con oxígeno y libera la energía guardada en la comida, igual que quemar leña libera su calor. Esa energía sirve para moverse, crecer y todo lo demás. Por eso también las plantas respiran, aunque no tengan pulmones: sacan energía de su azúcar dentro de sus células.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una semilla seca guardada en un frasco no se mueve, no crece y no parece respirar. ¿Está viva o muerta? Justifica.",
+      "pista": "Un ser vivo no tiene que estar HACIENDO las siete funciones en este instante; le basta con ser CAPAZ de hacerlas. Buscá la palabra que describe estar 'en pausa'.",
+      "solucion": "Está VIVA, pero en un estado de reposo llamado latencia: baja sus funciones al mínimo para sobrevivir a la falta de agua. En cuanto reciba agua, tierra y calor, despierta y cumple todas las funciones vitales (crece, se nutre, respira). La clave es que estar vivo significa ser CAPAZ de cumplir las siete funciones cuando las condiciones lo permitan, no estar cumpliéndolas justo ahora.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Distingue entre EXCRECIÓN y hacer caca (heces). ¿Por qué eliminar las heces no cuenta como excreción?",
+      "pista": "Preguntate: ¿la caca la fabricaron tus células como desecho, o es comida que nunca llegó a entrar de verdad al cuerpo?",
+      "solucion": "La excreción es sacar los desechos que PRODUCEN las células al funcionar, como el dióxido de carbono (de la respiración) o la urea (en orina y sudor). Las heces, en cambio, son sobre todo comida que no se digirió y que nunca llegó a formar parte del cuerpo; eliminarlas se llama egestión, no excreción. En resumen: excretás lo que tu cuerpo fabricó como basura; egestás lo que simplemente no pudiste digerir.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Compara cómo se nutre un león y cómo se nutre un manzano. ¿Cómo se llama cada tipo de nutrición y qué significan esos nombres?",
+      "pista": "Uno consigue su comida comiendo a otros seres vivos; el otro la fabrica él mismo con la luz del Sol. Los nombres vienen de 'otro' y de 'uno mismo'.",
+      "solucion": "El león se nutre comiendo a otro ser vivo (la cebra): es nutrición heterótrofa ('hétero' = otro, se alimenta de otros; no puede fabricar su comida, la busca). El manzano fabrica su propio alimento (azúcar) usando la luz del Sol, agua y dióxido de carbono, por fotosíntesis: es nutrición autótrofa ('auto' = uno mismo, se alimenta por sí mismo). Ambos se nutren, pero de formas opuestas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una bola de nieve rueda por una ladera y se hace cada vez más grande. ¿Esto es 'crecimiento' como función vital? Explica.",
+      "pista": "El crecimiento biológico es aumentar de tamaño fabricando cuerpo propio a partir del alimento. ¿La bola de nieve fabrica algo, o solo se pega nieve de afuera?",
+      "solucion": "No es crecimiento biológico. La bola de nieve solo se agranda pegándose nieve de afuera, sin fabricar nada por dentro ni usar alimento propio. El crecimiento como función vital es el aumento permanente de tamaño hecho con material que el organismo mismo construye a partir de su nutrición (como un cachorro que forma huesos y músculos nuevos). Agrandarse por acumular material externo no cuenta.",
+      "figura": ""
+    },
+    {
+      "enunciado": "La reproducción es la única función vital que un individuo puede no realizar nunca y aun así vivir toda su vida. Entonces, ¿por qué se la considera una función vital?",
+      "pista": "Pensá no en un solo individuo, sino en el tipo de ser vivo (la especie) a lo largo del tiempo. ¿Qué pasaría si NADIE de esa clase tuviera descendencia?",
+      "solucion": "Es cierto que un individuo puede vivir sin reproducirse. Pero si NINGÚN organismo de una especie tuviera descendencia, esa especie desaparecería (se extinguiría). La reproducción es vital para la vida en general —para que los seres vivos continúen existiendo—, aunque no sea necesaria para mantener con vida a un individuo concreto. Por eso entra en la lista de funciones vitales.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un robot moderno se mueve solo, 'detecta' obstáculos con sensores, esquiva cosas y hasta se conecta a la corriente para 'alimentarse' de energía. Usando MRS GREN, decide si el robot está vivo y explica qué le falta.",
+      "pista": "Recorré las siete funciones. El robot imita movimiento, algo de sensibilidad y hasta consigue energía. Fijate en crecimiento, reproducción y en si está hecho de células que se nutren de verdad.",
+      "solucion": "El robot NO está vivo. Imita algunas funciones (se mueve, 'siente' con sensores, se 'alimenta' enchufándose), pero falla en el resto: no CRECE fabricando cuerpo propio a partir de alimento, no se REPRODUCE por sí mismo dando robots nuevos, no se NUTRE ni RESPIRA en sentido biológico (no saca energía quemando comida en células) y no está hecho de células vivas. Como no cumple las siete funciones de verdad, no está vivo. Imitar una función con máquinas no es lo mismo que realizarla como ser vivo.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué es una 'función vital'?",
+      "opciones": [
+        "Una tarea que un ser vivo debe hacer para estar vivo",
+        "Una parte del cuerpo, como el corazón",
+        "Un tipo de célula muy importante",
+        "Una enfermedad que afecta a los organismos"
+      ],
+      "correcta": 0,
+      "explicacion": "'Vital' viene de vida: una función vital es una de las tareas (como nutrirse o respirar) que todo ser vivo tiene que realizar para estar vivo. No es una parte del cuerpo ni una célula."
+    },
+    {
+      "pregunta": "El acrónimo MRS GREN sirve para recordar las siete funciones vitales. ¿En qué idioma están las iniciales?",
+      "opciones": [
+        "En español",
+        "En inglés",
+        "En latín",
+        "En griego"
+      ],
+      "correcta": 1,
+      "explicacion": "MRS GREN nació en los libros ingleses y cada letra es la inicial de una palabra en inglés (Movement, Respiration, Sensitivity, Growth, Reproduction, Excretion, Nutrition). Suena como 'Mrs. Green'. En español traducimos cada una, pero el gancho para memorizar sigue en inglés."
+    },
+    {
+      "pregunta": "En biología, ¿qué significa la RESPIRACIÓN como función vital?",
+      "opciones": [
+        "Inhalar y exhalar aire por la nariz y la boca",
+        "El proceso dentro de las células que libera energía de la comida",
+        "Toser cuando entra polvo a los pulmones",
+        "Llevar oxígeno en la sangre"
+      ],
+      "correcta": 1,
+      "explicacion": "Respirar aire es solo la puerta de entrada del oxígeno. La respiración como función vital ocurre dentro de cada célula: combina el alimento (glucosa) con oxígeno y libera la energía guardada en la comida. Por eso hasta las plantas 'respiran', aunque no tengan pulmones."
+    },
+    {
+      "pregunta": "Un girasol gira su flor durante el día siguiendo al Sol. ¿Qué DOS funciones vitales se ven claramente aquí?",
+      "opciones": [
+        "Reproducción y excreción",
+        "Nutrición y crecimiento",
+        "Movimiento y sensibilidad",
+        "Respiración y reproducción"
+      ],
+      "correcta": 2,
+      "explicacion": "El girasol MUEVE su flor por sí mismo (movimiento) y lo hace porque DETECTA la posición del Sol y RESPONDE (sensibilidad). Muestra que las plantas también se mueven y responden a estímulos, solo que despacio."
+    },
+    {
+      "pregunta": "¿Por qué el FUEGO no está vivo, aunque parezca que 'crece' y consume oxígeno?",
+      "opciones": [
+        "Porque es demasiado caliente para tener células",
+        "Porque no cumple TODAS las funciones vitales: no se nutre para hacer su propio cuerpo, no tiene células ni sensibilidad real",
+        "Porque el fuego en realidad no consume oxígeno",
+        "Porque no se mueve"
+      ],
+      "correcta": 1,
+      "explicacion": "El fuego imita una o dos funciones (parece crecer, consume oxígeno), pero para estar vivo hay que cumplir las SIETE. El fuego no se nutre para fabricar su propio cuerpo, no está hecho de células y no tiene sensibilidad ni reproducción reales. Parecerse en una función no alcanza."
+    },
+    {
+      "pregunta": "¿Cuál de estas acciones es un ejemplo de EXCRECIÓN?",
+      "opciones": [
+        "Eliminar las heces (caca) después de comer",
+        "Exhalar dióxido de carbono al respirar",
+        "Comer una manzana",
+        "Beber agua cuando tienes sed"
+      ],
+      "correcta": 1,
+      "explicacion": "La excreción saca los desechos que PRODUCEN las células, como el dióxido de carbono de la respiración. Las heces son sobre todo comida no digerida (eso es egestión, no excreción). Comer y beber son parte de la nutrición, no de la excreción."
+    },
+    {
+      "pregunta": "Un cristal de sal metido en agua salada aumenta de tamaño con el tiempo. ¿Esto es 'crecimiento' como función vital?",
+      "opciones": [
+        "Sí, porque se hace más grande",
+        "Sí, porque usa la sal como alimento",
+        "No, porque solo se agranda pegándose sal de afuera, sin fabricar cuerpo propio",
+        "No, porque los cristales son demasiado pequeños"
+      ],
+      "correcta": 2,
+      "explicacion": "El crecimiento biológico es aumentar de tamaño fabricando cuerpo propio a partir del alimento. El cristal solo se agranda acumulando sal externa, sin producir nada por dentro ni nutrirse. Hacerse más grande no siempre es 'crecer' en el sentido vital."
+    },
+    {
+      "pregunta": "Un león caza y come una cebra. ¿Cómo se llama este tipo de nutrición y por qué?",
+      "opciones": [
+        "Autótrofa, porque el león se alimenta por sí mismo",
+        "Heterótrofa, porque el león consigue su alimento comiendo a otro ser vivo",
+        "Fotosíntesis, porque usa la energía del Sol",
+        "Excreción, porque elimina desechos"
+      ],
+      "correcta": 1,
+      "explicacion": "Los animales no pueden fabricar su propia comida, así que la consiguen comiendo a otros seres vivos: nutrición heterótrofa ('hétero' = otro). La autótrofa ('auto' = uno mismo) es la de las plantas, que fabrican su alimento por fotosíntesis."
+    },
+    {
+      "pregunta": "¿Cuál de estas NO es una de las siete funciones vitales de MRS GREN?",
+      "opciones": [
+        "Sensibilidad",
+        "Reproducción",
+        "Digestión",
+        "Excreción"
+      ],
+      "correcta": 2,
+      "explicacion": "Las siete son Movimiento, Respiración, Sensibilidad, Crecimiento, Reproducción, Excreción y Nutrición. La digestión (deshacer la comida) es parte de la nutrición, pero no es una de las siete funciones de la lista."
+    },
+    {
+      "pregunta": "¿Por qué se considera que las PLANTAS también cumplen la función vital de la sensibilidad?",
+      "opciones": [
+        "Porque tienen ojos y oídos pequeños",
+        "Porque detectan cambios del entorno y responden, como crecer hacia la luz o cerrar sus hojas al tocarlas",
+        "Porque se mueven muy rápido cuando hace viento",
+        "Porque piensan como los animales"
+      ],
+      "correcta": 1,
+      "explicacion": "Sensibilidad es detectar estímulos y responder. Las plantas lo hacen: crecen hacia la luz, cierran sus hojas al tocarlas, abren sus flores de día. No tienen ojos ni cerebro, pero igual detectan y responden a su entorno."
+    },
+    {
+      "pregunta": "La reproducción es la única función vital que un individuo puede no hacer nunca y aun así vivir toda su vida. ¿Por qué sigue siendo una función vital?",
+      "opciones": [
+        "Porque sin ella el individuo se muere enseguida",
+        "Porque sin ella la especie entera desaparecería (se extinguiría)",
+        "Porque es la más importante de las siete",
+        "En realidad no es una función vital"
+      ],
+      "correcta": 1,
+      "explicacion": "Un individuo puede vivir sin reproducirse, pero si NADIE de una especie tuviera descendencia, esa especie se extinguiría. La reproducción es vital para que la vida continúe, aunque no sea necesaria para mantener con vida a un solo individuo."
+    },
+    {
+      "pregunta": "Una semilla seca no se mueve, no crece y no parece respirar. Según las funciones vitales, ¿está viva?",
+      "opciones": [
+        "No, porque en este momento no realiza ninguna función vital",
+        "Sí, porque está en latencia y es CAPAZ de cumplir las funciones cuando reciba agua y calor",
+        "No, porque ya está seca y muerta",
+        "Sí, pero solo porque alguna vez estuvo viva"
+      ],
+      "correcta": 1,
+      "explicacion": "Estar vivo significa ser CAPAZ de cumplir las siete funciones cuando las condiciones lo permitan, no estar cumpliéndolas justo ahora. La semilla está en latencia (funciones al mínimo) y despierta al recibir agua, tierra y calor: está viva."
+    }
+  ]
+}

@@ -1,0 +1,319 @@
+{
+  "programa": "cumbre",
+  "materia": "Química",
+  "grado": "Cumbre Química 1er año",
+  "dominio": "Pensar como químico",
+  "tema": "El laboratorio: seguridad, materiales y el mechero (tu primera herramienta)",
+  "referencias": [
+    "UK KS3 (Year 7) — Working safely in the lab, apparatus, using a Bunsen burner (safety flame vs blue flame)",
+    "CLEAPSS (UK) — Bunsen burner: parts, safety flame (yellow) and roaring flame (blue), safe use guidance",
+    "Singapore Lower Secondary Science — Laboratory apparatus and safety rules",
+    "GHS — Sistema Globalmente Armonizado de pictogramas de peligro"
+  ],
+  "resumen": {
+    "titulo": "Tu primer día en el laboratorio: hacerlo con seguridad y saber usar tus herramientas",
+    "intro": "El laboratorio de química es uno de los lugares más emocionantes para aprender: ahí las cosas que leíste cobran vida. Pero también es un lugar donde hay que tener cuidado: hay fuego, vidrio y a veces sustancias que no se deben tocar ni oler de cualquier forma. La buena noticia es que trabajar con seguridad no es complicado: se trata de conocer unas pocas reglas, saber para qué sirve cada material y aprender a usar bien tu primera herramienta, el mechero. Este resumen te prepara para entrar al laboratorio sabiendo qué hacer, qué NO hacer y por qué. Todo lo que aquí se afirma sobre seguridad es real: síguelo tal cual.",
+    "secciones": [
+      {
+        "titulo": "Por qué el laboratorio tiene reglas (y no son para fastidiar)",
+        "explicacion": "Un LABORATORIO es un lugar equipado para hacer experimentos con cuidado y de forma ordenada. Sus reglas no existen para quitarte la diversión: existen porque en química se trabaja con cosas que pueden quemar, cortar, salpicar o reaccionar de formas inesperadas. Una regla de seguridad es simplemente una manera de evitar que algo salga mal ANTES de que pase. Piénsalo así: igual que en la calle miras a los dos lados antes de cruzar, en el laboratorio sigues unas costumbres que te protegen a ti y a tus compañeros. La idea de fondo es la PREVENCIÓN: casi todos los accidentes se evitan pensando un segundo antes de actuar.",
+        "pasos": [],
+        "ejemplo": "Atarse el cabello largo antes de encender un mechero parece un detalle menor, pero evita el accidente más común y evitable: que el pelo roce la llama. La regla existe por una razón concreta, no por costumbre."
+      },
+      {
+        "titulo": "Las reglas de oro de seguridad (apréndelas de memoria)",
+        "explicacion": "Estas son reglas reales y básicas que se usan en los laboratorios escolares de todo el mundo. Ninguna es opcional. Léelas entendiendo el PORQUÉ de cada una: así no se te olvidan.",
+        "pasos": [
+          "Nunca entres ni empieces sin la autorización y la supervisión de tu profesor o profesora. En un laboratorio nunca se trabaja solo.",
+          "Usa siempre gafas de seguridad cuando haya fuego o sustancias químicas: protegen tus ojos de salpicaduras, y los ojos no se recuperan como la piel.",
+          "Nunca comas, bebas ni lleves cosas a la boca en el laboratorio: podrías tragar sin querer una sustancia peligrosa.",
+          "No pruebes NUNCA una sustancia. Y si necesitas oler algo, hazlo 'abanicando': mueve el aire con la mano hacia tu nariz desde lejos, sin acercar la cara al recipiente.",
+          "Ata el cabello largo y evita ropa muy suelta o colgante cerca del fuego.",
+          "Camina, no corras, y mantén el mesón ordenado: la mayoría de los accidentes son tropiezos y volcaduras.",
+          "Si algo cae sobre tu piel o tus ojos, avisa de inmediato y lava con abundante agua; informa siempre al profesor de cualquier accidente, por pequeño que sea.",
+          "Al terminar, apaga el mechero, cierra el gas, limpia y lávate las manos."
+        ],
+        "ejemplo": "Para oler el contenido de un tubo de ensayo NO acerques la nariz al tubo: sostenlo a distancia y con la mano 'abanica' un poco de aire hacia tu nariz. Así, si el vapor fuera irritante, solo llega una cantidad mínima y no un golpe directo a las vías respiratorias."
+      },
+      {
+        "titulo": "El material de vidrio, parte 1: para contener y mezclar",
+        "explicacion": "En el laboratorio usamos mucho material de VIDRIO porque es transparente (ves lo que pasa), aguanta el calor mejor que un vaso común y no reacciona con la mayoría de las sustancias. Empecemos por los recipientes donde se ponen y se mezclan las cosas. El VASO DE PRECIPITADOS es un vaso cilíndrico con un pico para verter; sirve para contener, mezclar y calentar líquidos, pero sus marcas de volumen son aproximadas (no sirve para medir con exactitud). El MATRAZ o frasco de laboratorio suele tener el cuerpo ancho y el cuello angosto; el más común, el matraz Erlenmeyer, tiene forma de cono y su cuello estrecho ayuda a mezclar agitando sin que salpique y a reducir la evaporación. El TUBO DE ENSAYO es un tubito estrecho cerrado por abajo; sirve para hacer pequeñas reacciones o pruebas con poca cantidad de sustancia, y se sostiene con una pinza de madera cuando se calienta.",
+        "pasos": [
+          "Vaso de precipitados: contener, mezclar y calentar líquidos (medida solo aproximada).",
+          "Matraz Erlenmeyer (cónico): mezclar agitando sin salpicar; reduce la evaporación por su cuello angosto.",
+          "Tubo de ensayo: pruebas y reacciones con poca cantidad; se calienta sujeto con una pinza."
+        ],
+        "ejemplo": "Si quieres mezclar dos líquidos agitando con la mano, es mejor un matraz Erlenmeyer que un vaso de precipitados: su cuello estrecho evita que el líquido salga volando por los bordes.",
+        "figura": "<svg viewBox=\"0 0 360 160\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M35 40 L35 120 Q35 135 50 135 L85 135 Q100 135 100 120 L100 40\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"2\"/><path d=\"M35 40 L28 33\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"2\"/><rect x=\"35\" y=\"100\" width=\"65\" height=\"35\" fill=\"#12B5A4\" fill-opacity=\"0.25\"/><path d=\"M175 40 L163 40 L190 110 L190 128 Q190 135 197 135 L228 135 Q235 135 235 128 L235 110 L262 40 L250 40\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"2\"/><path d=\"M180 100 L245 100 L235 128 Q235 135 228 135 L197 135 Q190 135 190 128 Z\" fill=\"#12B5A4\" fill-opacity=\"0.25\" stroke=\"none\"/><rect x=\"305\" y=\"30\" width=\"22\" height=\"105\" rx=\"2\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"2\"/><rect x=\"307\" y=\"95\" width=\"18\" height=\"38\" fill=\"#12B5A4\" fill-opacity=\"0.25\"/><path d=\"M307 133 Q316 140 325 133\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"2\"/><text x=\"67\" y=\"152\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">vaso de precip.</text><text x=\"212\" y=\"152\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">matraz</text><text x=\"316\" y=\"152\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">tubo</text></svg>"
+      },
+      {
+        "titulo": "El material de vidrio, parte 2: para medir con exactitud",
+        "explicacion": "Cuando en química necesitas una cantidad EXACTA de líquido, no usas el vaso de precipitados (sus marcas son solo aproximadas): usas material fabricado para medir. La PROBETA (o cilindro graduado) es un tubo alto y estrecho con una escala de rayitas por fuera; sirve para medir volúmenes de líquido con bastante precisión. Para leer bien una probeta hay que mirar a la altura de los ojos y fijarse en el 'menisco', que es la curvita que forma la superficie del líquido: se lee por la parte más baja de esa curva. La PIPETA es un tubo fino y alargado que sirve para tomar y trasladar cantidades pequeñas y precisas de líquido, gota a gota o hasta una marca; nunca se aspira con la boca, sino con una perilla o bombilla de goma. Regla práctica: para medir con exactitud, probeta o pipeta; para solo contener o calentar, el vaso de precipitados.",
+        "pasos": [
+          "Probeta (cilindro graduado): mide volúmenes de líquido con precisión; se lee a la altura de los ojos, por la parte baja del menisco.",
+          "Pipeta: toma y traslada cantidades pequeñas y exactas de líquido; se usa con perilla de goma, nunca con la boca.",
+          "Para medir exacto: probeta o pipeta. Para contener o calentar: vaso de precipitados."
+        ],
+        "ejemplo": "Si una receta pide 25 mililitros de líquido justos, los mides en una probeta, poniendo el ojo a la altura de la marca y llevando la parte más baja del menisco hasta la raya del 25. En un vaso de precipitados nunca quedarías seguro de tener exactamente 25.",
+        "figura": ""
+      },
+      {
+        "titulo": "El mechero Bunsen: sus partes",
+        "explicacion": "El MECHERO BUNSEN es la fuente de calor clásica del laboratorio: un quemador que produce una llama limpia y muy caliente a partir de gas. Es tu primera gran herramienta, así que conócelo bien. Tiene estas partes: la BASE, una peana ancha y pesada que lo mantiene firme y evita que se vuelque. La ENTRADA DE GAS, una boquilla lateral a la que se conecta la manguera que trae el gas. El TUBO o cañón, la parte vertical y alargada por donde sube el gas y donde se forma la llama arriba. Y el COLLAR o anillo regulador de aire (con una o varias ventanas u orificios): girándolo abres o cierras la entrada de aire, y eso es lo que te permite controlar el tipo de llama. Entender esta última parte es la clave de todo lo que sigue.",
+        "pasos": [
+          "Base: peana ancha y pesada; da estabilidad y evita volcaduras.",
+          "Entrada de gas: boquilla lateral donde se conecta la manguera del gas.",
+          "Tubo (cañón): parte vertical por donde sube el gas; la llama aparece en su boca superior.",
+          "Collar regulador de aire: anillo con ventanas que, al girarlo, abre o cierra la entrada de aire y así cambia la llama."
+        ],
+        "ejemplo": "Si giras el collar para TAPAR las ventanas de aire, entra poco aire y obtienes una llama amarilla; si lo giras para DESTAPARLAS, entra más aire y la llama se vuelve azul y mucho más caliente. Todo el control de la llama está en esa pieza.",
+        "figura": "<svg viewBox=\"0 0 220 240\" xmlns=\"http://www.w3.org/2000/svg\"><ellipse cx=\"110\" cy=\"215\" rx=\"70\" ry=\"14\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"2\"/><rect x=\"95\" y=\"70\" width=\"30\" height=\"140\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"2\"/><circle cx=\"110\" cy=\"150\" r=\"14\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"2\"/><rect x=\"106\" y=\"140\" width=\"8\" height=\"20\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"1.5\"/><rect x=\"55\" y=\"195\" width=\"30\" height=\"12\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"2\"/><path d=\"M110 70 Q95 40 110 15 Q125 40 110 70 Z\" fill=\"#7C4DFF\" fill-opacity=\"0.4\" stroke=\"#7C4DFF\" stroke-width=\"1.5\"/><text x=\"150\" y=\"215\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">base</text><text x=\"132\" y=\"120\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">tubo</text><text x=\"132\" y=\"154\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">collar de aire</text><text x=\"18\" y=\"192\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">entrada gas</text><text x=\"130\" y=\"30\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#5A3AAF\">llama</text></svg>"
+      },
+      {
+        "titulo": "Cómo se enciende el mechero, paso a paso",
+        "explicacion": "Encender el mechero tiene un orden que NO se salta, porque hacerlo mal es una de las causas comunes de sustos. La idea clave es sencilla: primero se enciende con la entrada de aire CERRADA (llama amarilla, tranquila y visible) y solo después se abre el aire para pasar a la llama azul de trabajo. Nunca al revés. Empezar con el aire abierto puede hacer que la llama sea casi invisible o que 'no prenda' bien, y encender el mechero con la cara encima es peligroso.",
+        "pasos": [
+          "Revisa que la manguera esté bien conectada a la entrada de gas y sin fugas, y que el mesón esté despejado.",
+          "Cierra el collar de aire (tapa las ventanas): así la primera llama será amarilla y segura.",
+          "Enciende primero la fuente de fuego (fósforo largo o encendedor de chispa) y luego abre el gas: acerca la llama a la boca del tubo SIN poner la cara encima.",
+          "Cuando prenda, tendrás una llama amarilla. Ahora abre poco a poco el collar de aire y verás cómo la llama se vuelve azul: esa es la llama de trabajo, la más caliente.",
+          "Para apagar: cierra primero la llave del gas. Al terminar del todo, cierra también el collar de aire para dejar el mechero listo y seguro para la próxima vez."
+        ],
+        "ejemplo": "Un buen hábito: al terminar de calentar, si vas a hacer una pausa pero no a apagar, gira el collar para volver a la llama amarilla. Es más visible y avisa a todos que el mechero está encendido, reduciendo el riesgo de que alguien lo toque sin darse cuenta."
+      },
+      {
+        "titulo": "Las dos llamas del mechero: amarilla (segura) y azul (caliente)",
+        "explicacion": "El mechero tiene, según cuánto aire le entre, dos llamas muy distintas, y saber cuál usar en cada momento es esencial. Con el collar de aire CERRADO (poco aire), el gas no se quema del todo y se produce la LLAMA AMARILLA: es luminosa, ondulante, relativamente fría, la ves fácilmente y por eso se llama 'llama de seguridad'; se usa para dejar el mechero encendido en espera, porque cualquiera nota que está prendido. Su desventaja es que ensucia con hollín (deja tizne negro) lo que toca. Con el collar de aire ABIERTO (más aire), el gas se quema por completo y se produce la LLAMA AZUL: es casi transparente, no ondula tanto, no hace tanto hollín y es MUCHO más caliente; es la 'llama de trabajo', la que se usa para calentar de verdad. Regla mental: amarilla para esperar y verla; azul para calentar.",
+        "pasos": [
+          "Aire cerrado → llama AMARILLA: visible, más fría, deja hollín. Es la llama de SEGURIDAD/espera.",
+          "Aire abierto → llama AZUL: poco visible, muy caliente, limpia. Es la llama de TRABAJO/calentar.",
+          "Dentro de la llama azul, la parte MÁS caliente está justo encima de la punta del pequeño cono azul interior; ahí se coloca lo que se quiere calentar más."
+        ],
+        "ejemplo": "Si necesitas hervir agua rápido en un tubo de ensayo, abres el aire para tener la llama azul y acercas el tubo a la zona más caliente (justo por encima del conito azul interno). Si solo estás esperando entre pasos, cierras el aire y dejas la llama amarilla para que se vea bien.",
+        "figura": "<svg viewBox=\"0 0 300 200\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"40\" y=\"120\" width=\"26\" height=\"70\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"2\"/><path d=\"M53 120 Q30 70 53 25 Q76 70 53 120 Z\" fill=\"#F2C230\" fill-opacity=\"0.55\" stroke=\"#D9A400\" stroke-width=\"1.5\"/><text x=\"53\" y=\"18\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#8A6D00\">amarilla</text><text x=\"53\" y=\"178\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">aire cerrado</text><rect x=\"210\" y=\"120\" width=\"26\" height=\"70\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"2\"/><path d=\"M223 120 Q200 65 223 20 Q246 65 223 120 Z\" fill=\"#7C4DFF\" fill-opacity=\"0.30\" stroke=\"#5A3AAF\" stroke-width=\"1.5\"/><path d=\"M223 120 Q212 95 223 78 Q234 95 223 120 Z\" fill=\"#12B5A4\" fill-opacity=\"0.55\" stroke=\"#0E9486\" stroke-width=\"1.5\"/><circle cx=\"223\" cy=\"74\" r=\"4\" fill=\"#D63A3A\"/><text x=\"223\" y=\"16\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#5A3AAF\">azul</text><text x=\"223\" y=\"178\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">aire abierto</text><text x=\"250\" y=\"77\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#D63A3A\">mas caliente</text></svg>"
+      },
+      {
+        "titulo": "Calentar con seguridad: cómo NO quemarte ni romper el vidrio",
+        "explicacion": "Calentar es donde ocurren más accidentes, así que hay hábitos concretos que conviene grabar. El vidrio caliente se ve EXACTAMENTE igual que el frío: no cambia de color, así que trata todo vidrio que estuvo cerca del fuego como si estuviera caliente hasta comprobar lo contrario. Cuando calientes un tubo de ensayo, apunta su boca hacia un lugar VACÍO, nunca hacia ti ni hacia un compañero: si el líquido salta, no salpica a nadie. Muévelo suavemente sobre la llama en vez de calentar un solo punto fijo, para que el calor se reparta y el vidrio no se quiebre por el golpe de temperatura. Sujeta el tubo con una pinza de madera, no con los dedos. Y nunca dejes un mechero encendido sin vigilancia.",
+        "pasos": [
+          "Todo vidrio que estuvo al fuego puede estar caliente aunque se vea normal: no lo agarres a mano hasta estar seguro de que se enfrió.",
+          "Al calentar un tubo de ensayo, apunta su boca hacia un espacio vacío, lejos de las caras.",
+          "Mueve el tubo suavemente sobre la llama; no calientes siempre el mismo punto (el vidrio puede quebrarse por el cambio brusco de temperatura).",
+          "Usa pinza de madera para sujetar el tubo; usa gafas de seguridad.",
+          "Nunca dejes el mechero encendido y desatendido; apágalo cerrando el gas cuando no lo uses."
+        ],
+        "ejemplo": "Al calentar agua en un tubo de ensayo, inclínalo un poco y con la boca apuntando a la pared vacía (no a tu cara), y ve moviéndolo sobre la llama azul. Así el calor se reparte, el vidrio no se raja de golpe, y si algo salpica, no te alcanza."
+      },
+      {
+        "titulo": "Los símbolos de peligro: leer las etiquetas antes de tocar",
+        "explicacion": "Muchos frascos del laboratorio llevan SÍMBOLOS DE PELIGRO: dibujos dentro de un rombo con borde rojo (del sistema internacional GHS) que avisan, de un vistazo, qué riesgo tiene esa sustancia. Son un idioma universal: sirven en cualquier país aunque no entiendas el texto. Antes de usar cualquier sustancia, MIRA su etiqueta e identifica el símbolo; nunca uses un frasco sin etiqueta ni uno cuyo contenido no conozcas. Estos son los más comunes que verás: una LLAMA significa inflamable (arde con facilidad, mantener lejos del fuego). Un signo de EXCLAMACIÓN significa que puede irritar la piel, los ojos o las vías respiratorias. Una CALAVERA con dos huesos significa tóxico (puede envenenar, muy peligroso). Y unas gotas cayendo sobre una mano y una superficie significan corrosivo (puede quemar la piel y 'comerse' los materiales).",
+        "pasos": [
+          "Llama: inflamable → arde fácil; mantener lejos de chispas y del mechero.",
+          "Signo de exclamación: irritante → puede irritar piel, ojos o al respirarlo; manipular con cuidado.",
+          "Calavera con huesos: tóxico → puede envenenar; extremar precauciones, no ingerir ni oler directo.",
+          "Gotas sobre mano/superficie: corrosivo → quema la piel y daña materiales; usar guantes y gafas.",
+          "Regla base: lee SIEMPRE la etiqueta antes de tocar; nunca uses frascos sin etiqueta."
+        ],
+        "ejemplo": "Ves un frasco con el símbolo de la llama: sabes de inmediato que su contenido es inflamable, así que NO lo acercas al mechero encendido ni lo destapas cerca de una chispa. El símbolo te protegió antes de siquiera leer el nombre de la sustancia.",
+        "figura": "<svg viewBox=\"0 0 300 110\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#D63A3A\" stroke-width=\"3\" fill=\"#fff\"><rect x=\"20\" y=\"25\" width=\"48\" height=\"48\" transform=\"rotate(45 44 49)\"/><rect x=\"120\" y=\"25\" width=\"48\" height=\"48\" transform=\"rotate(45 144 49)\"/><rect x=\"220\" y=\"25\" width=\"48\" height=\"48\" transform=\"rotate(45 244 49)\"/></g><path d=\"M44 62 Q34 48 44 35 Q47 45 52 42 Q56 55 44 62 Z\" fill=\"#3B2B4A\"/><text x=\"144\" y=\"58\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"26\" font-weight=\"700\" fill=\"#3B2B4A\">!</text><circle cx=\"244\" cy=\"44\" r=\"9\" fill=\"none\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><circle cx=\"241\" cy=\"42\" r=\"1.6\" fill=\"#3B2B4A\"/><circle cx=\"247\" cy=\"42\" r=\"1.6\" fill=\"#3B2B4A\"/><line x1=\"238\" y1=\"55\" x2=\"250\" y2=\"62\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><line x1=\"250\" y1=\"55\" x2=\"238\" y2=\"62\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><text x=\"44\" y=\"98\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">inflamable</text><text x=\"144\" y=\"98\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">irritante</text><text x=\"244\" y=\"98\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">toxico</text></svg>"
+      }
+    ],
+    "idea_clave": "El laboratorio es seguro cuando conoces sus reglas, tus materiales y tu mechero. Recuerda tres cosas por encima de todo: piensa en la PREVENCIÓN y sigue las reglas de oro (gafas, no comer, oler abanicando, avisar al profesor); usa el material correcto para cada tarea (probeta o pipeta para medir exacto, vaso de precipitados para contener); y domina el mechero: se enciende con la llama AMARILLA (segura y visible, aire cerrado) y se trabaja con la llama AZUL (mucho más caliente, aire abierto), calentando siempre con la boca del tubo apuntando lejos de las caras."
+  },
+  "practica": [
+    {
+      "enunciado": "Ordena correctamente estos pasos para encender un mechero Bunsen: (1) abrir poco a poco el collar de aire hasta que la llama sea azul; (2) cerrar el collar de aire; (3) encender el fósforo o chispa y abrir el gas acercando la llama a la boca del tubo; (4) revisar que la manguera esté bien conectada.",
+      "pista": "Piensa en la regla de oro: primero llama amarilla (aire cerrado), y solo después se abre el aire para la azul. Y antes de todo, revisar la conexión.",
+      "solucion": "Orden correcto: 4, 2, 3, 1. Primero revisas la conexión de la manguera (4); luego cierras el collar de aire para tener una llama amarilla y segura (2); enciendes la fuente de fuego y abres el gas acercando la llama a la boca del tubo, sin poner la cara encima (3); y por último abres poco a poco el aire para pasar a la llama azul de trabajo (1). Nunca se empieza con el aire abierto.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Tu profesor te pide medir EXACTAMENTE 50 mililitros de agua para un experimento. ¿Qué material eliges: un vaso de precipitados o una probeta? Explica por qué, y cómo debes leer la medida.",
+      "pista": "Recuerda cuál material tiene marcas solo aproximadas y cuál está hecho para medir con precisión. Y piensa en el menisco.",
+      "solucion": "Eliges la PROBETA (cilindro graduado), porque está fabricada para medir volúmenes con precisión; el vaso de precipitados solo tiene marcas aproximadas y no sirve para una medida exacta. Para leerla correctamente, pones el ojo a la altura de la marca de 50 mL y llevas la parte MÁS BAJA del menisco (la curvita que forma la superficie del agua) justo hasta esa raya. Mirar desde arriba o desde abajo daría una lectura equivocada.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante quiere oler el contenido de un tubo de ensayo para saber qué es. Describe la forma CORRECTA de hacerlo y explica por qué no se debe acercar la nariz directamente.",
+      "pista": "La técnica correcta se llama 'abanicar'. Piensa en llevar solo un poquito de vapor a la nariz, no un golpe directo.",
+      "solucion": "La forma correcta es 'abanicar': sostener el tubo a cierta distancia y, con la mano, mover suavemente un poco de aire desde la boca del tubo hacia la nariz, sin acercar la cara al recipiente. No se acerca la nariz directamente porque, si el vapor fuera irritante o tóxico, entraría de golpe una gran cantidad a las vías respiratorias y podría dañarlas. Abanicando solo llega una cantidad mínima y segura. (Y nunca se debe probar una sustancia con la boca.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica la diferencia entre la llama amarilla y la llama azul del mechero: cuál es más caliente, cuál es más visible, y para qué se usa cada una.",
+      "pista": "Piensa en cuánto aire entra en cada caso (collar cerrado o abierto) y qué consecuencia tiene eso.",
+      "solucion": "La llama AMARILLA aparece con el collar de aire cerrado (poco aire): es luminosa y muy visible, pero relativamente fría y deja hollín; se usa como llama de SEGURIDAD/espera, para dejar el mechero encendido de forma que todos lo vean. La llama AZUL aparece con el collar de aire abierto (más aire): es casi transparente y poco visible, pero MUCHO más caliente y limpia; es la llama de TRABAJO, la que se usa para calentar de verdad. Resumen: azul = más caliente (para calentar); amarilla = más visible (para esperar).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Nombra dos reglas de seguridad del laboratorio y explica, en cada una, qué accidente concreto evita.",
+      "pista": "Elige reglas de las 'reglas de oro'. Para cada una, di qué cosa mala podría pasar si NO la sigues.",
+      "solucion": "Ejemplos válidos: (1) 'Usar gafas de seguridad cuando hay fuego o químicos' evita que una salpicadura llegue a los ojos, que son muy delicados y no se recuperan como la piel. (2) 'Atar el cabello largo y evitar ropa suelta cerca del fuego' evita que el pelo o la ropa rocen la llama del mechero y se prendan. Otras válidas: no comer/beber (evita tragar sustancias peligrosas), caminar sin correr (evita tropiezos y volcaduras). Lo importante es unir cada regla con el accidente que previene.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Vas a calentar agua en un tubo de ensayo con el mechero. Menciona tres precauciones que debes tomar para no quemarte ni romper el vidrio.",
+      "pista": "Piensa en hacia dónde apunta la boca del tubo, en cómo mueves el tubo sobre la llama, y en con qué lo sujetas.",
+      "solucion": "Tres precauciones correctas: (1) apuntar la boca del tubo hacia un espacio VACÍO, nunca hacia tu cara ni la de un compañero, por si el líquido salta. (2) Mover el tubo suavemente sobre la llama en lugar de calentar un solo punto fijo, para que el calor se reparta y el vidrio no se quiebre por el cambio brusco de temperatura. (3) Sujetar el tubo con una pinza de madera (no con los dedos) y usar gafas de seguridad. Y recordar que el vidrio caliente se ve igual que el frío, así que no tocarlo a mano después.",
+      "figura": ""
+    },
+    {
+      "enunciado": "En una etiqueta ves el símbolo de una llama dentro de un rombo de borde rojo. ¿Qué significa y qué NO debes hacer con esa sustancia?",
+      "pista": "Cada símbolo GHS avisa de un tipo de peligro. Una llama se relaciona con el fuego.",
+      "solucion": "El símbolo de la llama significa que la sustancia es INFLAMABLE: arde con facilidad. Por eso NO debes acercarla al mechero encendido, a chispas ni a ninguna fuente de fuego, ni destaparla cerca de una llama. Debes mantenerla lejos del calor. El símbolo te avisa del peligro de un vistazo, antes incluso de leer el nombre de la sustancia.",
+      "figura": ""
+    },
+    {
+      "enunciado": "¿Por qué está prohibido comer, beber o masticar chicle en el laboratorio, aunque tengas hambre? Da la razón química de la regla.",
+      "pista": "Piensa en qué podría entrar a tu boca sin que te des cuenta si comes en un lugar con sustancias químicas.",
+      "solucion": "Porque en el laboratorio hay sustancias que pueden ser tóxicas, corrosivas o irritantes, y si comes o bebes ahí podrías tragar sin querer restos de esas sustancias (que están en el aire, en el mesón o en tus manos). Además, un alimento podría contaminarse con algo peligroso. Por eso se come SIEMPRE fuera del laboratorio, y siempre te lavas las manos al terminar. Es una regla de prevención: evita el envenenamiento antes de que pueda ocurrir.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Relaciona cada material con su uso principal: (A) matraz Erlenmeyer, (B) pipeta, (C) tubo de ensayo. Usos: (1) hacer pruebas o reacciones con poca cantidad; (2) mezclar líquidos agitando sin que salpiquen; (3) trasladar cantidades pequeñas y exactas de líquido.",
+      "pista": "Piensa en la forma de cada uno: el cuello angosto del matraz, el tubo fino de la pipeta, el tamaño pequeño del tubo de ensayo.",
+      "solucion": "A-2, B-3, C-1. El matraz Erlenmeyer (A) sirve para mezclar líquidos agitando sin salpicar, gracias a su cuello angosto (2). La pipeta (B) sirve para trasladar cantidades pequeñas y exactas de líquido (3). El tubo de ensayo (C) sirve para pruebas o reacciones con poca cantidad de sustancia (1).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Justo terminaste de calentar un vaso de precipitados y lo apartaste del mechero. Tu compañero va a agarrarlo con la mano porque 'ya no se ve la llama y se ve igual que antes'. ¿Qué le adviertes y por qué?",
+      "pista": "Piensa en una característica peligrosa del vidrio caliente: su aspecto.",
+      "solucion": "Le adviertes que NO lo toque con la mano, porque el vidrio caliente se ve EXACTAMENTE igual que el vidrio frío: no cambia de color ni de aspecto aunque esté a mucha temperatura. Todo vidrio que estuvo cerca del fuego debe tratarse como caliente hasta comprobar que se enfrió. Para moverlo debe usar una pinza o guantes adecuados. Agarrarlo a mano le causaría una quemadura seria.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "Al encender un mechero Bunsen, ¿con qué llama se debe empezar?",
+      "opciones": [
+        "Con la llama azul, abriendo primero toda la entrada de aire",
+        "Con la llama amarilla, con la entrada de aire cerrada",
+        "Con cualquiera, da igual el orden",
+        "Sin llama, solo abriendo el gas un rato antes"
+      ],
+      "correcta": 1,
+      "explicacion": "Siempre se empieza con la entrada de aire CERRADA, lo que da la llama amarilla: es visible y segura. Solo después se abre el aire poco a poco para pasar a la llama azul. Empezar con el aire abierto o dejar el gas suelto antes de encender es peligroso."
+    },
+    {
+      "pregunta": "¿Cuál de las dos llamas del mechero es la MÁS caliente?",
+      "opciones": [
+        "La llama amarilla",
+        "La llama azul",
+        "Las dos calientan igual",
+        "Ninguna calienta"
+      ],
+      "correcta": 1,
+      "explicacion": "La llama azul (con la entrada de aire abierta) es mucho más caliente, porque el gas se quema por completo. La amarilla es más visible pero relativamente fría y deja hollín; por eso la azul es la 'llama de trabajo' para calentar."
+    },
+    {
+      "pregunta": "Necesitas medir 30 mL de líquido con exactitud. ¿Qué instrumento usas?",
+      "opciones": [
+        "Un vaso de precipitados",
+        "Una probeta (cilindro graduado)",
+        "Un matraz cualquiera",
+        "Un tubo de ensayo"
+      ],
+      "correcta": 1,
+      "explicacion": "La probeta está hecha para medir volúmenes con precisión. El vaso de precipitados solo tiene marcas aproximadas; el matraz Erlenmeyer y el tubo de ensayo no sirven para medir exacto. Además, la probeta se lee a la altura de los ojos, por la parte baja del menisco."
+    },
+    {
+      "pregunta": "¿Cuál es la forma CORRECTA de oler una sustancia en el laboratorio?",
+      "opciones": [
+        "Acercar la nariz directamente al recipiente y respirar hondo",
+        "Abanicar con la mano un poco de aire hacia la nariz, desde cierta distancia",
+        "Probar un poquito con la lengua para reconocerla mejor",
+        "No hay que tener ningún cuidado al oler"
+      ],
+      "correcta": 1,
+      "explicacion": "Se 'abanica': se mueve con la mano un poco de aire hacia la nariz, sin acercar la cara, para que solo llegue una cantidad mínima de vapor. Acercar la nariz directamente puede dañar las vías respiratorias, y NUNCA se prueba una sustancia con la boca."
+    },
+    {
+      "pregunta": "¿Cuál de estos NO es una regla de seguridad correcta del laboratorio?",
+      "opciones": [
+        "Usar gafas de seguridad cuando hay fuego o químicos",
+        "Atar el cabello largo cerca del mechero",
+        "Comer un snack rápido mientras trabajas si tienes hambre",
+        "Avisar al profesor de cualquier accidente, por pequeño que sea"
+      ],
+      "correcta": 2,
+      "explicacion": "Comer o beber en el laboratorio está PROHIBIDO: podrías tragar sin querer una sustancia peligrosa. Usar gafas, atar el cabello y avisar de todo accidente sí son reglas correctas y obligatorias."
+    },
+    {
+      "pregunta": "¿Para qué sirve el collar (anillo regulador de aire) del mechero Bunsen?",
+      "opciones": [
+        "Para sujetar el mechero a la mesa",
+        "Para abrir o cerrar la entrada de aire y así cambiar el tipo de llama",
+        "Para conectar la manguera del gas",
+        "Para medir la temperatura de la llama"
+      ],
+      "correcta": 1,
+      "explicacion": "El collar regula cuánta AIRE entra: cerrado da la llama amarilla (poco aire) y abierto da la llama azul (más aire y más calor). La estabilidad la da la base, y la manguera se conecta a la entrada de gas; el collar no mide temperatura."
+    },
+    {
+      "pregunta": "Vas a calentar líquido en un tubo de ensayo. ¿Hacia dónde debe apuntar la boca del tubo?",
+      "opciones": [
+        "Hacia tu propia cara para ver mejor",
+        "Hacia un espacio vacío, lejos de las personas",
+        "Hacia el compañero de al lado",
+        "Da igual la dirección"
+      ],
+      "correcta": 1,
+      "explicacion": "La boca del tubo debe apuntar a un espacio VACÍO, lejos de todas las caras: si el líquido caliente salta, no salpica a nadie. Apuntar hacia una persona (incluido tú) es peligroso."
+    },
+    {
+      "pregunta": "En una etiqueta ves una CALAVERA con dos huesos cruzados dentro de un rombo rojo. ¿Qué significa?",
+      "opciones": [
+        "Inflamable",
+        "Tóxico (puede envenenar)",
+        "Que huele mal",
+        "Que está frío"
+      ],
+      "correcta": 1,
+      "explicacion": "La calavera con huesos es el símbolo de sustancia TÓXICA: puede envenenar y es muy peligrosa. La llama significa inflamable, el signo de exclamación significa irritante, y las gotas sobre una mano significan corrosivo."
+    },
+    {
+      "pregunta": "¿Por qué hay que tener MUCHO cuidado al tocar vidrio que estuvo cerca del mechero?",
+      "opciones": [
+        "Porque el vidrio caliente se ve igual que el frío y no avisa que quema",
+        "Porque el vidrio caliente cambia de color a rojo y se nota fácil",
+        "Porque el vidrio caliente hace ruido",
+        "Porque no hay ningún peligro, el vidrio no se calienta"
+      ],
+      "correcta": 0,
+      "explicacion": "El vidrio caliente se ve EXACTAMENTE igual que el frío: no cambia de color ni avisa. Por eso todo vidrio que estuvo al fuego se trata como caliente hasta comprobar lo contrario, y se manipula con pinza o guantes."
+    },
+    {
+      "pregunta": "¿Cuál es la mejor razón para dejar el mechero en llama AMARILLA cuando no lo estás usando pero sigue encendido?",
+      "opciones": [
+        "Porque la amarilla calienta más",
+        "Porque la amarilla es muy visible y avisa a todos que el mechero está prendido",
+        "Porque la amarilla gasta menos gas",
+        "Porque la amarilla no quema nada"
+      ],
+      "correcta": 1,
+      "explicacion": "La llama amarilla es luminosa y muy visible, así que sirve de aviso: todos ven que el mechero está encendido y evitan tocarlo o acercar algo por accidente. La azul, en cambio, es casi transparente y fácil de no ver. (La amarilla sí puede quemar; no es 'inofensiva'.)"
+    },
+    {
+      "pregunta": "¿Cuál de estos materiales es el más adecuado para mezclar dos líquidos AGITÁNDOLOS sin que salpiquen?",
+      "opciones": [
+        "Un vaso de precipitados abierto y ancho",
+        "Un matraz Erlenmeyer (de cuello estrecho)",
+        "Una probeta",
+        "Una pipeta"
+      ],
+      "correcta": 1,
+      "explicacion": "El matraz Erlenmeyer tiene el cuello estrecho, así que puedes agitar para mezclar sin que el líquido salte por los bordes. El vaso ancho salpicaría más; la probeta es para medir y la pipeta para trasladar poquito líquido, no para agitar."
+    },
+    {
+      "pregunta": "Antes de usar cualquier frasco de sustancia en el laboratorio, ¿qué es lo PRIMERO que debes hacer?",
+      "opciones": [
+        "Olerlo directamente para saber qué es",
+        "Leer su etiqueta y sus símbolos de peligro",
+        "Probar una gota con la lengua",
+        "Calentarlo con el mechero para ver qué pasa"
+      ],
+      "correcta": 1,
+      "explicacion": "Lo primero es LEER la etiqueta y mirar los símbolos de peligro para saber qué riesgos tiene y cómo manipularla. Nunca se usa un frasco sin etiqueta ni contenido conocido; oler directo, probar con la lengua o calentar al azar son acciones peligrosas."
+    }
+  ]
+}

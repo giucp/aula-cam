@@ -1,0 +1,306 @@
+{
+  "programa": "cumbre",
+  "materia": "Biología",
+  "grado": "Cumbre Biología 1er año",
+  "dominio": "La unidad de la vida: la célula",
+  "tema": "El microscopio: la herramienta que abrió el mundo invisible",
+  "referencias": [
+    "UK KS3 Science (Year 7) — Cells: using a light microscope, magnification and parts",
+    "Cambridge Lower Secondary & IGCSE Biology — The microscope and magnification (magnification = eyepiece × objective)",
+    "Japan MEXT Grade 7 Science — Observación con microscopio (顕微鏡の使い方)",
+    "Singapore MOE Lower Secondary Science — Using the light microscope to observe cells"
+  ],
+  "resumen": {
+    "titulo": "El microscopio: ver lo que el ojo no puede",
+    "intro": "Tus ojos son buenísimos, pero tienen un límite: no pueden ver cosas más pequeñas que aproximadamente un décimo de milímetro (más finas que un pelo). Por eso, durante casi toda la historia, nadie supo que existían las CÉLULAS (las piezas diminutas de las que están hechos todos los seres vivos) ni los microbios. Todo cambió con un aparato: el MICROSCOPIO, un instrumento que usa lentes para AUMENTAR las cosas, es decir para hacerlas ver mucho más grandes de lo que son. 'Micro' significa pequeño y 'scopio' viene de mirar: un microscopio es, literalmente, un 'mirador de lo pequeño'. En este resumen vas a entender por qué revolucionó la biología, cómo se llama cada parte y para qué sirve, cómo se calcula cuánto aumenta (con cuentas exactas), cómo preparar una muestra para verla y qué reglas seguir para usarlo bien.",
+    "secciones": [
+      {
+        "titulo": "Por qué el microscopio cambió la biología para siempre",
+        "explicacion": "Antes del microscopio, los seres vivos parecían 'lisos' por dentro: nadie sospechaba que estaban hechos de millones de piezas diminutas. En el siglo XVII, dos personas cambiaron eso. Robert Hooke, en Inglaterra, miró una fina lámina de corcho con su microscopio y vio muchos huequitos ordenados como celditas; los llamó 'células' (por su parecido a las celdas de un monasterio), y ese nombre quedó para siempre. Poco después, Antoni van Leeuwenhoek, en Holanda, pulió lentes tan buenas que pudo ver, por primera vez en la historia, seres vivos diminutos moviéndose en una gota de agua: bacterias y otros microbios, a los que llamó 'animalículos' (animalitos). Gracias a ellos entendimos que la vida está construida con células y que hay un mundo entero de seres vivos invisibles a simple vista. El microscopio no solo agrandó las cosas: agrandó lo que la humanidad podía saber.",
+        "pasos": [],
+        "ejemplo": "Hooke miró corcho (materia de una planta muerta) y vio 'celditas' vacías: le puso el nombre 'célula'. Leeuwenhoek miró agua de un charco y vio bichitos vivos nadando: descubrió los microbios. Dos miradas por un tubo con lentes fundaron la biología moderna.",
+        "figura": ""
+      },
+      {
+        "titulo": "Qué es 'aumentar' y por qué necesitamos lentes",
+        "explicacion": "AUMENTAR (o dar AUMENTO) significa hacer que algo se vea más grande de lo que es en realidad, sin que la cosa cambie de tamaño de verdad: lo que crece es su IMAGEN. Cuando decimos que un microscopio da '40 aumentos' (se escribe 40×, y se lee 'cuarenta equis' o 'cuarenta aumentos'), queremos decir que la imagen se ve 40 veces más grande que el objeto real. Si una célula mide en verdad la mitad de un pelo, a 40× la ves como si midiera 40 veces eso: ya es visible y estudiable. Esto se logra con LENTES, que son trozos de vidrio curvado que desvían la luz y agrandan la imagen, como hace una lupa. El microscopio del que hablamos usa luz que atraviesa la muestra y varias lentes en fila, por eso se llama MICROSCOPIO ÓPTICO ('óptico' = que trabaja con luz).",
+        "pasos": [],
+        "ejemplo": "Una lupa de mano da unos 3× (tres aumentos): un insecto se ve tres veces más grande. Un microscopio óptico escolar llega a 400× o más: una célula que a simple vista es invisible se ve como un objeto claro y con partes.",
+        "figura": ""
+      },
+      {
+        "titulo": "Las partes del microscopio óptico (y para qué sirve cada una)",
+        "explicacion": "Un microscopio óptico tiene varias partes con nombre propio; conocerlas es el primer paso para usarlo bien. Vamos de arriba hacia abajo por donde viaja tu mirada y donde viaja la luz. El OCULAR es la lente de arriba, por donde pegás el ojo; casi siempre da 10 aumentos (10×). Los OBJETIVOS son las lentes de abajo, cerca de la muestra: suele haber varios (por ejemplo 4×, 10× y 40×) montados en una pieza giratoria llamada revólver, para cambiar de aumento girándola hasta que la lente que querés quede en su lugar (hace 'clic'). La PLATINA es la mesita plana con un agujero en el centro donde se apoya la muestra; unas pinzas la sujetan. Los TORNILLOS sirven para enfocar, es decir para lograr que la imagen se vea nítida y no borrosa: el TORNILLO MACROMÉTRICO (el grande) sube y baja la platina rápido, para el enfoque grueso; el TORNILLO MICROMÉTRICO (el pequeño) la mueve muy poquito, para afinar el enfoque fino. El DIAFRAGMA es una pieza bajo la platina que regula cuánta luz pasa, abriéndose o cerrándose como la pupila del ojo, para no ver ni muy oscuro ni muy encandilado. Y la FUENTE DE LUZ (una lamparita, o un espejo en los modelos antiguos) está abajo del todo e ilumina la muestra desde atrás, para que la luz la atraviese y llegue a tus ojos.",
+        "pasos": [
+          "Ocular: lente de arriba, donde ponés el ojo. Suele ser 10×.",
+          "Objetivos: lentes de abajo (por ejemplo 4×, 10×, 40×), montados en el revólver giratorio para cambiar de aumento.",
+          "Platina: mesita con un agujero donde se apoya y se sujeta la muestra.",
+          "Tornillo macrométrico (grande): enfoque grueso, mueve la platina rápido.",
+          "Tornillo micrométrico (pequeño): enfoque fino, la mueve muy poco para afinar.",
+          "Diafragma: regula cuánta luz pasa, como la pupila del ojo.",
+          "Fuente de luz: lamparita o espejo abajo, ilumina la muestra desde atrás."
+        ],
+        "ejemplo": "Para pasar de poco a mucho aumento, girás el revólver del objetivo 4× al 10× hasta oír el 'clic', y luego retocás con el tornillo micrométrico para que la imagen vuelva a verse nítida.",
+        "figura": "<svg viewBox=\"0 0 340 300\" xmlns=\"http://www.w3.org/2000/svg\"><ellipse cx=\"150\" cy=\"285\" rx=\"90\" ry=\"12\" fill=\"#8C7C93\" fill-opacity=\"0.25\"/><rect x=\"70\" y=\"250\" width=\"160\" height=\"30\" rx=\"6\" fill=\"none\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><rect x=\"110\" y=\"70\" width=\"18\" height=\"190\" rx=\"4\" fill=\"none\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><rect x=\"104\" y=\"40\" width=\"30\" height=\"34\" rx=\"5\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><line x1=\"119\" y1=\"74\" x2=\"119\" y2=\"150\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><rect x=\"104\" y=\"150\" width=\"30\" height=\"18\" rx=\"3\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><rect x=\"96\" y=\"180\" width=\"90\" height=\"12\" rx=\"2\" fill=\"none\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><circle cx=\"141\" cy=\"186\" r=\"3\" fill=\"#7C4DFF\"/><circle cx=\"200\" cy=\"120\" r=\"10\" fill=\"none\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><circle cx=\"200\" cy=\"210\" r=\"7\" fill=\"none\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><circle cx=\"119\" cy=\"235\" r=\"8\" fill=\"#FFC94A\" fill-opacity=\"0.6\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><text x=\"140\" y=\"52\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#0E9486\">ocular</text><text x=\"140\" y=\"163\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#0E9486\">objetivos</text><text x=\"192\" y=\"183\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#3B2B4A\">platina</text><text x=\"214\" y=\"124\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#5A3AAF\">macro</text><text x=\"214\" y=\"214\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#5A3AAF\">micro</text><text x=\"135\" y=\"240\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">luz</text></svg>"
+      },
+      {
+        "titulo": "El cálculo clave: el AUMENTO TOTAL",
+        "explicacion": "Esta es la cuenta más importante del tema, y es facilísima una vez que la entendés. En un microscopio óptico la luz pasa por DOS lentes que agrandan: primero el objetivo (abajo) y después el ocular (arriba). Cada una multiplica el tamaño de la imagen. Como una agranda la imagen que le entrega la otra, sus aumentos se MULTIPLICAN entre sí (no se suman). Por eso la regla es: AUMENTO TOTAL = aumento del ocular × aumento del objetivo. Pensalo con una imagen: el objetivo agranda la célula, digamos, 40 veces; el ocular toma esa imagen ya agrandada y la vuelve a agrandar 10 veces más; el resultado es 10 × 40 = 400 veces el tamaño real. Por eso multiplicamos: son dos agrandamientos, uno encima del otro. Ojo con el error clásico: NO se suman (10 + 40 = 50 está MAL); se multiplican.",
+        "pasos": [
+          "Mirá el número grabado en el ocular (por ejemplo 10×).",
+          "Mirá el número grabado en el objetivo que estás usando (por ejemplo 40×).",
+          "Multiplicá esos dos números.",
+          "El resultado es el aumento total, con el que estás viendo la muestra."
+        ],
+        "ejemplo": "Ocular 10× y objetivo 40×: aumento total = 10 × 40 = 400×. Ves la muestra 400 veces más grande que su tamaño real.",
+        "figura": ""
+      },
+      {
+        "titulo": "Practicando el cálculo con números exactos",
+        "explicacion": "Veamos varios casos con el ocular típico de 10× y los tres objetivos típicos de un microscopio escolar (4×, 10× y 40×), para que la cuenta te salga automática. En todos, el aumento total es 10 (del ocular) multiplicado por el número del objetivo. Fijate cómo, al girar el revólver a un objetivo mayor, el aumento total salta enseguida.",
+        "pasos": [
+          "Objetivo de menor aumento: 10 × 4 = 40× (para explorar y ubicar la muestra).",
+          "Objetivo mediano: 10 × 10 = 100× (para ver más de cerca).",
+          "Objetivo mayor: 10 × 40 = 400× (para ver detalles, como el interior de una célula).",
+          "Regla para revisar tu respuesta: el aumento total SIEMPRE es mayor que cada lente por separado (porque multiplicás dos números mayores que 1)."
+        ],
+        "ejemplo": "Con un ocular de 10× empezás en 10 × 4 = 40× para buscar la célula; cuando la encontrás, girás al 10× (10 × 10 = 100×) y luego al 40× (10 × 40 = 400×) para ver sus partes. Si el ocular fuera de 15× y el objetivo de 40×, el total sería 15 × 40 = 600×.",
+        "figura": ""
+      },
+      {
+        "titulo": "Cómo se prepara una muestra: la preparación",
+        "explicacion": "Para que la luz atraviese la muestra y puedas verla, la muestra tiene que ser MUY fina, casi transparente; un trozo grueso no deja pasar la luz y se ve todo negro. La muestra fina montada para observar se llama PREPARACIÓN (o portaobjetos preparado). Se arma sobre una lámina de vidrio larga y delgada, el PORTAOBJETOS, y se cubre con un vidrio cuadrado finito, el CUBREOBJETOS, que aplasta la muestra, la mantiene plana y la protege. Muchas células son casi incoloras, así que se les agrega un COLORANTE (una gota de tinte, como el azul de metileno o el yodo) que se pega a ciertas partes y las hace resaltar; así se distingue el núcleo, la pared, etc. La técnica de bajar el cubreobjetos poco a poco (apoyándolo de un lado y dejándolo caer despacio) sirve para que no queden BURBUJAS de aire atrapadas, que se ven como círculos negros y molestan.",
+        "pasos": [
+          "Poné la muestra fina en el centro del portaobjetos (la lámina de vidrio larga).",
+          "Agregá una gota de agua y, si hace falta, una gota de colorante para que las partes resalten.",
+          "Bajá el cubreobjetos despacio, apoyándolo primero de un borde, para no atrapar burbujas de aire.",
+          "Secá el líquido que sobre por los bordes y ya tenés tu preparación lista para la platina."
+        ],
+        "ejemplo": "Para ver células de cebolla: separás una piel finísima transparente de una capa de la cebolla, la ponés en el portaobjetos con una gota de yodo (que tiñe de amarillo-marrón), bajás el cubreobjetos despacio y la observás. El yodo hace que se vean claramente las paredes de cada célula, como un enrejado.",
+        "figura": "<svg viewBox=\"0 0 340 180\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"40\" y=\"70\" width=\"260\" height=\"40\" rx=\"5\" fill=\"#BFE9F2\" fill-opacity=\"0.35\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><rect x=\"140\" y=\"55\" width=\"70\" height=\"70\" rx=\"3\" fill=\"#7C4DFF\" fill-opacity=\"0.12\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><ellipse cx=\"175\" cy=\"90\" rx=\"22\" ry=\"12\" fill=\"#12B5A4\" fill-opacity=\"0.4\" stroke=\"#0E9486\" stroke-width=\"1.5\"/><text x=\"170\" y=\"140\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#3B2B4A\">portaobjetos</text><text x=\"245\" y=\"48\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#5A3AAF\">cubreobjetos</text><line x1=\"210\" y1=\"55\" x2=\"238\" y2=\"44\" stroke=\"#5A3AAF\" stroke-width=\"1\"/><text x=\"110\" y=\"90\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#0E9486\">muestra</text><line x1=\"132\" y1=\"90\" x2=\"155\" y2=\"90\" stroke=\"#0E9486\" stroke-width=\"1\"/></svg>"
+      },
+      {
+        "titulo": "Cómo se observa: del menor al mayor aumento",
+        "explicacion": "El orden para observar no es al azar: se empieza SIEMPRE con el objetivo de MENOR aumento y se sube de a poco. ¿Por qué? Porque con poco aumento ves un trozo grande de la muestra y es fácil encontrar lo que buscás y ponerlo en el centro; si empezaras con el mayor aumento, verías un pedacito diminuto y estarías perdido, sin saber hacia dónde mover la muestra. Además, con el objetivo grande la lente queda muy cerca del vidrio, y enfocar a lo bruto con el tornillo grande podría chocar y romper la preparación. La secuencia segura es: enfocar primero en 4×, centrar lo que te interesa, girar el revólver a 10×, retocar con el tornillo fino, y solo entonces pasar a 40× afinando con el micrométrico. Cada vez que subís de objetivo, la imagen se ve más grande pero también más oscura y con menos campo, así que quizás tengas que abrir un poco el diafragma para tener más luz.",
+        "pasos": [
+          "Colocá la preparación en la platina y sujetala con las pinzas, con el objetivo en 4×.",
+          "Enfocá con el tornillo macrométrico (grande) mirando de costado para no chocar el vidrio.",
+          "Centrá lo que te interesa y girá el revólver a 10×; afiná con el tornillo micrométrico (pequeño).",
+          "Pasá a 40× solo al final, enfocando únicamente con el micrométrico, y abrí el diafragma si se ve oscuro."
+        ],
+        "ejemplo": "Buscás una célula de cebolla: en 4× ves muchas celditas y elegís una; la centrás, subís a 10× (se ve más grande) y luego a 40×, donde ya distinguís la pared y el núcleo de esa célula en particular.",
+        "figura": ""
+      },
+      {
+        "titulo": "Normas de uso: cuidar el instrumento (y verlo bien)",
+        "explicacion": "El microscopio es un instrumento delicado y caro, con lentes de vidrio finas; unas pocas reglas evitan romperlo y ayudan a ver mejor. Se transporta con las DOS manos, una en el brazo (la parte curva que se agarra) y otra bajo la base, para que no se resbale. Se guarda con el objetivo de MENOR aumento hacia abajo y la platina baja, para que nada golpee las lentes. NUNCA se tocan las lentes con los dedos (la grasa de la piel las empaña); se limpian solo con un papel especial para lentes. Se enfoca alejando la lente de la muestra (subiendo la vista o bajando la platina), nunca acercándola a ciegas, para no chocar el vidrio. Y se trabaja con la muestra bien iluminada pero sin encandilarse, regulando el diafragma. Seguir estas normas no es solo cuidar el aparato: también es la diferencia entre ver una imagen nítida y ver un borrón.",
+        "pasos": [
+          "Transportalo con las dos manos: una en el brazo, otra bajo la base.",
+          "Guardalo con el objetivo de menor aumento puesto y la platina baja.",
+          "No toques las lentes con los dedos; limpialas solo con papel de lentes.",
+          "Enfocá alejando la lente de la muestra, mirando de costado, para no chocar el vidrio.",
+          "Regulá la luz con el diafragma: ni muy oscuro ni encandilado."
+        ],
+        "ejemplo": "Si al terminar dejás el microscopio en 40× con la platina subida y el objetivo casi tocando el vidrio, el próximo que lo mueva puede rayar o romper la lente. Por eso la norma es guardarlo siempre en 4× y con la platina baja.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "El microscopio óptico usa lentes y luz para AUMENTAR (agrandar la imagen de) cosas invisibles a simple vista; gracias a él Hooke descubrió las células y Leeuwenhoek los microbios. La luz pasa por dos lentes que agrandan —objetivo y ocular—, y como uno agranda la imagen del otro, sus aumentos se MULTIPLICAN: AUMENTO TOTAL = aumento del ocular × aumento del objetivo (por ejemplo 10 × 40 = 400×, nunca 10 + 40). Se observa siempre del menor al mayor aumento, con la muestra preparada muy fina, y se cuida el instrumento con unas pocas normas."
+  },
+  "practica": [
+    {
+      "enunciado": "Un microscopio tiene un ocular de 10× y estás usando el objetivo de 40×. ¿Cuál es el aumento total con el que ves la muestra?",
+      "pista": "El aumento total se calcula multiplicando (no sumando) el aumento del ocular por el del objetivo.",
+      "solucion": "Aumento total = aumento del ocular × aumento del objetivo = 10 × 40 = 400×. Ves la muestra 400 veces más grande que su tamaño real. (Un error típico es sumar: 10 + 40 = 50, lo cual está MAL; siempre se multiplica.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "El mismo microscopio (ocular 10×) tiene tres objetivos: 4×, 10× y 40×. Calcula el aumento total con cada objetivo.",
+      "pista": "Multiplicá el 10 del ocular por cada uno de los tres objetivos, uno por uno.",
+      "solucion": "Con 4×: 10 × 4 = 40×. Con 10×: 10 × 10 = 100×. Con 40×: 10 × 40 = 400×. Fijate que al subir de objetivo el aumento total crece rápido, y siempre es mayor que cualquiera de las dos lentes por separado.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un microscopio da un aumento total de 600×. Si el objetivo que se está usando es de 40×, ¿cuánto aumenta el ocular?",
+      "pista": "Como total = ocular × objetivo, para despejar el ocular hacé la división: total ÷ objetivo.",
+      "solucion": "Ocular = aumento total ÷ objetivo = 600 ÷ 40 = 15. El ocular es de 15×. (Comprobación: 15 × 40 = 600× ✓.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ordena los pasos para observar una muestra y explica por qué se empieza por el objetivo de MENOR aumento.",
+      "pista": "Con poco aumento ves un trozo grande de la muestra. Pensá qué pasaría si empezaras buscando con el objetivo más potente.",
+      "solucion": "Orden correcto: (1) poner la preparación en la platina con el objetivo de menor aumento (4×); (2) enfocar con el tornillo macrométrico mirando de costado; (3) centrar lo que interesa y girar a 10×, afinando con el micrométrico; (4) pasar a 40× solo al final. Se empieza por el menor aumento porque así ves un campo grande y es fácil encontrar y centrar la muestra; con el mayor aumento verías un pedacito diminuto, estarías perdido y además la lente podría chocar el vidrio al enfocar a lo bruto.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Relaciona cada parte con su función: (a) tornillo micrométrico; (b) diafragma; (c) revólver; (d) platina.",
+      "pista": "Pensá qué hace cada una: una afina el enfoque muy poco, otra regula la luz, otra cambia de objetivo girando, otra sostiene la muestra.",
+      "solucion": "(a) Tornillo micrométrico: afina el enfoque moviendo la platina muy poco (enfoque fino). (b) Diafragma: regula cuánta luz pasa hacia la muestra, como la pupila del ojo. (c) Revólver: pieza giratoria que sostiene los objetivos y permite cambiar de aumento girándola. (d) Platina: mesita con un agujero donde se apoya y sujeta la muestra.",
+      "figura": ""
+    },
+    {
+      "enunciado": "¿Por qué la muestra que se pone en el microscopio óptico debe ser muy fina y casi transparente?",
+      "pista": "En este microscopio la luz viene de abajo y tiene que ATRAVESAR la muestra para llegar a tus ojos. ¿Qué pasa si el trozo es grueso?",
+      "solucion": "Porque en el microscopio óptico la luz ilumina la muestra desde abajo y debe atravesarla para formar la imagen. Si la muestra es gruesa, la luz no pasa y se ve todo oscuro o negro; en cambio, una lámina finísima deja pasar la luz y se ven los detalles. Por eso se usan cortes delgados (como la piel transparente de la cebolla) y se aplastan con el cubreobjetos.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica quiénes fueron Robert Hooke y Antoni van Leeuwenhoek y por qué son importantes en la historia del microscopio.",
+      "pista": "Uno miró corcho y le dio nombre a algo; el otro miró agua y descubrió seres vivos que nadie había visto.",
+      "solucion": "Robert Hooke (Inglaterra, siglo XVII) miró una lámina fina de corcho con su microscopio, vio huequitos ordenados como celditas y los llamó 'células', nombre que quedó para siempre. Antoni van Leeuwenhoek (Holanda) pulió lentes muy potentes y fue el primero en ver seres vivos diminutos (bacterias y otros microbios) moviéndose en una gota de agua. Gracias a ellos entendimos que la vida está hecha de células y que existe un mundo de microorganismos invisibles a simple vista.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Al montar una preparación, ¿por qué conviene bajar el cubreobjetos despacio, apoyándolo primero de un borde?",
+      "pista": "Si lo dejás caer plano de golpe, algo puede quedar atrapado entre los dos vidrios y arruinar la imagen.",
+      "solucion": "Para evitar que queden BURBUJAS de aire atrapadas entre el portaobjetos y el cubreobjetos. Apoyando primero un borde y dejándolo caer poco a poco, el líquido va empujando el aire hacia afuera. Las burbujas se ven al microscopio como círculos negros de borde grueso y estorban la observación, así que conviene no atraparlas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero dice que su microscopio 'aumenta 50 veces' porque tiene un ocular de 10× y un objetivo de 40× (10 + 40 = 50). ¿Tiene razón? Corrígelo.",
+      "pista": "Los dos aumentos NO se suman: uno agranda la imagen que le entrega el otro, así que se multiplican.",
+      "solucion": "No tiene razón. Los aumentos del ocular y del objetivo NO se suman, se MULTIPLICAN, porque el ocular agranda la imagen que ya agrandó el objetivo (dos agrandamientos, uno encima del otro). El aumento correcto es 10 × 40 = 400×, no 50×. Sumar es el error más común de este tema.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Menciona tres normas de uso del microscopio y explica brevemente por qué cada una protege el instrumento.",
+      "pista": "Pensá en cómo se transporta, cómo se guarda, cómo se tocan (o no) las lentes y cómo se enfoca sin chocar el vidrio.",
+      "solucion": "Ejemplos válidos: (1) Transportarlo con las dos manos, una en el brazo y otra bajo la base, para que no se resbale ni se caiga. (2) Guardarlo con el objetivo de menor aumento puesto y la platina baja, para que ninguna lente golpee la muestra o el vidrio. (3) No tocar las lentes con los dedos (la grasa las empaña) y limpiarlas solo con papel de lentes. (Otra: enfocar alejando la lente de la muestra, mirando de costado, para no chocar el cubreobjetos.) Cada norma evita golpes, rayones o suciedad en las lentes, que son la parte más delicada y cara.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué significa que un microscopio dé un 'aumento' de 400×?",
+      "opciones": [
+        "Que la muestra crece de verdad 400 veces de tamaño",
+        "Que la imagen de la muestra se ve 400 veces más grande que su tamaño real",
+        "Que el microscopio pesa 400 gramos",
+        "Que hay que mirar durante 400 segundos"
+      ],
+      "correcta": 1,
+      "explicacion": "Aumentar es hacer que algo se vea más grande sin que cambie de tamaño real: lo que crece es la IMAGEN. A 400× la imagen se ve 400 veces más grande que el objeto verdadero. La muestra sigue midiendo lo mismo."
+    },
+    {
+      "pregunta": "Un microscopio tiene un ocular de 10× y un objetivo de 40×. ¿Cuál es el aumento total?",
+      "opciones": [
+        "50×",
+        "400×",
+        "410×",
+        "4×"
+      ],
+      "correcta": 1,
+      "explicacion": "El aumento total = ocular × objetivo = 10 × 40 = 400×. El error clásico es sumar (10 + 40 = 50), pero se MULTIPLICA, porque el ocular agranda la imagen que ya agrandó el objetivo."
+    },
+    {
+      "pregunta": "¿Por qué el aumento del ocular y el del objetivo se MULTIPLICAN en lugar de sumarse?",
+      "opciones": [
+        "Porque son dos números y así lo manda una regla arbitraria",
+        "Porque el ocular vuelve a agrandar la imagen que ya había agrandado el objetivo (dos agrandamientos, uno sobre otro)",
+        "Porque sumar daría un número demasiado pequeño",
+        "Porque el objetivo no agranda nada, solo el ocular"
+      ],
+      "correcta": 1,
+      "explicacion": "La luz pasa por dos lentes que agrandan: el objetivo agranda la muestra, y el ocular toma esa imagen ya agrandada y la agranda otra vez. Como un agrandamiento se aplica sobre el otro, los factores se multiplican."
+    },
+    {
+      "pregunta": "Un microscopio da 100× de aumento total con un ocular de 10×. ¿Cuál es el aumento del objetivo que se está usando?",
+      "opciones": [
+        "90×",
+        "1000×",
+        "10×",
+        "110×"
+      ],
+      "correcta": 2,
+      "explicacion": "Como total = ocular × objetivo, el objetivo = total ÷ ocular = 100 ÷ 10 = 10×. (Comprobación: 10 × 10 = 100× ✓.)"
+    },
+    {
+      "pregunta": "¿Cuál es la función del OBJETIVO en el microscopio?",
+      "opciones": [
+        "Es la lente de arriba, por donde se pone el ojo",
+        "Es la lente de abajo, cerca de la muestra, que la agranda; suele haber varios en el revólver",
+        "Es la mesita donde se apoya la muestra",
+        "Regula cuánta luz llega a la muestra"
+      ],
+      "correcta": 1,
+      "explicacion": "El objetivo es la lente cercana a la muestra (por ejemplo 4×, 10×, 40×), montada en el revólver giratorio. La lente de arriba, donde se pone el ojo, es el ocular; la mesita es la platina; y la luz la regula el diafragma."
+    },
+    {
+      "pregunta": "¿Para qué sirve el tornillo MICROMÉTRICO (el pequeño)?",
+      "opciones": [
+        "Para subir y bajar la platina rápido (enfoque grueso)",
+        "Para afinar el enfoque moviendo la platina muy poquito (enfoque fino)",
+        "Para cambiar de objetivo girándolo",
+        "Para encender la luz"
+      ],
+      "correcta": 1,
+      "explicacion": "El tornillo micrométrico (pequeño) mueve la platina muy poco, para afinar el enfoque y ver nítido. El grande (macrométrico) es el del enfoque grueso; cambiar de objetivo se hace con el revólver."
+    },
+    {
+      "pregunta": "Al observar una muestra, ¿con qué objetivo se debe EMPEZAR siempre?",
+      "opciones": [
+        "Con el de mayor aumento, para ver todo el detalle de una vez",
+        "Con el de menor aumento, para ver un campo grande y encontrar la muestra",
+        "Con cualquiera, da igual",
+        "Sin ningún objetivo, solo con el ocular"
+      ],
+      "correcta": 1,
+      "explicacion": "Se empieza por el menor aumento porque muestra un campo grande, fácil de explorar para encontrar y centrar lo que buscás. Con el mayor aumento verías un pedacito diminuto y estarías perdido, y la lente podría chocar el vidrio."
+    },
+    {
+      "pregunta": "¿Por qué la muestra del microscopio óptico debe ser muy fina y casi transparente?",
+      "opciones": [
+        "Para que quepa en el portaobjetos",
+        "Para que la luz pueda atravesarla y formar la imagen; si es gruesa, se ve todo oscuro",
+        "Para que pese menos",
+        "Para que no se ensucie el ocular"
+      ],
+      "correcta": 1,
+      "explicacion": "En el microscopio óptico la luz viene de abajo y debe atravesar la muestra. Si es gruesa, la luz no pasa y se ve negro; una lámina finísima deja pasar la luz y muestra los detalles."
+    },
+    {
+      "pregunta": "¿Quién observó láminas de corcho al microscopio y les dio el nombre de 'células'?",
+      "opciones": [
+        "Antoni van Leeuwenhoek",
+        "Robert Hooke",
+        "Charles Darwin",
+        "Louis Pasteur"
+      ],
+      "correcta": 1,
+      "explicacion": "Robert Hooke vio en el corcho huequitos ordenados como celditas de monasterio y los llamó 'células'. Leeuwenhoek, en cambio, fue el primero en ver microbios vivos en una gota de agua."
+    },
+    {
+      "pregunta": "¿Para qué se usa un COLORANTE (como el yodo o el azul de metileno) al preparar una muestra?",
+      "opciones": [
+        "Para matar la muestra más rápido",
+        "Para que ciertas partes de la célula resalten y se distingan mejor, ya que muchas células son casi incoloras",
+        "Para pegar el cubreobjetos al portaobjetos",
+        "Para aumentar el tamaño real de la célula"
+      ],
+      "correcta": 1,
+      "explicacion": "Muchas células son casi transparentes y cuesta verlas. El colorante se pega a ciertas partes (como el núcleo o la pared) y las hace resaltar, para distinguirlas. No cambia el tamaño real ni pega los vidrios."
+    },
+    {
+      "pregunta": "Al bajar el cubreobjetos sobre la muestra, se hace despacio y apoyando primero un borde. ¿Por qué?",
+      "opciones": [
+        "Para que la muestra crezca más rápido",
+        "Para evitar que queden burbujas de aire atrapadas, que estorban la imagen",
+        "Para aumentar la potencia del microscopio",
+        "Para que el colorante seque antes"
+      ],
+      "correcta": 1,
+      "explicacion": "Bajarlo despacio desde un borde deja que el líquido empuje el aire hacia afuera y evita burbujas atrapadas, que al microscopio se ven como círculos negros molestos."
+    },
+    {
+      "pregunta": "¿Cuál de estas es una buena norma de uso del microscopio?",
+      "opciones": [
+        "Transportarlo tomándolo de una sola parte, con una mano",
+        "Limpiar las lentes frotándolas con el dedo",
+        "Guardarlo con el objetivo de menor aumento puesto y la platina baja",
+        "Guardarlo siempre en 40× con la platina subida"
+      ],
+      "correcta": 2,
+      "explicacion": "Se guarda en el menor aumento con la platina baja para que ninguna lente golpee el vidrio. Se transporta con las DOS manos (brazo y base) y las lentes se limpian solo con papel de lentes, nunca con el dedo (la grasa las empaña)."
+    }
+  ]
+}

@@ -1,0 +1,322 @@
+{
+  "programa": "cumbre",
+  "materia": "Física",
+  "grado": "Cumbre Física 1er año",
+  "dominio": "Medir el mundo",
+  "tema": "Qué es la física: fenómenos, preguntas y el método científico",
+  "referencias": [
+    "UK KS3 Year 7 Science — Working Scientifically (observation, questions, hypotheses, variables, fair testing, conclusions)",
+    "Japan MEXT Grade 7 (Chugakko 1) Science — inquiry method: observation, prediction, experiment, analysis",
+    "Singapore Lower Secondary Science — Scientific Method and the practice of science",
+    "IB MYP Sciences Year 1 — Criterion B/C: scientific inquiry and processing data"
+  ],
+  "resumen": {
+    "titulo": "La física: hacerle preguntas al mundo y aprender a responderlas",
+    "intro": "Todos los días pasan cosas a tu alrededor: una piedra cae, el hielo se derrite, un imán atrae un clavo, el eco te devuelve tu voz. La física es la ciencia que se dedica a entender POR QUÉ pasan esas cosas y a descubrir las reglas que siguen. Lo más lindo es que no lo hace adivinando ni creyendo: tiene un método, una forma ordenada de mirar, preguntar y comprobar. En este tema vas a aprender qué estudia la física y, sobre todo, cómo piensa un científico. Con eso vas a poder investigar cualquier cosa que te dé curiosidad, no solo repetir lo que te dicen.",
+    "secciones": [
+      {
+        "titulo": "¿Qué estudia la física?",
+        "explicacion": "Empecemos por lo básico. La FÍSICA es la ciencia que estudia la MATERIA (todo lo que ocupa lugar y tiene peso: una silla, el agua, el aire) y la ENERGÍA (la capacidad de producir cambios: el calor que derrite, la luz que ilumina, el movimiento que empuja), y cómo esas dos cosas se relacionan. Dicho en simple: la física trata de entender cómo funciona el mundo por dentro, las reglas del juego que hacen que las cosas se muevan, caigan, se calienten, brillen o suenen. No estudia cosas raras y lejanas: estudia lo que tienes delante. Cuando pateas una pelota y sube y baja, cuando enciendes una linterna, cuando escuchas música, cuando te resbalas en un piso mojado, en todos esos momentos está actuando la física. Aprenderla es como recibir el manual de instrucciones del universo.",
+        "pasos": [
+          "La física busca REGLAS: relaciones que se cumplen siempre, no solo una vez (una piedra suelta SIEMPRE cae, en cualquier lugar del mundo).",
+          "Esas reglas nos dejan PREDECIR: si sé cómo cae una piedra, puedo calcular dónde caerá antes de soltarla.",
+          "Y nos dejan CONSTRUIR: los puentes, los aviones, los celulares y los cohetes funcionan porque alguien entendió las reglas de la física."
+        ],
+        "ejemplo": "Cuando un columpio va y viene, la física explica por qué siempre tarda casi lo mismo en cada vaivén, por qué se detiene poco a poco y qué tienes que hacer para que llegue más alto. No es magia ni suerte: hay reglas detrás, y la física las encuentra.",
+        "figura": ""
+      },
+      {
+        "titulo": "Fenómeno físico: la palabra clave",
+        "explicacion": "Una palabra que vas a oír muchísimo es FENÓMENO. Suena rara, pero significa algo muy sencillo: un fenómeno es cualquier cosa que OCURRE y que podemos observar. Que un vaso de agua se enfríe, que una hoja caiga del árbol, que salte una chispa, que se forme un arcoíris: todos son fenómenos. Cuando ese hecho tiene que ver con la materia y la energía (moverse, caer, calentarse, brillar, sonar) y NO cambia de qué está hecha la sustancia, lo llamamos un FENÓMENO FÍSICO. Por ejemplo, el agua que hierve y se convierte en vapor sigue siendo agua (solo cambió su estado): eso es un fenómeno físico. La física se dedica justamente a observar fenómenos y a descubrir la regla que los explica. Aprender a mirar el mundo como una colección de fenómenos por entender es el primer paso para pensar como científico.",
+        "pasos": [
+          "Un fenómeno es un hecho que se puede OBSERVAR (con los ojos, los oídos o instrumentos).",
+          "Es FÍSICO cuando involucra materia y energía sin cambiar la sustancia de fondo (el agua que se congela sigue siendo agua).",
+          "Cada fenómeno es una invitación a preguntar: ¿por qué pasa esto? ¿de qué depende?"
+        ],
+        "ejemplo": "Sueltas una pelota y rebota varias veces, cada vez más bajo, hasta quedarse quieta. Ese rebote que se apaga es un fenómeno físico: se puede observar, se repite y esconde una regla (algo de la energía del movimiento se pierde en cada golpe). La física quiere descubrir esa regla.",
+        "figura": ""
+      },
+      {
+        "titulo": "Todo empieza con la observación y una buena pregunta",
+        "explicacion": "La ciencia no arranca con respuestas, sino con CURIOSIDAD. El primer paso siempre es OBSERVAR: mirar con atención un fenómeno, fijándose en los detalles que otros dejan pasar. Observar no es solo 'ver'; es notar qué cambia, cuándo, cuánto. Del observar bien nace una PREGUNTA, y no cualquiera: una buena pregunta científica es la que se puede RESPONDER investigando y midiendo, no solo opinando. 'Cuál color es más bonito' no es una pregunta científica (es cuestión de gustos); en cambio '¿el agua caliente se enfría más rápido que el agua tibia?' sí lo es, porque puedo montar un experimento y medirlo. Aprender a hacer preguntas que se puedan poner a prueba es una de las habilidades más valiosas de un científico: la mitad de descubrir algo es preguntar bien.",
+        "pasos": [
+          "OBSERVA con atención: ¿qué está pasando exactamente? ¿qué cambia?",
+          "Convierte tu curiosidad en una PREGUNTA concreta.",
+          "Revisa que sea una pregunta CIENTÍFICA: ¿se puede responder haciendo un experimento y midiendo? Si solo se responde con opiniones, no lo es."
+        ],
+        "ejemplo": "Observas que la ropa tendida al sol se seca más rápido que a la sombra. Pregunta científica: '¿El calor hace que el agua se evapore más rápido?'. Es científica porque puedo mojar dos telas iguales, poner una al sol y otra a la sombra, y medir cuál se seca antes.",
+        "figura": ""
+      },
+      {
+        "titulo": "La hipótesis: una respuesta para poner a prueba",
+        "explicacion": "Una vez que tienes tu pregunta, no corres a experimentar a lo loco: primero das tu mejor respuesta provisional. Esa respuesta se llama HIPÓTESIS. Una hipótesis es una explicación POSIBLE que propones antes de experimentar, basada en lo que ya sabes u observaste, y que se puede COMPROBAR. Lo importante es que una hipótesis siempre se puede equivocar: es una apuesta honesta, no una verdad. Se suele escribir con la forma 'Si... entonces...': 'SI caliento el agua, ENTONCES se evaporará más rápido'. Esa forma es útil porque ya te dice qué vas a cambiar y qué esperas que pase, y así el experimento casi se diseña solo. Y ojo: si al final el experimento demuestra que tu hipótesis estaba equivocada, eso NO es un fracaso. Descubrir que una idea era falsa también es aprender; muchos grandes avances empezaron con una hipótesis que resultó incorrecta.",
+        "pasos": [
+          "Piensa una respuesta POSIBLE a tu pregunta, usando lo que ya sabes.",
+          "Escríbela como algo que se pueda comprobar, idealmente en forma 'Si... entonces...'.",
+          "Acepta desde ya que puede resultar verdadera o falsa: el experimento lo decidirá, no tú."
+        ],
+        "ejemplo": "Pregunta: '¿El calor evapora el agua más rápido?'. Hipótesis: 'Si el agua está más caliente, entonces se evaporará más rápido que el agua fría'. Es una buena hipótesis porque es clara, se apoya en algo que observaste (la ropa al sol) y se puede poner a prueba.",
+        "figura": ""
+      },
+      {
+        "titulo": "El experimento y las variables: cambiar UNA sola cosa",
+        "explicacion": "El EXPERIMENTO es la prueba que montas para ver si tu hipótesis se cumple. Aquí aparece una idea clave: la VARIABLE. Una variable es algo que puede cambiar o tomar distintos valores en el experimento, como la temperatura, el tiempo o la cantidad de agua. El secreto de un buen experimento es cambiar SOLO UNA variable a la vez y mantener todas las demás iguales; si cambias muchas cosas al mismo tiempo, después no sabes cuál fue la responsable del resultado. A esto se le llama un EXPERIMENTO JUSTO (o prueba justa): comparar de forma pareja, cambiando una sola cosa. La variable que TÚ decides cambiar a propósito se llama variable independiente; lo que MIDES para ver qué pasó se llama variable dependiente; y todo lo que mantienes igual son las variables controladas. No hace falta que memorices esos nombres ahora: lo esencial es la idea de 'cambio una, dejo iguales las demás'.",
+        "pasos": [
+          "Elige QUÉ vas a cambiar (una sola variable): eso es lo que estás probando.",
+          "Decide QUÉ vas a medir para ver el efecto.",
+          "Mantén IGUAL todo lo demás, para que la comparación sea justa.",
+          "Repite la prueba varias veces: un solo intento puede salir raro por casualidad."
+        ],
+        "ejemplo": "Para probar si el calor evapora más rápido, pones la MISMA cantidad de agua en dos vasos IGUALES, en el mismo lugar; lo único distinto es la temperatura del agua (una caliente, una fría). Así, si una se evapora antes, sabes que fue por la temperatura y no por otra cosa.",
+        "figura": "<svg viewBox=\"0 0 360 200\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"55\" y=\"70\" width=\"70\" height=\"90\" rx=\"6\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><rect x=\"58\" y=\"110\" width=\"64\" height=\"48\" rx=\"4\" fill=\"#12B5A4\" fill-opacity=\"0.18\"/><rect x=\"235\" y=\"70\" width=\"70\" height=\"90\" rx=\"6\" fill=\"none\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><rect x=\"238\" y=\"110\" width=\"64\" height=\"48\" rx=\"4\" fill=\"#7C4DFF\" fill-opacity=\"0.18\"/><text x=\"90\" y=\"55\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#0E9486\">agua fria</text><text x=\"270\" y=\"55\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#5A3AAF\">agua caliente</text><text x=\"180\" y=\"105\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#3B2B4A\">mismo vaso</text><text x=\"180\" y=\"125\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#3B2B4A\">misma agua</text><text x=\"180\" y=\"145\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#3B2B4A\">mismo lugar</text><text x=\"180\" y=\"180\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#3B2B4A\">solo cambia la temperatura</text></svg>"
+      },
+      {
+        "titulo": "Medir: por qué los números importan más que 'me pareció'",
+        "explicacion": "En ciencia no basta con decir 'se enfrió bastante' o 'tardó mucho': hay que MEDIR. Medir es comparar algo con una unidad conocida para ponerle un número; por ejemplo, decir que el agua tardó 8 minutos en enfriarse, o que la temperatura bajó de 60 a 40 grados. ¿Por qué es tan importante? Porque los números son OBJETIVOS: no dependen de la opinión de cada quien. Para mí 'mucho' puede ser lo que para ti es 'poco', pero 8 minutos son 8 minutos para todos. Medir permite comparar con exactitud, repetir el experimento y que otra persona en otro lugar obtenga lo mismo. Por eso decimos que la medición es la BASE de la física: sin medir no hay ciencia, solo impresiones. En los próximos temas aprenderás a medir bien (con qué instrumentos, con qué unidades y con cuánta precisión), porque de eso depende que tus conclusiones sean confiables.",
+        "pasos": [
+          "En vez de palabras vagas ('mucho', 'rápido'), busca un NÚMERO con su unidad.",
+          "Usa el instrumento adecuado: regla para longitudes, reloj para tiempos, termómetro para temperatura, balanza para masa.",
+          "Anota siempre la medida CON su unidad: '8' no dice nada; '8 minutos' sí."
+        ],
+        "ejemplo": "Dos personas miran el mismo experimento. Una dice 'se enfrió rápido' y otra 'se enfrió lento': no se ponen de acuerdo. Pero si miden con un termómetro y un reloj, ambas anotan 'bajó de 60 a 40 grados en 8 minutos'. Ahora sí hablan el mismo idioma: eso es medir.",
+        "figura": ""
+      },
+      {
+        "titulo": "Analizar los datos y sacar una conclusión",
+        "explicacion": "Después de experimentar y medir, tienes un montón de números anotados: eso son los DATOS (la información que recogiste, casi siempre en forma de medidas). Pero los datos sueltos no dicen nada por sí solos; hay que ANALIZARLOS, o sea, ordenarlos y compararlos para descubrir qué muestran. Un truco muy usado es hacer una TABLA (organizar los datos en filas y columnas) o un GRÁFICO (un dibujo que hace visible cómo una cosa cambia respecto de otra), porque así la tendencia salta a la vista. Con el análisis llegas por fin a la CONCLUSIÓN: la respuesta a tu pregunta según lo que mostraron los datos, y una comparación con tu hipótesis. La conclusión honesta puede ser 'mi hipótesis se cumplió' o 'no se cumplió'; las dos son válidas mientras se apoyen en los datos y no en lo que a ti te gustaría que pasara. Esa honestidad es el corazón de la ciencia.",
+        "pasos": [
+          "Reúne y ORDENA tus datos (una tabla ayuda muchísimo).",
+          "COMPARA: ¿qué pasó al cambiar la variable? ¿hay una tendencia clara?",
+          "Escribe la CONCLUSIÓN respondiendo tu pregunta, y di si tu hipótesis se cumplió o no.",
+          "Sé honesto: la conclusión sale de los datos, no de tu deseo."
+        ],
+        "ejemplo": "Mediste que el agua caliente tardó 5 minutos en evaporar cierta cantidad y la fría 12 minutos. Analizas: la caliente fue más rápida. Conclusión: los datos apoyan la hipótesis de que el calor evapora el agua más rápido.",
+        "figura": ""
+      },
+      {
+        "titulo": "El método científico completo, en orden",
+        "explicacion": "Ahora que conoces cada pieza, veamos cómo encajan. El MÉTODO CIENTÍFICO es la forma ordenada en que la ciencia investiga: una secuencia de pasos que va de la curiosidad a una respuesta confiable. No es una receta rígida (a veces hay que volver atrás y repetir), pero seguir este orden te mantiene honesto y te evita engañarte solo. Lo bonito es que sirve para CUALQUIER pregunta investigable, no solo en un laboratorio: puedes usarlo para averiguar qué planta de tu casa crece más rápido o con qué ángulo un avión de papel vuela más lejos. Aprender este método es aprender a pensar con claridad para el resto de tu vida.",
+        "pasos": [
+          "OBSERVAR un fenómeno con atención.",
+          "PREGUNTAR algo que se pueda investigar.",
+          "Proponer una HIPÓTESIS (respuesta posible que se pueda comprobar).",
+          "EXPERIMENTAR cambiando una sola variable, de forma justa.",
+          "MEDIR y anotar los datos con sus unidades.",
+          "ANALIZAR los datos (tabla o gráfico) y sacar una CONCLUSIÓN honesta.",
+          "COMPARTIR el resultado para que otros lo repitan y comprueben."
+        ],
+        "ejemplo": "Avión de papel: observas que a veces vuela más lejos (observar); te preguntas si el ángulo de lanzamiento importa (preguntar); apuestas que lanzarlo un poco hacia arriba llega más lejos (hipótesis); lanzas el MISMO avión con distintos ángulos y todo lo demás igual (experimentar); mides cada distancia con una cinta métrica (medir); comparas los números y decides qué ángulo ganó (analizar y concluir).",
+        "figura": "<svg viewBox=\"0 0 420 120\" xmlns=\"http://www.w3.org/2000/svg\"><g font-family=\"sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"#3B2B4A\" text-anchor=\"middle\"><rect x=\"10\" y=\"45\" width=\"58\" height=\"30\" rx=\"6\" fill=\"#12B5A4\" fill-opacity=\"0.15\" stroke=\"#12B5A4\" stroke-width=\"1.5\"/><text x=\"39\" y=\"64\">Observar</text><rect x=\"88\" y=\"45\" width=\"58\" height=\"30\" rx=\"6\" fill=\"#12B5A4\" fill-opacity=\"0.15\" stroke=\"#12B5A4\" stroke-width=\"1.5\"/><text x=\"117\" y=\"64\">Preguntar</text><rect x=\"166\" y=\"45\" width=\"58\" height=\"30\" rx=\"6\" fill=\"#12B5A4\" fill-opacity=\"0.15\" stroke=\"#12B5A4\" stroke-width=\"1.5\"/><text x=\"195\" y=\"64\">Hipotesis</text><rect x=\"244\" y=\"45\" width=\"62\" height=\"30\" rx=\"6\" fill=\"#7C4DFF\" fill-opacity=\"0.15\" stroke=\"#7C4DFF\" stroke-width=\"1.5\"/><text x=\"275\" y=\"64\">Experimentar</text><rect x=\"326\" y=\"45\" width=\"58\" height=\"30\" rx=\"6\" fill=\"#7C4DFF\" fill-opacity=\"0.15\" stroke=\"#7C4DFF\" stroke-width=\"1.5\"/><text x=\"355\" y=\"64\">Concluir</text></g><g stroke=\"#8C7C93\" stroke-width=\"1.5\"><line x1=\"68\" y1=\"60\" x2=\"86\" y2=\"60\"/><line x1=\"146\" y1=\"60\" x2=\"164\" y2=\"60\"/><line x1=\"224\" y1=\"60\" x2=\"242\" y2=\"60\"/><line x1=\"306\" y1=\"60\" x2=\"324\" y2=\"60\"/></g></svg>"
+      },
+      {
+        "titulo": "Física frente a otras ciencias (y por qué se llevan bien)",
+        "explicacion": "Quizás te preguntes en qué se diferencia la física de otras ciencias como la química o la biología. Todas usan el método científico, pero cada una mira una parte distinta del mundo. La FÍSICA estudia las reglas más generales de la materia y la energía: el movimiento, las fuerzas, el calor, la luz, el sonido, la electricidad. La QUÍMICA estudia de qué están hechas las sustancias y cómo se transforman unas en otras (cuando cambia LA SUSTANCIA misma, como el hierro que se oxida). La BIOLOGÍA estudia los seres vivos: cómo nacen, crecen y funcionan. La frontera no siempre es exacta y muchas veces se ayudan: para entender cómo late un corazón (biología) hace falta la física de las presiones, y para diseñar un medicamento (química) se usan mediciones físicas. Lo que hace especial a la física es que sus reglas son tan básicas que sirven de cimiento para las demás ciencias; por eso se dice que es una de las ciencias más fundamentales.",
+        "pasos": [
+          "Física: movimiento, fuerzas, energía, calor, luz, sonido, electricidad (las reglas generales).",
+          "Química: de qué están hechas las cosas y cómo se transforman las sustancias.",
+          "Biología: los seres vivos y cómo funcionan.",
+          "Todas comparten el método científico; sus temas se cruzan y se ayudan."
+        ],
+        "ejemplo": "Que una vela se derrita (cambia de sólido a líquido pero sigue siendo cera) es un fenómeno más físico; que la vela se queme y se convierta en humo y gases (cambia la sustancia) es más químico. El mismo objeto, dos ciencias mirándolo desde ángulos distintos.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "La física estudia las reglas de la materia y la energía observando FENÓMENOS: cosas que ocurren y podemos observar. Para descubrir esas reglas sin engañarnos usamos el MÉTODO CIENTÍFICO: observar, preguntar, proponer una hipótesis, experimentar cambiando una sola variable, medir con números y sacar una conclusión honesta a partir de los datos. Medir es la base de todo: convierte impresiones en hechos que cualquiera puede comprobar."
+  },
+  "practica": [
+    {
+      "enunciado": "Clasifica cada afirmación como PREGUNTA CIENTÍFICA (se puede responder investigando y midiendo) o como OPINIÓN (solo cuestión de gustos): (a) '¿Cuál es el sabor de helado más rico?', (b) '¿Rueda más lejos una pelota sobre baldosa que sobre alfombra?', (c) '¿Qué canción es la más bonita?'.",
+      "pista": "Pregúntate para cada una: ¿podría montar un experimento y MEDIR algo para responderla, o depende del gusto de cada persona?",
+      "solucion": "(a) Opinión: 'más rico' depende del gusto, no se mide. (b) Pregunta científica: puedo soltar la misma pelota, con el mismo empujón, sobre baldosa y sobre alfombra, y MEDIR con una cinta cuánto rueda cada vez. (c) Opinión: 'más bonita' es cuestión de gustos. Solo (b) es científica porque se puede poner a prueba y medir.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Convierte esta curiosidad en el método científico. Observas que tu bicicleta frena en menos distancia cuando el piso está seco que cuando está mojado. Escribe: (1) una pregunta científica, (2) una hipótesis en forma 'Si... entonces...'.",
+      "pista": "La pregunta debe poder responderse midiendo la distancia de frenado. La hipótesis es tu mejor apuesta sobre qué causa la diferencia, escrita como 'Si (cambio esto)... entonces (pasará esto)...'.",
+      "solucion": "(1) Pregunta científica: '¿La bicicleta necesita más distancia para frenar cuando el piso está mojado que cuando está seco?'. (2) Hipótesis: 'Si el piso está mojado, entonces la bicicleta necesitará más distancia para frenar que sobre piso seco'. Ambas se pueden comprobar: se frena a la misma velocidad sobre piso seco y sobre piso mojado y se mide la distancia de frenado en cada caso.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante quiere saber si el largo de la cuerda de un péndulo (un peso colgado de un hilo que se balancea) cambia el tiempo de cada vaivén. En su experimento cambia el largo de la cuerda, pero además usa un peso distinto y lo suelta desde una altura diferente cada vez. ¿Qué error cometió y cómo lo arreglarías?",
+      "pista": "Recuerda la regla del experimento justo: cambiar UNA sola variable a la vez. Cuenta cuántas cosas cambió al mismo tiempo.",
+      "solucion": "El error es que cambió TRES variables a la vez (el largo, el peso y la altura de suelta), así que si el tiempo cambia no sabrá cuál de las tres fue la culpable. Para arreglarlo debe cambiar SOLO el largo de la cuerda y mantener iguales el peso y la altura desde la que lo suelta. Así, cualquier cambio en el tiempo del vaivén se deberá únicamente al largo. Eso es un experimento justo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ordena estos pasos del método científico, que están desordenados: (A) sacar una conclusión, (B) proponer una hipótesis, (C) observar un fenómeno, (D) experimentar y medir, (E) hacer una pregunta.",
+      "pista": "Todo empieza con la curiosidad (observar) y termina con la respuesta (conclusión). La hipótesis va ANTES de experimentar, porque es lo que vas a poner a prueba.",
+      "solucion": "El orden correcto es: C (observar), E (preguntar), B (hipótesis), D (experimentar y medir), A (conclusión). Primero observas un fenómeno, esa observación te hace preguntar, propones una respuesta posible (hipótesis), la pones a prueba experimentando y midiendo, y con los datos sacas la conclusión.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica con tus palabras por qué en ciencia es mejor decir 'el agua bajó de 70 a 45 grados en 6 minutos' que decir 'el agua se enfrió bastante rápido'.",
+      "pista": "Piensa en qué pasa si dos personas distintas leen cada frase. ¿Entienden exactamente lo mismo en los dos casos?",
+      "solucion": "'Bastante rápido' es una impresión que depende de cada persona: para uno puede ser rápido y para otro no, y no se puede comparar ni repetir. En cambio, 'bajó de 70 a 45 grados en 6 minutos' es una MEDICIÓN: un número con su unidad que significa lo mismo para todos, se puede comparar con otro experimento y otra persona puede repetirlo y comprobarlo. Por eso medir con números es la base de la ciencia: convierte una opinión en un hecho verificable.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Decide si cada cosa es un FENÓMENO FÍSICO (ocurre, se observa, y no cambia de qué está hecha la sustancia) o no: (a) un cubo de hielo que se derrite, (b) un pensamiento que tienes, (c) un imán que atrae un clavo, (d) el eco de tu voz en una montaña.",
+      "pista": "Un fenómeno físico se puede OBSERVAR desde afuera e involucra materia y energía. Fíjate cuál de las opciones no se puede observar por nadie más que tú.",
+      "solucion": "(a) Sí: el hielo derritiéndose se observa y sigue siendo agua (solo cambió de estado). (b) No: un pensamiento no se puede observar desde afuera ni medir con instrumentos; no es un fenómeno físico. (c) Sí: la atracción del imán se observa e involucra energía. (d) Sí: el eco es sonido que rebota, se observa (se oye) e involucra energía. Fenómenos físicos: a, c y d.",
+      "figura": ""
+    },
+    {
+      "enunciado": "En un experimento para ver si una planta crece más con más luz, un estudiante pone una planta junto a la ventana y otra en un armario oscuro. A la de la ventana la riega todos los días y a la del armario la riega una vez por semana. ¿Su experimento es justo? Justifica.",
+      "pista": "Para que sea justo, la ÚNICA diferencia entre las dos plantas debe ser la variable que quiere probar (la luz). Revisa si hay otra cosa distinta.",
+      "solucion": "No es justo. Además de la luz (la variable que quiere probar), cambió también el riego (una la riega a diario y la otra una vez por semana). Si una planta crece más, no sabrá si fue por la luz o por el agua. Para hacerlo justo debe regar AMBAS plantas igual y mantener todo lo demás igual (mismo tipo de planta, misma maceta, misma tierra), dejando la luz como única diferencia.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante hace su experimento una sola vez y obtiene un resultado. Su compañero le dice que debería repetirlo varias veces. ¿Por qué es buena idea repetir un experimento en vez de confiar en un solo intento?",
+      "pista": "Piensa en qué pasa si justo esa única vez algo salió raro por casualidad (un error al medir, una corriente de aire, un despiste).",
+      "solucion": "Porque un solo intento puede salir raro por casualidad: un error al leer el instrumento, una distracción, algo del ambiente que cambió un momento. Si repites el experimento varias veces y obtienes resultados parecidos, puedes confiar en que el resultado es real y no una casualidad. Repetir y obtener lo mismo hace que la conclusión sea mucho más confiable; es una de las razones por las que la ciencia es tan cuidadosa.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Clasifica cada estudio según la ciencia que lo estudia principalmente (física, química o biología): (a) por qué un objeto pesado y uno liviano caen y llegan al suelo casi al mismo tiempo, (b) cómo el hierro se convierte en óxido (herrumbre), (c) cómo respira una planta.",
+      "pista": "Física: movimiento, fuerzas, energía. Química: transformación de sustancias. Biología: seres vivos.",
+      "solucion": "(a) Física: se trata del movimiento y la caída de los objetos (materia y energía, sin cambiar la sustancia). (b) Química: el hierro se transforma en una sustancia nueva (óxido), un cambio de sustancia. (c) Biología: la respiración es un proceso de un ser vivo. Aunque las tres ciencias se ayudan entre sí, cada estudio cae principalmente en una de ellas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Empareja cada magnitud con el instrumento correcto para medirla, y explica por qué: longitud, tiempo, temperatura, masa. Instrumentos disponibles: termómetro, balanza, regla, cronómetro.",
+      "pista": "Cada instrumento sirve para una sola cosa. Piensa qué mides con cada uno en la vida diaria.",
+      "solucion": "Longitud con la regla (mide qué tan largo es algo). Tiempo con el cronómetro (mide cuánto dura algo). Temperatura con el termómetro (mide qué tan caliente o frío está algo). Masa con la balanza (mide cuánta materia tiene un objeto). Usar el instrumento correcto es parte de medir bien: no se mide la temperatura con una regla ni el tiempo con una balanza. Cada medición necesita su herramienta.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué estudia principalmente la física?",
+      "opciones": [
+        "La materia y la energía, y las reglas de cómo se mueven, caen, se calientan o brillan las cosas",
+        "Solo los seres vivos y cómo crecen",
+        "Solo las palabras y los idiomas",
+        "Únicamente cosas lejanas como las estrellas, nada de la vida diaria"
+      ],
+      "correcta": 0,
+      "explicacion": "La física estudia la materia (lo que ocupa lugar y tiene peso) y la energía (la capacidad de producir cambios), y las reglas generales del mundo. Los seres vivos son de la biología, y la física está en la vida diaria, no solo en el espacio."
+    },
+    {
+      "pregunta": "Un FENÓMENO FÍSICO es...",
+      "opciones": [
+        "Algo que solo pasa en un laboratorio con máquinas caras",
+        "Cualquier hecho que ocurre y podemos observar, que involucra materia y energía",
+        "Una opinión sobre lo que nos gusta",
+        "Un número inventado"
+      ],
+      "correcta": 1,
+      "explicacion": "Un fenómeno es un hecho que ocurre y se puede observar; es físico cuando involucra materia y energía sin cambiar la sustancia de fondo. El hielo que se derrite o el eco de tu voz son fenómenos físicos, y no hace falta un laboratorio para verlos."
+    },
+    {
+      "pregunta": "¿Cuál de estas es una PREGUNTA CIENTÍFICA (que se puede responder investigando y midiendo)?",
+      "opciones": [
+        "¿Cuál es el color más bonito?",
+        "¿Qué música es mejor?",
+        "¿Se enfría más rápido el agua en un vaso ancho que en uno angosto?",
+        "¿Cuál es el mejor día de la semana?"
+      ],
+      "correcta": 2,
+      "explicacion": "La pregunta del agua se puede responder con un experimento y midiendo con un termómetro y un reloj. Las otras tres dependen del gusto de cada persona ('más bonito', 'mejor'), así que son opiniones, no preguntas científicas."
+    },
+    {
+      "pregunta": "En el método científico, ¿qué es una HIPÓTESIS?",
+      "opciones": [
+        "El resultado final que ya está comprobado y no puede fallar",
+        "Una respuesta posible que propones ANTES de experimentar y que se puede comprobar",
+        "El instrumento que usas para medir",
+        "La lista de materiales del experimento"
+      ],
+      "correcta": 1,
+      "explicacion": "Una hipótesis es tu mejor respuesta provisional a la pregunta, propuesta antes de experimentar y que se puede poner a prueba (suele escribirse 'Si... entonces...'). No es un resultado ya comprobado: puede resultar verdadera o falsa, y las dos cosas enseñan."
+    },
+    {
+      "pregunta": "En un experimento, ¿por qué se debe cambiar SOLO UNA variable a la vez?",
+      "opciones": [
+        "Para que el experimento termine más rápido",
+        "Porque así se gasta menos material",
+        "Porque si cambias varias cosas a la vez, no sabrás cuál causó el resultado",
+        "No importa, se pueden cambiar todas juntas"
+      ],
+      "correcta": 2,
+      "explicacion": "Si cambias muchas variables al mismo tiempo y el resultado cambia, no puedes saber cuál fue la responsable. Cambiando una sola y manteniendo las demás iguales (un experimento justo), cualquier cambio se debe a esa única variable."
+    },
+    {
+      "pregunta": "Un estudiante propone la hipótesis 'el agua caliente se evapora más rápido' y su experimento demuestra que es FALSA. ¿Qué debe hacer?",
+      "opciones": [
+        "Cambiar los datos para que parezca que acertó",
+        "Aceptar el resultado honestamente: descubrir que una hipótesis es falsa también es aprender",
+        "Rendirse: el experimento fue un fracaso total",
+        "Repetir hasta que salga lo que él quería"
+      ],
+      "correcta": 1,
+      "explicacion": "La honestidad es el corazón de la ciencia. Una hipótesis que resulta falsa NO es un fracaso: también es conocimiento. Cambiar los datos o repetir hasta 'forzar' el resultado deseado es lo contrario de hacer ciencia."
+    },
+    {
+      "pregunta": "¿Por qué medir con números es mejor que describir con palabras como 'mucho' o 'rápido'?",
+      "opciones": [
+        "Porque los números son más difíciles y así parece más serio",
+        "Porque un número con su unidad significa lo mismo para todos y se puede comparar y repetir",
+        "Porque las palabras están prohibidas en ciencia",
+        "No es mejor; da igual usar palabras vagas"
+      ],
+      "correcta": 1,
+      "explicacion": "'Mucho' o 'rápido' dependen de la opinión de cada persona, pero '8 minutos' o '45 grados' significan lo mismo para todos, se pueden comparar y otra persona puede repetir la medición. Por eso medir es la base objetiva de la ciencia."
+    },
+    {
+      "pregunta": "¿Cuál es el orden correcto de los pasos del método científico?",
+      "opciones": [
+        "Concluir, experimentar, preguntar, observar, hipótesis",
+        "Observar, preguntar, hipótesis, experimentar y medir, concluir",
+        "Hipótesis, observar, concluir, preguntar, experimentar",
+        "Experimentar, observar, concluir, preguntar, hipótesis"
+      ],
+      "correcta": 1,
+      "explicacion": "Se empieza por observar un fenómeno, eso lleva a una pregunta, luego se propone una hipótesis, se experimenta y se mide para ponerla a prueba, y finalmente se saca la conclusión a partir de los datos."
+    },
+    {
+      "pregunta": "Los DATOS de un experimento son...",
+      "opciones": [
+        "Las opiniones de los que miraron",
+        "La información que recogiste, casi siempre en forma de medidas",
+        "El título del experimento",
+        "Los deseos del científico sobre qué debería pasar"
+      ],
+      "correcta": 1,
+      "explicacion": "Los datos son la información recogida durante el experimento, normalmente medidas (números con sus unidades). Se ordenan en tablas o gráficos para analizarlos y así llegar a una conclusión basada en hechos, no en deseos ni opiniones."
+    },
+    {
+      "pregunta": "Que un cubo de hielo se derrita y se vuelva agua líquida es un ejemplo más cercano a la...",
+      "opciones": [
+        "Física, porque cambia el estado pero sigue siendo la misma sustancia (agua)",
+        "Química, porque se convierte en una sustancia totalmente nueva",
+        "Biología, porque el hielo está vivo",
+        "Ninguna ciencia lo estudia"
+      ],
+      "correcta": 0,
+      "explicacion": "Al derretirse, el hielo cambia de sólido a líquido pero sigue siendo agua: la sustancia no cambia, solo su estado. Eso es un fenómeno físico. Sería química si la sustancia se transformara en otra distinta (como el hierro que se oxida)."
+    },
+    {
+      "pregunta": "Para que un experimento sea confiable, además de ser justo, conviene...",
+      "opciones": [
+        "Hacerlo una sola vez y confiar en ese resultado",
+        "Repetirlo varias veces para asegurarse de que el resultado no fue casualidad",
+        "Cambiar todas las variables a la vez para ir más rápido",
+        "No anotar los datos para no complicarse"
+      ],
+      "correcta": 1,
+      "explicacion": "Un solo intento puede salir raro por casualidad (un error al medir, una distracción). Repetir el experimento y obtener resultados parecidos hace que la conclusión sea mucho más confiable. Anotar los datos y cambiar una sola variable también son parte de un buen experimento."
+    },
+    {
+      "pregunta": "¿Por qué se dice que medir es la BASE de la física?",
+      "opciones": [
+        "Porque sin medir con números no se pueden comparar, repetir ni comprobar los resultados; quedarían solo impresiones",
+        "Porque medir es lo único que hace un físico",
+        "Porque los números se ven bonitos",
+        "Porque así los experimentos duran más tiempo"
+      ],
+      "correcta": 0,
+      "explicacion": "Sin mediciones, la ciencia se quedaría en impresiones vagas que dependen de cada persona. Medir da números objetivos que cualquiera puede comparar, repetir y comprobar; por eso es el cimiento sobre el que se construye toda la física."
+    }
+  ]
+}

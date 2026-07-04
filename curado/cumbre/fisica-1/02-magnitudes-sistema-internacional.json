@@ -1,0 +1,326 @@
+{
+  "programa": "cumbre",
+  "materia": "Física",
+  "grado": "Cumbre Física 1er año",
+  "dominio": "Medir el mundo",
+  "tema": "Magnitudes físicas y el Sistema Internacional de unidades",
+  "referencias": [
+    "UK KS3 Year 7 Science — Measurement: SI units, prefixes, unit conversion and instruments",
+    "Japan MEXT Grade 7 Science — measurement, units (m, kg, s) and reading instruments",
+    "Singapore Lower Secondary Science — Physical Quantities, SI Units and Measurement",
+    "BIPM/SI Brochure — the seven base units of the International System of Units"
+  ],
+  "resumen": {
+    "titulo": "Medir el mundo: magnitudes, unidades y el lenguaje común del SI",
+    "intro": "En el tema anterior aprendiste que medir es la base de la ciencia. Ahora vamos a aprender a medir BIEN. Cada vez que dices que algo mide 2 metros, que pesa 5 kilogramos o que duró 30 segundos, estás usando dos cosas: una MAGNITUD (lo que mides) y una UNIDAD (con qué la comparas). El mundo entero se puso de acuerdo en un mismo conjunto de unidades, el Sistema Internacional (SI), para que un metro signifique lo mismo en Venezuela, en Japón o en un cohete espacial. En este tema vas a entender qué es una magnitud, por qué medir es comparar, cuáles son las unidades básicas del SI, cómo se agrandan y achican con prefijos como kilo, centi y mili, y cómo convertir de unas a otras sin equivocarte.",
+    "secciones": [
+      {
+        "titulo": "¿Qué es una magnitud física?",
+        "explicacion": "Una MAGNITUD física es todo aquello que se puede MEDIR, es decir, a lo que le podemos poner un número. La longitud de tu lápiz, la masa de una manzana, el tiempo que dura una canción, la temperatura del agua: todas son magnitudes, porque a todas les puedes asignar un número mediante una medición. Y ojo con una trampa muy común: hay cosas que NO son magnitudes porque no se pueden medir con un número, como la belleza, el sabor o la simpatía. Puedes decir que una comida está 'rica', pero no puedes decir que tiene '7 de rico' de forma que todos midan lo mismo; en cambio sí puedes decir que pesa 300 gramos. La física trabaja siempre con magnitudes, porque son las que permiten comparar y calcular. Reconocer qué es una magnitud y qué no lo es es el primer paso para medir con sentido.",
+        "pasos": [
+          "Pregúntate: ¿puedo ponerle un NÚMERO a esto midiéndolo con un instrumento?",
+          "Si sí (longitud, masa, tiempo, temperatura...), es una magnitud física.",
+          "Si no (belleza, sabor, alegría...), no es una magnitud: es una impresión."
+        ],
+        "ejemplo": "La altura de una puerta es una magnitud: mide, por ejemplo, 2 metros. 'Lo bonita que es la puerta' NO es una magnitud, porque no hay un número que signifique lo mismo para todos.",
+        "figura": ""
+      },
+      {
+        "titulo": "Medir es comparar con una unidad",
+        "explicacion": "Aquí está la idea más importante de todo el tema: MEDIR es COMPARAR una magnitud con una UNIDAD para ver cuántas veces cabe. Una unidad es una cantidad fija que se toma como referencia, una especie de 'ladrillo' con el que comparamos. Cuando dices que una mesa mide 3 metros, lo que estás diciendo es que el 'ladrillo' llamado metro cabe 3 veces a lo largo de la mesa. Por eso toda medida tiene SIEMPRE dos partes: un NÚMERO (cuántas veces cabe la unidad) y una UNIDAD (cuál es el ladrillo). Decir 'la mesa mide 3' no significa nada: ¿3 qué? ¿3 metros, 3 pasos, 3 lápices? El número sin la unidad está incompleto. Nunca, jamás, escribas una medida sin su unidad: es uno de los errores que más bajan las notas en ciencia y, peor, hace que la medida no se entienda.",
+        "pasos": [
+          "Elige la UNIDAD con la que vas a comparar (el 'ladrillo': metro, kilogramo, segundo...).",
+          "Cuenta cuántas veces cabe esa unidad en lo que mides: ese es el NÚMERO.",
+          "Escribe la medida completa: número + unidad (ejemplo: 3 metros).",
+          "Nunca dejes el número solo: '3' no dice nada; '3 metros' sí."
+        ],
+        "ejemplo": "Mides el ancho de un cuaderno con un clip como unidad y caben 6 clips: el ancho es '6 clips'. Si lo mides con una regla, caben 21 centímetros: el ancho es '21 centímetros'. Es el mismo cuaderno, distinto ladrillo, distinto número, pero siempre número MÁS unidad.",
+        "figura": "<svg viewBox=\"0 0 340 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"30\" y=\"40\" width=\"240\" height=\"36\" rx=\"4\" fill=\"#12B5A4\" fill-opacity=\"0.12\" stroke=\"#12B5A4\" stroke-width=\"2\"/><g stroke=\"#7C4DFF\" stroke-width=\"1.5\"><line x1=\"70\" y1=\"40\" x2=\"70\" y2=\"76\"/><line x1=\"110\" y1=\"40\" x2=\"110\" y2=\"76\"/><line x1=\"150\" y1=\"40\" x2=\"150\" y2=\"76\"/><line x1=\"190\" y1=\"40\" x2=\"190\" y2=\"76\"/><line x1=\"230\" y1=\"40\" x2=\"230\" y2=\"76\"/></g><text x=\"150\" y=\"25\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">la unidad cabe 6 veces  =  6 unidades</text><text x=\"150\" y=\"100\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#5A3AAF\">medir = contar cuantas veces cabe el ladrillo</text></svg>"
+      },
+      {
+        "titulo": "Por qué el mundo necesita un sistema común: el SI",
+        "explicacion": "Imagina el caos si cada país o cada persona midiera con su propio ladrillo: uno vende 'un pie' de tela y otro no sabe cuánto es porque su pie es más chico. De hecho, así fue durante siglos, y provocó confusiones, estafas y hasta accidentes. Por eso los científicos del mundo entero acordaron usar un mismo conjunto de unidades: el SISTEMA INTERNACIONAL DE UNIDADES, que se abrevia SI (de su nombre en francés, 'Système International'). El SI es el idioma común de la medición: un metro es exactamente igual en todos los países, así que un ingeniero venezolano y uno japonés pueden trabajar juntos en un mismo puente sin confundirse. Usar el SI no es un capricho de los profesores: es lo que permite que la ciencia y la tecnología del planeta se entiendan. Por eso en física siempre medimos en unidades del SI.",
+        "pasos": [
+          "Antes, cada lugar medía con unidades distintas: nadie se entendía.",
+          "El SI (Sistema Internacional) es el acuerdo mundial: unas mismas unidades para todos.",
+          "Ventaja: cualquiera, en cualquier país, entiende y puede repetir una medida."
+        ],
+        "ejemplo": "En 1999 una sonda espacial se perdió porque un equipo usó unidades de un sistema y otro equipo usó otras distintas: los números no coincidieron y la nave falló. Un buen recordatorio de por qué el mundo acordó un sistema común.",
+        "figura": ""
+      },
+      {
+        "titulo": "Las magnitudes fundamentales del SI",
+        "explicacion": "El SI escoge unas pocas magnitudes básicas, llamadas MAGNITUDES FUNDAMENTALES, y les da a cada una su unidad. Se llaman fundamentales porque no se construyen a partir de otras: son los cimientos, y a partir de ellas se arman todas las demás medidas. Las tres que más vas a usar este año son: la LONGITUD, que mide qué tan largo es algo y su unidad es el METRO (símbolo m); la MASA, que mide cuánta materia tiene un objeto (cuánta 'cantidad de cosa' hay) y su unidad es el KILOGRAMO (símbolo kg); y el TIEMPO, que mide cuánto dura algo y su unidad es el SEGUNDO (símbolo s). El SI tiene siete magnitudes fundamentales en total (a las tres anteriores se suman la temperatura, medida en kelvin K; la corriente eléctrica, en amperio A; la cantidad de sustancia, en mol; y la intensidad luminosa, en candela). No hace falta que memorices las siete ahora: quédate firme con metro, kilogramo y segundo, que son la base de casi todo lo que medirás.",
+        "pasos": [
+          "Longitud (qué tan largo) -> unidad: metro (m).",
+          "Masa (cuánta materia) -> unidad: kilogramo (kg).",
+          "Tiempo (cuánto dura) -> unidad: segundo (s).",
+          "Las otras cuatro: temperatura (kelvin, K), corriente eléctrica (amperio, A), cantidad de sustancia (mol) e intensidad luminosa (candela).",
+          "Con las fundamentales se arman las demás (por ejemplo, la rapidez se mide en metros por segundo, m/s: longitud dividida entre tiempo)."
+        ],
+        "ejemplo": "Un corredor recorre 100 metros (longitud, en m) en 12 segundos (tiempo, en s). Con esas dos magnitudes fundamentales sale su rapidez: 100 m ÷ 12 s, que se mide en metros por segundo (m/s). Así las fundamentales construyen otras medidas.",
+        "figura": "<svg viewBox=\"0 0 360 150\" xmlns=\"http://www.w3.org/2000/svg\"><g font-family=\"sans-serif\" text-anchor=\"middle\"><rect x=\"20\" y=\"40\" width=\"90\" height=\"70\" rx=\"8\" fill=\"#12B5A4\" fill-opacity=\"0.15\" stroke=\"#12B5A4\" stroke-width=\"2\"/><text x=\"65\" y=\"68\" font-size=\"14\" font-weight=\"700\" fill=\"#3B2B4A\">Longitud</text><text x=\"65\" y=\"92\" font-size=\"15\" font-weight=\"700\" fill=\"#0E9486\">metro (m)</text><rect x=\"135\" y=\"40\" width=\"90\" height=\"70\" rx=\"8\" fill=\"#12B5A4\" fill-opacity=\"0.15\" stroke=\"#12B5A4\" stroke-width=\"2\"/><text x=\"180\" y=\"68\" font-size=\"14\" font-weight=\"700\" fill=\"#3B2B4A\">Masa</text><text x=\"180\" y=\"92\" font-size=\"14\" font-weight=\"700\" fill=\"#0E9486\">kilogramo (kg)</text><rect x=\"250\" y=\"40\" width=\"90\" height=\"70\" rx=\"8\" fill=\"#12B5A4\" fill-opacity=\"0.15\" stroke=\"#12B5A4\" stroke-width=\"2\"/><text x=\"295\" y=\"68\" font-size=\"14\" font-weight=\"700\" fill=\"#3B2B4A\">Tiempo</text><text x=\"295\" y=\"92\" font-size=\"15\" font-weight=\"700\" fill=\"#0E9486\">segundo (s)</text><text x=\"180\" y=\"28\" font-size=\"13\" font-weight=\"700\" fill=\"#5A3AAF\">tres magnitudes fundamentales</text></g></svg>"
+      },
+      {
+        "titulo": "Cuidado: masa no es lo mismo que peso",
+        "explicacion": "Aunque en la vida diaria decimos 'peso 40 kilos', en física conviene distinguir dos cosas que parecen iguales pero no lo son. La MASA es la cantidad de materia que tiene un objeto: cuánta 'cosa' hay dentro de él, y no cambia vayas donde vayas. El PESO es la fuerza con que la gravedad tira de ese objeto hacia abajo, y sí puede cambiar de un lugar a otro. Por eso un astronauta tiene la MISMA masa en la Tierra y en la Luna (sigue teniendo la misma cantidad de materia), pero pesa mucho menos en la Luna, porque allí la gravedad tira con menos fuerza. La masa se mide en kilogramos (kg) con una balanza; el peso, al ser una fuerza, se mide en otra unidad llamada newton (N). Este año trabajaremos casi siempre con la masa, pero es bueno que desde ya sepas que 'masa' y 'peso' no son sinónimos exactos, aunque en el habla común se mezclen.",
+        "pasos": [
+          "Masa = cuánta materia tiene un objeto; no cambia de lugar; se mide en kilogramos (kg) con una balanza.",
+          "Peso = fuerza con que la gravedad lo jala; cambia de lugar; se mide en newton (N).",
+          "En la Luna tu masa es la misma, pero tu peso es menor (menos gravedad)."
+        ],
+        "ejemplo": "Una maleta de 20 kg de masa sigue teniendo 20 kg de masa en la Luna, pero allí pesa unas seis veces menos, porque la gravedad lunar es más débil. La cantidad de materia (masa) no cambió; solo cambió el tirón de la gravedad (peso).",
+        "figura": ""
+      },
+      {
+        "titulo": "Prefijos: agrandar y achicar las unidades (kilo, centi, mili)",
+        "explicacion": "A veces el metro es muy grande (para medir un insecto) o muy chico (para medir una carretera). En vez de inventar unidades nuevas, el SI usa PREFIJOS: pedacitos que se ponen delante de la unidad para multiplicarla o dividirla por potencias de 10. Los tres más importantes para ti son: KILO, que significa mil veces (1 kilómetro = 1000 metros); CENTI, que significa la centésima parte, o sea dividir entre 100 (1 centímetro = 1 metro dividido en 100 partes, es decir 1 metro = 100 centímetros); y MILI, que significa la milésima parte, dividir entre 1000 (1 milímetro = 1 metro dividido en 1000 partes, es decir 1 metro = 1000 milímetros). Lo genial es que el mismo prefijo sirve para cualquier unidad: kilo siempre es mil, sea kilómetro, kilogramo o kilolitro. Por eso el SI es tan ordenado: aprendes el prefijo una vez y lo usas en todo. Y como todo va de 10 en 10, convertir es solo mover la coma o multiplicar y dividir por 10, 100 o 1000, sin cálculos raros.",
+        "pasos": [
+          "kilo (k) = 1000 veces la unidad. 1 km = 1000 m; 1 kg = 1000 g.",
+          "centi (c) = la centésima parte (÷100). 1 m = 100 cm; 1 cm = 0,01 m.",
+          "mili (m) = la milésima parte (÷1000). 1 m = 1000 mm; 1 mm = 0,001 m.",
+          "El mismo prefijo vale para cualquier unidad: kilo siempre es mil.",
+          "Todo va de 10 en 10, así que convertir es multiplicar o dividir por 10, 100 o 1000."
+        ],
+        "ejemplo": "1 kilómetro son 1000 metros. 1 metro son 100 centímetros. 1 metro son 1000 milímetros. Y como un kilogramo son 1000 gramos, medio kilogramo (0,5 kg) son 500 gramos.",
+        "figura": "<svg viewBox=\"0 0 380 130\" xmlns=\"http://www.w3.org/2000/svg\"><g font-family=\"sans-serif\" text-anchor=\"middle\"><text x=\"60\" y=\"45\" font-size=\"15\" font-weight=\"700\" fill=\"#0E9486\">kilo</text><text x=\"60\" y=\"68\" font-size=\"12\" fill=\"#3B2B4A\">x 1000</text><text x=\"60\" y=\"90\" font-size=\"12\" fill=\"#3B2B4A\">1 km = 1000 m</text><text x=\"190\" y=\"45\" font-size=\"15\" font-weight=\"700\" fill=\"#5A3AAF\">centi</text><text x=\"190\" y=\"68\" font-size=\"12\" fill=\"#3B2B4A\">dividir 100</text><text x=\"190\" y=\"90\" font-size=\"12\" fill=\"#3B2B4A\">1 m = 100 cm</text><text x=\"320\" y=\"45\" font-size=\"15\" font-weight=\"700\" fill=\"#5A3AAF\">mili</text><text x=\"320\" y=\"68\" font-size=\"12\" fill=\"#3B2B4A\">dividir 1000</text><text x=\"320\" y=\"90\" font-size=\"12\" fill=\"#3B2B4A\">1 m = 1000 mm</text></g></svg>"
+      },
+      {
+        "titulo": "Escribir bien: símbolos y notación correctos",
+        "explicacion": "En ciencia importa escribir las unidades exactamente como corresponde, porque un símbolo mal escrito puede significar otra cosa. Estas son las reglas: los símbolos van SIN punto final (se escribe 'm', no 'm.') y casi siempre en MINÚSCULA (m, kg, s, cm), salvo los que vienen de un nombre propio de persona, que van con MAYÚSCULA (K de kelvin, N de newton, A de amperio, en honor a los científicos Kelvin, Newton y Ampère). Además, los símbolos NO llevan 's' de plural: 5 kilómetros se escribe '5 km', nunca '5 kms'. Y se deja un espacio entre el número y el símbolo: '5 m', no '5m'. Fíjate en una diferencia peligrosa: 'm' (minúscula) es metro, pero como prefijo 'm' es mili; el contexto lo aclara, pero por eso hay que ser cuidadoso. Escribir bien las unidades no es manía: es parte de medir bien y de que los demás te entiendan sin dudas.",
+        "pasos": [
+          "Sin punto final: 'm', no 'm.'.",
+          "Minúscula, salvo los que vienen de nombres de persona: K (kelvin), N (newton), A (amperio).",
+          "Sin plural: '5 km', nunca '5 kms'.",
+          "Un espacio entre número y unidad: '5 m', no '5m'.",
+          "Mismo cuidado con los prefijos: 'kg' es correcto; 'Kg' o 'KG' no lo son."
+        ],
+        "ejemplo": "Correcto: 3 kg, 250 cm, 12 s, 40 kelvin escrito como 40 K. Incorrecto: 3 Kg (mayúscula de más), 250 cms (plural), 12s (sin espacio), 40 k (minúscula donde va mayúscula).",
+        "figura": ""
+      },
+      {
+        "titulo": "Cómo convertir de una unidad a otra sin equivocarte",
+        "explicacion": "Convertir es cambiar una medida a otra unidad SIN cambiar la cantidad real: 1000 metros y 1 kilómetro son la misma distancia, solo escrita de dos formas. La clave es una sola idea: si pasas a una unidad más PEQUEÑA, el número se hace MÁS GRANDE (porque hacen falta más ladrillos chiquitos para cubrir lo mismo); si pasas a una unidad más GRANDE, el número se hace MÁS PEQUEÑO. Piénsalo así: cubrir una mesa con granos de arroz necesita muchísimos; cubrirla con ladrillos necesita poquitos. Con eso ya sabes si el resultado debe crecer o achicar, y no te confundes de dirección. En la práctica: de kilómetros a metros multiplicas por 1000; de metros a centímetros multiplicas por 100; de metros a milímetros multiplicas por 1000. Y al revés (de la unidad chica a la grande) divides por lo mismo. Un consejo de oro: al terminar, mira si tu resultado tiene SENTIDO. Si conviertes 3 metros a centímetros y te da 0,03, algo salió al revés, porque centímetros son más chicos y el número debería crecer (300).",
+        "pasos": [
+          "Decide la dirección: ¿pasas a una unidad más chica (el número crece) o más grande (el número achica)?",
+          "De km a m: multiplica por 1000. De m a cm: multiplica por 100. De m a mm: multiplica por 1000.",
+          "De m a km: divide entre 1000. De cm a m: divide entre 100. De mm a m: divide entre 1000.",
+          "Comprueba el sentido: a unidad más chica el número debe ser mayor; si te salió menor, revísalo."
+        ],
+        "ejemplo": "Convertir 2,5 km a metros: como el metro es más chico que el kilómetro, el número crece. 2,5 x 1000 = 2500. Entonces 2,5 km = 2500 m. Al revés: 2500 m a km es 2500 ÷ 1000 = 2,5 km. Tiene sentido: pasamos a una unidad más grande y el número achicó.",
+        "figura": ""
+      },
+      {
+        "titulo": "Los instrumentos: cada magnitud, su herramienta",
+        "explicacion": "Para medir bien no basta con saber la unidad: hay que usar el INSTRUMENTO adecuado, cada uno pensado para una magnitud. La longitud se mide con reglas, cintas métricas (para distancias largas, como una habitación) o con instrumentos finos como el calibre o pie de rey (para cosas pequeñas, como el grosor de una moneda). La masa se mide con una BALANZA. El tiempo se mide con un reloj o un CRONÓMETRO (que mide tiempos cortos con precisión). La temperatura se mide con un TERMÓMETRO. Y el volumen de un líquido se mide con una probeta o un vaso graduado. Usar el instrumento correcto y leerlo bien es parte de la PRECISIÓN de una medida, que significa qué tan finita o detallada es: una regla común mide hasta el milímetro, mientras que un calibre puede medir décimas de milímetro. Elegir la herramienta según lo que mides es lo que separa una medida confiable de una chapucera.",
+        "pasos": [
+          "Longitud: regla, cinta métrica (largo) o calibre (piezas pequeñas y finas).",
+          "Masa: balanza.",
+          "Tiempo: reloj o cronómetro.",
+          "Temperatura: termómetro.",
+          "Volumen de líquidos: probeta o vaso graduado.",
+          "Lee el instrumento con cuidado: mirar de frente y anotar con la unidad correcta."
+        ],
+        "ejemplo": "Para medir el grosor de una moneda, una regla común es demasiado tosca (apenas llega al milímetro); un calibre, que mide décimas de milímetro, da una medida mucho más precisa. Elegir el instrumento según la precisión que necesitas es medir con criterio.",
+        "figura": "<svg viewBox=\"0 0 340 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"20\" y=\"50\" width=\"200\" height=\"26\" rx=\"3\" fill=\"#12B5A4\" fill-opacity=\"0.12\" stroke=\"#12B5A4\" stroke-width=\"2\"/><g stroke=\"#5A3AAF\" stroke-width=\"1\"><line x1=\"40\" y1=\"50\" x2=\"40\" y2=\"66\"/><line x1=\"60\" y1=\"50\" x2=\"60\" y2=\"60\"/><line x1=\"80\" y1=\"50\" x2=\"80\" y2=\"60\"/><line x1=\"100\" y1=\"50\" x2=\"100\" y2=\"66\"/><line x1=\"120\" y1=\"50\" x2=\"120\" y2=\"60\"/><line x1=\"140\" y1=\"50\" x2=\"140\" y2=\"60\"/><line x1=\"160\" y1=\"50\" x2=\"160\" y2=\"66\"/><line x1=\"180\" y1=\"50\" x2=\"180\" y2=\"60\"/><line x1=\"200\" y1=\"50\" x2=\"200\" y2=\"60\"/></g><text x=\"120\" y=\"38\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">regla graduada en cm y mm</text><text x=\"120\" y=\"100\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#5A3AAF\">cada magnitud tiene su instrumento</text></svg>"
+      }
+    ],
+    "idea_clave": "Una MAGNITUD es todo lo que se puede medir (longitud, masa, tiempo...), y MEDIR es comparar esa magnitud con una UNIDAD para ver cuántas veces cabe; por eso toda medida es número MÁS unidad. El mundo usa el Sistema Internacional (SI) para hablar el mismo idioma: metro (m) para longitud, kilogramo (kg) para masa, segundo (s) para tiempo. Los prefijos kilo (x1000), centi (÷100) y mili (÷1000) agrandan o achican las unidades, y convertir es solo multiplicar o dividir por 10, 100 o 1000, comprobando siempre que el resultado tenga sentido."
+  },
+  "practica": [
+    {
+      "enunciado": "De esta lista, di cuáles son magnitudes físicas (se pueden medir con un número) y cuáles no: la longitud de una cancha, la simpatía de una persona, la masa de una manzana, lo divertido de una película, el tiempo que dura un recreo.",
+      "pista": "Una magnitud se puede medir con un instrumento y ponerle un número que signifique lo mismo para todos. Lo que solo se puede opinar no es magnitud.",
+      "solucion": "Son magnitudes físicas: la longitud de la cancha (se mide con cinta métrica, en metros), la masa de la manzana (se mide con balanza, en gramos o kilogramos) y el tiempo del recreo (se mide con reloj, en minutos o segundos). NO son magnitudes: la simpatía y lo divertido de una película, porque no hay un número que signifique lo mismo para todos; son impresiones, no medidas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero anota en su cuaderno que la mesa 'mide 4' y que el experimento 'duró 30'. Explica por qué esas anotaciones están mal y corrígelas de forma razonable.",
+      "pista": "Recuerda que toda medida tiene dos partes. Fíjate qué le falta a cada anotación.",
+      "solucion": "Están mal porque les falta la UNIDAD: un número solo no dice nada. '4' puede ser 4 metros, 4 centímetros o 4 pasos, y '30' puede ser 30 segundos, 30 minutos o 30 horas. Corregidas con unidades razonables: la mesa mide 'un metro con veinte', o sea 1,20 m (un ancho normal de mesa), y el experimento 'duró 30 segundos' (30 s). Toda medida debe escribirse como número MÁS unidad.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe la magnitud fundamental del SI y su unidad (con símbolo) que usarías para medir: (a) qué tan alto eres, (b) cuánta materia tiene una bolsa de arroz, (c) cuánto tardas en llegar a la escuela.",
+      "pista": "Las tres fundamentales que más usas son longitud, masa y tiempo. Empareja cada situación con la magnitud que le corresponde.",
+      "solucion": "(a) Tu altura es una LONGITUD; unidad: metro (m). (b) La materia de la bolsa de arroz es MASA; unidad: kilogramo (kg). (c) Lo que tardas es TIEMPO; unidad: segundo (s) —aunque en la vida diaria lo digas en minutos, la unidad del SI es el segundo—. Cada situación cae en una de las tres magnitudes fundamentales del SI.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Convierte 2,5 km a metros. Explica en qué dirección va el cambio (si el número debe crecer o achicar) y comprueba que tenga sentido.",
+      "pista": "El metro es más pequeño que el kilómetro, y 1 km = 1000 m. Al pasar a una unidad más chica, el número debe crecer. Multiplica por 1000.",
+      "solucion": "El metro es más chico que el kilómetro, así que el número debe CRECER. Como 1 km = 1000 m, multiplicamos: 2,5 x 1000 = 2500. Entonces 2,5 km = 2500 m. Comprobación: al revés, 2500 m ÷ 1000 = 2,5 km, así que cuadra. Tiene sentido porque pasamos a una unidad más pequeña y el número se hizo mayor.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Convierte 3 minutos a segundos. (Recuerda que 1 minuto tiene 60 segundos.)",
+      "pista": "El segundo es más pequeño que el minuto, así que el número debe crecer. Multiplica los minutos por 60.",
+      "solucion": "Como 1 minuto = 60 segundos, multiplicamos: 3 x 60 = 180. Entonces 3 min = 180 s. Comprobación: 180 ÷ 60 = 3 min, cuadra. Tiene sentido: el segundo es más chico que el minuto, por eso el número creció de 3 a 180.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Convierte 1,5 kg a gramos, y luego di cuántos gramos son medio kilogramo (0,5 kg).",
+      "pista": "El prefijo kilo significa mil, así que 1 kg = 1000 g. El gramo es más pequeño que el kilogramo, el número debe crecer. Multiplica por 1000.",
+      "solucion": "Como 1 kg = 1000 g, para 1,5 kg multiplicamos: 1,5 x 1000 = 1500 g. Y medio kilogramo: 0,5 x 1000 = 500 g. Comprobación: 1500 g ÷ 1000 = 1,5 kg y 500 g ÷ 1000 = 0,5 kg, ambos cuadran. En los dos casos el número creció porque el gramo es más chico que el kilogramo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un lápiz mide 18 cm. Exprésalo en milímetros y luego en metros. (1 cm = 10 mm; 1 m = 100 cm.)",
+      "pista": "Para pasar de cm a mm, el milímetro es más chico: multiplica por 10. Para pasar de cm a m, el metro es más grande: divide por 100.",
+      "solucion": "A milímetros: como 1 cm = 10 mm, 18 x 10 = 180 mm. A metros: como 1 m = 100 cm, dividimos, 18 ÷ 100 = 0,18 m. Comprobaciones: 180 mm ÷ 10 = 18 cm y 0,18 m x 100 = 18 cm, ambas cuadran. Fíjate en la lógica: hacia mm (más chico) el número creció (180); hacia m (más grande) el número achicó (0,18).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige la escritura de estas unidades según las reglas del SI: '5 Kg', '20 cms', '3m', '40 k' (queriendo decir kelvin).",
+      "pista": "Recuerda: minúscula salvo nombres de persona; sin plural; con espacio entre número y unidad; kelvin lleva K mayúscula.",
+      "solucion": "'5 Kg' debe ser '5 kg' (kilo va en minúscula). '20 cms' debe ser '20 cm' (los símbolos no llevan 's' de plural). '3m' debe ser '3 m' (falta el espacio entre el número y la unidad). '40 k' debe ser '40 K' (kelvin viene del nombre propio Lord Kelvin, por eso su símbolo es K mayúscula). Escribir bien las unidades es parte de medir bien.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Empareja cada magnitud con el instrumento adecuado y justifica una elección: masa, tiempo, temperatura del agua, longitud de una habitación. Instrumentos: termómetro, cinta métrica, balanza, cronómetro.",
+      "pista": "Cada instrumento sirve para una sola magnitud. Para la habitación piensa cuál llega a medir varios metros con comodidad.",
+      "solucion": "Masa con la balanza. Tiempo con el cronómetro. Temperatura del agua con el termómetro. Longitud de la habitación con la cinta métrica (una regla corta sería incómoda para varios metros; la cinta métrica se estira a lo largo de toda la habitación). Usar el instrumento correcto es parte de obtener una medida confiable.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un objeto tiene una masa de 12 kg. ¿Cambiará su MASA si lo llevas a la Luna? ¿Y su PESO? Explica la diferencia.",
+      "pista": "La masa es cuánta materia tiene el objeto; el peso es la fuerza con que la gravedad lo jala. Piensa cuál de las dos depende de la gravedad del lugar.",
+      "solucion": "Su MASA seguirá siendo 12 kg en la Luna, porque la masa es la cantidad de materia del objeto y esa no cambia de lugar. Su PESO SÍ cambiará: en la Luna la gravedad es más débil (unas seis veces menor), así que el objeto pesará bastante menos, aunque tenga la misma cantidad de materia. La diferencia: la masa mide cuánta cosa hay (en kg); el peso mide el tirón de la gravedad (en newton, N), y ese tirón depende del lugar.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál de estas es una MAGNITUD FÍSICA (algo que se puede medir con un número)?",
+      "opciones": [
+        "La simpatía de una persona",
+        "La masa de una manzana",
+        "Lo bonito de un paisaje",
+        "El sabor de una comida"
+      ],
+      "correcta": 1,
+      "explicacion": "La masa se puede medir con una balanza y ponerle un número (por ejemplo, 300 gramos) que significa lo mismo para todos. La simpatía, la belleza y el sabor son impresiones que dependen de cada persona: no son magnitudes."
+    },
+    {
+      "pregunta": "¿Qué significa realmente 'medir' una magnitud?",
+      "opciones": [
+        "Adivinar un número aproximado",
+        "Comparar la magnitud con una unidad para ver cuántas veces cabe",
+        "Preguntarle a alguien su opinión",
+        "Escribir cualquier número que suene bien"
+      ],
+      "correcta": 1,
+      "explicacion": "Medir es comparar lo que mides con una unidad (un 'ladrillo' fijo) y contar cuántas veces cabe. Por eso toda medida tiene dos partes: un número (cuántas veces) y una unidad (cuál ladrillo)."
+    },
+    {
+      "pregunta": "Un estudiante escribe que su cuaderno 'mide 21'. ¿Qué le falta a esa medida?",
+      "opciones": [
+        "Nada, está completa",
+        "Le falta la unidad: 21 no dice si son centímetros, metros o pasos",
+        "Le falta poner un número más grande",
+        "Le falta la fecha"
+      ],
+      "correcta": 1,
+      "explicacion": "Un número solo no significa nada: '21' puede ser 21 cm, 21 m o 21 lápices. Toda medida debe escribirse como número MÁS unidad, por ejemplo '21 cm'. Es uno de los errores más comunes al medir."
+    },
+    {
+      "pregunta": "¿Para qué sirve el Sistema Internacional de unidades (SI)?",
+      "opciones": [
+        "Para que cada país use las unidades que quiera",
+        "Para que todos midan con las mismas unidades y se entiendan en cualquier parte del mundo",
+        "Para hacer los problemas más difíciles",
+        "Solo para los astronautas"
+      ],
+      "correcta": 1,
+      "explicacion": "El SI es el acuerdo mundial que fija unas mismas unidades para todos, así un metro es igual en cualquier país. Eso permite que la ciencia y la tecnología del planeta se entiendan y puedan repetir las mediciones de otros."
+    },
+    {
+      "pregunta": "¿Cuál es la unidad del SI para la LONGITUD y su símbolo correcto?",
+      "opciones": [
+        "El kilogramo (kg)",
+        "El segundo (s)",
+        "El metro (m)",
+        "El litro (l)"
+      ],
+      "correcta": 2,
+      "explicacion": "La longitud se mide en metros, con símbolo m. El kilogramo (kg) es para la masa y el segundo (s) para el tiempo; esas son las otras dos magnitudes fundamentales que más usarás."
+    },
+    {
+      "pregunta": "¿Cuánto es 2,5 km expresado en metros?",
+      "opciones": [
+        "250 m",
+        "25 m",
+        "2500 m",
+        "0,0025 m"
+      ],
+      "correcta": 2,
+      "explicacion": "Como 1 km = 1000 m, multiplicamos: 2,5 x 1000 = 2500 m. El metro es más pequeño que el kilómetro, así que al convertir el número debe CRECER (de 2,5 a 2500), no achicar."
+    },
+    {
+      "pregunta": "¿A cuántos segundos equivalen 3 minutos?",
+      "opciones": [
+        "30 s",
+        "180 s",
+        "60 s",
+        "300 s"
+      ],
+      "correcta": 1,
+      "explicacion": "Cada minuto tiene 60 segundos, así que 3 x 60 = 180 s. El segundo es más pequeño que el minuto, por eso el número crece de 3 a 180. (30 sería medio minuto y 60 sería un solo minuto.)"
+    },
+    {
+      "pregunta": "El prefijo 'kilo' significa...",
+      "opciones": [
+        "Mil veces la unidad (x1000)",
+        "La mitad de la unidad",
+        "La milésima parte de la unidad",
+        "Cien veces la unidad"
+      ],
+      "correcta": 0,
+      "explicacion": "Kilo siempre significa mil, en cualquier unidad: 1 kilómetro = 1000 metros y 1 kilogramo = 1000 gramos. La milésima parte es 'mili' y la centésima es 'centi'; no confundirlos."
+    },
+    {
+      "pregunta": "¿Cuántos centímetros hay en 1 metro?",
+      "opciones": [
+        "10 cm",
+        "1000 cm",
+        "100 cm",
+        "0,01 cm"
+      ],
+      "correcta": 2,
+      "explicacion": "El prefijo centi significa la centésima parte, así que 1 metro se divide en 100 centímetros: 1 m = 100 cm. (En 1 metro hay 1000 milímetros y 10 decímetros, pero centímetros son 100.)"
+    },
+    {
+      "pregunta": "¿Cuál de estas unidades está ESCRITA correctamente según el SI?",
+      "opciones": [
+        "5 Kg",
+        "20 kms",
+        "3 kg",
+        "12s"
+      ],
+      "correcta": 2,
+      "explicacion": "'3 kg' es correcto: kilo en minúscula, sin plural y con espacio. '5 Kg' tiene mayúscula de más, '20 kms' lleva una 's' de plural que no debe ir, y '12s' le falta el espacio entre el número y la unidad."
+    },
+    {
+      "pregunta": "Al convertir 3 metros a centímetros obtienes 0,03. ¿Qué pasó?",
+      "opciones": [
+        "Está bien, ese es el resultado",
+        "Está mal: pasaste a una unidad más pequeña, así que el número debía crecer, no achicar (lo correcto es 300 cm)",
+        "Está mal porque el resultado debía ser 3",
+        "Está bien porque los centímetros son más grandes que los metros"
+      ],
+      "correcta": 1,
+      "explicacion": "El centímetro es más chico que el metro, así que al convertir el número debe CRECER. Lo correcto es 3 x 100 = 300 cm. Obtener 0,03 significa que se dividió cuando había que multiplicar: por eso siempre conviene comprobar que el resultado tenga sentido."
+    },
+    {
+      "pregunta": "¿En qué se diferencian la MASA y el PESO de un objeto?",
+      "opciones": [
+        "Son exactamente lo mismo con distinto nombre",
+        "La masa es cuánta materia tiene (no cambia de lugar); el peso es la fuerza de la gravedad sobre él (sí cambia de lugar)",
+        "La masa cambia en la Luna y el peso no",
+        "El peso se mide en kilogramos y la masa en metros"
+      ],
+      "correcta": 1,
+      "explicacion": "La masa es la cantidad de materia y no cambia vayas donde vayas (se mide en kg con una balanza). El peso es la fuerza con que la gravedad jala el objeto y sí cambia de lugar (se mide en newton, N): en la Luna tu masa es la misma pero pesas menos."
+    }
+  ]
+}

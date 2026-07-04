@@ -1,0 +1,323 @@
+{
+  "programa": "cumbre",
+  "materia": "Inglés",
+  "grado": "Cumbre Inglés 1er año",
+  "dominio": "Hablar de mí y de otros",
+  "tema": "Puedo dar información personal: edad, país, nacionalidad (personal information; numbers)",
+  "referencias": [
+    "MCER/CEFR A1-A2 — puede dar información personal básica: edad, lugar de origen y nacionalidad; puede usar los números cardinales",
+    "Cambridge A2 Key for Schools — personal information, cardinal numbers, countries and nationalities",
+    "IB Language Acquisition (Emergent/Phase 1) — identidad personal: edad, origen, nacionalidad",
+    "Communicative Language Teaching (CLT) — función 'can-do': presentar datos personales en una conversación real"
+  ],
+  "resumen": {
+    "titulo": "Contar quién soy: mi edad, mi país y mi nacionalidad",
+    "intro": "Ya sabes saludar y decir tu nombre. El siguiente paso natural cuando conoces a alguien es contar un poco más de ti: cuántos años tienes, de qué país eres y cuál es tu nacionalidad. Para eso necesitas dos herramientas: los NÚMEROS en inglés (para la edad) y las palabras de PAÍSES y NACIONALIDADES. En esta guía aprendes a decir tu edad sin caer en el error más famoso de los hispanohablantes, a contar del 0 al 100, y a pasar del nombre de un país al de su nacionalidad siguiendo un patrón. Empezamos desde cero: no necesitas saber inglés previo. El inglés va siempre con su traducción entre paréntesis y, cuando ayuda, con la pronunciación aproximada en español.",
+    "secciones": [
+      {
+        "titulo": "Los números del 0 al 12: la base de todo",
+        "explicacion": "Un NÚMERO CARDINAL es el que sirve para CONTAR cosas (uno, dos, tres...), a diferencia de los que ordenan (primero, segundo). Para decir tu edad y muchísimas cosas más necesitas los números en inglés, y los primeros son especiales porque cada uno tiene su propio nombre y hay que memorizarlos. Aquí están del 0 al 12 con su pronunciación aproximada: 0 zero (zíro), 1 one (uán), 2 two (tú), 3 three (zríi), 4 four (fóar), 5 five (fáiv), 6 six (six), 7 seven (séven), 8 eight (éit), 9 nine (náin), 10 ten (ten), 11 eleven (iléven), 12 twelve (tuélv). Un truco: la 'th' de 'three' es un sonido que no existe en español, como una 'z' suave sacando un poquito la lengua entre los dientes. Vale la pena repetirlos en voz alta varias veces hasta que salgan solos, porque son la base de todo lo demás.",
+        "pasos": [
+          "Memoriza uno por uno del 0 al 12: son nombres únicos, no siguen un patrón.",
+          "Repítelos en voz alta: zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve.",
+          "Practica la 'th' de 'three' poniendo la lengua entre los dientes."
+        ],
+        "ejemplo": "Si tienes 12 años, el número que necesitas es 'twelve' (se dice 'tuélv')."
+      },
+      {
+        "titulo": "Los números del 13 al 19: los 'teen'",
+        "explicacion": "Del 13 al 19 aparece un patrón muy útil: casi todos terminan en '-teen' (que se dice 'tíin'). Por eso en inglés a los adolescentes se les llama 'teenagers': son los de los años 'teen'. Se forman tomando la raíz del número pequeño y pegándole '-teen': 13 thirteen (zértíin), 14 fourteen (fórtíin), 15 fifteen (fíftíin), 16 sixteen (síxtíin), 17 seventeen (séventíin), 18 eighteen (éitíin), 19 nineteen (náintíin). Ojo con dos que cambian un poco su raíz: 'thirteen' (viene de three pero se escribe 'thir-') y 'fifteen' (viene de five pero se escribe 'fif-'). El resto sí se reconocen fácil: four→fourteen, six→sixteen, seven→seventeen, eight→eighteen, nine→nineteen. Si tienes entre 13 y 19 años, tu edad está en este grupo.",
+        "pasos": [
+          "Toma el número pequeño y pégale '-teen': six + teen = sixteen.",
+          "Memoriza los dos raros: thirteen (de three) y fifteen (de five).",
+          "Los demás son directos: fourteen, sixteen, seventeen, eighteen, nineteen."
+        ],
+        "ejemplo": "Con 15 años dices 'fifteen'; con 18 años dices 'eighteen'."
+      },
+      {
+        "titulo": "Las decenas: 20, 30, 40... hasta 100",
+        "explicacion": "Las DECENAS son los números redondos: 20, 30, 40, etc. Casi todas terminan en '-ty' (que se dice 'ti'): 20 twenty (tuénti), 30 thirty (zérti), 40 forty (fórti), 50 fifty (fífti), 60 sixty (síxti), 70 seventy (séventi), 80 eighty (éiti), 90 ninety (náinti), y 100 one hundred (uán jándred). Cuidado con no confundir el sonido '-teen' (de 13-19) con '-ty' (de las decenas): 'fifteen' (15) suena 'fíf-TÍIN' con fuerza al final, y 'fifty' (50) suena 'FÍF-ti' con fuerza al principio. Es un error clásico. Fíjate también que 'forty' (40) se escribe SIN la 'u' de 'four' (no es 'fourty'), y que thirty y fifty cambian su raíz igual que sus primos teen.",
+        "pasos": [
+          "Las decenas terminan en '-ty': twenty, thirty, forty, fifty...",
+          "No confundas -teen (13-19) con -ty (20, 30...): fifteen vs fifty.",
+          "Recuerda las que cambian: thirty, forty (sin u), fifty.",
+          "100 es 'one hundred'."
+        ],
+        "ejemplo": "Tu abuela de 60 años tiene 'sixty' años; un billete de 100 es 'one hundred'."
+      },
+      {
+        "titulo": "Números compuestos: cómo armar 21, 34, 58...",
+        "explicacion": "Para los números que no son redondos (como 21, 34 o 58) el inglés los arma juntando la decena y la unidad con un guion. La fórmula es: decena + guion + unidad. Así, 21 es 'twenty-one' (veinte-uno), 34 es 'thirty-four' (treinta-cuatro), 58 es 'fifty-eight' (cincuenta-ocho). Es más fácil que en español: nosotros decimos 'veintiuno' o 'treinta y cuatro', pero en inglés siempre es la misma receta, decena primero y unidad después, unidas con guion. No hace falta memorizar del 21 al 99 uno por uno: con las decenas y las unidades del 1 al 9 ya puedes construir cualquiera.",
+        "pasos": [
+          "Di primero la decena: twenty, thirty, forty...",
+          "Pon un guion y luego la unidad: -one, -two, -three...",
+          "Ejemplo: 47 = forty (40) + seven (7) = forty-seven."
+        ],
+        "ejemplo": "45 se dice 'forty-five' (cuarenta-cinco); 72 se dice 'seventy-two' (setenta-dos)."
+      },
+      {
+        "titulo": "Decir la edad: 'I am 12 years old' (y por qué NO 'I have 12 years')",
+        "explicacion": "Este es el punto más importante de toda la guía, porque aquí casi todos los hispanohablantes cometen el mismo error. En español decimos 'TENGO 12 años', usando el verbo TENER. Por eso, al traducir palabra por palabra, muchos dicen 'I have 12 years', ¡pero eso está MAL en inglés! El inglés no usa 'tener' para la edad, usa el verbo 'to be' (ser/estar): la forma correcta es 'I am 12 years old', que literalmente sería 'yo SOY 12 años viejo'. La palabra 'old' significa 'viejo/de edad' (se dice 'óuld') y 'years' significa 'años' (se dice 'yíars'). ¿Por qué es así? Porque para el inglés la edad es una CARACTERÍSTICA tuya (como ser alto o feliz), no algo que posees; y las características van con 'to be'. Además, como hablas de ti mismo (I), el verbo es 'am'. Puedes decirlo completo 'I am 12 years old' o corto 'I'm 12'. Las dos son correctas; lo que nunca se dice es 'I have 12 years'.",
+        "pasos": [
+          "Usa el verbo 'to be', NO 'have': I am... (Yo soy...).",
+          "Forma completa: 'I am 12 years old.' (Tengo 12 años).",
+          "Forma corta y natural: 'I'm 12.'",
+          "NUNCA digas 'I have 12 years': es traducir 'tengo' literal, y en inglés está mal."
+        ],
+        "ejemplo": "Correcto: 'I am 13 years old.' o 'I'm 13.' (Tengo 13 años). Incorrecto: 'I have 13 years.'"
+      },
+      {
+        "titulo": "Preguntar la edad: 'How old are you?'",
+        "explicacion": "Para preguntar la edad de alguien se dice 'How old are you?', que significa '¿Cuántos años tienes?' (literalmente sería '¿Qué tan viejo eres?'; se dice 'jáu óuld ar yú'). Fíjate que vuelve a aparecer el verbo 'to be': como preguntas a 'you', va 'are', igual que en 'How are you?'. La respuesta usa lo que ya aprendiste: 'I'm...' + tu edad. No hace falta repetir 'years old' al responder si no quieres; basta con 'I'm 12'. Cuidado: no se dice 'How many years do you have?' (que sería traducir '¿cuántos años tienes?' literal); eso está mal en inglés justamente porque la edad va con 'to be', no con 'have'.",
+        "pasos": [
+          "Pregunta: 'How old are you?' (¿Cuántos años tienes?).",
+          "Con 'you' va 'are' (How old ARE you).",
+          "Responde: 'I'm 12.' o 'I am 12 years old.'",
+          "Evita 'How many years do you have?': es incorrecto."
+        ],
+        "ejemplo": "'How old are you?' (¿Cuántos años tienes?) — 'I'm 14. And you?' (Tengo 14. ¿Y tú?)."
+      },
+      {
+        "titulo": "De dónde soy: países y 'I'm from...'",
+        "explicacion": "Para decir de qué país eres se usa la fórmula 'I'm from...' + el país (que significa 'Soy de...'; 'from' significa 'de/desde' y se dice 'from'). Los nombres de los países en inglés se parecen a los del español pero cambian un poco y SIEMPRE se escriben con mayúscula. Algunos ejemplos: Venezuela (igual), Colombia (igual), Mexico (sin acento, se dice 'méxico'), Spain (España, se dice 'spéin'), the United States (Estados Unidos), Brazil (Brasil, con z), Argentina (igual), Peru (sin acento), Italy (Italia), France (Francia), Japan (Japón), China (igual). La pregunta para el país es 'Where are you from?', que significa '¿De dónde eres?' ('where' significa 'dónde', se dice 'guér'). Otra vez aparece 'to be': 'Where ARE you from'.",
+        "pasos": [
+          "Di 'I'm from...' + el país: I'm from Venezuela (Soy de Venezuela).",
+          "Los países van SIEMPRE con mayúscula.",
+          "Pregunta: 'Where are you from?' (¿De dónde eres?)."
+        ],
+        "ejemplo": "'Where are you from?' (¿De dónde eres?) — 'I'm from Venezuela.' (Soy de Venezuela.)."
+      },
+      {
+        "titulo": "Nacionalidades: del país a la nacionalidad hay un patrón",
+        "explicacion": "La NACIONALIDAD es la palabra que dice a qué país perteneces, pero usada como característica tuya: no es lo mismo el país (Venezuela) que la nacionalidad (Venezuelan = venezolano). En inglés la nacionalidad SIEMPRE va con mayúscula, igual que el país. Lo bueno es que hay un PATRÓN: la mayoría de las nacionalidades se forman agregando una terminación al nombre del país. Las terminaciones más comunes son '-an', '-ian', '-ish' y '-ese'. Por ejemplo, se le agrega '-n' o '-an': Venezuela → Venezuelan, Colombia → Colombian, Mexico → Mexican, America → American, Italy → Italian, Brazil → Brazilian. Con '-ish': Spain → Spanish (español), England → English (inglés). Con '-ese': Japan → Japanese (japonés), China → Chinese (chino). Hay algunos que se salen del patrón y hay que memorizarlos, como France → French (francés). Para decir tu nacionalidad usas 'I'm...' + nacionalidad, con el verbo 'to be': 'I'm Venezuelan' (Soy venezolano).",
+        "pasos": [
+          "La nacionalidad es una característica tuya y va con 'to be': I'm + nacionalidad.",
+          "Muchas se forman con '-an'/'-ian': Venezuela→Venezuelan, Italy→Italian.",
+          "Otras con '-ish' (Spain→Spanish) o '-ese' (Japan→Japanese, China→Chinese).",
+          "Memoriza las irregulares, como France→French.",
+          "País y nacionalidad van SIEMPRE con mayúscula."
+        ],
+        "ejemplo": "I'm from Venezuela, and I'm Venezuelan. (Soy de Venezuela, y soy venezolano.) I'm from Japan, and I'm Japanese. (Soy de Japón, y soy japonés.)"
+      },
+      {
+        "titulo": "Preguntar la nacionalidad y no confundir país con nacionalidad",
+        "explicacion": "La pregunta por la nacionalidad es 'What's your nationality?', que significa '¿Cuál es tu nacionalidad?' ('nationality' significa 'nacionalidad', se dice 'nashonáliti'). Aquí es clave no mezclar dos cosas que se parecen: el PAÍS es un lugar (Venezuela, Spain, Japan) y va después de 'from' ('I'm FROM Venezuela'), mientras que la NACIONALIDAD es una característica tuya (Venezuelan, Spanish, Japanese) y va directo después de 'to be' SIN 'from' ('I'm Venezuelan'). El error típico es decir 'I'm from Venezuelan' (mezclando 'from' con la nacionalidad) o 'I'm Venezuela' (usando el país como si fuera nacionalidad). La regla es fácil: si pones 'from', va el PAÍS; si no pones 'from', va la NACIONALIDAD.",
+        "pasos": [
+          "Pregunta: 'What's your nationality?' (¿Cuál es tu nacionalidad?).",
+          "Con 'from' va el PAÍS: 'I'm from Spain.'",
+          "SIN 'from' va la NACIONALIDAD: 'I'm Spanish.'",
+          "Nunca mezcles: 'I'm from Spanish' y 'I'm Spain' están mal."
+        ],
+        "ejemplo": "'What's your nationality?' — 'I'm Colombian.' (¿Cuál es tu nacionalidad? — Soy colombiano.) Pero para el país: 'I'm from Colombia.' (Soy de Colombia.)"
+      },
+      {
+        "titulo": "Todo junto: presentarme con mis datos personales",
+        "explicacion": "Ahora puedes juntar todo lo de esta guía con lo que ya sabías de saludar y presentarte, y dar una descripción completa de ti mismo. El orden habitual es: nombre, edad, país y nacionalidad, todo con el verbo 'to be'. Practícalo en voz alta cambiando los datos por los tuyos: es la mejor forma de que se te quede. Fíjate que TODAS las frases usan 'to be' (am/is): el nombre, la edad, el origen y la nacionalidad. Por eso 'to be' es tan importante para hablar de uno mismo.",
+        "pasos": [
+          "Nombre: 'My name is...' o 'I'm...'.",
+          "Edad: 'I'm 12 years old.' (con 'to be', no con 'have').",
+          "País: 'I'm from...' (con 'from').",
+          "Nacionalidad: 'I'm...' (sin 'from')."
+        ],
+        "ejemplo": "'Hi! My name is Ana. I'm 12 years old. I'm from Venezuela, and I'm Venezuelan.' (¡Hola! Me llamo Ana. Tengo 12 años. Soy de Venezuela y soy venezolana.)"
+      }
+    ],
+    "idea_clave": "Para dar tus datos personales en inglés todo gira alrededor del verbo 'to be': la edad se dice 'I am 12 years old' (nunca 'I have 12 years', porque en inglés la edad es una característica, no algo que se tiene); el país va con 'from' ('I'm from Venezuela') y la nacionalidad va sin 'from' ('I'm Venezuelan'). Los números se memorizan del 0 al 12, los del 13 al 19 terminan en '-teen', las decenas en '-ty', y los compuestos se arman con un guion (twenty-one). La mayoría de las nacionalidades salen del país agregando '-an', '-ian', '-ish' o '-ese'."
+  },
+  "practica": [
+    {
+      "enunciado": "Escribe estos números en inglés: 3, 7, 12, 15, 20, 40.",
+      "pista": "Del 0 al 12 son nombres únicos; 15 es del grupo '-teen'; 20 y 40 son decenas que terminan en '-ty'. Ojo con la escritura de 40.",
+      "solucion": "3 = three, 7 = seven, 12 = twelve, 15 = fifteen, 20 = twenty, 40 = forty (¡sin la 'u' de four!). Recuerda que fifteen (15) lleva -teen y forty (40) lleva -ty.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Traduce al inglés la frase '¿Cuántos años tienes?' y responde 'Tengo 12 años' de la forma CORRECTA.",
+      "pista": "La pregunta usa 'How old...' con el verbo 'to be' (are). Para la edad NUNCA se usa 'have'; se usa 'to be'.",
+      "solucion": "Pregunta: 'How old are you?' Respuesta: 'I am 12 years old.' o 'I'm 12.' Con 'you' va 'are', y para la edad se usa el verbo 'to be' (I'm), no 'I have'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige el error en esta frase muy común: 'I have 14 years.'",
+      "pista": "En español decimos 'tengo', pero el inglés no usa 'have' para la edad. ¿Qué verbo usa?",
+      "solucion": "Lo correcto es 'I am 14 years old.' o 'I'm 14.' El error 'I have 14 years' viene de traducir 'tengo' literal; en inglés la edad va con el verbo 'to be' porque es una característica, no una posesión.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Da la nacionalidad para cada país, con mayúscula: Venezuela, Spain, Japan, Italy.",
+      "pista": "Recuerda el patrón: '-an'/'-ian', '-ish', '-ese'. Venezuela y Italy llevan una; Spain lleva otra; Japan lleva otra.",
+      "solucion": "Venezuela → Venezuelan, Spain → Spanish, Japan → Japanese, Italy → Italian. Todas van con mayúscula. (Venezuelan e Italian con -an/-ian, Spanish con -ish, Japanese con -ese.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe estos números compuestos en inglés: 21, 34, 58, 47.",
+      "pista": "La receta es decena + guion + unidad. Primero la decena (twenty, thirty...), luego un guion, luego la unidad (one, two...).",
+      "solucion": "21 = twenty-one, 34 = thirty-four, 58 = fifty-eight, 47 = forty-seven. Siempre: decena primero, guion, y unidad después.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Completa con 'from' donde haga falta: 'I'm ___ Colombia.' (país) y 'I'm ___ Colombian.' (nacionalidad).",
+      "pista": "Regla clave: con el PAÍS va 'from'; con la NACIONALIDAD NO va 'from'.",
+      "solucion": "'I'm from Colombia.' (país, lleva 'from') y 'I'm Colombian.' (nacionalidad, SIN 'from'). El error típico sería 'I'm from Colombian', que mezcla mal las dos.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Traduce al inglés: '¿De dónde eres?' y responde 'Soy de México'.",
+      "pista": "La pregunta usa 'Where' + el verbo 'to be' (are) + 'from'. La respuesta usa 'I'm from...' + el país (con mayúscula).",
+      "solucion": "Pregunta: 'Where are you from?' Respuesta: 'I'm from Mexico.' (Mexico se escribe sin acento y con mayúscula.) Con 'you' va 'are'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica con tus palabras la diferencia entre 'fifteen' y 'fifty', y di cuál es 15 y cuál es 50.",
+      "pista": "Uno termina en '-teen' (de los adolescentes, 13-19) y el otro en '-ty' (las decenas redondas).",
+      "solucion": "'Fifteen' termina en -teen y es 15 (uno de los números del 13 al 19). 'Fifty' termina en -ty y es 50 (una decena redonda). Se confunden al hablar, pero fifteen carga la fuerza al final (fif-TÍIN) y fifty al principio (FÍF-ti).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ordena este diálogo para que tenga sentido: (a) 'I'm from Peru, and I'm Peruvian.' (b) 'Where are you from?' (c) 'How old are you?' (d) 'I'm 13.'",
+      "pista": "Un diálogo natural pregunta una cosa, se responde, y luego pregunta otra. Agrupa cada pregunta con su respuesta lógica: edad con edad, país con país.",
+      "solucion": "Orden correcto: (c) 'How old are you?' → (d) 'I'm 13.' → (b) 'Where are you from?' → (a) 'I'm from Peru, and I'm Peruvian.' Primero la pregunta y respuesta de la edad, luego la del país y nacionalidad.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe una presentación completa de ti mismo (usa el nombre 'Diego', 12 años, de Venezuela). Incluye nombre, edad, país y nacionalidad.",
+      "pista": "Usa 'to be' en todo: 'My name is...' / 'I'm ... years old' / 'I'm from...' / 'I'm ...' (nacionalidad, sin from).",
+      "solucion": "'Hi! My name is Diego. I'm 12 years old. I'm from Venezuela, and I'm Venezuelan.' (¡Hola! Me llamo Diego. Tengo 12 años. Soy de Venezuela y soy venezolano.) Todas las frases usan el verbo 'to be'.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál es la forma CORRECTA de decir 'Tengo 12 años' en inglés?",
+      "opciones": [
+        "I have 12 years.",
+        "I am 12 years old.",
+        "I have 12 years old.",
+        "My age is 12 years have."
+      ],
+      "correcta": 1,
+      "explicacion": "En inglés la edad va con el verbo 'to be': 'I am 12 years old' (o 'I'm 12'). 'I have 12 years' es el error clásico de traducir 'tengo' literal del español; en inglés eso está mal."
+    },
+    {
+      "pregunta": "¿Cómo se pregunta la edad de alguien en inglés?",
+      "opciones": [
+        "How many years do you have?",
+        "What is your age have?",
+        "How old are you?",
+        "How are you old?"
+      ],
+      "correcta": 2,
+      "explicacion": "'How old are you?' (¿Cuántos años tienes?) es la forma correcta, y usa el verbo 'to be' (are). 'How many years do you have?' traduce mal del español usando 'have', que no se usa para la edad."
+    },
+    {
+      "pregunta": "¿Cuál es el número 15 en inglés?",
+      "opciones": [
+        "fifty",
+        "fiveteen",
+        "fifteen",
+        "five-ten"
+      ],
+      "correcta": 2,
+      "explicacion": "15 es 'fifteen' (termina en -teen, del grupo 13-19; la raíz cambia de five a fif-). 'Fifty' es 50 (decena, -ty), y 'fiveteen' o 'five-ten' no existen."
+    },
+    {
+      "pregunta": "¿Cómo se dice 'Soy de Venezuela' en inglés?",
+      "opciones": [
+        "I'm Venezuela.",
+        "I'm from Venezuelan.",
+        "I'm from Venezuela.",
+        "I have from Venezuela."
+      ],
+      "correcta": 2,
+      "explicacion": "El país va con 'from': 'I'm from Venezuela.' 'I'm Venezuela' usa el país como si fuera nacionalidad; 'I'm from Venezuelan' mezcla mal 'from' con la nacionalidad; 'I have from' es incorrecto."
+    },
+    {
+      "pregunta": "¿Cuál es la nacionalidad correcta para alguien de Japan (Japón)?",
+      "opciones": [
+        "Japanish",
+        "Japanese",
+        "Japanan",
+        "Japan"
+      ],
+      "correcta": 1,
+      "explicacion": "La nacionalidad de Japan es 'Japanese' (con terminación -ese, como China→Chinese). 'Japan' es el país, no la nacionalidad, y las otras dos formas no existen."
+    },
+    {
+      "pregunta": "¿Cómo se escribe el número 40 en inglés?",
+      "opciones": [
+        "fourty",
+        "forty",
+        "fourteen",
+        "fortty"
+      ],
+      "correcta": 1,
+      "explicacion": "40 se escribe 'forty', SIN la 'u' de 'four' (es una de las trampas de ortografía más comunes). 'Fourteen' es 14, no 40, y las otras formas están mal escritas."
+    },
+    {
+      "pregunta": "Completa: 'What's your nationality?' — '___'",
+      "opciones": [
+        "I'm from Spain.",
+        "I'm Spanish.",
+        "I'm 12 years old.",
+        "My name is Spain."
+      ],
+      "correcta": 1,
+      "explicacion": "La pregunta es por la NACIONALIDAD, así que va sin 'from': 'I'm Spanish.' 'I'm from Spain' responde al país (de dónde eres), que es una pregunta distinta."
+    },
+    {
+      "pregunta": "¿Cómo se dice el número 21 en inglés?",
+      "opciones": [
+        "twenty-one",
+        "twentyone",
+        "two-one",
+        "twenty and one"
+      ],
+      "correcta": 0,
+      "explicacion": "Los números compuestos se arman con decena + guion + unidad: 'twenty-one'. Se escribe con guion, no todo junto ni con 'and', y no se dice 'two-one'."
+    },
+    {
+      "pregunta": "¿Cuál de estas frases está MAL?",
+      "opciones": [
+        "I'm from Colombia.",
+        "I'm Colombian.",
+        "I'm from Colombian.",
+        "I'm from Mexico."
+      ],
+      "correcta": 2,
+      "explicacion": "'I'm from Colombian' está mal: mezcla 'from' (que pide un PAÍS) con la nacionalidad 'Colombian'. Lo correcto sería 'I'm from Colombia' (país) o 'I'm Colombian' (nacionalidad, sin from)."
+    },
+    {
+      "pregunta": "Alguien te dice 'How old are you?'. ¿Cuál es una respuesta correcta?",
+      "opciones": [
+        "I have thirteen.",
+        "I'm from Venezuela.",
+        "I'm 13 years old.",
+        "My name is 13."
+      ],
+      "correcta": 2,
+      "explicacion": "'How old are you?' pregunta la edad, así que se responde con 'to be': 'I'm 13 years old' (o 'I'm 13'). 'I have thirteen' usa mal 'have'; las otras responden a preguntas distintas."
+    },
+    {
+      "pregunta": "¿Cuál es la diferencia entre 'sixteen' y 'sixty'?",
+      "opciones": [
+        "Son la misma palabra escrita distinto.",
+        "sixteen es 16 y sixty es 60.",
+        "sixteen es 60 y sixty es 16.",
+        "sixteen es 6 y sixty es 16."
+      ],
+      "correcta": 1,
+      "explicacion": "'Sixteen' termina en -teen y es 16 (grupo 13-19); 'sixty' termina en -ty y es 60 (decena). Confundirlos es un error muy común: -teen para adolescentes, -ty para las decenas redondas."
+    },
+    {
+      "pregunta": "¿Cómo se dice 'Soy venezolano' (la nacionalidad) en inglés?",
+      "opciones": [
+        "I'm Venezuela.",
+        "I have Venezuelan.",
+        "I'm Venezuelan.",
+        "I'm from Venezuelan."
+      ],
+      "correcta": 2,
+      "explicacion": "La nacionalidad va con 'to be' y SIN 'from': 'I'm Venezuelan.' 'I'm Venezuela' usa el país en vez de la nacionalidad, 'I have' es incorrecto, y 'I'm from Venezuelan' mezcla mal 'from' con la nacionalidad."
+    }
+  ]
+}

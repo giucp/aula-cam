@@ -1,0 +1,306 @@
+{
+  "programa": "cumbre",
+  "materia": "Cómo Pensar",
+  "grado": "Cumbre Cómo Pensar 1er año",
+  "dominio": "Preguntar e investigar",
+  "tema": "Observar de verdad: notar detalles, no lo que esperamos ver",
+  "referencias": [
+    "NGSS Science & Engineering Practices — Practice 3: Planning and carrying out investigations (observación sistemática y uso de instrumentos)",
+    "IB Approaches to Learning (ATL) — research & thinking skills: observar, registrar y distinguir observación de interpretación",
+    "Ennis, marco de disposiciones y habilidades del pensamiento crítico — observar con cuidado y separar observación de inferencia",
+    "Alfabetización visual y mediática — percepción selectiva, atención y sesgo de esperar lo que se quiere ver"
+  ],
+  "resumen": {
+    "titulo": "Ver lo que hay, no lo que esperas: el arte de observar bien",
+    "intro": "Creemos que ver es automático: abrimos los ojos y ahí está el mundo. Pero observar DE VERDAD es una habilidad, y una de las más útiles que existen. Los buenos detectives, científicos, médicos y artistas comparten algo: notan detalles que los demás pasan por alto, y no se dejan engañar por lo que esperaban encontrar. Este tema te enseña a mirar con cuidado, a separar lo que realmente ves de lo que imaginas, y a darte cuenta de una trampa sorprendente: nuestro cerebro muchas veces nos muestra lo que espera ver, no lo que hay. Aprender a observar bien es el primer paso de toda investigación: si los datos con los que empiezas están mal mirados, todo lo que construyas encima estará torcido.",
+    "secciones": [
+      {
+        "titulo": "Observar es recoger información con los sentidos",
+        "explicacion": "Empecemos por lo básico: ¿qué es OBSERVAR? Observar es recoger información del mundo usando los sentidos: lo que ves, oyes, hueles, tocas o saboreas. Cuando dices 'la manzana es roja', 'la música está fuerte' o 'la mesa está fría', estás observando. Suena fácil, pero hay una diferencia entre mirar de pasada y observar con atención. Mirar de pasada es lo que hacemos casi siempre, en piloto automático, y por eso se nos escapan miles de detalles. Observar de verdad es mirar A PROPÓSITO, con la intención de notar cosas: cuántos, de qué color exacto, qué forma, qué sonido, qué cambió. La buena noticia es que se entrena. Mientras más practicas prestar atención a los detalles, más empiezas a notarlos sin esfuerzo, igual que un músico que con el tiempo escucha notas que tú ni percibes.",
+        "pasos": [
+          "Decide observar a propósito: no basta con tener los ojos abiertos.",
+          "Recorre tus sentidos uno por uno: qué veo, qué oigo, qué huelo, qué toco.",
+          "Fíjate en cantidades, colores exactos, formas, sonidos y cambios, no solo en la 'idea general' de lo que hay."
+        ],
+        "ejemplo": "Mirar de pasada un salón: 'hay pupitres'. Observar con atención el mismo salón: '18 pupitres, 3 vacíos, uno con la pata torcida, una ventana abierta y olor a marcador'. Es el mismo salón; la diferencia es cuánta información recoges.",
+        "figura": ""
+      },
+      {
+        "titulo": "Observar no es lo mismo que inferir",
+        "explicacion": "Aquí está una de las ideas más importantes del tema, y una que confundimos todo el tiempo. OBSERVAR es notar algo directamente con los sentidos. INFERIR es sacar una conclusión a partir de lo que observaste, o sea, adivinar o deducir algo que NO estás viendo directamente. Ejemplo: ves que el suelo está mojado (observación) y piensas 'llovió' (inferencia). Pero no viste llover: el suelo pudo mojarse porque alguien regó, se rompió un tubo o pasó un camión de agua. La observación es lo seguro, lo que de verdad captaron tus sentidos; la inferencia es una explicación posible que le pones encima. No hay nada malo en inferir, es súper útil, PERO hay que saber cuál es cuál. El error grande es confundir tu inferencia con un hecho observado y jurar que 'viste' algo que en realidad solo dedujiste. Un buen pensador siempre puede responder: '¿esto lo vi, o lo deduje?'.",
+        "pasos": [
+          "Cuando afirmes algo, pregúntate: '¿esto lo capté directamente con un sentido, o lo estoy deduciendo?'.",
+          "Si lo captaste con los sentidos, es una OBSERVACIÓN.",
+          "Si lo dedujiste a partir de otra cosa, es una INFERENCIA: podría estar equivocada, así que trátala como una posibilidad, no como un hecho seguro."
+        ],
+        "ejemplo": "Observación: 'la niña tiene los ojos rojos y húmedos'. Inferencia: 'estuvo llorando'. Pero los ojos rojos también salen por alergia, humo o cansancio. Confundir la inferencia con lo observado te haría afirmar 'estaba llorando' como si lo hubieras visto, cuando solo lo dedujiste.",
+        "figura": ""
+      },
+      {
+        "titulo": "Describir sin interpretar",
+        "explicacion": "Una destreza clave que se practica poco: DESCRIBIR sin INTERPRETAR. Describir es contar lo que hay usando palabras neutras, como una cámara que solo registra. Interpretar es agregarle tu opinión o tu explicación. 'El hombre camina rápido moviendo mucho los brazos' es una descripción. 'El hombre está furioso' es una interpretación: le pusiste un sentimiento que no viste directamente, quizá va apurado por otra razón. La regla para lograrlo es preguntarte: '¿esto lo podría filmar una cámara?'. Una cámara puede grabar 'camina rápido moviendo los brazos', pero NO puede grabar 'está furioso' (eso es una conclusión sobre lo que siente por dentro). Aprender a describir primero, sin saltar a interpretar, es lo que hace que tus observaciones sean confiables. Las interpretaciones pueden venir después, pero siempre marcadas como lo que son.",
+        "pasos": [
+          "Cuenta primero solo lo que una cámara podría grabar: formas, colores, movimientos, cantidades, sonidos.",
+          "Evita palabras que metan opinión o sentimiento ('feo', 'furioso', 'nervioso', 'peligroso').",
+          "Si quieres interpretar, hazlo aparte y con cuidado: 'lo que veo es X; mi interpretación es que quizá Y'."
+        ],
+        "ejemplo": "Interpretación disfrazada de descripción: 'el perro es agresivo'. Descripción de verdad: 'el perro enseña los dientes, tiene el pelo del lomo levantado y gruñe'. Lo primero es una conclusión; lo segundo es lo que realmente se ve y oye, y otra persona podría confirmarlo.",
+        "figura": ""
+      },
+      {
+        "titulo": "La gran trampa: ver lo que esperamos ver",
+        "explicacion": "Ahora viene lo más sorprendente del tema. Tu cerebro no es una cámara neutral: muchas veces te muestra lo que ESPERA ver, no lo que hay. A esto se le llama percepción selectiva o sesgo de expectativa. Un SESGO es una inclinación que tuerce nuestra manera de ver o juzgar sin que nos demos cuenta. Si esperas que algo pase, tiendes a 'verlo' aunque no esté; si estás convencido de que una persona es antipática, notarás cada gesto que lo confirme e ignorarás los amables. Esto no es que seas tonto: le pasa a todos los cerebros humanos, incluso a los científicos. Por eso el famoso experimento donde a la gente se le pide contar cuántas veces se pasan una pelota, y en medio del video cruza alguien disfrazado de gorila, y MUCHOS no lo ven: estaban tan concentrados en la pelota que su atención tapó lo demás. La lección es enorme: lo que crees que 'viste con tus propios ojos' pudo estar filtrado por lo que esperabas. Saber que esta trampa existe es el primer paso para no caer tanto en ella.",
+        "pasos": [
+          "Acepta que tu cerebro filtra: no ves todo, ves sobre todo lo que esperas o aquello a lo que prestas atención.",
+          "Cuando estés muy seguro de haber visto algo, pregúntate: '¿lo vi de verdad, o esperaba verlo?'.",
+          "Cuando busques una cosa, recuerda que puedes estar tapando otras: mira también lo que NO estabas buscando."
+        ],
+        "ejemplo": "En el experimento del 'gorila invisible', quienes cuentan pases de pelota no notan a la persona disfrazada de gorila que cruza en medio. No es que estuviera escondida: estaba a plena vista. La atención puesta en la pelota les tapó lo demás. Así de fuerte es esperar-ver una cosa e ignorar el resto.",
+        "figura": ""
+      },
+      {
+        "titulo": "Detalles que se nos pasan (y por qué)",
+        "explicacion": "Siguiendo con la trampa anterior: constantemente se nos escapan detalles, y no al azar, sino de forma predecible. Se nos pasan las cosas que damos por obvias ('claro que la puerta era marrón'... ¿seguro?), las que no encajan con lo que esperábamos, y todo aquello a lo que no le prestamos atención en el momento. Por eso los testigos de un mismo accidente cuentan versiones distintas: cada uno miró y recordó cosas diferentes, y su cerebro rellenó los huecos con lo que 'debería' haber pasado. Rellenar huecos es algo que el cerebro hace solo, sin avisarte, y a veces inventa detalles que no ocurrieron. Contra esto ayuda un truco simple: observar despacio, nombrar los detalles en voz baja o por escrito, y anotarlos en el momento en vez de confiar en la memoria. Lo que se escribe al momento vale mucho más que lo que se recuerda después, porque la memoria también se deja llevar por lo que esperábamos.",
+        "pasos": [
+          "Observa despacio y en orden, no de un vistazo: recorre la escena por partes.",
+          "Nombra o anota los detalles en el momento; no confíes en recordarlos después.",
+          "Desconfía de tu memoria cuando rellena huecos: pregúntate '¿esto lo vi o lo estoy suponiendo?'."
+        ],
+        "ejemplo": "Cinco personas ven el mismo choque. Una jura que el carro era rojo, otra que era vinotinto; una vio dos personas dentro, otra tres. Nadie miente: cada cerebro captó y rellenó distinto. Por eso la policía toma notas al momento y no se fía solo de la memoria.",
+        "figura": ""
+      },
+      {
+        "titulo": "Los sentidos engañan: por eso existen los instrumentos",
+        "explicacion": "Nuestros sentidos son buenos, pero tienen límites y a veces mienten. Hay ILUSIONES: dos líneas iguales que parecen de distinto largo, un color que parece cambiar según lo que lo rodea, un ruido que juraste oír y no estaba. Como los sentidos se equivocan, la gente que observa en serio usa INSTRUMENTOS: herramientas que miden mejor que nuestro cuerpo. Una regla mide el largo mejor que tu ojo; un termómetro mide la temperatura mejor que tu mano (mete una mano en agua fría y otra en caliente, luego ambas en tibia: una la siente caliente y la otra fría, ¡el mismo agua!); una balanza pesa mejor que 'a ojo'; una lupa o un microscopio te dejan ver lo que el ojo solo no alcanza. Los instrumentos tienen dos ventajas enormes: son más precisos que los sentidos y, además, dan un número que OTRA persona puede comprobar. 'Está calientísimo' depende de quién lo diga; '38 grados' lo mide cualquiera igual. Por eso la ciencia se apoya tanto en medir con instrumentos.",
+        "pasos": [
+          "Recuerda que los sentidos se cansan, se engañan y dependen de quién observa.",
+          "Cuando importe la precisión, mide con un instrumento (regla, termómetro, balanza, reloj, lupa).",
+          "Prefiere un dato que otra persona pueda comprobar ('38 grados') sobre una impresión personal ('está hirviendo')."
+        ],
+        "ejemplo": "Prueba de las manos: una mano en agua fría, otra en caliente, un minuto, y luego las dos juntas en agua tibia. La misma agua tibia se siente caliente para una mano y fría para la otra. El tacto te engaña; el termómetro no: marca un solo número para todos.",
+        "figura": "<svg viewBox=\"0 0 300 120\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"40\" y1=\"30\" x2=\"120\" y2=\"30\" stroke=\"#3B2B4A\" stroke-width=\"3\"/><line x1=\"40\" y1=\"30\" x2=\"52\" y2=\"22\" stroke=\"#3B2B4A\" stroke-width=\"3\"/><line x1=\"40\" y1=\"30\" x2=\"52\" y2=\"38\" stroke=\"#3B2B4A\" stroke-width=\"3\"/><line x1=\"120\" y1=\"30\" x2=\"108\" y2=\"22\" stroke=\"#3B2B4A\" stroke-width=\"3\"/><line x1=\"120\" y1=\"30\" x2=\"108\" y2=\"38\" stroke=\"#3B2B4A\" stroke-width=\"3\"/><line x1=\"40\" y1=\"80\" x2=\"120\" y2=\"80\" stroke=\"#3B2B4A\" stroke-width=\"3\"/><line x1=\"40\" y1=\"80\" x2=\"28\" y2=\"72\" stroke=\"#3B2B4A\" stroke-width=\"3\"/><line x1=\"40\" y1=\"80\" x2=\"28\" y2=\"88\" stroke=\"#3B2B4A\" stroke-width=\"3\"/><line x1=\"120\" y1=\"80\" x2=\"132\" y2=\"72\" stroke=\"#3B2B4A\" stroke-width=\"3\"/><line x1=\"120\" y1=\"80\" x2=\"132\" y2=\"88\" stroke=\"#3B2B4A\" stroke-width=\"3\"/><text x=\"170\" y=\"35\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#5A3AAF\">parecen distintas...</text><text x=\"170\" y=\"85\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#0E9486\">pero miden igual</text></svg>"
+      },
+      {
+        "titulo": "Observar en ciencia: mirar sin trampas",
+        "explicacion": "En la ciencia, observar bien es tan importante que se han inventado reglas para no caer en las trampas de antes. Los científicos observan de forma SISTEMÁTICA: siguiendo un mismo método ordenado cada vez, no a lo loco, para poder comparar. REGISTRAN al momento: anotan o miden en el instante, no confían en la memoria. REPITEN: no se fían de una sola mirada, observan muchas veces, porque una vez puede ser casualidad o error. Y buscan que OTROS puedan observar lo mismo: si un solo científico ve algo pero nadie más lo logra repetir, se desconfía. Además, con toda intención, tratan de separar la observación (lo que se ve) de la interpretación (lo que creen que significa), y hasta hacen experimentos 'a ciegas' para que sus expectativas no tuerzan lo que ven. Todo esto es porque saben lo mismo que estás aprendiendo tú: el cerebro humano tiende a ver lo que espera, y la única defensa es medir, registrar, repetir y dejar que otros comprueben.",
+        "pasos": [
+          "Observa de forma ordenada y siempre igual, para poder comparar (sistemático).",
+          "Registra en el momento con instrumentos cuando puedas, no de memoria.",
+          "Repite la observación varias veces y deja que otros la comprueben.",
+          "Separa a propósito lo que observaste de lo que crees que significa."
+        ],
+        "ejemplo": "Para saber si una planta crece más con cierta luz, un científico no mira 'a ojo' una vez. Mide la altura con una regla cada día, lo anota, usa varias plantas y compara con otras sin esa luz. Así su expectativa ('yo creo que crece más') no decide el resultado: lo deciden las mediciones repetidas.",
+        "figura": ""
+      },
+      {
+        "titulo": "Herramientas para observar mejor (que puedes usar hoy)",
+        "explicacion": "Observar bien se puede practicar con trucos sencillos, sin equipo especial. Truco uno: recorrer los sentidos a propósito, preguntándote uno por uno qué veo, qué oigo, qué huelo, qué toco; casi siempre aparecen detalles que de otro modo se te escapan. Truco dos: describir antes de interpretar, obligándote a decir solo lo que una cámara grabaría antes de sacar conclusiones. Truco tres: contar y medir en vez de decir 'muchos' o 'grande'; los números son más precisos y comprobables. Truco cuatro: comparar con algo conocido ('del tamaño de una moneda', 'tan alto como la puerta') para dar una idea clara. Truco cinco: anotar al momento, porque la memoria rellena y cambia. Y truco seis, el más humilde y poderoso: recordar que puedes estar viendo lo que esperas, y buscar a propósito lo que te sorprende o lo que no cuadra. Estos hábitos son los que separan a quien 'mira' de quien de verdad OBSERVA.",
+        "pasos": [
+          "Recorre los sentidos a propósito, uno por uno.",
+          "Describe antes de interpretar (lo que una cámara grabaría).",
+          "Cuenta y mide en vez de 'muchos' o 'grande'; compara con algo conocido.",
+          "Anota al momento y busca a propósito lo que te sorprende o no cuadra."
+        ],
+        "ejemplo": "Observando un mismo árbol de camino a clase: en vez de 'un árbol grande', practicas 'unos 4 metros (como dos puertas), hojas verdes con bordes amarillos, tres nidos, olor dulce, hormigas subiendo por el lado izquierdo'. Ese es el salto de mirar a observar.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "Observar de verdad es mirar a propósito y con cuidado, no en piloto automático. Separa lo que OBSERVAS (lo que captan tus sentidos) de lo que INFIERES o interpretas (lo que deduces). Cuidado con la gran trampa: el cerebro tiende a ver lo que espera y a pasar por alto lo demás. Contra eso: describe antes de interpretar, mide con instrumentos en vez de fiarte solo de los sentidos, anota al momento y deja que otros comprueben. Así observan la ciencia y cualquier buen investigador."
+  },
+  "practica": [
+    {
+      "enunciado": "Para cada frase, di si es una OBSERVACIÓN (algo captado directamente por un sentido) o una INFERENCIA (una conclusión deducida): (a) 'El pan está duro.' (b) 'El pan tiene varios días.' (c) 'Se oye un motor afuera.' (d) 'Llegó el carro de mi papá.'",
+      "pista": "Pregúntate en cada una: '¿esto lo capté con un sentido directamente, o lo estoy deduciendo a partir de otra cosa?'.",
+      "solucion": "(a) OBSERVACIÓN: la dureza se toca directamente. (b) INFERENCIA: 'varios días' se deduce de que está duro, pero pudo endurecerse por otra razón. (c) OBSERVACIÓN: el sonido del motor se oye directamente. (d) INFERENCIA: que sea el carro de tu papá se deduce del motor, pero podría ser otro carro. Las observaciones son lo seguro; las inferencias son deducciones que podrían fallar.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Reescribe esta frase como una DESCRIPCIÓN pura (solo lo que una cámara grabaría), quitando la interpretación: 'El niño estaba nervioso durante la prueba.'",
+      "pista": "'Nervioso' es una conclusión sobre lo que siente por dentro, no algo que se filme. ¿Qué se vería por fuera que te hizo pensar 'nervioso'?",
+      "solucion": "Una descripción pura podría ser: 'El niño movía la pierna sin parar, se mordía el lápiz y borraba varias veces.' Eso es lo que una cámara grabaría. 'Nervioso' es una interpretación: le pusiste un sentimiento que no se ve directamente (quizá solo tenía frío o esa es su costumbre). Primero se describe lo visible; la interpretación viene después y marcada como tal.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica con tus palabras qué muestra el experimento del 'gorila invisible' (donde muchos, contando pases de una pelota, no ven a alguien disfrazado de gorila cruzar) y qué enseña sobre observar.",
+      "pista": "Piensa por qué no lo ven aunque esté a plena vista. Relaciónalo con la atención y con 'ver lo que esperamos'.",
+      "solucion": "Muestra que, al concentrarnos mucho en una cosa (contar pases), nuestra atención tapa el resto, y podemos no ver algo tan llamativo como un gorila a plena vista. Enseña que no vemos 'todo lo que está ahí': vemos sobre todo aquello a lo que prestamos atención o lo que esperamos ver. Por eso 'lo vi con mis propios ojos' no siempre es confiable, y hay que mirar también lo que no estábamos buscando.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Tu amigo mete una mano en agua fría y otra en agua caliente por un minuto; luego mete las dos en agua tibia. Una mano la siente caliente y la otra fría, aunque es la misma agua. ¿Qué te enseña esto y qué usarías para saber la temperatura de verdad?",
+      "pista": "Es un ejemplo de que los sentidos engañan. ¿Qué instrumento da un solo número para todos?",
+      "solucion": "Enseña que el tacto no mide temperatura de forma confiable: depende de a qué estaba acostumbrada cada mano antes, así que la misma agua se siente distinta. Para saber la temperatura de verdad se usa un termómetro, que da un solo número igual para cualquiera y que otra persona puede comprobar. Es un buen ejemplo de por qué existen los instrumentos: son más precisos y no dependen de quién observa.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Cinco testigos ven el mismo accidente y dan versiones distintas del color del carro y de cuántas personas iban dentro, aunque ninguno miente. ¿Por qué pasa esto y qué hábito ayudaría a que sus observaciones fueran más confiables?",
+      "pista": "Piensa en la atención (cada uno miró cosas distintas) y en la memoria (que rellena huecos). ¿Qué se hace en el momento para no depender de recordar?",
+      "solucion": "Pasa porque cada persona prestó atención a cosas distintas y porque la memoria rellena los huecos con lo que 'debería' haber pasado, sin que uno se dé cuenta; por eso no es que mientan, sino que cada cerebro captó y recordó diferente. Ayudaría anotar o medir los detalles en el momento, en vez de confiar en recordarlos después, porque lo escrito al instante vale más que la memoria, que se deja llevar por lo que esperábamos.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Lee esta frase y separa la parte que es OBSERVACIÓN de la que es INTERPRETACIÓN: 'La vecina no saludó cuando pasó; está enojada conmigo.'",
+      "pista": "Una cámara puede grabar 'no saludó', pero no puede grabar por qué. ¿Qué otras razones podría haber?",
+      "solucion": "Observación: 'la vecina pasó y no saludó'. Interpretación: 'está enojada conmigo'. El enojo no se observó; se dedujo. Podría no haber saludado por muchas razones: no te vio, iba distraída, apurada o preocupada por otra cosa. Confundir la interpretación con lo observado te haría dar por hecho un enojo que quizá no existe.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Mira a tu alrededor ahora mismo y escribe cinco detalles que probablemente no habías notado, recorriendo distintos sentidos (vista, oído, olfato, tacto). Luego explica qué hiciste distinto para notarlos.",
+      "pista": "No hay respuesta única. La clave es observar 'a propósito', recorriendo los sentidos uno por uno, en vez de mirar de pasada.",
+      "solucion": "Ejemplo válido: 'un cable enredado detrás de la puerta, un zumbido bajo (¿la nevera?), olor leve a comida, la silla más fría de un lado, una mancha pequeña en la pared'. Lo que se hizo distinto: observar a propósito y recorrer los sentidos uno por uno (qué veo, qué oigo, qué huelo, qué toco), en vez de mirar en piloto automático. Eso es lo que hace aparecer los detalles que normalmente se escapan.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un científico quiere saber si una planta crece más con luz azul. En vez de mirarla 'a ojo' un día y decidir, ¿qué pasos de observación científica debería seguir para no dejarse llevar por lo que espera?",
+      "pista": "Recuerda las reglas de observar en ciencia: sistemático, registrar al momento, repetir, comparar y dejar que otros comprueben.",
+      "solucion": "Debería: medir la altura con una regla (instrumento) en vez de calcular a ojo; anotar la medida cada día en el momento; usar varias plantas, no una sola (repetir), y comparar con plantas sin luz azul; hacerlo siempre igual (sistemático) para poder comparar; y dejar registro para que otros comprueben. Así su expectativa ('creo que crece más') no decide el resultado: lo deciden las mediciones repetidas y comparables.",
+      "figura": ""
+    },
+    {
+      "enunciado": "¿Por qué decir 'la caja pesa 3 kilos' suele ser mejor observación que decir 'la caja pesa muchísimo'? Da dos razones.",
+      "pista": "Piensa en la precisión y en que otra persona pueda comprobar lo mismo. ¿'Muchísimo' significa lo mismo para todos?",
+      "solucion": "Razón uno: '3 kilos' es preciso, mientras que 'muchísimo' depende de quién lo diga (para un niño pequeño 3 kilos es mucho, para un adulto fuerte no). Razón dos: '3 kilos' lo puede comprobar cualquiera con una balanza y obtendrá lo mismo; 'muchísimo' no se puede comprobar, es una impresión personal. Medir con un instrumento da datos precisos y comprobables por otros, que es justo lo que busca una buena observación.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Estás segurísimo de que la puerta de tu salón es marrón. Un compañero dice que es verde oscuro. Sin ir a mirar todavía, ¿qué te enseña este tema sobre tu propia seguridad, y cómo lo resolverías?",
+      "pista": "Recuerda que damos por obvios detalles que quizá no observamos bien, y que el cerebro rellena. ¿Cómo se resuelve una duda de observación de forma confiable?",
+      "solucion": "Enseña que estar 'segurísimo' no garantiza que observaste bien: puede que hayas dado el color por obvio sin mirarlo de verdad, y que tu memoria haya rellenado con lo que esperabas. La seguridad que uno siente no mide qué tan cierto es. Se resuelve yendo a observar de nuevo con atención, e incluso comparando con otras personas o con una foto: dejar que la observación real y comprobable decida, en vez de la confianza en la memoria.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál de estas frases es una OBSERVACIÓN y no una inferencia?",
+      "opciones": [
+        "El niño está triste.",
+        "El niño tiene lágrimas en las mejillas.",
+        "Al niño lo regañaron.",
+        "El niño quiere irse a casa."
+      ],
+      "correcta": 1,
+      "explicacion": "'Tiene lágrimas en las mejillas' se capta directamente con la vista: es una observación. 'Está triste', 'lo regañaron' y 'quiere irse' son inferencias: conclusiones deducidas que podrían tener otras explicaciones (alergia, cebolla, bostezo). Solo lo primero es lo que realmente se ve."
+    },
+    {
+      "pregunta": "¿Qué diferencia hay entre observar e inferir?",
+      "opciones": [
+        "Son exactamente lo mismo.",
+        "Observar es notar algo con los sentidos; inferir es deducir una conclusión a partir de lo observado.",
+        "Inferir es más seguro que observar.",
+        "Observar solo se hace con los ojos; inferir, con los oídos."
+      ],
+      "correcta": 1,
+      "explicacion": "Observar es captar algo directamente con cualquier sentido; inferir es sacar una conclusión que no viste directamente. La inferencia puede fallar, así que no es más segura que la observación. Y observar usa todos los sentidos, no solo la vista."
+    },
+    {
+      "pregunta": "Ves el suelo mojado al salir de casa. ¿Cuál es la INFERENCIA?",
+      "opciones": [
+        "El suelo está mojado.",
+        "El suelo se ve oscuro y brilla.",
+        "Anoche llovió.",
+        "Hay charcos en la acera."
+      ],
+      "correcta": 2,
+      "explicacion": "'Anoche llovió' es una conclusión deducida: no lo viste llover, y el suelo pudo mojarse por un tubo roto, alguien regando o un camión de agua. Que el suelo esté mojado, se vea oscuro y brille, y haya charcos, son observaciones directas."
+    },
+    {
+      "pregunta": "En el experimento del 'gorila invisible', muchos no ven a la persona disfrazada de gorila cruzar mientras cuentan pases de pelota. ¿Qué demuestra?",
+      "opciones": [
+        "Que el gorila estaba muy bien escondido.",
+        "Que cuando prestamos toda la atención a una cosa, podemos no ver otras aunque estén a plena vista.",
+        "Que esas personas tenían mala vista.",
+        "Que los videos engañan con efectos especiales."
+      ],
+      "correcta": 1,
+      "explicacion": "El gorila está a plena vista; la razón de no verlo es que la atención concentrada en la pelota tapa lo demás. No es cuestión de mala vista ni de trucos: muestra que vemos sobre todo aquello a lo que prestamos atención, no todo lo que hay."
+    },
+    {
+      "pregunta": "¿Cuál de estas es una DESCRIPCIÓN pura (lo que una cámara grabaría), sin interpretación?",
+      "opciones": [
+        "El hombre está furioso.",
+        "El hombre es peligroso.",
+        "El hombre habla en voz alta y golpea la mesa con la mano.",
+        "El hombre quiere pelear."
+      ],
+      "correcta": 2,
+      "explicacion": "'Habla en voz alta y golpea la mesa' es lo que una cámara grabaría: pura descripción. 'Furioso', 'peligroso' y 'quiere pelear' son interpretaciones: le ponen un sentimiento o una intención que no se ve directamente (quizá está actuando, o hablando de fútbol con entusiasmo)."
+    },
+    {
+      "pregunta": "Metes una mano en agua fría y otra en caliente, y luego ambas en agua tibia: una la sientes caliente y otra fría, aunque es la misma agua. ¿Qué muestra?",
+      "opciones": [
+        "Que el agua tibia cambia de temperatura sola.",
+        "Que los sentidos pueden engañarnos, por eso conviene medir con un instrumento.",
+        "Que una mano está enferma.",
+        "Que el agua tibia no existe."
+      ],
+      "correcta": 1,
+      "explicacion": "La misma agua se siente distinta según a qué estaba acostumbrada cada mano: el tacto engaña. Por eso se usa un termómetro, que da un solo número igual para todos y comprobable. El agua no cambió de temperatura ni hay nada malo con la mano."
+    },
+    {
+      "pregunta": "¿Por qué los científicos prefieren medir con instrumentos en vez de fiarse solo de los sentidos?",
+      "opciones": [
+        "Porque los instrumentos nunca fallan.",
+        "Porque son más precisos y dan un dato que otra persona puede comprobar igual.",
+        "Porque usar los sentidos está prohibido en ciencia.",
+        "Porque los instrumentos son más caros y por eso mejores."
+      ],
+      "correcta": 1,
+      "explicacion": "Los instrumentos son más precisos que los sentidos y dan un número comprobable por cualquiera ('38 grados' vale igual para todos, 'está hirviendo' depende de quién lo diga). No es que nunca fallen ni que los sentidos estén prohibidos; y el precio no es lo que los hace útiles."
+    },
+    {
+      "pregunta": "Cinco testigos de un mismo accidente dan detalles distintos aunque ninguno miente. ¿Cuál es la mejor explicación?",
+      "opciones": [
+        "Todos vieron cosas diferentes porque prestaron atención a cosas distintas y la memoria rellenó huecos.",
+        "Al menos cuatro están mintiendo.",
+        "El accidente ocurrió cinco veces.",
+        "Es imposible que pase; siempre se recuerda igual."
+      ],
+      "correcta": 0,
+      "explicacion": "Cada persona atendió a detalles distintos y su memoria rellenó los huecos con lo que esperaba, sin darse cuenta; por eso las versiones difieren sin que nadie mienta. No es que mientan ni que haya varios accidentes, y sí es muy común que la memoria varíe."
+    },
+    {
+      "pregunta": "¿Qué significa que el cerebro tiende a 'ver lo que espera ver'?",
+      "opciones": [
+        "Que siempre vemos el futuro.",
+        "Que nuestras expectativas pueden hacernos notar lo que confirma lo que ya creíamos e ignorar lo demás.",
+        "Que vemos mejor cuando cerramos los ojos.",
+        "Que todo el mundo ve exactamente lo mismo."
+      ],
+      "correcta": 1,
+      "explicacion": "El sesgo de expectativa hace que nuestra atención resalte lo que encaja con lo que ya creíamos y pase por alto el resto, sin que nos demos cuenta. No tiene que ver con ver el futuro ni con cerrar los ojos, y justamente por esto no todos vemos lo mismo."
+    },
+    {
+      "pregunta": "¿Cuál es un buen hábito para observar mejor y con datos comprobables?",
+      "opciones": [
+        "Decir 'muchos' y 'grande' en vez de números.",
+        "Confiar siempre en la memoria y anotar después, en casa.",
+        "Contar y medir, y anotar los detalles en el momento.",
+        "Mirar todo de un solo vistazo rápido."
+      ],
+      "correcta": 2,
+      "explicacion": "Contar, medir y anotar al momento da observaciones precisas y comprobables, y evita que la memoria rellene huecos. Decir 'muchos/grande', fiarse de la memoria o mirar de un vistazo son justo los hábitos que hacen perder detalles."
+    },
+    {
+      "pregunta": "Estás segurísimo de haber visto algo, pero un compañero recuerda algo distinto. ¿Cuál es la actitud de un buen observador?",
+      "opciones": [
+        "Como estoy segurísimo, seguro tengo razón: la seguridad prueba que vi bien.",
+        "Reconocer que la seguridad no garantiza haber visto bien, e ir a comprobarlo con una nueva observación o una foto.",
+        "Insistir hasta que el otro me dé la razón.",
+        "Decidirlo por votación entre los que estaban."
+      ],
+      "correcta": 1,
+      "explicacion": "Sentirse muy seguro no garantiza haber observado bien: el cerebro rellena y espera-ver. Lo sensato es volver a observar con atención o usar algo comprobable (una foto, una medición). Ni la seguridad, ni insistir, ni una votación deciden lo que de verdad ocurrió; la observación comprobable sí."
+    },
+    {
+      "pregunta": "¿Por qué en ciencia se REPITE una observación varias veces en lugar de confiar en una sola mirada?",
+      "opciones": [
+        "Porque una sola vez puede ser casualidad o error, y repetir permite comprobar si de verdad ocurre.",
+        "Porque repetir hace perder el tiempo, pero es obligatorio.",
+        "Porque la primera observación siempre está mal.",
+        "Porque así se gasta más material y parece más serio."
+      ],
+      "correcta": 0,
+      "explicacion": "Una sola observación puede salir por casualidad o por un error, así que repetir muestra si el resultado se sostiene. No es perder el tiempo ni que la primera vez esté 'siempre mal'; es la forma de no dejarse engañar por un caso suelto."
+    }
+  ]
+}

@@ -1,0 +1,305 @@
+{
+  "programa": "cumbre",
+  "materia": "Informática",
+  "grado": "Cumbre Informática 1er año",
+  "dominio": "Pensamiento computacional",
+  "tema": "Descomposición: partir un problema grande en pasos pequeños",
+  "referencias": [
+    "CSTA K-12 Computer Science Standards (grades 6-8): descomponer problemas en subproblemas para facilitar el diseño de soluciones",
+    "K-12 Computer Science Framework — Decomposition: una de las prácticas centrales del pensamiento computacional",
+    "UK Computing Key Stage 3 — descomponer problemas en partes más pequeñas y manejables",
+    "CS Unplugged / Bebras — actividades sin computadora sobre dividir tareas grandes en subtareas"
+  ],
+  "resumen": {
+    "titulo": "Descomposición: cómo comerse un problema enorme a pedacitos",
+    "intro": "Hay problemas tan grandes que solo mirarlos da miedo: organizar una fiesta, hacer una maqueta enorme, programar un videojuego. Si intentas resolverlos de un solo golpe, te bloqueas. Pero existe un truco que usan todos los buenos programadores, ingenieros y organizadores del mundo, y es sorprendentemente simple: NO resuelvas el problema grande. Pártelo en problemas pequeños, resuelve cada uno por separado, y al juntarlos el grande queda resuelto. Ese truco tiene nombre: DESCOMPOSICIÓN. Es la segunda gran idea del pensamiento computacional (después de dar instrucciones exactas), y también se entrena sin computadora, con cosas de todos los días. Hay un dicho que lo resume: '¿Cómo te comes un elefante? A pedacitos, un bocado a la vez.'",
+    "secciones": [
+      {
+        "titulo": "Qué es descomponer",
+        "explicacion": "Empecemos por la palabra: DESCOMPONER significa partir algo grande en partes más pequeñas. En informática, descomponer un problema es dividirlo en subproblemas: problemas más chicos y manejables que, resueltos todos, resuelven el grande. La idea es la misma que cuando desarmas un juguete complicado para entender cómo funciona, o cuando una tarea larguísima la conviertes en una lista de tareitas. No estás cambiando el problema ni haciéndolo más fácil por arte de magia: lo estás rompiendo en pedazos que sí puedes agarrar. La palabra clave nueva es SUBPROBLEMA: una parte más pequeña del problema grande, que se puede resolver casi por su cuenta.",
+        "pasos": [],
+        "ejemplo": "El problema grande 'ordenar todo mi cuarto' da flojera y agobia. Descompuesto en subproblemas se vuelve manejable: 1) tender la cama, 2) recoger la ropa del suelo, 3) ordenar el escritorio, 4) guardar los juguetes, 5) sacar la basura. Cada subproblema es pequeño y fácil de empezar; al terminarlos todos, el cuarto queda ordenado."
+      },
+      {
+        "titulo": "Por qué descomponer ayuda tanto",
+        "explicacion": "Quizás pienses: si igual hay que hacer todo, ¿qué gano partiéndolo? Ganas muchísimo, y por razones muy concretas. Primero, un problema pequeño no da miedo: sabes por dónde empezar, mientras que uno enorme te paraliza. Segundo, si algo sale mal, es fácil encontrar CUÁL parte falló y arreglar solo esa, en vez de revisar todo. Tercero, las partes se pueden repartir: si organizas una fiesta con amigos, cada quien se encarga de un subproblema y avanzan a la vez. Cuarto, algunas partes se PARECEN a cosas que ya sabes hacer, así que reutilizas soluciones. Descomponer no es solo ordenado: es lo que vuelve POSIBLE resolver cosas que de un solo golpe serían imposibles.",
+        "pasos": [
+          "Quita el miedo: cada parte pequeña sí sabes cómo empezarla.",
+          "Facilita encontrar errores: si algo falla, sabes en qué parte buscar.",
+          "Permite repartir el trabajo entre varias personas.",
+          "Deja reutilizar soluciones que ya conoces para las partes parecidas."
+        ],
+        "ejemplo": "Si tu maqueta del sistema solar te queda mal y NO la descompusiste, no sabes por dónde empezar a arreglarla. Si la descompusiste en 'pintar el Sol', 'colgar los planetas', 'poner los nombres', y el problema es que un nombre está mal, arreglas solo esa parte en dos minutos."
+      },
+      {
+        "titulo": "Cómo se descompone: de lo grande a lo pequeño",
+        "explicacion": "Descomponer se hace de arriba hacia abajo: partes del problema grande y lo divides en unas pocas partes grandes; luego, si alguna sigue siendo grande, la divides otra vez; y así hasta que cada trocito sea fácil de hacer. Es como un árbol que se va abriendo en ramas cada vez más finas. No hace falta que salga perfecto a la primera: primero identificas las grandes partes, y después te preocupas por los detalles de cada una. Este método de 'primero las partes grandes, después los detalles' es exactamente como los profesionales encaran proyectos enormes sin volverse locos.",
+        "pasos": [
+          "Escribe el problema grande completo.",
+          "Divídelo en unas pocas partes grandes (tres a cinco suele bastar).",
+          "Mira cada parte: ¿todavía es grande y confusa? Divídela otra vez.",
+          "Repite hasta que cada parte sea una tarea clara y pequeña que sabes cómo hacer."
+        ],
+        "ejemplo": "Problema: 'hacer un trabajo escrito sobre los delfines'. Partes grandes: 1) buscar información, 2) escribir el trabajo, 3) presentarlo bonito. La parte 2 sigue siendo grande, así que se subdivide: 2a) escribir la introducción, 2b) escribir el cuerpo, 2c) escribir la conclusión. Ahora cada trocito es abordable."
+      },
+      {
+        "titulo": "Ejemplo cotidiano: organizar una fiesta",
+        "explicacion": "Organizar una fiesta parece un solo problema gigante, pero en realidad son muchos problemas pequeños escondidos. Descomponerlo hace que deje de dar vueltas en la cabeza y se vuelva una lista concreta. Además muestra el superpoder de repartir: cada parte se la puede encargar una persona distinta. Fíjate cómo algunas partes todavía se pueden partir más (la comida se divide en salada y dulce, y en bebidas), justo como en un árbol que se sigue abriendo.",
+        "pasos": [
+          "Parte grande 1: invitados (hacer la lista, avisarles, confirmar quién viene).",
+          "Parte grande 2: comida (decidir el menú, comprar, preparar).",
+          "Parte grande 3: lugar (elegir dónde, limpiar, decorar).",
+          "Parte grande 4: actividades (elegir juegos o música, preparar lo necesario)."
+        ],
+        "ejemplo": "La 'Parte 2: comida' sigue siendo grande, así que se subdivide: comida salada, comida dulce y bebidas. Y 'comida salada' se subdivide en 'comprar ingredientes' y 'preparar el día anterior'. Cuando llegas a tareas como 'comprar dos bolsas de papas', ya son tan pequeñas que se hacen sin pensar mucho: ahí paras de dividir."
+      },
+      {
+        "titulo": "Ejemplo cotidiano: hacer toda la tarea del día",
+        "explicacion": "'Tengo que hacer toda la tarea' es una frase que agobia y hace que uno la posponga. El agobio viene justo de mirarla como un solo bloque enorme. Descompuesta, se vuelve una lista donde cada renglón es empezable en un minuto. Y aparece otra ventaja de descomponer: puedes ORDENAR las partes y decidir por cuál empezar (por la más urgente, o por la más rápida para agarrar impulso). Un problema grande no se puede ordenar; una lista de partes, sí.",
+        "pasos": [
+          "Lista cada materia que tiene tarea como una parte separada.",
+          "Dentro de cada materia, escribe la tarea concreta como subtarea.",
+          "Ordena las partes (por lo que entregas antes, o por lo que te toma menos).",
+          "Ve tachando una por una."
+        ],
+        "ejemplo": "'Toda la tarea' se descompone en: Matemática (hacer los 10 ejercicios de la página 40), Lengua (leer el cuento y responder 3 preguntas), Ciencias (dibujar el ciclo del agua). Cada una es concreta y pequeña. Empiezas por Ciencias porque es la más rápida y eso te da impulso para las demás."
+      },
+      {
+        "titulo": "Ejemplo cotidiano: un videojuego hecho por partes",
+        "explicacion": "Aquí la descomposición se acerca a la informática de verdad. Un videojuego parece una sola cosa enorme e imposible de hacer, pero por dentro es un montón de partes pequeñas que funcionan juntas. Los que crean juegos NUNCA lo programan de un golpe: descomponen el juego en piezas y hacen una a la vez. Esto es clave para entender programar: un programa grande siempre se construye a partir de partes pequeñas resueltas por separado.",
+        "pasos": [
+          "Parte 1: el personaje (cómo se ve, cómo se mueve).",
+          "Parte 2: el escenario (el mapa, las plataformas, los obstáculos).",
+          "Parte 3: los enemigos (cómo aparecen, cómo se mueven).",
+          "Parte 4: las reglas (puntos, vidas, cómo ganas o pierdes)."
+        ],
+        "ejemplo": "'Parte 1: el personaje' se subdivide en tareas aún más pequeñas: que salte, que camine a la izquierda, que camine a la derecha, que se caiga si no hay piso. Cada una es un problema chiquito que se resuelve solo. Al final, todas las piezas juntas forman el juego completo."
+      },
+      {
+        "titulo": "La conexión con resolver problemas y programar",
+        "explicacion": "La descomposición no es un truco suelto: es la base de cómo se resuelve CUALQUIER problema difícil, dentro y fuera de la computadora. Un programa es, literalmente, un problema grande partido en partes pequeñas. Los programadores dividen su programa en pedazos (a veces llamados funciones o módulos), resuelven cada pedazo por separado, lo prueban, y después los unen. Por eso practicar descomposición con fiestas y tareas te está preparando de verdad para programar: es el mismo pensamiento, solo que aplicado a cosas cotidianas primero. Y se junta con lo que ya sabes: cada parte pequeña, al final, se resuelve escribiendo un algoritmo (una lista de instrucciones precisas y ordenadas).",
+        "pasos": [],
+        "ejemplo": "Un programa para calcular el promedio de las notas de un salón se descompone en partes: 1) recoger todas las notas, 2) sumarlas, 3) contar cuántas notas hay, 4) dividir la suma entre la cantidad, 5) mostrar el resultado. Cada parte es pequeña y clara; juntas resuelven el problema grande."
+      },
+      {
+        "titulo": "¿Cuándo un paso ya es 'suficientemente pequeño'?",
+        "explicacion": "Una duda muy común: ¿hasta cuándo hay que seguir partiendo? La respuesta es sencilla: un paso está suficientemente pequeño cuando ya sabes cómo hacerlo sin tener que pensarlo mucho ni volver a dividirlo. Si al leer un paso todavía dices '¿y esto cómo lo hago?', es que sigue siendo grande y hay que partirlo más. Si al leerlo puedes empezar de una vez, ya está en su tamaño correcto: para ahí. No conviene partir de más (llenarías todo de trocitos diminutos y te perderías) ni partir de menos (te quedarían partes que aún dan miedo). El punto justo es 'una tarea que puedo empezar ahora mismo'.",
+        "pasos": [
+          "Lee el paso y pregúntate: ¿sé exactamente cómo hacerlo ya?",
+          "Si SÍ y puedes empezarlo de inmediato: está suficientemente pequeño, para de dividir.",
+          "Si NO, si todavía dudas cómo, sigue siendo grande: divídelo una vez más.",
+          "Evita el extremo de partir tanto que cada trocito sea absurdo de tan pequeño."
+        ],
+        "ejemplo": "'Preparar la comida de la fiesta' es grande (¿cómo?, ¿qué comida?): hay que partirlo. 'Comprar dos bolsas de papas fritas' ya es suficientemente pequeño: sabes exactamente cómo hacerlo y puedes empezar ya. No hace falta partirlo en 'agarrar la bolsa', 'caminar a la caja', etc.: eso sería partir de más."
+      },
+      {
+        "titulo": "Errores típicos al descomponer",
+        "explicacion": "Como todo, descomponer bien tiene sus trampas, y conocerlas de antemano te ahorra problemas. Los tres errores más comunes son: partir de menos (dejar partes que todavía son enormes y confusas), partir de más (romper todo en trocitos tan diminutos que te pierdes entre ellos), y olvidar una parte (que la suma de los pedazos no cubra todo el problema). Este último es traicionero: descompones una fiesta en invitados, comida y lugar, pero olvidaste 'música', y el día llega sin música. Por eso, al terminar de descomponer, siempre hay que revisar que juntando todas las partes se resuelve el problema COMPLETO, sin huecos.",
+        "pasos": [
+          "Revisa que ninguna parte siga siendo demasiado grande o confusa.",
+          "Revisa que no hayas partido de más en trocitos inútiles.",
+          "Revisa que la suma de todas las partes cubra el problema entero, sin olvidar nada.",
+          "Si falta algo, agrégalo como una parte más."
+        ],
+        "ejemplo": "Descomponer 'mudarse de casa' en solo 'empacar' y 'desempacar' olvida partes importantes: conseguir cajas, transportar todo, limpiar la casa vieja. Al revisar el conjunto se ve el hueco y se agregan las partes que faltaban."
+      }
+    ],
+    "idea_clave": "Descomponer es partir un problema grande en subproblemas pequeños y manejables: quita el miedo, facilita encontrar errores, permite repartir el trabajo y reutilizar soluciones. Se parte de lo grande a lo pequeño hasta que cada trocito sea una tarea que sabes empezar ya. Es la base de resolver cualquier problema difícil y de programar, y cada parte pequeña, al final, se resuelve con un algoritmo."
+  },
+  "practica": [
+    {
+      "enunciado": "Descompón el problema grande 'preparar mi mochila para el colegio mañana' en al menos cuatro subproblemas pequeños y concretos.",
+      "pista": "Piensa en las distintas cosas que tienes que meter o revisar. Cada tipo de cosa (cuadernos, útiles, comida, ropa de gimnasia) puede ser un subproblema.",
+      "solucion": "Un ejemplo válido: 1) Guardar los cuadernos y libros de las materias de mañana. 2) Revisar que el estuche tenga lápiz, goma y bolígrafo. 3) Preparar la merienda y meterla. 4) Guardar la ropa de educación física si hay clase. 5) Poner la botella de agua. Cada subproblema es pequeño y concreto; juntos resuelven el problema grande de preparar la mochila.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica con tus palabras por qué descomponer un problema grande ayuda a encontrar errores más rápido que si lo resolvieras todo de un golpe.",
+      "pista": "Piensa qué pasa cuando algo sale mal en un bloque enorme, frente a lo que pasa cuando sale mal en una lista de partes separadas.",
+      "solucion": "Si resuelves todo de un golpe y algo sale mal, tienes que revisar el problema entero para encontrar dónde está la falla. Si lo descompusiste en partes, cada parte funciona por su cuenta, así que puedes ver rápidamente CUÁL parte falló y arreglar solo esa, sin tocar las demás. Al aislar el error en una parte pequeña, encontrarlo y corregirlo es mucho más rápido.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Toma el subproblema 'preparar la comida para una fiesta' (que todavía es grande) y descomponlo en partes más pequeñas. Luego señala cuál de tus partes finales ya está 'suficientemente pequeña' y por qué.",
+      "pista": "Primero divide por tipo de comida (salada, dulce, bebidas). Luego pregúntate en cuál parte ya sabes exactamente qué hacer sin pensarlo.",
+      "solucion": "Un ejemplo válido: 'preparar la comida' se parte en: 1) comida salada, 2) comida dulce, 3) bebidas. La parte 1 sigue siendo grande, así que se subdivide en 'comprar ingredientes salados' y 'preparar los sándwiches el día anterior'. La parte 'comprar dos botellas de refresco' ya está suficientemente pequeña porque sé exactamente cómo hacerlo y puedo empezar de inmediato: no hace falta dividirla más.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un amigo descompuso 'organizar una fiesta de cumpleaños' así: invitados, comida, lugar. El día de la fiesta se dio cuenta de que faltó algo importante. ¿Qué error de descomposición cometió y cómo se arregla?",
+      "pista": "El error no es que las partes estén mal, sino que la suma de las partes no cubre TODO el problema. ¿Qué necesita una fiesta que no está en esa lista?",
+      "solucion": "El error es 'olvidar una parte': la suma de sus partes no cubre el problema completo. Le faltaron cosas como la música o el entretenimiento, y quizás la decoración o el pastel. Se arregla revisando el conjunto y agregando las partes que faltaban, por ejemplo: 4) música y juegos, 5) decoración, 6) pastel. Al terminar de descomponer siempre hay que comprobar que juntando todo se resuelve el problema entero, sin huecos.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Descompón el problema 'hacer un video corto para presentar en clase sobre tu mascota o animal favorito' en tres partes grandes, y subdivide una de ellas en dos subtareas.",
+      "pista": "Piensa en las tres fases naturales de hacer un video: qué vas a decir, grabarlo y arreglarlo. Luego elige una y pártela en dos.",
+      "solucion": "Un ejemplo válido. Tres partes grandes: 1) Planear el contenido (qué información voy a mostrar). 2) Grabar el video. 3) Editarlo y prepararlo para presentar. Subdividimos la parte 1 en dos subtareas: 1a) buscar tres datos interesantes del animal, y 1b) escribir el guion de lo que voy a decir. Así el problema grande queda partido en piezas manejables, y una de ellas mostrada con más detalle.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero partió 'lavar los platos' en veinte pasos diminutos: 'mirar el plato', 'estirar la mano hacia el plato', 'cerrar los dedos', 'levantar el plato', etc. ¿Qué error de descomposición cometió?",
+      "pista": "¿El problema era que las partes seguían siendo grandes, o al revés, que eran demasiado pequeñas?",
+      "solucion": "El error es 'partir de más': dividió la tarea en trocitos tan diminutos que se vuelve confuso y no sirve de nada. Un paso está en su tamaño correcto cuando ya sabes cómo hacerlo sin pensarlo. 'Lavar cada plato con esponja y jabón' ya es suficientemente pequeño; no hace falta partirlo en 'estirar la mano', 'cerrar los dedos', etc. Descomponer de más te hace perderte entre partes inútiles.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica cómo la descomposición se relaciona con programar un videojuego. ¿Por qué los creadores de juegos no lo programan todo de un solo golpe?",
+      "pista": "Piensa en las partes de un juego (personaje, escenario, enemigos, reglas) y en las ventajas de resolver cada una por separado.",
+      "solucion": "Un videojuego parece una sola cosa enorme, pero por dentro son muchas partes pequeñas que funcionan juntas: el personaje, el escenario, los enemigos, las reglas. Los creadores lo descomponen y programan una parte a la vez porque así cada pieza es manejable, se puede probar por separado, es fácil encontrar en qué parte está un error, y hasta se pueden repartir entre varias personas. Al final se unen todas las piezas y forman el juego completo. Programar cualquier programa grande es siempre esto: descomponerlo en partes pequeñas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Descompón el problema 'ordenar la biblioteca del salón, que tiene los libros todos revueltos' en partes. Incluye al menos una parte que necesites subdividir otra vez.",
+      "pista": "Piensa en las etapas: sacar todo, clasificar y volver a colocar. La etapa de clasificar seguramente se puede partir más (por tema, por tamaño, por autor).",
+      "solucion": "Un ejemplo válido. Partes grandes: 1) Sacar todos los libros de los estantes y ponerlos en una mesa. 2) Clasificar los libros. 3) Volver a colocarlos ordenados en los estantes. La parte 2 sigue siendo grande, así que se subdivide: 2a) separar por tema (cuentos, ciencia, historia), 2b) dentro de cada tema, ordenar por tamaño o por apellido del autor. Cada subtarea es clara y abordable, y juntas resuelven el problema completo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Tienes que decidir si el paso 'estudiar para el examen de ciencias' está suficientemente pequeño o si hay que partirlo más. ¿Qué está pequeño y qué no, y cómo lo decides?",
+      "pista": "Aplica la prueba: al leer el paso, ¿sabes exactamente qué hacer y puedes empezar ya, o todavía dudas cómo?",
+      "solucion": "'Estudiar para el examen de ciencias' NO está suficientemente pequeño, porque al leerlo todavía dudas cómo empezar (¿qué temas?, ¿leer, resumir, hacer ejercicios?). La prueba es: si aún preguntas '¿y esto cómo lo hago?', sigue siendo grande. Hay que partirlo, por ejemplo en: 1) leer los tres temas del examen, 2) hacer un resumen de cada uno, 3) responder las preguntas de práctica. Cada una de esas SÍ está pequeña, porque sabes exactamente cómo empezarla de inmediato.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Une las dos grandes ideas del año: toma UNA de las partes pequeñas de un problema descompuesto (por ejemplo 'preparar la merienda para la fiesta') y explica cómo se resolvería con un algoritmo.",
+      "pista": "Recuerda que un algoritmo es una lista de instrucciones precisas y en orden. Escribe los pasos concretos para esa parte pequeña.",
+      "solucion": "La descomposición parte el problema grande en piezas pequeñas; cada pieza pequeña, al final, se resuelve con un algoritmo (una lista de instrucciones precisas y ordenadas). Para la parte 'preparar la merienda': 1) Saca el pan y las lonchas de jamón. 2) Arma diez sándwiches poniendo una loncha en cada pan. 3) Corta cada sándwich por la mitad. 4) Colócalos en una bandeja. 5) Cubre la bandeja con plástico y guárdala en la nevera. Así se ve cómo las dos ideas se juntan: descomponer da las piezas, y un algoritmo resuelve cada pieza.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué significa 'descomponer' un problema en informática?",
+      "opciones": [
+        "Hacer el problema más difícil",
+        "Partirlo en subproblemas más pequeños y manejables",
+        "Borrar el problema y empezar otro",
+        "Resolverlo de un solo golpe muy rápido"
+      ],
+      "correcta": 1,
+      "explicacion": "Descomponer es partir un problema grande en partes más pequeñas (subproblemas) que, resueltas todas, resuelven el grande. No cambia el problema por arte de magia: lo rompe en pedazos que sí puedes agarrar."
+    },
+    {
+      "pregunta": "¿Cuál es la razón principal por la que un problema pequeño es más fácil de encarar que uno enorme?",
+      "opciones": [
+        "Porque los problemas pequeños no tienen errores",
+        "Porque sabes por dónde empezar, mientras que uno enorme te paraliza",
+        "Porque los problemas pequeños se resuelven solos",
+        "Porque no hay que pensar en ellos"
+      ],
+      "correcta": 1,
+      "explicacion": "Un problema pequeño no da miedo: sabes cómo empezarlo. Uno enorme, en cambio, paraliza porque no ves por dónde entrarle. Por eso partir el problema quita el bloqueo y te deja avanzar."
+    },
+    {
+      "pregunta": "Descompusiste tu proyecto en partes y una de ellas falla. ¿Qué ventaja te da la descomposición en ese momento?",
+      "opciones": [
+        "Que el proyecto ya no puede fallar",
+        "Que sabes en qué parte buscar el error y arreglas solo esa",
+        "Que puedes ignorar el error",
+        "Que las otras partes también se rompen y avisan"
+      ],
+      "correcta": 1,
+      "explicacion": "Como cada parte funciona por su cuenta, al fallar algo sabes exactamente CUÁL parte revisar y arreglas solo esa. Encontrar un error en una parte pequeña es mucho más rápido que revisar el proyecto entero."
+    },
+    {
+      "pregunta": "¿En qué dirección conviene descomponer un problema?",
+      "opciones": [
+        "De lo pequeño a lo grande, juntando trocitos",
+        "De lo grande a lo pequeño: partir primero en pocas partes grandes y luego subdividir",
+        "Al azar, en cualquier orden",
+        "Todo de una vez en partes diminutas"
+      ],
+      "correcta": 1,
+      "explicacion": "Se descompone de lo grande a lo pequeño: primero identificas unas pocas partes grandes y, si alguna sigue siendo grande, la divides otra vez, como un árbol que se abre en ramas más finas. Así no te pierdes en los detalles antes de tiempo."
+    },
+    {
+      "pregunta": "¿Cuándo un paso ya está 'suficientemente pequeño' y no hay que partirlo más?",
+      "opciones": [
+        "Cuando cabe en una sola línea escrita",
+        "Cuando ya sabes cómo hacerlo y puedes empezarlo de inmediato",
+        "Cuando tiene menos de tres palabras",
+        "Cuando es la última parte de la lista"
+      ],
+      "correcta": 1,
+      "explicacion": "El tamaño correcto de un paso es 'una tarea que puedo empezar ahora mismo': si sabes exactamente cómo hacerlo, para de dividir. Si al leerlo todavía dudas cómo, sigue siendo grande y hay que partirlo más."
+    },
+    {
+      "pregunta": "Un compañero partió 'agarrar un vaso' en: 'mirar el vaso', 'estirar la mano', 'cerrar los dedos', 'levantar'. ¿Qué error cometió?",
+      "opciones": [
+        "Partió de menos, dejó partes muy grandes",
+        "Partió de más, en trocitos tan diminutos que ya no sirven",
+        "Olvidó una parte del problema",
+        "No cometió ningún error"
+      ],
+      "correcta": 1,
+      "explicacion": "Ese es el error de 'partir de más': dividir en trocitos tan diminutos que solo confunden. 'Agarrar el vaso' ya era suficientemente pequeño. Descomponer de más te hace perderte entre partes inútiles."
+    },
+    {
+      "pregunta": "Descompones 'organizar una fiesta' en invitados, comida y lugar, pero el día llega y no hay música. ¿Qué error de descomposición fue?",
+      "opciones": [
+        "Partir de más",
+        "Olvidar una parte: la suma de los pedazos no cubría todo el problema",
+        "Descomponer en la dirección equivocada",
+        "Hacer las partes demasiado grandes"
+      ],
+      "correcta": 1,
+      "explicacion": "El error fue 'olvidar una parte': las partes elegidas no cubrían el problema completo, faltaba la música. Por eso, al terminar de descomponer, siempre hay que revisar que juntando todas las partes se resuelva el problema entero, sin huecos."
+    },
+    {
+      "pregunta": "¿Por qué la descomposición es útil cuando trabajas en equipo?",
+      "opciones": [
+        "Porque así solo trabaja una persona",
+        "Porque cada parte se la puede encargar una persona distinta y avanzan a la vez",
+        "Porque evita tener que hablar con los demás",
+        "Porque hace el trabajo más largo"
+      ],
+      "correcta": 1,
+      "explicacion": "Al partir el problema en partes, cada persona puede encargarse de una parte distinta y todas avanzan al mismo tiempo. Repartir el trabajo es una de las grandes ventajas de descomponer."
+    },
+    {
+      "pregunta": "¿Cómo se relaciona la descomposición con programar?",
+      "opciones": [
+        "No tienen ninguna relación",
+        "Un programa es un problema grande partido en partes pequeñas que se resuelven por separado y luego se unen",
+        "Programar es lo contrario de descomponer",
+        "Solo se descompone después de terminar el programa"
+      ],
+      "correcta": 1,
+      "explicacion": "Un programa es, literalmente, un problema grande descompuesto en partes pequeñas: los programadores resuelven cada pedazo por separado, lo prueban y luego los unen. Por eso practicar descomposición te prepara de verdad para programar."
+    },
+    {
+      "pregunta": "Después de descomponer un problema en partes pequeñas, ¿cómo se resuelve finalmente cada parte pequeña?",
+      "opciones": [
+        "Descomponiéndola infinitas veces más",
+        "Con un algoritmo: una lista de instrucciones precisas y en orden",
+        "Adivinando",
+        "No hace falta resolverlas, basta con listarlas"
+      ],
+      "correcta": 1,
+      "explicacion": "Aquí se juntan las dos grandes ideas: la descomposición da las piezas pequeñas, y cada pieza se resuelve escribiendo un algoritmo (instrucciones precisas y ordenadas). Descomponer y dar instrucciones exactas trabajan juntas."
+    },
+    {
+      "pregunta": "¿Cuál de estas listas es la MEJOR descomposición de 'hacer toda la tarea del día'?",
+      "opciones": [
+        "Hacer la tarea; terminar la tarea",
+        "Matemática: 10 ejercicios de la página 40; Lengua: leer el cuento y responder 3 preguntas; Ciencias: dibujar el ciclo del agua",
+        "Estudiar mucho",
+        "Sentarse; abrir el cuaderno; escribir; cerrar el cuaderno"
+      ],
+      "correcta": 1,
+      "explicacion": "La buena descomposición parte el problema en subtareas concretas y del tamaño justo (una por materia, cada una clara y empezable). La opción de 'sentarse, abrir, escribir' parte de más en trocitos inútiles, y 'hacer la tarea' no descompone nada."
+    },
+    {
+      "pregunta": "¿Qué dicho resume mejor la idea de la descomposición?",
+      "opciones": [
+        "Más vale tarde que nunca",
+        "¿Cómo te comes un elefante? A pedacitos, un bocado a la vez",
+        "El que mucho abarca poco aprieta",
+        "A caballo regalado no se le mira el diente"
+      ],
+      "correcta": 1,
+      "explicacion": "Comerse un elefante 'a pedacitos' es la imagen exacta de la descomposición: un problema imposible de un solo golpe se vuelve posible si lo partes en pedazos pequeños y resuelves uno a la vez."
+    }
+  ]
+}
