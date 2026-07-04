@@ -46,17 +46,17 @@ export default async function handler(req, res) {
   if (req.body && req.body.cumbre) {
     try {
       const ahora = new Date().toISOString();
-      const { grado, materias } = CUMBRE_CURRICULO;
+      const { materias } = CUMBRE_CURRICULO;
       const out = [];
       for (const m of materias) {
         const totalTemas = (m.grupos || []).reduce((s, g) => s + ((g.temas || []).length), 0);
         await upsert(cfg, {
-          grado, materia_id: m.id, materia: m.materia, nombre_corto: m.nombre_corto,
+          grado: m.grado, materia_id: m.id, materia: m.materia, nombre_corto: m.nombre_corto,
           temas: { fuente: "cumbre", grupos: m.grupos || [] }, actualizado: ahora,
         });
-        out.push({ materia: m.materia, dominios: (m.grupos || []).length, temas: totalTemas });
+        out.push({ materia: m.materia, grado: m.grado, dominios: (m.grupos || []).length, temas: totalTemas });
       }
-      return res.status(200).json({ ok: true, cumbre: true, grado, materias: out });
+      return res.status(200).json({ ok: true, cumbre: true, materias: out });
     } catch (e) {
       return res.status(500).json({ error: String(e.message || e) });
     }

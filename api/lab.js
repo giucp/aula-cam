@@ -20,45 +20,48 @@ function supabaseCfg() {
 function hdr(cfg) { return { apikey: cfg.key, Authorization: `Bearer ${cfg.key}` }; }
 
 async function materias(cfg) {
-  // 1) árbol de Cumbre (dominios → temas) desde el currículo
+  // 1) árbol de Cumbre (dominios → temas) desde el currículo. Cada materia de Cumbre tiene
+  //    su propio grado ("Cumbre Matemática/Física/Química 1er año"); se identifican por
+  //    temas.fuente==='cumbre'. La tabla es pequeña → se filtra en JS (robusto, sin jsonb-URL).
   const rc = await fetch(
-    `${cfg.url}/rest/v1/curriculo?grado=eq.${encodeURIComponent(GRADO_CUMBRE)}&select=materia,temas,materia_id&order=materia_id`,
+    `${cfg.url}/rest/v1/curriculo?select=materia,temas,materia_id,grado&order=materia_id`,
     { headers: hdr(cfg) }
   );
-  const cursos = rc.ok ? await rc.json() : [];
-  // 2) qué (materia_norm, tema_norm) están curados y en qué modos (solo programa='cumbre')
+  const todas = rc.ok ? await rc.json() : [];
+  const cursos = (Array.isArray(todas) ? todas : []).filter((c) => c.temas && c.temas.fuente === "cumbre");
+  // 2) qué (grado, materia_norm, tema_norm) están curados y en qué modos (solo programa='cumbre')
   const rk = await fetch(
-    `${cfg.url}/rest/v1/contenido_curado?programa=eq.cumbre&grado=eq.${encodeURIComponent(GRADO_CUMBRE)}&select=materia_norm,tema_norm,modo`,
+    `${cfg.url}/rest/v1/contenido_curado?programa=eq.cumbre&select=grado,materia_norm,tema_norm,modo`,
     { headers: hdr(cfg) }
   );
   const curadas = rk.ok ? await rk.json() : [];
   const mapaCurado = {};
   for (const row of Array.isArray(curadas) ? curadas : []) {
-    const k = `${row.materia_norm}||${row.tema_norm}`;
+    const k = `${row.grado}||${row.materia_norm}||${row.tema_norm}`;
     (mapaCurado[k] || (mapaCurado[k] = new Set())).add(row.modo);
   }
-  return (Array.isArray(cursos) ? cursos : []).map((c) => {
+  return cursos.map((c) => {
     const mnorm = normCurado(c.materia || "");
     const grupos = (c.temas && Array.isArray(c.temas.grupos)) ? c.temas.grupos : [];
     let curados = 0, total = 0;
     const dominios = grupos.map((g) => {
       const temas = (g.temas || []).map((t) => {
         const titulo = t && typeof t === "object" ? t.t : t;
-        const modos = mapaCurado[`${mnorm}||${normCurado(titulo)}`];
+        const modos = mapaCurado[`${c.grado}||${mnorm}||${normCurado(titulo)}`];
         total++;
         if (modos) curados++;
         return { tema: titulo, curado: !!modos, modos: modos ? [...modos] : [] };
       });
       return { dominio: g.lapso || "", intl: g.intl || "", temas };
     });
-    return { materia: c.materia, grado: GRADO_CUMBRE, curados, total, dominios };
+    return { materia: c.materia, grado: c.grado, curados, total, dominios };
   });
 }
 
-async function tema(cfg, materia, tm) {
+async function tema(cfg, materia, tm, grado) {
   const q =
     `programa=eq.cumbre` +
-    `&grado=eq.${encodeURIComponent(GRADO_CUMBRE)}` +
+    `&grado=eq.${encodeURIComponent(grado)}` +
     `&materia_norm=eq.${encodeURIComponent(normCurado(materia))}` +
     `&tema_norm=eq.${encodeURIComponent(normCurado(tm))}` +
     `&select=modo,contenido`;
@@ -85,9 +88,9 @@ export default async function handler(req, res) {
   try {
     if (accion === "materias") return res.status(200).json({ materias: await materias(cfg) });
     if (accion === "tema") {
-      const { materia, tema: tm } = req.body || {};
+      const { materia, tema: tm, grado } = req.body || {};
       if (!materia || !tm) return res.status(400).json({ error: "Falta materia o tema" });
-      return res.status(200).json({ modos: await tema(cfg, materia, tm) });
+      return res.status(200).json({ modos: await tema(cfg, materia, tm, grado || GRADO_CUMBRE) });
     }
     return res.status(400).json({ error: "accion inválida" });
   } catch (e) {

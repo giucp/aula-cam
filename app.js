@@ -1614,7 +1614,7 @@
     const body=$("#labBody");
     body.innerHTML=`<p class="labCrumb">🏔️ ${escapeHtml(m.materia)} — ${escapeHtml(t.tema)}</p><p class="labLoad">Cargando…</p>`;
     try{
-      const r=await fetch(API_LAB,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"tema", clave:LAB_CLAVE, materia:m.materia, tema:t.tema})});
+      const r=await fetch(API_LAB,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"tema", clave:LAB_CLAVE, materia:m.materia, tema:t.tema, grado:m.grado})});
       if(r.status===401){ LAB_CLAVE=""; entrarLab(); return; }
       const d=await r.json(); const modos=d.modos||{};
       body.innerHTML=`<p class="labCrumb">🏔️ ${escapeHtml(m.materia)} — ${escapeHtml(t.tema)}</p><p class="labNota">Así lo verá la alumna (vista de solo lectura).</p>`;

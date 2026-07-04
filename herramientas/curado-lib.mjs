@@ -9,7 +9,7 @@ import { normCurado } from "./normcurado.mjs";
 const GRADOS_CONOCIDOS = new Set([
   "1er grado", "2do grado", "3er grado", "4to grado", "5to grado", "6to grado",
   "1er año", "2do año", "3er año", "4to año", "5to año",
-  "Cumbre Matemática 1er año",
+  "Cumbre Matemática 1er año", "Cumbre Física 1er año", "Cumbre Química 1er año",
 ]);
 // Programas conocidos: 'aula' (temario venezolano, lo de siempre) y 'cumbre' (élite).
 const PROGRAMAS_CONOCIDOS = new Set(["aula", "cumbre"]);
