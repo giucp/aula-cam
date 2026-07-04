@@ -423,5 +423,152 @@ export const CUMBRE_CURRICULO = {
         },
       ],
     },
+    {
+      id: 9005,
+      grado: "Cumbre Informática 1er año",
+      materia: "Informática",
+      nombre_corto: "CUMBRE INFO 1A",
+      // Ciencias de la Computación. Organizada por las 5 hebras de CSTA (no por dominios de
+      // ciencias naturales). A esta edad: la LÓGICA antes que la SINTAXIS; mucho 'unplugged'.
+      // Equivalente: CSTA grade band 6-8, UK Computing KS3.
+      grupos: [
+        {
+          lapso: "Pensamiento computacional",
+          intl: "Computational Thinking — unplugged",
+          temas: [
+            "Qué es pensar como una computadora: instrucciones exactas y sin ambigüedad",
+            "Descomposición: partir un problema grande en pasos pequeños",
+            "Reconocer patrones: encontrar lo que se repite para no repetir trabajo",
+            "Abstracción: quedarse con lo importante e ignorar lo que no importa",
+            "Algoritmos: una receta paso a paso que siempre funciona",
+            "Seguir y depurar un algoritmo: encontrar el error cuando algo sale mal (debugging)",
+          ],
+        },
+        {
+          lapso: "Programación",
+          intl: "Algorithms & Programming",
+          temas: [
+            "De la idea al código: programar por bloques (estilo Scratch)",
+            "Secuencia: el orden de las instrucciones importa",
+            "Repetición: los bucles hacen el trabajo aburrido por ti",
+            "Decisiones: condicionales 'si… entonces… si no'",
+            "Variables: guardar y usar información que cambia",
+            "Combinar todo: crear un juego o una animación sencilla",
+            "Del bloque al texto: un primer vistazo a un lenguaje real (Python)",
+          ],
+        },
+        {
+          lapso: "Datos e información",
+          intl: "Data & Analysis",
+          temas: [
+            "Cómo la computadora guarda todo en unos y ceros (el bit y el byte)",
+            "De números a texto, imágenes y sonido: todo es datos",
+            "Organizar datos: listas y tablas para encontrar lo que buscas",
+            "Buscar y ordenar: cómo la computadora halla una aguja en el pajar",
+            "Convertir datos en información: gráficos y conclusiones (puente con Cómo Pensar)",
+          ],
+        },
+        {
+          lapso: "Máquinas y redes",
+          intl: "Computing Systems & Networks",
+          temas: [
+            "Qué hay dentro de una computadora: hardware y software trabajando juntos",
+            "Cómo 'piensa' una computadora: entrada, proceso, memoria y salida",
+            "Qué es internet: mensajes partidos en paquetes que viajan y se rearman",
+            "La web no es internet: la diferencia y cómo llega una página a tu pantalla",
+            "Resolver problemas comunes: estrategias básicas cuando algo no funciona",
+          ],
+        },
+        {
+          lapso: "Ciudadanía digital",
+          intl: "Impacts & Digital Citizenship",
+          temas: [
+            "Tu huella digital: lo que dejas en internet y quién puede verlo",
+            "Seguridad: contraseñas fuertes y cómo protegerte de engaños (phishing)",
+            "Privacidad: qué información no se comparte y por qué",
+            "Convivencia en línea: respeto, ciberacoso y cómo actuar",
+            "La tecnología y la sociedad: cómo cambia el trabajo, la vida y qué es la inteligencia artificial",
+            "Crear con responsabilidad: derechos de autor, dar crédito y usar la IA con ética",
+          ],
+        },
+      ],
+    },
+    {
+      id: 9006,
+      grado: "Cumbre Inglés 1er año",
+      materia: "Inglés",
+      nombre_corto: "CUMBRE ING 1A",
+      // Organizada por FUNCIONES COMUNICATIVAS (descriptores 'can-do' del MCER), no por reglas
+      // de gramática sueltas. Nivel A1→A2; cuatro destrezas integradas, el uso real sobre la
+      // perfección. La gramática/vocabulario entran al servicio de cada función.
+      grupos: [
+        {
+          lapso: "Hablar de mí y de otros",
+          intl: "Talking about myself and others",
+          temas: [
+            "Puedo saludar, presentarme y despedirme (greetings; verb to be)",
+            "Puedo dar información personal: edad, país, nacionalidad (personal information; numbers)",
+            "Puedo hablar de mi familia y describir a las personas (family; possessives; adjectives)",
+            "Puedo decir qué tengo y qué no tengo (have got; a/an; plurals)",
+            "Puedo hablar de lo que me gusta y no me gusta (like/don't like + noun and -ing)",
+          ],
+        },
+        {
+          lapso: "Mi mundo día a día",
+          intl: "My everyday world",
+          temas: [
+            "Puedo describir mi casa y lo que hay en ella (there is/there are; prepositions of place)",
+            "Puedo hablar de mi rutina diaria (present simple; daily routines)",
+            "Puedo decir con qué frecuencia hago las cosas (adverbs of frequency)",
+            "Puedo decir la hora, los días y organizar mi horario (telling the time; days; school subjects)",
+            "Puedo hablar de la comida y pedir en una tienda o restaurante (food; countable/uncountable; some/any)",
+          ],
+        },
+        {
+          lapso: "Lo que está pasando y lo que puedo hacer",
+          intl: "Now and abilities",
+          temas: [
+            "Puedo describir lo que está pasando ahora mismo (present continuous)",
+            "Puedo distinguir lo que hago siempre de lo que hago ahora (present simple vs continuous)",
+            "Puedo hablar de habilidades y pedir permiso (can/can't)",
+            "Puedo describir a personas por su aspecto y su ropa (appearance; clothes)",
+            "Puedo hablar de mis pasatiempos y deportes (hobbies; free time)",
+          ],
+        },
+        {
+          lapso: "Contar y describir",
+          intl: "Narrating and describing",
+          temas: [
+            "Puedo hablar de dónde estuve y qué había (past of to be: was/were; there was/were)",
+            "Puedo contar lo que hice: verbos regulares en pasado (past simple regular)",
+            "Puedo contar lo que hice: verbos irregulares comunes (past simple irregular)",
+            "Puedo hacer y responder preguntas sobre el pasado (past simple questions)",
+            "Puedo describir un lugar y mi ciudad (places in town; giving directions)",
+          ],
+        },
+        {
+          lapso: "Comunicarme de verdad",
+          intl: "Real communication",
+          temas: [
+            "Puedo mantener una conversación corta y cotidiana (short social exchanges)",
+            "Puedo escribir un mensaje o una nota sencilla (writing short messages and notes)",
+            "Puedo escribir una carta o correo personal simple (a simple personal email)",
+            "Puedo leer y entender textos cortos y sencillos (reading short texts; finding information)",
+            "Puedo entender lo esencial cuando me hablan despacio y claro (listening for gist)",
+          ],
+        },
+        {
+          lapso: "Herramientas del idioma",
+          intl: "Language tools",
+          temas: [
+            "Cómo aprender vocabulario que se queda: por temas y en contexto",
+            "Los sonidos del inglés: pronunciación y el alfabeto (deletrear)",
+            "Conectar ideas: and, but, because, then (basic connectors)",
+            "Palabras que preguntan: wh- questions (what, where, when, who, how)",
+            "Adivinar por el contexto: entender sin saber cada palabra (reading strategy)",
+          ],
+        },
+      ],
+    },
   ],
 };

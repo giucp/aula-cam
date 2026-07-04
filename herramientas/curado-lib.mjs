@@ -11,6 +11,7 @@ const GRADOS_CONOCIDOS = new Set([
   "1er año", "2do año", "3er año", "4to año", "5to año",
   "Cumbre Matemática 1er año", "Cumbre Física 1er año", "Cumbre Química 1er año",
   "Cumbre Biología 1er año", "Cumbre Cómo Pensar 1er año",
+  "Cumbre Informática 1er año", "Cumbre Inglés 1er año",
 ]);
 // Programas conocidos: 'aula' (temario venezolano, lo de siempre) y 'cumbre' (élite).
 const PROGRAMAS_CONOCIDOS = new Set(["aula", "cumbre"]);
