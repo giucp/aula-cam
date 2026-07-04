@@ -1,0 +1,290 @@
+{
+  "materia": "LÓGICA MATEMÁTICA 6G",
+  "tema": "Planteo de Ecuaciones",
+  "grado": "6to grado",
+  "fuentes": ["Hoja de Trabajo: Planteo de ecuaciones (aula LÓGICA MATEMÁTICA 6G)"],
+  "resumen": {
+    "titulo": "Del enunciado a la ecuación: aprende a traducir problemas",
+    "intro": "Muchos problemas de matemática vienen contados con palabras: una edad que no sabes, un dinero escondido, la longitud de un puente. La clave para resolverlos no es adivinar, sino TRADUCIR: convertir esa historia en una igualdad con símbolos, llamada ecuación, y después despejar el número que buscamos. Aprender a traducir es como aprender a pasar de un idioma a otro; una vez que le agarras el truco, cualquier problema deja de dar miedo. Aquí vas a aprender, desde cero, qué es una incógnita, cómo pasar cada frase del enunciado a símbolos y cómo resolver y comprobar la ecuación.",
+    "secciones": [
+      {
+        "titulo": "¿Qué es una incógnita y qué es una ecuación?",
+        "explicacion": "Empecemos por la palabra más importante: INCÓGNITA. Una incógnita es simplemente un número que todavía NO conocemos y que queremos descubrir; como no sabemos cuánto vale, le ponemos un nombre corto, una letra, casi siempre la x. Por ejemplo, si un problema habla de 'mi edad' y no la dice, escribimos x = mi edad. La segunda palabra clave es ECUACIÓN: una ecuación es una IGUALDAD, o sea dos cosas separadas por un signo igual (=) que valen exactamente lo mismo, y en la que aparece la incógnita. Piensa en una balanza de dos platillos en equilibrio: lo que hay a la izquierda del igual pesa lo mismo que lo que hay a la derecha. PLANTEAR una ecuación quiere decir escribir esa igualdad a partir de lo que cuenta el problema. RESOLVERLA quiere decir encontrar el valor de la incógnita que hace verdadera la igualdad.",
+        "pasos": [
+          "Lee el problema y pregúntate: ¿cuál es el número que no conozco y me piden hallar?",
+          "Ponle nombre a ese número con una letra: por ejemplo, sea x = la edad (o el número, o el dinero...).",
+          "Traduce la historia a una igualdad (=) donde aparezca la x. Eso es la ecuación.",
+          "Resuelve la ecuación para hallar x, y comprueba con el enunciado."
+        ],
+        "ejemplo": "Problema: 'Un número aumentado en 4 es igual a 10.' La incógnita es ese número: sea x = el número. La ecuación es x + 4 = 10. Resolviendo: x = 10 - 4 = 6. Comprobación con el enunciado: 6 aumentado en 4 es 10. Correcto."
+      },
+      {
+        "titulo": "El diccionario de palabras: cómo pasar frases a símbolos",
+        "explicacion": "Para traducir bien hay que conocer qué operación esconde cada palabra. Este es el 'diccionario' que usarás todo el tiempo. 'El doble de un número' significa multiplicarlo por 2, o sea 2x; 'el triple' es 3x; 'el cuádruple' es 4x; 'el quíntuple' es 5x; 'el séxtuple' es 6x. La palabra 'aumentado en' (o 'más', o 'agregarle') significa SUMAR: 'un número aumentado en 5' es x + 5. La palabra 'disminuido en' (o 'menos', o 'quitarle') significa RESTAR: 'un número disminuido en 5' es x - 5. Y las frases 'es igual a', 'equivale a', 'se obtiene', 'resulta' o simplemente 'es' se traducen todas como el signo igual (=). Con este diccionario puedes convertir casi cualquier frase en símbolos.",
+        "pasos": [
+          "'El doble / triple / cuádruple / quíntuple / séxtuple de x' → 2x, 3x, 4x, 5x, 6x.",
+          "'aumentado en', 'más', 'agregarle' → sumar (+).",
+          "'disminuido en', 'menos', 'quitarle' → restar (-).",
+          "'es', 'es igual a', 'equivale a', 'se obtiene', 'resulta' → signo igual (=)."
+        ],
+        "ejemplo": "'El triple de un número disminuido en 2 es igual a 13.' Traducción parte por parte: el triple del número = 3x; disminuido en 2 = 3x - 2; es igual a 13 = ... = 13. Ecuación: 3x - 2 = 13. (Resolviendo: 3x = 15, x = 5.)"
+      },
+      {
+        "titulo": "Cuidado con los paréntesis: dónde se aplica la operación",
+        "explicacion": "Este es el error que más confunde, así que vale la pena entenderlo bien. No es lo mismo 'el triple de un número, aumentado en 8' que 'el triple de (un número aumentado en 8)'. En el primero, primero triplicas el número y LUEGO le sumas 8: 3x + 8. En el segundo, primero le sumas 8 al número y DESPUÉS triplicas todo: como se triplica el paquete completo, hay que usar paréntesis: 3(x + 8), que vale 3x + 24 (se multiplica el 3 por cada cosa de adentro). La pista para decidir: si el enunciado dice 'el triple de UN NÚMERO aumentado en 8' se refiere solo al número (3x + 8); pero si dice 'el triple de un número AUMENTADO en 8' señalando que primero se aumenta y luego se triplica, va con paréntesis: 3(x + 8). Cuando dudes, lee despacio qué se hace primero.",
+        "pasos": [
+          "Pregúntate: ¿qué se hace primero, la multiplicación (doble, triple...) o la suma/resta?",
+          "Si se multiplica primero y luego se suma: 3x + 8 (sin paréntesis).",
+          "Si se suma primero y luego se multiplica todo el paquete: 3(x + 8) (con paréntesis).",
+          "Para quitar el paréntesis, multiplica el número de afuera por cada término de adentro: 3(x + 8) = 3x + 24."
+        ],
+        "ejemplo": "'El doble de (un número aumentado en 3) es 14.' Como primero se aumenta y luego se duplica todo: 2(x + 3) = 14, o sea 2x + 6 = 14, entonces 2x = 8 y x = 4. Comprobación: el número (4) aumentado en 3 es 7, y su doble es 14. Correcto."
+      },
+      {
+        "titulo": "Traducir 'lo que me falta para' y 'el exceso sobre'",
+        "explicacion": "Hay dos frases especiales que aparecen mucho en estos problemas. 'Lo que me falta para tener 50' significa la diferencia entre 50 y lo que tengo ahora: si tengo x, me falta 50 - x (porque si a lo que tengo le sumo lo que me falta, llego a 50). Al revés, 'el EXCESO de un número sobre 12' significa cuánto le sobra a ese número por encima de 12, o sea x - 12 (lo de arriba menos lo de abajo). Fíjate en el orden: 'el exceso de A sobre B' siempre es A - B (el mayor menos el menor). Estas dos frases parecen difíciles, pero si te imaginas la situación real se vuelven fáciles.",
+        "pasos": [
+          "'Lo que me falta para tener N' (si tengo x) → N - x.",
+          "'El exceso de un número sobre N' → x - N.",
+          "'El exceso de A sobre B' (en general) → A - B (siempre el primero menos el segundo).",
+          "Truco: comprueba que la resta dé positiva; si diera negativa, invertiste el orden."
+        ],
+        "ejemplo": "'Lo que me falta para tener 50 es igual a 30.' Si tengo x, lo que me falta es 50 - x, así que 50 - x = 30. Resolviendo: 50 - 30 = x, entonces x = 20. Comprobación: si tengo 20, para llegar a 50 me faltan 30. Correcto."
+      },
+      {
+        "titulo": "Traducir problemas de dos números que suman una cantidad",
+        "explicacion": "Un tipo muy común: 'dos números suman 21 y uno es el doble del otro'. El truco es llamar x al número más SENCILLO (el que sirve para describir al otro). Aquí, si uno es el doble del otro, llamamos x al número pequeño; entonces el otro, que es su doble, es 2x. Como los dos juntos suman 21, la ecuación es x + 2x = 21. Al sumar las dos x queda 3x = 21, entonces x = 7. Ese es el número pequeño; el mayor es 2x = 14. Lo importante: primero decide a cuál llamas x (siempre al que te ayuda a escribir el otro con la misma letra), escribe el otro en función de x, y suma.",
+        "pasos": [
+          "Llama x al número que te permite describir al otro (el más simple).",
+          "Escribe el otro número usando x (su doble = 2x, su triple = 3x, 'excede en 9' = x + 9...).",
+          "Como suman una cantidad, plantea: x + (el otro) = esa cantidad.",
+          "Resuelve, y ojo con qué te piden: el mayor, el menor o ambos."
+        ],
+        "ejemplo": "'Dos números suman 21 y uno es el doble del otro; halla el mayor.' Sea x = el menor, entonces el mayor = 2x. Ecuación: x + 2x = 21, o sea 3x = 21, entonces x = 7. El mayor es 2x = 14. Comprobación: 7 + 14 = 21 y 14 es el doble de 7. Correcto. La respuesta es 14."
+      },
+      {
+        "titulo": "Cómo resolver la ecuación una vez planteada",
+        "explicacion": "Ya sabes traducir; ahora hay que despejar la x, o sea dejarla sola de un lado. La regla de oro es la balanza: lo que le haces a un lado del igual, se lo haces también al otro, y así la igualdad se mantiene. En la práctica se usan atajos: un número que está SUMANDO en un lado pasa al otro lado RESTANDO; uno que está RESTANDO pasa SUMANDO; uno que está MULTIPLICANDO a la x pasa DIVIDIENDO. Primero juntas las x de un lado y los números del otro, y al final divides. Elige siempre el camino que deje la x sola.",
+        "pasos": [
+          "Si hay paréntesis, quítalos primero (multiplica el número de afuera por cada término de adentro).",
+          "Pasa todas las x a un lado y todos los números al otro (sumando o restando lo mismo en ambos lados).",
+          "Junta las x (por ejemplo 5x - 3x = 2x) y junta los números.",
+          "Si la x quedó multiplicada por un número, divide ambos lados entre ese número.",
+          "Comprueba: reemplaza la x por el valor hallado en el ENUNCIADO original."
+        ],
+        "ejemplo": "Ecuación 5x + 30 = 7x - 4. Paso las x a la derecha y los números a la izquierda: 30 + 4 = 7x - 5x, o sea 34 = 2x, entonces x = 34 ÷ 2 = 17. Comprobación en la ecuación: 5(17) + 30 = 115 y 7(17) - 4 = 115. Iguales. Correcto."
+      },
+      {
+        "titulo": "Un ejemplo completo, de principio a fin (edad de Christian)",
+        "explicacion": "Juntemos todo con un problema como los de la hoja del profe. 'Christian: si al cuádruple de su edad le agregamos 30 años, obtenemos su séxtuple disminuido en 4. ¿Qué edad tiene?' Paso 1, la incógnita: sea x = la edad de Christian. Paso 2, traducir cada parte con el diccionario: 'el cuádruple de su edad' = 4x; 'agregarle 30' = 4x + 30; 'obtenemos' = signo igual; 'su séxtuple' = 6x; 'disminuido en 4' = 6x - 4. Paso 3, la ecuación: 4x + 30 = 6x - 4. Paso 4, resolver: paso las x a la derecha y los números a la izquierda: 30 + 4 = 6x - 4x, o sea 34 = 2x, entonces x = 17. Paso 5, comprobar en el ENUNCIADO: el cuádruple de 17 es 68, más 30 da 98; el séxtuple de 17 es 102, menos 4 da 98. Los dos dan 98. Correcto. Christian tiene 17 años.",
+        "pasos": [
+          "Nombra la incógnita: sea x = la edad de Christian.",
+          "Traduce cada frase con el diccionario: 4x, 4x + 30, =, 6x, 6x - 4.",
+          "Escribe la ecuación completa: 4x + 30 = 6x - 4.",
+          "Despeja: 34 = 2x, entonces x = 17.",
+          "Comprueba en el enunciado original (los dos lados dan 98)."
+        ],
+        "ejemplo": "4x + 30 = 6x - 4 → 30 + 4 = 6x - 4x → 34 = 2x → x = 17. Christian tiene 17 años. (Comprobación: 4·17 + 30 = 98 y 6·17 - 4 = 98.)"
+      },
+      {
+        "titulo": "Comprobar SIEMPRE con el enunciado (no solo con la ecuación)",
+        "explicacion": "El último paso, y el que casi nadie hace, es el que te salva de los errores: comprobar. Pero ojo, hay dos comprobaciones distintas. La rápida es reemplazar la x en la ECUACIÓN y ver que los dos lados den lo mismo; eso solo confirma que resolviste bien la ecuación. La importante es reemplazar el valor en el ENUNCIADO original, en la historia contada con palabras, y ver que todo cuadre. Así te das cuenta si TRADUCISTE mal desde el principio. Por ejemplo, si el problema dice 'dos números suman 21' y tu respuesta da dos números que suman 25, hay un error de traducción aunque tu ecuación estuviera 'bien' resuelta. Comprobar con el enunciado es tu red de seguridad.",
+        "pasos": [
+          "Comprobación de la ecuación: reemplaza x y verifica que los dos lados sean iguales.",
+          "Comprobación del enunciado: cuenta la historia con el número hallado y verifica que se cumpla TODO lo que dice.",
+          "Si el enunciado no cuadra, revisa la traducción (quizá confundiste 'aumentado' con 'disminuido' o pusiste mal un paréntesis)."
+        ],
+        "ejemplo": "Para 'dos números suman 21 y uno es el doble del otro', hallamos 7 y 14. Comprobación del enunciado: 7 + 14 = 21 (suman 21) y 14 = 2·7 (uno es el doble del otro). Se cumplen las DOS condiciones, así que la respuesta es correcta."
+      }
+    ],
+    "idea_clave": "Resolver un problema con palabras es TRADUCIR: ponle nombre (x) a lo que no conoces, convierte cada frase en símbolos con el diccionario ('doble' = 2x, 'aumentado en' = +, 'disminuido en' = -, 'es' = =), escribe la ecuación, despeja la x y comprueba con el enunciado original."
+  },
+  "retos": [
+    {
+      "enunciado": "Dos números suman 24 y uno es el triple del otro. Halla el número mayor.",
+      "pista": "Llama x al número más pequeño; entonces el otro, que es su triple, es 3x. Como juntos suman 24, plantea x + 3x = 24.",
+      "solucion": "Sea x = el número menor; el mayor = 3x. Ecuación: x + 3x = 24. Sumando las x: 4x = 24, entonces x = 24 ÷ 4 = 6. El número mayor es 3x = 3 × 6 = 18. Comprobación en el enunciado: 6 + 18 = 24 (suman 24) y 18 = 3 × 6 (uno es el triple del otro). La respuesta es 18.",
+      "figura": ""
+    },
+    {
+      "enunciado": "¿Qué edad tiene Andrés, si al quíntuple de su edad y agregarle 30 años obtenemos su séptuple disminuido en 4?",
+      "pista": "Sea x = la edad. Traduce: 'quíntuple' = 5x, 'agregarle 30' = 5x + 30, 'séptuple' = 7x, 'disminuido en 4' = 7x - 4. Iguala los dos lados.",
+      "solucion": "Sea x = la edad de Andrés. Ecuación: 5x + 30 = 7x - 4. Paso las x a la derecha y los números a la izquierda: 30 + 4 = 7x - 5x, o sea 34 = 2x, entonces x = 17. Andrés tiene 17 años. Comprobación en el enunciado: el quíntuple de 17 es 85, más 30 da 115; el séptuple de 17 es 119, menos 4 da 115. Los dos dan 115. Correcto.",
+      "figura": ""
+    },
+    {
+      "enunciado": "La longitud de un puente cumple lo siguiente: el séptuple de su longitud disminuido en 400 metros equivale al cuádruple de su longitud disminuido en 100 metros. ¿Cuánto mide el puente?",
+      "pista": "Sea L = la longitud. 'Séptuple disminuido en 400' = 7L - 400; 'cuádruple disminuido en 100' = 4L - 100. 'Equivale a' es el signo igual.",
+      "solucion": "Sea L = la longitud del puente. Ecuación: 7L - 400 = 4L - 100. Paso las L a la izquierda y los números a la derecha: 7L - 4L = 400 - 100, o sea 3L = 300, entonces L = 300 ÷ 3 = 100. El puente mide 100 metros. Comprobación en el enunciado: el séptuple de 100 es 700, menos 400 da 300; el cuádruple de 100 es 400, menos 100 da 300. Los dos dan 300. Correcto.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Si ganara 200 monedas, tendría el doble de lo que me quedaría si perdiera 200 monedas. ¿Cuánto dinero tengo?",
+      "pista": "Sea x = lo que tengo. 'Si ganara 200' = x + 200. 'Lo que me quedaría si perdiera 200' = x - 200, y su doble es 2(x - 200). Iguala. No olvides el paréntesis.",
+      "solucion": "Sea x = el dinero que tengo. Ecuación: x + 200 = 2(x - 200). Quito el paréntesis: x + 200 = 2x - 400. Paso las x a la derecha y los números a la izquierda: 200 + 400 = 2x - x, o sea 600 = x. Tengo 600 monedas. Comprobación en el enunciado: si ganara 200 tendría 800; si perdiera 200 me quedarían 400, y su doble es 800. Los dos dan 800. Correcto.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Al triple de mi edad le quito mi edad aumentada en 6 años, y obtengo 20. ¿Qué edad tengo?",
+      "pista": "Sea x = la edad. 'El triple de mi edad' = 3x. 'Mi edad aumentada en 6' = x + 6, y se la quitas: 3x - (x + 6). Ojo con el paréntesis: le restas TODO el paquete.",
+      "solucion": "Sea x = mi edad. Ecuación: 3x - (x + 6) = 20. Quito el paréntesis (el signo menos cambia lo de adentro): 3x - x - 6 = 20, o sea 2x - 6 = 20. Paso el 6: 2x = 20 + 6 = 26, entonces x = 26 ÷ 2 = 13. Tengo 13 años. Comprobación en el enunciado: el triple de 13 es 39; mi edad aumentada en 6 es 19; 39 - 19 = 20. Correcto.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Al doble de mi edad le quitan 8 y se obtiene lo que me falta para tener 40 años. ¿Qué edad tengo?",
+      "pista": "Sea x = la edad. 'El doble de mi edad menos 8' = 2x - 8. 'Lo que me falta para tener 40' = 40 - x. Iguala los dos.",
+      "solucion": "Sea x = mi edad. Ecuación: 2x - 8 = 40 - x. Paso la x de la derecha a la izquierda (sumando x) y el 8 a la derecha (sumando 8): 2x + x = 40 + 8, o sea 3x = 48, entonces x = 48 ÷ 3 = 16. Tengo 16 años. Comprobación en el enunciado: el doble de 16 es 32, menos 8 da 24; y lo que me falta para tener 40, teniendo 16, es 40 - 16 = 24. Los dos dan 24. Correcto.",
+      "figura": ""
+    },
+    {
+      "enunciado": "El cuádruple de un número aumentado en 5 es igual al quíntuple del mismo número disminuido en 7. ¿Cuál es el número?",
+      "pista": "Sea x = el número. 'Cuádruple aumentado en 5' = 4x + 5; 'quíntuple disminuido en 7' = 5x - 7. Iguala.",
+      "solucion": "Sea x = el número. Ecuación: 4x + 5 = 5x - 7. Paso las x a la derecha y los números a la izquierda: 5 + 7 = 5x - 4x, o sea 12 = x. El número es 12. Comprobación en el enunciado: el cuádruple de 12 es 48, más 5 da 53; el quíntuple de 12 es 60, menos 7 da 53. Los dos dan 53. Correcto.",
+      "figura": ""
+    },
+    {
+      "enunciado": "El exceso del séxtuple de un número sobre 40 es igual al doble del mismo número aumentado en 8. ¿Cuál es el número?",
+      "pista": "'El exceso del séxtuple sobre 40' significa 6x - 40 (lo de arriba menos 40). 'El doble aumentado en 8' = 2x + 8. Iguala.",
+      "solucion": "Sea x = el número. 'El exceso del séxtuple sobre 40' = 6x - 40. Ecuación: 6x - 40 = 2x + 8. Paso las x a la izquierda y los números a la derecha: 6x - 2x = 40 + 8, o sea 4x = 48, entonces x = 48 ÷ 4 = 12. El número es 12. Comprobación en el enunciado: el séxtuple de 12 es 72; su exceso sobre 40 es 72 - 40 = 32; el doble de 12 es 24, aumentado en 8 da 32. Los dos dan 32. Correcto.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Dos números suman 45 y uno excede al otro en 9. Halla el número mayor.",
+      "pista": "Llama x al número mayor; entonces el menor, que es 9 menos, es x - 9. Como suman 45, plantea x + (x - 9) = 45.",
+      "solucion": "Sea x = el número mayor; el menor = x - 9 (porque el mayor excede al menor en 9). Ecuación: x + (x - 9) = 45, o sea 2x - 9 = 45. Paso el 9: 2x = 45 + 9 = 54, entonces x = 54 ÷ 2 = 27. El número mayor es 27 (y el menor es 27 - 9 = 18). Comprobación en el enunciado: 27 + 18 = 45 (suman 45) y 27 - 18 = 9 (uno excede al otro en 9). La respuesta es 27.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Si tuviera 50 monedas más, tendría el triple de lo que tendría si perdiera 50 monedas. ¿Cuántas monedas tengo?",
+      "pista": "Sea x = lo que tengo. 'Si tuviera 50 más' = x + 50. 'Lo que tendría si perdiera 50' = x - 50, y su triple es 3(x - 50). Iguala, con paréntesis.",
+      "solucion": "Sea x = las monedas que tengo. Ecuación: x + 50 = 3(x - 50). Quito el paréntesis: x + 50 = 3x - 150. Paso las x a la derecha y los números a la izquierda: 50 + 150 = 3x - x, o sea 200 = 2x, entonces x = 200 ÷ 2 = 100. Tengo 100 monedas. Comprobación en el enunciado: si tuviera 50 más tendría 150; si perdiera 50 me quedarían 50, y su triple es 150. Los dos dan 150. Correcto.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "Dos números suman 36 y uno es el doble del otro. ¿Cuál es el número MAYOR?",
+      "opciones": ["12", "24", "18", "36"],
+      "correcta": 1,
+      "explicacion": "Sea x = el menor y 2x = el mayor. Ecuación: x + 2x = 36, o sea 3x = 36, entonces x = 12. El MAYOR es 2x = 24. (12 es el menor, no el mayor; 18 sale de repartir 36 en dos partes iguales, pero aquí una es el doble de la otra.)"
+    },
+    {
+      "pregunta": "¿Cuál ecuación traduce correctamente 'el triple de un número, aumentado en 4, es igual a 25'?",
+      "opciones": ["3(x + 4) = 25", "3x + 4 = 25", "3x - 4 = 25", "x + 4 = 25"],
+      "correcta": 1,
+      "explicacion": "Primero se triplica el número (3x) y luego se le suma 4: 3x + 4 = 25. La opción 3(x + 4) es de OTRO problema (donde primero se aumenta y luego se triplica). 3x - 4 confunde 'aumentado' con 'disminuido'."
+    },
+    {
+      "pregunta": "El triple de (un número aumentado en 4) es 27. ¿Cuál es el número?",
+      "opciones": ["5", "9", "7", "23"],
+      "correcta": 0,
+      "explicacion": "Aquí primero se aumenta y luego se triplica TODO, con paréntesis: 3(x + 4) = 27, o sea 3x + 12 = 27, entonces 3x = 15 y x = 5. Comprobación en el enunciado: 5 aumentado en 4 es 9, y su triple es 27. (El error típico es olvidar el paréntesis y triplicar solo el número, tomando 3x = 27 → x = 9; pero eso deja de lado el aumento de 4.)"
+    },
+    {
+      "pregunta": "La edad de Luis cumple: su quíntuple disminuido en 6 es igual a su triple aumentado en 8. ¿Qué edad tiene?",
+      "opciones": ["7", "1", "14", "2"],
+      "correcta": 0,
+      "explicacion": "Sea x la edad. Ecuación: 5x - 6 = 3x + 8. Paso las x a la izquierda y los números a la derecha: 5x - 3x = 6 + 8, o sea 2x = 14, entonces x = 7. Comprobación: 5·7 - 6 = 29 y 3·7 + 8 = 29. (El error típico da 2x = 2 al restar mal los números: 8 - 6 en vez de 8 + 6.)"
+    },
+    {
+      "pregunta": "Lo que me falta para tener 60 monedas es igual al doble de las monedas que tengo. ¿Cuántas monedas tengo?",
+      "opciones": ["30", "40", "20", "60"],
+      "correcta": 2,
+      "explicacion": "Sea x lo que tengo. 'Lo que me falta para 60' = 60 - x. Ecuación: 60 - x = 2x. Paso la x a la derecha: 60 = 2x + x, o sea 60 = 3x, entonces x = 20. Comprobación: si tengo 20, me faltan 40 para llegar a 60, y 40 es el doble de 20. (40 es lo que me falta, no lo que tengo.)"
+    },
+    {
+      "pregunta": "¿Cuál expresión traduce 'el doble de un número, disminuido en 5'?",
+      "opciones": ["2(x - 5)", "2x - 5", "5 - 2x", "2x + 5"],
+      "correcta": 1,
+      "explicacion": "Primero el doble del número (2x) y luego se le quita 5: 2x - 5. La opción 2(x - 5) sería 'el doble de (un número disminuido en 5)'. 5 - 2x invierte el orden de la resta, y 2x + 5 confunde 'disminuido' (restar) con 'aumentado' (sumar)."
+    },
+    {
+      "pregunta": "Si ganara 100 monedas, tendría el doble de las monedas que tengo ahora. ¿Cuántas monedas tengo?",
+      "opciones": ["50", "200", "100", "300"],
+      "correcta": 2,
+      "explicacion": "Sea x lo que tengo. 'Si ganara 100' = x + 100. Ecuación: x + 100 = 2x. Paso la x: 100 = 2x - x, o sea x = 100. Comprobación: si tengo 100 y gano 100, tendría 200, que es el doble de 100. Correcto."
+    },
+    {
+      "pregunta": "El exceso de un número sobre 12 es igual a 8. ¿Cuál es el número?",
+      "opciones": ["4", "20", "96", "8"],
+      "correcta": 1,
+      "explicacion": "'El exceso de un número sobre 12' = x - 12 (el número menos 12). Ecuación: x - 12 = 8, entonces x = 8 + 12 = 20. Comprobación: 20 - 12 = 8. (4 sale de restar al revés, 12 - 8; el número debe ser MAYOR que 12 para tener exceso sobre él.)"
+    },
+    {
+      "pregunta": "La longitud de un puente cumple: su séxtuple disminuido en 200 metros equivale a su triple disminuido en 20 metros. ¿Cuánto mide?",
+      "opciones": ["60 m", "180 m", "80 m", "220 m"],
+      "correcta": 0,
+      "explicacion": "Sea L la longitud. Ecuación: 6L - 200 = 3L - 20. Paso las L a la izquierda y los números a la derecha: 6L - 3L = 200 - 20, o sea 3L = 180, entonces L = 60. Comprobación: 6·60 - 200 = 160 y 3·60 - 20 = 160. Iguales."
+    },
+    {
+      "pregunta": "Al triple de mi edad le quito mi edad aumentada en 10, y queda 14. ¿Qué edad tengo?",
+      "opciones": ["8", "12", "6", "24"],
+      "correcta": 1,
+      "explicacion": "Sea x la edad. Ecuación: 3x - (x + 10) = 14. Con el paréntesis: 3x - x - 10 = 14, o sea 2x - 10 = 14, entonces 2x = 24 y x = 12. Comprobación: el triple de 12 es 36; mi edad aumentada en 10 es 22; 36 - 22 = 14. (El error típico, olvidar el paréntesis, da 3x - x + 10 = 14 → 2x = 4 → x = 2, que no cumple el enunciado.)"
+    },
+    {
+      "pregunta": "Resolviste una ecuación y obtuviste x = 8. ¿Con cuál de estos enunciados COMPRUEBA correctamente x = 8?",
+      "opciones": ["'El cuádruple de un número aumentado en 3 es 35'", "'El cuádruple de un número aumentado en 3 es 30'", "'El doble de un número aumentado en 3 es 35'", "'El cuádruple de un número disminuido en 3 es 35'"],
+      "correcta": 0,
+      "explicacion": "Comprobamos: el cuádruple de 8 es 32, aumentado en 3 da 35. La primera opción cuadra (4·8 + 3 = 35). Las otras no: 4·8 + 3 = 35 ≠ 30; 2·8 + 3 = 19 ≠ 35; 4·8 - 3 = 29 ≠ 35. Comprobar con el enunciado confirma la traducción."
+    },
+    {
+      "pregunta": "Un número más su siguiente (el número que va justo después) suman 47. ¿Cuál es el número MENOR?",
+      "opciones": ["23", "24", "22", "47"],
+      "correcta": 0,
+      "explicacion": "Sea x el menor; su siguiente es x + 1. Ecuación: x + (x + 1) = 47, o sea 2x + 1 = 47, entonces 2x = 46 y x = 23. El menor es 23 (el siguiente es 24). Comprobación: 23 + 24 = 47. (24 es el mayor, no el menor.)"
+    }
+  ],
+  "examen": [
+    {
+      "pregunta": "Dos números suman 27 y uno es el doble del otro. Halla el número MENOR. Plantea la ecuación, resuélvela y comprueba.",
+      "respuesta": "El número menor es 9.",
+      "explicacion": "Sea x = el número menor; el mayor = 2x. Como suman 27: x + 2x = 27, o sea 3x = 27, entonces x = 27 ÷ 3 = 9. El menor es 9 (el mayor es 2 × 9 = 18). Comprobación con el enunciado: 9 + 18 = 27 y 18 es el doble de 9. Correcto."
+    },
+    {
+      "pregunta": "¿Qué edad tiene Marta, si al cuádruple de su edad y agregarle 20 años obtenemos su séxtuple disminuido en 4? Plantea, resuelve y comprueba.",
+      "respuesta": "Marta tiene 12 años.",
+      "explicacion": "Sea x = la edad de Marta. Traducción: cuádruple = 4x, agregarle 20 = 4x + 20, séxtuple = 6x, disminuido en 4 = 6x - 4. Ecuación: 4x + 20 = 6x - 4. Paso las x a la derecha y los números a la izquierda: 20 + 4 = 6x - 4x, o sea 24 = 2x, entonces x = 12. Comprobación: 4·12 + 20 = 68 y 6·12 - 4 = 68. Iguales."
+    },
+    {
+      "pregunta": "La longitud de un puente cumple: su quíntuple disminuido en 250 metros equivale a su doble aumentado en 50 metros. ¿Cuánto mide? Plantea, resuelve y comprueba.",
+      "respuesta": "El puente mide 100 metros.",
+      "explicacion": "Sea L = la longitud. 'Quíntuple disminuido en 250' = 5L - 250; 'doble aumentado en 50' = 2L + 50. Ecuación: 5L - 250 = 2L + 50. Paso las L a la izquierda y los números a la derecha: 5L - 2L = 250 + 50, o sea 3L = 300, entonces L = 100. Comprobación: 5·100 - 250 = 250 y 2·100 + 50 = 250. Iguales."
+    },
+    {
+      "pregunta": "Si ganara 400 monedas, tendría el triple de lo que me quedaría si perdiera 200 monedas. ¿Cuánto dinero tengo? Plantea, resuelve y comprueba.",
+      "respuesta": "Tengo 500 monedas.",
+      "explicacion": "Sea x = el dinero que tengo. 'Si ganara 400' = x + 400; 'lo que me quedaría si perdiera 200' = x - 200, y su triple es 3(x - 200). Ecuación: x + 400 = 3(x - 200). Quito el paréntesis: x + 400 = 3x - 600. Paso las x a la derecha y los números a la izquierda: 400 + 600 = 3x - x, o sea 1000 = 2x, entonces x = 500. Comprobación: si ganara 400 tendría 900; si perdiera 200 me quedarían 300, y su triple es 900. Iguales."
+    },
+    {
+      "pregunta": "Al triple de mi edad le quito mi edad aumentada en 12 años, y obtengo 18. ¿Qué edad tengo? Plantea, resuelve y comprueba.",
+      "respuesta": "Tengo 15 años.",
+      "explicacion": "Sea x = mi edad. 'El triple de mi edad' = 3x; 'mi edad aumentada en 12' = x + 12; se la quito: 3x - (x + 12) = 18. Quito el paréntesis: 3x - x - 12 = 18, o sea 2x - 12 = 18, entonces 2x = 30 y x = 15. Comprobación: el triple de 15 es 45; mi edad aumentada en 12 es 27; 45 - 27 = 18. Correcto."
+    },
+    {
+      "pregunta": "El doble de mi edad disminuido en 15 es igual a lo que me falta para tener 60 años. ¿Qué edad tengo? Plantea, resuelve y comprueba.",
+      "respuesta": "Tengo 25 años.",
+      "explicacion": "Sea x = mi edad. 'El doble de mi edad disminuido en 15' = 2x - 15; 'lo que me falta para tener 60' = 60 - x. Ecuación: 2x - 15 = 60 - x. Paso la x de la derecha a la izquierda y el 15 a la derecha: 2x + x = 60 + 15, o sea 3x = 75, entonces x = 25. Comprobación: el doble de 25 es 50, menos 15 da 35; y lo que me falta para 60, teniendo 25, es 35. Iguales."
+    },
+    {
+      "pregunta": "El séxtuple de un número disminuido en 30 es igual al triple del mismo número aumentado en 12. ¿Cuál es el número? Plantea, resuelve y comprueba.",
+      "respuesta": "El número es 14.",
+      "explicacion": "Sea x = el número. 'Séxtuple disminuido en 30' = 6x - 30; 'triple aumentado en 12' = 3x + 12. Ecuación: 6x - 30 = 3x + 12. Paso las x a la izquierda y los números a la derecha: 6x - 3x = 30 + 12, o sea 3x = 42, entonces x = 14. Comprobación: 6·14 - 30 = 54 y 3·14 + 12 = 54. Iguales."
+    },
+    {
+      "pregunta": "El exceso del doble de un número sobre 10 es igual a 16. ¿Cuál es el número? Plantea, resuelve y comprueba.",
+      "respuesta": "El número es 13.",
+      "explicacion": "Sea x = el número. 'El exceso del doble sobre 10' = 2x - 10 (el doble menos 10). Ecuación: 2x - 10 = 16. Paso el 10: 2x = 16 + 10 = 26, entonces x = 13. Comprobación: el doble de 13 es 26; su exceso sobre 10 es 26 - 10 = 16. Correcto."
+    },
+    {
+      "pregunta": "Dos números suman 40 y uno excede al otro en 6. Halla el número MAYOR. Plantea, resuelve y comprueba.",
+      "respuesta": "El número mayor es 23.",
+      "explicacion": "Sea x = el número mayor; el menor = x - 6 (porque el mayor lo excede en 6). Ecuación: x + (x - 6) = 40, o sea 2x - 6 = 40. Paso el 6: 2x = 46, entonces x = 23. El mayor es 23 (el menor es 17). Comprobación: 23 + 17 = 40 y 23 - 17 = 6. Correcto."
+    },
+    {
+      "pregunta": "El triple de (un número aumentado en 5) es igual a 45. ¿Cuál es el número? Plantea, resuelve y comprueba. (Cuidado con el paréntesis.)",
+      "respuesta": "El número es 10.",
+      "explicacion": "Como primero se aumenta y luego se triplica TODO, va con paréntesis: 3(x + 5) = 45. Quito el paréntesis: 3x + 15 = 45, entonces 3x = 30 y x = 10. Comprobación: el número (10) aumentado en 5 es 15, y su triple es 45. Correcto. (Sin paréntesis, 3x + 5 = 45 daría un resultado distinto y equivocado.)"
+    }
+  ]
+}

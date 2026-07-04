@@ -1,0 +1,306 @@
+{
+  "materia": "LÓGICA MATEMÁTICA 6G",
+  "tema": "Problemas sobre Edades",
+  "grado": "6to grado",
+  "fuentes": ["Hoja de Trabajo: Problemas sobre edades (aula LÓGICA MATEMÁTICA 6G)"],
+  "resumen": {
+    "titulo": "Problemas de edades: descubrir el número escondido",
+    "intro": "Los problemas de edades parecen difíciles porque están escritos con palabras enredadas, pero en realidad todos se resuelven igual: le pones una letra (casi siempre x) a la edad que no conoces, traduces la frase a una ecuación y despejas la x. En esta guía vas a aprender, desde cero y sin que nadie te lo explique al lado, a leer estas frases con calma, convertirlas en cuentas y comprobar que tu respuesta cuadra. La clave es una sola idea repetida: el tiempo pasa igual para todos.",
+    "secciones": [
+      {
+        "titulo": "El primer paso siempre: ¿quién es x?",
+        "explicacion": "En casi todo problema de edades hay una edad que no conocemos y que queremos hallar. A esa edad desconocida le ponemos un nombre corto: la letra x. Se llama la INCÓGNITA, que quiere decir 'lo que no se sabe todavía'. Casi siempre conviene que x sea una edad ACTUAL (la de HOY), porque desde el hoy es fácil calcular el pasado (restando) y el futuro (sumando). Antes de escribir cuentas, escribe siempre en palabras qué representa tu x; ese pequeño paso evita casi todos los errores. Por ejemplo: 'x = mi edad actual'.",
+        "pasos": [
+          "Lee el problema completo una vez, sin apurarte.",
+          "Busca la edad que te preguntan o la que todo lo demás depende de ella.",
+          "Escribe: x = esa edad (de preferencia la edad de HOY).",
+          "Deja escrito en palabras qué es x antes de seguir."
+        ],
+        "ejemplo": "Si el problema pregunta '¿cuántos años tengo?', entonces escribo 'x = mi edad actual' y trabajo desde ahí.",
+        "figura": ""
+      },
+      {
+        "titulo": "\"Hace n años\" y \"dentro de n años\": el tiempo pasa para todos",
+        "explicacion": "Esta es la idea más importante de todo el tema. El tiempo no elige: pasa igual para cada persona. Entonces, si mi edad hoy es x: HACE n años yo tenía x − n (le resto los años que pasaron), y DENTRO de n años yo tendré x + n (le sumo los años que faltan). Y ojo con lo más importante: cuando en un problema hay dos personas, 'hace n años' o 'dentro de n años' se le aplica a LAS DOS a la vez, porque el tiempo pasó para ambas. Un error clásico es restarle los años a una persona y olvidarse de la otra. La regla es: el mismo n se suma o se resta a TODAS las edades del problema.",
+        "pasos": [
+          "'Hace n años' significa RESTAR n a cada edad (x − n).",
+          "'Dentro de n años' significa SUMAR n a cada edad (x + n).",
+          "Si hay dos o más personas, aplica ese mismo n a TODAS, no solo a una."
+        ],
+        "ejemplo": "Si hoy tengo x = 20 años, hace 8 años tenía 20 − 8 = 12, y dentro de 5 años tendré 20 + 5 = 25. Y si mi hermano hoy tiene 14, hace 8 años él tenía 6: a los dos les resto 8.",
+        "figura": "<svg viewBox=\"0 0 420 120\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"30\" y1=\"70\" x2=\"390\" y2=\"70\" stroke=\"#8C7C93\" stroke-width=\"2\"/><circle cx=\"110\" cy=\"70\" r=\"5\" fill=\"#7C4DFF\"/><circle cx=\"210\" cy=\"70\" r=\"6\" fill=\"#12B5A4\"/><circle cx=\"310\" cy=\"70\" r=\"5\" fill=\"#7C4DFF\"/><text x=\"110\" y=\"55\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#3B2B4A\">PASADO</text><text x=\"110\" y=\"92\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#5A3AAF\">x - n</text><text x=\"210\" y=\"52\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#3B2B4A\">HOY</text><text x=\"210\" y=\"92\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#0E9486\">x</text><text x=\"310\" y=\"55\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#3B2B4A\">FUTURO</text><text x=\"310\" y=\"92\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#5A3AAF\">x + n</text></svg>"
+      },
+      {
+        "titulo": "La regla poderosa: la diferencia de edades NUNCA cambia",
+        "explicacion": "Piensa en dos personas: tú y tu mamá. Si ella te lleva 25 años hoy, te llevaba 25 años cuando naciste y te llevará 25 años cuando seas grande. La DIFERENCIA de edades entre dos personas es CONSTANTE: se mantiene igual para siempre, porque los dos cumplen años al mismo ritmo. Esto es utilísimo, porque muchas frases esconden justo esa diferencia. La más común: 'cuando nací, mi mamá tenía 40 años'. Eso significa que la diferencia entre mi mamá y yo es 40, hoy y siempre (porque cuando yo tenía 0, ella tenía 40, y 40 − 0 = 40). Traducción directa: mamá − yo = 40, en cualquier momento.",
+        "pasos": [
+          "Cuando dos personas aparecen juntas, piensa: ¿cuál es la diferencia entre sus edades?",
+          "Esa diferencia es la misma en el pasado, hoy y el futuro.",
+          "'Cuando nació X, Y tenía k años' significa que la diferencia entre Y y X es k (siempre)."
+        ],
+        "ejemplo": "'Cuando nací, mi madre tenía 40.' Diferencia = 40 siempre. Si hoy yo tengo x, mi madre tiene x + 40, sin importar los años que pasen.",
+        "figura": ""
+      },
+      {
+        "titulo": "\"El doble de\", \"el triple de\", \"el cuádruple de\": la razón",
+        "explicacion": "A veces el problema compara dos edades con una multiplicación: 'la edad de mi madre es el triple de la mía'. 'El triple de' quiere decir 'multiplicado por 3'; 'el doble' es por 2, 'el cuádruple' por 4, 'el quíntuple' por 5. Si mi edad es x, el triple de mi edad es 3x. Cuidado con una trampa fina: la comparación se cumple en un MOMENTO concreto (casi siempre HOY). Si el problema dice 'hoy mi madre es el triple de la mía', entonces hoy madre = 3x; pero si dijera 'hace 5 años mi madre era el triple', la igualdad se arma con las edades de hace 5 años, no con las de hoy. Fíjate SIEMPRE en qué momento vale la comparación.",
+        "pasos": [
+          "'El doble' = por 2; 'el triple' = por 3; 'el cuádruple' = por 4; 'el quíntuple' = por 5.",
+          "Si la persona menor tiene x, la mayor tiene (número) por x.",
+          "Aplica la comparación en el momento que dice el problema (hoy, hace n años o dentro de n años)."
+        ],
+        "ejemplo": "'Hoy mi madre es el triple de mi edad.' Si yo tengo x, mi madre tiene 3x hoy. Si además la diferencia se conociera, ya tendríamos una ecuación.",
+        "figura": ""
+      },
+      {
+        "titulo": "\"Suman\" o \"entre los dos tienen\": la suma de edades",
+        "explicacion": "Otra pista frecuente es la SUMA de las edades de dos personas en un momento dado: 'hace 8 años, entre los dos sumaban 64' o 'dentro de 12 años sumarán 64'. Sumar edades es simplemente juntarlas con un +. El único cuidado es hacerlo en el MOMENTO correcto: si dicen 'hace 8 años sumaban 64', primero escribes la edad de CADA persona hace 8 años (restándole 8 a cada una) y luego las sumas e igualas a 64. Recuerda: el 8 se le resta a las dos, no a una sola.",
+        "pasos": [
+          "Escribe la edad de cada persona en el momento que pide el problema.",
+          "Súmalas con un signo +.",
+          "Iguala esa suma al número que da el enunciado.",
+          "Resuelve la x."
+        ],
+        "ejemplo": "María es el cuádruple de Jaime; hace 8 años sumaban 64. Hoy Jaime = j y María = 4j. Hace 8 años: (4j − 8) + (j − 8) = 64, o sea 5j − 16 = 64, entonces 5j = 80 y j = 16.",
+        "figura": ""
+      },
+      {
+        "titulo": "Traducir frase por frase a una ecuación",
+        "explicacion": "Una ecuación es una igualdad con una x escondida; resolverla es hallar el valor de x que hace verdadera esa igualdad. El secreto de los problemas de edades es traducir la frase a símbolos, pedacito por pedacito, sin saltarte nada. Estas son las traducciones que más vas a usar: 'es igual a' se convierte en el signo =; 'el doble de A' es 2·A; 'la edad que tuve hace n años' es x − n; 'la edad que tendré dentro de n años' es x + n; 'la tercera parte de B' es B ÷ 3 (lo mismo que B/3). Vas leyendo de izquierda a derecha y escribiendo cada trocito.",
+        "pasos": [
+          "Subraya cada trozo de la frase que hable de una edad o de un tiempo.",
+          "Traduce cada trozo: doble/triple = ×2/×3; hace n = − n; dentro de n = + n; 'es igual a' = signo =.",
+          "Junta todos los trozos respetando el orden de la frase.",
+          "Ya tienes tu ecuación: ahora toca despejar."
+        ],
+        "ejemplo": "'El doble de la edad que tendré dentro de 3 años es igual a cuatro veces la edad que tuve hace 9 años.' Traducido: 2·(x + 3) = 4·(x − 9).",
+        "figura": ""
+      },
+      {
+        "titulo": "Cómo despejar la x paso a paso",
+        "explicacion": "Despejar es dejar la x sola de un lado del =. Trabajamos como una balanza: lo que le haces a un lado, se lo haces igual al otro, y así la igualdad se mantiene. Primero, si hay paréntesis, se reparten los productos (multiplicas el número de afuera por cada cosa de adentro): por ejemplo 2·(x + 3) es 2x + 6, y 4·(x − 9) es 4x − 36. Después juntas las x de un lado y los números del otro, pasando cada cosa con la operación contraria (lo que suma pasa restando; lo que multiplica pasa dividiendo). Elige siempre problemas con números que den una edad ENTERA y realista (nadie tiene 13 años y medio en estos ejercicios).",
+        "pasos": [
+          "Quita los paréntesis repartiendo la multiplicación.",
+          "Junta todas las x de un lado y todos los números del otro (con la operación contraria al pasar).",
+          "Divide para dejar la x sola.",
+          "Escribe la respuesta con su significado ('x = mi edad actual = ...')."
+        ],
+        "ejemplo": "2·(x + 3) = 4·(x − 9) se abre como 2x + 6 = 4x − 36; paso los términos: 6 + 36 = 4x − 2x, o sea 42 = 2x, entonces x = 21. Mi edad actual es 21.",
+        "figura": ""
+      },
+      {
+        "titulo": "El paso que casi nadie hace: COMPROBAR",
+        "explicacion": "Los problemas de edades son famosos por salir mal, así que el último paso no es opcional: comprobar. Comprobar es tomar el número que hallaste y volver a leer el enunciado ORIGINAL reemplazando la x, para ver si todo cuadra. Si el problema decía 'el doble de una cosa es igual al cuádruple de otra', calcula las dos cosas con tu número y verifica que de verdad una es el doble o el cuádruple de la otra. Si la comparación (el doble, el triple), la suma o la diferencia se cumplen exactamente, tu respuesta es correcta. Si no cuadra, en algún paso te equivocaste: revisa las traducciones.",
+        "pasos": [
+          "Toma tu valor de x y calcula todas las edades del problema en cada momento.",
+          "Vuelve al enunciado original y verifica la condición (doble/triple, suma o diferencia).",
+          "Si todo coincide exactamente, tu respuesta es correcta.",
+          "Si no coincide, revisa dónde se te fue un signo o un tiempo."
+        ],
+        "ejemplo": "Con x = 21: dentro de 3 años tendré 24 y su doble es 48; hace 9 años tuve 12 y su cuádruple es 48. Los dos dan 48. Cuadra: la respuesta 21 es correcta.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "Ponle x a la edad desconocida (mejor la de HOY), recuerda que 'hace n años' resta n y 'dentro de n años' suma n a TODAS las edades, usa que la diferencia entre dos personas es constante, traduce la frase a una ecuación pedacito por pedacito, despeja la x y COMPRUEBA reemplazando en el enunciado original."
+  },
+  "retos": [
+    {
+      "enunciado": "La edad de mi madre es el triple de la mía. Cuando yo nací, mi madre tenía 30 años. ¿Cuántos años tengo hoy?",
+      "pista": "Llama x a tu edad de hoy. 'Cuando nací mi madre tenía 30' quiere decir que la diferencia entre las dos edades es 30 siempre. Y 'el triple' se aplica hoy: madre = 3x. La diferencia madre − yo es 30.",
+      "solucion": "x = mi edad actual. Hoy: mi madre = 3x. La diferencia de edades es constante: como cuando yo tenía 0 ella tenía 30, esa diferencia es 30 siempre, así que 3x − x = 30. Entonces 2x = 30 y x = 15. Mi madre tiene 3·15 = 45. Comprobación: 45 es el triple de 15, y 45 − 15 = 30, igual que cuando nací. Correcto: tengo 15 años.",
+      "figura": ""
+    },
+    {
+      "enunciado": "El doble de la edad que tendré dentro de 4 años es igual al triple de la edad que tuve hace 6 años. ¿Cuántos años tengo?",
+      "pista": "x = tu edad actual. 'Dentro de 4 años' = x + 4; 'hace 6 años' = x − 6. Escribe 2·(x + 4) = 3·(x − 6) y despeja.",
+      "solucion": "x = mi edad actual. Dentro de 4 años tendré x + 4; hace 6 años tuve x − 6. Ecuación: 2·(x + 4) = 3·(x − 6). Abro paréntesis: 2x + 8 = 3x − 18. Paso términos: 8 + 18 = 3x − 2x, o sea 26 = x. Comprobación: dentro de 4 años tendré 30 y su doble es 60; hace 6 años tuve 20 y su triple es 60. Los dos dan 60. Correcto: tengo 26 años.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Cuando nació mi hermano, yo tenía 6 años. Hoy mi edad es el doble de la suya. ¿Qué edad tiene mi hermano?",
+      "pista": "La diferencia de edades es 6 y no cambia. Llama h a la edad del hermano hoy; tú tienes h + 6, pero también tú eres el doble: 2h. Iguala.",
+      "solucion": "h = edad de mi hermano hoy. Como cuando él nació yo tenía 6, la diferencia entre nosotros es 6 siempre: yo = h + 6. Además hoy yo soy el doble: yo = 2h. Entonces 2h = h + 6, así que h = 6 y yo tengo 12. Comprobación: 12 es el doble de 6, y 12 − 6 = 6, igual que cuando nació. Correcto: mi hermano tiene 6 años.",
+      "figura": ""
+    },
+    {
+      "enunciado": "La edad de un padre es el cuádruple de la de su hijo. Hace 5 años, entre los dos sumaban 60 años. ¿Qué edad tiene el hijo hoy?",
+      "pista": "Hoy el hijo tiene h y el padre 4h. Hace 5 años a CADA uno réstale 5: (4h − 5) y (h − 5). Súmalos e iguala a 60.",
+      "solucion": "h = edad del hijo hoy; el padre = 4h. Hace 5 años el hijo tenía h − 5 y el padre 4h − 5. Suma: (4h − 5) + (h − 5) = 60, o sea 5h − 10 = 60, entonces 5h = 70 y h = 14. El padre tiene 4·14 = 56. Comprobación: hace 5 años el hijo tenía 9 y el padre 51, y 9 + 51 = 60. Correcto: el hijo tiene 14 años.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Sofía es el triple de Bruno. Dentro de 6 años, entre los dos sumarán 60 años. ¿Qué edad tiene Bruno?",
+      "pista": "Hoy Bruno tiene b y Sofía 3b. Dentro de 6 años a CADA uno súmale 6: (3b + 6) y (b + 6). Súmalos e iguala a 60.",
+      "solucion": "b = edad de Bruno hoy; Sofía = 3b. Dentro de 6 años Bruno tendrá b + 6 y Sofía 3b + 6. Suma: (3b + 6) + (b + 6) = 60, o sea 4b + 12 = 60, entonces 4b = 48 y b = 12. Sofía tiene 3·12 = 36. Comprobación: dentro de 6 años Bruno tendrá 18 y Sofía 42, y 18 + 42 = 60. Correcto: Bruno tiene 12 años.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Hace 6 años yo tenía la tercera parte de la edad que tendré dentro de 6 años. ¿Cuántos años tengo?",
+      "pista": "x = tu edad actual. 'Hace 6 años' = x − 6; 'dentro de 6 años' = x + 6. 'La tercera parte' significa dividir entre 3: x − 6 = (x + 6) ÷ 3.",
+      "solucion": "x = mi edad actual. Hace 6 años tuve x − 6; dentro de 6 años tendré x + 6. 'La tercera parte' es dividir entre 3: x − 6 = (x + 6) ÷ 3. Multiplico los dos lados por 3: 3·(x − 6) = x + 6, o sea 3x − 18 = x + 6. Paso términos: 2x = 24, entonces x = 12. Comprobación: hace 6 años tuve 6; dentro de 6 años tendré 18; y 18 ÷ 3 = 6. Correcto: tengo 12 años.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Dentro de 10 años tendré el triple de la edad que tuve hace 6 años. ¿Cuántos años tengo?",
+      "pista": "x = tu edad actual. 'Dentro de 10 años' = x + 10; 'hace 6 años' = x − 6. Escribe x + 10 = 3·(x − 6) y despeja.",
+      "solucion": "x = mi edad actual. Dentro de 10 años tendré x + 10; hace 6 años tuve x − 6. Ecuación: x + 10 = 3·(x − 6). Abro paréntesis: x + 10 = 3x − 18. Paso términos: 10 + 18 = 3x − x, o sea 28 = 2x, entonces x = 14. Comprobación: dentro de 10 años tendré 24; hace 6 años tuve 8; y el triple de 8 es 24. Correcto: tengo 14 años.",
+      "figura": ""
+    },
+    {
+      "enunciado": "El doble de la edad que tendré dentro de 3 años es igual a cuatro veces la edad que tuve hace 9 años. ¿Qué edad tuve hace 4 años?",
+      "pista": "x = tu edad actual. Arma 2·(x + 3) = 4·(x − 9), halla x, y RECIÉN al final resta 4 para responder lo que piden.",
+      "solucion": "x = mi edad actual. Dentro de 3 años: x + 3; hace 9 años: x − 9. Ecuación: 2·(x + 3) = 4·(x − 9). Abro: 2x + 6 = 4x − 36. Paso términos: 6 + 36 = 4x − 2x, o sea 42 = 2x, entonces x = 21. Pero preguntan por hace 4 años: 21 − 4 = 17. Comprobación de la ecuación: dentro de 3 años tendré 24 (doble 48); hace 9 años tuve 12 (cuádruple 48). Correcto: hace 4 años tuve 17 años.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Carla tenía 28 años cuando nació Diego. Hoy la edad de Carla es el quíntuple de la de Diego. ¿Qué edad tiene Diego?",
+      "pista": "La diferencia de edades es 28 y no cambia. Llama d a la edad de Diego hoy; Carla = 5d, y también Carla = d + 28. Iguala.",
+      "solucion": "d = edad de Diego hoy. Como Carla tenía 28 cuando él nació, la diferencia entre ellos es 28 siempre: Carla = d + 28. Además hoy Carla es el quíntuple: Carla = 5d. Entonces 5d = d + 28, o sea 4d = 28, y d = 7. Carla tiene 5·7 = 35. Comprobación: 35 es el quíntuple de 7, y 35 − 7 = 28, igual que cuando nació Diego. Correcto: Diego tiene 7 años.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Luisa es el cuádruple de Marco. Hace 3 años, entre los dos sumaban 39 años. ¿Qué edad tiene Marco?",
+      "pista": "Hoy Marco tiene m y Luisa 4m. Hace 3 años a CADA uno réstale 3: (4m − 3) y (m − 3). Súmalos e iguala a 39.",
+      "solucion": "m = edad de Marco hoy; Luisa = 4m. Hace 3 años Marco tenía m − 3 y Luisa 4m − 3. Suma: (4m − 3) + (m − 3) = 39, o sea 5m − 6 = 39, entonces 5m = 45 y m = 9. Luisa tiene 4·9 = 36. Comprobación: hace 3 años Marco tenía 6 y Luisa 33, y 6 + 33 = 39. Correcto: Marco tiene 9 años.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "La edad de mi madre es el triple de la mía. Cuando yo nací, mi madre tenía 22 años. ¿Cuántos años tengo hoy?",
+      "opciones": ["7 años", "11 años", "22 años", "33 años"],
+      "correcta": 1,
+      "explicacion": "x = mi edad. La diferencia madre − yo es 22 siempre, y hoy madre = 3x, así que 3x − x = 22, o sea 2x = 22 y x = 11. (22 es la diferencia, no mi edad; 33 sería la edad de mi madre.)",
+      "figura": ""
+    },
+    {
+      "pregunta": "El triple de la edad que tendré dentro de 2 años es igual a cinco veces la edad que tuve hace 6 años. ¿Cuántos años tengo?",
+      "opciones": ["16 años", "18 años", "20 años", "24 años"],
+      "correcta": 1,
+      "explicacion": "x = mi edad. Dentro de 2: x + 2; hace 6: x − 6. Ecuación 3·(x + 2) = 5·(x − 6) → 3x + 6 = 5x − 30 → 36 = 2x → x = 18. Comprobación: dentro de 2 tendré 20 (triple 60); hace 6 tuve 12 (por 5 = 60).",
+      "figura": ""
+    },
+    {
+      "pregunta": "Cuando nació mi hermano, yo tenía 8 años. Hoy mi edad es el triple de la suya. ¿Qué edad tiene mi hermano?",
+      "opciones": ["4 años", "8 años", "12 años", "24 años"],
+      "correcta": 0,
+      "explicacion": "La diferencia es 8 siempre, así que yo = h + 8; y hoy yo = 3h. Entonces 3h = h + 8 → 2h = 8 → h = 4 (yo tengo 12). Error común: creer que el hermano tiene 8 (eso es solo la diferencia).",
+      "figura": ""
+    },
+    {
+      "pregunta": "Un padre es el triple de su hijo. Hace 4 años, entre los dos sumaban 40 años. ¿Qué edad tiene el hijo hoy?",
+      "opciones": ["8 años", "10 años", "12 años", "14 años"],
+      "correcta": 2,
+      "explicacion": "Hoy hijo = h, padre = 3h. Hace 4 años a CADA uno menos 4: (3h − 4) + (h − 4) = 40 → 4h − 8 = 40 → 4h = 48 → h = 12. Comprobación: hace 4 años tenían 8 y 32, y 8 + 32 = 40. (Restarle 4 a uno solo daría un resultado equivocado.)",
+      "figura": ""
+    },
+    {
+      "pregunta": "Ema es el cuádruple de Iván. Dentro de 5 años, entre los dos sumarán 60 años. ¿Qué edad tiene Iván?",
+      "opciones": ["8 años", "10 años", "12 años", "15 años"],
+      "correcta": 1,
+      "explicacion": "Hoy Iván = i, Ema = 4i. Dentro de 5 años a CADA uno más 5: (4i + 5) + (i + 5) = 60 → 5i + 10 = 60 → 5i = 50 → i = 10. Comprobación: dentro de 5 años tendrán 45 y 15, y 45 + 15 = 60.",
+      "figura": ""
+    },
+    {
+      "pregunta": "Hace 4 años yo tenía la mitad de la edad que tendré dentro de 8 años. ¿Cuántos años tengo?",
+      "opciones": ["12 años", "14 años", "16 años", "20 años"],
+      "correcta": 2,
+      "explicacion": "x = mi edad. Hace 4: x − 4; dentro de 8: x + 8. 'La mitad' es dividir entre 2: x − 4 = (x + 8) ÷ 2 → 2·(x − 4) = x + 8 → 2x − 8 = x + 8 → x = 16. Comprobación: hace 4 tuve 12; dentro de 8 tendré 24; y 24 ÷ 2 = 12.",
+      "figura": ""
+    },
+    {
+      "pregunta": "Dentro de 8 años tendré el triple de la edad que tuve hace 4 años. ¿Cuántos años tengo?",
+      "opciones": ["8 años", "10 años", "12 años", "14 años"],
+      "correcta": 1,
+      "explicacion": "x = mi edad. Dentro de 8: x + 8; hace 4: x − 4. Ecuación x + 8 = 3·(x − 4) → x + 8 = 3x − 12 → 20 = 2x → x = 10. Comprobación: dentro de 8 tendré 18; hace 4 tuve 6; y el triple de 6 es 18.",
+      "figura": ""
+    },
+    {
+      "pregunta": "Cuando nació Nora, Pablo tenía 24 años. Hoy la edad de Pablo es el doble de la de Nora. ¿Qué edad tiene Nora?",
+      "opciones": ["8 años", "12 años", "24 años", "48 años"],
+      "correcta": 2,
+      "explicacion": "La diferencia es 24 siempre: Pablo = n + 24; y hoy Pablo = 2n. Entonces 2n = n + 24 → n = 24 (Pablo tiene 48). Comprobación: 48 es el doble de 24 y 48 − 24 = 24. (48 es la edad de Pablo, no de Nora.)",
+      "figura": ""
+    },
+    {
+      "pregunta": "El doble de la edad que tendré dentro de 5 años es igual a cuatro veces la edad que tuve hace 10 años. ¿Qué edad tuve hace 3 años?",
+      "opciones": ["20 años", "22 años", "25 años", "30 años"],
+      "correcta": 1,
+      "explicacion": "x = mi edad actual. 2·(x + 5) = 4·(x − 10) → 2x + 10 = 4x − 40 → 50 = 2x → x = 25. Pero piden hace 3 años: 25 − 3 = 22. (25 es la edad de HOY, no la de hace 3 años: hay que restar 3.)",
+      "figura": ""
+    },
+    {
+      "pregunta": "Una hermana mayor es el cuádruple de la menor. Hace 2 años, entre las dos sumaban 26 años. ¿Qué edad tiene la menor?",
+      "opciones": ["4 años", "6 años", "8 años", "24 años"],
+      "correcta": 1,
+      "explicacion": "Hoy menor = m, mayor = 4m. Hace 2 años a CADA una menos 2: (4m − 2) + (m − 2) = 26 → 5m − 4 = 26 → 5m = 30 → m = 6. Comprobación: hace 2 años tenían 4 y 22, y 4 + 22 = 26. (24 es la edad hoy de la mayor.)",
+      "figura": ""
+    },
+    {
+      "pregunta": "La edad de mi madre es el triple de la mía. Cuando yo nací, mi madre tenía 30 años. ¿Cuántos años tengo hoy?",
+      "opciones": ["10 años", "15 años", "30 años", "45 años"],
+      "correcta": 1,
+      "explicacion": "x = mi edad. Diferencia = 30 siempre y hoy madre = 3x, así que 3x − x = 30 → 2x = 30 → x = 15 (madre tiene 45). Comprobación: 45 es el triple de 15 y 45 − 15 = 30. (30 es la diferencia; 45 es la edad de la madre.)",
+      "figura": ""
+    },
+    {
+      "pregunta": "Dentro de 15 años tendré el cuádruple de la edad que tuve hace 6 años. ¿Cuántos años tengo?",
+      "opciones": ["11 años", "13 años", "15 años", "18 años"],
+      "correcta": 1,
+      "explicacion": "x = mi edad. Dentro de 15: x + 15; hace 6: x − 6. Ecuación x + 15 = 4·(x − 6) → x + 15 = 4x − 24 → 39 = 3x → x = 13. Comprobación: dentro de 15 tendré 28; hace 6 tuve 7; y el cuádruple de 7 es 28.",
+      "figura": ""
+    }
+  ],
+  "examen": [
+    {
+      "pregunta": "La edad de mi madre es el triple de la mía. Cuando yo nací, mi madre tenía 26 años. ¿Cuántos años tengo hoy?",
+      "respuesta": "13 años.",
+      "explicacion": "Llamo x a mi edad de hoy. La diferencia de edades es constante: como al nacer yo tenía 0 y mi madre 26, la diferencia es 26 siempre. Hoy mi madre es el triple: 3x. Entonces 3x − x = 26, o sea 2x = 26 y x = 13. Mi madre tiene 39. Comprobación: 39 es el triple de 13 y 39 − 13 = 26."
+    },
+    {
+      "pregunta": "El doble de la edad que tendré dentro de 5 años es igual al triple de la edad que tuve hace 4 años. ¿Cuántos años tengo?",
+      "respuesta": "22 años.",
+      "explicacion": "x = mi edad actual. Dentro de 5 años: x + 5; hace 4 años: x − 4. Ecuación: 2·(x + 5) = 3·(x − 4). Abro paréntesis: 2x + 10 = 3x − 12. Paso términos: 10 + 12 = 3x − 2x, o sea 22 = x. Comprobación: dentro de 5 años tendré 27 y su doble es 54; hace 4 años tuve 18 y su triple es 54."
+    },
+    {
+      "pregunta": "Cuando nació mi hermano, yo tenía 10 años. Hoy mi edad es el triple de la suya. ¿Qué edad tiene cada uno?",
+      "respuesta": "Mi hermano tiene 5 años y yo tengo 15.",
+      "explicacion": "La diferencia de edades es 10 y no cambia. Si mi hermano tiene h, yo tengo h + 10; y como hoy yo soy el triple, también yo = 3h. Entonces 3h = h + 10, o sea 2h = 10 y h = 5; yo tengo 15. Comprobación: 15 es el triple de 5 y 15 − 5 = 10."
+    },
+    {
+      "pregunta": "La edad de un padre es el quíntuple de la de su hijo. Hace 5 años, entre los dos sumaban 50 años. ¿Qué edad tiene el hijo?",
+      "respuesta": "10 años.",
+      "explicacion": "Hoy el hijo tiene h y el padre 5h. Hace 5 años a cada uno le resto 5: (5h − 5) + (h − 5) = 50, o sea 6h − 10 = 50, entonces 6h = 60 y h = 10. El padre tiene 50. Comprobación: hace 5 años tenían 5 y 45, y 5 + 45 = 50."
+    },
+    {
+      "pregunta": "Tomás es el triple de Vera. Dentro de 4 años, entre los dos sumarán 48 años. ¿Qué edad tiene Vera?",
+      "respuesta": "10 años.",
+      "explicacion": "Hoy Vera tiene v y Tomás 3v. Dentro de 4 años a cada uno le sumo 4: (3v + 4) + (v + 4) = 48, o sea 4v + 8 = 48, entonces 4v = 40 y v = 10. Tomás tiene 30. Comprobación: dentro de 4 años tendrán 34 y 14, y 34 + 14 = 48."
+    },
+    {
+      "pregunta": "Hace 10 años yo tenía la cuarta parte de la edad que tendré dentro de 20 años. ¿Cuántos años tengo?",
+      "respuesta": "20 años.",
+      "explicacion": "x = mi edad actual. Hace 10 años: x − 10; dentro de 20 años: x + 20. 'La cuarta parte' es dividir entre 4: x − 10 = (x + 20) ÷ 4. Multiplico los dos lados por 4: 4·(x − 10) = x + 20, o sea 4x − 40 = x + 20. Paso términos: 3x = 60, entonces x = 20. Comprobación: hace 10 años tuve 10; dentro de 20 años tendré 40; y 40 ÷ 4 = 10."
+    },
+    {
+      "pregunta": "Dentro de 12 años tendré el triple de la edad que tuve hace 8 años. ¿Cuántos años tengo?",
+      "respuesta": "18 años.",
+      "explicacion": "x = mi edad actual. Dentro de 12 años: x + 12; hace 8 años: x − 8. Ecuación: x + 12 = 3·(x − 8). Abro paréntesis: x + 12 = 3x − 24. Paso términos: 12 + 24 = 3x − x, o sea 36 = 2x, entonces x = 18. Comprobación: dentro de 12 años tendré 30; hace 8 años tuve 10; y el triple de 10 es 30."
+    },
+    {
+      "pregunta": "Cuando nació Elena, Raúl tenía 32 años. Hoy la edad de Raúl es el quíntuple de la de Elena. ¿Qué edad tiene Elena?",
+      "respuesta": "8 años.",
+      "explicacion": "La diferencia de edades es 32 y no cambia: si Elena tiene e, Raúl tiene e + 32; y hoy Raúl es el quíntuple, así que Raúl = 5e. Entonces 5e = e + 32, o sea 4e = 32 y e = 8. Raúl tiene 40. Comprobación: 40 es el quíntuple de 8 y 40 − 8 = 32."
+    },
+    {
+      "pregunta": "El doble de la edad que tendré dentro de 3 años es igual a tres veces la edad que tuve hace 7 años. ¿Qué edad tuve hace 2 años?",
+      "respuesta": "25 años.",
+      "explicacion": "x = mi edad actual. Dentro de 3 años: x + 3; hace 7 años: x − 7. Ecuación: 2·(x + 3) = 3·(x − 7). Abro paréntesis: 2x + 6 = 3x − 21. Paso términos: 6 + 21 = 3x − 2x, o sea 27 = x. Pero preguntan por hace 2 años: 27 − 2 = 25. Comprobación de la ecuación: dentro de 3 años tendré 30 (doble 60); hace 7 años tuve 20 (por 3 = 60)."
+    },
+    {
+      "pregunta": "Diana es el cuádruple de Iker. Hace 4 años, entre los dos sumaban 42 años. ¿Qué edad tiene Iker?",
+      "respuesta": "10 años.",
+      "explicacion": "Hoy Iker tiene i y Diana 4i. Hace 4 años a cada uno le resto 4: (4i − 4) + (i − 4) = 42, o sea 5i − 8 = 42, entonces 5i = 50 y i = 10. Diana tiene 40. Comprobación: hace 4 años tenían 6 y 36, y 6 + 36 = 42."
+    }
+  ]
+}
