@@ -13,9 +13,95 @@
 // pruebas y el candado de aislamiento (programa='cumbre') los tratan por separado.
 
 export const CUMBRE_CURRICULO = {
+  // Orden de las materias en el cuarto de pruebas = por materia_id ascendente (ids sintéticos
+  // ≥9000 para no chocar con cursos reales de Moodle). "Cómo Pensar" (9000) va primero por ser
+  // la materia transversal que enseña a razonar; luego las ciencias.
   materias: [
     {
-      id: 9001, // id sintético (Cumbre no viene de Moodle); >9000 para no chocar con cursos reales
+      id: 9000,
+      grado: "Cumbre Cómo Pensar 1er año",
+      materia: "Cómo Pensar",
+      nombre_corto: "CUMBRE PENS 1A",
+      // Materia PROPIA y TRANSVERSAL: enseña a pensar con método, evidencia y lógica, sin
+      // dejarse engañar. Inspirada en IB ToK/ATL, NGSS (argumentar desde la evidencia),
+      // marcos de pensamiento crítico (Ennis/Facione) y alfabetización mediática y de datos.
+      grupos: [
+        {
+          lapso: "Preguntar e investigar",
+          intl: "Scientific Inquiry",
+          temas: [
+            "La gran pregunta: cómo sabemos lo que sabemos (afirmación vs. evidencia)",
+            "Observar de verdad: notar detalles, no lo que esperamos ver",
+            "La hipótesis: una buena conjetura que se puede poner a prueba",
+            "Variables: qué cambio, qué mido y qué mantengo igual",
+            "Diseñar una prueba justa: el experimento controlado (con ejemplos de física y biología)",
+            "Sacar conclusiones honestas: qué dicen los datos y qué NO dicen",
+            "La ciencia se corrige a sí misma: por qué equivocarse es parte del método",
+          ],
+        },
+        {
+          lapso: "Razonar con lógica",
+          intl: "Logic & Reasoning",
+          temas: [
+            "Afirmaciones, razones y conclusiones: las partes de un argumento",
+            "Razonar de lo general a lo particular y al revés (deducir e inducir)",
+            "Causa y correlación: que dos cosas ocurran juntas no significa que una cause la otra",
+            "Condiciones: 'si… entonces' y por qué invertirlo engaña (con ejemplos de matemática)",
+            "Contraejemplos: cómo una sola excepción derrumba una regla",
+            "Buenos y malos argumentos: cómo se ve un razonamiento sólido",
+          ],
+        },
+        {
+          lapso: "No dejarse engañar",
+          intl: "Fallacies & Biases",
+          temas: [
+            "Falacias comunes 1: atacar a la persona, no a la idea; y la falsa autoridad",
+            "Falacias comunes 2: falso dilema, generalización apresurada y pendiente resbaladiza",
+            "Trampas del lenguaje: ambigüedad, cargar la pregunta y las palabras que manipulan",
+            "Sesgos de la mente: por qué creemos lo que ya queríamos creer (sesgo de confirmación)",
+            "Otros sesgos cotidianos: el ancla, lo que se recuerda fácil, seguir a la mayoría",
+            "Persuasión y publicidad: cómo te intentan convencer sin argumentos",
+          ],
+        },
+        {
+          lapso: "Pensar con datos",
+          intl: "Data Literacy",
+          temas: [
+            "Qué es un dato y de dónde sale: muestras justas y muestras tramposas",
+            "Promedio, mediana y moda: cuál cuenta la verdad según el caso (puente con Matemática)",
+            "Leer un gráfico con ojo crítico: qué muestra y qué esconde",
+            "Gráficos engañosos: ejes cortados, escalas y trucos visuales",
+            "Porcentajes y probabilidades en la vida real: no dejarse impresionar por un número",
+            "Correlación en los datos: ver un patrón sin saltar a conclusiones",
+          ],
+        },
+        {
+          lapso: "Evaluar la información",
+          intl: "Media & Source Literacy",
+          temas: [
+            "Fuentes: quién lo dice, cómo lo sabe y por qué lo dice",
+            "Hecho, opinión y afirmación disfrazada de hecho",
+            "Evaluar una noticia o un video: credibilidad, sesgo y evidencia",
+            "Rastrear la evidencia: llegar a la fuente original, no al que la repitió",
+            "Información falsa: cómo se fabrica y se propaga (y cómo verificar)",
+          ],
+        },
+        {
+          lapso: "Pensar mejor y resolver problemas",
+          intl: "Thinking & Problem-Solving",
+          temas: [
+            "Descomponer un problema grande en partes manejables (pensamiento computacional)",
+            "Buscar patrones y generalizar (con ejemplos de matemática y ciencias)",
+            "Considerar varias perspectivas antes de decidir",
+            "Pensar sobre tu propio pensar: revisar, dudar y corregirte (metacognición)",
+            "Creatividad con criterio: generar ideas y luego evaluarlas",
+            "Decidir con cabeza: pesar evidencia, riesgos y valores en una decisión real",
+          ],
+        },
+      ],
+    },
+    {
+      id: 9001,
       grado: "Cumbre Matemática 1er año",
       materia: "Matemática",
       nombre_corto: "CUMBRE MAT 1A",
@@ -255,6 +341,84 @@ export const CUMBRE_CURRICULO = {
             "Metales que reaccionan: oxidación y metales con ácidos",
             "La conservación de la masa: nada aparece ni desaparece (la gran idea de Lavoisier)",
             "Reacciones útiles y reacciones problema: de la cocina a la corrosión",
+          ],
+        },
+      ],
+    },
+    {
+      id: 9004,
+      grado: "Cumbre Biología 1er año",
+      materia: "Biología",
+      nombre_corto: "CUMBRE BIO 1A",
+      // Equivalente: UK KS3 Year 7 Biology (big questions de Oak National), hilo biológico de
+      // Singapore Lower Secondary Science, Japan MEXT Grade 7 "el mundo vivo cercano", IB MYP Y1.
+      grupos: [
+        {
+          lapso: "La unidad de la vida: la célula",
+          intl: "Cells — the Unit of Life",
+          temas: [
+            "¿Qué significa estar vivo? Las siete funciones vitales (MRS GREN)",
+            "El microscopio: la herramienta que abrió el mundo invisible",
+            "La célula: la unidad básica de todo ser vivo",
+            "Célula animal y célula vegetal: partes y diferencias",
+            "Células especializadas: la forma sigue a la función",
+            "De célula a organismo: células, tejidos, órganos y sistemas",
+          ],
+        },
+        {
+          lapso: "El cuerpo humano como sistema",
+          intl: "The Human Body",
+          temas: [
+            "El sistema digestivo: cómo el cuerpo obtiene lo que necesita del alimento",
+            "El sistema respiratorio: el intercambio de gases",
+            "El sistema circulatorio: el corazón y el transporte por la sangre",
+            "El sistema locomotor: huesos, músculos y movimiento",
+            "Alimentación y nutrición: una dieta balanceada explicada por la ciencia",
+            "Salud e higiene: cómo el cuerpo se mantiene sano y se defiende",
+          ],
+        },
+        {
+          lapso: "Crecer y reproducirse",
+          intl: "Growth & Reproduction",
+          temas: [
+            "Reproducción sexual y asexual: dos estrategias de la vida",
+            "La reproducción en las plantas: la flor, la polinización y la semilla",
+            "La reproducción humana: los cambios de la pubertad explicados",
+            "El ciclo de vida: de la semilla o el huevo al adulto",
+          ],
+        },
+        {
+          lapso: "La diversidad de la vida",
+          intl: "Classifying Life",
+          temas: [
+            "¿Por qué clasificamos? Orden en la enorme variedad de la vida",
+            "Los cinco reinos: animales, plantas, hongos, protistas y bacterias",
+            "Vertebrados: los cinco grupos y sus características",
+            "Invertebrados: la mayoría oculta de los animales",
+            "Las plantas: con y sin flores, y cómo se agrupan",
+            "El sistema de Linneo: nombrar cada ser vivo (nombre científico) y las claves dicotómicas",
+          ],
+        },
+        {
+          lapso: "La energía de la vida",
+          intl: "Energy in Life",
+          temas: [
+            "La fotosíntesis: cómo las plantas fabrican su alimento con luz",
+            "La hoja: la fábrica de la planta por dentro",
+            "La respiración celular: cómo los seres vivos liberan la energía del alimento",
+            "Fotosíntesis y respiración: dos procesos que se conectan",
+          ],
+        },
+        {
+          lapso: "Los seres vivos y su ambiente",
+          intl: "Ecosystems & Interdependence",
+          temas: [
+            "El ecosistema: seres vivos (bióticos) y su entorno (abióticos)",
+            "Cadenas y redes alimentarias: productores, consumidores y descomponedores",
+            "El flujo de energía y el reciclaje de la materia en la naturaleza",
+            "Adaptaciones: cómo cada ser vivo encaja en su ambiente",
+            "Relaciones entre especies: competencia, depredación y cooperación",
+            "Biodiversidad de Venezuela y el impacto humano en los ecosistemas",
           ],
         },
       ],
