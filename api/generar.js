@@ -608,11 +608,22 @@ export default async function handler(req, res) {
     // numérico). Razona aparte y los cálculos salen limpios y correctos.
     if (necesitaMate) genCfg.thinkingConfig = { thinkingBudget: 4096 };
     const payload = { contents: [{ parts }], generationConfig: genCfg };
-    // Modelo preferido por modo + el otro de respaldo. Cada modelo tiene su PROPIO
-    // cupo free, así que si el preferido se agota, el otro suele seguir andando.
-    const modelos = necesitaMate
-      ? [MODEL_EJERCICIOS, MODEL_TEXTO] // con cálculo: flash; respaldo flash-lite
-      : [MODEL_TEXTO, MODEL_EJERCICIOS]; // texto puro: flash-lite; respaldo flash
+    // REGLA DE MODELOS (2026-07-04): flash-lite NUNCA toca contenido numérico/lógico —
+    // por más blindado que esté el prompt, se equivoca. Prioridades:
+    // - Tema NUMÉRICO (mate/lógica/olimpiada, cualquier modo): SOLO flash. Sin respaldo
+    //   hacia abajo: si flash se agota en TODAS las keys (gratis + paga), devolvemos el
+    //   429/503 amable y el front enfría/reintenta — mejor esperar unos segundos que
+    //   servir un ejercicio mal hecho. Con la key paga (flash 1000 req/min) en la cola,
+    //   en la práctica nunca se agota.
+    // - PRÁCTICA de teoría (retos/quiz/examen no numéricos): flash preferido (calidad),
+    //   flash-lite solo como ÚLTIMO recurso (sin números el riesgo es bajo; mejor que fallar).
+    // - RESUMEN de teoría: flash-lite (barato, texto puro) con flash de respaldo.
+    const esPractica = esEjercicio || modo === "examen";
+    const modelos = numerica
+      ? [MODEL_EJERCICIOS] // numérico: SOLO flash, nunca degradar a lite
+      : esPractica
+      ? [MODEL_EJERCICIOS, MODEL_TEXTO] // práctica de teoría: flash primero
+      : [MODEL_TEXTO, MODEL_EJERCICIOS]; // resumen de teoría: lite primero
     // Probamos modelos × keys. Ante 429 (cupo) o 503 (saturado) seguimos con la
     // próxima key; agotadas todas, el próximo modelo. ESTRATEGIA DE COSTO: primero
     // TODAS las gratis (arrancando en una al azar, para repartir su cupo de ~20/min
@@ -685,6 +696,7 @@ export default async function handler(req, res) {
       fuentes: pdfs.map((p) => p.nombre), // PDFs que Gemini realmente leyó
       apuntes: tieneFotos, // usó fotos del cuaderno del alumno
       iaVia: usoPaga ? "paga" : "gratis", // diagnóstico: qué tipo de key sirvió esta generación
+      iaModelo: modeloUsado, // diagnóstico: qué modelo generó (auditar que lo numérico salga de flash)
     };
     // 2) guardamos en caché para la próxima vez — SALVO si usó fotos (resultado personal del alumno)
     if (!tieneFotos) {
