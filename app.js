@@ -1287,6 +1287,7 @@
         return `<div class="sumSec">
           ${s.titulo?`<h3>${escapeHtml(s.titulo)}</h3>`:``}
           ${s.explicacion?`<p>${escapeHtml(s.explicacion)}</p>`:``}
+          ${figuraHTML(s.figura)}
           ${pasos.length?`<ol class="sumPasos">${pasos.map(p=>`<li>${escapeHtml(p)}</li>`).join("")}</ol>`:``}
           ${s.ejemplo?`<div class="sumEj"><b>✏️ Ejemplo:</b> ${escapeHtml(s.ejemplo)}</div>`:``}
         </div>`;

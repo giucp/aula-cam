@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v16"; // v16: cuarto de pruebas con endpoint unico api/lab (bajo limite de funciones Vercel)
+const VERSION = "aulacam-v17"; // v17: el resumen tambien muestra figuras SVG (para Cumbre)
 const SHELL = [
   "/",
   "/index.html",
