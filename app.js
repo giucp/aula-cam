@@ -38,6 +38,7 @@
   let temaSel = null;
   let cantidad = 5;
   let modoSel = "retos";
+  let MODO_LAB = false;   // true dentro del "cuarto de pruebas" (admin): no escribe nada, sin botones de generar
   let ultimoContexto = null;
   let fotos = [];          // fotos del cuaderno (apuntes), solo del momento
   const MAX_FOTOS = 3;
@@ -1357,7 +1358,7 @@
       <p class="q">Nota: ${nota}/20 · acertaste ${estado.ok} de ${estado.total}</p>
       <div class="sumKey"><b>${escapeHtml(msg)}</b></div>`;
     res.appendChild(c);
-    renderOtros(res);
+    if(!MODO_LAB) renderOtros(res);   // en el cuarto no hay "generar otros"
     c.scrollIntoView({behavior:"smooth",block:"nearest"});
   }
 
@@ -1539,8 +1540,112 @@
   }
   function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 
+  // ───────── CUARTO DE PRUEBAS (admin, oculto en #lab) ─────────
+  // Vista privada para revisar el contenido de Cumbre renderizado EXACTAMENTE como lo
+  // verá la alumna, antes de publicarlo. Solo lectura: MODO_LAB apaga toda escritura y
+  // no hay botones de generar. La clave se valida server-side (api/admin-check) y vive
+  // solo en memoria (se re-pide al recargar; no se guarda en el aparato).
+  const API_ADMIN_CHECK  = "https://aula-cam.vercel.app/api/admin-check";
+  const API_LAB_MATERIAS = "https://aula-cam.vercel.app/api/lab-materias";
+  const API_LAB_TEMA     = "https://aula-cam.vercel.app/api/lab-tema";
+  let LAB_CLAVE = "";
+  const MODOS_LAB = [["resumen","📝 Resumen"],["retos","🎯 Práctica"],["quiz","🎮 Quiz"],["examen","📋 Examen"]];
+  const LETRA_MODO = { resumen:"R", retos:"P", quiz:"Q", examen:"E" };
+
+  function entrarLab(){
+    MODO_LAB = true;
+    ["#vLanding","#vLogin","#vHome","#vPendiente"].forEach(id=>{ const e=$(id); if(e) e.classList.add("hidden"); });
+    $("#vLab").classList.remove("hidden");
+    $("#labApp").classList.add("hidden"); $("#labLogin").classList.remove("hidden");
+    $("#labErr").classList.add("hidden");
+    setTimeout(()=>{ try{ $("#labClave").focus(); }catch(_){} }, 60);
+  }
+  async function labLogin(){
+    const clave=($("#labClave").value||"").trim(); if(!clave) return;
+    const btn=$("#labEntrar"); btn.disabled=true; $("#labErr").classList.add("hidden");
+    try{
+      const r=await fetch(API_ADMIN_CHECK,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({clave})});
+      if(!r.ok){ $("#labErr").classList.remove("hidden"); return; }
+      LAB_CLAVE=clave;
+      $("#labLogin").classList.add("hidden"); $("#labApp").classList.remove("hidden");
+      labCargarMaterias();
+    }catch(_){ $("#labErr").classList.remove("hidden"); }
+    finally{ btn.disabled=false; }
+  }
+  async function labCargarMaterias(){
+    const body=$("#labBody"); labBack(true); body.innerHTML=`<p class="labLoad">Cargando…</p>`;
+    try{
+      const r=await fetch(API_LAB_MATERIAS,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({clave:LAB_CLAVE})});
+      if(r.status===401){ LAB_CLAVE=""; entrarLab(); return; }
+      const d=await r.json(); labNivelMaterias(d.materias||[]);
+    }catch(_){ body.innerHTML=errBox("No se pudo cargar el cuarto. Reintenta."); }
+  }
+  function labBack(hide, fn){ const b=$("#labBack"); b.classList.toggle("hidden", !!hide); if(fn) b.onclick=fn; }
+  function labNivelMaterias(materias){
+    labBack(true); const body=$("#labBody"); body.innerHTML="";
+    if(!materias.length){ body.innerHTML=`<div class="empty">Aún no hay materias de Cumbre.</div>`; return; }
+    materias.forEach(m=>{
+      const b=document.createElement("button"); b.className="labMat";
+      b.innerHTML=`<span class="labMatNom">🏔️ ${escapeHtml(m.materia)}</span><span class="labMatGr">${escapeHtml(m.grado)}</span><span class="labProg">${m.curados} de ${m.total} temas curados</span>`;
+      b.onclick=()=>labNivelMapa(m, materias);
+      body.appendChild(b);
+    });
+  }
+  function labNivelMapa(m, materias){
+    labBack(false, ()=>labNivelMaterias(materias));
+    const body=$("#labBody"); body.innerHTML=`<p class="labCrumb">🏔️ ${escapeHtml(m.materia)} · ${escapeHtml(m.grado)}</p>`;
+    const varios=(m.dominios||[]).length>1;
+    (m.dominios||[]).forEach((dom,idx)=>{
+      const titulo = dom.intl ? `${dom.dominio}  ·  ${dom.intl}` : dom.dominio;
+      const chips = crearLapso(body, titulo, (dom.temas||[]).length, idx===0);
+      chips.classList.add("labTemas");
+      (dom.temas||[]).forEach(t=>{
+        const fila=document.createElement(t.curado?"button":"div");
+        fila.className="labTema"+(t.curado?" curado":" pend");
+        const modos=(t.modos||[]).map(k=>LETRA_MODO[k]||"?").join(" ");
+        fila.innerHTML=`<span class="labBadge">${t.curado?"✅":"⬜"}</span><span class="labTemaNom">${escapeHtml(t.tema)}</span>${t.curado?`<span class="labModos">${modos}</span>`:`<span class="labModos pend">pendiente</span>`}`;
+        if(t.curado) fila.onclick=()=>labNivelTema(m, t, materias);
+        chips.appendChild(fila);
+      });
+    });
+    if(!varios){} // (un solo dominio igual se ve como acordeón; está bien)
+  }
+  async function labNivelTema(m, t, materias){
+    labBack(false, ()=>labNivelMapa(m, materias));
+    const body=$("#labBody");
+    body.innerHTML=`<p class="labCrumb">🏔️ ${escapeHtml(m.materia)} — ${escapeHtml(t.tema)}</p><p class="labLoad">Cargando…</p>`;
+    try{
+      const r=await fetch(API_LAB_TEMA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({clave:LAB_CLAVE, materia:m.materia, tema:t.tema})});
+      if(r.status===401){ LAB_CLAVE=""; entrarLab(); return; }
+      const d=await r.json(); const modos=d.modos||{};
+      body.innerHTML=`<p class="labCrumb">🏔️ ${escapeHtml(m.materia)} — ${escapeHtml(t.tema)}</p><p class="labNota">Así lo verá la alumna (vista de solo lectura).</p>`;
+      const disp=MODOS_LAB.filter(([k])=>modos[k]);
+      if(!disp.length){ body.innerHTML+=`<div class="empty">Aún no curado.</div>`; return; }
+      const sel=document.createElement("div"); sel.className="labModoSel";
+      const out=document.createElement("div"); out.className="results";
+      const meta={materia:m.materia, tema:t.tema, grado:m.grado};
+      const pintar=(k)=>{
+        out.innerHTML="";
+        [...sel.children].forEach(x=>x.classList.toggle("on", x.dataset.k===k));
+        if(k==="resumen") renderResumen(out, modos.resumen||{});
+        else if(k==="retos") renderRetos(out, (modos.retos&&modos.retos.items)||[], meta);
+        else if(k==="quiz") renderQuiz(out, (modos.quiz&&modos.quiz.items)||[], meta);
+        else if(k==="examen") renderExamen(out, (modos.examen&&modos.examen.items)||[], meta);
+        out.scrollIntoView({behavior:"smooth",block:"nearest"});
+      };
+      disp.forEach(([k,lbl])=>{ const b=document.createElement("button"); b.className="labModoBtn"; b.dataset.k=k; b.textContent=lbl; b.onclick=()=>pintar(k); sel.appendChild(b); });
+      body.appendChild(sel); body.appendChild(out);
+      pintar(disp[0][0]);
+    }catch(_){ body.innerHTML=errBox("No se pudo cargar el tema. Reintenta."); }
+  }
+  $("#labEntrar").onclick=labLogin;
+  $("#labClave").addEventListener("keydown",(e)=>{ if(e.key==="Enter") labLogin(); });
+  window.addEventListener("hashchange",()=>{ if(location.hash==="#lab" && !MODO_LAB) entrarLab(); });
+
   // ───────── arranque (al final: todas las consts/funciones ya están definidas) ─────────
   (function arrancar(){
+    // cuarto de pruebas (admin), oculto: si se entra por #lab, no seguir el flujo normal
+    if(location.hash === "#lab"){ entrarLab(); return; }
     try{
       let s = store.get("sesion");
       if(!(s && s.materias)){

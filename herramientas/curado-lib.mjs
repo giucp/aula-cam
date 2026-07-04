@@ -69,10 +69,15 @@ export function filasDeBanco(doc, ahoraISO) {
 
   const filas = [];
   let algun = false;
+  // El esquema de Cumbre llama "practica" a lo que internamente es el modo "retos"
+  // (mismos campos: enunciado/pista/solucion/figura). Se acepta como alias.
+  const fuenteDe = (modo) =>
+    modo === "retos" ? (doc.retos != null ? doc.retos : doc.practica) : doc[modo];
   for (const modo of ["resumen", "retos", "quiz", "examen"]) {
-    if (!(modo in doc) || doc[modo] == null) continue;
+    const valor = fuenteDe(modo);
+    if (valor == null) continue;
     algun = true;
-    const v = validarModo(modo, doc[modo]);
+    const v = validarModo(modo, valor);
     if (!v.ok) { avisos.push(`modo ${modo} omitido: ${v.motivo}`); continue; }
     filas.push({
       materia_norm, tema_norm, modo, grado: doc.grado, programa,

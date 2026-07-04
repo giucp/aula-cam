@@ -265,6 +265,26 @@
     </nav>
   </section>
 
+  <!-- CUARTO DE PRUEBAS (admin, oculto: solo se ve navegando a #lab) -->
+  <section id="vLab" class="hidden">
+    <div id="labLogin" class="labWrap">
+      <div class="labCard">
+        <h1 class="labH">🧪 Cuarto de pruebas</h1>
+        <p class="labSub">Vista privada de administrador. Ingresa tu clave para revisar el contenido.</p>
+        <input id="labClave" type="password" class="labInput" placeholder="Clave de administrador" autocomplete="off" />
+        <button id="labEntrar" class="go">Entrar</button>
+        <p id="labErr" class="labErr hidden">Clave incorrecta.</p>
+      </div>
+    </div>
+    <div id="labApp" class="hidden">
+      <header class="labTop">
+        <button id="labBack" class="volver hidden">‹ Volver</button>
+        <span class="labTitle">🧪 Cuarto de pruebas · Cumbre</span>
+      </header>
+      <div id="labBody"></div>
+    </div>
+  </section>
+
 </div>
 
 <script src="app.js"></script>

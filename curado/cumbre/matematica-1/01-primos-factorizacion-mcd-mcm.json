@@ -1,0 +1,262 @@
+{
+  "programa": "cumbre",
+  "materia": "Matemática",
+  "grado": "Cumbre Matemática 1er año",
+  "dominio": "Números y Álgebra",
+  "tema": "Números primos, factorización, MCD y MCM",
+  "referencias": [
+    "Singapore MOE Secondary 1 (N1: primes, prime factorisation, HCF, LCM, index notation, square/cube roots by factorisation)",
+    "IB MYP Year 1 — Number: primes, factors, number systems",
+    "Japan MEXT Grade 7 — Numbers and Algebraic Expressions",
+    "UK KS3/GCSE — factor trees, Venn-diagram method, HCF×LCM property, common errors"
+  ],
+  "resumen": {
+    "titulo": "Los átomos de los números: primos y factorización",
+    "intro": "Así como todo en el universo está hecho de átomos, todo número está hecho de números primos. Aprender a ver ese 'interior' de los números es una de las herramientas más poderosas de la matemática: te sirve para simplificar fracciones, sacar raíces sin calculadora y resolver problemas reales de repartir y coincidir.",
+    "secciones": [
+      {
+        "titulo": "¿Qué es un número primo? (la idea central)",
+        "explicacion": "Un número primo es un número mayor que 1 que solo se puede dividir exactamente entre 1 y él mismo: no se puede 'partir' en un rectángulo de fichas de más de una fila. El 7 es primo porque 7 fichas solo forman una fila de 7; en cambio el 12 no es primo, porque 12 fichas sí forman rectángulos (2×6, 3×4). A los que no son primos (y son mayores que 1) los llamamos compuestos. Ojo con dos casos que confunden: el 1 NO es primo (solo tiene un divisor), y el 2 SÍ es primo (es el único primo par).",
+        "pasos": [],
+        "ejemplo": "Primos hasta 30: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29. Fíjate: después del 2, todos son impares — pero no todo impar es primo (9, 15, 21, 25, 27 son compuestos)."
+      },
+      {
+        "titulo": "El Teorema Fundamental de la Aritmética (la gran idea)",
+        "explicacion": "Aquí está lo poderoso: TODO número compuesto se puede escribir como una multiplicación de primos, y de UNA sola manera. A eso se le llama factorización en primos. El 12 siempre es 2×2×3, sin importar cómo empieces a partirlo. Por eso decimos que los primos son los 'átomos' de los números: son las piezas indivisibles con las que se construye cualquier otro número. Esta idea tiene nombre grande —Teorema Fundamental de la Aritmética— porque es uno de los cimientos de toda la matemática.",
+        "pasos": [],
+        "ejemplo": "12 = 2 × 2 × 3, empieces por 12 = 2×6 o por 12 = 3×4: las piezas finales son siempre las mismas."
+      },
+      {
+        "titulo": "Herramienta rápida: los criterios de divisibilidad",
+        "explicacion": "Para factorizar rápido conviene reconocer a simple vista entre qué primos se divide un número. Estos atajos te ahorran muchísimo tiempo y los usan los estudiantes de los mejores sistemas como segunda naturaleza.",
+        "pasos": [
+          "Entre 2: si termina en cifra par (0, 2, 4, 6, 8).",
+          "Entre 3: si la SUMA de sus cifras es múltiplo de 3. (474 → 4+7+4=15 → sí).",
+          "Entre 5: si termina en 0 o en 5.",
+          "Entre 9: si la suma de sus cifras es múltiplo de 9.",
+          "Entre 10: si termina en 0."
+        ],
+        "ejemplo": "¿4731 es divisible entre 3? Suma: 4+7+3+1 = 15, y 15 es múltiplo de 3 → sí lo es (4731 = 3 × 1577)."
+      },
+      {
+        "titulo": "Cómo factorizar: el árbol de factores",
+        "explicacion": "Para encontrar los primos que forman un número usamos un árbol de factores. Partes el número en dos factores cualesquiera, y sigues partiendo cada rama hasta que todas las 'hojas' sean primas. No importa por dónde empieces: siempre llegas a las mismas hojas (eso lo garantiza el Teorema Fundamental).",
+        "pasos": [
+          "Escribe el número arriba.",
+          "Pártelo en dos factores cualesquiera (no hace falta que sean primos todavía).",
+          "Sigue partiendo cada rama que no sea prima.",
+          "Cuando todas las hojas sean primas, terminaste: enciérralas en un círculo."
+        ],
+        "ejemplo": "60 → 6 × 10 → (2 × 3) × (2 × 5). Hojas primas: 2, 2, 3, 5.",
+        "figura": "<svg viewBox=\"0 0 320 220\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"160\" y1=\"40\" x2=\"100\" y2=\"95\" stroke=\"#8C7C93\" stroke-width=\"2\"/><line x1=\"160\" y1=\"40\" x2=\"220\" y2=\"95\" stroke=\"#8C7C93\" stroke-width=\"2\"/><line x1=\"100\" y1=\"115\" x2=\"70\" y2=\"165\" stroke=\"#8C7C93\" stroke-width=\"2\"/><line x1=\"100\" y1=\"115\" x2=\"130\" y2=\"165\" stroke=\"#8C7C93\" stroke-width=\"2\"/><line x1=\"220\" y1=\"115\" x2=\"190\" y2=\"165\" stroke=\"#8C7C93\" stroke-width=\"2\"/><line x1=\"220\" y1=\"115\" x2=\"250\" y2=\"165\" stroke=\"#8C7C93\" stroke-width=\"2\"/><text x=\"160\" y=\"35\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"20\" font-weight=\"700\" fill=\"#3B2B4A\">60</text><text x=\"100\" y=\"112\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"#3B2B4A\">6</text><text x=\"220\" y=\"112\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"#3B2B4A\">10</text><circle cx=\"70\" cy=\"180\" r=\"16\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><circle cx=\"130\" cy=\"180\" r=\"16\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><circle cx=\"190\" cy=\"180\" r=\"16\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><circle cx=\"250\" cy=\"180\" r=\"16\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><text x=\"70\" y=\"186\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#0E9486\">2</text><text x=\"130\" y=\"186\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#0E9486\">3</text><text x=\"190\" y=\"186\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#0E9486\">2</text><text x=\"250\" y=\"186\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#0E9486\">5</text></svg>"
+      },
+      {
+        "titulo": "Notación de índices: la forma elegante de escribirlo",
+        "explicacion": "Cuando un primo se repite, los matemáticos no lo escriben varias veces: usan una potencia (notación de índices). En vez de 2×2×3×5 escriben 2²×3×5. Es lo mismo, pero más corto y más claro, y es como lo exigen en los mejores sistemas del mundo. Aprender a escribirlo así desde ya te prepara para el álgebra que viene.",
+        "pasos": [],
+        "ejemplo": "60 = 2 × 2 × 3 × 5 = 2² × 3 × 5.   168 = 2 × 2 × 2 × 3 × 7 = 2³ × 3 × 7."
+      },
+      {
+        "titulo": "Superpoder 1: raíces sin calculadora",
+        "explicacion": "La factorización te deja sacar raíces cuadradas y cúbicas de números grandes SIN calculadora. La clave: un cuadrado perfecto tiene todos sus primos en PAREJAS (exponentes pares), y un cubo perfecto los tiene en TRÍOS. Para la raíz cuadrada, tomas un primo de cada pareja y multiplicas; para la cúbica, uno de cada trío. Y al revés: si un primo queda sin pareja, el número NO es cuadrado perfecto — y ya sabes exactamente qué le falta para serlo.",
+        "pasos": [
+          "Factoriza el número en primos con notación de índices.",
+          "Para √: verifica que todos los exponentes sean pares; toma la mitad de cada exponente y multiplica.",
+          "Para ∛: verifica que todos los exponentes sean múltiplos de 3; toma un tercio de cada exponente y multiplica."
+        ],
+        "ejemplo": "√576: 576 = 2⁶ × 3². Mitades: 2³ × 3 = 8 × 3 = 24. Entonces √576 = 24. ∛1000: 1000 = 2³ × 5³ → 2 × 5 = 10."
+      },
+      {
+        "titulo": "MCD y MCM: para qué sirven de verdad",
+        "explicacion": "Aquí conectamos con el mundo real, que es donde estos conceptos cobran sentido. El Máximo Común Divisor (MCD) es el número más grande que divide a dos números a la vez: sirve cuando quieres REPARTIR en grupos iguales lo más grandes posible. El Mínimo Común Múltiplo (MCM) es el número más pequeño que es múltiplo de ambos: sirve cuando quieres saber cuándo dos cosas que se repiten VUELVEN A COINCIDIR. La pista para saber cuál usar: si el problema habla de 'repartir, dividir en grupos, el más grande posible', es MCD; si habla de 'volver a coincidir, sonar juntos otra vez, el más pequeño que se repite', es MCM. En inglés los verás como HCF (Highest Common Factor) y LCM (Lowest Common Multiple).",
+        "pasos": [],
+        "ejemplo": "Cortar dos cintas en pedazos iguales lo más largos posible → MCD. Dos autobuses que salen cada tanto y quieres saber cuándo coinciden → MCM."
+      },
+      {
+        "titulo": "El método visual: primos en un diagrama de Venn",
+        "explicacion": "Los mejores sistemas enseñan a hallar MCD y MCM con un diagrama de Venn, porque hace VISIBLE lo que está pasando. Factorizas ambos números en primos y colocas cada primo en dos círculos que se solapan: los primos que comparten van en el centro (la intersección), los que no comparte cada uno van en su propio lado. Entonces: el MCD es multiplicar SOLO lo del centro (lo que comparten). El MCM es multiplicar TODO lo que aparece en el diagrama (centro y lados). Verlo así hace casi imposible confundirlos.",
+        "pasos": [
+          "Factoriza ambos números en primos.",
+          "Coloca los primos comunes en el centro (intersección).",
+          "Coloca los primos no comunes en el lado de cada número.",
+          "MCD = producto de SOLO el centro.",
+          "MCM = producto de TODO el diagrama."
+        ],
+        "ejemplo": "60 = 2²×3×5 y 24 = 2³×3. Comparten 2×2×3 → centro. Sobra un 5 (de 60) y un 2 (de 24). MCD = 2×2×3 = 12. MCM = 12 × 5 × 2 = 120.",
+        "figura": "<svg viewBox=\"0 0 400 240\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"150\" cy=\"120\" r=\"90\" fill=\"#12B5A4\" fill-opacity=\"0.15\" stroke=\"#12B5A4\" stroke-width=\"2\"/><circle cx=\"250\" cy=\"120\" r=\"90\" fill=\"#7C4DFF\" fill-opacity=\"0.15\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><text x=\"95\" y=\"55\" font-family=\"sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#0E9486\">60</text><text x=\"290\" y=\"55\" font-family=\"sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#5A3AAF\">24</text><text x=\"105\" y=\"130\" font-family=\"sans-serif\" font-size=\"20\" font-weight=\"700\" fill=\"#3B2B4A\">5</text><text x=\"188\" y=\"110\" font-family=\"sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"#3B2B4A\">2</text><text x=\"188\" y=\"135\" font-family=\"sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"#3B2B4A\">2</text><text x=\"205\" y=\"122\" font-family=\"sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"#3B2B4A\">3</text><text x=\"280\" y=\"130\" font-family=\"sans-serif\" font-size=\"20\" font-weight=\"700\" fill=\"#3B2B4A\">2</text><text x=\"120\" y=\"225\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#0E9486\">centro = MCD</text><text x=\"250\" y=\"225\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#5A3AAF\">todo = MCM</text></svg>"
+      },
+      {
+        "titulo": "Superpoder 2: la comprobación secreta (MCD × MCM)",
+        "explicacion": "Hay una relación hermosa que casi nadie enseña en clase: para dos números cualesquiera, MCD × MCM = producto de los dos números. Te sirve para dos cosas: COMPROBAR tus respuestas (si no cuadra, algo salió mal) y como ATAJO: si ya tienes el MCD, el MCM sale con una simple división.",
+        "pasos": [
+          "Calcula MCD × MCM.",
+          "Calcula número1 × número2.",
+          "Si dan lo mismo, tus respuestas son correctas."
+        ],
+        "ejemplo": "Para 24 y 60: MCD = 12 y MCM = 120. Comprobación: 12 × 120 = 1440, y 24 × 60 = 1440. ✓ Atajo: si sabes que MCD(28, 42) = 14, entonces MCM = (28 × 42) ÷ 14 = 1176 ÷ 14 = 84."
+      },
+      {
+        "titulo": "Errores típicos (y cómo blindarte)",
+        "explicacion": "Estos son los tres errores que los examinadores de los mejores sistemas ven una y otra vez. Conocerlos de antemano es la mitad de la batalla.",
+        "pasos": [
+          "Factorización incompleta: escribir 12 = 4 × 3 y detenerse. El 4 no es primo; hay que llegar hasta 2² × 3.",
+          "Confundir MCD y MCM: el MCD siempre es MENOR o igual que los dos números; el MCM siempre es MAYOR o igual. Si tu 'MCD' te dio más grande que los números, lo confundiste.",
+          "Olvidar los primos no compartidos en el MCM: si un número tiene un 7 y el otro no, ese 7 IGUAL va en el MCM (todo el diagrama, no solo el centro)."
+        ],
+        "ejemplo": "Chequeo rápido siempre: ¿mi MCD divide exactamente a ambos números? ¿mi MCM es múltiplo de ambos? ¿MCD × MCM = producto de los dos?"
+      }
+    ],
+    "idea_clave": "Los primos son los átomos de los números: si sabes de qué primos está hecho un número, puedes simplificar, repartir, sacar raíces sin calculadora y predecir coincidencias. El MCD multiplica lo que dos números COMPARTEN; el MCM multiplica TODO lo que entre los dos APARECE."
+  },
+  "practica": [
+    {
+      "enunciado": "Escribe 90 como producto de sus factores primos, en notación de índices (con potencias).",
+      "pista": "Haz un árbol de factores. Empieza por cualquier par que multiplicado dé 90, por ejemplo 9×10, y sigue partiendo hasta que todo sea primo. Al final agrupa los primos repetidos como potencias.",
+      "solucion": "90 = 9 × 10 = (3×3) × (2×5) = 2 × 3² × 5. Respuesta en notación de índices: 2 × 3² × 5.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un jardinero tiene 48 rosas y 36 tulipanes. Quiere armar ramos idénticos usando TODAS las flores, con la mayor cantidad de ramos posible y sin que sobre ninguna. ¿Cuántos ramos puede hacer, y cuántas rosas y tulipanes lleva cada ramo?",
+      "pista": "Piensa qué te piden: repartir en grupos iguales, la mayor cantidad de grupos. Eso es MCD. Factoriza 48 y 36, halla su MCD con el método de Venn, y ese es el número de ramos. Luego reparte cada flor entre esos ramos.",
+      "solucion": "48 = 2⁴×3 y 36 = 2²×3². Comparten 2²×3 = 12, así que MCD = 12. Puede hacer 12 ramos. Cada ramo lleva 48÷12 = 4 rosas y 36÷12 = 3 tulipanes. (Comprobación: 12 ramos × 4 = 48 rosas y 12 × 3 = 36 tulipanes. ✓)",
+      "figura": ""
+    },
+    {
+      "enunciado": "En una estación, el autobús rojo sale cada 12 minutos y el autobús azul cada 18 minutos. Si ambos acaban de salir juntos a las 8:00, ¿a qué hora volverán a salir exactamente al mismo tiempo?",
+      "pista": "Aquí las cosas se repiten y quieres saber cuándo COINCIDEN otra vez: eso es MCM. Factoriza 12 y 18, halla el MCM multiplicando todos los primos del diagrama de Venn, y súmale ese tiempo a las 8:00.",
+      "solucion": "12 = 2²×3 y 18 = 2×3². Para el MCM tomamos la mayor potencia de cada primo: 2²×3² = 4×9 = 36. Los dos autobuses coinciden cada 36 minutos. Volverán a salir juntos a las 8:36.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica con tus palabras por qué 1 no se considera un número primo, aunque solo se pueda dividir entre 1 y sí mismo.",
+      "pista": "Piensa en la definición exacta: un primo tiene EXACTAMENTE dos divisores distintos. Cuenta cuántos divisores distintos tiene el 1.",
+      "solucion": "El 1 tiene un solo divisor: él mismo (1 y 'sí mismo' son el mismo número). La definición de primo exige exactamente DOS divisores distintos, y el 1 solo tiene uno. Además, si el 1 fuera primo, la factorización dejaría de ser única (podrías meterle 1×1×1... infinitas veces), y se rompería el Teorema Fundamental de la Aritmética. Por eso los matemáticos dejan al 1 fuera.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escrito como producto de primos, un número es 2² × 3 × 5. Sin calcular el número final, encuentra tres factores de ese número distintos de 1 y del número completo.",
+      "pista": "Cualquier combinación (multiplicación) de esos primos es un factor del número. Por ejemplo, 2 solo, o 2×3, o 3×5...",
+      "solucion": "El número es 2²×3×5 = 60. Factores posibles (combinando los primos): 2, 3, 5, 2²=4, 2×3=6, 2×5=10, 3×5=15, 2²×3=12, 2²×5=20, 2×3×5=30. Tres ejemplos válidos: 6, 10 y 15. (Este es el superpoder de la factorización: te da TODOS los factores sin tener que probar dividiendo uno por uno.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Se quiere cubrir el piso de un cuarto de 240 cm por 180 cm con baldosas CUADRADAS, todas del mismo tamaño, lo más grandes posible y sin cortar ninguna. ¿Cuánto mide el lado de cada baldosa, y cuántas baldosas se necesitan?",
+      "pista": "El lado de la baldosa debe dividir exactamente tanto a 240 como a 180, y quieres el más grande posible: eso es MCD. Después, calcula cuántas baldosas caben a lo largo y a lo ancho.",
+      "solucion": "240 = 2⁴×3×5 y 180 = 2²×3²×5. Comparten 2²×3×5 = 60, así que MCD = 60. Cada baldosa mide 60 cm de lado. Caben 240÷60 = 4 a lo largo y 180÷60 = 3 a lo ancho: 4 × 3 = 12 baldosas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Usando factorización (sin calculadora), halla √576.",
+      "pista": "Factoriza 576 en primos con notación de índices. Si todos los exponentes son pares, toma la mitad de cada exponente y multiplica.",
+      "solucion": "576 = 2⁶ × 3² (árbol: 576 = 2×288 = 2×2×144 = ... hasta llegar a seis 2 y dos 3). Mitades de los exponentes: 2³ × 3 = 8 × 3 = 24. √576 = 24. (Comprobación: 24² = 576 ✓)",
+      "figura": ""
+    },
+    {
+      "enunciado": "¿Es 396 un cuadrado perfecto? Si no lo es, ¿cuál es el número MÁS PEQUEÑO por el que hay que multiplicarlo para que lo sea?",
+      "pista": "Factoriza 396. Un cuadrado perfecto tiene todos sus primos en parejas (exponentes pares). Busca qué primo quedó sin pareja.",
+      "solucion": "396 = 2² × 3² × 11. El 2 y el 3 tienen pareja (exponentes pares), pero el 11 está solo. No es cuadrado perfecto. Multiplicando por 11: 396 × 11 = 4356 = 2² × 3² × 11², y ahora sí: √4356 = 2 × 3 × 11 = 66. El número más pequeño es 11.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Tres amigas corren en una pista circular. Ana completa una vuelta cada 6 minutos, Bea cada 8 y Carla cada 12. Si salen juntas de la línea de partida, ¿en cuántos minutos volverán a estar las TRES juntas en la partida?",
+      "pista": "Es una coincidencia que se repite → MCM, pero ahora de TRES números. El método de factorización funciona igual: toma la mayor potencia de cada primo que aparezca.",
+      "solucion": "6 = 2×3, 8 = 2³, 12 = 2²×3. Mayores potencias: 2³ y 3. MCM = 8 × 3 = 24. Las tres coinciden en la partida cada 24 minutos. (Comprobación: 24÷6 = 4 vueltas de Ana, 24÷8 = 3 de Bea, 24÷12 = 2 de Carla — todas números exactos ✓)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Sabiendo que el MCD de 28 y 42 es 14, halla su MCM SIN factorizar de nuevo, usando la propiedad MCD × MCM = producto de los números.",
+      "pista": "Despeja: MCM = (28 × 42) ÷ MCD.",
+      "solucion": "MCM = (28 × 42) ÷ 14 = 1176 ÷ 14 = 84. (Comprobación: 84 es múltiplo de 28 (×3) y de 42 (×2) ✓.) Esta propiedad convierte un problema de dos cálculos en uno solo.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál de estos números es primo?",
+      "opciones": ["51", "57", "61", "63"],
+      "correcta": 2,
+      "explicacion": "61 solo se divide entre 1 y 61. Los otros son compuestos: 51 = 3×17, 57 = 3×19, 63 = 7×9. Truco: si la suma de las cifras es múltiplo de 3, el número se divide entre 3 (5+1=6, 5+7=12, 6+3=9)."
+    },
+    {
+      "pregunta": "¿Cuál es la factorización en primos de 72, en notación de índices?",
+      "opciones": ["2³ × 3²", "2² × 3³", "2³ × 3 × 5", "8 × 9"],
+      "correcta": 0,
+      "explicacion": "72 = 8×9 = 2³ × 3². Aunque 8×9 da 72, no es una factorización en PRIMOS (8 y 9 no son primos). Hay que llegar hasta los primos: 2×2×2×3×3 = 2³×3²."
+    },
+    {
+      "pregunta": "Dos luces parpadean: una cada 10 segundos y otra cada 15. Si parpadean juntas ahora, ¿cada cuántos segundos volverán a coincidir?",
+      "opciones": ["5 segundos", "25 segundos", "30 segundos", "150 segundos"],
+      "correcta": 2,
+      "explicacion": "Coincidir de nuevo = MCM. 10 = 2×5 y 15 = 3×5. MCM = 2×3×5 = 30. El 5 se cuenta una sola vez porque es compartido. (5 sería el MCD, que aquí no aplica.)"
+    },
+    {
+      "pregunta": "Quieres cortar dos cintas de 24 cm y 40 cm en pedazos iguales lo más largos posible, sin que sobre cinta. ¿Cuánto mide cada pedazo?",
+      "opciones": ["4 cm", "8 cm", "120 cm", "12 cm"],
+      "correcta": 1,
+      "explicacion": "Repartir en pedazos iguales lo más grandes = MCD. 24 = 2³×3 y 40 = 2³×5. Comparten 2³ = 8. MCD = 8 cm. (120 sería el MCM, que serviría para otra pregunta distinta.)"
+    },
+    {
+      "pregunta": "¿Por qué la factorización en primos de un número es siempre la misma, sin importar cómo empieces el árbol de factores?",
+      "opciones": [
+        "Por el Teorema Fundamental de la Aritmética: cada número tiene una única descomposición en primos.",
+        "Porque siempre hay que empezar dividiendo entre 2.",
+        "Es casualidad; a veces cambia.",
+        "Porque los números primos son infinitos."
+      ],
+      "correcta": 0,
+      "explicacion": "El Teorema Fundamental de la Aritmética garantiza que la lista de primos que forma un número es única. Puedes empezar el árbol por 6×10 o por 4×15, pero siempre llegas exactamente a los mismos primos."
+    },
+    {
+      "pregunta": "Un número es 2³ × 3 × 5². ¿Cuál de estos NO es un factor suyo?",
+      "opciones": ["8", "15", "9", "25"],
+      "correcta": 2,
+      "explicacion": "9 = 3², pero el número solo tiene UN 3 en su factorización — no alcanza para formar 9. En cambio 8 = 2³ ✓, 15 = 3×5 ✓ y 25 = 5² ✓ sí se pueden armar con las piezas disponibles."
+    },
+    {
+      "pregunta": "252 = 2² × 3² × 7. ¿Por cuál número MÁS PEQUEÑO hay que multiplicar 252 para obtener un cuadrado perfecto?",
+      "opciones": ["2", "3", "7", "252"],
+      "correcta": 2,
+      "explicacion": "Un cuadrado perfecto necesita todos los primos en parejas. El 2 y el 3 ya tienen pareja (exponentes pares); el 7 está solo. Multiplicando por 7: 2²×3²×7² = (2×3×7)² = 42²."
+    },
+    {
+      "pregunta": "Usando factorización: 225 = 3² × 5². ¿Cuánto es √225?",
+      "opciones": ["25", "15", "45", "13"],
+      "correcta": 1,
+      "explicacion": "Para la raíz cuadrada tomas un primo de cada pareja: 3 × 5 = 15. (Comprobación: 15² = 225 ✓.) Sin calculadora."
+    },
+    {
+      "pregunta": "El MCD de 20 y 30 es 10, y su MCM es 60. ¿Qué relación cumplen estos cuatro números?",
+      "opciones": [
+        "MCD × MCM = 20 × 30",
+        "MCD + MCM = 20 + 30",
+        "MCM ÷ MCD = 20 ÷ 30",
+        "Ninguna relación especial"
+      ],
+      "correcta": 0,
+      "explicacion": "10 × 60 = 600 y 20 × 30 = 600. Para CUALQUIER par de números, MCD × MCM = producto de los dos. Es tu herramienta de comprobación (y un atajo para hallar uno si tienes el otro)."
+    },
+    {
+      "pregunta": "Sin dividir: ¿4731 es divisible entre 3?",
+      "opciones": [
+        "Sí, porque 4+7+3+1 = 15, que es múltiplo de 3",
+        "No, porque termina en 1",
+        "No, porque es impar",
+        "Sí, porque empieza en 4"
+      ],
+      "correcta": 0,
+      "explicacion": "El criterio del 3 mira la SUMA de las cifras: 4+7+3+1 = 15, y 15 es múltiplo de 3, así que 4731 también. Terminar en 1 o ser impar no dice nada sobre la divisibilidad entre 3."
+    },
+    {
+      "pregunta": "Dos amigos van al mismo gimnasio: uno cada 4 días y el otro cada 6. Si hoy coincidieron, ¿dentro de cuántos días volverán a coincidir?",
+      "opciones": ["2 días", "10 días", "12 días", "24 días"],
+      "correcta": 2,
+      "explicacion": "Volver a coincidir = MCM. 4 = 2² y 6 = 2×3. MCM = 2²×3 = 12 días. (24 también coinciden, pero se pide la PRÓXIMA vez: el mínimo. Y 2 es el MCD.)"
+    },
+    {
+      "pregunta": "¿Cuál es el único número primo entre 90 y 100?",
+      "opciones": ["91", "93", "97", "99"],
+      "correcta": 2,
+      "explicacion": "97 es primo. Los demás: 91 = 7×13 (el más traicionero — parece primo pero no lo es), 93 = 3×31, 99 = 9×11. Truco: para verificar si un número es primo basta probar los primos hasta su raíz cuadrada (para 97: probar 2, 3, 5, 7 — ninguno lo divide)."
+    }
+  ]
+}
