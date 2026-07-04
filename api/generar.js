@@ -145,7 +145,9 @@ const MODOS_VALIDOS = new Set(["retos", "resumen", "examen", "quiz"]);
 // Versión del prompt por modo: al subirla, el caché de ese modo se invalida
 // (los resúmenes viejos y flacos no se vuelven a servir). Mismo criterio que el
 // frontend para saber si un tema es "numérico" (matemática/lógica/olimpiada).
-const PROMPT_VER = { resumen: "3", retos: "3", examen: "4", quiz: "4" };
+// retos/examen/quiz subidos 2026-07-04: protocolo CONSTRUIR→ENUMERAR→VERIFICAR para
+// acertijos de deducción (purga del caché los acertijos ambiguos/sin solución previos).
+const PROMPT_VER = { resumen: "3", retos: "4", examen: "5", quiz: "5" };
 function esNumerica(txt) {
   return /matemát|matemat|lógic|logic|olimpiad/i.test(txt || "");
 }
@@ -174,8 +176,15 @@ ${ctx}${pdfNota}${fotosNota}\n`;
   const figuraNota = `Usa "figura" SOLO cuando el ejercicio es visual/geométrico y la figura ayuda de verdad a entenderlo (por ejemplo: estrellas mágicas con números, pirámides numéricas, conteo de cubos, secuencias o patrones de figuras). En ese caso incluye un dibujo en SVG simple y autocontenido, coherente con el enunciado y con la solución verificada (usa viewBox; solo formas, líneas, números y texto; SIN <script>, SIN <image>, SIN recursos externos). NUNCA uses figura para acertijos de deducción, ordenamiento o ubicación (quién se sienta dónde, en qué orden va algo): esos se explican con palabras. En la duda, deja "figura":"" (cadena vacía).`;
   // Reglas específicas para acertijos de deducción/lógica (donde el modelo suele
   // inventar acertijos sin solución única o razonar mal). Solo en temas numéricos/lógicos.
+  // Protocolo CONSTRUIR→ENUMERAR→VERIFICAR: la instrucción vaga "comprueba que sea única"
+  // no bastaba (salían acertijos ambiguos, sin solución o con explicación contradictoria).
   const reglasDeduccion = numerica
-    ? `\nSi el ejercicio es de deducción, ordenamiento o ubicación (quién se sienta dónde, en qué orden va algo, acertijos con pistas): es OBLIGATORIO que el acertijo tenga UNA sola solución posible. Resuélvelo por completo y COMPRUEBA que la respuesta cumple TODAS las pistas y que ninguna otra disposición también las cumpliría; si tuviera varias soluciones o ninguna, deséchalo y crea otro que SÍ tenga solución única. La explicación debe ser correcta y coincidir EXACTAMENTE con la respuesta, sin pasos contradictorios (no afirmes ubicaciones que no se deducen de las pistas).\n`
+    ? `\nSi el ejercicio es de deducción, ordenamiento o ubicación (quién se sienta dónde, en qué orden llegan o se colocan, acertijos con pistas), sigue OBLIGATORIAMENTE este protocolo:
+1. CONSTRUYE PRIMERO la solución: decide la disposición u orden final completo ANTES de redactar el enunciado, y escribe las pistas describiendo ESA disposición.
+2. Redacta SIN ambigüedad: escribe siempre "inmediatamente a la derecha/izquierda de" o "en algún lugar a la derecha/izquierda de" (nunca "a la derecha de" a secas, que se entiende de dos formas); "justo antes/después" significa en la posición inmediata. En mesas redondas, aclara en el enunciado que la derecha y la izquierda son las de la persona sentada (no las del lector), y recuerda: en una mesa de 4, el que está al frente de tu vecino de la derecha es tu vecino de la izquierda.
+3. VERIFICA LA UNICIDAD enumerando: con 3 o 4 elementos las disposiciones posibles son pocas (6 o 24; en mesa redonda, fija a una persona y ordena el resto). Recorre TODAS y cuenta cuántas cumplen todas las pistas: debe quedar EXACTAMENTE UNA. Si quedan cero o más de una, DESCARTA el acertijo y construye otro desde el paso 1. No uses más de 5 elementos.
+4. La respuesta debe cumplir TODAS las pistas: verifícala pista por pista antes de entregar.
+5. La explicación deduce la respuesta PASO A PASO citando en cada paso la pista que lo justifica. Nada de "por descarte" sin mostrar por qué cada alternativa es imposible, y NUNCA afirmes algo que contradiga una pista (ejemplo de error prohibido: "como el verde no está en los extremos, va al final" — el final ES un extremo).\n`
     : ``;
 
   if (modo === "resumen") {
