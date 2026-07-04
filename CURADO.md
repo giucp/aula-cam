@@ -55,8 +55,20 @@ Todas las claves de modo son OPCIONALES (se puede curar solo resumen+quiz de un 
 - **Español neutro** y claro para el grado; sin jerga regional ("chamo", "épale", "pana").
 - **Matemática:** TODO ejercicio/ejemplo se resuelve y verifica antes de incluirse; elegir
   números para resultados EXACTOS; la solución nunca contradice el enunciado.
-- **Resumen:** enseña PROCEDIMIENTOS paso a paso con ejemplo resuelto por sección, no
-  definiciones sueltas. 3–5 secciones. Debe poder sustituir la clase que el niño se perdió.
+- **Resumen — regla de oro "SIN PROFE AL LADO" (obligatoria):** todo resumen debe explicarse
+  DESDE CERO, como si el que lee no tuviera ninguna base y no hubiera nadie para aclararle. El
+  resumen tiene que SUSTITUIR a la clase, no complementarla. En la práctica:
+  - Da la INTUICIÓN antes que la definición formal (primero "qué es y por qué", con una imagen
+    mental cotidiana; después el término técnico). Nunca sueltes la definición seca y esperes que
+    el lector la razone solo.
+  - DEFINÍ cada palabra técnica la primera vez que aparece (divisor, potencia, raíz, múltiplo…);
+    no asumas que ya se sabe.
+  - Enseña los PROCEDIMIENTOS paso a paso, con un ejemplo resuelto por sección.
+  - Cuando algo "es así" (ej. el 1 no es primo), explicá el PORQUÉ, no solo lo afirmes.
+  - Prueba del que no recuerda nada: ¿un adulto que olvidó el tema, o un adolescente que nunca lo
+    vio, lo entiende leyéndolo solo? Si necesita que alguien se lo explique, NO cumple la regla.
+  Es directo NO significa mejor: preferimos "nutritivo y explícito" a "correcto pero denso".
+  Vale especialmente para Cumbre (currículo de autoexploración, sin profe por definición).
 - **Quiz:** 15 preguntas, 3–4 opciones, distractores creíbles (errores típicos reales del
   grado), explicación breve del porqué. `correcta` = índice válido dentro de `opciones`.
 - **Retos:** 12, con pista que orienta sin regalar y solución con explicación corta.

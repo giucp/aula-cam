@@ -15,16 +15,27 @@
     "intro": "Así como todo en el universo está hecho de átomos, todo número está hecho de números primos. Aprender a ver ese 'interior' de los números es una de las herramientas más poderosas de la matemática: te sirve para simplificar fracciones, sacar raíces sin calculadora y resolver problemas reales de repartir y coincidir.",
     "secciones": [
       {
-        "titulo": "¿Qué es un número primo? (la idea central)",
-        "explicacion": "Un número primo es un número mayor que 1 que solo se puede dividir exactamente entre 1 y él mismo: no se puede 'partir' en un rectángulo de fichas de más de una fila. El 7 es primo porque 7 fichas solo forman una fila de 7; en cambio el 12 no es primo, porque 12 fichas sí forman rectángulos (2×6, 3×4). A los que no son primos (y son mayores que 1) los llamamos compuestos. Ojo con dos casos que confunden: el 1 NO es primo (solo tiene un divisor), y el 2 SÍ es primo (es el único primo par).",
+        "titulo": "¿Qué es un número primo? ¿Y uno compuesto?",
+        "explicacion": "Empecemos por una palabra que vamos a usar todo el tiempo: DIVISOR. Un divisor de un número es otro número que lo divide EXACTO, sin que sobre nada. Los divisores de 6, por ejemplo, son 1, 2, 3 y 6, porque 6 caramelos se pueden repartir en grupos iguales de 1, de 2, de 3 o de 6 sin que quede ninguno suelto; en cambio 4 no es divisor de 6, porque al repartir 6 en grupos de 4 sobran 2. Con esa sola idea ya entendemos todo. Un número PRIMO es el que tiene EXACTAMENTE dos divisores: el 1 y él mismo, y ninguno más. El 7 es primo porque, por más que lo intentes, solo se reparte en 1 grupo de 7 o en 7 grupos de 1: no hay manera de hacer grupos iguales de 2, 3 o 4 sin que sobre. Un número COMPUESTO es el que tiene MÁS de dos divisores, o sea que se puede repartir de varias formas: el 12 es compuesto porque, además del 1 y el 12, se reparte en grupos de 2, de 3, de 4 y de 6. ¿Y por qué se llama 'compuesto'? Porque está compuesto (armado) multiplicando números más pequeños, como 12 = 3 × 4; un primo, en cambio, no se puede armar así con números menores: es una pieza de base.",
+        "pasos": [
+          "Para decidir si un número es primo, hazte UNA pregunta: ¿existe algún número, distinto de 1 y de él mismo, que lo divida exacto?",
+          "Si NO existe ninguno, es PRIMO.",
+          "Si existe aunque sea uno, es COMPUESTO.",
+          "Truco visual: intenta acomodar esa cantidad de fichas en un rectángulo de varias filas iguales. Si solo sale una fila, es primo; si salen rectángulos de verdad (como 12 = 3×4), es compuesto."
+        ],
+        "ejemplo": "Los primos hasta 30 son: 2, 3, 5, 7, 11, 13, 17, 19, 23 y 29. Salvo el 2, todos son impares; pero cuidado con la trampa: no todo impar es primo. El 9 es impar y COMPUESTO (9 = 3 × 3), igual que 15 = 3 × 5, 21 = 3 × 7 o 25 = 5 × 5."
+      },
+      {
+        "titulo": "Dos casos que siempre confunden: el 1 y el 2",
+        "explicacion": "Hay dos números que generan dudas a todo el mundo; vale la pena dejarlos claros de una vez. El 1 NO es primo. ¿Por qué? Porque el 1 tiene un SOLO divisor: él mismo (el 1 y 'él mismo' son el mismo número). Y para ser primo hacen falta DOS divisores distintos. Como el 1 no llega a dos, queda afuera; y tampoco es compuesto, porque no tiene 'más de dos'. El 1 es un caso aparte: ni primo ni compuesto. El 2, en cambio, SÍ es primo: sus únicos divisores son 1 y 2, o sea exactamente dos. Y es muy especial porque es el ÚNICO primo par. La razón es sencilla: cualquier otro número par (4, 6, 8, 10…) se puede repartir en grupos de 2, así que automáticamente tiene al 2 como divisor de más y se vuelve compuesto. Por eso, del 2 en adelante, todos los primos son impares.",
         "pasos": [],
-        "ejemplo": "Primos hasta 30: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29. Fíjate: después del 2, todos son impares — pero no todo impar es primo (9, 15, 21, 25, 27 son compuestos)."
+        "ejemplo": "El 2 es primo (divisores: 1 y 2). El 4 ya no lo es (divisores: 1, 2 y 4 → tres divisores → compuesto). Y el 1 no es ni primo ni compuesto."
       },
       {
         "titulo": "El Teorema Fundamental de la Aritmética (la gran idea)",
-        "explicacion": "Aquí está lo poderoso: TODO número compuesto se puede escribir como una multiplicación de primos, y de UNA sola manera. A eso se le llama factorización en primos. El 12 siempre es 2×2×3, sin importar cómo empieces a partirlo. Por eso decimos que los primos son los 'átomos' de los números: son las piezas indivisibles con las que se construye cualquier otro número. Esta idea tiene nombre grande —Teorema Fundamental de la Aritmética— porque es uno de los cimientos de toda la matemática.",
+        "explicacion": "Primero, qué significa FACTORIZAR: es romper un número en una multiplicación de números más pequeños, llamados FACTORES (factorizar 12 puede empezar como 12 = 3 × 4). Ahora sí, lo poderoso: si seguimos rompiendo hasta que TODOS los factores sean primos, obtenemos la factorización en primos, y resulta que TODO número compuesto se puede escribir así de UNA sola manera. El 12 siempre termina siendo 2 × 2 × 3, sin importar por dónde empieces a partirlo. Por eso decimos que los primos son los 'átomos' de los números: las piezas indivisibles con las que se construye cualquier otro número. Esta idea tiene un nombre grande —Teorema Fundamental de la Aritmética— porque es uno de los cimientos de toda la matemática.",
         "pasos": [],
-        "ejemplo": "12 = 2 × 2 × 3, empieces por 12 = 2×6 o por 12 = 3×4: las piezas finales son siempre las mismas."
+        "ejemplo": "12 = 2 × 2 × 3. Da igual si empiezas por 12 = 2 × 6 o por 12 = 3 × 4: las piezas primas finales son siempre las mismas."
       },
       {
         "titulo": "Herramienta rápida: los criterios de divisibilidad",
@@ -51,24 +62,24 @@
         "figura": "<svg viewBox=\"0 0 320 220\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"160\" y1=\"40\" x2=\"100\" y2=\"95\" stroke=\"#8C7C93\" stroke-width=\"2\"/><line x1=\"160\" y1=\"40\" x2=\"220\" y2=\"95\" stroke=\"#8C7C93\" stroke-width=\"2\"/><line x1=\"100\" y1=\"115\" x2=\"70\" y2=\"165\" stroke=\"#8C7C93\" stroke-width=\"2\"/><line x1=\"100\" y1=\"115\" x2=\"130\" y2=\"165\" stroke=\"#8C7C93\" stroke-width=\"2\"/><line x1=\"220\" y1=\"115\" x2=\"190\" y2=\"165\" stroke=\"#8C7C93\" stroke-width=\"2\"/><line x1=\"220\" y1=\"115\" x2=\"250\" y2=\"165\" stroke=\"#8C7C93\" stroke-width=\"2\"/><text x=\"160\" y=\"35\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"20\" font-weight=\"700\" fill=\"#3B2B4A\">60</text><text x=\"100\" y=\"112\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"#3B2B4A\">6</text><text x=\"220\" y=\"112\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"#3B2B4A\">10</text><circle cx=\"70\" cy=\"180\" r=\"16\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><circle cx=\"130\" cy=\"180\" r=\"16\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><circle cx=\"190\" cy=\"180\" r=\"16\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><circle cx=\"250\" cy=\"180\" r=\"16\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><text x=\"70\" y=\"186\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#0E9486\">2</text><text x=\"130\" y=\"186\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#0E9486\">3</text><text x=\"190\" y=\"186\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#0E9486\">2</text><text x=\"250\" y=\"186\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#0E9486\">5</text></svg>"
       },
       {
-        "titulo": "Notación de índices: la forma elegante de escribirlo",
-        "explicacion": "Cuando un primo se repite, los matemáticos no lo escriben varias veces: usan una potencia (notación de índices). En vez de 2×2×3×5 escriben 2²×3×5. Es lo mismo, pero más corto y más claro, y es como lo exigen en los mejores sistemas del mundo. Aprender a escribirlo así desde ya te prepara para el álgebra que viene.",
+        "titulo": "Notación de índices: escribir las potencias",
+        "explicacion": "Cuando un primo se repite, escribirlo muchas veces es incómodo, así que usamos una POTENCIA: una forma corta de escribir una multiplicación del mismo número. Por ejemplo, 2 × 2 × 2 se escribe 2³ (se lee 'dos al cubo'): el número grande de abajo (el 2) es lo que se multiplica, y el chiquito de arriba (el 3) dice CUÁNTAS veces. Así, 2² = 2 × 2 = 4 y 2³ = 2 × 2 × 2 = 8. Con eso la factorización queda elegante: en vez de 2 × 2 × 3 × 5 escribimos 2² × 3 × 5. Es lo mismo, pero más corto y más claro, y es como se exige en los mejores sistemas del mundo. Acostumbrarte desde ya te prepara para el álgebra que viene.",
         "pasos": [],
         "ejemplo": "60 = 2 × 2 × 3 × 5 = 2² × 3 × 5.   168 = 2 × 2 × 2 × 3 × 7 = 2³ × 3 × 7."
       },
       {
         "titulo": "Superpoder 1: raíces sin calculadora",
-        "explicacion": "La factorización te deja sacar raíces cuadradas y cúbicas de números grandes SIN calculadora. La clave: un cuadrado perfecto tiene todos sus primos en PAREJAS (exponentes pares), y un cubo perfecto los tiene en TRÍOS. Para la raíz cuadrada, tomas un primo de cada pareja y multiplicas; para la cúbica, uno de cada trío. Y al revés: si un primo queda sin pareja, el número NO es cuadrado perfecto — y ya sabes exactamente qué le falta para serlo.",
+        "explicacion": "Primero, qué es una RAÍZ CUADRADA: es la pregunta al revés de elevar al cuadrado. 'La raíz cuadrada de 25' pregunta '¿qué número, multiplicado por sí mismo, da 25?', y la respuesta es 5, porque 5 × 5 = 25; se escribe √25 = 5. La RAÍZ CÚBICA es igual pero con tríos: ∛8 = 2, porque 2 × 2 × 2 = 8. Ahora lo genial: la factorización te deja sacar estas raíces de números grandes SIN calculadora. La clave es que un cuadrado perfecto tiene todos sus primos en PAREJAS (exponentes pares) y un cubo perfecto los tiene en TRÍOS. Para la raíz cuadrada tomas un primo de cada pareja y multiplicas; para la cúbica, uno de cada trío. Y al revés: si un primo queda sin pareja, el número NO es cuadrado perfecto, y ya sabes exactamente qué le falta para serlo.",
         "pasos": [
           "Factoriza el número en primos con notación de índices.",
-          "Para √: verifica que todos los exponentes sean pares; toma la mitad de cada exponente y multiplica.",
-          "Para ∛: verifica que todos los exponentes sean múltiplos de 3; toma un tercio de cada exponente y multiplica."
+          "Para la raíz cuadrada (√): verifica que todos los exponentes sean pares; toma la mitad de cada exponente y multiplica.",
+          "Para la raíz cúbica (∛): verifica que todos los exponentes sean múltiplos de 3; toma un tercio de cada exponente y multiplica."
         ],
-        "ejemplo": "√576: 576 = 2⁶ × 3². Mitades: 2³ × 3 = 8 × 3 = 24. Entonces √576 = 24. ∛1000: 1000 = 2³ × 5³ → 2 × 5 = 10."
+        "ejemplo": "√576: como 576 = 2⁶ × 3², tomo la mitad de cada exponente → 2³ × 3 = 8 × 3 = 24, así que √576 = 24. ∛1000: como 1000 = 2³ × 5³ → 2 × 5 = 10."
       },
       {
         "titulo": "MCD y MCM: para qué sirven de verdad",
-        "explicacion": "Aquí conectamos con el mundo real, que es donde estos conceptos cobran sentido. El Máximo Común Divisor (MCD) es el número más grande que divide a dos números a la vez: sirve cuando quieres REPARTIR en grupos iguales lo más grandes posible. El Mínimo Común Múltiplo (MCM) es el número más pequeño que es múltiplo de ambos: sirve cuando quieres saber cuándo dos cosas que se repiten VUELVEN A COINCIDIR. La pista para saber cuál usar: si el problema habla de 'repartir, dividir en grupos, el más grande posible', es MCD; si habla de 'volver a coincidir, sonar juntos otra vez, el más pequeño que se repite', es MCM. En inglés los verás como HCF (Highest Common Factor) y LCM (Lowest Common Multiple).",
+        "explicacion": "Dos ideas nuevas, cada una con su intuición. Un DIVISOR COMÚN de dos números es un número que divide exacto a los DOS a la vez; el MÁXIMO COMÚN DIVISOR (MCD) es el más grande de esos, y sirve cuando quieres REPARTIR en grupos iguales lo más grandes posible. Un MÚLTIPLO de un número es lo que sale de multiplicarlo por 1, 2, 3… (los múltiplos de 4 son 4, 8, 12, 16…); un múltiplo común aparece en las listas de los dos, y el MÍNIMO COMÚN MÚLTIPLO (MCM) es el más pequeño de esos, que sirve para saber cuándo dos cosas que se repiten VUELVEN A COINCIDIR. La pista para no confundirlos: si el problema habla de 'repartir, dividir en grupos, el más grande posible', es MCD; si habla de 'volver a coincidir, sonar juntos otra vez, el más pequeño que se repite', es MCM. En inglés los verás como HCF (Highest Common Factor) y LCM (Lowest Common Multiple).",
         "pasos": [],
         "ejemplo": "Cortar dos cintas en pedazos iguales lo más largos posible → MCD. Dos autobuses que salen cada tanto y quieres saber cuándo coinciden → MCM."
       },
@@ -173,25 +184,45 @@
   "quiz": [
     {
       "pregunta": "¿Cuál de estos números es primo?",
-      "opciones": ["51", "57", "61", "63"],
+      "opciones": [
+        "51",
+        "57",
+        "61",
+        "63"
+      ],
       "correcta": 2,
       "explicacion": "61 solo se divide entre 1 y 61. Los otros son compuestos: 51 = 3×17, 57 = 3×19, 63 = 7×9. Truco: si la suma de las cifras es múltiplo de 3, el número se divide entre 3 (5+1=6, 5+7=12, 6+3=9)."
     },
     {
       "pregunta": "¿Cuál es la factorización en primos de 72, en notación de índices?",
-      "opciones": ["2³ × 3²", "2² × 3³", "2³ × 3 × 5", "8 × 9"],
+      "opciones": [
+        "2³ × 3²",
+        "2² × 3³",
+        "2³ × 3 × 5",
+        "8 × 9"
+      ],
       "correcta": 0,
       "explicacion": "72 = 8×9 = 2³ × 3². Aunque 8×9 da 72, no es una factorización en PRIMOS (8 y 9 no son primos). Hay que llegar hasta los primos: 2×2×2×3×3 = 2³×3²."
     },
     {
       "pregunta": "Dos luces parpadean: una cada 10 segundos y otra cada 15. Si parpadean juntas ahora, ¿cada cuántos segundos volverán a coincidir?",
-      "opciones": ["5 segundos", "25 segundos", "30 segundos", "150 segundos"],
+      "opciones": [
+        "5 segundos",
+        "25 segundos",
+        "30 segundos",
+        "150 segundos"
+      ],
       "correcta": 2,
       "explicacion": "Coincidir de nuevo = MCM. 10 = 2×5 y 15 = 3×5. MCM = 2×3×5 = 30. El 5 se cuenta una sola vez porque es compartido. (5 sería el MCD, que aquí no aplica.)"
     },
     {
       "pregunta": "Quieres cortar dos cintas de 24 cm y 40 cm en pedazos iguales lo más largos posible, sin que sobre cinta. ¿Cuánto mide cada pedazo?",
-      "opciones": ["4 cm", "8 cm", "120 cm", "12 cm"],
+      "opciones": [
+        "4 cm",
+        "8 cm",
+        "120 cm",
+        "12 cm"
+      ],
       "correcta": 1,
       "explicacion": "Repartir en pedazos iguales lo más grandes = MCD. 24 = 2³×3 y 40 = 2³×5. Comparten 2³ = 8. MCD = 8 cm. (120 sería el MCM, que serviría para otra pregunta distinta.)"
     },
@@ -208,19 +239,34 @@
     },
     {
       "pregunta": "Un número es 2³ × 3 × 5². ¿Cuál de estos NO es un factor suyo?",
-      "opciones": ["8", "15", "9", "25"],
+      "opciones": [
+        "8",
+        "15",
+        "9",
+        "25"
+      ],
       "correcta": 2,
       "explicacion": "9 = 3², pero el número solo tiene UN 3 en su factorización — no alcanza para formar 9. En cambio 8 = 2³ ✓, 15 = 3×5 ✓ y 25 = 5² ✓ sí se pueden armar con las piezas disponibles."
     },
     {
       "pregunta": "252 = 2² × 3² × 7. ¿Por cuál número MÁS PEQUEÑO hay que multiplicar 252 para obtener un cuadrado perfecto?",
-      "opciones": ["2", "3", "7", "252"],
+      "opciones": [
+        "2",
+        "3",
+        "7",
+        "252"
+      ],
       "correcta": 2,
       "explicacion": "Un cuadrado perfecto necesita todos los primos en parejas. El 2 y el 3 ya tienen pareja (exponentes pares); el 7 está solo. Multiplicando por 7: 2²×3²×7² = (2×3×7)² = 42²."
     },
     {
       "pregunta": "Usando factorización: 225 = 3² × 5². ¿Cuánto es √225?",
-      "opciones": ["25", "15", "45", "13"],
+      "opciones": [
+        "25",
+        "15",
+        "45",
+        "13"
+      ],
       "correcta": 1,
       "explicacion": "Para la raíz cuadrada tomas un primo de cada pareja: 3 × 5 = 15. (Comprobación: 15² = 225 ✓.) Sin calculadora."
     },
@@ -248,13 +294,23 @@
     },
     {
       "pregunta": "Dos amigos van al mismo gimnasio: uno cada 4 días y el otro cada 6. Si hoy coincidieron, ¿dentro de cuántos días volverán a coincidir?",
-      "opciones": ["2 días", "10 días", "12 días", "24 días"],
+      "opciones": [
+        "2 días",
+        "10 días",
+        "12 días",
+        "24 días"
+      ],
       "correcta": 2,
       "explicacion": "Volver a coincidir = MCM. 4 = 2² y 6 = 2×3. MCM = 2²×3 = 12 días. (24 también coinciden, pero se pide la PRÓXIMA vez: el mínimo. Y 2 es el MCD.)"
     },
     {
       "pregunta": "¿Cuál es el único número primo entre 90 y 100?",
-      "opciones": ["91", "93", "97", "99"],
+      "opciones": [
+        "91",
+        "93",
+        "97",
+        "99"
+      ],
       "correcta": 2,
       "explicacion": "97 es primo. Los demás: 91 = 7×13 (el más traicionero — parece primo pero no lo es), 93 = 3×31, 99 = 9×11. Truco: para verificar si un número es primo basta probar los primos hasta su raíz cuadrada (para 97: probar 2, 3, 5, 7 — ninguno lo divide)."
     }
