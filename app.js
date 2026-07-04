@@ -1545,9 +1545,7 @@
   // verá la alumna, antes de publicarlo. Solo lectura: MODO_LAB apaga toda escritura y
   // no hay botones de generar. La clave se valida server-side (api/admin-check) y vive
   // solo en memoria (se re-pide al recargar; no se guarda en el aparato).
-  const API_ADMIN_CHECK  = "https://aula-cam.vercel.app/api/admin-check";
-  const API_LAB_MATERIAS = "https://aula-cam.vercel.app/api/lab-materias";
-  const API_LAB_TEMA     = "https://aula-cam.vercel.app/api/lab-tema";
+  const API_LAB = "https://aula-cam.vercel.app/api/lab";   // endpoint único (accion: check/materias/tema)
   let LAB_CLAVE = "";
   const MODOS_LAB = [["resumen","📝 Resumen"],["retos","🎯 Práctica"],["quiz","🎮 Quiz"],["examen","📋 Examen"]];
   const LETRA_MODO = { resumen:"R", retos:"P", quiz:"Q", examen:"E" };
@@ -1564,7 +1562,7 @@
     const clave=($("#labClave").value||"").trim(); if(!clave) return;
     const btn=$("#labEntrar"); btn.disabled=true; $("#labErr").classList.add("hidden");
     try{
-      const r=await fetch(API_ADMIN_CHECK,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({clave})});
+      const r=await fetch(API_LAB,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"check",clave})});
       if(!r.ok){ $("#labErr").classList.remove("hidden"); return; }
       LAB_CLAVE=clave;
       $("#labLogin").classList.add("hidden"); $("#labApp").classList.remove("hidden");
@@ -1575,7 +1573,7 @@
   async function labCargarMaterias(){
     const body=$("#labBody"); labBack(true); body.innerHTML=`<p class="labLoad">Cargando…</p>`;
     try{
-      const r=await fetch(API_LAB_MATERIAS,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({clave:LAB_CLAVE})});
+      const r=await fetch(API_LAB,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"materias",clave:LAB_CLAVE})});
       if(r.status===401){ LAB_CLAVE=""; entrarLab(); return; }
       const d=await r.json(); labNivelMaterias(d.materias||[]);
     }catch(_){ body.innerHTML=errBox("No se pudo cargar el cuarto. Reintenta."); }
@@ -1615,7 +1613,7 @@
     const body=$("#labBody");
     body.innerHTML=`<p class="labCrumb">🏔️ ${escapeHtml(m.materia)} — ${escapeHtml(t.tema)}</p><p class="labLoad">Cargando…</p>`;
     try{
-      const r=await fetch(API_LAB_TEMA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({clave:LAB_CLAVE, materia:m.materia, tema:t.tema})});
+      const r=await fetch(API_LAB,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"tema", clave:LAB_CLAVE, materia:m.materia, tema:t.tema})});
       if(r.status===401){ LAB_CLAVE=""; entrarLab(); return; }
       const d=await r.json(); const modos=d.modos||{};
       body.innerHTML=`<p class="labCrumb">🏔️ ${escapeHtml(m.materia)} — ${escapeHtml(t.tema)}</p><p class="labNota">Así lo verá la alumna (vista de solo lectura).</p>`;

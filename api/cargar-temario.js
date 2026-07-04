@@ -9,6 +9,7 @@
 // esos grados, ese upsert reemplaza estas filas (mismo grado + materia_id).
 
 import { TEMARIO } from "../temario-oficial.mjs";
+import { CUMBRE_CURRICULO } from "../cumbre-curriculo.mjs";
 
 function supabaseCfg() {
   const url = process.env.SUPABASE_URL;
@@ -39,6 +40,27 @@ export default async function handler(req, res) {
   }
   const cfg = supabaseCfg();
   if (!cfg) return res.status(500).json({ error: "Falta configurar SUPABASE_URL / SUPABASE_SERVICE_KEY" });
+
+  // Con { secret, cumbre:true } carga el ÁRBOL de Cumbre (currículo de élite) en vez del
+  // temario del aula. Reusa el mismo upsert (curriculo, PK grado+materia_id).
+  if (req.body && req.body.cumbre) {
+    try {
+      const ahora = new Date().toISOString();
+      const { grado, materias } = CUMBRE_CURRICULO;
+      const out = [];
+      for (const m of materias) {
+        const totalTemas = (m.grupos || []).reduce((s, g) => s + ((g.temas || []).length), 0);
+        await upsert(cfg, {
+          grado, materia_id: m.id, materia: m.materia, nombre_corto: m.nombre_corto,
+          temas: { fuente: "cumbre", grupos: m.grupos || [] }, actualizado: ahora,
+        });
+        out.push({ materia: m.materia, dominios: (m.grupos || []).length, temas: totalTemas });
+      }
+      return res.status(200).json({ ok: true, cumbre: true, grado, materias: out });
+    } catch (e) {
+      return res.status(500).json({ error: String(e.message || e) });
+    }
+  }
 
   try {
     const ahora = new Date().toISOString();
