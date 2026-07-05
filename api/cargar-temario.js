@@ -9,7 +9,7 @@
 // esos grados, ese upsert reemplaza estas filas (mismo grado + materia_id).
 
 import { TEMARIO } from "../temario-oficial.mjs";
-import { CUMBRE_CURRICULO } from "../cumbre-curriculo.mjs";
+import { CUMBRE_CURRICULO, nivelCognitivoDeGrado } from "../cumbre-curriculo.mjs";
 
 function supabaseCfg() {
   const url = process.env.SUPABASE_URL;
@@ -50,11 +50,14 @@ export default async function handler(req, res) {
       const out = [];
       for (const m of materias) {
         const totalTemas = (m.grupos || []).reduce((s, g) => s + ((g.temas || []).length), 0);
+        // nivel cognitivo dominante del grado (override por materia si viniera), metadato
+        // para autor/revisor de curaduría — no cambia dominios/temas/orden.
+        const nivel_cognitivo = m.nivel_cognitivo || nivelCognitivoDeGrado(m.grado);
         await upsert(cfg, {
           grado: m.grado, materia_id: m.id, materia: m.materia, nombre_corto: m.nombre_corto,
-          temas: { fuente: "cumbre", grupos: m.grupos || [] }, actualizado: ahora,
+          temas: { fuente: "cumbre", nivel_cognitivo, grupos: m.grupos || [] }, actualizado: ahora,
         });
-        out.push({ materia: m.materia, grado: m.grado, dominios: (m.grupos || []).length, temas: totalTemas });
+        out.push({ materia: m.materia, grado: m.grado, nivel: nivel_cognitivo, dominios: (m.grupos || []).length, temas: totalTemas });
       }
       return res.status(200).json({ ok: true, cumbre: true, materias: out });
     } catch (e) {

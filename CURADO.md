@@ -123,6 +123,9 @@ ambiguo de la regla de signos ("un negativo, impar" sin aclarar que se cuentan l
 - [ ] **Grep de perspectiva**: buscar en los archivos menciones de grado ("4to", "5to",
       "6to", "1er año"...) y confirmar una por una que corresponden al lector definido en
       Fase 1. Igual con nombres propios y géneros si aplica.
+- [ ] **Nivel cognitivo (solo Cumbre)**: el banco trabaja al `nivel_cognitivo` del grado
+      (verbos de consigna y profundidad del resumen acordes a la escala Bloom); si el tema
+      existe en un grado menor, esta versión SUBE de nivel, no repite.
 - [ ] **Lectura completa final** de los 4 modos (no solo el resumen) en "modo padre
       exigente": buscando ambigüedades, erratas, frases confusas o incompletas.
 
@@ -144,9 +147,37 @@ ambiguo de la regla de signos ("un negativo, impar" sin aclarar que se cuentan l
 - **CUMBRE (`"programa":"cumbre"`)** — currículo de élite, visible solo en `#lab` hasta Fase 4.
   Fuente de verdad: `cumbre-curriculo.mjs` (título del tema letra por letra). **3 modos**
   (resumen+practica+quiz; `practica`=retos; SIN examen — patrón del banco de primos). `grado` =
-  "Cumbre <Materia> 1er año". Regla "sin profe al lado" al MÁXIMO (autoexploración); referencias
-  internacionales (Singapore/IB/KS3/MEXT). Archivos en `curado/cumbre/<materia>-1/NN-*.json`.
+  "Cumbre <Materia> 1er año" o "Cumbre <Materia> 5to grado" (Cumbre tiene 2 tracks: 1er año
+  bachillerato y 5to grado primaria). Regla "sin profe al lado" al MÁXIMO (autoexploración);
+  referencias internacionales (Singapore/IB/KS3/MEXT). Archivos en `curado/cumbre/<materia>-<grado>/NN-*.json`.
 El resto del proceso (checklist, verificación, subida) es el mismo para ambos.
+
+## ESCALA COGNITIVA DE CUMBRE — nivel de Bloom por grado (obligatoria al curar Cumbre)
+Un mismo tema puede repetirse entre grados; para que la niña sienta que CRECE (no que repite),
+cada grado trabaja a una PROFUNDIDAD cognitiva distinta. Base: Taxonomía de Bloom revisada
+(Recordar → Entender → Aplicar → Analizar → Evaluar → Crear). Nivel dominante por grado (siempre
+se apoya en los inferiores):
+
+| Grado | Nivel Bloom dominante | Qué HACE el estudiante |
+|---|---|---|
+| 4to grado | Recordar → Entender | Reconoce, describe y explica con guía. |
+| **5to grado** | **Entender → Aplicar (con guía)** | Explica con sus palabras y aplica en casos parecidos, guiado. |
+| **6to grado** | **Aplicar → primeros Analizar** | Aplica solo a casos nuevos; empieza a comparar/detectar en contexto. |
+| **1er año** | **Analizar → primeros Evaluar** | Descompone, distingue casos, relaciona, empieza a juzgar con criterios. |
+| 2do año | Evaluar → Crear | Juzga con evidencia, refuta, produce/diseña lo propio. |
+
+**REGLA DE ORO DE ESCALABILIDAD:** cuando un tema aparece en dos grados, el grado mayor NO repite
+— sube ≥1 nivel de Bloom. Antes de curar un tema que ya existe en un grado inferior, MIRÁ cómo
+quedó allá (Supabase/bancos) y garantizá que la versión del grado mayor sube de nivel.
+**Cómo se nota el nivel en el banco:**
+- Resumen: a mayor grado, menos "aquí está la regla" y más "por qué funciona, cómo se conecta,
+  cuándo NO aplica".
+- Práctica/reto: el verbo de la consigna sube — identifica/calcula (aplicar) → compara/explica por
+  qué (analizar) → evalúa/decide/diseña (evaluar/crear).
+- Quiz: menos recordar, más aplicar a casos nuevos y razonar el porqué a medida que sube el grado.
+El nivel dominante del grado vive como metadato `nivel_cognitivo` en cada materia del
+`cumbre-curriculo.mjs` (y en la fila de `curriculo`). Es INPUT obligatorio del autor y CRITERIO
+del revisor (ver patrón de subagentes).
 
 ## PATRÓN DE SUBAGENTES — calidad/precio (obligatorio al curar en lote)
 Prioridad 1: CALIDAD. Prioridad 2: ahorro de tokens. Regla espejo de la matriz de Gemini de la
@@ -157,13 +188,18 @@ app: el modelo económico JAMÁS toca lo que puede salir mal caro; el modelo top
      laboratorio, datos biológicos/históricos precisos) → **modelo TOP** (Opus/Fable, el heredado).
    - Teoría pura e idioma (sociales, inglés, "cómo pensar", ciudadanía digital, lenguaje) →
      **Sonnet** (`model: "sonnet"` en el Agent tool). Ahorra ~60-70% del grueso.
-   - Todo redactor recibe SIEMPRE: CURADO.md + el banco de oro (primos) + reglas del tipo de curado.
+   - Todo redactor recibe SIEMPRE: CURADO.md + el banco de oro (primos) + reglas del tipo de curado
+     + (para Cumbre) el **`nivel_cognitivo` del grado** como objetivo explícito, y —si el tema existe
+     en un grado menor— cómo quedó allá, para SUBIR de nivel y no repetir.
 2. **Verificación mecánica — SIN subagente (0 tokens):** la corre Claude en el loop principal con
    scripts: `filasDeBanco` (estructura/claves), recomputar TODA la aritmética, greps (mojibake,
    Markdown, ASCII, perspectiva de grado, contaminación del banco de oro, `<script>` en SVG).
 3. **Revisión adversarial final — SIEMPRE modelo TOP, sin excepción:** lectura completa del banco
    en "modo padre exigente": enunciado↔ecuación↔respuesta, ambigüedades (izq/der, tiempos,
-   referentes), regla "sin profe al lado", distractores = errores típicos reales, hechos correctos.
+   referentes), regla "sin profe al lado", distractores = errores típicos reales, hechos correctos,
+   y (Cumbre) **que el banco trabaje al `nivel_cognitivo` del grado** — ni corto ni pasado; un banco
+   que se quedó en recordar/entender cuando el grado pide analizar se DEVUELVE, igual que por un
+   error de cálculo.
    Para bancos redactados por Sonnet este paso es OBLIGATORIO e intransigente (leer+reportar cuesta
    ~4-5× menos que redactar → la supervisión top sale barata). Puede hacerla el propio Claude
    principal si él es el modelo top de la sesión.

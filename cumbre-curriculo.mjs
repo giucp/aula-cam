@@ -12,6 +12,26 @@
 // Cada materia = su propio grado (igual que "Cumbre Matemática 1er año"): así el cuarto de
 // pruebas y el candado de aislamiento (programa='cumbre') los tratan por separado.
 
+// Escala cognitiva de Cumbre (Taxonomía de Bloom revisada). Cada grado trabaja a una
+// PROFUNDIDAD dominante; así un tema repetido entre grados sube de nivel en vez de repetir.
+// Ver CURADO.md → "ESCALA COGNITIVA DE CUMBRE". Es INPUT del autor y CRITERIO del revisor.
+export const NIVEL_COGNITIVO_POR_GRADO = {
+  "4to grado": "Recordar-Entender",
+  "5to grado": "Entender-Aplicar",
+  "6to grado": "Aplicar-Analizar",
+  "1er año": "Analizar-Evaluar",
+  "2do año": "Evaluar-Crear",
+  "3er año": "Evaluar-Crear",
+};
+// De "Cumbre <Materia> 5to grado" / "Cumbre <Materia> 1er año" saca el nivel dominante.
+export function nivelCognitivoDeGrado(grado) {
+  const g = String(grado || "");
+  for (const [suf, nivel] of Object.entries(NIVEL_COGNITIVO_POR_GRADO)) {
+    if (g.includes(suf)) return nivel;
+  }
+  return null;
+}
+
 export const CUMBRE_CURRICULO = {
   // Orden de las materias en el cuarto de pruebas = por materia_id ascendente (ids sintéticos
   // ≥9000 para no chocar con cursos reales de Moodle). "Cómo Pensar" (9000) va primero por ser
