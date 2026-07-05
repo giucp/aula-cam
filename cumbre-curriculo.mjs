@@ -769,5 +769,152 @@ export const CUMBRE_CURRICULO = {
         },
       ],
     },
+    {
+      id: 9502,
+      grado: "Cumbre Informática 5to grado",
+      materia: "Informática",
+      nombre_corto: "CUMBRE INFO 5G",
+      nivel_cognitivo: "Entender-Aplicar",
+      // Ciencias de la Computación (CSTA banda 1B, ages 8-11 / UK Computing KS2). Lógica antes
+      // que sintaxis, mucho unplugged; programa por BLOQUES (Scratch/Code.org), sin texto todavía.
+      grupos: [
+        {
+          lapso: "Pensamiento computacional (sin computadora)",
+          intl: "",
+          temas: [
+            "Instrucciones exactas: por qué una computadora hace justo lo que le dices (aunque esté mal)",
+            "Descomponer: partir una tarea grande en pasos pequeños",
+            "Reconocer patrones: lo que se repite te ahorra trabajo",
+            "Abstracción: quedarse con lo importante y dejar lo que no importa",
+            "Algoritmos: escribir una receta paso a paso que siempre funcione",
+            "Encontrar el error: revisar un algoritmo y arreglarlo (depurar)",
+          ],
+        },
+        {
+          lapso: "Programar por bloques",
+          intl: "Algorithms & Programming",
+          temas: [
+            "De la idea a los bloques: mi primer programa (estilo Scratch)",
+            "Secuencia: el orden de los pasos cambia todo",
+            "Bucles: repetir sin escribir lo mismo mil veces",
+            "Condicionales: 'si pasa esto, haz aquello'",
+            "Variables: una cajita para guardar información que cambia",
+            "Eventos: hacer que algo pase cuando toco una tecla o hago clic",
+            "Crear un juego o una historia animada con todo lo aprendido",
+            "Mejorar el programa de otro con respeto: remix y dar crédito",
+          ],
+        },
+        {
+          lapso: "Datos e información",
+          intl: "Data & Analysis",
+          temas: [
+            "Todo es datos: cómo la computadora guarda números, letras e imágenes",
+            "Recoger y organizar datos en tablas",
+            "Convertir datos en información: gráficos que cuentan una historia (puente con Matemática)",
+            "Buscar un patrón en los datos para hacer una predicción",
+          ],
+        },
+        {
+          lapso: "Máquinas y redes",
+          intl: "Computing Systems & Networks",
+          temas: [
+            "Qué hay dentro: las partes de una computadora y para qué sirven",
+            "Hardware y software trabajando juntos como un sistema",
+            "Cuando algo no funciona: pasos para encontrar y resolver el problema",
+            "Qué es internet: mensajes que se parten en paquetes, viajan y se rearman",
+            "Cómo viaja un mensaje de una computadora a otra",
+          ],
+        },
+        {
+          lapso: "Tecnología, seguridad y buen uso",
+          intl: "Impacts & Digital Citizenship",
+          temas: [
+            "Contraseñas fuertes: la llave de tus cosas (y por qué no se comparte)",
+            "Tu información es tuya: qué datos personales cuidar en internet",
+            "Ser buena persona en línea: respeto y qué hacer ante el ciberacoso",
+            "¿Es de fiar? Mirar con ojo crítico lo que aparece en pantalla (puente con Cómo Pensar)",
+            "La tecnología cambió el mundo: cómo era antes y cómo es ahora",
+            "Usar y crear con respeto: dar crédito a las ideas de otros",
+          ],
+        },
+      ],
+    },
+    {
+      id: 9503,
+      grado: "Cumbre Inglés 5to grado",
+      materia: "Inglés",
+      nombre_corto: "CUMBRE ING 5G",
+      nivel_cognitivo: "Entender-Aplicar",
+      // Inglés Pre-A1→A1 (Cambridge Young Learners Movers/Flyers). Por FUNCIONES comunicativas
+      // "can-do", muy visual y concreto; prioridad en escuchar y hablar. Más básico que 1er año.
+      grupos: [
+        {
+          lapso: "Yo y mi gente",
+          intl: "Me and my people",
+          temas: [
+            "Puedo saludar y decir cómo me llamo y cómo estoy (hello, my name is, how are you)",
+            "Puedo contar cuántos años tengo y de dónde soy (numbers; I'm from…)",
+            "Puedo hablar de mi familia (family members; this is my…)",
+            "Puedo describir cómo es alguien (adjectives: tall, short, happy)",
+            "Puedo decir de quién es algo (possessives: my, your, his, her)",
+          ],
+        },
+        {
+          lapso: "Mi mundo",
+          intl: "My world",
+          temas: [
+            "Puedo nombrar los colores y las formas (colors and shapes)",
+            "Puedo nombrar los animales que conozco (pets and wild animals)",
+            "Puedo hablar de mi casa y lo que hay en ella (rooms; there is/there are)",
+            "Puedo decir dónde están las cosas (prepositions: in, on, under)",
+            "Puedo nombrar la comida y decir qué me gusta (food; I like / I don't like)",
+          ],
+        },
+        {
+          lapso: "Lo que tengo y lo que puedo",
+          intl: "Having and doing",
+          temas: [
+            "Puedo decir qué tengo (have got: I've got a…)",
+            "Puedo hablar de lo que sé hacer (can / can't: I can swim)",
+            "Puedo nombrar las partes del cuerpo (parts of the body)",
+            "Puedo hablar de la ropa que llevo (clothes: I'm wearing…)",
+            "Puedo pedir cosas con cortesía (can I have…, please / thank you)",
+          ],
+        },
+        {
+          lapso: "Mi día a día",
+          intl: "My everyday life",
+          temas: [
+            "Puedo hablar de lo que hago cada día (present simple: I get up, I go to school)",
+            "Puedo decir los días de la semana y mi horario (days; school subjects)",
+            "Puedo decir la hora de forma sencilla (telling the time: o'clock, half past)",
+            "Puedo describir el clima (weather: it's sunny, it's raining)",
+            "Puedo hablar de lo que está pasando ahora (present continuous: I'm playing)",
+          ],
+        },
+        {
+          lapso: "Comunicarme",
+          intl: "Getting my message across",
+          temas: [
+            "Puedo hacer preguntas sencillas (wh- questions: what, where, who)",
+            "Puedo entender instrucciones y cuentos cortos si me hablan despacio (listening)",
+            "Puedo leer y entender frases y textos muy cortos (reading short texts)",
+            "Puedo escribir sobre mí en frases simples (writing about myself)",
+            "Puedo tener una conversación corta y básica (short conversations; greetings and goodbyes)",
+          ],
+        },
+        {
+          lapso: "Herramientas del idioma",
+          intl: "Language tools",
+          temas: [
+            "Los sonidos del inglés y el abecedario: deletrear mi nombre (the alphabet; spelling)",
+            "Aprender palabras nuevas por temas y con imágenes (vocabulary in context)",
+            "Uno y muchos: el plural de las cosas (singular and plural)",
+            "Unir ideas con and, but, because (basic connectors)",
+            "Adivinar el significado por los dibujos y el contexto (reading strategy)",
+          ],
+        },
+      ],
+    },
   ],
 };
