@@ -103,6 +103,19 @@
         ],
         "ejemplo": "Si al terminar dejás el microscopio en 40× con la platina subida y el objetivo casi tocando el vidrio, el próximo que lo mueva puede rayar o romper la lente. Por eso la norma es guardarlo siempre en 4× y con la platina baja.",
         "figura": ""
+      },
+      {
+        "titulo": "Cuándo NO conviene más aumento (los límites del microscopio)",
+        "explicacion": "Es tentador pensar que 'más aumento es siempre mejor', pero no es así, y entender por qué es lo que separa a quien sabe usar el microscopio de quien solo gira lentes. Cada vez que subís de aumento pagás dos precios. Primero, se achica el CAMPO DE VISIÓN, que es el trozo de muestra que ves por el ocular: con poco aumento ves una zona amplia (muchas células a la vez, o el contorno completo de algo); con mucho aumento ves un pedacito minúsculo (quizás una sola célula, o parte de ella). Por eso, si querés ver algo grande y completo, el aumento alto te lo 'esconde'. Segundo, la imagen se vuelve más OSCURA, porque la misma luz se reparte en una imagen más grande, y hay que abrir el diafragma para compensar. Y hay un límite de fondo que ningún aumento supera: el microscopio óptico usa luz, y por cómo se comporta la luz no puede mostrar cosas más pequeñas que aproximadamente dos décimas de micrómetro (más chicas que muchos virus). Pasado ese punto, subir el aumento solo agranda un borrón sin revelar nada nuevo: es 'aumento vacío'. Para ver lo que está por debajo de ese límite (como los virus o el interior fino de una célula) se inventaron otros microscopios, como el microscopio ELECTRÓNICO, que en vez de luz usa un haz de electrones y llega mucho más lejos. Moraleja: el mejor aumento es el MÍNIMO que te deja ver con claridad lo que buscás, no el máximo posible.",
+        "pasos": [
+          "Más aumento = menos campo de visión: ves un trozo más chico de la muestra.",
+          "Para ver algo grande y completo (un contorno entero), conviene aumento BAJO.",
+          "Para ver un detalle diminuto (el núcleo de una célula), conviene aumento ALTO.",
+          "Más aumento también da imagen más oscura: hay que abrir el diafragma para compensar.",
+          "El microscopio óptico tiene un tope: no muestra lo más pequeño que cierto tamaño; pasarse es 'aumento vacío' (agranda un borrón). Para eso existen otros microscopios, como el electrónico."
+        ],
+        "ejemplo": "Si querés ver de un vistazo toda la trama de células de una hoja de cebolla, el 4× te la muestra completa; si subís a 40× ves clarísima una sola célula, pero perdés la vista de conjunto. Ninguno es 'mejor': cada uno sirve para una pregunta distinta. Y por más que giraras a un aumento gigante, jamás verías un virus con este microscopio: para eso hace falta uno electrónico.",
+        "figura": ""
       }
     ],
     "idea_clave": "El microscopio óptico usa lentes y luz para AUMENTAR (agrandar la imagen de) cosas invisibles a simple vista; gracias a él Hooke descubrió las células y Leeuwenhoek los microbios. La luz pasa por dos lentes que agrandan —objetivo y ocular—, y como uno agranda la imagen del otro, sus aumentos se MULTIPLICAN: AUMENTO TOTAL = aumento del ocular × aumento del objetivo (por ejemplo 10 × 40 = 400×, nunca 10 + 40). Se observa siempre del menor al mayor aumento, con la muestra preparada muy fina, y se cuida el instrumento con unas pocas normas."
@@ -166,6 +179,24 @@
       "enunciado": "Menciona tres normas de uso del microscopio y explica brevemente por qué cada una protege el instrumento.",
       "pista": "Pensá en cómo se transporta, cómo se guarda, cómo se tocan (o no) las lentes y cómo se enfoca sin chocar el vidrio.",
       "solucion": "Ejemplos válidos: (1) Transportarlo con las dos manos, una en el brazo y otra bajo la base, para que no se resbale ni se caiga. (2) Guardarlo con el objetivo de menor aumento puesto y la platina baja, para que ninguna lente golpee la muestra o el vidrio. (3) No tocar las lentes con los dedos (la grasa las empaña) y limpiarlas solo con papel de lentes. (Otra: enfocar alejando la lente de la muestra, mirando de costado, para no chocar el cubreobjetos.) Cada norma evita golpes, rayones o suciedad en las lentes, que son la parte más delicada y cara.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Querés ver el contorno general de una hoja de cebolla completa; después querés distinguir el núcleo de UNA sola célula. ¿Qué aumento conviene en cada caso y por qué?",
+      "pista": "Pensá en el campo de visión: cuánto más aumento uses, más chico es el trozo de muestra que ves. ¿Qué necesitás ver 'entero' y qué necesitás ver 'de cerca'?",
+      "solucion": "Para el contorno general de la hoja completa conviene un aumento BAJO (por ejemplo 4×, o sea 10 × 4 = 40× total): con poco aumento el campo de visión es amplio y entra toda la hoja de una vez, así ves el conjunto. Para distinguir el núcleo de UNA célula conviene un aumento ALTO (por ejemplo 40×, o sea 10 × 40 = 400× total): con mucho aumento el campo se achica y solo ves una célula o parte de ella, pero con el detalle suficiente para ver el núcleo. La regla es que aumento y campo de visión van al revés: más aumento = menos campo (más detalle de menos zona); menos aumento = más campo (más zona, menos detalle).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Elegí, con criterio, qué objetivo usar en cada situación: (a) buscar en qué parte del portaobjetos quedó la muestra; (b) contar cuántas células hay en una zona amplia; (c) mirar en detalle el borde de una única célula. Justificá cada elección.",
+      "pista": "Empezás explorando (campo grande) y terminás mirando detalle (campo chico). ¿Qué aumento da campo grande y cuál da detalle?",
+      "solucion": "(a) Objetivo de MENOR aumento (4×, total 40×): al explorar necesitás campo amplio para encontrar dónde quedó la muestra sin perderte. (b) Aumento BAJO o medio (4× o 10×, total 40× o 100×): para contar en una zona amplia conviene ver muchas células a la vez, cosa que un aumento alto no te deja. (c) Objetivo de MAYOR aumento (40×, total 400×): para ver el detalle del borde de una sola célula necesitás el mayor detalle, aunque el campo se reduzca a esa célula. En resumen: primero aumento bajo para ubicar y ver conjunto, y solo al final aumento alto para el detalle fino.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Diagnóstico de fallas: un alumno mira por el microscopio y (a) ve todo negro; (b) ve un círculo negro de borde grueso que 'flota' sobre la muestra; (c) en 40× no logra encontrar la muestra por ningún lado. ¿Qué hizo mal en cada caso y cómo lo arregla?",
+      "pista": "(a) tiene que ver con la LUZ; (b) con la PREPARACIÓN; (c) con el ORDEN de los objetivos al enfocar.",
+      "solucion": "(a) Ve todo negro: le falta luz. No encendió la fuente de luz o tiene el diafragma cerrado. Solución: encender la lámpara (o acomodar el espejo) y abrir el diafragma hasta que la muestra se ilumine. (b) Ve un círculo negro de borde grueso flotando: es una BURBUJA de aire atrapada en la preparación al bajar el cubreobjetos. Solución: rehacer el montaje bajando el cubreobjetos despacio desde un borde para que el aire salga. (c) No encuentra la muestra en 40×: empezó directo en aumento alto sin enfocar antes en el menor. En 40× el campo es diminuto y es casi imposible ubicar la muestra. Solución: volver al objetivo de MENOR aumento (4×), enfocar y centrar la muestra ahí, y recién entonces subir a 10× y luego a 40×.",
       "figura": ""
     }
   ],
@@ -301,6 +332,17 @@
       ],
       "correcta": 2,
       "explicacion": "Se guarda en el menor aumento con la platina baja para que ninguna lente golpee el vidrio. Se transporta con las DOS manos (brazo y base) y las lentes se limpian solo con papel de lentes, nunca con el dedo (la grasa las empaña)."
+    },
+    {
+      "pregunta": "Imaginá un microscopio raro cuyo ocular fuera de 1×. Comparado con el aumento del objetivo solo, el aumento total sería...",
+      "opciones": [
+        "Mayor que el del objetivo solo",
+        "Menor que el del objetivo solo",
+        "Igual que el del objetivo solo",
+        "Cero, porque un ocular de 1× no sirve"
+      ],
+      "correcta": 2,
+      "explicacion": "El aumento total = ocular × objetivo. Con un ocular de 1×, total = 1 × objetivo = el mismo objetivo (por ejemplo 1 × 40 = 40×). Multiplicar por 1 no cambia el valor, así que el total queda IGUAL al del objetivo solo. Un ocular de 1× no agranda extra, pero tampoco anula nada: N × 1 = N."
     }
   ]
 }

@@ -119,7 +119,8 @@
           "Tiempo: reloj o cronómetro.",
           "Temperatura: termómetro.",
           "Volumen de líquidos: probeta o vaso graduado.",
-          "Lee el instrumento con cuidado: mirar de frente y anotar con la unidad correcta."
+          "Lee el instrumento con cuidado: mirar de frente y anotar con la unidad correcta.",
+          "Cuándo una medición NO es válida y cómo decidir la precisión adecuada: la unidad y el instrumento deben ajustarse al tamaño de lo que mides, y un resultado que no tiene sentido físico (un lápiz de 18 metros) delata un error, aunque la cuenta esté bien hecha; entonces hay que revisar la unidad, el instrumento o la lectura."
         ],
         "ejemplo": "Para medir el grosor de una moneda, una regla común es demasiado tosca (apenas llega al milímetro); un calibre, que mide décimas de milímetro, da una medida mucho más precisa. Elegir el instrumento según la precisión que necesitas es medir con criterio.",
         "figura": "<svg viewBox=\"0 0 340 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"20\" y=\"50\" width=\"200\" height=\"26\" rx=\"3\" fill=\"#12B5A4\" fill-opacity=\"0.12\" stroke=\"#12B5A4\" stroke-width=\"2\"/><g stroke=\"#5A3AAF\" stroke-width=\"1\"><line x1=\"40\" y1=\"50\" x2=\"40\" y2=\"66\"/><line x1=\"60\" y1=\"50\" x2=\"60\" y2=\"60\"/><line x1=\"80\" y1=\"50\" x2=\"80\" y2=\"60\"/><line x1=\"100\" y1=\"50\" x2=\"100\" y2=\"66\"/><line x1=\"120\" y1=\"50\" x2=\"120\" y2=\"60\"/><line x1=\"140\" y1=\"50\" x2=\"140\" y2=\"60\"/><line x1=\"160\" y1=\"50\" x2=\"160\" y2=\"66\"/><line x1=\"180\" y1=\"50\" x2=\"180\" y2=\"60\"/><line x1=\"200\" y1=\"50\" x2=\"200\" y2=\"60\"/></g><text x=\"120\" y=\"38\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">regla graduada en cm y mm</text><text x=\"120\" y=\"100\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#5A3AAF\">cada magnitud tiene su instrumento</text></svg>"
@@ -186,6 +187,12 @@
       "enunciado": "Un objeto tiene una masa de 12 kg. ¿Cambiará su MASA si lo llevas a la Luna? ¿Y su PESO? Explica la diferencia.",
       "pista": "La masa es cuánta materia tiene el objeto; el peso es la fuerza con que la gravedad lo jala. Piensa cuál de las dos depende de la gravedad del lugar.",
       "solucion": "Su MASA seguirá siendo 12 kg en la Luna, porque la masa es la cantidad de materia del objeto y esa no cambia de lugar. Su PESO SÍ cambiará: en la Luna la gravedad es más débil (unas seis veces menor), así que el objeto pesará bastante menos, aunque tenga la misma cantidad de materia. La diferencia: la masa mide cuánta cosa hay (en kg); el peso mide el tirón de la gravedad (en newton, N), y ese tirón depende del lugar.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Dos alumnos miden la misma mesa: uno anota 1,2 m y otro anota 118 cm. ¿Se contradicen? ¿Cuál instrumento y unidad convendría usar en cambio para medir el grosor de una moneda, y por qué?",
+      "pista": "Antes de juzgar si se contradicen, pon las dos medidas en la misma unidad: convierte 1,2 m a centímetros. Para la moneda, piensa qué tan pequeña es y qué unidad se ajusta a ese tamaño.",
+      "solucion": "Primero hay que comparar en la misma unidad: como 1 m = 100 cm, 1,2 x 100 = 120, así que 1,2 m = 120 cm. Las dos medidas (120 cm y 118 cm) casi coinciden: difieren solo 2 cm, lo cual es un error de medición normal (distinta regla, forma de leer, dónde apoyaron el cero). Por eso NO se contradicen: están midiendo prácticamente lo mismo. En cambio, para el grosor de una moneda no conviene el metro ni el centímetro: es demasiado pequeño. Conviene medirlo en milímetros (o menos) con un instrumento más preciso, como un calibre, porque la unidad y el instrumento deben ajustarse al tamaño de lo que se mide.",
       "figura": ""
     }
   ],
@@ -321,6 +328,28 @@
       ],
       "correcta": 1,
       "explicacion": "La masa es la cantidad de materia y no cambia vayas donde vayas (se mide en kg con una balanza). El peso es la fuerza con que la gravedad jala el objeto y sí cambia de lugar (se mide en newton, N): en la Luna tu masa es la misma pero pesas menos."
+    },
+    {
+      "pregunta": "Un cartel dice que un lápiz nuevo mide 18 metros. ¿Qué está mal en esa afirmación?",
+      "opciones": [
+        "Nada, es una medida perfectamente posible para un lápiz",
+        "Confundieron la unidad: un lápiz mide unos 18 centímetros, no 18 metros; 18 metros es más o menos el largo de una casa",
+        "Le falta ponerle la unidad a la medida",
+        "El error es que usó el SI en lugar de otro sistema"
+      ],
+      "correcta": 1,
+      "explicacion": "La cuenta escrita puede parecer correcta, pero el resultado no tiene sentido físico: un lápiz mide alrededor de 18 cm, no 18 m. Un largo de 18 m es como el de una casa entera, imposible para un lápiz. Se confundió la unidad (metros por centímetros). Por eso, además de calcular, hay que juzgar si la magnitud del resultado es razonable."
+    },
+    {
+      "pregunta": "¿Cuál de estas dos longitudes es MAYOR: 1500 mm o 1,4 m?",
+      "opciones": [
+        "1,4 m, porque el número 1,4 se ve más pequeño y por eso engaña",
+        "1500 mm, porque equivale a 1,5 m y 1,5 m es mayor que 1,4 m",
+        "Son iguales",
+        "No se pueden comparar porque están en unidades distintas"
+      ],
+      "correcta": 1,
+      "explicacion": "Para comparar hay que llevarlas a la misma unidad. Como 1 m = 1000 mm, entonces 1500 mm = 1500 ÷ 1000 = 1,5 m. Ahora sí se comparan: 1,5 m es mayor que 1,4 m, así que 1500 mm es la longitud mayor. No hay que dejarse engañar por el tamaño del número: primero se convierte, después se compara."
     }
   ]
 }

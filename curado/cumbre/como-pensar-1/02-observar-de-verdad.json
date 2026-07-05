@@ -167,6 +167,18 @@
       "pista": "Recuerda que damos por obvios detalles que quizá no observamos bien, y que el cerebro rellena. ¿Cómo se resuelve una duda de observación de forma confiable?",
       "solucion": "Enseña que estar 'segurísimo' no garantiza que observaste bien: puede que hayas dado el color por obvio sin mirarlo de verdad, y que tu memoria haya rellenado con lo que esperabas. La seguridad que uno siente no mide qué tan cierto es. Se resuelve yendo a observar de nuevo con atención, e incluso comparando con otras personas o con una foto: dejar que la observación real y comprobable decida, en vez de la confianza en la memoria.",
       "figura": ""
+    },
+    {
+      "enunciado": "Dos personas registran el MISMO hecho de maneras distintas. Registro A: 'El perro está furioso y quiere atacar.' Registro B: 'El perro enseña los dientes, tiene el pelo del lomo levantado y gruñe.' Juzga cuál de los dos es más confiable como observación y justifica tu decisión con al menos dos razones.",
+      "pista": "Pregúntate cuál de los dos podría grabar una cámara tal cual, y cuál otra persona podría confirmar mirando lo mismo. ¿Cuál mete conclusiones que no se ven directamente?",
+      "solucion": "El más confiable es el Registro B. Razón uno: describe solo lo que una cámara grabaría (dientes, pelo del lomo levantado, gruñido), sin meter conclusiones; el Registro A afirma 'furioso' y 'quiere atacar', que son interpretaciones sobre lo que el perro siente o planea, y eso no se ve directamente. Razón dos: otra persona puede mirar al mismo perro y confirmar los datos de B (o corregirlos), mientras que 'furioso' depende de quién lo diga y no se puede comprobar igual. El Registro A no es inútil, pero mezcla observación con interpretación y las da por hecho; por eso, como observación, B es la que sirve mejor.",
+      "figura": ""
+    },
+    {
+      "enunciado": "En un pueblo, cinco personas que ya creían que una casa está embrujada oyen juntas un ruido raro dentro y las cinco 'confirman' que fue un fantasma. Alguien dice: 'Si cinco observaciones coinciden, tiene que ser cierto.' Juzga si repetir o que coincidan varias observaciones alcanza para dar esto por cierto. ¿Qué falla aquí y qué haría falta?",
+      "pista": "En ciencia se repite y se busca que otros confirmen... pero fíjate en QUÉ esperaban ya las cinco personas antes de oír el ruido. ¿Sus miradas son de verdad independientes?",
+      "solucion": "No alcanza. Repetir o que coincidan varias observaciones ayuda cuando las miradas son independientes, pero aquí las cinco personas ya esperaban un fantasma antes de oír el ruido, así que su expectativa compartida tuerce por igual lo que interpretan: no son cinco pruebas independientes, es la misma expectativa repetida cinco veces (sesgo de expectativa). Además, 'un ruido raro' es la observación; 'fue un fantasma' es una interpretación que se les coló como si fuera un hecho. Haría falta: separar lo observado (hubo un ruido) de la interpretación (su causa); traer a alguien que NO creyera en el fantasma para observar sin esa expectativa; y buscar la causa con instrumentos o revisando el lugar (viento, una tubería, un animal, la madera que cruje). Coincidir no prueba nada si todos comparten el mismo sesgo.",
+      "figura": ""
     }
   ],
   "quiz": [
@@ -301,6 +313,17 @@
       ],
       "correcta": 0,
       "explicacion": "Una sola observación puede salir por casualidad o por un error, así que repetir muestra si el resultado se sostiene. No es perder el tiempo ni que la primera vez esté 'siempre mal'; es la forma de no dejarse engañar por un caso suelto."
+    },
+    {
+      "pregunta": "Dos personas describen el mismo momento en el patio. Ana escribe: 'Un niño empujó a otro porque es un abusador.' Beto escribe: 'Un niño puso las dos manos en la espalda de otro y este dio dos pasos hacia adelante.' Si tuvieras que decidir cuál sirve mejor como EVIDENCIA de lo que pasó, ¿cuál eliges y por qué?",
+      "opciones": [
+        "La de Ana, porque explica el motivo y así entendemos mejor la escena.",
+        "La de Beto, porque describe solo lo que se vería y otra persona podría confirmarlo, sin dar por hecho la intención.",
+        "Las dos sirven igual, porque ambas cuentan lo mismo.",
+        "Ninguna sirve, porque nadie grabó el momento en video."
+      ],
+      "correcta": 1,
+      "explicacion": "La de Beto sirve mejor como evidencia: describe solo lo que una cámara grabaría (manos en la espalda, dos pasos hacia adelante), así que otra persona podría confirmarlo o corregirlo. La de Ana mete 'porque es un abusador', que es una interpretación de la intención y el carácter, no algo observado; podría haber sido un juego, un tropiezo o un accidente. Que explique un motivo no la hace más confiable, la hace menos, porque da por hecho algo que no se vio; y no hace falta un video para observar bien, basta con describir lo verificable en vez de interpretar."
     }
   ]
 }

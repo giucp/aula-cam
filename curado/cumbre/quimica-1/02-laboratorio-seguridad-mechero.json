@@ -118,7 +118,7 @@
         "figura": "<svg viewBox=\"0 0 300 110\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#D63A3A\" stroke-width=\"3\" fill=\"#fff\"><rect x=\"20\" y=\"25\" width=\"48\" height=\"48\" transform=\"rotate(45 44 49)\"/><rect x=\"120\" y=\"25\" width=\"48\" height=\"48\" transform=\"rotate(45 144 49)\"/><rect x=\"220\" y=\"25\" width=\"48\" height=\"48\" transform=\"rotate(45 244 49)\"/></g><path d=\"M44 62 Q34 48 44 35 Q47 45 52 42 Q56 55 44 62 Z\" fill=\"#3B2B4A\"/><text x=\"144\" y=\"58\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"26\" font-weight=\"700\" fill=\"#3B2B4A\">!</text><circle cx=\"244\" cy=\"44\" r=\"9\" fill=\"none\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><circle cx=\"241\" cy=\"42\" r=\"1.6\" fill=\"#3B2B4A\"/><circle cx=\"247\" cy=\"42\" r=\"1.6\" fill=\"#3B2B4A\"/><line x1=\"238\" y1=\"55\" x2=\"250\" y2=\"62\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><line x1=\"250\" y1=\"55\" x2=\"238\" y2=\"62\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><text x=\"44\" y=\"98\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">inflamable</text><text x=\"144\" y=\"98\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">irritante</text><text x=\"244\" y=\"98\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">toxico</text></svg>"
       }
     ],
-    "idea_clave": "El laboratorio es seguro cuando conoces sus reglas, tus materiales y tu mechero. Recuerda tres cosas por encima de todo: piensa en la PREVENCIÓN y sigue las reglas de oro (gafas, no comer, oler abanicando, avisar al profesor); usa el material correcto para cada tarea (probeta o pipeta para medir exacto, vaso de precipitados para contener); y domina el mechero: se enciende con la llama AMARILLA (segura y visible, aire cerrado) y se trabaja con la llama AZUL (mucho más caliente, aire abierto), calentando siempre con la boca del tubo apuntando lejos de las caras."
+    "idea_clave": "El laboratorio es seguro cuando conoces sus reglas, tus materiales y tu mechero. Recuerda tres cosas por encima de todo: piensa en la PREVENCIÓN y sigue las reglas de oro (gafas, no comer, oler abanicando, avisar al profesor); usa el material correcto para cada tarea (probeta o pipeta para medir exacto, vaso de precipitados para contener); y domina el mechero: se enciende con la llama AMARILLA (segura y visible, aire cerrado) y se trabaja con la llama AZUL (mucho más caliente, aire abierto), calentando siempre con la boca del tubo apuntando lejos de las caras. Y para DECIDIR ante la duda o cuando dos reglas parecen chocar, ten un criterio simple: ante la duda, para y pregunta al profesor antes de actuar; trata todo material de vidrio como si estuviera caliente hasta comprobar que se enfrió; y si algo es inflamable, mantenlo lejos del fuego y nunca lo calientes directo sobre la llama."
   },
   "practica": [
     {
@@ -179,6 +179,12 @@
       "enunciado": "Justo terminaste de calentar un vaso de precipitados y lo apartaste del mechero. Tu compañero va a agarrarlo con la mano porque 'ya no se ve la llama y se ve igual que antes'. ¿Qué le adviertes y por qué?",
       "pista": "Piensa en una característica peligrosa del vidrio caliente: su aspecto.",
       "solucion": "Le adviertes que NO lo toque con la mano, porque el vidrio caliente se ve EXACTAMENTE igual que el vidrio frío: no cambia de color ni de aspecto aunque esté a mucha temperatura. Todo vidrio que estuvo cerca del fuego debe tratarse como caliente hasta comprobar que se enfrió. Para moverlo debe usar una pinza o guantes adecuados. Agarrarlo a mano le causaría una quemadura seria.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Necesitas calentar 25 mL de un líquido cuya etiqueta lleva el símbolo de la llama (inflamable). ¿Es seguro ponerlo directo sobre la llama del mechero para calentarlo? Decide qué haces y justifica tu decisión integrando lo que sabes de medir, de sustancias inflamables y del fuego.",
+      "pista": "Fíjate en dos cosas a la vez: cómo mides bien esos 25 mL, y qué significa el símbolo de la llama frente a una fuente de fuego directo.",
+      "solucion": "NO es seguro ponerlo directo sobre la llama del mechero. El símbolo de la llama significa que el líquido es inflamable (arde con facilidad), así que exponerlo a fuego directo puede hacer que se encienda o que sus vapores prendan. Lo que decides: (1) medir los 25 mL con una probeta, leyendo por la parte baja del menisco a la altura de los ojos, para tener la cantidad exacta sin desperdiciar sustancia peligrosa; (2) calentarlo con un método SIN llama directa, como un baño de agua caliente o una placa calefactora, en lugar del mechero encendido bajo el recipiente; y (3) mantener el frasco y el líquido lejos de chispas y de cualquier fuente de ignición. En resumen: inflamable más fuego directo es peligroso, así que se mide con cuidado y se calienta de forma indirecta, alejado del fuego.",
       "figura": ""
     }
   ],
@@ -314,6 +320,39 @@
       ],
       "correcta": 1,
       "explicacion": "Lo primero es LEER la etiqueta y mirar los símbolos de peligro para saber qué riesgos tiene y cómo manipularla. Nunca se usa un frasco sin etiqueta ni contenido conocido; oler directo, probar con la lengua o calentar al azar son acciones peligrosas."
+    },
+    {
+      "pregunta": "Observas a cuatro estudiantes en una práctica con el mechero. ¿Cuál de estas acciones es PELIGROSA?",
+      "opciones": [
+        "Sujeta el tubo de ensayo con una pinza de madera mientras lo calienta",
+        "Mueve el tubo suavemente sobre la llama para repartir el calor",
+        "Calienta el tubo apuntando su boca hacia la cara de su compañero de al lado",
+        "Se pone las gafas de seguridad antes de encender el mechero"
+      ],
+      "correcta": 2,
+      "explicacion": "Apuntar la boca del tubo hacia una persona es peligroso: si el líquido caliente salta o 'escupe', salpica directo a la cara de su compañero y puede quemarlo. La boca del tubo siempre debe apuntar a un espacio vacío. Las otras tres acciones (usar pinza, mover el tubo para repartir el calor y ponerse las gafas antes de encender) son correctas y seguras."
+    },
+    {
+      "pregunta": "En otra mesa, ¿cuál de estas acciones es INSEGURA y debes corregir?",
+      "opciones": [
+        "Acaba de calentar un vaso y lo agarra con la mano porque se ve igual que uno frío",
+        "Deja enfriar el vaso caliente sobre una rejilla antes de moverlo",
+        "Ata su cabello largo antes de acercarse al mechero encendido",
+        "Cierra la llave del gas para apagar el mechero al terminar"
+      ],
+      "correcta": 0,
+      "explicacion": "Agarrar a mano un vaso recién calentado es peligroso: el vidrio caliente se ve EXACTAMENTE igual que el frío y no avisa que quema, así que causaría una quemadura seria. Hay que tratar todo vidrio que estuvo al fuego como caliente y moverlo con pinza o guantes. Dejarlo enfriar, atarse el cabello y cerrar el gas al terminar son acciones correctas."
+    },
+    {
+      "pregunta": "Tienes que calentar algo, pero justo al lado hay un frasco con el símbolo de la llama (inflamable). ¿Qué haces?",
+      "opciones": [
+        "Enciendes el mechero donde está y calientas ahí mismo, sin mover el frasco",
+        "Alejas el frasco inflamable de la zona de fuego antes de encender el mechero, o calientas en otro sitio sin llama cerca",
+        "Destapas el frasco para que 'respire' mientras usas el mechero al lado",
+        "Acercas el frasco al mechero para calentarlo también y así ahorrar tiempo"
+      ],
+      "correcta": 1,
+      "explicacion": "El símbolo de la llama significa inflamable: arde con facilidad y sus vapores pueden prenderse con una chispa o una llama cercana. Por eso, antes de usar fuego, alejas el frasco de la zona (o calientas en otro lugar sin llama cerca) y lo mantienes tapado. Encender el mechero al lado, destaparlo o acercarlo al fuego son acciones peligrosas."
     }
   ]
 }

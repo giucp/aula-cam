@@ -79,7 +79,7 @@
       },
       {
         "titulo": "Perfectos y no perfectos: cuándo la raíz es 'redonda'",
-        "explicacion": "No todo número tiene una raíz cuadrada entera. Los que sí (como 25, 49, 144) son los CUADRADOS PERFECTOS: su raíz es un entero exacto. Pero la mayoría no lo son: √50, por ejemplo, no da un entero, porque no existe ningún número entero que multiplicado por sí mismo dé exactamente 50. Con la factorización sabes al instante cuál es cuál: si al factorizar queda algún primo SIN pareja (un exponente impar), el número NO es cuadrado perfecto. Y lo mejor: sabes EXACTAMENTE qué le falta. Si a un número le sobra un 7 solitario, multiplicándolo por 7 ese primo consigue pareja y el número se vuelve cuadrado perfecto. Esta es una pregunta muy típica en los mejores exámenes: '¿por cuál número mínimo hay que multiplicar para que sea cuadrado perfecto?'. La respuesta es: por el producto de los primos que quedaron sin pareja.",
+        "explicacion": "No todo número tiene una raíz cuadrada entera. Los que sí (como 25, 49, 144) son los CUADRADOS PERFECTOS: su raíz es un entero exacto. Pero la mayoría no lo son: √50, por ejemplo, no da un entero, porque no existe ningún número entero que multiplicado por sí mismo dé exactamente 50. Con la factorización sabes al instante cuál es cuál: si al factorizar queda algún primo SIN pareja (un exponente impar), el número NO es cuadrado perfecto. Y lo mejor: sabes EXACTAMENTE qué le falta. Si a un número le sobra un 7 solitario, multiplicándolo por 7 ese primo consigue pareja y el número se vuelve cuadrado perfecto. Esta es una pregunta muy típica en los mejores exámenes: '¿por cuál número mínimo hay que multiplicar para que sea cuadrado perfecto?'. La respuesta es: por el producto de los primos que quedaron sin pareja. Este mismo criterio te dice cuándo la factorización NO te va a dar un entero: si al partir cada exponente entre 2 (para √) o entre 3 (para ∛) alguno NO reparte parejo —es decir, algún primo queda sin pareja completa o sin trío completo—, entonces la raíz no es un entero y no te queda otra que estimar entre dos enteros.",
         "pasos": [
           "Factoriza el número en primos.",
           "Mira los exponentes: si todos son pares, ES cuadrado perfecto.",
@@ -170,6 +170,12 @@
       "enunciado": "Sin calculadora, halla √1296 usando factorización en primos. (Pista de tamaño: la respuesta es un número de dos cifras.)",
       "pista": "1296 es par y la suma de sus cifras (1+2+9+6=18) es múltiplo de 9. Al factorizar te quedan potencias de 2 y de 3. Divide cada exponente entre 2.",
       "solucion": "1296 = 2⁴ × 3⁴ (árbol: 1296 = 16 × 81 = 2⁴ × 3⁴). Los exponentes (4 y 4) son pares. Mitad de cada uno → 2² × 3² = 4 × 9 = 36. Entonces √1296 = 36. (Comprobación: 36² = 1296 ✓.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Te piden hallar √150. Primero decide: ¿es exacta (da un entero)? Si no lo es, ¿entre qué dos enteros consecutivos está? Y lo más importante: para resolverla, ¿conviene factorizar 150 en primos para 'sacar' la raíz, o es mejor estimar? Justifica tu elección del método.",
+      "pista": "No calcules a ciegas: primero mira si 150 es cuadrado perfecto. Prueba a factorizarlo y observa si los exponentes quedan todos pares. Si algún primo queda sin pareja, la factorización no te dará un entero y tendrás que estimar entre dos cuadrados perfectos vecinos.",
+      "solucion": "Primero, ¿es exacta? Los cuadrados perfectos vecinos son 12² = 144 y 13² = 169; como 150 cae entre 144 y 169, √150 está entre 12 y 13, y por tanto NO es exacta (no hay entero cuyo cuadrado sea 150). Segundo, ¿qué método conviene? Factorizo: 150 = 2 × 75 = 2 × 3 × 25 = 2 × 3 × 5². Solo el 5 tiene pareja (5²); el 2 y el 3 quedan solitos, con exponente impar. Como la factorización NO deja todos los primos emparejados, no puede darme un entero: factorizar aquí no 'saca' la raíz. Por eso conviene ESTIMAR: √150 está entre 12 y 13, y como 150 está más cerca de 144 que de 169, es un poco más de 12 (el valor real es 12,24...). (Comprobación: 12² = 144 y 13² = 169, y 144 < 150 < 169 ✓.)",
       "figura": ""
     }
   ],
@@ -305,6 +311,28 @@
       ],
       "correcta": 1,
       "explicacion": "La arista de un cubo es ∛volumen. ∛27 = 3, porque 3 × 3 × 3 = 27. (Comprobación: 3³ = 27 ✓.) El 9 confunde raíz cúbica con cuadrada, y 13,5 sale de dividir 27 entre 2."
+    },
+    {
+      "pregunta": "Un estudiante escribió √36 = 18. ¿Qué error cometió?",
+      "opciones": [
+        "Dividió 36 entre 2, en vez de buscar el número que multiplicado por sí mismo da 36",
+        "Elevó 36 al cuadrado en vez de sacar la raíz",
+        "Confundió la raíz cuadrada con la raíz cúbica",
+        "Ninguno: √36 sí es 18"
+      ],
+      "correcta": 0,
+      "explicacion": "El error es tratar la raíz cuadrada como 'dividir entre 2' (36 ÷ 2 = 18). Pero la raíz cuadrada pregunta '¿qué número por sí mismo da 36?', y la respuesta es 6, porque 6 × 6 = 36. Que 18 está mal se ve al comprobar: 18 × 18 = 324, no 36. La correcta es √36 = 6 (6² = 36 ✓)."
+    },
+    {
+      "pregunta": "¿Cuál de estos números NO es un cuadrado perfecto?",
+      "opciones": [
+        "49",
+        "64",
+        "50",
+        "81"
+      ],
+      "correcta": 2,
+      "explicacion": "Un cuadrado perfecto tiene raíz cuadrada entera. 49 = 7², 64 = 8² y 81 = 9² sí la tienen. En cambio 50 cae ENTRE dos cuadrados perfectos vecinos, 49 = 7² y 64 = 8², sin coincidir con ninguno: no existe un entero cuyo cuadrado sea 50, así que 50 NO es cuadrado perfecto."
     }
   ]
 }
