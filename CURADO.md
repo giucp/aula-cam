@@ -136,6 +136,43 @@ ambiguo de la regla de signos ("un negativo, impar" sin aclarar que se cuentan l
 - [ ] Commitear los `.json` y reportar al admin: qué se verificó por script, qué a mano,
       y qué quedó sin verificar (ser explícito, sin maquillar).
 
+## Los DOS tipos de curado (no confundir)
+- **AULA (`programa` ausente = 'aula')** — lo que ven los niños con sello 📗 en el flujo normal.
+  Fuente de verdad: el Moodle REAL (títulos exactos con `moodle-leer`, PDFs del profe para calibrar
+  estilo y nivel). **4 modos** (resumen+retos+quiz+examen; el examen imita cómo evalúa la maestra).
+  `grado` = "4to grado" / "6to grado" / "1er año"… Archivos en `curado/*.json`.
+- **CUMBRE (`"programa":"cumbre"`)** — currículo de élite, visible solo en `#lab` hasta Fase 4.
+  Fuente de verdad: `cumbre-curriculo.mjs` (título del tema letra por letra). **3 modos**
+  (resumen+practica+quiz; `practica`=retos; SIN examen — patrón del banco de primos). `grado` =
+  "Cumbre <Materia> 1er año". Regla "sin profe al lado" al MÁXIMO (autoexploración); referencias
+  internacionales (Singapore/IB/KS3/MEXT). Archivos en `curado/cumbre/<materia>-1/NN-*.json`.
+El resto del proceso (checklist, verificación, subida) es el mismo para ambos.
+
+## PATRÓN DE SUBAGENTES — calidad/precio (obligatorio al curar en lote)
+Prioridad 1: CALIDAD. Prioridad 2: ahorro de tokens. Regla espejo de la matriz de Gemini de la
+app: el modelo económico JAMÁS toca lo que puede salir mal caro; el modelo top SIEMPRE supervisa.
+
+1. **Redacción — modelo según el contenido:**
+   - Numérico/lógico o con hechos delicados (matemática, lógica, física con cálculo, seguridad de
+     laboratorio, datos biológicos/históricos precisos) → **modelo TOP** (Opus/Fable, el heredado).
+   - Teoría pura e idioma (sociales, inglés, "cómo pensar", ciudadanía digital, lenguaje) →
+     **Sonnet** (`model: "sonnet"` en el Agent tool). Ahorra ~60-70% del grueso.
+   - Todo redactor recibe SIEMPRE: CURADO.md + el banco de oro (primos) + reglas del tipo de curado.
+2. **Verificación mecánica — SIN subagente (0 tokens):** la corre Claude en el loop principal con
+   scripts: `filasDeBanco` (estructura/claves), recomputar TODA la aritmética, greps (mojibake,
+   Markdown, ASCII, perspectiva de grado, contaminación del banco de oro, `<script>` en SVG).
+3. **Revisión adversarial final — SIEMPRE modelo TOP, sin excepción:** lectura completa del banco
+   en "modo padre exigente": enunciado↔ecuación↔respuesta, ambigüedades (izq/der, tiempos,
+   referentes), regla "sin profe al lado", distractores = errores típicos reales, hechos correctos.
+   Para bancos redactados por Sonnet este paso es OBLIGATORIO e intransigente (leer+reportar cuesta
+   ~4-5× menos que redactar → la supervisión top sale barata). Puede hacerla el propio Claude
+   principal si él es el modelo top de la sesión.
+4. **Correcciones:** al MISMO redactor vía SendMessage (mantiene su contexto) o edición directa de
+   Claude si es puntual. **Subida y verificación en vivo:** siempre Claude principal (endpoint +
+   `curado:true` + commit), nunca los subagentes.
+Paralelismo: un redactor por materia (como el lote de 13 bancos de 2026-07-04, ~545k tokens — con
+este patrón el mismo lote costaría ~40-50% menos sin bajar calidad).
+
 ## Seguridad de la sesión
 - **Nunca** imprimir contraseñas ni tokens en la conversación ni en logs.
 - **Nunca** commitear `.env.local`, `curado/fotos/`, `curado/material/`.
