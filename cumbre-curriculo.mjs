@@ -670,5 +670,84 @@ export const CUMBRE_CURRICULO = {
         },
       ],
     },
+    {
+      id: 9501,
+      grado: "Cumbre Ciencias 5to grado",
+      materia: "Ciencias",
+      nombre_corto: "CUMBRE CIE 5G",
+      // Ciencia INTEGRADA (Singapore P5 Science / UK KS2 Y5): a esta edad NO se separan Física/
+      // Química/Biología. Estructura por los 5 temas del MOE (Diversidad, Ciclos, Sistemas,
+      // Interacciones, Energía) + un dominio de entrada de indagación (puente con Cómo Pensar).
+      grupos: [
+        {
+          lapso: "Pensar como científico",
+          intl: "Working Scientifically",
+          temas: [
+            "El método científico: preguntar, predecir, probar y concluir",
+            "La hipótesis: una predicción que se puede poner a prueba",
+            "Variables: qué cambio, qué mido y qué mantengo igual (la prueba justa)",
+            "Medir y observar con las herramientas correctas",
+            "Comunicar resultados: tablas, gráficos y conclusiones con evidencia",
+          ],
+        },
+        {
+          lapso: "Diversidad: la variedad del mundo",
+          intl: "Diversity",
+          temas: [
+            "La enorme variedad de seres vivos y no vivos",
+            "Clasificar los seres vivos: plantas, animales, hongos y más",
+            "Materiales y sus propiedades: elegir el material correcto para cada uso",
+            "Las mezclas y cómo separarlas (filtrar, evaporar, tamizar)",
+          ],
+        },
+        {
+          lapso: "Ciclos: lo que se repite en la naturaleza",
+          intl: "Cycles",
+          temas: [
+            "Los estados del agua y cómo cambia de uno a otro",
+            "El ciclo del agua: evaporación, condensación y precipitación",
+            "La reproducción en las plantas: la flor, la polinización y la semilla",
+            "La reproducción en los animales: distintas formas de continuar la vida",
+            "Ciclos de vida: cómo crecen y cambian los seres vivos",
+          ],
+        },
+        {
+          lapso: "Sistemas: partes que trabajan juntas",
+          intl: "Systems",
+          temas: [
+            "Qué es un sistema: partes con funciones que se combinan",
+            "La célula: la unidad básica de la vida (y el microscopio)",
+            "El sistema respiratorio: cómo entra el aire y se intercambian los gases",
+            "El sistema circulatorio: el corazón y el transporte por la sangre",
+            "Respiratorio y circulatorio trabajando juntos",
+            "El sistema de transporte de las plantas: cómo sube el agua",
+            "El circuito eléctrico: fuente, componentes y circuito cerrado",
+            "Conductores y aislantes; circuitos en serie y en paralelo",
+          ],
+        },
+        {
+          lapso: "Energía: lo que hace que todo funcione",
+          intl: "Energy",
+          temas: [
+            "Formas de energía y para qué las usamos",
+            "La fotosíntesis: cómo las plantas fabrican su alimento con luz",
+            "Cómo obtienen energía las plantas y los animales",
+            "Luz y calor: en qué se parecen y en qué se diferencian",
+            "Transformaciones de energía y por qué conviene ahorrarla",
+          ],
+        },
+        {
+          lapso: "Interacciones: cómo las cosas se afectan",
+          intl: "Interactions",
+          temas: [
+            "Las fuerzas: empujar, halar y sus efectos",
+            "Fricción, gravedad y fuerza en los resortes",
+            "Los imanes y sus fuerzas de atracción y repulsión",
+            "Cómo los seres vivos interactúan con su ambiente",
+            "El impacto humano en el ambiente y cómo cuidarlo",
+          ],
+        },
+      ],
+    },
   ],
 };
