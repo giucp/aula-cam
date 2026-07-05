@@ -97,6 +97,23 @@
   .cumProx b{font-family:"Fredoka";font-weight:600;color:#B65A12}
   .cumProx span{font-family:"Nunito";font-size:.94rem;color:var(--ink);opacity:.85}
 
+  /* batería de "energía de IA" (anillo tipo reloj en Inicio) */
+  #energiaIA{margin-bottom:18px}
+  .enIn{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:12px 16px;box-shadow:var(--shadow-xs)}
+  .enRing{flex:none}
+  .enBg{fill:none;stroke:#EFE7F5;stroke-width:7}
+  .enFg{fill:none;stroke-width:7;stroke-linecap:round;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset .5s ease}
+  .enPct{font-family:"Fredoka";font-weight:600;font-size:15px;fill:var(--ink)}
+  .enTx{min-width:0}
+  .enTit{display:block;font-family:"Fredoka";font-weight:600;font-size:1rem;color:var(--ink)}
+  .enMsg{font-family:"Nunito";font-size:.86rem;color:var(--muted);margin:2px 0 0}
+  .en-alto .enFg{stroke:var(--ok)}
+  .en-medio .enFg{stroke:#12B5A4}
+  .en-bajo .enFg{stroke:#F5A623}
+  .en-vacio .enFg{stroke:var(--bad)}
+  .en-vacio .enPct{fill:var(--bad)}
+  .en-vacio .enTit{color:var(--bad)}
+
   /* "Un día como hoy" (efeméride diaria en Inicio) */
   #efemeride{margin-bottom:22px}
   .efeIn{display:flex;align-items:center;gap:14px;background:linear-gradient(120deg,#EAF7F5,#F3ECFF);border:1px solid var(--line);border-radius:20px;padding:14px 16px;box-shadow:var(--shadow-xs)}

@@ -130,14 +130,14 @@
   document.querySelectorAll("#navbar .navBtn").forEach(b=>b.onclick=()=>verTab(b.dataset.tab));
 
   // ───────── agenda: datos (horario + tareas en Supabase) ─────────
-  let HORARIO=[], TAREAS=[], NOTAS=[];
+  let HORARIO=[], TAREAS=[], NOTAS=[], IA_ESTADO=null;
   async function apiAgenda(body){
     const r=await fetch(API_AGENDA,{method:"POST",headers:{"Content-Type":"application/json"},
       body:JSON.stringify({...body, usuario_id:(SESION&&SESION.id)||null})});
     return r.json();
   }
   async function cargarAgenda(){
-    try{ const d=await apiAgenda({accion:"todo"}); HORARIO=d.horario||[]; TAREAS=d.tareas||[]; NOTAS=d.notas||[]; }
+    try{ const d=await apiAgenda({accion:"todo"}); HORARIO=d.horario||[]; TAREAS=d.tareas||[]; NOTAS=d.notas||[]; IA_ESTADO=d.ia||IA_ESTADO; }
     catch(_){ HORARIO=[]; TAREAS=[]; NOTAS=[]; }
     if(!$("#tabInicio").classList.contains("hidden")) pintarEscritorio();
   }
@@ -172,6 +172,7 @@
     const d=new Date();
     const f=`${DIAS_NOM[d.getDay()]} ${d.getDate()} de ${MESES[d.getMonth()]}`;
     $("#fechaHoy").textContent=f[0].toUpperCase()+f.slice(1);
+    pintarEnergiaIA();
     cargarEfemerides().then(pintarEfemeride);
     pintarExamenBanner();
     pintarNovedadesInicio();
@@ -187,6 +188,25 @@
     try{ const r=await fetch("/un-dia-como-hoy.json"); EFEMERIDES=await r.json(); }
     catch(_){ EFEMERIDES={}; }
     return EFEMERIDES;
+  }
+
+  // Batería de "energía de IA": muestra cuánto del cupo diario de IA le queda al alumno.
+  // Se oculta si es ilimitado (hijas/elegidos) o si no se conoce el presupuesto.
+  function pintarEnergiaIA(){
+    const box=$("#energiaIA"); if(!box) return;
+    const e=IA_ESTADO;
+    if(!e || e.ilimitado || !e.limite){ box.classList.add("hidden"); box.innerHTML=""; return; }
+    const pct=Math.max(0, Math.min(100, Math.round((e.restante/e.limite)*100)));
+    const nivel = pct<=0 ? "vacio" : pct<=20 ? "bajo" : pct<=50 ? "medio" : "alto";
+    const msg = pct<=0 ? "Se agotó por hoy 🌙 ¡Mañana se recarga! Mientras, tienes las guías 📗 y lo ya practicado."
+      : pct<=20 ? "Te queda poca energía de IA por hoy" : "Energía de IA para practicar hoy";
+    const R=26, C=2*Math.PI*R, off=C*(1-pct/100);
+    box.innerHTML=`<div class="enIn en-${nivel}"><svg class="enRing" viewBox="0 0 64 64" width="56" height="56" aria-hidden="true">`+
+      `<circle class="enBg" cx="32" cy="32" r="${R}"></circle>`+
+      `<circle class="enFg" cx="32" cy="32" r="${R}" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"></circle>`+
+      `<text x="32" y="37" text-anchor="middle" class="enPct">${pct}%</text></svg>`+
+      `<div class="enTx"><span class="enTit">🔋 Tu energía de IA</span><p class="enMsg">${msg}</p></div></div>`;
+    box.classList.remove("hidden");
   }
   function pintarEfemeride(){
     const box=$("#efemeride"); if(!box) return;
@@ -1177,6 +1197,7 @@
       catch(_){ throw new Error("El servidor tardó demasiado o se cayó. Prueba de nuevo en un momentico."); }
       if(d.error){ const er=new Error(d.error); er.code=d.code; er.retryAfter=d.retryAfter; throw er; }
       // el alumno ya gastó su presupuesto de IA del mes → seguir con guías/lo cacheado
+      if(d.ia){ IA_ESTADO=d.ia; pintarEnergiaIA(); }   // refresca la batería de energía IA
       if(d.limiteIA){ renderLimite(res); return; }
       // guía agotada, o el tema no tiene guía → ofrecer seguir con IA
       if(d.sinItems || d.sinBanco){ renderHandoff(res, d); return; }

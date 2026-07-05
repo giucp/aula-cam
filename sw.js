@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v21"; // v21: foto permite elegir de la galeria en movil (se quito capture=environment)
+const VERSION = "aulacam-v22"; // v22: bateria de energia de IA (cupo diario visible en Inicio)
 const SHELL = [
   "/",
   "/index.html",

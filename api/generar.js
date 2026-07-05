@@ -276,22 +276,30 @@ function diaIA() {
 // (sin id, sin Supabase, error, sin fila aún) devuelve permitido=true (no cortar por un hipo).
 async function presupuestoIA(usuarioId) {
   const cfg = supabaseCfg();
-  if (!cfg || usuarioId == null) return { permitido: true };
+  if (!cfg || usuarioId == null) return { permitido: true, ilimitado: true };
   try {
     const r = await fetch(
       `${cfg.url}/rest/v1/usuarios?id=eq.${encodeURIComponent(usuarioId)}&select=ia_ilimitado,ia_limite_dia_usd,ia_gasto_dia_usd,ia_dia`,
       { headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}` } }
     );
-    if (!r.ok) return { permitido: true };
+    if (!r.ok) return { permitido: true, ilimitado: true };
     const rows = await r.json();
     const u = Array.isArray(rows) && rows[0];
-    if (!u || u.ia_ilimitado) return { permitido: true }; // sin fila, o hijas/elegidos
+    if (!u || u.ia_ilimitado) return { permitido: true, ilimitado: true }; // sin fila, o hijas/elegidos
     const limite = u.ia_limite_dia_usd == null ? LIMITE_DIA_USD : Number(u.ia_limite_dia_usd);
     const gasto = u.ia_dia === diaIA() ? Number(u.ia_gasto_dia_usd || 0) : 0; // día nuevo → 0
-    return { permitido: gasto < limite, limite, gasto };
+    return { permitido: gasto < limite, ilimitado: false, limite, gasto };
   } catch (e) {
-    return { permitido: true };
+    return { permitido: true, ilimitado: true };
   }
+}
+// Estado de IA para el front (batería): sin dinero crudo, solo lo necesario para el gauge.
+// `add` = costo (USD) de la generación recién hecha, para reflejar el gasto ya actualizado.
+function iaEstado(presu, add) {
+  if (!presu || presu.ilimitado || !presu.limite) return { ilimitado: true };
+  const limite = presu.limite;
+  const gasto = Math.min(limite, (presu.gasto || 0) + (add || 0));
+  return { ilimitado: false, limite, gasto, restante: Math.max(0, limite - gasto) };
 }
 // Suma el costo (USD) de una generación al gasto de HOY del alumno (atómico vía RPC).
 // Nunca rompe la generación.
@@ -568,7 +576,7 @@ export default async function handler(req, res) {
     //   ia_ilimitado nunca entran acá.
     const presu = await presupuestoIA(usuarioId);
     if (!presu.permitido) {
-      return res.status(200).json({ limiteIA: true, tema, materia: materia || null, modo });
+      return res.status(200).json({ limiteIA: true, tema, materia: materia || null, modo, ia: iaEstado(presu) });
     }
 
     const material = armarMaterial(contexto);
@@ -706,7 +714,11 @@ export default async function handler(req, res) {
     //    AUNQUE la haya servido una key gratis: el cupo diario es un freno de USO por
     //    niño (las gratis también se agotan y son compartidas entre todos); si contara
     //    solo la paga, un niño podría vaciar el cupo gratis de los demás sin frenarse.
-    await registrarGastoIA(usuarioId, costoUSD(modeloUsado, data.usageMetadata));
+    const costo = costoUSD(modeloUsado, data.usageMetadata);
+    await registrarGastoIA(usuarioId, costo);
+    // El estado de IA (batería) es POR ALUMNO → se agrega DESPUÉS de cachear (línea de arriba),
+    // así el caché compartido nunca guarda el presupuesto de un niño en particular.
+    respuesta.ia = iaEstado(presu, costo);
     return res.status(200).json(respuesta);
   } catch (e) {
     return res.status(500).json({ error: String(e.message || e) });

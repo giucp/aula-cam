@@ -22,6 +22,22 @@ function hdr(cfg, extra) {
 }
 
 const TIPOS = new Set(["tarea", "trabajo", "examen"]);
+const LIMITE_DIA_USD = 0.20;
+function diaIA() { return new Date(Date.now() - 4 * 3600 * 1000).toISOString().slice(0, 10); } // día civil de Caracas
+// Estado de IA (batería) del alumno para el home. Degrada a {ilimitado:true} si faltan
+// columnas/fila → la app oculta el gauge (mismo criterio que generar.js).
+async function estadoIA(cfg, uid) {
+  try {
+    const r = await fetch(`${cfg.url}/rest/v1/usuarios?id=eq.${uid}&select=ia_ilimitado,ia_limite_dia_usd,ia_gasto_dia_usd,ia_dia`, { headers: hdr(cfg) });
+    const u = r.ok ? (await r.json())[0] : null;
+    if (!u || u.ia_ilimitado) return { ilimitado: true };
+    const limite = u.ia_limite_dia_usd == null ? LIMITE_DIA_USD : Number(u.ia_limite_dia_usd);
+    const gasto = u.ia_dia === diaIA() ? Number(u.ia_gasto_dia_usd || 0) : 0;
+    return { ilimitado: false, limite, gasto, restante: Math.max(0, limite - gasto) };
+  } catch (e) {
+    return { ilimitado: true };
+  }
+}
 // fecha "YYYY-MM-DD" o null (evita basura en la columna date)
 function fechaValida(s) {
   return typeof s === "string" && /^\d{4}-\d{2}-\d{2}$/.test(s) ? s : null;
@@ -43,16 +59,18 @@ export default async function handler(req, res) {
 
   try {
     if (accion === "todo") {
-      const [h, t, n] = await Promise.all([
+      const [h, t, n, ia] = await Promise.all([
         fetch(`${cfg.url}/rest/v1/horario?usuario_id=eq.${uid}&select=dia,materia,orden&order=dia,orden`, { headers: hdr(cfg) }),
         fetch(`${cfg.url}/rest/v1/tareas?usuario_id=eq.${uid}&select=id,materia,descripcion,tipo,fecha,hecha&order=hecha,fecha.asc.nullslast,id.desc&limit=200`, { headers: hdr(cfg) }),
         fetch(`${cfg.url}/rest/v1/notas?usuario_id=eq.${uid}&select=id,materia,descripcion,nota,fecha&order=fecha.desc.nullslast,id.desc&limit=100`, { headers: hdr(cfg) }),
+        estadoIA(cfg, uid),
       ]);
       return res.status(200).json({
         ok: true,
         horario: h.ok ? await h.json() : [],
         tareas: t.ok ? await t.json() : [],
         notas: n.ok ? await n.json() : [],
+        ia,
       });
     }
 
