@@ -570,5 +570,105 @@ export const CUMBRE_CURRICULO = {
         },
       ],
     },
+    {
+      // Bloque 5to grado (primaria). Convención de ids: 1er año bachillerato = 9000-9006;
+      // grados de primaria = 9<grado>00+ (5to grado = 9500+). El grado propio los aísla igual.
+      id: 9500,
+      grado: "Cumbre Matemática 5to grado",
+      materia: "Matemática",
+      nombre_corto: "CUMBRE MAT 5G",
+      // Equivalente: Singapore Primary 5 (syllabus MOE 2021 — estándar de oro de primaria),
+      // UK KS2 Year 5-6, enfoque concreto-pictórico-abstracto. Rasgo distintivo: el modelo de
+      // barras (bar model) como dominio propio que luego atraviesa todo.
+      grupos: [
+        {
+          lapso: "Números grandes y operaciones",
+          intl: "Whole Numbers",
+          temas: [
+            "Números hasta los 10 millones: leerlos, escribirlos y entender su tamaño",
+            "Multiplicar y dividir por 10, 100 y 1000: el poder del valor posicional",
+            "Orden de las operaciones y paréntesis: en qué orden se resuelve",
+            "Multiplicación y división con números grandes",
+            "Estimar y redondear: ¿mi respuesta tiene sentido?",
+            "Factores, múltiplos y números primos: el interior de los números",
+          ],
+        },
+        {
+          lapso: "El modelo de barras: dibujar para resolver",
+          intl: "Bar Model — el método de Singapur",
+          temas: [
+            "Qué es el modelo de barras: convertir un problema en un dibujo",
+            "Modelo parte-todo: cuando algo se divide en pedazos",
+            "Modelo de comparación: cuando algo tiene más o menos que otro",
+            "Problemas de dos pasos con barras: encadenar lo que sabes",
+            "El modelo antes-después: cuando las cantidades cambian",
+            "El método de la suposición: resolver imaginando que todo es de un tipo",
+          ],
+        },
+        {
+          lapso: "Fracciones a fondo",
+          intl: "Fractions",
+          temas: [
+            "La fracción como división: 3÷4 y 3/4 son lo mismo",
+            "Fracciones impropias y números mixtos: convertir en ambos sentidos",
+            "Sumar y restar fracciones con distinto denominador",
+            "Sumar y restar números mixtos",
+            "Multiplicar una fracción por un número entero",
+            "Multiplicar fracción por fracción: qué significa 'la mitad de un tercio'",
+            "Problemas con fracciones usando el modelo de barras",
+          ],
+        },
+        {
+          lapso: "Decimales y medidas",
+          intl: "Decimals & Measurement",
+          temas: [
+            "Decimales: valor posicional hasta las milésimas",
+            "Multiplicar y dividir decimales por 10, 100 y 1000",
+            "Las cuatro operaciones con decimales",
+            "Fracciones y decimales: dos escrituras del mismo número",
+            "Convertir medidas con decimales: kilómetros, metros, litros, kilogramos",
+            "Problemas de dinero y medidas del mundo real",
+          ],
+        },
+        {
+          lapso: "Porcentaje y tasa",
+          intl: "Percentage & Rate — el estreno de la proporcionalidad",
+          temas: [
+            "El porcentaje: partes de 100 (y su conexión con las fracciones)",
+            "La pregunta clave: ¿qué es el 100% en este problema?",
+            "Hallar el porcentaje de una cantidad",
+            "Hallar el total conociendo un porcentaje",
+            "Descuentos e impuestos: el porcentaje en las compras",
+            "La tasa: cantidad por unidad (precio por kilo, agua por minuto)",
+            "Primera mirada a la razón: comparar cantidades (puente al próximo año)",
+          ],
+        },
+        {
+          lapso: "Geometría: ángulos y figuras",
+          intl: "Angles & Figures",
+          temas: [
+            "Ángulos sobre una recta y alrededor de un punto",
+            "Ángulos opuestos por el vértice",
+            "Los ángulos de un triángulo suman 180°: deducir el que falta",
+            "Triángulos isósceles y equiláteros: usar sus propiedades",
+            "Paralelogramo, rombo y trapecio: propiedades y ángulos",
+            "Área del triángulo: base, altura y por qué la fórmula funciona",
+            "Figuras compuestas: partir para calcular",
+            "Volumen del cubo y el ortoedro: centímetros cúbicos y litros",
+          ],
+        },
+        {
+          lapso: "Datos y promedio",
+          intl: "Data & Average",
+          temas: [
+            "El promedio: repartir el total en partes iguales",
+            "Del promedio al total y de vuelta: usar la relación en ambos sentidos",
+            "Problemas de promedio con el modelo de barras",
+            "Leer tablas y gráficos para responder preguntas de varios pasos",
+            "¿Qué dice y qué no dice un promedio? (puente con Cómo Pensar)",
+          ],
+        },
+      ],
+    },
   ],
 };
