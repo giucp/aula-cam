@@ -172,11 +172,31 @@
     const d=new Date();
     const f=`${DIAS_NOM[d.getDay()]} ${d.getDate()} de ${MESES[d.getMonth()]}`;
     $("#fechaHoy").textContent=f[0].toUpperCase()+f.slice(1);
+    cargarEfemerides().then(pintarEfemeride);
     pintarExamenBanner();
     pintarNovedadesInicio();
     pintarHorarioInicio();
     pintarTareasResumen();
     pintarNotasInicio();
+  }
+
+  // "Un día como hoy": efeméride del día (archivo estático curado, cacheado offline por el SW).
+  let EFEMERIDES=null;
+  async function cargarEfemerides(){
+    if(EFEMERIDES) return EFEMERIDES;
+    try{ const r=await fetch("/un-dia-como-hoy.json"); EFEMERIDES=await r.json(); }
+    catch(_){ EFEMERIDES={}; }
+    return EFEMERIDES;
+  }
+  function pintarEfemeride(){
+    const box=$("#efemeride"); if(!box) return;
+    const d=new Date();
+    const key=String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+    const e=EFEMERIDES&&EFEMERIDES[key];
+    if(!e||!e.texto){ box.classList.add("hidden"); box.innerHTML=""; return; }
+    const anio=e.anio?`En ${escapeHtml(String(e.anio))}, `:"";
+    box.innerHTML=`<div class="efeIn"><span class="efeEmoji">${escapeHtml(e.emoji||"📅")}</span><div class="efeTx"><span class="efeTit">Un día como hoy</span><p class="efePar">${anio}${escapeHtml(e.texto)}</p></div></div>`;
+    box.classList.remove("hidden");
   }
   // pegamento examen→simulacro: si anotó un examen a ≤3 días, se lo recordamos
   function pintarExamenBanner(){

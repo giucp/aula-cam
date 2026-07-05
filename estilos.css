@@ -97,6 +97,14 @@
   .cumProx b{font-family:"Fredoka";font-weight:600;color:#B65A12}
   .cumProx span{font-family:"Nunito";font-size:.94rem;color:var(--ink);opacity:.85}
 
+  /* "Un día como hoy" (efeméride diaria en Inicio) */
+  #efemeride{margin-bottom:22px}
+  .efeIn{display:flex;align-items:center;gap:14px;background:linear-gradient(120deg,#EAF7F5,#F3ECFF);border:1px solid var(--line);border-radius:20px;padding:14px 16px;box-shadow:var(--shadow-xs)}
+  .efeEmoji{font-size:2rem;flex:none;line-height:1}
+  .efeTx{min-width:0}
+  .efeTit{display:block;font-family:"Fredoka";font-weight:600;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--grape)}
+  .efePar{font-family:"Nunito";font-size:.98rem;line-height:1.45;color:var(--ink);margin:2px 0 0}
+
   /* tarjeta "repasar mis errores" */
   .repasar{display:flex;align-items:center;gap:14px;width:100%;text-align:left;cursor:pointer;border:none;
     background:linear-gradient(120deg,#FF6B3D,#FF9558);color:#fff;border-radius:20px;padding:15px 18px;margin-bottom:22px;
