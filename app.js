@@ -800,6 +800,7 @@
   function pintarMaterias(){
     origen = "actual";
     $("#destacadaWrap").classList.toggle("hidden", !siguienteGradoLabel());
+    $("#cumbreWrap").classList.remove("hidden");
     $("#erroresWrap").classList.toggle("hidden", !MIS_ERRORES.length);
     $("#materiasHead").innerHTML = "📚 Tus materias";
     gridMaterias(SESION.materias||[]);
@@ -822,6 +823,7 @@
       origen = "proximo"; proximoGrado = grado;
       cargarCuradoInfo(grado);   // guía revisada del próximo grado (si la hubiera)
       $("#destacadaWrap").classList.add("hidden");
+      $("#cumbreWrap").classList.add("hidden");
       $("#erroresWrap").classList.add("hidden");
       $("#materiasHead").innerHTML = `<button class="volver" id="volverActual">‹ Mis materias</button><span class="proxTag">🚀 ${escapeHtml(grado)} · próximo año</span>`;
       $("#volverActual").onclick = ()=>{ pintarMaterias(); window.scrollTo({top:0,behavior:"smooth"}); };
@@ -833,7 +835,37 @@
     }finally{ btn.disabled=false; }
   }
 
-  function verMaterias(){ $("#paneTemas").classList.add("hidden"); $("#paneErrores").classList.add("hidden"); $("#paneMaterias").classList.remove("hidden"); }
+  function verMaterias(){ $("#paneTemas").classList.add("hidden"); $("#paneErrores").classList.add("hidden"); $("#paneCumbre").classList.add("hidden"); $("#paneMaterias").classList.remove("hidden"); }
+
+  // ───────── Cumbre: presentación del espacio (acceso listo, contenido próximamente) ─────────
+  $("#btnCumbre").onclick = entrarCumbre;
+  $("#btnBackCumbre").onclick = verMaterias;
+  async function entrarCumbre(){
+    $("#paneMaterias").classList.add("hidden");
+    $("#paneErrores").classList.add("hidden");
+    $("#paneTemas").classList.add("hidden");
+    $("#paneCumbre").classList.remove("hidden");
+    const box = $("#cumbreIntro");
+    box.innerHTML = `<p class="labLoad">Cargando…</p>`;
+    window.scrollTo({top:0,behavior:"smooth"});
+    try{
+      const r = await fetch(API_CURRICULO,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ accion:"cumbre_intro" })});
+      const d = await r.json();
+      renderCumbreIntro(d.intro||{});
+    }catch(e){ renderCumbreIntro({}); }
+  }
+  function renderCumbreIntro(x){
+    const titulo = x.titulo || "Cumbre 🏔️";
+    const bajada = x.bajada || "La mejor educación del mundo, para ti.";
+    let html = `<div class="cumHero"><div class="cumMonte">🏔️</div><h2 class="cumTit">${escapeHtml(titulo)}</h2><p class="cumBaj">${escapeHtml(bajada)}</p></div>`;
+    if(x.texto_nino) html += `<p class="cumPar">${escapeHtml(x.texto_nino)}</p>`;
+    if(x.cierre) html += `<p class="cumCierre">${escapeHtml(x.cierre)}</p>`;
+    if(x.texto_padre){
+      html += `<details class="cumMas"><summary>Para los padres</summary><p class="cumPar">${escapeHtml(x.texto_padre)}</p></details>`;
+    }
+    html += `<div class="cumProx"><b>🚧 En preparación</b><span>Las materias de Cumbre están en camino. Pronto vas a poder practicar aquí. Por ahora, esta es tu presentación del espacio.</span></div>`;
+    $("#cumbreIntro").innerHTML = html;
+  }
   $("#btnBack").onclick = ()=>{ temaSel=null; $("#results").innerHTML=""; fotos=[]; pintarFotos(); limpiarRefuerzo(); verMaterias(); };
 
   function abrirMateria(m){

@@ -76,6 +76,26 @@
   .dTxt b{font-family:"Fredoka";font-weight:600;font-size:1.12rem}
   .dTxt small{opacity:.92;font-weight:700;font-size:.9rem}
   .dArrow{font-family:"Fredoka";font-size:1.7rem;opacity:.9;flex:none}
+  /* tarjeta Cumbre: gradiente más profundo (premium, distinto de "Adelántate") */
+  #cumbreWrap{margin-top:-6px}
+  .destacada.cumbre{background:linear-gradient(120deg,#3B2B4A,#5A3AAF 55%,#7C4DFF);box-shadow:0 16px 30px -12px rgba(59,43,74,.75)}
+
+  /* presentación del espacio Cumbre (#paneCumbre) */
+  .cumHero{text-align:center;background:linear-gradient(160deg,#3B2B4A,#5A3AAF);color:#fff;border-radius:24px;padding:26px 20px 22px;margin-bottom:18px;box-shadow:0 18px 34px -14px rgba(59,43,74,.7)}
+  .cumMonte{font-size:2.7rem;line-height:1}
+  .cumTit{font-family:"Fredoka";font-weight:600;font-size:1.7rem;margin:6px 0 4px}
+  .cumBaj{font-family:"Nunito";font-weight:700;font-size:1.02rem;opacity:.95;margin:0}
+  .cumPar{font-family:"Nunito";font-size:1rem;line-height:1.6;color:var(--ink);margin:0 2px 14px}
+  .cumCierre{font-family:"Fredoka";font-weight:600;font-size:1.05rem;color:var(--grape);text-align:center;background:#F1EAFB;border-radius:16px;padding:14px 16px;margin:0 0 16px}
+  .cumMas{border:2px solid var(--line);border-radius:16px;padding:2px 16px;margin-bottom:16px;background:var(--surface)}
+  .cumMas summary{font-family:"Fredoka";font-weight:600;color:var(--grape);cursor:pointer;padding:12px 0;list-style:none}
+  .cumMas summary::-webkit-details-marker{display:none}
+  .cumMas summary::after{content:"▾";float:right;transition:transform .2s}
+  .cumMas[open] summary::after{transform:rotate(180deg)}
+  .cumMas .cumPar{margin-bottom:12px}
+  .cumProx{display:flex;flex-direction:column;gap:3px;background:#FFF3E4;border:2px dashed #F0C89A;border-radius:16px;padding:14px 16px}
+  .cumProx b{font-family:"Fredoka";font-weight:600;color:#B65A12}
+  .cumProx span{font-family:"Nunito";font-size:.94rem;color:var(--ink);opacity:.85}
 
   /* tarjeta "repasar mis errores" */
   .repasar{display:flex;align-items:center;gap:14px;width:100%;text-align:left;cursor:pointer;border:none;
