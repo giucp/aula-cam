@@ -200,14 +200,19 @@ app: el modelo económico JAMÁS toca lo que puede salir mal caro; el modelo top
    y (Cumbre) **que el banco trabaje al `nivel_cognitivo` del grado** — ni corto ni pasado; un banco
    que se quedó en recordar/entender cuando el grado pide analizar se DEVUELVE, igual que por un
    error de cálculo.
-   Para bancos redactados por Sonnet este paso es OBLIGATORIO e intransigente (leer+reportar cuesta
-   ~4-5× menos que redactar → la supervisión top sale barata). Puede hacerla el propio Claude
-   principal si él es el modelo top de la sesión.
+   Para bancos redactados por Sonnet este paso es OBLIGATORIO e intransigente. Puede hacerla el
+   propio Claude principal si él es el modelo top de la sesión.
+   OJO COSTO (medido 2026-07-04, 7 revisores de nivel cognitivo = ~418k tokens): revisar un banco
+   NO sale casi gratis — el revisor debe LEER el banco completo (~30KB) antes de juzgar, así que
+   revisar ≈ 0.7× redactar, no 0.2×. El ahorro REAL del patrón está en (1) usar Sonnet para
+   redactar teoría/idioma y (2) que la verificación mecánica (paso 2) no gaste subagentes; NO en
+   suponer que la revisión es barata. No inflar el nº de revisores.
 4. **Correcciones:** al MISMO redactor vía SendMessage (mantiene su contexto) o edición directa de
    Claude si es puntual. **Subida y verificación en vivo:** siempre Claude principal (endpoint +
    `curado:true` + commit), nunca los subagentes.
 Paralelismo: un redactor por materia (como el lote de 13 bancos de 2026-07-04, ~545k tokens — con
-este patrón el mismo lote costaría ~40-50% menos sin bajar calidad).
+Sonnet para la teoría el mismo lote costaría ~25-35% menos sin bajar calidad; la revisión NO ahorra
+mucho porque implica releer todo).
 
 ## Seguridad de la sesión
 - **Nunca** imprimir contraseñas ni tokens en la conversación ni en logs.
