@@ -69,18 +69,24 @@ Todas las claves de modo son OPCIONALES (se puede curar solo resumen+quiz de un 
     vio, lo entiende leyéndolo solo? Si necesita que alguien se lo explique, NO cumple la regla.
   Es directo NO significa mejor: preferimos "nutritivo y explícito" a "correcto pero denso".
   Vale especialmente para Cumbre (currículo de autoexploración, sin profe por definición).
-- **Quiz:** 15 preguntas, 3–4 opciones, distractores creíbles (errores típicos reales del
-  grado), explicación breve del porqué. `correcta` = índice válido dentro de `opciones`.
-- **Retos:** 12, con pista que orienta sin regalar y solución con explicación corta.
-- **Examen:** 10 preguntas en el formato que evalúa la maestra (mirar guías/fotos para
+- **Quiz:** MÍNIMO 12 preguntas (el tema manda: si da para 15+, mejor; NUNCA por debajo del
+  mínimo). 3–4 opciones, distractores creíbles (errores típicos reales del grado), explicación
+  breve del porqué. `correcta` = índice válido dentro de `opciones`.
+- **Retos:** MÍNIMO 10 (más si el tema lo amerita). Cada uno con pista que orienta sin regalar y
+  solución con explicación corta.
+- **Examen:** MÍNIMO 10 preguntas en el formato que evalúa la maestra (mirar guías/fotos para
   imitar su estilo), cada una con explicación de CÓMO se resuelve.
 - **Figuras:** solo si el ejercicio lo necesita; SVG simple autocontenido con `viewBox`,
   sin `<script>` ni recursos externos; coherente con enunciado y solución. Si no, `"figura":""`.
 - **Grados activos:** `5to grado` (cuenta A) y `1er año` (cuenta B) — usar EXACTAMENTE
   esos strings en el campo `grado`.
 
-> Tamaños: quiz y retos 12–15, examen 10. El servido toma una MUESTRA aleatoria de la
-> cantidad que pide el niño; con bancos así, "generar otros" da variedad real sin gastar IA.
+> Tamaños = MÍNIMOS, NO cantidades fijas. Cada tema es distinto: uno rinde 10 buenos ejercicios,
+> otro da para 18 — subí por encima del mínimo cuando el tema lo justifique, nunca bajes de él.
+> Mínimos: quiz ≥12, retos ≥10, examen ≥10. El mínimo existe por una razón FUNCIONAL, no estética:
+> el servido toma una MUESTRA aleatoria de la cantidad que pide el niño, así que el banco necesita
+> bastantes MÁS ítems que un pedido típico para que "generar otros" dé variedad real sin gastar IA.
+> (El banco de oro de primos —10 retos/12 quiz— es un EJEMPLO que cumple el mínimo, no un molde fijo.)
 
 ## CHECKLIST OBLIGATORIO de cada banco (seguirlo SIEMPRE, en orden)
 Cada vez que el admin diga "vamos a crear el contenido de X", Claude debe ejecutar estas
