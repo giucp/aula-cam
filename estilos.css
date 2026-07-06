@@ -98,6 +98,8 @@
   .cumProx span{font-family:"Nunito";font-size:.94rem;color:var(--ink);opacity:.85}
   /* encuadre "adelanta en vacaciones" sobre la tarjeta de Cumbre (no toca la tarjeta) */
   .cumEyebrow{display:flex;align-items:center;gap:6px;font-family:"Fredoka";font-weight:600;font-size:.94rem;color:var(--grape);margin:0 4px 8px}
+  /* distintivo del grado de las materias de Cumbre (dentro del hero morado) */
+  .cumGrado{display:inline-block;margin-top:12px;background:rgba(255,255,255,.2);color:#fff;font-family:"Nunito";font-weight:800;font-size:.9rem;padding:6px 16px;border-radius:20px}
   /* Cumbre: materias del track con sus temas (curado 📗 vs Próximamente) */
   #cumbreMaterias{margin-top:4px}
   .cMat{background:var(--surface);border-radius:18px;padding:8px 14px;margin-bottom:10px;box-shadow:var(--shadow-xs)}
@@ -137,13 +139,13 @@
   .enTit{display:block;font-family:"Fredoka";font-weight:600;font-size:1rem;color:var(--ink)}
   .enMsg{font-family:"Nunito";font-size:.86rem;color:var(--muted);margin:2px 0 0}
   /* escala verde → amarillo → rojo según la energía que queda; track tintado del mismo tono + glow suave */
-  .en-alto  .enFg{stroke:#2FBF71;filter:drop-shadow(0 2px 5px rgba(47,191,113,.45))}
+  .en-alto  .enFg{stroke:#2FBF71}
   .en-alto  .enBg{stroke:#E3F6EB}
-  .en-medio .enFg{stroke:#FBB215;filter:drop-shadow(0 2px 5px rgba(251,178,21,.45))}
+  .en-medio .enFg{stroke:#FBB215}
   .en-medio .enBg{stroke:#FDF1D4}
-  .en-bajo  .enFg{stroke:#FB5A4B;filter:drop-shadow(0 2px 5px rgba(251,90,75,.45))}
+  .en-bajo  .enFg{stroke:#FB5A4B}
   .en-bajo  .enBg{stroke:#FDE3DF}
-  .en-vacio .enFg{stroke:#FB5A4B;filter:drop-shadow(0 2px 5px rgba(251,90,75,.4))}
+  .en-vacio .enFg{stroke:#FB5A4B}
   .en-vacio .enBg{stroke:#FDE3DF}
   .en-vacio .enPct{fill:#E5483D}
   .en-vacio .enTit{color:var(--bad)}

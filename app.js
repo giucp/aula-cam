@@ -941,9 +941,12 @@
     }catch(e){ renderCumbreIntro({}); renderCumbreMaterias([]); }
   }
   function renderCumbreIntro(x){
-    const titulo = x.titulo || "Cumbre 🏔️";
+    // el ícono de montaña grande (cumMonte) ya está arriba → quitamos la 🏔️ del título para no repetir.
+    const titulo = ((x.titulo || "Cumbre").replace(/[\u{1F3D4}\u{FE0F}]/gu, "").trim()) || "Cumbre";
     const bajada = x.bajada || "La mejor educación del mundo, para ti.";
-    let html = `<div class="cumHero"><div class="cumMonte">🏔️</div><h2 class="cumTit">${escapeHtml(titulo)}</h2><p class="cumBaj">${escapeHtml(bajada)}</p></div>`;
+    const track = cumbreTrack();
+    const badge = track ? `<span class="cumGrado">🎓 Materias de ${escapeHtml(track)}</span>` : "";
+    let html = `<div class="cumHero"><div class="cumMonte">🏔️</div><h2 class="cumTit">${escapeHtml(titulo)}</h2><p class="cumBaj">${escapeHtml(bajada)}</p>${badge}</div>`;
     if(x.texto_nino) html += `<p class="cumPar">${escapeHtml(x.texto_nino)}</p>`;
     if(x.cierre) html += `<p class="cumCierre">${escapeHtml(x.cierre)}</p>`;
     if(x.texto_padre){
