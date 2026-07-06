@@ -218,29 +218,45 @@
     box.innerHTML=`<div class="efeIn"><span class="efeEmoji">${escapeHtml(e.emoji||"📅")}</span><div class="efeTx"><span class="efeTit">Un día como hoy</span><p class="efePar">${anio}${escapeHtml(e.texto)}</p></div></div>`;
     box.classList.remove("hidden");
   }
-  // pegamento examen→simulacro: si anotó examen(es) a ≤3 días, se los recordamos.
-  // Muestra TODOS los exámenes próximos (uno por materia), no solo el más cercano,
-  // para que pueda ir a practicar cualquiera si tiene 2 o más el mismo día.
+  // pegamento examen→simulacro. Muestra SOLO el día más próximo con examen (no
+  // los de 2-3 días después, para no llenar el inicio). Si ese día tiene 1 examen,
+  // es el banner de siempre; si tiene 2 o más, se juntan en UNA tarjeta compacta
+  // (una fila por materia), no varios banners apilados.
   // Un examen de HOY se oculta a partir de CORTE_MANANA (1 PM, hora del aparato):
-  // pasada la mañana escolar se asume presentado, y el banner pasa a mostrar los del
-  // día siguiente. Antes de esa hora sí se muestra (sirve para repasar en la mañana).
+  // pasada la mañana escolar se asume presentado y se pasa a mostrar el día siguiente.
   const CORTE_MANANA = 13; // hora local a partir de la cual un examen de hoy ya no se recuerda
   function pintarExamenBanner(){
     const box=$("#examenBanner"); box.innerHTML="";
     const horaLocal=new Date().getHours();
-    const exs=TAREAS.filter(t=>t.tipo==="examen" && !t.hecha && t.fecha)
+    const todos=TAREAS.filter(t=>t.tipo==="examen" && !t.hecha && t.fecha)
       .map(t=>({t,n:diasHasta(t.fecha)}))
       .filter(x=>x.n!==null && x.n>=0 && x.n<=3 && (x.n>0 || horaLocal<CORTE_MANANA))
-      .sort((a,b)=>a.n-b.n)
-      .slice(0,6); // tope de seguridad; en la práctica son 1-3
-    if(!exs.length) return;
-    exs.forEach(ex=>{
-      const cuando = ex.n===0?"¡es hoy!":(ex.n===1?"es mañana":`en ${ex.n} días`);
+      .sort((a,b)=>a.n-b.n);
+    if(!todos.length) return;
+    const minN=todos[0].n;                                   // día más próximo con examen
+    const dia=todos.filter(x=>x.n===minN).slice(0,6);        // solo ese día
+    const cuando = minN===0?"¡es hoy!":(minN===1?"es mañana":`en ${minN} días`);
+    const cuandoCorto = minN===0?"hoy":(minN===1?"mañana":`en ${minN} días`);
+    if(dia.length===1){
+      const ex=dia[0];
       const b=document.createElement("button"); b.className="examenAviso";
       b.innerHTML=`<span class="dIcon">📋</span><span class="dTxt"><b>Examen de ${escapeHtml(limpiaNombreMateria(ex.t.materia||"")||"…")} ${cuando}</b><small>¿Simulamos uno para practicar? →</small></span><span class="dArrow">›</span>`;
       b.onclick=()=>irAPractica(ex.t.materia, "examen");
       box.appendChild(b);
+      return;
+    }
+    // 2+ exámenes el mismo día → una sola tarjeta con una fila por materia
+    const card=document.createElement("div"); card.className="examenCard";
+    const head=document.createElement("div"); head.className="ecHead";
+    head.innerHTML=`<span class="ecIcon">📋</span><span class="ecHeadTxt"><b>Tienes ${dia.length} exámenes ${cuandoCorto}</b><small>Toca uno para simularlo y practicar</small></span>`;
+    card.appendChild(head);
+    dia.forEach(ex=>{
+      const row=document.createElement("button"); row.className="ecRow";
+      row.innerHTML=`<span class="ecMat">${iconMateria(ex.t.materia)} ${escapeHtml(limpiaNombreMateria(ex.t.materia||"")||"…")}</span><span class="ecGo">Practicar ›</span>`;
+      row.onclick=()=>irAPractica(ex.t.materia, "examen");
+      card.appendChild(row);
     });
+    box.appendChild(card);
   }
   function pintarHorarioInicio(){
     const {dia,titulo}=proximoDiaEscolar();

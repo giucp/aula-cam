@@ -370,6 +370,19 @@
   .examenAviso .dTxt b{display:block;font-family:"Fredoka";font-weight:600;font-size:1.02rem}
   .examenAviso .dTxt small{opacity:.9;font-weight:600}
   .examenAviso .dArrow{margin-left:auto;font-size:1.4rem;opacity:.85}
+  /* tarjeta de exámenes (2+ el mismo día): UN solo bloque en vez de varios banners */
+  .examenCard{background:linear-gradient(120deg,#7C4DFF,#9C6BFF);color:#fff;border-radius:var(--radius);
+    padding:16px;box-shadow:0 14px 26px -12px rgba(124,77,255,.6);margin-bottom:14px}
+  .examenCard .ecHead{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .examenCard .ecIcon{font-size:1.4rem}
+  .examenCard .ecHead b{display:block;font-family:"Fredoka";font-weight:600;font-size:1.02rem}
+  .examenCard .ecHead small{opacity:.9;font-weight:600}
+  .examenCard .ecRow{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;
+    background:rgba(255,255,255,.15);border:none;cursor:pointer;color:#fff;border-radius:12px;
+    padding:11px 14px;margin-top:8px;text-align:left;transition:transform .12s,background .12s}
+  .examenCard .ecRow:active{transform:scale(.98)}
+  .examenCard .ecMat{font-family:"Fredoka";font-weight:600;font-size:1rem;display:flex;align-items:center;gap:8px}
+  .examenCard .ecGo{opacity:.9;font-weight:600;font-size:.92rem;white-space:nowrap}
 
   /* tareas */
   .tarea{display:flex;align-items:flex-start;gap:10px;padding:10px 2px;border-bottom:1.5px solid var(--line)}

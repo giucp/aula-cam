@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v26"; // v26: el examen de hoy se oculta del banner a partir de la 1 PM (pasa a mostrar los del dia siguiente)
+const VERSION = "aulacam-v27"; // v27: examenes del dia mas proximo en UNA tarjeta compacta (no varios banners apilados)
 const SHELL = [
   "/",
   "/index.html",
