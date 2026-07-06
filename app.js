@@ -218,18 +218,23 @@
     box.innerHTML=`<div class="efeIn"><span class="efeEmoji">${escapeHtml(e.emoji||"📅")}</span><div class="efeTx"><span class="efeTit">Un día como hoy</span><p class="efePar">${anio}${escapeHtml(e.texto)}</p></div></div>`;
     box.classList.remove("hidden");
   }
-  // pegamento examen→simulacro: si anotó un examen a ≤3 días, se lo recordamos
+  // pegamento examen→simulacro: si anotó examen(es) a ≤3 días, se los recordamos.
+  // Muestra TODOS los exámenes próximos (uno por materia), no solo el más cercano,
+  // para que pueda ir a practicar cualquiera si tiene 2 o más el mismo día.
   function pintarExamenBanner(){
     const box=$("#examenBanner"); box.innerHTML="";
-    const ex=TAREAS.filter(t=>t.tipo==="examen" && !t.hecha && t.fecha)
+    const exs=TAREAS.filter(t=>t.tipo==="examen" && !t.hecha && t.fecha)
       .map(t=>({t,n:diasHasta(t.fecha)})).filter(x=>x.n!==null && x.n>=0 && x.n<=3)
-      .sort((a,b)=>a.n-b.n)[0];
-    if(!ex) return;
-    const cuando = ex.n===0?"¡es hoy!":(ex.n===1?"es mañana":`en ${ex.n} días`);
-    const b=document.createElement("button"); b.className="examenAviso";
-    b.innerHTML=`<span class="dIcon">📋</span><span class="dTxt"><b>Examen de ${escapeHtml(limpiaNombreMateria(ex.t.materia||"")||"…")} ${cuando}</b><small>¿Simulamos uno para practicar? →</small></span><span class="dArrow">›</span>`;
-    b.onclick=()=>irAPractica(ex.t.materia, "examen");
-    box.appendChild(b);
+      .sort((a,b)=>a.n-b.n)
+      .slice(0,6); // tope de seguridad; en la práctica son 1-3
+    if(!exs.length) return;
+    exs.forEach(ex=>{
+      const cuando = ex.n===0?"¡es hoy!":(ex.n===1?"es mañana":`en ${ex.n} días`);
+      const b=document.createElement("button"); b.className="examenAviso";
+      b.innerHTML=`<span class="dIcon">📋</span><span class="dTxt"><b>Examen de ${escapeHtml(limpiaNombreMateria(ex.t.materia||"")||"…")} ${cuando}</b><small>¿Simulamos uno para practicar? →</small></span><span class="dArrow">›</span>`;
+      b.onclick=()=>irAPractica(ex.t.materia, "examen");
+      box.appendChild(b);
+    });
   }
   function pintarHorarioInicio(){
     const {dia,titulo}=proximoDiaEscolar();
