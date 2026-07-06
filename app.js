@@ -916,6 +916,9 @@
   $("#btnBackCumbre").onclick = ()=>{ pintarMaterias(); verMaterias(); };
   let CUMBRE_MATERIAS = [];     // materias del track (para el render y los clicks)
   let cumbreModosTema = [];     // modos disponibles del tema abierto en Cumbre
+  // Cumbre es SOLO curado: los botones NO dicen "crear/inventar" (eso es IA), sino "leer/empezar".
+  const CUMBRE_VERBO = { resumen:"📖 Leer el resumen", retos:"🎯 Empezar a practicar", quiz:"🎮 Empezar el quiz", examen:"📋 Empezar el examen" };
+  const CUMBRE_CARGA = { resumen:"Abriendo tu resumen", retos:"Abriendo tu práctica", quiz:"Abriendo tu quiz", examen:"Abriendo tu examen" };
   async function entrarCumbre(){
     $("#paneMaterias").classList.add("hidden");
     $("#paneErrores").classList.add("hidden");
@@ -1012,7 +1015,7 @@
     const mo = MODOS.find(m=>m.id===id) || MODOS[0];
     $("#pasoCantidad").classList.toggle("hidden", !mo.conteo);
     pintarModosCumbre();
-    const btnGen=$("#btnGen"); if(btnGen){ btnGen.textContent = mo.verbo; btnGen.disabled=false; }
+    const btnGen=$("#btnGen"); if(btnGen){ btnGen.textContent = CUMBRE_VERBO[id] || mo.verbo; btnGen.disabled=false; }
   }
   // generar contenido de Cumbre: SOLO curado (programa=cumbre); reusa render(). Nunca IA/caché.
   async function generarCumbre(){
@@ -1021,7 +1024,7 @@
     const mo = MODOS.find(m=>m.id===modoSel) || MODOS[0];
     const res=$("#results"), btnGen=$("#btnGen");
     if(btnGen) btnGen.disabled=true;
-    res.innerHTML = vistaCargando(tema, mo, false);
+    res.innerHTML = vistaCargando(tema, { ...mo, carga: CUMBRE_CARGA[modoSel] || "Abriendo" }, false);
     try{
       const body = { materia:mat, tema, grado:gr, cantidad, modo:modoSel, programa:"cumbre", usuario_id:(SESION&&SESION.id)||null };
       const r = await fetch(API_GENERAR,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
