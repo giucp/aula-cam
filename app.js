@@ -954,9 +954,13 @@
     const cont = $("#cumbreMaterias"); cont.innerHTML = "";
     if(!materias.length){ cont.innerHTML = `<div class="empty">Tus materias de Cumbre están en camino. ¡Pronto! ✨</div>`; return; }
     materias.forEach((m, mi)=>{
-      const card = document.createElement("div"); card.className = "cMat";
+      const card = document.createElement("div"); card.className = "cMat";  // plegada por defecto
       const prog = `${m.curados||0} de ${m.total||0} listo${(m.total===1)?"":"s"}`;
-      let html = `<div class="cMatHead"><span class="em">${iconMateria(m.materia)}</span><span class="cMatNom">${escapeHtml(m.materia)}</span><span class="cMatProg">${prog}</span></div>`;
+      const head = document.createElement("button"); head.type="button"; head.className="cMatHead";
+      head.setAttribute("aria-expanded","false");
+      head.innerHTML = `<span class="em">${iconMateria(m.materia)}</span><span class="cMatNom">${escapeHtml(m.materia)}</span><span class="cMatProg">${prog}</span><span class="cMatChevron">▾</span>`;
+      const body = document.createElement("div"); body.className="cMatBody";
+      let html = "";
       (m.dominios||[]).forEach((dom, di)=>{
         const temas = dom.temas||[]; if(!temas.length) return;
         html += `<div class="cDom">${escapeHtml(dom.dominio||"")}</div>`;
@@ -965,14 +969,16 @@
           else html += `<div class="cTema no"><span class="cNom">${escapeHtml(t.tema)}</span><span class="cSoon">Próximamente</span></div>`;
         });
       });
-      card.innerHTML = html;
-      card.querySelectorAll(".cTema.ok").forEach(btn=>{
+      body.innerHTML = html;
+      head.onclick = ()=>{ const op=card.classList.toggle("open"); head.setAttribute("aria-expanded", String(op)); };
+      body.querySelectorAll(".cTema.ok").forEach(btn=>{
         btn.onclick = ()=>{
           const mm = CUMBRE_MATERIAS[+btn.dataset.mi]; if(!mm) return;
           const tt = ((mm.dominios[+btn.dataset.di]||{}).temas||[])[+btn.dataset.ti]; if(!tt) return;
           abrirTemaCumbre(mm.materia, mm.grado, tt.tema, tt.modos||[]);
         };
       });
+      card.appendChild(head); card.appendChild(body);
       cont.appendChild(card);
     });
   }

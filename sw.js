@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v29"; // v29: Cumbre soltado como "adelanta en vacaciones" (materias/temas curados, reemplaza el adelantate viejo)
+const VERSION = "aulacam-v30"; // v30: materias de Cumbre en acordeon (plegadas por defecto) para no deslizar tanto
 const SHELL = [
   "/",
   "/index.html",

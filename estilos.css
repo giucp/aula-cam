@@ -100,11 +100,15 @@
   .cumEyebrow{display:flex;align-items:center;gap:6px;font-family:"Fredoka";font-weight:600;font-size:.94rem;color:var(--grape);margin:0 4px 8px}
   /* Cumbre: materias del track con sus temas (curado 📗 vs Próximamente) */
   #cumbreMaterias{margin-top:4px}
-  .cMat{background:var(--surface);border-radius:18px;padding:12px 14px 8px;margin-bottom:12px;box-shadow:var(--shadow-xs)}
-  .cMatHead{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+  .cMat{background:var(--surface);border-radius:18px;padding:8px 14px;margin-bottom:10px;box-shadow:var(--shadow-xs)}
+  .cMatHead{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:none;background:transparent;cursor:pointer;padding:6px 0}
   .cMatHead .em{flex:none;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-size:1.2rem;background:#F1EAFB}
-  .cMatNom{flex:1;font-family:"Nunito";font-weight:800;font-size:1.02rem;color:var(--ink)}
+  .cMatNom{flex:1;font-family:"Nunito";font-weight:800;font-size:1.02rem;color:var(--ink);min-width:0}
   .cMatProg{font-size:.74rem;font-weight:700;color:#1B8F5A;background:#E3F6EB;padding:3px 9px;border-radius:20px;white-space:nowrap}
+  .cMatChevron{flex:none;color:var(--muted);font-family:"Fredoka";font-size:1.1rem;opacity:.6;transition:transform .2s}
+  .cMat.open .cMatChevron{transform:rotate(180deg)}
+  .cMatBody{display:none;padding:2px 0 6px}
+  .cMat.open .cMatBody{display:block}
   .cDom{font-family:"Fredoka";font-weight:600;font-size:.78rem;letter-spacing:.02em;text-transform:uppercase;color:var(--muted);margin:10px 2px 6px}
   .cTema{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:none;border-radius:12px;padding:11px 12px;margin-bottom:6px;font-family:"Nunito"}
   .cTema.ok{background:#F3FBF6;box-shadow:inset 0 0 0 1.5px #C8ECD8;cursor:pointer;transition:transform .12s}
