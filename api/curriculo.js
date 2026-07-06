@@ -5,6 +5,10 @@
 // del lado del servidor porque la tabla tiene RLS.
 //
 // Uso (POST JSON): { "grado": "5to grado" }
+//   o { "accion":"cumbre_track", "track":"5to grado" } → materias de Cumbre de ese track
+//   (cada materia es su propio grado "Cumbre <Materia> <track>") con qué temas están CURADOS.
+
+import { normCurado } from "../herramientas/normcurado.mjs";
 
 function supabaseCfg() {
   const url = process.env.SUPABASE_URL;
@@ -49,6 +53,49 @@ export default async function handler(req, res) {
   // Presentación de Cumbre (texto editable; NO contenido de materias).
   if (req.body && req.body.accion === "cumbre_intro") {
     return res.status(200).json({ ok: true, intro: await leerCumbreIntro() });
+  }
+
+  // Track de Cumbre: materias del track (5to grado / 1er año) + qué temas están CURADOS.
+  // Cada materia de Cumbre es su propio grado ("Cumbre <Materia> <track>"). Gemini NUNCA
+  // toca Cumbre → la app solo deja practicar los temas curados; el resto va "Próximamente".
+  if (req.body && req.body.accion === "cumbre_track") {
+    const track = req.body.track;
+    if (!track) return res.status(400).json({ error: "Falta 'track'" });
+    const cfg = supabaseCfg();
+    if (!cfg) return res.status(200).json({ ok: true, track, materias: [] });
+    try {
+      const qm = `${cfg.url}/rest/v1/curriculo?grado=like.${encodeURIComponent("Cumbre*" + track)}` +
+        `&select=materia,grado,materia_id,temas&order=materia_id`;
+      const rm = await fetch(qm, { headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}` } });
+      const cursos = rm.ok ? await rm.json() : [];
+      const rk = await fetch(`${cfg.url}/rest/v1/contenido_curado?programa=eq.cumbre&select=grado,materia_norm,tema_norm,modo`,
+        { headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}` } });
+      const curadas = rk.ok ? await rk.json() : [];
+      const mapa = {};
+      for (const row of Array.isArray(curadas) ? curadas : []) {
+        const k = `${row.grado}||${row.materia_norm}||${row.tema_norm}`;
+        (mapa[k] || (mapa[k] = [])).push(row.modo);
+      }
+      const materias = (Array.isArray(cursos) ? cursos : []).map((c) => {
+        const mnorm = normCurado(c.materia || "");
+        const grupos = (c.temas && Array.isArray(c.temas.grupos)) ? c.temas.grupos : [];
+        let curados = 0, total = 0;
+        const dominios = grupos.map((g) => {
+          const temas = (g.temas || []).map((t) => {
+            const titulo = t && typeof t === "object" ? t.t : t;
+            const modos = mapa[`${c.grado}||${mnorm}||${normCurado(titulo)}`] || null;
+            total++; if (modos) curados++;
+            return { tema: titulo, curado: !!modos, modos: modos || [] };
+          });
+          return { dominio: g.lapso || "", intl: g.intl || "", temas };
+        });
+        return { materia: c.materia, grado: c.grado, materia_id: c.materia_id,
+          nivel: (c.temas && c.temas.nivel_cognitivo) || null, curados, total, dominios };
+      });
+      return res.status(200).json({ ok: true, track, materias });
+    } catch (e) {
+      return res.status(200).json({ ok: true, track, materias: [], error: String(e.message || e) });
+    }
   }
 
   const grado = req.body && req.body.grado;

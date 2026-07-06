@@ -330,7 +330,7 @@ async function registrarGastoIA(usuarioId, usd) {
 // Bancos que el administrador cargó a mano en la tabla contenido_curado. Se sirven
 // ANTES del caché de Gemini y sin consumir cupo. Nunca rompen: ante cualquier fallo
 // de lectura, devolvemos null y el flujo sigue con el caché/Gemini de siempre.
-async function curadoGet(materia, tema, modo, grado) {
+async function curadoGet(materia, tema, modo, grado, programa = "aula") {
   const cfg = supabaseCfg();
   if (!cfg) return null;
   try {
@@ -339,7 +339,7 @@ async function curadoGet(materia, tema, modo, grado) {
       `&tema_norm=eq.${encodeURIComponent(normCurado(tema))}` +
       `&modo=eq.${encodeURIComponent(modo)}` +
       `&grado=eq.${encodeURIComponent(grado)}` +
-      `&programa=eq.aula` + // candado: las alumnas solo ven contenido del aula, nunca Cumbre
+      `&programa=eq.${encodeURIComponent(programa)}` + // "aula" (flujo normal) o "cumbre" (adelanta en vacaciones)
       `&select=contenido,fuentes&limit=1`;
     const r = await fetch(`${cfg.url}/rest/v1/contenido_curado?${q}`, {
       headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}` },
@@ -544,6 +544,19 @@ export default async function handler(req, res) {
     const soloCurado = !!(req.body && req.body.soloCurado);
     const sinCurado = !!(req.body && req.body.sinCurado);
     const vistos = new Set(Array.isArray(req.body && req.body.vistos) ? req.body.vistos.map(String) : []);
+
+    // CUMBRE ("adelanta en vacaciones con Cumbre"): contenido SOLO curado por nosotros.
+    // Gemini NUNCA toca Cumbre → si el tema no está curado devolvemos sinBanco (nunca IA ni caché).
+    if (req.body && req.body.programa === "cumbre") {
+      const curado = await curadoGet(materia, tema, modo, grado, "cumbre");
+      const comun = { tema, materia: materia || null, modo, programa: "cumbre",
+        basadoEnMaterial: true, fuentes: (curado && Array.isArray(curado.fuentes)) ? curado.fuentes : [] };
+      if (!curado) return res.status(200).json({ ...comun, curado: false, sinBanco: true });
+      const s = servirCurado(modo, curado, n, vistos);
+      if (s && s.doc) return res.status(200).json({ ...s.doc, ...comun, curado: true });
+      if (s && s.items) return res.status(200).json({ [s.wrap]: s.items, ...comun, curado: true, agotado: s.quedan <= 0 });
+      return res.status(200).json({ ...comun, curado: true, agotado: true, sinItems: true });
+    }
 
     // 0) CONTENIDO CURADO: bancos revisados a mano. Se sirven ANTES del caché/Gemini
     //    (sin gastar cupo). "Con IA" (sinCurado) y las fotos lo saltan a propósito.
