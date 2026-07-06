@@ -190,6 +190,7 @@
         </button>
       </div>
       <div id="cumbreWrap">
+        <p class="cumEyebrow">🏖️ Adelanta en vacaciones con Cumbre</p>
         <button class="destacada cumbre" id="btnCumbre">
           <span class="dIcon">🏔️</span>
           <span class="dTxt"><b>Cumbre</b><small>La mejor educación del mundo, para ti</small></span>
@@ -218,6 +219,7 @@
     <div id="paneCumbre" class="hidden">
       <button class="back" id="btnBackCumbre">‹ Inicio</button>
       <div id="cumbreIntro"></div>
+      <div id="cumbreMaterias"></div>
     </div>
 
     <!-- paso B: tema + modo + generar -->
@@ -227,13 +229,15 @@
         <p class="lbl" id="tituloMateria" style="color:var(--mango)"></p>
         <div id="refuerzoBanner" class="hidden"></div>
 
-        <p class="lbl"><span class="n">1</span> Escoge un tema</p>
-        <div id="grupos"></div>
-        <div id="sinTemas" class="empty hidden">Esta materia aún no tiene temas para practicar. Puedes escribir uno abajo. 👇</div>
-        <div class="field" style="margin-top:14px"><input id="otro" type="text" placeholder="…o escribe otro tema" autocomplete="off" /></div>
-        <div class="field hidden" id="otroDatosWrap" style="margin-top:10px">
-          <textarea id="otroDatos" rows="3" placeholder="¿De qué trata? Escríbele a la IA lo que sepas: subtemas, palabras clave, un ejemplo del cuaderno… (opcional, pero ayuda mucho si no hay material en el aula)"></textarea>
-          <p class="ayuda" style="margin:8px 2px 0">Y si tienes apuntes, súmale fotos del cuaderno más abajo. 📷</p>
+        <div id="pasoTema">
+          <p class="lbl"><span class="n">1</span> Escoge un tema</p>
+          <div id="grupos"></div>
+          <div id="sinTemas" class="empty hidden">Esta materia aún no tiene temas para practicar. Puedes escribir uno abajo. 👇</div>
+          <div class="field" style="margin-top:14px"><input id="otro" type="text" placeholder="…o escribe otro tema" autocomplete="off" /></div>
+          <div class="field hidden" id="otroDatosWrap" style="margin-top:10px">
+            <textarea id="otroDatos" rows="3" placeholder="¿De qué trata? Escríbele a la IA lo que sepas: subtemas, palabras clave, un ejemplo del cuaderno… (opcional, pero ayuda mucho si no hay material en el aula)"></textarea>
+            <p class="ayuda" style="margin:8px 2px 0">Y si tienes apuntes, súmale fotos del cuaderno más abajo. 📷</p>
+          </div>
         </div>
 
         <div class="paso">

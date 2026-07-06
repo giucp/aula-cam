@@ -796,6 +796,7 @@
   }
   // guarda las preguntas que la niña falló en un quiz (para repasarlas luego)
   async function guardarErrores(fallidas, meta){
+    if(origen==="cumbre") return;   // Cumbre no alimenta "repasar mis errores" (evita replay con IA)
     if(!SESION || SESION.id==null || !fallidas.length) return;
     const numerica = esNumerica((meta&&meta.materia)||"") || esNumerica((meta&&meta.tema)||"");
     const errores = fallidas.map(f=>({
@@ -823,6 +824,7 @@
   }
   // registra que el niño hizo una actividad; actualiza PROGRESO al instante + guarda (fire-and-forget)
   function registrarActividad(meta, modo, extra){
+    if(origen==="cumbre") return;   // el progreso de Cumbre no se mezcla con el del aula (Fase 1)
     if(!SESION || SESION.id==null) return;
     const mat=(meta&&meta.materia)||null, tema=(meta&&meta.tema)||null;
     if(!tema) return;
@@ -866,8 +868,11 @@
   }
   function pintarMaterias(){
     origen = "actual";
-    $("#destacadaWrap").classList.toggle("hidden", !siguienteGradoLabel());
-    $("#cumbreWrap").classList.remove("hidden");
+    // Cumbre es el "adelanta en vacaciones" cuando hay track (5to/1er año). Si no hay
+    // track de Cumbre para el próximo grado, se muestra el adelántate viejo como respaldo.
+    const track = cumbreTrack();
+    $("#cumbreWrap").classList.toggle("hidden", !track);
+    $("#destacadaWrap").classList.toggle("hidden", !!track || !siguienteGradoLabel());
     $("#erroresWrap").classList.toggle("hidden", !MIS_ERRORES.length);
     $("#materiasHead").innerHTML = "📚 Tus materias";
     gridMaterias(SESION.materias||[]);
@@ -904,22 +909,33 @@
 
   function verMaterias(){ $("#paneTemas").classList.add("hidden"); $("#paneErrores").classList.add("hidden"); $("#paneCumbre").classList.add("hidden"); $("#paneMaterias").classList.remove("hidden"); }
 
-  // ───────── Cumbre: presentación del espacio (acceso listo, contenido próximamente) ─────────
+  // ───────── Cumbre: "adelanta en vacaciones" (SOLO contenido curado; Gemini nunca toca Cumbre) ─────────
   $("#btnCumbre").onclick = entrarCumbre;
-  $("#btnBackCumbre").onclick = verMaterias;
+  // volver al Inicio desde Cumbre: repinta materias (resetea origen="actual" para no dejar
+  // el flujo en modo cumbre) y muestra la grilla del aula.
+  $("#btnBackCumbre").onclick = ()=>{ pintarMaterias(); verMaterias(); };
+  let CUMBRE_MATERIAS = [];     // materias del track (para el render y los clicks)
+  let cumbreModosTema = [];     // modos disponibles del tema abierto en Cumbre
   async function entrarCumbre(){
     $("#paneMaterias").classList.add("hidden");
     $("#paneErrores").classList.add("hidden");
     $("#paneTemas").classList.add("hidden");
     $("#paneCumbre").classList.remove("hidden");
-    const box = $("#cumbreIntro");
-    box.innerHTML = `<p class="labLoad">Cargando…</p>`;
+    $("#cumbreIntro").innerHTML = `<p class="labLoad">Cargando…</p>`;
+    $("#cumbreMaterias").innerHTML = "";
     window.scrollTo({top:0,behavior:"smooth"});
+    const track = cumbreTrack();
     try{
-      const r = await fetch(API_CURRICULO,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ accion:"cumbre_intro" })});
-      const d = await r.json();
-      renderCumbreIntro(d.intro||{});
-    }catch(e){ renderCumbreIntro({}); }
+      const [ri, rt] = await Promise.all([
+        fetch(API_CURRICULO,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ accion:"cumbre_intro" })}),
+        track ? fetch(API_CURRICULO,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ accion:"cumbre_track", track })}) : Promise.resolve(null),
+      ]);
+      const di = await ri.json();
+      const dt = rt ? await rt.json() : { materias:[] };
+      renderCumbreIntro(di.intro||{});
+      CUMBRE_MATERIAS = (dt && dt.materias) || [];
+      renderCumbreMaterias(CUMBRE_MATERIAS);
+    }catch(e){ renderCumbreIntro({}); renderCumbreMaterias([]); }
   }
   function renderCumbreIntro(x){
     const titulo = x.titulo || "Cumbre 🏔️";
@@ -930,12 +946,100 @@
     if(x.texto_padre){
       html += `<details class="cumMas"><summary>Para los padres</summary><p class="cumPar">${escapeHtml(x.texto_padre)}</p></details>`;
     }
-    html += `<div class="cumProx"><b>🚧 En preparación</b><span>Las materias de Cumbre están en camino. Pronto vas a poder practicar aquí. Por ahora, esta es tu presentación del espacio.</span></div>`;
     $("#cumbreIntro").innerHTML = html;
   }
-  $("#btnBack").onclick = ()=>{ temaSel=null; $("#results").innerHTML=""; fotos=[]; pintarFotos(); limpiarRefuerzo(); verMaterias(); };
+  // materias del track de Cumbre con sus dominios/temas. Curados = practicables (📗);
+  // sin curar = "Próximamente" (Gemini nunca los genera). Índices para evitar comillas en atributos.
+  function renderCumbreMaterias(materias){
+    const cont = $("#cumbreMaterias"); cont.innerHTML = "";
+    if(!materias.length){ cont.innerHTML = `<div class="empty">Tus materias de Cumbre están en camino. ¡Pronto! ✨</div>`; return; }
+    materias.forEach((m, mi)=>{
+      const card = document.createElement("div"); card.className = "cMat";
+      const prog = `${m.curados||0} de ${m.total||0} listo${(m.total===1)?"":"s"}`;
+      let html = `<div class="cMatHead"><span class="em">${iconMateria(m.materia)}</span><span class="cMatNom">${escapeHtml(m.materia)}</span><span class="cMatProg">${prog}</span></div>`;
+      (m.dominios||[]).forEach((dom, di)=>{
+        const temas = dom.temas||[]; if(!temas.length) return;
+        html += `<div class="cDom">${escapeHtml(dom.dominio||"")}</div>`;
+        temas.forEach((t, ti)=>{
+          if(t.curado) html += `<button class="cTema ok" data-mi="${mi}" data-di="${di}" data-ti="${ti}"><span class="cBadge">📗</span><span class="cNom">${escapeHtml(t.tema)}</span><span class="cGo">Practicar ›</span></button>`;
+          else html += `<div class="cTema no"><span class="cNom">${escapeHtml(t.tema)}</span><span class="cSoon">Próximamente</span></div>`;
+        });
+      });
+      card.innerHTML = html;
+      card.querySelectorAll(".cTema.ok").forEach(btn=>{
+        btn.onclick = ()=>{
+          const mm = CUMBRE_MATERIAS[+btn.dataset.mi]; if(!mm) return;
+          const tt = ((mm.dominios[+btn.dataset.di]||{}).temas||[])[+btn.dataset.ti]; if(!tt) return;
+          abrirTemaCumbre(mm.materia, mm.grado, tt.tema, tt.modos||[]);
+        };
+      });
+      cont.appendChild(card);
+    });
+  }
+  // abrir un tema curado de Cumbre para practicar (reusa el panel de tema, en modo "cumbre")
+  function abrirTemaCumbre(mat, grado, tema, modos){
+    origen = "cumbre";
+    materiaSel = { nombre:mat, grado, _cumbre:true };
+    temaSel = tema; clearOtro();
+    cumbreModosTema = (modos && modos.length) ? modos : ["resumen"];
+    fotos = []; $("#results").innerHTML = "";
+    $("#paneCumbre").classList.add("hidden");
+    const pt = $("#paneTemas"); pt.classList.add("cumbre"); pt.classList.remove("hidden");
+    $("#tituloMateria").innerHTML = `🏔️ ${escapeHtml(mat)} · ${escapeHtml(tema)}`;
+    const first = ["resumen","retos","quiz","examen"].find(id=>cumbreModosTema.includes(id)) || cumbreModosTema[0];
+    setModoCumbre(first);
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+  function pintarModosCumbre(){
+    const cont = $("#modos"); cont.innerHTML="";
+    MODOS.filter(mo=>cumbreModosTema.includes(mo.id)).forEach((mo, idx)=>{
+      const b=document.createElement("button");
+      b.className="modo"; b.dataset.modo=mo.id; b.setAttribute("aria-pressed", String(mo.id===modoSel));
+      b.innerHTML=`<span class="pmNum">${idx+1}</span><span class="pmIcon">${mo.icon}</span>`+
+        `<span class="pmTxt"><span class="pmNom">${mo.nombre}</span><span class="pmDesc">${mo.desc}</span></span><span class="pmEstado"></span>`;
+      b.onclick=()=>setModoCumbre(mo.id);
+      cont.appendChild(b);
+    });
+  }
+  function setModoCumbre(id){
+    modoSel = id;
+    const mo = MODOS.find(m=>m.id===id) || MODOS[0];
+    $("#pasoCantidad").classList.toggle("hidden", !mo.conteo);
+    pintarModosCumbre();
+    const btnGen=$("#btnGen"); if(btnGen){ btnGen.textContent = mo.verbo; btnGen.disabled=false; }
+  }
+  // generar contenido de Cumbre: SOLO curado (programa=cumbre); reusa render(). Nunca IA/caché.
+  async function generarCumbre(){
+    const mat=(materiaSel&&materiaSel.nombre)||"", tema=temaSel, gr=(materiaSel&&materiaSel.grado)||"";
+    if(!tema) return;
+    const mo = MODOS.find(m=>m.id===modoSel) || MODOS[0];
+    const res=$("#results"), btnGen=$("#btnGen");
+    if(btnGen) btnGen.disabled=true;
+    res.innerHTML = vistaCargando(tema, mo, false);
+    try{
+      const body = { materia:mat, tema, grado:gr, cantidad, modo:modoSel, programa:"cumbre", usuario_id:(SESION&&SESION.id)||null };
+      const r = await fetch(API_GENERAR,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+      let d; try{ d = await r.json(); }catch(_){ throw new Error("El servidor tardó demasiado. Prueba de nuevo."); }
+      if(d.error){ throw new Error(d.error); }
+      if(d.sinItems || d.sinBanco){ res.innerHTML = `<div class="empty">Este tema todavía no está listo en este modo. ¡Pronto! ✨</div>`; return; }
+      render(d);
+    }catch(e){
+      res.innerHTML = errBox("No pudimos cargar esto. Intenta de nuevo.", String(e.message||e));
+    }finally{ if(btnGen) btnGen.disabled=false; }
+  }
+  $("#btnBack").onclick = ()=>{
+    if(origen==="cumbre"){                 // del tema de Cumbre → volver a la lista de materias de Cumbre
+      const pt=$("#paneTemas"); pt.classList.remove("cumbre"); pt.classList.add("hidden");
+      temaSel=null; $("#results").innerHTML="";
+      $("#paneCumbre").classList.remove("hidden");
+      window.scrollTo({top:0,behavior:"smooth"});
+      return;
+    }
+    temaSel=null; $("#results").innerHTML=""; fotos=[]; pintarFotos(); limpiarRefuerzo(); verMaterias();
+  };
 
   function abrirMateria(m){
+    $("#paneTemas").classList.remove("cumbre");   // por si veníamos de un tema de Cumbre
     materiaSel=m; temaSel=null; clearOtro(); $("#results").innerHTML="";
     fotos=[]; pintarFotos();
     const esProx = origen==="proximo";
@@ -1183,7 +1287,8 @@
 
   // ───────── GENERAR ─────────
   $("#btnGuia").onclick = ()=>generar({via:"guia"});
-  $("#btnGen").onclick  = ()=>generar({via:"ia"});
+  // en modo Cumbre el botón usa el flujo aislado (solo curado); en el aula, el de siempre.
+  $("#btnGen").onclick  = ()=> origen==="cumbre" ? generarCumbre() : generar({via:"ia"});
   async function generar(opts){
     opts = opts||{};
     const tema = temaActual(); if(!tema) return;
@@ -1594,6 +1699,10 @@
     if(g.tipo==="G") return g.n<6 ? `${ORDN[g.n+1]} grado` : "1er año";
     return g.n<5 ? `${ORDN[g.n+1]} año` : null;
   }
+  // Tracks de Cumbre que existen hoy (2 pistas). El "adelanta en vacaciones" es Cumbre
+  // cuando el próximo grado tiene track; si no, cae al temario oficial viejo (respaldo).
+  const CUMBRE_TRACKS = new Set(["5to grado", "1er año"]);
+  function cumbreTrack(){ const g = siguienteGradoLabel(); return (g && CUMBRE_TRACKS.has(g)) ? g : null; }
   // grado con el que se genera/cachea según el modo (actual vs próximo año)
   function gradoActivo(){ return origen==="proximo" ? (proximoGrado||"") : (gradoDeSesion()||"4to grado"); }
 
