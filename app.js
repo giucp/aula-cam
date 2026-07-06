@@ -221,10 +221,16 @@
   // pegamento examen→simulacro: si anotó examen(es) a ≤3 días, se los recordamos.
   // Muestra TODOS los exámenes próximos (uno por materia), no solo el más cercano,
   // para que pueda ir a practicar cualquiera si tiene 2 o más el mismo día.
+  // Un examen de HOY se oculta a partir de CORTE_MANANA (1 PM, hora del aparato):
+  // pasada la mañana escolar se asume presentado, y el banner pasa a mostrar los del
+  // día siguiente. Antes de esa hora sí se muestra (sirve para repasar en la mañana).
+  const CORTE_MANANA = 13; // hora local a partir de la cual un examen de hoy ya no se recuerda
   function pintarExamenBanner(){
     const box=$("#examenBanner"); box.innerHTML="";
+    const horaLocal=new Date().getHours();
     const exs=TAREAS.filter(t=>t.tipo==="examen" && !t.hecha && t.fecha)
-      .map(t=>({t,n:diasHasta(t.fecha)})).filter(x=>x.n!==null && x.n>=0 && x.n<=3)
+      .map(t=>({t,n:diasHasta(t.fecha)}))
+      .filter(x=>x.n!==null && x.n>=0 && x.n<=3 && (x.n>0 || horaLocal<CORTE_MANANA))
       .sort((a,b)=>a.n-b.n)
       .slice(0,6); // tope de seguridad; en la práctica son 1-3
     if(!exs.length) return;
