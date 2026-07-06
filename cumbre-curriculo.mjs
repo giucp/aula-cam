@@ -591,8 +591,93 @@ export const CUMBRE_CURRICULO = {
       ],
     },
     {
-      // Bloque 5to grado (primaria). Convención de ids: 1er año bachillerato = 9000-9006;
-      // grados de primaria = 9<grado>00+ (5to grado = 9500+). El grado propio los aísla igual.
+      // Bloque 5to grado (primaria). "Cómo Pensar" encabeza igual que en 1er año (9000):
+      // le damos 9499 —justo debajo del bloque 5to (9500+)— para que salga PRIMERA en el
+      // orden del cuarto (materia_id ascendente) sin renumerar las materias 5to ya cargadas.
+      // Convención de ids: 1er año bachillerato = 9000-9006; primaria = 9<grado>00+ (5to = 9500+).
+      id: 9499,
+      grado: "Cumbre Cómo Pensar 5to grado",
+      materia: "Cómo Pensar",
+      nombre_corto: "CUMBRE PENS 5G",
+      // Versión 5to (10-11 años) de la materia transversal de pensamiento: mismas habilidades que
+      // en 1er año (pensar con método, evidencia y lógica, sin dejarse engañar) pero sembradas para
+      // primaria — concretas, visuales, con ejemplos de la vida diaria del niño y de sus materias
+      // (mate y ciencias de 5to). En espiral: estas ideas suben a Analizar-Evaluar en 1er año.
+      grupos: [
+        {
+          lapso: "Preguntar e investigar",
+          intl: "Scientific Inquiry (elemental)",
+          temas: [
+            "¿Cómo lo sabes? La diferencia entre 'creo que' y 'lo probé'",
+            "Observar de verdad: ver los detalles, no lo que esperabas ver",
+            "Hacer buenas preguntas: las que se pueden responder investigando",
+            "Una predicción que se puede probar (la hipótesis, en versión niño)",
+            "La prueba justa: cambiar una sola cosa a la vez (con ejemplos de ciencias)",
+            "¿Qué me dicen los resultados? Sacar conclusiones honestas",
+          ],
+        },
+        {
+          lapso: "Razonar paso a paso",
+          intl: "Logical Reasoning",
+          temas: [
+            "Razones y conclusiones: por qué pienso lo que pienso",
+            "Ordenar ideas: qué va primero y qué va después",
+            "Que dos cosas pasen juntas no significa que una cause la otra",
+            "Pensar en 'si… entonces': las consecuencias de una regla",
+            "El contraejemplo: un solo caso que rompe una regla (con ejemplos de matemática)",
+            "Adivinar bien: estimar con cabeza antes de calcular",
+          ],
+        },
+        {
+          lapso: "No dejarse engañar",
+          intl: "Critical Thinking & Biases",
+          temas: [
+            "Creer solo lo que tiene pruebas (no porque lo diga alguien 'importante')",
+            "El truco del 'o esto o aquello': casi siempre hay más opciones",
+            "Generalizar apurado: 'uno me salió mal, entonces todos son malos'",
+            "Cuando queremos creer algo, lo creemos más fácil (primer sesgo)",
+            "Seguir a la mayoría: ¿está bien solo porque todos lo hacen?",
+            "La publicidad: cómo te intentan convencer para que quieras algo",
+          ],
+        },
+        {
+          lapso: "Pensar con números y datos",
+          intl: "Data Literacy",
+          temas: [
+            "¿De dónde salió este número? Preguntar antes de creerlo",
+            "El promedio en la vida real: qué cuenta y qué esconde (puente con Matemática)",
+            "Leer un gráfico: qué me muestra de verdad",
+            "Gráficos tramposos: cuando el dibujo exagera",
+            "Muchos y pocos: no dejarse impresionar por un número grande sin contexto",
+          ],
+        },
+        {
+          lapso: "¿Es verdad lo que veo?",
+          intl: "Media & Information Literacy",
+          temas: [
+            "Hecho y opinión: aprender a distinguirlos",
+            "¿Quién lo dice y cómo lo sabe? Confiar con criterio",
+            "No todo lo que está en internet es verdad (verificar antes de creer y compartir)",
+            "Buscar la fuente original, no al que lo repitió",
+            "Imágenes y videos que engañan: mirar con ojo despierto",
+          ],
+        },
+        {
+          lapso: "Resolver problemas y pensar mejor",
+          intl: "Problem Solving & Metacognition",
+          temas: [
+            "Partir un problema grande en pasos pequeños (pensamiento computacional)",
+            "Buscar el patrón: lo que se repite te da la pista",
+            "Ver el problema desde otro punto de vista",
+            "Pensar sobre cómo pienso: revisar y corregir mis propios errores",
+            "Tener muchas ideas y luego elegir la mejor (crear y decidir)",
+          ],
+        },
+      ],
+    },
+    {
+      // Bloque 5to grado — mate/ciencias. Convención de ids: 1er año = 9000-9006;
+      // primaria = 9<grado>00+ (5to grado = 9500+). El grado propio los aísla igual.
       id: 9500,
       grado: "Cumbre Matemática 5to grado",
       materia: "Matemática",
