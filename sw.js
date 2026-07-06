@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v32"; // v32: bateria sin glow (mancha), Cumbre 1 sola montania + distintivo de grado
+const VERSION = "aulacam-v33"; // v33: iconos distintos para Como Pensar (cerebro) y Ciencias (microscopio) en Cumbre
 const SHELL = [
   "/",
   "/index.html",

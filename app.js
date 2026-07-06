@@ -1727,8 +1727,8 @@
 
   function iconMateria(nombre){
     const n=(nombre||"").toLowerCase();
-    const map=[["lógic","🧠"],["logic","🧠"],["matemát","🔢"],["matemat","🔢"],["lenguaje","📖"],["castellano","📖"],
-      ["lengua","📖"],["inglés","🔤"],["ingles","🔤"],["natural","🔬"],["social","🌎"],
+    const map=[["pensar","🧠"],["lógic","🧠"],["logic","🧠"],["matemát","🔢"],["matemat","🔢"],["lenguaje","📖"],["castellano","📖"],
+      ["lengua","📖"],["inglés","🔤"],["ingles","🔤"],["natural","🔬"],["social","🌎"],["cienc","🔬"],
       ["educación f","⚽"],["educacion f","⚽"],["físic","🧲"],["fisic","🧲"],["químic","⚗️"],["quimic","⚗️"],
       ["biolog","🌱"],["geograf","🗺️"],["historia","🗺️"],["metodolog","🔍"],["orientac","🧭"],
       ["electrón","⚡"],["electron","⚡"],["puente","🌉"],
