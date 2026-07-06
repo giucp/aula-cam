@@ -1,0 +1,255 @@
+{
+  "programa": "cumbre",
+  "materia": "Inglés",
+  "grado": "Cumbre Inglés 5to grado",
+  "dominio": "Yo y mi gente",
+  "tema": "Puedo contar cuántos años tengo y de dónde soy (numbers; I'm from…)",
+  "referencias": [
+    "Cambridge English Young Learners (Starters/Movers)",
+    "CEFR Pre-A1/A1",
+    "British Council LearnEnglish Kids"
+  ],
+  "resumen": {
+    "titulo": "Mi edad y de dónde soy: los números y mi país",
+    "intro": "Ya sabes saludar y decir tu nombre. Ahora vas a aprender dos cosas nuevas muy útiles: contar en inglés y decir de qué país eres. Con esto vas a poder responder cuando alguien te pregunte cuántos años tienes o de dónde vienes. Vamos despacito, número por número y frase por frase. No necesitas saber nada más de inglés: cada frase viene con su significado en español y, entre comillas, cómo suena aproximadamente si la dices en voz alta.",
+    "secciones": [
+      {
+        "titulo": "Contar del 1 al 10",
+        "explicacion": "Antes de decir tu edad, necesitas saber los números en inglés. Los primeros diez son: 1 one (se dice 'uán'), 2 two ('tú'), 3 three ('zrí', con la lengua un poquito entre los dientes), 4 four ('fóar'), 5 five ('fáiv'), 6 six ('six'), 7 seven ('séven'), 8 eight ('éit'), 9 nine ('náin'), 10 ten ('ten'). Estos diez números hay que memorizarlos uno por uno, porque no siguen ningún patrón: son como los nombres propios de cada número.",
+        "pasos": [
+          "Repite en voz alta: one, two, three, four, five.",
+          "Sigue con: six, seven, eight, nine, ten.",
+          "Practica la 'th' de 'three' sacando un poquito la lengua entre los dientes."
+        ],
+        "ejemplo": "Si tienes 8 años, el número que necesitas es 'eight' (se dice 'éit')."
+      },
+      {
+        "titulo": "Contar del 11 al 20",
+        "explicacion": "Después del 10 siguen: 11 eleven ('iléven'), 12 twelve ('tuélv'), 13 thirteen ('zertíin'), 14 fourteen ('fortíin'), 15 fifteen ('fiftíin'), 16 sixteen ('sixtíin'), 17 seventeen ('séventíin'), 18 eighteen ('éitíin'), 19 nineteen ('náintíin') y 20 twenty ('tuénti'). Fíjate que del 13 al 19 casi todos terminan en '-teen' (se dice 'tíin'): es como agregarle esa terminación al número pequeño. Dos números cambian un poco su forma: 'thirteen' (viene de three) y 'fifteen' (viene de five). Si tienes entre 11 y 19 años, tu edad está en este grupo.",
+        "pasos": [
+          "Memoriza eleven (11) y twelve (12): son especiales, no siguen el patrón '-teen'.",
+          "Del 13 al 19 casi todos son el número pequeño + '-teen': six+teen=sixteen.",
+          "Ojo con los que cambian: thirteen (no 'threeteen') y fifteen (no 'fiveteen').",
+          "20 es 'twenty', y con él empieza el siguiente grupo de números."
+        ],
+        "ejemplo": "Con 11 años dices 'eleven'; con 15 años dices 'fifteen' (no 'fiveteen')."
+      },
+      {
+        "titulo": "Las decenas: 20, 30, 40... hasta 100",
+        "explicacion": "Las decenas son los números redondos, como 20, 30 o 40. Casi todas terminan en '-ty' (se dice 'ti'): 20 twenty ('tuénti'), 30 thirty ('zérti'), 40 forty ('fórti'), 50 fifty ('fífti'), 60 sixty ('síxti'), 70 seventy ('séventi'), 80 eighty ('éiti'), 90 ninety ('náinti'), y 100 one hundred ('uán jándred'). Hay una trampa importante: no confundas el sonido '-teen' (13 al 19) con el sonido '-ty' (las decenas). Por ejemplo, 'thirteen' (13) suena fuerte al FINAL ('zer-TÍIN'), y 'thirty' (30) suena fuerte al PRINCIPIO ('ZÉR-ti'). Son parecidas pero significan números distintos. Otra cosa: 'forty' (40) se escribe SIN la 'u' de 'four' (no es 'fourty').",
+        "pasos": [
+          "Las decenas terminan en '-ty': twenty, thirty, forty, fifty...",
+          "No confundas -teen (13-19) con -ty (decenas): thirteen (13) suena fuerte al final; thirty (30) suena fuerte al principio.",
+          "Recuerda que 'forty' (40) NO lleva la 'u' de 'four'.",
+          "100 se dice 'one hundred'."
+        ],
+        "ejemplo": "Tu maestra puede tener 'thirty' (30) años; un billete de 100 es 'one hundred'."
+      },
+      {
+        "titulo": "Preguntar la edad: How old are you?",
+        "explicacion": "Para preguntar cuántos años tiene alguien se dice 'How old are you?' (se dice 'jáu óuld ar yú'), que significa '¿Cuántos años tienes?'. Para responder, la forma completa es 'I'm' + tu edad + 'years old' (por ejemplo 'I'm nine years old'), que significa 'Tengo nueve años'. También puedes responder de forma más corta, sin 'years old': 'I'm nine'. Las dos formas están bien. Ojo con un error común: en español decimos 'TENGO' tantos años, pero en inglés NO se usa 'have' para la edad; se usa 'I'm' (que viene de 'to be', ser/estar). Nunca digas 'I have nine years'.",
+        "pasos": [
+          "Pregunta: 'How old are you?' (¿Cuántos años tienes?).",
+          "Respuesta completa: 'I'm' + número + 'years old'. Ejemplo: 'I'm nine years old.'",
+          "Respuesta corta: 'I'm' + número. Ejemplo: 'I'm nine.'",
+          "NUNCA digas 'I have... years': en inglés la edad no se dice con 'have'."
+        ],
+        "ejemplo": "'How old are you?' (¿Cuántos años tienes?) — 'I'm ten years old.' (Tengo diez años.)"
+      },
+      {
+        "titulo": "De dónde soy: I'm from Venezuela",
+        "explicacion": "Para decir de qué país eres, usas la frase 'I'm from...' (se dice 'áim from'), que significa 'Soy de...'. Después de 'from' pones el nombre del país. Por ejemplo, 'I'm from Venezuela' significa 'Soy de Venezuela'. Los nombres de países en inglés SIEMPRE se escriben con mayúscula al inicio, igual que en español: 'Venezuela', 'Colombia', 'Mexico' (sin acento), 'Spain' (España), 'the United States' (Estados Unidos). La pregunta para esto es 'Where are you from?' (se dice 'guér ar yú from'), que significa '¿De dónde eres?'.",
+        "pasos": [
+          "Pregunta: 'Where are you from?' (¿De dónde eres?).",
+          "Respuesta: 'I'm from' + el país. Ejemplo: 'I'm from Venezuela.'",
+          "El nombre del país va SIEMPRE con mayúscula."
+        ],
+        "ejemplo": "'Where are you from?' (¿De dónde eres?) — 'I'm from Venezuela.' (Soy de Venezuela.)"
+      },
+      {
+        "titulo": "Mi nacionalidad: I'm Venezuelan",
+        "explicacion": "Además de decir el país, puedes decir tu nacionalidad, que es la palabra que describe a la gente de ese país. Por ejemplo, si eres de Venezuela, tu nacionalidad es 'Venezuelan' (se dice 'venesuélian'), que significa 'venezolano' o 'venezolana'. Para decirlo usas 'I'm' + la nacionalidad, SIN la palabra 'from': 'I'm Venezuelan' (Soy venezolano). Fíjate en la diferencia: con el país va 'from' ('I'm from Venezuela'), pero con la nacionalidad NO va 'from' ('I'm Venezuelan'). La nacionalidad, igual que el país, se escribe siempre con mayúscula.",
+        "pasos": [
+          "Nacionalidad de Venezuela: 'Venezuelan' (venezolano/venezolana).",
+          "Para decirla: 'I'm' + nacionalidad, SIN 'from'. Ejemplo: 'I'm Venezuelan.'",
+          "Con el país SÍ va 'from' ('I'm from Venezuela'); con la nacionalidad NO va 'from' ('I'm Venezuelan').",
+          "La nacionalidad también se escribe con mayúscula."
+        ],
+        "ejemplo": "'I'm from Venezuela, and I'm Venezuelan.' (Soy de Venezuela, y soy venezolano.)"
+      },
+      {
+        "titulo": "Todo junto: un mini-diálogo completo",
+        "explicacion": "Ahora vas a juntar todo lo que aprendiste en una conversación pequeña, como cuando conoces a un amigo nuevo por videollamada o en un intercambio escolar. El orden natural es: saludar, decir el nombre, decir la edad, y decir de dónde eres. No hace falta memorizar palabra por palabra: entiende qué significa cada frase y arma tu propia conversación cambiando los datos.",
+        "pasos": [
+          "Saluda y di tu nombre: 'Hi! I'm Ana.'",
+          "Di tu edad cuando te pregunten: 'How old are you?' — 'I'm ten years old.'",
+          "Di de dónde eres cuando te pregunten: 'Where are you from?' — 'I'm from Venezuela.'",
+          "Si quieres, agrega tu nacionalidad: 'I'm Venezuelan.'"
+        ],
+        "ejemplo": "Sofía: 'Hi! I'm Sofía. How old are you?' (¡Hola! Soy Sofía. ¿Cuántos años tienes?) — Luis: 'I'm nine years old. Where are you from?' (Tengo nueve años. ¿De dónde eres?) — Sofía: 'I'm from Venezuela. I'm Venezuelan.' (Soy de Venezuela. Soy venezolana.)"
+      }
+    ],
+    "idea_clave": "Para decir mi edad en inglés uso 'I'm' + número + 'years old' (o solo 'I'm' + número), nunca 'I have... years'. Los números del 1 al 10 se memorizan uno por uno; del 11 al 19 casi todos terminan en '-teen'; las decenas (20, 30, 40...) terminan en '-ty', y no hay que confundir 'thirteen' (13) con 'thirty' (30). Para decir de dónde soy uso 'I'm from' + el país ('I'm from Venezuela'), y para la nacionalidad uso 'I'm' + nacionalidad SIN 'from' ('I'm Venezuelan')."
+  },
+  "practica": [
+    {
+      "enunciado": "Escribe estos números en inglés: 3, 7, 10.",
+      "pista": "Son de los primeros diez números; hay que memorizarlos uno por uno.",
+      "solucion": "3 = three, 7 = seven, 10 = ten.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe estos números en inglés: 13 y 15. ¿Cuál es la trampa al escribirlos?",
+      "pista": "Los dos vienen de three y five, pero cambian un poco su forma al agregar '-teen'.",
+      "solucion": "13 = thirteen (no 'threeteen'), 15 = fifteen (no 'fiveteen'). La trampa es que 'thir-' y 'fif-' cambian la raíz del número pequeño.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe el número 40 en inglés. ¿Qué error de escritura es muy común?",
+      "pista": "Piensa en la palabra 'four' y en cómo cambia al agregarle '-ty'.",
+      "solucion": "40 = forty. El error común es escribir 'fourty' con la 'u' de 'four', pero lo correcto es 'forty' SIN esa 'u'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Completa el diálogo: 'How old are you?' — 'I'm ___ ___.' (responde que tienes nueve años, forma completa)",
+      "pista": "La forma completa es 'I'm' + número + una palabra que significa 'años' y otra que significa 'de edad'.",
+      "solucion": "'I'm nine years old.' (Tengo nueve años.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige el error: 'I have ten years.'",
+      "pista": "En español decimos 'tengo', pero en inglés la edad no se dice con 'have'. ¿Qué palabra se usa en su lugar?",
+      "solucion": "Lo correcto es 'I'm ten years old.' o 'I'm ten.' El error viene de traducir 'tengo' literal; en inglés la edad se dice con 'I'm', no con 'have'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Traduce al inglés: '¿De dónde eres?' y responde 'Soy de Venezuela'.",
+      "pista": "La pregunta empieza con 'Where'; la respuesta usa 'I'm from' + el país con mayúscula.",
+      "solucion": "Pregunta: 'Where are you from?' Respuesta: 'I'm from Venezuela.'",
+      "figura": ""
+    },
+    {
+      "enunciado": "Completa con la palabra que falta: 'I'm ___ Venezuela.' (país) y 'I'm ___.' (nacionalidad, sin repetir 'from')",
+      "pista": "Con el país va una palabra antes; con la nacionalidad esa palabra NO aparece.",
+      "solucion": "'I'm from Venezuela.' (con 'from', porque es el país) y 'I'm Venezuelan.' (sin 'from', porque es la nacionalidad).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ordena este mini-diálogo: (a) 'I'm from Venezuela.' (b) 'How old are you?' (c) 'I'm ten years old.' (d) 'Where are you from?'",
+      "pista": "Primero se pregunta y responde la edad; después se pregunta y responde de dónde es.",
+      "solucion": "Orden correcto: (b) 'How old are you?' → (c) 'I'm ten years old.' → (d) 'Where are you from?' → (a) 'I'm from Venezuela.'",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe estos números en inglés: 12 y 20. Explica por qué no se parecen aunque ambos empiecen distinto.",
+      "pista": "12 es uno de los números especiales antes del grupo '-teen'; 20 es la primera decena.",
+      "solucion": "12 = twelve, 20 = twenty. 'Twelve' es un número especial (no sigue el patrón '-teen' como thirteen o fourteen), y 'twenty' es la primera de las decenas que terminan en '-ty'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe una mini-presentación tuya con tu edad y tu país, usando el nombre 'Carlos', 9 años, de Venezuela.",
+      "pista": "Usa 'I'm' para el nombre, la edad ('years old') y el país (con 'from').",
+      "solucion": "'Hi! I'm Carlos. I'm nine years old. I'm from Venezuela.' (¡Hola! Soy Carlos. Tengo nueve años. Soy de Venezuela.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "¿Cuál es la diferencia de sonido entre 'thirteen' (13) y 'thirty' (30)? Explícalo con tus palabras.",
+      "pista": "Piensa en dónde suena más fuerte cada palabra: al final o al principio.",
+      "solucion": "'Thirteen' (13) suena fuerte al FINAL: zer-TÍIN. 'Thirty' (30) suena fuerte al PRINCIPIO: ZÉR-ti. Aunque se parecen, son números distintos y no hay que confundirlos.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál es el número 7 en inglés?",
+      "opciones": ["five", "seven", "eight", "six"],
+      "correcta": 1,
+      "explicacion": "7 es 'seven' (se dice 'séven'). 'Five' es 5, 'six' es 6 y 'eight' es 8.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es el número 13 en inglés?",
+      "opciones": ["thirty", "thirteen", "three", "thirteenth"],
+      "correcta": 1,
+      "explicacion": "13 es 'thirteen'. 'Thirty' es 30 (una decena, no confundir), y 'three' es solo 3.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es el número 30 en inglés?",
+      "opciones": ["thirteen", "three", "thirty", "thirty-teen"],
+      "correcta": 2,
+      "explicacion": "30 es 'thirty' (termina en '-ty', de las decenas). 'Thirteen' es 13, y las otras opciones no existen o están mal.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cómo se escribe correctamente el número 40 en inglés?",
+      "opciones": ["fourty", "forty", "fourteen", "fortty"],
+      "correcta": 1,
+      "explicacion": "40 se escribe 'forty', SIN la 'u' de 'four'. Es un error de ortografía muy común escribir 'fourty'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es la forma CORRECTA de decir 'Tengo nueve años' en inglés?",
+      "opciones": ["I have nine years.", "I'm nine years old.", "I have nine years old.", "My years are nine."],
+      "correcta": 1,
+      "explicacion": "La edad en inglés se dice con 'I'm' (no con 'have'): 'I'm nine years old.' 'I have nine years' es el error típico de traducir 'tengo' literal del español.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cómo se pregunta la edad de alguien en inglés?",
+      "opciones": ["What's your name?", "How old are you?", "Where are you from?", "How are you?"],
+      "correcta": 1,
+      "explicacion": "'How old are you?' significa '¿Cuántos años tienes?'. Las otras preguntas son para el nombre, el país o cómo te sientes.",
+      "figura": ""
+    },
+    {
+      "pregunta": "Te preguntan 'How old are you?' y tienes 11 años. ¿Cuál es una buena respuesta?",
+      "opciones": ["I'm from eleven.", "I'm eleven years old.", "My name is eleven.", "I have eleven."],
+      "correcta": 1,
+      "explicacion": "'I'm eleven years old' (Tengo once años) responde correctamente a la pregunta sobre la edad, usando 'I'm', no 'have'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cómo se dice 'Soy de Venezuela' en inglés?",
+      "opciones": ["I'm Venezuela.", "I'm Venezuelan.", "I'm from Venezuela.", "I have Venezuela."],
+      "correcta": 2,
+      "explicacion": "El país va con 'from': 'I'm from Venezuela.' 'I'm Venezuela' usa el país como si fuera nacionalidad, y 'I'm Venezuelan' es la nacionalidad, no el país.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cómo se dice 'Soy venezolano' (la nacionalidad) en inglés?",
+      "opciones": ["I'm from Venezuelan.", "I'm Venezuela.", "I'm Venezuelan.", "I have Venezuelan."],
+      "correcta": 2,
+      "explicacion": "La nacionalidad va SIN 'from': 'I'm Venezuelan.' 'I'm from Venezuelan' mezcla mal 'from' con la nacionalidad, y 'I'm Venezuela' usa el país en su lugar.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál de estas preguntas sirve para saber de dónde es alguien?",
+      "opciones": ["How old are you?", "What's your name?", "Where are you from?", "How are you?"],
+      "correcta": 2,
+      "explicacion": "'Where are you from?' significa '¿De dónde eres?'. Las otras preguntan la edad, el nombre o cómo te sientes.",
+      "figura": ""
+    },
+    {
+      "pregunta": "Te preguntan '¿Cuántos años tienes?' en inglés. ¿Cuál de estas respuestas está MAL?",
+      "opciones": ["I'm ten years old.", "I'm ten.", "I have ten years.", "I am ten years old."],
+      "correcta": 2,
+      "explicacion": "'I have ten years' está mal porque la edad en inglés no se dice con 'have'. Las otras tres formas usan correctamente 'I'm' o 'I am'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es el número 12 en inglés?",
+      "opciones": ["twelveteen", "twelve", "two-teen", "twenty"],
+      "correcta": 1,
+      "explicacion": "12 es 'twelve', un número especial que no sigue el patrón '-teen'. 'Twenty' es 20, y las otras opciones no existen.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál de estas frases mezcla mal el país con la nacionalidad?",
+      "opciones": ["I'm from Venezuela.", "I'm Venezuelan.", "I'm from Venezuelan.", "I'm from Colombia."],
+      "correcta": 2,
+      "explicacion": "'I'm from Venezuelan' está mal: 'from' pide un país (Venezuela), no una nacionalidad (Venezuelan). Lo correcto sería 'I'm from Venezuela' o 'I'm Venezuelan'.",
+      "figura": ""
+    }
+  ]
+}

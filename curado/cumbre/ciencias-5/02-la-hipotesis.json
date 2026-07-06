@@ -1,0 +1,292 @@
+{
+  "programa": "cumbre",
+  "materia": "Ciencias",
+  "grado": "Cumbre Ciencias 5to grado",
+  "dominio": "Pensar como científico",
+  "tema": "La hipótesis: una predicción que se puede poner a prueba",
+  "referencias": [
+    "Singapore MOE Primary Science — Working Scientifically",
+    "UK KS2 Science — working scientifically",
+    "NGSS Science & Engineering Practices — constructing explanations and predictions"
+  ],
+  "resumen": {
+    "titulo": "La hipótesis: aprender a predecir con razón, no a adivinar",
+    "intro": "En el tema anterior conociste los cinco pasos del método científico, y uno de ellos era 'predecir con una hipótesis'. Ahora vas a meterte de lleno en ESE paso, porque es uno de los más importantes y también uno donde más fácil te puedes confundir. Vas a aprender qué hace que una hipótesis sea BUENA (y no solo una idea cualquiera), cómo distinguirla de una opinión o un deseo, cómo convertir una pregunta en una hipótesis clara, y por qué una hipótesis que sale falsa no es un error tuyo. Al terminar este tema vas a poder escribir hipótesis de verdad útiles, de esas que sirven para investigar algo en serio.",
+    "secciones": [
+      {
+        "titulo": "Qué es una hipótesis (y qué NO es)",
+        "explicacion": "Ya sabes que una HIPÓTESIS es la respuesta que crees que es cierta, ANTES de comprobarla con un experimento. Pero para que sea una BUENA hipótesis, tiene que cumplir dos condiciones al mismo tiempo: primero, tiene que estar basada en algo que ya observaste o ya sabes (no es un invento al azar); segundo, tiene que poder PONERSE A PRUEBA, es decir, tiene que existir alguna forma de comprobar con un experimento si es cierta o falsa. Si no se puede comprobar de ninguna manera, no es una hipótesis científica, aunque suene parecida. Por ejemplo, 'las plantas están felices cuando reciben sol' no es una buena hipótesis, porque nadie puede medir la 'felicidad' de una planta con un experimento. En cambio, 'las plantas crecen más centímetros por semana cuando reciben más horas de sol' sí es una buena hipótesis, porque se puede medir con una regla.",
+        "pasos": [
+          "Pregúntate: ¿esta idea está basada en algo que observé o que ya sé? (no es un invento al azar).",
+          "Pregúntate: ¿existe alguna forma de comprobar con un experimento si esto es cierto o falso?",
+          "Si respondiste SÍ a las dos preguntas, tienes una hipótesis científica de verdad."
+        ],
+        "ejemplo": "'Creo que esta piedra es mágica' no es una hipótesis: no hay ningún experimento que pueda comprobar o desmentir la 'magia'. Pero 'creo que un cubo de hielo al sol se derretirá más rápido que un cubo igual a la sombra' sí es una hipótesis: se puede poner los dos cubos, uno al sol y otro a la sombra, y medir con un reloj cuál se derrite primero.",
+        "figura": ""
+      },
+      {
+        "titulo": "La forma 'Si... entonces...'",
+        "explicacion": "Para que una hipótesis quede clara y fácil de comprobar, conviene escribirla siempre con la forma 'SI... ENTONCES...'. La parte del 'SI' dice qué vas a cambiar en tu experimento (por ejemplo, la cantidad de luz, el tipo de material, la temperatura). La parte del 'ENTONCES' dice qué esperas que pase como consecuencia de ese cambio. Esta forma es tan útil porque, apenas la escribes, ya sabes cuál es la variable que vas a cambiar en tu experimento y qué es lo que tienes que medir para comprobarla. Una hipótesis mal escrita, como 'la luz es importante para las plantas', es vaga: no dice qué se compara ni qué se espera medir. Escrita como 'Si una planta recibe más horas de luz al día, entonces crecerá más centímetros en una semana', ya queda clarísimo qué experimento hacer.",
+        "pasos": [
+          "Identifica QUÉ vas a cambiar en tu experimento y ponlo después del 'Si'.",
+          "Identifica QUÉ esperas que pase como resultado y ponlo después del 'entonces'.",
+          "Revisa que las dos partes se puedan medir u observar con claridad, no con palabras vagas como 'mejor' o 'más bonito'."
+        ],
+        "ejemplo": "Pregunta: '¿un trapo mojado se seca más rápido al sol o a la sombra?'. Hipótesis vaga (mala): 'el sol seca mejor'. Hipótesis en forma Si...entonces (buena): 'Si pongo un trapo mojado al sol y otro igual a la sombra, entonces el del sol se secará en menos tiempo'.",
+        "figura": ""
+      },
+      {
+        "titulo": "Comprobable y con posibilidad de ser falsa: las dos marcas de una buena hipótesis",
+        "explicacion": "Hay una idea clave que mucha gente confunde: una hipótesis TIENE que poder salir FALSA. Esto quiere decir que, cuando la escribes, debe existir una posibilidad real de que el experimento demuestre que estabas equivocado. Si una afirmación no puede fallar NUNCA pase lo que pase, entonces no es una hipótesis, aunque suene científica. Por ejemplo, 'esta planta crecerá, o no crecerá' no es una hipótesis útil: no importa qué pase, la frase siempre se cumple, así que no dice nada de verdad comprobable. Una buena hipótesis se arriesga: dice algo concreto que el experimento puede confirmar O refutar (mostrar que es falso). Esa posibilidad de fallar es justamente lo que la hace valiosa: si algo no puede fallar nunca, tampoco te enseña nada nuevo cuando lo compruebas.",
+        "pasos": [
+          "Imagina el experimento terminado: ¿hay algún resultado posible que haría que tu hipótesis fuera FALSA?",
+          "Si NO existe ningún resultado que pudiera contradecirla, reescríbela para que sea más concreta y arriesgada.",
+          "Si SÍ existe un resultado que podría contradecirla, tu hipótesis es comprobable y está bien planteada."
+        ],
+        "ejemplo": "'Puede que llueva o puede que no llueva mañana' no es una hipótesis útil: siempre se cumple, pase lo que pase. En cambio, 'mañana lloverá en mi ciudad' sí es una hipótesis: mañana, o llueve (se confirma) o no llueve (resulta falsa). Las dos posibilidades existen de verdad, y eso es lo que la hace comprobable.",
+        "figura": ""
+      },
+      {
+        "titulo": "Hipótesis, opinión y deseo: tres cosas que se parecen pero son distintas",
+        "explicacion": "Es muy fácil confundir una hipótesis con una OPINIÓN o con un DESEO, porque las tres son ideas sobre algo que 'creemos'. La diferencia está en si se pueden poner a prueba con un experimento. Una OPINIÓN depende del gusto de cada persona y no hay experimento que decida quién tiene razón (por ejemplo, 'el helado de chocolate es el más rico'). Un DESEO es lo que a ti te GUSTARÍA que pasara, sin que eso tenga que ver con lo que realmente va a ocurrir (por ejemplo, 'ojalá mi equipo gane el partido'). Una HIPÓTESIS, en cambio, es una predicción basada en razones, que se puede comprobar con un experimento y aceptar el resultado sea cual sea, aunque no sea el que esperabas. Si te sorprendes pensando 'quiero que salga así' en vez de 'creo que va a salir así porque...', probablemente estás mezclando un deseo con tu hipótesis, y eso puede hacer que, sin querer, solo mires los resultados que te convienen.",
+        "pasos": [
+          "Si la afirmación depende del gusto de cada persona y nadie la puede comprobar, es una OPINIÓN.",
+          "Si la afirmación es lo que te gustaría que pasara, sin razones que la respalden, es un DESEO.",
+          "Si la afirmación se puede comprobar con un experimento y tienes una razón para pensar que es cierta, es una HIPÓTESIS."
+        ],
+        "ejemplo": "'Espero que mi maceta con más agua sea la que gane' es un deseo (habla de lo que quieres). 'La maceta con más agua es más bonita' es una opinión (depende del gusto). 'Si le doy más agua a esta planta que a esa otra, entonces esta crecerá más alto, porque el agua ayuda a las plantas a crecer' es una hipótesis: tiene una razón detrás y se puede medir con una regla, gane la que gane.",
+        "figura": ""
+      },
+      {
+        "titulo": "De la pregunta a la hipótesis: cómo dar el salto",
+        "explicacion": "Convertir una pregunta en una hipótesis no es adivinar al azar: es dar tu MEJOR predicción, apoyada en algo que ya sabes u observaste. El proceso tiene tres momentos. Primero, piensa qué SABES sobre el tema (por experiencia, por algo que leíste o viste antes). Segundo, usa eso para predecir una respuesta posible: no cualquier respuesta, sino la que tiene más sentido según lo que ya sabes. Tercero, escríbela en forma 'Si... entonces...', dejando claro que se puede comprobar. Fíjate que predecir 'con razón' no significa que tengas que estar seguro de acertar: significa que tu predicción tiene un porqué detrás, aunque al final resulte equivocada. Eso es muy distinto de tirar una respuesta cualquiera sin pensar.",
+        "pasos": [
+          "Piensa qué ya sabes o notaste sobre el tema de tu pregunta.",
+          "Usa eso para predecir la respuesta que te parece más probable (no cualquiera al azar).",
+          "Escribe tu predicción en forma 'Si... entonces...', asegurándote de que se pueda medir u observar."
+        ],
+        "ejemplo": "Pregunta: '¿qué objeto flota más fácil en el agua, una piedra pequeña o un tapón de plástico del mismo tamaño?'. Ya sé que los tapones de plástico suelen flotar en charcos y las piedras se hunden. Hipótesis: 'Si pongo una piedra y un tapón de plástico del mismo tamaño en un balde de agua, entonces el tapón flotará y la piedra se hundirá, porque el plástico pesa menos que la piedra para el mismo tamaño'.",
+        "figura": ""
+      },
+      {
+        "titulo": "Predecir con razón, no adivinar al azar",
+        "explicacion": "Hay una diferencia enorme entre PREDECIR y ADIVINAR, aunque a veces se parezcan. ADIVINAR es tirar una respuesta sin ningún motivo detrás, como cuando elegís una carta al azar en un juego de mesa: no sabes nada, solo dices algo. PREDECIR CON RAZÓN es distinto: usas lo que ya observaste o sabes para apoyar tu respuesta, aunque no estés cien por ciento seguro. Por ejemplo, si nunca has visto una balanza y te preguntan cuál de dos objetos pesa más, adivinar sería decir cualquiera sin mirarlos. Predecir con razón sería decir 'creo que el objeto de metal pesa más que el de espuma, porque cuando los cargué el de metal se sentía más pesado en la mano'. Las dos formas pueden terminar equivocadas, pero solo la segunda es una hipótesis científica: tiene un razonamiento detrás que otra persona puede entender y revisar, aunque al final el experimento diga que no era así.",
+        "pasos": [
+          "Antes de responder, busca al menos UNA razón (algo que observaste, sentiste o ya sabes) que apoye tu predicción.",
+          "Si no tienes ninguna razón, no la inventes: puedes decir 'no lo sé todavía' y usar el experimento para descubrirlo, en vez de adivinar al azar.",
+          "Al escribir tu hipótesis, agrega el 'porque...' que explica tu razón, aunque después el resultado sea distinto."
+        ],
+        "ejemplo": "Un niño no sabe si un lápiz de madera flota o se hunde. Adivinar al azar sería decir 'flota' sin ningún motivo. Predecir con razón sería decir: 'creo que el lápiz de madera flotará, porque una vez vi un palito de madera flotando en un charco'. Aunque el lápiz se hunda al final (porque tiene un poco de metal y grafito dentro), la predicción fue válida por tener una razón, y el resultado le enseña algo nuevo sobre los lápices.",
+        "figura": ""
+      },
+      {
+        "titulo": "Una hipótesis falsa también enseña",
+        "explicacion": "Ya viste en el tema anterior que un experimento no fracasa porque la hipótesis salga falsa. Ahora profundicemos en POR QUÉ eso es tan valioso. Cuando tu hipótesis se confirma, aprendes que tu razonamiento era correcto. Pero cuando tu hipótesis sale FALSA, en realidad aprendes algo todavía más sorprendente: descubres que el mundo funciona distinto de lo que pensabas, y eso te obliga a mejorar tu forma de razonar. Muchas ideas importantes de la ciencia empezaron así: alguien predijo algo razonable, el experimento mostró que estaba equivocado, y esa sorpresa llevó a entender mejor las cosas. Por eso un buen científico no se pone triste cuando su hipótesis falla: se pone CURIOSO, porque el resultado inesperado es una pista nueva para investigar.",
+        "pasos": [
+          "Si tu hipótesis se confirma, anota qué razonamiento te llevó a acertar (te sirve para la próxima).",
+          "Si tu hipótesis sale falsa, no la escondas ni la cambies: anótala tal cual y anota también el resultado real.",
+          "Pregúntate qué te enseña ese resultado inesperado, y qué pregunta nueva te abre."
+        ],
+        "ejemplo": "Una niña predice: 'Si dejo secar al aire una toalla mojada y un plástico mojado del mismo tamaño, entonces el plástico se secará más rápido, porque parece más liso y sin huecos'. En la prueba, el plástico casi no se seca (el agua se queda en gotas encima) y la toalla se seca antes. Su hipótesis fue falsa, pero ahora sabe algo importante: lo liso de una superficie no es lo que determina qué tan rápido se seca, y eso la lleva a preguntarse qué sí lo determina.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "Una buena hipótesis es una predicción basada en razones (no un invento al azar), escrita de forma clara (idealmente 'Si... entonces...'), que se puede PONER A PRUEBA con un experimento y que tiene una posibilidad real de resultar FALSA. Se distingue de una opinión (depende del gusto) y de un deseo (depende de lo que te gustaría), porque la hipótesis acepta el resultado del experimento sea cual sea. Y cuando una hipótesis sale falsa, no es un fracaso: es información nueva y valiosa sobre cómo funciona realmente el mundo."
+  },
+  "practica": [
+    {
+      "enunciado": "Un niño observa dos toallas de papel mojadas colgadas: una en un lugar con viento y otra en un lugar sin viento. Se pregunta: '¿el viento hace que la ropa se seque más rápido?'. Escribe una hipótesis en forma 'Si... entonces...' para esa pregunta.",
+      "pista": "Identifica qué se cambia (la parte del 'Si') y qué se espera que pase como consecuencia (la parte del 'entonces').",
+      "solucion": "Una hipótesis válida es: 'Si cuelgo una toalla mojada en un lugar con viento y otra igual en un lugar sin viento, entonces la que está con viento se secará en menos tiempo'. Cumple con la forma Si...entonces y se puede comprobar midiendo el tiempo que tarda en secarse cada toalla.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Decide si esta afirmación es una hipótesis COMPROBABLE o NO comprobable, y explica por qué: 'Esta planta crece más porque se siente querida cuando le hablo'.",
+      "pista": "Pregúntate si existe algún instrumento o experimento que pueda medir si una planta 'se siente querida'.",
+      "solucion": "NO es comprobable. No existe ninguna forma de medir si una planta 'se siente querida': no hay instrumento ni experimento que pueda comprobar ese sentimiento. Para volverla comprobable, habría que cambiarla por algo medible, como: 'Si le hablo a una planta todos los días y a otra igual no le hablo, entonces la que recibe voz crecerá más centímetros en una semana' (aunque el 'por qué' seguiría siendo otra pregunta aparte).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Lee esta afirmación: 'El sabor de mango es el más rico de todos los helados'. ¿Es una HIPÓTESIS, una OPINIÓN o un DESEO? Explica tu respuesta.",
+      "pista": "Piensa si esa afirmación depende del gusto de cada persona o si se puede comprobar con un experimento que dé el mismo resultado para todos.",
+      "solucion": "Es una OPINIÓN. 'El más rico' depende del gusto de cada persona: no existe un experimento que determine con certeza cuál sabor es 'mejor' para todo el mundo. Una hipótesis sobre helados sí podría escribirse, por ejemplo: 'Si dejo un helado de mango y uno de vainilla a temperatura ambiente, entonces el de mango se derretirá más rápido', porque eso sí se puede medir con un reloj.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Mejora esta hipótesis vaga para que quede clara y comprobable: 'El agua caliente es mejor para lavar la ropa'.",
+      "pista": "Una hipótesis vaga usa palabras como 'mejor' que no dicen qué se mide. Piensa qué podrías medir de verdad al lavar ropa (por ejemplo, cuánto se quita una mancha).",
+      "solucion": "Una versión mejorada podría ser: 'Si lavo dos telas iguales con una mancha de barro del mismo tamaño, una con agua caliente y otra con agua fría, entonces la tela lavada con agua caliente quedará con menos mancha visible'. Esta versión dice claramente qué se cambia (la temperatura del agua) y qué se puede observar y comparar (cuánta mancha queda), en vez de usar la palabra vaga 'mejor'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un niño dice: 'Ojalá mi maceta, la que tiene más sol, sea la que crezca más, porque quiero ganarle a mi hermano en el experimento de la escuela'. ¿Esto es una hipótesis? Explica qué problema tiene esta forma de pensar.",
+      "pista": "Fíjate en las palabras 'ojalá' y 'quiero ganarle'. ¿Eso describe una razón sobre el mundo, o lo que al niño le gustaría que pasara?",
+      "solucion": "No es una hipótesis, es un DESEO: el niño está expresando lo que le gustaría que pasara (ganarle a su hermano), no una predicción basada en razones sobre las plantas. El problema es que, si mezcla su deseo con su hipótesis, corre el riesgo de solo fijarse en los resultados que le convienen para 'ganar', en vez de anotar honestamente lo que realmente creció cada maceta. Una hipótesis científica sería, por ejemplo: 'Si esta maceta recibe más horas de sol que la de mi hermano, entonces crecerá más centímetros en una semana', aceptando el resultado sea cual sea.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un niño observa que dos vasos con hielo están sobre la mesa, uno envuelto en papel de aluminio y otro sin envolver. Convierte esta observación en (a) una pregunta científica y (b) una hipótesis en forma 'Si... entonces...'.",
+      "pista": "La pregunta debe poder responderse con una medición (por ejemplo, tiempo). La hipótesis necesita una razón que la apoye.",
+      "solucion": "(a) Pregunta científica: '¿el hielo envuelto en papel de aluminio tarda más en derretirse que el hielo sin envolver?'. (b) Hipótesis: 'Si envuelvo un cubo de hielo en papel de aluminio y dejo otro cubo igual sin envolver, entonces el envuelto tardará más tiempo en derretirse, porque el aluminio puede bloquear parte del calor del ambiente'. Las dos partes se pueden comprobar midiendo el tiempo de derretimiento con un cronómetro.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica por qué esta afirmación NO sirve como hipótesis: 'Mañana el clima estará bien o estará mal'.",
+      "pista": "Imagina cualquier clima que pueda hacer mañana. ¿Hay alguna posibilidad de que esa frase resulte falsa?",
+      "solucion": "No sirve como hipótesis porque no puede resultar FALSA de ninguna manera: pase lo que pase mañana (llueva, haga sol, haga viento), siempre se podrá decir que el clima estuvo 'bien' o 'mal' según cómo se lo mire. Una hipótesis de verdad debe arriesgarse a algo concreto que se pueda comprobar, por ejemplo: 'Mañana lloverá en mi ciudad', porque esa frase sí puede resultar cierta (llueve) o falsa (no llueve).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un niño nunca ha probado si un globo inflado con más aire rebota más alto que uno con poco aire. No tiene ninguna razón ni observación previa sobre eso. ¿Qué debería hacer: adivinar al azar cuál rebota más, o hay una mejor opción? Explica.",
+      "pista": "Piensa si existe una tercera opción distinta a 'inventar una respuesta seguro' cuando de verdad no se tiene ninguna razón.",
+      "solucion": "No debería inventar una respuesta sin ninguna razón solo por rellenar algo. Si de verdad no tiene ninguna observación ni conocimiento previo sobre el tema, lo más honesto es reconocerlo ('no sé cuál rebotará más todavía') y usar el experimento para averiguarlo, en vez de forzar una hipótesis sin fundamento. Ahora bien, si piensa un poco, sí puede encontrar una razón, por ejemplo: 'un globo con más aire está más estirado y tenso, así que creo que rebotará más alto que uno con poco aire, porque se ve más firme'. Eso sí sería predecir con razón, no adivinar al azar.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una niña predijo: 'Si planto una semilla en tierra oscura y otra en arena, entonces la de tierra oscura crecerá más alto, porque la tierra oscura se ve más rica en nutrientes'. Al hacer la prueba (mismo tipo de semilla, misma agua, misma luz, midiendo después de dos semanas), la planta de arena creció más alto. ¿Qué debería concluir la niña sobre su hipótesis, y qué NO debería hacer?",
+      "pista": "Compara la predicción con el resultado real. Piensa también qué sería deshonesto hacer con ese resultado inesperado.",
+      "solucion": "Debería concluir que su hipótesis resultó FALSA: predijo que la tierra oscura haría crecer más a la planta, pero el resultado real fue lo contrario (la de arena creció más). Lo que NO debería hacer es cambiar sus datos o inventar una excusa para que parezca que acertó. En cambio, debe anotar el resultado real tal cual, aceptar que su razonamiento sobre 'la tierra se ve más rica' no se cumplió en este caso, y usar esa sorpresa para preguntarse qué otro factor pudo haber influido en el crecimiento.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ordena estas ideas de MENOS a MÁS parecidas a una buena hipótesis científica, explicando brevemente por qué: (A) 'Ojalá gane mi equipo de fútbol'. (B) 'La pizza es la comida más rica del mundo'. (C) 'Si riego esta planta con agua salada y otra igual con agua normal, entonces la de agua salada crecerá menos, porque la sal no es buena para las plantas'.",
+      "pista": "Piensa cuál depende del deseo, cuál depende del gusto, y cuál se puede comprobar con un experimento y tiene una razón detrás.",
+      "solucion": "Orden de menos a más parecida a una hipótesis: A, B, C. (A) es un DESEO: habla de lo que al niño le gustaría que pasara, no se puede comprobar con un experimento. (B) es una OPINIÓN: 'la más rica' depende del gusto de cada persona. (C) es una HIPÓTESIS de verdad: está en forma 'Si...entonces', tiene una razón ('la sal no es buena para las plantas'), y se puede comprobar regando de verdad las dos plantas y midiendo su crecimiento.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuáles son las DOS condiciones que debe cumplir una buena hipótesis?",
+      "opciones": [
+        "Estar basada en algo que ya sabes u observaste, y poder ponerse a prueba con un experimento",
+        "Ser siempre verdadera y sonar muy científica",
+        "Ser una idea inventada al azar y muy larga",
+        "Gustarle a la mayoría de las personas"
+      ],
+      "correcta": 0,
+      "explicacion": "Una buena hipótesis está basada en algo que ya se sabe o se observó (no es un invento al azar) y se puede comprobar con un experimento. No tiene que ser siempre verdadera: puede resultar falsa y seguir siendo una buena hipótesis."
+    },
+    {
+      "pregunta": "¿Cuál de estas hipótesis está bien escrita en forma 'Si... entonces...'?",
+      "opciones": [
+        "La luz es buena para las plantas",
+        "Si una planta recibe más horas de luz al día, entonces crecerá más centímetros en una semana",
+        "Las plantas con luz se ven más felices",
+        "No sé si la luz sirve para algo"
+      ],
+      "correcta": 1,
+      "explicacion": "La segunda opción indica claramente qué se cambia (las horas de luz) y qué se espera medir como consecuencia (los centímetros de crecimiento). Las otras opciones son vagas, hablan de sentimientos que no se pueden medir, o no proponen ninguna predicción."
+    },
+    {
+      "pregunta": "¿Por qué una hipótesis debe poder resultar FALSA?",
+      "opciones": [
+        "Porque si no existe ningún resultado posible que la contradiga, entonces no dice nada comprobable de verdad",
+        "Porque las hipótesis falsas son más divertidas",
+        "Porque a los científicos les gusta equivocarse",
+        "No es necesario; una buena hipótesis siempre debe ser verdadera"
+      ],
+      "correcta": 0,
+      "explicacion": "Si una afirmación se cumple pase lo que pase (como 'lloverá o no lloverá'), no arriesga nada y no se puede comprobar de verdad. Una buena hipótesis debe poder ser confirmada O mostrarse falsa según lo que diga el experimento."
+    },
+    {
+      "pregunta": "Un niño dice: 'esta piedra es especial y por eso flota'. Nadie puede diseñar un experimento que compruebe si la piedra es 'especial'. ¿Qué problema tiene esta afirmación?",
+      "opciones": [
+        "Ninguno, es una buena hipótesis",
+        "No es comprobable: no existe forma de medir o poner a prueba si algo es 'especial'",
+        "Es demasiado corta para ser una hipótesis",
+        "El problema es que no usa la forma 'Si... entonces...'"
+      ],
+      "correcta": 1,
+      "explicacion": "El problema principal es que no se puede comprobar: no hay ningún experimento que mida si una piedra es 'especial'. Aunque se escribiera en forma 'Si...entonces', seguiría sin ser comprobable, así que ese no es el error principal."
+    },
+    {
+      "pregunta": "'El azul es el color más bonito' es un ejemplo de...",
+      "opciones": [
+        "Una hipótesis científica bien formulada",
+        "Una opinión, porque depende del gusto de cada persona y no se puede comprobar con un experimento",
+        "Una conclusión, porque ya fue comprobada",
+        "Un deseo sobre el futuro"
+      ],
+      "correcta": 1,
+      "explicacion": "'El más bonito' depende del gusto de cada persona: no hay experimento que determine con certeza cuál color es objetivamente el más bonito para todos. Por eso es una opinión, no una hipótesis."
+    },
+    {
+      "pregunta": "'Ojalá mañana no llueva para poder ir al parque' es un ejemplo de...",
+      "opciones": [
+        "Una hipótesis, porque habla del clima",
+        "Un deseo, porque expresa lo que a alguien le gustaría que pasara, no una predicción basada en razones",
+        "Una conclusión con evidencia",
+        "Una pregunta científica"
+      ],
+      "correcta": 1,
+      "explicacion": "La palabra 'ojalá' indica que es un deseo: lo que la persona quisiera que pasara, sin ninguna razón que apoye si realmente va a llover o no. Una hipótesis sobre el clima sería, por ejemplo, 'mañana lloverá en mi ciudad', basada en alguna señal observada."
+    },
+    {
+      "pregunta": "¿Cuál es la diferencia principal entre 'adivinar al azar' y 'predecir con razón'?",
+      "opciones": [
+        "No hay ninguna diferencia, las dos son formas válidas de hacer ciencia",
+        "Predecir con razón se apoya en algo que ya sabes u observaste; adivinar al azar no tiene ningún motivo detrás",
+        "Adivinar al azar siempre acierta más",
+        "Predecir con razón significa estar cien por ciento seguro de acertar"
+      ],
+      "correcta": 1,
+      "explicacion": "Predecir con razón significa dar una respuesta apoyada en algo que ya observaste o sabes, aunque no estés seguro de acertar. Adivinar al azar es responder sin ningún motivo. Las dos pueden fallar, pero solo la primera es una hipótesis científica."
+    },
+    {
+      "pregunta": "Un niño predice: 'Si dejo secar una toalla y un plástico mojados al aire, entonces el plástico se secará más rápido, porque se ve más liso'. El resultado muestra que la toalla se seca primero. ¿Qué significa esto?",
+      "opciones": [
+        "Que el niño hizo mal el experimento y debe repetirlo hasta que gane el plástico",
+        "Que su hipótesis resultó falsa, pero aun así aprendió algo real: lo liso de la superficie no es lo que determina el secado",
+        "Que debe inventar otro resultado para que coincida con lo que predijo",
+        "Que la ciencia no sirve para estas cosas"
+      ],
+      "correcta": 1,
+      "explicacion": "Una hipótesis falsa no significa que el experimento estuviera mal hecho. Si la prueba fue justa, el resultado real (la toalla se seca primero) es información válida y valiosa, aunque contradiga la predicción inicial."
+    },
+    {
+      "pregunta": "¿Cuál de estas opciones es la hipótesis MEJOR formulada?",
+      "opciones": [
+        "El agua caliente es mejor para lavar la ropa",
+        "Si lavo dos telas con la misma mancha, una con agua caliente y otra con agua fría, entonces la de agua caliente quedará con menos mancha visible",
+        "Lavar ropa es importante",
+        "Ojalá el agua caliente limpie mejor"
+      ],
+      "correcta": 1,
+      "explicacion": "La segunda opción indica claramente qué se cambia (la temperatura del agua) y qué se puede observar y medir (cuánta mancha queda), a diferencia de la palabra vaga 'mejor' o de un deseo sin comprobación."
+    },
+    {
+      "pregunta": "¿Cuál de estos pasos NO forma parte de convertir una pregunta en una buena hipótesis?",
+      "opciones": [
+        "Pensar qué ya sabes u observaste sobre el tema",
+        "Escribir la predicción en forma 'Si... entonces...'",
+        "Inventar cualquier respuesta sin pensar, solo para tener algo escrito",
+        "Revisar que la predicción se pueda medir u observar"
+      ],
+      "correcta": 2,
+      "explicacion": "Inventar cualquier respuesta sin pensar es adivinar al azar, no formular una hipótesis científica. Una buena hipótesis siempre parte de algo que ya se sabe u observó, y se revisa que se pueda medir."
+    },
+    {
+      "pregunta": "Un niño dice: 'Mañana el clima estará bien o estará mal'. ¿Por qué esta frase NO sirve como hipótesis científica?",
+      "opciones": [
+        "Porque habla del clima, y el clima no se puede investigar",
+        "Porque no puede resultar falsa de ninguna manera: se cumple pase lo que pase mañana",
+        "Porque es demasiado larga",
+        "Porque no menciona ningún instrumento de medición"
+      ],
+      "correcta": 1,
+      "explicacion": "Sea cual sea el clima de mañana, siempre se podrá decir que estuvo 'bien' o 'mal' según cómo se lo mire, así que la frase nunca puede resultar falsa. Una hipótesis debe arriesgar algo concreto y comprobable."
+    },
+    {
+      "pregunta": "Una niña predijo que la tierra oscura haría crecer más a una planta que la arena, pero el resultado mostró lo contrario. Ella decide anotar el resultado real, aunque no sea el que esperaba. ¿Por qué esto es lo correcto?",
+      "opciones": [
+        "Porque así queda mal ante los demás",
+        "Porque la honestidad con los resultados, aunque contradigan la hipótesis, es lo que hace confiable a la ciencia",
+        "Porque debería haber cambiado los datos para que coincidieran con su predicción",
+        "Porque el resultado no sirve para nada si la hipótesis fue falsa"
+      ],
+      "correcta": 1,
+      "explicacion": "Anotar el resultado real, sea cual sea, es lo que hace que la investigación sea confiable. Cambiar los datos para 'ganar' arruinaría por completo el propósito de experimentar: descubrir la verdad, no confirmar lo que uno quiere creer."
+    }
+  ]
+}

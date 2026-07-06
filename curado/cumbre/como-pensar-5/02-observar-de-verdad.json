@@ -1,0 +1,284 @@
+{
+  "programa": "cumbre",
+  "materia": "Cómo Pensar",
+  "grado": "Cumbre Cómo Pensar 5to grado",
+  "dominio": "Preguntar e investigar",
+  "tema": "Observar de verdad: ver los detalles, no lo que esperabas ver",
+  "referencias": [
+    "Philosophy for Children (P4C)",
+    "IB PYP thinking skills",
+    "NGSS Science & Engineering Practices (elemental): observar con atención",
+    "Alfabetización mediática inicial: mirar con atención"
+  ],
+  "resumen": {
+    "titulo": "Mirar no es lo mismo que ver: cómo observar de verdad",
+    "intro": "Todos los días usas los ojos, los oídos, la nariz, las manos y la boca para andar por el mundo, pero eso no es lo mismo que OBSERVAR de verdad. Observar es fijarte con atención, a propósito, en los detalles que la mayoría de la gente se salta. Este tema te va a enseñar algo que sorprende a casi todos la primera vez que lo descubren: muchas veces creemos que 'vimos' algo, pero en realidad nuestra cabeza nos mostró lo que esperábamos ver, no lo que de verdad había. Aprender a observar bien te sirve para todo: para no perderte el detalle importante, para no confundirte por una primera impresión, y para darte cuenta cuando tu propia mente te hizo una jugada.",
+    "secciones": [
+      {
+        "titulo": "Mirar y observar no son lo mismo",
+        "explicacion": "MIRAR es simplemente tener los ojos (o los demás sentidos) abiertos y dejar que las cosas pasen frente a ti, casi sin darte cuenta. OBSERVAR es distinto: es fijarte A PROPÓSITO, con calma, buscando detalles concretos. Un DETALLE es una parte pequeña de algo que fácilmente se pasa por alto si no la buscas con cuidado: el color exacto, cuántas cosas hay, qué cambió, qué sonido se escucha de fondo. Cuando miras rápido, tu cabeza solo se queda con la idea general ('hay un perro'). Cuando observas de verdad, te quedas con muchos detalles ('el perro es café oscuro, cojea de la pata trasera derecha y tiene un collar rojo con una placa'). La buena noticia es que observar se entrena: mientras más practicas fijarte, más detalles empiezas a notar sin esfuerzo.",
+        "pasos": [
+          "Detente un momento antes de decir 'ya vi' o 'ya sé qué es esto'.",
+          "Pregúntate: '¿qué detalles todavía no noté?' (color exacto, cantidad, forma, sonido, algo que cambió).",
+          "Recorre tus sentidos uno por uno: qué ves, qué oyes, qué hueles, qué tocas."
+        ],
+        "ejemplo": "Miras tu cartuchera rápido: 'tiene lápices'. La observas de verdad: 'tiene 3 lápices, uno mordido en la punta, un sacapuntas sin la tapa y una goma partida a la mitad'. Es la misma cartuchera; lo que cambia es cuánta atención le pusiste."
+      },
+      {
+        "titulo": "Qué es una expectativa y cómo te hace 'ver' cosas que no están",
+        "explicacion": "Una EXPECTATIVA es lo que esperas encontrar antes de mirar, basado en lo que ya sabes o en lo que imaginas. El problema es que tu cabeza, para ahorrar esfuerzo, muchas veces te muestra lo que esperabas ver en vez de lo que realmente hay. Por ejemplo, si sabes que en tu estuche siempre hay un borrador rosado, cuando lo abres rápido 'ves' el borrador rosado aunque en realidad hoy no esté (capaz lo perdiste y hay otra cosa en su lugar). Esto le pasa a todo el mundo, no es un error tuyo solamente: se llama esperar-ver, y sucede porque tu cabeza completa lo que falta con lo que ya conoce. Por eso, cuando algo importa de verdad, no basta con 'mirar como siempre': hay que observar despacio y comprobar si lo que 'viste' de verdad está ahí.",
+        "pasos": [
+          "Antes de mirar algo, pregúntate: '¿qué espero encontrar?' Así puedes notar la diferencia.",
+          "Mira despacio, sin dar por hecho que va a estar como siempre.",
+          "Si algo te sorprende, no lo ignores: puede ser justo el detalle que cambió."
+        ],
+        "ejemplo": "Cada mañana tu mamá deja tu lonchera en el mismo lugar. Un día la agarras rápido pensando que es la tuya, pero en realidad es la de tu hermano (son parecidas). La confundiste porque esperabas encontrar la tuya ahí, no porque no supieras diferenciarlas."
+      },
+      {
+        "titulo": "El detalle que cambió: buscar lo que es diferente, no solo lo que ya conoces",
+        "explicacion": "Una forma muy útil de observar de verdad es buscar A PROPÓSITO lo que CAMBIÓ o lo que NO está, en vez de solo confirmar lo que ya sabías. Cuando algo se ve 'igual que siempre', tendemos a no fijarnos, y ahí es justo cuando se nos escapa el detalle importante: un objeto que falta, un color distinto, un número que no cuadra. Para encontrar ese detalle hay un truco simple: comparar con calma, parte por parte, en vez de mirar todo de un solo vistazo. Si comparas de a poco (primero la parte de arriba, después la de abajo, después los lados), es mucho más fácil notar qué cambió que si le echas un vistazo general y decides enseguida que 'está todo igual'.",
+        "pasos": [
+          "No te conformes con un vistazo rápido; recorre la escena por partes.",
+          "Compara con lo que recuerdas de antes, parte por parte, no de un solo vistazo.",
+          "Si algo te resulta raro o distinto, aunque sea pequeño, anótalo o dilo en voz alta antes de que se te olvide."
+        ],
+        "ejemplo": "Tu cuarto se ve 'igual que siempre' a simple vista, pero si lo recorres por partes notas que el marco de una foto está torcido y que falta un cargador que ayer sí estaba en el enchufe. Ese es el tipo de detalle que un vistazo rápido no encuentra."
+      },
+      {
+        "titulo": "Observar con los cinco sentidos, no solo con los ojos",
+        "explicacion": "Cuando decimos 'observar' pensamos primero en los ojos, pero observar de verdad usa los CINCO SENTIDOS: la vista, el oído, el olfato, el tacto y el gusto. Cada sentido te da un tipo de información distinta que los otros no pueden darte: el oído capta un sonido que quizá no ves, el tacto nota una textura o una temperatura, el olfato detecta un olor que anuncia algo antes de que lo veas. Si solo usas los ojos, se te escapa información valiosa. Por eso, cuando algo importa de verdad, conviene recorrer los sentidos uno por uno a propósito, en vez de confiar solo en la vista.",
+        "pasos": [
+          "Pregúntate qué ves, pero también qué oyes, qué hueles y qué sientes al tocar.",
+          "Si un sentido te da una pista (un olor raro, un sonido nuevo), síguela en vez de ignorarla.",
+          "Recuerda que un solo sentido no siempre alcanza para observar bien algo completo."
+        ],
+        "ejemplo": "Entras a la cocina y solo con los ojos no notarías nada raro, pero el olfato te avisa un olor a quemado que la vista todavía no muestra: el arroz se está pegando en la olla, aunque por fuera se vea normal."
+      },
+      {
+        "titulo": "Observar con calma: por qué apurarse hace que se te escapen cosas",
+        "explicacion": "Apurarte es uno de los mayores enemigos de observar bien. Cuando miras rápido porque tienes prisa, tu cabeza toma un 'atajo': agarra la primera impresión y la da por buena, sin revisar si de verdad es correcta. Ese atajo funciona bien la mayoría de las veces (por eso existe), pero falla justo en los casos que más importan: cuando algo cambió, cuando hay un detalle raro, cuando dos cosas se parecen mucho pero no son iguales. Observar con calma no significa tardar una eternidad; significa darte un segundo extra antes de decidir 'ya vi todo lo que hay que ver', para que tu cabeza no se quede solo con la primera impresión.",
+        "pasos": [
+          "Antes de decidir algo importante, date un segundo extra para mirar de nuevo.",
+          "Si dos cosas se parecen mucho (dos cuadernos, dos gorras iguales), compáralas con calma antes de asumir cuál es cuál.",
+          "Acepta que la prisa es la que más te hace perder detalles, no la falta de buena vista."
+        ],
+        "ejemplo": "Sales corriendo del salón y agarras 'tu' suéter de la silla porque es igual al tuyo. Si te hubieras detenido un segundo a mirar el nombre bordado adentro, habrías notado que era el de tu compañero."
+      },
+      {
+        "titulo": "Dibujar o contar lo que de verdad ves, no lo que crees que es",
+        "explicacion": "Un ejercicio muy útil para aprender a observar es dibujar o describir algo mirándolo de verdad, en vez de dibujar lo que 'crees que es' de memoria. Por ejemplo, si te piden dibujar una moneda de memoria, mucha gente dibuja mal detalles pequeños (qué número tiene, para qué lado mira la cara), porque nunca la observó con atención aunque la haya visto mil veces. Cuando en cambio dibujas o describes mirando el objeto real con calma, aparecen detalles que 'sabías' pero en realidad nunca habías observado bien. Esto demuestra algo importante: haber visto algo muchas veces no es lo mismo que haberlo observado alguna vez de verdad.",
+        "pasos": [
+          "Cuando dibujes o describas algo, mira el objeto real en vez de hacerlo solo de memoria.",
+          "Fíjate en detalles que darías por sabidos (forma exacta, número de partes, para qué lado apunta algo).",
+          "Compara tu dibujo o descripción con el objeto real para ver qué detalle se te escapó."
+        ],
+        "ejemplo": "Intentas dibujar de memoria el logo de tu marca de cereal favorita, la que desayunas casi todos los días. Al comparar tu dibujo con la caja real, notas que te equivocaste en un color o en la posición de una letra: la habías visto mil veces, pero nunca la habías observado con atención."
+      },
+      {
+        "titulo": "Cómo observar de verdad en tu día a día",
+        "explicacion": "Juntemos todo en pasos simples que puedes usar siempre que algo importe: primero, detente un momento en vez de mirar rápido y seguir de largo. Segundo, pregúntate qué esperabas encontrar, para poder notar si lo que hay es distinto de lo que imaginabas. Tercero, recorre tus sentidos y las partes de lo que observas, en vez de quedarte con la idea general de un solo vistazo. Cuarto, presta atención especial a lo que cambió, a lo que falta o a lo que te sorprende, porque ahí suele estar el detalle importante. Con práctica, esto deja de sentirse como un esfuerzo extra y se vuelve un hábito natural, como el de cualquier buen observador.",
+        "pasos": [
+          "Detente un momento antes de dar algo por visto.",
+          "Pregúntate qué esperabas encontrar y compáralo con lo que de verdad hay.",
+          "Recorre los sentidos y las partes, no te quedes con un solo vistazo.",
+          "Presta atención especial a lo que cambió, falta o sorprende."
+        ],
+        "ejemplo": "Antes de entregar una tarea, en vez de mirarla rápido y decir 'está bien', la recorres con calma parte por parte: notas que en un ejercicio olvidaste escribir la respuesta final, algo que un vistazo rápido no te hubiera mostrado."
+      }
+    ],
+    "idea_clave": "Mirar es tener los ojos abiertos sin fijarte de verdad; observar es hacerlo a propósito, con calma y con los cinco sentidos, buscando detalles y no solo la idea general. Tu cabeza tiende a mostrarte lo que esperabas ver (una expectativa) en vez de lo que realmente hay, así que hay que comparar con calma, buscar lo que cambió o falta, y no confiar solo en un vistazo rápido ni en lo que 'ya crees saber' de memoria."
+  },
+  "practica": [
+    {
+      "enunciado": "Mira el estuche o la mochila que tienes cerca ahora mismo durante 3 segundos y ciérrala. Escribe todos los detalles que recuerdes (colores, cuántas cosas, roturas). Después ábrela y compara: ¿qué detalle se te escapó?",
+      "pista": "Piensa si tu primera mirada fue un vistazo rápido o una observación con calma.",
+      "solucion": "No hay una única respuesta correcta. Lo esperable es notar que en el primer vistazo rápido se te escapan detalles pequeños (un color exacto, una cantidad, una rotura) que sí aparecen cuando observas con calma. Eso muestra la diferencia entre mirar rápido y observar de verdad."
+    },
+    {
+      "enunciado": "Todos los días tu mamá deja las llaves de la casa colgadas en el mismo gancho. Un día las agarras sin mirar bien y en realidad agarraste las llaves de tu tío, que se parecen mucho. ¿Por qué te confundiste, aunque tenías los ojos abiertos?",
+      "pista": "Piensa en qué esperabas encontrar en ese gancho antes de mirar.",
+      "solucion": "Te confundiste porque esperabas encontrar las llaves de siempre en ese lugar (una expectativa), así que tu cabeza dio por hecho que eran esas sin observarlas con cuidado. No fue un problema de la vista, sino de no comparar con calma antes de actuar."
+    },
+    {
+      "enunciado": "Te piden dibujar de memoria la bandera de tu escuela, que ves casi todos los días. Al comparar tu dibujo con la bandera real, te das cuenta de que pusiste mal el orden de los colores. ¿Qué te enseña esto sobre ver algo muchas veces?",
+      "pista": "Piensa si haber visto algo mil veces es lo mismo que haberlo observado con atención alguna vez.",
+      "solucion": "Enseña que ver algo muchas veces no es lo mismo que observarlo de verdad. Aunque hayas pasado frente a esa bandera cientos de veces, nunca te detuviste a fijarte en el orden exacto de los colores, así que tu memoria se quedó con la idea general, no con el detalle preciso."
+    },
+    {
+      "enunciado": "Entras a tu cuarto y a simple vista parece que todo está igual que siempre. Si lo recorrieras con calma, parte por parte, ¿qué tipo de detalles podrías notar que un vistazo rápido no muestra? Da dos ejemplos.",
+      "pista": "Piensa en cosas que faltan, que están torcidas, o que cambiaron de lugar.",
+      "solucion": "Ejemplo válido: podrías notar que un cargador que ayer estaba en el enchufe ya no está, o que un cuaderno quedó en un lugar distinto de donde lo dejaste. Un vistazo general dice 'está todo igual'; recorrer por partes con calma es lo que permite notar lo que cambió o falta."
+    },
+    {
+      "enunciado": "Vas apurado a la cocina y agarras rápido lo que crees que es tu vaso de jugo, pero en realidad es el de tu hermana, que se ve casi idéntico. ¿Qué parte de observar de verdad te faltó hacer?",
+      "pista": "Piensa en la diferencia entre la primera impresión y darte un segundo extra para comparar.",
+      "solucion": "Te faltó darte un segundo extra antes de decidir, en vez de quedarte con la primera impresión por la prisa. Cuando dos cosas se parecen mucho, hay que compararlas con calma (por ejemplo, fijarse en una marca o el nivel de jugo) antes de asumir cuál es cuál; la prisa fue lo que hizo que se te escapara el detalle."
+    },
+    {
+      "enunciado": "Escuchas un ruido raro en la cocina, pero desde donde estás no ves nada distinto con los ojos. ¿Qué sentido además de la vista te está dando una pista, y qué deberías hacer con esa información?",
+      "pista": "Piensa en qué sentido, además de la vista, te avisó algo.",
+      "solucion": "El oído te está dando la pista (el ruido raro), aunque la vista todavía no muestre nada. Deberías seguir esa pista: ir a revisar de dónde viene el sonido en vez de ignorarlo solo porque a simple vista todo parece normal. Observar bien usa todos los sentidos, no solo los ojos."
+    },
+    {
+      "enunciado": "Un compañero dice: 'No hace falta fijarme bien, si algo cambia yo lo noto enseguida porque tengo buena vista.' ¿Estás de acuerdo? Explica por qué sí o por qué no.",
+      "pista": "Piensa si el problema de no notar un cambio es siempre de la vista, o puede ser de la atención y la expectativa.",
+      "solucion": "No, no estás de acuerdo del todo. Tener buena vista ayuda, pero no basta: muchas veces no notamos un cambio porque esperábamos que todo siguiera igual (una expectativa), no porque no podamos verlo bien. Aunque tengas buena vista, si miras rápido y sin atención, igual se te puede escapar el detalle que cambió."
+    },
+    {
+      "enunciado": "Te piden comparar dos dibujos casi idénticos y encontrar 3 diferencias. Si le echas un solo vistazo general a los dos dibujos, ¿por qué probablemente se te escapen diferencias? ¿Qué deberías hacer en cambio?",
+      "pista": "Piensa en comparar por partes en vez de de un solo vistazo.",
+      "solucion": "Con un solo vistazo general, tu cabeza tiende a decidir rápido que 'son iguales' sin revisar cada parte, así que se te escapan diferencias pequeñas. En cambio deberías recorrer los dos dibujos por partes (primero arriba, luego abajo, luego los lados) comparando con calma cada zona, en vez de mirar todo de una vez y sacar una conclusión apurada."
+    },
+    {
+      "enunciado": "Piensa en un objeto que usas todos los días (tu cepillo de dientes, tu lonchera, tu par de zapatos favorito) y que crees conocer perfectamente. Descríbelo con el mayor detalle posible SIN mirarlo. Luego mira el objeto real y anota qué detalle escribiste mal o se te olvidó.",
+      "pista": "No hay una única respuesta correcta. La clave es notar la diferencia entre lo que 'creías saber' y lo que de verdad observas al mirar con atención.",
+      "solucion": "Ejemplo válido: describes tu cepillo de dientes como 'azul con cerdas blancas', pero al mirarlo notas que las cerdas en realidad son blancas y azules mezcladas, y que tiene una franja de goma en el mango que habías olvidado. Esto demuestra que usar algo todos los días no significa haberlo observado con atención alguna vez."
+    },
+    {
+      "enunciado": "Tu maestra pone sobre la mesa dos monedas que parecen iguales y te pide encontrar en qué se diferencian. Les das un vistazo rápido y dices 'son idénticas'. Pero una tiene el año 2019 y la otra el año 2020. ¿Qué parte de observar de verdad te falló y qué deberías haber hecho?",
+      "pista": "Piensa en la diferencia entre un vistazo rápido y revisar cada parte de los dos objetos con calma.",
+      "solucion": "Te faltó revisar con cuidado, mirando cada parte de las dos monedas (el dibujo, los bordes, los números), en vez de quedarte con la impresión rápida de que 'son iguales'. El detalle (el año) estaba a la vista, pero un vistazo de un segundo no alcanza para notarlo. Para observar de verdad hay que fijarse parte por parte y comparar, sin apurarse.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Vas a buscar tu suéter azul en un perchero donde hay varios suéteres parecidos. Nombra dos cosas concretas que harías para observar con calma y no llevarte el equivocado.",
+      "pista": "Piensa en detalles pequeños que distinguen a un suéter de otro parecido, además del color.",
+      "solucion": "Ejemplo válido: primero, no agarrar el primero que vea del color parecido, sino comparar la talla o una marca/etiqueta con el nombre. Segundo, fijarte en un detalle pequeño que el tuyo tenga y otros no (un botón distinto, una mancha, el bordado del nombre), en vez de guiarte solo por el color a simple vista."
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál es la diferencia principal entre MIRAR y OBSERVAR?",
+      "opciones": [
+        "No hay ninguna diferencia, son la misma cosa.",
+        "Mirar es tener los ojos abiertos sin fijarte de verdad; observar es fijarte a propósito, con calma, en los detalles.",
+        "Mirar se hace con los ojos y observar solo con los oídos.",
+        "Observar es lo que hacen las cámaras, no las personas."
+      ],
+      "correcta": 1,
+      "explicacion": "Mirar es dejar que las cosas pasen frente a ti casi sin darte cuenta. Observar es hacerlo a propósito, buscando detalles concretos, y sí lo hacen las personas, no solo las cámaras."
+    },
+    {
+      "pregunta": "¿Qué es una EXPECTATIVA, tal como se usa en este tema?",
+      "opciones": [
+        "Un detalle pequeño que se te escapa al mirar rápido.",
+        "Lo que esperas encontrar antes de mirar, basado en lo que ya sabes o imaginas.",
+        "Un sentido que usamos para observar, como el olfato.",
+        "El nombre de una prueba científica."
+      ],
+      "correcta": 1,
+      "explicacion": "Una expectativa es lo que esperas encontrar antes de mirar. El problema es que a veces esa expectativa hace que 'veas' lo que esperabas en vez de lo que realmente hay."
+    },
+    {
+      "pregunta": "Cada mañana la lonchera de tu hermano está en el mismo lugar que la tuya y se parecen. Un día agarras la de tu hermano sin darte cuenta. ¿Por qué pasó esto?",
+      "opciones": [
+        "Porque no puedes ver bien.",
+        "Porque esperabas encontrar tu lonchera en ese lugar, así que no te fijaste con calma para comprobarlo.",
+        "Porque las loncheras cambian de forma solas.",
+        "Porque tu hermano las cambió a propósito."
+      ],
+      "correcta": 1,
+      "explicacion": "Esperabas encontrar tu lonchera ahí (una expectativa), así que tu cabeza dio por hecho que era la tuya sin comparar con calma. No es un problema de la vista."
+    },
+    {
+      "pregunta": "¿Cuál de estas frases muestra que alguien observó de verdad, y no solo miró rápido?",
+      "opciones": [
+        "'Hay un perro en el patio.'",
+        "'El perro es café oscuro, cojea de la pata trasera derecha y tiene un collar rojo.'",
+        "'Creo que había algo en el patio.'",
+        "'Seguro hay un perro, siempre hay uno.'"
+      ],
+      "correcta": 1,
+      "explicacion": "Describir el color exacto, la cojera y el collar muestra que se observó con atención los detalles, no solo la idea general de 'hay un perro'."
+    },
+    {
+      "pregunta": "¿Por qué es útil buscar A PROPÓSITO lo que cambió o lo que falta, en vez de solo confirmar lo que ya sabías?",
+      "opciones": [
+        "Porque no sirve de nada, siempre está todo igual.",
+        "Porque cuando algo se ve 'igual que siempre' tendemos a no fijarnos, y ahí es donde se escapa el detalle importante.",
+        "Porque los detalles que cambian nunca son importantes.",
+        "Porque buscar cambios es más rápido que mirar todo junto."
+      ],
+      "correcta": 1,
+      "explicacion": "Cuando algo parece igual que siempre, bajamos la atención, y es justo ahí donde se nos escapan los detalles que sí cambiaron, como un objeto que falta o algo torcido."
+    },
+    {
+      "pregunta": "¿Cuál es la mejor forma de encontrar diferencias entre dos dibujos casi idénticos?",
+      "opciones": [
+        "Echar un solo vistazo general rápido a los dos.",
+        "Recorrer los dibujos por partes, comparando con calma cada zona.",
+        "Adivinar sin mirar, porque siempre son iguales.",
+        "Mirar solo la parte de arriba y suponer que el resto es igual."
+      ],
+      "correcta": 1,
+      "explicacion": "Comparar por partes con calma permite notar diferencias pequeñas que un vistazo general rápido no muestra, porque la cabeza tiende a decidir rápido que 'son iguales' sin revisar cada zona."
+    },
+    {
+      "pregunta": "Observar de verdad usa los cinco sentidos. ¿Cuál de estos ejemplos muestra un sentido distinto a la vista dando una pista importante?",
+      "opciones": [
+        "Ves que la olla tiene arroz adentro.",
+        "Sientes un olor a quemado antes de ver que el arroz se está pegando.",
+        "Ves el color de la olla.",
+        "Ves cuántas ollas hay en la cocina."
+      ],
+      "correcta": 1,
+      "explicacion": "El olfato detecta el olor a quemado antes de que la vista muestre algo raro por fuera de la olla. Eso muestra que observar bien no depende solo de los ojos."
+    },
+    {
+      "pregunta": "¿Por qué apurarte hace que se te escapen detalles al observar?",
+      "opciones": [
+        "Porque la prisa hace que tu cabeza agarre la primera impresión y la dé por buena, sin revisar si es correcta.",
+        "Porque cuando te apuras ves mejor los detalles pequeños.",
+        "Porque la prisa no tiene ninguna relación con observar.",
+        "Porque apurarte mejora tu memoria."
+      ],
+      "correcta": 0,
+      "explicacion": "Cuando te apuras, tu cabeza toma un atajo: se queda con la primera impresión sin revisarla, y ese atajo es justo el que falla cuando hay un detalle importante o dos cosas parecidas."
+    },
+    {
+      "pregunta": "Describes de memoria el logo de tu cereal favorito, que ves casi todos los días, pero te equivocas en un color. ¿Qué te enseña esto?",
+      "opciones": [
+        "Que tienes mala memoria en general.",
+        "Que ver algo muchas veces no es lo mismo que haberlo observado con atención alguna vez.",
+        "Que el logo cambia de color todo el tiempo.",
+        "Que dibujar de memoria siempre da el resultado correcto."
+      ],
+      "correcta": 1,
+      "explicacion": "Aunque hayas visto ese logo cientos de veces, tu cabeza se quedó con la idea general, no con el detalle exacto, porque nunca te detuviste a observarlo con atención de verdad."
+    },
+    {
+      "pregunta": "Un compañero dice: 'Si algo parece obvio, no hace falta fijarse bien.' ¿Qué problema tiene esta idea, según lo que aprendiste?",
+      "opciones": [
+        "Ninguno, lo obvio siempre es correcto.",
+        "Que justo cuando algo parece obvio o 'igual de siempre' es cuando más se nos escapan los detalles que cambiaron.",
+        "Que lo obvio nunca se puede observar.",
+        "Que solo los adultos pueden fijarse en lo obvio."
+      ],
+      "correcta": 1,
+      "explicacion": "Cuando algo parece obvio, bajamos la guardia y confiamos en la expectativa en vez de mirar con cuidado, y ahí es exactamente donde se escapa el detalle importante."
+    },
+    {
+      "pregunta": "En un juego de 'encuentra las diferencias', dos dibujos casi iguales tienen una sola diferencia: en uno el gato tiene un collar y en el otro no. Un compañero mira los dibujos un segundo y dice que son idénticos. ¿Qué le falló al observar?",
+      "opciones": [
+        "Se quedó con la impresión general y no comparó los dos dibujos parte por parte.",
+        "Tenía razón: si dos dibujos se parecen mucho, ya son iguales.",
+        "Se fijó demasiado en los detalles y por eso se confundió.",
+        "Miró un dibujo con cuidado, pero se olvidó de mirar el otro."
+      ],
+      "correcta": 0,
+      "explicacion": "El detalle (el collar del gato) estaba a la vista, pero al mirar solo un segundo y quedarse con la impresión de que 'son iguales', no lo notó. Observar de verdad es comparar los dos dibujos parte por parte, con calma.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál de estos es un buen hábito para observar de verdad, según lo que aprendiste en este tema?",
+      "opciones": [
+        "Decidir rápido con el primer vistazo y seguir de largo.",
+        "Detenerte un momento, preguntarte qué esperabas encontrar, y recorrer los sentidos y las partes con calma.",
+        "Confiar siempre en que todo está igual que la última vez.",
+        "Fijarte solo con los ojos y nunca con los otros sentidos."
+      ],
+      "correcta": 1,
+      "explicacion": "Detenerte, notar tu expectativa y recorrer sentidos y partes con calma es justo lo que separa observar de verdad de simplemente mirar rápido y seguir de largo."
+    }
+  ]
+}

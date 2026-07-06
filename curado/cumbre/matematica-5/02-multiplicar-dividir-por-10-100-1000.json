@@ -1,0 +1,332 @@
+{
+  "programa": "cumbre",
+  "materia": "Matemática",
+  "grado": "Cumbre Matemática 5to grado",
+  "dominio": "Números grandes y operaciones",
+  "tema": "Multiplicar y dividir por 10, 100 y 1000: el poder del valor posicional",
+  "referencias": [
+    "Singapore MOE Primary 5 (Whole Numbers - Multiplication & Division): multiply and divide by 10, 100 and 1000; place value patterns; decimals",
+    "UK KS2 Year 5 (Number - Multiplication & Division): multiply and divide whole numbers and decimals by 10, 100 and 1000; understand digits shifting place value"
+  ],
+  "resumen": {
+    "titulo": "Multiplicar y dividir por 10, 100 y 1000: el truco de correr las cifras",
+    "intro": "Ya sabes que en un número cada cifra vale según el lugar que ocupa: en 30 el 3 vale treinta, y en 300 vale trescientos. En este tema vas a usar esa idea para hacer algo muy poderoso: multiplicar y dividir por 10, por 100 y por 1000 casi sin hacer cuentas, solo moviendo las cifras de lugar. Mucha gente aprende esto como 'agregar ceros' o 'quitar ceros', y a veces funciona por casualidad, pero es un truco de memoria que se equivoca apenas aparece un decimal o un número que no termina en cero. Aquí vas a entender POR QUÉ pasa, y así nunca te vas a equivocar, tenga el número la forma que tenga.",
+    "secciones": [
+      {
+        "titulo": "Recordar el valor posicional: cada lugar vale 10 veces más",
+        "explicacion": "Antes de multiplicar, recordemos la base. VALOR POSICIONAL quiere decir que una cifra vale distinto según la posición (el lugar) que ocupa dentro del número. Las posiciones, empezando por la derecha, son: unidades (vale 1), decenas (vale 10), centenas (vale 100), unidad de millar (vale 1.000), y así siguiendo. Fíjate en el patrón clave: cada posición vale exactamente 10 VECES MÁS que la que tiene a su derecha. De unidades a decenas, multiplicas por 10; de decenas a centenas, otra vez por 10; y siempre igual. Ese patrón, 'cada paso a la izquierda vale 10 veces más', es justo lo que hace que multiplicar por 10 sea tan fácil: mover una cifra un lugar a la izquierda ES multiplicarla por 10.",
+        "pasos": [
+          "Ubica las posiciones de un número de derecha a izquierda: unidades, decenas, centenas, unidad de millar...",
+          "Recuerda que cada posición vale 10 veces más que la de su derecha.",
+          "Entiende la idea central: correr una cifra un lugar a la izquierda la hace valer 10 veces más."
+        ],
+        "ejemplo": "En 40, el 4 está en las decenas y vale 40. Si ese mismo 4 se corre un lugar a la izquierda, cae en las centenas y vale 400, que es 40 multiplicado por 10. La cifra no cambió; cambió su lugar, y por eso su valor se multiplicó por 10."
+      },
+      {
+        "titulo": "Multiplicar por 10: cada cifra se corre un lugar a la izquierda",
+        "explicacion": "Multiplicar un número por 10 significa hacerlo 10 veces más grande. Como cada posición vale 10 veces más que la de su derecha, para que TODO el número valga 10 veces más basta con correr cada una de sus cifras un lugar hacia la izquierda. Cuando las cifras se corren, queda un hueco vacío en la posición de las unidades, y ese hueco se rellena con un cero para guardar el lugar. Por eso PARECE que 'le agregamos un cero': el cero no es lo importante, es solo la marca de que todas las cifras se movieron un lugar. Lo que de verdad pasa es que cada cifra subió a una posición que vale 10 veces más.",
+        "pasos": [
+          "Toma el número y corre cada cifra un lugar hacia la izquierda (cada una pasa a valer 10 veces más).",
+          "En la posición de las unidades, que queda vacía, escribe un cero para guardar el lugar.",
+          "Lee el número nuevo: es el original multiplicado por 10."
+        ],
+        "ejemplo": "35 × 10. El 3 (decenas) se corre a las centenas y el 5 (unidades) se corre a las decenas; las unidades quedan vacías y ponemos un 0. Resultado: 350. Comprobación: 35 valía treinta y cinco, y 350 es diez veces treinta y cinco."
+      },
+      {
+        "titulo": "Multiplicar por 100 y por 1000: correr dos o tres lugares",
+        "explicacion": "Multiplicar por 100 es multiplicar por 10 DOS VECES, porque 100 = 10 × 10. Y multiplicar por 1000 es multiplicar por 10 TRES VECES, porque 1000 = 10 × 10 × 10. Entonces la regla es la misma de antes, pero repetida: para multiplicar por 100, cada cifra se corre DOS lugares a la izquierda; para multiplicar por 1000, se corre TRES lugares. Cada lugar que dejas vacío en la derecha se rellena con un cero. Un truco para recordarlo sin memorizar: cuenta los ceros del 10, el 100 o el 1000. El 10 tiene un cero (un lugar), el 100 tiene dos (dos lugares) y el 1000 tiene tres (tres lugares). Pero recuerda siempre lo que de verdad ocurre: las cifras se corren esa cantidad de lugares, y por eso valen mucho más.",
+        "pasos": [
+          "Cuenta los ceros del número por el que multiplicas: 10 (uno), 100 (dos), 1000 (tres). Ese es el número de lugares que se corren las cifras.",
+          "Corre cada cifra esa cantidad de lugares hacia la izquierda.",
+          "Rellena con ceros los lugares que quedaron vacíos a la derecha."
+        ],
+        "ejemplo": "47 × 100. Como el 100 tiene dos ceros, cada cifra se corre dos lugares: el 4 pasa de decenas a unidades de millar y el 7 de unidades a centenas; los dos lugares vacíos (decenas y unidades) se rellenan con ceros. Resultado: 4.700. Comprobación: 47 × 100 = 4.700."
+      },
+      {
+        "titulo": "Por qué NO es 'agregar ceros' de memoria",
+        "explicacion": "Aquí viene el aviso más importante del tema. Muchos aprenden 'para multiplicar por 100 le pongo dos ceros al final'. Con números enteros que no llevan decimales, ese atajo da bien por casualidad, porque correr las cifras deja justo esos ceros. Pero es peligroso, porque no explica lo que pasa y falla apenas hay un decimal. Por ejemplo, con 2,5 (dos coma cinco) 'agregar dos ceros' daría 2,500, que sigue siendo dos coma cinco, y eso está MAL: 2,5 × 100 es 250. Lo correcto SIEMPRE es pensar que las cifras se corren de lugar. Cuando las cifras se corren, en los números enteros aparecen ceros nuevos; en los decimales lo que se mueve es la coma. La idea de 'correr las cifras' funciona en todos los casos; la de 'agregar ceros' no. Por eso vale la pena entender el porqué y no confiar en el atajo.",
+        "pasos": [
+          "Nunca digas 'le agrego ceros' como regla; di 'corro las cifras de lugar'.",
+          "En números enteros, correr las cifras hace aparecer ceros a la derecha (por eso el atajo parece funcionar).",
+          "En números con coma, correr las cifras equivale a mover la coma; agregar ceros al final no cambia nada."
+        ],
+        "ejemplo": "12 × 10 = 120: aquí 'agregar un cero' coincide con correr las cifras, y por eso confunde. Pero 12,3 × 10 no es 12,30 (que es lo mismo que 12,3); es 123, porque las cifras se corrieron un lugar. La regla verdadera es correr, no agregar."
+      },
+      {
+        "titulo": "Multiplicar decimales por 10, 100 y 1000: correr la coma",
+        "explicacion": "Un número con COMA (llamado decimal) tiene una parte entera a la izquierda de la coma y una parte más pequeña a la derecha. La coma separa las dos partes. Cuando multiplicas un decimal por 10, 100 o 1000, las cifras se corren a la izquierda igual que siempre, y hay una forma cómoda de verlo: es como si la COMA se corriera a la DERECHA. Se corre un lugar por cada cero del multiplicador: un lugar por el 10, dos por el 100, tres por el 1000. Correr la coma a la derecha hace el número más grande, que es justo lo que debe pasar al multiplicar. Si al correr la coma te quedas sin cifras por ese lado, rellenas con ceros los lugares que falten.",
+        "pasos": [
+          "Cuenta los ceros del multiplicador: 10 (uno), 100 (dos), 1000 (tres). Esos son los lugares que corres la coma hacia la derecha.",
+          "Mueve la coma esa cantidad de lugares hacia la derecha (el número se hace más grande).",
+          "Si te faltan cifras para completar el movimiento, rellena con ceros a la derecha.",
+          "Si después de mover la coma no queda ninguna cifra decimal, el resultado es un número entero y la coma desaparece."
+        ],
+        "ejemplo": "2,5 × 100. El 100 tiene dos ceros, así que la coma se corre dos lugares a la derecha. En 2,5 hay una sola cifra después de la coma (el 5), así que al mover un lugar queda 25, y para el segundo lugar rellenamos con un cero: 250. Resultado: 2,5 × 100 = 250."
+      },
+      {
+        "titulo": "Dividir por 10, 100 y 1000: el camino de vuelta",
+        "explicacion": "Dividir es lo contrario de multiplicar, así que hace lo opuesto: en vez de agrandar el número, lo achica. Si multiplicar por 10 corre las cifras a la IZQUIERDA, dividir por 10 las corre a la DERECHA, porque cada cifra pasa a una posición que vale 10 veces MENOS. Con 100 las cifras se corren dos lugares a la derecha, y con 1000, tres lugares. En números enteros que terminan en ceros, correr las cifras a la derecha PARECE 'quitar un cero del final', y por eso mucha gente lo aprende así. Pero cuidado: no se trata de tachar cualquier dígito, sino de correr TODAS las cifras el número justo de lugares. Cuando al dividir las cifras se corren más allá de las unidades, aparece una coma y el número se vuelve decimal.",
+        "pasos": [
+          "Cuenta los ceros del divisor: 10 (uno), 100 (dos), 1000 (tres). Esos son los lugares que se corren las cifras hacia la derecha.",
+          "Corre cada cifra esa cantidad de lugares hacia la derecha (cada una pasa a valer 10 veces menos).",
+          "Si el número termina en ceros, esos ceros de la derecha desaparecen al correrse las cifras.",
+          "Si las cifras se corren más allá de las unidades, pon una coma para separar la parte entera de la decimal."
+        ],
+        "ejemplo": "8.000 ÷ 100. El 100 tiene dos ceros, así que las cifras se corren dos lugares a la derecha; los dos ceros del final desaparecen y queda 80. Comprobación: 80 × 100 = 8.000, así que 8.000 ÷ 100 = 80."
+      },
+      {
+        "titulo": "Dividir cuando no termina en ceros: aparece la coma",
+        "explicacion": "¿Qué pasa si divides un número que NO termina en muchos ceros, como 45 ÷ 100? Aquí se ve por qué 'quitar ceros' es un truco flojo: en 45 no hay ceros que quitar, pero igual se puede dividir. Lo que hacemos es lo de siempre: correr las cifras a la derecha, y si se pasan de las unidades, aparece una coma. Correr la coma a la IZQUIERDA hace el número más pequeño, que es justo lo que debe pasar al dividir. Se corre un lugar por cada cero del divisor. Si al correr la coma te quedas sin cifras enteras, se pone un cero antes de la coma (por ejemplo 0,45) para dejar claro que no hay unidades enteras. Este es el mismo movimiento de la coma que en la multiplicación, pero hacia el otro lado.",
+        "pasos": [
+          "Cuenta los ceros del divisor: son los lugares que corres la coma hacia la izquierda.",
+          "Mueve la coma esa cantidad de lugares hacia la izquierda (el número se hace más pequeño).",
+          "Si faltan cifras enteras, escribe un cero antes de la coma para indicar que no hay unidades enteras.",
+          "Comprueba multiplicando el resultado por el divisor: debe volver a dar el número de partida."
+        ],
+        "ejemplo": "45 ÷ 100. El 100 tiene dos ceros, así que la coma (que en 45 está detrás del 5, como 45,0) se corre dos lugares a la izquierda: pasa entre el 4 y el 5, y luego antes del 4, quedando 0,45. Resultado: 45 ÷ 100 = 0,45. Comprobación: 0,45 × 100 = 45."
+      },
+      {
+        "titulo": "Encadenar: multiplicar y dividir por varios de una vez",
+        "explicacion": "Una idea muy útil es que multiplicar por 100 es lo mismo que multiplicar por 10 y otra vez por 10, porque 10 × 10 = 100. Y por 1000 es multiplicar por 10 tres veces. Esto sirve para resolver operaciones encadenadas sin cansarte: puedes juntar los ceros. Por ejemplo, multiplicar por 10 y luego por 100 es como multiplicar por 1000, porque en total corres las cifras uno más dos, o sea tres lugares (10 × 100 = 1000). Y si en una misma cuenta multiplicas por 100 pero también divides por 10, los movimientos se restan: corres dos lugares a la izquierda y uno a la derecha, y el resultado neto es correr un lugar a la izquierda, o sea multiplicar por 10. Pensar en cuántos lugares se corren en total, sumando los de multiplicar y restando los de dividir, te deja resolver cadenas largas de un solo tirón.",
+        "pasos": [
+          "Convierte cada paso en 'cuántos lugares se corren': multiplicar mueve a la izquierda, dividir mueve a la derecha.",
+          "Suma los lugares de las multiplicaciones y resta los de las divisiones.",
+          "Corre las cifras el total que te quedó: a la izquierda si el total es positivo, a la derecha si es negativo.",
+          "Rellena con ceros o coloca la coma según el resultado."
+        ],
+        "ejemplo": "6 × 10 × 100. Multiplicar por 10 corre un lugar a la izquierda y por 100 corre dos más: en total tres lugares, que es multiplicar por 1000. Así que 6 × 10 × 100 = 6 × 1000 = 6.000. Comprobación por partes: 6 × 10 = 60, y 60 × 100 = 6.000."
+      }
+    ],
+    "idea_clave": "Multiplicar por 10, 100 o 1000 corre cada cifra uno, dos o tres lugares a la IZQUIERDA (el número se agranda 10, 100 o 1000 veces); dividir los corre a la DERECHA (el número se achica). No es 'agregar ni quitar ceros' de memoria: lo que se mueve es el VALOR de cada cifra. En números enteros ese movimiento hace aparecer o desaparecer ceros; en decimales, mueve la COMA (a la derecha al multiplicar, a la izquierda al dividir). Cuenta los ceros del 10, 100 o 1000 para saber cuántos lugares correr, y comprueba multiplicando de vuelta."
+  },
+  "practica": [
+    {
+      "enunciado": "Calcula 68 × 10 y explica qué le pasó a cada cifra.",
+      "pista": "Correr cada cifra un lugar a la izquierda y rellenar las unidades con un cero. El 10 tiene un cero: un solo lugar.",
+      "solucion": "68 × 10 = 680. El 6 (decenas) se corrió a las centenas y el 8 (unidades) se corrió a las decenas; las unidades quedaron vacías y se pusieron un 0. Cada cifra pasó a valer 10 veces más, por eso el número entero es 10 veces más grande. Comprobación: 680 ÷ 10 = 68.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Calcula 53 × 100.",
+      "pista": "El 100 tiene dos ceros, así que las cifras se corren DOS lugares a la izquierda y quedan dos lugares vacíos que se rellenan con ceros.",
+      "solucion": "53 × 100 = 5.300. Cada cifra se corrió dos lugares a la izquierda y las dos posiciones vacías (decenas y unidades) se rellenaron con ceros. Comprobación: 5.300 ÷ 100 = 53.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Calcula 9 × 1000.",
+      "pista": "Multiplicar por 1000 es correr las cifras TRES lugares a la izquierda. Cuenta los tres ceros del 1000.",
+      "solucion": "9 × 1000 = 9.000. El 9, que estaba en las unidades, se corrió tres lugares a la izquierda hasta la unidad de millar; los tres lugares vacíos (centenas, decenas, unidades) se rellenaron con ceros. Comprobación: 9.000 ÷ 1000 = 9.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Calcula 7.200 ÷ 100.",
+      "pista": "Dividir por 100 corre las cifras DOS lugares a la derecha. Si el número termina en ceros, esos ceros del final desaparecen.",
+      "solucion": "7.200 ÷ 100 = 72. Las cifras se corrieron dos lugares a la derecha, así que los dos ceros del final desaparecieron y quedó 72. Comprobación: 72 × 100 = 7.200.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Calcula 60.000 ÷ 1000.",
+      "pista": "Dividir por 1000 corre las cifras TRES lugares a la derecha. Cuenta cuántos ceros del final se van.",
+      "solucion": "60.000 ÷ 1000 = 60. Al correr las cifras tres lugares a la derecha desaparecen tres de los ceros del final, y queda 60 (no 6: solo se corren tres lugares, no todos los ceros). Comprobación: 60 × 1000 = 60.000.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Calcula 3,4 × 1000. Cuidado: hay una coma.",
+      "pista": "Multiplicar un decimal por 1000 corre la coma TRES lugares a la derecha. Si te faltan cifras, rellena con ceros.",
+      "solucion": "3,4 × 1000 = 3.400. El 1000 tiene tres ceros, así que la coma se corre tres lugares a la derecha. En 3,4 hay una sola cifra tras la coma (el 4): al primer lugar queda 34, y faltan dos lugares que se rellenan con ceros, dando 3.400. Comprobación: 3.400 ÷ 1000 = 3,4.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Calcula 8 ÷ 10. El resultado ya no es un número entero.",
+      "pista": "Dividir por 10 corre la coma un lugar a la izquierda. En 8, la coma está detrás del 8 (8,0). Si te quedas sin parte entera, pon un 0 antes de la coma.",
+      "solucion": "8 ÷ 10 = 0,8. La coma de 8 (que está como 8,0) se corre un lugar a la izquierda y pasa delante del 8; como no queda parte entera, se escribe un 0 antes de la coma: 0,8. Comprobación: 0,8 × 10 = 8.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Calcula 250 ÷ 100.",
+      "pista": "Dividir por 100 corre la coma dos lugares a la izquierda. En 250 la coma está detrás del 0 (250,0). Aquí SÍ aparece una coma en el resultado.",
+      "solucion": "250 ÷ 100 = 2,5. La coma de 250 se corre dos lugares a la izquierda: pasa a estar entre el 2 y el 5, quedando 2,5. No es 25 (eso sería dividir por 10) ni 2 (no se puede tirar cifras). Comprobación: 2,5 × 100 = 250.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Resuelve la cadena 4 × 10 × 100 pensando en cuántos lugares se corren en total.",
+      "pista": "Multiplicar por 10 corre un lugar y por 100 corre dos: suma los lugares. Uno más dos son tres lugares, que es multiplicar por 1000.",
+      "solucion": "4 × 10 × 100 = 4.000. Multiplicar por 10 corre un lugar a la izquierda y por 100 dos lugares más: en total tres lugares, o sea multiplicar por 1000. Entonces 4 × 1000 = 4.000. Comprobación por partes: 4 × 10 = 40, y 40 × 100 = 4.000.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica con tus palabras por qué 25 × 100 NO es 25,00, sino 2.500.",
+      "pista": "Piensa en si '25,00' es un número distinto de 25. ¿Agregar ceros después de la coma cambia el tamaño?",
+      "solucion": "Escribir 25,00 es exactamente lo mismo que 25: los ceros después de la coma no agregan valor, no hacen el número más grande. Multiplicar por 100 tiene que hacer el número 100 veces más grande, así que las cifras deben correrse dos lugares a la izquierda: el resultado es 2.500. El error de 'agregar dos ceros al final' solo funciona por casualidad con enteros que se escriben sin coma; en cuanto piensas 'agregar ceros', te confundes. Lo correcto es siempre correr las cifras. Comprobación: 2.500 ÷ 100 = 25.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un camión lleva 100 cajas y cada caja tiene 340 tornillos. ¿Cuántos tornillos lleva en total?",
+      "pista": "Tienes que multiplicar 340 por 100. Corre las cifras dos lugares a la izquierda.",
+      "solucion": "Hay que calcular 340 × 100. Multiplicar por 100 corre las cifras dos lugares a la izquierda y rellena con dos ceros: 340 × 100 = 34.000. El camión lleva 34.000 tornillos. Comprobación: 34.000 ÷ 100 = 340, que son los tornillos de cada caja.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Se repartieron 45.000 bolívares en partes iguales entre 1000 personas. ¿Cuánto recibió cada persona?",
+      "pista": "Repartir en partes iguales es dividir. Divide 45.000 entre 1000 corriendo las cifras tres lugares a la derecha.",
+      "solucion": "Hay que calcular 45.000 ÷ 1000. Dividir por 1000 corre las cifras tres lugares a la derecha, así que desaparecen tres de los ceros del final: 45.000 ÷ 1000 = 45. Cada persona recibió 45 bolívares. Comprobación: 45 × 1000 = 45.000.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuánto es 74 × 10?",
+      "opciones": [
+        "740",
+        "84",
+        "7.400",
+        "74"
+      ],
+      "correcta": 0,
+      "explicacion": "Multiplicar por 10 corre cada cifra un lugar a la izquierda y rellena las unidades con un cero: 74 × 10 = 740. No es 84 (eso sería sumar 10, no multiplicar) ni 7.400 (eso sería multiplicar por 100, dos lugares)."
+    },
+    {
+      "pregunta": "¿Cuánto es 36 × 100?",
+      "opciones": [
+        "3.600",
+        "360",
+        "36.000",
+        "3.060"
+      ],
+      "correcta": 0,
+      "explicacion": "El 100 tiene dos ceros, así que las cifras se corren dos lugares a la izquierda: 36 × 100 = 3.600. El 360 sería multiplicar por 10 (un solo lugar) y el 36.000 sería por 1000 (tres lugares)."
+    },
+    {
+      "pregunta": "¿Cuánto es 5 × 1000?",
+      "opciones": [
+        "5.000",
+        "500",
+        "50.000",
+        "1.005"
+      ],
+      "correcta": 0,
+      "explicacion": "Multiplicar por 1000 corre las cifras tres lugares a la izquierda: el 5 pasa a la unidad de millar y quedan tres ceros. 5 × 1000 = 5.000. El 500 sería por 100 y el 50.000 por 10.000."
+    },
+    {
+      "pregunta": "¿Cuánto es 9.000 ÷ 100?",
+      "opciones": [
+        "90",
+        "900",
+        "9",
+        "9.00"
+      ],
+      "correcta": 0,
+      "explicacion": "Dividir por 100 corre las cifras dos lugares a la derecha, así que se van dos de los ceros del final: 9.000 ÷ 100 = 90. El error de quitar un solo cero da 900 (eso sería dividir por 10); quitar tres da 9 (eso sería por 1000)."
+    },
+    {
+      "pregunta": "¿Cuánto es 40.000 ÷ 1000?",
+      "opciones": [
+        "40",
+        "4",
+        "400",
+        "4.000"
+      ],
+      "correcta": 0,
+      "explicacion": "Dividir por 1000 corre las cifras tres lugares a la derecha: desaparecen tres ceros del final y queda 40. No es 4: eso sería quitar los cuatro ceros, o sea dividir por 10.000, no por 1000. Comprobación: 40 × 1000 = 40.000."
+    },
+    {
+      "pregunta": "¿Cuánto es 2,5 × 10?",
+      "opciones": [
+        "25",
+        "2,50",
+        "250",
+        "20,5"
+      ],
+      "correcta": 0,
+      "explicacion": "Multiplicar un decimal por 10 corre la coma un lugar a la derecha: 2,5 × 10 = 25. Escribir 2,50 es lo mismo que 2,5, no lo multiplica; ese es justo el error de 'agregar un cero' con decimales."
+    },
+    {
+      "pregunta": "¿Cuánto es 0,7 × 100?",
+      "opciones": [
+        "70",
+        "7",
+        "700",
+        "0,700"
+      ],
+      "correcta": 0,
+      "explicacion": "El 100 tiene dos ceros, así que la coma se corre dos lugares a la derecha. En 0,7 hay una cifra tras la coma (el 7): un lugar la lleva a 7 y el segundo lugar se rellena con un cero, dando 70. El 7 sería solo por 10 (un lugar)."
+    },
+    {
+      "pregunta": "¿Cuánto es 6 ÷ 10?",
+      "opciones": [
+        "0,6",
+        "0,06",
+        "60",
+        "6,0"
+      ],
+      "correcta": 0,
+      "explicacion": "Dividir por 10 corre la coma un lugar a la izquierda. En 6 (que es 6,0) la coma pasa delante del 6 y, como no queda parte entera, se escribe un 0 delante: 0,6. El 0,06 sería dividir por 100 (dos lugares). Comprobación: 0,6 × 10 = 6."
+    },
+    {
+      "pregunta": "¿Cuánto es 380 ÷ 100?",
+      "opciones": [
+        "3,8",
+        "38",
+        "3,08",
+        "0,38"
+      ],
+      "correcta": 0,
+      "explicacion": "Dividir por 100 corre la coma dos lugares a la izquierda. En 380 (que es 380,0) la coma pasa entre el 3 y el 8, quedando 3,8. El 38 sería dividir por 10 (un solo lugar). Comprobación: 3,8 × 100 = 380."
+    },
+    {
+      "pregunta": "¿Por qué decir 'multiplicar por 100 es agregar dos ceros al final' es un truco peligroso?",
+      "opciones": [
+        "Porque falla con decimales: agregar ceros después de la coma no cambia el número, cuando en realidad las cifras deben correrse dos lugares",
+        "Porque nunca funciona, ni siquiera con números enteros",
+        "Porque en realidad hay que agregar tres ceros, no dos",
+        "Porque multiplicar por 100 no cambia el tamaño del número"
+      ],
+      "correcta": 0,
+      "explicacion": "Con enteros sin coma, agregar dos ceros coincide por casualidad con correr las cifras dos lugares, por eso parece funcionar. Pero con un decimal como 2,5, 'agregar dos ceros' daría 2,500 (que sigue siendo 2,5), cuando el resultado correcto es 250. La regla verdadera es correr las cifras de lugar."
+    },
+    {
+      "pregunta": "Resolviendo la cadena 3 × 10 × 100, ¿cuál es el resultado?",
+      "opciones": [
+        "3.000",
+        "300",
+        "30.000",
+        "113"
+      ],
+      "correcta": 0,
+      "explicacion": "Multiplicar por 10 corre un lugar a la izquierda y por 100 corre dos más: en total tres lugares, que es multiplicar por 1000. Así 3 × 1000 = 3.000. Por partes: 3 × 10 = 30, y 30 × 100 = 3.000."
+    },
+    {
+      "pregunta": "En una cadena se multiplica por 100 y luego se divide por 10. ¿A qué equivale en total?",
+      "opciones": [
+        "A multiplicar por 10 (correr un lugar a la izquierda)",
+        "A multiplicar por 1000",
+        "A dividir por 10",
+        "A dejar el número igual"
+      ],
+      "correcta": 0,
+      "explicacion": "Multiplicar por 100 corre dos lugares a la izquierda; dividir por 10 corre uno a la derecha. Los movimientos se restan: dos a la izquierda menos uno a la derecha deja un lugar a la izquierda, o sea multiplicar por 10. Por ejemplo, 5 × 100 = 500, y 500 ÷ 10 = 50, que es 5 × 10."
+    },
+    {
+      "pregunta": "Una fábrica produce 250 panes por hora. ¿Cuántos panes produce en 100 horas trabajando al mismo ritmo?",
+      "opciones": [
+        "25.000",
+        "2.500",
+        "350",
+        "250.000"
+      ],
+      "correcta": 0,
+      "explicacion": "Hay que calcular 250 × 100. Multiplicar por 100 corre las cifras dos lugares a la izquierda y rellena con dos ceros: 250 × 100 = 25.000. El 2.500 sería multiplicar solo por 10."
+    },
+    {
+      "pregunta": "Se guardan 8.000 semillas en partes iguales en 1000 sobres. ¿Cuántas semillas van en cada sobre?",
+      "opciones": [
+        "8",
+        "80",
+        "800",
+        "8.000"
+      ],
+      "correcta": 0,
+      "explicacion": "Repartir en partes iguales es dividir: 8.000 ÷ 1000. Dividir por 1000 corre las cifras tres lugares a la derecha, quitando tres ceros del final: quedan 8 semillas por sobre. Comprobación: 8 × 1000 = 8.000."
+    }
+  ]
+}

@@ -1,0 +1,285 @@
+{
+  "programa": "cumbre",
+  "materia": "Informática",
+  "grado": "Cumbre Informática 5to grado",
+  "dominio": "Pensamiento computacional (sin computadora)",
+  "tema": "Descomponer: partir una tarea grande en pasos pequeños",
+  "referencias": [
+    "CSTA K-12 Computer Science Standards banda 1B (ages 8-11)",
+    "UK Computing KS2 (Key Stage 2) — decomposition",
+    "Code.org CS Fundamentals (unplugged, decomposition)"
+  ],
+  "resumen": {
+    "titulo": "Descomponer: partir una tarea grande en pasos pequeños",
+    "intro": "¿Alguna vez te dijeron 'ordena tu cuarto' y no sabías por dónde empezar, porque parecía demasiado? Eso le pasa a todo el mundo con las tareas grandes: dan pereza o dan miedo porque no se ve por dónde agarrarlas. Existe un truco simple que usan las personas ordenadas y también las computadoras: en vez de intentar hacer la tarea grande de un solo golpe, la partes en pasos pequeños, uno por uno. A eso se le llama DESCOMPONER. En el tema anterior aprendiste a dar instrucciones exactas, sin huecos y en el orden correcto; ahora vas a aprender a construir esos pasos desde una tarea grande, dividiéndola en pedazos pequeños y claros.",
+    "secciones": [
+      {
+        "titulo": "Qué es descomponer",
+        "explicacion": "DESCOMPONER significa partir una tarea grande en TAREAS más pequeñas, más fáciles de hacer una por una. Una tarea grande es cualquier cosa que quieres lograr pero que tiene muchas partes adentro, como 'preparar la mochila', 'organizar una fiesta' o 'hacer un dibujo grande'. Cuando la descompones, cada parte pequeña se llama un PASO. Un paso es una parte de la tarea grande que ya puedes hacer sin dividirla más. La tarea grande no cambia ni se hace más fácil por arte de magia: lo que cambia es que ahora la ves como una lista de pasos, en vez de como un bulto enorme y confuso.",
+        "pasos": [
+          "Piensa en la tarea grande completa que quieres lograr.",
+          "Pregúntate: ¿qué cosas más pequeñas tengo que hacer para lograrla?",
+          "Anota cada cosa pequeña como un paso separado."
+        ],
+        "ejemplo": "Tarea grande: 'preparar la mochila para mañana'. Descompuesta en pasos: 1) Guardar los cuadernos de las materias de mañana. 2) Meter el estuche con lápiz y goma. 3) Guardar la merienda. 4) Poner la botella de agua. Cada paso es pequeño y se hace en un minuto; los cuatro juntos logran la tarea grande."
+      },
+      {
+        "titulo": "Por qué es más fácil resolver algo por partes",
+        "explicacion": "Cuando miras una tarea grande de un solo golpe, es normal sentir pereza o bloquearte, porque no sabes por dónde empezar. En cambio, un paso pequeño casi siempre sabes cómo hacerlo de inmediato: por eso da menos pereza y es más fácil comenzar. Además, descomponer tiene otra ventaja: si algo sale mal, es mucho más fácil encontrar EN QUÉ paso estuvo el problema, en vez de revisar toda la tarea otra vez desde el principio.",
+        "pasos": [
+          "Una tarea grande completa suele dar pereza o confundir porque no se ve por dónde empezar.",
+          "Un paso pequeño casi siempre lo sabes hacer ya, sin pensarlo mucho.",
+          "Si algo sale mal, revisar paso por paso ayuda a encontrar dónde estuvo el error."
+        ],
+        "ejemplo": "Si te piden 'estudia para el examen de sociales' de un solo golpe, no sabes ni por dónde arrancar. Si lo descompones en: 1) leer el tema del libro, 2) hacer un resumen, 3) responder las preguntas de práctica, cada paso sí sabes cómo hacerlo, y puedes empezar por el primero ya mismo."
+      },
+      {
+        "titulo": "Cómo identificar los pasos de una tarea",
+        "explicacion": "Para descomponer una tarea, primero piensa en las partes GRANDES que la forman (unas 3 a 5 partes suele bastar), y después revisa si alguna de esas partes todavía es grande y hay que partirla un poco más. Una buena forma de encontrar los pasos es imaginarte haciendo la tarea de principio a fin, como si fuera una película en tu cabeza, y anotar cada acción distinta que ves. Si al leer un paso todavía no sabes cómo hacerlo, ese paso sigue siendo grande y conviene dividirlo de nuevo.",
+        "pasos": [
+          "Imagina la tarea completa de principio a fin, como una película en tu cabeza.",
+          "Anota cada acción distinta que ves como un paso separado.",
+          "Si un paso todavía es confuso o grande, divídelo en dos pasos más pequeños."
+        ],
+        "ejemplo": "Tarea: 'hacer un dibujo grande de un paisaje'. Imaginando la 'película': primero se traza el cielo y la tierra, después las montañas, después los árboles, después se pintan los colores. Pasos: 1) Dibujar la línea del horizonte. 2) Dibujar las montañas al fondo. 3) Dibujar los árboles adelante. 4) Colorear todo el dibujo."
+      },
+      {
+        "titulo": "El orden de los pasos también importa",
+        "explicacion": "No basta con tener los pasos correctos: también hay que ponerlos en el ORDEN correcto, igual que aprendiste con las instrucciones exactas. Un paso puede necesitar que otro ya esté hecho antes. Si cambias el orden, la tarea puede salir mal o hasta volverse imposible de hacer. Para revisar el orden, lee los pasos de arriba hacia abajo y pregúntate en cada uno: ¿ya está hecho todo lo que este paso necesita?",
+        "pasos": [
+          "Lee los pasos en el orden en que los escribiste, de arriba hacia abajo.",
+          "En cada paso, pregúntate qué necesita que ya haya pasado antes.",
+          "Si un paso necesita algo que todavía no ocurrió, cambia el orden."
+        ],
+        "ejemplo": "Para hacer una limonada: si el orden es 1) exprimir los limones, 2) lavar los limones, está mal, porque hay que lavarlos ANTES de exprimirlos. El orden correcto es 1) lavar los limones, 2) exprimirlos, 3) mezclar el jugo con agua y azúcar."
+      },
+      {
+        "titulo": "Que cada paso sea claro (conectar con instrucciones exactas)",
+        "explicacion": "En el tema anterior aprendiste que una computadora (o cualquiera que obedece al pie de la letra) necesita instrucciones exactas: completas, sin ambigüedad y en el orden correcto. Ahora que sabes descomponer una tarea grande en pasos, esos pasos son justamente eso: instrucciones. Por eso, cada paso que escribas al descomponer debe cumplir las mismas reglas: decir una sola acción concreta, no dejar datos importantes por adivinar (como 'cuánto' o 'cuál'), y no poder entenderse de dos formas distintas.",
+        "pasos": [
+          "Cada paso debe describir una sola acción concreta.",
+          "Cada paso debe tener todos los datos necesarios (cantidad, lugar, nombre), sin huecos.",
+          "Cada paso debe poder entenderse de una sola manera, sin ambigüedad."
+        ],
+        "ejemplo": "Paso poco claro: 'echa un poco de agua'. Paso claro (como instrucción exacta): 'echa dos vasos de agua en la olla'. Al descomponer una tarea, conviene revisar cada paso con la misma prueba que usaste con las instrucciones: ¿alguien que no sabe nada de esto lo haría bien leyendo solo este paso?"
+      },
+      {
+        "titulo": "Ejemplo cotidiano: organizar una fiesta sencilla",
+        "explicacion": "Organizar una fiesta de cumpleaños parece una sola tarea enorme, pero se puede descomponer en partes grandes que después se dividen en pasos más chicos. Fíjate cómo cada parte grande se convierte en pasos claros y en el orden correcto, siguiendo lo que aprendiste en las dos secciones anteriores.",
+        "pasos": [
+          "Parte grande 1: invitados (hacer la lista, avisarles).",
+          "Parte grande 2: comida (decidir qué se sirve, comprarlo).",
+          "Parte grande 3: decoración (comprar globos, colgarlos)."
+        ],
+        "ejemplo": "La parte 'decoración' se descompone en pasos: 1) Comprar diez globos y una cinta. 2) Inflar los diez globos. 3) Colgar los globos en la puerta de entrada con la cinta. Cada paso es una sola acción clara y necesita que el anterior ya esté hecho: no puedes colgar globos que todavía no están inflados."
+      },
+      {
+        "titulo": "Ejemplo cotidiano: seguir una receta",
+        "explicacion": "Una receta de cocina es un ejemplo perfecto de tarea grande ya descompuesta en pasos por otra persona: por eso las recetas funcionan igual para cualquiera que las siga. Fíjate que cada paso de una receta es concreto (dice cantidades exactas) y está en el orden correcto (no puedes hornear antes de mezclar los ingredientes).",
+        "pasos": [
+          "Reunir los ingredientes exactos que pide la receta.",
+          "Seguir cada paso de la receta en el orden en que aparece.",
+          "No adelantar un paso que necesita que otro ya esté terminado."
+        ],
+        "ejemplo": "Tarea grande: 'hacer una arepa'. Pasos de la receta: 1) Mezclar dos tazas de harina de maíz con agua y sal hasta formar una masa. 2) Formar una bola aplastada con la masa. 3) Cocinar la arepa en el budare por diez minutos de cada lado. Si cocinas antes de formar la masa, no hay nada que cocinar: el orden es obligatorio."
+      }
+    ],
+    "idea_clave": "Descomponer es partir una tarea grande en pasos pequeños que sí sabes hacer, en el orden correcto, sin dejar ninguno por fuera. Un paso pequeño da menos pereza que la tarea completa, y si algo sale mal es más fácil encontrar en qué paso estuvo el error. Cada paso, además, debe ser una instrucción exacta: una sola acción, sin huecos y sin ambigüedad, tal como aprendiste en el tema anterior."
+  },
+  "practica": [
+    {
+      "enunciado": "Descompón la tarea grande 'lavarme los dientes' en al menos cuatro pasos, en el orden correcto.",
+      "pista": "Piensa en la 'película' completa: primero preparas el cepillo, después cepillas, después terminas.",
+      "solucion": "Un ejemplo válido: 1) Mojar el cepillo. 2) Poner pasta dental en el cepillo. 3) Cepillar los dientes de arriba y de abajo. 4) Enjuagarse la boca con agua. Cada paso es una sola acción y necesita que el anterior ya esté hecho: no puedes poner pasta en un cepillo que no está mojado según este orden elegido.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Estos pasos para tender la cama están desordenados: (a) Acomodar la almohada. (b) Estirar la sábana de abajo. (c) Cubrir con la cobija. (d) Quitar la ropa de cama de la noche anterior. Ordénalos correctamente.",
+      "pista": "¿Qué tiene que estar hecho antes de estirar la sábana? ¿Puedes cubrir con la cobija antes de estirar la sábana de abajo?",
+      "solucion": "El orden correcto es: d, b, c, a. Es decir: 1) Quitar la ropa de cama de la noche anterior. 2) Estirar la sábana de abajo. 3) Cubrir con la cobija. 4) Acomodar la almohada. Primero hay que quitar la ropa amontonada de anoche, porque no se puede estirar bien la sábana de abajo si encima todavía está todo revuelto; la cobija va sobre la sábana ya estirada, y la almohada se acomoda al final, encima de todo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "La tarea grande 'preparar mi mochila para mañana' fue descompuesta así, pero le falta un paso importante: 1) Guardar los cuadernos. 2) Meter el estuche. 3) Guardar la merienda. Si mañana hay clase de educación física, ¿qué paso falta y dónde lo agregarías?",
+      "pista": "Piensa en todo lo que necesitas para la clase de educación física que no está en la lista de cuadernos, estuche ni merienda.",
+      "solucion": "Falta el paso 'Guardar la ropa de educación física'. Se puede agregar como paso 4, al final: 1) Guardar los cuadernos. 2) Meter el estuche. 3) Guardar la merienda. 4) Guardar la ropa de educación física. Al descomponer una tarea, siempre hay que revisar que la lista de pasos cubra TODO lo que se necesita, sin olvidar nada.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero descompuso la tarea 'hacer la tarea de matemática' en un solo paso: 'hacer los ejercicios de la página 20'. Explica por qué ese paso todavía es demasiado grande y descompónlo en pasos más pequeños.",
+      "pista": "Pregúntate: al leer ese paso, ¿sabes exactamente qué hacer primero, o todavía hay que pensarlo?",
+      "solucion": "Ese paso sigue siendo grande porque 'hacer los ejercicios' no dice cómo empezar ni cuántos hay. Se puede descomponer en pasos más pequeños: 1) Leer el enunciado del ejercicio 1. 2) Resolver el ejercicio 1 en el cuaderno. 3) Repetir los pasos 1 y 2 para cada ejercicio de la página 20 hasta terminarlos todos. Ahora cada paso sí se sabe hacer de inmediato.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Descompón la tarea grande 'ordenar mi cuarto' en al menos cuatro pasos pequeños.",
+      "pista": "Piensa en las distintas cosas que están desordenadas: cama, ropa, escritorio, juguetes.",
+      "solucion": "Un ejemplo válido: 1) Tender la cama. 2) Recoger la ropa del suelo y guardarla en el clóset. 3) Ordenar los cuadernos y lápices del escritorio. 4) Guardar los juguetes en su caja. Cada paso es una parte pequeña y concreta del cuarto; hechos los cuatro, el cuarto entero queda ordenado.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Estos pasos para hacer un sándwich de jamón y queso están desordenados: (a) Poner una rebanada de jamón y una de queso sobre el pan. (b) Cortar el sándwich por la mitad. (c) Poner dos rebanadas de pan sobre el plato. (d) Tapar con la otra rebanada de pan. Ordénalos y explica por qué ese es el único orden posible.",
+      "pista": "Necesitas el pan puesto antes del jamón y el queso, todo eso antes de tapar, y todo armado antes de cortar.",
+      "solucion": "El orden correcto es: c, a, d, b. Es decir: 1) Poner dos rebanadas de pan sobre el plato. 2) Poner una rebanada de jamón y una de queso sobre el pan. 3) Tapar con la otra rebanada de pan. 4) Cortar el sándwich por la mitad. Es el único orden posible porque cada paso necesita lo del paso anterior: no puedes tapar un sándwich que no tiene jamón ni queso, ni cortar uno que no está armado.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Descompón la tarea grande 'preparar un vaso de jugo de limón' en pasos pequeños y claros, cuidando que cada paso sea una instrucción exacta (sin huecos como 'un poco' o 'algo de agua').",
+      "pista": "Recuerda el tema anterior: cada paso necesita cantidades exactas, no palabras como 'un poco'.",
+      "solucion": "Un ejemplo válido: 1) Cortar dos limones por la mitad. 2) Exprimir los cuatro medios limones en un vaso. 3) Agregar dos cucharadas de azúcar. 4) Llenar el vaso con agua hasta el borde. 5) Revolver con una cuchara hasta que el azúcar se disuelva. Cada paso dice una cantidad exacta, así que cualquiera que lo siga obtiene el mismo resultado.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un amigo te dio estos pasos sueltos para llegar del salón de clases al comedor, pero están mezclados sin ningún orden: 'gira a la izquierda en el pasillo principal', 'sal del salón por la puerta', 'entra por la puerta del comedor', 'camina derecho hasta el final del pasillo'. Júntalos en el orden correcto para formar la tarea completa.",
+      "pista": "Piensa en la 'película' de caminar desde el salón: primero sales, después avanzas, después giras, después llegas.",
+      "solucion": "El orden correcto es: 1) Sal del salón por la puerta. 2) Camina derecho hasta el final del pasillo. 3) Gira a la izquierda en el pasillo principal. 4) Entra por la puerta del comedor. Juntando esos cuatro pasos sueltos en el orden correcto se forma la tarea completa de llegar al comedor.",
+      "figura": ""
+    },
+    {
+      "enunciado": "La tarea grande 'bañar a mi perro' fue descompuesta así: 1) Mojar al perro con agua tibia. 2) Enjuagar con agua hasta que no quede espuma. 3) Secar al perro con una toalla. Falta un paso importante en el medio. ¿Cuál es y en qué posición va?",
+      "pista": "Antes de enjuagar la espuma, ¿qué falta hacer con el perro mojado?",
+      "solucion": "Falta el paso 'Poner champú y frotar todo el cuerpo del perro', que va como paso 2, entre mojarlo y enjuagarlo: 1) Mojar al perro con agua tibia. 2) Poner champú y frotar todo el cuerpo del perro. 3) Enjuagar con agua hasta que no quede espuma. 4) Secar al perro con una toalla. Sin ese paso no habría espuma que enjuagar, así que el paso 3 no tendría sentido.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Descompón la tarea grande 'dibujar una casa sencilla' en al menos cinco pasos, empezando por las formas más grandes y terminando por los detalles pequeños.",
+      "pista": "Recuerda el orden de dictar dibujos del tema anterior: primero el marco grande (la casa), después los detalles (puerta, ventanas, techo).",
+      "solucion": "Un ejemplo válido: 1) Dibujar un cuadrado grande en el centro de la hoja (el cuerpo de la casa). 2) Dibujar un triángulo encima del cuadrado (el techo). 3) Dibujar un rectángulo pequeño en el centro de abajo (la puerta). 4) Dibujar dos cuadrados pequeños a los lados de la puerta (las ventanas). 5) Dibujar una línea ondulada saliendo del techo (el humo de la chimenea). Cada paso agrega un detalle nuevo sobre lo que ya está dibujado, de lo grande a lo pequeño.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué significa 'descomponer' una tarea grande?",
+      "opciones": [
+        "Hacerla lo más rápido posible sin pensar",
+        "Partirla en pasos más pequeños y fáciles de hacer uno por uno",
+        "Pedirle a otra persona que la haga completa",
+        "Olvidarse de algunas partes para terminar antes"
+      ],
+      "correcta": 1,
+      "explicacion": "Descomponer es partir una tarea grande en pasos más pequeños, que se hacen uno por uno. La tarea no se hace más corta ni se le quita nada importante: solo se organiza en partes manejables."
+    },
+    {
+      "pregunta": "¿Por qué una tarea grande completa suele dar pereza o bloquear, mientras que un paso pequeño no?",
+      "opciones": [
+        "Porque los pasos pequeños no cuentan como trabajo real",
+        "Porque casi siempre sabes cómo hacer un paso pequeño de inmediato, y una tarea grande no se ve por dónde empezar",
+        "Porque los pasos pequeños los hace otra persona",
+        "Porque las tareas grandes siempre están mal escritas"
+      ],
+      "correcta": 1,
+      "explicacion": "Un paso pequeño casi siempre se sabe hacer ya, por eso no da pereza empezarlo. Una tarea grande completa no muestra por dónde entrarle, y eso bloquea."
+    },
+    {
+      "pregunta": "Descompusiste 'hacer la tarea de ciencias' en varios pasos y uno de ellos salió mal. ¿Qué ventaja te da haberla descompuesto?",
+      "opciones": [
+        "Que ya no importa si algo salió mal",
+        "Que puedes ver rápido en qué paso estuvo el problema y arreglar solo ese",
+        "Que tienes que repetir toda la tarea desde el inicio",
+        "Que el error desaparece solo"
+      ],
+      "correcta": 1,
+      "explicacion": "Como cada paso es una parte separada, cuando algo falla puedes identificar rápido cuál paso fue y corregir solo ese, en vez de revisar toda la tarea de nuevo."
+    },
+    {
+      "pregunta": "Para encontrar los pasos de una tarea, ¿qué conviene hacer primero?",
+      "opciones": [
+        "Empezar a hacer la tarea sin planear nada",
+        "Imaginar la tarea completa de principio a fin, como una película, y anotar cada acción distinta",
+        "Copiar los pasos de una tarea diferente",
+        "Elegir un solo paso al azar y trabajar solo en ese"
+      ],
+      "correcta": 1,
+      "explicacion": "Imaginar la tarea de principio a fin, como una película en la cabeza, ayuda a ver cada acción por separado y anotarla como un paso."
+    },
+    {
+      "pregunta": "Ordenaste los pasos para tender la cama así: 1) Cubrir con la cobija. 2) Estirar la sábana de abajo. ¿Qué problema tiene este orden?",
+      "opciones": [
+        "Ninguno, el orden no importa en esta tarea",
+        "Está mal: no puedes cubrir con la cobija una cama que todavía no tiene la sábana estirada",
+        "Faltó un paso, por eso está mal",
+        "Los pasos están ambiguos, no desordenados"
+      ],
+      "correcta": 1,
+      "explicacion": "El problema es el orden: cubrir con la cobija necesita que la sábana de abajo ya esté puesta. Si se hace al revés, la cobija queda directamente sobre el colchón sin sábana."
+    },
+    {
+      "pregunta": "¿Cómo se conecta descomponer una tarea con dar instrucciones exactas (tema anterior)?",
+      "opciones": [
+        "No tienen ninguna relación entre sí",
+        "Cada paso de una tarea descompuesta debe ser, además, una instrucción exacta: una sola acción, sin huecos y sin ambigüedad",
+        "Descomponer sirve para no tener que dar instrucciones",
+        "Las instrucciones exactas solo sirven para computadoras, no para tareas de la casa"
+      ],
+      "correcta": 1,
+      "explicacion": "Al descomponer, cada paso que obtienes debe cumplir las reglas de instrucción exacta: una sola acción concreta, con todos los datos necesarios y sin poder entenderse de dos formas."
+    },
+    {
+      "pregunta": "Descompusiste 'preparar la mochila' en: guardar cuadernos, meter el estuche, guardar la merienda. Mañana hay clase de educación física y no incluiste la ropa deportiva. ¿Qué pasó?",
+      "opciones": [
+        "Los pasos están en el orden equivocado",
+        "Faltó un paso: la lista de pasos no cubrió todo lo que se necesitaba",
+        "Sobra un paso en la lista",
+        "Los pasos son ambiguos"
+      ],
+      "correcta": 1,
+      "explicacion": "El error es que faltó un paso: al descomponer hay que revisar que la lista completa de pasos cubra TODO lo que la tarea necesita, sin dejar nada por fuera."
+    },
+    {
+      "pregunta": "El paso 'hacer los ejercicios de la página 20' sigue siendo grande. ¿Cómo lo sabes?",
+      "opciones": [
+        "Porque tiene pocas palabras",
+        "Porque al leerlo todavía no sabes exactamente qué hacer primero, hay que pensarlo más",
+        "Porque menciona un número de página",
+        "Porque está en la parte de arriba de la lista"
+      ],
+      "correcta": 1,
+      "explicacion": "Un paso sigue siendo grande cuando, al leerlo, todavía hay que pensar cómo empezar. 'Hacer los ejercicios' no dice por cuál empezar ni qué hacer con cada uno, así que conviene dividirlo más."
+    },
+    {
+      "pregunta": "¿Cuál de estas listas descompone MEJOR la tarea 'lavarme los dientes'?",
+      "opciones": [
+        "Lavarme los dientes; terminar de lavarme los dientes",
+        "Mojar el cepillo; poner pasta; cepillar arriba y abajo; enjuagarse la boca",
+        "Ir al baño",
+        "Cepillo, pasta, agua, boca"
+      ],
+      "correcta": 1,
+      "explicacion": "La buena descomposición da pasos concretos, en orden, cada uno con una sola acción clara. Las otras opciones o no descomponen nada, o son solo una lista de palabras sueltas sin forma de instrucción."
+    },
+    {
+      "pregunta": "En la receta de una arepa, el orden es: 1) mezclar la masa, 2) formar la bola aplastada, 3) cocinar en el budare. ¿Por qué no se puede cambiar este orden?",
+      "opciones": [
+        "Porque las recetas nunca se pueden cambiar",
+        "Porque cada paso necesita que el anterior ya esté hecho: no puedes formar una bola sin masa, ni cocinar algo que no tiene forma todavía",
+        "Porque cocinar siempre va primero en cualquier receta",
+        "Porque el orden en una receta no importa realmente"
+      ],
+      "correcta": 1,
+      "explicacion": "El orden importa porque cada paso depende del anterior: sin masa no hay bola que formar, y sin la bola formada no hay nada que poner a cocinar."
+    },
+    {
+      "pregunta": "Un compañero dice que descomponer una tarea es simplemente 'hacerla más rápido'. ¿Qué le responderías?",
+      "opciones": [
+        "Que tiene razón, descomponer siempre ahorra tiempo",
+        "Que descomponer no es hacerla rápido, sino partirla en pasos pequeños y claros, en el orden correcto, para que sea más fácil de empezar y de revisar",
+        "Que descomponer significa saltarse pasos que no gustan",
+        "Que descomponer es lo mismo que copiar la tarea de otra persona"
+      ],
+      "correcta": 1,
+      "explicacion": "Descomponer no trata de velocidad: trata de dividir la tarea en pasos manejables y ordenados. Un error típico es confundir 'descomponer' con 'apurarse' o con saltarse partes."
+    },
+    {
+      "pregunta": "¿Cuál de estas ideas es un ERROR típico al descomponer una tarea?",
+      "opciones": [
+        "Revisar que los pasos cubran toda la tarea",
+        "Poner los pasos en cualquier orden porque 'de todas formas hay que hacerlos todos'",
+        "Escribir cada paso como una sola acción concreta",
+        "Dividir un paso que todavía es confuso en dos pasos más pequeños"
+      ],
+      "correcta": 1,
+      "explicacion": "Un error típico es pensar que el orden no importa con tal de hacer todos los pasos. Como viste con la cama y el sándwich, un paso puede necesitar que otro ya esté hecho antes; si el orden está mal, la tarea puede salir mal o ser imposible."
+    }
+  ]
+}
