@@ -1,0 +1,304 @@
+{
+  "programa": "cumbre",
+  "materia": "Matemática",
+  "grado": "Cumbre Matemática 5to grado",
+  "dominio": "Números grandes y operaciones",
+  "tema": "Números hasta los 10 millones: leerlos, escribirlos y entender su tamaño",
+  "referencias": [
+    "Singapore MOE Primary 5 (Whole Numbers): numbers up to 10 million, place value, comparing, ordering, rounding",
+    "UK KS2 Year 5 (Number & Place Value): read, write, order and compare numbers to at least 1,000,000; round to nearest 10/100/1000/10000/100000"
+  ],
+  "resumen": {
+    "titulo": "Números gigantes: cómo leerlos, escribirlos y saber cuál es más grande",
+    "intro": "Ya sabes contar y escribir números de todos los días, como 25 o 340. Pero, ¿cómo se escribe la cantidad de personas que viven en una ciudad grande, o cuántos granos de arroz caben en un saco enorme? Esos son números gigantes, de millones. En este tema vas a aprender un truco muy ordenado para leer y escribir cualquier número, por grande que sea, sin perderte. La clave se llama VALOR POSICIONAL, y una vez que la entiendes, los números de millones dejan de dar miedo.",
+    "secciones": [
+      {
+        "titulo": "El valor posicional: por qué el lugar de una cifra lo cambia todo",
+        "explicacion": "Fíjate en algo curioso: el número 5 vale distinto según DÓNDE esté escrito. En el número 5 vale cinco. Pero en 50 ese mismo 5 vale cincuenta, y en 500 vale quinientos. La cifra es la misma, pero su lugar le da un valor diferente. A eso se le llama VALOR POSICIONAL: el valor que tiene una cifra según la posición (el lugar) que ocupa dentro del número. ¿Y cómo funciona? Cada vez que una cifra se corre un lugar hacia la izquierda, vale 10 veces más. Por eso las posiciones tienen nombres: la primera de la derecha son las UNIDADES (vale 1 cada una), la siguiente son las DECENAS (cada una vale 10), la siguiente las CENTENAS (cada una vale 100), y así se sigue multiplicando por 10 cada vez que avanzas a la izquierda. Entender esto es la base de todo lo demás.",
+        "pasos": [
+          "Mira una cifra dentro de un número y fíjate en qué posición está (contando desde la derecha).",
+          "La posición de más a la derecha es la de las unidades (vale 1).",
+          "Cada posición hacia la izquierda vale 10 veces más que la anterior: unidades, decenas, centenas...",
+          "El valor de esa cifra es: la cifra multiplicada por lo que vale su posición."
+        ],
+        "ejemplo": "En el número 372, el 3 está en las centenas y vale 300; el 7 está en las decenas y vale 70; el 2 está en las unidades y vale 2. Sumando: 300 + 70 + 2 = 372. Cada cifra aporta según su lugar."
+      },
+      {
+        "titulo": "Las posiciones hasta los millones, una por una",
+        "explicacion": "Vamos a nombrar todas las posiciones que necesitas para llegar a los 10 millones, de derecha a izquierda. Las primeras tres ya las conoces: UNIDADES (vale 1), DECENAS (vale 10) y CENTENAS (vale 100). Después viene un salto importante: la siguiente posición es la UNIDAD DE MILLAR, que vale 1.000 (mil). Le siguen la DECENA DE MILLAR, que vale 10.000 (diez mil), y la CENTENA DE MILLAR, que vale 100.000 (cien mil). Y después de las centenas de millar llega la posición de la UNIDAD DE MILLÓN, que vale 1.000.000 (un millón). Un millón es mil veces mil, o sea un 1 seguido de seis ceros. Para llegar hasta diez millones basta con una posición más a la izquierda: la DECENA DE MILLÓN, que vale 10.000.000 (diez millones). Cada posición sigue valiendo 10 veces más que la de su derecha, siempre.",
+        "pasos": [
+          "Unidades: valen 1.",
+          "Decenas: valen 10.",
+          "Centenas: valen 100.",
+          "Unidad de millar: vale 1.000 (mil).",
+          "Decena de millar: vale 10.000 (diez mil).",
+          "Centena de millar: vale 100.000 (cien mil).",
+          "Unidad de millón: vale 1.000.000 (un millón).",
+          "Decena de millón: vale 10.000.000 (diez millones)."
+        ],
+        "ejemplo": "El número 8.000.000 tiene un 8 en la posición de la unidad de millón: vale ocho millones. El número 10.000.000 tiene un 1 en la decena de millón: es diez millones, el número más grande de este tema."
+      },
+      {
+        "titulo": "El truco de los periodos: separar de tres en tres",
+        "explicacion": "Leer un número largo cifra por cifra es un lío. El truco que usan en todo el mundo es agrupar las cifras de TRES en TRES, empezando por la derecha. A cada grupo de tres se le llama PERIODO (también se le dice clase). Los periodos, de derecha a izquierda, son: el periodo de las UNIDADES (las tres primeras cifras), el periodo de los MILES (las tres siguientes) y el periodo de los MILLONES (las que siguen). Para marcar los periodos se usa un punto como separador (por eso 1.000.000 se escribe con puntos). El truco para leer es sencillo: lees cada periodo como si fuera un número normal de tres cifras y le agregas el nombre del periodo. Así, un número enorme se convierte en tres numeritos fáciles de leer.",
+        "pasos": [
+          "Empezando por la derecha, separa las cifras en grupos de tres con un punto.",
+          "El primer grupo (derecha) es el periodo de las unidades; el segundo, el de los miles; el tercero, el de los millones.",
+          "Lee cada grupo como un número de tres cifras y agrégale el nombre de su periodo (millones, mil), menos al periodo de las unidades que no lleva nombre extra."
+        ],
+        "ejemplo": "El número 4258317 se separa así: 4.258.317. Se lee: 'cuatro millones, doscientos cincuenta y ocho mil, trescientos diecisiete'. Cada periodo es un numerito fácil: 4 (millones), 258 (mil), 317."
+      },
+      {
+        "titulo": "De las palabras a las cifras: escribir el número que te dictan",
+        "explicacion": "Ahora al revés: alguien te dice el nombre de un número y tú lo escribes en cifras. El secreto es escuchar los nombres de los periodos, porque te dicen dónde poner cada grupo. Cuando oigas 'millones', ese numerito va en el periodo de la izquierda; cuando oigas 'mil', va en el periodo del medio; y lo que queda al final, sin nombre, va en el periodo de las unidades (el de la derecha). Un cuidado muy importante: cada periodo, menos el de la izquierda, debe quedar SIEMPRE con tres cifras. Si un periodo tiene menos de tres, se rellena con ceros a la izquierda hasta completar tres. Por ejemplo, si te dicen 'cinco mil', el periodo de los miles es 5, pero se escribe 005 dentro del número completo para que ocupe sus tres lugares.",
+        "pasos": [
+          "Identifica cuántos millones, cuántos miles y cuántas unidades te dicen.",
+          "Escribe primero el grupo de los millones, luego el de los miles, luego el de las unidades.",
+          "Rellena con ceros a la izquierda cada periodo (menos el primero) hasta que tenga tres cifras.",
+          "Une los tres grupos y separa con puntos."
+        ],
+        "ejemplo": "'Tres millones, cuarenta mil, doscientos cinco'. Millones: 3. Miles: 40, que completado a tres cifras es 040. Unidades: 205. Uniendo: 3.040.205."
+      },
+      {
+        "titulo": "El cero, el guardalugar silencioso",
+        "explicacion": "El cero es una cifra rara: no vale nada por sí sola, pero es la más importante para escribir bien los números grandes. Su trabajo es GUARDAR EL LUGAR de una posición que está vacía, para que las otras cifras no se corran de su sitio. Piénsalo así: en el número 305 no hay decenas, pero no podemos escribir '35' porque eso sería otro número. El 0 se queda en el lugar de las decenas diciendo 'aquí no hay nada, pero este lugar existe', y así el 3 sigue valiendo trescientos. En los números de millones esto pasa mucho: si a un número le faltan los miles o le faltan las unidades, esos lugares se llenan con ceros. Olvidar un cero es el error más común al escribir números grandes, porque cambia por completo el tamaño del número.",
+        "pasos": [
+          "Cuando escribas un número, revisa que cada posición tenga su cifra, aunque sea un 0.",
+          "Si en una posición no hay nada (ni unidades, ni decenas, etc.), pon un 0 para guardar ese lugar.",
+          "Cuenta las cifras al final: un número entre millones y diez millones tiene siete cifras."
+        ],
+        "ejemplo": "'Seis millones, ocho' se escribe 6.000.008. Los ceros guardan los lugares de las centenas de millar, decenas de millar, unidades de millar, centenas y decenas, que están vacíos. Si te olvidaras de los ceros y escribieras 68, tendrías un número muchísimo más pequeño."
+      },
+      {
+        "titulo": "Comparar números: cuál es mayor y cuál es menor",
+        "explicacion": "Comparar es decidir cuál de dos números es más grande. Con números gigantes hay un truco muy seguro que evita equivocarse. Primero, cuenta cuántas cifras tiene cada número: el que tenga MÁS cifras es el mayor (un número de siete cifras siempre es mayor que uno de seis). Si los dos tienen la misma cantidad de cifras, entonces se comparan cifra por cifra, empezando por la IZQUIERDA (por la posición más valiosa). En cuanto encuentres una posición donde una cifra sea mayor que la otra, ese número es el mayor, y ya no hace falta seguir mirando. Para escribir el resultado se usan los signos: el 'mayor que' (>) apunta con su punta al número más pequeño, y el 'menor que' (<) también apunta al más pequeño; la boca abierta siempre mira al número más grande.",
+        "pasos": [
+          "Cuenta las cifras de cada número: si uno tiene más cifras, ese es el mayor.",
+          "Si tienen la misma cantidad de cifras, compáralas de izquierda a derecha, posición por posición.",
+          "En la primera posición donde difieran, gana el que tenga la cifra más grande.",
+          "Escribe el resultado con > (mayor que) o < (menor que): la boca abierta mira al número más grande."
+        ],
+        "ejemplo": "Comparar 2.540.000 y 2.480.000. Los dos tienen siete cifras y empiezan igual (2 millones). En el periodo de los miles, 540 es mayor que 480, así que 2.540.000 es el mayor. Se escribe 2.540.000 > 2.480.000."
+      },
+      {
+        "titulo": "Ordenar una lista de números",
+        "explicacion": "Ordenar es acomodar varios números en fila, de menor a mayor (orden ascendente, subiendo) o de mayor a menor (orden descendente, bajando). Es como comparar, pero con varios a la vez. La forma más segura es alinearlos mentalmente por sus posiciones y comparar primero por cantidad de cifras, y luego de izquierda a derecha, igual que al comparar dos. Un consejo que ayuda mucho: escribe los números uno debajo de otro cuidando que las unidades queden alineadas a la derecha; así ves de un vistazo cuál tiene más cifras y cuál gana en cada posición.",
+        "pasos": [
+          "Escribe todos los números y cuenta sus cifras.",
+          "Los de menos cifras son los más pequeños; ponlos primero (si ordenas de menor a mayor).",
+          "Entre los que tienen igual cantidad de cifras, compara de izquierda a derecha.",
+          "Coloca cada número en su lugar y revisa la fila completa al final."
+        ],
+        "ejemplo": "Ordenar de menor a mayor: 1.200.000, 980.000 y 1.020.000. El 980.000 tiene seis cifras, los otros siete, así que 980.000 va primero. Entre 1.200.000 y 1.020.000, en el periodo de los miles 020 es menor que 200. Orden final: 980.000, 1.020.000, 1.200.000."
+      },
+      {
+        "titulo": "Redondear: buscar el número redondo más cercano",
+        "explicacion": "Redondear es cambiar un número por otro cercano más 'redondo' (terminado en ceros), para trabajar más fácil o dar una idea rápida del tamaño. Redondeas 'a la decena más cercana', 'a la centena más cercana', 'al millar más cercano', 'al millón más cercano', etc., según cuánto quieras simplificar. La regla es siempre la misma y solo mira UNA cifra: la que está justo a la derecha de la posición a la que redondeas. Si esa cifra es 5, 6, 7, 8 o 9, subes (redondeas hacia arriba) la posición de redondeo en uno; si es 0, 1, 2, 3 o 4, la dejas igual (redondeas hacia abajo). En ambos casos, todas las cifras a la derecha de la posición de redondeo se vuelven ceros. Redondear no es 'inventar', es elegir el múltiplo redondo que queda más cerca del número original.",
+        "pasos": [
+          "Decide a qué posición vas a redondear (decena, centena, millar, millón...).",
+          "Mira SOLO la cifra que está inmediatamente a la derecha de esa posición.",
+          "Si esa cifra es 5 o más, súbele uno a la posición de redondeo; si es 4 o menos, déjala igual.",
+          "Cambia por ceros todas las cifras que están a la derecha de la posición de redondeo."
+        ],
+        "ejemplo": "Redondear 3.482.156 al millón más cercano. La posición de los millones es el 3; la cifra a su derecha es 4 (centena de millar). Como 4 es menor que 5, el 3 se queda igual y lo demás se vuelve cero: 3.000.000. En cambio, 3.482.156 redondeado al millar más cercano mira la cifra de las centenas, que es 1 (menor que 5), así que queda 3.482.000."
+      }
+    ],
+    "idea_clave": "Todo número, por gigante que sea, se ordena por posiciones que valen 10 veces más cada vez que avanzas a la izquierda. Si separas de tres en tres (periodos: unidades, miles, millones), leerlo y escribirlo se vuelve fácil; el cero guarda los lugares vacíos; para comparar, gana el que tiene más cifras o la primera cifra mayor por la izquierda; y para redondear, solo miras la cifra de la derecha de la posición: 5 o más sube, 4 o menos se queda."
+  },
+  "practica": [
+    {
+      "enunciado": "Escribe con palabras cómo se lee el número 6.317.045.",
+      "pista": "Sepáralo en periodos de tres cifras: 6 (millones), 317 (mil), 045 (unidades). Lee cada periodo como un numerito y agrégale su nombre.",
+      "solucion": "Se lee: 'seis millones, trescientos diecisiete mil, cuarenta y cinco'. El periodo de las unidades es 045, que se lee 'cuarenta y cinco' (el cero de la izquierda no se nombra, solo guarda el lugar de las centenas).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe en cifras el número 'dos millones, ochenta mil, trescientos seis'.",
+      "pista": "Millones: 2. Miles: 80, que completado a tres cifras es 080. Unidades: 306. Une los tres grupos con puntos.",
+      "solucion": "Se escribe 2.080.306. El periodo de los miles es 80, pero dentro del número ocupa tres lugares, por eso queda 080. El periodo de las unidades es 306. Uniendo: 2.080.306.",
+      "figura": ""
+    },
+    {
+      "enunciado": "En el número 7.526.900, ¿qué valor tiene la cifra 5 según su posición?",
+      "pista": "Ubica en qué posición está el 5 (cuéntala desde la derecha o mira su periodo). Luego di cuánto vale esa posición.",
+      "solucion": "El 5 está en la posición de las centenas de millar, que vale 100.000. Como hay un 5 ahí, su valor es 5 × 100.000 = 500.000 (quinientos mil). No vale 5, vale quinientos mil, porque el valor depende de la posición.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe en cifras el número 'cinco millones, ocho'. Ten cuidado con los ceros.",
+      "pista": "Millones: 5. Miles: no hay, así que 000. Unidades: 8, que completado a tres cifras es 008. Cuenta que el número tenga siete cifras.",
+      "solucion": "Se escribe 5.000.008. Como no hay miles, el periodo del medio es 000; y como solo hay ocho unidades, ese periodo es 008. Los ceros guardan todos los lugares vacíos. El número tiene siete cifras, como debe ser un número de millones.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Compara los números 4.903.000 y 4.930.000 usando el signo > o <.",
+      "pista": "Los dos tienen siete cifras y empiezan igual. Compara de izquierda a derecha hasta encontrar la primera posición donde se diferencien.",
+      "solucion": "Ambos empiezan con 4 millones. En el periodo de los miles, uno tiene 903 y el otro 930. Comparando de izquierda a derecha dentro de ese periodo: el 9 es igual, pero luego 0 (del 903) es menor que 3 (del 930). Entonces 4.903.000 < 4.930.000. La boca del signo mira al número más grande.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ordena estos tres números de MENOR a MAYOR: 3.100.000, 890.000 y 3.010.000.",
+      "pista": "Primero cuenta las cifras de cada uno: el que tenga menos cifras es el más pequeño. Entre los que empatan en cifras, compara de izquierda a derecha.",
+      "solucion": "El 890.000 tiene seis cifras; los otros dos tienen siete, así que 890.000 es el menor y va primero. Entre 3.100.000 y 3.010.000, ambos son 3 millones; en el periodo de los miles, 010 es menor que 100. Orden de menor a mayor: 890.000, 3.010.000, 3.100.000.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Redondea 5.647.200 al millón más cercano.",
+      "pista": "La posición de los millones es el 5. Mira la cifra que está justo a su derecha (la centena de millar). Si es 5 o más, sube; si es 4 o menos, se queda.",
+      "solucion": "La cifra a la derecha de los millones es 6 (centena de millar). Como 6 es 5 o más, el 5 de los millones sube a 6 y todo lo demás se vuelve cero: 6.000.000. Así que 5.647.200 redondeado al millón más cercano es 6.000.000.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Redondea 2.318.560 al millar más cercano.",
+      "pista": "La posición de los millares (unidad de millar) es el 8. Mira la cifra a su derecha, que está en las centenas. Aplica la regla del 5.",
+      "solucion": "La cifra a la derecha del millar es 5 (centenas). Como es 5 o más, la unidad de millar sube: el 8 de los millares pasa a 9, y las tres cifras de la derecha se vuelven ceros: 2.319.000. Entonces 2.318.560 redondeado al millar más cercano es 2.319.000.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica con tus palabras por qué el número 1.000.000 es mayor que 999.999, aunque el 999.999 tenga puros nueves.",
+      "pista": "Cuenta las cifras de cada número. ¿Cuántas tiene cada uno?",
+      "solucion": "El 1.000.000 tiene siete cifras y el 999.999 tiene solo seis. Cuando un número tiene más cifras que otro, siempre es mayor, sin importar qué cifras tenga el otro. Los nueves del 999.999 son las cifras más grandes posibles para seis lugares, pero al llegar a 999.999 y sumar uno más, el número 'salta' a una cifra nueva y se convierte en 1.000.000. Por eso el millón, aunque esté lleno de ceros, es mayor.",
+      "figura": ""
+    },
+    {
+      "enunciado": "En el número 8.204.706 hay dos ceros. Explica qué lugar guarda cada cero, sin cambiar el número.",
+      "pista": "Ubica la posición de cada cero contando los periodos. Un cero está en el periodo de los miles y otro en el de las unidades.",
+      "solucion": "El primer cero (en 8.204.706) está en la posición de las decenas de millar: guarda ese lugar para que el 2 siga en las centenas de millar y valga 200.000. El segundo cero está en la posición de las decenas: guarda ese lugar para que el 7 valga 700 (centenas) y el 6 quede en las unidades. Si quitáramos esos ceros, todas las cifras se correrían y el número cambiaría por completo.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cómo se lee el número 3.250.017?",
+      "opciones": [
+        "Tres millones, doscientos cincuenta mil, diecisiete",
+        "Tres millones, veinticinco mil, diecisiete",
+        "Trescientos veinticinco mil, diecisiete",
+        "Tres millones, doscientos cincuenta mil, ciento setenta"
+      ],
+      "correcta": 0,
+      "explicacion": "Separado en periodos: 3 (millones), 250 (mil), 017 (unidades). Se lee 'tres millones, doscientos cincuenta mil, diecisiete'. El periodo del medio es 250, no 25 (ese sería el error de confundir el periodo), y el último es 017, que se lee diecisiete, no ciento setenta."
+    },
+    {
+      "pregunta": "¿Cómo se escribe en cifras 'cuatro millones, seis mil, ochenta'?",
+      "opciones": [
+        "4.006.080",
+        "4.600.080",
+        "4.060.080",
+        "4.006.800"
+      ],
+      "correcta": 0,
+      "explicacion": "Millones: 4. Miles: 6, que completado a tres cifras es 006. Unidades: 80, que es 080. Uniendo: 4.006.080. El error común es no rellenar los miles con ceros y correr las cifras de lugar."
+    },
+    {
+      "pregunta": "En el número 5.783.000, ¿qué valor tiene la cifra 7 según su posición?",
+      "opciones": [
+        "700.000",
+        "7.000.000",
+        "70.000",
+        "7"
+      ],
+      "correcta": 0,
+      "explicacion": "El 7 está en la posición de las centenas de millar, que vale 100.000. Su valor es 7 × 100.000 = 700.000. El valor de una cifra depende de su posición, no es solo el 7 que ves escrito."
+    },
+    {
+      "pregunta": "¿Cuál de estos números es el MAYOR?",
+      "opciones": [
+        "6.099.999",
+        "6.100.000",
+        "6.090.000",
+        "6.019.000"
+      ],
+      "correcta": 1,
+      "explicacion": "Todos tienen siete cifras y empiezan con 6 millones. Comparando el periodo de los miles: 100 es mayor que 099, que 090 y que 019. Por eso 6.100.000 es el mayor. Fíjate que 6.099.999 tiene muchos nueves pero su periodo de miles (099) es menor que 100."
+    },
+    {
+      "pregunta": "¿Cómo se escribe en cifras 'siete millones, cinco'?",
+      "opciones": [
+        "7.000.005",
+        "7.500.000",
+        "7.000.500",
+        "7.005.000"
+      ],
+      "correcta": 0,
+      "explicacion": "Millones: 7. No hay miles: 000. Unidades: 5, que es 005. Uniendo: 7.000.005. Los ceros guardan los lugares vacíos. El error típico es poner el 5 en otro lugar y olvidar que las unidades van a la derecha del todo."
+    },
+    {
+      "pregunta": "Redondea 4.628.000 al millón más cercano.",
+      "opciones": [
+        "5.000.000",
+        "4.000.000",
+        "4.600.000",
+        "4.700.000"
+      ],
+      "correcta": 0,
+      "explicacion": "Para redondear al millón, mira la cifra a la derecha de los millones: es 6 (centena de millar). Como 6 es 5 o más, el 4 de los millones sube a 5 y lo demás se vuelve cero: 5.000.000. El error común es dejarlo en 4.000.000 sin aplicar la regla del 5."
+    },
+    {
+      "pregunta": "Redondea 3.451.900 al millar más cercano.",
+      "opciones": [
+        "3.452.000",
+        "3.451.000",
+        "3.450.000",
+        "3.452.900"
+      ],
+      "correcta": 0,
+      "explicacion": "Para redondear al millar, mira la cifra de las centenas: es 9. Como 9 es 5 o más, la unidad de millar (1) sube a 2 y las tres cifras de la derecha se vuelven ceros: 3.452.000. Mirar solo esa cifra es la clave; las de más a la derecha no cambian la decisión."
+    },
+    {
+      "pregunta": "¿Cuántas cifras tiene el número 'un millón' escrito en cifras?",
+      "opciones": [
+        "7 cifras (1.000.000)",
+        "6 cifras (100.000)",
+        "8 cifras (10.000.000)",
+        "5 cifras (10.000)"
+      ],
+      "correcta": 0,
+      "explicacion": "Un millón se escribe 1.000.000: un 1 seguido de seis ceros, siete cifras en total. Los ceros guardan todos los lugares menores. Con seis cifras (100.000) tendrías solo cien mil, diez veces menos."
+    },
+    {
+      "pregunta": "Ordenados de MENOR a MAYOR, ¿cuál es el orden correcto de 2.400.000, 990.000 y 2.040.000?",
+      "opciones": [
+        "990.000, 2.040.000, 2.400.000",
+        "990.000, 2.400.000, 2.040.000",
+        "2.040.000, 2.400.000, 990.000",
+        "2.400.000, 2.040.000, 990.000"
+      ],
+      "correcta": 0,
+      "explicacion": "El 990.000 tiene seis cifras, los otros siete, así que va primero por ser el menor. Entre 2.040.000 y 2.400.000, en el periodo de los miles 040 es menor que 400, así que 2.040.000 va antes. Orden: 990.000, 2.040.000, 2.400.000."
+    },
+    {
+      "pregunta": "¿Qué signo va en el medio para que sea correcto: 1.999.000 ___ 2.000.000?",
+      "opciones": [
+        "< (menor que)",
+        "> (mayor que)",
+        "= (igual)",
+        "Ninguno, no se pueden comparar"
+      ],
+      "correcta": 0,
+      "explicacion": "1.999.000 es 1 millón y algo; 2.000.000 son 2 millones. En la posición de los millones, 1 es menor que 2, así que 1.999.000 < 2.000.000. La boca del signo mira al número más grande, que está a la derecha."
+    },
+    {
+      "pregunta": "En 9.020.400, ¿en qué posición está el cero que se encuentra justo después del 9 (segunda cifra desde la izquierda)?",
+      "opciones": [
+        "En las centenas de millar",
+        "En las decenas de millón",
+        "En las unidades de millar",
+        "En las decenas"
+      ],
+      "correcta": 0,
+      "explicacion": "El 9 está en las unidades de millón. La cifra siguiente hacia la derecha es la centena de millar, y ahí está ese cero, guardando el lugar. Sin ese cero, el número entero se correría y cambiaría de tamaño."
+    },
+    {
+      "pregunta": "Redondea 6.500.000 al millón más cercano.",
+      "opciones": [
+        "7.000.000",
+        "6.000.000",
+        "6.500.000",
+        "6.600.000"
+      ],
+      "correcta": 0,
+      "explicacion": "La cifra a la derecha de los millones es 5 (centena de millar). La regla dice que si es 5 o más, se sube; así que el 6 de los millones pasa a 7: queda 7.000.000. El 5 justo redondea hacia arriba, no se queda igual."
+    }
+  ]
+}

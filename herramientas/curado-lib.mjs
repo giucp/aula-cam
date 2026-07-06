@@ -12,6 +12,7 @@ const GRADOS_CONOCIDOS = new Set([
   "Cumbre Matemática 1er año", "Cumbre Física 1er año", "Cumbre Química 1er año",
   "Cumbre Biología 1er año", "Cumbre Cómo Pensar 1er año",
   "Cumbre Informática 1er año", "Cumbre Inglés 1er año",
+  "Cumbre Cómo Pensar 5to grado",
   "Cumbre Matemática 5to grado", "Cumbre Ciencias 5to grado",
   "Cumbre Informática 5to grado", "Cumbre Inglés 5to grado",
 ]);

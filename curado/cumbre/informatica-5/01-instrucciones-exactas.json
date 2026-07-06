@@ -1,0 +1,286 @@
+{
+  "programa": "cumbre",
+  "materia": "Informática",
+  "grado": "Cumbre Informática 5to grado",
+  "dominio": "Pensamiento computacional (sin computadora)",
+  "tema": "Instrucciones exactas: por qué una computadora hace justo lo que le dices (aunque esté mal)",
+  "referencias": [
+    "CSTA K-12 Computer Science Standards banda 1B (ages 8-11)",
+    "UK Computing KS2 (Key Stage 2)",
+    "Code.org CS Fundamentals (unplugged)"
+  ],
+  "resumen": {
+    "titulo": "Instrucciones exactas: la computadora hace justo lo que le dices",
+    "intro": "Imagina que tienes un ayudante robot: es súper rápido y nunca se cansa, pero tiene una regla fija: hace EXACTAMENTE lo que le dices, ni una cosa más ni una cosa menos. No adivina, no completa lo que te faltó decir, no usa sentido común. Así es una computadora. Por eso, para que haga bien una tarea, tú tienes que decirle los pasos con mucho cuidado, en el orden correcto y sin dejar nada a la suposición. En este tema vas a aprender a dar ese tipo de instrucciones, sin usar ninguna computadora: con ejemplos de todos los días, como hacer un sándwich, dibujar algo o llegar a un lugar.",
+    "secciones": [
+      {
+        "titulo": "Qué es una instrucción",
+        "explicacion": "Una INSTRUCCIÓN es una orden que le dices a alguien (o a algo) para que haga una sola acción concreta. 'Abre la puerta' es una instrucción. 'Corta el pan' es otra instrucción. Cuando juntas varias instrucciones, una después de la otra, para lograr una tarea completa, formas una SECUENCIA. Piensa en las instrucciones como piezas de un juego de bloques: cada bloque es un paso, y los vas colocando uno encima del otro para construir algo más grande, como una receta completa o un dibujo completo.",
+        "pasos": [
+          "Una instrucción dice UNA sola acción, no varias mezcladas.",
+          "La acción debe ser algo que se pueda hacer directamente, sin adivinar nada más.",
+          "Varias instrucciones juntas, en orden, forman una secuencia."
+        ],
+        "ejemplo": "Para lavarte los dientes das varias instrucciones seguidas: 1) Moja el cepillo. 2) Pon pasta dental en el cepillo. 3) Cepilla los dientes de arriba y de abajo. 4) Enjuágate la boca con agua. Cada número es una instrucción; las cuatro juntas, en ese orden, son la secuencia completa."
+      },
+      {
+        "titulo": "La computadora obedece al pie de la letra",
+        "explicacion": "Cuando decimos que la computadora hace las cosas AL PIE DE LA LETRA, queremos decir que entiende tus palabras de forma literal, exactamente como las escribiste, sin buscarles un segundo sentido. Si tú le dices a un amigo 'ciérrame la puerta' y la puerta está lejos de él, tu amigo entiende que debe levantarse e ir a cerrarla, aunque tú no lo hayas explicado con esas palabras: él usa su sentido común para completar lo que faltó. La computadora NO hace eso. Si tu instrucción no dice 'levántate y camina hasta la puerta', ella no lo hace sola. La computadora no es tonta ni mala: simplemente no completa huecos. El que tiene que pensar en TODOS los detalles eres tú, antes de dar la orden.",
+        "pasos": [
+          "Antes de dar una instrucción, piensa: ¿qué necesita saber quien la va a obedecer para hacerla bien?",
+          "No confíes en que 'se va a dar cuenta solo': dilo con palabras.",
+          "Revisa que la instrucción no dependa de adivinar nada."
+        ],
+        "ejemplo": "Le dices a un robot 'llena el vaso'. Un amigo llenaría el vaso hasta cerca del borde y pararía ahí solo. El robot, si la instrucción no dice cuándo parar, puede seguir echando agua aunque el vaso ya se desborde: él hizo justo lo que decía la orden, nada más ni nada menos."
+      },
+      {
+        "titulo": "Qué es la ambigüedad (cuando una orden se puede entender de dos formas)",
+        "explicacion": "AMBIGÜEDAD significa que una frase se puede entender de más de una manera. Para las personas casi no es problema, porque adivinamos cuál de los dos sentidos tiene lógica en ese momento. Pero para la computadora es un problema grande: como ella no adivina, puede elegir el sentido que NO querías, y todo sale mal. Reconocer una instrucción ambigua es fácil si te preguntas: '¿esto podría significar otra cosa distinta?'. Si la respuesta es sí, hay que cambiar las palabras hasta que solo quede un significado posible.",
+        "pasos": [
+          "Lee la instrucción y pregúntate si podría entenderse de otra manera.",
+          "Si hay más de un significado posible, la instrucción es ambigua.",
+          "Agrega la palabra o el dato que falta para que quede un solo significado."
+        ],
+        "ejemplo": "'Trae el libro de la mesa' es ambigua si hay dos mesas en la casa y no sabes de cuál: ¿de la mesa de la cocina o de la del cuarto? Una versión sin ambigüedad: 'Trae el libro que está sobre la mesa de la cocina.'"
+      },
+      {
+        "titulo": "Instrucciones completas contra instrucciones incompletas",
+        "explicacion": "Una instrucción está INCOMPLETA cuando le falta un dato necesario para hacerse bien, aunque no sea ambigua (no se pueda confundir con otra cosa, mas igual falta algo). Por ejemplo, 'espera un poco' no se confunde con otra acción, pero no dice CUÁNTO tiempo esperar, así que sigue sin poder cumplirse con exactitud. Para completar una instrucción hay que buscar las palabras que dejan un hueco —un poco, algo, rápido, luego— y reemplazarlas por un dato exacto: un número, un nombre, una cantidad.",
+        "pasos": [
+          "Busca palabras que dejan huecos: 'un poco', 'algo', 'rápido', 'luego', 'cerca'.",
+          "Pregúntate qué dato exacto falta: ¿cuánto?, ¿cuál?, ¿cuándo?, ¿dónde?",
+          "Agrega ese dato con un número o un nombre concreto."
+        ],
+        "ejemplo": "Incompleta: 'Corta unas rodajas de pan.' Completa: 'Corta cuatro rodajas de pan.' Ahora cualquiera que la lea corta la misma cantidad, sin adivinar."
+      },
+      {
+        "titulo": "El orden importa: la secuencia correcta",
+        "explicacion": "No basta con tener las instrucciones correctas: también hay que ponerlas en el ORDEN correcto. La computadora hace los pasos uno por uno, del primero al último, tal como están escritos; no los reordena ni adivina cuál 'debería' ir primero. Si cambias el orden de dos pasos, aunque cada paso esté bien escrito por separado, el resultado final puede salir completamente distinto o directamente imposible de hacer. Antes de dar por buena una lista de pasos, hay que leerla en orden y comprobar que, en cada paso, ya esté hecho todo lo que ese paso necesita.",
+        "pasos": [
+          "Lee los pasos en el orden en que están escritos, de arriba hacia abajo.",
+          "En cada paso, pregúntate: ¿ya pasó todo lo que este paso necesita para poder hacerse?",
+          "Si un paso necesita algo que todavía no ocurrió, el orden está mal."
+        ],
+        "ejemplo": "Para ponerse un zapato: si el orden es 1) amarrar los cordones, 2) ponerse el zapato, el resultado es imposible: no puedes amarrar los cordones de un zapato que todavía no tienes puesto. El orden correcto es 1) ponerse el zapato, 2) amarrar los cordones."
+      },
+      {
+        "titulo": "Practicando con un robot que dibuja",
+        "explicacion": "Un ejercicio clásico para entrenar instrucciones exactas es dictarle a alguien cómo dibujar algo, sin que esa persona vea el dibujo original y sin señalar con el dedo: solo con palabras. Ahí descubres rápido cuántas cosas dabas por sentadas. Conviene empezar por la forma más grande y general (el marco) y después ir agregando los detalles de adentro, dando siempre un tamaño y una posición claros, para que la otra persona sepa exactamente dónde dibujar cada parte.",
+        "pasos": [
+          "Empieza describiendo la forma más grande primero (el marco general).",
+          "Después agrega los detalles de adentro, uno a la vez.",
+          "Para cada forma, di dónde va (posición) y qué tan grande es (tamaño), comparándolo con algo conocido."
+        ],
+        "ejemplo": "Para dictar una carita feliz: 1) Dibuja un círculo grande en el centro de la hoja, del tamaño de un plato. 2) Dentro del círculo, en la parte de arriba, dibuja dos puntos pequeños separados (los ojos). 3) Debajo de los puntos, en el centro del círculo, dibuja una línea curva hacia arriba, como una sonrisa. Siguiendo esos tres pasos en ese orden, sale la misma carita feliz."
+      },
+      {
+        "titulo": "Cómo revisar tus propias instrucciones (probarlas 'como robot')",
+        "explicacion": "Después de escribir una secuencia de instrucciones, conviene revisarla poniéndote en el papel de un robot obediente: sigue cada paso exactamente como está escrito, sin usar tu sentido común para rellenar huecos, y fíjate si en algún momento te quedas sin saber qué hacer. A eso se le llama probar en seco: seguir los pasos con la cabeza (o en un papel), como si tú fueras la máquina. Si en algún paso tienes que detenerte y pensar '¿y esto cómo se hace exactamente?', encontraste un hueco que hay que arreglar antes de dar la instrucción por buena.",
+        "pasos": [
+          "Ponte en el papel de un robot que obedece al pie de la letra, sin sentido común.",
+          "Sigue cada paso, en orden, exactamente como está escrito.",
+          "Si en algún paso dudas o necesitas adivinar algo, marca ese paso como un problema.",
+          "Corrige los pasos marcados y vuelve a probar desde el principio."
+        ],
+        "ejemplo": "Instrucciones: '1) Pon el pan en el plato. 2) Unta la mermelada.' Al probarlas como robot, te detienes en el paso 2: ¿con qué unto la mermelada, con un cuchillo o con la mano? Y ¿de dónde saco la mermelada? Ese hueco se corrige agregando: 'Con un cuchillo, saca mermelada del frasco y úntala sobre el pan.'"
+      }
+    ],
+    "idea_clave": "La computadora no adivina: hace exactamente lo que le dices, en el orden en que se lo dices. Por eso una buena instrucción es completa (no le falta ningún dato), no es ambigua (solo se puede entender de una forma) y está en el orden correcto. Si algo sale mal, casi siempre el error está en la instrucción, no en quien la obedeció."
+  },
+  "practica": [
+    {
+      "enunciado": "La instrucción 'pon la fruta en el frutero' es imprecisa (le falta un dato) si en la cocina hay dos frutas distintas sobre la mesa: una banana y una manzana, y no se sabe cuál poner. Reescribe la instrucción para que ya no sea ambigua.",
+      "pista": "Pregúntate qué palabra falta para que solo quede un significado posible: ¿cuál fruta exactamente?",
+      "solucion": "Una versión sin ambigüedad: 'Pon la manzana en el frutero.' Al decir cuál fruta exactamente, ya no hay dos formas de entender la orden.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Estos pasos para ponerse una chaqueta están desordenados: (a) Sube el cierre. (b) Mete el brazo derecho en la manga derecha. (c) Toma la chaqueta del perchero. (d) Mete el brazo izquierdo en la manga izquierda. Ordénalos correctamente.",
+      "pista": "Piensa qué tiene que estar hecho antes de cada paso: no puedes meter los brazos en una chaqueta que sigue en el perchero, ni subir el cierre antes de tener los dos brazos puestos.",
+      "solucion": "El orden correcto es: c, b, d, a. Es decir: 1) Toma la chaqueta del perchero. 2) Mete el brazo derecho en la manga derecha. 3) Mete el brazo izquierdo en la manga izquierda. 4) Sube el cierre. Cada paso necesita que el anterior ya haya pasado.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un robot recibe esta instrucción incompleta: 'Espera un poco y luego apaga la luz.' Di qué dato le falta y reescribe la instrucción completa.",
+      "pista": "Busca la palabra que deja un hueco: ¿cuánto tiempo es 'un poco'?",
+      "solucion": "Falta decir cuánto tiempo esperar exactamente. Una versión completa: 'Espera cinco minutos y luego apaga la luz.' Ahora el robot sabe exactamente cuándo actuar, sin adivinar.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un robot que obedece al pie de la letra recibe la instrucción: 'Sirve jugo en el vaso.' Nadie le dijo cuándo parar de servir. Predice qué hará el robot y explica por qué eso no es culpa del robot.",
+      "pista": "Piensa que el robot no tiene sentido común: sigue sirviendo mientras nada le diga que pare.",
+      "solucion": "El robot seguirá sirviendo jugo aunque el vaso se llene y el jugo se derrame sobre la mesa, porque nadie le dijo cuándo detenerse. No es culpa del robot: él hizo exactamente lo que decía la instrucción. El error está en la instrucción, que estaba incompleta (le faltaba decir 'hasta llenar el vaso' o una cantidad exacta).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe una secuencia de cuatro instrucciones, en el orden correcto, para que alguien prepare un vaso de agua con azúcar. Cada instrucción debe ser una sola acción concreta.",
+      "pista": "Piensa en el orden real: primero necesitas el vaso, después el agua, después el azúcar, después mezclar. No puedes revolver antes de echar el azúcar.",
+      "solucion": "Un ejemplo válido: 1) Toma un vaso. 2) Llena el vaso con agua hasta la mitad. 3) Echa dos cucharadas de azúcar en el vaso. 4) Revuelve con una cuchara hasta que el azúcar se disuelva. Cada paso es una sola acción y necesita que el paso anterior ya esté hecho.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero te dictó estas instrucciones para dibujar una bandera, sin verla tú: '1) Dibuja un rectángulo. 2) Dibuja una línea en el medio.' Explica por qué son ambiguas o incompletas, y agrega los datos que faltan.",
+      "pista": "Piensa en todo lo que no se dijo: ¿de qué tamaño el rectángulo?, ¿dónde en la hoja?, ¿la línea va derecha, torcida, horizontal o vertical?",
+      "solucion": "Son incompletas porque no dicen el tamaño ni la posición del rectángulo en la hoja, ni cómo es la línea (horizontal, vertical, en qué parte). Una versión completa: 1) En el centro de la hoja, dibuja un rectángulo del tamaño de una tarjeta, más ancho que alto. 2) Dentro del rectángulo, dibuja una línea horizontal que lo divida en dos mitades iguales, una arriba y otra abajo. Ahora cualquiera dibuja la misma bandera.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Sigue esta instrucción como si fueras un robot obediente, al pie de la letra, y di exactamente qué pasaría: 'Camina hacia la puerta hasta chocar con la pared.' (La puerta está antes de llegar a la pared.)",
+      "pista": "El robot no se detiene solo en la puerta porque nadie se lo dijo: la instrucción dice 'hasta chocar con la pared', y eso es justo lo que hará.",
+      "solucion": "El robot caminaría en línea recta, pasaría de largo por la puerta (porque la instrucción no dijo que se detuviera ahí) y seguiría hasta chocar con la pared, tal como decía la orden al pie de la letra. Para que se detenga en la puerta, la instrucción debería decir: 'Camina hacia la puerta y detente al llegar a ella.'",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica con tus propias palabras qué significa que la computadora obedece 'al pie de la letra', y da un ejemplo cotidiano donde eso cause un problema si la instrucción no es exacta.",
+      "pista": "Piensa en la diferencia entre cómo entendería la orden un amigo (con sentido común) y cómo la entendería una máquina que no adivina nada.",
+      "solucion": "Obedecer 'al pie de la letra' significa hacer exactamente lo que dicen las palabras, sin adivinar ni completar lo que falta, aunque el resultado sea un desastre. Ejemplo: si le dices a un robot de cocina 'echa sal a la sopa' sin decir cuánta, podría echar todo el paquete de sal, porque la instrucción no puso un límite. Un amigo hubiera echado un poquito por sentido común; el robot no.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Estos pasos para armar un sándwich de queso están desordenados: (a) Pon una rebanada de queso sobre el pan. (b) Corta el sándwich por la mitad. (c) Pon dos rebanadas de pan sobre el plato. (d) Tapa con la otra rebanada de pan. Ordénalos y explica por qué ese orden es el único que funciona.",
+      "pista": "Necesitas el pan puesto antes de agregar el queso, el queso puesto antes de tapar, y todo armado antes de cortar.",
+      "solucion": "El orden correcto es: c, a, d, b. Es decir: 1) Pon dos rebanadas de pan sobre el plato. 2) Pon una rebanada de queso sobre el pan. 3) Tapa con la otra rebanada de pan. 4) Corta el sándwich por la mitad. Es el único orden que funciona porque cada paso necesita lo del paso anterior: no puedes poner queso sin pan, ni tapar sin queso, ni cortar un sándwich que todavía no está armado.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe una instrucción completa y sin ambigüedad para decirle a alguien en qué silla sentarse, sabiendo que en el salón hay tres sillas: una roja, una azul y una verde, y quieres que se siente en la azul.",
+      "pista": "Nombra el color exacto de la silla para que no quede duda de cuál es.",
+      "solucion": "Una instrucción válida: 'Siéntate en la silla azul.' Al decir el color exacto, ya no hay forma de confundirla con la roja o la verde: la instrucción es completa y no es ambigua.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué hace una computadora cuando recibe una instrucción?",
+      "opciones": [
+        "Adivina lo que quisiste decir y corrige los errores",
+        "Hace exactamente lo que dice la instrucción, sin adivinar nada más",
+        "Espera a que se lo expliques de nuevo si algo no le queda claro",
+        "Elige la opción que más sentido común tiene"
+      ],
+      "correcta": 1,
+      "explicacion": "La computadora obedece al pie de la letra: hace justo lo que dice la instrucción, ni más ni menos. No adivina, no corrige y no usa sentido común como lo haría una persona."
+    },
+    {
+      "pregunta": "¿Qué es una instrucción?",
+      "opciones": [
+        "Una lista de muchos pasos para lograr una tarea grande",
+        "Una orden que dice una sola acción concreta",
+        "Un dibujo que explica una tarea",
+        "Un error que comete la computadora"
+      ],
+      "correcta": 1,
+      "explicacion": "Una instrucción es una sola orden concreta, como 'abre la puerta' o 'corta el pan'. Varias instrucciones juntas y en orden forman una secuencia."
+    },
+    {
+      "pregunta": "Una instrucción es AMBIGUA cuando...",
+      "opciones": [
+        "Tiene muchas palabras difíciles",
+        "Se puede entender de más de una manera distinta",
+        "Es muy corta",
+        "Habla de más de una persona"
+      ],
+      "correcta": 1,
+      "explicacion": "Ambigua significa que se puede entender de dos o más formas distintas. Para una persona no suele ser problema porque adivina el sentido correcto; para la computadora sí, porque puede elegir el sentido que no querías."
+    },
+    {
+      "pregunta": "Le dices a un robot 'sirve jugo en el vaso' sin decir cuánto, y el robot sigue sirviendo hasta que el vaso se derrama. ¿De quién fue el error?",
+      "opciones": [
+        "Del robot, porque no usó sentido común",
+        "De la instrucción, porque estaba incompleta y no decía cuándo parar",
+        "Del vaso, que era muy pequeño",
+        "Del jugo, que se sirvió solo"
+      ],
+      "correcta": 1,
+      "explicacion": "El robot hizo exactamente lo que la instrucción decía. El error fue de la instrucción, que no dijo hasta cuándo servir. Para que funcione bien hay que decir, por ejemplo, 'hasta llenar el vaso' o una cantidad exacta."
+    },
+    {
+      "pregunta": "¿Cuál de estas instrucciones es completa y no es ambigua?",
+      "opciones": [
+        "Trae el libro de la mesa",
+        "Espera un poco antes de salir",
+        "Corta tres rodajas de pan con el cuchillo",
+        "Camina un rato y gira"
+      ],
+      "correcta": 2,
+      "explicacion": "La opción correcta dice una cantidad exacta (tres rodajas) y la herramienta (el cuchillo), sin dejar nada a la suposición. Las otras usan palabras con huecos como 'la mesa' (¿cuál mesa?), 'un poco' o 'un rato'."
+    },
+    {
+      "pregunta": "Tienes las instrucciones correctas para ponerte un zapato, pero las escribes en este orden: 1) Amarra los cordones. 2) Ponte el zapato. ¿Qué pasa?",
+      "opciones": [
+        "No pasa nada, el orden no importa",
+        "Es imposible seguirlas así: no puedes amarrar los cordones de un zapato que aún no tienes puesto",
+        "El resultado es el mismo, solo que más lento",
+        "Faltó una instrucción, por eso falla"
+      ],
+      "correcta": 1,
+      "explicacion": "El problema no es que falte una instrucción ni que sean ambiguas: el problema es el ORDEN. Un paso necesita que el anterior ya haya pasado, y aquí el orden hace la tarea imposible."
+    },
+    {
+      "pregunta": "¿Qué significa hacer una 'prueba en seco' de una secuencia de instrucciones?",
+      "opciones": [
+        "Borrar los pasos que sobran",
+        "Seguir cada paso exactamente como está escrito, como si fueras un robot, para ver si algo falla",
+        "Escribir las instrucciones sin usar lápiz ni papel",
+        "Pedirle a otra persona que las lea en voz alta"
+      ],
+      "correcta": 1,
+      "explicacion": "Probar en seco es recorrer los pasos tú mismo, poniéndote en el lugar del robot obediente, sin usar tu sentido común. Si en algún paso te quedas sin saber qué hacer, encontraste un hueco que hay que arreglar."
+    },
+    {
+      "pregunta": "En el juego de dictar un dibujo sin que la otra persona lo vea, ¿por qué conviene describir primero la forma grande y después los detalles de adentro?",
+      "opciones": [
+        "Porque así se tarda menos tiempo",
+        "Porque la forma grande da un marco claro donde después se puede ubicar cada detalle",
+        "Porque los detalles no son importantes",
+        "Porque los colores se dictan al final siempre"
+      ],
+      "correcta": 1,
+      "explicacion": "Empezar por la forma general le da a la otra persona una referencia donde ubicar los detalles después, evitando dudas sobre dónde va cada parte. Si empiezas por un detalle suelto, no hay marco de referencia."
+    },
+    {
+      "pregunta": "Un robot recibe la instrucción 'Camina hacia la puerta hasta chocar con la pared' y la puerta queda antes de la pared. ¿Qué hará el robot?",
+      "opciones": [
+        "Se detendrá en la puerta porque es lo lógico",
+        "Pasará de largo la puerta y seguirá caminando hasta chocar con la pared, tal como dice la instrucción",
+        "Se quedará quieto sin saber qué hacer",
+        "Le preguntará a alguien qué hacer"
+      ],
+      "correcta": 1,
+      "explicacion": "El robot no adivina que 'lo lógico' es detenerse en la puerta: hace exactamente lo que la instrucción dice, que es caminar hasta la pared. Si se quería que se detuviera en la puerta, había que decirlo explícitamente."
+    },
+    {
+      "pregunta": "¿Cuál es la diferencia entre una instrucción AMBIGUA y una instrucción INCOMPLETA?",
+      "opciones": [
+        "Son exactamente lo mismo",
+        "La ambigua se puede entender de dos formas distintas; la incompleta simplemente le falta un dato, aunque no se confunda con otra cosa",
+        "La incompleta es más larga que la ambigua",
+        "La ambigua solo ocurre con números"
+      ],
+      "correcta": 1,
+      "explicacion": "Una instrucción ambigua tiene dos o más significados posibles ('banco' como asiento o como entidad de dinero). Una instrucción incompleta no se confunde con otra cosa, pero le falta un dato necesario, como 'espera un poco' (no dice cuánto tiempo)."
+    },
+    {
+      "pregunta": "Estos pasos para armar un sándwich están en este orden: 1) Tapa el sándwich con la otra rebanada. 2) Pon el queso sobre el pan. ¿Qué problema tiene esta secuencia?",
+      "opciones": [
+        "Ninguno, los pasos están bien así",
+        "El orden está mal: se tapa el sándwich antes de poner el queso, así que el queso quedaría fuera",
+        "Falta poner el pan en el plato",
+        "Las instrucciones son ambiguas"
+      ],
+      "correcta": 1,
+      "explicacion": "El problema es el orden: si tapas el sándwich antes de poner el queso, el queso no puede entrar. El paso de poner el queso debe ir ANTES de tapar, no después."
+    },
+    {
+      "pregunta": "¿Por qué es útil practicar 'pensar como una computadora' con tareas como dibujar, dar rutas o armar un sándwich, en vez de usar directamente una computadora?",
+      "opciones": [
+        "Porque las computadoras son difíciles de conseguir",
+        "Porque lo importante es aprender a dar instrucciones completas, sin ambigüedad y en el orden correcto, y eso se practica con tareas cotidianas",
+        "Porque dibujar es más divertido que programar",
+        "Porque las computadoras no entienden instrucciones en español"
+      ],
+      "correcta": 1,
+      "explicacion": "Lo esencial no es usar una computadora, sino aprender la lógica de dar instrucciones exactas: completas, sin ambigüedad y en orden. Esa lógica se entrena perfectamente con tareas de todos los días, sin necesitar ninguna máquina."
+    }
+  ]
+}

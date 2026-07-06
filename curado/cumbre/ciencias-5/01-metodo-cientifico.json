@@ -1,0 +1,306 @@
+{
+  "programa": "cumbre",
+  "materia": "Ciencias",
+  "grado": "Cumbre Ciencias 5to grado",
+  "dominio": "Pensar como científico",
+  "tema": "El método científico: preguntar, predecir, probar y concluir",
+  "referencias": [
+    "Singapore MOE Primary Science — Working Scientifically",
+    "UK KS2 Science — working scientifically",
+    "NGSS Science & Engineering Practices (elemental)"
+  ],
+  "resumen": {
+    "titulo": "Cómo piensa un científico: preguntar, predecir, probar y concluir",
+    "intro": "Seguro alguna vez te preguntaste algo así: ¿por qué esta planta creció más que aquella?, ¿qué papel absorbe más agua?, ¿cuál pelota rebota más alto? Un científico no se queda solo con la curiosidad: tiene una forma ordenada de buscar la respuesta, para estar SEGURO y no solo 'creer' algo. Esa forma ordenada se llama método científico, y en este tema vas a aprender sus pasos para poder usarlos tú mismo, en tu casa o en la escuela, con cualquier pregunta que se te ocurra.",
+    "secciones": [
+      {
+        "titulo": "¿Qué es el método científico?",
+        "explicacion": "El MÉTODO CIENTÍFICO es una serie de pasos ordenados que sirven para responder una pregunta sobre el mundo de forma segura, comprobándola en vez de adivinarla. No es un secreto de laboratorio: es una forma de pensar que puedes usar para cualquier curiosidad, como saber si las plantas crecen más con más luz o qué papel absorbe más agua. Los pasos, en orden, son: observar y preguntar, predecir (hipótesis), diseñar y hacer un experimento con prueba justa, observar los resultados, y concluir con evidencia. Seguir estos pasos EN ORDEN es lo que hace que la respuesta sea confiable: si te saltas un paso o los mezclas, corres el riesgo de engañarte a ti mismo y creer algo que no es cierto.",
+        "pasos": [
+          "Observar algo y hacerte una pregunta.",
+          "Predecir una respuesta posible (hipótesis).",
+          "Diseñar un experimento con prueba justa y hacerlo.",
+          "Observar y anotar los resultados.",
+          "Concluir: responder la pregunta usando esos resultados como evidencia."
+        ],
+        "ejemplo": "Notas que una planta junto a la ventana está más grande que otra que tienes en un rincón oscuro. Eso despierta una pregunta: ¿la luz hace que las plantas crezcan más? A partir de ahí, vas a seguir los pasos del método científico para averiguarlo de verdad, en vez de solo suponerlo.",
+        "figura": ""
+      },
+      {
+        "titulo": "Paso 1: observar y preguntar",
+        "explicacion": "Todo empieza con OBSERVAR: mirar con atención algo que pasa a tu alrededor y notar un detalle interesante. Observar bien significa fijarte en cosas concretas: no solo 'la planta se ve bien', sino 'esta planta tiene hojas más grandes y más verdes que aquella'. De una buena observación nace una PREGUNTA: algo que quieres averiguar y que se puede responder haciendo una prueba, no solo opinando. Por ejemplo, '¿cuál es la mejor planta?' no es una buena pregunta científica (depende del gusto de cada quien), pero '¿las plantas crecen más si reciben más luz?' sí lo es, porque se puede comprobar con un experimento.",
+        "pasos": [
+          "Observa con atención: ¿qué notas exactamente? ¿qué es diferente o llama la atención?",
+          "Convierte lo que observaste en una pregunta.",
+          "Revisa que tu pregunta se pueda comprobar haciendo una prueba, no que dependa solo de gustos."
+        ],
+        "ejemplo": "Observas que un papel de cocina se moja rápido cuando lo tocas con agua, y una hoja de tu cuaderno tarda más. Pregunta: '¿qué papel absorbe más agua, el de cocina o el de cuaderno?'.",
+        "figura": ""
+      },
+      {
+        "titulo": "Paso 2: la hipótesis, una predicción que se puede probar",
+        "explicacion": "Antes de hacer el experimento, un científico se anima a predecir qué cree que va a pasar. Esa predicción se llama HIPÓTESIS: es la respuesta que TÚ crees que es cierta, antes de comprobarla, basada en lo que ya sabes u observaste. Una buena forma de escribirla es 'Si... entonces...': por ejemplo, 'Si le doy más luz a una planta, entonces crecerá más'. Lo más importante de una hipótesis es que se pueda PROBAR con un experimento, y que puede salir CORRECTA o puede salir INCORRECTA; las dos cosas están bien, porque las dos te enseñan algo. Si tu hipótesis resulta falsa, no significa que hiciste algo mal: significa que aprendiste que el mundo funciona distinto de como pensabas, y eso también es ciencia.",
+        "pasos": [
+          "Piensa qué crees que va a pasar, antes de probarlo.",
+          "Escríbelo como una predicción clara, por ejemplo con 'Si... entonces...'.",
+          "Acepta que el experimento puede confirmarla o puede mostrar que estaba equivocada; ambas son un resultado válido."
+        ],
+        "ejemplo": "Pregunta: '¿qué papel absorbe más agua, el de cocina o el de cuaderno?'. Hipótesis: 'Si comparo un papel de cocina con uno de cuaderno, entonces el papel de cocina absorberá más agua, porque se siente más grueso y esponjoso'.",
+        "figura": ""
+      },
+      {
+        "titulo": "Paso 3: el experimento y la prueba justa",
+        "explicacion": "El EXPERIMENTO es la prueba que haces para ver si tu hipótesis se cumple o no. Para que un experimento sirva de verdad, tiene que ser una PRUEBA JUSTA (también llamada experimento controlado): eso quiere decir que solo cambias UNA cosa a la vez y dejas todo lo demás exactamente igual. A esa única cosa que cambias a propósito se le llama VARIABLE, y en un experimento hay tres tipos: la variable que CAMBIAS (por ejemplo, la cantidad de luz que recibe cada planta), la variable que MIDES para ver el efecto (por ejemplo, cuánto creció cada planta, en centímetros), y las variables que MANTIENES IGUAL en todos los casos (por ejemplo, el mismo tipo de planta, la misma cantidad de agua, la misma maceta, la misma tierra). Si cambias más de una cosa a la vez, después no sabrás cuál de esos cambios fue el verdadero responsable del resultado, y tu experimento deja de servir.",
+        "pasos": [
+          "Decide QUÉ vas a cambiar a propósito (esa es tu variable que cambias).",
+          "Decide QUÉ vas a medir para comparar el efecto (tu variable que mides).",
+          "Deja TODO lo demás exactamente igual en ambos casos (las variables que mantienes igual).",
+          "Haz la prueba con cuidado y, si puedes, repítela para estar más seguro."
+        ],
+        "ejemplo": "Para saber si más luz hace crecer más a una planta: usas DOS plantas iguales, de la misma especie y del mismo tamaño inicial, en la misma maceta, con la misma cantidad de tierra y de agua. La ÚNICA diferencia es que una recibe mucha luz y la otra recibe poca luz. Si al final una creció más, sabes que fue por la luz, porque todo lo demás era igual.",
+        "figura": "<svg viewBox=\"0 0 360 210\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"50\" y=\"110\" width=\"70\" height=\"70\" rx=\"6\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><rect x=\"78\" y=\"70\" width=\"14\" height=\"45\" fill=\"#12B5A4\" fill-opacity=\"0.35\"/><circle cx=\"85\" cy=\"60\" r=\"10\" fill=\"#12B5A4\" fill-opacity=\"0.35\"/><rect x=\"240\" y=\"110\" width=\"70\" height=\"70\" rx=\"6\" fill=\"none\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><rect x=\"268\" y=\"95\" width=\"14\" height=\"20\" fill=\"#7C4DFF\" fill-opacity=\"0.35\"/><circle cx=\"275\" cy=\"90\" r=\"6\" fill=\"#7C4DFF\" fill-opacity=\"0.35\"/><text x=\"85\" y=\"40\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#0E9486\">mucha luz</text><text x=\"275\" y=\"40\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#5A3AAF\">poca luz</text><text x=\"180\" y=\"150\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#3B2B4A\">misma maceta</text><text x=\"180\" y=\"170\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#3B2B4A\">misma tierra y agua</text><text x=\"180\" y=\"195\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#3B2B4A\">solo cambia la luz</text></svg>"
+      },
+      {
+        "titulo": "Paso 4: observar los resultados",
+        "explicacion": "Mientras haces el experimento y cuando termina, tienes que OBSERVAR y ANOTAR lo que pasó, con cuidado y con números siempre que se pueda. No alcanza con decir 'la planta se puso grande' o 'el papel se mojó rápido': es mejor anotar 'la planta creció 4 centímetros en una semana' o 'el papel de cocina absorbió el agua en 3 segundos y el de cuaderno en 9 segundos'. Anotar con números permite COMPARAR de verdad y evita que tu opinión (lo que te gustaría que pasara) se mezcle con lo que realmente ocurrió. A esos números y anotaciones que reúnes se les llama RESULTADOS o datos del experimento, y son la base para el último paso.",
+        "pasos": [
+          "Mira con atención qué pasó en cada caso del experimento.",
+          "Anota los resultados, usando números cuando sea posible (centímetros, segundos, cantidad).",
+          "Anota los resultados de TODOS los casos que comparaste, no solo del que te convenga."
+        ],
+        "ejemplo": "Mides con una regla las dos plantas después de una semana: la que recibió mucha luz mide 12 centímetros, y la que recibió poca luz mide 7 centímetros. Esos dos números son tus resultados.",
+        "figura": ""
+      },
+      {
+        "titulo": "Paso 5: concluir con evidencia",
+        "explicacion": "El último paso es la CONCLUSIÓN: la respuesta a tu pregunta original, apoyada en los resultados que observaste (a eso se le llama EVIDENCIA: los datos concretos que sostienen lo que afirmas). Una conclusión con evidencia dice, por ejemplo, 'la planta con más luz creció más (12 cm contra 7 cm), así que la luz sí ayuda a crecer', y no solo 'creo que la luz ayuda'. También en este paso comparas tu conclusión con tu hipótesis: puede que se haya CONFIRMADO (salió como pensabas) o que haya salido FALSA (salió distinto de lo que pensabas). Las dos son conclusiones válidas y útiles, mientras estén basadas en lo que realmente observaste y no en lo que esperabas o te convenía.",
+        "pasos": [
+          "Mira tus resultados (evidencia) y responde tu pregunta original con ellos.",
+          "Compara tu conclusión con tu hipótesis: ¿se confirmó o resultó falsa?",
+          "Escribe la conclusión apoyada en los números, no en lo que te hubiera gustado que pasara."
+        ],
+        "ejemplo": "Resultados: la planta con mucha luz creció 12 cm y la de poca luz 7 cm. Conclusión: la evidencia muestra que la planta con más luz creció más, así que la hipótesis 'más luz, más crecimiento' se confirmó.",
+        "figura": ""
+      },
+      {
+        "titulo": "Cuando la hipótesis sale falsa: también es aprender",
+        "explicacion": "Hay una confusión muy común que conviene aclarar de una vez: si tu hipótesis resulta FALSA, tu experimento NO fracasó. Un experimento fracasa solo si estuvo mal diseñado (por ejemplo, si no fue una prueba justa) o si no anotaste bien los resultados. Pero si hiciste todo correctamente y los resultados simplemente muestran que tu predicción estaba equivocada, eso es un ÉXITO del método científico: descubriste algo verdadero sobre el mundo, aunque no era lo que esperabas. Muchos descubrimientos importantes de la ciencia empezaron con una hipótesis que resultó falsa, y eso llevó a los científicos a hacerse preguntas nuevas y mejores.",
+        "pasos": [
+          "Revisa que el experimento haya sido una prueba justa (una sola cosa cambiada, todo lo demás igual).",
+          "Si lo fue, y el resultado no coincide con tu hipótesis, acepta esa conclusión: aprendiste algo real.",
+          "Usa lo que aprendiste para hacerte una pregunta nueva."
+        ],
+        "ejemplo": "Un niño predice: 'Si uso una pelota de goma y otra de trapo, entonces la de trapo rebotará más alto'. Al probar con prueba justa (mismo piso, misma altura de caída, mismo empujón), la pelota de trapo casi no rebota y la de goma rebota mucho más. Su hipótesis fue falsa, pero ahora sabe con evidencia que el material de la pelota sí afecta el rebote, y puede preguntarse por qué.",
+        "figura": ""
+      },
+      {
+        "titulo": "Poniéndolo todo junto: tres ejemplos cotidianos",
+        "explicacion": "Veamos los cinco pasos aplicados completos a preguntas que cualquier niño se puede hacer en su casa. Fíjate cómo en los tres casos la estructura es la misma, aunque la pregunta cambie: observar y preguntar, predecir con hipótesis, experimentar con prueba justa, observar resultados, y concluir con evidencia.",
+        "pasos": [
+          "¿Las plantas crecen más con más luz? Hipótesis: sí. Prueba justa: dos plantas iguales, misma agua y tierra, distinta luz. Resultado: la de más luz creció más. Conclusión: se confirma.",
+          "¿Qué papel absorbe más agua, el de cocina o el de cuaderno? Hipótesis: el de cocina. Prueba justa: mismo tamaño de papel, misma cantidad de agua, mismo momento. Resultado: el de cocina absorbió más rápido. Conclusión: se confirma.",
+          "¿Qué pelota rebota más alto, la de goma o la de trapo? Hipótesis: la de trapo. Prueba justa: mismo piso, misma altura de caída, mismo tipo de lanzamiento. Resultado: la de goma rebotó mucho más alto. Conclusión: la hipótesis fue falsa; rebota más la de goma."
+        ],
+        "ejemplo": "En los tres casos, lo que hace confiable la conclusión no es 'quién tenía razón', sino que se siguieron los pasos en orden y se comparó con una prueba justa. Eso es pensar como científico.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "El método científico son cinco pasos en orden: observar y preguntar, predecir con una hipótesis, experimentar con una prueba justa (cambiando una sola variable y manteniendo el resto igual), observar los resultados, y concluir con evidencia. Una hipótesis puede salir falsa y eso también es aprender: lo que hace confiable a la ciencia no es acertar siempre, sino comprobar con pruebas justas y concluir según lo que realmente se observó."
+  },
+  "practica": [
+    {
+      "enunciado": "Un niño observa que su perro corre más rápido en el parque que dentro de la casa. Se pregunta: '¿mi perro corre más rápido al aire libre?'. Escribe una hipótesis para esa pregunta, en forma 'Si... entonces...'.",
+      "pista": "La hipótesis es tu predicción de qué va a pasar, antes de comprobarlo. Usa la forma 'Si (algo cambia)... entonces (pasará esto)...'.",
+      "solucion": "Una hipótesis válida es: 'Si mi perro corre en un espacio abierto como el parque, entonces correrá más rápido que dentro de la casa'. Es una predicción clara que se puede comprobar midiendo el tiempo o la velocidad del perro en los dos lugares.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una niña quiere saber si el azúcar se disuelve más rápido en agua caliente que en agua fría. Prepara dos vasos con la misma cantidad de agua y la misma cantidad de azúcar, pero uno con agua caliente y otro con agua fría, y revuelve los dos el mismo número de veces. ¿Cuál es la variable que CAMBIA a propósito, y cuáles son las variables que MANTIENE igual?",
+      "pista": "La variable que cambia a propósito es la que la niña decidió hacer diferente entre los dos vasos. Las que mantiene igual son todas las demás condiciones.",
+      "solucion": "La variable que cambia a propósito es la temperatura del agua (caliente en un vaso, fría en el otro). Las variables que mantiene igual son: la cantidad de agua, la cantidad de azúcar y el número de veces que revuelve. Eso hace que sea una prueba justa: si el azúcar se disuelve distinto, solo puede deberse a la temperatura.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante quiere comparar si una esponja o una toalla absorbe más agua. Usa una esponja GRANDE y una toalla PEQUEÑA, y además moja la esponja con más agua que la toalla. ¿Es esto una prueba justa? Explica por qué.",
+      "pista": "Recuerda que una prueba justa cambia SOLO una cosa. Cuenta cuántas cosas son diferentes entre la esponja y la toalla en este experimento.",
+      "solucion": "No es una prueba justa. Cambió el tamaño (esponja grande, toalla pequeña) Y la cantidad de agua usada, es decir, dos cosas a la vez además del tipo de material. Si la esponja absorbe más, no se sabrá si fue por ser esponja, por ser más grande, o por haber recibido más agua. Para que fuera justa, debería usar una esponja y una toalla del MISMO tamaño y mojarlas con la MISMA cantidad de agua, dejando el tipo de material como única diferencia.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Lee esta oración y di si es una PREGUNTA CIENTÍFICA (se puede comprobar con un experimento) o una OPINIÓN (depende del gusto): '¿Cuál es el helado más rico, el de chocolate o el de vainilla?'.",
+      "pista": "Pregúntate: ¿esto se puede medir o comprobar con una prueba, o solo depende de lo que a cada quien le gusta?",
+      "solucion": "Es una opinión. 'Más rico' depende del gusto de cada persona: no hay un experimento ni una medición que determine cuál sabor es 'mejor' de forma objetiva. Una pregunta científica sobre helado podría ser, por ejemplo, '¿cuál de los dos helados se derrite más rápido a temperatura ambiente?', porque eso sí se puede medir con un reloj.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un niño hizo este experimento: comparó dos macetas con la misma planta, la misma tierra y la misma cantidad de luz, pero regó una todos los días y la otra una vez por semana. Después de dos semanas, la que regó todos los días creció más. ¿Cuál es la conclusión correcta, con evidencia?",
+      "pista": "La conclusión debe responder la pregunta usando los resultados (los números o hechos observados) como evidencia, no solo una opinión.",
+      "solucion": "La conclusión con evidencia es: 'La planta que se regó todos los días creció más que la que se regó una vez por semana, así que regar con más frecuencia ayudó a que la planta creciera más'. Es una conclusión válida porque se apoya directamente en lo que se observó (la diferencia de crecimiento entre las dos plantas) y fue una prueba justa (la única diferencia fue el riego).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una niña predijo: 'Si dejo un cubo de hielo al sol y otro cubo igual a la sombra, entonces el del sol se derretirá más rápido'. Hizo la prueba con dos cubos de hielo del mismo tamaño, puestos al mismo tiempo, uno al sol y otro a la sombra. El cubo del sol se derritió en 10 minutos y el de la sombra en 25 minutos. ¿Su hipótesis se confirmó o resultó falsa? Explica usando los resultados.",
+      "pista": "Compara lo que predijo (hipótesis) con lo que realmente pasó (resultados). Si coinciden, se confirma; si no coinciden, es falsa.",
+      "solucion": "Su hipótesis se confirmó. Predijo que el cubo al sol se derretiría más rápido, y los resultados lo muestran: el cubo al sol tardó 10 minutos y el de la sombra 25 minutos, es decir, el del sol sí se derritió más rápido. La evidencia (los tiempos medidos) coincide con la predicción.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante predijo que una pelota de trapo rebotaría más alto que una de goma. Al hacer la prueba justa (mismo piso, misma altura de caída), la pelota de goma rebotó mucho más alto que la de trapo. El estudiante dice: 'Entonces mi experimento fracasó'. ¿Está en lo correcto? Explica.",
+      "pista": "Piensa en la diferencia entre que la HIPÓTESIS salga falsa y que el EXPERIMENTO esté mal hecho.",
+      "solucion": "No está en lo correcto. Su experimento NO fracasó: fue una prueba justa (mismo piso, misma altura de caída) y obtuvo un resultado claro. Lo que pasó es que su HIPÓTESIS resultó falsa, pero eso es distinto de un experimento fallido. Gracias a esa prueba, ahora sabe con evidencia que la pelota de goma rebota más alto que la de trapo, y eso también es un descubrimiento válido.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Diseña una prueba justa para responder esta pregunta: '¿un carrito de juguete rueda más lejos sobre piso de baldosa o sobre alfombra?'. Indica qué variable cambiarías y qué variables mantendrías igual.",
+      "pista": "La variable que cambias es el tipo de superficie. Piensa en todo lo que debe quedarse igual para que la comparación sea justa: el carrito, el empujón, el punto de partida.",
+      "solucion": "Variable que se cambia: el tipo de superficie (baldosa o alfombra). Variables que se mantienen igual: el mismo carrito, el mismo empujón (misma fuerza, por ejemplo soltándolo desde la misma rampa o con el mismo impulso), el mismo punto de partida, y se mide la misma forma la distancia recorrida (por ejemplo con una cinta métrica). Así, si el carrito rueda distinto, se sabrá que fue por la superficie y no por otra cosa.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ordena estos pasos del método científico, que están desordenados: (A) concluir con evidencia, (B) observar y preguntar, (C) predecir con una hipótesis, (D) observar los resultados, (E) hacer el experimento con prueba justa.",
+      "pista": "Todo empieza con la curiosidad y termina con la respuesta. La hipótesis va antes de experimentar, porque es lo que se va a poner a prueba.",
+      "solucion": "El orden correcto es: B (observar y preguntar), C (predecir con hipótesis), E (hacer el experimento con prueba justa), D (observar los resultados), A (concluir con evidencia). Primero surge la pregunta de una observación, luego se predice una respuesta posible, se prueba con un experimento justo, se observan los resultados, y finalmente se concluye usando esos resultados como evidencia.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un niño quiere saber si el tamaño de un avión de papel afecta cuánto vuela. Hace un avión grande y uno pequeño, pero lanza el grande con mucha fuerza y el pequeño con poca fuerza. El avión grande vuela más lejos. Él concluye: 'los aviones grandes vuelan más lejos'. ¿Es correcta esa conclusión? Explica qué falló.",
+      "pista": "Revisa si fue una prueba justa antes de aceptar la conclusión. ¿Cuántas cosas cambiaron entre los dos aviones?",
+      "solucion": "La conclusión NO es confiable, porque el experimento no fue una prueba justa: cambió el tamaño del avión Y la fuerza del lanzamiento al mismo tiempo. El avión grande pudo volar más lejos por ser grande, o simplemente porque lo lanzó con más fuerza; no hay forma de saberlo con este experimento. Para poder concluir algo sobre el tamaño, debería lanzar ambos aviones con la MISMA fuerza y mantener todo lo demás igual, cambiando solo el tamaño.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué es el método científico?",
+      "opciones": [
+        "Una serie de pasos ordenados para responder una pregunta comprobándola, en vez de solo adivinarla",
+        "Una opinión que un científico famoso dijo alguna vez",
+        "Un aparato que se usa solo en laboratorios",
+        "Una lista de datos sin ningún orden"
+      ],
+      "correcta": 0,
+      "explicacion": "El método científico es una serie de pasos ordenados (observar, preguntar, predecir, experimentar, observar resultados y concluir) que sirven para responder una pregunta comprobándola con evidencia, en vez de solo suponerla."
+    },
+    {
+      "pregunta": "¿Cuál de estas es una PREGUNTA CIENTÍFICA?",
+      "opciones": [
+        "¿Cuál es el color más bonito?",
+        "¿Qué pelota rebota más alto, la de goma o la de trapo?",
+        "¿Cuál es la mejor mascota?",
+        "¿Qué canción te gusta más?"
+      ],
+      "correcta": 1,
+      "explicacion": "La pregunta sobre las pelotas se puede comprobar dejándolas caer desde la misma altura y midiendo cuánto rebotan. Las otras tres dependen del gusto de cada persona, así que son opiniones, no preguntas científicas."
+    },
+    {
+      "pregunta": "Una HIPÓTESIS es...",
+      "opciones": [
+        "La conclusión final, ya comprobada y segura",
+        "Una predicción de lo que crees que va a pasar, antes de comprobarlo con un experimento",
+        "El resultado exacto que anotaste al final",
+        "El nombre del experimento"
+      ],
+      "correcta": 1,
+      "explicacion": "La hipótesis es tu predicción, lo que crees que va a pasar ANTES de hacer el experimento; puede resultar cierta o falsa. La conclusión, en cambio, es lo que afirmas DESPUÉS de ver los resultados."
+    },
+    {
+      "pregunta": "Un niño hace su hipótesis 'si le doy más luz a la planta, entonces crecerá más' y al hacer el experimento la planta con más luz creció menos. ¿Qué debería pensar el niño?",
+      "opciones": [
+        "Que el experimento fracasó por completo y no sirvió para nada",
+        "Que su hipótesis resultó falsa, pero igual aprendió algo real gracias al experimento",
+        "Que debe inventar otro resultado para que coincida con su hipótesis",
+        "Que la ciencia no funciona"
+      ],
+      "correcta": 1,
+      "explicacion": "Si la prueba fue justa, una hipótesis falsa no significa que el experimento haya fracasado: significa que aprendió algo verdadero, aunque distinto de lo que esperaba. Eso también es hacer ciencia."
+    },
+    {
+      "pregunta": "En un experimento para saber qué papel absorbe más agua, ¿cuál sería la VARIABLE que se cambia a propósito?",
+      "opciones": [
+        "La cantidad de agua usada",
+        "El tipo de papel (por ejemplo, de cocina o de cuaderno)",
+        "El lugar donde se hace el experimento",
+        "La hora del día"
+      ],
+      "correcta": 1,
+      "explicacion": "La variable que se cambia a propósito es lo que se está comparando: el tipo de papel. Todo lo demás (cantidad de agua, lugar, momento) debe mantenerse igual para que sea una prueba justa."
+    },
+    {
+      "pregunta": "Un estudiante compara dos plantas cambiando a la vez la cantidad de luz Y la cantidad de agua que reciben. ¿Por qué esto NO es una prueba justa?",
+      "opciones": [
+        "Porque las plantas no crecen con agua",
+        "Porque cambió dos cosas a la vez, y si el resultado cambia no se sabrá cuál de las dos fue la causa",
+        "Porque las plantas deben estar en macetas diferentes",
+        "Porque no se puede usar más de una planta"
+      ],
+      "correcta": 1,
+      "explicacion": "Una prueba justa cambia SOLO una variable a la vez y mantiene todo lo demás igual. Si se cambian la luz y el agua al mismo tiempo, no se puede saber si el resultado se debió a la luz, al agua, o a ambas."
+    },
+    {
+      "pregunta": "Después de observar los resultados de un experimento, ¿qué es la CONCLUSIÓN?",
+      "opciones": [
+        "Una opinión sobre lo que hubiera gustado que pasara",
+        "La respuesta a la pregunta original, apoyada en los resultados que se observaron (la evidencia)",
+        "Repetir exactamente la hipótesis, sin importar lo que pasó",
+        "El primer paso del método científico"
+      ],
+      "correcta": 1,
+      "explicacion": "La conclusión responde la pregunta original usando los resultados observados (la evidencia) como apoyo, y dice si la hipótesis se confirmó o resultó falsa. No debe basarse en lo que uno hubiera querido que pasara."
+    },
+    {
+      "pregunta": "¿Cuál es el orden correcto de los pasos del método científico?",
+      "opciones": [
+        "Concluir, experimentar, observar y preguntar, predecir",
+        "Observar y preguntar, predecir con hipótesis, experimentar con prueba justa, observar resultados, concluir",
+        "Predecir, concluir, observar y preguntar, experimentar",
+        "Experimentar, concluir, predecir, observar y preguntar"
+      ],
+      "correcta": 1,
+      "explicacion": "El orden es: primero observar algo y hacerse una pregunta, luego predecir con una hipótesis, después experimentar con una prueba justa, luego observar los resultados, y finalmente concluir con evidencia."
+    },
+    {
+      "pregunta": "Un niño mide que su planta con más luz creció 12 centímetros y la de menos luz creció 7 centímetros. ¿Por qué es mejor anotar esos números que decir simplemente 'la de más luz creció bastante más'?",
+      "opciones": [
+        "Porque los números no sirven para nada en ciencia",
+        "Porque los números permiten comparar con exactitud, y 'bastante más' significa algo distinto para cada persona",
+        "Porque 'bastante más' es más preciso que un número",
+        "No hay ninguna diferencia entre las dos formas"
+      ],
+      "correcta": 1,
+      "explicacion": "Anotar números concretos (12 cm y 7 cm) permite comparar con exactitud y que cualquier persona entienda lo mismo. 'Bastante más' es una impresión vaga que puede significar cosas distintas según quién la diga."
+    },
+    {
+      "pregunta": "Un estudiante hace un experimento una sola vez y da su conclusión de inmediato. ¿Qué sería una buena práctica adicional antes de estar totalmente seguro?",
+      "opciones": [
+        "No hace falta hacer nada más, con un solo intento alcanza siempre",
+        "Repetir el experimento para ver si se obtiene un resultado parecido y no fue solo casualidad",
+        "Cambiar la hipótesis para que coincida con el resultado",
+        "Inventar un resultado distinto"
+      ],
+      "correcta": 1,
+      "explicacion": "Un solo intento puede salir raro por casualidad (un descuido, algo que cambió sin querer). Repetir el experimento y obtener resultados parecidos hace que la conclusión sea más confiable."
+    },
+    {
+      "pregunta": "Una niña dice: 'mi hipótesis era que el azúcar se disuelve más rápido en agua fría que en agua caliente, pero salió falsa, así que mi experimento no sirvió'. ¿Qué error de pensamiento está cometiendo?",
+      "opciones": [
+        "Ninguno, tiene razón: un experimento con hipótesis falsa no sirve",
+        "Está confundiendo que la hipótesis salga falsa con que el experimento haya fracasado; si la prueba fue justa, el experimento sí sirvió y le enseñó algo real",
+        "El error es que no debió hacer una hipótesis",
+        "El error es que las hipótesis siempre deben ser verdaderas"
+      ],
+      "correcta": 1,
+      "explicacion": "Una hipótesis falsa no invalida el experimento. Si la prueba fue justa y los resultados son claros, el experimento SÍ sirvió: le mostró con evidencia que su predicción original no era correcta, y eso es aprendizaje válido."
+    },
+    {
+      "pregunta": "Para comparar si una esponja o una toalla absorbe más agua de forma justa, ¿qué se debe hacer?",
+      "opciones": [
+        "Usar una esponja grande y una toalla pequeña, para que se note más la diferencia",
+        "Usar la misma cantidad de agua y el mismo tiempo para las dos, cambiando solo el tipo de material",
+        "Mojar primero la esponja y dejar la toalla para otro día",
+        "No importa cómo se haga, cualquier forma sirve igual"
+      ],
+      "correcta": 1,
+      "explicacion": "Una prueba justa mantiene todo igual (cantidad de agua, tiempo, tamaño de la muestra) y cambia solo lo que se quiere comparar: el tipo de material. Cambiar el tamaño o el momento arruinaría la comparación."
+    }
+  ]
+}

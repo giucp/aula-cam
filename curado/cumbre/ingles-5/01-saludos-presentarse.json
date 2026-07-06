@@ -1,0 +1,298 @@
+{
+  "programa": "cumbre",
+  "materia": "Inglés",
+  "grado": "Cumbre Inglés 5to grado",
+  "dominio": "Yo y mi gente",
+  "tema": "Puedo saludar y decir cómo me llamo y cómo estoy (hello, my name is, how are you)",
+  "referencias": [
+    "Cambridge English Young Learners (Starters/Movers)",
+    "CEFR Pre-A1/A1",
+    "British Council LearnEnglish Kids"
+  ],
+  "resumen": {
+    "titulo": "Mis primeras palabras en inglés: hola y mi nombre",
+    "intro": "Vas a aprender las primeras palabras que dice cualquier persona cuando conoce el inglés: cómo saludar, cómo decir tu nombre, cómo preguntarle el nombre a otra persona y cómo decir cómo te sientes. No necesitas saber nada de inglés todavía: aquí vamos despacito, frase por frase. Al lado de cada frase en inglés vas a ver qué significa en español y, entre comillas, cómo suena más o menos si la dices en voz alta.",
+    "secciones": [
+      {
+        "titulo": "Hello y Hi: la palabra mágica para saludar",
+        "explicacion": "Cuando ves a alguien y quieres saludar, en inglés usas 'Hello' (se dice aproximadamente 'jelóu') o 'Hi' (se dice 'jái'). Las dos significan 'hola'. 'Hi' es más cortita y se usa con amigos o niños de tu edad; 'Hello' sirve para saludar a cualquier persona, incluso a un adulto. Fíjate que la H al inicio no es muda como en español: suena como un soplido de aire, parecido a la 'j'.",
+        "pasos": [
+          "Para saludar a un amigo: di 'Hi!' (jái).",
+          "Para saludar a cualquier persona: di 'Hello!' (jelóu).",
+          "La H suena como una 'j' suave, no se calla como en español."
+        ],
+        "ejemplo": "Llegas al salón y ves a tu amigo Pedro. Le dices: 'Hi, Pedro!' (¡Hola, Pedro!). Él te responde: 'Hi!' (¡Hola!)."
+      },
+      {
+        "titulo": "Buenos días, buenas tardes, buenas noches",
+        "explicacion": "En inglés hay un saludo distinto según la hora del día, y todos empiezan con la palabra 'Good' (bueno, se dice 'gud'). Por la mañana se dice 'Good morning' (buenos días, se dice 'gud mórning'). Desde el mediodía hasta que empieza a oscurecer se dice 'Good afternoon' (buenas tardes, se dice 'gud afternún'). Cuando ya oscureció y te encuentras con alguien, se dice 'Good evening' (buenas noches, se dice 'gud ívning'). Ojo con una trampa: 'Good night' (se dice 'gud náit') NO es para saludar; es solo para despedirte de noche o para decir 'que descanses' antes de dormir.",
+        "pasos": [
+          "Por la mañana, para saludar: 'Good morning'.",
+          "Por la tarde, para saludar: 'Good afternoon'.",
+          "De noche, para saludar cuando llegas: 'Good evening'.",
+          "De noche, para despedirte o ir a dormir: 'Good night' (esta NO es para saludar)."
+        ],
+        "ejemplo": "Llegas a la escuela a las 7 de la mañana y le dices a tu maestra: 'Good morning, Miss!' (¡Buenos días, Maestra!). Ella responde: 'Good morning!'."
+      },
+      {
+        "titulo": "Chau, nos vemos: cómo despedirte",
+        "explicacion": "Para despedirte, la palabra más usada es 'Bye' (se dice 'bái'), que significa 'chau'. También existe 'Goodbye' (se dice 'gudbái'), que es la forma completa y significa 'adiós'; es un poquito más formal que 'Bye'. Si quieres decir que se van a ver de nuevo, usas 'See you!' (se dice 'sí yú'), que significa 'nos vemos'. Y si es de noche y te vas a dormir, usas 'Good night' (buenas noches), como aprendiste antes.",
+        "pasos": [
+          "Para despedirte de forma simple y amistosa: 'Bye!'.",
+          "Para despedirte más formal: 'Goodbye!'.",
+          "Para decir que se verán de nuevo: 'See you!'.",
+          "Si es de noche y te vas a dormir: 'Good night!'."
+        ],
+        "ejemplo": "Terminó el recreo y le dices a tu amiga: 'Bye! See you!' (¡Chau! ¡Nos vemos!)."
+      },
+      {
+        "titulo": "Decir mi nombre: My name is... / I'm...",
+        "explicacion": "Para decir cómo te llamas hay dos formas, y las dos están bien. La primera es 'My name is...' (se dice 'mai néim is'), que significa 'Mi nombre es...'. Después de esa frase pones tu nombre. La segunda forma, más corta, es 'I'm...' (se dice 'áim'), que significa 'Soy...' o 'Yo soy...'. Las dos sirven para lo mismo: presentarte. 'My name' quiere decir 'mi nombre' y 'is' quiere decir 'es'.",
+        "pasos": [
+          "Forma larga: 'My name is' + tu nombre.",
+          "Forma corta: 'I'm' + tu nombre.",
+          "Las dos significan lo mismo: son correctas."
+        ],
+        "ejemplo": "'My name is Sofía.' (Mi nombre es Sofía.) o también 'I'm Sofía.' (Soy Sofía.)."
+      },
+      {
+        "titulo": "Preguntar el nombre: What's your name?",
+        "explicacion": "Para preguntarle a alguien cómo se llama, dices 'What's your name?' (se dice 'guáts yor néim'), que significa '¿Cómo te llamas?'. Cuando alguien te pregunta esto, respondes con lo que aprendiste antes: 'My name is...' o 'I'm...' y tu nombre. Es como una pregunta y su respuesta que siempre van juntas, como un par.",
+        "pasos": [
+          "Pregunta: 'What's your name?' (¿Cómo te llamas?).",
+          "Respuesta: 'My name is...' o 'I'm...' + tu nombre."
+        ],
+        "ejemplo": "'What's your name?' (¿Cómo te llamas?) — 'My name is Luis.' (Me llamo Luis.)."
+      },
+      {
+        "titulo": "Preguntar cómo estás: How are you?",
+        "explicacion": "Después de saludar, es común preguntar cómo está la otra persona. La pregunta es 'How are you?' (se dice 'jáu ar yú'), que significa '¿Cómo estás?'. Para responder, se usa 'I'm' + una palabra que dice cómo te sientes. Algunas palabras útiles: 'fine' (bien, se dice 'fáin'), 'good' (bien, se dice 'gud'), 'happy' (feliz, se dice 'jápi'), 'tired' (cansado, se dice 'táird'). Al final se agrega 'thank you' (gracias, se dice 'tenk yú', con la punta de la lengua entre los dientes al empezar) por cortesía. Muy importante: 'How are you?' pregunta cómo TE SIENTES, no tu nombre; no se responde con tu nombre.",
+        "pasos": [
+          "Pregunta: 'How are you?' (¿Cómo estás?).",
+          "Responde con 'I'm' + cómo te sientes: fine, good, happy, tired.",
+          "Agrega 'thank you' al final por cortesía.",
+          "Recuerda: no respondas tu nombre a esta pregunta; eso es para otra pregunta distinta ('What's your name?')."
+        ],
+        "ejemplo": "'How are you?' (¿Cómo estás?) — 'I'm fine, thank you.' (Estoy bien, gracias.)."
+      },
+      {
+        "titulo": "Mucho gusto: Nice to meet you",
+        "explicacion": "Cuando conoces a alguien por primera vez y ya sabes su nombre, se usa la frase 'Nice to meet you' (se dice 'nais tu mít yú'), que significa 'Mucho gusto'. Si la otra persona te la dice primero, tú respondes 'Nice to meet you, too' (se dice 'nais tu mít yú tú'), que significa 'Mucho gusto también'. Esta frase se dice UNA sola vez, justo cuando conoces a alguien nuevo; no se usa con amigos que ya conoces.",
+        "pasos": [
+          "Al conocer a alguien nuevo, después de saber su nombre: 'Nice to meet you.'",
+          "Si te lo dicen primero a ti, responde: 'Nice to meet you, too.'"
+        ],
+        "ejemplo": "'My name is Ana.' (Mi nombre es Ana.) — 'Nice to meet you, Ana!' (¡Mucho gusto, Ana!) — 'Nice to meet you, too!' (¡Mucho gusto también!)."
+      },
+      {
+        "titulo": "Todo junto: una conversación pequeña",
+        "explicacion": "Ahora que sabes cada pieza, vamos a juntarlas en orden, como cuando conoces a un compañero nuevo. El orden que mejor funciona es: primero saludas, después preguntas el nombre, luego preguntas cómo está, y al final te despides. No hace falta memorizar palabra por palabra: entiende para qué sirve cada frase y arma tu propia conversación.",
+        "pasos": [
+          "Saluda: 'Hello!' o 'Hi!' o el saludo según la hora (Good morning/afternoon/evening).",
+          "Pregunta o di el nombre: 'What's your name?' / 'My name is...'.",
+          "Di 'Nice to meet you' si es la primera vez que se conocen.",
+          "Pregunta cómo está: 'How are you?' y responde con 'I'm fine/good/happy/tired, thank you.'",
+          "Despídete: 'Bye!' o 'See you!'"
+        ],
+        "ejemplo": "María: 'Hi! What's your name?' (¡Hola! ¿Cómo te llamas?) — Juan: 'I'm Juan. Nice to meet you!' (Soy Juan. ¡Mucho gusto!) — María: 'Nice to meet you, too! How are you?' (¡Mucho gusto también! ¿Cómo estás?) — Juan: 'I'm happy, thank you. Bye!' (Estoy feliz, gracias. ¡Chau!)."
+      }
+    ],
+    "idea_clave": "Para saludar en inglés uso 'Hi' o 'Hello' siempre, y 'Good morning/afternoon/evening' según la hora ('Good night' es solo para despedirse de noche). Para decir mi nombre uso 'My name is...' o 'I'm...', y para preguntarlo, 'What's your name?'. Para saber cómo está alguien pregunto 'How are you?' y respondo con 'I'm fine/good/happy/tired, thank you' (nunca con mi nombre). Al conocer a alguien nuevo digo 'Nice to meet you', y para despedirme uso 'Bye' o 'See you'."
+  },
+  "practica": [
+    {
+      "enunciado": "Traduce al inglés: 'Hola' (para un amigo) y 'Hola' (para cualquier persona, más neutro).",
+      "pista": "Una es más cortita y se usa con amigos; la otra sirve para cualquiera.",
+      "solucion": "Para un amigo: 'Hi!'. Para cualquier persona: 'Hello!'. Las dos significan 'hola'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Son las 8 de la mañana y llegas a la escuela. ¿Qué saludo usas?",
+      "pista": "Piensa en la hora del día: mañana, tarde o noche.",
+      "solucion": "'Good morning!' (Buenos días). Se usa en la mañana.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Completa el diálogo: 'What's your name?' — '___ ___ Camila.' (usa la forma larga con 'name')",
+      "pista": "La forma larga para decir tu nombre empieza con 'My name'.",
+      "solucion": "'My name is Camila.' (Mi nombre es Camila.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ordena este mini-diálogo: (a) 'I'm fine, thank you.' (b) 'Hi! How are you?' (c) 'Bye!'",
+      "pista": "Primero se saluda y se pregunta cómo está, después se responde, y al final se despiden.",
+      "solucion": "Orden correcto: (b) 'Hi! How are you?' → (a) 'I'm fine, thank you.' → (c) 'Bye!'",
+      "figura": ""
+    },
+    {
+      "enunciado": "Es de noche y te vas a dormir. ¿Qué le dices a tu mamá?",
+      "pista": "Ojo con la trampa: esta frase con 'Good' NO es para saludar, es para despedirte de noche.",
+      "solucion": "'Good night!' (Buenas noches, para despedirse o ir a dormir).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Traduce al inglés: 'Mucho gusto.' ¿Cuándo se usa esta frase?",
+      "pista": "Es una frase que se dice UNA sola vez, justo cuando conoces a alguien nuevo.",
+      "solucion": "'Nice to meet you.' Se usa al conocer a alguien por primera vez, justo después de saber su nombre.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Alguien te pregunta 'How are you?' y tú te sientes cansado. Responde correctamente.",
+      "pista": "Usa 'I'm' + la palabra que describe cómo te sientes, y agrega 'thank you'.",
+      "solucion": "'I'm tired, thank you.' (Estoy cansado, gracias.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige el error: alguien te pregunta 'How are you?' y tú respondes 'My name is Pedro.' ¿Qué está mal?",
+      "pista": "Piensa en qué pregunta cada frase: una pregunta el nombre, la otra pregunta cómo te sientes.",
+      "solucion": "Está mal porque 'How are you?' pregunta cómo te sientes, no tu nombre. La respuesta correcta sería algo como 'I'm fine, thank you.' 'My name is Pedro' respondería a la pregunta 'What's your name?'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Son las 3 de la tarde y saludas a la mamá de tu amigo. ¿Qué saludo usas?",
+      "pista": "Piensa en la hora: ya pasó el mediodía pero todavía no es de noche.",
+      "solucion": "'Good afternoon!' (Buenas tardes). Se usa desde el mediodía hasta que empieza a oscurecer.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe una conversación corta completa entre tú y un compañero nuevo: saludo, nombre, 'Nice to meet you', cómo estás y despedida.",
+      "pista": "Sigue el orden: saludo → nombre → Nice to meet you → cómo estás → despedida.",
+      "solucion": "Ejemplo válido: 'Hi! What's your name?' — 'I'm Diego. Nice to meet you!' — 'Nice to meet you, too! How are you?' — 'I'm good, thank you. Bye!' (Cualquier versión con ese mismo orden es correcta.)",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué significa 'Hello'?",
+      "opciones": [
+        "Adiós",
+        "Hola",
+        "Gracias",
+        "Por favor"
+      ],
+      "correcta": 1,
+      "explicacion": "'Hello' significa 'Hola' y se usa para saludar a cualquier persona."
+    },
+    {
+      "pregunta": "Son las 9 de la mañana. ¿Qué saludo es el correcto?",
+      "opciones": [
+        "Good night",
+        "Good evening",
+        "Good morning",
+        "Good afternoon"
+      ],
+      "correcta": 2,
+      "explicacion": "'Good morning' (buenos días) se usa en la mañana. 'Good afternoon' es de tarde, 'Good evening' es al anochecer, y 'Good night' es solo para despedirse de noche."
+    },
+    {
+      "pregunta": "Alguien te pregunta 'How are you?'. ¿Cuál es una buena respuesta?",
+      "opciones": [
+        "My name is Ana.",
+        "Good morning.",
+        "I'm fine, thank you.",
+        "Nice to meet you."
+      ],
+      "correcta": 2,
+      "explicacion": "'How are you?' pregunta cómo te sientes, así que respondes con algo como 'I'm fine, thank you' (Estoy bien, gracias). Las otras frases responden a preguntas distintas."
+    },
+    {
+      "pregunta": "¿Qué le dirías a alguien que se va a dormir?",
+      "opciones": [
+        "Good evening",
+        "Good night",
+        "Good morning",
+        "Hello"
+      ],
+      "correcta": 1,
+      "explicacion": "'Good night' (buenas noches) se usa para despedirse de noche o antes de dormir, no para saludar al llegar."
+    },
+    {
+      "pregunta": "¿Cómo preguntas el nombre de alguien en inglés?",
+      "opciones": [
+        "How are you?",
+        "What's your name?",
+        "Nice to meet you.",
+        "Good afternoon?"
+      ],
+      "correcta": 1,
+      "explicacion": "'What's your name?' significa '¿Cómo te llamas?'. 'How are you?' pregunta cómo te sientes, no el nombre."
+    },
+    {
+      "pregunta": "¿Cuál de estas frases sirve para decir tu propio nombre?",
+      "opciones": [
+        "What's your name?",
+        "How are you?",
+        "My name is Laura.",
+        "See you!"
+      ],
+      "correcta": 2,
+      "explicacion": "'My name is Laura' significa 'Mi nombre es Laura', y se usa para decir cómo te llamas. Las otras frases preguntan o dicen otra cosa."
+    },
+    {
+      "pregunta": "Conoces a un compañero nuevo y ya sabes su nombre. ¿Qué le dices por cortesía?",
+      "opciones": [
+        "Good night.",
+        "Nice to meet you.",
+        "Bye!",
+        "How are you?"
+      ],
+      "correcta": 1,
+      "explicacion": "'Nice to meet you' (Mucho gusto) se dice justo al conocer a alguien nuevo, después de saber su nombre."
+    },
+    {
+      "pregunta": "¿Cuál de estas es una despedida?",
+      "opciones": [
+        "Hi!",
+        "Bye!",
+        "What's your name?",
+        "How are you?"
+      ],
+      "correcta": 1,
+      "explicacion": "'Bye!' (chau) es una despedida. 'Hi!' es un saludo, y las otras dos son preguntas."
+    },
+    {
+      "pregunta": "Son las 5 de la tarde y saludas a tu vecina. ¿Qué dices?",
+      "opciones": [
+        "Good morning!",
+        "Good night!",
+        "Good afternoon!",
+        "Good evening!"
+      ],
+      "correcta": 2,
+      "explicacion": "A las 5 de la tarde todavía no anocheció, así que se usa 'Good afternoon!' (buenas tardes)."
+    },
+    {
+      "pregunta": "Te preguntan 'How are you?' y te sientes feliz. ¿Cuál es tu respuesta?",
+      "opciones": [
+        "I'm happy, thank you.",
+        "My name is happy.",
+        "Good morning, thank you.",
+        "See you happy."
+      ],
+      "correcta": 0,
+      "explicacion": "'I'm happy, thank you' (Estoy feliz, gracias) responde correctamente a cómo te sientes. Las otras opciones mezclan frases que no corresponden."
+    },
+    {
+      "pregunta": "¿Qué significa 'See you!'?",
+      "opciones": [
+        "Buenas noches",
+        "Mucho gusto",
+        "Nos vemos",
+        "¿Cómo estás?"
+      ],
+      "correcta": 2,
+      "explicacion": "'See you!' significa 'Nos vemos', y se usa para despedirse diciendo que se verán de nuevo."
+    },
+    {
+      "pregunta": "¿Cuál de estas frases NO se usa para saludar al llegar a un lugar de noche?",
+      "opciones": [
+        "Good evening",
+        "Hello",
+        "Good night",
+        "Hi"
+      ],
+      "correcta": 2,
+      "explicacion": "'Good night' no es un saludo de llegada: es solo para despedirse de noche o antes de dormir. Para saludar de noche al llegar se usa 'Good evening'."
+    }
+  ]
+}
