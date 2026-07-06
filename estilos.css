@@ -101,17 +101,22 @@
   #energiaIA{margin-bottom:18px}
   .enIn{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:12px 16px;box-shadow:var(--shadow-xs)}
   .enRing{flex:none}
-  .enBg{fill:none;stroke:#EFE7F5;stroke-width:7}
-  .enFg{fill:none;stroke-width:7;stroke-linecap:round;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset .5s ease}
-  .enPct{font-family:"Fredoka";font-weight:600;font-size:15px;fill:var(--ink)}
+  .enBg{fill:none;stroke:#ECEAF2;stroke-width:10}
+  .enFg{fill:none;stroke-width:10;stroke-linecap:round;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset .6s ease,stroke .3s ease}
+  .enPct{font-family:"Fredoka";font-weight:600;font-size:18px;fill:var(--ink)}
   .enTx{min-width:0}
   .enTit{display:block;font-family:"Fredoka";font-weight:600;font-size:1rem;color:var(--ink)}
   .enMsg{font-family:"Nunito";font-size:.86rem;color:var(--muted);margin:2px 0 0}
-  .en-alto .enFg{stroke:var(--ok)}
-  .en-medio .enFg{stroke:#12B5A4}
-  .en-bajo .enFg{stroke:#F5A623}
-  .en-vacio .enFg{stroke:var(--bad)}
-  .en-vacio .enPct{fill:var(--bad)}
+  /* escala verde → amarillo → rojo según la energía que queda; track tintado del mismo tono + glow suave */
+  .en-alto  .enFg{stroke:#2FBF71;filter:drop-shadow(0 2px 5px rgba(47,191,113,.45))}
+  .en-alto  .enBg{stroke:#E3F6EB}
+  .en-medio .enFg{stroke:#FBB215;filter:drop-shadow(0 2px 5px rgba(251,178,21,.45))}
+  .en-medio .enBg{stroke:#FDF1D4}
+  .en-bajo  .enFg{stroke:#FB5A4B;filter:drop-shadow(0 2px 5px rgba(251,90,75,.45))}
+  .en-bajo  .enBg{stroke:#FDE3DF}
+  .en-vacio .enFg{stroke:#FB5A4B;filter:drop-shadow(0 2px 5px rgba(251,90,75,.4))}
+  .en-vacio .enBg{stroke:#FDE3DF}
+  .en-vacio .enPct{fill:#E5483D}
   .en-vacio .enTit{color:var(--bad)}
 
   /* "Un día como hoy" (efeméride diaria en Inicio) */

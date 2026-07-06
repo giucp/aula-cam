@@ -200,11 +200,11 @@
     const nivel = pct<=0 ? "vacio" : pct<=20 ? "bajo" : pct<=50 ? "medio" : "alto";
     const msg = pct<=0 ? "Se agotó por hoy 🌙 ¡Mañana se recarga! Mientras, tienes las guías 📗 y lo ya practicado."
       : pct<=20 ? "Te queda poca energía de IA por hoy" : "Energía de IA para practicar hoy";
-    const R=26, C=2*Math.PI*R, off=C*(1-pct/100);
-    box.innerHTML=`<div class="enIn en-${nivel}"><svg class="enRing" viewBox="0 0 64 64" width="56" height="56" aria-hidden="true">`+
-      `<circle class="enBg" cx="32" cy="32" r="${R}"></circle>`+
-      `<circle class="enFg" cx="32" cy="32" r="${R}" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"></circle>`+
-      `<text x="32" y="37" text-anchor="middle" class="enPct">${pct}%</text></svg>`+
+    const R=30, C=2*Math.PI*R, off=C*(1-pct/100);
+    box.innerHTML=`<div class="enIn en-${nivel}"><svg class="enRing" viewBox="0 0 72 72" width="64" height="64" aria-hidden="true">`+
+      `<circle class="enBg" cx="36" cy="36" r="${R}"></circle>`+
+      `<circle class="enFg" cx="36" cy="36" r="${R}" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"></circle>`+
+      `<text x="36" y="42" text-anchor="middle" class="enPct">${pct}%</text></svg>`+
       `<div class="enTx"><span class="enTit">🔋 Tu energía de IA</span><p class="enMsg">${msg}</p></div></div>`;
     box.classList.remove("hidden");
   }
