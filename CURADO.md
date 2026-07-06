@@ -26,10 +26,16 @@ sirve ANTES de Gemini a todos los niños del grado (spec de servido en
    abajo. Basarse SIEMPRE en el material real: las guías definen enfoque, notación y
    nivel; las fotos del cuaderno definen cómo lo explicó la maestra en clase. Ante
    conflicto, **manda el cuaderno** (es lo que la maestra evaluará).
-4. **Control con el admin.** Mostrar: título e ideas del resumen, 3 preguntas de quiz de
-   muestra y 2 retos de muestra. Esperar su visto bueno o correcciones. **No subir sin OK.**
-5. **Subir y commitear.** Con el OK: `node herramientas/cargar-curado.mjs
-   --solo=<archivo.json>`. Confirmar la clave normalizada que imprime (debe casar con lo
+4. **Control antes de subir — según el TIPO de curado (decisión del admin, 2026-07-06):**
+   - **CUMBRE → sin OK previo.** Tras pasar la verificación mecánica (Fase 3) y la revisión
+     adversarial top, SUBIR directo y solo REPORTAR al admin (título + muestras de lo subido +
+     qué corrigió la revisión). Es currículo propio, no lo evalúa ninguna maestra, y ya lleva
+     doble red (verificación mecánica + revisión adversarial). No preguntar "¿subo?".
+   - **AULA → con OK.** Mostrar título e ideas del resumen, 3 preguntas de quiz de muestra y 2
+     retos de muestra; esperar visto bueno o correcciones. **No subir aula sin OK** (imita lo que
+     evalúa la maestra; un error ahí se nota más).
+5. **Subir y commitear.** Cumbre: directo tras verificar/revisar. Aula: con el OK. `node
+   herramientas/cargar-curado.mjs --solo=<archivo.json>`. Confirmar la clave normalizada que imprime (debe casar con lo
    que manda la app). Commitear SOLO el `.json` (verificar con `git status` que
    `fotos/`, `material/` y `.env.local` no entren).
 
@@ -223,7 +229,8 @@ mucho porque implica releer todo).
 ## Seguridad de la sesión
 - **Nunca** imprimir contraseñas ni tokens en la conversación ni en logs.
 - **Nunca** commitear `.env.local`, `curado/fotos/`, `curado/material/`.
-- **No** subir bancos sin el visto bueno explícito del admin (paso 4).
+- **Aula:** no subir sin el visto bueno explícito del admin (paso 4). **Cumbre:** subir directo
+  tras verificación mecánica + revisión adversarial, sin OK previo; solo reportar (paso 4).
 
 ## Nota operativa
 `moodle-leer` deduce el grado real de la cuenta desde el aula. Si la cuenta que estás
