@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v22"; // v22: bateria de energia de IA (cupo diario visible en Inicio)
+const VERSION = "aulacam-v23"; // v23: fotos como modelo en numericas + iconos maskable en el shell
 const SHELL = [
   "/",
   "/index.html",
@@ -12,6 +12,8 @@ const SHELL = [
   "/manifest.webmanifest",
   "/icon-192.png",
   "/icon-512.png",
+  "/icon-maskable-192.png",
+  "/icon-maskable-512.png",
   "/apple-touch-icon.png",
   "/favicon-32.png",
 ];

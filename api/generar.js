@@ -159,10 +159,21 @@ function armarPrompt({ modo, material, tienePdf, tieneFotos, fotosExamen, grado,
   const pdfNota = tienePdf
     ? `\nTe adjunto la(s) guía(s)/hoja(s) en PDF con la teoría y los ejercicios reales del tema. Léelas con atención y básate en su contenido.\n`
     : ``;
+  // Cómo usar las fotos depende del modo y de si el tema es numérico:
+  // - numérico + práctica: la foto es MODELO (tipo/método/dificultad) → ejercicios
+  //   NUEVOS, jamás copiar los de la foto (antes Gemini replicaba la hoja tal cual).
+  // - teoría + práctica: la foto ES la teoría que le van a evaluar → las preguntas
+  //   pueden salir directamente de su contenido.
+  // - resumen: información complementaria, como siempre.
+  const modoPractica = modo === "retos" || modo === "quiz" || modo === "examen";
   const fotosNota = !tieneFotos
     ? ``
     : fotosExamen
     ? `\nEl alumno adjuntó fotos de su EXAMEN CORREGIDO por el docente. Analízalas con atención: identifica las preguntas donde se equivocó o perdió puntos (marcas, tachaduras, correcciones del docente, puntajes bajos) y ENFOCA lo que generes en reforzar EXACTAMENTE esos puntos débiles: mismos tipos de pregunta y mismos conceptos donde falló, con dificultad similar a la del examen. Lo que ya respondió bien no necesita refuerzo (inclúyelo solo de repaso ligero si sobra espacio). NO inventes lo que sea ilegible.\n`
+    : numerica && modoPractica
+    ? `\nEl alumno también adjuntó fotos de su clase presencial (apuntes o ejercicios del cuaderno). Úsalas SOLO como MODELO del tipo de ejercicio, del método y del nivel de dificultad que están trabajando en clase. NO copies, NO repitas y NO reformules los ejercicios que aparecen en las fotos: crea ejercicios NUEVOS del mismo tipo y nivel, con números, nombres y contextos DISTINTOS a los de las fotos (el alumno ya tiene los de la hoja; necesita practicar con casos nuevos). Si las fotos muestran el procedimiento que enseñó el docente, respeta ese mismo procedimiento al explicar. La letra de un niño puede ser difícil de leer: interpreta lo que puedas con razonable seguridad y NO inventes lo que sea ilegible.\n`
+    : modoPractica
+    ? `\nEl alumno también adjuntó fotos de sus apuntes del cuaderno, tomados en sus clases presenciales: esa es la teoría que le van a evaluar. Básate en el CONTENIDO de esas fotos (junto al material del aula) para crear las preguntas — está bien que salgan directamente de lo que dicen los apuntes, porque eso es lo que el docente va a preguntar. La letra de un niño puede ser difícil de leer: interpreta y aprovecha lo que puedas con razonable seguridad, y NO inventes lo que sea ilegible.\n`
     : `\nEl alumno también adjuntó fotos de sus apuntes del cuaderno, tomados en sus clases presenciales. Léelas con atención y úsalas como información complementaria al material del aula. La letra de un niño puede ser difícil de leer: interpreta y aprovecha lo que puedas con razonable seguridad, y NO inventes lo que sea ilegible.\n`;
   const base = `Eres un docente de ${grado} en Venezuela, cálido y claro. Escribe en español neutro y claro, con palabras apropiadas para ${grado}. No uses jerga regional ni saludos coloquiales como "chamos", "chamo", "épale" o "pana"; dirígete al alumno de forma sencilla y neutra.
 

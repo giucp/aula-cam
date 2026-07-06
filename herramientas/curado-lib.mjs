@@ -66,6 +66,15 @@ export function filasDeBanco(doc, ahoraISO) {
   // 'cumbre' para el currículo de élite. Aísla ambos mundos en la misma tabla.
   const programa = esStr(doc.programa) ? doc.programa.trim().toLowerCase() : "aula";
   if (!PROGRAMAS_CONOCIDOS.has(programa)) avisos.push(`programa "${programa}" desconocido — se sube igual`);
+  // GUARD anti-pisada: el índice único de contenido_curado NO incluye "programa",
+  // así que un banco mal etiquetado (grado Cumbre con programa aula, o al revés)
+  // haría UPSERT ENCIMA del banco del otro programa y lo pisaría en silencio.
+  // La convención es 1:1: grado "Cumbre …" ⟺ programa "cumbre". Se corta con error.
+  const esGradoCumbre = /^cumbre\b/i.test(doc.grado.trim());
+  if (esGradoCumbre && programa !== "cumbre")
+    throw new Error(`grado "${doc.grado}" es de Cumbre pero programa="${programa}" — agrega "programa":"cumbre" al banco`);
+  if (!esGradoCumbre && programa === "cumbre")
+    throw new Error(`programa "cumbre" con grado "${doc.grado}" (no es un grado Cumbre) — corrige el grado o el programa`);
   const materia_norm = normCurado(doc.materia);
   const tema_norm = normCurado(doc.tema);
   const fuentes = Array.isArray(doc.fuentes) ? doc.fuentes.filter(esStr) : null;
