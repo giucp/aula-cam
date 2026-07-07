@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v44"; // v44: cohesion en landing/login/pendiente (.panel y .pendCard a --shadow-card, igual que el resto)
+const VERSION = "aulacam-v45"; // v45: alerta de novedades del aula sincronizada POR USUARIO (usuarios.aula_snap) + tope de 7 dias; ya no es por aparato
 const SHELL = [
   "/",
   "/index.html",

@@ -114,6 +114,25 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true, notas: [...map.values()] });
     }
 
+    // ── Novedades del aula: "foto" de lo último que vio el alumno, guardada POR USUARIO
+    //    (no por aparato) en usuarios.aula_snap (jsonb). Así la alerta 🆕 es consistente
+    //    entre PC y celular y se apaga en todos lados al abrir la materia.
+    if (b.accion === "aula_snap_get") {
+      const r = await fetch(`${cfg.url}/rest/v1/usuarios?id=eq.${uid}&select=aula_snap`, { headers: hdr(cfg) });
+      const rows = r.ok ? await r.json() : [];
+      const snap = (Array.isArray(rows) && rows[0] && rows[0].aula_snap) || {};
+      return res.status(200).json({ ok: true, snap });
+    }
+    if (b.accion === "aula_snap_set") {
+      const snap = (b.snap && typeof b.snap === "object" && !Array.isArray(b.snap)) ? b.snap : {};
+      await fetch(`${cfg.url}/rest/v1/usuarios?id=eq.${uid}`, {
+        method: "PATCH",
+        headers: { ...hdr(cfg), "Content-Type": "application/json" },
+        body: JSON.stringify({ aula_snap: snap }),
+      });
+      return res.status(200).json({ ok: true });
+    }
+
     return res.status(400).json({ error: "acción inválida" });
   } catch (e) {
     return res.status(200).json({ ok: true, progreso: [], error: String(e.message || e) });

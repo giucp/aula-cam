@@ -113,7 +113,12 @@
     const wrap = $("#destacadaWrap");
     if(prox){ $("#proxSub").textContent = `Practica ${prox}`; wrap.classList.remove("hidden"); }
     else wrap.classList.add("hidden");
-    detectarNovedades();                 // 🆕 módulos nuevos vs. lo último visto acá (antes de pintar)
+    // 🆕 novedades del aula: cargar la foto del usuario (servidor) y luego detectar + repintar
+    cargarAulaSnap().then(()=>{
+      detectarNovedades();
+      pintarNovedadesInicio();
+      if(origen==="actual" && SESION && SESION.materias) gridMaterias(SESION.materias);
+    });
     pintarMaterias();
     verMaterias();
     cargarErrores();
@@ -497,9 +502,13 @@
   // ───────── novedades del aula (🆕, sin servidor) ─────────
   // Compara los módulos del aula contra el último snapshot visto en este aparato:
   // módulo nuevo o archivo más reciente → 🆕 en la materia y lista en el escritorio.
-  // Se marca visto al ABRIR la materia. La primera vez solo guarda la base (sin 🆕).
-  const SNAP_KEY="aula_snap_v1";
+  // La "foto" de lo último visto vive POR USUARIO en el servidor (usuarios.aula_snap), no por
+  // aparato: así la alerta 🆕 es igual en PC y celular y se apaga en TODOS lados al abrir la
+  // materia. Además solo cuentan novedades de los últimos NOV_MAX_DIAS (por fecha del aula),
+  // para que ninguna quede pegada indefinidamente. Se marca visto al ABRIR la materia.
   let NOVEDADES={};                       // materiaId → [{tema, nombre}]
+  let AULA_SNAP={};                       // { materiaId: { moduloId: ts } } — cargado del servidor
+  const NOV_MAX_DIAS=7;
   function snapDeMateria(m){
     const out={};
     (m.temas||[]).forEach(t=>(t.modulos||[]).forEach(mod=>{
@@ -508,32 +517,45 @@
     }));
     return out;
   }
+  async function cargarAulaSnap(){
+    AULA_SNAP={};
+    if(!SESION || SESION.id==null) return;
+    try{
+      const r=await fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"aula_snap_get",usuario_id:SESION.id})});
+      const d=await r.json().catch(()=>null);
+      AULA_SNAP=(d && d.snap && typeof d.snap==="object" && !Array.isArray(d.snap)) ? d.snap : {};
+    }catch(_){ AULA_SNAP={}; }
+  }
+  function guardarAulaSnap(){
+    if(!SESION || SESION.id==null) return;
+    try{ fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"aula_snap_set",usuario_id:SESION.id,snap:AULA_SNAP})}); }catch(_){}
+  }
   function detectarNovedades(){
     if(!SESION || !Array.isArray(SESION.materias)) return;
-    const snaps=store.get(SNAP_KEY)||{};
     NOVEDADES={};
     let base=false;
+    const corte=(Date.now()/1000)-NOV_MAX_DIAS*86400;   // las fechas del aula (Moodle) van en segundos
     SESION.materias.forEach(m=>{
       if(m.id==null) return;
       const nuevo=snapDeMateria(m);
-      const viejo=snaps[m.id];
-      if(!viejo){ snaps[m.id]=nuevo; base=true; return; }   // primera vez: base silenciosa
+      const viejo=AULA_SNAP[m.id];
+      if(!viejo){ AULA_SNAP[m.id]=nuevo; base=true; return; }   // primera vez: base silenciosa
       const items=[];
       (m.temas||[]).forEach(t=>(t.modulos||[]).forEach(mod=>{
         if(mod.tipo==="label"||mod.tipo==="subsection") return;
-        if(!(mod.id in viejo) || (nuevo[mod.id]||0)>(viejo[mod.id]||0)){
-          items.push({tema:t.seccion||"", nombre:mod.nombre||""});
-        }
+        const ts=nuevo[mod.id]||0;
+        const cambio=!(mod.id in viejo) || ts>(viejo[mod.id]||0);
+        const reciente=ts===0 ? true : ts>=corte;   // sin fecha (módulo sin archivo) → cuenta como nuevo
+        if(cambio && reciente) items.push({tema:t.seccion||"", nombre:mod.nombre||""});
       }));
       if(items.length) NOVEDADES[m.id]=items;
     });
-    if(base) store.set(SNAP_KEY, snaps);
+    if(base) guardarAulaSnap();   // primera vez / materia nueva → guarda la base en el servidor
   }
   function marcarAulaVista(m){
     if(!m || m.id==null || !NOVEDADES[m.id]) return;
-    const snaps=store.get(SNAP_KEY)||{};
-    snaps[m.id]=snapDeMateria(m);
-    store.set(SNAP_KEY, snaps);
+    AULA_SNAP[m.id]=snapDeMateria(m);
+    guardarAulaSnap();                             // se apaga en todos los aparatos
     delete NOVEDADES[m.id];
     gridMaterias((SESION&&SESION.materias)||[]);   // quita el 🆕 para cuando vuelva
   }
