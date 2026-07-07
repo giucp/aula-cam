@@ -147,7 +147,9 @@ const MODOS_VALIDOS = new Set(["retos", "resumen", "examen", "quiz"]);
 // frontend para saber si un tema es "numérico" (matemática/lógica/olimpiada).
 // retos/examen/quiz subidos 2026-07-04: protocolo CONSTRUIR→ENUMERAR→VERIFICAR para
 // acertijos de deducción (purga del caché los acertijos ambiguos/sin solución previos).
-const PROMPT_VER = { resumen: "3", retos: "4", examen: "5", quiz: "6" };
+// retos 5 (2026-07-07): regla de respuesta exacta ampliada (entero cuando se pueda;
+// decimal/fracción EXACTOS en temas de fracciones/decimales/porcentajes/dinero/medidas).
+const PROMPT_VER = { resumen: "3", retos: "5", examen: "5", quiz: "6" };
 function esNumerica(txt) {
   return /matemát|matemat|lógic|logic|olimpiad/i.test(txt || "");
 }
@@ -157,6 +159,16 @@ function esNumerica(txt) {
 // letras tardaba >60s y Vercel lo mataba (FUNCTION_INVOCATION_TIMEOUT).
 function esVerbal(txt) {
   return /analog[ií]|orden de la inf|sin[oó]nim|ant[oó]nim|series de (letras|palabras)/i.test(txt || "");
+}
+// Materias ANALÍTICAS (matemática, lógica, física, química, olimpiada, electrónica…):
+// TODO lo que se genere en ellas —cualquier modo, aunque el tema puntual sea verbal
+// (ej. analogías dentro de Lógica)— va con el modelo completo (flash, nunca lite) y
+// con la key PAGA primero (decisión del user 2026-07-07: "si está en matemáticas es
+// matemáticas"; cero tolerancia a errores acá). OJO: "Educación Física" NO es física.
+function esAnalitica(txt) {
+  const s = String(txt || "");
+  if (/educaci[oó]n\s*f/i.test(s)) return false;
+  return /matemát|matemat|lógic|logic|olimpiad|físic|fisic|químic|quimic|electrón|electron/i.test(s);
 }
 
 function armarPrompt({ modo, material, tienePdf, tieneFotos, fotosExamen, grado, tema, materia, n, numerica, recientes }) {
@@ -258,7 +270,7 @@ ${reglasDeduccion}${noRepetir}${jsonOnly}`;
   // retos (por defecto)
   return base + `Crea ${n} ejercicios de práctica NUEVOS para reforzar el MISMO tema y nivel, distintos entre sí${tienePdf ? " y distintos a los del documento, pero del mismo estilo" : ""}.
 - Claros, resolubles y con dificultad acorde a la edad.
-- Si el tema es de matemática o lógica: RESUELVE y VERIFICA cada ejercicio antes de entregarlo. Elige los números para que la respuesta sea EXACTA (un entero, salvo que el tema sea de decimales/fracciones). La respuesta debe cumplir TODAS las condiciones del enunciado, y el enunciado debe coincidir con la respuesta final.
+- Si el tema es de matemática o lógica: RESUELVE y VERIFICA cada ejercicio antes de entregarlo. Elige los números para que la respuesta sea EXACTA: un entero cuando el tema lo permita, o un decimal o fracción EXACTOS cuando el tema los use de forma natural (fracciones, decimales, porcentajes, dinero, medidas, proporciones/regla de tres) — por ejemplo 7,5 o 3/4 está bien; 7,333… no. La respuesta debe cumplir TODAS las condiciones del enunciado, y el enunciado debe coincidir con la respuesta final.
 - "pista": orienta sin dar la respuesta. "solucion": SOLO el resultado correcto y una explicación breve y clara. NUNCA escribas "Ups", "error", "ajustemos", "revisemos" ni cambies el enunciado dentro de la solución. Si un ejercicio no te cuadra, descártalo y crea otro distinto que SÍ cuadre.
 Forma EXACTA del JSON:
 {"ejercicios":[{"enunciado":"...","pista":"...","solucion":"...","figura":""}]}
@@ -702,7 +714,11 @@ export default async function handler(req, res) {
 
     // ¿el tema es numérico? (por materia o por el título del tema) — pero NO si es de
     // razonamiento verbal (analogías, orden de la información…), aunque la materia sea Lógica.
+    // "numerica" gobierna el PROMPT de cálculo y el thinking pesado (a nivel TEMA).
     const numerica = (esNumerica(materia) || esNumerica(tema)) && !esVerbal(tema);
+    // "analitica" gobierna MODELO + KEY (a nivel MATERIA): en estas materias todo va con
+    // flash + key paga primero, aunque el tema sea verbal ("si está en matemáticas es matemáticas").
+    const analitica = esAnalitica(materia) || esAnalitica(tema);
     // examenFoto: las fotos son de un examen corregido (modo refuerzo) → la IA ataca lo que falló
     const fotosExamen = tieneFotos && !!(req.body && req.body.examenFoto);
     const prompt = armarPrompt({ modo, material, tienePdf: pdfs.length > 0, tieneFotos, fotosExamen, grado, tema, materia, n, numerica, recientes });
@@ -741,8 +757,8 @@ export default async function handler(req, res) {
     //   flash-lite solo como ÚLTIMO recurso (sin números el riesgo es bajo; mejor que fallar).
     // - RESUMEN de teoría: flash-lite (barato, texto puro) con flash de respaldo.
     const esPractica = esEjercicio || modo === "examen";
-    const modelos = numerica
-      ? [MODEL_EJERCICIOS] // numérico: SOLO flash, nunca degradar a lite
+    const modelos = (numerica || analitica)
+      ? [MODEL_EJERCICIOS] // materia analítica o tema numérico: SOLO flash (nunca lite), en TODOS los modos incl. resumen
       : esPractica
       ? [MODEL_EJERCICIOS, MODEL_TEXTO] // práctica de teoría: flash primero
       : [MODEL_TEXTO, MODEL_EJERCICIOS]; // resumen de teoría: lite primero
@@ -753,7 +769,11 @@ export default async function handler(req, res) {
     // gratis se agotó o está saturado. La rotación pasa dentro del mismo request,
     // así que el niño no nota nada.
     const ini = gratis.length > 1 ? Math.floor(Math.random() * gratis.length) : 0;
-    const ordenKeys = [...gratis.map((_, i) => gratis[(ini + i) % gratis.length]), ...pagas];
+    const gratisRot = gratis.map((_, i) => gratis[(ini + i) % gratis.length]);
+    // Materias analíticas: la key PAGA va PRIMERO (sin cupos de free-tier, más fiable y
+    // rápida → menos errores/timeouts justo donde no se toleran) y las gratis quedan de
+    // respaldo. Para todo lo demás: gratis primero (costo) y la paga de respaldo, como siempre.
+    const ordenKeys = analitica ? [...pagas, ...gratisRot] : [...gratisRot, ...pagas];
     let data = null,
       status = 0,
       modeloUsado = modelos[0],
