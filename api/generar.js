@@ -511,6 +511,13 @@ function esValido(modo, d) {
     Number.isInteger(p.correcta) && p.correcta >= 0 && p.correcta < p.opciones.length);
   return true;
 }
+// Concatena TODOS los parts de la respuesta de Gemini (a veces la parte en varios) y
+// devuelve el JSON parseado, o null si no es JSON válido (truncado/malformado).
+function parsearGemini(data) {
+  const partes = (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) || [];
+  const texto = (partes.map((p) => (p && p.text) || "").join("").trim()) || "{}";
+  try { return JSON.parse(texto.replace(/```json|```/g, "").trim()); } catch (e) { return null; }
+}
 async function cacheGet(clave) {
   const cfg = supabaseCfg();
   if (!cfg) return null;
@@ -754,57 +761,46 @@ export default async function handler(req, res) {
     // Presupuesto de tiempo: cortamos antes del maxDuration de 60s de Vercel para devolver
     // un 503 amable (el front reintenta) en vez de un 504 crudo que rompe la pantalla.
     const DEADLINE = Date.now() + 52000;
+    let parsed = null, malformado = false;
     buscar: for (const m of modelos) {
       const ep = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`;
       for (const key of ordenKeys) {
-        if (Date.now() > DEADLINE - 4000) { status = 503; data = null; break buscar; } // sin tiempo
+        if (Date.now() > DEADLINE - 4000) { status = 503; break buscar; } // sin tiempo → cortamos amable
         const r = await pedirAGemini(`${ep}?key=${key}`, payload, 2, DEADLINE);
         data = r.data;
         status = r.status;
         modeloUsado = m;
         keyUsada = key;
-        if (status !== 429 && status !== 503) break buscar; // éxito o error no recuperable
+        if (status === 429 || status === 503) continue;   // cupo/saturado → próxima key
+        if (data && data.error) break buscar;               // error no recuperable (ej. 400)
+        // 200: parseamos y validamos ACÁ. Si el JSON viene malformado/incompleto (varianza del
+        // modelo), lo tratamos como reintentable: probamos otra key/modelo si queda tiempo.
+        const p = parsearGemini(data);
+        if (p && esValido(modo, p)) { parsed = p; break buscar; }
+        malformado = true;
       }
     }
     // ¿la sirvió la key de pago? (true = esta generación costó plata de verdad)
     const usoPaga = keyUsada != null && pagas.includes(keyUsada);
 
-    if (!data) {
-      // sin respuesta (se acabó el tiempo / abort / todas las keys saturadas): 503 amable,
-      // el front reintenta solo. Mejor que un 504 crudo o un 500.
-      return res.status(503).json({ error: "El servicio está ocupado en este momento. Intenta de nuevo en unos segundos.", code: 503 });
-    }
-    if (data.error) {
+    if (!parsed) {
+      // Error NO recuperable de Gemini (ej. 400 por payload): que salga como 500.
+      if (data && data.error && status !== 429 && status !== 503) throw new Error(data.error.message);
       if (status === 429) {
-        // límite por minuto: mensaje amable + código + segundos que pide esperar + detalle.
+        // límite por minuto: mensaje amable + segundos que pide esperar.
         return res.status(429).json({
           error: "Hay mucha demanda en este momento. Espera unos segundos y vuelve a intentar.",
           code: 429,
-          retryAfter: segReintento(data.error && data.error.message),
-          detalle: (data.error && data.error.message) || null,
+          retryAfter: segReintento(data && data.error && data.error.message),
+          detalle: (data && data.error && data.error.message) || null,
         });
       }
-      if (status === 503) {
-        // modelo saturado (transitorio): el front reintenta solo una vez
-        return res.status(503).json({
-          error: "El servicio está ocupado en este momento. Intenta de nuevo en unos segundos.",
-          code: 503,
-        });
+      // JSON malformado tras agotar reintentos (con tiempo): 502 (armar de nuevo).
+      if (malformado && status !== 503) {
+        return res.status(502).json({ error: "No pudimos armar la actividad. Intenta de nuevo.", code: 502 });
       }
-      throw new Error(data.error.message);
-    }
-
-    let parsed;
-    // Gemini puede partir la respuesta en varios "parts": hay que CONCATENARLOS todos
-    // (antes se leía solo parts[0] → si el JSON venía partido, quedaba incompleto y no parseaba).
-    const partes = (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) || [];
-    const textoCrudo = (partes.map((p) => (p && p.text) || "").join("").trim()) || "{}";
-    try {
-      const limpio = textoCrudo.replace(/```json|```/g, "").trim();
-      parsed = JSON.parse(limpio);
-    } catch (e) {
-      // Gemini devolvió algo que no es JSON (truncado/malformado): no cacheamos, reintentar.
-      return res.status(502).json({ error: "No pudimos armar la actividad. Intenta de nuevo.", code: 502 });
+      // Saturado / sin tiempo / sin respuesta: 503 amable (el front reintenta solo).
+      return res.status(503).json({ error: "El servicio está ocupado en este momento. Intenta de nuevo en unos segundos.", code: 503 });
     }
     // BLINDAJE del quiz: alinea "correcta" con la respuesta que la propia explicación
     // declara (sello "Respuesta correcta: ..."), para que el índice marcado NUNCA
