@@ -546,21 +546,33 @@ async function cacheSet(clave, fila) {
 
 // Llama a Gemini con reintentos: ante 429 (límite por minuto) o 503 (saturado)
 // espera un poco y reintenta, en vez de fallarle al niño de una.
-async function pedirAGemini(url, payload, intentos = 2) {
+async function pedirAGemini(url, payload, intentos = 2, deadline = 0) {
   let ultimo = { data: null, status: 0 };
   for (let i = 0; i < intentos; i++) {
-    const r = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-    let data = null;
-    try { data = await r.json(); } catch (e) { data = null; }
-    const status = (data && data.error && data.error.code) || r.status;
+    // No arrancamos una llamada si casi no queda presupuesto de tiempo (evita el 504 de
+    // Vercel: mejor cortar amable a que la función muera a los 60s).
+    const restante = deadline ? deadline - Date.now() : 45000;
+    if (restante < 4000) { ultimo = { data: null, status: 503 }; break; }
+    const ctrl = new AbortController();
+    const to = setTimeout(() => ctrl.abort(), Math.min(restante, 45000));
+    let data = null, status = 0;
+    try {
+      const r = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        signal: ctrl.signal,
+      });
+      try { data = await r.json(); } catch (e) { data = null; }
+      status = (data && data.error && data.error.code) || r.status;
+    } catch (e) {
+      // timeout (abort) o red caída → lo tratamos como saturación transitoria (amable/retriable)
+      data = null; status = 503;
+    } finally { clearTimeout(to); }
     ultimo = { data, status };
-    // Solo reintentamos en 503 (saturación transitoria). En 429 (límite por
-    // minuto) NO reintentamos: reintentar gastaría más cuota y la empeora.
-    if (status === 503 && i < intentos - 1) {
+    // Solo reintentamos en 503 (saturación transitoria) y si aún queda tiempo. En 429
+    // (límite por minuto) NO reintentamos: gastaría más cuota y la empeora.
+    if (status === 503 && i < intentos - 1 && (!deadline || deadline - Date.now() > 5000)) {
       await dormir(900 * (i + 1)); // backoff corto: 0.9s, 1.8s
       continue;
     }
@@ -739,10 +751,14 @@ export default async function handler(req, res) {
       status = 0,
       modeloUsado = modelos[0],
       keyUsada = null;
+    // Presupuesto de tiempo: cortamos antes del maxDuration de 60s de Vercel para devolver
+    // un 503 amable (el front reintenta) en vez de un 504 crudo que rompe la pantalla.
+    const DEADLINE = Date.now() + 52000;
     buscar: for (const m of modelos) {
       const ep = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`;
       for (const key of ordenKeys) {
-        const r = await pedirAGemini(`${ep}?key=${key}`, payload);
+        if (Date.now() > DEADLINE - 4000) { status = 503; data = null; break buscar; } // sin tiempo
+        const r = await pedirAGemini(`${ep}?key=${key}`, payload, 2, DEADLINE);
         data = r.data;
         status = r.status;
         modeloUsado = m;
@@ -753,7 +769,11 @@ export default async function handler(req, res) {
     // ¿la sirvió la key de pago? (true = esta generación costó plata de verdad)
     const usoPaga = keyUsada != null && pagas.includes(keyUsada);
 
-    if (!data) throw new Error("El modelo no respondió. Intenta de nuevo.");
+    if (!data) {
+      // sin respuesta (se acabó el tiempo / abort / todas las keys saturadas): 503 amable,
+      // el front reintenta solo. Mejor que un 504 crudo o un 500.
+      return res.status(503).json({ error: "El servicio está ocupado en este momento. Intenta de nuevo en unos segundos.", code: 503 });
+    }
     if (data.error) {
       if (status === 429) {
         // límite por minuto: mensaje amable + código + segundos que pide esperar + detalle.
@@ -783,12 +803,8 @@ export default async function handler(req, res) {
       const limpio = textoCrudo.replace(/```json|```/g, "").trim();
       parsed = JSON.parse(limpio);
     } catch (e) {
-      // Gemini devolvió algo que no es JSON: no cacheamos y pedimos reintentar.
-      const cand = (data && data.candidates && data.candidates[0]) || {};
-      return res.status(502).json({ error: "No pudimos armar la actividad. Intenta de nuevo.", code: 502,
-        diag: { finishReason: cand.finishReason || null, partes: partes.length,
-          thoughts: partes.map((p) => !!(p && p.thought)), len: textoCrudo.length,
-          head: textoCrudo.slice(0, 300), tail: textoCrudo.slice(-300) } });
+      // Gemini devolvió algo que no es JSON (truncado/malformado): no cacheamos, reintentar.
+      return res.status(502).json({ error: "No pudimos armar la actividad. Intenta de nuevo.", code: 502 });
     }
     // BLINDAJE del quiz: alinea "correcta" con la respuesta que la propia explicación
     // declara (sello "Respuesta correcta: ..."), para que el índice marcado NUNCA
