@@ -147,7 +147,7 @@ const MODOS_VALIDOS = new Set(["retos", "resumen", "examen", "quiz"]);
 // frontend para saber si un tema es "numérico" (matemática/lógica/olimpiada).
 // retos/examen/quiz subidos 2026-07-04: protocolo CONSTRUIR→ENUMERAR→VERIFICAR para
 // acertijos de deducción (purga del caché los acertijos ambiguos/sin solución previos).
-const PROMPT_VER = { resumen: "3", retos: "4", examen: "5", quiz: "5" };
+const PROMPT_VER = { resumen: "3", retos: "4", examen: "5", quiz: "6" };
 function esNumerica(txt) {
   return /matemát|matemat|lógic|logic|olimpiad/i.test(txt || "");
 }
@@ -233,14 +233,21 @@ ${reglasDeduccion}${noRepetir}${jsonOnly}`;
     const expNota = numerica
       ? `explica el procedimiento PASO A PASO para llegar a la respuesta correcta (así el alumno aprende a resolverlo, no solo cuál era)`
       : `da la respuesta correcta con una aclaración clara y, si ayuda, una breve recomendación de qué repasar`;
+    const convencionNota = numerica
+      ? `- Si alguna convención cambia el resultado (por ejemplo, año de 360 vs 365 días en interés simple, o un redondeo), acláralo en la explicación y sé consistente con ella. Si el enunciado no especifica, usa 360 días (año comercial).\n`
+      : "";
     return base + `Crea ${n} preguntas de opción múltiple sobre el tema, apropiadas para ${grado}. Cada una con 3 o 4 opciones, UNA sola correcta.
 Forma EXACTA del JSON:
 {"preguntas":[{"pregunta":"...","opciones":["opción A","opción B","opción C"],"correcta":0,"explicacion":"...","figura":""}]}
 - "correcta" es el índice (empezando en 0) de la opción correcta dentro de "opciones".
 - Las opciones incorrectas deben ser creíbles, no absurdas.
 - "explicacion": ${expNota}. Sirve para repasar el error, así que enseña de verdad.
-- Si la pregunta involucra cálculo, RESUÉLVELA y verifica que la opción marcada como "correcta" es de verdad la correcta.
-${figuraNota}
+- CLAVE para no errar "correcta": RESUELVE el problema por completo, obtén el VALOR final y asegúrate de que
+  EXISTA una opción con EXACTAMENTE ese valor; pon su índice en "correcta". Si ninguna opción tiene el valor
+  correcto, cambia las opciones para que UNA lo tenga. El valor de la opción marcada como correcta y el
+  resultado de tu explicación DEBEN ser el mismo; si no coinciden, corrígelo ANTES de responder.
+- TERMINA cada "explicacion" con esta línea al final del todo: Respuesta correcta: <copia EXACTA del texto de la opción correcta>
+${convencionNota}${figuraNota}
 ${reglasDeduccion}${noRepetir}${jsonOnly}`;
   }
 
@@ -375,6 +382,31 @@ function barajarOpciones(p) {
   const mezcladas = barajar(opciones);
   const idx = mezcladas.indexOf(correctaTxt);
   return { ...p, opciones: mezcladas, correcta: idx >= 0 ? idx : p.correcta };
+}
+// Normaliza texto para casar opciones (sin acentos, minúsculas, solo letras/números).
+function normTxt(s) {
+  return String(s == null ? "" : s).normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+// BLINDAJE del quiz: alinea "correcta" con la respuesta que declara la propia explicación.
+// La IA termina la explicación con un sello "Respuesta correcta: <texto de la opción>";
+// acá casamos ese texto contra las opciones (robusto, sin parsear números), forzamos el
+// índice a esa opción y quitamos el sello del texto visible. Si no hay sello o no casa,
+// se deja la pregunta como vino (el índice ya pasó la validación estructural).
+function alinearCorrecta(p) {
+  if (!p || !Array.isArray(p.opciones) || p.opciones.length < 2) return p;
+  const exp = String(p.explicacion || "");
+  const m = exp.match(/respuesta\s+correcta\s*:\s*([^\n]+?)\s*$/i);
+  if (!m) return p;
+  const target = normTxt(m[1]);
+  const limpia = exp.replace(/\s*respuesta\s+correcta\s*:\s*[^\n]+?\s*$/i, "").trim();
+  const opt = p.opciones.map(normTxt);
+  let idx = opt.findIndex((o) => o && o === target);
+  if (idx < 0) {
+    const cand = opt.map((o, i) => ({ o, i })).filter(({ o }) => o && (target.includes(o) || o.includes(target)));
+    if (cand.length === 1) idx = cand[0].i; // solo si UNA opción casa (evita ambigüedad)
+  }
+  return idx >= 0 ? { ...p, correcta: idx, explicacion: limpia } : { ...p, explicacion: limpia };
 }
 // Firma estable de un item de banco (para no repetir): hash corto del texto principal.
 function sigItem(modo, it) {
@@ -743,6 +775,12 @@ export default async function handler(req, res) {
     } catch (e) {
       // Gemini devolvió algo que no es JSON: no cacheamos y pedimos reintentar.
       return res.status(502).json({ error: "No pudimos armar la actividad. Intenta de nuevo.", code: 502 });
+    }
+    // BLINDAJE del quiz: alinea "correcta" con la respuesta que la propia explicación
+    // declara (sello "Respuesta correcta: ..."), para que el índice marcado NUNCA
+    // contradiga el cálculo. Determinista, sin llamadas extra a Gemini.
+    if (modo === "quiz" && parsed && Array.isArray(parsed.preguntas)) {
+      parsed.preguntas = parsed.preguntas.map(alinearCorrecta);
     }
     // Si salió vacío o malformado, NO lo cacheamos (evita envenenar el tema para todos).
     if (!esValido(modo, parsed)) {
