@@ -25,7 +25,7 @@
   .star{display:inline-block;transform:translateY(2px);filter:drop-shadow(0 4px 6px rgba(255,168,61,.5))}
   .hidden{display:none !important}
 
-  .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 19px;box-shadow:var(--shadow)}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 19px;box-shadow:var(--shadow-card)}
   .lbl{font-family:"Fredoka",sans-serif;font-weight:600;font-size:.96rem;color:var(--ink);margin:0 0 13px;display:flex;align-items:center;gap:9px}
   .lbl .n{background:var(--sun);color:var(--ink);width:25px;height:25px;border-radius:50%;display:grid;place-items:center;font-size:.85rem;font-weight:700;box-shadow:var(--shadow-xs)}
 
@@ -530,7 +530,7 @@
 
   /* pantalla "acceso en revisión" */
   #vPendiente{padding-top:34px}
-  .pendCard{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);padding:34px 24px;text-align:center;max-width:440px;margin:24px auto 0}
+  .pendCard{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow-card);padding:34px 24px;text-align:center;max-width:440px;margin:24px auto 0}
   .pendIco{font-size:3rem;line-height:1;display:block;margin-bottom:8px}
   .pendCard h1{font-family:"Fredoka";font-weight:600;font-size:1.5rem;color:var(--ink);margin:0 0 10px}
   .pendTxt{color:var(--muted);font-weight:600;line-height:1.5;margin:0 0 22px;font-size:1rem}

@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v43"; // v43: barrido de cohesion visual: sombra suave en capas (--shadow-card) en tarjetas de resultado/skeleton/acordeones/efemeride/Cumbre
+const VERSION = "aulacam-v44"; // v44: cohesion en landing/login/pendiente (.panel y .pendCard a --shadow-card, igual que el resto)
 const SHELL = [
   "/",
   "/index.html",
