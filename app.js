@@ -1790,8 +1790,10 @@
   // verá la alumna, antes de publicarlo. Solo lectura: MODO_LAB apaga toda escritura y
   // no hay botones de generar. La clave se valida server-side (api/admin-check) y vive
   // solo en memoria (se re-pide al recargar; no se guarda en el aparato).
-  const API_LAB = "https://aula-cam.vercel.app/api/lab";   // endpoint único (accion: check/materias/tema)
+  const API_LAB = "https://aula-cam.vercel.app/api/lab";   // endpoint único (accion: check/materias/tema/usuarios/usuario_set)
   let LAB_CLAVE = "";
+  let LAB_TAB = "contenido";
+  let LAB_USUARIOS = [];
   const MODOS_LAB = [["resumen","📝 Resumen"],["retos","🎯 Práctica"],["quiz","🎮 Quiz"],["examen","📋 Examen"]];
   const LETRA_MODO = { resumen:"R", retos:"P", quiz:"Q", examen:"E" };
 
@@ -1811,7 +1813,7 @@
       if(!r.ok){ $("#labErr").classList.remove("hidden"); return; }
       LAB_CLAVE=clave;
       $("#labLogin").classList.add("hidden"); $("#labApp").classList.remove("hidden");
-      labCargarMaterias();
+      labTab("contenido");
     }catch(_){ $("#labErr").classList.remove("hidden"); }
     finally{ btn.disabled=false; }
   }
@@ -1881,6 +1883,97 @@
       pintar(disp[0][0]);
     }catch(_){ body.innerHTML=errBox("No se pudo cargar el tema. Reintenta."); }
   }
+  // ───────── pestaña USUARIOS del cuarto (aprobar acceso + consumo de IA) ─────────
+  function labTab(tab){
+    LAB_TAB=tab;
+    $("#labTabContenido").classList.toggle("on", tab==="contenido");
+    $("#labTabUsuarios").classList.toggle("on", tab==="usuarios");
+    if(tab==="usuarios") labCargarUsuarios(); else labCargarMaterias();
+  }
+  async function labCargarUsuarios(){
+    labBack(true); const body=$("#labBody"); body.innerHTML=`<p class="labLoad">Cargando…</p>`;
+    try{
+      const r=await fetch(API_LAB,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"usuarios",clave:LAB_CLAVE})});
+      if(r.status===401){ LAB_CLAVE=""; entrarLab(); return; }
+      const d=await r.json(); LAB_USUARIOS=Array.isArray(d.usuarios)?d.usuarios:[]; labPintarUsuarios();
+    }catch(_){ body.innerHTML=errBox("No se pudieron cargar los usuarios. Reintenta."); }
+  }
+  function labFecha(iso){
+    if(!iso) return "—";
+    try{ const d=new Date(iso); return d.toLocaleDateString("es-VE",{day:"2-digit",month:"short"})+" "+d.toLocaleTimeString("es-VE",{hour:"2-digit",minute:"2-digit"}); }
+    catch(_){ return "—"; }
+  }
+  function labPintarUsuarios(){
+    const body=$("#labBody"); body.innerHTML="";
+    // los "en revisión" primero (para aprobarlos rápido), luego por acceso más reciente
+    const us=LAB_USUARIOS.slice().sort((a,b)=> (a.autorizado?1:0)-(b.autorizado?1:0));
+    const pend=us.filter(u=>!u.autorizado).length;
+    const head=document.createElement("p"); head.className="labNota";
+    head.textContent=`${us.length} usuario(s) · ${pend} en revisión`;
+    body.appendChild(head);
+    if(!us.length){ const e=document.createElement("div"); e.className="empty"; e.textContent="Aún no hay usuarios. Aparecen al iniciar sesión."; body.appendChild(e); return; }
+    us.forEach(u=>body.appendChild(labCardUsuario(u)));
+  }
+  function labCardUsuario(u){
+    const card=document.createElement("div"); card.className="labUser"+(u.autorizado?"":" pend");
+    const ini=((u.nombre||"?").trim().charAt(0)||"?").toUpperCase();
+    const top=document.createElement("div"); top.className="labUserTop";
+    top.innerHTML=`<span class="labUserAv">${escapeHtml(ini)}</span>`
+      +`<span class="labUserInfo"><span class="labUserNom">${escapeHtml(u.nombre||"(sin nombre)")}</span>`
+      +`<span class="labUserMeta">${escapeHtml(u.grado||"—")} · ${u.accesos} acceso(s) · ${labFecha(u.ultimo_acceso)} · id ${u.id}</span></span>`;
+    card.appendChild(top);
+
+    // acceso
+    const rowA=document.createElement("div"); rowA.className="labUserRow";
+    const lblA=document.createElement("span"); lblA.className="labUserK"; lblA.textContent="Acceso";
+    const btnA=document.createElement("button"); btnA.className="labToggle"+(u.autorizado?" si":" no");
+    btnA.textContent=u.autorizado?"✅ Habilitado":"⬜ En revisión";
+    btnA.onclick=()=>labSetUsuario(u,{autorizado:!u.autorizado},card);
+    rowA.appendChild(lblA); rowA.appendChild(btnA); card.appendChild(rowA);
+
+    // consumo de IA de hoy
+    const rowB=document.createElement("div"); rowB.className="labUserRow";
+    const lblB=document.createElement("span"); lblB.className="labUserK"; lblB.textContent="IA hoy";
+    const gasto=document.createElement("span"); gasto.className="labUserGasto";
+    gasto.innerHTML=u.ia_ilimitado
+      ? `<span class="labIlim">ilimitada</span>`
+      : `$${(u.gasto_hoy||0).toFixed(3)} <span class="labUserMuted">/ $${(u.ia_limite_dia_usd||0).toFixed(2)} día</span>`;
+    rowB.appendChild(lblB); rowB.appendChild(gasto); card.appendChild(rowB);
+
+    // editar tope diario + poner/quitar ilimitado
+    const rowC=document.createElement("div"); rowC.className="labUserRow labUserEdit";
+    const lblC=document.createElement("span"); lblC.className="labUserK"; lblC.textContent="Límite";
+    const inp=document.createElement("input"); inp.type="number"; inp.step="0.01"; inp.min="0"; inp.max="5";
+    inp.className="labLimInp"; inp.value=(u.ia_limite_dia_usd||0).toFixed(2); inp.disabled=!!u.ia_ilimitado;
+    const save=document.createElement("button"); save.className="labLimSave"; save.textContent="Guardar"; save.disabled=!!u.ia_ilimitado;
+    save.onclick=()=>{ const v=parseFloat(inp.value); if(!isFinite(v)) return; labSetUsuario(u,{ia_limite_dia_usd:v},card); };
+    const ilim=document.createElement("button"); ilim.className="labToggle small"+(u.ia_ilimitado?" si":" no");
+    ilim.textContent=u.ia_ilimitado?"∞ ilimitada":"poner ∞";
+    ilim.onclick=()=>labSetUsuario(u,{ia_ilimitado:!u.ia_ilimitado},card);
+    rowC.appendChild(lblC); rowC.appendChild(inp); rowC.appendChild(save); rowC.appendChild(ilim);
+    card.appendChild(rowC);
+    return card;
+  }
+  async function labSetUsuario(u,campos,card){
+    card.classList.add("saving");
+    try{
+      const r=await fetch(API_LAB,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"usuario_set", clave:LAB_CLAVE, id:u.id, campos})});
+      if(r.status===401){ LAB_CLAVE=""; entrarLab(); return; }
+      const d=await r.json();
+      if(d && d.ok){
+        Object.assign(u, campos);                 // optimista
+        if(d.usuario){                             // y sincroniza con lo que confirmó el server
+          u.autorizado=!!d.usuario.autorizado;
+          u.ia_ilimitado=!!d.usuario.ia_ilimitado;
+          u.ia_limite_dia_usd=Number(d.usuario.ia_limite_dia_usd||0);
+        }
+        card.replaceWith(labCardUsuario(u));
+      }else{ card.classList.remove("saving"); alert("No se pudo guardar. Reintenta."); }
+    }catch(_){ card.classList.remove("saving"); alert("Error de red. Reintenta."); }
+  }
+
+  $("#labTabContenido").onclick=()=>labTab("contenido");
+  $("#labTabUsuarios").onclick=()=>labTab("usuarios");
   $("#labEntrar").onclick=labLogin;
   $("#labClave").addEventListener("keydown",(e)=>{ if(e.key==="Enter") labLogin(); });
   window.addEventListener("hashchange",()=>{ if(location.hash==="#lab" && !MODO_LAB) entrarLab(); });

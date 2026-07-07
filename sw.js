@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v35"; // v35: rename visible Aula CAM -> Chispa (nombre de instalacion + dentro de la app; dominio sin cambios)
+const VERSION = "aulacam-v36"; // v36: cuarto operativo -> pestana Usuarios en #lab (aprobar acceso + ver/editar limite de IA)
 const SHELL = [
   "/",
   "/index.html",
