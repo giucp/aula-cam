@@ -147,7 +147,7 @@ const MODOS_VALIDOS = new Set(["retos", "resumen", "examen", "quiz"]);
 // frontend para saber si un tema es "numérico" (matemática/lógica/olimpiada).
 // retos/examen/quiz subidos 2026-07-04: protocolo CONSTRUIR→ENUMERAR→VERIFICAR para
 // acertijos de deducción (purga del caché los acertijos ambiguos/sin solución previos).
-const PROMPT_VER = { resumen: "3", retos: "5", examen: "6", quiz: "6" };
+const PROMPT_VER = { resumen: "3", retos: "4", examen: "5", quiz: "6" };
 function esNumerica(txt) {
   return /matemát|matemat|lógic|logic|olimpiad/i.test(txt || "");
 }
@@ -198,11 +198,6 @@ ${ctx}${pdfNota}${fotosNota}\n`;
 5. La explicación deduce la respuesta PASO A PASO citando en cada paso la pista que lo justifica. Nada de "por descarte" sin mostrar por qué cada alternativa es imposible, y NUNCA afirmes algo que contradiga una pista (ejemplo de error prohibido: "como el verde no está en los extremos, va al final" — el final ES un extremo).\n`
     : ``;
 
-  // Convención que puede cambiar un resultado (interés 360/365, redondeos): que la diga y sea consistente.
-  const convencionNota = numerica
-    ? `\nSi alguna convención cambia el resultado (por ejemplo, año de 360 vs 365 días en interés simple, o un redondeo), aclárala en tu explicación/solución y sé consistente con ella. Si el enunciado no la especifica, usa 360 días (año comercial).\n`
-    : ``;
-
   // Tanda anterior a la vista: PROHIBIDO repetirla. Gemini no recuerda entre llamadas —
   // sin esta lista, pedir 5 y luego 3 del mismo tema repetía ejercicios casi iguales.
   const noRepetir = (recientes && recientes.length)
@@ -231,7 +226,7 @@ Forma EXACTA del JSON:
 - "respuesta": la respuesta correcta, breve.
 - "explicacion": explica CÓMO se llega a esa respuesta (el procedimiento paso a paso o el razonamiento), claro y apropiado para ${grado}. Es OBLIGATORIO: siempre enseña cómo obtenerla, no solo el resultado.
 - Si la pregunta involucra cálculo, RESUÉLVELA y verifica que la respuesta y el procedimiento son correctos.
-${convencionNota}${reglasDeduccion}${noRepetir}${jsonOnly}`;
+${reglasDeduccion}${noRepetir}${jsonOnly}`;
   }
 
   if (modo === "quiz") {
@@ -249,7 +244,7 @@ Forma EXACTA del JSON:
   correcto, cambia las opciones para que UNA lo tenga. El valor de la opción marcada como correcta y el
   resultado de tu explicación DEBEN ser el mismo; si no coinciden, corrígelo ANTES de responder.
 - TERMINA cada "explicacion" con esta línea al final del todo: Respuesta correcta: <copia EXACTA del texto de la opción correcta>
-${convencionNota}${figuraNota}
+${figuraNota}
 ${reglasDeduccion}${noRepetir}${jsonOnly}`;
   }
 
@@ -260,7 +255,7 @@ ${reglasDeduccion}${noRepetir}${jsonOnly}`;
 - "pista": orienta sin dar la respuesta. "solucion": SOLO el resultado correcto y una explicación breve y clara. NUNCA escribas "Ups", "error", "ajustemos", "revisemos" ni cambies el enunciado dentro de la solución. Si un ejercicio no te cuadra, descártalo y crea otro distinto que SÍ cuadre.
 Forma EXACTA del JSON:
 {"ejercicios":[{"enunciado":"...","pista":"...","solucion":"...","figura":""}]}
-${figuraNota}${convencionNota}
+${figuraNota}
 ${reglasDeduccion}${noRepetir}${jsonOnly}`;
 }
 
