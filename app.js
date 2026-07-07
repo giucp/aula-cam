@@ -846,7 +846,11 @@
   }
   // registra que el niño hizo una actividad; actualiza PROGRESO al instante + guarda (fire-and-forget)
   function registrarActividad(meta, modo, extra){
-    if(origen==="cumbre") return;   // el progreso de Cumbre no se mezcla con el del aula (Fase 1)
+    if(origen==="cumbre"){          // Cumbre no se mezcla con el progreso del aula, pero SÍ guarda la nota del quiz (local)
+      if(modo==="quiz" && extra && Number.isInteger(extra.total) && extra.total>0 && Number.isInteger(extra.aciertos))
+        guardarNotaCumbre(meta, extra.aciertos, extra.total);
+      return;
+    }
     if(!SESION || SESION.id==null) return;
     const mat=(meta&&meta.materia)||null, tema=(meta&&meta.tema)||null;
     if(!tema) return;
@@ -861,6 +865,16 @@
     if(modo==="quiz" && extra){ body.aciertos=extra.aciertos; body.total=extra.total; }
     try{ fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}); }catch(_){}
   }
+  // Nota del "Demuestra" (quiz) de Cumbre: se guarda LOCAL por niño (no usa Supabase; es
+  // personal y por dispositivo) y se muestra la MEJOR junto a cada tema en el acordeón.
+  function notaKey(mat,tema){ return "cumbreNota:"+((SESION&&SESION.id!=null)?SESION.id:"x")+":"+norm(mat||"")+":"+norm(tema||""); }
+  function guardarNotaCumbre(meta,aciertos,total){
+    const mat=(meta&&meta.materia)||"", tema=(meta&&meta.tema)||""; if(!tema) return;
+    const frac=aciertos/total, k=notaKey(mat,tema), prev=store.get(k);
+    if(prev==null || frac>prev) store.set(k, frac);   // guarda la MEJOR (si repite y sube, se actualiza)
+  }
+  function notaCumbre(mat,tema){ const v=store.get(notaKey(mat,tema)); return (typeof v==="number")?v:null; }
+
   // marca ✓ (hecho) / ⭐ (dominado ≥80%) en los chips del panel abierto
   function marcarChips(){
     const mat=(materiaSel&&materiaSel.nombre)||"";
@@ -938,6 +952,7 @@
   $("#btnBackCumbre").onclick = ()=>{ pintarMaterias(); verMaterias(); };
   let CUMBRE_MATERIAS = [];     // materias del track (para el render y los clicks)
   let cumbreModosTema = [];     // modos disponibles del tema abierto en Cumbre
+  let CUMBRE_OPEN_MI = null;    // índice de la materia abierta (para reabrirla al volver y ver la nota)
   // Cumbre es SOLO curado: los botones NO dicen "crear/inventar" (eso es IA), sino "leer/empezar".
   const CUMBRE_VERBO = { resumen:"📖 Leer el resumen", retos:"🎯 Empezar a practicar", quiz:"🎮 Empezar el quiz", examen:"📋 Empezar el examen" };
   const CUMBRE_CARGA = { resumen:"Abriendo tu resumen", retos:"Abriendo tu práctica", quiz:"Abriendo tu quiz", examen:"Abriendo tu examen" };
@@ -978,7 +993,7 @@
   }
   // materias del track de Cumbre con sus dominios/temas. Curados = practicables (📗);
   // sin curar = "Próximamente" (Gemini nunca los genera). Índices para evitar comillas en atributos.
-  function renderCumbreMaterias(materias){
+  function renderCumbreMaterias(materias, openMi){
     const cont = $("#cumbreMaterias"); cont.innerHTML = "";
     if(!materias.length){ cont.innerHTML = `<div class="empty">Tus materias de Cumbre están en camino. ¡Pronto! ✨</div>`; return; }
     materias.forEach((m, mi)=>{
@@ -993,7 +1008,11 @@
         const temas = dom.temas||[]; if(!temas.length) return;
         html += `<div class="cDom">${escapeHtml(dom.dominio||"")}</div>`;
         temas.forEach((t, ti)=>{
-          if(t.curado) html += `<button class="cTema ok" data-mi="${mi}" data-di="${di}" data-ti="${ti}"><span class="cBadge">📗</span><span class="cNom">${escapeHtml(t.tema)}</span><span class="cGo">Practicar ›</span></button>`;
+          if(t.curado){
+            const nf = notaCumbre(m.materia, t.tema);
+            const notaHtml = (nf!=null) ? `<span class="cNota ${colorNota(Math.round(nf*20))}">${Math.round(nf*20)}/20</span>` : "";
+            html += `<button class="cTema ok" data-mi="${mi}" data-di="${di}" data-ti="${ti}"><span class="cBadge">📗</span><span class="cNom">${escapeHtml(t.tema)}</span><span class="cTemaR">${notaHtml}<span class="cGo">Practicar ›</span></span></button>`;
+          }
           else html += `<div class="cTema no"><span class="cNom">${escapeHtml(t.tema)}</span><span class="cSoon">Próximamente</span></div>`;
         });
       });
@@ -1003,12 +1022,15 @@
         btn.onclick = ()=>{
           const mm = CUMBRE_MATERIAS[+btn.dataset.mi]; if(!mm) return;
           const tt = ((mm.dominios[+btn.dataset.di]||{}).temas||[])[+btn.dataset.ti]; if(!tt) return;
+          CUMBRE_OPEN_MI = +btn.dataset.mi;
           abrirTemaCumbre(mm.materia, mm.grado, tt.tema, tt.modos||[]);
         };
       });
       card.appendChild(head); card.appendChild(body);
       cont.appendChild(card);
     });
+    // reabrir la materia en la que veníamos (al volver de un tema) para ver la nota recién sacada
+    if(openMi!=null){ const c=cont.querySelectorAll(".cMat")[openMi]; if(c){ c.classList.add("open"); const h=c.querySelector(".cMatHead"); if(h) h.setAttribute("aria-expanded","true"); c.scrollIntoView({behavior:"smooth",block:"nearest"}); } }
   }
   // abrir un tema curado de Cumbre para practicar (reusa el panel de tema, en modo "cumbre")
   function abrirTemaCumbre(mat, grado, tema, modos){
@@ -1065,6 +1087,7 @@
     if(origen==="cumbre"){                 // del tema de Cumbre → volver a la lista de materias de Cumbre
       const pt=$("#paneTemas"); pt.classList.remove("cumbre"); pt.classList.add("hidden");
       temaSel=null; $("#results").innerHTML="";
+      renderCumbreMaterias(CUMBRE_MATERIAS, CUMBRE_OPEN_MI);   // repinta para mostrar la nota recién sacada, reabriendo la materia
       $("#paneCumbre").classList.remove("hidden");
       window.scrollTo({top:0,behavior:"smooth"});
       return;
@@ -1663,6 +1686,7 @@
     b.textContent=txt; b.onclick=fn; return b;
   }
   function renderOtros(res){
+    if(origen==="cumbre") return;   // Cumbre es SOLO curado: nada de "otra de la guía" ni "con IA"
     const wrap=document.createElement("div"); wrap.className="otrosWrap";
     if(ultimoCurado){
       // lo mostrado vino de nuestra guía: "otra de la guía" (sin repetir) o pasar a IA

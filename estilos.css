@@ -130,12 +130,19 @@
   .cTema.ok .cBadge{font-size:1.05rem;flex:none}
   .cTema.ok .cNom{flex:1;font-weight:800;font-size:.95rem;color:#1B6B47;min-width:0}
   .cTema.ok .cGo{font-weight:700;font-size:.85rem;color:#2FBF71;white-space:nowrap}
+  /* nota del "Demuestra" junto a cada tema (arriba de "Practicar ›") */
+  .cTema.ok .cTemaR{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex:none}
+  .cNota{font-family:"Fredoka";font-weight:600;font-size:.74rem;padding:1px 8px;border-radius:20px;line-height:1.5;white-space:nowrap}
+  .cNota.buena{background:#E7F7EF;color:var(--ok)}
+  .cNota.media{background:#FFF6E0;color:#B07D00}
+  .cNota.floja{background:#FDEDF1;color:var(--bad)}
   .cTema.no{background:#FBF7F0}
   .cTema.no .cNom{flex:1;font-weight:600;font-size:.93rem;color:#9C8A72;min-width:0}
   .cTema.no .cSoon{font-size:.72rem;font-weight:700;color:#B79A6F;background:#F0E4D0;padding:3px 9px;border-radius:20px;white-space:nowrap}
   /* modo Cumbre en el panel de tema: se oculta lo que no aplica (Cumbre es solo curado) */
   #paneTemas.cumbre #pasoTema,
   #paneTemas.cumbre #pasoFotos,
+  #paneTemas.cumbre #pasoCantidad,
   #paneTemas.cumbre #btnGuia,
   #paneTemas.cumbre #accInfo,
   #paneTemas.cumbre .n{display:none}

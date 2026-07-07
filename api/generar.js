@@ -404,6 +404,24 @@ function servirCurado(modo, curado, n, vistos) {
   return { items: muestra, wrap: modo === "retos" ? "ejercicios" : "preguntas", quedan: frescos.length - elegidos.length };
 }
 
+// Cumbre: sirve el banco curado COMPLETO (no recorta por "cantidad" ni por "vistos").
+//  - Practica (retos) → todos los ejercicios que curamos.
+//  - Demuestra (quiz) / examen → todas las preguntas curadas (esa es la nota /20).
+// El orden curado se respeta; en quiz se barajan las OPCIONES de cada pregunta.
+function servirCuradoTodo(modo, curado) {
+  const cont = curado && curado.contenido;
+  if (modo === "resumen") {
+    return cont && typeof cont === "object" && !Array.isArray(cont) ? { doc: cont } : null;
+  }
+  const items = cont && Array.isArray(cont.items) ? cont.items : [];
+  if (!items.length) return null;
+  const muestra = items.map((it) => {
+    const base = modo === "quiz" ? barajarOpciones(it) : it;
+    return { ...base, _sig: sigItem(modo, it) };
+  });
+  return { items: muestra, wrap: modo === "retos" ? "ejercicios" : "preguntas", quedan: 0 };
+}
+
 // Una o varias API keys de Gemini. Devuelve { gratis, pagas } (arreglos, sin duplicar).
 // ESTRATEGIA DE COSTO: primero se agota lo GRATIS (cada key gratis tiene su cupo de
 // ~20/min por modelo) y la(s) key(s) de PAGO quedan de RESPALDO al final — solo pagan
@@ -566,7 +584,7 @@ export default async function handler(req, res) {
       const comun = { tema, materia: materia || null, modo, programa: "cumbre",
         basadoEnMaterial: true, fuentes: (curado && Array.isArray(curado.fuentes)) ? curado.fuentes : [] };
       if (!curado) return res.status(200).json({ ...comun, curado: false, sinBanco: true });
-      const s = servirCurado(modo, curado, n, vistos);
+      const s = servirCuradoTodo(modo, curado); // Cumbre: TODO el banco (sin recortar por cantidad ni vistos)
       if (s && s.doc) return res.status(200).json({ ...s.doc, ...comun, curado: true });
       if (s && s.items) return res.status(200).json({ [s.wrap]: s.items, ...comun, curado: true, agotado: s.quedan <= 0 });
       return res.status(200).json({ ...comun, curado: true, agotado: true, sinItems: true });
