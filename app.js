@@ -1213,40 +1213,6 @@
   function checkReady(){ pintarAcciones(); }
 
   // ───────── caché local (en el teléfono) ─────────
-  // Guarda lo ya generado en este aparato para no repetir llamadas (ni a la IA
-  // ni a Supabase) cuando la alumna vuelve a un modo/tema que ya vio. Se salta
-  // con "Generar otros" y con fotos (resultados personales). Clave igual a la del
-  // servidor (el resumen ignora "cantidad").
-  const CACHE_LOCAL_KEY = "gen_cache_v3";  // v3: purga ASCII/Markdown + acertijos de lógica mal armados
-  const CACHE_LOCAL_MAX = 60;
-  // firma barata del contenido del tema (misma idea que el backend): si la maestra
-  // actualiza el material, cambia la firma → clave nueva → se regenera solo.
-  function firmaLocal(contexto){
-    const acts = contexto && Array.isArray(contexto.actividades) ? contexto.actividades : [];
-    const base = acts.map(a=>`${a.archivoUrl||a.nombre||""}:${a.modificado||""}`).join("~");
-    const datos = (contexto && contexto.datosClave) || "";   // tema libre: distingue por datos clave
-    return datos ? `d:${datos}~${base}` : base;               // vacío para temas del aula → clave igual que antes
-  }
-  function claveLocal(tema, firma){
-    const cant = modoSel === "resumen" ? "" : cantidad;
-    return [ (materiaSel&&materiaSel.nombre)||"General", tema, modoSel,
-             gradoActivo(), cant, firma||"" ].join("|").toLowerCase();
-  }
-  function cacheLocalGet(k){
-    const all = store.get(CACHE_LOCAL_KEY) || {};
-    return (all[k] && all[k].d) ? all[k].d : null;
-  }
-  function cacheLocalSet(k, d){
-    const all = store.get(CACHE_LOCAL_KEY) || {};
-    all[k] = { d, t: Date.now() };
-    const keys = Object.keys(all);
-    if(keys.length > CACHE_LOCAL_MAX){                 // conserva los más nuevos
-      keys.sort((a,b)=>(all[a].t||0)-(all[b].t||0));
-      keys.slice(0, keys.length - CACHE_LOCAL_MAX).forEach(old=>delete all[old]);
-    }
-    store.set(CACHE_LOCAL_KEY, all);
-  }
-
   // ───────── contenido curado (guía revisada por nosotros) ─────────
   // normaliza IGUAL que el servidor (herramientas/normcurado.mjs) para casar temas.
   function normCurado(s){
@@ -1786,16 +1752,12 @@
   function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 
   // ───────── CUARTO DE PRUEBAS (admin, oculto en #lab) ─────────
-  // Vista privada para revisar el contenido de Cumbre renderizado EXACTAMENTE como lo
-  // verá la alumna, antes de publicarlo. Solo lectura: MODO_LAB apaga toda escritura y
-  // no hay botones de generar. La clave se valida server-side (api/admin-check) y vive
+  // Panel de administración privado (oculto en la ruta #lab): aprobar el acceso de cada
+  // alumno y ver/ajustar su consumo de IA. La clave se valida server-side (api/lab) y vive
   // solo en memoria (se re-pide al recargar; no se guarda en el aparato).
-  const API_LAB = "https://aula-cam.vercel.app/api/lab";   // endpoint único (accion: check/materias/tema/usuarios/usuario_set)
+  const API_LAB = "https://aula-cam.vercel.app/api/lab";   // endpoint único (accion: check/usuarios/usuario_set)
   let LAB_CLAVE = "";
-  let LAB_TAB = "contenido";
   let LAB_USUARIOS = [];
-  const MODOS_LAB = [["resumen","📝 Resumen"],["retos","🎯 Práctica"],["quiz","🎮 Quiz"],["examen","📋 Examen"]];
-  const LETRA_MODO = { resumen:"R", retos:"P", quiz:"Q", examen:"E" };
 
   function entrarLab(){
     MODO_LAB = true;
@@ -1813,85 +1775,13 @@
       if(!r.ok){ $("#labErr").classList.remove("hidden"); return; }
       LAB_CLAVE=clave;
       $("#labLogin").classList.add("hidden"); $("#labApp").classList.remove("hidden");
-      labTab("contenido");
+      labCargarUsuarios();
     }catch(_){ $("#labErr").classList.remove("hidden"); }
     finally{ btn.disabled=false; }
   }
-  async function labCargarMaterias(){
-    const body=$("#labBody"); labBack(true); body.innerHTML=`<p class="labLoad">Cargando…</p>`;
-    try{
-      const r=await fetch(API_LAB,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"materias",clave:LAB_CLAVE})});
-      if(r.status===401){ LAB_CLAVE=""; entrarLab(); return; }
-      const d=await r.json(); labNivelMaterias(d.materias||[]);
-    }catch(_){ body.innerHTML=errBox("No se pudo cargar el cuarto. Reintenta."); }
-  }
-  function labBack(hide, fn){ const b=$("#labBack"); b.classList.toggle("hidden", !!hide); if(fn) b.onclick=fn; }
-  function labNivelMaterias(materias){
-    labBack(true); const body=$("#labBody"); body.innerHTML="";
-    if(!materias.length){ body.innerHTML=`<div class="empty">Aún no hay materias de Cumbre.</div>`; return; }
-    materias.forEach(m=>{
-      const b=document.createElement("button"); b.className="labMat";
-      b.innerHTML=`<span class="labMatNom">🏔️ ${escapeHtml(m.materia)}</span><span class="labMatGr">${escapeHtml(m.grado)}</span><span class="labProg">${m.curados} de ${m.total} temas curados</span>`;
-      b.onclick=()=>labNivelMapa(m, materias);
-      body.appendChild(b);
-    });
-  }
-  function labNivelMapa(m, materias){
-    labBack(false, ()=>labNivelMaterias(materias));
-    const body=$("#labBody"); body.innerHTML=`<p class="labCrumb">🏔️ ${escapeHtml(m.materia)} · ${escapeHtml(m.grado)}</p>`;
-    const varios=(m.dominios||[]).length>1;
-    (m.dominios||[]).forEach((dom,idx)=>{
-      const titulo = dom.intl ? `${dom.dominio}  ·  ${dom.intl}` : dom.dominio;
-      const chips = crearLapso(body, titulo, (dom.temas||[]).length, idx===0);
-      chips.classList.add("labTemas");
-      (dom.temas||[]).forEach(t=>{
-        const fila=document.createElement(t.curado?"button":"div");
-        fila.className="labTema"+(t.curado?" curado":" pend");
-        const modos=(t.modos||[]).map(k=>LETRA_MODO[k]||"?").join(" ");
-        fila.innerHTML=`<span class="labBadge">${t.curado?"✅":"⬜"}</span><span class="labTemaNom">${escapeHtml(t.tema)}</span>${t.curado?`<span class="labModos">${modos}</span>`:`<span class="labModos pend">pendiente</span>`}`;
-        if(t.curado) fila.onclick=()=>labNivelTema(m, t, materias);
-        chips.appendChild(fila);
-      });
-    });
-    if(!varios){} // (un solo dominio igual se ve como acordeón; está bien)
-  }
-  async function labNivelTema(m, t, materias){
-    labBack(false, ()=>labNivelMapa(m, materias));
-    const body=$("#labBody");
-    body.innerHTML=`<p class="labCrumb">🏔️ ${escapeHtml(m.materia)} — ${escapeHtml(t.tema)}</p><p class="labLoad">Cargando…</p>`;
-    try{
-      const r=await fetch(API_LAB,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"tema", clave:LAB_CLAVE, materia:m.materia, tema:t.tema, grado:m.grado})});
-      if(r.status===401){ LAB_CLAVE=""; entrarLab(); return; }
-      const d=await r.json(); const modos=d.modos||{};
-      body.innerHTML=`<p class="labCrumb">🏔️ ${escapeHtml(m.materia)} — ${escapeHtml(t.tema)}</p><p class="labNota">Así lo verá la alumna (vista de solo lectura).</p>`;
-      const disp=MODOS_LAB.filter(([k])=>modos[k]);
-      if(!disp.length){ body.innerHTML+=`<div class="empty">Aún no curado.</div>`; return; }
-      const sel=document.createElement("div"); sel.className="labModoSel";
-      const out=document.createElement("div"); out.className="results";
-      const meta={materia:m.materia, tema:t.tema, grado:m.grado};
-      const pintar=(k)=>{
-        out.innerHTML="";
-        [...sel.children].forEach(x=>x.classList.toggle("on", x.dataset.k===k));
-        if(k==="resumen") renderResumen(out, modos.resumen||{});
-        else if(k==="retos") renderRetos(out, (modos.retos&&modos.retos.items)||[], meta);
-        else if(k==="quiz") renderQuiz(out, (modos.quiz&&modos.quiz.items)||[], meta);
-        else if(k==="examen") renderExamen(out, (modos.examen&&modos.examen.items)||[], meta);
-        out.scrollIntoView({behavior:"smooth",block:"nearest"});
-      };
-      disp.forEach(([k,lbl])=>{ const b=document.createElement("button"); b.className="labModoBtn"; b.dataset.k=k; b.textContent=lbl; b.onclick=()=>pintar(k); sel.appendChild(b); });
-      body.appendChild(sel); body.appendChild(out);
-      pintar(disp[0][0]);
-    }catch(_){ body.innerHTML=errBox("No se pudo cargar el tema. Reintenta."); }
-  }
-  // ───────── pestaña USUARIOS del cuarto (aprobar acceso + consumo de IA) ─────────
-  function labTab(tab){
-    LAB_TAB=tab;
-    $("#labTabContenido").classList.toggle("on", tab==="contenido");
-    $("#labTabUsuarios").classList.toggle("on", tab==="usuarios");
-    if(tab==="usuarios") labCargarUsuarios(); else labCargarMaterias();
-  }
+  // ───────── panel de USUARIOS (aprobar acceso + consumo de IA) ─────────
   async function labCargarUsuarios(){
-    labBack(true); const body=$("#labBody"); body.innerHTML=`<p class="labLoad">Cargando…</p>`;
+    const body=$("#labBody"); body.innerHTML=`<p class="labLoad">Cargando…</p>`;
     try{
       const r=await fetch(API_LAB,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"usuarios",clave:LAB_CLAVE})});
       if(r.status===401){ LAB_CLAVE=""; entrarLab(); return; }
@@ -1920,7 +1810,8 @@
     const top=document.createElement("div"); top.className="labUserTop";
     top.innerHTML=`<span class="labUserAv">${escapeHtml(ini)}</span>`
       +`<span class="labUserInfo"><span class="labUserNom">${escapeHtml(u.nombre||"(sin nombre)")}</span>`
-      +`<span class="labUserMeta">${escapeHtml(u.grado||"—")} · ${u.accesos} acceso(s) · ${labFecha(u.ultimo_acceso)} · id ${u.id}</span></span>`;
+      +`<span class="labUserMeta">${u.accesos} acceso(s) · ${labFecha(u.ultimo_acceso)} · id ${u.id}</span></span>`
+      +`<span class="labUserGrado${u.grado?"":" sin"}">${escapeHtml(u.grado||"grado ?")}</span>`;
     card.appendChild(top);
 
     // acceso
@@ -1972,8 +1863,6 @@
     }catch(_){ card.classList.remove("saving"); alert("Error de red. Reintenta."); }
   }
 
-  $("#labTabContenido").onclick=()=>labTab("contenido");
-  $("#labTabUsuarios").onclick=()=>labTab("usuarios");
   $("#labEntrar").onclick=labLogin;
   $("#labClave").addEventListener("keydown",(e)=>{ if(e.key==="Enter") labLogin(); });
   window.addEventListener("hashchange",()=>{ if(location.hash==="#lab" && !MODO_LAB) entrarLab(); });

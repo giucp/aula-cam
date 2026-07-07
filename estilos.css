@@ -513,39 +513,19 @@
   .labErr{color:var(--bad);font-weight:700;margin:12px 0 0}
   .labTop{display:flex;align-items:center;gap:10px;padding:6px 2px 14px;position:sticky;top:0;background:linear-gradient(180deg,#FBF7FF,rgba(251,247,255,.85));backdrop-filter:blur(4px);z-index:5}
   .labTitle{font-family:"Fredoka";font-weight:600;color:var(--grape);font-size:1.05rem}
-  .labCrumb{font-family:"Fredoka";font-weight:600;color:var(--ink);font-size:1.05rem;margin:2px 0 4px}
   .labNota{color:var(--muted);font-weight:600;font-size:.85rem;margin:0 0 12px}
   .labLoad{color:var(--muted);font-weight:700;text-align:center;padding:24px}
-  .labMat{display:block;width:100%;text-align:left;background:var(--surface);border:2px solid #E7DBF6;border-left:6px solid var(--grape);border-radius:18px;padding:16px 18px;margin-bottom:12px;cursor:pointer;box-shadow:var(--shadow-xs);transition:transform .12s}
-  .labMat:active{transform:scale(.99)}
-  .labMatNom{display:block;font-family:"Fredoka";font-weight:600;font-size:1.15rem;color:var(--ink)}
-  .labMatGr{display:block;color:var(--muted);font-weight:700;font-size:.85rem;margin:2px 0 6px}
-  .labProg{display:inline-block;background:#F1EAFB;color:var(--grape);font-weight:700;font-size:.82rem;padding:3px 10px;border-radius:20px}
-  .chips.labTemas{flex-direction:column;gap:6px}
-  .labTema{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:11px 13px;font-family:"Nunito",sans-serif}
-  .labTema.curado{cursor:pointer;border-color:#BEE9E1}
-  .labTema.curado:active{transform:scale(.99)}
-  .labTema.pend{opacity:.6}
-  .labBadge{font-size:1.05rem;flex:none}
-  .labTemaNom{flex:1;min-width:0;font-weight:700;color:var(--ink);font-size:.95rem;line-height:1.3}
-  .labModos{flex:none;font-weight:800;letter-spacing:2px;color:var(--teal-dark);font-size:.85rem}
-  .labModos.pend{letter-spacing:0;color:var(--muted);font-weight:700;font-size:.78rem}
-  .labModoSel{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 14px}
-  .labModoBtn{border:2px solid var(--line);background:#fff;cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:.95rem;color:var(--ink);padding:9px 16px;border-radius:12px}
-  .labModoBtn.on{border-color:var(--grape);background:#F1EAFB;color:var(--grape)}
-  /* Pestañas del cuarto (Contenido / Usuarios) */
-  .labTabs{display:flex;gap:8px;margin:0 0 16px}
-  .labTab{flex:1;border:2px solid var(--line);background:#fff;cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:.95rem;color:var(--muted);padding:9px 10px;border-radius:12px}
-  .labTab.on{border-color:var(--grape);background:#F1EAFB;color:var(--grape)}
   /* Tarjetas de usuario (aprobar acceso + consumo de IA) */
   .labUser{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:14px 15px;margin-bottom:12px;box-shadow:var(--shadow-xs)}
   .labUser.pend{border-left:5px solid #F2A900;background:#FFFBF2}
   .labUser.saving{opacity:.55;pointer-events:none}
   .labUserTop{display:flex;align-items:center;gap:11px;margin-bottom:8px}
   .labUserAv{flex:none;width:38px;height:38px;border-radius:50%;background:var(--grape);color:#fff;font-family:"Fredoka";font-weight:600;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
-  .labUserInfo{display:flex;flex-direction:column;min-width:0}
+  .labUserInfo{display:flex;flex-direction:column;min-width:0;flex:1}
   .labUserNom{font-family:"Fredoka";font-weight:600;font-size:1.05rem;color:var(--ink)}
   .labUserMeta{color:var(--muted);font-weight:700;font-size:.78rem}
+  .labUserGrado{flex:none;align-self:flex-start;background:#F1EAFB;color:var(--grape);font-family:"Fredoka";font-weight:600;font-size:.92rem;padding:5px 12px;border-radius:20px;white-space:nowrap}
+  .labUserGrado.sin{background:#FFF6E6;color:#B5790A}
   .labUserRow{display:flex;align-items:center;gap:10px;padding:5px 0;flex-wrap:wrap}
   .labUserK{flex:none;width:60px;color:var(--muted);font-weight:800;font-size:.82rem}
   .labToggle{border:2px solid var(--line);background:#fff;cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:.9rem;padding:7px 14px;border-radius:20px;color:var(--ink)}
