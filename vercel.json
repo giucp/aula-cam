@@ -1,7 +1,6 @@
 {
   "functions": {
     "api/generar.js": { "maxDuration": 60 },
-    "api/capturar.js": { "maxDuration": 60 },
     "api/moodle.js": { "maxDuration": 60 }
   }
 }
