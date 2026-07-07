@@ -80,6 +80,18 @@
   #cumbreWrap{margin-top:-6px}
   .destacada.cumbre{background:linear-gradient(120deg,#3B2B4A,#5A3AAF 55%,#7C4DFF);box-shadow:0 16px 30px -12px rgba(59,43,74,.75)}
 
+  /* tarjeta Sinapsis (recreo mental): gradiente oscuro tipo "espacio", distinto de lo académico */
+  #juegoWrap{margin:14px 0 2px}
+  .destacada.juego{background:linear-gradient(120deg,#0E1230,#1B1E52 52%,#2A2E7A);box-shadow:0 16px 30px -12px rgba(20,22,60,.7)}
+  /* juego a pantalla completa: overlay que cubre Chispa; el iframe se inyecta al abrir */
+  #juegoOverlay{position:fixed;inset:0;z-index:9999;background:#0A0A1E;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top)}
+  #juegoOverlay.hidden{display:none}
+  .juegoCerrar{flex:0 0 auto;align-self:flex-end;margin:8px 10px 6px;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:8px 14px;font-family:"Fredoka";font-weight:600;font-size:.9rem;cursor:pointer}
+  .juegoCerrar:active{transform:scale(.97)}
+  #juegoFrameWrap{flex:1;min-height:0}
+  #juegoFrameWrap iframe{width:100%;height:100%;border:0;display:block}
+  body.juegoAbierto{overflow:hidden}
+
   /* presentación del espacio Cumbre (#paneCumbre) */
   .cumHero{text-align:center;background:linear-gradient(160deg,#3B2B4A,#5A3AAF);color:#fff;border-radius:24px;padding:26px 20px 22px;margin-bottom:18px;box-shadow:0 18px 34px -14px rgba(59,43,74,.7)}
   .cumMonte{font-size:2.7rem;line-height:1}

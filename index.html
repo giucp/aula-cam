@@ -101,6 +101,16 @@
       <!-- un día como hoy (efeméride diaria: dato curioso para leer al entrar) -->
       <div id="efemeride" class="hidden"></div>
 
+      <!-- Sinapsis: recreo mental con ranking privado del cole (juego embebido) -->
+      <div id="juegoWrap">
+        <p class="cumEyebrow">🎮 Recreo mental</p>
+        <button class="destacada juego" id="btnJuego">
+          <span class="dIcon">🧠</span>
+          <span class="dTxt"><b>Sinapsis</b><small>Entrena tu mente y compite con tu cole</small></span>
+          <span class="dArrow">›</span>
+        </button>
+      </div>
+
       <!-- qué toca mañana (o el lunes) -->
       <div class="widget">
         <div class="wHead"><span class="wTit" id="horarioTit">📅 Mañana toca</span><button class="wLink" id="btnEditarHorario">Editar</button></div>
@@ -306,6 +316,12 @@
       <div id="labBody"></div>
     </div>
   </section>
+
+  <!-- Sinapsis a pantalla completa (el iframe se crea SOLO al abrir → no pesa hasta que el niño juega) -->
+  <div id="juegoOverlay" class="hidden">
+    <button id="btnCerrarJuego" class="juegoCerrar">✕ Volver a Chispa</button>
+    <div id="juegoFrameWrap"></div>
+  </div>
 
 </div>
 

@@ -708,6 +708,28 @@
   $("#btnEntrarLanding").onclick = ()=>{ $("#loginMsg").innerHTML=""; verLogin(); };
   $("#btnVolverLanding").onclick = ()=>{ $("#user").value=""; $("#pass").value=""; verLanding(); };
 
+  // ── Sinapsis (juego): liga privada del cole. Se abre embebido, con el nombre e id
+  //    del niño; el iframe se crea SOLO al abrir (no pesa hasta que juega) y se descarta al cerrar.
+  const JUEGO_URL = "https://sinapsis-mocha.vercel.app";
+  function nombreJuego(){
+    const p = ((SESION&&SESION.nombre)||"").trim().split(/\s+/).filter(Boolean);
+    return p[0] ? (p[0] + (p[1] ? " "+p[1].charAt(0).toUpperCase()+"." : "")) : "jugador";
+  }
+  function abrirJuego(){
+    if(!SESION) return;
+    const url = JUEGO_URL + "/?grupo=chispa&nombre=" + encodeURIComponent(nombreJuego()) + "&uid=" + encodeURIComponent(String(SESION.id));
+    $("#juegoFrameWrap").innerHTML = '<iframe id="juegoFrame" title="Sinapsis" src="'+url+'" allow="autoplay; fullscreen"></iframe>';
+    $("#juegoOverlay").classList.remove("hidden");
+    document.body.classList.add("juegoAbierto");
+  }
+  function cerrarJuego(){
+    $("#juegoOverlay").classList.add("hidden");
+    $("#juegoFrameWrap").innerHTML = "";   // descarga el juego: libera memoria y detiene sonido/timers
+    document.body.classList.remove("juegoAbierto");
+  }
+  $("#btnJuego").onclick = abrirJuego;
+  $("#btnCerrarJuego").onclick = cerrarJuego;
+
   $("#btnSalir").onclick = ()=>{
     store.del("sesion"); SESION=null; origen="actual";
     materiaSel=null; temaSel=null; $("#results").innerHTML="";

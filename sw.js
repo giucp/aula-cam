@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v37"; // v37: #lab = panel de Usuarios (grado visible); se quito la vista de contenido Cumbre del cuarto + limpieza de codigo muerto
+const VERSION = "aulacam-v38"; // v38: tarjeta Sinapsis (juego embebido, liga privada del cole) + guard de origen en navegacion
 const SHELL = [
   "/",
   "/index.html",
@@ -39,7 +39,8 @@ self.addEventListener("fetch", (e) => {
   if (url.pathname.startsWith("/api/")) return;      // API: siempre a la red
 
   // HTML (navegación): red primero (para recibir cambios), cache de respaldo offline.
-  if (req.mode === "navigate") {
+  // Solo el MISMO origen: nunca tocar el iframe cross-origin del juego (no cachearlo como index).
+  if (req.mode === "navigate" && url.origin === self.location.origin) {
     e.respondWith(
       fetch(req)
         .then((r) => {
