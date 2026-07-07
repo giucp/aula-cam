@@ -151,6 +151,13 @@ const PROMPT_VER = { resumen: "3", retos: "4", examen: "5", quiz: "6" };
 function esNumerica(txt) {
   return /matemát|matemat|lógic|logic|olimpiad/i.test(txt || "");
 }
+// Temas de razonamiento VERBAL / con letras (analogías, orden de la información, sinónimos/
+// antónimos): aunque la MATERIA sea "Lógica Matemática", NO son aritmética → no deben llevar la
+// instrucción de "números enteros" ni el thinking pesado. Sin esto, un quiz de analogías de
+// letras tardaba >60s y Vercel lo mataba (FUNCTION_INVOCATION_TIMEOUT).
+function esVerbal(txt) {
+  return /analog[ií]|orden de la inf|sin[oó]nim|ant[oó]nim|series de (letras|palabras)/i.test(txt || "");
+}
 
 function armarPrompt({ modo, material, tienePdf, tieneFotos, fotosExamen, grado, tema, materia, n, numerica, recientes }) {
   const ctx = material
@@ -674,8 +681,9 @@ export default async function handler(req, res) {
       pdfs = [];
     }
 
-    // ¿el tema es numérico? (por materia o por el título del tema)
-    const numerica = esNumerica(materia) || esNumerica(tema);
+    // ¿el tema es numérico? (por materia o por el título del tema) — pero NO si es de
+    // razonamiento verbal (analogías, orden de la información…), aunque la materia sea Lógica.
+    const numerica = (esNumerica(materia) || esNumerica(tema)) && !esVerbal(tema);
     // examenFoto: las fotos son de un examen corregido (modo refuerzo) → la IA ataca lo que falló
     const fotosExamen = tieneFotos && !!(req.body && req.body.examenFoto);
     const prompt = armarPrompt({ modo, material, tienePdf: pdfs.length > 0, tieneFotos, fotosExamen, grado, tema, materia, n, numerica, recientes });
@@ -699,7 +707,9 @@ export default async function handler(req, res) {
     };
     // Pensar antes de responder mejora MUCHO la matemática (retos/quiz y resumen
     // numérico). Razona aparte y los cálculos salen limpios y correctos.
-    if (necesitaMate) genCfg.thinkingConfig = { thinkingBudget: 4096 };
+    // Numérico: thinking amplio (los cálculos lo necesitan). No numérico (teoría/verbal):
+    // thinking liviano → mucho más rápido, para no pasar del límite de 60s de Vercel.
+    if (necesitaMate) genCfg.thinkingConfig = { thinkingBudget: numerica ? 4096 : 1024 };
     const payload = { contents: [{ parts }], generationConfig: genCfg };
     // REGLA DE MODELOS (2026-07-04): flash-lite NUNCA toca contenido numérico/lógico —
     // por más blindado que esté el prompt, se equivoca. Prioridades:
