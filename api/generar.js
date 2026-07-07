@@ -775,13 +775,18 @@ export default async function handler(req, res) {
     }
 
     let parsed;
+    // Gemini puede partir la respuesta en varios "parts": hay que CONCATENARLOS todos
+    // (antes se leía solo parts[0] → si el JSON venía partido, quedaba incompleto y no parseaba).
+    const partes = (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) || [];
+    const textoCrudo = (partes.map((p) => (p && p.text) || "").join("").trim()) || "{}";
     try {
-      const texto = data?.candidates?.[0]?.content?.parts?.[0]?.text || "{}";
-      const limpio = texto.replace(/```json|```/g, "").trim();
+      const limpio = textoCrudo.replace(/```json|```/g, "").trim();
       parsed = JSON.parse(limpio);
     } catch (e) {
       // Gemini devolvió algo que no es JSON: no cacheamos y pedimos reintentar.
-      return res.status(502).json({ error: "No pudimos armar la actividad. Intenta de nuevo.", code: 502 });
+      const fr = (data && data.candidates && data.candidates[0] && data.candidates[0].finishReason) || null;
+      return res.status(502).json({ error: "No pudimos armar la actividad. Intenta de nuevo.", code: 502,
+        diag: { finishReason: fr, partes: partes.length, len: textoCrudo.length, head: textoCrudo.slice(0, 220), tail: textoCrudo.slice(-220) } });
     }
     // BLINDAJE del quiz: alinea "correcta" con la respuesta que la propia explicación
     // declara (sello "Respuesta correcta: ..."), para que el índice marcado NUNCA
