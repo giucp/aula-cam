@@ -784,9 +784,7 @@ export default async function handler(req, res) {
       parsed = JSON.parse(limpio);
     } catch (e) {
       // Gemini devolvió algo que no es JSON: no cacheamos y pedimos reintentar.
-      const fr = (data && data.candidates && data.candidates[0] && data.candidates[0].finishReason) || null;
-      return res.status(502).json({ error: "No pudimos armar la actividad. Intenta de nuevo.", code: 502,
-        diag: { finishReason: fr, partes: partes.length, len: textoCrudo.length, head: textoCrudo.slice(0, 220), tail: textoCrudo.slice(-220) } });
+      return res.status(502).json({ error: "No pudimos armar la actividad. Intenta de nuevo.", code: 502 });
     }
     // BLINDAJE del quiz: alinea "correcta" con la respuesta que la propia explicación
     // declara (sello "Respuesta correcta: ..."), para que el índice marcado NUNCA
