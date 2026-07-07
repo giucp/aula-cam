@@ -4,6 +4,7 @@
     --shadow:0 18px 38px -16px rgba(90,40,70,.34);
     --shadow-sm:0 8px 20px -10px rgba(90,40,70,.30);
     --shadow-xs:0 3px 10px -4px rgba(90,40,70,.26);
+    --shadow-card:0 14px 30px -18px rgba(90,40,70,.4),0 2px 6px -3px rgba(90,40,70,.12);
     --radius:24px;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -121,7 +122,7 @@
   .cumGrado{display:inline-block;margin-top:12px;background:rgba(255,255,255,.2);color:#fff;font-family:"Nunito";font-weight:800;font-size:.9rem;padding:6px 16px;border-radius:20px}
   /* Cumbre: materias del track con sus temas (curado 📗 vs Próximamente) */
   #cumbreMaterias{margin-top:4px}
-  .cMat{background:var(--surface);border-radius:18px;padding:8px 14px;margin-bottom:10px;box-shadow:var(--shadow-xs)}
+  .cMat{background:var(--surface);border-radius:18px;padding:8px 14px;margin-bottom:11px;box-shadow:var(--shadow-card)}
   .cMatHead{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:none;background:transparent;cursor:pointer;padding:6px 0}
   .cMatHead .em{flex:none;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-size:1.2rem;background:#F1EAFB}
   .cMatNom{flex:1;font-family:"Nunito";font-weight:800;font-size:1.02rem;color:var(--ink);min-width:0}
@@ -180,7 +181,7 @@
 
   /* "Un día como hoy" (efeméride diaria en Inicio) */
   #efemeride{margin-bottom:22px}
-  .efeIn{display:flex;align-items:center;gap:14px;background:linear-gradient(120deg,#EAF7F5,#F3ECFF);border:1px solid var(--line);border-radius:20px;padding:14px 16px;box-shadow:var(--shadow-xs)}
+  .efeIn{display:flex;align-items:center;gap:14px;background:linear-gradient(120deg,#EAF7F5,#F3ECFF);border:1px solid var(--line);border-radius:20px;padding:14px 16px;box-shadow:var(--shadow-card)}
   .efeEmoji{font-size:2rem;flex:none;line-height:1}
   .efeTx{min-width:0}
   .efeTit{display:block;font-family:"Fredoka";font-weight:600;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--grape)}
@@ -229,7 +230,7 @@
 
   /* lapsos como acordeón (menú desplegable) + chips */
   .chips{display:flex;flex-wrap:wrap;gap:9px}
-  .lapso{border:1px solid var(--line);border-radius:14px;background:#fff;margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow-xs)}
+  .lapso{border:1px solid var(--line);border-radius:16px;background:#fff;margin-bottom:11px;overflow:hidden;box-shadow:var(--shadow-card)}
   .lapHead{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;background:#fff;border:none;
     padding:13px 15px;font-family:"Fredoka";font-weight:600;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--grape)}
   .lapHead:hover{background:#FBF7FB}
@@ -293,7 +294,7 @@
   .dots span:nth-child(2){background:var(--sun);animation-delay:.15s}
   .dots span:nth-child(3){background:var(--teal);animation-delay:.3s}
   @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-  .skel{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow-xs)}
+  .skel{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow-card)}
   .skel .bar{height:13px;border-radius:7px;margin:9px 0;
     background:linear-gradient(90deg,#F2E9EF 25%,#FBF4F8 37%,#F2E9EF 63%);background-size:400% 100%;animation:shimmer 1.4s ease infinite}
   .skel .bar.s{width:38%;height:10px}
@@ -329,7 +330,7 @@
   .accInfoBody .tagIA{display:block;color:#C85A2B;font-weight:700}
 
   /* card base (retos / examen) */
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow-sm);
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow-card);
     opacity:0;transform:translateY(14px) rotate(-.6deg);animation:deal .45s cubic-bezier(.2,.9,.3,1.2) forwards}
   @keyframes deal{to{opacity:1;transform:none}}
   .tag{display:inline-flex;align-items:center;gap:7px;font-family:"Fredoka";font-weight:600;font-size:.82rem;color:var(--mango);background:#FFEEE6;padding:5px 12px;border-radius:999px;margin-bottom:11px}
@@ -352,7 +353,7 @@
   .footer{text-align:center;color:var(--muted);font-weight:800;margin:26px 4px 0;font-size:.98rem}
 
   /* resumen */
-  .sumCard{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--shadow-sm)}
+  .sumCard{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--shadow-card)}
   .sumCard h2{font-family:"Fredoka";font-weight:700;font-size:1.3rem;margin:.2em 0 .5em;color:var(--ink)}
   .sumPts{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
   .sumPts li{position:relative;padding-left:30px;font-weight:700;line-height:1.5}
