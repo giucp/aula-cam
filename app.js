@@ -75,7 +75,7 @@
       SESION = {
         id: (d.usuario && d.usuario.id!=null) ? d.usuario.id : ("u_"+user.toLowerCase()),
         nombre:(d.usuario&&d.usuario.nombre)||user, token:d.token, materias:d.materias||[],
-        fetched: Date.now()
+        racha:(d.usuario&&d.usuario.racha)||0, fetched: Date.now()
       };
       store.set("sesion", SESION);
       $("#user").value=""; $("#pass").value="";
@@ -99,6 +99,12 @@
     $("#avatar").textContent = (primer[0]||"?").toUpperCase();
     $("#avatar").style.setProperty("--c", colorCuenta(SESION.nombre||primer));
     $("#saludo").innerHTML = `¡Hola, ${escapeHtml(primer)}! 👋`;
+    // racha de días seguidos (se muestra desde el 2º día, para que se sienta ganada)
+    const racha = (SESION && SESION.racha) || 0, rc = $("#rachaChip");
+    if(rc){
+      if(racha>=2){ rc.innerHTML = `🔥 <b>${racha}</b> <small>días</small>`; rc.classList.remove("hidden"); }
+      else { rc.classList.add("hidden"); rc.innerHTML=""; }
+    }
     const g = gradoDeSesion();
     $("#gradoBadge").innerHTML = g ? `🎓 ${escapeHtml(g)}` : "";
     $("#gradoBadge").classList.toggle("hidden", !g);
@@ -198,14 +204,12 @@
     if(!e || e.ilimitado || !e.limite){ box.classList.add("hidden"); box.innerHTML=""; return; }
     const pct=Math.max(0, Math.min(100, Math.round((e.restante/e.limite)*100)));
     const nivel = pct<=0 ? "vacio" : pct<=20 ? "bajo" : pct<=50 ? "medio" : "alto";
+    const estado = pct<=0 ? "agotada" : pct<=20 ? "poca" : pct<=50 ? "a mitad" : "con energía";
     const msg = pct<=0 ? "Se agotó por hoy 🌙 ¡Mañana se recarga! Mientras, tienes las guías 📗 y lo ya practicado."
       : pct<=20 ? "Te queda poca energía de IA por hoy" : "Energía de IA para practicar hoy";
-    const R=30, C=2*Math.PI*R, off=C*(1-pct/100);
-    box.innerHTML=`<div class="enIn en-${nivel}"><svg class="enRing" viewBox="0 0 72 72" width="64" height="64" aria-hidden="true">`+
-      `<circle class="enBg" cx="36" cy="36" r="${R}"></circle>`+
-      `<circle class="enFg" cx="36" cy="36" r="${R}" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"></circle>`+
-      `<text x="36" y="42" text-anchor="middle" class="enPct">${pct}%</text></svg>`+
-      `<div class="enTx"><span class="enTit">🔋 Tu energía de IA</span><p class="enMsg">${msg}</p></div></div>`;
+    box.innerHTML=`<div class="enIn en-${nivel}"><div class="enIco">⚡</div>`+
+      `<div class="enBody"><div class="enTop"><span class="enTit">Tu energía de IA</span><span class="enState">${estado}</span></div>`+
+      `<div class="enMeter"><i style="width:${pct}%"></i></div><p class="enMsg">${msg}</p></div></div>`;
     box.classList.remove("hidden");
   }
   function pintarEfemeride(){
@@ -700,7 +704,8 @@
       if(d.error) throw new Error(d.error);
       if(d.pendiente){ btn.textContent="Todavía no 😅 Prueba en un rato"; setTimeout(()=>{btn.textContent=txt;btn.disabled=false;},2600); return; }
       SESION = { id:(d.usuario&&d.usuario.id!=null)?d.usuario.id:("u_"+(nombrePendiente||"x").toLowerCase()),
-        nombre:(d.usuario&&d.usuario.nombre)||nombrePendiente, token:d.token, materias:d.materias||[], fetched:Date.now() };
+        nombre:(d.usuario&&d.usuario.nombre)||nombrePendiente, token:d.token, materias:d.materias||[],
+        racha:(d.usuario&&d.usuario.racha)||0, fetched:Date.now() };
       store.set("sesion", SESION); tokenPendiente=null; entrarHome();
     }catch(e){ btn.textContent="No se pudo, reintenta"; setTimeout(()=>{btn.textContent=txt;btn.disabled=false;},2600); }
   };
@@ -899,16 +904,31 @@
   }
   function repintarProgreso(){
     if($("#paneTemas") && !$("#paneTemas").classList.contains("hidden")){ pintarModos(); marcarChips(); pintarAcciones(); }
+    // refresca la barra de progreso de las tarjetas de materia (materias actuales)
+    if(origen==="actual" && $("#gridMaterias") && SESION && SESION.materias && SESION.materias.length) gridMaterias(SESION.materias);
   }
 
   // grilla de materias (sirve para las actuales y para las del próximo año)
+  // progreso REAL de una materia actual: temas practicados / temas practicables.
+  // Devuelve null si no aplica (próximo año / Cumbre no tienen temas practicables acá).
+  function progresoMateria(m){
+    const total = temasPracticables(m).length;
+    if(!total) return null;
+    const pref = norm(m.nombre)+"|";
+    let done=0;
+    PROGRESO.forEach((p,k)=>{ if(k.indexOf(pref)===0 && p.modos && p.modos.size>0) done++; });
+    done = Math.min(done, total);
+    return { done, total, pct: Math.round(done/total*100) };
+  }
   function gridMaterias(lista){
     const g = $("#gridMaterias"); g.innerHTML="";
     lista.forEach(m=>{
       const b=document.createElement("button"); b.className="mat";
       b.style.setProperty("--c", colorMateria(m.nombre));
       const nuevo = (m.id!=null && NOVEDADES[m.id]) ? `<span class="nuevoBadge">🆕</span>` : "";
-      b.innerHTML=`<span class="em">${iconMateria(m.nombre)}</span><span class="nom">${escapeHtml(limpiaNombreMateria(m.nombre))}</span>${nuevo}<span class="chev">›</span>`;
+      const pr = progresoMateria(m);
+      const barra = pr ? `<span class="matBar" title="${pr.done} de ${pr.total} temas"><i style="width:${pr.pct}%;background:${colorMateria(m.nombre)}"></i></span>` : "";
+      b.innerHTML=`<span class="em">${iconMateria(m.nombre)}</span><span class="matMid"><span class="nom">${escapeHtml(limpiaNombreMateria(m.nombre))}</span>${barra}</span>${nuevo}<span class="chev">›</span>`;
       b.onclick=()=>abrirMateria(m);
       g.appendChild(b);
     });

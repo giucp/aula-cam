@@ -60,17 +60,20 @@ async function registrarAcceso(userid, nombre, courses) {
 // Todos pueden loguear, pero solo pasa quien esté autorizado. Fail-open: si Supabase
 // no responde, no bloqueamos (mejor no dejar afuera a un niño por un hipo; igual
 // necesita clave real del aula).
-async function estaAutorizado(userid) {
+// Lee el estado del alumno: si está autorizado y su racha de días seguidos (para
+// mostrarla en el inicio). Fail-open en autorizado (no bloquear por un hipo de Supabase).
+async function leerEstado(userid) {
   const cfg = supabaseCfg();
-  if (!cfg || userid == null) return true;
+  if (!cfg || userid == null) return { autorizado: true, racha: 0 };
   try {
-    const r = await fetch(`${cfg.url}/rest/v1/usuarios?id=eq.${userid}&select=autorizado`, {
+    const r = await fetch(`${cfg.url}/rest/v1/usuarios?id=eq.${userid}&select=autorizado,racha_dias`, {
       headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}` },
     });
-    if (!r.ok) return true;
+    if (!r.ok) return { autorizado: true, racha: 0 };
     const rows = await r.json();
-    return !!(Array.isArray(rows) && rows[0] && rows[0].autorizado);
-  } catch (e) { return true; }
+    const row = Array.isArray(rows) ? rows[0] : null;
+    return { autorizado: !!(row && row.autorizado), racha: (row && row.racha_dias) || 0 };
+  } catch (e) { return { autorizado: true, racha: 0 }; }
 }
 
 // Intercambia usuario+clave por un token del servicio móvil.
@@ -111,7 +114,8 @@ export default async function handler(req, res) {
     //      Supabase). Registramos SIEMPRE al niño (así el admin lo ve y lo habilita) y,
     //      si aún no está autorizado, devolvemos "pendiente" SIN bajar el contenido pesado.
     await registrarAcceso(userid, info.fullname, courses);
-    if (!(await estaAutorizado(userid))) {
+    const est = await leerEstado(userid); // registrarAcceso ya actualizó la racha → la leemos fresca
+    if (!est.autorizado) {
       return res.status(200).json({
         pendiente: true,
         usuario: { id: userid, nombre: info.fullname },
@@ -147,7 +151,7 @@ export default async function handler(req, res) {
 
     // (el acceso ya se registró en el paso 2.5, antes del chequeo de autorización)
     return res.status(200).json({
-      usuario: { id: userid, nombre: info.fullname, sitio: info.sitename },
+      usuario: { id: userid, nombre: info.fullname, sitio: info.sitename, racha: est.racha },
       // devolvemos el token para que la PWA lo guarde y no repita login cada vez:
       token,
       materias,

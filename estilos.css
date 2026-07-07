@@ -58,6 +58,13 @@
     font-family:"Fredoka";font-weight:600;font-size:.78rem;padding:4px 11px;border-radius:999px;margin-top:8px}
   .salir{background:#fff;border:2px solid var(--line);border-radius:13px;color:var(--muted);font-family:"Nunito";font-weight:800;cursor:pointer;font-size:.86rem;padding:9px 13px;transition:all .15s;white-space:nowrap}
   .salir:hover{color:var(--mango);border-color:#FFCDBB}
+  /* racha de días seguidos (header) */
+  .topRight{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+  .rachaChip{display:inline-flex;align-items:baseline;gap:5px;background:linear-gradient(160deg,#FFF2D4,#FFE1B0);
+    border:1px solid #FFD894;border-radius:14px;padding:6px 11px;font-family:"Fredoka";font-weight:600;
+    font-size:.82rem;color:#C25A0C;box-shadow:0 6px 14px -8px rgba(224,120,20,.6);white-space:nowrap}
+  .rachaChip b{font-family:"Fredoka";font-weight:700;font-size:1.02rem;line-height:1}
+  .rachaChip small{font-size:.62rem;font-weight:800;letter-spacing:.03em;text-transform:uppercase}
 
   /* avatar del usuario (home) */
   .who{display:flex;align-items:flex-start;gap:12px;min-width:0}
@@ -147,26 +154,28 @@
   #paneTemas.cumbre #accInfo,
   #paneTemas.cumbre .n{display:none}
 
-  /* batería de "energía de IA" (anillo tipo reloj en Inicio) */
-  #energiaIA{margin-bottom:18px}
-  .enIn{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:12px 16px;box-shadow:var(--shadow-xs)}
-  .enRing{flex:none}
-  .enBg{fill:none;stroke:#ECEAF2;stroke-width:10}
-  .enFg{fill:none;stroke-width:10;stroke-linecap:round;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset .6s ease,stroke .3s ease}
-  .enPct{font-family:"Fredoka";font-weight:600;font-size:18px;fill:var(--ink)}
-  .enTx{min-width:0}
-  .enTit{display:block;font-family:"Fredoka";font-weight:600;font-size:1rem;color:var(--ink)}
-  .enMsg{font-family:"Nunito";font-size:.86rem;color:var(--muted);margin:2px 0 0}
-  /* escala verde → amarillo → rojo según la energía que queda; track tintado del mismo tono + glow suave */
-  .en-alto  .enFg{stroke:#2FBF71}
-  .en-alto  .enBg{stroke:#E3F6EB}
-  .en-medio .enFg{stroke:#FBB215}
-  .en-medio .enBg{stroke:#FDF1D4}
-  .en-bajo  .enFg{stroke:#FB5A4B}
-  .en-bajo  .enBg{stroke:#FDE3DF}
-  .en-vacio .enFg{stroke:#FB5A4B}
-  .en-vacio .enBg{stroke:#FDE3DF}
-  .en-vacio .enPct{fill:#E5483D}
+  /* "energía de IA": medidor de barra (cupo diario del alumno) en Inicio */
+  #energiaIA{margin-bottom:14px}
+  .enIn{display:flex;align-items:center;gap:13px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:13px 15px;
+    box-shadow:0 12px 26px -18px rgba(90,40,70,.4),0 2px 6px -3px rgba(90,40,70,.12)}
+  .enIco{flex:none;width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:1.25rem;background:#FFF3D6}
+  .enBody{flex:1;min-width:0}
+  .enTop{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .enTit{font-family:"Fredoka";font-weight:600;font-size:1rem;color:var(--ink)}
+  .enState{font-family:"Fredoka";font-weight:600;font-size:.82rem;white-space:nowrap}
+  .enMeter{height:9px;border-radius:99px;background:#F0E7EE;margin:8px 0 0;overflow:hidden}
+  .enMeter i{display:block;height:100%;border-radius:99px;transition:width .6s ease}
+  .enMsg{font-family:"Nunito";font-size:.8rem;color:var(--muted);margin:7px 0 0;line-height:1.4}
+  /* escala verde → amarillo → rojo según la energía que queda */
+  .en-alto  .enMeter i{background:linear-gradient(90deg,#25b36b,#7ed957)}
+  .en-alto  .enState{color:#1FA86A}
+  .en-medio .enMeter i{background:linear-gradient(90deg,#F5A623,#FFC83D)}
+  .en-medio .enState{color:#C98A0A}
+  .en-medio .enIco{background:#FDF1D4}
+  .en-bajo  .enMeter i{background:linear-gradient(90deg,#FB5A4B,#FF8158)}
+  .en-vacio .enMeter i{background:#FB5A4B}
+  .en-bajo  .enState,.en-vacio .enState{color:var(--bad)}
+  .en-bajo  .enIco,.en-vacio .enIco{background:#FDE3DF}
   .en-vacio .enTit{color:var(--bad)}
 
   /* "Un día como hoy" (efeméride diaria en Inicio) */
@@ -207,7 +216,10 @@
   .mat:active{transform:scale(.99)}
   .mat .em{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:1.4rem;
     background:color-mix(in srgb,var(--c,var(--mango)) 18%,#fff)}
-  .mat .nom{flex:1;min-width:0;font-family:"Fredoka",sans-serif;font-weight:600;color:var(--ink);font-size:1.02rem;line-height:1.22}
+  .mat .matMid{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+  .mat .nom{min-width:0;font-family:"Fredoka",sans-serif;font-weight:600;color:var(--ink);font-size:1.02rem;line-height:1.22}
+  .mat .matBar{height:6px;border-radius:99px;background:#F0E7EE;overflow:hidden}
+  .mat .matBar i{display:block;height:100%;border-radius:99px;opacity:.9;transition:width .5s ease}
   .mat .chev{flex:none;color:var(--muted);font-family:"Fredoka";font-size:1.4rem;opacity:.5;padding-right:2px}
 
   /* back */
@@ -396,18 +408,22 @@
   :focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:8px}
 
   /* ═══ escritorio (Inicio) + agenda + barra inferior ═══ */
-  #vHome{padding-bottom:90px}   /* aire para la barra de navegación fija */
-  .navbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;justify-content:center;gap:6px;
-    background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-top:2px solid var(--line);
-    padding:8px max(10px, env(safe-area-inset-left)) max(10px, env(safe-area-inset-bottom))}
-  .navBtn{flex:1;max-width:150px;display:flex;flex-direction:column;align-items:center;gap:2px;border:none;background:none;
-    cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:.8rem;color:var(--muted);padding:7px 6px;border-radius:14px;transition:all .14s}
-  .navBtn .nIcon{font-size:1.35rem;line-height:1}
-  .navBtn[aria-pressed="true"]{color:var(--mango);background:#FFF1EA}
+  #vHome{padding-bottom:104px}   /* aire para la barra de navegación flotante */
+  .navbar{position:fixed;left:14px;right:14px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:40;
+    max-width:420px;margin:0 auto;display:flex;justify-content:space-around;gap:6px;
+    background:rgba(255,255,255,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border:1px solid rgba(240,227,238,.9);border-radius:22px;padding:8px 8px;
+    box-shadow:0 16px 32px -14px rgba(90,40,70,.45),0 3px 8px -4px rgba(90,40,70,.2)}
+  .navBtn{flex:1;max-width:130px;display:flex;flex-direction:column;align-items:center;gap:2px;border:none;background:none;
+    cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:.78rem;color:var(--muted);padding:7px 6px;border-radius:15px;transition:all .14s}
+  .navBtn .nIcon{font-size:1.3rem;line-height:1;filter:grayscale(.35);opacity:.65;transition:all .14s}
+  .navBtn[aria-pressed="true"]{color:var(--grape);background:#F1EAFB}
+  .navBtn[aria-pressed="true"] .nIcon{filter:none;opacity:1}
   .navBtn:active{transform:scale(.95)}
 
   .fechaHoy{font-family:"Fredoka";font-weight:600;color:var(--muted);font-size:1rem;margin:2px 2px 12px}
-  .widget{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 16px;margin-bottom:14px}
+  .widget{background:var(--surface);border-radius:22px;padding:17px 16px;margin-bottom:13px;
+    box-shadow:0 14px 30px -18px rgba(90,40,70,.4),0 2px 6px -3px rgba(90,40,70,.12)}
   .wHead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
   .wTit{font-family:"Fredoka";font-weight:600;font-size:1.08rem;color:var(--ink)}
   .wLink{border:none;background:none;cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:.92rem;color:var(--teal);padding:4px 8px;border-radius:10px}
