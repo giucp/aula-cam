@@ -1284,6 +1284,20 @@
     const set=new Set(all[k]||[]); sigs.forEach(s=>set.add(s)); all[k]=[...set];
     store.set(VISTOS_KEY, all);
   }
+  // "recientes": textos de los ejercicios/preguntas que la niña ACABA de ver (por
+  // tema+modo, en memoria de la sesión). Se mandan a la IA en la próxima tanda para
+  // que NO los repita — Gemini no recuerda entre llamadas: sin esto, pedir 5 y luego
+  // 3 del mismo tema repetía ejercicios.
+  const RECIENTES = new Map();
+  function recKey(mat,tema,modo){ return [norm(mat),norm(tema),modo].join("|"); }
+  function recientesDe(mat,tema,modo){ return RECIENTES.get(recKey(mat,tema,modo))||[]; }
+  function acumularRecientes(mat,tema,modo,d){
+    const items=(d.ejercicios||d.preguntas||[]).map(x=>x&&(x.enunciado||x.pregunta)).filter(Boolean);
+    if(!items.length) return;
+    const k=recKey(mat,tema,modo); const arr=RECIENTES.get(k)||[];
+    for(const it of items) if(!arr.includes(it)) arr.push(it);
+    RECIENTES.set(k, arr.slice(-20));   // solo lo más reciente
+  }
   // muestra/oculta el botón "Guía revisada" y ajusta el de "Con IA" según el tema+modo
   function pintarAcciones(){
     const tema=temaActual();
@@ -1332,7 +1346,15 @@
         token:(!esProx && SESION && SESION.token)||null, fotos: esProx?[]:fotos,
         usuario_id:(SESION&&SESION.id)||null };
       if(via==="guia"){ body.soloCurado=true; body.vistos=vistosDe(mat,tema,modoSel,gr); }
-      else { body.sinCurado=true; body.nocache=!!opts.nocache; }
+      else {
+        body.sinCurado=true; body.nocache=!!opts.nocache;
+        // lo que acaba de ver en este tema+modo → la IA no lo repite (el server además
+        // salta la lectura del caché para no servirle una tanda vieja con los mismos)
+        if(modoSel!=="resumen"){
+          const rec = recientesDe(mat,tema,modoSel);
+          if(rec.length) body.recientes = rec.slice(-12);
+        }
+      }
       // refuerzo activo + fotos = son fotos del EXAMEN CORREGIDO (la IA ataca lo que falló)
       if(REFUERZO && usaFotos) body.examenFoto=true;
       const r = await fetch(API_GENERAR,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
@@ -1346,6 +1368,7 @@
       // guía agotada, o el tema no tiene guía → ofrecer seguir con IA
       if(d.sinItems || d.sinBanco){ renderHandoff(res, d); return; }
       if(via==="guia" && d.curado) acumularVistos(mat,tema,modoSel,gr,d);
+      if(modoSel!=="resumen") acumularRecientes(mat,tema,modoSel,d);   // para que la próxima tanda no repita
       render(d);
     }catch(e){
       if(e.code===503 && !opts._retry){

@@ -152,7 +152,7 @@ function esNumerica(txt) {
   return /matemát|matemat|lógic|logic|olimpiad/i.test(txt || "");
 }
 
-function armarPrompt({ modo, material, tienePdf, tieneFotos, fotosExamen, grado, tema, materia, n, numerica }) {
+function armarPrompt({ modo, material, tienePdf, tieneFotos, fotosExamen, grado, tema, materia, n, numerica, recientes }) {
   const ctx = material
     ? `Este es el material REAL del aula del alumno (lo que está viendo):\n\n${material}\n`
     : `Tema: "${tema}" (materia: ${materia || "General"}).\n`;
@@ -198,6 +198,12 @@ ${ctx}${pdfNota}${fotosNota}\n`;
 5. La explicación deduce la respuesta PASO A PASO citando en cada paso la pista que lo justifica. Nada de "por descarte" sin mostrar por qué cada alternativa es imposible, y NUNCA afirmes algo que contradiga una pista (ejemplo de error prohibido: "como el verde no está en los extremos, va al final" — el final ES un extremo).\n`
     : ``;
 
+  // Tanda anterior a la vista: PROHIBIDO repetirla. Gemini no recuerda entre llamadas —
+  // sin esta lista, pedir 5 y luego 3 del mismo tema repetía ejercicios casi iguales.
+  const noRepetir = (recientes && recientes.length)
+    ? `\nEl alumno ACABA de resolver estos ejercicios/preguntas sobre este MISMO tema. PROHIBIDO repetirlos y PROHIBIDO hacer variantes casi iguales (cambiar solo los nombres o los números NO cuenta como nuevo): cambia el planteo, el contexto o lo que se pregunta.\n${recientes.map((r) => `- ${r}`).join("\n")}\n`
+    : "";
+
   if (modo === "resumen") {
     const enfoqueMate = numerica
       ? `\nComo es un tema de matemática o lógica, es OBLIGATORIO enseñar los PROCEDIMIENTOS concretos, no solo definiciones. Según lo que pida el tema, explica cosas como: cómo pasar del enunciado en palabras a la operación o ecuación (qué representa cada dato), cómo despejar o resolver PASO A PASO, cómo distinguir y plantear los distintos casos (por ejemplo, regla de tres DIRECTA vs. INVERSA: cómo se reconoce cada una y cómo se redacta), y cómo comprobar que el resultado está bien. Cada procedimiento con sus pasos y un ejemplo numérico resuelto y CORRECTO (verifica los cálculos; usa números que den exacto).\n`
@@ -220,7 +226,7 @@ Forma EXACTA del JSON:
 - "respuesta": la respuesta correcta, breve.
 - "explicacion": explica CÓMO se llega a esa respuesta (el procedimiento paso a paso o el razonamiento), claro y apropiado para ${grado}. Es OBLIGATORIO: siempre enseña cómo obtenerla, no solo el resultado.
 - Si la pregunta involucra cálculo, RESUÉLVELA y verifica que la respuesta y el procedimiento son correctos.
-${reglasDeduccion}${jsonOnly}`;
+${reglasDeduccion}${noRepetir}${jsonOnly}`;
   }
 
   if (modo === "quiz") {
@@ -235,7 +241,7 @@ Forma EXACTA del JSON:
 - "explicacion": ${expNota}. Sirve para repasar el error, así que enseña de verdad.
 - Si la pregunta involucra cálculo, RESUÉLVELA y verifica que la opción marcada como "correcta" es de verdad la correcta.
 ${figuraNota}
-${reglasDeduccion}${jsonOnly}`;
+${reglasDeduccion}${noRepetir}${jsonOnly}`;
   }
 
   // retos (por defecto)
@@ -246,7 +252,7 @@ ${reglasDeduccion}${jsonOnly}`;
 Forma EXACTA del JSON:
 {"ejercicios":[{"enunciado":"...","pista":"...","solucion":"...","figura":""}]}
 ${figuraNota}
-${reglasDeduccion}${jsonOnly}`;
+${reglasDeduccion}${noRepetir}${jsonOnly}`;
 }
 
 // ───────── caché en Supabase (opcional) ─────────
@@ -538,6 +544,14 @@ export default async function handler(req, res) {
     const fotos = limpiarFotos(req.body && req.body.fotos);
     const tieneFotos = fotos.length > 0;
     const nocache = !!(req.body && req.body.nocache);
+    // Ejercicios/preguntas que el alumno ACABA de ver en este mismo tema+modo (los manda
+    // el front). Gemini no tiene memoria entre llamadas: sin esto, generar 5 y luego 3
+    // repetía ejercicios. Si vienen, también se SALTA la lectura del caché (una tanda
+    // cacheada podría ser justo la que ya vio); la escritura sigue (el resultado nuevo
+    // es válido para otros alumnos).
+    const recientes = Array.isArray(req.body && req.body.recientes)
+      ? req.body.recientes.filter((s) => typeof s === "string" && s.trim()).slice(0, 15).map((s) => recortar(s, 220))
+      : [];
     // Dos caminos explícitos desde la app: "Guía revisada" (soloCurado) y "Con IA"
     // (sinCurado). "vistos" = firmas de los items que el alumno YA vio (para no
     // repetir dentro de la guía).
@@ -587,7 +601,7 @@ export default async function handler(req, res) {
     //    La firma del contenido entra en la clave → si la maestra actualiza el material, se regenera.
     const firma = firmaContenido(contexto);
     const clave = claveCache({ materia, tema, modo, grado, cantidad: n, firma });
-    const noCache = nocache || tieneFotos;
+    const noCache = nocache || tieneFotos || recientes.length > 0;
     if (!noCache) {
       const hit = await cacheGet(clave);
       if (hit) return res.status(200).json({ ...hit, cacheado: true });
@@ -617,7 +631,7 @@ export default async function handler(req, res) {
     const numerica = esNumerica(materia) || esNumerica(tema);
     // examenFoto: las fotos son de un examen corregido (modo refuerzo) → la IA ataca lo que falló
     const fotosExamen = tieneFotos && !!(req.body && req.body.examenFoto);
-    const prompt = armarPrompt({ modo, material, tienePdf: pdfs.length > 0, tieneFotos, fotosExamen, grado, tema, materia, n, numerica });
+    const prompt = armarPrompt({ modo, material, tienePdf: pdfs.length > 0, tieneFotos, fotosExamen, grado, tema, materia, n, numerica, recientes });
 
     // Partes del request: el prompt + cada PDF + cada foto del cuaderno como inline_data.
     const parts = [{ text: prompt }];
