@@ -865,15 +865,26 @@
     if(modo==="quiz" && extra){ body.aciertos=extra.aciertos; body.total=extra.total; }
     try{ fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}); }catch(_){}
   }
-  // Nota del "Demuestra" (quiz) de Cumbre: se guarda LOCAL por niño (no usa Supabase; es
-  // personal y por dispositivo) y se muestra la MEJOR junto a cada tema en el acordeón.
-  function notaKey(mat,tema){ return "cumbreNota:"+((SESION&&SESION.id!=null)?SESION.id:"x")+":"+norm(mat||"")+":"+norm(tema||""); }
+  // Nota del "Demuestra" (quiz) de Cumbre: se guarda en Supabase por niño (tabla cumbre_notas
+  // vía api/actividad), así SIGUE al niño en cualquier dispositivo. Se muestra la MEJOR.
+  async function cargarNotasCumbre(){
+    CUMBRE_NOTAS = new Map();
+    if(!SESION || SESION.id==null) return;
+    try{
+      const r=await fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"cumbre_resumen",usuario_id:SESION.id})});
+      const d=await r.json().catch(()=>null);
+      (d&&Array.isArray(d.notas)?d.notas:[]).forEach(row=>{ if(typeof row.quizMejor==="number") CUMBRE_NOTAS.set(norm(row.materia||"")+"|"+norm(row.tema||""), row.quizMejor); });
+    }catch(e){}
+  }
   function guardarNotaCumbre(meta,aciertos,total){
     const mat=(meta&&meta.materia)||"", tema=(meta&&meta.tema)||""; if(!tema) return;
-    const frac=aciertos/total, k=notaKey(mat,tema), prev=store.get(k);
-    if(prev==null || frac>prev) store.set(k, frac);   // guarda la MEJOR (si repite y sube, se actualiza)
+    const frac=aciertos/total, key=norm(mat)+"|"+norm(tema), prev=CUMBRE_NOTAS.get(key);
+    if(prev==null || frac>prev) CUMBRE_NOTAS.set(key, frac);   // instantáneo (para verlo al volver)
+    if(SESION && SESION.id!=null){
+      try{ fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"cumbre_guardar",usuario_id:SESION.id,materia:mat,tema,aciertos,total})}); }catch(_){}
+    }
   }
-  function notaCumbre(mat,tema){ const v=store.get(notaKey(mat,tema)); return (typeof v==="number")?v:null; }
+  function notaCumbre(mat,tema){ const v=CUMBRE_NOTAS.get(norm(mat||"")+"|"+norm(tema||"")); return (typeof v==="number")?v:null; }
 
   // marca ✓ (hecho) / ⭐ (dominado ≥80%) en los chips del panel abierto
   function marcarChips(){
@@ -953,6 +964,7 @@
   let CUMBRE_MATERIAS = [];     // materias del track (para el render y los clicks)
   let cumbreModosTema = [];     // modos disponibles del tema abierto en Cumbre
   let CUMBRE_OPEN_MI = null;    // índice de la materia abierta (para reabrirla al volver y ver la nota)
+  let CUMBRE_NOTAS = new Map(); // notas del Demuestra por (materia|tema) del niño; sincroniza por cuenta (server)
   // Cumbre es SOLO curado: los botones NO dicen "crear/inventar" (eso es IA), sino "leer/empezar".
   const CUMBRE_VERBO = { resumen:"📖 Leer el resumen", retos:"🎯 Empezar a practicar", quiz:"🎮 Empezar el quiz", examen:"📋 Empezar el examen" };
   const CUMBRE_CARGA = { resumen:"Abriendo tu resumen", retos:"Abriendo tu práctica", quiz:"Abriendo tu quiz", examen:"Abriendo tu examen" };
@@ -969,6 +981,7 @@
       const [ri, rt] = await Promise.all([
         fetch(API_CURRICULO,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ accion:"cumbre_intro" })}),
         track ? fetch(API_CURRICULO,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ accion:"cumbre_track", track })}) : Promise.resolve(null),
+        cargarNotasCumbre(),   // notas del niño para el badge por tema (sincroniza por cuenta)
       ]);
       const di = await ri.json();
       const dt = rt ? await rt.json() : { materias:[] };

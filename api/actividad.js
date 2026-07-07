@@ -78,6 +78,42 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true, progreso });
     }
 
+    // ── Notas del "Demuestra" (quiz) de CUMBRE — tabla aparte cumbre_notas, no se mezcla
+    //    con el progreso del aula. Se guarda cada intento; la MEJOR se agrega al leer.
+    if (b.accion === "cumbre_guardar") {
+      const tema = rec(b.tema, 200);
+      if (!tema || !Number.isInteger(b.aciertos) || !Number.isInteger(b.total) ||
+          b.total <= 0 || b.aciertos < 0 || b.aciertos > b.total) {
+        return res.status(400).json({ error: "datos inválidos" });
+      }
+      await fetch(`${cfg.url}/rest/v1/cumbre_notas`, {
+        method: "POST",
+        headers: { ...hdr(cfg), "Content-Type": "application/json" },
+        body: JSON.stringify({
+          usuario_id: uid, materia: rec(b.materia, 120) || null, tema,
+          aciertos: b.aciertos, total: b.total,
+        }),
+      });
+      return res.status(200).json({ ok: true });
+    }
+
+    if (b.accion === "cumbre_resumen") {
+      const q = `${cfg.url}/rest/v1/cumbre_notas?usuario_id=eq.${uid}` +
+        `&select=materia,tema,aciertos,total&order=creado.desc&limit=3000`;
+      const r = await fetch(q, { headers: hdr(cfg) });
+      const rows = r.ok ? await r.json() : [];
+      const map = new Map();
+      for (const row of Array.isArray(rows) ? rows : []) {
+        if (!Number.isInteger(row.total) || row.total <= 0 || !Number.isInteger(row.aciertos)) continue;
+        const key = norm(row.materia) + "|" + norm(row.tema);
+        const v = row.aciertos / row.total;
+        const e = map.get(key);
+        if (!e) map.set(key, { materia: row.materia, tema: row.tema, quizMejor: v });
+        else if (v > e.quizMejor) e.quizMejor = v;
+      }
+      return res.status(200).json({ ok: true, notas: [...map.values()] });
+    }
+
     return res.status(400).json({ error: "acción inválida" });
   } catch (e) {
     return res.status(200).json({ ok: true, progreso: [], error: String(e.message || e) });

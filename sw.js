@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v39"; // v39: Cumbre sin selector de cantidad (sirve todo el curado) + sin botones IA + nota del Demuestra por tema
+const VERSION = "aulacam-v40"; // v40: nota del Demuestra de Cumbre en Supabase (cumbre_notas) → sincroniza por cuenta entre dispositivos
 const SHELL = [
   "/",
   "/index.html",
