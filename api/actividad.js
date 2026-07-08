@@ -114,6 +114,27 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true, notas: [...map.values()] });
     }
 
+    // ── Reporte de contenido malo: cualquier usuario marca un ejercicio/pregunta de
+    //    Practica/Demuestra/Examen como malo. Queda en reportes_contenido (lo revisamos
+    //    a mano) y el front regenera SOLO ese ítem. Resumen y Cumbre quedan fuera.
+    if (b.accion === "reportar_item") {
+      const modo = String(b.modo || "");
+      const item = b.item;
+      if (!["retos", "quiz", "examen"].includes(modo) || !item || typeof item !== "object" || Array.isArray(item)) {
+        return res.status(400).json({ error: "reporte inválido" });
+      }
+      await fetch(`${cfg.url}/rest/v1/reportes_contenido`, {
+        method: "POST",
+        headers: { ...hdr(cfg), "Content-Type": "application/json" },
+        body: JSON.stringify({
+          usuario_id: uid, materia: rec(b.materia, 120) || null, tema: rec(b.tema, 200) || null,
+          grado: rec(b.grado, 40) || null, modo, origen: b.origen === "guia" ? "guia" : "ia",
+          item,
+        }),
+      });
+      return res.status(200).json({ ok: true });
+    }
+
     // ── Novedades del aula: "foto" de lo último que vio el alumno, guardada POR USUARIO
     //    (no por aparato) en usuarios.aula_snap (jsonb). Así la alerta 🆕 es consistente
     //    entre PC y celular y se apaga en todos lados al abrir la materia.

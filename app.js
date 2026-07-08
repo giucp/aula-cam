@@ -1543,24 +1543,86 @@
     res.appendChild(f);
   }
 
+  // ───────── reportar contenido malo (retos / quiz / examen) ─────────
+  // Si un ejercicio o pregunta está malo (mal redactado, incorrecto, lo que sea),
+  // cualquiera lo reporta con la banderita: el reporte queda en Supabase (tabla
+  // reportes_contenido, la revisamos aparte) y ESE ítem —solo ese— se regenera con
+  // IA (cantidad 1 + "recientes" para no repetir lo de pantalla) y se reemplaza al
+  // momento. Excluidos: resúmenes y Cumbre (la IA no la toca).
+  function puedeReportar(){ return origen!=="cumbre" && !MODO_LAB && SESION && SESION.id!=null; }
+  function enviarReporte(item, meta, modo){
+    try{ fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
+      accion:"reportar_item", usuario_id:SESION.id, materia:(meta&&meta.materia)||null,
+      tema:(meta&&meta.tema)||null, grado:(meta&&meta.grado)||gradoActivo(), modo,
+      origen: ultimoCurado?"guia":"ia", item })}); }catch(_){}
+  }
+  async function regenerarItem(meta, modo){
+    const mat=(meta&&meta.materia)||"General", tema=(meta&&meta.tema)||"", gr=(meta&&meta.grado)||gradoActivo();
+    const body={ materia:mat, tema, grado:gr, cantidad:1, contexto:ultimoContexto, modo,
+      token:(SESION&&SESION.token)||null, fotos:[], usuario_id:(SESION&&SESION.id)||null,
+      sinCurado:true, nocache:true, recientes:recientesDe(mat,tema,modo).slice(-12) };
+    try{
+      const r=await fetch(API_GENERAR,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+      const d=await r.json().catch(()=>null);
+      if(!d || d.error || d.limiteIA) return null;
+      if(d.ia){ IA_ESTADO=d.ia; pintarEnergiaIA(); }
+      const nuevo=(Array.isArray(d.ejercicios)&&d.ejercicios[0])||(Array.isArray(d.preguntas)&&d.preguntas[0])||null;
+      if(nuevo) acumularRecientes(mat,tema,modo,d);   // que el próximo cambio tampoco lo repita
+      return nuevo;
+    }catch(_){ return null; }
+  }
+  // Banderita por tarjeta. getItem() da el ítem vigente; alReemplazar(nuevo) lo repinta.
+  // Si soloReporte() da true (quiz ya terminado, la nota ya quedó), guarda el reporte
+  // sin regenerar. Doble toque = confirmación (evita reportes por toques accidentales).
+  function zonaReporte(getItem, meta, modo, alReemplazar, soloReporte){
+    if(!puedeReportar()) return null;
+    const b=document.createElement("button"); b.type="button"; b.className="repBtn";
+    b.textContent="🚩 Reportar"; b.title="¿Está malo este ejercicio? Repórtalo y te doy otro";
+    b.onclick=async ()=>{
+      if(b.dataset.busy) return;
+      if(!b.dataset.arm){
+        b.dataset.arm="1"; b.classList.add("arm"); b.textContent="¿Cambiarlo por otro? Toca de nuevo";
+        setTimeout(()=>{ if(!b.dataset.busy){ delete b.dataset.arm; b.classList.remove("arm"); b.textContent="🚩 Reportar"; } }, 4500);
+        return;
+      }
+      b.dataset.busy="1"; b.disabled=true;
+      enviarReporte(getItem(), meta, modo);   // el reporte se guarda SIEMPRE (aunque el cambio falle)
+      if(soloReporte && soloReporte()){ b.textContent="¡Gracias! Quedó reportado ✔"; return; }
+      b.textContent="Cambiándolo…";
+      const nuevo=await regenerarItem(meta, modo);
+      if(nuevo){ alReemplazar(nuevo); }
+      else{
+        delete b.dataset.busy; delete b.dataset.arm; b.classList.remove("arm"); b.disabled=false;
+        b.textContent="Reportado ✔ · no pude cambiarlo, prueba luego";
+        setTimeout(()=>{ b.textContent="🚩 Reportar"; }, 3400);
+      }
+    };
+    return b;
+  }
+
   function renderRetos(res, ejercicios, meta){
     if(!ejercicios.length){ res.appendChild(vacio("No llegaron retos. Intenta otra vez.")); return; }
     let registrado=false;
     ejercicios.forEach((e,i)=>{
       const c=tarjeta(i);
-      c.innerHTML=`<span class="tag">🎯 Reto ${i+1}</span>
-        <p class="q">${escapeHtml(e.enunciado||"")}</p>
-        ${figuraHTML(e.figura)}
-        <div class="reveals">
-          ${e.pista?`<button class="mini hint">💡 Pista</button>`:``}
-          <button class="mini ans">✅ Ver respuesta</button>
-        </div>
-        ${e.pista?`<div class="reveal hint"><b>💡 Pista:</b> ${escapeHtml(e.pista)}</div>`:``}
-        <div class="reveal ans"><b>Respuesta:</b> ${escapeHtml(e.solucion||"")}</div>`;
-      const h=c.querySelector(".mini.hint"), a=c.querySelector(".mini.ans");
-      if(h) h.onclick=()=>{ c.querySelector(".reveal.hint").classList.add("show"); h.disabled=true; };
-      a.onclick=()=>{ c.querySelector(".reveal.ans").classList.add("show"); a.disabled=true;
-        if(!registrado){ registrado=true; registrarActividad(meta, "retos"); } };
+      const llenar=(e)=>{
+        c.innerHTML=`<div class="cardTop"><span class="tag">🎯 Reto ${i+1}</span></div>
+          <p class="q">${escapeHtml(e.enunciado||"")}</p>
+          ${figuraHTML(e.figura)}
+          <div class="reveals">
+            ${e.pista?`<button class="mini hint">💡 Pista</button>`:``}
+            <button class="mini ans">✅ Ver respuesta</button>
+          </div>
+          ${e.pista?`<div class="reveal hint"><b>💡 Pista:</b> ${escapeHtml(e.pista)}</div>`:``}
+          <div class="reveal ans"><b>Respuesta:</b> ${escapeHtml(e.solucion||"")}</div>`;
+        const h=c.querySelector(".mini.hint"), a=c.querySelector(".mini.ans");
+        if(h) h.onclick=()=>{ c.querySelector(".reveal.hint").classList.add("show"); h.disabled=true; };
+        a.onclick=()=>{ c.querySelector(".reveal.ans").classList.add("show"); a.disabled=true;
+          if(!registrado){ registrado=true; registrarActividad(meta, "retos"); } };
+        const z=zonaReporte(()=>ejercicios[i], meta, "retos", (nuevo)=>{ ejercicios[i]=nuevo; llenar(nuevo); });
+        if(z) c.querySelector(".cardTop").appendChild(z);
+      };
+      llenar(e);
       res.appendChild(c);
     });
   }
@@ -1570,13 +1632,18 @@
     if(!preguntas.length){ res.appendChild(vacio("No llegaron preguntas. Intenta otra vez.")); return; }
     preguntas.forEach((p,i)=>{
       const c=tarjeta(i);
-      c.innerHTML=`<span class="tag t2">📋 Pregunta ${i+1}</span>
-        <p class="q">${escapeHtml(p.pregunta||"")}</p>
-        <div class="reveals"><button class="mini ans">✅ Ver respuesta</button></div>
-        <div class="reveal ans"><b>Respuesta:</b> ${escapeHtml(p.respuesta||"")}${p.explicacion?`<div class="comoRes"><b>✏️ Cómo se resuelve:</b> ${escapeHtml(p.explicacion)}</div>`:``}</div>`;
-      const a=c.querySelector(".mini.ans");
-      a.onclick=()=>{ c.querySelector(".reveal.ans").classList.add("show"); a.disabled=true;
-        if(!registrado){ registrado=true; registrarActividad(meta, "examen"); } };
+      const llenar=(p)=>{
+        c.innerHTML=`<div class="cardTop"><span class="tag t2">📋 Pregunta ${i+1}</span></div>
+          <p class="q">${escapeHtml(p.pregunta||"")}</p>
+          <div class="reveals"><button class="mini ans">✅ Ver respuesta</button></div>
+          <div class="reveal ans"><b>Respuesta:</b> ${escapeHtml(p.respuesta||"")}${p.explicacion?`<div class="comoRes"><b>✏️ Cómo se resuelve:</b> ${escapeHtml(p.explicacion)}</div>`:``}</div>`;
+        const a=c.querySelector(".mini.ans");
+        a.onclick=()=>{ c.querySelector(".reveal.ans").classList.add("show"); a.disabled=true;
+          if(!registrado){ registrado=true; registrarActividad(meta, "examen"); } };
+        const z=zonaReporte(()=>preguntas[i], meta, "examen", (nuevo)=>{ preguntas[i]=nuevo; llenar(nuevo); });
+        if(z) c.querySelector(".cardTop").appendChild(z);
+      };
+      llenar(p);
       res.appendChild(c);
     });
   }
@@ -1611,37 +1678,53 @@
 
   function renderQuiz(res, preguntas, meta){
     if(!preguntas.length){ res.appendChild(vacio("No llegó el quiz. Intenta otra vez.")); return; }
-    const estado = { resp:0, ok:0, total:preguntas.length, fallidas:[] };
+    const estado = { resp:0, ok:0, total:preguntas.length, fallidas:[], done:false };
     const score=document.createElement("div"); score.className="score";
     score.textContent=`Puntaje: 0/${estado.total}`;
     res.appendChild(score);
 
     preguntas.forEach((p,i)=>{
-      const opciones = Array.isArray(p.opciones) ? p.opciones : [];
-      const correcta = Number(p.correcta);
       const c=tarjeta(i);
-      const letras="ABCDE";
-      c.innerHTML=`<span class="tag t3">🎮 Pregunta ${i+1}</span>
-        <p class="q">${escapeHtml(p.pregunta||"")}</p>
-        ${figuraHTML(p.figura)}
-        <div class="opts">${opciones.map((o,j)=>`<button class="opt"><span class="letra">${letras[j]||"•"}</span><span>${escapeHtml(o)}</span></button>`).join("")}</div>
-        ${p.explicacion?`<div class="qexp"><b>¿Por qué?</b> ${escapeHtml(p.explicacion)}</div>`:``}`;
-      const btns=[...c.querySelectorAll(".opt")];
-      btns.forEach((b,j)=>{
-        b.onclick=()=>{
-          if(c.dataset.done) return;
-          c.dataset.done="1";
-          btns.forEach((x,k)=>{ x.disabled=true; if(k===correcta) x.classList.add("ok"); });
-          if(j!==correcta){
-            b.classList.add("bad");
-            estado.fallidas.push({ pregunta:p.pregunta, opciones, correcta, elegida:j, explicacion:p.explicacion, figura:p.figura });
+      const llenar=(p)=>{
+        const opciones = Array.isArray(p.opciones) ? p.opciones : [];
+        const correcta = Number(p.correcta);
+        delete c.dataset.done;
+        const letras="ABCDE";
+        c.innerHTML=`<div class="cardTop"><span class="tag t3">🎮 Pregunta ${i+1}</span></div>
+          <p class="q">${escapeHtml(p.pregunta||"")}</p>
+          ${figuraHTML(p.figura)}
+          <div class="opts">${opciones.map((o,j)=>`<button class="opt"><span class="letra">${letras[j]||"•"}</span><span>${escapeHtml(o)}</span></button>`).join("")}</div>
+          ${p.explicacion?`<div class="qexp"><b>¿Por qué?</b> ${escapeHtml(p.explicacion)}</div>`:``}`;
+        const btns=[...c.querySelectorAll(".opt")];
+        btns.forEach((b,j)=>{
+          b.onclick=()=>{
+            if(c.dataset.done) return;
+            c.dataset.done="1";
+            btns.forEach((x,k)=>{ x.disabled=true; if(k===correcta) x.classList.add("ok"); });
+            if(j!==correcta){
+              b.classList.add("bad");
+              estado.fallidas.push({ i, pregunta:p.pregunta, opciones, correcta, elegida:j, explicacion:p.explicacion, figura:p.figura });
+            }
+            const exp=c.querySelector(".qexp"); if(exp) exp.classList.add("show");
+            estado.resp++; if(j===correcta) estado.ok++;
+            score.textContent=`Puntaje: ${estado.ok}/${estado.total}`;
+            if(estado.resp===estado.total){ estado.done=true; mostrarResultadoQuiz(res, estado, meta); }
+          };
+        });
+        // banderita: si el quiz YA terminó solo guarda el reporte (la nota ya quedó);
+        // si no, cambia la pregunta y, si ya estaba respondida, descuenta su aporte.
+        const z=zonaReporte(()=>preguntas[i], meta, "quiz", (nuevo)=>{
+          if(c.dataset.done){
+            estado.resp--;
+            const fIdx=estado.fallidas.findIndex(f=>f.i===i);
+            if(fIdx>=0) estado.fallidas.splice(fIdx,1); else estado.ok--;
+            score.textContent=`Puntaje: ${estado.ok}/${estado.total}`;
           }
-          const exp=c.querySelector(".qexp"); if(exp) exp.classList.add("show");
-          estado.resp++; if(j===correcta) estado.ok++;
-          score.textContent=`Puntaje: ${estado.ok}/${estado.total}`;
-          if(estado.resp===estado.total) mostrarResultadoQuiz(res, estado, meta);
-        };
-      });
+          preguntas[i]=nuevo; llenar(nuevo);
+        }, ()=>estado.done);
+        if(z) c.querySelector(".cardTop").appendChild(z);
+      };
+      llenar(p);
       res.appendChild(c);
     });
   }
