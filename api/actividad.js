@@ -197,14 +197,28 @@ export default async function handler(req, res) {
         if (Number.isInteger(b.meta.dias)) meta.dias = Math.max(0, Math.min(3650, b.meta.dias));
         if (!Object.keys(meta).length) meta = null;
       }
-      // dedup: mismo niño + mismo tipo (+materia+tema) el MISMO día → no republicar
+      // dedup: mismo niño + mismo tipo (+materia+tema) el MISMO día → no republicar. EXCEPCIÓN:
+      // si el evento trae un score MAYOR que el ya publicado (ej. mejor de los 3 intentos del
+      // reto diario de Sinapsis), se actualiza la fila a ese máximo y sube al tope del feed.
       const desde = inicioHoyCaracasISO();
       const qd = `${cfg.url}/rest/v1/muro?usuario_id=eq.${uid}&tipo=eq.${encodeURIComponent(tipo)}` +
-        `&creado=gte.${encodeURIComponent(desde)}&select=materia,tema`;
+        `&creado=gte.${encodeURIComponent(desde)}&select=id,materia,tema,meta`;
       const rd = await fetch(qd, { headers: hdr(cfg) });
       const prev = rd.ok ? await rd.json() : [];
-      if (Array.isArray(prev) && prev.some((r) => norm(r.materia) === norm(materia) && norm(r.tema) === norm(tema)))
+      const dupRow = (Array.isArray(prev) ? prev : []).find((r) => norm(r.materia) === norm(materia) && norm(r.tema) === norm(tema));
+      if (dupRow) {
+        const nuevoScore = meta && Number.isFinite(meta.score) ? meta.score : null;
+        const viejoScore = dupRow.meta && Number.isFinite(dupRow.meta.score) ? dupRow.meta.score : null;
+        if (nuevoScore != null && (viejoScore == null || nuevoScore > viejoScore)) {
+          await fetch(`${cfg.url}/rest/v1/muro?id=eq.${dupRow.id}`, {
+            method: "PATCH",
+            headers: { ...hdr(cfg), "Content-Type": "application/json" },
+            body: JSON.stringify({ meta, creado: new Date().toISOString() }),
+          });
+          return res.status(200).json({ ok: true, actualizado: true });
+        }
         return res.status(200).json({ ok: true, dedup: true });
+      }
       await fetch(`${cfg.url}/rest/v1/muro`, {
         method: "POST",
         headers: { ...hdr(cfg), "Content-Type": "application/json" },
