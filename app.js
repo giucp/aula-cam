@@ -746,9 +746,13 @@
     const p = ((SESION&&SESION.nombre)||"").trim().split(/\s+/).filter(Boolean);
     return p[0] ? (p[0] + (p[1] ? " "+p[1].charAt(0).toUpperCase()+"." : "")) : "jugador";
   }
+  function juegoOnbKey(){ return "sxOnb:" + (SESION ? SESION.id : ""); }
   function abrirJuego(){
     if(!SESION) return;
-    const url = JUEGO_URL + "/?grupo=chispa&nombre=" + encodeURIComponent(nombreJuego()) + "&uid=" + encodeURIComponent(String(SESION.id));
+    // El iframe de Sinapsis es de otro dominio → su localStorage no persiste (iOS/ITP).
+    // Chispa (first-party) recuerda si este niño ya vio el tutorial y se lo pasa (?onb).
+    let onb = ""; try{ const o = store.get(juegoOnbKey()); if(o) onb = "&onb=" + encodeURIComponent(JSON.stringify(o)); }catch(e){}
+    const url = JUEGO_URL + "/?grupo=chispa&nombre=" + encodeURIComponent(nombreJuego()) + "&uid=" + encodeURIComponent(String(SESION.id)) + onb;
     $("#juegoFrameWrap").innerHTML = '<iframe id="juegoFrame" title="Sinapsis" src="'+url+'" allow="autoplay; fullscreen"></iframe>';
     $("#juegoOverlay").classList.remove("hidden");
     document.body.classList.add("juegoAbierto");
@@ -796,6 +800,18 @@
       }
     }catch(e){ /* sin conexión: seguimos con lo cacheado */ }
   }
+
+  // Refresco al volver al frente. En iOS la PWA standalone no tiene "deslizar para
+  // refrescar" (es gesto del navegador) y al reabrir REANUDA la app congelada en vez
+  // de recargarla → sin esto los datos quedan viejos hasta cerrar sesión. visibilitychange
+  // (y pageshow, por el bfcache) sí disparan al reanudar; con throttle de 60s para no spamear.
+  function refrescarAlVolver(){
+    if(!SESION || !SESION.token || MODO_LAB) return;
+    if(Date.now() - (SESION.fetched || 0) < 60000) return;
+    refrescarMaterias();
+  }
+  document.addEventListener("visibilitychange", ()=>{ if(!document.hidden) refrescarAlVolver(); });
+  window.addEventListener("pageshow", (e)=>{ if(e.persisted) refrescarAlVolver(); });
 
   // ───────── repasar mis errores ─────────
   async function cargarErrores(){
@@ -958,11 +974,17 @@
     if(d<7) return `hace ${d} días`;
     const sem=Math.floor(d/7); return sem<5?`hace ${sem} sem`:"hace tiempo";
   }
-  // Sinapsis (iframe, otro dominio) avisa su score del RETO DIARIO por postMessage → lo publicamos.
+  // Sinapsis (iframe, otro dominio) nos habla por postMessage.
   window.addEventListener("message", (ev)=>{
     if(!/sinapsis/i.test(ev.origin||"")) return;
     const m = ev.data;
-    if(m && m.tipo==="sinapsis_diario" && Number.isFinite(+m.score)) publicarMuro("sinapsis", {meta:{score:+m.score}});
+    if(!m) return;
+    // score del RETO DIARIO → lo publicamos en el muro.
+    if(m.tipo==="sinapsis_diario" && Number.isFinite(+m.score)) publicarMuro("sinapsis", {meta:{score:+m.score}});
+    // estado del tutorial → lo guardamos por niño (persistimos por él, ver abrirJuego).
+    if(m.tipo==="sinapsis_onb" && SESION){
+      try{ const t = Array.isArray(m.t) ? m.t.filter(x=>typeof x==="string").slice(0,12) : []; store.set(juegoOnbKey(), {i: m.i?1:0, t}); }catch(e){}
+    }
   });
 
   function registrarActividad(meta, modo, extra){
