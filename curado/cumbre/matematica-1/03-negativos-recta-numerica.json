@@ -1,0 +1,285 @@
+{
+  "programa": "cumbre",
+  "materia": "Matemática",
+  "grado": "Cumbre Matemática 1er año",
+  "dominio": "Números y Álgebra",
+  "tema": "Números negativos y enteros: la recta numérica",
+  "referencias": [
+    "Singapore MOE Secondary 1 (N2: negative numbers, directed numbers, the number line, four operations with integers)",
+    "IB MYP Year 1 — Number: integers, absolute value, ordering and operations with directed numbers",
+    "UK KS3 — directed numbers, integer arithmetic on a number line, common sign-rule misconceptions",
+    "Japan MEXT Grade 7 — 正の数・負の数 (positive and negative numbers): definitions, ordering, four operations"
+  ],
+  "resumen": {
+    "titulo": "Bajo cero y más allá: los números enteros y la recta numérica",
+    "intro": "En los temas anteriores trabajaste solo con números que cuentan CANTIDAD: cuántos primos forman un número, cuánto mide el lado de un cuadrado. Ahora vas a ampliar tu universo numérico para incluir algo nuevo: la DIRECCIÓN. No solo importa cuánto hay, sino de qué lado de un punto de referencia está. Un termómetro que baja de cero, un edificio con sótanos, una montaña y una fosa marina: todos necesitan números que digan 'cuánto' y también 'hacia dónde'. Esa es la idea central de los números enteros, y la recta numérica es la herramienta que la hace visible.",
+    "secciones": [
+      {
+        "titulo": "¿Qué es un número entero? El cero como punto de referencia",
+        "explicacion": "Hasta ahora trabajaste con números que solo cuentan CANTIDAD: cuántas fichas, cuántos años, cuántos objetos hay. Pero en la vida real hay situaciones donde no alcanza con contar cuánto hay: también hace falta decir DE QUÉ LADO de un punto de referencia estás. Piensa en un termómetro: 0°C es el punto donde el agua se congela, y a partir de ahí la temperatura puede subir (más calor) o bajar (más frío). Piensa en un edificio: la planta baja (0) es la referencia, y desde ahí hay pisos hacia arriba y sótanos hacia abajo. Piensa en el nivel del mar: 0 metros es la referencia, y desde ahí hay montañas hacia arriba y valles o fosas hacia abajo. Para describir estas situaciones usamos los números POSITIVOS (todo lo que está POR ENCIMA o A FAVOR de la referencia; se escriben con signo + o sin ningún signo) y los números NEGATIVOS (todo lo que está POR DEBAJO o EN CONTRA de la referencia; se escriben siempre con un signo - delante). El CERO es el punto de referencia mismo: no es ni positivo ni negativo, es el límite exacto entre los dos lados. Al conjunto formado por los números naturales (1, 2, 3…), sus opuestos negativos (-1, -2, -3…) y el cero se le llama números ENTEROS.",
+        "pasos": [
+          "Identifica el punto cero de referencia de la situación (0°C, el nivel del mar, la planta baja).",
+          "Todo lo que está POR ENCIMA o A FAVOR de esa referencia se anota positivo (con + o sin signo).",
+          "Todo lo que está POR DEBAJO o EN CONTRA se anota negativo (con - delante).",
+          "Recuerda que el cero no es positivo ni negativo: es el límite entre ambos lados."
+        ],
+        "ejemplo": "En una noche fría, el termómetro marca -6°C (6 grados por DEBAJO del punto de congelación del agua); al día siguiente, a pleno sol, marca 21°C (21 grados por ENCIMA de esa referencia). Ambos números miden una 'distancia' al cero, pero el signo dice de qué lado están.",
+        "figura": ""
+      },
+      {
+        "titulo": "La recta numérica y los números opuestos",
+        "explicacion": "Una RECTA NUMÉRICA es una línea donde cada punto representa un número entero: el cero se ubica al centro, los positivos se acomodan hacia la derecha (cada vez más grandes mientras más lejos del cero) y los negativos hacia la izquierda (cada vez MÁS CHICOS mientras más lejos del cero hacia ese lado — esto es clave y lo vas a usar todo el tema). Cada paso entre un número y el siguiente tiene el mismo tamaño. En esta recta aparece una idea nueva: el OPUESTO de un número. Dos números son opuestos cuando están exactamente a la misma distancia del cero, pero en lados diferentes: el opuesto de 6 es -6, porque ambos están a 6 pasos del cero, uno a la derecha y otro a la izquierda. Para hallar el opuesto de cualquier número basta con 'reflejarlo' al otro lado del cero, sin cambiar la distancia. El cero es un caso especial: es el único número que es su propio opuesto (no tiene otro lado al cual reflejarse).",
+        "pasos": [
+          "Dibuja la recta con el cero al centro.",
+          "Camina hacia la derecha para ubicar positivos y hacia la izquierda para ubicar negativos, con pasos del mismo tamaño.",
+          "Para hallar el opuesto de un número, refléjalo al otro lado del cero, a la MISMA distancia."
+        ],
+        "ejemplo": "El opuesto de 6 es -6 (ambos a 6 pasos del cero, en lados distintos). La orilla del Mar Muerto está a -430 m respecto al nivel del mar; su opuesto sería +430 m, una altura imaginaria tan alta como profunda es esa orilla.",
+        "figura": "<svg viewBox=\"0 0 400 140\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"20\" y1=\"70\" x2=\"380\" y2=\"70\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><polygon points=\"380,70 368,63 368,77\" fill=\"#3B2B4A\"/><polygon points=\"20,70 32,63 32,77\" fill=\"#3B2B4A\"/><line x1=\"20\" y1=\"64\" x2=\"20\" y2=\"76\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><line x1=\"80\" y1=\"64\" x2=\"80\" y2=\"76\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><line x1=\"140\" y1=\"64\" x2=\"140\" y2=\"76\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><line x1=\"200\" y1=\"64\" x2=\"200\" y2=\"76\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><line x1=\"260\" y1=\"64\" x2=\"260\" y2=\"76\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><line x1=\"320\" y1=\"64\" x2=\"320\" y2=\"76\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><line x1=\"380\" y1=\"64\" x2=\"380\" y2=\"76\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><text x=\"20\" y=\"100\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#3B2B4A\">-6</text><text x=\"80\" y=\"100\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#3B2B4A\">-4</text><text x=\"140\" y=\"100\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#3B2B4A\">-2</text><text x=\"200\" y=\"100\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#3B2B4A\">0</text><text x=\"260\" y=\"100\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#3B2B4A\">2</text><text x=\"320\" y=\"100\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#3B2B4A\">4</text><text x=\"380\" y=\"100\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#3B2B4A\">6</text><circle cx=\"20\" cy=\"70\" r=\"6\" fill=\"#12B5A4\"/><circle cx=\"380\" cy=\"70\" r=\"6\" fill=\"#12B5A4\"/><circle cx=\"200\" cy=\"70\" r=\"6\" fill=\"#7C4DFF\"/><path d=\"M20,55 Q200,15 380,55\" fill=\"none\" stroke=\"#0E9486\" stroke-width=\"2\" stroke-dasharray=\"4,3\"/><text x=\"200\" y=\"28\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#0E9486\">opuestos: misma distancia, lados distintos</text></svg>"
+      },
+      {
+        "titulo": "El valor absoluto: la distancia al cero",
+        "explicacion": "Ahora una herramienta que vas a usar todo el tema: el VALOR ABSOLUTO de un número entero es la distancia que hay entre ese número y el cero en la recta numérica, contada SIEMPRE en pasos positivos (una distancia nunca puede ser negativa: no existe caminar '-5 pasos'). Se escribe encerrando el número entre dos barras verticales: |n|. Ojo con la trampa más común: el valor absoluto NO es 'quitarle el signo al número por las buenas'; es contar cuántos pasos hay desde el cero hasta ese número, sin importar hacia qué lado caminaste. Como consecuencia, dos números opuestos SIEMPRE tienen el mismo valor absoluto, porque están a la misma distancia del cero, solo que en lados distintos.",
+        "pasos": [
+          "Ubica el número en la recta numérica.",
+          "Cuenta cuántos pasos hay desde el cero hasta ese número (sin fijarte en la dirección).",
+          "Ese conteo, siempre positivo o cero, es el valor absoluto."
+        ],
+        "ejemplo": "|-9| = 9, porque hay 9 pasos desde el cero hasta -9. Y |9| = 9 también, porque hay 9 pasos desde el cero hasta 9 (del otro lado). Los opuestos 9 y -9 tienen el mismo valor absoluto.",
+        "figura": ""
+      },
+      {
+        "titulo": "Comparar y ordenar enteros: cuidado con el valor absoluto",
+        "explicacion": "Para comparar dos enteros, la regla es simple pero engañosa si no la aplicas con cuidado: un número es MAYOR que otro si está MÁS A LA DERECHA en la recta numérica, sin importar el signo. Entre un positivo y un negativo, el positivo SIEMPRE es mayor (todo positivo está a la derecha del cero; todo negativo, a la izquierda). Pero la parte que más confunde a todo el mundo es comparar DOS negativos: ahí, el número con MAYOR valor absoluto es en realidad el MENOR, porque está MÁS a la izquierda. Esto es AL REVÉS de lo que pasa con los positivos, y es el error más común del tema: pensar que -20 es mayor que -5 'porque 20 es mayor que 5', cuando en realidad es exactamente al revés, porque -20 está mucho más a la izquierda (más lejos del cero, del lado negativo) que -5.",
+        "pasos": [
+          "Ubica ambos números en la recta (o imagínalos ahí).",
+          "El que está más a la derecha es el MAYOR.",
+          "Si comparas un positivo con un negativo, el positivo siempre gana.",
+          "Si comparas dos negativos, el de MENOR valor absoluto es el MAYOR (está más cerca del cero, más a la derecha)."
+        ],
+        "ejemplo": "-3 está más a la derecha que -9 en la recta, así que -3 > -9, aunque 3 sea menor que 9. Comparando profundidades: -22 m (un buzo) es MAYOR que -47 m (otro buzo más profundo), porque -22 está más arriba, más cerca de la superficie.",
+        "figura": "<svg viewBox=\"0 0 400 130\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"20\" y1=\"70\" x2=\"380\" y2=\"70\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><polygon points=\"380,70 368,63 368,77\" fill=\"#3B2B4A\"/><polygon points=\"20,70 32,63 32,77\" fill=\"#3B2B4A\"/><circle cx=\"80\" cy=\"70\" r=\"6\" fill=\"#7C4DFF\"/><text x=\"80\" y=\"95\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#5A3AAF\">-9</text><circle cx=\"260\" cy=\"70\" r=\"6\" fill=\"#12B5A4\"/><text x=\"260\" y=\"95\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#0E9486\">-2</text><text x=\"80\" y=\"45\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#5A3AAF\">menor (más a la izquierda)</text><text x=\"260\" y=\"45\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#0E9486\">mayor (más a la derecha)</text></svg>"
+      },
+      {
+        "titulo": "Sumar enteros: moverse sobre la recta",
+        "explicacion": "Sumar un entero es, literalmente, CAMINAR sobre la recta numérica. Empiezas parado en el primer número (el punto de partida), y el segundo número te dice cuántos pasos caminar y en qué dirección: si es positivo, caminas esa cantidad de pasos hacia la DERECHA; si es negativo, caminas esa cantidad de pasos hacia la IZQUIERDA. El punto donde terminas de caminar es el resultado de la suma. Esta idea de 'moverse' es mucho más intuitiva que memorizar reglas sueltas, y funciona exactamente igual sin importar si el punto de partida es positivo, negativo o cero.",
+        "pasos": [
+          "Ubica el primer número en la recta: ese es tu punto de partida.",
+          "Si el segundo número es positivo, camina esa cantidad de pasos hacia la derecha.",
+          "Si el segundo número es negativo, camina esa cantidad de pasos hacia la izquierda.",
+          "El punto donde terminas es la suma."
+        ],
+        "ejemplo": "Un submarino está a -4 m (4 metros bajo la superficie) y asciende 9 m: -4 + 9 = 5 (parto en -4, camino 9 pasos a la derecha porque asciende, termino en +5, o sea 5 m sobre la superficie). Si en cambio desciende 9 m más desde -4: -4 + (-9) = -13 (camino 9 pasos a la izquierda, termino en -13).",
+        "figura": "<svg viewBox=\"0 0 400 140\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"20\" y1=\"80\" x2=\"380\" y2=\"80\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><polygon points=\"380,80 368,73 368,87\" fill=\"#3B2B4A\"/><polygon points=\"20,80 32,73 32,87\" fill=\"#3B2B4A\"/><line x1=\"200\" y1=\"74\" x2=\"200\" y2=\"86\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><text x=\"200\" y=\"108\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#3B2B4A\">0</text><circle cx=\"80\" cy=\"80\" r=\"6\" fill=\"#7C4DFF\"/><text x=\"80\" y=\"108\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#5A3AAF\">-4</text><circle cx=\"350\" cy=\"80\" r=\"6\" fill=\"#12B5A4\"/><text x=\"350\" y=\"108\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#0E9486\">5</text><path d=\"M80,65 Q215,25 345,63\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><polygon points=\"350,80 338,64 352,68\" fill=\"#12B5A4\"/><text x=\"215\" y=\"25\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#0E9486\">+9 (9 pasos a la derecha)</text></svg>"
+      },
+      {
+        "titulo": "Restar enteros: sumar el opuesto",
+        "explicacion": "Restar un entero puede confundirte si lo piensas como una operación totalmente distinta a la suma: mejor pensarlo así: RESTAR un número es EXACTAMENTE lo mismo que SUMAR su opuesto. En símbolos: a - b = a + (opuesto de b). Esto es especialmente útil cuando aparecen dos signos seguidos. Si restas un número POSITIVO, su opuesto es negativo, así que en la recta caminas hacia la IZQUIERDA (tiene sentido: restar te achica el resultado). Pero si restas un número NEGATIVO, su opuesto es POSITIVO, así que en la recta caminas hacia la DERECHA: los dos signos negativos seguidos (el de 'restar' y el del número negativo) se cancelan entre sí y el resultado es como una suma. Por eso 'menos por menos da más' en este contexto: no es magia, es que restar un negativo es sumar su opuesto positivo.",
+        "pasos": [
+          "Cambia la resta por una suma, reemplazando el número que se resta por su OPUESTO.",
+          "Si restabas un número positivo, ahora sumas su opuesto negativo (te mueves a la izquierda).",
+          "Si restabas un número negativo, ahora sumas su opuesto positivo (los dos negativos seguidos se cancelan; te mueves a la derecha).",
+          "Resuelve la suma resultante caminando en la recta, como en la sección anterior."
+        ],
+        "ejemplo": "La cima de un volcán está a 3200 m y un mirador cercano está a -180 m (bajo el nivel de referencia). La diferencia de altura entre ambos es 3200 - (-180) = 3200 + 180 = 3380 m. Otro caso, sin contexto: -6 - 4 = -6 + (-4) = -10 (aquí se resta un positivo, así que el opuesto es negativo y te mueves a la izquierda).",
+        "figura": ""
+      },
+      {
+        "titulo": "Multiplicar y dividir enteros: la regla de los signos",
+        "explicacion": "Para multiplicar o dividir enteros, el VALOR (los números sin signo) se calcula igual que siempre; lo único nuevo es decidir el SIGNO del resultado, y para eso hay una regla precisa que evita cualquier confusión: cuenta la CANTIDAD de signos negativos entre los números que estás multiplicando (o dividiendo). Si esa cantidad es PAR (0, 2, 4…), el resultado es POSITIVO, porque los signos negativos se van cancelando de a PARES. Si esa cantidad es IMPAR (1, 3, 5…), el resultado es NEGATIVO, porque sobra un signo negativo sin pareja. Esto vale sin importar CUÁNTOS números haya en total en la cuenta: lo que decide el signo es cuántos de ellos son negativos, no cuántos son en total. La misma regla aplica igual para la multiplicación y para la división.",
+        "pasos": [
+          "Multiplica (o divide) los valores sin fijarte todavía en los signos.",
+          "Cuenta cuántos de los números que multiplicaste (o dividiste) eran negativos.",
+          "Si esa cantidad de negativos es PAR, el resultado final es POSITIVO.",
+          "Si esa cantidad de negativos es IMPAR, el resultado final es NEGATIVO."
+        ],
+        "ejemplo": "(-6) × (-3) = 18: hay DOS signos negativos (cantidad par) → resultado positivo. (-6) × 3 = -18: hay UN signo negativo (cantidad impar) → resultado negativo. En división es igual: (-40) ÷ 5 = -8 (un negativo, impar → negativo), pero (-40) ÷ (-5) = 8 (dos negativos, par → positivo). Con tres factores: (-2) × (-5) × (-1) = -10: son TRES signos negativos (cantidad impar) → resultado negativo, aunque 'haya varios' negativos, lo que decide es que 3 es impar.",
+        "figura": ""
+      },
+      {
+        "titulo": "La distancia entre dos enteros en la recta",
+        "explicacion": "Ya sabes que el valor absoluto es la distancia de un número al CERO. Pero muchas veces necesitas la distancia entre DOS números enteros cualesquiera (no solo contra el cero): por ejemplo, cuánto separa a dos temperaturas, o la diferencia de altura entre dos lugares. Para eso, RESTA los dos números (en el orden que prefieras) y toma el VALOR ABSOLUTO de esa resta: esa es la distancia entre ellos en la recta, siempre positiva o cero, sin importar cuál restaste primero.",
+        "pasos": [
+          "Resta los dos enteros, en cualquier orden.",
+          "Toma el valor absoluto de esa resta (olvídate del signo).",
+          "Ese número, siempre positivo, es la distancia entre ambos puntos en la recta numérica."
+        ],
+        "ejemplo": "Distancia entre la cima del Everest (+8848 m) y la orilla del Mar Muerto (-430 m): |8848 - (-430)| = |9278| = 9278 m. Distancia entre -15°C y -2°C: |-15 - (-2)| = |-13| = 13°C (da lo mismo restar al revés: |-2 - (-15)| = |13| = 13).",
+        "figura": "<svg viewBox=\"0 0 400 120\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"20\" y1=\"60\" x2=\"380\" y2=\"60\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><polygon points=\"380,60 368,53 368,67\" fill=\"#3B2B4A\"/><polygon points=\"20,60 32,53 32,67\" fill=\"#3B2B4A\"/><circle cx=\"60\" cy=\"60\" r=\"6\" fill=\"#7C4DFF\"/><text x=\"60\" y=\"85\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#5A3AAF\">-15</text><circle cx=\"340\" cy=\"60\" r=\"6\" fill=\"#12B5A4\"/><text x=\"340\" y=\"85\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#0E9486\">-2</text><line x1=\"60\" y1=\"30\" x2=\"340\" y2=\"30\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><line x1=\"60\" y1=\"24\" x2=\"60\" y2=\"36\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><line x1=\"340\" y1=\"24\" x2=\"340\" y2=\"36\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><text x=\"200\" y=\"20\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#3B2B4A\">distancia = 13</text></svg>"
+      },
+      {
+        "titulo": "Errores típicos: cómo detectarlos y evaluarlos tú mismo",
+        "explicacion": "Con enteros hay tres errores que aparecen una y otra vez, incluso en estudiantes que ya dominan las reglas de memoria. El primero es comparar dos negativos usando el valor absoluto en vez de la posición en la recta: creer que -30 > -5 'porque 30 es más grande que 5', cuando en realidad -30 está mucho más a la izquierda. El segundo es tratar el valor absoluto como 'borrar el signo a lo bruto' sin entender que es una DISTANCIA: esto falla apenas el valor absoluto aparece dentro de una operación más larga, porque hay que resolver primero lo de adentro. El tercero es, al multiplicar o dividir varios números, contar mal la cantidad de negativos, por ejemplo contar cuántos NÚMEROS hay en total en vez de contar cuántos de ellos tienen signo negativo. La forma de blindarte contra los tres es la misma: antes de aceptar una respuesta, verifícala. Para una comparación, dibuja (aunque sea mentalmente) la recta y ubica los dos puntos. Para una operación de signos, cuenta explícitamente, uno por uno, cuántos negativos hay antes de decidir el signo del resultado.",
+        "pasos": [
+          "Ante una comparación de negativos, ubica ambos puntos en la recta antes de decidir cuál es mayor.",
+          "Ante un valor absoluto dentro de una operación más larga, resuelve primero lo de adentro de las barras.",
+          "Ante una multiplicación o división con varios números, cuenta explícitamente los signos negativos uno por uno (no 'a ojo').",
+          "Verifica siempre el resultado: ¿tiene sentido la posición en la recta? ¿el signo coincide con la cantidad de negativos que contaste?"
+        ],
+        "ejemplo": "Un estudiante escribió -20 > -5 'porque 20 es mayor que 5'. Es un error: en la recta, -20 está mucho más a la izquierda que -5, así que en realidad -20 < -5. Verificación: si subieras de -20 hacia -5, estarías caminando hacia la derecha (aumentando), lo que confirma que -5 es el mayor de los dos.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "Los enteros extienden los números para incluir dirección, no solo cantidad: el signo dice de qué lado del cero está algo, y el valor absoluto dice a qué distancia. En la recta numérica, más a la derecha es siempre mayor, aunque el número sea negativo y su valor absoluto sea chico. Sumar y restar son movimientos sobre la recta (restar es sumar el opuesto); al multiplicar o dividir, lo único que importa para el signo del resultado es si la CANTIDAD de signos negativos es par (resultado positivo) o impar (resultado negativo)."
+  },
+  "practica": [
+    {
+      "enunciado": "Estas son las temperaturas mínimas registradas durante una semana en una estación de montaña: -8°C, 3°C, -15°C, 0°C, -1°C y 7°C. Ordénalas de MENOR a MAYOR.",
+      "pista": "Ubica cada temperatura en una recta numérica mental: recuerda que, entre negativos, el de mayor valor absoluto es el que está más a la izquierda (el menor).",
+      "solucion": "De menor a mayor: -15°C, -8°C, -1°C, 0°C, 3°C, 7°C. (Verificación: cada uno está más a la derecha que el anterior en la recta numérica.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica, sin usar la palabra 'regla', por qué -50 es MENOR que -12, a pesar de que 50 es mayor que 12.",
+      "pista": "Piensa en la recta numérica: ¿cuál de los dos números está más lejos del cero hacia la izquierda? Eso es lo que importa para decidir cuál es menor.",
+      "solucion": "-50 está 50 pasos a la izquierda del cero, mientras que -12 está solo 12 pasos a la izquierda. Como -50 queda mucho más hacia la izquierda que -12 en la recta, -50 es el MENOR de los dos, aunque su valor absoluto (50) sea mayor que el de -12 (12). El valor absoluto grande, entre negativos, indica estar más lejos hacia el lado NEGATIVO, no un número más grande.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un submarino de investigación está a -180 m de profundidad y asciende 95 m. ¿A qué profundidad (o altura) queda?",
+      "pista": "Ascender es moverse hacia la derecha en la recta numérica (hacia números mayores). Parte de -180 y suma 95.",
+      "solucion": "-180 + 95 = -85. El submarino queda a -85 m, es decir, todavía 85 m bajo la superficie (no llegó a salir del agua). (Verificación: -85 está más cerca del cero que -180, como corresponde a haber ascendido.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "En una misma ciudad, la temperatura más alta registrada en un año fue 29°C y la más baja fue -14°C. ¿Cuál fue la diferencia entre la temperatura más alta y la más baja?",
+      "pista": "La diferencia es una resta: temperatura alta menos temperatura baja. Recuerda que restar un negativo es sumar su opuesto.",
+      "solucion": "29 - (-14) = 29 + 14 = 43°C de diferencia. (Verificación: si subieras 43 grados desde -14°C llegarías exactamente a 29°C: -14 + 43 = 29 ✓.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Sin multiplicar todo de una vez, decide primero si el resultado de (-5) × (-2) × (-3) × (-1) es positivo o negativo, y luego calcúlalo.",
+      "pista": "Cuenta cuántos de los cuatro factores son negativos. Si esa cantidad es par, el resultado es positivo; si es impar, negativo.",
+      "solucion": "Los cuatro factores son negativos: cantidad par (4) de signos negativos → el resultado es POSITIVO. Calculando los valores: 5 × 2 × 3 × 1 = 30. Entonces (-5) × (-2) × (-3) × (-1) = 30.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Calcula -78 ÷ 6, decidiendo primero el signo del resultado con la cantidad de signos negativos.",
+      "pista": "Hay un solo signo negativo entre los dos números (cantidad impar): eso decide el signo antes de dividir.",
+      "solucion": "Un signo negativo (cantidad impar) → resultado negativo. 78 ÷ 6 = 13, así que -78 ÷ 6 = -13. (Verificación: -13 × 6 = -78 ✓.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero afirma: 'Restar un número negativo siempre da un resultado MENOR que el número original.' Evalúa si esta afirmación es verdadera o falsa, y justifica tu respuesta con un ejemplo numérico.",
+      "pista": "Recuerda que restar un negativo equivale a sumar su opuesto positivo: eso hace que el resultado AUMENTE, no que disminuya.",
+      "solucion": "La afirmación es FALSA. Restar un número negativo es lo mismo que sumar su opuesto (positivo), así que el resultado siempre AUMENTA (es mayor que el número original), nunca menor. Ejemplo: 5 - (-3) = 5 + 3 = 8, y 8 es MAYOR que 5, no menor.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un ascensor parte del sótano 2 (-2), sube 5 pisos y luego baja 3 pisos. ¿En qué piso termina?",
+      "pista": "Traduce 'sube' como sumar y 'baja' como restar, paso a paso, empezando en -2.",
+      "solucion": "-2 + 5 = 3 (después de subir); 3 - 3 = 0 (después de bajar). El ascensor termina en la planta baja (piso 0). (Verificación: en total subió 5 y bajó 3, un movimiento neto de +2 desde -2, y -2+2=0 ✓.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Dos buzos se sumergen en el mismo punto: el buzo A está a -28 m y el buzo B está a -35 m. ¿Cuál de los dos está MÁS PROFUNDO? ¿Cuál está MÁS CERCA de la superficie? Justifica usando la recta numérica.",
+      "pista": "En la recta, 'más profundo' significa más a la izquierda (más negativo); 'más cerca de la superficie' significa más a la derecha (menos negativo).",
+      "solucion": "El buzo B (-35 m) está MÁS PROFUNDO, porque -35 está más a la izquierda que -28 en la recta numérica (mayor valor absoluto, del lado negativo). El buzo A (-28 m) está MÁS CERCA de la superficie, porque -28 está más a la derecha (más cerca del cero) que -35. En símbolos: -35 < -28.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Sin calcular el producto completo, decide si (-7) × (-5) × (-2) × (-9) × (-1) es positivo o negativo. Luego calcula su valor.",
+      "pista": "Cuenta los cinco factores: ¿cuántos son negativos? Esa cantidad decide el signo, sin importar que sean 'muchos'.",
+      "solucion": "Los cinco factores son negativos: cantidad IMPAR (5) → el resultado es NEGATIVO. Calculando los valores: 7 × 5 × 2 × 9 × 1 = 630. Entonces el resultado es -630.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un globo meteorológico flota a +7150 m de altura, mientras un vehículo submarino de investigación está a -3250 m de profundidad. ¿Qué distancia vertical los separa?",
+      "pista": "La distancia entre dos enteros es el valor absoluto de su resta, sin importar cuál restes primero.",
+      "solucion": "|7150 - (-3250)| = |7150 + 3250| = |10400| = 10400 m. La distancia vertical entre el globo y el vehículo submarino es de 10400 metros.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante calculó 8 - (-6) y escribió como resultado 2, porque hizo '8 menos 6'. Evalúa su procedimiento: ¿dónde está el error, y cuál es la respuesta correcta?",
+      "pista": "Revisa qué pasa con los dos signos negativos seguidos (el de 'restar' y el del -6): ¿se cancelan o se suman?",
+      "solucion": "El error es que el estudiante ignoró el signo negativo del 6 y restó 8 - 6 = 2, como si fuera 8 - (+6). Pero restar un número NEGATIVO es sumar su opuesto positivo: los dos signos negativos seguidos se cancelan. La respuesta correcta es 8 - (-6) = 8 + 6 = 14.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál de estos cuatro números es el MENOR?",
+      "opciones": ["-30", "-3", "3", "30"],
+      "correcta": 0,
+      "explicacion": "-30 está mucho más a la izquierda que -3 en la recta numérica (mayor valor absoluto del lado negativo), así que es el menor de los cuatro. El error típico sería pensar que -3 es menor porque 'parece más grande', pero lo que importa es la posición en la recta."
+    },
+    {
+      "pregunta": "¿Cuál es el opuesto de -17?",
+      "opciones": ["17", "-17", "0", "1/17"],
+      "correcta": 0,
+      "explicacion": "El opuesto de un número está a la misma distancia del cero, del otro lado. -17 está 17 pasos a la izquierda del cero; su opuesto, 17, está 17 pasos a la derecha. (1/17 confunde 'opuesto' con 'inverso', que es un concepto distinto.)"
+    },
+    {
+      "pregunta": "¿Cuánto vale |-31|?",
+      "opciones": ["31", "-31", "0", "62"],
+      "correcta": 0,
+      "explicacion": "El valor absoluto es la distancia al cero, siempre positiva: hay 31 pasos entre 0 y -31. El resultado NUNCA es negativo (descarta -31), y no se duplica el número (descarta 62)."
+    },
+    {
+      "pregunta": "¿Cuál de estas comparaciones es correcta?",
+      "opciones": ["-9 > -2", "-9 < -2", "-9 = -2", "No se pueden comparar números negativos"],
+      "correcta": 1,
+      "explicacion": "-9 está más a la izquierda que -2 en la recta numérica, así que -9 es MENOR que -2 (-9 < -2). El error típico es pensar que -9 > -2 porque 9 > 2: entre negativos, el de mayor valor absoluto es el MENOR."
+    },
+    {
+      "pregunta": "Un submarino está a -140 m de profundidad y asciende 60 m. ¿A qué profundidad queda?",
+      "opciones": ["-80 m", "-200 m", "80 m", "200 m"],
+      "correcta": 0,
+      "explicacion": "-140 + 60 = -80: el submarino queda a 80 m bajo la superficie, más cerca de ella que antes. -200 sale de sumar los valores absolutos en vez de restar; 80 y 200 ignoran que sigue bajo el agua (falta el signo negativo)."
+    },
+    {
+      "pregunta": "Calcula: 6 - (-11)",
+      "opciones": ["-5", "5", "17", "-17"],
+      "correcta": 2,
+      "explicacion": "Restar un negativo es sumar su opuesto: 6 - (-11) = 6 + 11 = 17. Los distractores -5 y 5 vienen de restar 11 - 6 sin cuidar el signo; -17 invierte el signo del resultado correcto."
+    },
+    {
+      "pregunta": "Calcula: (-8) × (-5)",
+      "opciones": ["-40", "40", "-13", "13"],
+      "correcta": 1,
+      "explicacion": "Dos signos negativos (cantidad par) → resultado positivo: 8 × 5 = 40. -40 es el error de olvidar la regla de los signos; -13 y 13 confunden multiplicar con sumar (8+5=13)."
+    },
+    {
+      "pregunta": "Calcula: -95 ÷ 5",
+      "opciones": ["-19", "19", "-90", "90"],
+      "correcta": 0,
+      "explicacion": "Un signo negativo (cantidad impar) → resultado negativo: 95 ÷ 5 = 19, así que -95 ÷ 5 = -19. 19 (positivo) olvida el signo; -90 y 90 vienen de restar en vez de dividir."
+    },
+    {
+      "pregunta": "En (-2) × 5 × (-3) × (-1), ¿cuántos signos negativos hay entre los factores, y el resultado es positivo o negativo?",
+      "opciones": ["2 negativos, cantidad par, resultado positivo", "3 negativos, cantidad impar, resultado negativo", "3 negativos, cantidad impar, resultado positivo", "4 negativos, cantidad par, resultado negativo"],
+      "correcta": 1,
+      "explicacion": "Los factores negativos son -2, -3 y -1: son TRES (cantidad impar), así que el resultado es negativo. Calculando los valores: 2 × 5 × 3 × 1 = 30, entonces el resultado es -30. El error más común es contar TODOS los factores (4) en vez de solo los negativos (3)."
+    },
+    {
+      "pregunta": "En un edificio, el sótano 3 es -3 y la planta baja es 0. Si estás en el sótano 3 y subes 7 pisos, ¿en qué piso quedas?",
+      "opciones": ["Piso 4", "Piso 10", "Sótano 10", "Piso -4"],
+      "correcta": 0,
+      "explicacion": "-3 + 7 = 4: subir 7 pisos desde el sótano 3 te deja en el piso 4 (por encima de la planta baja). Piso 10 suma los valores absolutos sin restar; sótano 10 y piso -4 invierten el signo del resultado."
+    },
+    {
+      "pregunta": "La cima de una montaña está a +6200 m y un valle cercano está a -175 m bajo el nivel del mar. ¿Qué distancia vertical los separa?",
+      "opciones": ["6025 m", "6200 m", "6375 m", "175 m"],
+      "correcta": 2,
+      "explicacion": "La distancia es |6200 - (-175)| = |6200 + 175| = 6375 m. 6025 sale de restar en vez de sumar; 6200 ignora el valle; 175 es solo la profundidad del valle, no la distancia entre ambos puntos."
+    },
+    {
+      "pregunta": "Un estudiante afirma: '-100 es mayor que -1, porque 100 es mayor que 1.' ¿Es correcta esta afirmación?",
+      "opciones": ["Sí, porque comparó bien los valores absolutos", "No: -100 es MENOR que -1, porque está mucho más a la izquierda en la recta", "No: en realidad -100 y -1 son iguales", "Sí, porque todos los negativos grandes son mayores"],
+      "correcta": 1,
+      "explicacion": "La afirmación es incorrecta: entre negativos, el de mayor valor absoluto está más a la izquierda y por lo tanto es MENOR. -100 está mucho más lejos del cero (hacia el lado negativo) que -1, así que -100 < -1, no al revés."
+    },
+    {
+      "pregunta": "Buzo A está a -12 m y buzo B está a -42 m. ¿Cuál de estas afirmaciones es correcta?",
+      "opciones": ["El buzo A está más profundo que el B", "El buzo B está más profundo que el A", "Ambos están a la misma profundidad", "No se puede comparar dos profundidades negativas"],
+      "correcta": 1,
+      "explicacion": "-42 está más a la izquierda que -12 en la recta numérica (mayor valor absoluto del lado negativo), así que el buzo B está más profundo. El buzo A, con -12, está más cerca de la superficie."
+    },
+    {
+      "pregunta": "Calcula: (-6) + (-9) - (-4)",
+      "opciones": ["-19", "-11", "-1", "19"],
+      "correcta": 1,
+      "explicacion": "(-6) + (-9) = -15; luego -15 - (-4) = -15 + 4 = -11. El distractor -19 sale de NO cambiar el signo al restar el -4 (hacer -15-4); -1 y 19 vienen de errores de suma/resta de los valores absolutos."
+    }
+  ]
+}

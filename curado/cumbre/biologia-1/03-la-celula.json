@@ -1,0 +1,332 @@
+{
+  "programa": "cumbre",
+  "materia": "Biología",
+  "grado": "Cumbre Biología 1er año",
+  "dominio": "La unidad de la vida: la célula",
+  "tema": "La célula: la unidad básica de todo ser vivo",
+  "referencias": [
+    "UK KS3/GCSE Biology (AQA/Edexcel) — Cell theory; prokaryotic and eukaryotic cells; structures common to all cells",
+    "Cambridge Lower Secondary & IGCSE Biology — Cell theory and the diversity of unicellular and multicellular organisms",
+    "Japan MEXT Grade 8 Science (中学2年 理科) — 生物と細胞: teoría celular, células procariotas y eucariotas",
+    "Singapore MOE Lower Secondary Science — Cell theory; structural and functional unity of living things"
+  ],
+  "resumen": {
+    "titulo": "La célula: el ladrillo con el que está construido todo ser vivo",
+    "intro": "En el tema anterior conociste el microscopio, la herramienta que por primera vez dejó ver las 'celditas' que Robert Hooke bautizó 'células' y los diminutos 'animalículos' que Leeuwenhoek encontró nadando en una gota de agua. Pero ver algo no es lo mismo que entenderlo. Ahora toca la pregunta más grande de toda la biología: ¿qué ES en realidad una célula, y por qué se dice que es 'la unidad básica de todo ser vivo'? La respuesta que vas a construir en este resumen es uno de los pilares de la biología moderna: así como toda la materia del universo está hecha de átomos, TODO ser vivo —desde la bacteria más diminuta hasta la ballena azul— está hecho de células. Entender bien esta idea (y sus trampas más comunes) es la base de todo lo que viene después en este dominio: cómo es una célula animal o vegetal, cómo se especializan, y cómo miles de millones de ellas forman un organismo completo.",
+    "secciones": [
+      {
+        "titulo": "¿Qué es, en realidad, una célula?",
+        "explicacion": "Empecemos por la definición, pero construida desde la intuición, no memorizada de golpe. En el tema 1 aprendiste que todo organismo (todo ser vivo) cumple siete funciones vitales: se mueve, respira, siente, crece, se reproduce, excreta y se nutre (MRS GREN). Ahora la pregunta es: ¿DÓNDE ocurren, físicamente, esas siete funciones? La respuesta es: dentro de células. Una CÉLULA es la unidad más pequeña de materia que está viva, es decir, la porción más chica de un organismo capaz de realizar por sí misma las funciones vitales (o de participar activamente en ellas). Usamos la palabra 'UNIDAD' con un sentido muy preciso: una unidad es la pieza mínima que no se puede partir sin que deje de funcionar como tal. Si partís una célula por la mitad no obtenés dos células más chicas funcionando: obtenés dos mitades muertas, que ya no pueden cumplir ninguna función vital. En cambio, si partís un organismo multicelular (como una lombriz de tierra, que puede regenerarse en dos), cada mitad puede seguir viva, porque TODAVÍA conserva muchísimas células completas. Por eso decimos que la célula, y no el organismo completo, es la unidad básica de la vida: es el nivel más pequeño en el que la vida realmente 'funciona'.",
+        "pasos": [],
+        "ejemplo": "Una gota de sangre bajo el microscopio no se ve como un líquido uniforme: se ve llena de glóbulos rojos, cada uno una célula individual. Ninguno de esos glóbulos, si lo cortaras por la mitad, seguiría siendo una célula funcionando: perdería su forma, su membrana se rompería y dejaría de transportar oxígeno. Eso es lo que significa que la célula sea una 'unidad': la pieza más chica que todavía funciona como parte viva.",
+        "figura": ""
+      },
+      {
+        "titulo": "La Teoría Celular: tres ideas que unieron toda la biología",
+        "explicacion": "Hooke y Leeuwenhoek vieron células y microbios en el siglo XVII, pero durante casi 200 años nadie conectó esas observaciones en una idea general. Eso cambió a mediados del siglo XIX (entre 1830 y 1850, aproximadamente), cuando dos científicos alemanes, Matthias Schleiden (que estudiaba plantas) y Theodor Schwann (que estudiaba animales), compararon sus observaciones y llegaron a una conclusión enorme: TODOS los seres vivos, sin importar si son plantas o animales, están hechos de células. Poco después, Rudolf Virchow agregó una tercera idea clave, resumida en una frase en latín que se hizo famosa: 'Omnis cellula e cellula' ('toda célula proviene de otra célula'). Estas tres ideas juntas forman la TEORÍA CELULAR, uno de los cimientos de toda la biología: (1) todos los seres vivos están formados por una o más células; (2) la célula es la unidad básica de estructura y función de todo ser vivo (ahí ocurren las funciones vitales); (3) toda célula proviene de una célula preexistente, por división de una anterior. Fijate que la teoría celular NO dice 'todo ser vivo ES una célula': dice que está HECHO de una o más células. Esa diferencia, aunque parezca chiquita, es clave, y la vamos a analizar a fondo en la próxima sección, porque es el error más común de todo el tema.",
+        "pasos": [
+          "Postulado 1: todo ser vivo está formado por una o más células (ninguna excepción conocida).",
+          "Postulado 2: la célula es la unidad básica de estructura y función; ahí ocurren las funciones vitales.",
+          "Postulado 3: toda célula proviene de una célula anterior que ya existía (nunca surge de materia no viva)."
+        ],
+        "ejemplo": "Curiosidad histórica: al principio, incluso el propio Schwann pensaba que las células nuevas también podían formarse a partir de una sustancia no viva, una especie de gel al que llamaba 'blastema'. Unos años más tarde, Virchow demostró con evidencia que eso era incorrecto: TODA célula nueva nace de la división de una célula que ya existía, nunca de materia no viva. Ese tercer postulado terminó de cerrar la teoría celular tal como la conocemos hoy, y de paso le dio un golpe mortal a una creencia antigua que vas a ver en la última sección: la generación espontánea.",
+        "figura": ""
+      },
+      {
+        "titulo": "El error más común del tema: 'ser' una célula vs. 'estar hecho' de células",
+        "explicacion": "Acá está la trampa que confunde a casi todo el mundo la primera vez, así que léela con calma. La teoría celular dice que todo ser vivo está hecho de UNA O MÁS células; eso significa que hay DOS grupos muy distintos de organismos, y hay que saber diferenciarlos. Un organismo UNICELULAR es aquel cuyo cuerpo entero es UNA sola célula: esa única célula tiene que cumplir, ella sola, las siete funciones vitales completas (se mueve, se nutre, respira, siente, crece, se reproduce y excreta, todo dentro de sus propios límites). Ejemplos: una ameba, un paramecio, una bacteria como Escherichia coli, o una levadura (un hongo unicelular que se usa para hacer pan). Un organismo MULTICELULAR, en cambio, está formado por MUCHAS células (desde unos pocos cientos hasta billones) que TRABAJAN JUNTAS, casi siempre especializadas cada una en una tarea distinta, para mantener vivo al organismo completo. Ejemplos: un roble, una medusa, o un ser humano (formado por unos 37 billones de células). Ahora el punto central: decir 'todos los seres vivos SON una célula' es FALSO, porque es cierto solo para los unicelulares; en cambio decir 'todos los seres vivos ESTÁN HECHOS de una o más células' es lo correcto, porque cubre los dos casos a la vez. Un roble no 'es' una célula: está hecho de billones de ellas. Pero una ameba sí es, literalmente, una única célula viviendo por su cuenta.",
+        "pasos": [
+          "Preguntate: ¿el cuerpo entero de este organismo es UNA sola célula, o son MUCHAS trabajando juntas?",
+          "Si es una sola: es UNICELULAR (esa célula hace las siete funciones vitales ella sola).",
+          "Si son muchas: es MULTICELULAR (las células se reparten y comparten las tareas).",
+          "Nunca digas 'todo ser vivo ES una célula'; decí 'todo ser vivo ESTÁ HECHO de una o más células'."
+        ],
+        "ejemplo": "Una ameba que vive en una gota de agua ES, literalmente, una sola célula: esa misma célula caza su alimento, se mueve con prolongaciones llamadas seudópodos, y se reproduce dividiéndose en dos. Un roble, en cambio, tiene raíces, hojas, tronco y flores hechos de billones de células distintas trabajando juntas: ninguna célula sola 'es' el roble.",
+        "figura": ""
+      },
+      {
+        "titulo": "Lo que TODA célula comparte, sin excepción",
+        "explicacion": "A pesar de la enorme diversidad de células que existen (las hay redondas, alargadas, gigantes, microscópicas, de animales, de plantas, de hongos, de bacterias), hay tres partes que TODA célula conocida tiene, sin excepción, porque sin ellas no podría cumplir ninguna función vital. La MEMBRANA PLASMÁTICA es una capa delgadísima que envuelve a la célula por fuera, como la piel de un globo; separa el 'adentro' vivo de la célula del 'afuera', y controla qué entra (alimento, oxígeno) y qué sale (desechos). Sin membrana, el contenido de la célula se disolvería en el ambiente y no habría 'célula' que valga. El CITOPLASMA es el material que llena el interior de la célula, entre la membrana y el material genético: es una especie de gel acuoso donde flotan y funcionan las distintas piezas internas de la célula (que verás en detalle en un tema posterior). Por último, el MATERIAL GENÉTICO (formado por ADN) es como el 'manual de instrucciones' de la célula: contiene toda la información necesaria para que la célula funcione y para fabricar células nuevas cuando se reproduce. Estas tres partes —membrana, citoplasma y material genético— son la definición mínima de 'célula': cualquier cosa que tenga las tres es una célula; a cualquier cosa que le falte alguna, no lo es (ese detalle va a ser importante en la última sección, cuando hablemos de los virus).",
+        "pasos": [
+          "Membrana plasmática: envuelve la célula, separa adentro/afuera y controla qué entra y sale.",
+          "Citoplasma: gel acuoso que llena el interior, donde flotan las piezas internas de la célula.",
+          "Material genético (ADN): el 'manual de instrucciones' con la información para funcionar y reproducirse."
+        ],
+        "ejemplo": "Imaginá una célula como una casa con una bolsa de agua adentro: la MEMBRANA es la bolsa que la mantiene junta; el CITOPLASMA es el agua de adentro; y el MATERIAL GENÉTICO es el plano de construcción guardado en algún cajón de esa casa, con las instrucciones de cómo se hizo y cómo hacer una copia.",
+        "figura": "<svg viewBox=\"0 0 300 260\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"150\" cy=\"140\" r=\"105\" fill=\"#BFE9F2\" fill-opacity=\"0.3\" stroke=\"#3B2B4A\" stroke-width=\"3\"/><ellipse cx=\"150\" cy=\"150\" rx=\"42\" ry=\"32\" fill=\"#7C4DFF\" fill-opacity=\"0.3\" stroke=\"#5A3AAF\" stroke-width=\"2\"/><text x=\"150\" y=\"30\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">membrana plasmática</text><line x1=\"150\" y1=\"36\" x2=\"150\" y2=\"38\" stroke=\"#3B2B4A\" stroke-width=\"1\"/><text x=\"150\" y=\"95\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#0E9486\">citoplasma</text><text x=\"150\" y=\"153\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"#5A3AAF\">material</text><text x=\"150\" y=\"166\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"#5A3AAF\">genético (ADN)</text></svg>"
+      },
+      {
+        "titulo": "Dos grandes familias de células: procariotas y eucariotas",
+        "explicacion": "Ya sabés que toda célula tiene membrana, citoplasma y material genético. Pero hay una diferencia enorme en CÓMO está guardado ese material genético, y esa diferencia divide a todas las células del planeta en dos grandes familias. En las células PROCARIOTAS, el material genético (el ADN) flota LIBRE dentro del citoplasma, sin ninguna membrana propia que lo envuelva por separado; 'procariota' viene del griego y significa, más o menos, 'antes del núcleo'. Las bacterias (como Escherichia coli) son procariotas. En las células EUCARIOTAS, en cambio, el material genético está guardado DENTRO de un compartimento propio, rodeado por su propia membrana, llamado NÚCLEO ('eucariota' significa 'núcleo verdadero'); el núcleo funciona como una 'caja fuerte' que protege el ADN y lo mantiene separado del resto del citoplasma. Las células animales, las vegetales, las de los hongos y las de organismos unicelulares como la ameba o el paramecio son eucariotas. Este dato es importante para no caer en un error común: NO toda célula tiene núcleo. Cuando en un tema posterior veas la célula animal y la vegetal en detalle, vas a estar viendo SOLO células eucariotas (con núcleo); las procariotas, aunque también son células completas con sus tres partes básicas, organizan su ADN de otra manera.",
+        "pasos": [
+          "Procariota: el ADN flota libre en el citoplasma, sin núcleo propio. Ejemplo: bacterias.",
+          "Eucariota: el ADN está guardado dentro de un núcleo con su propia membrana. Ejemplo: células animales, vegetales, de hongos y de protozoos como la ameba.",
+          "Truco para recordar: 'eu' = verdadero → eucariota = núcleo VERDADERO; 'pro' = antes → procariota = ANTES del núcleo (no lo tiene)."
+        ],
+        "ejemplo": "Si pudieras encoger y entrar a una bacteria, verías su ADN enrollado libremente en medio del citoplasma, sin ninguna pared que lo separe. Si entraras a una célula de tu propia mejilla, en cambio, encontrarías el ADN guardado dentro de un compartimento redondo y bien delimitado: el núcleo.",
+        "figura": ""
+      },
+      {
+        "titulo": "¿Por qué las células son tan pequeñas? El secreto está en la superficie",
+        "explicacion": "Esta es una de las preguntas más interesantes de toda la biología, y la respuesta no es 'porque sí': tiene una razón matemática exacta. La mayoría de las células miden entre 10 y 100 micrómetros (un micrómetro es la milésima parte de un milímetro), tan chicas que —como vimos en el tema anterior— hacen falta cientos de aumentos para verlas. ¿Por qué no crecen más, si eso les daría más espacio para vivir? Porque una célula necesita que TODO su interior intercambie materiales (alimento, oxígeno, desechos) A TRAVÉS de su membrana, y esa membrana es su ÚNICA puerta con el exterior. El problema es que, cuando una célula crece, su VOLUMEN (lo que hay que abastecer por dentro) crece mucho más rápido que su SUPERFICIE (la membrana disponible para el intercambio). Se puede comprobar con una cuenta simple usando un cubo como modelo: un cubo de lado 1 tiene una superficie de 6 (6 caras de 1×1) y un volumen de 1 (1×1×1), así que su razón superficie/volumen es 6÷1 = 6. Si ese mismo cubo duplica su lado a 2, su superficie sube a 24 (6 caras de 2×2) pero su volumen sube a 8 (2×2×2): la razón ahora es 24÷8 = 3, ¡la MITAD de antes! Cuanto más grande se pone el cubo (o la célula), MENOS superficie de membrana le queda disponible por cada unidad de volumen que tiene que abastecer. Por eso una célula gigante tendría problemas serios para alimentarse y limpiarse a tiempo: le faltaría 'puerta' para tanto 'adentro'. La solución que encontró la vida no fue hacer células más grandes, sino hacer MÁS células: por eso un elefante no tiene células mucho más grandes que las de un ratón, tiene MUCHÍSIMAS más.",
+        "pasos": [
+          "Superficie de un cubo = 6 × (lado × lado). Volumen de un cubo = lado × lado × lado.",
+          "Razón superficie/volumen = superficie ÷ volumen.",
+          "A medida que el lado (el tamaño) crece, la razón superficie/volumen BAJA: hay relativamente menos membrana para abastecer cada vez más interior.",
+          "Por eso las células se mantienen chicas, y los organismos grandes crecen agregando MÁS células, no agrandando cada célula sin límite."
+        ],
+        "ejemplo": "Cubo de lado 1: superficie 6, volumen 1, razón 6. Cubo de lado 3: superficie = 6×9 = 54, volumen = 27, razón = 54÷27 = 2. La razón bajó de 6 a 2: el cubo grande tiene bastante menos superficie disponible por cada unidad de volumen que el chico. (Excepciones curiosas: algunas células SÍ son enormes, como la yema de un huevo de avestruz —una sola célula— o las neuronas, que son larguísimas pero muy delgadas; en ambos casos, la forma o el contenido resuelven el problema de otra manera.)",
+        "figura": "<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"40\" y=\"120\" width=\"40\" height=\"40\" fill=\"#12B5A4\" fill-opacity=\"0.15\" stroke=\"#0E9486\" stroke-width=\"3\"/><text x=\"60\" y=\"105\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#0E9486\">lado 1</text><text x=\"60\" y=\"180\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">sup=6 vol=1</text><text x=\"60\" y=\"195\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#0E9486\">razón = 6</text><rect x=\"190\" y=\"40\" width=\"160\" height=\"160\" fill=\"#7C4DFF\" fill-opacity=\"0.12\" stroke=\"#5A3AAF\" stroke-width=\"3\"/><text x=\"270\" y=\"28\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#5A3AAF\">lado 4</text><text x=\"270\" y=\"125\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">sup=96 vol=64</text><text x=\"270\" y=\"212\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#5A3AAF\">razón = 1.5</text></svg>"
+      },
+      {
+        "titulo": "Una célula que lo hace todo: unicelulares bajo presión",
+        "explicacion": "Volvamos un momento a MRS GREN, las siete funciones vitales del tema 1, para ver algo que las conecta directamente con lo que acabás de aprender. En un organismo MULTICELULAR como vos, las siete funciones se REPARTEN entre distintos grupos de células especializadas: unas células se encargan más de moverse (musculares), otras de sentir (nerviosas), otras de reproducirse (sexuales), y así sucesivamente (vas a profundizar en esta especialización en un tema posterior de este dominio). Pero en un organismo UNICELULAR, no hay reparto posible: esa ÚNICA célula tiene que arreglárselas SOLA para cumplir las siete funciones vitales completas, con las mismas tres partes básicas que viste (membrana, citoplasma, material genético) y sin ayuda de ninguna otra célula. Un paramecio, por ejemplo, tiene que MOVERSE con estructuras como pequeños pelos (para nadar y buscar comida), NUTRIRSE atrapando partículas de alimento, RESPIRAR liberando energía de esa comida, SENTIR cambios en el agua que lo rodea (como sustancias tóxicas, de las que se aleja), CRECER, REPRODUCIRSE dividiéndose en dos, y EXCRETAR sus desechos, todo esto dentro de los límites de una sola célula microscópica. Esto explica por qué, aunque una bacteria o un paramecio sean 'solo' una célula, de ninguna manera son organismos simples: cumplen exactamente las mismas siete funciones vitales que un elefante, solo que comprimidas en un único paquete diminuto.",
+        "pasos": [],
+        "ejemplo": "Un paramecio nadando en una gota de agua está, en ese mismo instante, moviéndose con sus pelillos (cilios), digiriendo partículas de alimento que atrapó, liberando energía de ellas, detectando y alejándose de una gota de ácido cercana, y preparándose para dividirse en dos paramecios nuevos. Todo eso, en UNA sola célula.",
+        "figura": ""
+      },
+      {
+        "titulo": "Errores y mitos que hay que dejar atrás",
+        "explicacion": "Para cerrar, repasemos tres ideas falsas muy comunes relacionadas con este tema, para que no se cuelen en tu forma de pensar la biología. Primero, la GENERACIÓN ESPONTÁNEA: durante siglos, la gente creyó que los seres vivos podían surgir directamente de materia no viva —que la carne podrida 'generaba' moscas, o que el agua sucia 'generaba' microbios de la nada—. El científico italiano Francesco Redi mostró en el siglo XVII que las moscas en la carne venían de huevos puestos por otras moscas, no de la carne misma (comparó carne tapada con gasa, sin moscas, contra carne destapada, con moscas). Dos siglos después, Louis Pasteur remató la idea con un experimento clásico usando matraces de cuello largo y curvado ('cuello de cisne'): un caldo hervido dentro de ese matraz se mantenía sin microbios por mucho tiempo, porque el aire entraba pero el polvo con microbios quedaba atrapado en la curva del cuello; si se inclinaba el matraz para que el caldo tocara esa curva, el caldo se llenaba de microbios enseguida. Esto probó, junto con el tercer postulado de la teoría celular de Virchow, que NINGÚN ser vivo (ni siquiera un microbio) surge de materia no viva: toda célula viene de otra célula. Segundo, un VIRUS NO ES una célula: le falta membrana propia, citoplasma propio y la capacidad de cumplir funciones vitales por sí solo (necesita invadir una célula de otro organismo y usarla como fábrica para poder reproducirse); por eso muchos científicos ni siquiera consideran 'vivos' a los virus en sentido estricto: son un caso límite que sigue en debate. Tercero, y para no repetirlo nunca más: no toda célula tiene núcleo (las procariotas no lo tienen), y no todo ser vivo ES una célula (solo los unicelulares lo son; los demás están HECHOS de muchas).",
+        "pasos": [
+          "Mito 1 — Generación espontánea: FALSO. Ningún ser vivo surge de materia no viva; toda célula proviene de una célula anterior (Redi, Pasteur, Virchow).",
+          "Mito 2 — 'Un virus es una célula (o la célula más pequeña)': FALSO. Un virus no tiene membrana ni citoplasma propios ni cumple funciones vitales por sí solo; es un caso límite debatido, no una célula.",
+          "Mito 3 — 'Toda célula tiene núcleo' y 'todo ser vivo es una célula': FALSOS. Las procariotas no tienen núcleo, y la mayoría de los seres vivos están hechos de MUCHAS células, no son una sola."
+        ],
+        "ejemplo": "Si alguien te dice 'dejé un trozo de carne al aire y le salieron gusanos solos, de la nada', ahora sabés explicarle el error: esos gusanos salieron de huevos microscópicos de mosca que ya estaban ahí (o que llegaron volando), tal como demostró Redi hace más de 300 años. Nada vivo aparece de la nada.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "Todo ser vivo está HECHO de una o más células (nunca decimos que 'ES' una célula, salvo en los unicelulares) — ese es el corazón de la Teoría Celular, que también dice que la célula es la unidad básica de estructura y función, y que toda célula proviene de una célula anterior (nunca de materia no viva). Toda célula, sin excepción, tiene membrana plasmática, citoplasma y material genético; según cómo guarde ese material genético, es procariota (ADN libre) o eucariota (ADN dentro de un núcleo). Las células se mantienen pequeñas porque, al crecer, su volumen aumenta más rápido que su superficie de membrana disponible para intercambiar materiales; por eso los organismos grandes tienen MÁS células, no células más grandes."
+  },
+  "practica": [
+    {
+      "enunciado": "Un compañero de clase afirma: 'Está comprobado científicamente que todos los seres vivos son una célula'. Corrige el error usando los postulados de la Teoría Celular y da un ejemplo que muestre por qué la frase correcta es otra.",
+      "pista": "Pensá en un roble o en un ser humano: ¿son literalmente UNA célula, o están hechos de muchas? Compará con una ameba.",
+      "solucion": "La frase es incorrecta. La Teoría Celular dice que todo ser vivo está HECHO de una o más células, no que 'sea' una célula. Eso es cierto solo para los organismos unicelulares (como una ameba o una bacteria, que sí son literalmente una sola célula). Un ser humano, en cambio, está formado por unos 37 billones de células trabajando juntas: ninguna célula sola 'es' la persona completa. La frase correcta es: 'todo ser vivo está hecho de una o más células'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Clasifica cada organismo como UNICELULAR o MULTICELULAR y justifica: (a) Escherichia coli (una bacteria); (b) una medusa; (c) una levadura de panadería; (d) un roble.",
+      "pista": "Preguntate si el cuerpo entero del organismo es UNA sola célula que hace todo, o si son MUCHAS células repartiéndose las tareas.",
+      "solucion": "(a) Unicelular: la bacteria completa es una sola célula que cumple las siete funciones vitales por sí sola. (b) Multicelular: la medusa está formada por muchas células especializadas (tentáculos, células urticantes, etc.). (c) Unicelular: aunque es un hongo, la levadura de panadería es un organismo formado por una sola célula. (d) Multicelular: un roble tiene raíces, tronco, hojas y flores hechos de billones de células distintas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Calcula la superficie, el volumen y la razón superficie/volumen de un cubo de lado 1 y de un cubo de lado 4. ¿Qué cubo tiene, proporcionalmente, más 'puerta de entrada y salida' (superficie) por cada unidad de 'interior' (volumen)?",
+      "pista": "Superficie de un cubo = 6 × lado². Volumen = lado³. Razón = superficie ÷ volumen.",
+      "solucion": "Cubo de lado 1: superficie = 6×1² = 6; volumen = 1³ = 1; razón = 6÷1 = 6. Cubo de lado 4: superficie = 6×4² = 6×16 = 96; volumen = 4³ = 64; razón = 96÷64 = 1.5. El cubo chico (lado 1) tiene una razón mucho mayor (6 contra 1.5): proporcionalmente tiene mucha más superficie disponible por cada unidad de volumen. Esto confirma por qué las células se mantienen pequeñas: al crecer, pierden 'puerta' relativa para intercambiar materiales.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Clasifica estos cuatro organismos en DOS categorías a la vez (unicelular/multicelular Y procariota/eucariota): Escherichia coli, un paramecio, un ser humano, una levadura de panadería.",
+      "pista": "Primero decidí si cada uno es una sola célula o muchas. Después decidí si su ADN está libre en el citoplasma (procariota) o guardado en un núcleo (eucariota). Recordá: las bacterias son las únicas procariotas de esta lista.",
+      "solucion": "Escherichia coli: unicelular y procariota (una sola célula, sin núcleo, ADN libre). Paramecio: unicelular y eucariota (una sola célula, pero con núcleo). Ser humano: multicelular y eucariota (billones de células, todas con núcleo). Levadura de panadería: unicelular y eucariota (una sola célula de hongo, con núcleo). Nota: ser unicelular/multicelular y ser procariota/eucariota son DOS clasificaciones distintas e independientes; no hay que confundirlas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica por qué un elefante, que es enormemente más grande que un ratón, NO tiene células mucho más grandes que las del ratón. ¿Qué tiene el elefante en cambio?",
+      "pista": "Pensá en la razón superficie/volumen: ¿qué le pasaría a una célula si creciera demasiado?",
+      "solucion": "Si las células del elefante fueran mucho más grandes, tendrían un volumen enorme para abastecer pero relativamente poca superficie de membrana para intercambiar alimento, oxígeno y desechos (la razón superficie/volumen bajaría demasiado). Por eso las células del elefante son casi del mismo tamaño que las del ratón; lo que tiene el elefante es MUCHÍSIMAS MÁS células, no células más grandes. (Existen excepciones puntuales, como células muy largas y delgadas —neuronas— o algunas células gigantes como la yema de un huevo de avestruz, pero la regla general es: organismos más grandes = más cantidad de células, no células de mayor tamaño.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "¿Es un virus una célula? Justifica tu respuesta usando las tres partes que TODA célula tiene.",
+      "pista": "Repasá las tres partes universales de una célula y comparalas con lo que tiene (o no tiene) un virus.",
+      "solucion": "No, un virus no es una célula. Le falta membrana plasmática propia, citoplasma propio y no puede cumplir funciones vitales por sí solo: necesita invadir una célula de otro organismo y usar su maquinaria para poder reproducirse. Como no cumple con las tres partes universales de una célula (membrana, citoplasma, material genético organizado en una célula funcional), no se lo clasifica como célula. De hecho, por esta misma razón, muchos científicos ni siquiera lo consideran un ser 'vivo' en sentido estricto: es un caso límite todavía debatido.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Describe el experimento de Louis Pasteur con los matraces de cuello de cisne y explica qué idea antigua refutó.",
+      "pista": "Pensá en qué pasaba con el caldo cuando el cuello estaba intacto, y qué pasaba cuando se inclinaba el matraz para que el caldo tocara la curva.",
+      "solucion": "Pasteur hirvió caldo dentro de matraces con un cuello largo y curvado en forma de 'S' (cuello de cisne). Mientras el cuello permanecía intacto, el aire podía entrar pero el polvo y los microbios quedaban atrapados en la curva, y el caldo se mantenía sin microbios durante mucho tiempo. Si se inclinaba el matraz para que el caldo tocara esa curva contaminada, el caldo se llenaba de microbios en poco tiempo. Esto refutó la GENERACIÓN ESPONTÁNEA: la idea antigua de que los seres vivos (incluidos los microbios) podían surgir directamente de materia no viva. El experimento mostró que los microbios venían de otros microbios ya existentes, no de la nada.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica por qué se dice que una bacteria como Escherichia coli 'no tiene núcleo verdadero', y qué tiene en su lugar.",
+      "pista": "Pensá en dónde está el material genético en una célula procariota, comparado con una célula eucariota.",
+      "solucion": "Una célula procariota como E. coli SÍ tiene material genético (ADN), pero no está guardado dentro de un compartimento propio rodeado de membrana (un núcleo); en cambio, el ADN flota libre, mezclado directamente con el citoplasma. Por eso se dice que no tiene 'núcleo verdadero' (de ahí el nombre procariota, 'antes del núcleo'). Esto no significa que la bacteria le falte algo esencial: sigue teniendo las tres partes universales de toda célula (membrana, citoplasma y material genético), solo que organizadas de otra manera que las células eucariotas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Retomando el tema 1 (MRS GREN): explica qué significa que un paramecio, siendo una sola célula, tenga que cumplir las siete funciones vitales COMPLETAS él solo. Da un ejemplo concreto de al menos tres de esas funciones en el paramecio.",
+      "pista": "Repasá las siete funciones (M-R-S-G-R-E-N) y pensá cómo las haría una única célula que vive libre en el agua, sin ayuda de otras células.",
+      "solucion": "En un organismo multicelular, distintas células se especializan y se reparten las siete funciones vitales; en un unicelular como el paramecio no hay reparto posible: la MISMA y ÚNICA célula tiene que hacerlo todo. Ejemplos: se MUEVE nadando con sus cilios (pelillos); se NUTRE atrapando partículas de alimento del agua; SIENTE y se aleja de sustancias dañinas cercanas; se REPRODUCE dividiéndose en dos. Todo esto ocurre dentro de los límites de una única célula microscópica, sin ayuda de ninguna otra.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Si un cubo duplica su lado (por ejemplo, pasa de lado 2 a lado 4), ¿su razón superficie/volumen se duplica, se reduce a la mitad, o queda igual? Compruébalo con números.",
+      "pista": "Calculá superficie, volumen y razón para lado 2 y para lado 4, y compará las dos razones.",
+      "solucion": "Lado 2: superficie = 6×4 = 24; volumen = 8; razón = 24÷8 = 3. Lado 4: superficie = 6×16 = 96; volumen = 64; razón = 96÷64 = 1.5. La razón pasó de 3 a 1.5: se REDUJO A LA MITAD (no se duplicó ni quedó igual). Cada vez que el lado se duplica, la razón superficie/volumen se reduce a la mitad: por eso las células no pueden crecer indefinidamente sin quedarse sin superficie relativa para abastecerse.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica el aporte de Rudolf Virchow a la Teoría Celular y por qué corrigió una idea que incluso Schwann había propuesto originalmente.",
+      "pista": "Pensá en de dónde creía Schwann, al principio, que podían surgir células nuevas, y qué demostró Virchow en cambio.",
+      "solucion": "Schwann, en su versión original de la teoría, pensaba que las células nuevas también podían formarse a partir de una sustancia no viva (una especie de gel al que llamaba 'blastema'). Rudolf Virchow demostró con evidencia que eso era incorrecto, y propuso el tercer postulado de la Teoría Celular, resumido en la frase 'omnis cellula e cellula' (toda célula proviene de otra célula): ninguna célula nueva surge de materia no viva; toda célula nace de la división de una célula anterior que ya existía. Este aporte completó la Teoría Celular y, de paso, respaldó la idea de que la generación espontánea era falsa.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un microscopio óptico (tema anterior) no puede mostrar objetos menores a unos 0.2 micrómetros. La mayoría de las células miden entre 10 y 100 micrómetros. Explica por qué, entonces, las células SÍ se pueden observar bien con un microscopio óptico, pero muchos virus no.",
+      "pista": "Compará el tamaño típico de una célula con el límite del microscopio óptico, y el tamaño típico de un virus (mucho más chico) con ese mismo límite.",
+      "solucion": "Las células (10 a 100 micrómetros) son muchísimo más grandes que el límite del microscopio óptico (0.2 micrómetros), así que quedan cómodamente por encima de ese límite y se ven con claridad. Los virus, en cambio, suelen medir bastante menos de 0.2 micrómetros, por debajo del límite que la luz puede resolver; por eso, para verlos, hace falta un microscopio electrónico (el mismo que se mencionó en el tema anterior para ver detalles más finos que la luz).",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "Según la Teoría Celular, ¿cuál de estas afirmaciones es la CORRECTA?",
+      "opciones": [
+        "Todos los seres vivos SON una célula.",
+        "Todos los seres vivos ESTÁN HECHOS de una o más células.",
+        "Solo los animales están hechos de células; las plantas no.",
+        "Las células solo existen en los organismos multicelulares."
+      ],
+      "correcta": 1,
+      "explicacion": "La Teoría Celular dice que todo ser vivo está HECHO de una o más células, no que 'sea' una célula (eso solo es literalmente cierto para los unicelulares). Tanto animales como plantas están hechos de células, y también existen en los organismos unicelulares."
+    },
+    {
+      "pregunta": "¿Cuál de estos organismos es UNICELULAR?",
+      "opciones": [
+        "Un roble",
+        "Una medusa",
+        "Una bacteria como Escherichia coli",
+        "Un ser humano"
+      ],
+      "correcta": 2,
+      "explicacion": "Una bacteria como E. coli es un organismo formado por una sola célula que cumple las siete funciones vitales por sí sola. El roble, la medusa y el ser humano son multicelulares: están hechos de muchísimas células."
+    },
+    {
+      "pregunta": "¿Quién propuso el postulado de que 'toda célula proviene de una célula preexistente' (omnis cellula e cellula)?",
+      "opciones": [
+        "Robert Hooke",
+        "Antoni van Leeuwenhoek",
+        "Rudolf Virchow",
+        "Theodor Schwann"
+      ],
+      "correcta": 2,
+      "explicacion": "Rudolf Virchow propuso este tercer postulado de la Teoría Celular, corrigiendo incluso una idea original de Schwann. Hooke y Leeuwenhoek son del siglo XVII y no formaron parte de la Teoría Celular formal, que llegó dos siglos después."
+    },
+    {
+      "pregunta": "¿Cuál es la diferencia principal entre una célula PROCARIOTA y una EUCARIOTA?",
+      "opciones": [
+        "Las procariotas no tienen citoplasma y las eucariotas sí",
+        "Las procariotas tienen el ADN libre en el citoplasma; las eucariotas lo tienen guardado dentro de un núcleo",
+        "Las procariotas son siempre más grandes que las eucariotas",
+        "Las eucariotas no tienen membrana plasmática"
+      ],
+      "correcta": 1,
+      "explicacion": "Ambas tienen citoplasma y membrana plasmática (son partes universales de toda célula). La diferencia clave es cómo está organizado el material genético: libre en el citoplasma (procariota) o encerrado en un núcleo propio (eucariota)."
+    },
+    {
+      "pregunta": "Si un cubo duplica su lado (por ejemplo, de 2 a 4), ¿qué le pasa a su razón superficie/volumen?",
+      "opciones": [
+        "Se duplica",
+        "Se reduce a la mitad",
+        "Queda exactamente igual",
+        "Se triplica"
+      ],
+      "correcta": 1,
+      "explicacion": "Lado 2: razón = 24÷8 = 3. Lado 4: razón = 96÷64 = 1.5. La razón se reduce a la mitad. Es un error común pensar que un cubo más grande tiene proporcionalmente más superficie: en realidad tiene MENOS, porque el volumen crece más rápido que la superficie."
+    },
+    {
+      "pregunta": "¿Por qué las células, en general, se mantienen pequeñas en lugar de crecer indefinidamente?",
+      "opciones": [
+        "Porque se quedarían sin ADN si crecieran más",
+        "Porque al crecer, su volumen aumenta más rápido que su superficie de membrana disponible para el intercambio de materiales",
+        "Porque las células grandes explotan por la presión del agua",
+        "Porque el microscopio no podría verlas si fueran más grandes"
+      ],
+      "correcta": 1,
+      "explicacion": "El volumen (lo que hay que abastecer) crece más rápido que la superficie (la membrana, única puerta de intercambio). Una célula demasiado grande tendría relativamente poca membrana para alimentarse y eliminar desechos a tiempo. Las otras opciones son inventadas y no tienen base."
+    },
+    {
+      "pregunta": "¿Es un virus una célula?",
+      "opciones": [
+        "Sí, es la célula más pequeña que existe",
+        "No, porque no tiene membrana ni citoplasma propios ni puede cumplir funciones vitales por sí solo",
+        "Sí, porque tiene material genético (ADN o ARN)",
+        "No, porque los virus no existen realmente"
+      ],
+      "correcta": 1,
+      "explicacion": "Tener material genético no alcanza para ser una célula: hace falta también membrana y citoplasma propios, y poder funcionar por sí solo. Un virus carece de eso y necesita invadir una célula ajena para reproducirse; por eso no se lo considera una célula (y es un caso límite en el debate de qué está 'vivo')."
+    },
+    {
+      "pregunta": "¿Qué demostró el experimento de Louis Pasteur con los matraces de cuello de cisne?",
+      "opciones": [
+        "Que el aire está lleno de oxígeno",
+        "Que los microbios no surgen espontáneamente de materia no viva, sino de otros microbios ya existentes",
+        "Que las células tienen núcleo",
+        "Que las bacterias son más pequeñas que los virus"
+      ],
+      "correcta": 1,
+      "explicacion": "El caldo hervido se mantenía libre de microbios mientras el cuello curvado del matraz atrapaba el polvo del aire; al inclinar el matraz para que el caldo tocara esa curva, se contaminaba enseguida. Esto refutó la generación espontánea incluso para los microorganismos."
+    },
+    {
+      "pregunta": "Un elefante es enormemente más grande que un ratón. ¿Por qué es así, según lo que aprendiste sobre el tamaño de las células?",
+      "opciones": [
+        "Porque las células del elefante son mucho más grandes que las del ratón",
+        "Porque el elefante tiene muchísimas MÁS células que el ratón, no células de mayor tamaño",
+        "Porque el elefante tiene menos células, pero cada una hace más funciones",
+        "Porque las células del elefante no respetan la razón superficie/volumen"
+      ],
+      "correcta": 1,
+      "explicacion": "Las células no pueden crecer indefinidamente sin perder superficie relativa para intercambiar materiales (razón superficie/volumen). Por eso los organismos grandes están hechos de MÁS cantidad de células, y no de células mucho más grandes."
+    },
+    {
+      "pregunta": "¿Cuál de estas tres es una de las partes que TODA célula tiene, sin excepción?",
+      "opciones": [
+        "Un núcleo con membrana propia",
+        "Cloroplastos",
+        "Membrana plasmática",
+        "Pared celular"
+      ],
+      "correcta": 2,
+      "explicacion": "La membrana plasmática (junto con el citoplasma y el material genético) está en TODA célula, sin excepción. El núcleo con membrana propia solo existe en las células eucariotas (las procariotas no lo tienen); cloroplastos y pared celular son propios de ciertos tipos de células, no de todas."
+    },
+    {
+      "pregunta": "Clasificá: una levadura de panadería (hongo unicelular) es...",
+      "opciones": [
+        "Unicelular y procariota",
+        "Unicelular y eucariota",
+        "Multicelular y procariota",
+        "Multicelular y eucariota"
+      ],
+      "correcta": 1,
+      "explicacion": "La levadura es un organismo de una sola célula (unicelular), pero esa célula sí tiene su ADN guardado dentro de un núcleo (eucariota), a diferencia de una bacteria. Unicelular/multicelular y procariota/eucariota son dos clasificaciones distintas."
+    },
+    {
+      "pregunta": "¿Qué proponía la idea antigua de la 'generación espontánea'?",
+      "opciones": [
+        "Que las células se dividen para formar células nuevas",
+        "Que los seres vivos podían surgir directamente de materia no viva (como moscas 'naciendo' de carne podrida)",
+        "Que todas las células tienen el mismo tamaño",
+        "Que los microbios solo viven dentro de otros seres vivos"
+      ],
+      "correcta": 1,
+      "explicacion": "La generación espontánea sostenía que la vida podía surgir de la nada a partir de materia no viva. Fue refutada por experimentos como los de Redi (con la carne y las moscas) y Pasteur (con los matraces de cuello de cisne), y contradice el tercer postulado de la Teoría Celular."
+    },
+    {
+      "pregunta": "Según la Teoría Celular, ¿dónde ocurren las funciones vitales (MRS GREN) de un organismo?",
+      "opciones": [
+        "Solo en el cerebro",
+        "Dentro de sus células, sea una sola (unicelular) o muchas trabajando juntas (multicelular)",
+        "Fuera del organismo, en el ambiente",
+        "Solo en el material genético"
+      ],
+      "correcta": 1,
+      "explicacion": "La célula es la unidad básica de estructura y función: ahí ocurren las funciones vitales. En un unicelular, una única célula las cumple todas; en un multicelular, se reparten entre distintas células especializadas."
+    },
+    {
+      "pregunta": "¿Por qué se puede observar bien una célula típica (10 a 100 micrómetros) con un microscopio óptico, pero no la mayoría de los virus?",
+      "opciones": [
+        "Porque los virus son transparentes y las células no",
+        "Porque las células son mucho más grandes que el límite de aproximadamente 0.2 micrómetros del microscopio óptico, y muchos virus están por debajo de ese límite",
+        "Porque los virus se mueven demasiado rápido para enfocarlos",
+        "Porque el microscopio óptico solo puede ver cosas vivas"
+      ],
+      "correcta": 1,
+      "explicacion": "Como viste en el tema del microscopio, la luz no puede mostrar con claridad objetos menores a unos 0.2 micrómetros. Las células (10-100 micrómetros) quedan muy por encima de ese límite; muchos virus, en cambio, son más chicos que ese límite y requieren un microscopio electrónico."
+    }
+  ]
+}

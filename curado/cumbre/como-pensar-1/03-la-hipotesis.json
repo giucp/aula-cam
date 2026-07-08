@@ -1,0 +1,346 @@
+{
+  "programa": "cumbre",
+  "materia": "Cómo Pensar",
+  "grado": "Cumbre Cómo Pensar 1er año",
+  "dominio": "Preguntar e investigar",
+  "tema": "La hipótesis: una buena conjetura que se puede poner a prueba",
+  "referencias": [
+    "NGSS Science and Engineering Practices — Practice 1: Asking questions and defining problems (formular hipótesis a partir de observaciones, de forma que se puedan investigar)",
+    "UK National Curriculum, Working Scientifically (KS3) — formar hipótesis basadas en conocimiento previo, usarlas para hacer predicciones comprobables y planificar pruebas justas (fair tests) controlando variables",
+    "IB MYP Sciences, Criterio B (Inquiring and designing) — formular una hipótesis con razonamiento científico y diseñar una investigación capaz de ponerla a prueba",
+    "Karl Popper, criterio de falsabilidad (filosofía de la ciencia) — una hipótesis científica se distingue de una creencia porque puede, en principio, demostrarse falsa"
+  ],
+  "resumen": {
+    "titulo": "Explicaciones que se atreven a estar equivocadas: qué es una hipótesis",
+    "intro": "Ya aprendiste a distinguir una afirmación de la evidencia que la sostiene (tema 1) y a separar lo que observás de lo que inferís (tema 2). Ahora viene el paso que conecta ambas cosas: qué hacer cuando observás algo y querés averiguar POR QUÉ pasa. Ahí entra la hipótesis, una de las herramientas más poderosas de cualquier investigador. No es simplemente 'una idea': es una explicación que se arma con una condición muy especial, que se anima a decir de antemano qué prueba la echaría abajo si estuviera equivocada. Ese único requisito es lo que separa pensar como un investigador de simplemente inventar cosas que suenan bien.",
+    "secciones": [
+      {
+        "titulo": "De observar y preguntar por qué, a armar una hipótesis",
+        "explicacion": "Recordá el tema anterior: observar es notar algo con los sentidos, e inferir es sacar una conclusión sobre algo que no ves directamente, a partir de lo que sí observaste. Ahora damos un paso más. Cuando observás algo y te preguntás POR QUÉ pasa, tu mente arma casi automáticamente una explicación posible: eso ya es inferir. Una HIPÓTESIS es un tipo particular de inferencia: una explicación posible y razonada para algo que observaste, que además proponés A PROPÓSITO para investigarla, no solo para quedarte tranquilo con una idea. La diferencia con una inferencia cualquiera está en esa intención: no la armás solo para explicarte algo a vos mismo en el momento, sino para salir a comprobar si de verdad es cierta. Por eso una hipótesis siempre tiene que cumplir un requisito que vas a ver en la próxima sección: tiene que poder ponerse a prueba.",
+        "pasos": [
+          "Observá algo que te llame la atención (tema 2).",
+          "Preguntate: '¿por qué pasa esto?'.",
+          "Armá una explicación posible basada en lo que ya sabés u observaste, no en una ocurrencia al azar.",
+          "Marcá esa explicación como HIPÓTESIS solo si tenés intención de salir a comprobarla."
+        ],
+        "ejemplo": "Observás que las luces de tu calle se apagan siempre a la misma hora de madrugada, incluso en días nublados. Te preguntás por qué. Hipótesis: 'las luces tienen un temporizador programado para apagarse a esa hora, sin importar si hay sol o nubes'. Es una explicación razonada, no al azar, y, como vas a ver, se puede comprobar.",
+        "figura": ""
+      },
+      {
+        "titulo": "La prueba de fuego: que se pueda FALSAR",
+        "explicacion": "Acá está el corazón de todo el tema, así que vamos con calma. FALSABLE (o refutable) quiere decir que existe una prueba concreta que, si el resultado sale de cierta manera, mostraría que la hipótesis es FALSA. Ojo: falsable no significa 'que sea falsa'; significa que SE PUEDE demostrar que es falsa si en realidad lo es. Esto es lo que separa una hipótesis de verdad de una simple creencia. Un filósofo de la ciencia, Karl Popper, explicó esta idea con algo que vale la pena recordar siempre: lo que hace fuerte a una explicación no es que le encuentres casos a favor (eso casi siempre se puede, incluso para ideas falsas), sino que te animes a decir de antemano QUÉ resultado la echaría abajo. Si no hay ningún resultado posible que pudiera refutarla, no es una hipótesis: es una creencia que no se puede investigar. Por ejemplo, 'hay un espíritu invisible en el ático, que no se puede ver, oír, grabar ni detectar de ninguna forma' no es una hipótesis: no importa qué encuentres (o no encuentres), la afirmación sigue diciendo que el espíritu está ahí igual. En cambio, 'hay murciélagos viviendo en el ático' SÍ es una hipótesis: podés subir con una linterna, buscar excremento o grabar con un detector de ultrasonido, y si no encontrás nada de eso, la hipótesis queda refutada.",
+        "pasos": [
+          "Ante una posible hipótesis, preguntate: '¿qué resultado, si lo encontrara, mostraría que esto es FALSO?'.",
+          "Si podés nombrar un resultado así, la hipótesis es falsable: adelante.",
+          "Si NINGÚN resultado posible podría contradecirla (siempre tiene una salida), no es una hipótesis científica: es una creencia sin poner a prueba."
+        ],
+        "ejemplo": "'Este jarabe es mágico y siempre ayuda, aunque a veces ayude tomando más, a veces tomando menos, y a veces sin tomarlo' no es falsable: cualquier resultado 'confirma' la magia. 'Tomar este jarabe baja la fiebre en menos de 2 horas' sí es falsable: si medís la temperatura y no baja en ese tiempo, la hipótesis queda refutada.",
+        "figura": ""
+      },
+      {
+        "titulo": "Hipótesis no es lo mismo que un deseo o una opinión",
+        "explicacion": "Ya viste en el tema 1 que una OPINIÓN depende del gusto de cada quien y no se puede comprobar como verdadera o falsa. Un DESEO se parece: es lo que uno quiere que pase, no una explicación de por qué algo ocurre. Ninguno de los dos es una hipótesis. 'Voy a ganar el campeonato porque me lo merezco' no es una hipótesis: 'merecerlo' no es algo que se pueda medir ni poner a prueba, y la frase en el fondo es un deseo con forma de explicación. En cambio, 'el equipo anota más goles en los partidos donde practicó tiros libres 30 minutos antes de jugar' sí es una hipótesis: se puede llevar un registro partido por partido y comprobarlo. Fijate en la conexión con el tema 1: una hipótesis suele empezar como un 'creo que, quizás...', que es honesto porque todavía no tiene prueba. Lo que la hace valiosa es que, a diferencia de una opinión, SÍ podés salir a buscar evidencia y, si la encontrás, pasar a decir 'sé que, porque la prueba mostró...'.",
+        "pasos": [
+          "Preguntate: '¿esto describe algo que se pueda medir u observar, o es un gusto o un deseo?'.",
+          "Si depende del gusto (como una opinión) o es lo que querés que pase (un deseo), NO es una hipótesis.",
+          "Si describe una relación comprobable entre cosas, es candidata a hipótesis: seguí con la prueba de falsabilidad de la sección anterior."
+        ],
+        "ejemplo": "'Esta canción es la mejor del año' es opinión (gusto). 'Voy a aprobar porque tengo buena suerte' es deseo disfrazado de explicación (la suerte no se mide). 'Repasar con tarjetas de memoria el doble de veces mejora mi nota en el examen de vocabulario' sí es una hipótesis: se puede comprobar llevando un registro.",
+        "figura": ""
+      },
+      {
+        "titulo": "Hipótesis y predicción no son lo mismo: la forma 'si..., entonces...'",
+        "explicacion": "Dos palabras que se confunden mucho: HIPÓTESIS y PREDICCIÓN. La hipótesis es la EXPLICACIÓN (el 'por qué' que proponés). La PREDICCIÓN es lo que esperarías OBSERVAR si esa explicación fuera cierta: es una consecuencia concreta y comprobable de la hipótesis. La manera más clara de conectarlas es con la forma 'SI la hipótesis es cierta, ENTONCES se debería observar esto'. Vamos a seguir un ejemplo que va a reaparecer en varias secciones: hipótesis: 'estudiar una lista de palabras mientras se escucha música instrumental ayuda a recordar más palabras que estudiar en silencio'. La predicción, con la forma si-entonces, sería: 'si eso es cierto, entonces las personas que estudien la lista con música instrumental deberían recordar, en promedio, más palabras que las que estudien en silencio, con el mismo tiempo de estudio'. Fijate que la predicción es la parte que de verdad se puede medir (contar palabras recordadas); la hipótesis es la idea de fondo que explica por qué pasaría eso.",
+        "pasos": [
+          "Escribí primero la hipótesis: la explicación de por qué creés que pasa algo.",
+          "Completá: 'SI mi hipótesis es cierta, ENTONCES debería observarse esto (algo medible)'.",
+          "Revisá que la parte de 'entonces' sea concreta: un número, una cantidad, algo que se pueda contar o medir, no una idea vaga."
+        ],
+        "ejemplo": "Hipótesis: 'el ácido del jugo de limón acelera la oxidación del hierro (que un clavo saque óxido)'. Predicción: 'si eso es cierto, entonces un clavo mojado con jugo de limón mostrará más óxido visible después de una semana que un clavo mojado solo con agua'.",
+        "figura": "<svg viewBox=\"0 0 400 160\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"20\" y=\"50\" width=\"150\" height=\"60\" rx=\"8\" fill=\"#12B5A4\" fill-opacity=\"0.15\" stroke=\"#12B5A4\" stroke-width=\"2\"/><text x=\"95\" y=\"75\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#0E9486\">HIPÓTESIS</text><text x=\"95\" y=\"93\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0E9486\">(la explicación)</text><line x1=\"170\" y1=\"80\" x2=\"225\" y2=\"80\" stroke=\"#8C7C93\" stroke-width=\"2\"/><polygon points=\"225,80 215,74 215,86\" fill=\"#8C7C93\"/><rect x=\"230\" y=\"50\" width=\"150\" height=\"60\" rx=\"8\" fill=\"#7C4DFF\" fill-opacity=\"0.15\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><text x=\"305\" y=\"75\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#5A3AAF\">PREDICCIÓN</text><text x=\"305\" y=\"93\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#5A3AAF\">(lo que se observaría)</text><text x=\"200\" y=\"130\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#3B2B4A\">SI la hipótesis es cierta, ENTONCES se observa esto</text></svg>"
+      },
+      {
+        "titulo": "Variables: qué cambio, qué mido, qué mantengo igual",
+        "explicacion": "Para poner a prueba una predicción con justicia hacen falta tres piezas, y cada una tiene su nombre técnico. La VARIABLE INDEPENDIENTE es lo que vos cambiás a propósito para ver qué efecto tiene (en el ejemplo de la música: si hay música o no). La VARIABLE DEPENDIENTE es lo que MEDÍS para ver si hubo un efecto (cuántas palabras recuerda cada persona). Las VARIABLES CONTROLADAS son todo lo demás que mantenés IGUAL para las dos situaciones, para que la única diferencia real sea la que estás estudiando (la misma lista de palabras, el mismo tiempo de estudio, el mismo lugar tranquilo aparte de la música, el mismo tipo de prueba de memoria después). A una prueba donde controlás bien todo lo demás se le llama PRUEBA JUSTA (fair test): si no controlás esas otras variables, y por ejemplo un grupo estudia una lista más corta o tiene más tiempo, ya no sabés si el resultado se debió a la música o a esa otra diferencia.",
+        "pasos": [
+          "Identificá qué vas a cambiar a propósito: esa es la variable independiente.",
+          "Identificá qué vas a medir para ver el efecto: esa es la variable dependiente.",
+          "Hacé una lista de todo lo demás que podría influir, y mantenelo IGUAL en ambas situaciones: esas son las variables controladas.",
+          "Si algo de esa lista queda distinto entre los dos grupos, la prueba deja de ser justa."
+        ],
+        "ejemplo": "Para probar si el material de una taza (metal o cerámica) afecta cuánto tarda en enfriarse el té: variable independiente = el material de la taza. Variable dependiente = la temperatura del té cada 5 minutos. Variables controladas = la misma cantidad de té, la misma temperatura inicial, el mismo lugar y la misma temperatura ambiente para las dos tazas.",
+        "figura": "<svg viewBox=\"0 0 420 170\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"10\" y=\"30\" width=\"120\" height=\"70\" rx=\"8\" fill=\"#12B5A4\" fill-opacity=\"0.15\" stroke=\"#12B5A4\" stroke-width=\"2\"/><text x=\"70\" y=\"58\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#0E9486\">CAMBIO</text><text x=\"70\" y=\"74\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#0E9486\">(independiente)</text><rect x=\"150\" y=\"30\" width=\"120\" height=\"70\" rx=\"8\" fill=\"#7C4DFF\" fill-opacity=\"0.15\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><text x=\"210\" y=\"58\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#5A3AAF\">MIDO</text><text x=\"210\" y=\"74\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#5A3AAF\">(dependiente)</text><rect x=\"290\" y=\"30\" width=\"120\" height=\"70\" rx=\"8\" fill=\"#8C7C93\" fill-opacity=\"0.15\" stroke=\"#8C7C93\" stroke-width=\"2\"/><text x=\"350\" y=\"58\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#3B2B4A\">MANTENGO IGUAL</text><text x=\"350\" y=\"74\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">(controlada)</text><text x=\"210\" y=\"130\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#3B2B4A\">Las tres piezas de una prueba justa</text></svg>"
+      },
+      {
+        "titulo": "Diseñar una prueba que de verdad pueda refutar (no solo confirmar)",
+        "explicacion": "Acá se conecta con una trampa que ya viste en el tema 2: el sesgo de expectativa, esa tendencia del cerebro a ver lo que espera ver. Al poner a prueba una hipótesis pasa algo parecido, y es muy tentador: si ya creés que la música ayuda a memorizar, es fácil probarla UNA sola vez, con UNA sola persona (vos mismo, que ya esperás que funcione) y quedarte con eso como si fuera una prueba fuerte. Pero una prueba diseñada de verdad para investigar tiene que salir a buscar también la posibilidad de estar equivocada: probar con VARIAS personas (no una), asignar quién estudia con música y quién sin música de forma que no dependa de si la persona ya cree en el efecto, y usar la MISMA lista y el MISMO tiempo para ambos grupos (las variables controladas de la sección anterior). Si diseñás la prueba solo buscando confirmar, es fácil auto-engañarte, igual que en el experimento del gorila invisible del tema 2: tu expectativa filtra lo que notás. Una buena prueba deja abierta, de verdad, la posibilidad de que la hipótesis pierda.",
+        "pasos": [
+          "Probá con varias personas o varios casos, no con uno solo (un caso puede ser casualidad, tema 1).",
+          "Compará un grupo con la condición (por ejemplo, con música) contra un grupo sin ella, no solo mires 'a favor'.",
+          "Buscá activamente el resultado que refutaría tu hipótesis, no solo el que la confirma.",
+          "Mantené igual todo lo demás (variables controladas) para que la comparación sea justa."
+        ],
+        "ejemplo": "Prueba débil: estudiás una vez con música, te va bien, y decidís que 'la música ayuda'. Prueba fuerte: 20 personas estudian la misma lista el mismo tiempo; 10 con música instrumental y 10 en silencio (elegido al azar, no por si ya creían en la música); se cuenta cuántas palabras recuerda cada quien. Esa segunda prueba de verdad podría mostrar que la música NO ayuda, si los resultados salen parecidos entre los dos grupos.",
+        "figura": ""
+      },
+      {
+        "titulo": "Qué significa que una hipótesis se REFUTE o quede SOSTENIDA",
+        "explicacion": "Después de la prueba pasan dos cosas posibles, y ambas son útiles. Si el resultado NO coincide con la predicción (por ejemplo, el grupo con música no recordó más palabras que el de silencio), la hipótesis queda REFUTADA: se descarta o se revisa. Esto NO es un fracaso: es exactamente para eso que se diseñó la prueba, y ahora sabés algo que antes no sabías. Si el resultado SÍ coincide con la predicción, la hipótesis queda SOSTENIDA por ahora: ganó apoyo, pero (recordando los niveles de evidencia del tema 1) una sola prueba, con un solo grupo, es todavía una evidencia más débil que si el mismo resultado se repite con otros grupos, en otros lugares, hecho por otras personas. Por eso en ciencia nunca se dice que una hipótesis quedó 'demostrada para siempre': se dice que está BIEN SOSTENIDA por la evidencia que hay hasta ahora, y que seguiría sostenida mientras nadie encuentre un resultado que la refute. Esa puerta abierta, que siempre podría aparecer evidencia en contra, es, otra vez, parte de lo que la hace una hipótesis de verdad y no un dogma.",
+        "pasos": [
+          "Compará el resultado real con la predicción 'si..., entonces...'.",
+          "Si NO coincide: la hipótesis queda refutada. Revisala o descartala; no es un fracaso, es información.",
+          "Si SÍ coincide: la hipótesis queda sostenida por ahora, con más fuerza cuantas más veces se repita con otros grupos (tema 1).",
+          "Nunca la declares 'verdad absoluta para siempre': dejá la puerta abierta a nueva evidencia."
+        ],
+        "ejemplo": "Si en la prueba de la música los 10 estudiantes con música recuerdan, en promedio, la misma cantidad de palabras que los 10 en silencio, la hipótesis 'la música ayuda a memorizar' queda refutada, al menos en esa forma. Si en cambio recuerdan claramente más, la hipótesis queda sostenida por ahora, y sería aún más fuerte si otros grupos, en otro momento, obtienen el mismo resultado.",
+        "figura": ""
+      },
+      {
+        "titulo": "La trampa de la excusa a la medida (hipótesis 'ad hoc')",
+        "explicacion": "Hay una manera de romper todo lo aprendido sin darse cuenta, y es tan común que tiene nombre propio: la hipótesis AD HOC, una 'excusa a la medida' inventada justo en el momento para salvar la idea original cada vez que falla la prueba. Pasa así: alguien tiene una hipótesis, la prueba falla, y en vez de aceptar que quedó refutada, le agrega un parche que explica por qué 'en realidad' no falló. Por ejemplo: 'esta piedra me trae buena suerte'. Un día lleva la piedra y le va mal. En vez de aceptar que la hipótesis se refutó, dice: 'es que ese día no la llevaba bien puesta en el bolsillo'. La próxima vez que falle, inventará otra excusa distinta. El problema es que, con un parche siempre disponible, la hipótesis deja de ser falsable: ya ningún resultado puede refutarla, porque siempre hay una excusa nueva a la medida. Esto no significa que TODO ajuste a una hipótesis esté mal (a veces de verdad se descubre una condición real que faltaba); la señal de alarma es cuando la excusa aparece SOLO para salvar la idea, sin ninguna prueba propia, y cambia cada vez que hace falta.",
+        "pasos": [
+          "Cuando una hipótesis falle y alguien la 'salve' con una excusa nueva, preguntate: '¿esa excusa se puede comprobar por separado, o solo apareció para que la hipótesis no pierda?'.",
+          "Si la excusa cambia cada vez y nunca se pone a prueba ella misma, es un parche ad hoc: no se acepta como salvavidas válido.",
+          "Lo honesto es aceptar que la hipótesis original quedó refutada, y si hace falta, proponer una nueva hipótesis con su propia prueba."
+        ],
+        "ejemplo": "Hipótesis: 'este cargador carga el celular más rápido'. Se prueba y no carga más rápido. Excusa ad hoc: 'es que el celular estaba muy caliente ese día'. Si la próxima vez tampoco carga más rápido y aparece OTRA excusa distinta ('es que la batería ya estaba vieja'), es la señal de que se está parchando en vez de aceptar que la hipótesis no se sostiene.",
+        "figura": ""
+      },
+      {
+        "titulo": "Todo el proceso junto: de la observación a la evaluación",
+        "explicacion": "Juntemos las piezas en un solo recorrido que podés usar frente a cualquier cosa que te llame la atención. Primero, OBSERVÁ con cuidado (tema 2). Segundo, preguntate POR QUÉ pasa eso. Tercero, armá una HIPÓTESIS: una explicación razonada y, sobre todo, FALSABLE (secciones 1 y 2), no una opinión ni un deseo (sección 3). Cuarto, derivá una PREDICCIÓN concreta con la forma 'si..., entonces...' (sección 4). Quinto, diseñá una prueba identificando variable independiente, dependiente y controladas (sección 5), que busque de verdad la posibilidad de refutar, no solo de confirmar (sección 6). Sexto, mirá el resultado con honestidad: ¿la hipótesis quedó refutada o sostenida por ahora? (sección 7). Y séptimo, desconfiá de vos mismo si sentís la tentación de parchar la hipótesis con una excusa a la medida en vez de aceptar que falló (sección 8). Este recorrido es exactamente lo que hacen los científicos, y también lo que puede hacer cualquiera frente a una duda cotidiana.",
+        "pasos": [
+          "Observá con cuidado (tema 2).",
+          "Preguntá por qué.",
+          "Armá una hipótesis razonada y falsable (no opinión ni deseo).",
+          "Escribí la predicción 'si..., entonces...' concreta y medible.",
+          "Diseñá una prueba justa: variable independiente, dependiente, controladas, buscando refutar de verdad.",
+          "Evaluá el resultado con honestidad: refutada, sostenida por ahora, o hace falta más evidencia.",
+          "Cuidate de parchar con excusas a la medida en vez de aceptar un resultado en contra."
+        ],
+        "ejemplo": "Observás que el perro de tu casa ladra mucho más los martes que otros días. Por qué: pensás en qué es distinto los martes. Hipótesis: 'el perro ladra más los martes porque ese día pasa el camión de la basura por tu calle'. Predicción: 'si eso es cierto, entonces los martes que el camión NO pase (por algún feriado, por ejemplo) el perro debería ladrar una cantidad normal, parecida a otros días'. Prueba: anotás, durante varias semanas, si pasó el camión y cuántas veces ladró el perro (variable independiente: si pasa el camión o no; dependiente: cantidad de ladridos; controlada: mismo horario de observación). Si un martes sin camión el perro ladra igual que siempre, la hipótesis queda refutada y hay que buscar otra explicación; si ladra menos, queda sostenida por ahora.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "Una hipótesis es una explicación razonada para algo que observaste, propuesta A PROPÓSITO para ponerla a prueba: por eso, a diferencia de una opinión o un deseo, tiene que ser FALSABLE (tiene que existir un resultado posible que la mostraría falsa). De una hipótesis se deriva una predicción concreta con la forma 'si..., entonces...', que se pone a prueba controlando variables (qué cambio, qué mido, qué mantengo igual) y buscando de verdad la posibilidad de refutarla, no solo de confirmarla. El resultado deja la hipótesis refutada o sostenida por ahora, nunca 'demostrada para siempre', y hay que cuidarse de salvarla con excusas a la medida (hipótesis ad hoc) en vez de aceptar cuando falla."
+  },
+  "practica": [
+    {
+      "enunciado": "Clasificá cada frase como HIPÓTESIS FALSABLE, OPINIÓN o CREENCIA NO FALSABLE: (a) 'Mi celular pierde la batería más rápido cuando hace frío.' (b) 'El frío es feo.' (c) 'Existe una fuerza que hace que se te pierdan las cosas cuando tenés prisa, y nunca se puede detectar de ninguna manera.'",
+      "pista": "Para cada una, preguntate: ¿depende del gusto? ¿se puede medir y existe un resultado que la refutaría? ¿hay alguna forma, aunque sea difícil, de mostrar que es falsa?",
+      "solucion": "(a) HIPÓTESIS FALSABLE: se puede medir cuánto dura la batería en frío y en temperatura normal, y comparar; si dura igual, queda refutada. (b) OPINIÓN: 'feo' depende del gusto de cada persona, no se comprueba como verdadero o falso. (c) CREENCIA NO FALSABLE: dice explícitamente que nunca se puede detectar de ninguna forma, así que ningún resultado podría mostrarla falsa; no es investigable.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Reescribí esta creencia no falsable para convertirla en una hipótesis que sí se pueda poner a prueba: 'Este amuleto me protege de la mala suerte, pase lo que pase.'",
+      "pista": "Pensá en algo concreto y medible que 'protegerme de la mala suerte' podría significar: ¿menos accidentes?, ¿menos veces que se te caen las cosas? Elegí algo contable.",
+      "solucion": "Una versión falsable posible: 'Las semanas que llevo el amuleto encima, se me caen o se me pierden cosas menos veces que las semanas que no lo llevo.' Ahora sí hay algo medible (contar caídas o pérdidas por semana) y un resultado que podría refutarla (si el número sale igual o peor con el amuleto).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Dada la hipótesis 'el agua con sal hierve a una temperatura más alta que el agua sin sal', escribí la predicción con la forma 'si..., entonces...'.",
+      "pista": "La predicción tiene que ser algo concreto que se pueda MEDIR con un termómetro, comparando ambas aguas.",
+      "solucion": "'Si eso es cierto, entonces al medir con un termómetro la temperatura a la que empieza a hervir, el agua con sal debería marcar un número más alto que el agua sin sal, midiendo la misma cantidad de las dos.'",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante quiere saber si el tipo de superficie (cemento o pasto) afecta cuánto rebota una pelota. Deja caer la MISMA pelota desde la MISMA altura sobre cemento y sobre pasto, y mide la altura del rebote con una regla. Identificá la variable independiente, la dependiente y al menos dos variables controladas.",
+      "pista": "La independiente es lo que él cambia a propósito; la dependiente es lo que mide; las controladas son lo que mantiene igual para que la comparación sea justa.",
+      "solucion": "Variable independiente: el tipo de superficie (cemento o pasto). Variable dependiente: la altura del rebote, medida con la regla. Variables controladas: la misma pelota y la misma altura de caída (también podría agregar: la misma persona soltando la pelota, el mismo método de medición).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero afirma: 'Cuando uso medias rojas juego mejor al fútbol.' Lo probó una sola vez, un día que ya se sentía bien y con ganas de jugar, y le fue bien. Concluyó que las medias rojas funcionan. Explicá al menos DOS fallas en esta forma de probar su hipótesis.",
+      "pista": "Pensá en el tema 2 (sesgo de expectativa) y en las variables controladas: ¿probó buscando refutar, o solo una vez a favor? ¿controló otras cosas que también podrían explicar que jugara bien ese día?",
+      "solucion": "Falla 1: es una sola prueba (una anécdota, tema 1), no alcanza para sostener la hipótesis; podría repetirse con y sin medias rojas varias veces. Falla 2: no controló otras variables: ya se sentía bien y con ganas ese día, así que el buen juego pudo deberse a su ánimo y no a las medias (variable controlada faltante). Falla 3 (sesgo de expectativa, tema 2): como ya esperaba que las medias ayudaran, es fácil que haya notado más lo bueno de su juego ese día y le diera crédito a las medias sin buscar realmente si jugó igual de bien otros días sin ellas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Después de una sola prueba donde el resultado coincidió con la predicción, alguien dice: 'Listo, quedó demostrado para siempre.' ¿Qué está mal en esa conclusión?",
+      "pista": "Recordá los niveles de evidencia del tema 1: ¿qué nivel es una sola prueba? ¿Una hipótesis puede 'demostrarse para siempre'?",
+      "solucion": "Está mal por dos razones. Primero, una sola prueba es apenas un caso (parecido a una anécdota, tema 1): pesa menos que si el mismo resultado se repite con otros grupos o en otras condiciones. Segundo, ninguna hipótesis científica se declara 'demostrada para siempre': queda sostenida por ahora, con la puerta abierta a que aparezca evidencia futura que la refute. Lo correcto sería decir 'por ahora la evidencia la sostiene, y sería más fuerte si se repite'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "En este párrafo, separá cuál frase es la HIPÓTESIS y cuál es la PREDICCIÓN: 'Creo que el pan se pone duro más rápido si lo dejo destapado por el aire seco. Si eso es cierto, entonces un pan destapado debería estar más duro después de un día que un pan tapado con una bolsa, guardados los dos en el mismo lugar.'",
+      "pista": "La hipótesis es la explicación del 'por qué'; la predicción es lo que se espera observar y medir para comprobarlo.",
+      "solucion": "Hipótesis: 'el pan se pone duro más rápido si lo dejo destapado por el aire seco' (es la explicación de la causa). Predicción: 'un pan destapado debería estar más duro después de un día que un pan tapado con una bolsa, guardados los dos en el mismo lugar' (es lo concreto y comprobable que se espera observar si la hipótesis es cierta).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Alguien sostiene la hipótesis: 'Este suplemento hace crecer el cabello más rápido.' Lo prueba durante un mes y no nota diferencia. En vez de aceptar que la hipótesis no se sostiene, dice: 'Es que un mes es muy poco tiempo para este suplemento en particular.' Si vuelve a probarlo tres meses y sigue sin resultado, y entonces dice: 'Es que mi cuerpo es distinto y necesita más tiempo todavía', ¿qué está pasando y por qué es un problema?",
+      "pista": "Fijate que cada vez que falla la prueba, aparece una excusa NUEVA que nunca se pone a prueba por sí sola. ¿Cómo se llama esto?",
+      "solucion": "Está agregando excusas a la medida (hipótesis ad hoc) cada vez que la prueba falla, en vez de aceptar que la hipótesis quedó refutada. El problema es que ninguna de esas excusas se comprueba por separado, y como siempre aparece una excusa nueva y distinta, la hipótesis deja de ser falsable: ya ningún resultado, por más tiempo que pase, podría mostrarla falsa, porque siempre habrá un parche nuevo. Lo honesto sería aceptar, tras una prueba bien hecha, que el suplemento no mostró el efecto y buscar otra explicación.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Observás que el perro de tu casa ladra mucho más los martes que los demás días de la semana. Escribí: (a) una hipótesis razonada y falsable que explique esto, (b) su predicción con la forma 'si..., entonces...', y (c) la variable independiente y la dependiente de una prueba para comprobarla.",
+      "pista": "Pensá qué es distinto específicamente los martes en tu barrio o tu casa (algo que puedas comprobar, no algo mágico).",
+      "solucion": "(a) Hipótesis: 'el perro ladra más los martes porque ese día pasa el camión de la basura por la calle.' (b) Predicción: 'si eso es cierto, entonces un martes en que el camión NO pase (por ejemplo, un feriado), el perro debería ladrar una cantidad parecida a un día normal, no como los otros martes.' (c) Variable independiente: si el camión de la basura pasa o no ese día. Variable dependiente: la cantidad de ladridos del perro, contados en el mismo rango de horas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ante la misma observación ('el semáforo de la esquina tarda distinto en cambiar según la hora del día'), dos personas proponen hipótesis distintas: Hipótesis A: 'el semáforo está embrujado y cambia cuando quiere.' Hipótesis B: 'el semáforo tiene un temporizador que ajusta el tiempo según la hora pico, para dejar pasar más autos cuando hay más tráfico.' Evaluá cuál de las dos es una mejor hipótesis científica y justificá con al menos dos razones.",
+      "pista": "Preguntate cuál de las dos es falsable (¿qué prueba podría mostrar cada una como falsa?) y cuál permite diseñar una prueba concreta.",
+      "solucion": "La Hipótesis B es mejor. Razón 1: es falsable, porque se puede comprobar con evidencia (por ejemplo, cronometrar el semáforo en distintas horas y ver si el patrón coincide con las horas de más tráfico; si no coincide, quedaría refutada). Razón 2: propone un mecanismo comprobable (un temporizador que responde al tráfico), mientras que la Hipótesis A ('embrujado') no permite ninguna prueba: cualquier resultado que se observe se podría 'explicar' diciendo que el hechizo actuó así, por lo que no es falsable y no es una hipótesis científica útil.",
+      "figura": ""
+    },
+    {
+      "enunciado": "La frase 'la música me pone de buen humor' suena razonable, pero es demasiado vaga para ponerla a prueba tal cual. Reescribila como una hipótesis más precisa y falsable.",
+      "pista": "Pensá en algo medible: ¿qué tipo de música?, ¿cómo medirías el 'buen humor' (una escala, una pregunta, algo observable)?",
+      "solucion": "Una versión más precisa: 'Escuchar música con ritmo rápido durante 10 minutos sube, en promedio, mi nivel de ánimo (medido del 1 al 10 antes y después) más que quedarme 10 minutos en silencio.' Ahora la hipótesis especifica el tipo de música, el tiempo y cómo se mide el ánimo, así que existe una forma concreta de comprobarla o refutarla.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante propone: 'Cuánto tarda el hielo en derretirse depende del color del recipiente que lo contiene (más oscuro, se derrite más rápido).' Diseñá una prueba: identificá la variable independiente, la dependiente y al menos tres variables que habría que controlar.",
+      "pista": "Pensá en todo lo que, si queda distinto entre los recipientes, podría explicar el resultado además del color (cantidad de hielo, tamaño y forma del recipiente, si están al sol o a la sombra, temperatura ambiente).",
+      "solucion": "Variable independiente: el color del recipiente (por ejemplo, negro y blanco). Variable dependiente: el tiempo que tarda el hielo en derretirse por completo. Variables controladas: la misma cantidad de hielo en cada recipiente, el mismo tamaño y forma de recipiente, el mismo lugar y la misma temperatura ambiente para ambos, y empezar los dos al mismo tiempo. Si alguna de estas quedara distinta, no se sabría si la diferencia se debió al color o a esa otra variable.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál de estas es la definición correcta de HIPÓTESIS?",
+      "opciones": [
+        "Una explicación razonada para algo observado, propuesta a propósito para ponerla a prueba.",
+        "Cualquier idea que se te ocurra sobre algo, sin importar si se puede comprobar.",
+        "Un hecho que ya está comprobado con certeza.",
+        "Una opinión sobre lo que te gusta más."
+      ],
+      "correcta": 0,
+      "explicacion": "Una hipótesis es una explicación razonada (no una ocurrencia al azar) que se propone A PROPÓSITO para investigarla. No es un hecho ya comprobado (eso vendría después, si la evidencia la sostiene), ni una opinión de gusto."
+    },
+    {
+      "pregunta": "¿Qué significa que una hipótesis sea FALSABLE?",
+      "opciones": [
+        "Que ya se sabe que es falsa.",
+        "Que existe algún resultado posible que, de encontrarse, mostraría que es falsa.",
+        "Que nadie la puede comprobar nunca.",
+        "Que suena poco creíble."
+      ],
+      "correcta": 1,
+      "explicacion": "Falsable no significa 'falsa': significa que hay una manera concreta de mostrar que sería falsa si en realidad lo fuera. Si NINGÚN resultado posible pudiera contradecirla, no es una hipótesis científica, sea o no creíble a simple vista."
+    },
+    {
+      "pregunta": "¿Cuál de estas afirmaciones NO es falsable?",
+      "opciones": [
+        "'Un espíritu invisible vive en el ático, y no se puede detectar de ninguna manera posible.'",
+        "'Hay murciélagos en el ático.'",
+        "'La temperatura del ático sube más de 5 grados al mediodía.'",
+        "'El techo del ático tiene una gotera.'"
+      ],
+      "correcta": 0,
+      "explicacion": "La frase del espíritu dice explícitamente que no se puede detectar de ninguna forma: ningún resultado podría refutarla, así que no es falsable. Las otras tres SÍ se pueden comprobar (buscando murciélagos, midiendo temperatura, revisando el techo)."
+    },
+    {
+      "pregunta": "Hipótesis: 'las plantas de mi jardín crecen porque las cuido con cariño.' ¿Por qué es difícil ponerla a prueba tal como está escrita?",
+      "opciones": [
+        "Porque 'cariño' no se puede medir ni definir de forma clara y comprobable.",
+        "Porque las plantas nunca crecen.",
+        "Porque el cariño no existe.",
+        "Porque ya está demostrada."
+      ],
+      "correcta": 0,
+      "explicacion": "El problema no es que el cariño no exista, sino que tal como está la frase no se puede MEDIR: no hay forma clara de comprobarla. Habría que reescribirla en algo concreto, como la cantidad de agua, luz o minutos de atención, para que fuera falsable."
+    },
+    {
+      "pregunta": "Dada la hipótesis 'dormir con la ventana abierta mejora la calidad del sueño', ¿cuál de estas es la PREDICCIÓN correcta con la forma 'si..., entonces...'?",
+      "opciones": [
+        "'Si eso es cierto, entonces dormir con la ventana abierta debería, en promedio, dar menos despertares nocturnos que dormir con la ventana cerrada.'",
+        "'Dormir con la ventana abierta mejora la calidad del sueño.'",
+        "'A mí me gusta dormir con la ventana abierta.'",
+        "'El sueño es importante para la salud.'"
+      ],
+      "correcta": 0,
+      "explicacion": "La predicción es la consecuencia CONCRETA y medible que se esperaría observar (menos despertares nocturnos, algo contable) si la hipótesis fuera cierta. Las otras opciones repiten la hipótesis, dan una opinión o afirman algo general que no comprueba nada."
+    },
+    {
+      "pregunta": "En una prueba donde se compara si el tipo de suela de zapato (goma o cuero) afecta cuánto resbala en piso mojado, ¿cuál es la variable INDEPENDIENTE?",
+      "opciones": [
+        "El tipo de suela (goma o cuero).",
+        "Cuánto resbala el zapato.",
+        "El piso mojado.",
+        "La persona que hace la prueba."
+      ],
+      "correcta": 0,
+      "explicacion": "La variable independiente es lo que se cambia A PROPÓSITO para ver su efecto: aquí, el tipo de suela. Cuánto resbala es lo que se MIDE (la dependiente); el piso mojado y quién hace la prueba deberían mantenerse iguales (controladas)."
+    },
+    {
+      "pregunta": "En esa misma prueba de las suelas, ¿cuál es la variable DEPENDIENTE?",
+      "opciones": [
+        "El tipo de suela.",
+        "Cuánto resbala el zapato (por ejemplo, la distancia que se desliza).",
+        "El color del zapato.",
+        "La marca del zapato."
+      ],
+      "correcta": 1,
+      "explicacion": "La variable dependiente es lo que se MIDE para ver si hubo efecto: cuánto resbala (por ejemplo, la distancia deslizada). El tipo de suela es la independiente; color y marca deberían ser variables controladas (iguales en ambos casos) para que la prueba sea justa."
+    },
+    {
+      "pregunta": "Un experimento prueba dos tipos de fertilizante, pero uno de los grupos de plantas recibe además más horas de sol que el otro. Si el grupo con más sol crece más, ¿qué problema tiene esta prueba?",
+      "opciones": [
+        "Ninguno, el fertilizante igual funcionó.",
+        "No se controló una variable (las horas de sol), así que no se puede saber si el crecimiento se debió al fertilizante o al sol.",
+        "El experimento es válido porque usó plantas de verdad.",
+        "El problema es que las plantas no pueden crecer distinto."
+      ],
+      "correcta": 1,
+      "explicacion": "Al quedar distinta la cantidad de sol entre los grupos, esa es otra variable sin controlar que también podría explicar el resultado: no se puede saber si creció más por el fertilizante, por el sol, o por ambos. Una prueba justa necesita mantener igual todo excepto lo que se está estudiando."
+    },
+    {
+      "pregunta": "Se prueba una hipótesis y el resultado NO coincide con la predicción. ¿Cuál es la actitud correcta?",
+      "opciones": [
+        "Aceptar que la hipótesis queda refutada (o hay que revisarla), y ver eso como información útil, no como un fracaso.",
+        "Ignorar el resultado y seguir creyendo la hipótesis igual.",
+        "Inventar una excusa nueva cada vez para que la hipótesis nunca pierda.",
+        "Declarar que el experimento no cuenta porque no dio lo esperado."
+      ],
+      "correcta": 0,
+      "explicacion": "Cuando el resultado contradice la predicción, lo correcto es aceptar que la hipótesis queda refutada (o necesita ajustarse), y eso es información valiosa. Ignorarlo, inventar excusas nuevas cada vez (hipótesis ad hoc) o descartar el experimento sin motivo real rompe el sentido de haberlo hecho."
+    },
+    {
+      "pregunta": "Una sola persona prueba una hipótesis una sola vez y el resultado coincide con la predicción. ¿Por qué NO se puede decir todavía que la hipótesis quedó 'demostrada para siempre'?",
+      "opciones": [
+        "Porque una sola prueba es como una anécdota (tema 1): pesa menos que si el resultado se repite con más personas o en otras condiciones, y siempre podría aparecer evidencia en contra.",
+        "Porque las hipótesis nunca sirven para nada.",
+        "Porque hay que probarla exactamente 100 veces para que cuente.",
+        "Porque solo los científicos famosos pueden confirmar hipótesis."
+      ],
+      "correcta": 0,
+      "explicacion": "Una sola prueba equivale a un caso aislado, y (como viste con los niveles de evidencia del tema 1) eso pesa menos que resultados repetidos. Además, ninguna hipótesis científica se da por 'demostrada para siempre': queda sostenida por ahora, con la puerta abierta a nueva evidencia. No existe un número mágico fijo de repeticiones ni hace falta ser famoso."
+    },
+    {
+      "pregunta": "Alguien sostiene: 'Este cargador carga más rápido.' Falla la prueba, y dice: 'Es que el celular estaba caliente.' Se prueba de nuevo, vuelve a fallar, y dice: 'Es que la batería ya está vieja.' ¿Cómo se llama esta forma de defender la hipótesis, y por qué es un problema?",
+      "opciones": [
+        "Se llama evidencia fuerte, y es una forma válida de sostener la hipótesis.",
+        "Se llama hipótesis ad hoc (excusa a la medida): cada excusa nueva no se comprueba por separado y hace que la hipótesis deje de ser falsable.",
+        "Se llama predicción, y es exactamente lo que hay que hacer.",
+        "Se llama variable controlada, y mejora la prueba."
+      ],
+      "correcta": 1,
+      "explicacion": "Agregar una excusa distinta cada vez que la prueba falla, sin comprobar esa excusa por separado, es una hipótesis ad hoc. El problema es que la hipótesis deja de ser falsable: siempre habrá un parche nuevo, así que ya ningún resultado podría mostrarla falsa. No es evidencia fuerte, ni una predicción, ni una variable controlada."
+    },
+    {
+      "pregunta": "¿Cuál de estas es la MEJOR manera de diseñar una prueba para ver si escuchar música instrumental ayuda a memorizar una lista de palabras?",
+      "opciones": [
+        "Probarlo una sola vez con vos mismo, ya que esperás que funcione.",
+        "Comparar varios grupos de personas (con y sin música), asignados sin que dependa de si ya creen en el efecto, usando la misma lista y el mismo tiempo de estudio para todos.",
+        "Preguntarle a la gente si cree que la música ayuda.",
+        "Buscar solo casos de personas a las que les funcionó, sin comparar con nadie más."
+      ],
+      "correcta": 1,
+      "explicacion": "Una prueba fuerte compara grupos (no un solo caso), controla que la asignación no dependa de la expectativa de cada quien, y mantiene igual la lista y el tiempo (variables controladas). Probarlo una vez esperando que funcione, preguntar opiniones o buscar solo casos favorables son formas débiles que no buscan de verdad la posibilidad de refutar la hipótesis."
+    },
+    {
+      "pregunta": "Ante la observación 'el semáforo tarda distinto según la hora', se comparan dos hipótesis: A) 'está embrujado y cambia cuando quiere' y B) 'tiene un temporizador que ajusta el tiempo según el tráfico'. ¿Cuál es la mejor hipótesis científica y por qué?",
+      "opciones": [
+        "La A, porque suena más misteriosa.",
+        "La B, porque es falsable: se puede diseñar una prueba (cronometrar en distintas horas) que podría refutarla; la A no permite ninguna prueba porque cualquier resultado se explicaría como parte del hechizo.",
+        "Ambas son igual de buenas porque las dos explican el fenómeno.",
+        "Ninguna sirve porque los semáforos no se pueden estudiar."
+      ],
+      "correcta": 1,
+      "explicacion": "La B es mejor porque es falsable y permite diseñar una prueba concreta con un resultado que podría contradecirla. La A no es investigable: cualquier resultado se puede 'explicar' con el hechizo, así que no es una hipótesis científica útil, aunque suene interesante. No son igual de buenas, y sí se pueden estudiar los semáforos."
+    }
+  ]
+}

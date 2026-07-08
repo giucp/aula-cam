@@ -1,0 +1,379 @@
+{
+  "programa": "cumbre",
+  "materia": "Física",
+  "grado": "Cumbre Física 1er año",
+  "dominio": "Medir el mundo",
+  "tema": "Medir longitud, masa y tiempo: instrumentos, precisión y error",
+  "referencias": [
+    "UK KS3/GCSE Combined Science — Working Scientifically: precisión, exactitud, repetibilidad, resolución de instrumentos, error sistemático y aleatorio",
+    "Singapore Lower Secondary Science / IB MYP Sciences — uso correcto de instrumentos (regla, calibre/pie de rey, balanza, cronómetro), cifras significativas y fuentes de error",
+    "Japan MEXT Grade 7 Science — lectura correcta de escalas e instrumentos, estimación del último dígito",
+    "IB MYP Sciences (Criterio B) — recolectar y procesar datos con la precisión adecuada, identificar limitaciones de una medición"
+  ],
+  "resumen": {
+    "titulo": "Medir bien: instrumentos, precisión y error",
+    "intro": "En el tema anterior aprendiste QUÉ es una magnitud y con QUÉ unidad se mide: longitud en metros, masa en kilogramos, tiempo en segundos. Pero saber la unidad correcta no es suficiente para medir bien. Dos personas pueden usar el mismo metro y aun así obtener números distintos, porque el instrumento que eligen, la forma en que lo leen y los errores que cometen sin darse cuenta cambian el resultado. En este tema vas a aprender a elegir el instrumento correcto para cada magnitud, a leerlo con el número justo de cifras, y —lo más importante— a juzgar qué tan BUENA es una medida distinguiendo dos ideas que casi todo el mundo confunde: precisión y exactitud.",
+    "secciones": [
+      {
+        "titulo": "De las magnitudes a medir bien: por qué este tema importa",
+        "explicacion": "Imagina que dos estudiantes miden el mismo escritorio con la misma cinta métrica. Uno obtiene 120 cm y el otro 123 cm. Ambos usaron la unidad correcta (centímetros), así que la unidad no es el problema. La diferencia viene de OTRO lugar: quizás uno estiró más la cinta, o el otro no puso el cero exactamente en el borde, o uno miró la marca de frente y el otro de costado. Medir bien no es solo 'usar la unidad correcta': es también elegir el instrumento adecuado, leerlo con cuidado y entender que toda medida real tiene algo de error, sin que eso signifique que hiciste algo mal. Aprender a manejar ese error —a reducirlo cuando se puede y a reconocerlo cuando no— es lo que separa una medida confiable de una medida al azar.",
+        "pasos": [
+          "Elegir el INSTRUMENTO adecuado para la magnitud y el tamaño de lo que se mide.",
+          "LEER el instrumento con la técnica correcta (cero bien puesto, sin mirar de costado).",
+          "Reportar la medida con el número de cifras que el instrumento realmente respalda.",
+          "Reconocer y, cuando se pueda, reducir el error de la medición."
+        ],
+        "ejemplo": "Los dos estudiantes que midieron el escritorio (120 cm y 123 cm) no están 'mal' por definición: la diferencia de 3 cm podría venir de un cero mal alineado (un error que se repite siempre igual) o de estirar la cinta con más o menos fuerza cada vez (un error que cambia al azar). Distinguir cuál de las dos cosas pasó es exactamente lo que vas a aprender a hacer en este tema.",
+        "figura": ""
+      },
+      {
+        "titulo": "Instrumentos para medir longitud: regla, cinta métrica y calibre",
+        "explicacion": "Para la longitud existen varios instrumentos, y cada uno sirve para un tamaño distinto de objeto. La REGLA GRADUADA sirve para objetos pequeños (un lápiz, un cuaderno): la mayoría marca hasta el milímetro, es decir, su marca más pequeña es 1 mm. La CINTA MÉTRICA es una regla flexible y larga, pensada para distancias grandes que una regla rígida no alcanza a cubrir (el ancho de un salón, el largo de una cancha); su marca más pequeña también suele ser el milímetro, pero al ser flexible es un poco más fácil que se doble o se afloje al usarla, así que hay que estirarla bien. El CALIBRE (también llamado pie de rey o vernier) es un instrumento para objetos pequeños que necesitan una lectura muy fina, como el grosor de una moneda o el diámetro de un alambre: su marca más pequeña llega a la décima de milímetro (0,1 mm), diez veces más fina que una regla común. Elegir mal el instrumento arruina la medida antes de empezar: una cinta métrica es demasiado tosca para el diámetro de un tornillo, y un calibre no te sirve para medir un pasillo (su rango es demasiado corto).",
+        "pasos": [
+          "Objetos pequeños de uso diario (lápiz, cuaderno, borrador) -> regla graduada.",
+          "Distancias largas (salón, cancha, pasillo) -> cinta métrica.",
+          "Objetos muy pequeños o que necesitan una lectura muy fina (grosor, diámetro de piezas chicas) -> calibre.",
+          "Antes de medir, pregúntate: ¿el TAMAÑO del objeto y la FINURA que necesito calzan con este instrumento?"
+        ],
+        "ejemplo": "Para medir el diámetro de un tornillo pequeño usarías un calibre (necesitas décimas de milímetro); para medir el ancho de un salón de clases usarías una cinta métrica (la distancia es demasiado grande para una regla, y no necesitas tanta finura); para medir el largo de una llave usarías una regla común.",
+        "figura": ""
+      },
+      {
+        "titulo": "La palabra clave: la RESOLUCIÓN de un instrumento (y cómo leerlo bien)",
+        "explicacion": "En el tema anterior dijimos, de forma informal, que una regla común 'mide hasta el milímetro' y que por eso era menos fina que un calibre para el grosor de una moneda. Ese uso de la palabra 'precisión' en realidad se refería a la RESOLUCIÓN del instrumento: el valor de la división más pequeña que el instrumento puede marcar o mostrar. La regla tiene una resolución de 1 mm; el calibre, de 0,1 mm (diez veces más fina). A partir de ahora vamos a reservar la palabra PRECISIÓN para otra idea distinta, que vas a conocer más adelante en este mismo tema; por ahora, resolución significa solamente 'qué tan fina es la escala del instrumento'. Con un instrumento ANALÓGICO (uno que tiene marcas y tú decides dónde cae la lectura, como una regla o un calibre de aguja), la técnica correcta es: primero alinear bien el cero con el borde del objeto; segundo, mirar de frente y no de costado (mirar de costado produce un error llamado ERROR DE PARALAJE, porque el ángulo hace que la marca parezca estar en otro lugar); tercero, leer las divisiones que se ven con certeza; y cuarto, ESTIMAR un dígito más, calculando a ojo en qué fracción de la división más pequeña cae el borde del objeto. Con un instrumento DIGITAL (una balanza digital, un cronómetro digital), el aparato ya hizo ese trabajo de estimar por ti: simplemente lees el número que muestra la pantalla, sin inventar ni redondear más.",
+        "pasos": [
+          "Alinea el cero del instrumento exactamente con el borde de lo que mides.",
+          "Mira de frente, nunca de costado (evita el error de paralaje).",
+          "Lee con certeza hasta la división más pequeña que marca el instrumento (su resolución).",
+          "Si es analógico: ESTIMA un dígito más, la fracción de esa división en la que cae el borde.",
+          "Si es digital: usa el número que muestra la pantalla tal cual, sin agregar ni quitar dígitos."
+        ],
+        "ejemplo": "Con una regla de resolución 1 mm, el borde de una goma de borrar cae justo a la mitad entre las marcas de 53 mm y 54 mm: la lectura correcta es 53,5 mm (el 5 de las décimas es el dígito estimado). Con un calibre de resolución 0,1 mm, el diámetro de un tornillo cae justo a la mitad entre 4,3 mm y 4,4 mm: la lectura correcta es 4,35 mm. Con una balanza digital que muestra '24,3 g' al pesar un llavero, la lectura es 24,3 g directamente: no hace falta estimar nada más, el aparato ya lo hizo.",
+        "figura": "<svg viewBox=\"0 0 380 150\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"10\" y=\"15\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">goma de borrar alineada desde 0 mm (fuera de este acercamiento)</text><rect x=\"20\" y=\"55\" width=\"340\" height=\"26\" fill=\"#12B5A4\" fill-opacity=\"0.08\" stroke=\"#12B5A4\" stroke-width=\"2\"/><rect x=\"0\" y=\"60\" width=\"170\" height=\"16\" fill=\"#7C4DFF\" fill-opacity=\"0.35\"/><g stroke=\"#8C7C93\" stroke-width=\"1.5\"><line x1=\"30\" y1=\"50\" x2=\"30\" y2=\"86\"/><line x1=\"70\" y1=\"50\" x2=\"70\" y2=\"86\"/><line x1=\"110\" y1=\"50\" x2=\"110\" y2=\"86\"/><line x1=\"150\" y1=\"50\" x2=\"150\" y2=\"86\"/><line x1=\"190\" y1=\"50\" x2=\"190\" y2=\"86\"/><line x1=\"230\" y1=\"50\" x2=\"230\" y2=\"86\"/><line x1=\"270\" y1=\"50\" x2=\"270\" y2=\"86\"/><line x1=\"310\" y1=\"50\" x2=\"310\" y2=\"86\"/><line x1=\"350\" y1=\"50\" x2=\"350\" y2=\"86\"/></g><g font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\" text-anchor=\"middle\"><text x=\"30\" y=\"100\">50</text><text x=\"70\" y=\"100\">51</text><text x=\"110\" y=\"100\">52</text><text x=\"150\" y=\"100\">53</text><text x=\"190\" y=\"100\">54</text><text x=\"230\" y=\"100\">55</text><text x=\"270\" y=\"100\">56</text><text x=\"310\" y=\"100\">57</text><text x=\"350\" y=\"100\">58</text></g><line x1=\"170\" y1=\"40\" x2=\"170\" y2=\"95\" stroke=\"#3B2B4A\" stroke-width=\"1.5\" stroke-dasharray=\"3,2\"/><text x=\"170\" y=\"30\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">53.5 mm</text><text x=\"195\" y=\"130\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#5A3AAF\">el borde cae a la mitad entre 53 y 54 mm: el digito de las decimas (5) es el estimado</text></svg>"
+      },
+      {
+        "titulo": "Cifras significativas: cuántos dígitos reportar, ni de más ni de menos",
+        "explicacion": "Una CIFRA SIGNIFICATIVA es cada dígito de una medida que aporta información real sobre ella: los dígitos que leíste con certeza, más el ÚNICO dígito que estimaste. Ni uno menos (perderías información que sí pudiste leer), ni uno más (inventarías información que el instrumento no te puede dar). Con el calibre de resolución 0,1 mm, la lectura '4,35 mm' tiene tres cifras significativas: el 4 y el 3 son ciertos, y el 5 es el estimado. Sería un error escribir '4,3 mm' (perdiste el dígito estimado que sí lograste leer) y también sería un error escribir '4,350000 mm' (inventaste ceros que el calibre jamás midió). Este segundo error es muy común cuando se usa una calculadora: si divides o multiplicas una medida y la calculadora te da ocho decimales, esos decimales de más NO son reales, son solo lo que hace la calculadora con cualquier número; hay que redondear el resultado para que respete la precisión de la medida original. Con instrumentos digitales, todas las cifras que muestra la pantalla ya son las significativas (incluida la última, que es la que tiene algo de incertidumbre), y no hay que agregar ni quitar ninguna.",
+        "pasos": [
+          "Cuenta los dígitos que leíste con CERTEZA (hasta la resolución del instrumento).",
+          "Súmales UN dígito más: el estimado (en analógicos) o el último que muestra la pantalla (en digitales).",
+          "Ese total es el número correcto de cifras significativas: ni redondees de más, ni agregues decimales inventados."
+        ],
+        "ejemplo": "Un estudiante mide con un calibre y anota '4,350000 mm'. Eso está mal: el calibre solo puede respaldar tres cifras (4,35 mm); los ceros de más sugieren una finura que el instrumento nunca tuvo. Otro estudiante redondea esa misma lectura a '4,3 mm': también está mal, porque tira a la basura el dígito estimado (el 5) que sí alcanzó a leer con cuidado.",
+        "figura": ""
+      },
+      {
+        "titulo": "Instrumentos para masa y tiempo, y una trampa con el cronómetro",
+        "explicacion": "Para la MASA se usa la BALANZA: puede ser analógica (de brazos o de resorte, con una aguja o un fiel que hay que leer, resolución típica de 0,1 g) o digital (muestra el número directamente en una pantalla). Antes de pesar cualquier cosa, hay que TARAR la balanza: ponerla en cero con el platillo vacío (o con el envase vacío, si vas a pesar algo dentro de un recipiente), porque si el platillo ya marcaba algo distinto de cero, esa cantidad se sumará SIEMPRE a cada medición que hagas. Para el TIEMPO se usa el CRONÓMETRO, casi siempre digital, con una resolución de 0,01 s (centésimas de segundo). Aquí aparece una trampa importante: aunque el cronómetro pueda MOSTRAR centésimas, eso no significa que tu medición sea así de fina, porque TÚ tienes que presionar el botón de inicio y el de parada, y tu TIEMPO DE REACCIÓN (que varía unas pocas décimas de segundo cada vez, sin que puedas evitarlo del todo) es un error mucho más grande que la resolución del aparato. Esta es la primera pista de una idea central de este tema: la calidad de una medición no depende solo de qué tan fino sea el instrumento, sino también de cómo lo usa la persona.",
+        "pasos": [
+          "Antes de pesar: TARA la balanza (ponla en cero con el platillo o el envase vacío).",
+          "Lee la balanza de frente, esperando a que el número se estabilice.",
+          "Con el cronómetro: recuerda que tu tiempo de reacción agrega un error propio, aparte de la resolución del aparato.",
+          "Para eventos muy cortos, repetir la medición varias veces ayuda a compensar ese error de reacción."
+        ],
+        "ejemplo": "Un cronómetro digital marca una vuelta de carrera como '23,47 s'. Esa lectura tiene la resolución del aparato (centésimas), pero si el mismo estudiante repite la vuelta idéntica varias veces y presiona el botón con un poco de retraso distinto cada vez, obtendrá números que varían más de una centésima entre sí: eso no es un defecto del cronómetro, es el tiempo de reacción humano sumándose a la medida.",
+        "figura": ""
+      },
+      {
+        "titulo": "Dos tipos de error: sistemático y aleatorio",
+        "explicacion": "Toda medida real tiene ERROR: la diferencia entre lo que medimos y el valor verdadero. Tener algo de error no es un fracaso ni un descuido; es parte de medir, y lo importante es entender de dónde viene para manejarlo. Hay dos tipos, con causas y soluciones muy distintas. El ERROR SISTEMÁTICO tiene una causa FIJA que se repite igual en cada medición, casi siempre en la misma dirección y por una cantidad parecida: una balanza que no fue tarada y ya marcaba de más con el platillo vacío, una cinta métrica con el extremo desgastado, un cero mal alineado en una regla. Como la causa sigue estando ahí, el error sistemático NO desaparece por repetir la medición muchas veces: si tu balanza suma 2 g de más, los sumará en la primera medición, en la segunda y en la centésima. El ERROR ALEATORIO, en cambio, cambia de forma impredecible de una medición a otra, a veces de más y a veces de menos, por causas que varían cada vez sin que puedas controlarlas del todo: el ángulo exacto desde el que miras (paralaje), tu tiempo de reacción al cronómetro, una pequeña vibración de la mesa. A diferencia del sistemático, repetir la medición SÍ ayuda con el error aleatorio, porque los valores de más y de menos tienden a compensarse en el promedio.",
+        "pasos": [
+          "Pregúntate: ¿esta causa de error se repite SIEMPRE igual (sistemático) o cambia cada vez, al azar (aleatorio)?",
+          "Sistemático: viene de una falla fija del instrumento o del método (cero mal puesto, falta de calibración).",
+          "Aleatorio: viene de algo que varía cada intento (paralaje, reacción humana, pequeñas vibraciones).",
+          "Repetir la medición ayuda con el error aleatorio; NO arregla el error sistemático."
+        ],
+        "ejemplo": "Si una balanza sin tarar agrega siempre 2,0 g de más, eso es sistemático (la causa —el cero mal puesto— es la misma en cada pesada). Si al medir con un cronómetro cinco personas obtienen tiempos ligeramente distintos por su propio tiempo de reacción, eso es aleatorio (la causa cambia de persona a persona y de intento a intento).",
+        "figura": ""
+      },
+      {
+        "titulo": "Precisión y exactitud: la trampa clásica",
+        "explicacion": "Aquí está la confusión más común de todo el tema, así que vamos a definirla con mucho cuidado. La PRECISIÓN es qué tan cerca están varias medidas REPETIDAS entre SÍ, sin importar si se acercan o no al valor verdadero: si repites una medición y siempre obtienes números muy parecidos entre ellos, esa medición es precisa (tiene buena repetibilidad), así esté acertando o no. La EXACTITUD es qué tan cerca está tu medida (o el promedio de tus medidas) del valor VERDADERO o aceptado: si tu resultado se acerca al valor real, es exacto, así hayas obtenido ese resultado con medidas muy dispersas entre sí o no. La analogía clásica es un blanco de tiro: dardos muy juntos entre sí pero lejos del centro son PRECISOS pero NO EXACTOS (mucha repetibilidad, poca cercanía al valor real); dardos dispersos por todo el blanco pero centrados alrededor del centro son EXACTOS en promedio pero NO PRECISOS (poca repetibilidad, pero el promedio acierta). Fíjate en la conexión con la sección anterior: la precisión está ligada al error ALEATORIO (mientras menos error aleatorio, más se parecen las medidas entre sí); la exactitud está ligada al error SISTEMÁTICO (mientras menos error sistemático, más se acerca el resultado al valor real). Veamos dos casos numéricos resueltos con una cinta métrica que mide una mesa cuyo largo verdadero, certificado por el fabricante, es 150,0 cm. Caso 1 (cinta con el extremo desgastado, error sistemático): cinco medidas dan 152,0; 151,9; 152,1; 152,0 y 151,8 cm. El promedio es (152,0+151,9+152,1+152,0+151,8)/5 = 759,8/5 = 151,96 cm, y el rango (la diferencia entre la mayor y la menor) es apenas 152,1−151,8 = 0,3 cm: las medidas son MUY parecidas entre sí (alta precisión), pero el promedio se aleja casi 2 cm del valor real (baja exactitud) — la sospecha inmediata es un error sistemático, como el extremo desgastado de la cinta. Caso 2 (cinta bien calibrada, pero con error de paralaje al leer, error aleatorio): cinco medidas dan 148,5; 151,6; 149,2; 150,8 y 150,9 cm. El promedio es (148,5+151,6+149,2+150,8+150,9)/5 = 751,0/5 = 150,2 cm, muy cerca del valor real (alta exactitud), pero el rango es 151,6−148,5 = 3,1 cm: las medidas individuales están muy dispersas entre sí (baja precisión) — la sospecha inmediata es un error aleatorio, como leer la cinta desde ángulos distintos cada vez.",
+        "pasos": [
+          "Para juzgar la PRECISIÓN: compara las medidas repetidas ENTRE SÍ (calcula el rango: la mayor menos la menor). Rango chico = precisa.",
+          "Para juzgar la EXACTITUD: compara el PROMEDIO de tus medidas con el valor real o aceptado (si lo conoces). Diferencia chica = exacta.",
+          "Una medición puede ser: precisa y exacta; precisa pero no exacta (sospecha error sistemático); exacta pero no precisa (sospecha error aleatorio); o ninguna de las dos."
+        ],
+        "ejemplo": "Repasando los dos casos de la mesa (valor real 150,0 cm): Caso 1 (152,0; 151,9; 152,1; 152,0; 151,8 cm) es PRECISO (rango 0,3 cm) pero NO EXACTO (promedio 151,96 cm, error de casi 2 cm) — probable error sistemático. Caso 2 (148,5; 151,6; 149,2; 150,8; 150,9 cm) es EXACTO en promedio (150,2 cm, muy cerca de 150,0) pero NO PRECISO (rango 3,1 cm) — probable error aleatorio.",
+        "figura": "<svg viewBox=\"0 0 480 380\" xmlns=\"http://www.w3.org/2000/svg\"><g font-family=\"sans-serif\" text-anchor=\"middle\"><circle cx=\"110\" cy=\"90\" r=\"55\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><circle cx=\"110\" cy=\"90\" r=\"35\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><circle cx=\"110\" cy=\"90\" r=\"15\" fill=\"#12B5A4\" fill-opacity=\"0.2\" stroke=\"#12B5A4\" stroke-width=\"2\"/><g fill=\"#3B2B4A\"><circle cx=\"108\" cy=\"88\" r=\"4\"/><circle cx=\"112\" cy=\"92\" r=\"4\"/><circle cx=\"110\" cy=\"85\" r=\"4\"/><circle cx=\"107\" cy=\"93\" r=\"4\"/><circle cx=\"113\" cy=\"89\" r=\"4\"/></g><text x=\"110\" y=\"175\" font-size=\"12\" font-weight=\"700\" fill=\"#0E9486\">Precisa y exacta</text><circle cx=\"350\" cy=\"90\" r=\"55\" fill=\"none\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><circle cx=\"350\" cy=\"90\" r=\"35\" fill=\"none\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><circle cx=\"350\" cy=\"90\" r=\"15\" fill=\"#7C4DFF\" fill-opacity=\"0.15\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><g fill=\"#3B2B4A\"><circle cx=\"376\" cy=\"66\" r=\"4\"/><circle cx=\"380\" cy=\"70\" r=\"4\"/><circle cx=\"377\" cy=\"65\" r=\"4\"/><circle cx=\"381\" cy=\"69\" r=\"4\"/><circle cx=\"379\" cy=\"67\" r=\"4\"/></g><text x=\"350\" y=\"175\" font-size=\"12\" font-weight=\"700\" fill=\"#5A3AAF\">Precisa, no exacta</text><text x=\"350\" y=\"190\" font-size=\"11\" fill=\"#5A3AAF\">(error sistematico)</text><circle cx=\"110\" cy=\"260\" r=\"55\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><circle cx=\"110\" cy=\"260\" r=\"35\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><circle cx=\"110\" cy=\"260\" r=\"15\" fill=\"#12B5A4\" fill-opacity=\"0.2\" stroke=\"#12B5A4\" stroke-width=\"2\"/><g fill=\"#3B2B4A\"><circle cx=\"95\" cy=\"245\" r=\"4\"/><circle cx=\"125\" cy=\"275\" r=\"4\"/><circle cx=\"90\" cy=\"265\" r=\"4\"/><circle cx=\"130\" cy=\"250\" r=\"4\"/><circle cx=\"108\" cy=\"280\" r=\"4\"/></g><text x=\"110\" y=\"345\" font-size=\"12\" font-weight=\"700\" fill=\"#0E9486\">Exacta en promedio, no precisa</text><text x=\"110\" y=\"360\" font-size=\"11\" fill=\"#0E9486\">(error aleatorio)</text><circle cx=\"350\" cy=\"260\" r=\"55\" fill=\"none\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><circle cx=\"350\" cy=\"260\" r=\"35\" fill=\"none\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><circle cx=\"350\" cy=\"260\" r=\"15\" fill=\"#7C4DFF\" fill-opacity=\"0.15\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><g fill=\"#3B2B4A\"><circle cx=\"375\" cy=\"205\" r=\"4\"/><circle cx=\"405\" cy=\"235\" r=\"4\"/><circle cx=\"370\" cy=\"225\" r=\"4\"/><circle cx=\"410\" cy=\"210\" r=\"4\"/><circle cx=\"395\" cy=\"240\" r=\"4\"/></g><text x=\"350\" y=\"345\" font-size=\"12\" font-weight=\"700\" fill=\"#5A3AAF\">Ni precisa ni exacta</text></g></svg>"
+      },
+      {
+        "titulo": "Cómo se corrige cada tipo de error",
+        "explicacion": "Como sus causas son distintas, la solución para cada error también lo es, y confundirlas es un error muy común. Para el ERROR SISTEMÁTICO hay que encontrar y eliminar la causa fija: calibrar el instrumento contra un patrón conocido, tarar (poner en cero) la balanza antes de pesar, revisar que el cero de la regla o la cinta esté bien alineado. Repetir la medición NO sirve de nada contra el error sistemático, porque la causa se repite igual en cada intento: promediar cien medidas hechas con una balanza sin tarar te seguirá dando un resultado desviado. Para el ERROR ALEATORIO, en cambio, la estrategia es justamente REPETIR la medición varias veces y PROMEDIAR los resultados: como el error cambia al azar (a veces de más, a veces de menos), esos desvíos tienden a compensarse entre sí, y el promedio se acerca más al valor real que cualquier medición suelta. Cuantas más repeticiones hagas, mejor tiende a compensarse el azar (siempre que no haya, además, un error sistemático de por medio, que el promedio nunca corrige).",
+        "pasos": [
+          "Error sistemático: calibra el instrumento, tara la balanza, revisa y corrige el cero. NO promedies esperando que desaparezca.",
+          "Error aleatorio: repite la medición varias veces y calcula el promedio.",
+          "Si sospechas de los dos a la vez: primero corrige la causa sistemática (el cero, la calibración) y LUEGO repite y promedia para el aleatorio."
+        ],
+        "ejemplo": "Un estudiante mide, con un cronómetro bien calibrado, un intervalo de un metrónomo que en realidad dura exactamente 5,00 s, y por su tiempo de reacción obtiene 5,3; 4,7 y 5,1 s en tres intentos. El promedio es (5,3+4,7+5,1)/3 = 15,1/3 = 5,03 s, muy cerca del valor real de 5,00 s, aunque cada intento individual se alejó un poco (a veces de más, a veces de menos): repetir y promediar compensó el error aleatorio del tiempo de reacción.",
+        "figura": ""
+      },
+      {
+        "titulo": "Error absoluto: ponerle un número a la exactitud",
+        "explicacion": "Cuando conocemos el valor verdadero o un valor de referencia aceptado (por ejemplo, una pesa patrón certificada, o una medida oficial), podemos poner un NÚMERO exacto a qué tan buena fue nuestra medición: el ERROR ABSOLUTO. El error absoluto es la diferencia, en valor absoluto (siempre positiva, porque no importa si te pasaste o te quedaste corto), entre el valor medido y el valor real: error absoluto = |valor medido − valor real|. Cuanto MENOR sea el error absoluto, más EXACTA es la medida (se acerca más al valor real); un error absoluto grande es la señal numérica de que algo —casi siempre un error sistemático— está desviando tu medición.",
+        "pasos": [
+          "Identifica el valor MEDIDO (tu resultado, o el promedio de tus mediciones).",
+          "Identifica el valor REAL o de referencia aceptado.",
+          "Resta ambos y toma el valor absoluto (ignora el signo): esa diferencia es el error absoluto, en las mismas unidades que la medida."
+        ],
+        "ejemplo": "Retomando el Caso 1 de la mesa (promedio medido 151,96 cm, valor real certificado 150,0 cm): el error absoluto es |151,96 − 150,0| = 1,96 cm, que redondeamos a 2,0 cm. Ese número confirma con precisión numérica lo que ya sospechábamos: una desviación de casi 2 cm es demasiado grande para ser puro azar; apunta a un error sistemático en la cinta.",
+        "figura": ""
+      },
+      {
+        "titulo": "Errores típicos que cometen los estudiantes (y cómo evitarlos)",
+        "explicacion": "Cerremos el tema con los tropiezos más frecuentes, para que los reconozcas antes de cometerlos. Primero: confundir precisión con exactitud, usando una palabra por la otra sin darse cuenta; la prueba rápida es siempre preguntarte '¿estoy hablando de que mis medidas se PARECEN ENTRE SÍ (precisión), o de que se ACERCAN AL VALOR REAL (exactitud)?'. Segundo: creer que promediar arregla CUALQUIER error; promediar solo compensa el error aleatorio, nunca el sistemático —si tu instrumento está mal calibrado, promediar cien mediciones seguirá dando el mismo resultado desviado—. Tercero: reportar más cifras de las que el instrumento respalda (falsa precisión, como escribir seis decimales que salieron de una calculadora) o menos de las que sí pudo leer (perder el dígito estimado). Cuarto: no verificar ni tarar el cero del instrumento antes de medir, la causa más común de error sistemático. Quinto: olvidar el error de paralaje al leer un instrumento analógico, mirando de costado en vez de de frente. Revisar esta lista antes de confiar en una medida es el hábito que distingue a quien mide con criterio.",
+        "pasos": [
+          "¿Estoy hablando de parecido ENTRE medidas (precisión) o de cercanía al valor REAL (exactitud)? No mezclar las dos palabras.",
+          "¿Estoy promediando para corregir un error aleatorio, o esperando (equivocadamente) que el promedio arregle un error sistemático?",
+          "¿El número de cifras que reporté coincide con lo que el instrumento realmente puede respaldar?",
+          "¿Taré o calibré el instrumento antes de medir?",
+          "¿Leí el instrumento de frente, evitando el paralaje?"
+        ],
+        "ejemplo": "Un estudiante mide una pesa patrón de 500,0 g cinco veces con una balanza sin tarar y obtiene 497,1; 497,4; 496,9; 497,2 y 497,0 g: son medidas muy parecidas entre sí (precisas), pero el promedio (497,12 g) se aleja casi 3 g del valor real, y esa desviación NO desaparecerá por más veces que repita la pesada, porque la balanza sigue sin estar tarada: hace falta corregir el cero, no promediar más.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "La RESOLUCIÓN de un instrumento es el valor de su división más pequeña (una regla: 1 mm; un calibre: 0,1 mm); leerlo bien significa leer con certeza hasta esa resolución y ESTIMAR un dígito más. La PRECISIÓN es qué tan parecidas son varias medidas repetidas ENTRE SÍ (se relaciona con el error ALEATORIO y se mejora repitiendo y promediando); la EXACTITUD es qué tan cerca está la medida del valor REAL (se relaciona con el error SISTEMÁTICO y se corrige calibrando el instrumento o ajustando su cero, nunca promediando). Una medida puede ser precisa sin ser exacta, exacta sin ser precisa, ambas cosas, o ninguna: el error absoluto (|medido − real|) pone un número exacto a qué tan buena fue la medición."
+  },
+  "practica": [
+    {
+      "enunciado": "Antes de pesar, una balanza marcaba 5,0 g con el platillo completamente vacío (no fue tarada). Con esa balanza se pesan varios objetos distintos. ¿Qué tipo de error se introduce en TODAS las mediciones: sistemático o aleatorio? Explica por qué.",
+      "pista": "Pregúntate si esa causa de error (el platillo que ya marcaba de más) se repite SIEMPRE igual, o si cambia de forma impredecible cada vez.",
+      "solucion": "Es un error SISTEMÁTICO. La causa (el cero mal puesto, 5,0 g de más) es fija y se repite exactamente igual en cada pesada, sin importar cuántas veces se use la balanza. Por eso todas las mediciones quedarán desviadas siempre en la misma dirección y por la misma cantidad (aproximadamente 5,0 g de más), y repetir la pesada muchas veces no eliminará ese error: hay que tarar la balanza antes de usarla.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante mide el tiempo de caída de una pelota con un cronómetro manual. Cada vez que repite el experimento con la MISMA pelota y la MISMA altura, obtiene un valor un poco distinto (a veces más, a veces menos), porque su tiempo de reacción al presionar los botones varía. ¿Qué tipo de error es este?",
+      "pista": "Piensa si la causa (el tiempo de reacción) es siempre exactamente la misma cantidad, o si cambia de un intento a otro sin que el estudiante pueda controlarlo del todo.",
+      "solucion": "Es un error ALEATORIO. El tiempo de reacción humano varía de forma impredecible en cada intento (a veces reacciona un poco más rápido, a veces un poco más lento), así que el error cambia de dirección y tamaño cada vez. A diferencia de un error sistemático, este SÍ se puede reducir repitiendo el experimento varias veces y promediando los tiempos obtenidos.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante usa una regla graduada en milímetros (resolución 1 mm) para medir el largo de un clip metálico, alineando un extremo en la marca de 0 mm. La figura muestra un acercamiento a la zona donde termina el clip. ¿Cuál es la lectura correcta, con el número de cifras que corresponde?",
+      "pista": "Lee primero las cifras ciertas (hasta el milímetro) y luego ESTIMA un dígito más: la fracción de milímetro en la que cae el borde entre las dos marcas más cercanas.",
+      "solucion": "El borde del clip cae entre las marcas de 31 mm y 32 mm, aproximadamente dos décimas después de la marca de 31 mm. La lectura correcta es 31,2 mm: el 3 y el 1 son cifras ciertas (hasta la resolución de la regla) y el 2 es el dígito estimado. Serían errores tanto reportar '31 mm' (se pierde el dígito estimado que sí se pudo leer) como reportar '31,20 mm' o más decimales (se inventaría una finura que esta regla no tiene).",
+      "figura": "<svg viewBox=\"0 0 200 150\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"8\" y=\"15\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">clip alineado desde 0 mm</text><rect x=\"20\" y=\"55\" width=\"150\" height=\"26\" fill=\"#12B5A4\" fill-opacity=\"0.08\" stroke=\"#12B5A4\" stroke-width=\"2\"/><rect x=\"0\" y=\"60\" width=\"78\" height=\"16\" fill=\"#7C4DFF\" fill-opacity=\"0.35\"/><g stroke=\"#8C7C93\" stroke-width=\"1.5\"><line x1=\"30\" y1=\"50\" x2=\"30\" y2=\"86\"/><line x1=\"70\" y1=\"50\" x2=\"70\" y2=\"86\"/><line x1=\"110\" y1=\"50\" x2=\"110\" y2=\"86\"/><line x1=\"150\" y1=\"50\" x2=\"150\" y2=\"86\"/></g><g font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\" text-anchor=\"middle\"><text x=\"30\" y=\"100\">30</text><text x=\"70\" y=\"100\">31</text><text x=\"110\" y=\"100\">32</text><text x=\"150\" y=\"100\">33</text></g><line x1=\"78\" y1=\"40\" x2=\"78\" y2=\"95\" stroke=\"#3B2B4A\" stroke-width=\"1.5\" stroke-dasharray=\"3,2\"/></svg>"
+    },
+    {
+      "enunciado": "Se mide, con una balanza, la masa de una pesa patrón certificada de 500,0 g. Cinco mediciones dan: 497,1; 497,4; 496,9; 497,2 y 497,0 g. Calcula el promedio y el rango (mayor menos menor), calcula el error absoluto respecto al valor certificado, y clasifica el resultado: ¿precisa y/o exacta? ¿Qué tipo de error sospechas?",
+      "pista": "El rango (diferencia entre la mayor y la menor medida) indica qué tan precisas son entre sí; el error absoluto entre el promedio y el valor de referencia indica qué tan exacta es la medición.",
+      "solucion": "Promedio: (497,1+497,4+496,9+497,2+497,0)/5 = 2485,6/5 = 497,12 g. Rango: 497,4 − 496,9 = 0,5 g (muy pequeño: las medidas son muy parecidas entre sí, alta PRECISIÓN). Error absoluto: |497,12 − 500,0| = 2,88 g ≈ 2,9 g (grande para el tamaño de la pesa: baja EXACTITUD). Conclusión: la medición es PRECISA pero NO EXACTA, lo que apunta a un error SISTEMÁTICO (por ejemplo, una balanza sin tarar que resta siempre una cantidad parecida a cada lectura).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Se mide, con un cronómetro, un intervalo de un metrónomo cuya duración real y certificada es exactamente 10,00 s. Cinco mediciones dan: 9,62; 10,35; 9,81; 10,28 y 9,94 s. Calcula el promedio y el rango, y clasifica el resultado: ¿precisa y/o exacta? ¿Qué tipo de error sospechas?",
+      "pista": "Suma las cinco medidas y divide entre 5 para el promedio; resta la menor de la mayor para el rango. Compara el promedio con el valor real (10,00 s).",
+      "solucion": "Promedio: (9,62+10,35+9,81+10,28+9,94)/5 = 50,00/5 = 10,00 s, EXACTAMENTE igual al valor real (altísima EXACTITUD del promedio). Rango: 10,35 − 9,62 = 0,73 s (bastante grande comparado con la resolución del cronómetro: las medidas individuales están dispersas entre sí, baja PRECISIÓN). Conclusión: la medición es EXACTA en promedio pero NO PRECISA, lo que apunta a un error ALEATORIO (muy probablemente el tiempo de reacción variable del estudiante al presionar los botones).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Indica qué instrumento usarías para cada medición y justifica brevemente: (a) el diámetro de un alambre delgado, (b) el ancho de una cancha de baloncesto, (c) el largo de una llave.",
+      "pista": "Piensa en el tamaño del objeto y en qué tan fina necesitas que sea la lectura: un objeto muy delgado necesita más finura que una cancha entera.",
+      "solucion": "(a) Calibre (pie de rey): un alambre es demasiado delgado para leerse con precisión en una regla común; el calibre tiene resolución de 0,1 mm, diez veces más fina. (b) Cinta métrica: una cancha mide varios metros, mucho más de lo que cubre una regla rígida. (c) Regla graduada: una llave es un objeto pequeño de uso diario, del tamaño perfecto para una regla común (resolución 1 mm).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una pesa patrón tiene un valor de referencia certificado de 250,0 g. Un estudiante la mide con su balanza y obtiene 248,6 g. Calcula el error absoluto de esa medición.",
+      "pista": "Error absoluto = valor medido menos valor real, tomando el resultado siempre en positivo (valor absoluto).",
+      "solucion": "Error absoluto = |248,6 − 250,0| = 1,4 g. Esa es la cantidad, en gramos, en que la medición del estudiante se aleja del valor certificado.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Antes de pesar, un grupo no calibra ni tara su balanza, que ya marcaba 2,0 g con el platillo vacío. ¿Qué tipo de error introduce esto y cómo se corrige correctamente?",
+      "pista": "Piensa si esta causa se repite igual en cada pesada, y si repetir la medición muchas veces la eliminaría.",
+      "solucion": "Se introduce un error SISTEMÁTICO: cada medición que hagan quedará 2,0 g por encima de su valor real, siempre en la misma dirección, porque la causa (el cero mal puesto) no cambia entre una pesada y otra. La forma correcta de corregirlo es TARAR la balanza (ponerla en cero con el platillo vacío) antes de empezar a pesar; repetir la pesada muchas veces y promediar NO elimina este error, porque el sesgo de 2,0 g estará presente en cada intento por igual.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante mide 5 veces el mismo lápiz con una regla y obtiene: 14,2; 14,5; 14,1; 14,6 y 14,3 cm. Los valores varían un poco cada vez porque el estudiante mira la regla desde un ángulo un poco distinto en cada intento (error de paralaje). ¿Qué tipo de error es y qué se recomienda hacer con estos datos para obtener la mejor estimación del largo real?",
+      "pista": "El paralaje cambia según el ángulo desde el que se mira cada vez: eso no es una causa fija. Calcula el promedio de las cinco medidas.",
+      "solucion": "Es un error ALEATORIO (el ángulo de lectura cambia de forma impredecible en cada intento, no es una falla fija del instrumento). Lo recomendable es usar el PROMEDIO de las cinco medidas como mejor estimación: (14,2+14,5+14,1+14,6+14,3)/5 = 71,7/5 = 14,34 cm. Además, conviene mirar siempre de frente (perpendicular a la regla) para reducir el paralaje en futuras mediciones.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una balanza digital muestra la masa de una fruta como '182,4 g'. ¿Cuántas cifras significativas tiene esta medida, y qué representa la última cifra (el 4)?",
+      "pista": "En un instrumento digital, todas las cifras que muestra la pantalla ya son significativas, incluida la última.",
+      "solucion": "La medida '182,4 g' tiene 4 cifras significativas (1, 8, 2 y 4). El '4' (las décimas de gramo) es la cifra menos segura, la que tiene algo de incertidumbre según la resolución del aparato; en un instrumento digital esa cifra ya viene mostrada directamente en la pantalla, sin que el usuario tenga que estimarla a ojo como haría con un instrumento analógico.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un cronómetro digital tiene una resolución de 0,01 s. Al usarlo para medir cuánto tarda una pelota en caer (un evento de menos de 1 segundo), las mediciones repetidas del mismo estudiante varían mucho más que 0,01 s entre sí. ¿Qué es lo que realmente limita la calidad de esta medición: la resolución del cronómetro o algo más? Explica.",
+      "pista": "Piensa en qué tiene que hacer el estudiante para iniciar y detener el cronómetro, y si esa acción se repite exactamente igual cada vez.",
+      "solucion": "Lo que realmente limita la medición es el TIEMPO DE REACCIÓN del estudiante al presionar los botones de inicio y parada, que puede variar dos o tres décimas de segundo de un intento a otro: un error mucho mayor que la resolución de 0,01 s del cronómetro. Esto muestra que la resolución del instrumento no es lo único que determina qué tan buena es una medición: también importa, y mucho, cómo lo usa la persona que mide.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Dos equipos miden la misma varilla metálica cuatro veces cada uno (el valor de referencia real de la varilla es 20,0 cm). Equipo 1: 20,1; 20,0; 20,2 y 20,1 cm. Equipo 2: 19,4; 20,6; 20,9 y 18,9 cm. Calcula el promedio y el rango de cada equipo. ¿Qué equipo es más preciso? ¿Cuál es más exacto en promedio? ¿En cuál confiarías más para una sola medición futura, y por qué?",
+      "pista": "Calcula el promedio y el rango de cada lista por separado, y compara ambos promedios con el valor real (20,0 cm). Piensa qué pasaría si tuvieras que confiar en UNA sola medición de cada equipo, no en el promedio.",
+      "solucion": "Equipo 1: promedio = (20,1+20,0+20,2+20,1)/4 = 80,4/4 = 20,1 cm; rango = 20,2−20,0 = 0,2 cm (muy precisas entre sí); error absoluto = |20,1−20,0| = 0,1 cm (muy exacto). Equipo 2: promedio = (19,4+20,6+20,9+18,9)/4 = 79,8/4 = 19,95 cm; rango = 20,9−18,9 = 2,0 cm (muy dispersas entre sí, poco precisas); error absoluto = |19,95−20,0| = 0,05 cm (el promedio resulta casi tan exacto, incluso un poco más). El Equipo 1 es mucho más PRECISO (rango 0,2 cm frente a 2,0 cm) y también exacto. El Equipo 2 tiene un promedio casi tan exacto, pero eso puede deberse a que sus errores aleatorios grandes se cancelaron por casualidad esta vez. Confiaría más en el Equipo 1: además de tener un promedio exacto, sus mediciones INDIVIDUALES son consistentes entre sí, así que cualquier medición suya (no solo el promedio) es confiable; en cambio, una sola medición del Equipo 2 (por ejemplo, 18,9 cm) podría estar muy lejos del valor real.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál es la definición correcta de PRECISIÓN?",
+      "opciones": [
+        "Qué tan cerca está una medida del valor verdadero",
+        "Qué tan cerca están varias medidas repetidas ENTRE SÍ, sin importar si se acercan o no al valor real",
+        "La cantidad de decimales que tiene una medida",
+        "Qué tan caro es el instrumento usado"
+      ],
+      "correcta": 1,
+      "explicacion": "La precisión es repetibilidad: qué tan parecidas son varias medidas entre sí. La opción A describe la exactitud, no la precisión; una medida puede ser muy precisa (siempre da lo mismo) y aun así estar lejos del valor real."
+    },
+    {
+      "pregunta": "¿Cuál es la definición correcta de EXACTITUD?",
+      "opciones": [
+        "Qué tan cerca está una medida (o su promedio) del valor real o aceptado",
+        "Qué tan parecidas son varias medidas entre sí",
+        "El valor de la división más pequeña de un instrumento",
+        "Que el instrumento usado sea digital"
+      ],
+      "correcta": 0,
+      "explicacion": "La exactitud es cercanía al valor verdadero. La opción B describe precisión, y la opción C describe resolución: son tres ideas distintas que conviene no mezclar."
+    },
+    {
+      "pregunta": "La RESOLUCIÓN de un instrumento se refiere a...",
+      "opciones": [
+        "Qué tan caro es el instrumento",
+        "El valor de la división más pequeña que el instrumento puede marcar o mostrar",
+        "Qué tan exacto es siempre, sin excepción",
+        "El tiempo que tarda en dar una lectura"
+      ],
+      "correcta": 1,
+      "explicacion": "La resolución es 'qué tan fina es la escala': una regla común tiene resolución de 1 mm; un calibre, de 0,1 mm. No garantiza por sí sola ni precisión ni exactitud, solo indica el detalle de la escala."
+    },
+    {
+      "pregunta": "Cinco mediciones de una pesa patrón de 500 g dan: 497,1; 497,4; 496,9; 497,2 y 497,0 g (rango de 0,5 g, promedio de aproximadamente 497,1 g). Esto es un ejemplo de...",
+      "opciones": [
+        "Medidas exactas pero no precisas",
+        "Medidas precisas pero no exactas (probable error sistemático)",
+        "Medidas ni precisas ni exactas",
+        "Medidas precisas y exactas"
+      ],
+      "correcta": 1,
+      "explicacion": "El rango pequeño (0,5 g) indica que las medidas son muy parecidas entre sí (precisas), pero el promedio se aleja casi 3 g del valor real de 500 g (no exactas). Esa combinación apunta a un error sistemático, como una balanza sin tarar."
+    },
+    {
+      "pregunta": "Cinco mediciones de un intervalo de tiempo cuyo valor real es 10,00 s dan: 9,62; 10,35; 9,81; 10,28 y 9,94 s (promedio exacto de 10,00 s, pero rango de 0,73 s). Esto es...",
+      "opciones": [
+        "Exactas en promedio pero no precisas (probable error aleatorio)",
+        "Precisas pero no exactas",
+        "Ni exactas ni precisas",
+        "Un ejemplo típico de error sistemático"
+      ],
+      "correcta": 0,
+      "explicacion": "El promedio coincide exactamente con el valor real (alta exactitud), pero el rango de 0,73 s muestra que las medidas individuales están bastante dispersas entre sí (baja precisión). Esta combinación es típica de un error aleatorio, como el tiempo de reacción al usar un cronómetro."
+    },
+    {
+      "pregunta": "¿Cuál de estas acciones CORRIGE un error sistemático?",
+      "opciones": [
+        "Repetir la medición muchas veces y promediar",
+        "Calibrar el instrumento o corregir/tarar su cero antes de medir",
+        "Usar un instrumento más caro sin revisarlo",
+        "Redondear la medida a menos decimales"
+      ],
+      "correcta": 1,
+      "explicacion": "El error sistemático tiene una causa fija (un cero mal puesto, falta de calibración); solo se elimina corrigiendo esa causa. Repetir y promediar (opción A) es la estrategia para el error ALEATORIO, no para el sistemático."
+    },
+    {
+      "pregunta": "¿Cuál de estas acciones ayuda a reducir el EFECTO del error aleatorio en una medición?",
+      "opciones": [
+        "Calibrar el instrumento",
+        "Repetir la medición varias veces y promediar los resultados",
+        "Comprar un instrumento con menor resolución",
+        "No hace falta hacer nada, el error aleatorio no se puede reducir de ninguna forma"
+      ],
+      "correcta": 1,
+      "explicacion": "Como el error aleatorio cambia de dirección y tamaño cada vez, repetir y promediar hace que esos desvíos tiendan a compensarse. Calibrar (opción A) sirve para el error sistemático, no para el aleatorio."
+    },
+    {
+      "pregunta": "Un calibre tiene una resolución de 0,1 mm. Al medir el diámetro de un tornillo, el borde cae exactamente a la mitad entre las marcas de 4,3 mm y 4,4 mm. ¿Cuál es la lectura correcta, con el número de cifras que corresponde?",
+      "opciones": [
+        "4 mm",
+        "4,3 mm",
+        "4,35 mm",
+        "4,350000 mm"
+      ],
+      "correcta": 2,
+      "explicacion": "Se leen las cifras ciertas (4,3, hasta la resolución del calibre) y se ESTIMA un dígito más, la mitad entre las dos marcas: 4,35 mm. Las opciones '4 mm' y '4,3 mm' pierden el dígito estimado que sí se pudo leer; '4,350000 mm' inventa ceros que el calibre nunca midió."
+    },
+    {
+      "pregunta": "¿Por qué el diámetro de un alambre delgado se mide mejor con un calibre que con una regla común?",
+      "opciones": [
+        "Porque el calibre es más bonito",
+        "Porque el calibre tiene una resolución más fina (0,1 mm) que la regla (1 mm), y el alambre es demasiado delgado para la regla",
+        "Porque la regla no sirve para medir absolutamente nada",
+        "Porque el calibre no necesita que el usuario lo lea"
+      ],
+      "correcta": 1,
+      "explicacion": "El calibre resuelve décimas de milímetro, diez veces más fino que una regla común; para un objeto tan delgado como un alambre, esa finura extra es necesaria para obtener una lectura confiable."
+    },
+    {
+      "pregunta": "Un cronómetro digital tiene una resolución de 0,01 s. Al usarlo para medir un evento muy corto, las medidas repetidas varían mucho más que 0,01 s entre sí. ¿Cuál es la causa MÁS probable?",
+      "opciones": [
+        "El cronómetro está descompuesto",
+        "El tiempo de reacción del estudiante al presionar los botones, que varía cada vez (error aleatorio)",
+        "El cronómetro no puede medir tiempos cortos",
+        "Es un error sistemático del cronómetro"
+      ],
+      "correcta": 1,
+      "explicacion": "El tiempo de reacción humano cambia un poco en cada intento, así que la causa no es fija: es un error aleatorio, no sistemático, y no significa que el cronómetro esté fallando."
+    },
+    {
+      "pregunta": "Un estudiante mide con un calibre (resolución 0,1 mm) y anota su resultado como '4,350000 mm'. ¿Qué error cometió?",
+      "opciones": [
+        "Ninguno, mientras más decimales mejor",
+        "Falsa precisión: escribió muchos más dígitos de los que el calibre puede respaldar",
+        "Debió escribir la medida sin ninguna unidad",
+        "Debió usar una calculadora distinta"
+      ],
+      "correcta": 1,
+      "explicacion": "El calibre solo respalda tres cifras significativas (4,35 mm); agregar más ceros decimales sugiere una finura que el instrumento nunca tuvo. Es el mismo error que cometer al copiar directamente todos los decimales que muestra una calculadora."
+    },
+    {
+      "pregunta": "El error absoluto de una medida se calcula como...",
+      "opciones": [
+        "El valor medido multiplicado por dos",
+        "La diferencia, en valor absoluto, entre el valor medido y el valor real o aceptado",
+        "El número de decimales que tiene la medida",
+        "El promedio de todas las medidas repetidas"
+      ],
+      "correcta": 1,
+      "explicacion": "Error absoluto = |valor medido − valor real|. Siempre es positivo y tiene las mismas unidades que la medida; cuanto menor es, más exacta fue la medición."
+    },
+    {
+      "pregunta": "Un valor de referencia certificado de una pesa patrón es 250,0 g. Un estudiante la mide y obtiene 248,6 g. ¿Cuál es el error absoluto?",
+      "opciones": [
+        "1,4 g",
+        "0,56 g",
+        "498,6 g",
+        "250,0 g"
+      ],
+      "correcta": 0,
+      "explicacion": "Error absoluto = |248,6 − 250,0| = 1,4 g. Es la diferencia entre lo medido y el valor certificado, tomada siempre en positivo."
+    },
+    {
+      "pregunta": "Antes de pesar, una balanza marcaba 2,0 g con el platillo VACÍO (no se taró). Todas las mediciones hechas con ella tendrán...",
+      "opciones": [
+        "Un error aleatorio, distinto cada vez",
+        "Un error sistemático: 2,0 g de más en cada medición, siempre en la misma dirección",
+        "Ningún error, porque la balanza es digital",
+        "Un error que desaparece automáticamente si repites la medición muchas veces"
+      ],
+      "correcta": 1,
+      "explicacion": "La causa (el cero mal puesto) es fija y se repite igual en cada pesada: es un error sistemático. La opción D es un error muy común: repetir y promediar NO corrige el error sistemático, solo el aleatorio."
+    },
+    {
+      "pregunta": "Dos equipos miden la misma varilla (valor real 20,0 cm). Equipo 1 obtiene 20,1; 20,0; 20,2 y 20,1 cm (muy parecidas entre sí). Equipo 2 obtiene 19,4; 20,6; 20,9 y 18,9 cm (muy dispersas, aunque su promedio también resulta cercano a 20,0 cm). ¿En qué equipo confiarías más para una sola medición futura, y por qué?",
+      "opciones": [
+        "En el Equipo 2, porque su promedio fue casi igual de exacto",
+        "En el Equipo 1, porque además de exacto en promedio, es mucho más preciso: sus medidas individuales son consistentes, mientras que el buen promedio del Equipo 2 pudo deberse a la casualidad",
+        "Da igual, ambos equipos son igual de confiables",
+        "En ninguno, porque los dos tienen el mismo error sistemático"
+      ],
+      "correcta": 1,
+      "explicacion": "El Equipo 1 tiene rango pequeño (alta precisión) y promedio cercano al valor real (alta exactitud): cualquiera de sus medidas individuales es confiable. El Equipo 2 logró un promedio parecido de exacto, pero con medidas tan dispersas que una sola de ellas (como 18,9 cm) podría estar muy lejos del valor real; su buen promedio pudo ser casualidad."
+    }
+  ]
+}

@@ -1,0 +1,327 @@
+{
+  "programa": "cumbre",
+  "materia": "Informática",
+  "grado": "Cumbre Informática 1er año",
+  "dominio": "Pensamiento computacional",
+  "tema": "Reconocer patrones: encontrar lo que se repite para no repetir trabajo",
+  "referencias": [
+    "UK Computing Key Stage 3 — Pattern Recognition, uno de los cuatro pilares del pensamiento computacional junto con descomposición, abstracción y algoritmos",
+    "CSTA K-12 Computer Science Standards (grades 6-8) — Algorithms & Programming: reconocer patrones y tendencias en procesos y datos para simplificar y generalizar soluciones",
+    "K-12 Computer Science Framework — Practice 5 (Abstracción): usar patrones para representar problemas y simplificar su solución",
+    "CS Unplugged / Bebras — actividades sin computadora de reconocimiento de patrones en rutinas, horarios y decisiones cotidianas"
+  ],
+  "resumen": {
+    "titulo": "Reconocer patrones: encontrar lo que se repite para no repetir trabajo",
+    "intro": "Ya sabes escribir algoritmos (listas de instrucciones precisas y en orden) y descomponer un problema grande en subproblemas pequeños. Ahora viene una tercera herramienta que se apoya en las dos anteriores: reconocer patrones. Consiste en darte cuenta de que una parte de un problema, una rutina o una decisión ya se repite de la misma forma en otras situaciones que viviste antes, para no tener que resolverla otra vez desde cero. Es la diferencia entre alguien que cada lunes se pregunta 'y ahora qué hago' y alguien que ya notó que los lunes siempre son iguales y tiene el plan listo de memoria. Igual que con el pensar como computadora, esto se entrena completamente sin computadora, mirando tus propias rutinas, tus decisiones repetidas y tus errores.",
+    "secciones": [
+      {
+        "titulo": "Qué es un patrón: la sensación de 'esto ya lo viví'",
+        "explicacion": "Un PATRÓN es una parte que se repite con la MISMA estructura dentro de algo más grande: una tarea, una semana, una serie de decisiones. 'Misma estructura' no significa que todo sea idéntico hasta el último detalle; significa que la FORMA se repite aunque cambien algunos detalles pequeños. Reconocer un patrón es notar esa repetición de forma, no solo un parecido superficial. Piensa en tu semana de colegio: aunque el lunes y el miércoles no son el mismo día ni tienen las mismas materias, ambos comparten una estructura fija, por ejemplo 'después de las clases toca natación'. Esa repetición de estructura, escondida detrás de días distintos, es un patrón. Encontrarlo es útil porque, una vez que lo ves, dejas de tratar cada lunes y cada miércoles como un caso nuevo que hay que pensar desde cero: ya sabes que ese bloque de la tarde tiene la misma forma.",
+        "pasos": [
+          "Mira varias situaciones parecidas, no solo una.",
+          "Pregúntate: ¿qué parte se repite EXACTAMENTE igual en todas ellas?",
+          "Esa parte que se repite es el patrón; lo demás son detalles que cambian de un caso a otro."
+        ],
+        "ejemplo": "En el horario semanal, los lunes tienen Matemática, Lengua y Natación; los miércoles tienen Ciencias, Inglés y Natación. Las materias cambian, pero el patrón 'después de clases hay natación' se repite igual en los dos días."
+      },
+      {
+        "titulo": "Por qué reconocer patrones ahorra trabajo",
+        "explicacion": "La idea central de todo el tema es esta: si ya resolviste un subproblema una vez y reconoces que vuelve a aparecer con la misma forma, no necesitas resolverlo otra vez desde cero, solo necesitas aplicar lo que ya sabes. Esto conecta directamente con lo que aprendiste de descomposición: cuando partes un problema grande en subproblemas, algunos de esos subproblemas se parecen a otros que ya resolviste antes en otro problema distinto. Reconocer el patrón es justamente darte cuenta de ese parecido. El beneficio no es solo ahorrar tiempo: también ahorra esfuerzo mental (no tienes que pensar cada vez desde el principio) y reduce errores, porque ya probaste antes que esa forma de resolverlo funciona.",
+        "pasos": [
+          "Antes de resolver algo desde cero, pregúntate: ¿esto se parece en su FORMA a algo que ya resolví antes?",
+          "Si la respuesta es sí, revisa qué cambia (los detalles) y qué se mantiene igual (la estructura).",
+          "Reutiliza la estructura que ya conoces y solo ajusta los detalles nuevos."
+        ],
+        "ejemplo": "Ya resolviste cómo armar la rutina de estudio para el examen de Ciencias (leer los temas, hacer un resumen, practicar preguntas). Cuando llega el examen de Historia, reconoces el mismo patrón de tres pasos y no tienes que inventar una rutina de estudio nueva: solo cambias el tema."
+      },
+      {
+        "titulo": "Tres lugares donde aparecen los patrones en la vida diaria",
+        "explicacion": "Los patrones no aparecen solo en horarios; se esconden en al menos tres tipos de situaciones que vas a encontrar todo el tiempo. Primero, patrones EN EL TIEMPO: rutinas que se repiten cada día o cada semana, como el orden en que te alistas cada mañana o las tareas de limpieza que le tocan a tu casa cada sábado. Segundo, patrones EN LAS DECISIONES: situaciones distintas donde terminas eligiendo de la misma manera, como decidir qué ropa llevar según el clima. Tercero, patrones EN LOS ERRORES: el mismo tipo de equivocación que se repite una y otra vez en cosas distintas, como olvidar siempre el mismo tipo de paso al armar la mochila. Reconocer en cuál de estos tres grupos está lo que estás mirando te ayuda a saber qué hacer con el patrón: los de tiempo y decisiones se convierten en rutinas fijas; los de errores se corrigen de raíz una sola vez.",
+        "pasos": [
+          "Patrón en el tiempo: algo que se repite cada día, cada semana o cada cierto periodo.",
+          "Patrón en las decisiones: la misma elección que tomas ante situaciones parecidas.",
+          "Patrón en los errores: el mismo tipo de falla que aparece en tareas distintas."
+        ],
+        "ejemplo": "Tiempo: cada sábado te toca sacar la basura. Decisión: cada vez que hace frío, sacas la chaqueta gruesa sin pensarlo. Error: en varios exámenes distintos se te olvida escribir las unidades de medida en las respuestas."
+      },
+      {
+        "titulo": "Cómo encontrar un patrón: comparar VARIOS casos, no solo uno",
+        "explicacion": "Un solo caso nunca alcanza para afirmar que existe un patrón; con un solo caso solo tienes un ejemplo suelto. Para encontrar un patrón real hay que reunir VARIOS casos parecidos y compararlos entre sí, buscando qué se repite EXACTAMENTE igual en todos y qué cambia de uno a otro. Lo que se repite en todos los casos es el patrón; lo que cambia son los detalles variables, esa parte que sí hay que ajustar cada vez. Este método de comparar varios casos (no adivinar con uno solo) es la diferencia entre encontrar un patrón de verdad y simplemente imaginar uno que no existe, algo que vas a ver con más cuidado más adelante en este mismo tema.",
+        "pasos": [
+          "Junta al menos tres o cuatro casos parecidos (no te quedes con uno o dos).",
+          "Anota, para cada caso, qué pasos o elementos tuvo.",
+          "Marca lo que aparece igual en TODOS los casos: eso es el patrón.",
+          "Marca lo que cambia de caso a caso: esos son los detalles variables."
+        ],
+        "ejemplo": "Comparas cómo hiciste la tarea el lunes, el martes y el jueves: en los tres días primero leíste el enunciado, después buscaste el cuaderno de la materia y al final escribiste la respuesta. Eso que se repitió en los tres días es el patrón; lo que cambió (la materia y el ejercicio) son los detalles variables."
+      },
+      {
+        "titulo": "De patrón a plantilla: qué hacer una vez que lo encontraste",
+        "explicacion": "Encontrar un patrón no sirve de mucho si no haces algo con él. El paso siguiente es convertirlo en una PLANTILLA: una versión fija y reutilizable del patrón, con espacios en blanco justo donde van los detalles variables, lista para usar la próxima vez sin tener que pensar la estructura de nuevo. Una plantilla es, en el fondo, un algoritmo que ya escribiste una vez y que ahora reutilizas cambiando solo lo que cambia en cada caso. Esto es exactamente lo que hacen las personas muy organizadas sin llamarlo así: convierten sus patrones en listas o rutinas fijas para no reinventar la rueda cada semana.",
+        "pasos": [
+          "Escribe el patrón como una lista de pasos fija (como un algoritmo).",
+          "Marca con claridad cuáles partes son siempre iguales y cuáles cambian cada vez.",
+          "Guarda esa lista (escrita o de memoria) como tu plantilla para la próxima vez.",
+          "La próxima vez que aparezca el mismo tipo de situación, usa la plantilla y solo llena los detalles variables."
+        ],
+        "ejemplo": "Del patrón de estudio (leer los temas, resumir, practicar preguntas) armas una plantilla fija: 'Rutina de estudio: 1) Leer los temas del examen. 2) Escribir un resumen de cada tema. 3) Responder preguntas de práctica.' La próxima vez que haya examen, sea de la materia que sea, usas esa misma plantilla."
+      },
+      {
+        "titulo": "El error de ver un patrón donde no lo hay",
+        "explicacion": "Así como reconocer un patrón real ahorra trabajo, creer que existe un patrón cuando en realidad no lo hay te lleva a decisiones equivocadas. A esto se le llama confundir COINCIDENCIA con patrón: una coincidencia es que dos cosas se parezcan una sola vez, por casualidad; un patrón real es que esa misma estructura se repita de forma constante en MUCHOS casos. El error típico es sacar una conclusión general después de ver la situación solo una o dos veces. Por eso la regla de comparar varios casos, y no solo uno, no es un simple consejo de orden: es lo que te protege de fabricar patrones falsos.",
+        "pasos": [
+          "Antes de decir 'esto siempre pasa así', cuenta cuántos casos reales viste.",
+          "Si son uno o dos, todavía no es un patrón confirmado: es solo una posible coincidencia.",
+          "Busca más casos parecidos antes de decidir que es un patrón real y actuar en base a él."
+        ],
+        "ejemplo": "Un amigo dice: 'cada vez que estudio de noche me va mal en el examen', pero solo le pasó dos veces. Con tan pocos casos no se puede afirmar que exista ese patrón; podría ser coincidencia (quizás esos dos exámenes eran de temas más difíciles). Haría falta comparar bastantes más casos para saber si es un patrón real."
+      },
+      {
+        "titulo": "Cuándo un patrón deja de aplicar: reconocer las excepciones",
+        "explicacion": "Ningún patrón dura para siempre sin condiciones: todo patrón se cumple mientras se mantienen ciertas condiciones, y cuando una condición importante cambia, el patrón deja de aplicar. A eso se le llama EXCEPCIÓN: un caso que se parece al patrón por fuera, pero que en el fondo tiene algo distinto que rompe la estructura repetida. Aplicar la plantilla de todas formas, sin fijarte en la excepción, es forzar el patrón, y suele salir mal. La habilidad importante aquí es comparar el caso nuevo contra las condiciones del patrón antes de decidir si tu plantilla de siempre sirve o si esta vez hay que pensarlo distinto.",
+        "pasos": [
+          "Antes de aplicar tu plantilla habitual, revisa si el caso nuevo cumple TODAS las condiciones del patrón.",
+          "Si alguna condición clave cambió, no fuerces la plantilla: trátalo como un caso especial.",
+          "Si ninguna condición clave cambió, aplica la plantilla con confianza."
+        ],
+        "ejemplo": "Tu patrón semanal dice que el sábado en la mañana limpias tu cuarto. Pero este sábado hay un feriado y toda la familia sale de viaje desde temprano. La condición 'estar en casa el sábado en la mañana' cambió, así que el patrón no aplica igual esta semana: hay que mover la limpieza a otro momento, no forzarla."
+      },
+      {
+        "titulo": "Patrones y descomposición: reconocer un subproblema ya resuelto",
+        "explicacion": "Recuerda que descomponer un problema grande significa partirlo en subproblemas más pequeños. Reconocer patrones le da un superpoder extra a la descomposición: cuando partes un problema nuevo en subproblemas, a veces uno de esos subproblemas tiene la MISMA forma que un subproblema que ya resolviste en un problema anterior, aunque el problema grande sea totalmente distinto. Notar ese parecido te ahorra volver a resolver esa parte desde cero: usas la misma solución (o la misma plantilla) que ya tenías. Esta es la razón por la que, mientras más problemas resuelves, más rápido te vuelves: no porque los problemas se hagan más fáciles, sino porque reconoces cada vez más patrones repetidos entre ellos.",
+        "pasos": [],
+        "ejemplo": "Al organizar el cumpleaños de tu hermano descompusiste el problema en invitados, comida y lugar. Meses después te piden ayudar a organizar la feria de ciencias del colegio: es un problema distinto por fuera, pero al descomponerlo notas el mismo patrón de subproblemas (a quién invitar, qué se va a servir, dónde se hace), así que reutilizas la misma forma de organizarte en vez de empezar a pensar de cero.",
+        "pasos": [
+          "Descompón el problema nuevo en subproblemas, igual que siempre.",
+          "Para cada subproblema, pregúntate: ¿esto tiene la misma forma que un subproblema que ya resolví antes en otro problema distinto?",
+          "Si la respuesta es sí, reutiliza esa misma solución o plantilla en vez de resolverlo de cero."
+        ]
+      },
+      {
+        "titulo": "Errores típicos al reconocer patrones",
+        "explicacion": "Tres errores aparecen una y otra vez al trabajar con patrones, y conocerlos de antemano evita caer en ellos. Primero, ver un patrón con muy pocos casos (confundir coincidencia con patrón real). Segundo, forzar una plantilla en un caso que en realidad tiene una excepción importante, en vez de detenerte a pensarlo distinto. Tercero, y menos obvio: no reconocer un patrón que sí existe, y por flojera mental resolver cada caso desde cero cuando ya tenías una plantilla lista para usar. Los tres errores van en direcciones opuestas (inventar patrones falsos contra no ver los reales), así que la solución para ambos es la misma: comparar con cuidado varios casos antes de decidir.",
+        "pasos": [
+          "Revisa que tu patrón esté basado en varios casos, no en uno o dos.",
+          "Antes de aplicar una plantilla, verifica que el caso nuevo cumpla todas sus condiciones.",
+          "Si notas que algo se repite seguido y todavía lo resuelves desde cero cada vez, es momento de convertirlo en plantilla."
+        ],
+        "ejemplo": "Alguien que cada domingo arma su horario de la semana desde cero, sin darse cuenta de que la estructura es casi siempre la misma, está perdiendo tiempo por no reconocer un patrón que ya existe y que podría convertir en plantilla fija."
+      }
+    ],
+    "idea_clave": "Un patrón es una parte que se repite con la misma estructura dentro de rutinas, decisiones o problemas distintos. Encontrarlo exige comparar VARIOS casos (no uno solo) para separar lo que siempre se repite de los detalles que cambian; convertirlo en plantilla te ahorra resolver lo mismo desde cero cada vez. Pero un patrón tiene condiciones: confundir coincidencia con patrón real, o forzar una plantilla cuando hay una excepción, son los errores que hay que evitar. Reconocer patrones conecta directamente con descomponer: te permite notar cuándo un subproblema nuevo ya lo resolviste antes con otra forma.",
+    "figura": "<svg viewBox=\"0 0 420 150\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"10\" y=\"18\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">Horario semanal</text><g font-family=\"sans-serif\" font-size=\"12\" fill=\"#3B2B4A\"><text x=\"25\" y=\"40\">L</text><text x=\"85\" y=\"40\">M</text><text x=\"145\" y=\"40\">M</text><text x=\"205\" y=\"40\">J</text><text x=\"265\" y=\"40\">V</text><text x=\"325\" y=\"40\">S</text><text x=\"375\" y=\"40\">D</text></g><rect x=\"10\" y=\"50\" width=\"50\" height=\"70\" rx=\"6\" fill=\"#12B5A4\" fill-opacity=\"0.18\" stroke=\"#12B5A4\" stroke-width=\"2\"/><rect x=\"70\" y=\"50\" width=\"50\" height=\"70\" rx=\"6\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"1.5\"/><rect x=\"130\" y=\"50\" width=\"50\" height=\"70\" rx=\"6\" fill=\"#12B5A4\" fill-opacity=\"0.18\" stroke=\"#12B5A4\" stroke-width=\"2\"/><rect x=\"190\" y=\"50\" width=\"50\" height=\"70\" rx=\"6\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"1.5\"/><rect x=\"250\" y=\"50\" width=\"50\" height=\"70\" rx=\"6\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"1.5\"/><rect x=\"310\" y=\"50\" width=\"50\" height=\"70\" rx=\"6\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"1.5\"/><rect x=\"370\" y=\"50\" width=\"40\" height=\"70\" rx=\"6\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"1.5\"/><text x=\"35\" y=\"90\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#0E9486\">natación</text><text x=\"155\" y=\"90\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#0E9486\">natación</text><text x=\"10\" y=\"140\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0E9486\">Sombreado = el patrón que se repite (lunes y miércoles)</text></svg>"
+  },
+  "practica": [
+    {
+      "enunciado": "Durante tres semanas anotaste qué hiciste cada domingo en la tarde: semana 1 (ordenar el cuarto, avanzar tarea de Lengua, ver una serie), semana 2 (ordenar el cuarto, avanzar tarea de Ciencias, llamar a un abuelo), semana 3 (ordenar el cuarto, avanzar tarea de Matemática, ver una serie). Identifica el patrón (lo que se repite en las tres semanas) y los detalles variables (lo que cambia).",
+      "pista": "Compara las tres listas una al lado de la otra. Lo que aparece en las TRES semanas exactamente igual es el patrón; lo que cambia de semana a semana son los detalles variables.",
+      "solucion": "El patrón (se repite en las tres semanas): ordenar el cuarto y avanzar tarea. Los detalles variables: la materia de la tarea (Lengua, Ciencias, Matemática) y la tercera actividad (ver serie, llamar a un abuelo, ver serie). Comprobación: al revisar las tres semanas, 'ordenar el cuarto' y 'avanzar tarea' aparecen siempre, así que sí cumplen la condición de un patrón real (repetirse en varios casos, no solo en uno).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una compañera dice: 'encontré un patrón: cada vez que llevo paraguas, no llueve'. Cuenta que esto le pasó dos veces esta semana. Evalúa si tiene evidencia suficiente para llamarlo un patrón real, y explica qué debería hacer antes de afirmarlo.",
+      "pista": "Recuerda la regla de comparar VARIOS casos, no uno o dos. Piensa cuántas veces hace falta observar algo antes de decir que 'siempre' pasa.",
+      "solucion": "No tiene evidencia suficiente. Dos casos son muy pocos para confirmar un patrón real; es más probable que sea una coincidencia. Antes de afirmarlo debería anotar qué pasa muchas veces más (llevando y sin llevar paraguas, en distintos días) y comparar todos esos casos. Si el 'no llueve cuando lleva paraguas' se sigue repitiendo en muchísimos casos, ahí sí habría más base para hablar de un patrón (aunque en este caso en particular lo más probable es que sea pura coincidencia con el clima, no una relación real).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Comparaste cómo estudiaste para tres exámenes distintos (Ciencias, Historia y Geografía) y notaste que en los tres hiciste: leer los temas, escribir un resumen y practicar preguntas. Convierte ese patrón en una plantilla de estudio escrita, con espacio para el detalle variable.",
+      "pista": "Una plantilla es una lista de pasos fija, como un algoritmo, con un espacio en blanco justo donde va el detalle que cambia cada vez (el tema o materia).",
+      "solucion": "Plantilla de estudio (patrón fijo, con un espacio para el detalle variable): 1) Leer los temas del examen de [materia]. 2) Escribir un resumen de cada tema. 3) Responder preguntas de práctica sobre [materia]. El espacio '[materia]' es el detalle variable que se llena cada vez; los tres pasos son el patrón fijo que ya se repitió en Ciencias, Historia y Geografía.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Tu patrón de todos los martes es: llegar del colegio, merendar y hacer la tarea antes de jugar. Este martes tienes cita con el dentista justo a la hora en que sueles merendar y hacer la tarea. Evalúa: ¿deberías forzar tu rutina de siempre o tratarlo como una excepción? Justifica.",
+      "pista": "Revisa si la condición que sostiene el patrón (estar en casa a esa hora) sigue cumpliéndose este martes. Si una condición clave cambió, el patrón no aplica igual.",
+      "solucion": "Debería tratarlo como una excepción, no forzar la rutina de siempre. La condición clave del patrón ('estar en casa después del colegio a esa hora') cambió porque hay una cita médica en ese horario. Forzar la rutina de siempre (intentar merendar y hacer la tarea igual, a la carrera, antes de salir corriendo al dentista) probablemente saldría mal. Lo correcto es reorganizar ese día en particular: por ejemplo, merendar antes de salir y hacer la tarea al volver de la cita.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ya organizaste antes el cumpleaños de tu hermano descomponiéndolo en invitados, comida y lugar. Ahora te piden ayudar a organizar la feria de ciencias del colegio. Explica qué patrón reconoces entre ambos problemas, aunque sean tan distintos por fuera, y cómo te ayuda a no empezar de cero.",
+      "pista": "Aunque una fiesta y una feria de ciencias parecen problemas totalmente diferentes, compara los SUBPROBLEMAS en los que los descompondrías. Busca la estructura que se repite detrás de nombres distintos.",
+      "solucion": "El patrón que se repite es la misma estructura de subproblemas de organización: a quién invitar/convocar, qué se va a servir o necesitar, y dónde se hace. En la fiesta eran invitados, comida y lugar; en la feria de ciencias son los mismos tipos de subproblemas, aunque los detalles cambien (invitados vs. participantes y jueces, comida para la fiesta vs. refrigerio para el evento, el salón de fiesta vs. el patio del colegio). Reconocer ese patrón te permite reutilizar la misma forma de organizarte en vez de inventar una estructura nueva desde cero.",
+      "figura": ""
+    },
+    {
+      "enunciado": "En tres tareas distintas de Matemática te bajaron puntos por la misma razón: no escribiste las unidades de medida en la respuesta final (cm, kg, etc.), aunque el cálculo estuviera bien. Identifica el patrón detrás de este error y propón una corrección que lo elimine de raíz, en vez de corregir tarea por tarea.",
+      "pista": "El patrón no está en el cálculo (eso cambia en cada tarea); está en el PASO que se te olvida siempre al final. Piensa en agregar ese paso a tu propia rutina de revisión.",
+      "solucion": "El patrón es un error de proceso, no de cálculo: siempre se te olvida el mismo paso final (escribir la unidad de medida), sin importar el tema de la tarea. Corregirlo tarea por tarea no sirve porque el error volvería a aparecer la próxima vez. La corrección de raíz es agregar un paso fijo a tu rutina de revisión: 'antes de entregar, revisar que cada respuesta numérica tenga su unidad'. Así el patrón de error queda cubierto de una sola vez, para cualquier tarea futura.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Comparas cómo empacaste la maleta para dos viajes de fin de semana distintos (a la playa y a la montaña) y notas que en ambos empacaste: ropa para varios días, artículos de aseo y cargador del teléfono, pero la ropa específica y el calzado fueron completamente distintos. ¿Cuál es el patrón y cuáles los detalles variables? Arma una plantilla de empaque.",
+      "pista": "Separa lo que se repitió igual en los dos viajes (patrón) de lo que cambió según el destino (detalles variables). La plantilla debe tener los elementos fijos con un espacio para lo que cambia.",
+      "solucion": "Patrón (igual en ambos viajes): llevar ropa para varios días, artículos de aseo y cargador del teléfono. Detalles variables: qué ropa y calzado específicos (ropa liviana y sandalias para la playa; ropa de abrigo y botas para la montaña). Plantilla de empaque: 1) Ropa para [número] días, según el clima de [destino]. 2) Artículos de aseo personal. 3) Cargador del teléfono. 4) Calzado adecuado para [destino]. Los espacios entre corchetes son lo que cambia cada vez que uses la plantilla.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero arma su horario de estudio semanal desde cero cada domingo, pensando cada vez qué día le toca qué materia, aunque la estructura es casi siempre la misma. Explica qué error está cometiendo con los patrones y qué debería hacer distinto.",
+      "pista": "Este no es el error de ver un patrón falso ni de forzar una plantilla; es el tercer error, el opuesto: no reconocer un patrón que sí existe.",
+      "solucion": "Está cometiendo el error de no reconocer un patrón real: como la estructura de su semana se repite casi siempre igual, sigue resolviendo el mismo problema desde cero en vez de crear una plantilla fija y reutilizarla. Debería comparar varias semanas pasadas, identificar qué se repite (por ejemplo, qué días quedan libres y cuáles ocupados) y convertir eso en una plantilla de horario que solo ajuste pequeños detalles cada domingo, en vez de rehacer todo el trabajo de planificación desde el principio cada vez.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica con tus palabras la diferencia entre una COINCIDENCIA y un PATRÓN, usando un ejemplo distinto a los vistos en el resumen.",
+      "pista": "Piensa en cuántas veces necesitas observar algo antes de poder llamarlo patrón, y qué pasa si solo lo viste una o dos veces.",
+      "solucion": "Una coincidencia es que algo se parezca o se repita una sola vez (o muy pocas), por casualidad, sin que exista una razón real detrás. Un patrón es que esa misma estructura se repita de forma constante en muchos casos parecidos. Ejemplo: si dos veces que fuiste al mismo restaurante pediste el mismo plato sin pensarlo, podría ser coincidencia; pero si eso pasa las últimas diez veces que fuiste, ya es un patrón real en tu forma de decidir, no casualidad.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un vecino nota que las últimas dos veces que salió sin paraguas terminó mojado, y decide que 'siempre' debe salir con paraguas de ahora en adelante, sin volver a revisar el clima. ¿Qué error está cometiendo y qué debería hacer en vez de eso?",
+      "pista": "Piensa si dos casos alcanzan para confirmar un patrón, y si ignorar información nueva (el clima de cada día) es forzar una regla fija donde no debería.",
+      "solucion": "Está cometiendo dos errores relacionados: primero, confundir coincidencia con patrón (dos casos son muy pocos para afirmar 'siempre'); segundo, está a punto de forzar una regla fija (llevar paraguas todos los días) sin revisar la condición real que importa, que es si va a llover ese día en particular. En vez de eso debería seguir revisando el pronóstico cada día (la condición real) en lugar de aplicar una regla rígida basada en solo dos casos.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica con tus palabras cómo se conectan las tres ideas del año hasta ahora: escribir algoritmos, descomponer problemas y reconocer patrones. Usa un ejemplo propio que las use a las tres juntas.",
+      "pista": "Recuerda el orden: primero divides el problema grande en partes (descomposición); luego, para cada parte, revisas si ya la resolviste antes con la misma forma (patrón); y al final, cada parte se resuelve escribiendo los pasos precisos (algoritmo).",
+      "solucion": "Las tres ideas trabajan juntas en este orden: primero DESCOMPONES el problema grande en subproblemas más pequeños y manejables. Después, para cada subproblema, RECONOCES si ya tiene la misma forma que algo que resolviste antes (un patrón), lo que te ahorra pensarlo de nuevo. Finalmente, cada subproblema (nuevo o reconocido) se resuelve escribiendo un ALGORITMO: una lista de instrucciones precisas y en orden. Ejemplo propio: al organizar mi cumpleaños, descompuse el problema en invitados, comida y lugar; reconocí que el subproblema 'comida' tiene el mismo patrón que cuando ayudé a organizar una reunión familiar (calcular cuánto comprar según la cantidad de invitados); y resolví ese subproblema con un algoritmo concreto: hacer la lista de invitados, contar cuántos son, calcular las porciones y comprar según esa cuenta.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál de estas definiciones describe mejor qué es un patrón?",
+      "opciones": [
+        "Dos cosas que se parecen una sola vez, por casualidad",
+        "Una parte que se repite con la misma estructura dentro de varias situaciones, aunque cambien los detalles",
+        "Cualquier tarea que se hace todos los días",
+        "Un error que se repite en un examen"
+      ],
+      "correcta": 1,
+      "explicacion": "Un patrón es una repetición de ESTRUCTURA (la forma) en varios casos, no solo un parecido puntual ni un simple hábito diario. Los detalles pueden cambiar; lo que define al patrón es que la forma de fondo se mantiene igual."
+    },
+    {
+      "pregunta": "¿Por qué reconocer un patrón te ahorra trabajo?",
+      "opciones": [
+        "Porque hace que el problema desaparezca",
+        "Porque te permite reutilizar una solución que ya conoces, en vez de resolver todo desde cero otra vez",
+        "Porque nunca más tendrás que pensar en ese tema",
+        "Porque los patrones siempre son más fáciles que los problemas nuevos"
+      ],
+      "correcta": 1,
+      "explicacion": "Reconocer un patrón te deja reutilizar una solución o plantilla que ya probaste antes, ajustando solo los detalles variables, en vez de volver a pensar toda la estructura desde el principio."
+    },
+    {
+      "pregunta": "¿Cuántos casos hacen falta, como mínimo, para poder afirmar que algo es un patrón real y no una coincidencia?",
+      "opciones": [
+        "Con un solo caso ya es suficiente",
+        "Con dos casos siempre alcanza",
+        "Hacen falta varios casos parecidos comparados entre sí, no uno o dos sueltos",
+        "Nunca se puede estar seguro de un patrón"
+      ],
+      "correcta": 2,
+      "explicacion": "Un solo caso, o incluso dos, no alcanzan para confirmar un patrón: podría ser pura coincidencia. Hay que comparar varios casos parecidos y ver si la misma estructura se repite en todos ellos."
+    },
+    {
+      "pregunta": "En un patrón, ¿qué son los 'detalles variables'?",
+      "opciones": [
+        "La parte que se repite exactamente igual en todos los casos",
+        "Los errores que aparecen al aplicar el patrón",
+        "Lo que cambia de un caso a otro, aunque la estructura general se mantenga",
+        "Los pasos que sobran y se pueden borrar"
+      ],
+      "correcta": 2,
+      "explicacion": "Los detalles variables son las partes que cambian de caso a caso (por ejemplo, la materia de una tarea o el destino de un viaje), mientras que la estructura fija que se repite es el patrón en sí."
+    },
+    {
+      "pregunta": "¿Qué es una plantilla, en el sentido de este tema?",
+      "opciones": [
+        "Un documento decorado con imágenes",
+        "Una versión fija y reutilizable de un patrón, con espacios para los detalles que cambian cada vez",
+        "Un problema que todavía no se descompuso",
+        "Una lista de errores para no cometer"
+      ],
+      "correcta": 1,
+      "explicacion": "Una plantilla convierte un patrón detectado en algo reutilizable: la estructura fija queda escrita, y solo hay que llenar los espacios de los detalles variables la próxima vez que aparezca una situación parecida."
+    },
+    {
+      "pregunta": "Dos veces seguidas te fue mal en un examen que rendiste de noche, y concluyes 'siempre me va mal si estudio de noche'. ¿Qué problema tiene esa conclusión?",
+      "opciones": [
+        "Ninguno, dos veces ya es suficiente evidencia",
+        "Se basa en muy pocos casos; podría ser coincidencia y no un patrón real",
+        "El problema es que estudiaste de noche, no la conclusión",
+        "Es imposible saber si estudiar de noche afecta el examen"
+      ],
+      "correcta": 1,
+      "explicacion": "Dos casos son pocos para afirmar un patrón con seguridad; podría ser coincidencia (quizás esos exámenes eran más difíciles por otra razón). Haría falta comparar más casos antes de sacar esa conclusión."
+    },
+    {
+      "pregunta": "Tu patrón de todos los sábados es limpiar tu cuarto en la mañana, pero este sábado toda la familia sale de viaje desde temprano. ¿Qué deberías hacer?",
+      "opciones": [
+        "Forzar la limpieza igual, aunque no haya tiempo, porque el patrón dice que se hace los sábados",
+        "Reconocer que una condición clave del patrón cambió y tratar este sábado como una excepción",
+        "Ignorar la limpieza para siempre a partir de ahora",
+        "Cambiar el patrón para todos los sábados futuros"
+      ],
+      "correcta": 1,
+      "explicacion": "Cuando una condición clave del patrón cambia (esta vez no vas a estar en casa esa mañana), hay que tratarlo como una excepción puntual, no forzar la rutina de siempre ni descartar el patrón para siempre."
+    },
+    {
+      "pregunta": "En tres tareas distintas te bajaron puntos por la misma razón: olvidar escribir las unidades de medida. ¿Cuál es la mejor forma de solucionar este patrón de error?",
+      "opciones": [
+        "Corregir cada tarea por separado sin cambiar nada más",
+        "Agregar un paso fijo a tu rutina de revisión que cubra ese error en cualquier tarea futura",
+        "Ignorarlo porque el cálculo estaba bien",
+        "Cambiar de materia para no volver a cometerlo"
+      ],
+      "correcta": 1,
+      "explicacion": "Como el error es un patrón (se repite en varias tareas distintas), corregirlo tarea por tarea no lo elimina: reaparecerá. La solución de raíz es agregar un paso fijo a tu proceso de revisión que cubra ese tipo de error siempre."
+    },
+    {
+      "pregunta": "¿Cómo se conecta reconocer patrones con descomponer un problema?",
+      "opciones": [
+        "No tienen ninguna relación entre sí",
+        "Al descomponer un problema nuevo en subproblemas, a veces uno de ellos tiene la misma forma que un subproblema ya resuelto antes en otro problema",
+        "Descomponer siempre elimina cualquier patrón",
+        "Reconocer patrones reemplaza por completo a la descomposición"
+      ],
+      "correcta": 1,
+      "explicacion": "Reconocer patrones le da un superpoder extra a la descomposición: al partir un problema nuevo en piezas, puedes notar que una pieza ya la resolviste antes en un problema distinto, y reutilizar esa solución en vez de empezar de cero."
+    },
+    {
+      "pregunta": "Un compañero arma su horario de estudio desde cero cada domingo, aunque la estructura es casi siempre igual. ¿Qué error está cometiendo?",
+      "opciones": [
+        "Está forzando un patrón que no existe",
+        "Está confundiendo coincidencia con patrón",
+        "No está reconociendo un patrón real que podría convertir en plantilla",
+        "No está cometiendo ningún error"
+      ],
+      "correcta": 2,
+      "explicacion": "Este es el error opuesto a inventar patrones falsos: existe un patrón real (su semana se repite casi igual) y no lo está aprovechando, así que repite trabajo de planificación que podría ahorrarse con una plantilla."
+    },
+    {
+      "pregunta": "¿Cuál de estos es un ejemplo de patrón EN LAS DECISIONES (no en el tiempo ni en los errores)?",
+      "opciones": [
+        "Sacar la basura todos los sábados",
+        "Elegir siempre llevar chaqueta gruesa cada vez que hace frío, sin importar el día",
+        "Olvidar las unidades de medida en varios exámenes distintos",
+        "Tener clase de Natación los lunes y miércoles"
+      ],
+      "correcta": 1,
+      "explicacion": "Elegir la misma opción (chaqueta gruesa) ante situaciones parecidas (frío), sin importar qué día sea, es un patrón de decisión. Las otras opciones son patrones de tiempo (rutinas repetidas en fechas fijas) o de errores."
+    },
+    {
+      "pregunta": "¿Qué diferencia hay entre 'ver un patrón donde no lo hay' y 'no reconocer un patrón que sí existe'?",
+      "opciones": [
+        "Son el mismo error con distinto nombre",
+        "El primero es inventar una regla con muy pocos casos; el segundo es seguir resolviendo todo desde cero aunque exista una repetición real",
+        "El primero solo pasa con números; el segundo solo con rutinas",
+        "Ninguno de los dos es realmente un error"
+      ],
+      "correcta": 1,
+      "explicacion": "Son errores opuestos: uno es fabricar un patrón falso a partir de poca evidencia (confundir coincidencia con patrón); el otro es ignorar un patrón que sí existe y repetir trabajo innecesario en vez de convertirlo en plantilla."
+    },
+    {
+      "pregunta": "Comparas cómo empacaste la maleta para un viaje a la playa y otro a la montaña. ¿Cuál sería el patrón entre ambos casos?",
+      "opciones": [
+        "Que ambos viajes duraron el mismo número de días",
+        "Llevar ropa para varios días, artículos de aseo y cargador del teléfono, aunque la ropa específica cambie",
+        "Que en ambos viajes llevaste sandalias",
+        "Que la playa y la montaña son el mismo tipo de lugar"
+      ],
+      "correcta": 1,
+      "explicacion": "El patrón es la estructura que se repite en ambos empaques (ropa para varios días, aseo, cargador), sin importar que el destino cambie la ropa y el calzado específicos, que son los detalles variables."
+    }
+  ]
+}

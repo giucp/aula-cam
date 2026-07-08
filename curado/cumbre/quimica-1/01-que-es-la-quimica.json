@@ -50,13 +50,13 @@
       },
       {
         "titulo": "Propiedades: cómo describimos e identificamos una sustancia",
-        "explicacion": "Una PROPIEDAD es una característica que podemos observar o medir de una sustancia, y que nos sirve para describirla y reconocerla. Igual que a una persona la describes por su altura, su color de ojos y su voz, a una sustancia la describes por sus propiedades: su color, su olor, si es duro o blando, si se disuelve en agua, a qué temperatura hierve o se derrite, cuánto pesa un pedazo de cierto tamaño (eso último se llama densidad). Las propiedades son la 'huella dactilar' de cada sustancia: como el agua pura SIEMPRE hierve a 100 grados Celsius al nivel del mar, esa propiedad ayuda a reconocerla y a saber si está pura. Cuando dos sustancias parecen iguales a simple vista (la sal y el azúcar, ambas blancas y en granitos), son sus propiedades las que las distinguen: el azúcar es dulce y se quema al calentarlo; la sal es salada y no se quema igual.",
+        "explicacion": "Una PROPIEDAD es una característica que podemos observar o medir de una sustancia, y que nos sirve para describirla y reconocerla. Igual que a una persona la describes por su altura, su color de ojos y su voz, a una sustancia la describes por sus propiedades: su color, su olor, si es duro o blando, si se disuelve en agua, a qué temperatura hierve o se derrite, cuánto pesa un pedazo de cierto tamaño (eso último se llama densidad). Las propiedades son la 'huella dactilar' de cada sustancia: como el agua pura SIEMPRE hierve a 100 grados Celsius al nivel del mar, esa propiedad ayuda a reconocerla y a saber si está pura. Cuando dos sustancias parecen iguales a simple vista (la sal y el azúcar, ambas blancas y en granitos), son sus propiedades las que las distinguen sin necesidad de probarlas: el azúcar se quema y se pone marrón al calentarla; la sal no cambia igual.",
         "pasos": [
           "Observa: color, olor, brillo, estado, si es duro o blando.",
           "Mide: temperatura a la que hierve o se derrite, si se disuelve en agua, la densidad.",
           "Compara esas propiedades con las de sustancias conocidas para identificarla."
         ],
-        "ejemplo": "Tienes dos polvos blancos sin etiqueta. Pruebas: uno se disuelve en agua y sabe salado (sal); el otro se disuelve, sabe dulce y, al calentarlo, se pone marrón y huele a caramelo (azúcar). Las PROPIEDADES te dijeron cuál era cuál sin necesidad de la etiqueta.",
+        "ejemplo": "Tienes dos frascos con polvos blancos a los que se les cayó la etiqueta, y sabes que uno es sal y el otro es azúcar de tu cocina. Sin probarlos (nunca se identifica un polvo desconocido probándolo), los observas: ambos se disuelven en agua, pero al calentar una pizca de cada uno, uno se pone marrón y huele a caramelo (el azúcar se quema), mientras que el otro aguanta el calor sin cambiar así (la sal). Las PROPIEDADES te dijeron cuál era cuál, sin necesidad de la etiqueta ni de probarlos.",
         "figura": ""
       },
       {
@@ -137,8 +137,8 @@
     },
     {
       "enunciado": "Nombra tres propiedades que podrías medir u observar para diferenciar la sal del azúcar, sabiendo que ambas son polvos blancos.",
-      "pista": "Piensa en cosas que puedas observar (sabor, qué pasa al calentar) o medir (si se disuelve, a qué temperatura funde).",
-      "solucion": "Ejemplos válidos: (1) el SABOR: la sal es salada, el azúcar es dulce. (2) Qué pasa al CALENTAR fuerte: el azúcar se derrite, se pone marrón y huele a caramelo (se quema); la sal aguanta mucho más sin cambiar así. (3) La temperatura a la que se FUNDE, o cómo se disuelven en agua. Todas esas son propiedades que actúan como 'huella dactilar' de cada sustancia y permiten distinguirlas aunque se vean igual.",
+      "pista": "Piensa en cosas que puedas observar sin probarlas (qué pasa al calentar, cómo se ven de cerca) o medir (si se disuelve, a qué temperatura funde). Nunca se identifica un polvo probándolo.",
+      "solucion": "Ejemplos válidos: (1) Qué pasa al CALENTAR fuerte: el azúcar se derrite, se pone marrón y huele a caramelo (se quema); la sal aguanta mucho más sin cambiar así. (2) La temperatura a la que se FUNDE, o cómo se disuelven en agua. (3) Cómo se ven de cerca (con lupa): los granos de azúcar y de sal tienen formas de cristal distintas. Todas esas son propiedades que actúan como 'huella dactilar' de cada sustancia y permiten distinguirlas aunque se vean igual, sin necesidad de probarlas.",
       "figura": ""
     },
     {

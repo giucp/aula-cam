@@ -1,0 +1,352 @@
+{
+  "programa": "cumbre",
+  "materia": "Química",
+  "grado": "Cumbre Química 1er año",
+  "dominio": "Pensar como químico",
+  "tema": "Propiedades de las sustancias: describir, comparar y medir (punto de fusión, dureza, solubilidad)",
+  "referencias": [
+    "UK KS3/GCSE Science — Properties of materials: melting point, hardness and solubility as evidence for identifying substances",
+    "Singapore Lower Secondary Science — Physical properties, states of matter and factors affecting solubility",
+    "IB MYP Sciences Year 1 — Using measurable properties as evidence to classify and identify matter",
+    "Japan MEXT Grade 7-8 Science — Properties of matter, states of matter and measurement skills in the laboratory"
+  ],
+  "resumen": {
+    "titulo": "Describir, comparar y medir: la evidencia con la que un químico identifica una sustancia",
+    "intro": "Ya sabes que cada sustancia tiene propiedades que actúan como su huella dactilar. En este tema vamos a ir más profundo: no solo a nombrar propiedades, sino a MEDIRLAS con números reales, COMPARARLAS entre sustancias distintas, y usarlas como evidencia para decidir qué es una muestra desconocida, igual que hace un químico de verdad. Vas a trabajar con tres propiedades medibles muy importantes: el punto de fusión, la dureza y la solubilidad. Y vas a aprender algo tan importante como los números mismos: una sola propiedad casi nunca alcanza, hay que saber leer el conjunto de datos, sospechar de impurezas cuando algo no encaja perfecto, y sobre todo, nunca usar el cuerpo (probar, tocar u oler de cerca) como instrumento de medición. Empezamos desde cero, así que no necesitas nada de antes salvo lo que ya viste en los dos temas anteriores.",
+    "secciones": [
+      {
+        "titulo": "Dos tipos de propiedades: las que se observan y las que se miden",
+        "explicacion": "En el tema anterior aprendiste que una PROPIEDAD es una característica que sirve para describir e identificar una sustancia, como su 'huella dactilar'. Ahora vamos a mirar las propiedades con más profundidad, separándolas en dos grupos. Las propiedades CUALITATIVAS se observan con los sentidos y no llevan un número: el color, el olor, el brillo (si refleja mucha luz o no) y la textura (áspera, lisa, granulada). Las propiedades CUANTITATIVAS se miden con un instrumento y se expresan con un número y una unidad: el punto de fusión se mide en grados Celsius (°C), la dureza se mide en la escala de Mohs (un número del 1 al 10) y la solubilidad se mide en gramos de sustancia por cada 100 mililitros de agua. Hay algo todavía más importante que hay que entender bien: estas propiedades cuantitativas NO cambian según cuánta cantidad tengas de la sustancia. A esto se le llama propiedad INTENSIVA: no depende de la cantidad de materia, sino solo de QUÉ sustancia es. Por eso un gramo de aluminio funde exactamente a la misma temperatura que una tonelada de aluminio: 660°C. En cambio, propiedades como la masa o el volumen SÍ dependen de la cantidad (se llaman propiedades EXTENSIVAS): un kilo de aluminio pesa más que un gramo de aluminio, obviamente, pero eso no dice nada sobre DE QUÉ está hecho. Esta diferencia es la razón por la que los químicos confían en el punto de fusión, la dureza y la solubilidad para identificar sustancias: sin importar el tamaño de la muestra, esos números siempre son los mismos para esa sustancia pura.",
+        "pasos": [
+          "Pregúntate: ¿esta propiedad se observa con los sentidos sin número (cualitativa) o se mide con un instrumento y da un número con unidad (cuantitativa)?",
+          "Si es cuantitativa, pregúntate además: ¿cambiaría este número si tuviera más o menos cantidad de la sustancia? Si la respuesta es NO, es una propiedad intensiva (característica), la que sirve para identificar.",
+          "Las propiedades intensivas que vas a usar en este tema son tres: punto de fusión (°C), dureza (escala Mohs) y solubilidad (g por 100 mL de agua)."
+        ],
+        "ejemplo": "Un anillo pequeño de aluminio y una escalera entera de aluminio pesan muchísimo distinto (propiedad extensiva: la masa), pero AMBOS funden exactamente a 660°C (propiedad intensiva: el punto de fusión). Por eso el punto de fusión identifica la sustancia y el peso no.",
+        "figura": ""
+      },
+      {
+        "titulo": "Punto de fusión: la temperatura exacta en la que un sólido se rinde",
+        "explicacion": "El PUNTO DE FUSIÓN es la temperatura exacta a la que una sustancia pasa de sólido a líquido, medida a la presión normal del aire (1 atmósfera, la presión al nivel del mar). Es un número fijo y característico de cada sustancia pura: por debajo de esa temperatura la sustancia es sólida, y apenas la superas empieza a fundirse. La tabla siguiente muestra puntos de fusión reales, y ya vas a notar lo distintos que pueden ser: el mercurio funde a -39°C (por eso ya es líquido a la temperatura de un cuarto normal, y se usaba en termómetros antiguos); el estaño funde a 232°C; el plomo funde a 327°C; el aluminio funde a 660°C; y el tungsteno funde a 3422°C, el punto de fusión más alto de todos los metales conocidos (por eso se usa para el filamento que se pone al rojo blanco dentro de una bombilla incandescente, sin derretirse). Fíjate en el rango enorme: de -39°C a 3422°C hay una diferencia de casi 3500 grados, y aun así cada valor es exacto y repetible para esa sustancia.",
+        "pasos": [
+          "Para medir un punto de fusión con seguridad: calienta la muestra poco a poco, nunca de golpe, preferiblemente en un baño de agua caliente (baño María) o con calentamiento indirecto, no con la llama tocando directo el recipiente que sostienes con la mano.",
+          "Usa un termómetro y anota la temperatura EXACTA en la que aparece la primera gota de líquido.",
+          "Compara ese número con una tabla de referencia de puntos de fusión conocidos para identificar la sustancia.",
+          "Nunca acerques la cara al recipiente que estás calentando, y usa pinzas o soportes, nunca las manos, para sostener algo que puede estar caliente."
+        ],
+        "ejemplo": "Un estudiante calienta con cuidado una muestra metálica desconocida y anota que la primera gota de líquido aparece justo a 327°C. Comparando con la tabla, concluye que probablemente es plomo, porque coincide exactamente con su punto de fusión conocido.",
+        "figura": "<svg viewBox=\"0 0 300 170\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"20\" y1=\"140\" x2=\"280\" y2=\"140\" stroke=\"#8C7C93\" stroke-width=\"2\"/><rect x=\"50\" y=\"105\" width=\"40\" height=\"35\" fill=\"#12B5A4\" fill-opacity=\"0.5\" stroke=\"#0E9486\" stroke-width=\"1.5\"/><rect x=\"130\" y=\"90\" width=\"40\" height=\"50\" fill=\"#7C4DFF\" fill-opacity=\"0.5\" stroke=\"#5A3AAF\" stroke-width=\"1.5\"/><rect x=\"210\" y=\"40\" width=\"40\" height=\"100\" fill=\"#F2C230\" fill-opacity=\"0.5\" stroke=\"#D9A400\" stroke-width=\"1.5\"/><text x=\"70\" y=\"158\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">Sn 232C</text><text x=\"150\" y=\"158\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">Pb 327C</text><text x=\"230\" y=\"158\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">Al 660C</text><text x=\"150\" y=\"20\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">Puntos de fusion (C)</text></svg>"
+      },
+      {
+        "titulo": "Un caso especial: cuando el sólido no pasa por líquido",
+        "explicacion": "Casi toda la materia sigue el camino esperado: sólido, luego líquido, luego gas, a medida que sube la temperatura. Pero hay sustancias que, a la presión normal del aire, se saltan el paso líquido: pasan DIRECTAMENTE de sólido a gas. A esto se le llama SUBLIMACIÓN. El ejemplo más conocido es el hielo seco, que es dióxido de carbono (CO2) sólido: a la presión normal, se sublima a -78°C, o sea que a esa temperatura el bloque sólido se convierte directo en gas (por eso el hielo seco 'humea' pero nunca moja como el hielo de agua, que sí pasa por líquido). La naftalina, la sustancia blanca y de olor fuerte que se usa en bolitas antipolillas, funde a 80°C pero también se sublima con facilidad incluso a temperatura ambiente, poco a poco, y por eso su olor característico se percibe en el aire aunque el sólido nunca se haya calentado ni tocado. Reconocer estos casos es importante para no aplicar la misma expectativa a todo: 'todo sólido primero se derrite antes de ser gas' NO es una regla universal.",
+        "pasos": [
+          "Antes de calentar una sustancia esperando ver un líquido, revisa si es una sustancia conocida por sublimarse (como el hielo seco o la naftalina).",
+          "Si se sublima, no vas a ver un charco de líquido: vas a ver que el sólido se hace cada vez más pequeño mientras sale gas o vapor.",
+          "No confundas esto con que la sustancia 'desapareció': se transformó de estado, no dejó de existir (sigue siendo la misma sustancia, solo que ahora es gas)."
+        ],
+        "ejemplo": "Un trozo de hielo seco dejado sobre la mesa (con la supervisión del profesor y sin tocarlo con la mano, porque a -78°C también quema por frío) se va haciendo cada vez más chico sin dejar ningún charco de agua: se sublimó directo a gas de dióxido de carbono.",
+        "figura": ""
+      },
+      {
+        "titulo": "Dureza: qué tan fácil (o difícil) es rayar una sustancia",
+        "explicacion": "La DUREZA es la resistencia de una sustancia a ser RAYADA (a que otro objeto le haga una marca o surco al presionar y arrastrar sobre su superficie). Los mineralogistas (los científicos que estudian minerales) crearon una escala para comparar durezas, llamada ESCALA DE MOHS, que va del 1 (el más blando) al 10 (el más duro), usando diez minerales de referencia: talco (1), yeso (2), calcita (3), fluorita (4), apatita (5), ortoclasa (6), cuarzo (7), topacio (8), corindón (9) y diamante (10, el mineral natural más duro que se conoce). La regla del test es simple pero hay que entenderla bien: si un objeto A raya a un objeto B, entonces A es MÁS DURO que B (y B es más blando que A); si ninguno raya al otro, tienen una dureza parecida. Es una escala ORDINAL, no una regla de proporciones: que el diamante sea 10 y el talco sea 1 NO significa que el diamante sea '10 veces más duro'; solo significa que el diamante raya a todo lo demás de la lista y nada de la lista lo raya a él. Para no depender solo de minerales de referencia, existen objetos cotidianos con dureza aproximada conocida que sirven de comparación rápida: la uña (aproximadamente 2,5), una moneda de cobre (aproximadamente 3,5), el vidrio de una ventana (aproximadamente 5,5), la hoja de un cuchillo de acero (aproximadamente 5,5) y una lima de acero (aproximadamente 6,5).",
+        "pasos": [
+          "Para comparar la dureza de dos sustancias con seguridad, intenta rayar una superficie pequeña y poco visible de una con un borde de la otra, siempre con supervisión del profesor y cuidado con los bordes filosos.",
+          "Si A deja una marca en B pero B no deja marca en A, entonces A es más duro que B.",
+          "Usa objetos de referencia conocidos (uña, moneda, vidrio, cuchillo, lima) para ubicar aproximadamente dónde cae la dureza de la muestra en la escala de Mohs.",
+          "Recuerda que la escala es de ORDEN, no de cantidad: un salto de 3 a 4 no es 'lo mismo' de diferencia que un salto de 9 a 10 en términos reales."
+        ],
+        "ejemplo": "Un mineral desconocido raya al vidrio de una ventana (dureza aproximada 5,5) pero el cuarzo (dureza 7) lo raya a él. Eso ubica su dureza en algún punto ENTRE 5,5 y 7: más duro que el vidrio, más blando que el cuarzo.",
+        "figura": "<svg viewBox=\"0 0 400 100\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"20\" y1=\"50\" x2=\"380\" y2=\"50\" stroke=\"#8C7C93\" stroke-width=\"3\"/><circle cx=\"20\" cy=\"50\" r=\"6\" fill=\"#12B5A4\"/><circle cx=\"60\" cy=\"50\" r=\"6\" fill=\"#12B5A4\"/><circle cx=\"100\" cy=\"50\" r=\"6\" fill=\"#12B5A4\"/><circle cx=\"140\" cy=\"50\" r=\"6\" fill=\"#12B5A4\"/><circle cx=\"180\" cy=\"50\" r=\"6\" fill=\"#12B5A4\"/><circle cx=\"220\" cy=\"50\" r=\"6\" fill=\"#12B5A4\"/><circle cx=\"260\" cy=\"50\" r=\"6\" fill=\"#12B5A4\"/><circle cx=\"300\" cy=\"50\" r=\"6\" fill=\"#12B5A4\"/><circle cx=\"340\" cy=\"50\" r=\"6\" fill=\"#12B5A4\"/><circle cx=\"380\" cy=\"50\" r=\"6\" fill=\"#7C4DFF\"/><text x=\"20\" y=\"30\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">1</text><text x=\"60\" y=\"30\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">2</text><text x=\"100\" y=\"30\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">3</text><text x=\"140\" y=\"30\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">4</text><text x=\"180\" y=\"30\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">5</text><text x=\"220\" y=\"30\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">6</text><text x=\"260\" y=\"30\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">7</text><text x=\"300\" y=\"30\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">8</text><text x=\"340\" y=\"30\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">9</text><text x=\"380\" y=\"30\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">10</text><text x=\"20\" y=\"80\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0E9486\">talco (blando)</text><text x=\"380\" y=\"80\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#5A3AAF\">diamante (duro)</text></svg>"
+      },
+      {
+        "titulo": "Solubilidad: cuánto se disuelve, y de qué depende de verdad",
+        "explicacion": "La SOLUBILIDAD es la cantidad máxima de una sustancia (llamada SOLUTO, lo que se disuelve) que se puede disolver en una cantidad fija de otra sustancia (llamada DISOLVENTE, generalmente agua), a una temperatura determinada. Se expresa en gramos de soluto por cada 100 mililitros de disolvente. No es un número universal: depende de TRES cosas a la vez, y confundir esto es el error más común. Primero, depende del soluto: el nitrato de potasio se disuelve mucho en agua (unos 32 gramos por cada 100 mililitros a 20°C), mientras que el carbonato de calcio (el mineral principal de la tiza y la caliza) casi no se disuelve en absoluto (apenas unos 0,0013 gramos por cada 100 mililitros): son dos sólidos blancos, pero su solubilidad es radicalmente distinta. Segundo, depende de la temperatura: la mayoría de los sólidos se disuelven MÁS al subir la temperatura (el nitrato de potasio pasa de unos 32 gramos por 100 mililitros a 20°C a unos 246 gramos por 100 mililitros a 100°C, casi ocho veces más), aunque no todos suben igual (el carbonato de calcio casi no cambia, sigue siendo prácticamente insoluble caliente o frío). Y tercero, depende del disolvente que uses: el yodo casi no se disuelve en agua (apenas unos 0,03 gramos por cada 100 mililitros) pero se disuelve mucho más en alcohol; por eso el antiséptico clásico 'tintura de yodo' se prepara con alcohol y no con agua. Decir simplemente 'esta sustancia se disuelve' está incompleto: hay que decir en QUÉ disolvente y a QUÉ temperatura.",
+        "pasos": [
+          "Para MEDIR solubilidad con seguridad: pesa con una balanza una cantidad conocida de soluto.",
+          "Agrégalo de a poco, revolviendo, a un volumen medido (con una probeta) de agua a una temperatura conocida.",
+          "Sigue agregando soluto hasta que ya no se disuelva más y quede un residuo sólido en el fondo por más que revuelvas: ese es el punto de saturación.",
+          "Anota cuántos gramos entraron por cada 100 mililitros de agua: esa es la solubilidad medida a esa temperatura.",
+          "Si quieres comparar el efecto de la temperatura o del disolvente, repite el mismo procedimiento cambiando SOLO esa variable."
+        ],
+        "ejemplo": "Si preparas una solución bien caliente y casi saturada de nitrato de potasio y la dejas enfriar despacio, vas a ver aparecer cristales sólidos en el fondo: al bajar la temperatura, el agua ya no puede sostener disuelta tanta cantidad, y el sobrante se separa como sólido. Eso es justamente lo opuesto de lo que le pasa al carbonato de calcio, que se queda igual de insoluble sin importar la temperatura.",
+        "figura": ""
+      },
+      {
+        "titulo": "Usar las tres propiedades juntas para identificar una sustancia",
+        "explicacion": "Ninguna propiedad sola suele bastar para identificar una sustancia con total seguridad; la clave está en combinarlas, como piezas de un rompecabezas. Imagina que te dan una muestra metálica desconocida y quieres saber cuál es. Paso 1: la calientas con cuidado y mides que funde justo a 660°C. Ya con ese solo dato tienes un candidato fuerte: el aluminio. Paso 2: intentas rayarla y descubres que la uña casi no le hace nada, pero un cuchillo de acero sí la raya fácilmente; eso ubica su dureza alrededor de 2,5 a 3, coherente con el aluminio (que es un metal relativamente blando para ser metal). Paso 3: intentas disolverla en agua y no pasa nada, ni fría ni caliente; eso también es coherente, porque los metales puros como el aluminio no se disuelven en agua. Las TRES propiedades apuntan al mismo candidato, así que la conclusión es mucho más sólida que si solo hubieras usado una. Esta es la diferencia entre 'sospechar' qué sustancia es y 'tener evidencia' de qué sustancia es: entre más propiedades independientes coincidan con la tabla de referencia, más confianza puedes tener en la identificación.",
+        "pasos": [
+          "Mide o compara la mayor cantidad de propiedades intensivas que puedas (punto de fusión, dureza, solubilidad, y las cualitativas como color y brillo).",
+          "Busca en una tabla de referencia qué sustancia conocida coincide con TODOS esos valores a la vez, no solo con uno.",
+          "Si un solo dato no coincide con tu candidato, no descartes de inmediato: puede haber impurezas (ver la siguiente sección) o puede que tu candidato esté equivocado; vuelve a revisar.",
+          "Cuantas más propiedades independientes coincidan, más segura es la identificación."
+        ],
+        "ejemplo": "Punto de fusión 660°C + dureza baja (se raya con cuchillo, no con la uña) + no se disuelve en agua = evidencia fuerte de que la muestra es aluminio, porque las tres propiedades coinciden a la vez con los valores de referencia del aluminio.",
+        "figura": ""
+      },
+      {
+        "titulo": "Cuando una sola propiedad no alcanza (y las impurezas engañan)",
+        "explicacion": "Hay dos trampas que un químico exigente siempre revisa antes de dar una identificación por segura. La primera trampa es que DOS sustancias distintas pueden compartir una propiedad: el plomo y el estaño tienen una dureza parecida, bastante baja (alrededor de 1,5), así que la dureza SOLA no alcanza para distinguirlos; hace falta otra propiedad independiente, como el punto de fusión (327°C el plomo, 232°C el estaño), que sí es bien distinta entre los dos. Por eso ninguna propiedad, por confiable que sea, reemplaza a las demás: hay que evaluar el conjunto. La segunda trampa tiene que ver con la PUREZA de la muestra. Una sustancia pura funde en un punto EXACTO (una temperatura precisa, casi sin variación). Pero si la muestra tiene impurezas (mezclada con algo más), suele fundir en un RANGO de temperaturas (por ejemplo, entre 300°C y 320°C en vez de exactamente en 327°C), y generalmente ese rango empieza un poco POR DEBAJO del punto de fusión real de la sustancia pura. Esto significa que si mides un rango ancho de fusión, o una temperatura más baja de lo esperado, la conclusión correcta no es 'debe ser otra sustancia', sino 'probablemente es la sustancia esperada, pero no está pura'. Saber leer así los datos, en vez de sacar la primera conclusión que aparece, es la diferencia entre memorizar tablas y pensar como químico de verdad.",
+        "pasos": [
+          "Antes de identificar una sustancia por una sola propiedad, pregúntate: ¿hay otra sustancia conocida que comparta este mismo valor?",
+          "Si es así, busca una segunda propiedad independiente que sí las distinga.",
+          "Si el punto de fusión medido da como un RANGO ancho de temperaturas en vez de un valor único y preciso, o si el valor es un poco más bajo de lo esperado, sospecha de impurezas antes que de una identidad distinta.",
+          "Una muestra más pura tiende a fundir en un rango más angosto y más cercano al valor de referencia."
+        ],
+        "ejemplo": "Una muestra se derrite entre 300°C y 320°C, no justo en 327°C. La conclusión razonable no es 'no es plomo': lo más probable es que SÍ sea plomo, pero con algo de impureza mezclada, lo cual baja y ensancha el punto de fusión medido.",
+        "figura": ""
+      },
+      {
+        "titulo": "Seguridad al comparar propiedades: la regla que no se negocia",
+        "explicacion": "Todo lo que aprendiste en este tema tiene una condición innegociable: NUNCA se compara ni se identifica una sustancia PROBÁNDOLA CON LA BOCA (el sabor) ni tocándola u oliéndola de forma directa. No importa qué tan curioso sea el resultado, ni que 'parezca' inofensiva por ser blanca o parecerse a algo conocido: una sustancia desconocida puede ser tóxica, corrosiva o irritante, y el sabor, el tacto directo o el olor cercano exponen tu cuerpo a un riesgo real e innecesario. La buena noticia es que NUNCA hace falta arriesgarse así, porque las tres propiedades de este tema (punto de fusión, dureza y solubilidad) se miden con instrumentos y se comparan con tablas de referencia, sin que tu cuerpo entre en contacto directo con el riesgo. Si de verdad necesitas percibir un olor como dato (algo distinto a probar o identificar una sustancia desconocida), la técnica correcta sigue siendo la que ya aprendiste: abanicar el aire con la mano desde la distancia, nunca acercar la nariz al recipiente. Ante cualquier sustancia sin etiqueta o sin identificar con seguridad, la respuesta correcta siempre es la misma: medir con instrumentos, comparar con tablas, y preguntar al profesor, nunca usar el cuerpo como instrumento de medición.",
+        "pasos": [
+          "Nunca pruebes con la lengua ni toques directamente con las manos una sustancia desconocida para comparar sus propiedades.",
+          "Nunca acerques la nariz directamente a un recipiente para 'identificar por el olfato' una sustancia desconocida.",
+          "Usa siempre instrumentos (termómetro, balanza, probeta) y objetos de referencia conocida (uña, moneda, minerales de la escala de Mohs) para medir y comparar.",
+          "Ante cualquier duda sobre una sustancia sin identificar con certeza, consulta al profesor antes de manipularla más."
+        ],
+        "ejemplo": "Un compañero propone probar un polvo blanco sin etiqueta con la lengua para adivinar si es sal, azúcar u otra cosa 'porque total, se ve inofensivo'. Es una idea peligrosa: un polvo blanco desconocido podría ser tóxico o corrosivo, y no hay forma de saberlo con solo mirarlo. Lo correcto es medir su punto de fusión, su dureza y su solubilidad con instrumentos, y comparar esos datos con una tabla, o simplemente preguntarle al profesor.",
+        "figura": ""
+      },
+      {
+        "titulo": "Elegir el material correcto: la química detrás de la ingeniería",
+        "explicacion": "Entender las propiedades de las sustancias no es solo un ejercicio de laboratorio: es exactamente cómo los ingenieros y diseñadores eligen qué material usar para cada trabajo. Piensa en una olla de cocina: el cuerpo suele ser de aluminio, porque su punto de fusión (660°C) es muchísimo más alto que cualquier temperatura que alcance una cocina normal, así que nunca se derrite mientras cocinas, y además reparte bien el calor. Pero el mango de esa misma olla casi nunca es de metal: suele ser de un plástico o material aislante que no deja pasar tanto el calor, para que puedas agarrarlo sin quemarte. Piensa también en el filamento delgadísimo dentro de una bombilla incandescente: se pone al rojo blanco, a temperaturas altísimas, así que tiene que estar hecho de una sustancia con un punto de fusión aún más extremo que el del aluminio; por eso se usa tungsteno, que funde a 3422°C y resiste sin derretirse. Y piensa en el vidrio de una ventana: tiene una dureza intermedia (alrededor de 5,5 en la escala de Mohs), suficiente para resistir el roce diario y la lluvia, pero cualquier mineral más duro (como el cuarzo, dureza 7, presente en muchas piedras y en la arena) sí puede rayarlo. Cada elección de material, aunque parezca de sentido común, en realidad está basada en comparar propiedades: qué tan alto funde, qué tan duro es, si se disuelve o no con la humedad. Pensar como químico es, en el fondo, aprender a hacer esas comparaciones antes de que algo salga mal.",
+        "pasos": [],
+        "ejemplo": "Si el mango de una olla estuviera hecho del mismo aluminio que el cuerpo, se calentaría casi tanto como el fuego mismo y te quemarías al agarrarlo: por eso se usan materiales distintos según la propiedad que se necesita en cada parte (alto punto de fusión y buena conducción de calor en el cuerpo; buen aislamiento térmico en el mango).",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "Las sustancias se describen con propiedades cualitativas (se observan: color, olor, brillo) y se identifican con más seguridad con propiedades cuantitativas e intensivas (no cambian con la cantidad): punto de fusión (°C), dureza (escala Mohs, del 1 al 10, donde 'más duro raya a más blando') y solubilidad (gramos por 100 mL de disolvente, que depende del soluto, de la temperatura y del disolvente). Ninguna propiedad sola basta: se combinan varias, se comparan con tablas de referencia, y se sospecha de impurezas cuando el punto de fusión sale como un rango en vez de un valor exacto. Y una regla nunca se negocia: jamás se prueba, toca u huele directamente una sustancia desconocida para compararla; siempre se usan instrumentos y tablas."
+  },
+  "practica": [
+    {
+      "enunciado": "Clasifica estas propiedades en cualitativas o cuantitativas, y explica el criterio que usaste: color, punto de fusión, olor, dureza (escala Mohs), solubilidad, brillo.",
+      "pista": "Pregúntate si la propiedad se observa con los sentidos sin número, o si se mide con un instrumento y da un número con unidad.",
+      "solucion": "Cualitativas (se observan sin número): color, olor, brillo. Cuantitativas (se miden con instrumento y dan un número con unidad): punto de fusión (°C), dureza (número de la escala Mohs), solubilidad (g por 100 mL). El criterio es: si necesitas un instrumento y el resultado es un número con unidad, es cuantitativa; si basta con los sentidos y no hay número, es cualitativa.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante mide con cuidado que un trozo de metal desconocido funde justo a 231°C. Usando los datos del tema (estaño 232°C, plomo 327°C, aluminio 660°C), ¿qué metal es más probable que sea? Explica además por qué el punto de fusión sirve para identificar la sustancia aunque el trozo sea grande o pequeño.",
+      "pista": "Compara el valor medido con la tabla y elige el más cercano. Después, recuerda el concepto de propiedad intensiva.",
+      "solucion": "Es muy probable que sea estaño, porque 231°C está prácticamente igual a su punto de fusión de referencia (232°C), mucho más cerca que del plomo (327°C) o del aluminio (660°C). El punto de fusión sirve para identificar sin importar el tamaño de la muestra porque es una propiedad INTENSIVA: no depende de cuánta cantidad de sustancia tengas, solo de qué sustancia es. Un gramo de estaño y un kilo de estaño funden exactamente a la misma temperatura.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Tienes una muestra metálica que la uña casi no raya, pero un cuchillo de acero sí la raya con facilidad (dureza baja, similar en plomo y en estaño). Además mides que funde a 327°C. ¿De qué metal se trata? Explica por qué la dureza SOLA no habría bastado para decidirlo.",
+      "pista": "Recuerda que plomo y estaño tienen una dureza muy parecida. Necesitas una segunda propiedad, independiente, para distinguirlos.",
+      "solucion": "Es plomo, porque su punto de fusión de referencia es 327°C, que coincide exactamente con lo medido (el estaño funde a 232°C, muy distinto). La dureza sola no habría bastado porque el plomo y el estaño tienen una dureza muy parecida y baja (ambos se rayan fácil con un cuchillo de acero y casi no con la uña); por eso hacía falta una segunda propiedad independiente, el punto de fusión, que sí es bien distinta entre los dos metales.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica por qué el hielo seco (dióxido de carbono sólido) es un caso especial dentro de lo que aprendiste sobre los estados de la materia, y qué significa que se 'sublime' a -78°C.",
+      "pista": "Piensa en los tres estados y en el camino habitual sólido-líquido-gas. El hielo seco se salta uno de esos pasos.",
+      "solucion": "El hielo seco es especial porque, a la presión normal del aire, NO pasa por el estado líquido: va directamente de sólido a gas al llegar a -78°C. A ese cambio directo de sólido a gas se le llama sublimación. Es un caso especial porque rompe la expectativa habitual de que todo sólido primero se derrite (se vuelve líquido) antes de convertirse en gas; el hielo seco demuestra que esa secuencia no es una regla universal para todas las sustancias.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un mineral desconocido raya al vidrio de una ventana (dureza aproximada 5,5) pero es rayado por el cuarzo (dureza 7). ¿En qué rango aproximado de la escala de Mohs está su dureza? Justifica tu respuesta con el principio de la escala.",
+      "pista": "Recuerda: si A raya a B, A es más duro que B. Aplica esa regla dos veces, una vez con el vidrio y otra con el cuarzo.",
+      "solucion": "Su dureza está aproximadamente ENTRE 5,5 y 7. Como el mineral raya al vidrio (5,5), el mineral es más duro que el vidrio. Pero como el cuarzo (7) raya al mineral, el cuarzo es más duro que el mineral. Entonces el mineral tiene que estar entre esos dos valores: más duro que 5,5 y más blando que 7.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Describe, paso a paso, un procedimiento SEGURO para averiguar si el nitrato de potasio o el carbonato de calcio (ambos sólidos blancos) es más soluble en agua fría, sin probarlos ni olerlos directamente.",
+      "pista": "Piensa en pesar con balanza, medir el agua con probeta, y agregar de a poco hasta que ya no se disuelva más.",
+      "solucion": "Procedimiento: (1) medir con una probeta el mismo volumen de agua fría (por ejemplo 100 mL) en dos recipientes distintos. (2) Pesar con una balanza cantidades iguales de cada sólido. (3) Agregar cada sólido de a poco al agua correspondiente, revolviendo, y seguir agregando hasta que ya no se disuelva más y quede un residuo visible en el fondo. (4) Anotar cuántos gramos entraron antes de saturarse en cada caso, y comparar: se espera que el nitrato de potasio acepte muchos más gramos (unos 32 g/100 mL) que el carbonato de calcio (apenas unos 0,0013 g/100 mL). En ningún momento se prueba ni se huele directamente ninguno de los dos sólidos.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero sugiere identificar un polvo blanco desconocido probándolo con la lengua para ver si es dulce o salado 'porque así se sabría rápido qué es'. Evalúa por qué esa idea es peligrosa y qué debería hacer en su lugar.",
+      "pista": "Piensa en qué tan segura es la suposición de que un polvo blanco desconocido es inofensivo, y en qué propiedades de este tema se pueden medir sin riesgo.",
+      "solucion": "Es peligroso porque un polvo blanco desconocido podría ser tóxico, corrosivo o irritante, y no hay forma de saberlo con solo mirarlo; probarlo con la lengua expone al cuerpo a un riesgo real e innecesario, y no existe ninguna situación en la que esto sea aceptable. En su lugar, debería medir propiedades seguras con instrumentos: su punto de fusión (calentando con cuidado), su dureza (comparando con objetos de referencia) y su solubilidad (pesando con balanza y disolviendo en agua medida), y comparar esos datos con una tabla de referencia, o simplemente preguntarle al profesor.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Usando el nitrato de potasio como ejemplo (32 g/100 mL a 20°C, y unos 246 g/100 mL a 100°C), explica por qué la solubilidad de la mayoría de los sólidos aumenta con la temperatura, y qué le pasaría a una solución bien caliente y casi saturada si se deja enfriar despacio.",
+      "pista": "Piensa en qué pasaría con el sólido de más que ya no cabe disuelto cuando el agua 'pierde capacidad' al enfriarse.",
+      "solucion": "La solubilidad del nitrato de potasio sube mucho con la temperatura (de 32 a 246 g por 100 mL), lo que significa que el agua caliente puede sostener disuelta mucha más cantidad que el agua fría. Si una solución bien caliente y casi saturada se deja enfriar despacio, el agua fría ya no puede sostener tanta cantidad disuelta como antes, así que el exceso de nitrato de potasio se separa y aparece como cristales sólidos en el fondo del recipiente.",
+      "figura": ""
+    },
+    {
+      "enunciado": "El carbonato de calcio (la tiza) es casi insoluble en agua (0,0013 g/100 mL), mientras que el nitrato de potasio se disuelve mucho (32 g/100 mL a 20°C). Un estudiante concluye: 'todos los sólidos blancos se disuelven más o menos igual en agua'. Evalúa esa afirmación usando los datos y corrígela.",
+      "pista": "Compara los dos números directamente. ¿Qué tan distintos son?",
+      "solucion": "La afirmación es incorrecta. La solubilidad de estos dos sólidos blancos es radicalmente distinta: el nitrato de potasio se disuelve unas 25 000 veces más que el carbonato de calcio (32 g frente a 0,0013 g por cada 100 mL de agua). El color o el aspecto de un sólido no dicen nada sobre su solubilidad: cada sustancia tiene su propia solubilidad característica, que depende de su composición, no de si se ve blanca o no.",
+      "figura": ""
+    },
+    {
+      "enunciado": "El yodo casi no se disuelve en agua (0,03 g/100 mL) pero sí mucho en alcohol. Evalúa la afirmación: 'la solubilidad es una propiedad fija de la sustancia, que no depende de nada más que del soluto'. Usa el ejemplo del yodo para justificar tu evaluación.",
+      "pista": "Piensa en qué cambió entre los dos casos del yodo: no cambió el soluto, cambió otra cosa.",
+      "solucion": "La afirmación es incorrecta. El ejemplo del yodo lo demuestra: el soluto (el yodo) es el mismo en los dos casos, pero su solubilidad cambia muchísimo según el disolvente que se use (casi nada en agua, mucho más en alcohol). Esto prueba que la solubilidad depende de al menos dos cosas a la vez, el soluto Y el disolvente (y también de la temperatura), no solo del soluto. Decir 'esta sustancia se disuelve' está incompleto si no se dice en qué disolvente.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica por qué se usa tungsteno (funde a 3422°C) y no aluminio (funde a 660°C) para el filamento de una bombilla incandescente, relacionando tu respuesta con el punto de fusión de cada metal.",
+      "pista": "Piensa en qué tan caliente se pone un filamento cuando brilla al rojo blanco, y qué le pasaría a un metal cuyo punto de fusión sea mucho más bajo que esa temperatura.",
+      "solucion": "El filamento de una bombilla incandescente alcanza temperaturas altísimas para producir luz (bastante por encima de los 660°C del aluminio). Si el filamento fuera de aluminio, se derretiría de inmediato al encenderse, porque la temperatura de trabajo superaría con facilidad su punto de fusión. El tungsteno, en cambio, funde a 3422°C, muy por encima de esas temperaturas de trabajo, así que resiste sin derretirse. Por eso se elige el material según su punto de fusión, no al azar.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Al medir el punto de fusión de una muestra que se cree que es plomo (referencia: 327°C), el resultado no es un valor único sino un RANGO entre 315°C y 325°C. ¿Qué se puede concluir sobre esta muestra? Explica la relación entre pureza y punto de fusión.",
+      "pista": "Recuerda qué le pasa al punto de fusión cuando una sustancia no está pura: no funde en un solo valor exacto, y suele fundir un poco más bajo.",
+      "solucion": "Lo más razonable es concluir que la muestra probablemente SÍ es plomo, pero no está completamente pura (tiene alguna impureza mezclada). Una sustancia pura funde en un punto exacto y preciso; una muestra con impurezas suele fundir en un rango de temperaturas (en vez de un solo valor) y normalmente ese rango queda un poco por debajo del punto de fusión de referencia. Un rango de 315°C a 325°C, cercano pero por debajo de 327°C, encaja con esa señal de impureza, no con que la sustancia sea otra completamente distinta.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál de estas propiedades es CUANTITATIVA (se mide con instrumento y da un número con unidad)?",
+      "opciones": [
+        "El color",
+        "El olor",
+        "El punto de fusión",
+        "El brillo"
+      ],
+      "correcta": 2,
+      "explicacion": "El punto de fusión se mide con un termómetro y se expresa en grados Celsius: es cuantitativa. El color, el olor y el brillo se observan con los sentidos, sin un número: son cualitativas."
+    },
+    {
+      "pregunta": "¿Por qué el punto de fusión sirve para identificar una sustancia sin importar si la muestra es grande o pequeña?",
+      "opciones": [
+        "Porque cambia según la cantidad, así que siempre coincide",
+        "Porque es una propiedad intensiva: no depende de la cantidad de materia, solo de qué sustancia es",
+        "Porque el termómetro siempre marca lo mismo, no importa qué midas",
+        "Porque el punto de fusión es aproximado y varía cada vez"
+      ],
+      "correcta": 1,
+      "explicacion": "El punto de fusión es una propiedad intensiva: un gramo y una tonelada de la misma sustancia funden exactamente a la misma temperatura, porque el valor depende de QUÉ sustancia es, no de cuánta cantidad hay."
+    },
+    {
+      "pregunta": "Según los datos del tema (aluminio 660°C, estaño 232°C, plomo 327°C, tungsteno 3422°C), ¿cuál tiene el punto de fusión MÁS ALTO?",
+      "opciones": [
+        "Aluminio",
+        "Estaño",
+        "Plomo",
+        "Tungsteno"
+      ],
+      "correcta": 3,
+      "explicacion": "El tungsteno funde a 3422°C, muy por encima de los otros tres metales. Por eso se usa en el filamento de las bombillas incandescentes, que alcanzan temperaturas extremas sin derretirse."
+    },
+    {
+      "pregunta": "¿Cuál de estas sustancias es LÍQUIDA a la temperatura de un cuarto normal (unos 25°C)?",
+      "opciones": [
+        "Mercurio",
+        "Aluminio",
+        "Plomo",
+        "Estaño"
+      ],
+      "correcta": 0,
+      "explicacion": "El mercurio funde a -39°C, muy por debajo de la temperatura ambiente, así que ya es líquido a 25°C (por eso se usaba en termómetros antiguos). El aluminio, el plomo y el estaño funden muy por encima de 25°C, así que son sólidos a temperatura ambiente."
+    },
+    {
+      "pregunta": "En la escala de Mohs, el diamante es 10 y el talco es 1. ¿Qué significa realmente esta diferencia?",
+      "opciones": [
+        "Que el diamante es exactamente 10 veces más duro que el talco",
+        "Que el diamante raya a todo lo demás de la escala, y nada de la escala raya al diamante",
+        "Que el diamante pesa 10 veces más que el talco",
+        "Que el diamante se derrite a 10°C"
+      ],
+      "correcta": 1,
+      "explicacion": "La escala de Mohs es ordinal, no de proporciones: no significa que el diamante sea '10 veces' más duro. Significa que, al hacer el test de rayado, el diamante raya a los otros nueve minerales de la escala y ninguno de ellos lo raya a él."
+    },
+    {
+      "pregunta": "Un mineral raya al vidrio (dureza aproximada 5,5) pero es rayado por el cuarzo (dureza 7). ¿Cuál es su dureza aproximada?",
+      "opciones": [
+        "Menor a 5,5",
+        "Entre 5,5 y 7",
+        "Mayor a 10",
+        "Exactamente 1"
+      ],
+      "correcta": 1,
+      "explicacion": "Como el mineral raya al vidrio, es más duro que 5,5. Como el cuarzo lo raya a él, es más blando que 7. Por lo tanto su dureza está entre esos dos valores."
+    },
+    {
+      "pregunta": "¿Cuál es la forma correcta y SEGURA de comparar si una sustancia desconocida es más o menos soluble que otra?",
+      "opciones": [
+        "Probarlas con la lengua para comparar el sabor",
+        "Olerlas de cerca para notar cuál se disuelve más rápido",
+        "Pesar cantidades conocidas con una balanza y disolverlas en un volumen medido de agua, comparando cuánto entra antes de saturarse",
+        "Tocarlas con la mano para sentir si están mojadas"
+      ],
+      "correcta": 2,
+      "explicacion": "La solubilidad se mide pesando el soluto con una balanza y disolviéndolo en un volumen conocido de agua (medido con probeta), anotando cuánto entra antes de que quede residuo sin disolver. Probar, oler de cerca o tocar directamente una sustancia desconocida nunca es un método seguro ni válido."
+    },
+    {
+      "pregunta": "El nitrato de potasio se disuelve mucho más en agua caliente que en agua fría, pero el carbonato de calcio casi no se disuelve ni frío ni caliente. ¿Qué conclusión es correcta?",
+      "opciones": [
+        "Todos los sólidos se comportan igual frente a la temperatura",
+        "La solubilidad depende de la sustancia: no todos los sólidos aumentan su solubilidad igual con la temperatura",
+        "El carbonato de calcio en realidad es un líquido",
+        "La temperatura nunca afecta la solubilidad de ningún sólido"
+      ],
+      "correcta": 1,
+      "explicacion": "Los datos muestran que la solubilidad depende de la sustancia particular: el nitrato de potasio sube muchísimo con la temperatura, mientras que el carbonato de calcio casi no cambia. No se puede generalizar que 'todos se comportan igual'."
+    },
+    {
+      "pregunta": "El yodo casi no se disuelve en agua, pero se disuelve mucho en alcohol. ¿Qué nos enseña este ejemplo sobre la solubilidad?",
+      "opciones": [
+        "Que la solubilidad no depende del disolvente que se use",
+        "Que la solubilidad depende tanto del soluto como del disolvente usado",
+        "Que el yodo no es soluble en absolutamente nada",
+        "Que el agua siempre disuelve mejor que cualquier otro líquido"
+      ],
+      "correcta": 1,
+      "explicacion": "El yodo (el soluto) es el mismo en los dos casos, pero su solubilidad cambia radicalmente según el disolvente (agua o alcohol). Esto demuestra que la solubilidad no depende solo del soluto, sino también de qué disolvente se use."
+    },
+    {
+      "pregunta": "El hielo seco (CO2 sólido), a la presión normal del aire y al calentarse, ¿qué hace?",
+      "opciones": [
+        "Se derrite como el hielo de agua, pasando primero por líquido",
+        "Pasa directamente de sólido a gas (se sublima), sin pasar por líquido",
+        "Se vuelve líquido y se queda así para siempre",
+        "No cambia nunca de estado, sea cual sea la temperatura"
+      ],
+      "correcta": 1,
+      "explicacion": "El hielo seco se sublima a -78°C: pasa directo de sólido a gas sin formar un charco líquido. Por eso 'humea' pero nunca moja, a diferencia del hielo de agua, que sí pasa por el estado líquido."
+    },
+    {
+      "pregunta": "Un compañero dice: 'Probar una sustancia desconocida con la lengua es una forma válida de comparar su sabor como propiedad'. ¿Cómo se corrige esta idea?",
+      "opciones": [
+        "Tiene razón, mientras se haga rápido no hay riesgo",
+        "Nunca se debe probar una sustancia desconocida: se deben usar instrumentos y tablas de referencia para comparar sus propiedades",
+        "Solo se puede probar si el polvo es blanco y se ve inofensivo",
+        "Se puede probar si el profesor no está mirando en ese momento"
+      ],
+      "correcta": 1,
+      "explicacion": "Nunca se prueba una sustancia desconocida, sin excepción: podría ser tóxica o corrosiva y no hay forma de saberlo con solo mirarla. Las propiedades de este tema (punto de fusión, dureza, solubilidad) se miden con instrumentos y se comparan con tablas, sin necesidad de arriesgar el cuerpo."
+    },
+    {
+      "pregunta": "El plomo y el estaño tienen una dureza muy parecida (ambos alrededor de 1,5 en la escala Mohs). ¿Qué otra propiedad conviene usar para diferenciarlos con más confianza?",
+      "opciones": [
+        "El color solamente, sin medir nada más",
+        "El punto de fusión, que es bien distinto entre los dos (327°C el plomo, 232°C el estaño)",
+        "No se pueden diferenciar nunca por ninguna propiedad",
+        "El peso de cualquier trozo, sin importar su tamaño"
+      ],
+      "correcta": 1,
+      "explicacion": "Como la dureza es casi igual en ambos metales, no sirve para distinguirlos. El punto de fusión, en cambio, es bastante distinto (327°C frente a 232°C), así que es una propiedad independiente y más confiable para diferenciarlos."
+    },
+    {
+      "pregunta": "Al medir el punto de fusión de una muestra que debería ser plomo puro (referencia: 327°C), el resultado es un rango entre 300°C y 320°C, no un valor único. ¿Qué sugiere esto?",
+      "opciones": [
+        "Que el plomo puro siempre funde así, en un rango ancho",
+        "Que la muestra probablemente tiene impurezas mezcladas",
+        "Que el termómetro está descompuesto siempre que esto pasa",
+        "Que el plomo cambió y se volvió otra sustancia distinta"
+      ],
+      "correcta": 1,
+      "explicacion": "Una sustancia pura funde en un valor exacto y preciso. Un rango ancho de temperaturas de fusión, y además un poco por debajo del valor de referencia, es la señal típica de que la muestra tiene impurezas, no de que sea una sustancia distinta."
+    },
+    {
+      "pregunta": "¿Por qué el cuerpo de una olla de cocina suele ser de aluminio (funde a 660°C) y no de un metal con un punto de fusión mucho más bajo?",
+      "opciones": [
+        "Porque el aluminio es el metal más barato que existe",
+        "Porque un metal con un punto de fusión bajo podría empezar a derretirse con el calor normal de la cocina, mientras que el aluminio lo resiste sin problema",
+        "Porque el aluminio es el más duro de todos los metales",
+        "Porque el color del aluminio combina mejor con la cocina"
+      ],
+      "correcta": 1,
+      "explicacion": "Elegir un material según su punto de fusión es una decisión de ingeniería: el aluminio (660°C) resiste con margen de sobra cualquier temperatura que alcance una cocina normal, mientras que un metal con un punto de fusión mucho más bajo correría riesgo de deformarse o fundirse."
+    }
+  ]
+}

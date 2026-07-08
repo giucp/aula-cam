@@ -1,0 +1,370 @@
+{
+  "programa": "cumbre",
+  "materia": "Inglés",
+  "grado": "Cumbre Inglés 1er año",
+  "dominio": "Hablar de mí y de otros",
+  "tema": "Puedo hablar de mi familia y describir a las personas (family; possessives; adjectives)",
+  "referencias": [
+    "MCER/CEFR A1-A2 — puede describir a su familia y a otras personas usando adjetivos simples, los verbos 'be'/'have' y posesivos ('my', 'his', 'her'...)",
+    "Cambridge A2 Key for Schools — family members, possessive adjectives and possessive 's, describing people: appearance and personality",
+    "IB Language Acquisition (Emergent/Phase 1-2) — identidad y relaciones cercanas: la familia y las personas que me rodean",
+    "Communicative Language Teaching (CLT) — función 'can-do': hablar de la familia y describir a alguien con precisión y respeto"
+  ],
+  "resumen": {
+    "titulo": "Mi familia y cómo son las personas: posesivos y adjetivos",
+    "intro": "Ya sabes presentarte y contar tus datos personales. Ahora vas a aprender a hablar de las personas más cercanas a ti: tu familia. Vas a conocer las palabras en inglés para mamá, papá, hermanos, abuelos, tíos y primos — y ya sabes, por tu propia vida, que 'familia' no significa lo mismo para todos: puede ser tus dos padres en casa, tu abuela que te cría, tu tío que te cuida, o tu mamá que te llama por videollamada desde otro país. Todas esas son familias de verdad, y en esta guía las vas a poder describir en inglés sin ningún problema. También vas a aprender dos herramientas nuevas: los POSESIVOS (las palabras que dicen de quién es algo: mi, tu, su...) y los ADJETIVOS para describir cómo es alguien, tanto físicamente (alto, pelo rizado) como su forma de ser (simpático, gracioso). Este tema se apoya en el verbo 'to be' que ya conoces y te presenta otro verbo clave, 'to have' (tener). Como siempre, empezamos desde cero: cada palabra y cada regla se explica la primera vez que aparece, y al final vas a tener que ANALIZAR qué estructura corresponde antes de escribir, no solo repetir frases de memoria.",
+    "secciones": [
+      {
+        "titulo": "Vocabulario de familia: quiénes son quiénes (y que no hay un solo tipo de familia)",
+        "explicacion": "Empecemos por el VOCABULARIO: las palabras en inglés para los miembros de una familia. 'Family' (se dice 'fámili') significa 'familia': las personas con las que vives y que te cuidan, sean quienes sean. Los padres juntos son 'parents' (pérents); 'mother' o, más cariñoso, 'mom' es 'madre/mamá' (se dice 'móm'); 'father' o 'dad' es 'padre/papá' (se dice 'dad'). Ojo: 'parent', en SINGULAR, significa uno solo de los dos (mamá O papá) — por eso una familia con un solo adulto a cargo se llama en inglés 'a single parent family' (una familia monoparental), y es una familia tan válida como cualquier otra. A los hermanos y hermanas juntos se les llama 'siblings' (síblings): una sola palabra que agrupa a 'brother' (hermano, bróder) y 'sister' (hermana, síster), sin importar cuántos sean de cada uno. Subiendo una generación están los abuelos: 'grandmother'/'grandma' (abuela, 'grándma') y 'grandfather'/'grandpa' (abuelo, 'grándpa'); juntos son los 'grandparents'. Los hermanos de tus padres son tu 'aunt' (tía, 'ant') y tu 'uncle' (tío, 'ónkel'); el hijo o la hija de tu tía o tío es tu 'cousin' (primo O prima — en inglés es LA MISMA palabra para los dos, no existe una versión distinta para niño o niña). Por último, los hijos de una persona son sus 'children' o 'kids'; un hijo solo es 'son' y una hija es 'daughter'. Aclaración importante: en inglés, igual que en la vida real, 'family' no tiene una sola forma correcta. Puede ser tus dos padres en casa, tu abuela criándote, tu tío cuidándote, o tu mamá trabajando en otro país y llamándote todos los domingos. Todas esas frases se dicen igual de bien en inglés.",
+        "pasos": [
+          "parents = padres (los dos); parent (singular) = uno solo, mamá o papá.",
+          "mother/mom = madre/mamá; father/dad = padre/papá.",
+          "siblings = hermanos y hermanas juntos; brother = hermano; sister = hermana.",
+          "grandmother/grandma y grandfather/grandpa = abuela y abuelo; grandparents = abuelos.",
+          "aunt = tía; uncle = tío; cousin = primo o prima (misma palabra para ambos).",
+          "children/kids = hijos; son = hijo; daughter = hija."
+        ],
+        "ejemplo": "Valentina vive con su abuela y su tío: 'I live with my grandmother and my uncle. They are my family.' (Vivo con mi abuela y mi tío. Son mi familia.) Es una frase tan correcta como 'I live with my parents.'",
+        "figura": "<svg viewBox=\"0 0 360 230\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"130\" y=\"10\" width=\"100\" height=\"36\" rx=\"6\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"2\"/><text x=\"180\" y=\"33\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">grandparents</text><line x1=\"180\" y1=\"46\" x2=\"90\" y2=\"90\" stroke=\"#8C7C93\" stroke-width=\"2\"/><line x1=\"180\" y1=\"46\" x2=\"270\" y2=\"90\" stroke=\"#8C7C93\" stroke-width=\"2\"/><rect x=\"40\" y=\"90\" width=\"100\" height=\"36\" rx=\"6\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><text x=\"90\" y=\"113\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#0E9486\">mother</text><rect x=\"220\" y=\"90\" width=\"100\" height=\"36\" rx=\"6\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><text x=\"270\" y=\"113\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#0E9486\">father</text><line x1=\"180\" y1=\"126\" x2=\"90\" y2=\"170\" stroke=\"#8C7C93\" stroke-width=\"2\"/><line x1=\"180\" y1=\"126\" x2=\"270\" y2=\"170\" stroke=\"#8C7C93\" stroke-width=\"2\"/><rect x=\"40\" y=\"170\" width=\"100\" height=\"36\" rx=\"6\" fill=\"none\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><text x=\"90\" y=\"193\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#5A3AAF\">brother</text><rect x=\"220\" y=\"170\" width=\"100\" height=\"36\" rx=\"6\" fill=\"none\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><text x=\"270\" y=\"193\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#5A3AAF\">sister</text></svg>"
+      },
+      {
+        "titulo": "Los posesivos: my, your, his, her, its, our, their",
+        "explicacion": "Ya usaste 'my' (mi) muchas veces en los temas anteriores. Ahora completemos la lista. Un POSESIVO es la palabra que dice DE QUIÉN es algo, y va justo ANTES del sustantivo: 'my family' (mi familia), 'her brother' (su hermano, de ella). Cada pronombre que ya conoces (I, you, he, she, it, we, they) tiene su propio posesivo, como una pareja fija: I → my (mi), you → your (tu/su, de usted), he → his (su, de él), she → her (su, de ella), it → its (su, de eso — solo para animales u objetos, NUNCA para personas), we → our (nuestro), they → their (su, de ellos/ellas). Fíjate en algo clave: en español 'su' sirve para él, ella, ellos y usted; en inglés cada uno tiene SU PROPIA palabra, así que hay que fijarse bien de quién se habla.",
+        "pasos": [
+          "I → my; you → your; he → his; she → her.",
+          "it → its (solo para animales/objetos, nunca para personas).",
+          "we → our; they → their.",
+          "El posesivo va SIEMPRE antes del sustantivo: posesivo + sustantivo."
+        ],
+        "ejemplo": "'This is my family.' (Esta es mi familia.) 'Their cousin is funny.' (Su primo es gracioso, de ellos.) 'Our grandmother is very kind.' (Nuestra abuela es muy amable.)",
+        "figura": ""
+      },
+      {
+        "titulo": "El error más común: his y her dependen del DUEÑO, no de la cosa",
+        "explicacion": "Este es el error que casi todo hispanohablante comete al empezar, así que vale la pena entenderlo bien. En español, 'su perro' sirve igual si el dueño es un chico o una chica: la palabra 'su' no cambia. En inglés, en cambio, el posesivo cambia según el GÉNERO DEL DUEÑO (quien posee la cosa), no según la cosa misma. Si Andrés (un chico) tiene un perro, decimos 'his dog' (su perro, de él) — NO 'its dog', aunque 'its' también signifique 'su'. 'Its' es SOLO para cuando el dueño es un animal o un objeto, no una persona. Si Camila (una chica) tiene el mismo perro, decimos 'her dog' (su perro, de ella). El perro no cambia, pero el posesivo sí, porque lo que importa es QUIÉN lo tiene, no QUÉ se tiene. Esta es la trampa exacta que hay que analizar cada vez: antes de escribir 'his', 'her' o 'its', pregúntate primero '¿de quién estamos hablando?', no '¿de qué estamos hablando?'.",
+        "pasos": [
+          "Pregúntate primero: ¿QUIÉN es el dueño? (no qué es lo que posee).",
+          "Si el dueño es un chico/hombre → his.",
+          "Si el dueño es una chica/mujer → her.",
+          "Si el 'dueño' es un animal o una cosa → its (nunca para personas)."
+        ],
+        "ejemplo": "Andrés has a dog. His dog is friendly. (El dueño es Andrés → his, aunque el perro sea 'it'.) Camila has the same kind of dog. Her dog is friendly. (Mismo tipo de perro, pero el dueño cambia, así que el posesivo cambia.)",
+        "figura": ""
+      },
+      {
+        "titulo": "El posesivo con apóstrofe: Camila's mother",
+        "explicacion": "Hay otra forma de decir de quién es algo, muy común con nombres propios: el POSESIVO CON APÓSTROFE. Se forma agregando 's al final del nombre: 'Camila's mother' significa 'la madre de Camila'. La fórmula es: Nombre + 's + sustantivo. Ahora, presta MUCHA atención, porque ya conoces otra cosa que se escribe exactamente igual: la CONTRACCIÓN de 'is' (¿recuerdas 'she's' = 'she is' del tema 1?). El mismo símbolo 's puede significar dos cosas totalmente distintas, y la única forma de saber cuál es mirando qué palabra viene DESPUÉS. Si después de 's viene un ADJETIVO o una acción, es la contracción de 'is': 'Camila's happy' = 'Camila is happy' (Camila está feliz). Si después de 's viene un SUSTANTIVO de familia (o cualquier cosa que se posee), es posesión: 'Camila's mother' = 'la madre de Camila'. Analizar la palabra que sigue es la clave para no confundirte nunca más.",
+        "pasos": [
+          "Nombre + 's + sustantivo = posesión: 'Gabriel's sister' (la hermana de Gabriel).",
+          "Nombre + 's + adjetivo/verbo = contracción de 'is': 'Gabriel's happy' (Gabriel está feliz).",
+          "Para saber cuál es, mira la palabra que sigue: sustantivo de familia → posesión; adjetivo → 'is'."
+        ],
+        "ejemplo": "'Camila's mother is a nurse.' (La madre de Camila es enfermera — posesión.) 'Camila's tired today.' (Camila está cansada hoy — contracción de 'is'.)",
+        "figura": ""
+      },
+      {
+        "titulo": "Describir el físico: dos verbos distintos, 'to be' y 'to have'",
+        "explicacion": "Para describir cómo es alguien físicamente, el inglés usa DOS verbos diferentes según lo que describas, y hay que aprender cuál va con cuál. Para la ESTATURA (qué tan alto o bajo es alguien) se usa 'to be': 'tall' (alto, 'tol') y 'short' (bajo/de baja estatura, 'short') — 'He is tall' (Él es alto). Para el PELO y los OJOS se usa 'to have' (tener): el pelo puede ser 'long' (largo) o 'short' (corto), 'straight' (liso, 'stréit') o 'curly' (rizado, 'kérli'), y de color 'dark' (oscuro) o 'light' (claro), o específicamente 'black' (negro), 'brown' (castaño), 'blonde' (rubio) o 'red' (pelirrojo/rojizo) hair; los ojos pueden ser 'dark eyes' o 'light eyes'. Como es 'to have', el verbo cambia según quién habla, igual que aprendiste con 'to be': he/she/it → 'has'; I/you/we/they → 'have'. Un punto importante de esta guía: al describir a alguien físicamente, en este curso usamos SIEMPRE palabras neutras y respetuosas (estatura, color y forma del pelo, color de ojos) — nunca palabras que juzguen el cuerpo de una persona de forma negativa. Describir a alguien es contar cómo es, no opinar si eso está bien o mal.",
+        "pasos": [
+          "Estatura → 'to be': 'tall' (alto), 'short' (bajo). 'She is tall.'",
+          "Pelo/ojos → 'to have': has/have + adjetivo + noun. 'He has curly hair.'",
+          "Pelo: long/short, straight/curly, dark/light, black/brown/blonde/red.",
+          "Recuerda la conjugación de 'have': he/she/it → has; I/you/we/they → have."
+        ],
+        "ejemplo": "'My uncle is tall. He has short, straight hair.' (Mi tío es alto. Tiene el pelo corto y liso.) 'My cousins are short. They have dark eyes.' (Mis primos son bajitos. Tienen los ojos oscuros.)",
+        "figura": ""
+      },
+      {
+        "titulo": "Describir la personalidad: adjetivos con 'to be'",
+        "explicacion": "Además de cómo se ve alguien, puedes describir cómo ES por dentro: su forma de ser, o PERSONALIDAD. Estos adjetivos van con el verbo 'to be' que ya conoces muy bien (am/is/are), igual que la estatura. Algunos de los más útiles: 'friendly' (simpático/amistoso, 'fréndli'), 'funny' (gracioso, 'fáni'), 'kind' (amable, 'káind'), 'smart' (inteligente, 'smart'), 'shy' (tímido, 'shái'), 'brave' (valiente, 'bréiv'), 'patient' (paciente, 'péishent'), 'generous' (generoso, 'yéneros'), 'talkative' (hablador, 'tókativ') y 'quiet' (callado/tranquilo, 'kuáiet'). Fíjate que la fórmula es siempre la misma que ya conoces: sujeto + am/is/are + adjetivo. No necesitas ningún verbo nuevo para la personalidad, solo vocabulario nuevo sobre la base que ya dominas.",
+        "pasos": [
+          "Personalidad → siempre con 'to be' (am/is/are), igual que la estatura.",
+          "Vocabulario: friendly, funny, kind, smart, shy, brave, patient, generous, talkative, quiet.",
+          "Fórmula: sujeto + is/are + adjetivo de personalidad."
+        ],
+        "ejemplo": "'My grandmother is very patient and kind.' (Mi abuela es muy paciente y amable.) 'My brother is shy, but he's very funny with his friends.' (Mi hermano es tímido, pero es muy gracioso con sus amigos.)",
+        "figura": ""
+      },
+      {
+        "titulo": "El orden de las palabras: el adjetivo va ANTES del sustantivo",
+        "explicacion": "Aquí está otro de los errores más comunes al traducir del español. En español el adjetivo casi siempre va DESPUÉS del sustantivo: 'una hermana amable', 'un tío alto'. En inglés es AL REVÉS: el adjetivo va SIEMPRE ANTES del sustantivo. La fórmula es: (posesivo o artículo) + adjetivo + sustantivo. 'Una hermana amable' se dice 'a kind sister' (amable + hermana), nunca 'a sister kind'. Esto aplica siempre, no solo con familia: 'a tall boy' (un chico alto), 'a funny teacher' (una profesora graciosa). Este orden es tan fijo en inglés que decirlo al revés suena claramente extraño para quien habla inglés, aunque en español sea completamente normal.",
+        "pasos": [
+          "Orden fijo en inglés: (posesivo/artículo) + ADJETIVO + SUSTANTIVO.",
+          "'a kind sister' (adjetivo antes), nunca 'a sister kind'.",
+          "Funciona igual con posesivos: 'my tall brother', 'her funny grandmother'."
+        ],
+        "ejemplo": "Correcto: 'I have a smart cousin.' (Tengo una prima inteligente.) Incorrecto: 'I have a cousin smart.'",
+        "figura": ""
+      },
+      {
+        "titulo": "Antes de escribir, analiza: ¿posesión, 'to be' o 'to have'?",
+        "explicacion": "Ya tienes todas las piezas; ahora el reto es saber combinarlas sin memorizar frases sueltas. Antes de escribir una frase sobre una persona, hazte esta pregunta en orden: PRIMERO, ¿necesito decir de quién es o de quién hablo? → usa un posesivo (my, his, her...) o el 's de apóstrofe, y fíjate en el DUEÑO, no en la cosa. SEGUNDO, ¿estoy describiendo estatura o personalidad (algo que la persona ES)? → usa 'to be' (is/are), con el adjetivo ANTES del sustantivo si hay uno. TERCERO, ¿estoy describiendo pelo u ojos (algo que la persona TIENE)? → usa 'to have' (has/have). Analizar estas tres preguntas ANTES de escribir es lo que evita mezclar todo (como decir 'she have tall' o 'her is friendly', que son errores de mezclar las categorías). Con la práctica, este análisis se vuelve automático.",
+        "pasos": [
+          "1. ¿De quién hablo? → posesivo (dueño, no cosa) o nombre + 's.",
+          "2. ¿Es una característica (estatura/personalidad)? → to be (is/are) + adjetivo antes del sustantivo.",
+          "3. ¿Es pelo u ojos? → to have (has/have) + adjetivo + sustantivo.",
+          "Nunca mezcles: 'she have tall' y 'her is friendly' están mal por mezclar las categorías."
+        ],
+        "ejemplo": "Pregunta: '¿Cómo es la abuela de Fernanda?' Análisis: (1) dueño = Fernanda → 'Fernanda's grandmother'; (2) personalidad → 'is kind'; (3) pelo → 'has grey hair'. Frase completa: 'Fernanda's grandmother is kind. She has grey hair.'",
+        "figura": ""
+      },
+      {
+        "titulo": "Todo junto: describir a alguien de tu familia, paso a paso",
+        "explicacion": "Ahora puedes combinar todo lo de esta guía en una descripción completa: vocabulario de familia, posesivos, y adjetivos con el verbo correcto (be o have). El orden natural es: quién es esa persona (relación de familia) → cómo es su personalidad → cómo es físicamente. Practícalo en voz alta cambiando los datos por los de tu propia familia, sea cual sea su forma: con dos padres, con uno solo, con abuelos, con tíos. La gramática es exactamente la misma para todas.",
+        "pasos": [
+          "Di quién es: 'My uncle...' / 'Mateo's grandmother...'",
+          "Describe su personalidad con 'to be': '...is generous and funny.'",
+          "Describe su físico con 'to be' (estatura) y 'to have' (pelo/ojos): '...is tall. He has short hair.'"
+        ],
+        "ejemplo": "'My mom works in another country, but I live with my grandmother and my uncle. My grandmother is very patient and kind. She is short, and she has curly, grey hair. My uncle is tall and funny. He has dark eyes.' (Mi mamá trabaja en otro país, pero vivo con mi abuela y mi tío. Mi abuela es muy paciente y amable. Es bajita, y tiene el pelo rizado y canoso. Mi tío es alto y gracioso. Tiene los ojos oscuros.)",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "Para hablar de tu familia y describir a las personas necesitas tres piezas: el VOCABULARIO de familia (parents, siblings, grandparents, aunt/uncle, cousin — y recuerda que 'family' no tiene una sola forma correcta), los POSESIVOS que dependen del DUEÑO y no de lo que se posee (his para él, her para ella, their para ellos, y el 's de apóstrofe para nombres: 'Camila's mother'), y los ADJETIVOS: van SIEMPRE antes del sustantivo ('a tall brother', nunca 'a brother tall'), y usan 'to be' para personalidad y estatura (is/are) pero 'to have' para pelo y ojos (has/have). Antes de escribir una frase, analiza: ¿es una posesión, una característica con 'to be', o un rasgo con 'to have'?"
+  },
+  "practica": [
+    {
+      "enunciado": "Elige el posesivo correcto según el DUEÑO, no según el objeto. Completa: 'Andrés has a dog. ___ dog is very friendly.'",
+      "pista": "Fíjate en quién es el dueño del perro, no en qué es el perro. Andrés es hombre, así que le corresponde el posesivo de 'he'.",
+      "solucion": "'His dog is very friendly.' (Su perro es muy amistoso.) Se usa 'his' porque el dueño es Andrés (he → his), no 'its', que sería solo si el dueño fuera un animal o un objeto.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige el orden de las palabras en esta frase: 'She has a sister kind.'",
+      "pista": "En inglés el adjetivo va ANTES del sustantivo, al revés que en español ('hermana amable' → adjetivo después).",
+      "solucion": "'She has a kind sister.' (Ella tiene una hermana amable.) El adjetivo 'kind' debe ir antes del sustantivo 'sister', nunca después.",
+      "figura": ""
+    },
+    {
+      "enunciado": "¿Qué significa cada frase? Explica la diferencia: 'Camila's happy.' y 'Camila's mother.'",
+      "pista": "El mismo símbolo 's puede significar dos cosas distintas: la contracción de 'is', o posesión. Fíjate en qué palabra sigue: un adjetivo o un sustantivo de familia.",
+      "solucion": "'Camila's happy' = 'Camila is happy' (Camila está feliz) — aquí 's es la contracción de 'is', porque le sigue un adjetivo. 'Camila's mother' = 'la madre de Camila' — aquí 's muestra posesión, porque le sigue un sustantivo de familia (mother).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Completa con 'has' o 'have': 'My grandmother ___ curly hair. My cousins ___ dark eyes.'",
+      "pista": "'Has' es para he/she/it (una sola persona); 'have' es para I/you/we/they (varias personas o tú). ¿'My grandmother' es una sola persona? ¿'My cousins' es una sola persona o varias?",
+      "solucion": "'My grandmother HAS curly hair.' (una sola persona → has). 'My cousins HAVE dark eyes.' (varias personas → have).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe una descripción de un miembro de tu familia combinando: posesivo + adjetivo de personalidad + palabra de familia, y otra frase con 'has/have' + pelo o ojos.",
+      "pista": "Sigue la receta: '(posesivo) + adjetivo antes del sustantivo + is/are' para la personalidad, y 'has/have + adjetivo + noun' para el pelo o los ojos.",
+      "solucion": "Ejemplo válido: 'My uncle is very patient. He has short, dark hair.' (Mi tío es muy paciente. Tiene el pelo corto y oscuro.) Cualquier combinación correcta de posesivo + adjetivo antes del sustantivo + has/have para pelo u ojos es válida.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Encuentra los TRES errores en este párrafo y corrígelos: 'My mother have a sister funny. She's name is Fernanda.'",
+      "pista": "Hay un error de have/has, un error de orden de adjetivo, y revisa si el 's en 'She's name' tiene sentido como contracción de 'is' o si debería ser un posesivo.",
+      "solucion": "Errores: (1) 'have' debería ser 'has' ('my mother' = una sola persona). (2) 'a sister funny' debería ser 'a funny sister' (adjetivo antes del sustantivo). (3) 'She's name' está mal: 'she's' = 'she is', y 'ella es nombre' no tiene sentido; debería ser el posesivo 'Her name is Fernanda.' Corregido: 'My mother has a funny sister. Her name is Fernanda.'",
+      "figura": ""
+    },
+    {
+      "enunciado": "Traduce: 'El hermano de Santiago es alto y tiene el pelo rizado.'",
+      "pista": "Usa el posesivo con apóstrofe para 'de Santiago', el verbo 'to be' para 'alto' y 'to have' para el pelo.",
+      "solucion": "'Santiago's brother is tall, and he has curly hair.' 'Is tall' porque la estatura es una característica (to be); 'has curly hair' porque el pelo se describe con 'to have'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "¿Cuál de estas dos frases está bien formada? Explica por qué la otra está mal: (a) 'Their grandmother is very kind.' (b) 'They grandmother is very kind.'",
+      "pista": "Solo una de las dos usa un POSESIVO antes de 'grandmother'. Revisa si 'they' o 'their' es el que puede ir directamente antes de un sustantivo.",
+      "solucion": "La correcta es (a) 'Their grandmother is very kind.' 'Their' es el posesivo (de ellos) y va antes del sustantivo 'grandmother'. (b) está mal porque 'they' es un pronombre de SUJETO (ellos), no un posesivo; no puede ir directamente antes de un sustantivo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una familia puede verse de muchas formas. Traduce esta frase respetando la gramática: 'Vivo con mi abuela y mi tío. Ellos son mi familia.'",
+      "pista": "'Vivo con' = 'I live with'; usa 'my' para 'mi abuela/mi tío'; para 'ellos son' usa el pronombre 'they' + 'to be'.",
+      "solucion": "'I live with my grandmother and my uncle. They are my family.' Es una familia tan válida como cualquier otra, y se describe con exactamente la misma gramática.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Analiza esta lista de palabras y clasifícalas en dos grupos: las que van con 'to be' (is/are) y las que van con 'to have' (has/have): tall, curly hair, funny, dark eyes, shy, short.",
+      "pista": "Piensa en la regla: las características de personalidad y estatura van con 'to be'; el pelo y los ojos van con 'to have'.",
+      "solucion": "Con 'to be': tall, funny, shy, short (estatura y personalidad → is/are). Con 'to have': curly hair, dark eyes (rasgos de pelo/ojos → has/have). Ejemplo de uso: 'She is tall and funny. She has curly hair and dark eyes.'",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige: 'My parents has two childs: a son and a daughter.'",
+      "pista": "'Parents' es plural (dos personas), así que el verbo debe ser el de plural. Además, el plural de 'child' es una palabra irregular: no se le agrega '-s' como a la mayoría.",
+      "solucion": "'My parents HAVE two CHILDREN: a son and a daughter.' 'Parents' (plural) va con 'have', no 'has'; y el plural de 'child' es 'children' (irregular), no 'childs'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe una pregunta y respuesta usando el posesivo con apóstrofe para preguntar de quién es una mochila que es de Isabella.",
+      "pista": "La pregunta usa 'Whose' (de quién) + sustantivo + 'is it?'. La respuesta usa el nombre + 's + el objeto.",
+      "solucion": "Pregunta: 'Whose backpack is it?' (¿De quién es la mochila?) Respuesta: 'It's Isabella's backpack.' o simplemente 'It's Isabella's.' (Es de Isabella.) El 's marca posesión: la mochila le pertenece a Isabella.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "Andrés has a cat. ¿Cuál es la frase correcta para decir 'Su gato es pequeño'?",
+      "opciones": [
+        "Its cat is small.",
+        "His cat is small.",
+        "Her cat is small.",
+        "Their cat is small."
+      ],
+      "correcta": 1,
+      "explicacion": "El posesivo depende del DUEÑO, no del animal. Andrés es hombre, así que es 'his' (de él). 'Its' sería solo si el dueño fuera el gato mismo, no una persona.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál frase tiene el orden correcto de las palabras?",
+      "opciones": [
+        "She has a sister kind.",
+        "She has a kind sister.",
+        "She a kind sister has.",
+        "She kind has a sister."
+      ],
+      "correcta": 1,
+      "explicacion": "En inglés el adjetivo va ANTES del sustantivo: 'a kind sister', no después como en español ('una hermana amable').",
+      "figura": ""
+    },
+    {
+      "pregunta": "'Gabriel's happy today' significa...",
+      "opciones": [
+        "El hermano de Gabriel está feliz hoy.",
+        "Gabriel está feliz hoy.",
+        "La felicidad de Gabriel.",
+        "Gabriel tiene un hermano feliz."
+      ],
+      "correcta": 1,
+      "explicacion": "Aquí 's es la contracción de 'is': 'Gabriel's happy' = 'Gabriel is happy' (Gabriel está feliz). Como después de 's va un adjetivo (happy) y no un sustantivo de familia, sabemos que es la contracción, no posesión.",
+      "figura": ""
+    },
+    {
+      "pregunta": "Completa: 'My grandmother ___ short, straight hair.'",
+      "opciones": [
+        "have",
+        "has",
+        "is",
+        "are"
+      ],
+      "correcta": 1,
+      "explicacion": "'My grandmother' es una sola persona (he/she/it), así que el verbo es 'has'. Para describir el pelo se usa 'to have', no 'to be'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es el posesivo correcto para 'we' (nosotros)?",
+      "opciones": [
+        "our",
+        "your",
+        "their",
+        "its"
+      ],
+      "correcta": 0,
+      "explicacion": "'We' (nosotros) corresponde al posesivo 'our' (nuestro/a). 'Your' es de 'you', 'their' es de 'they', e 'its' es de 'it' (para cosas o animales, no personas).",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es el plural correcto de 'child' (hijo/niño)?",
+      "opciones": [
+        "childs",
+        "childes",
+        "children",
+        "child's"
+      ],
+      "correcta": 2,
+      "explicacion": "'Child' tiene un plural IRREGULAR: 'children', no sigue la regla de agregar '-s'. 'Childs' es un error muy común pero incorrecto.",
+      "figura": ""
+    },
+    {
+      "pregunta": "'Camila's brother' significa...",
+      "opciones": [
+        "Camila es el hermano.",
+        "El hermano de Camila.",
+        "Camila está con su hermano.",
+        "Camila tiene un hermano feliz."
+      ],
+      "correcta": 1,
+      "explicacion": "Aquí 's muestra POSESIÓN porque le sigue un sustantivo de familia ('brother'): 'Camila's brother' = 'el hermano de Camila'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Qué palabra en inglés se usa TANTO para 'primo' como para 'prima'?",
+      "opciones": [
+        "sibling",
+        "cousin",
+        "nephew",
+        "aunt"
+      ],
+      "correcta": 1,
+      "explicacion": "'Cousin' es la misma palabra para primo y para prima; el inglés no tiene una versión distinta para cada género, a diferencia del español.",
+      "figura": ""
+    },
+    {
+      "pregunta": "Tu papá y tu mamá juntos se llaman en inglés...",
+      "opciones": [
+        "siblings",
+        "grandparents",
+        "parents",
+        "cousins"
+      ],
+      "correcta": 2,
+      "explicacion": "'Parents' significa 'padres' (mamá y papá juntos). 'Siblings' son los hermanos entre sí, 'grandparents' son los abuelos, y 'cousins' son los primos.",
+      "figura": ""
+    },
+    {
+      "pregunta": "Fernanda es una chica. ¿Cuál frase describe correctamente su pelo?",
+      "opciones": [
+        "Their hair is curly.",
+        "Her hair is curly.",
+        "His hair is curly.",
+        "Its hair is curly."
+      ],
+      "correcta": 1,
+      "explicacion": "Fernanda es una chica (she), así que el posesivo correcto es 'her' (de ella). 'His' es para hombres, 'its' es para objetos/animales, y 'their' es para varias personas.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál de estas es un adjetivo de PERSONALIDAD (no físico)?",
+      "opciones": [
+        "tall",
+        "curly",
+        "friendly",
+        "short"
+      ],
+      "correcta": 2,
+      "explicacion": "'Friendly' (simpático/amistoso) describe la forma de ser de alguien. 'Tall', 'curly' y 'short' describen el físico (estatura o pelo).",
+      "figura": ""
+    },
+    {
+      "pregunta": "Completa: 'My cousins ___ very funny.'",
+      "opciones": [
+        "is",
+        "has",
+        "are",
+        "have"
+      ],
+      "correcta": 2,
+      "explicacion": "'My cousins' es plural, y 'funny' es una característica de personalidad, así que usamos 'to be': 'are'. 'Has/have' se usarían solo para describir pelo u ojos, no personalidad.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál de estas frases usa el posesivo INCORRECTAMENTE?",
+      "opciones": [
+        "This is my family.",
+        "They grandmother is kind.",
+        "Our cousin is tall.",
+        "Her uncle is patient."
+      ],
+      "correcta": 1,
+      "explicacion": "'They grandmother' está mal: 'they' es un pronombre de sujeto, no un posesivo. Lo correcto sería 'Their grandmother is kind.' Las otras tres usan bien el posesivo antes del sustantivo.",
+      "figura": ""
+    },
+    {
+      "pregunta": "Una familia formada por un solo papá o una sola mamá a cargo de los hijos se llama en inglés...",
+      "opciones": [
+        "a single parent family",
+        "a grandparents family",
+        "a sibling family",
+        "a cousin family"
+      ],
+      "correcta": 0,
+      "explicacion": "'A single parent family' (una familia monoparental) usa 'parent' en singular: uno de los dos, mamá o papá, a cargo. Es una familia tan válida y común como cualquier otra.",
+      "figura": ""
+    }
+  ]
+}
