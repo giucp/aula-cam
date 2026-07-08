@@ -195,6 +195,30 @@ del revisor (ver patrón de subagentes).
 Prioridad 1: CALIDAD. Prioridad 2: ahorro de tokens. Regla espejo de la matriz de Gemini de la
 app: el modelo económico JAMÁS toca lo que puede salir mal caro; el modelo top SIEMPRE supervisa.
 
+### ★ PROTOCOLO DE MODELOS OFICIAL (decidido 2026-07-08, asesoría de Fable 5 — usar SIEMPRE)
+El error a evitar: correr un lote sin asignar modelo a cada subagente → todos heredan el modelo de la
+sesión y no hay escalonado (pasó el 2026-07-08: 11 subagentes todos a Sonnet 5, sin tiering). La clave
+es que el modelo TOP de la sesión y el modelo de cada subagente son decisiones INDEPENDIENTES (el Agent
+tool acepta `model:` por subagente). Se le pone a cada etapa el modelo más barato que dé la calidad.
+
+| Etapa | Modelo | Nota |
+|---|---|---|
+| **Top / orquestador** (lo pone el user con `/model`) | **Sonnet 5** (`claude-sonnet-5`) | Coordina, corre los scripts de verificación (0 tokens) y revisa en vivo los bancos de teoría. Opus 4.8 de top es la variante "calidad-máxima" (cuesta un poco más); Fable 5 de top NUNCA (carísimo para volumen). |
+| **Redacción — las 7 materias** | **Sonnet 5** (`model:"sonnet"`) | Calidad-primero: casi Opus al 60% del costo/token, y el revisor es la red. |
+| **Revisión — datos duros** (Mate/Física/Química/Biología) | **Opus 4.8** (`model:"opus"`), 1 revisor dedicado por banco | Acá va la plata: última línea contra errores de números/datos. Es lo que atrapó los errores del 2026-07-08. |
+| **Revisión — teoría/idioma** (Cómo Pensar/Info/Inglés) | **Claude principal, EN VIVO** (sin subagente) | Protocolo barato validado el 2026-07-08 (atrapó el `pasos:[]` vacío de Informática). Exige releer el banco completo, no en diagonal. |
+| **Verificación mecánica** | ninguno (scripts) | 0 tokens. |
+
+**Costo: mirar DÓLARES, no tokens.** Precio salida/1M: Haiku $5 · Sonnet 5 $15 (intro $10 hasta 31/08/2026)
+· Opus 4.8 $25 · Fable 5 $50. Un token de Sonnet = ~60% de uno de Opus, así que "más tokens" ≠ "más plata".
+**Dos ahorros que pesan más que el modelo (aplican SIEMPRE):** (1) cada redactor lee SOLO el tema anterior
+de su materia (no los dos), o un digest de "términos+estilo hasta ahora" — es el mayor ahorro de input, se
+multiplica ×7; (2) mantener CURADO.md + banco de oro idénticos y AL PRINCIPIO del prompt de los 7 redactores
+(prefijo compartido → se cachea). **Experimento pendiente (medir antes de fijar):** probar Haiku 4.5
+(`model:"haiku"`) en UNA redacción de teoría/idioma; si aguanta "sin profe al lado" + nivel Bloom bajo
+revisión, mover teoría/idioma a Haiku; si el revisor lo rebota, volver atrás (rehacer cuesta más). Datos
+duros NUNCA a Haiku.
+
 1. **Redacción — modelo según el contenido:**
    - Numérico/lógico o con hechos delicados (matemática, lógica, física con cálculo, seguridad de
      laboratorio, datos biológicos/históricos precisos) → **modelo TOP** (Opus/Fable, el heredado).
@@ -203,6 +227,10 @@ app: el modelo económico JAMÁS toca lo que puede salir mal caro; el modelo top
    - Todo redactor recibe SIEMPRE: CURADO.md + el banco de oro (primos) + reglas del tipo de curado
      + (para Cumbre) el **`nivel_cognitivo` del grado** como objetivo explícito, y —si el tema existe
      en un grado menor— cómo quedó allá, para SUBIR de nivel y no repetir.
+   - **CONTEXTO DE CONTINUIDAD (regla de ahorro, 2026-07-08):** pasarle SOLO el **tema anterior** de su
+     misma materia (el 02 cuando cura el 03, etc.), NO todos los anteriores — leer dos temas completos
+     (~30KB c/u) ×7 redactores es el mayor gasto de input y no hace falta. Con el tema anterior alcanza
+     para no repetir ejemplos/números, mantener terminología y no bajar de nivel.
 2. **Verificación mecánica — SIN subagente (0 tokens):** la corre Claude en el loop principal con
    scripts: `filasDeBanco` (estructura/claves), recomputar TODA la aritmética, greps (mojibake,
    Markdown, ASCII, perspectiva de grado, contaminación del banco de oro, `<script>` en SVG).
@@ -212,13 +240,15 @@ app: el modelo económico JAMÁS toca lo que puede salir mal caro; el modelo top
    y (Cumbre) **que el banco trabaje al `nivel_cognitivo` del grado** — ni corto ni pasado; un banco
    que se quedó en recordar/entender cuando el grado pide analizar se DEVUELVE, igual que por un
    error de cálculo.
-   Para bancos redactados por Sonnet este paso es OBLIGATORIO e intransigente. Puede hacerla el
-   propio Claude principal si él es el modelo top de la sesión.
+   **ESCALONADO DE REVISIÓN (protocolo de modelos oficial, arriba):** datos duros (Mate/Física/
+   Química/Biología) → un revisor **Opus 4.8** dedicado por banco; teoría/idioma (Cómo Pensar/Info/
+   Inglés) → los revisa el **Claude principal en vivo**, sin subagente (releyendo el banco completo).
    OJO COSTO (medido 2026-07-04, 7 revisores de nivel cognitivo = ~418k tokens): revisar un banco
    NO sale casi gratis — el revisor debe LEER el banco completo (~30KB) antes de juzgar, así que
-   revisar ≈ 0.7× redactar, no 0.2×. El ahorro REAL del patrón está en (1) usar Sonnet para
-   redactar teoría/idioma y (2) que la verificación mecánica (paso 2) no gaste subagentes; NO en
-   suponer que la revisión es barata. No inflar el nº de revisores.
+   revisar ≈ 0.7× redactar, no 0.2×. El ahorro REAL del patrón está en (1) usar el modelo medio para
+   redactar y no sobre-escalar, (2) que la verificación mecánica (paso 2) no gaste subagentes, y (3)
+   que solo los datos duros paguen un revisor dedicado; NO en suponer que la revisión es barata. No
+   inflar el nº de revisores.
 4. **Correcciones:** al MISMO redactor vía SendMessage (mantiene su contexto) o edición directa de
    Claude si es puntual. **Subida y verificación en vivo:** siempre Claude principal (endpoint +
    `curado:true` + commit), nunca los subagentes.
