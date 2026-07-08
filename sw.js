@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v51"; // v51: selector de materia compacto (desplegable) en Anotar/Tarea + horario prolijo (grilla con scroll)
+const VERSION = "aulacam-v52"; // v52: flechita del selector dibujada con CSS (iOS no renderizaba el glifo unicode y quedaba vacio)
 const SHELL = [
   "/",
   "/index.html",

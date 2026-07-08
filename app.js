@@ -428,9 +428,10 @@
     const panel=document.createElement("div"); panel.className="selMatPanel hidden";
     function pintarToggle(){
       const sel=getSel(), abierto=!panel.classList.contains("hidden");
-      toggle.innerHTML = sel
-        ? `<span class="selMatCur">${iconMateria(sel)} ${escapeHtml(limpiaNombreMateria(sel))}</span><span class="selMatEd">✎</span>`
-        : `<span class="selMatPh">📚 Elegir materia</span><span class="selMatCar">▾</span>`;
+      const etiqueta = sel
+        ? `<span class="selMatCur">${iconMateria(sel)} ${escapeHtml(limpiaNombreMateria(sel))}</span>`
+        : `<span class="selMatPh">📚 Elegir materia</span>`;
+      toggle.innerHTML = etiqueta + `<span class="selMatCar" aria-hidden="true"></span>`;
       toggle.classList.toggle("abierto", abierto);
       toggle.setAttribute("aria-expanded", String(abierto));
     }
