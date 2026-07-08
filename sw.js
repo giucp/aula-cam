@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v48"; // v48: reporte cobra a la bateria a tarifa Flash (no Pro) + cap 3 Pro/dia por nino; banner explica el boton Reportar
+const VERSION = "aulacam-v49"; // v49: Muro social por grado (logros de companeros + reacciones emoji seguras); pestana Amigos
 const SHELL = [
   "/",
   "/index.html",

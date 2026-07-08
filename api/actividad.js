@@ -19,6 +19,32 @@ function supabaseCfg() {
 }
 function hdr(cfg) { return { apikey: cfg.key, Authorization: `Bearer ${cfg.key}` }; }
 
+// ── MURO (mini red social sana) ────────────────────────────────────────────────
+// Set de reacciones CURADO y positivo (no se puede usar para molestar). El texto del
+// anuncio lo compone el SERVIDOR a partir de datos estructurados (nunca texto libre del
+// cliente), y NUNCA incluye notas de examen — solo lo que el niño HIZO.
+const MURO_EMOJIS = new Set(["👏", "🔥", "💪", "🎉", "⭐"]);
+const MURO_TIPOS  = new Set(["practica", "quiz", "examen", "cumbre", "racha", "sinapsis"]);
+function textoMuro(tipo, materia, tema, meta) {
+  const m = materia ? String(materia) : "";
+  const t = tema ? String(tema) : "";
+  const conTema = t ? `: ${t}` : "";
+  switch (tipo) {
+    case "practica": return `practicó ${m}${conTema} 💪`;
+    case "quiz":     return `resolvió un quiz de ${m}${conTema} ✅`;
+    case "examen":   return `hizo un examen de ${m}${conTema} 📝`;
+    case "cumbre":   return `avanzó en «${t || m}» de ${m} en Cumbre 🏔️`;
+    case "racha":    return `lleva una racha de ${(meta && meta.dias) || ""} días seguidos 🔥`;
+    case "sinapsis": return `jugó el reto diario de Sinapsis: ${(meta && meta.score) || 0} puntos 🧠`;
+    default: return "";
+  }
+}
+// Inicio del día civil de Venezuela (UTC-4) en ISO UTC, para el dedup "1 por día".
+function inicioHoyCaracasISO() {
+  const car = new Date(Date.now() - 4 * 3600 * 1000);
+  return `${car.toISOString().slice(0, 10)}T04:00:00.000Z`; // 00:00 Caracas = 04:00 UTC
+}
+
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "https://aula-cam.vercel.app");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -150,6 +176,85 @@ export default async function handler(req, res) {
         method: "PATCH",
         headers: { ...hdr(cfg), "Content-Type": "application/json" },
         body: JSON.stringify({ aula_snap: snap }),
+      });
+      return res.status(200).json({ ok: true });
+    }
+
+    // ── MURO: publicar un logro (server compone el texto; dedup 1/día por tipo+materia+tema).
+    if (b.accion === "muro_publicar") {
+      const tipo = String(b.tipo || "");
+      if (!MURO_TIPOS.has(tipo)) return res.status(400).json({ error: "tipo inválido" });
+      const grado = rec(b.grado, 40);
+      if (!grado) return res.status(400).json({ error: "falta grado" });
+      const materia = rec(b.materia, 120) || null;
+      const tema = rec(b.tema, 200) || null;
+      const nombre = rec(b.nombre, 40) || null;
+      // meta saneada: SOLO score (sinapsis) y dias (racha). Nunca notas ni campos libres.
+      let meta = null;
+      if (b.meta && typeof b.meta === "object" && !Array.isArray(b.meta)) {
+        meta = {};
+        if (Number.isFinite(+b.meta.score)) meta.score = Math.max(0, Math.min(9999999, Math.round(+b.meta.score)));
+        if (Number.isInteger(b.meta.dias)) meta.dias = Math.max(0, Math.min(3650, b.meta.dias));
+        if (!Object.keys(meta).length) meta = null;
+      }
+      // dedup: mismo niño + mismo tipo (+materia+tema) el MISMO día → no republicar
+      const desde = inicioHoyCaracasISO();
+      const qd = `${cfg.url}/rest/v1/muro?usuario_id=eq.${uid}&tipo=eq.${encodeURIComponent(tipo)}` +
+        `&creado=gte.${encodeURIComponent(desde)}&select=materia,tema`;
+      const rd = await fetch(qd, { headers: hdr(cfg) });
+      const prev = rd.ok ? await rd.json() : [];
+      if (Array.isArray(prev) && prev.some((r) => norm(r.materia) === norm(materia) && norm(r.tema) === norm(tema)))
+        return res.status(200).json({ ok: true, dedup: true });
+      await fetch(`${cfg.url}/rest/v1/muro`, {
+        method: "POST",
+        headers: { ...hdr(cfg), "Content-Type": "application/json" },
+        body: JSON.stringify({ usuario_id: uid, nombre, grado, tipo, materia, tema, meta }),
+      });
+      return res.status(200).json({ ok: true });
+    }
+
+    // ── MURO: feed del grado (últimos 40) con reacciones agregadas + la mía.
+    if (b.accion === "muro_feed") {
+      const grado = rec(b.grado, 40);
+      if (!grado) return res.status(200).json({ ok: true, posts: [] });
+      const q = `${cfg.url}/rest/v1/muro?grado=eq.${encodeURIComponent(grado)}` +
+        `&select=id,usuario_id,nombre,tipo,materia,tema,meta,creado,muro_reacciones(usuario_id,emoji)` +
+        `&order=creado.desc&limit=40`;
+      const r = await fetch(q, { headers: hdr(cfg) });
+      const rows = r.ok ? await r.json() : [];
+      const posts = (Array.isArray(rows) ? rows : []).map((row) => {
+        const reac = {}; let miReaccion = null;
+        for (const x of row.muro_reacciones || []) {
+          if (!MURO_EMOJIS.has(x.emoji)) continue;
+          reac[x.emoji] = (reac[x.emoji] || 0) + 1;
+          if (String(x.usuario_id) === String(uid)) miReaccion = x.emoji;
+        }
+        return {
+          id: row.id, mio: String(row.usuario_id) === String(uid),
+          nombre: row.nombre || null, tipo: row.tipo,
+          texto: textoMuro(row.tipo, row.materia, row.tema, row.meta),
+          creado: row.creado, reacciones: reac, miReaccion,
+        };
+      });
+      return res.status(200).json({ ok: true, posts });
+    }
+
+    // ── MURO: reaccionar (emoji del set seguro) o quitar la reacción (emoji null).
+    if (b.accion === "muro_reaccion") {
+      const muroId = parseInt(b.muro_id, 10);
+      if (!muroId) return res.status(400).json({ error: "falta muro_id" });
+      const emoji = b.emoji == null ? null : String(b.emoji);
+      if (emoji && !MURO_EMOJIS.has(emoji)) return res.status(400).json({ error: "emoji inválido" });
+      if (!emoji) {
+        await fetch(`${cfg.url}/rest/v1/muro_reacciones?muro_id=eq.${muroId}&usuario_id=eq.${uid}`,
+          { method: "DELETE", headers: hdr(cfg) });
+        return res.status(200).json({ ok: true });
+      }
+      // una reacción por (muro, usuario): upsert reemplaza el emoji si ya había
+      await fetch(`${cfg.url}/rest/v1/muro_reacciones?on_conflict=muro_id,usuario_id`, {
+        method: "POST",
+        headers: { ...hdr(cfg), "Content-Type": "application/json", Prefer: "resolution=merge-duplicates" },
+        body: JSON.stringify({ muro_id: muroId, usuario_id: uid, emoji }),
       });
       return res.status(200).json({ ok: true });
     }

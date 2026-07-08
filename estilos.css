@@ -434,6 +434,34 @@
   .navBtn[aria-pressed="true"] .nIcon{filter:none;opacity:1}
   .navBtn:active{transform:scale(.95)}
 
+  /* ── MURO: logros del grado + reacciones ───────────────────────────────── */
+  #tabMuro{padding-bottom:96px}
+  .muroHead{margin:2px 2px 16px}
+  .muroHead h2{font-family:"Fredoka";font-weight:600;font-size:1.28rem;color:var(--ink);margin:0 0 4px;display:flex;align-items:center;gap:8px}
+  .muroHead p{color:var(--muted);font-weight:600;font-size:.92rem;line-height:1.45;margin:0}
+  .muroSkel{color:var(--muted);font-weight:700;text-align:center;padding:26px 0}
+  .muroVacio{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px 20px;text-align:center;box-shadow:var(--shadow-card)}
+  .muroVacio .mvIco{font-size:2.4rem;line-height:1;margin-bottom:8px}
+  .muroVacio p{color:var(--ink);font-weight:700;font-size:.98rem;line-height:1.5;margin:0 0 6px}
+  .muroVacio p:last-child{color:var(--muted);font-weight:600;font-size:.9rem;margin:0}
+  .muroList{display:flex;flex-direction:column;gap:12px}
+  .muroCard{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:13px 15px;box-shadow:var(--shadow-card)}
+  .muroCard.mio{border-color:#D9C9F5;background:linear-gradient(180deg,#FBF8FF,#F6F0FF)}
+  .mcTop{display:flex;align-items:flex-start;gap:11px}
+  .mcAv{flex:none;width:38px;height:38px;border-radius:50%;background:var(--c,#ccc);color:#fff;display:grid;place-items:center;
+    font-family:"Fredoka";font-weight:600;font-size:1.05rem;box-shadow:var(--shadow-xs)}
+  .mcTxt{flex:1;min-width:0;font-family:"Nunito";font-size:.98rem;line-height:1.45;color:var(--ink);align-self:center}
+  .mcTxt b{color:var(--grape)}
+  .muroCard.mio .mcTxt b{color:var(--teal-dark)}
+  .mcTime{flex:none;color:var(--muted);font-weight:700;font-size:.74rem;white-space:nowrap;margin-top:3px}
+  .mcReac{display:flex;flex-wrap:wrap;gap:7px;margin:11px 0 0;padding-left:49px}
+  .reacBtn{display:inline-flex;align-items:center;gap:4px;border:1.5px solid var(--line);background:#fff;border-radius:999px;
+    cursor:pointer;font-size:1.05rem;line-height:1;padding:6px 10px;transition:all .13s}
+  .reacBtn b{font-family:"Nunito";font-weight:800;font-size:.82rem;color:var(--muted)}
+  .reacBtn:active{transform:scale(.9)}
+  .reacBtn.on{background:#F1EAFB;border-color:#C9B4F5}
+  .reacBtn.on b{color:var(--grape)}
+
   .fechaHoy{font-family:"Fredoka";font-weight:600;color:var(--muted);font-size:1rem;margin:2px 2px 12px}
   .widget{background:var(--surface);border-radius:22px;padding:17px 16px;margin-bottom:13px;
     box-shadow:0 14px 30px -18px rgba(90,40,70,.4),0 2px 6px -3px rgba(90,40,70,.12)}
