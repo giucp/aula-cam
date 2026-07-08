@@ -314,6 +314,9 @@
   .basado li{margin:2px 0}
   .basado .sub{color:var(--muted);font-weight:600;font-size:.82rem;line-height:1.4;margin:0 0 6px}
   .basado ul + .sub, .basado .sub.ia{margin:7px 0 0}
+  /* explicacion del boton Reportar: separada con una linea punteada suave */
+  .basado .sub.rep{margin:9px 0 0;padding-top:9px;border-top:1px dashed rgba(0,0,0,.12)}
+  .basado .sub.rep b{color:var(--ink)}
   /* banner naranja cuando el contenido es generado por IA (contraste con la guia verde) */
   .basado.ia{background:linear-gradient(180deg,#FFF3EC,#FFE9DE);border-color:#FFD3BE}
   .basado.ia .t{color:#C85A2B}

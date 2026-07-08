@@ -305,6 +305,9 @@ const PRECIO_IA = {
   "gemini-2.5-pro": { in: 1.25, out: 10.00 },
 };
 const LIMITE_DIA_USD = 0.20; // tope diario por defecto si la fila no trae ia_limite_dia_usd
+// Máx. regeneraciones POR REPORTE que usan Pro por alumno y día. Pasado el tope, el reporte
+// igual regenera pero por el flujo normal (Flash) → acota el costo Pro que absorbe el proyecto.
+const CAP_REPORTE_PRO = 3;
 function costoUSD(model, usage) {
   const p = PRECIO_IA[model] || PRECIO_IA["gemini-2.5-flash"];
   const inp = (usage && usage.promptTokenCount) || 0;
@@ -319,21 +322,24 @@ function diaIA() {
 // (sin id, sin Supabase, error, sin fila aún) devuelve permitido=true (no cortar por un hipo).
 async function presupuestoIA(usuarioId) {
   const cfg = supabaseCfg();
-  if (!cfg || usuarioId == null) return { permitido: true, ilimitado: true };
+  if (!cfg || usuarioId == null) return { permitido: true, ilimitado: true, reportesHoy: 0 };
   try {
     const r = await fetch(
-      `${cfg.url}/rest/v1/usuarios?id=eq.${encodeURIComponent(usuarioId)}&select=ia_ilimitado,ia_limite_dia_usd,ia_gasto_dia_usd,ia_dia`,
+      `${cfg.url}/rest/v1/usuarios?id=eq.${encodeURIComponent(usuarioId)}&select=ia_ilimitado,ia_limite_dia_usd,ia_gasto_dia_usd,ia_dia,reportes_ia_dia,reportes_ia_fecha`,
       { headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}` } }
     );
-    if (!r.ok) return { permitido: true, ilimitado: true };
+    if (!r.ok) return { permitido: true, ilimitado: true, reportesHoy: 0 };
     const rows = await r.json();
     const u = Array.isArray(rows) && rows[0];
-    if (!u || u.ia_ilimitado) return { permitido: true, ilimitado: true }; // sin fila, o hijas/elegidos
+    if (!u) return { permitido: true, ilimitado: true, reportesHoy: 0 };
+    // reportes Pro por reporte de HOY (día nuevo → 0), para el cap CAP_REPORTE_PRO
+    const reportesHoy = u.reportes_ia_fecha === diaIA() ? Number(u.reportes_ia_dia || 0) : 0;
+    if (u.ia_ilimitado) return { permitido: true, ilimitado: true, reportesHoy }; // hijas/elegidos
     const limite = u.ia_limite_dia_usd == null ? LIMITE_DIA_USD : Number(u.ia_limite_dia_usd);
     const gasto = u.ia_dia === diaIA() ? Number(u.ia_gasto_dia_usd || 0) : 0; // día nuevo → 0
-    return { permitido: gasto < limite, ilimitado: false, limite, gasto };
+    return { permitido: gasto < limite, ilimitado: false, limite, gasto, reportesHoy };
   } catch (e) {
-    return { permitido: true, ilimitado: true };
+    return { permitido: true, ilimitado: true, reportesHoy: 0 };
   }
 }
 // Estado de IA para el front (batería): sin dinero crudo, solo lo necesario para el gauge.
@@ -356,6 +362,18 @@ async function registrarGastoIA(usuarioId, usd) {
       body: JSON.stringify({ p_id: usuarioId, p_usd: usd }),
     });
   } catch (e) { /* el registro de gasto nunca debe romper la generación */ }
+}
+// Suma 1 al contador diario de regeneraciones Pro por reporte del alumno (cap CAP_REPORTE_PRO).
+async function sumarReporteIA(usuarioId) {
+  const cfg = supabaseCfg();
+  if (!cfg || usuarioId == null) return;
+  try {
+    await fetch(`${cfg.url}/rest/v1/rpc/sumar_reporte_ia`, {
+      method: "POST",
+      headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ p_id: usuarioId }),
+    });
+  } catch (e) { /* nunca romper la generación */ }
 }
 
 // ───────── contenido curado (revisado a mano) ─────────
@@ -708,6 +726,9 @@ export default async function handler(req, res) {
     if (!presu.permitido) {
       return res.status(200).json({ limiteIA: true, tema, materia: materia || null, modo, ia: iaEstado(presu) });
     }
+    // ¿esta regeneración por reporte usa Pro? Solo si el alumno no llegó al tope de HOY.
+    // Pasado el tope, cae al flujo normal (Flash) → el niño igual recibe reemplazo, sin gasto Pro extra.
+    const usarProReporte = porReporte && (presu.reportesHoy || 0) < CAP_REPORTE_PRO;
 
     const material = armarMaterial(contexto);
 
@@ -767,7 +788,7 @@ export default async function handler(req, res) {
     // REPORTE (2026-07-08): regenerar un ítem que alguien marcó como incorrecto usa
     // gemini-2.5-pro primero (más confiable) con flash de respaldo — si pro se agota o
     // se pasa del tiempo, el niño igual recibe un reemplazo (no un error).
-    const modelos = porReporte
+    const modelos = usarProReporte
       ? [MODEL_REPORTE, MODEL_EJERCICIOS]
       : (numerica || analitica)
       ? [MODEL_EJERCICIOS] // materia analítica o tema numérico: SOLO flash (nunca lite), en TODOS los modos incl. resumen
@@ -785,7 +806,7 @@ export default async function handler(req, res) {
     // Materias analíticas o regeneración por reporte: la key PAGA va PRIMERO (sin cupos
     // de free-tier, más fiable y rápida — pro en particular casi no tiene cupo gratis) y
     // las gratis quedan de respaldo. Para todo lo demás: gratis primero (costo).
-    const ordenKeys = (analitica || porReporte) ? [...pagas, ...gratisRot] : [...gratisRot, ...pagas];
+    const ordenKeys = (analitica || usarProReporte) ? [...pagas, ...gratisRot] : [...gratisRot, ...pagas];
     let data = null,
       status = 0,
       modeloUsado = modelos[0],
@@ -866,8 +887,14 @@ export default async function handler(req, res) {
     //    AUNQUE la haya servido una key gratis: el cupo diario es un freno de USO por
     //    niño (las gratis también se agotan y son compartidas entre todos); si contara
     //    solo la paga, un niño podría vaciar el cupo gratis de los demás sin frenarse.
-    const costo = costoUSD(modeloUsado, data.usageMetadata);
+    // REPORTE: se cobra a la batería del niño a tarifa FLASH aunque haya corrido Pro —
+    // no es justo castigar al alumno por 1 error nuestro/de Gemini. El costo real de Pro
+    // lo absorbe el proyecto, acotado por el cap diario (CAP_REPORTE_PRO).
+    const modeloCobro = porReporte ? "gemini-2.5-flash" : modeloUsado;
+    const costo = costoUSD(modeloCobro, data.usageMetadata);
     await registrarGastoIA(usuarioId, costo);
+    // consumió un cupo Pro de reporte de HOY → suma al contador diario (para el cap)
+    if (usarProReporte) await sumarReporteIA(usuarioId);
     // El estado de IA (batería) es POR ALUMNO → se agrega DESPUÉS de cachear (línea de arriba),
     // así el caché compartido nunca guarda el presupuesto de un niño en particular.
     respuesta.ia = iaEstado(presu, costo);

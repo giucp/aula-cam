@@ -1499,8 +1499,8 @@
   function render(d){
     ultimoCurado = !!d.curado; ultimoAgotado = !!d.agotado;
     const res=$("#results"); res.innerHTML="";
-    renderBanner(res, d.fuentes, d.basadoEnMaterial, d.apuntes, d.curado);
     const modo = d.modo || modoSel;
+    renderBanner(res, d.fuentes, d.basadoEnMaterial, d.apuntes, d.curado, modo);
     const meta = { materia:d.materia, tema:d.tema, grado:gradoActivo() };
     if(modo==="resumen"){      renderResumen(res, d); registrarActividad(meta, "resumen"); }
     else if(modo==="examen"){  renderExamen(res, d.preguntas||[], meta); renderOtros(res); }
@@ -1510,7 +1510,7 @@
     res.scrollIntoView({behavior:"smooth",block:"nearest"});
   }
 
-  function renderBanner(res, fuentes, basado, apuntes, curado){
+  function renderBanner(res, fuentes, basado, apuntes, curado, modo){
     const pdfs = Array.isArray(fuentes) ? fuentes : [];
     const acts = (ultimoContexto && ultimoContexto.actividades) ? ultimoContexto.actividades : [];
     const apunte = apuntes ? `<li>📓 + tus apuntes del cuaderno</li>` : "";
@@ -1535,6 +1535,9 @@
     }
     // cuando es IA con material real, se agrega la aclaración de que la actividad se generó al momento
     if(esIA && (pdfs.length || apuntes || (basado && acts.length))) html += `<p class="sub ia">✨ Ejercicios creados con IA en el momento.</p>`;
+    // explicación breve del botón Reportar (solo donde aparece: práctica/quiz/examen, con sesión, no Cumbre)
+    if(puedeReportar() && (modo==="retos"||modo==="quiz"||modo==="examen"))
+      html += `<p class="sub rep">🚩 ¿Un ejercicio salió mal o no se entiende? Toca <b>Reportar</b> (dos toques para confirmar) y te damos otro en su lugar.</p>`;
     if(html){ const b=document.createElement("div"); b.className="basado"+(esIA?" ia":""); b.innerHTML=html; res.appendChild(b); }
   }
   function renderFooter(res){

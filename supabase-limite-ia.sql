@@ -36,3 +36,27 @@ begin
     ia_dia           = hoy
   where id = p_id;
 end; $$;
+
+-- ── CAP de regeneraciones POR REPORTE con Gemini 2.5 Pro (2026-07-08) ───────────────────
+-- La bandera 🚩 Reportar regenera SOLO ese ejercicio con Pro (más confiable) — pero Pro es
+-- ~4× más caro que Flash. Para no castigar la batería del niño por 1 error nuestro/de Gemini,
+-- el backend COBRA esa regeneración a la batería a tarifa Flash; el costo real de Pro lo
+-- absorbe el proyecto, ACOTADO a CAP_REPORTE_PRO (=3) regeneraciones Pro por alumno y día.
+-- Pasado el tope, el reporte igual regenera pero por el flujo normal (Flash), sin gasto Pro.
+-- El contador (reportes_ia_dia / reportes_ia_fecha) lo maneja solo el backend; no lo toques.
+alter table public.usuarios
+  add column if not exists reportes_ia_dia   int  not null default 0,
+  add column if not exists reportes_ia_fecha text;
+
+-- Suma 1 al contador de regeneraciones Pro por reporte de HOY del alumno. Reinicia por día.
+create or replace function public.sumar_reporte_ia(p_id bigint)
+returns void language plpgsql as $$
+declare
+  hoy text := to_char(now() at time zone 'America/Caracas', 'YYYY-MM-DD');
+begin
+  update public.usuarios set
+    reportes_ia_dia   = case when reportes_ia_fecha is distinct from hoy then 1
+                             else coalesce(reportes_ia_dia, 0) + 1 end,
+    reportes_ia_fecha = hoy
+  where id = p_id;
+end; $$;
