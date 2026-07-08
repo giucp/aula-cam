@@ -246,6 +246,25 @@
   .chip:hover{border-color:#FFCDBB}
   .chip:active{transform:scale(.96)}
   .chip[aria-pressed="true"]{background:linear-gradient(180deg,#FF8158,var(--mango));border-color:transparent;color:#fff;box-shadow:var(--shadow-sm)}
+  /* selector de materia compacto (elige UNA): botón que abre los chips */
+  .selMat{display:block}
+  .selMatBtn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;
+    font-family:"Nunito",sans-serif;font-weight:700;font-size:1rem;color:var(--ink);
+    padding:13px 15px;border:2px solid var(--line);border-radius:15px;background:#FFFDFB;
+    box-shadow:var(--shadow-xs);transition:border-color .15s,box-shadow .15s}
+  .selMatBtn:hover{border-color:#FFCDBB}
+  .selMatBtn.abierto{border-color:var(--teal);box-shadow:0 0 0 4px rgba(18,181,164,.14)}
+  .selMatCur{display:inline-flex;align-items:center;gap:8px}
+  .selMatPh{color:#BBA9C0;font-weight:600;display:inline-flex;align-items:center;gap:8px}
+  .selMatEd{color:var(--teal-dark);font-weight:700}
+  .selMatCar{color:var(--muted);font-size:.8rem}
+  .selMatBtn.abierto .selMatCar{transform:rotate(180deg)}
+  .selMatPanel{display:flex;flex-wrap:wrap;gap:9px;margin-top:10px}
+  .selMatPanel.hidden{display:none}
+  /* horario: grilla ordenada con scroll en vez de un muro de chips */
+  .heChips{max-height:210px;overflow-y:auto;padding:3px 2px;
+    -webkit-overflow-scrolling:touch;scrollbar-width:thin}
+  .heChips .chip{flex:0 1 auto}
 
   /* modos = pasos de la ruta de aprendizaje (lista vertical) */
   .modos{display:flex;flex-direction:column;gap:10px}

@@ -363,14 +363,7 @@
   function abrirFormTarea(){
     $("#formTarea").classList.remove("hidden");
     $("#tDesc").value=""; $("#tFecha").value=""; tipoSel="tarea"; tMatSel=""; $("#tMsg").innerHTML="";
-    const cont=$("#tMaterias"); cont.innerHTML="";
-    materiasParaFormularios().forEach(nombre=>{
-      const b=document.createElement("button"); b.className="chip"; b.setAttribute("aria-pressed","false");
-      b.textContent=`${iconMateria(nombre)} ${limpiaNombreMateria(nombre)}`;
-      b.onclick=()=>{ tMatSel=(tMatSel===nombre)?"":nombre;
-        cont.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed", String(c===b && !!tMatSel))); };
-      cont.appendChild(b);
-    });
+    montarSelectorMateria($("#tMaterias"), ()=>tMatSel, v=>{ tMatSel=v; });
     document.querySelectorAll("#tTipos .chip").forEach(c=>c.setAttribute("aria-pressed", String(c.dataset.tipo==="tarea")));
     $("#tDesc").focus();
   }
@@ -425,6 +418,39 @@
   // pool completo de materias para los formularios (aula + propias)
   function materiasParaFormularios(){ return unicasPorNombre([...materiasBase(), ...materiasExtraGuardadas()]); }
 
+  // Selector de materia compacto (elige UNA): por defecto un solo botón; al tocarlo
+  // abre los chips (con ícono/color); al elegir se cierra mostrando la materia elegida.
+  // getSel/setSel leen y escriben la variable de selección del formulario que lo use.
+  function montarSelectorMateria(cont, getSel, setSel){
+    if(!cont) return;
+    cont.innerHTML=""; cont.className="selMat";
+    const toggle=document.createElement("button"); toggle.type="button"; toggle.className="selMatBtn";
+    const panel=document.createElement("div"); panel.className="selMatPanel hidden";
+    function pintarToggle(){
+      const sel=getSel(), abierto=!panel.classList.contains("hidden");
+      toggle.innerHTML = sel
+        ? `<span class="selMatCur">${iconMateria(sel)} ${escapeHtml(limpiaNombreMateria(sel))}</span><span class="selMatEd">✎</span>`
+        : `<span class="selMatPh">📚 Elegir materia</span><span class="selMatCar">▾</span>`;
+      toggle.classList.toggle("abierto", abierto);
+      toggle.setAttribute("aria-expanded", String(abierto));
+    }
+    function abrir(v){ panel.classList.toggle("hidden", !v); pintarToggle(); }
+    toggle.onclick=()=>abrir(panel.classList.contains("hidden"));
+    materiasParaFormularios().forEach(nombre=>{
+      const b=document.createElement("button"); b.type="button"; b.className="chip";
+      b.innerHTML=`${iconMateria(nombre)} ${escapeHtml(limpiaNombreMateria(nombre))}`;
+      b.setAttribute("aria-pressed", String(getSel()===nombre));
+      b.onclick=()=>{
+        const nuevo = getSel()===nombre ? "" : nombre; setSel(nuevo);
+        panel.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed", String(c===b && !!nuevo)));
+        pintarToggle(); abrir(false);
+      };
+      panel.appendChild(b);
+    });
+    cont.appendChild(toggle); cont.appendChild(panel);
+    pintarToggle();
+  }
+
   let EDIT_HORARIO=null, EDIT_DIA=1, EDIT_EXTRAS=[];   // {1:[nombres],…5:[…]} + día activo + propias nuevas
   function poolEditor(){ return unicasPorNombre([...materiasBase(), ...materiasExtraGuardadas(), ...EDIT_EXTRAS]); }
   function abrirEditorHorario(){
@@ -452,7 +478,7 @@
     sub.textContent=`Toca las materias del ${DIAS_CORT[EDIT_DIA].toLowerCase()}, en el orden en que las tienes. Toca de nuevo para quitarla.`;
     cont.appendChild(sub);
     // 3) chips SOLO del día elegido
-    const chips=document.createElement("div"); chips.className="chips";
+    const chips=document.createElement("div"); chips.className="chips heChips";
     poolEditor().forEach(nombre=>{
       const dia=EDIT_HORARIO[EDIT_DIA];
       const i=dia.indexOf(nombre);
@@ -682,14 +708,7 @@
   function abrirFormNota(){
     $("#formNota").classList.remove("hidden");
     $("#nDesc").value=""; $("#nNota").value=""; $("#nFecha").value=""; nMatSel=""; $("#nMsg").innerHTML="";
-    const cont=$("#nMaterias"); cont.innerHTML="";
-    materiasParaFormularios().forEach(nombre=>{
-      const b=document.createElement("button"); b.className="chip"; b.setAttribute("aria-pressed","false");
-      b.textContent=`${iconMateria(nombre)} ${limpiaNombreMateria(nombre)}`;
-      b.onclick=()=>{ nMatSel=(nMatSel===nombre)?"":nombre;
-        cont.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed", String(c===b && !!nMatSel))); };
-      cont.appendChild(b);
-    });
+    montarSelectorMateria($("#nMaterias"), ()=>nMatSel, v=>{ nMatSel=v; });
     $("#nDesc").focus();
   }
   $("#btnNuevaNota").onclick=abrirFormNota;
