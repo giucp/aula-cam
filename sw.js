@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v46"; // v46: boton "Reportar" en Practica/Demuestra/Examen (guarda en reportes_contenido + regenera SOLO ese item); excluidos resumen y Cumbre
+const VERSION = "aulacam-v47"; // v47: regeneracion por "Reportar" usa gemini-2.5-pro (key paga primero) en vez de flash/lite, con flash de respaldo
 const SHELL = [
   "/",
   "/index.html",

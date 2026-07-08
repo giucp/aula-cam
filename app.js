@@ -1560,7 +1560,7 @@
     const mat=(meta&&meta.materia)||"General", tema=(meta&&meta.tema)||"", gr=(meta&&meta.grado)||gradoActivo();
     const body={ materia:mat, tema, grado:gr, cantidad:1, contexto:ultimoContexto, modo,
       token:(SESION&&SESION.token)||null, fotos:[], usuario_id:(SESION&&SESION.id)||null,
-      sinCurado:true, nocache:true, recientes:recientesDe(mat,tema,modo).slice(-12) };
+      sinCurado:true, nocache:true, recientes:recientesDe(mat,tema,modo).slice(-12), porReporte:true };
     try{
       const r=await fetch(API_GENERAR,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
       const d=await r.json().catch(()=>null);

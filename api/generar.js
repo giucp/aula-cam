@@ -21,6 +21,8 @@ import { normCurado } from "../herramientas/normcurado.mjs";
 // matemática); resumen/examen con flash-lite (más rápido y barato).
 const MODEL_EJERCICIOS = "gemini-2.5-flash";
 const MODEL_TEXTO = "gemini-2.5-flash-lite";
+// Regeneración de UN ítem reportado como incorrecto: se prioriza calidad sobre costo/velocidad.
+const MODEL_REPORTE = "gemini-2.5-pro";
 const MAX_PDFS = 3;                       // cuántos PDFs leer por generación
 const MAX_PDF_BYTES = 8 * 1024 * 1024;    // por archivo
 const MAX_TOTAL_BYTES = 15 * 1024 * 1024; // suma de todos
@@ -300,6 +302,7 @@ function supabaseCfg() {
 const PRECIO_IA = {
   "gemini-2.5-flash": { in: 0.30, out: 2.50 },
   "gemini-2.5-flash-lite": { in: 0.10, out: 0.40 },
+  "gemini-2.5-pro": { in: 1.25, out: 10.00 },
 };
 const LIMITE_DIA_USD = 0.20; // tope diario por defecto si la fila no trae ia_limite_dia_usd
 function costoUSD(model, usage) {
@@ -624,6 +627,10 @@ export default async function handler(req, res) {
 
     const modo = MODOS_VALIDOS.has(req.body && req.body.modo) ? req.body.modo : "retos";
     const n = Math.min(Math.max(parseInt(cantidad, 10) || 5, 1), 10);
+    // Regeneración de un ítem reportado como malo (botón "🚩 Reportar"): se usa el
+    // modelo más confiable (pro) en vez de flash/lite. Solo vale de a UNO (n===1) para
+    // que no se pueda pedir un lote entero con pro por este camino.
+    const porReporte = !!(req.body && req.body.porReporte) && n === 1;
 
     // Fotos del cuaderno (apuntes de clase presencial): personales del alumno, complementan el material.
     const fotos = limpiarFotos(req.body && req.body.fotos);
@@ -757,7 +764,12 @@ export default async function handler(req, res) {
     //   flash-lite solo como ÚLTIMO recurso (sin números el riesgo es bajo; mejor que fallar).
     // - RESUMEN de teoría: flash-lite (barato, texto puro) con flash de respaldo.
     const esPractica = esEjercicio || modo === "examen";
-    const modelos = (numerica || analitica)
+    // REPORTE (2026-07-08): regenerar un ítem que alguien marcó como incorrecto usa
+    // gemini-2.5-pro primero (más confiable) con flash de respaldo — si pro se agota o
+    // se pasa del tiempo, el niño igual recibe un reemplazo (no un error).
+    const modelos = porReporte
+      ? [MODEL_REPORTE, MODEL_EJERCICIOS]
+      : (numerica || analitica)
       ? [MODEL_EJERCICIOS] // materia analítica o tema numérico: SOLO flash (nunca lite), en TODOS los modos incl. resumen
       : esPractica
       ? [MODEL_EJERCICIOS, MODEL_TEXTO] // práctica de teoría: flash primero
@@ -770,10 +782,10 @@ export default async function handler(req, res) {
     // así que el niño no nota nada.
     const ini = gratis.length > 1 ? Math.floor(Math.random() * gratis.length) : 0;
     const gratisRot = gratis.map((_, i) => gratis[(ini + i) % gratis.length]);
-    // Materias analíticas: la key PAGA va PRIMERO (sin cupos de free-tier, más fiable y
-    // rápida → menos errores/timeouts justo donde no se toleran) y las gratis quedan de
-    // respaldo. Para todo lo demás: gratis primero (costo) y la paga de respaldo, como siempre.
-    const ordenKeys = analitica ? [...pagas, ...gratisRot] : [...gratisRot, ...pagas];
+    // Materias analíticas o regeneración por reporte: la key PAGA va PRIMERO (sin cupos
+    // de free-tier, más fiable y rápida — pro en particular casi no tiene cupo gratis) y
+    // las gratis quedan de respaldo. Para todo lo demás: gratis primero (costo).
+    const ordenKeys = (analitica || porReporte) ? [...pagas, ...gratisRot] : [...gratisRot, ...pagas];
     let data = null,
       status = 0,
       modeloUsado = modelos[0],
