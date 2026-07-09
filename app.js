@@ -2182,6 +2182,8 @@
       if(!r.ok){ $("#labErr").classList.remove("hidden"); return; }
       LAB_CLAVE=clave;
       $("#labLogin").classList.add("hidden"); $("#labApp").classList.remove("hidden");
+      $("#labTabUsuarios").classList.add("on"); $("#labTabColegios").classList.remove("on");
+      $("#labBody").classList.remove("hidden"); $("#labColegios").classList.add("hidden");
       labCargarUsuarios();
     }catch(_){ $("#labErr").classList.remove("hidden"); }
     finally{ btn.disabled=false; }
@@ -2270,8 +2272,116 @@
     }catch(_){ card.classList.remove("saving"); alert("Error de red. Reintenta."); }
   }
 
+  // ───────── panel de COLEGIOS (alta/edición de aulas virtuales) ─────────
+  let LAB_COLEGIOS=[];
+  function labTab(which){
+    const uOn=which==="usuarios";
+    $("#labTabUsuarios").classList.toggle("on",uOn);
+    $("#labTabColegios").classList.toggle("on",!uOn);
+    $("#labBody").classList.toggle("hidden",!uOn);
+    $("#labColegios").classList.toggle("hidden",uOn);
+    if(!uOn) labCargarColegios();
+  }
+  async function labCargarColegios(){
+    const cont=$("#labColegios"); cont.innerHTML=`<p class="labLoad">Cargando…</p>`;
+    try{
+      const r=await fetch(API_LAB,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"colegios",clave:LAB_CLAVE})});
+      if(r.status===401){ LAB_CLAVE=""; entrarLab(); return; }
+      const d=await r.json(); LAB_COLEGIOS=Array.isArray(d.colegios)?d.colegios:[]; labPintarColegios();
+    }catch(_){ cont.innerHTML=errBox("No se pudieron cargar los colegios. Reintenta."); }
+  }
+  function labPintarColegios(){
+    const cont=$("#labColegios"); cont.innerHTML="";
+    const head=document.createElement("div"); head.className="labColHead";
+    const t=document.createElement("p"); t.className="labNota"; t.textContent=`${LAB_COLEGIOS.length} colegio(s)`;
+    const add=document.createElement("button"); add.className="labNuevoCol"; add.textContent="＋ Nuevo colegio";
+    add.onclick=()=>labEditorColegio(null);
+    head.appendChild(t); head.appendChild(add); cont.appendChild(head);
+    if(!LAB_COLEGIOS.length){ const e=document.createElement("div"); e.className="empty"; e.textContent="Aún no hay colegios. Agregá el primero."; cont.appendChild(e); return; }
+    LAB_COLEGIOS.forEach(c=>cont.appendChild(labCardColegio(c)));
+  }
+  function labCardColegio(c){
+    const card=document.createElement("div"); card.className="labCol";
+    const badges=[
+      c.tiene_moodle?`<span class="labColBadge moodle">Aula Moodle</span>`:`<span class="labColBadge manual">Sin aula</span>`,
+      c.verificado?`<span class="labColBadge ok">Verificado</span>`:`<span class="labColBadge pend">Sin verificar</span>`,
+    ].join("");
+    const lugar=[c.ciudad,c.estado].filter(Boolean).map(escapeHtml).join(", ");
+    card.innerHTML=`<div class="labColTop"><span class="labColNom">${escapeHtml(c.nombre||"(sin nombre)")}</span><span class="labColId">id ${c.id}</span></div>`
+      +`<div class="labColBadges">${badges}</div>`
+      +(lugar?`<div class="labColMeta">${lugar}</div>`:"")
+      +(c.moodle_url?`<div class="labColMeta labColUrl">${escapeHtml(c.moodle_url)}</div>`:"");
+    const btn=document.createElement("button"); btn.className="labColEdit"; btn.textContent="Editar";
+    btn.onclick=()=>labEditorColegio(c);
+    card.appendChild(btn);
+    return card;
+  }
+  function labEditorColegio(c){
+    const cont=$("#labColegios"); const editing=!!(c&&c.id!=null); c=c||{};
+    const mp=(c.mapeo_grados&&typeof c.mapeo_grados==="object")?c.mapeo_grados:{patron:"([1-6])\\s*([GA])\\b",sufijos:{G:"grado",A:"año"}};
+    const suf=mp.sufijos||{G:"grado",A:"año"}; const esc=escapeHtml;
+    cont.innerHTML="";
+    const f=document.createElement("div"); f.className="labColForm";
+    f.innerHTML=
+       `<h3 class="labColFormH">${editing?"Editar colegio":"Nuevo colegio"}</h3>`
+      +`<label class="labF">Nombre<input id="cfNombre" class="labInput2" value="${esc(c.nombre||"")}" placeholder="U.E. ..."></label>`
+      +`<div class="labFrow"><label class="labF">Ciudad<input id="cfCiudad" class="labInput2" value="${esc(c.ciudad||"")}"></label>`
+      +`<label class="labF">Estado<input id="cfEstado" class="labInput2" value="${esc(c.estado||"")}"></label></div>`
+      +`<label class="labFchk"><input id="cfTiene" type="checkbox" ${c.tiene_moodle?"checked":""}> Tiene aula virtual Moodle</label>`
+      +`<div id="cfMoodleBox">`
+      +  `<label class="labF">URL del aula<input id="cfUrl" class="labInput2" value="${esc(c.moodle_url||"")}" placeholder="https://aula.colegio.edu.ve"></label>`
+      +  `<button id="cfProbar" class="labColProbar" type="button">Probar conexión</button>`
+      +  `<p id="cfProbeMsg" class="labColProbe hidden"></p>`
+      +  `<label class="labF">Patrón de grado (regex)<input id="cfPatron" class="labInput2 mono" value="${esc(mp.patron||"")}"></label>`
+      +  `<div class="labFrow"><label class="labF">Sufijo G →<input id="cfSufG" class="labInput2" value="${esc(suf.G||"grado")}"></label>`
+      +  `<label class="labF">Sufijo A →<input id="cfSufA" class="labInput2" value="${esc(suf.A||"año")}"></label></div>`
+      +`</div>`
+      +`<label class="labFchk"><input id="cfVerif" type="checkbox" ${c.verificado?"checked":""}> Verificado (habilita la conexión real)</label>`
+      +`<div class="labColFormBtns"><button id="cfGuardar" class="go">Guardar</button><button id="cfCancelar" class="labColCancel" type="button">Cancelar</button></div>`
+      +`<p id="cfErr" class="labErr hidden"></p>`;
+    cont.appendChild(f);
+    const q=(s)=>f.querySelector(s);
+    const syncBox=()=>{ q("#cfMoodleBox").style.display=q("#cfTiene").checked?"":"none"; };
+    q("#cfTiene").onchange=syncBox; syncBox();
+    q("#cfCancelar").onclick=()=>labPintarColegios();
+    q("#cfProbar").onclick=async()=>{
+      const url=(q("#cfUrl").value||"").trim(); const msg=q("#cfProbeMsg");
+      msg.className="labColProbe"; msg.textContent="Probando…";
+      try{
+        const r=await fetch(API_LAB,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"colegio_probar",clave:LAB_CLAVE,moodle_url:url})});
+        if(r.status===401){ LAB_CLAVE=""; entrarLab(); return; }
+        const d=await r.json(); msg.textContent=(d.ok?"✅ ":"⚠️ ")+(d.motivo||""); msg.classList.add(d.ok?"ok":"bad");
+      }catch(_){ msg.textContent="No se pudo probar."; msg.classList.add("bad"); }
+    };
+    q("#cfGuardar").onclick=async()=>{
+      const err=q("#cfErr"); err.classList.add("hidden");
+      const tiene=q("#cfTiene").checked;
+      const colegio={
+        nombre:(q("#cfNombre").value||"").trim(),
+        ciudad:(q("#cfCiudad").value||"").trim()||null,
+        estado:(q("#cfEstado").value||"").trim()||null,
+        tiene_moodle:tiene,
+        moodle_url:tiene?((q("#cfUrl").value||"").trim()||null):null,
+        verificado:q("#cfVerif").checked,
+        mapeo_grados:tiene?{patron:(q("#cfPatron").value||"").trim(),sufijos:{G:(q("#cfSufG").value||"grado").trim(),A:(q("#cfSufA").value||"año").trim()}}:null,
+      };
+      if(editing) colegio.id=c.id;
+      if(!colegio.nombre){ err.textContent="Falta el nombre."; err.classList.remove("hidden"); return; }
+      const btn=q("#cfGuardar"); btn.disabled=true;
+      try{
+        const r=await fetch(API_LAB,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"colegio_guardar",clave:LAB_CLAVE,colegio})});
+        if(r.status===401){ LAB_CLAVE=""; entrarLab(); return; }
+        const d=await r.json();
+        if(d&&d.ok){ await labCargarColegios(); }
+        else{ err.textContent=(d&&d.error)||"No se pudo guardar."; err.classList.remove("hidden"); btn.disabled=false; }
+      }catch(_){ err.textContent="Error de red."; err.classList.remove("hidden"); btn.disabled=false; }
+    };
+  }
+
   $("#labEntrar").onclick=labLogin;
   $("#labClave").addEventListener("keydown",(e)=>{ if(e.key==="Enter") labLogin(); });
+  $("#labTabUsuarios").onclick=()=>labTab("usuarios");
+  $("#labTabColegios").onclick=()=>labTab("colegios");
   window.addEventListener("hashchange",()=>{ if(location.hash==="#lab" && !MODO_LAB) entrarLab(); });
 
   // ───────── arranque (al final: todas las consts/funciones ya están definidas) ─────────

@@ -659,3 +659,38 @@
   .labLimInp:disabled{opacity:.5}
   .labLimSave{border:2px solid var(--grape);background:#F1EAFB;color:var(--grape);cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:.9rem;padding:7px 14px;border-radius:10px}
   .labLimSave:disabled{opacity:.5;cursor:default}
+  /* pestañas del panel + COLEGIOS */
+  .labTabs{display:flex;gap:6px;margin-left:auto}
+  .labTab{border:2px solid var(--line);background:#fff;cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:.86rem;padding:6px 13px;border-radius:20px;color:var(--muted)}
+  .labTab.on{border-color:var(--grape);background:#F1EAFB;color:var(--grape)}
+  .labColHead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+  .labColHead .labNota{margin:0}
+  .labNuevoCol{border:2px solid var(--teal);background:#EAF9F5;color:var(--teal-dark);cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:.9rem;padding:8px 15px;border-radius:14px}
+  .labCol{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:14px 15px;margin-bottom:12px;box-shadow:var(--shadow-xs)}
+  .labColTop{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+  .labColNom{font-family:"Fredoka";font-weight:600;font-size:1.06rem;color:var(--ink);min-width:0}
+  .labColId{flex:none;color:var(--muted);font-weight:700;font-size:.8rem}
+  .labColBadges{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 4px}
+  .labColBadge{font-family:"Fredoka";font-weight:600;font-size:.78rem;padding:3px 10px;border-radius:20px}
+  .labColBadge.moodle{background:rgba(18,181,164,.12);color:var(--teal-dark)}
+  .labColBadge.manual{background:#FFF6E6;color:#B5790A}
+  .labColBadge.ok{background:#E7F7EF;color:var(--ok)}
+  .labColBadge.pend{background:#FDEDF1;color:var(--bad)}
+  .labColMeta{color:var(--muted);font-weight:600;font-size:.86rem;margin-top:3px;word-break:break-all}
+  .labColUrl{font-family:"Nunito";opacity:.9}
+  .labColEdit{margin-top:10px;border:2px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:.86rem;padding:6px 15px;border-radius:12px}
+  .labColForm{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:18px 16px;box-shadow:var(--shadow-xs)}
+  .labColFormH{font-family:"Fredoka";font-weight:600;font-size:1.15rem;color:var(--grape);margin:0 0 14px}
+  .labF{display:flex;flex-direction:column;gap:5px;font-family:"Fredoka";font-weight:600;font-size:.86rem;color:var(--muted);margin-bottom:12px;flex:1}
+  .labFrow{display:flex;gap:10px}
+  .labInput2{width:100%;font-family:"Nunito",sans-serif;font-weight:700;font-size:.98rem;color:var(--ink);padding:11px 12px;border:2px solid var(--line);border-radius:12px;background:#FFFDFB;outline:none}
+  .labInput2:focus{border-color:var(--teal)}
+  .labInput2.mono{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.9rem}
+  .labFchk{display:flex;align-items:center;gap:9px;font-family:"Fredoka";font-weight:600;font-size:.95rem;color:var(--ink);margin-bottom:12px;cursor:pointer}
+  .labFchk input{width:18px;height:18px;accent-color:var(--teal);flex:none}
+  .labColProbar{border:2px solid var(--grape);background:#F1EAFB;color:var(--grape);cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:.86rem;padding:8px 15px;border-radius:12px;margin-bottom:12px}
+  .labColProbe{font-weight:700;font-size:.88rem;margin:0 0 12px;line-height:1.4}
+  .labColProbe.ok{color:var(--ok)} .labColProbe.bad{color:var(--bad)}
+  .labColFormBtns{display:flex;gap:10px;align-items:center;margin-top:4px}
+  .labColFormBtns .go{flex:none;padding:11px 22px}
+  .labColCancel{border:2px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:.9rem;padding:10px 18px;border-radius:12px}
