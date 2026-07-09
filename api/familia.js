@@ -16,9 +16,9 @@ import crypto from "crypto";
 
 const BASE = "https://aulacam.uearzobispomendez.edu.ve";
 const ORIGIN = "https://aula-cam.vercel.app";
-// Dominio donde vive el panel del padre (para el link de invitación). Se puede mover a otro
-// dominio con la env FAMILIA_ORIGIN (en el proyecto aula-cam); si no está, cae a aula-cam.
-const FAMILIA_ORIGIN = process.env.FAMILIA_ORIGIN || ORIGIN;
+// Dominio donde vive el panel del padre (para el link de invitación): app propia, aparte
+// del aula del niño. Se puede mover con la env FAMILIA_ORIGIN (proyecto aula-cam).
+const FAMILIA_ORIGIN = process.env.FAMILIA_ORIGIN || "https://chispa-familia.vercel.app";
 // CORS: el panel del padre puede estar en otro *.vercel.app y llama a esta API. Reflejamos
 // el origen si es aula-cam o cualquier *.vercel.app (los tokens/códigos son el verdadero
 // candado; CORS solo dice qué webs pueden llamar desde el navegador).
