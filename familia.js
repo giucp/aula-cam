@@ -29,12 +29,13 @@ function tituloDia(iso) {
 }
 function hora(iso) { try { return FMT_HORA.format(new Date(iso)).replace(/\s?[.]?\s?m[.]?/i, (m) => m.trim()); } catch (e) { return ""; } }
 
-// fetch con TIMEOUT (14 s): en redes lentas un fetch sin límite puede colgarse minutos
+const FAMILIA_V = "v5"; // versión visible del panel (footer + pantalla de error) para saber qué código corre
+// fetch con TIMEOUT (25 s): en redes lentas un fetch sin límite puede colgarse minutos
 // y dejar la página "en blanco". Si falla la red devuelve status 0 (NUNCA lanza): el que
 // llama decide qué mostrar, y un fallo de red JAMÁS se confunde con "token inválido".
 async function api(body) {
   const ctl = new AbortController();
-  const t = setTimeout(() => ctl.abort(), 14000);
+  const t = setTimeout(() => ctl.abort(), 25000);
   try {
     const r = await fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), signal: ctl.signal });
     const d = await r.json().catch(() => null);
@@ -86,7 +87,7 @@ function setActivo(i) { localStorage.setItem(KEY_ACTIVO, String(i)); }
         setActivo(addNino(d.token, d.nino));
         history.replaceState(null, "", location.pathname);
       } else if (status === 0 && !getNinos().length) {
-        return estadoRed(() => location.reload());
+        return estadoRed(() => location.reload(), "sin respuesta de red al canjear");
       } else if (!getNinos().length) {
         return mostrarVincular(false, (d && d.error) || "Ese enlace no es válido o venció. Escribí el código o pedí uno nuevo.");
       }
@@ -94,11 +95,8 @@ function setActivo(i) { localStorage.setItem(KEY_ACTIVO, String(i)); }
     }
     if (!getNinos().length) return mostrarVincular(false);
     cargarYrender();
-  } catch (e) { estadoRed(() => location.reload()); }
+  } catch (e) { estadoRed(() => location.reload(), "error interno: " + (e && e.message || e)); }
 })();
-// red de seguridad final: si algo revienta fuera del try, mostrar algo igual
-window.addEventListener("unhandledrejection", () => { if (document.querySelector(".skel")) estadoRed(() => location.reload()); });
-window.addEventListener("error", () => { if (document.querySelector(".skel")) estadoRed(() => location.reload()); });
 
 // ───────── vincular con código (pantalla + canje) ─────────
 // Necesario para iOS: el ícono de "Agregar a inicio" tiene su propio almacenamiento, así que
@@ -201,35 +199,48 @@ function limpiarTodo() {
 // al recuperar conexión, si estamos en la pantalla "sin conexión", reintentar solo
 window.addEventListener("online", () => { if (document.getElementById("estadoRed") && getNinos().length) cargarYrender(true); });
 
+// Regla de oro: si alguna vez vimos el panel de este hijo, ABRIR NO DEPENDE DE LA RED.
+// Se pinta lo guardado AL INSTANTE y la red solo actualiza en segundo plano. Un fallo de
+// red jamás tapa el panel ni desvincula; solo un 401 real (revocado) desvincula.
 async function cargarYrender(recargar) {
   const ninos = getNinos();
   const i = getActivo();
   const nino = ninos[i];
-  app.innerHTML = tabsHijos(ninos, i) + '<div class="skel"></div>';
-  wireTabs(ninos);
-  if (recargar) delete PANEL_CACHE[nino.token];
-  let d = PANEL_CACHE[nino.token];
-  if (!d) {
-    const res = await api({ accion: "panel", ptoken: nino.token });
-    // SOLO un 401 real (el server dice "token no válido/revocado") desvincula. Un fallo de
-    // red, timeout, 5xx o respuesta rara NUNCA borra el vínculo: se ofrece reintentar.
-    if (res.status === 401) {
-      const arr = getNinos().filter((x) => x.token !== nino.token); setNinos(arr); setActivo(0);
-      if (!arr.length) return estadoError("El acceso caducó", (res.d && res.d.error) || "Pedile a tu hijo un enlace nuevo.", false);
-      return cargarYrender();
-    }
-    if (!(res.d && res.d.ok)) {
-      // fallo de red/servidor: si hay una copia guardada de antes, mostrarla (con aviso);
-      // si no, pantalla de reconexión. NUNCA desvincula.
-      const cache = leerPanel(nino.token);
-      if (cache) { PANEL_CACHE[nino.token] = cache.d; return render(cache.d, getNinos(), getActivo(), cache.ts); }
-      return estadoRed(() => cargarYrender(true));
-    }
-    d = res.d; PANEL_CACHE[nino.token] = d; guardarPanel(nino.token, d);
-    // refrescar nombre/grado guardados con lo que dice el servidor
-    if (d.perfil) { const a = getNinos(); if (a[i]) { a[i].nombre = d.perfil.nombre || a[i].nombre; a[i].grado = d.perfil.grado || a[i].grado; setNinos(a); } }
+  if (!nino) return mostrarVincular(false);
+  const cacheMem = PANEL_CACHE[nino.token];
+  const cacheDisco = cacheMem ? null : leerPanel(nino.token);
+  const cacheD = cacheMem || (cacheDisco && cacheDisco.d) || null;
+  // 1) pintar YA lo que tengamos; si no hay nada, esqueleto de carga
+  try {
+    if (cacheD) render(cacheD, ninos, i);
+    else { app.innerHTML = tabsHijos(ninos, i) + '<div class="skel"></div><p class="cargando">Cargando el panel…</p>'; wireTabs(ninos); }
+  } catch (e) { app.innerHTML = '<div class="skel"></div>'; }
+  // 2) actualizar de la red (en segundo plano si ya se pintó algo)
+  const res = await api({ accion: "panel", ptoken: nino.token });
+  if (getActivo() !== i || getNinos().length !== ninos.length) return; // cambió de hijo mientras cargaba
+  if (res.status === 401) {
+    const arr = getNinos().filter((x) => x.token !== nino.token); setNinos(arr); setActivo(0);
+    if (!arr.length) return estadoError("El acceso caducó", (res.d && res.d.error) || "Pedile a tu hijo un enlace nuevo.", false);
+    return cargarYrender();
   }
-  render(d, getNinos(), getActivo());
+  try {
+    if (res.d && res.d.ok) {
+      PANEL_CACHE[nino.token] = res.d; guardarPanel(nino.token, res.d);
+      const a = getNinos(); if (res.d.perfil && a[i]) { a[i].nombre = res.d.perfil.nombre || a[i].nombre; a[i].grado = res.d.perfil.grado || a[i].grado; setNinos(a); }
+      render(res.d, getNinos(), getActivo());
+    } else if (cacheD) {
+      // no se pudo actualizar: dejamos el panel guardado en pantalla, con aviso arriba
+      render(cacheD, ninos, i, (cacheDisco && cacheDisco.ts) || Date.now(), detalleRes(res));
+    } else {
+      estadoRed(() => cargarYrender(true), detalleRes(res));
+    }
+  } catch (e) { estadoRed(() => cargarYrender(true), "error interno: " + (e && e.message || e)); }
+}
+// resumen técnico corto de una respuesta fallida (para diagnosticar de una captura)
+function detalleRes(res) {
+  if (!res) return "sin respuesta";
+  if (res.status === 0) return "sin respuesta de red (timeout o corte)";
+  return "HTTP " + res.status + (res.d && res.d.error ? " · " + String(res.d.error).slice(0, 90) : (res.d ? "" : " · respuesta no válida"));
 }
 
 function estadoError(titulo, msg, reintentar) {
@@ -238,14 +249,16 @@ function estadoError(titulo, msg, reintentar) {
       ${reintentar ? '<button class="btn" onclick="location.reload()">Reintentar</button>' : ""}</div>
     <p class="foot">Chispa · Panel de familia</p>`;
 }
-// problema de conexión (NO borra ningún vínculo): mensaje amable + salidas
-function estadoRed(onRetry) {
+// problema de conexión (NO borra ningún vínculo): mensaje amable + salidas.
+// `detalle` muestra el error técnico real (status + versión) para diagnosticar de una captura.
+function estadoRed(onRetry, detalle) {
   app.innerHTML =
     `<div class="estado" id="estadoRed"><div class="em">📶</div><h2>No pudimos cargar</h2>
       <p>Parece un problema de conexión. Tus accesos siguen guardados: probá de nuevo.</p>
       <button class="btn" id="btnRetry">Reintentar</button>
       <button class="btn ghost" id="btnRedCodigo" style="margin-top:10px">Entrar con un código</button>
-      <p class="foot" style="margin-top:16px"><span id="btnReset" style="text-decoration:underline;cursor:pointer">Empezar de cero</span></p></div>`;
+      <p class="foot" style="margin-top:16px"><span id="btnReset" style="text-decoration:underline;cursor:pointer">Empezar de cero</span></p>
+      <p class="foot" style="margin-top:10px;opacity:.7">${FAMILIA_V}${detalle ? " · " + esc(detalle) : ""}</p></div>`;
   const b = document.getElementById("btnRetry"); if (b) b.onclick = onRetry || (() => location.reload());
   const c = document.getElementById("btnRedCodigo"); if (c) c.onclick = () => mostrarVincular(getNinos().length > 0);
   const r = document.getElementById("btnReset"); if (r) r.onclick = () => { if (confirm("¿Borrar todo de este dispositivo y empezar de cero? Vas a tener que vincular de nuevo.")) { limpiarTodo(); mostrarVincular(false); } };
@@ -265,7 +278,7 @@ function wireTabs(ninos) {
 }
 
 // ───────── render principal ─────────
-function render(d, ninos, i, staleTs) {
+function render(d, ninos, i, staleTs, detalle) {
   const p = d.perfil || {};
   const nombre = p.nombre || (ninos[i] && ninos[i].nombre) || "tu hijo";
   const chips = [];
@@ -275,7 +288,7 @@ function render(d, ninos, i, staleTs) {
 
   const html = [
     tabsHijos(ninos, i),
-    staleTs ? `<div class="staleBanner">📶 Sin conexión — te mostramos lo último que vimos${staleTxt(staleTs)}. <span class="staleRetry" id="staleRetry">Reintentar</span></div>` : "",
+    staleTs ? `<div class="staleBanner">📶 No pudimos actualizar — te mostramos lo último guardado${staleTxt(staleTs)}. <span class="staleRetry" id="staleRetry">Reintentar</span>${detalle ? `<br><small style="opacity:.75">${esc(detalle)}</small>` : ""}</div>` : "",
     `<div class="hdr">
       <p class="hi" style="color:rgba(255,255,255,.85)">Panel de familia</p>
       <h1>${esc(primerNombre(nombre))}</h1>
@@ -295,7 +308,7 @@ function render(d, ninos, i, staleTs) {
       <button class="btn ghost" id="btnRecargar">↻ Actualizar</button>
       <button class="btn ghost" id="btnSalir" style="margin-left:8px">Desvincular</button>
     </div>
-    <p class="foot">Chispa · Panel de familia · solo lectura<br>Tu hijo puede quitarte el acceso cuando quiera desde su aula.</p>`,
+    <p class="foot">Chispa · Panel de familia · solo lectura · ${FAMILIA_V}<br>Tu hijo puede quitarte el acceso cuando quiera desde su aula.</p>`,
   ];
   app.innerHTML = html.join("");
   wireTabs(ninos);

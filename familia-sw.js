@@ -3,7 +3,7 @@
 // VIEJO cacheado (los arreglos no llegaban al usuario hasta 2 aperturas después). Ahora:
 // si hay red, SIEMPRE la última versión; la caché es solo respaldo OFFLINE. El cascarón es
 // chico y las fuentes no bloquean, así que abrir sigue siendo rápido. /api/* nunca se cachea.
-const VERSION = "familia-v4"; // v4: familia.js llama a la API del mismo origen (relative, sin CORS)
+const VERSION = "familia-v5"; // v5: abrir pinta el panel guardado al instante (red solo actualiza en 2do plano) + detalle de error visible
 const SHELL = ["/familia.html", "/familia.js", "/jsQR.js"];
 
 self.addEventListener("install", (e) => {
