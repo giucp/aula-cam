@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v52"; // v52: flechita del selector dibujada con CSS (iOS no renderizaba el glifo unicode y quedaba vacio)
+const VERSION = "aulacam-v53"; // v53: el SW ignora /familia* (panel de padres, app aparte)
 const SHELL = [
   "/",
   "/index.html",
@@ -37,6 +37,7 @@ self.addEventListener("fetch", (e) => {
   if (req.method !== "GET") return;                 // POST /api no se cachea
   const url = new URL(req.url);
   if (url.pathname.startsWith("/api/")) return;      // API: siempre a la red
+  if (url.pathname.startsWith("/familia")) return;   // panel del padre: app aparte, el SW del niño no la toca
 
   // HTML (navegación): red primero (para recibir cambios), cache de respaldo offline.
   // Solo el MISMO origen: nunca tocar el iframe cross-origin del juego (no cachearlo como index).

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Panel de familia · Chispa</title>
+<meta name="description" content="Mirá exactamente qué hizo tu hijo en Chispa: prácticas, quiz, exámenes, notas y agenda." />
+<meta name="theme-color" content="#12B5A4" />
+<meta name="robots" content="noindex" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="Familia · Chispa" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --mango:#FF6B3D;--mango-dark:#E8511F;--teal:#12B5A4;--teal-dark:#0E9486;--sun:#FFC83D;
+    --grape:#7C4DFF;--ink:#3B2B4A;--muted:#8C7C93;--surface:#FFFFFF;--line:#EFE6EE;--ok:#1FA86A;--bad:#EF476F;
+    --bg:#FBF7FB;--shadow:0 14px 30px -18px rgba(90,40,70,.4),0 2px 6px -3px rgba(90,40,70,.12);
+    --shadow-xs:0 3px 10px -4px rgba(90,40,70,.26);--radius:20px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Nunito",sans-serif;font-weight:600;
+    line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:640px;margin:0 auto;padding:18px 16px 60px}
+  h1,h2,h3{font-family:"Fredoka",sans-serif;font-weight:600;margin:0}
+  .hi{font-family:"Fredoka";font-weight:600;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-dark);margin:0}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 17px;box-shadow:var(--shadow);margin-bottom:14px}
+  .secTit{font-family:"Fredoka";font-weight:600;font-size:1.02rem;color:var(--ink);display:flex;align-items:center;gap:9px;margin:0 0 12px}
+  .secTit .ic{font-size:1.15rem}
+  .muted{color:var(--muted)}
+  .lblMini{font-family:"Fredoka";font-weight:600;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+  /* header del niño */
+  .hdr{background:linear-gradient(180deg,#1ECAB8,var(--teal));color:#fff;border-radius:var(--radius);padding:18px 18px 16px;box-shadow:var(--shadow);margin-bottom:14px}
+  .hdr h1{font-size:1.4rem;color:#fff}
+  .hdr .sub{opacity:.92;font-size:.9rem;margin:3px 0 0}
+  .hdr .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+  .hdr .hchip{background:rgba(255,255,255,.22);color:#fff;font-weight:700;font-size:.82rem;padding:5px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:5px}
+  .soloLect{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;color:var(--muted);background:#F3EEF3;padding:5px 10px;border-radius:999px;font-weight:700}
+  /* tiles resumen */
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+  .tile{background:#FBF7FB;border-radius:15px;padding:12px 13px}
+  .tile .n{font-family:"Fredoka";font-weight:600;font-size:1.5rem;color:var(--ink);line-height:1}
+  .tile .l{font-size:.78rem;color:var(--muted);font-weight:700;margin-top:3px}
+  /* actividad */
+  .dia{margin-bottom:14px}
+  .dia:last-child{margin-bottom:0}
+  .diaTit{font-family:"Fredoka";font-weight:600;font-size:.9rem;color:var(--grape);margin:0 0 8px;text-transform:capitalize}
+  .act{display:flex;align-items:flex-start;gap:11px;padding:9px 0;border-top:1px solid var(--line)}
+  .act:first-of-type{border-top:none}
+  .act .ai{font-size:1.15rem;line-height:1.3;flex:none;width:26px;text-align:center}
+  .act .ab{flex:1;min-width:0}
+  .act .am{font-weight:800;font-size:.92rem}
+  .act .at{font-size:.82rem;color:var(--muted)}
+  .act .ar{flex:none;font-weight:800;font-size:.82rem;padding:3px 9px;border-radius:999px;white-space:nowrap}
+  .r-ok{background:#E5F7EF;color:var(--ok)}
+  .r-med{background:#FFF3DA;color:#B8770A}
+  .r-low{background:#FDE7ED;color:var(--bad)}
+  .r-hora{color:var(--muted);font-weight:700;font-size:.76rem;flex:none}
+  /* notas */
+  .notaRow{display:flex;align-items:center;gap:11px;padding:9px 0;border-top:1px solid var(--line)}
+  .notaRow:first-of-type{border-top:none}
+  .notaBadge{flex:none;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;font-family:"Fredoka";font-weight:600;font-size:1.1rem;color:#fff}
+  .nb-buena{background:var(--ok)}.nb-media{background:var(--sun);color:var(--ink)}.nb-floja{background:var(--bad)}
+  /* listas simples */
+  .li{display:flex;align-items:flex-start;gap:9px;padding:7px 0;border-top:1px solid var(--line);font-size:.9rem}
+  .li:first-of-type{border-top:none}
+  .li .lic{flex:none}
+  .tacha{text-decoration:line-through;color:var(--muted)}
+  /* horario */
+  .hday{margin-bottom:9px}
+  .hday .hd{font-family:"Fredoka";font-weight:600;font-size:.84rem;color:var(--ink);margin-bottom:3px}
+  .hday .hm{font-size:.86rem;color:var(--muted)}
+  /* botones / estados */
+  .btn{font-family:"Fredoka";font-weight:600;font-size:.95rem;border:none;border-radius:14px;padding:12px 18px;cursor:pointer;
+    background:var(--teal);color:#fff;box-shadow:var(--shadow-xs)}
+  .btn.ghost{background:#fff;color:var(--teal-dark);border:2px solid var(--line)}
+  .btn:active{transform:scale(.97)}
+  .center{text-align:center}
+  .estado{max-width:420px;margin:40px auto;text-align:center}
+  .estado .em{font-size:2.6rem}
+  .estado h2{font-size:1.3rem;margin:12px 0 6px}
+  .estado p{color:var(--muted);margin:0 0 18px}
+  .foot{text-align:center;color:var(--muted);font-size:.78rem;margin-top:22px}
+  .skel{height:120px;border-radius:var(--radius);background:linear-gradient(100deg,#F3EEF3,#FAF6FA,#F3EEF3);background-size:200% 100%;animation:sk 1.3s infinite}
+  @keyframes sk{0%{background-position:200% 0}100%{background-position:-200% 0}}
+  .badge{display:inline-flex;align-items:center;gap:5px;font-family:"Fredoka";font-weight:600;font-size:.74rem;padding:3px 9px;border-radius:999px;background:#F3EEF3;color:var(--muted)}
+</style>
+</head>
+<body>
+  <div class="wrap" id="app">
+    <div class="skel"></div>
+  </div>
+  <script src="familia.js"></script>
+</body>
+</html>
