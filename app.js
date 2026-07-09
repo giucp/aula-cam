@@ -785,6 +785,86 @@
   $("#btnJuego").onclick = abrirJuego;
   $("#btnCerrarJuego").onclick = cerrarJuego;
 
+  // ── Familia (padres): el niño genera un enlace/QR para dar acceso de SOLO LECTURA a un
+  //    adulto. La generación va autenticada con su token de Moodle (api/familia). El QR se
+  //    carga perezosamente (solo al invitar) para no pesar el arranque.
+  const API_FAMILIA = "https://aula-cam.vercel.app/api/familia";
+  let qrLibProm = null;
+  function cargarQR(){
+    if(window.qrcode) return Promise.resolve();
+    if(!qrLibProm) qrLibProm = new Promise((res,rej)=>{ const s=document.createElement("script"); s.src="qrcode.min.js"; s.onload=res; s.onerror=rej; document.head.appendChild(s); });
+    return qrLibProm;
+  }
+  function qrDataURL(texto){ try{ const qr=window.qrcode(0,"M"); qr.addData(texto); qr.make(); return qr.createDataURL(6,12); }catch(e){ return null; } }
+  function abrirFamilia(){
+    if(!SESION) return;
+    $("#familiaModal").classList.remove("hidden"); document.body.classList.add("modalAbierto");
+    $("#famBody").innerHTML =
+      `<p class="famEyebrow">👨‍👩‍👧 Para tu familia</p>
+       <h2 class="famTit">Dar acceso a un adulto</h2>
+       <p class="famTxt">Crea un enlace para que tu mamá o papá vea lo que hacés en Chispa: prácticas, quiz, exámenes, notas y agenda. <b>Solo pueden mirar</b>, no cambian nada.</p>
+       <button class="go" id="btnCrearInvite">Crear enlace de invitación</button>
+       <div id="famInviteBox"></div>
+       <div id="famVinculos"></div>`;
+    $("#btnCrearInvite").onclick = crearInvite;
+    cargarVinculos();
+  }
+  function cerrarFamilia(){ $("#familiaModal").classList.add("hidden"); document.body.classList.remove("modalAbierto"); }
+  async function crearInvite(){
+    const btn=$("#btnCrearInvite"); if(btn){ btn.disabled=true; btn.textContent="Creando…"; }
+    try{
+      const r=await fetch(API_FAMILIA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"invitar", token:SESION.token})});
+      const d=await r.json().catch(()=>null);
+      if(!d||!d.ok||!d.link) throw new Error();
+      await mostrarInvite(d.link, d.code);
+      cargarVinculos();
+    }catch(e){ if(btn){ btn.disabled=false; btn.textContent="Reintentar"; } }
+  }
+  async function mostrarInvite(link, code){
+    const box=$("#famInviteBox"); if(!box) return;
+    await cargarQR().catch(()=>{});
+    const img = window.qrcode ? qrDataURL(link) : null;
+    box.innerHTML =
+      `<div class="famCard">
+        <p class="famMini">Mostráselo a tu adulto o compartilo</p>
+        ${img?`<img class="famQR" src="${img}" alt="Código QR" />`:""}
+        <div class="famCode">${escapeHtml(code)}</div>
+        <p class="famHint">Que abra <b>aula-cam.vercel.app/familia</b> y escriba el código, o que escanee el QR.</p>
+        <div class="famBtns"><button class="otros" id="btnCompartir">📤 Compartir</button><button class="otros" id="btnCopiar">📋 Copiar</button></div>
+        <p class="famHint">Vale 24 horas y sirve una sola vez. Creá otro para el otro adulto.</p>
+      </div>`;
+    const share=$("#btnCompartir"), copy=$("#btnCopiar");
+    if(share) share.onclick=async()=>{ try{ if(navigator.share){ await navigator.share({title:"Chispa · Familia", text:"Mirá lo que hago en Chispa:", url:link}); } else { copiar(link,copy); } }catch(_){} };
+    if(copy) copy.onclick=()=>copiar(link,copy);
+  }
+  function copiar(txt, btn){
+    const ok=()=>{ if(btn){ const t=btn.textContent; btn.textContent="✓ Copiado"; setTimeout(()=>btn.textContent=t,1800); } };
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok).catch(()=>fallbackCopy(txt,ok));
+    else fallbackCopy(txt, ok);
+  }
+  function fallbackCopy(txt, ok){ try{ const ta=document.createElement("textarea"); ta.value=txt; ta.style.position="fixed"; ta.style.opacity="0"; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); ok&&ok(); }catch(_){} }
+  async function cargarVinculos(){
+    const box=$("#famVinculos"); if(!box) return;
+    try{
+      const r=await fetch(API_FAMILIA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"vinculos", token:SESION.token})});
+      const d=await r.json().catch(()=>null);
+      const activos=((d&&d.vinculos)||[]).filter(v=>v.estado==="activo");
+      if(!activos.length){ box.innerHTML=""; return; }
+      box.innerHTML=`<p class="famMini" style="margin-top:18px">Adultos con acceso</p>` + activos.map(v=>
+        `<div class="famVin"><span class="famVinNom">👤 ${escapeHtml(v.alias||"Adulto")}</span><button class="famQuitar" data-id="${v.id}">Quitar</button></div>`).join("");
+      box.querySelectorAll(".famQuitar").forEach(b=>b.onclick=()=>revocarVinculo(+b.dataset.id, b));
+    }catch(e){ box.innerHTML=""; }
+  }
+  async function revocarVinculo(id, btn){
+    if(!confirm("¿Quitarle el acceso a este adulto?")) return;
+    if(btn){ btn.disabled=true; btn.textContent="…"; }
+    try{ await fetch(API_FAMILIA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"revocar", token:SESION.token, id})}); }catch(_){}
+    cargarVinculos();
+  }
+  $("#btnFamilia").onclick = abrirFamilia;
+  $("#btnCerrarFamilia").onclick = cerrarFamilia;
+  $("#familiaModal").onclick = (e)=>{ if(e.target===$("#familiaModal")) cerrarFamilia(); };
+
   $("#btnSalir").onclick = ()=>{
     store.del("sesion"); SESION=null; origen="actual";
     materiaSel=null; temaSel=null; $("#results").innerHTML="";

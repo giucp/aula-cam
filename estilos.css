@@ -100,6 +100,31 @@
   #juegoFrameWrap iframe{width:100%;height:100%;border:0;display:block}
   body.juegoAbierto{overflow:hidden}
 
+  /* tarjeta Familia (dar acceso a un adulto): teal amistoso, distinto de lo académico */
+  #familiaWrap{margin:16px 0 2px}
+  .destacada.familia{background:linear-gradient(120deg,#0E9486,#12B5A4 55%,#3FD0B0);box-shadow:0 16px 30px -12px rgba(14,148,134,.6)}
+  /* modal Familia: hoja centrada sobre un velo */
+  .famOverlay{position:fixed;inset:0;z-index:9998;background:rgba(30,16,36,.5);display:flex;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
+  .famOverlay.hidden{display:none}
+  .famSheet{position:relative;background:var(--surface);border-radius:22px;max-width:420px;width:100%;padding:24px 20px 20px;box-shadow:var(--shadow);max-height:92vh;overflow-y:auto;margin:auto}
+  .famClose{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;border:none;background:#F3EEF3;color:var(--muted);font-size:1rem;cursor:pointer;font-family:"Fredoka"}
+  .famClose:active{transform:scale(.94)}
+  .famEyebrow{font-family:"Fredoka";font-weight:600;font-size:.9rem;color:var(--teal-dark);margin:0 0 2px}
+  .famTit{font-family:"Fredoka";font-weight:600;font-size:1.35rem;color:var(--ink);margin:0 0 8px}
+  .famTxt{font-size:.95rem;color:var(--ink);margin:0 0 4px;line-height:1.5}
+  .famCard{background:#FBF7FB;border:1px solid var(--line);border-radius:18px;padding:16px;text-align:center;margin-top:14px}
+  .famQR{width:184px;height:184px;image-rendering:pixelated;border-radius:12px;background:#fff;padding:8px;box-shadow:var(--shadow-xs)}
+  .famCode{font-family:"Fredoka";font-weight:600;font-size:1.7rem;letter-spacing:.12em;color:var(--grape);margin:10px 0 4px}
+  .famMini{font-family:"Fredoka";font-weight:600;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+  .famHint{font-size:.82rem;color:var(--muted);margin:8px 0 0;line-height:1.4}
+  .famBtns{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .famBtns .otros{font-size:.92rem;padding:9px 15px}
+  .famVin{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 13px;background:#FBF7FB;border:1px solid var(--line);border-radius:14px;margin-top:8px}
+  .famVinNom{font-weight:700}
+  .famQuitar{border:2px solid #F6C6D2;background:#fff;color:var(--bad);font-family:"Fredoka";font-weight:600;font-size:.85rem;padding:6px 13px;border-radius:12px;cursor:pointer}
+  .famQuitar:active{transform:scale(.96)}
+  body.modalAbierto{overflow:hidden}
+
   /* presentación del espacio Cumbre (#paneCumbre) */
   .cumHero{text-align:center;background:linear-gradient(160deg,#3B2B4A,#5A3AAF);color:#fff;border-radius:24px;padding:26px 20px 22px;margin-bottom:18px;box-shadow:0 18px 34px -14px rgba(59,43,74,.7)}
   .cumMonte{font-size:2.7rem;line-height:1}

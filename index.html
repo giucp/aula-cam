@@ -128,6 +128,16 @@
 
       <!-- últimas notas + refuerzo (solo si hay notas registradas) -->
       <div id="notasInicio"></div>
+
+      <!-- Familia: dar acceso a un adulto para que vea el progreso (solo lectura) -->
+      <div id="familiaWrap">
+        <p class="cumEyebrow">👨‍👩‍👧 Para tu familia</p>
+        <button class="destacada familia" id="btnFamilia">
+          <span class="dIcon">👀</span>
+          <span class="dTxt"><b>Dar acceso a un adulto</b><small>Que tu mamá o papá vea lo que hacés (solo mirar)</small></span>
+          <span class="dArrow">›</span>
+        </button>
+      </div>
     </div>
 
     <!-- ═══ pestaña AGENDA: tareas + horario ═══ -->
@@ -328,6 +338,14 @@
   <div id="juegoOverlay" class="hidden">
     <button id="btnCerrarJuego" class="juegoCerrar">✕ Volver a Chispa</button>
     <div id="juegoFrameWrap"></div>
+  </div>
+
+  <!-- Familia: modal para invitar a un adulto (crea un enlace/QR) y ver/quitar accesos -->
+  <div id="familiaModal" class="hidden famOverlay">
+    <div class="famSheet">
+      <button class="famClose" id="btnCerrarFamilia" aria-label="Cerrar">✕</button>
+      <div id="famBody"></div>
+    </div>
   </div>
 
 </div>

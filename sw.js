@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v53"; // v53: el SW ignora /familia* (panel de padres, app aparte)
+const VERSION = "aulacam-v54"; // v54: boton "Familia" en Inicio (invitar a un adulto con enlace/QR) + modal
 const SHELL = [
   "/",
   "/index.html",
