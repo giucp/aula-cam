@@ -13,7 +13,10 @@
 <meta name="apple-mobile-web-app-title" content="Familia · Chispa" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<!-- fuentes NO bloqueantes: la página renderiza al toque con la tipografía del sistema y
+     cambia a Fredoka/Nunito cuando llegan (clave en redes lentas: no espera a Google) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" /></noscript>
 <style>
   :root{
     --mango:#FF6B3D;--mango-dark:#E8511F;--teal:#12B5A4;--teal-dark:#0E9486;--sun:#FFC83D;
@@ -102,6 +105,9 @@
   .vincular .codeIn::placeholder{color:#C9B9CE;letter-spacing:.12em}
   .vincErr{color:var(--bad);font-weight:700;font-size:.9rem;margin:0 0 12px}
   .vincular .btn{min-width:160px}
+  .scanSub{color:var(--muted);font-size:.85rem;margin:12px 0 8px}
+  .scanWrap video{width:100%;max-width:320px;aspect-ratio:1/1;object-fit:cover;border-radius:20px;background:#0A0A1E;display:block;margin:0 auto}
+  .scanMsg{color:var(--muted);font-weight:700;margin:14px 0}
   .foot{text-align:center;color:var(--muted);font-size:.78rem;margin-top:22px}
   .skel{height:120px;border-radius:var(--radius);background:linear-gradient(100deg,#F3EEF3,#FAF6FA,#F3EEF3);background-size:200% 100%;animation:sk 1.3s infinite}
   @keyframes sk{0%{background-position:200% 0}100%{background-position:-200% 0}}

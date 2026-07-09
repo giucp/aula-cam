@@ -81,25 +81,25 @@ function setActivo(i) { localStorage.setItem(KEY_ACTIVO, String(i)); }
 // ───────── vincular con código (pantalla + canje) ─────────
 // Necesario para iOS: el ícono de "Agregar a inicio" tiene su propio almacenamiento, así que
 // hay que vincularlo escribiendo el código DENTRO de la app (el código sirve 24 h y varias veces).
+function hayCamara() { return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia); }
 function mostrarVincular(volver, errMsg) {
   app.innerHTML =
     `<div class="estado vincular">
       <div class="em">🔗</div>
-      <h2>Entrá con tu código</h2>
-      <p>Escribí el código que te dio tu hijo (Chispa → Familia → Invitar), o escaneá su QR.</p>
+      <h2>Vinculá tu acceso</h2>
+      <p>Usá el código que te dio tu hijo (Chispa → Familia → Invitar): escaneá el QR o escribilo.</p>
       ${errMsg ? `<p class="vincErr">${esc(errMsg)}</p>` : ""}
+      ${hayCamara() ? `<button class="btn" id="scanGo">📷 Escanear QR con la cámara</button><p class="scanSub">o escribí el código:</p>` : ""}
       <input id="codeInput" class="codeIn" autocapitalize="characters" autocomplete="off" spellcheck="false" maxlength="8" placeholder="Ej: ABCD2345" />
-      <button class="btn" id="codeGo">Entrar</button>
-      <p class="foot" style="margin-top:20px">📱 <b>En iPhone</b>, para que quede en el ícono: primero "Agregar a inicio", después abrí el ícono y escribí el código acá. El mismo código sirve por 24 horas.</p>
+      <button class="btn ${hayCamara() ? "ghost" : ""}" id="codeGo">Entrar con el código</button>
+      <p class="foot" style="margin-top:20px">📱 <b>En iPhone</b>, para que quede en el ícono: primero "Agregar a inicio", después abrí el ícono y vinculá acá. El mismo código sirve por 24 horas.</p>
       ${volver ? '<button class="btn ghost" id="codeBack" style="margin-top:10px">← Volver</button>' : ""}
     </div>`;
   const inp = document.getElementById("codeInput"), go = document.getElementById("codeGo");
-  const intentar = () => vincularConCodigo(inp.value);
-  go.onclick = intentar;
-  inp.addEventListener("keydown", (e) => { if (e.key === "Enter") intentar(); });
-  try { inp.focus(); } catch (e) {}
-  const back = document.getElementById("codeBack");
-  if (back) back.onclick = () => cargarYrender();
+  go.onclick = () => vincularConCodigo(inp.value);
+  inp.addEventListener("keydown", (e) => { if (e.key === "Enter") vincularConCodigo(inp.value); });
+  const scan = document.getElementById("scanGo"); if (scan) scan.onclick = escanearQR;
+  const back = document.getElementById("codeBack"); if (back) back.onclick = () => cargarYrender();
 }
 async function vincularConCodigo(code) {
   code = String(code || "").trim().toUpperCase();
@@ -108,6 +108,57 @@ async function vincularConCodigo(code) {
   const { d } = await api({ accion: "canjear", code });
   if (d && d.ok && d.token) { setActivo(addNino(d.token, d.nino)); cargarYrender(); }
   else mostrarVincular(getNinos().length > 0, (d && d.error) || "No pudimos entrar. Probá de nuevo.");
+}
+
+// ───────── escanear el QR con la cámara (jsQR, se carga perezosamente) ─────────
+let SCAN_STREAM = null, SCAN_RAF = null;
+function pararScan() {
+  if (SCAN_RAF) { cancelAnimationFrame(SCAN_RAF); SCAN_RAF = null; }
+  if (SCAN_STREAM) { SCAN_STREAM.getTracks().forEach((t) => t.stop()); SCAN_STREAM = null; }
+}
+function cargarJsQR() {
+  if (window.jsQR) return Promise.resolve();
+  return new Promise((res, rej) => { const s = document.createElement("script"); s.src = "jsQR.js"; s.onload = res; s.onerror = rej; document.head.appendChild(s); });
+}
+function codeDeTexto(txt) {
+  try { const u = new URL(txt); const c = u.searchParams.get("c"); if (c) return c.toUpperCase(); } catch (e) {}
+  const m = String(txt).match(/[A-Za-z2-9]{6,8}/); return m ? m[0].toUpperCase() : null;
+}
+async function escanearQR() {
+  app.innerHTML =
+    `<div class="estado scanWrap">
+      <video id="scanVid" playsinline muted></video>
+      <p class="scanMsg">Apuntá la cámara al código QR</p>
+      <button class="btn ghost" id="scanCancel">Cancelar</button>
+    </div>`;
+  document.getElementById("scanCancel").onclick = () => { pararScan(); mostrarVincular(getNinos().length > 0); };
+  try {
+    await cargarJsQR();
+    if (!window.jsQR) throw new Error("qr");
+    SCAN_STREAM = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+    const vid = document.getElementById("scanVid");
+    if (!vid) { pararScan(); return; }
+    vid.srcObject = SCAN_STREAM; await vid.play();
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    const tick = () => {
+      if (!SCAN_STREAM) return;
+      if (vid.readyState >= vid.HAVE_CURRENT_DATA && vid.videoWidth) {
+        canvas.width = vid.videoWidth; canvas.height = vid.videoHeight;
+        ctx.drawImage(vid, 0, 0, canvas.width, canvas.height);
+        let img = null; try { img = ctx.getImageData(0, 0, canvas.width, canvas.height); } catch (e) {}
+        if (img) {
+          const res = window.jsQR(img.data, img.width, img.height, { inversionAttempts: "dontInvert" });
+          if (res && res.data) { const code = codeDeTexto(res.data); if (code) { pararScan(); return vincularConCodigo(code); } }
+        }
+      }
+      SCAN_RAF = requestAnimationFrame(tick);
+    };
+    SCAN_RAF = requestAnimationFrame(tick);
+  } catch (e) {
+    pararScan();
+    mostrarVincular(getNinos().length > 0, "No pudimos usar la cámara. Escribí el código a mano.");
+  }
 }
 
 const PANEL_CACHE = {}; // token -> data del panel
