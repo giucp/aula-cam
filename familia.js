@@ -181,8 +181,17 @@ async function escanearQR() {
   }
 }
 
-const PANEL_CACHE = {}; // token -> data del panel
+const PANEL_CACHE = {}; // token -> data del panel (en memoria, esta sesión)
 let ACT_DIAS = [];      // actividad del hijo activo, agrupada por día (para el selector)
+
+// Copia local persistente del último panel (por token): si la red falla, mostramos ESTO
+// (con aviso) en vez de un error, así el padre SIEMPRE ve algo útil. Nunca desvincula.
+function panelKey(token) { return "familia_panel_" + token; }
+function guardarPanel(token, d) { try { localStorage.setItem(panelKey(token), JSON.stringify({ ts: Date.now(), d })); } catch (e) {} }
+function leerPanel(token) { try { const o = JSON.parse(localStorage.getItem(panelKey(token)) || "null"); return o && o.d ? o : null; } catch (e) { return null; } }
+function staleTxt(ts) { try { const iso = new Date(ts).toISOString(); return ` (${tituloDia(iso).toLowerCase()} ${hora(iso)})`; } catch (e) { return ""; } }
+// al recuperar conexión, si estamos en la pantalla "sin conexión", reintentar solo
+window.addEventListener("online", () => { if (document.getElementById("estadoRed") && getNinos().length) cargarYrender(true); });
 
 async function cargarYrender(recargar) {
   const ninos = getNinos();
@@ -201,8 +210,14 @@ async function cargarYrender(recargar) {
       if (!arr.length) return estadoError("El acceso caducó", (res.d && res.d.error) || "Pedile a tu hijo un enlace nuevo.", false);
       return cargarYrender();
     }
-    if (!(res.d && res.d.ok)) return estadoRed(() => cargarYrender(true));
-    d = res.d; PANEL_CACHE[nino.token] = d;
+    if (!(res.d && res.d.ok)) {
+      // fallo de red/servidor: si hay una copia guardada de antes, mostrarla (con aviso);
+      // si no, pantalla de reconexión. NUNCA desvincula.
+      const cache = leerPanel(nino.token);
+      if (cache) { PANEL_CACHE[nino.token] = cache.d; return render(cache.d, getNinos(), getActivo(), cache.ts); }
+      return estadoRed(() => cargarYrender(true));
+    }
+    d = res.d; PANEL_CACHE[nino.token] = d; guardarPanel(nino.token, d);
     // refrescar nombre/grado guardados con lo que dice el servidor
     if (d.perfil) { const a = getNinos(); if (a[i]) { a[i].nombre = d.perfil.nombre || a[i].nombre; a[i].grado = d.perfil.grado || a[i].grado; setNinos(a); } }
   }
@@ -215,14 +230,16 @@ function estadoError(titulo, msg, reintentar) {
       ${reintentar ? '<button class="btn" onclick="location.reload()">Reintentar</button>' : ""}</div>
     <p class="foot">Chispa · Panel de familia</p>`;
 }
-// problema de conexión (NO borra ningún vínculo): mensaje amable + reintentar
+// problema de conexión (NO borra ningún vínculo): mensaje amable + salidas
 function estadoRed(onRetry) {
   app.innerHTML =
-    `<div class="estado"><div class="em">📶</div><h2>No pudimos cargar</h2>
+    `<div class="estado" id="estadoRed"><div class="em">📶</div><h2>No pudimos cargar</h2>
       <p>Parece un problema de conexión. Tus accesos siguen guardados: probá de nuevo.</p>
-      <button class="btn" id="btnRetry">Reintentar</button></div>
+      <button class="btn" id="btnRetry">Reintentar</button>
+      <button class="btn ghost" id="btnRedCodigo" style="margin-top:10px">Entrar con un código</button></div>
     <p class="foot">Chispa · Panel de familia</p>`;
   const b = document.getElementById("btnRetry"); if (b) b.onclick = onRetry || (() => location.reload());
+  const c = document.getElementById("btnRedCodigo"); if (c) c.onclick = () => mostrarVincular(getNinos().length > 0);
 }
 
 // ───────── selector de hijos (solo si hay 2+) ─────────
@@ -239,7 +256,7 @@ function wireTabs(ninos) {
 }
 
 // ───────── render principal ─────────
-function render(d, ninos, i) {
+function render(d, ninos, i, staleTs) {
   const p = d.perfil || {};
   const nombre = p.nombre || (ninos[i] && ninos[i].nombre) || "tu hijo";
   const chips = [];
@@ -249,6 +266,7 @@ function render(d, ninos, i) {
 
   const html = [
     tabsHijos(ninos, i),
+    staleTs ? `<div class="staleBanner">📶 Sin conexión — te mostramos lo último que vimos${staleTxt(staleTs)}. <span class="staleRetry" id="staleRetry">Reintentar</span></div>` : "",
     `<div class="hdr">
       <p class="hi" style="color:rgba(255,255,255,.85)">Panel de familia</p>
       <h1>${esc(primerNombre(nombre))}</h1>
@@ -276,6 +294,7 @@ function render(d, ninos, i) {
   document.getElementById("btnAgregarHijo").onclick = () => mostrarVincular(true);
   document.getElementById("btnRecargar").onclick = () => cargarYrender(true);
   document.getElementById("btnSalir").onclick = desvincularActivo;
+  const sr = document.getElementById("staleRetry"); if (sr) sr.onclick = () => cargarYrender(true);
 }
 
 function primerNombre(n) { const p = String(n || "").trim().split(/\s+/); return p.slice(0, 2).join(" ") || "tu hijo"; }

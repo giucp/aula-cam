@@ -3,7 +3,7 @@
 // /familia*). Estrategia igual a la del aula: cascarón stale-while-revalidate (abre
 // INSTANTÁNEO desde caché aunque la red esté lenta, y se actualiza en segundo plano);
 // las APIs (/api/*) SIEMPRE van a la red (datos en vivo, nunca se cachean).
-const VERSION = "familia-v1";
+const VERSION = "familia-v2"; // v2: datos en cache (sin conexion muestra lo ultimo) + icono sin maskable
 const SHELL = ["/familia.html", "/familia.js", "/jsQR.js"];
 
 self.addEventListener("install", (e) => {

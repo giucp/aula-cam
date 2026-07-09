@@ -1,4 +1,5 @@
 {
+  "id": "/familia",
   "name": "Chispa · Familia",
   "short_name": "Familia",
   "description": "Mirá lo que hace tu hijo en Chispa: prácticas, quiz, exámenes, notas y agenda.",
@@ -8,9 +9,7 @@
   "background_color": "#FBF7FB",
   "theme_color": "#12B5A4",
   "icons": [
-    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
-    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
   ]
 }
