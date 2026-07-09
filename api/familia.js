@@ -72,19 +72,6 @@ export default async function handler(req, res) {
   const b = req.body || {};
   const accion = b.accion;
 
-  // telemetría mínima (fire-and-forget): registra que el request LLEGÓ, con qué acción y
-  // desde qué navegador — para diagnosticar remoto si los teléfonos llegan al servidor o no.
-  try {
-    fetch(`${cfg.url}/rest/v1/familia_log`, {
-      method: "POST", headers: hdr(cfg, { "Content-Type": "application/json" }),
-      body: JSON.stringify({
-        accion: String(accion || "?").slice(0, 24),
-        ua: String((req.headers && req.headers["user-agent"]) || "").slice(0, 140),
-        origen: String((req.headers && (req.headers.origin || req.headers.referer)) || "").slice(0, 80),
-      }),
-    }).catch(() => {});
-  } catch (e) {}
-
   try {
     // ── NIÑO: genera una invitación (código corto, válido 24 h, 1 solo uso) ──
     if (accion === "invitar") {
