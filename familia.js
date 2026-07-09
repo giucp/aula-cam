@@ -3,7 +3,10 @@
 // Flujo: ?c=CODIGO se canjea por un token persistente que se agrega a la lista de hijos de este
 // dispositivo; de ahí en más se pide el panel del hijo activo. Todo contra /api/familia.
 
-const API = "/api/familia";
+// El panel del padre puede vivir en su propio dominio (chispa-familia.vercel.app); igual
+// llama a la API de aula-cam (donde están las llaves de la BD). Absoluto = funciona desde
+// cualquier dominio. La API permite estos orígenes por CORS (ver api/familia.js).
+const API = "https://aula-cam.vercel.app/api/familia";
 const KEY_NINOS = "familia_ninos";       // [{token, nombre, grado}]
 const KEY_ACTIVO = "familia_activo";     // índice del hijo que se está viendo
 const KEY_TOKEN_VIEJO = "familia_ptoken"; // migración desde la versión de 1 solo hijo

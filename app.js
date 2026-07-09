@@ -824,12 +824,13 @@
     const box=$("#famInviteBox"); if(!box) return;
     await cargarQR().catch(()=>{});
     const img = window.qrcode ? qrDataURL(link) : null;
+    let donde="el enlace"; try{ donde=new URL(link).host+"/familia"; }catch(_){}
     box.innerHTML =
       `<div class="famCard">
         <p class="famMini">Mostráselo a tu adulto o compartilo</p>
         ${img?`<img class="famQR" src="${img}" alt="Código QR" />`:""}
         <div class="famCode">${escapeHtml(code)}</div>
-        <p class="famHint">Que abra <b>aula-cam.vercel.app/familia</b> y escriba el código, o que escanee el QR.</p>
+        <p class="famHint">Que abra <b>${escapeHtml(donde)}</b> y escriba el código, o que escanee el QR.</p>
         <div class="famBtns"><button class="otros" id="btnCompartir">📤 Compartir</button><button class="otros" id="btnCopiar">📋 Copiar</button></div>
         <p class="famHint">Vale 24 horas y sirve en más de un teléfono (mamá, papá, o el ícono de inicio del iPhone).</p>
       </div>`;

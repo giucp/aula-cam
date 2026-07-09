@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v56"; // v56: activate solo limpia caches aulacam-* (no pisar el cache familia-* del panel de padres)
+const VERSION = "aulacam-v57"; // v57: texto del invite toma el dominio real del link (soporte panel de padres en dominio aparte)
 const SHELL = [
   "/",
   "/index.html",

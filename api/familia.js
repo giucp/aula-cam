@@ -16,6 +16,16 @@ import crypto from "crypto";
 
 const BASE = "https://aulacam.uearzobispomendez.edu.ve";
 const ORIGIN = "https://aula-cam.vercel.app";
+// Dominio donde vive el panel del padre (para el link de invitación). Se puede mover a otro
+// dominio con la env FAMILIA_ORIGIN (en el proyecto aula-cam); si no está, cae a aula-cam.
+const FAMILIA_ORIGIN = process.env.FAMILIA_ORIGIN || ORIGIN;
+// CORS: el panel del padre puede estar en otro *.vercel.app y llama a esta API. Reflejamos
+// el origen si es aula-cam o cualquier *.vercel.app (los tokens/códigos son el verdadero
+// candado; CORS solo dice qué webs pueden llamar desde el navegador).
+function corsOrigin(req) {
+  const o = (req.headers && req.headers.origin) || "";
+  return (o === ORIGIN || /^https:\/\/[a-z0-9-]+\.vercel\.app$/.test(o)) ? o : ORIGIN;
+}
 
 function supabaseCfg() {
   const url = process.env.SUPABASE_URL;
@@ -49,7 +59,8 @@ function codigoCorto(n = 8) {
 function tokenLargo() { return crypto.randomBytes(24).toString("base64url"); }
 
 export default async function handler(req, res) {
-  res.setHeader("Access-Control-Allow-Origin", ORIGIN);
+  res.setHeader("Access-Control-Allow-Origin", corsOrigin(req));
+  res.setHeader("Vary", "Origin");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   if (req.method === "OPTIONS") return res.status(200).end();
@@ -77,7 +88,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({ usuario_id: uid, code, code_expira: expira, alias }),
       });
       if (!r.ok) throw new Error(`invitar: ${r.status} ${await r.text()}`);
-      return res.status(200).json({ ok: true, code, link: `${ORIGIN}/familia.html?c=${code}` });
+      return res.status(200).json({ ok: true, code, link: `${FAMILIA_ORIGIN}/familia.html?c=${code}` });
     }
 
     // ── NIÑO: lista sus accesos otorgados (para verlos / revocarlos) ──
