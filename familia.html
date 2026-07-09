@@ -124,9 +124,26 @@
     <p class="cargando">Cargando el panel…</p>
   </div>
   <script>
-    // SW propio del panel (scope /familia: NO toca el del aula del niño). Cachea el
-    // cascarón → abrir desde el ícono es instantáneo aunque la red esté lenta.
-    if ("serviceWorker" in navigator) { try { navigator.serviceWorker.register("/familia-sw.js", { scope: "/familia" }).catch(function(){}); } catch (e) {} }
+    // SW propio del panel (scope /familia: NO toca el del aula del niño en aula-cam).
+    // En el dominio del panel (chispa-familia), ANTES de registrar, desregistramos cualquier
+    // SW ajeno que haya quedado de cuando la raíz servía la app del niño (scope "/"): esos
+    // SW viejos interceptaban la página con estrategias que no son de acá.
+    if ("serviceWorker" in navigator) {
+      try {
+        var esDominioPanel = !/aula-cam/.test(location.host);
+        var listo = Promise.resolve();
+        if (esDominioPanel && navigator.serviceWorker.getRegistrations) {
+          listo = navigator.serviceWorker.getRegistrations().then(function (regs) {
+            return Promise.all(regs.map(function (r) {
+              if (r.scope.indexOf("/familia") === -1) return r.unregister().catch(function(){});
+            }));
+          }).catch(function(){});
+        }
+        listo.then(function () {
+          navigator.serviceWorker.register("/familia-sw.js", { scope: "/familia" }).catch(function(){});
+        });
+      } catch (e) {}
+    }
   </script>
   <script src="familia.js"></script>
 </body>

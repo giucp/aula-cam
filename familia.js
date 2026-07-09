@@ -29,7 +29,7 @@ function tituloDia(iso) {
 }
 function hora(iso) { try { return FMT_HORA.format(new Date(iso)).replace(/\s?[.]?\s?m[.]?/i, (m) => m.trim()); } catch (e) { return ""; } }
 
-const FAMILIA_V = "v6"; // versión visible del panel (footer + pantalla de error) para saber qué código corre
+const FAMILIA_V = "v7"; // versión visible del panel (carga + footer + errores) para saber qué código corre
 // fetch con TIMEOUT (25 s): en redes lentas un fetch sin límite puede colgarse minutos
 // y dejar la página "en blanco". Si falla la red devuelve status 0 (NUNCA lanza): el que
 // llama decide qué mostrar, y un fallo de red JAMÁS se confunde con "token inválido".
@@ -37,7 +37,7 @@ const FAMILIA_V = "v6"; // versión visible del panel (footer + pantalla de erro
 // (p. ej. un service worker que se actualiza puede matar el request en vuelo al abrir).
 async function apiUna(body) {
   const ctl = new AbortController();
-  const t = setTimeout(() => ctl.abort(), 25000);
+  const t = setTimeout(() => ctl.abort(), 10000);
   try {
     const r = await fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), signal: ctl.signal });
     const d = await r.json().catch(() => null);
@@ -224,7 +224,7 @@ async function cargarYrender(recargar) {
   // 1) pintar YA lo que tengamos; si no hay nada, esqueleto de carga
   try {
     if (cacheD) render(cacheD, ninos, i);
-    else { app.innerHTML = tabsHijos(ninos, i) + '<div class="skel"></div><p class="cargando">Cargando el panel…</p>'; wireTabs(ninos); }
+    else { app.innerHTML = tabsHijos(ninos, i) + '<div class="skel"></div><p class="cargando">Cargando el panel… · ' + FAMILIA_V + "</p>"; wireTabs(ninos); }
   } catch (e) { app.innerHTML = '<div class="skel"></div>'; }
   // 2) actualizar de la red (en segundo plano si ya se pintó algo)
   const res = await api({ accion: "panel", ptoken: nino.token });
