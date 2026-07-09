@@ -11,6 +11,12 @@ const KEY_NINOS = "familia_ninos";       // [{token, nombre, grado}]
 const KEY_ACTIVO = "familia_activo";     // índice del hijo que se está viendo
 const KEY_TOKEN_VIEJO = "familia_ptoken"; // migración desde la versión de 1 solo hijo
 const app = document.getElementById("app");
+// ⚠️ Declaradas ARRIBA del arranque: boot llama a cargarYrender SÍNCRONO cuando no hay ?c=
+// en la URL, y estas variables se usan en ese primer tramo. Tenerlas más abajo causaba
+// "Cannot access 'PANEL_CACHE' before initialization" → página muerta al recargar/reabrir
+// (el bug que colgó el panel desde el día 1 en todos los dispositivos).
+const PANEL_CACHE = {}; // token -> data del panel (en memoria, esta sesión)
+let ACT_DIAS = [];      // actividad del hijo activo, agrupada por día (para el selector)
 
 const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
@@ -29,7 +35,7 @@ function tituloDia(iso) {
 }
 function hora(iso) { try { return FMT_HORA.format(new Date(iso)).replace(/\s?[.]?\s?m[.]?/i, (m) => m.trim()); } catch (e) { return ""; } }
 
-const FAMILIA_V = "v7"; // versión visible del panel (carga + footer + errores) para saber qué código corre
+const FAMILIA_V = "v8"; // versión visible del panel (carga + footer + errores) para saber qué código corre
 // fetch con TIMEOUT (25 s): en redes lentas un fetch sin límite puede colgarse minutos
 // y dejar la página "en blanco". Si falla la red devuelve status 0 (NUNCA lanza): el que
 // llama decide qué mostrar, y un fallo de red JAMÁS se confunde con "token inválido".
@@ -105,9 +111,16 @@ function setActivo(i) { localStorage.setItem(KEY_ACTIVO, String(i)); }
       if (getNinos().length) history.replaceState(null, "", location.pathname);
     }
     if (!getNinos().length) return mostrarVincular(false);
-    cargarYrender();
+    await cargarYrender();   // await: si algo revienta adentro, cae al catch y SE VE en pantalla
   } catch (e) { estadoRed(() => location.reload(), "error interno: " + (e && e.message || e)); }
 })();
+// Guardián final: si una promesa muere sin capturar mientras la pantalla sigue en "cargando",
+// mostramos el ERROR REAL (con versión) en vez de dejar la página clavada en silencio.
+window.addEventListener("unhandledrejection", (ev) => {
+  const r = ev && ev.reason;
+  if (document.querySelector(".skel") || document.querySelector(".cargando"))
+    estadoRed(() => location.reload(), "error interno: " + ((r && r.message) || r));
+});
 
 // ───────── vincular con código (pantalla + canje) ─────────
 // Necesario para iOS: el ícono de "Agregar a inicio" tiene su propio almacenamiento, así que
@@ -192,9 +205,6 @@ async function escanearQR() {
     mostrarVincular(getNinos().length > 0, "No pudimos usar la cámara. Escribí el código a mano.");
   }
 }
-
-const PANEL_CACHE = {}; // token -> data del panel (en memoria, esta sesión)
-let ACT_DIAS = [];      // actividad del hijo activo, agrupada por día (para el selector)
 
 // Copia local persistente del último panel (por token): si la red falla, mostramos ESTO
 // (con aviso) en vez de un error, así el padre SIEMPRE ve algo útil. Nunca desvincula.

@@ -3,7 +3,7 @@
 // VIEJO cacheado (los arreglos no llegaban al usuario hasta 2 aperturas después). Ahora:
 // si hay red, SIEMPRE la última versión; la caché es solo respaldo OFFLINE. El cascarón es
 // chico y las fuentes no bloquean, así que abrir sigue siendo rápido. /api/* nunca se cachea.
-const VERSION = "familia-v7"; // v7: telemetría + versión visible en la carga + timeout 10s + limpieza de SW ajenos
+const VERSION = "familia-v8"; // v8: FIX RAIZ — PANEL_CACHE declarado antes de boot (TDZ mataba el JS al abrir sin ?c=)
 // (skipWaiting+claim mataba el request del panel EN VUELO cada vez que había versión nueva del SW:
 //  la página cargaba, el SW nuevo reclamaba el control a mitad del fetch y el fetch moría → "No pudimos
 //  cargar" tras cada deploy. Como el cascarón es network-first, el código fresco NO depende del SW:
