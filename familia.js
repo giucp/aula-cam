@@ -29,11 +29,13 @@ function tituloDia(iso) {
 }
 function hora(iso) { try { return FMT_HORA.format(new Date(iso)).replace(/\s?[.]?\s?m[.]?/i, (m) => m.trim()); } catch (e) { return ""; } }
 
-const FAMILIA_V = "v5"; // versión visible del panel (footer + pantalla de error) para saber qué código corre
+const FAMILIA_V = "v6"; // versión visible del panel (footer + pantalla de error) para saber qué código corre
 // fetch con TIMEOUT (25 s): en redes lentas un fetch sin límite puede colgarse minutos
 // y dejar la página "en blanco". Si falla la red devuelve status 0 (NUNCA lanza): el que
 // llama decide qué mostrar, y un fallo de red JAMÁS se confunde con "token inválido".
-async function api(body) {
+// Las LECTURAS (panel/vinculos) se reintentan solas 1 vez si la primera llamada muere
+// (p. ej. un service worker que se actualiza puede matar el request en vuelo al abrir).
+async function apiUna(body) {
   const ctl = new AbortController();
   const t = setTimeout(() => ctl.abort(), 25000);
   try {
@@ -43,6 +45,15 @@ async function api(body) {
   } catch (e) {
     return { status: 0, d: null };
   } finally { clearTimeout(t); }
+}
+async function api(body) {
+  const res = await apiUna(body);
+  const esLectura = body && (body.accion === "panel" || body.accion === "vinculos");
+  if (res.status === 0 && esLectura) {
+    await new Promise((ok) => setTimeout(ok, 900));
+    return apiUna(body);
+  }
+  return res;
 }
 
 const MODO = {

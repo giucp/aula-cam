@@ -3,17 +3,20 @@
 // VIEJO cacheado (los arreglos no llegaban al usuario hasta 2 aperturas después). Ahora:
 // si hay red, SIEMPRE la última versión; la caché es solo respaldo OFFLINE. El cascarón es
 // chico y las fuentes no bloquean, así que abrir sigue siendo rápido. /api/* nunca se cachea.
-const VERSION = "familia-v5"; // v5: abrir pinta el panel guardado al instante (red solo actualiza en 2do plano) + detalle de error visible
+const VERSION = "familia-v6"; // v6: SIN skipWaiting/claim — un SW nuevo NUNCA toma control de una página abierta
+// (skipWaiting+claim mataba el request del panel EN VUELO cada vez que había versión nueva del SW:
+//  la página cargaba, el SW nuevo reclamaba el control a mitad del fetch y el fetch moría → "No pudimos
+//  cargar" tras cada deploy. Como el cascarón es network-first, el código fresco NO depende del SW:
+//  el SW nuevo puede esperar tranquilamente a que se cierren las pestañas.)
 const SHELL = ["/familia.html", "/familia.js", "/jsQR.js"];
 
 self.addEventListener("install", (e) => {
-  e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL)));
 });
 self.addEventListener("activate", (e) => {
   e.waitUntil(
     caches.keys()
       .then((ks) => Promise.all(ks.filter((k) => k.startsWith("familia-") && k !== VERSION).map((k) => caches.delete(k))))
-      .then(() => self.clients.claim())
   );
 });
 self.addEventListener("fetch", (e) => {
