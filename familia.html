@@ -7,6 +7,7 @@
 <meta name="description" content="Mirá exactamente qué hizo tu hijo en Chispa: prácticas, quiz, exámenes, notas y agenda." />
 <meta name="theme-color" content="#12B5A4" />
 <meta name="robots" content="noindex" />
+<link rel="manifest" href="/familia.webmanifest" />
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -110,6 +111,7 @@
   .scanMsg{color:var(--muted);font-weight:700;margin:14px 0}
   .foot{text-align:center;color:var(--muted);font-size:.78rem;margin-top:22px}
   .skel{height:120px;border-radius:var(--radius);background:linear-gradient(100deg,#F3EEF3,#FAF6FA,#F3EEF3);background-size:200% 100%;animation:sk 1.3s infinite}
+  .cargando{text-align:center;color:var(--muted);font-size:.88rem;margin-top:14px}
   @keyframes sk{0%{background-position:200% 0}100%{background-position:-200% 0}}
   .badge{display:inline-flex;align-items:center;gap:5px;font-family:"Fredoka";font-weight:600;font-size:.74rem;padding:3px 9px;border-radius:999px;background:#F3EEF3;color:var(--muted)}
 </style>
@@ -117,7 +119,13 @@
 <body>
   <div class="wrap" id="app">
     <div class="skel"></div>
+    <p class="cargando">Cargando el panel…</p>
   </div>
+  <script>
+    // SW propio del panel (scope /familia: NO toca el del aula del niño). Cachea el
+    // cascarón → abrir desde el ícono es instantáneo aunque la red esté lenta.
+    if ("serviceWorker" in navigator) { try { navigator.serviceWorker.register("/familia-sw.js", { scope: "/familia" }).catch(function(){}); } catch (e) {} }
+  </script>
   <script src="familia.js"></script>
 </body>
 </html>

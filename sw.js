@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v55"; // v55: texto del invite (codigo sirve 24h/varios telefonos, no 1 solo uso)
+const VERSION = "aulacam-v56"; // v56: activate solo limpia caches aulacam-* (no pisar el cache familia-* del panel de padres)
 const SHELL = [
   "/",
   "/index.html",
@@ -27,7 +27,9 @@ self.addEventListener("install", (e) => {
 self.addEventListener("activate", (e) => {
   e.waitUntil(
     caches.keys()
-      .then((ks) => Promise.all(ks.filter((k) => k !== VERSION).map((k) => caches.delete(k))))
+      // SOLO limpiar cachés propios ("aulacam-*"): el panel de familia tiene su propio SW
+      // y caché ("familia-*") en el mismo origen — no tocarlo.
+      .then((ks) => Promise.all(ks.filter((k) => k.startsWith("aulacam-") && k !== VERSION).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });

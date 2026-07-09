@@ -26,10 +26,19 @@ function tituloDia(iso) {
 }
 function hora(iso) { try { return FMT_HORA.format(new Date(iso)).replace(/\s?[.]?\s?m[.]?/i, (m) => m.trim()); } catch (e) { return ""; } }
 
+// fetch con TIMEOUT (14 s): en redes lentas un fetch sin límite puede colgarse minutos
+// y dejar la página "en blanco". Si falla la red devuelve status 0 (NUNCA lanza): el que
+// llama decide qué mostrar, y un fallo de red JAMÁS se confunde con "token inválido".
 async function api(body) {
-  const r = await fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
-  const d = await r.json().catch(() => ({}));
-  return { status: r.status, d };
+  const ctl = new AbortController();
+  const t = setTimeout(() => ctl.abort(), 14000);
+  try {
+    const r = await fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), signal: ctl.signal });
+    const d = await r.json().catch(() => null);
+    return { status: r.status, d };
+  } catch (e) {
+    return { status: 0, d: null };
+  } finally { clearTimeout(t); }
 }
 
 const MODO = {
@@ -62,21 +71,31 @@ function getActivo() { const n = getNinos(); let i = parseInt(localStorage.getIt
 function setActivo(i) { localStorage.setItem(KEY_ACTIVO, String(i)); }
 
 // ───────── arranque ─────────
+// Blindado: pase lo que pase (error de red, excepción inesperada) el padre SIEMPRE ve
+// algo accionable — nunca una página en blanco ni un esqueleto eterno.
 (async function boot() {
-  migrar();
-  const code = (new URLSearchParams(location.search).get("c") || "").trim();
-  if (code) {
-    const { d } = await api({ accion: "canjear", code });
-    if (d && d.ok && d.token) {
-      setActivo(addNino(d.token, d.nino));
-      history.replaceState(null, "", location.pathname);
-    } else if (!getNinos().length) {
-      return mostrarVincular(false, (d && d.error) || "Ese enlace no es válido o venció. Escribí el código o pedí uno nuevo.");
+  try {
+    migrar();
+    const code = (new URLSearchParams(location.search).get("c") || "").trim();
+    if (code) {
+      const { status, d } = await api({ accion: "canjear", code });
+      if (d && d.ok && d.token) {
+        setActivo(addNino(d.token, d.nino));
+        history.replaceState(null, "", location.pathname);
+      } else if (status === 0 && !getNinos().length) {
+        return estadoRed(() => location.reload());
+      } else if (!getNinos().length) {
+        return mostrarVincular(false, (d && d.error) || "Ese enlace no es válido o venció. Escribí el código o pedí uno nuevo.");
+      }
+      if (getNinos().length) history.replaceState(null, "", location.pathname);
     }
-  }
-  if (!getNinos().length) return mostrarVincular(false);
-  cargarYrender();
+    if (!getNinos().length) return mostrarVincular(false);
+    cargarYrender();
+  } catch (e) { estadoRed(() => location.reload()); }
 })();
+// red de seguridad final: si algo revienta fuera del try, mostrar algo igual
+window.addEventListener("unhandledrejection", () => { if (document.querySelector(".skel")) estadoRed(() => location.reload()); });
+window.addEventListener("error", () => { if (document.querySelector(".skel")) estadoRed(() => location.reload()); });
 
 // ───────── vincular con código (pantalla + canje) ─────────
 // Necesario para iOS: el ícono de "Agregar a inicio" tiene su propio almacenamiento, así que
@@ -105,8 +124,9 @@ async function vincularConCodigo(code) {
   code = String(code || "").trim().toUpperCase();
   if (code.length < 6) return mostrarVincular(getNinos().length > 0, "El código tiene 8 letras y números. Revisalo.");
   const go = document.getElementById("codeGo"); if (go) { go.disabled = true; go.textContent = "Entrando…"; }
-  const { d } = await api({ accion: "canjear", code });
+  const { status, d } = await api({ accion: "canjear", code });
   if (d && d.ok && d.token) { setActivo(addNino(d.token, d.nino)); cargarYrender(); }
+  else if (status === 0) mostrarVincular(getNinos().length > 0, "Parece un problema de conexión. Probá de nuevo en un momento.");
   else mostrarVincular(getNinos().length > 0, (d && d.error) || "No pudimos entrar. Probá de nuevo.");
 }
 
@@ -174,11 +194,14 @@ async function cargarYrender(recargar) {
   let d = PANEL_CACHE[nino.token];
   if (!d) {
     const res = await api({ accion: "panel", ptoken: nino.token });
-    if (res.status === 401 || !(res.d && res.d.ok)) {
+    // SOLO un 401 real (el server dice "token no válido/revocado") desvincula. Un fallo de
+    // red, timeout, 5xx o respuesta rara NUNCA borra el vínculo: se ofrece reintentar.
+    if (res.status === 401) {
       const arr = getNinos().filter((x) => x.token !== nino.token); setNinos(arr); setActivo(0);
       if (!arr.length) return estadoError("El acceso caducó", (res.d && res.d.error) || "Pedile a tu hijo un enlace nuevo.", false);
       return cargarYrender();
     }
+    if (!(res.d && res.d.ok)) return estadoRed(() => cargarYrender(true));
     d = res.d; PANEL_CACHE[nino.token] = d;
     // refrescar nombre/grado guardados con lo que dice el servidor
     if (d.perfil) { const a = getNinos(); if (a[i]) { a[i].nombre = d.perfil.nombre || a[i].nombre; a[i].grado = d.perfil.grado || a[i].grado; setNinos(a); } }
@@ -191,6 +214,15 @@ function estadoError(titulo, msg, reintentar) {
     `<div class="estado"><div class="em">👋</div><h2>${esc(titulo)}</h2><p>${esc(msg)}</p>
       ${reintentar ? '<button class="btn" onclick="location.reload()">Reintentar</button>' : ""}</div>
     <p class="foot">Chispa · Panel de familia</p>`;
+}
+// problema de conexión (NO borra ningún vínculo): mensaje amable + reintentar
+function estadoRed(onRetry) {
+  app.innerHTML =
+    `<div class="estado"><div class="em">📶</div><h2>No pudimos cargar</h2>
+      <p>Parece un problema de conexión. Tus accesos siguen guardados: probá de nuevo.</p>
+      <button class="btn" id="btnRetry">Reintentar</button></div>
+    <p class="foot">Chispa · Panel de familia</p>`;
+  const b = document.getElementById("btnRetry"); if (b) b.onclick = onRetry || (() => location.reload());
 }
 
 // ───────── selector de hijos (solo si hay 2+) ─────────
