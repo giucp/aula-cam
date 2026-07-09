@@ -1,9 +1,9 @@
-// familia-sw.js — Service Worker del PANEL DE FAMILIA (padres). Registrado con scope
-// "/familia" (NO pisa el sw.js del aula del niño, que vive en scope "/" y además ignora
-// /familia*). Estrategia igual a la del aula: cascarón stale-while-revalidate (abre
-// INSTANTÁNEO desde caché aunque la red esté lenta, y se actualiza en segundo plano);
-// las APIs (/api/*) SIEMPRE van a la red (datos en vivo, nunca se cachean).
-const VERSION = "familia-v2"; // v2: datos en cache (sin conexion muestra lo ultimo) + icono sin maskable
+// familia-sw.js — Service Worker del PANEL DE FAMILIA (padres). Scope "/familia".
+// ESTRATEGIA: network-first para el cascarón. Antes era cache-first (SWR) y servía código
+// VIEJO cacheado (los arreglos no llegaban al usuario hasta 2 aperturas después). Ahora:
+// si hay red, SIEMPRE la última versión; la caché es solo respaldo OFFLINE. El cascarón es
+// chico y las fuentes no bloquean, así que abrir sigue siendo rápido. /api/* nunca se cachea.
+const VERSION = "familia-v3";
 const SHELL = ["/familia.html", "/familia.js", "/jsQR.js"];
 
 self.addEventListener("install", (e) => {
@@ -18,34 +18,18 @@ self.addEventListener("activate", (e) => {
 });
 self.addEventListener("fetch", (e) => {
   const req = e.request;
-  if (req.method !== "GET") return;                       // POST /api/familia: siempre red
+  if (req.method !== "GET") return;
   const url = new URL(req.url);
-  if (url.origin !== self.location.origin) return;         // fuentes de Google etc.: que decida el navegador
-  if (url.pathname.startsWith("/api/")) return;            // API: siempre a la red
-
-  // Navegación (abrir la página): caché al instante + revalidar en segundo plano.
-  if (req.mode === "navigate") {
-    e.respondWith(
-      caches.match("/familia.html").then((cached) => {
-        const fresco = fetch(req).then((r) => {
-          if (r && r.ok) { const copia = r.clone(); caches.open(VERSION).then((c) => c.put("/familia.html", copia)); }
-          return r;
-        }).catch(() => cached);
-        return cached || fresco;
-      })
-    );
-    return;
-  }
-  // Assets del panel (familia.js, jsQR.js): mismo trato.
-  if (SHELL.includes(url.pathname)) {
-    e.respondWith(
-      caches.match(url.pathname).then((cached) => {
-        const fresco = fetch(req).then((r) => {
-          if (r && r.ok) { const copia = r.clone(); caches.open(VERSION).then((c) => c.put(url.pathname, copia)); }
-          return r;
-        }).catch(() => cached);
-        return cached || fresco;
-      })
-    );
-  }
+  if (url.origin !== self.location.origin) return;   // API de aula-cam / fuentes: las maneja el navegador
+  if (url.pathname.startsWith("/api/")) return;       // API: siempre red
+  const esNav = req.mode === "navigate";
+  if (!esNav && !SHELL.includes(url.pathname)) return; // otros assets: navegador
+  const key = esNav ? "/familia.html" : url.pathname;
+  // network-first: red primero, caché de respaldo si no hay red.
+  e.respondWith(
+    fetch(req).then((r) => {
+      if (r && r.ok) { const copia = r.clone(); caches.open(VERSION).then((c) => c.put(key, copia)); }
+      return r;
+    }).catch(() => caches.match(key))
+  );
 });

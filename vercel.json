@@ -3,6 +3,10 @@
     "api/generar.js": { "maxDuration": 60 },
     "api/moodle.js": { "maxDuration": 60 }
   },
+  "redirects": [
+    { "source": "/", "has": [{ "type": "host", "value": "chispa-familia.vercel.app" }], "destination": "/familia.html", "permanent": false },
+    { "source": "/index.html", "has": [{ "type": "host", "value": "chispa-familia.vercel.app" }], "destination": "/familia.html", "permanent": false }
+  ],
   "rewrites": [
     { "source": "/familia", "destination": "/familia.html" }
   ]

@@ -193,6 +193,11 @@ function panelKey(token) { return "familia_panel_" + token; }
 function guardarPanel(token, d) { try { localStorage.setItem(panelKey(token), JSON.stringify({ ts: Date.now(), d })); } catch (e) {} }
 function leerPanel(token) { try { const o = JSON.parse(localStorage.getItem(panelKey(token)) || "null"); return o && o.d ? o : null; } catch (e) { return null; } }
 function staleTxt(ts) { try { const iso = new Date(ts).toISOString(); return ` (${tituloDia(iso).toLowerCase()} ${hora(iso)})`; } catch (e) { return ""; } }
+// borra TODO el estado local de este dispositivo (para volver a un estado limpio)
+function limpiarTodo() {
+  try { getNinos().forEach((n) => localStorage.removeItem(panelKey(n.token))); } catch (e) {}
+  localStorage.removeItem(KEY_NINOS); localStorage.removeItem(KEY_ACTIVO); localStorage.removeItem(KEY_TOKEN_VIEJO); localStorage.removeItem("familia_nino");
+}
 // al recuperar conexión, si estamos en la pantalla "sin conexión", reintentar solo
 window.addEventListener("online", () => { if (document.getElementById("estadoRed") && getNinos().length) cargarYrender(true); });
 
@@ -239,10 +244,11 @@ function estadoRed(onRetry) {
     `<div class="estado" id="estadoRed"><div class="em">📶</div><h2>No pudimos cargar</h2>
       <p>Parece un problema de conexión. Tus accesos siguen guardados: probá de nuevo.</p>
       <button class="btn" id="btnRetry">Reintentar</button>
-      <button class="btn ghost" id="btnRedCodigo" style="margin-top:10px">Entrar con un código</button></div>
-    <p class="foot">Chispa · Panel de familia</p>`;
+      <button class="btn ghost" id="btnRedCodigo" style="margin-top:10px">Entrar con un código</button>
+      <p class="foot" style="margin-top:16px"><span id="btnReset" style="text-decoration:underline;cursor:pointer">Empezar de cero</span></p></div>`;
   const b = document.getElementById("btnRetry"); if (b) b.onclick = onRetry || (() => location.reload());
   const c = document.getElementById("btnRedCodigo"); if (c) c.onclick = () => mostrarVincular(getNinos().length > 0);
+  const r = document.getElementById("btnReset"); if (r) r.onclick = () => { if (confirm("¿Borrar todo de este dispositivo y empezar de cero? Vas a tener que vincular de nuevo.")) { limpiarTodo(); mostrarVincular(false); } };
 }
 
 // ───────── selector de hijos (solo si hay 2+) ─────────
