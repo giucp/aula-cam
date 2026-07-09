@@ -2,11 +2,20 @@
 // Milestone 1: login -> token -> materias + temas/módulos de la alumna.
 // Resuelve CORS (la PWA llama aquí, esto llama a Moodle) y oculta la lógica del token.
 
-const BASE = "https://aulacam.uearzobispomendez.edu.ve";
+// ───────── colegios: de dónde sale el aula virtual (data-driven, multi-colegio) ─────────
+// El CAM (colegio 1) queda hardcodeado como DEFAULT + fail-safe: el login de los usuarios
+// actuales NUNCA depende de Supabase ni paga latencia extra. Cualquier OTRO colegio se
+// resuelve desde la tabla public.colegios (anti-SSRF: solo colegios verificados nuestros;
+// el cliente jamás inyecta una URL arbitraria).
+const DEFAULT_COLEGIO = {
+  id: 1,
+  base: "https://aulacam.uearzobispomendez.edu.ve",
+  mapeo: { patron: "([1-6])\\s*([GA])\\b", sufijos: { G: "grado", A: "año" } },
+};
 
 // Llama una función de Web Service de Moodle y devuelve JSON, lanzando si hay excepción.
-async function callWS(token, wsfunction, params = {}) {
-  const url = `${BASE}/webservice/rest/server.php`;
+async function callWS(base, token, wsfunction, params = {}) {
+  const url = `${base}/webservice/rest/server.php`;
   const body = new URLSearchParams({
     wstoken: token,
     wsfunction,
@@ -28,29 +37,56 @@ function supabaseCfg() {
   const key = process.env.SUPABASE_SERVICE_KEY;
   return url && key ? { url: url.replace(/\/+$/, ""), key } : null;
 }
-const ORD_G = { 1: "1er grado", 2: "2do grado", 3: "3er grado", 4: "4to grado", 5: "5to grado", 6: "6to grado" };
-const ORD_A = { 1: "1er año", 2: "2do año", 3: "3er año", 4: "4to año", 5: "5to año" };
-// Deriva grado ("4to grado" / "1er año") y token ("4G" / "1A") del shortname de un curso.
-function gradoDeCursos(courses) {
+
+// Resuelve la config del colegio (base del Moodle + mapeo de grados). Sin colegioId, o el CAM (1),
+// usa el DEFAULT hardcodeado sin tocar Supabase (fast-path, cero latencia). Otro colegio se lee de
+// la tabla y DEBE estar verificado + tener aula Moodle (si no, error claro → ese niño va a modo manual).
+async function resolverColegio(colegioId) {
+  if (colegioId == null || Number(colegioId) === DEFAULT_COLEGIO.id) return DEFAULT_COLEGIO;
+  const cfg = supabaseCfg();
+  if (!cfg) throw new Error("colegio no disponible");
+  const r = await fetch(
+    `${cfg.url}/rest/v1/colegios?id=eq.${encodeURIComponent(colegioId)}&select=id,tiene_moodle,moodle_url,mapeo_grados,verificado`,
+    { headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}` } }
+  );
+  if (!r.ok) throw new Error("colegio no disponible");
+  const rows = await r.json();
+  const c = Array.isArray(rows) ? rows[0] : null;
+  if (!c || !c.verificado || !c.tiene_moodle || !c.moodle_url) {
+    throw new Error("Ese colegio todavía no tiene aula virtual conectable.");
+  }
+  return { id: c.id, base: String(c.moodle_url).replace(/\/+$/, ""), mapeo: c.mapeo_grados || DEFAULT_COLEGIO.mapeo };
+}
+
+const ORDINALES = { 1: "1er", 2: "2do", 3: "3er", 4: "4to", 5: "5to", 6: "6to" };
+// Deriva grado ("4to grado" / "1er año") y token ("4G" / "1A") del shortname de un curso, usando el
+// mapeo del colegio (patron regex + sufijos G/A → sustantivo). Cae al patrón del CAM si falta/rompe.
+function gradoDeCursos(courses, mapeo) {
+  const m0 = mapeo || DEFAULT_COLEGIO.mapeo;
+  const sufijos = m0.sufijos || DEFAULT_COLEGIO.mapeo.sufijos;
+  let re;
+  try { re = new RegExp(m0.patron || DEFAULT_COLEGIO.mapeo.patron, "i"); }
+  catch (_) { re = new RegExp(DEFAULT_COLEGIO.mapeo.patron, "i"); }
   for (const c of courses || []) {
-    const m = String(c.shortname || c.fullname || "").match(/([1-6])\s*([GA])\b/i);
+    const m = String(c.shortname || c.fullname || "").match(re);
     if (m) {
-      const n = parseInt(m[1], 10), t = m[2].toUpperCase();
-      return { grado: (t === "A" ? ORD_A : ORD_G)[n] || null, corto: `${n}${t}` };
+      const n = parseInt(m[1], 10), t = String(m[2] || "").toUpperCase();
+      const noun = sufijos[t];
+      return { grado: noun && ORDINALES[n] ? `${ORDINALES[n]} ${noun}` : null, corto: `${n}${t}` };
     }
   }
   return { grado: null, corto: null };
 }
 // Crea/actualiza la fila del niño y suma un acceso (vía RPC). Nunca rompe el login.
-async function registrarAcceso(userid, nombre, courses) {
+async function registrarAcceso(userid, nombre, courses, colegioId, mapeo) {
   const cfg = supabaseCfg();
   if (!cfg || userid == null) return;
-  const { grado, corto } = gradoDeCursos(courses);
+  const { grado, corto } = gradoDeCursos(courses, mapeo);
   try {
     await fetch(`${cfg.url}/rest/v1/rpc/registrar_acceso`, {
       method: "POST",
       headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ p_id: userid, p_nombre: nombre || null, p_grado: grado, p_nombre_corto: corto }),
+      body: JSON.stringify({ p_id: userid, p_nombre: nombre || null, p_grado: grado, p_nombre_corto: corto, p_colegio_id: colegioId ?? null }),
     });
   } catch (e) { /* el registro nunca debe romper el login */ }
 }
@@ -77,13 +113,13 @@ async function leerEstado(userid) {
 }
 
 // Intercambia usuario+clave por un token del servicio móvil.
-async function getToken(username, password) {
+async function getToken(base, username, password) {
   const body = new URLSearchParams({
     username,
     password,
     service: "moodle_mobile_app",
   });
-  const res = await fetch(`${BASE}/login/token.php`, { method: "POST", body });
+  const res = await fetch(`${base}/login/token.php`, { method: "POST", body });
   const data = await res.json();
   if (data.error) throw new Error(data.error);
   return data.token;
@@ -97,23 +133,27 @@ export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "Solo POST" });
 
   try {
-    const { username, password, token: tokenPrevio } = req.body || {};
+    const { username, password, token: tokenPrevio, colegioId } = req.body || {};
+
+    // 0) ¿A qué colegio/aula virtual apunta este login? (sin colegioId → CAM, comportamiento actual)
+    const colegio = await resolverColegio(colegioId);
+    const base = colegio.base;
 
     // Si ya tienes token guardado lo reusas; si no, login con credenciales.
-    const token = tokenPrevio || (await getToken(username, password));
+    const token = tokenPrevio || (await getToken(base, username, password));
 
     // 1) Quién es el usuario (de aquí sale el userid).
-    const info = await callWS(token, "core_webservice_get_site_info");
+    const info = await callWS(base, token, "core_webservice_get_site_info");
     const userid = info.userid;
 
     // 2) Materias en las que está inscrita (esto define su grado).
-    const courses = await callWS(token, "core_enrol_get_users_courses", { userid });
+    const courses = await callWS(base, token, "core_enrol_get_users_courses", { userid });
 
     // 2.5) CONTROL DE ACCESO: cualquiera con clave del aula puede loguear, pero solo
     //      PASA quien el administrador habilitó a mano (usuarios.autorizado=true en
     //      Supabase). Registramos SIEMPRE al niño (así el admin lo ve y lo habilita) y,
     //      si aún no está autorizado, devolvemos "pendiente" SIN bajar el contenido pesado.
-    await registrarAcceso(userid, info.fullname, courses);
+    await registrarAcceso(userid, info.fullname, courses, colegio.id, colegio.mapeo);
     const est = await leerEstado(userid); // registrarAcceso ya actualizó la racha → la leemos fresca
     if (!est.autorizado) {
       return res.status(200).json({
@@ -126,7 +166,7 @@ export default async function handler(req, res) {
     // 3) Contenidos (temas + módulos) de cada materia — EN PARALELO (mucho más
     //    rápido que curso por curso contra un servidor escolar lento).
     const contenidos = await Promise.all(
-      courses.map((c) => callWS(token, "core_course_get_contents", { courseid: c.id }))
+      courses.map((c) => callWS(base, token, "core_course_get_contents", { courseid: c.id }))
     );
     const materias = courses.map((c, i) => ({
       id: c.id,

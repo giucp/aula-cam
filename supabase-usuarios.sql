@@ -16,18 +16,25 @@ create table if not exists public.usuarios (
 alter table public.usuarios enable row level security;
 -- RLS activado y SIN políticas → solo el backend (service_role) accede.
 
--- Registra un acceso: crea la fila la primera vez o actualiza nombre/grado,
+-- NOTA: las columnas colegio_id / fuente / auth_id se agregan en supabase-colegios.sql
+-- (fundación multi-colegio, PLAN-CHISPA-UNIVERSAL). Esta tabla nació solo con identidad Moodle.
+
+-- Registra un acceso: crea la fila la primera vez o actualiza nombre/grado/colegio,
 -- pone la fecha del último acceso y suma 1 al contador. Atómico (upsert).
+-- p_colegio_id (opcional): a qué colegio pertenece el niño; solo se setea en el INSERT o si
+-- estaba null (coalesce → nunca pisa un colegio ya asignado).
 create or replace function public.registrar_acceso(
-  p_id bigint, p_nombre text, p_grado text, p_nombre_corto text
+  p_id bigint, p_nombre text, p_grado text, p_nombre_corto text,
+  p_colegio_id bigint default null
 ) returns void language plpgsql as $$
 begin
-  insert into public.usuarios (id, nombre, grado, nombre_corto)
-  values (p_id, p_nombre, p_grado, p_nombre_corto)
+  insert into public.usuarios (id, nombre, grado, nombre_corto, colegio_id)
+  values (p_id, p_nombre, p_grado, p_nombre_corto, p_colegio_id)
   on conflict (id) do update set
     nombre        = excluded.nombre,
     grado         = coalesce(excluded.grado, public.usuarios.grado),
     nombre_corto  = coalesce(excluded.nombre_corto, public.usuarios.nombre_corto),
+    colegio_id    = coalesce(public.usuarios.colegio_id, excluded.colegio_id),
     ultimo_acceso = now(),
     accesos       = public.usuarios.accesos + 1;
 end; $$;
