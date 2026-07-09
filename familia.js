@@ -71,14 +71,44 @@ function setActivo(i) { localStorage.setItem(KEY_ACTIVO, String(i)); }
       setActivo(addNino(d.token, d.nino));
       history.replaceState(null, "", location.pathname);
     } else if (!getNinos().length) {
-      return estadoError("Enlace no válido", (d && d.error) || "Pedile a tu hijo un enlace nuevo desde Chispa → Familia.", true);
+      return mostrarVincular(false, (d && d.error) || "Ese enlace no es válido o venció. Escribí el código o pedí uno nuevo.");
     }
   }
-  if (!getNinos().length) {
-    return estadoError("Aún no estás vinculado", "Pedile a tu hijo que abra Chispa, entre a «Familia» y toque «Invitar». Se te dará un enlace o un código para entrar acá.", false);
-  }
+  if (!getNinos().length) return mostrarVincular(false);
   cargarYrender();
 })();
+
+// ───────── vincular con código (pantalla + canje) ─────────
+// Necesario para iOS: el ícono de "Agregar a inicio" tiene su propio almacenamiento, así que
+// hay que vincularlo escribiendo el código DENTRO de la app (el código sirve 24 h y varias veces).
+function mostrarVincular(volver, errMsg) {
+  app.innerHTML =
+    `<div class="estado vincular">
+      <div class="em">🔗</div>
+      <h2>Entrá con tu código</h2>
+      <p>Escribí el código que te dio tu hijo (Chispa → Familia → Invitar), o escaneá su QR.</p>
+      ${errMsg ? `<p class="vincErr">${esc(errMsg)}</p>` : ""}
+      <input id="codeInput" class="codeIn" autocapitalize="characters" autocomplete="off" spellcheck="false" maxlength="8" placeholder="Ej: ABCD2345" />
+      <button class="btn" id="codeGo">Entrar</button>
+      <p class="foot" style="margin-top:20px">📱 <b>En iPhone</b>, para que quede en el ícono: primero "Agregar a inicio", después abrí el ícono y escribí el código acá. El mismo código sirve por 24 horas.</p>
+      ${volver ? '<button class="btn ghost" id="codeBack" style="margin-top:10px">← Volver</button>' : ""}
+    </div>`;
+  const inp = document.getElementById("codeInput"), go = document.getElementById("codeGo");
+  const intentar = () => vincularConCodigo(inp.value);
+  go.onclick = intentar;
+  inp.addEventListener("keydown", (e) => { if (e.key === "Enter") intentar(); });
+  try { inp.focus(); } catch (e) {}
+  const back = document.getElementById("codeBack");
+  if (back) back.onclick = () => cargarYrender();
+}
+async function vincularConCodigo(code) {
+  code = String(code || "").trim().toUpperCase();
+  if (code.length < 6) return mostrarVincular(getNinos().length > 0, "El código tiene 8 letras y números. Revisalo.");
+  const go = document.getElementById("codeGo"); if (go) { go.disabled = true; go.textContent = "Entrando…"; }
+  const { d } = await api({ accion: "canjear", code });
+  if (d && d.ok && d.token) { setActivo(addNino(d.token, d.nino)); cargarYrender(); }
+  else mostrarVincular(getNinos().length > 0, (d && d.error) || "No pudimos entrar. Probá de nuevo.");
+}
 
 const PANEL_CACHE = {}; // token -> data del panel
 let ACT_DIAS = [];      // actividad del hijo activo, agrupada por día (para el selector)
@@ -149,6 +179,9 @@ function render(d, ninos, i) {
     seccionHorario(d.horario || []),
     seccionRefuerzo(d.errores || [], d.reportes || []),
     `<div class="center" style="margin-top:8px">
+      <button class="btn ghost" id="btnAgregarHijo">＋ Agregar otro hijo</button>
+    </div>
+    <div class="center" style="margin-top:8px">
       <button class="btn ghost" id="btnRecargar">↻ Actualizar</button>
       <button class="btn ghost" id="btnSalir" style="margin-left:8px">Desvincular</button>
     </div>
@@ -157,6 +190,7 @@ function render(d, ninos, i) {
   app.innerHTML = html.join("");
   wireTabs(ninos);
   wireActividad();
+  document.getElementById("btnAgregarHijo").onclick = () => mostrarVincular(true);
   document.getElementById("btnRecargar").onclick = () => cargarYrender(true);
   document.getElementById("btnSalir").onclick = desvincularActivo;
 }

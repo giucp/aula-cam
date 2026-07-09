@@ -66,6 +66,8 @@ export default async function handler(req, res) {
     if (accion === "invitar") {
       const uid = await useridDeToken(b.token);
       if (!uid) return res.status(401).json({ error: "Sesión inválida" });
+      // higiene: borrar invitaciones vencidas de este niño (filas con code y sin token = invitación)
+      fetch(`${cfg.url}/rest/v1/familia_vinculos?usuario_id=eq.${uid}&token=is.null&code_expira=lt.${encodeURIComponent(new Date().toISOString())}`, { method: "DELETE", headers: hdr(cfg) }).catch(() => {});
       const code = codigoCorto(8);
       const expira = new Date(Date.now() + 24 * 3600 * 1000).toISOString();
       const alias = String(b.alias || "").trim().slice(0, 24) || null;
@@ -105,25 +107,26 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true });
     }
 
-    // ── PADRE: canjea el código por un token persistente (1 solo uso) ──
+    // ── PADRE: canjea el código por un token persistente ──
+    // El código sirve durante 24 h y VARIAS veces (crea un vínculo nuevo cada vez, no se
+    // consume): imprescindible en iOS, donde Safari y el ícono de "Agregar a inicio" tienen
+    // almacenamiento SEPARADO (hay que vincular cada uno); además sirve para mamá Y papá.
     if (accion === "canjear") {
       const code = String(b.code || "").trim().toUpperCase();
       if (!code) return res.status(400).json({ error: "Falta código" });
       const nowISO = new Date().toISOString();
-      const rows = await sbGet(cfg, `familia_vinculos?code=eq.${encodeURIComponent(code)}&token=is.null&code_expira=gt.${encodeURIComponent(nowISO)}&select=id,usuario_id&limit=1`);
-      const row = Array.isArray(rows) && rows[0];
-      if (!row) return res.status(404).json({ error: "Código inválido o vencido. Pídele a tu hijo un enlace nuevo." });
+      // La invitación es la fila con ese code aún vigente (token null la identifica como invitación).
+      const rows = await sbGet(cfg, `familia_vinculos?code=eq.${encodeURIComponent(code)}&token=is.null&code_expira=gt.${encodeURIComponent(nowISO)}&select=usuario_id,alias&limit=1`);
+      const inv = Array.isArray(rows) && rows[0];
+      if (!inv) return res.status(404).json({ error: "Código inválido o vencido. Pídele a tu hijo un código nuevo." });
       const token = tokenLargo();
-      // El filtro token=is.null en el PATCH evita doble canje (condición de carrera).
-      const r = await fetch(`${cfg.url}/rest/v1/familia_vinculos?id=eq.${row.id}&token=is.null`, {
-        method: "PATCH",
+      const r = await fetch(`${cfg.url}/rest/v1/familia_vinculos`, {
+        method: "POST",
         headers: hdr(cfg, { "Content-Type": "application/json", Prefer: "return=representation" }),
-        body: JSON.stringify({ token, code: null, code_expira: null, activo: true, ultimo_acceso: nowISO }),
+        body: JSON.stringify({ usuario_id: inv.usuario_id, token, alias: inv.alias || null, activo: true, ultimo_acceso: nowISO }),
       });
-      if (!r.ok) throw new Error(`canjear: ${r.status}`);
-      const upd = await r.json();
-      if (!Array.isArray(upd) || !upd.length) return res.status(409).json({ error: "Ese enlace ya se usó." });
-      const u = await sbGet(cfg, `usuarios?id=eq.${row.usuario_id}&select=nombre,grado`);
+      if (!r.ok) throw new Error(`canjear: ${r.status} ${await r.text()}`);
+      const u = await sbGet(cfg, `usuarios?id=eq.${inv.usuario_id}&select=nombre,grado`);
       const nino = (Array.isArray(u) && u[0]) || {};
       return res.status(200).json({ ok: true, token, nino: { nombre: nino.nombre || null, grado: nino.grado || null } });
     }

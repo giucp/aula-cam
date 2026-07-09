@@ -831,7 +831,7 @@
         <div class="famCode">${escapeHtml(code)}</div>
         <p class="famHint">Que abra <b>aula-cam.vercel.app/familia</b> y escriba el código, o que escanee el QR.</p>
         <div class="famBtns"><button class="otros" id="btnCompartir">📤 Compartir</button><button class="otros" id="btnCopiar">📋 Copiar</button></div>
-        <p class="famHint">Vale 24 horas y sirve una sola vez. Creá otro para el otro adulto.</p>
+        <p class="famHint">Vale 24 horas y sirve en más de un teléfono (mamá, papá, o el ícono de inicio del iPhone).</p>
       </div>`;
     const share=$("#btnCompartir"), copy=$("#btnCopiar");
     if(share) share.onclick=async()=>{ try{ if(navigator.share){ await navigator.share({title:"Chispa · Familia", text:"Mirá lo que hago en Chispa:", url:link}); } else { copiar(link,copy); } }catch(_){} };
