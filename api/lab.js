@@ -145,6 +145,24 @@ async function colegioGuardar(cfg, c) {
   return { ok: true, colegio: Array.isArray(out) ? out[0] : out };
 }
 
+// Borra un colegio. Protegido por la FK usuarios.colegio_id: si algún alumno lo tiene
+// asignado (p.ej. el CAM), Postgres rechaza el DELETE → devolvemos mensaje claro.
+async function colegioBorrar(cfg, id) {
+  if (id == null) return { ok: false, error: "Falta el id." };
+  const r = await fetch(`${cfg.url}/rest/v1/colegios?id=eq.${encodeURIComponent(id)}`, {
+    method: "DELETE",
+    headers: { ...hdr(cfg), Prefer: "return=representation" },
+  });
+  if (!r.ok) {
+    const t = await r.text().catch(() => "");
+    if (/foreign key|violates|23503/i.test(t)) return { ok: false, error: "No se puede borrar: tiene alumnos vinculados." };
+    return { ok: false, error: `No se pudo borrar (HTTP ${r.status}).` };
+  }
+  const out = await r.json().catch(() => []);
+  if (Array.isArray(out) && out.length === 0) return { ok: false, error: "Ese colegio ya no existe." };
+  return { ok: true };
+}
+
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "https://aula-cam.vercel.app");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -169,6 +187,7 @@ export default async function handler(req, res) {
     if (accion === "colegios") return res.status(200).json({ colegios: await colegios(cfg) });
     if (accion === "colegio_probar") return res.status(200).json(await colegioProbar((req.body || {}).moodle_url));
     if (accion === "colegio_guardar") return res.status(200).json(await colegioGuardar(cfg, (req.body || {}).colegio));
+    if (accion === "colegio_borrar") return res.status(200).json(await colegioBorrar(cfg, (req.body || {}).id));
     return res.status(400).json({ error: "accion inválida" });
   } catch (e) {
     return res.status(200).json({ usuarios: [], error: String(e.message || e) });

@@ -2338,7 +2338,8 @@
       +`</div>`
       +`<label class="labFchk"><input id="cfVerif" type="checkbox" ${c.verificado?"checked":""}> Verificado (habilita la conexión real)</label>`
       +`<div class="labColFormBtns"><button id="cfGuardar" class="go">Guardar</button><button id="cfCancelar" class="labColCancel" type="button">Cancelar</button></div>`
-      +`<p id="cfErr" class="labErr hidden"></p>`;
+      +`<p id="cfErr" class="labErr hidden"></p>`
+      +(editing?`<button id="cfBorrar" class="labColBorrar" type="button">Eliminar colegio</button>`:"");
     cont.appendChild(f);
     const q=(s)=>f.querySelector(s);
     const syncBox=()=>{ q("#cfMoodleBox").style.display=q("#cfTiene").checked?"":"none"; };
@@ -2374,6 +2375,18 @@
         const d=await r.json();
         if(d&&d.ok){ await labCargarColegios(); }
         else{ err.textContent=(d&&d.error)||"No se pudo guardar."; err.classList.remove("hidden"); btn.disabled=false; }
+      }catch(_){ err.textContent="Error de red."; err.classList.remove("hidden"); btn.disabled=false; }
+    };
+    if(editing) q("#cfBorrar").onclick=async()=>{
+      if(!confirm("¿Borrar este colegio? No se puede deshacer.")) return;
+      const err=q("#cfErr"); err.classList.add("hidden");
+      const btn=q("#cfBorrar"); btn.disabled=true;
+      try{
+        const r=await fetch(API_LAB,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"colegio_borrar",clave:LAB_CLAVE,id:c.id})});
+        if(r.status===401){ LAB_CLAVE=""; entrarLab(); return; }
+        const d=await r.json();
+        if(d&&d.ok){ await labCargarColegios(); }
+        else{ err.textContent=(d&&d.error)||"No se pudo borrar."; err.classList.remove("hidden"); btn.disabled=false; }
       }catch(_){ err.textContent="Error de red."; err.classList.remove("hidden"); btn.disabled=false; }
     };
   }
