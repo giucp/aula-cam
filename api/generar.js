@@ -27,7 +27,7 @@ const MAX_PDFS = 3;                       // cuántos PDFs leer por generación
 const MAX_PDF_BYTES = 8 * 1024 * 1024;    // por archivo
 const MAX_TOTAL_BYTES = 15 * 1024 * 1024; // suma de todos
 const DL_TIMEOUT_MS = 9000;               // timeout por descarga
-const MAX_FOTOS = 3;                       // fotos de cuaderno por generación
+const MAX_FOTOS = 5;                       // fotos de cuaderno por generación
 const MIME_FOTOS = new Set(["image/jpeg", "image/png", "image/webp"]);
 const dormir = (ms) => new Promise((r) => setTimeout(r, ms));
 

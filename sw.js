@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v59"; // v59: Colegios en #lab — botón Eliminar + fix layout del Cancelar
+const VERSION = "aulacam-v60"; // v60: fotos de apuntes por generación 3 → 5
 const SHELL = [
   "/",
   "/index.html",

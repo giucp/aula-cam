@@ -41,7 +41,7 @@
   let MODO_LAB = false;   // true dentro del "cuarto de pruebas" (admin): no escribe nada, sin botones de generar
   let ultimoContexto = null;
   let fotos = [];          // fotos del cuaderno (apuntes), solo del momento
-  const MAX_FOTOS = 3;
+  const MAX_FOTOS = 5;
   let MIS_ERRORES = [];    // preguntas de quiz falladas (para "repasar mis errores")
   let PROGRESO = new Map();// clave norm(materia)+"|"+norm(tema) → {modos:Set, quizMejor:number|null}
 
