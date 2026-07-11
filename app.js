@@ -809,6 +809,7 @@
     if(!grado){ msg.innerHTML=errBox("Elegí tu grado."); return; }
     if(!/^[a-zA-Z0-9._]{3,20}$/.test(usuario)){ msg.innerHTML=errBox("El usuario: 3 a 20 letras o números, sin espacios."); return; }
     if(clave.length<6){ msg.innerHTML=errBox("La clave debe tener al menos 6 caracteres."); return; }
+    if(!($("#regConsent")&&$("#regConsent").checked)){ msg.innerHTML=errBox("Marcá la casilla de permiso para crear tu cuenta."); return; }
     const btn=$("#btnRegistrar"); btn.disabled=true; const t=btn.textContent; btn.textContent="Creando…"; msg.innerHTML="";
     try{
       const r=await fetch(API_CUENTA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"registrar",usuario,clave,nombre,grado})});

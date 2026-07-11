@@ -29,6 +29,14 @@
   .lbl{font-family:"Fredoka",sans-serif;font-weight:600;font-size:.96rem;color:var(--ink);margin:0 0 13px;display:flex;align-items:center;gap:9px}
   .lbl .n{background:var(--sun);color:var(--ink);width:25px;height:25px;border-radius:50%;display:grid;place-items:center;font-size:.85rem;font-weight:700;box-shadow:var(--shadow-xs)}
   .lbl .lblOpt{font-weight:500;font-size:.82rem;color:var(--muted, #8a8a99)}
+  /* consentimiento + nota de privacidad (registro de cuenta nativa) */
+  .consent{display:flex;gap:10px;align-items:flex-start;margin:16px 0 0;cursor:pointer;font-size:.9rem;line-height:1.45;color:var(--ink)}
+  .consent input{flex:none;width:20px;height:20px;margin:1px 0 0;accent-color:var(--teal, #12B5A4);cursor:pointer}
+  .privNota{margin-top:10px}
+  .privNota summary{font-size:.85rem;color:var(--teal-dark, #0E9486);cursor:pointer;font-weight:700;list-style:none}
+  .privNota summary::-webkit-details-marker{display:none}
+  .privNota summary::before{content:"ⓘ ";}
+  .privNota p{font-size:.85rem;color:var(--muted, #8a8a99);line-height:1.5;margin:8px 0 0}
 
   /* inputs */
   .field input,.field textarea{width:100%;font-family:"Nunito",sans-serif;font-weight:700;font-size:1rem;color:var(--ink);
