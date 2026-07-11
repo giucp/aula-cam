@@ -12,6 +12,7 @@
   const API_CURADO_INFO = "https://aula-cam.vercel.app/api/curado-info";
   const API_AGENDA = "https://aula-cam.vercel.app/api/agenda";
   const API_CUENTA = "https://aula-cam.vercel.app/api/cuenta";   // auth propia (cuenta nativa, beta)
+  const API_MANUAL = "https://aula-cam.vercel.app/api/manual";   // Camino B: materias manuales + apuntes
 
   // modos de salida
   // Ruta de aprendizaje: los 4 pasos EN ORDEN (ids internos intactos; solo cambia lo visible).
@@ -1306,9 +1307,65 @@
     $("#cumbreWrap").classList.toggle("hidden", !track);
     $("#destacadaWrap").classList.toggle("hidden", !!track || !siguienteGradoLabel());
     $("#erroresWrap").classList.toggle("hidden", !MIS_ERRORES.length);
+    if(SESION && SESION.fuente==="manual"){ pintarMateriasManuales(); return; }  // Camino B
     $("#materiasHead").innerHTML = "📚 Tus materias";
     gridMaterias(SESION.materias||[]);
   }
+
+  // ───────── Camino B: materias creadas a mano (cuentas nativas) ─────────
+  const MAT_EMOJIS = ["📐","🔢","📖","🔬","🌎","🎨","🎵","💻","🏃","⚗️","🧮","🗣️"];
+  let MAT_EMOJI_SEL = MAT_EMOJIS[0];
+  async function pintarMateriasManuales(){
+    $("#materiasHead").innerHTML = "📚 Mis materias";
+    const g=$("#gridMaterias"); g.innerHTML=`<p class="labLoad">Cargando…</p>`;
+    let mats=[];
+    try{
+      const r=await fetch(API_MANUAL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"materias",token:SESION.token})});
+      const d=await r.json(); mats=Array.isArray(d.materias)?d.materias:[];
+    }catch(_){}
+    g.innerHTML="";
+    if(!mats.length){ const e=document.createElement("p"); e.className="matHint"; e.textContent="Todavía no tenés materias. Creá la primera y estudiá con tus propios apuntes. 👇"; g.appendChild(e); }
+    mats.forEach(m=>{
+      const mo={ nombre:m.nombre, nombreCorto:"", temas:[], _manual:true, _id:m.id, emoji:m.emoji };
+      const b=document.createElement("button"); b.className="mat"; b.style.setProperty("--c", m.color||colorMateria(m.nombre));
+      b.innerHTML=`<span class="em">${m.emoji||iconMateria(m.nombre)}</span><span class="matMid"><span class="nom">${escapeHtml(m.nombre)}</span></span><span class="chev">›</span>`;
+      b.onclick=()=>abrirMateria(mo);
+      g.appendChild(b);
+    });
+    const add=document.createElement("button"); add.className="mat matNueva";
+    add.innerHTML=`<span class="em">➕</span><span class="matMid"><span class="nom">Nueva materia</span></span>`;
+    add.onclick=abrirMatModal;
+    g.appendChild(add);
+  }
+  function abrirMatModal(){
+    MAT_EMOJI_SEL = MAT_EMOJIS[0];
+    $("#matNombre").value=""; $("#matMsg").innerHTML="";
+    const cont=$("#matEmojis"); cont.innerHTML="";
+    MAT_EMOJIS.forEach(e=>{
+      const b=document.createElement("button"); b.type="button"; b.className="matEmojiBtn"+(e===MAT_EMOJI_SEL?" sel":""); b.textContent=e;
+      b.onclick=()=>{ MAT_EMOJI_SEL=e; cont.querySelectorAll(".matEmojiBtn").forEach(x=>x.classList.toggle("sel", x.textContent===e)); };
+      cont.appendChild(b);
+    });
+    $("#matModal").classList.remove("hidden");
+    setTimeout(()=>{ try{ $("#matNombre").focus(); }catch(_){} }, 60);
+  }
+  function cerrarMatModal(){ $("#matModal").classList.add("hidden"); }
+  async function guardarMateriaManual(){
+    const nombre=($("#matNombre").value||"").trim(); const msg=$("#matMsg");
+    if(!nombre){ msg.innerHTML=errBox("Escribí el nombre de la materia."); return; }
+    const btn=$("#btnGuardarMat"); btn.disabled=true; const t=btn.textContent; btn.textContent="Creando…";
+    try{
+      const r=await fetch(API_MANUAL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"materia_guardar",token:SESION.token,materia:{nombre,emoji:MAT_EMOJI_SEL}})});
+      const d=await r.json();
+      if(d && d.ok){ cerrarMatModal(); pintarMateriasManuales(); }
+      else { msg.innerHTML=errBox((d&&d.error)||"No se pudo crear."); }
+    }catch(_){ msg.innerHTML=errBox("Error de red. Reintentá."); }
+    finally{ btn.disabled=false; btn.textContent=t; }
+  }
+  $("#btnCerrarMat") && ($("#btnCerrarMat").onclick=cerrarMatModal);
+  $("#matModal") && ($("#matModal").onclick=(e)=>{ if(e.target===$("#matModal")) cerrarMatModal(); });
+  $("#btnGuardarMat") && ($("#btnGuardarMat").onclick=guardarMateriaManual);
+  $("#matNombre") && $("#matNombre").addEventListener("keydown",(e)=>{ if(e.key==="Enter") guardarMateriaManual(); });
 
   // ───────── adelantar próximo año (lee el currículo guardado) ─────────
   $("#btnProximo").onclick = entrarProximo;
