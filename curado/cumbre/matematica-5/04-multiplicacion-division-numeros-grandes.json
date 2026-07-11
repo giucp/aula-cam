@@ -1,0 +1,369 @@
+{
+  "programa": "cumbre",
+  "materia": "Matemática",
+  "grado": "Cumbre Matemática 5to grado",
+  "dominio": "Números grandes y operaciones",
+  "tema": "Multiplicación y división con números grandes",
+  "referencias": [
+    "Singapore MOE Primary 5 (Whole Numbers): multiplication and division of numbers up to 4 digits by a 2-digit whole number, with estimation to check reasonableness",
+    "UK National Curriculum KS2 Year 5 (Number - Multiplication and Division): multiply numbers up to 4 digits by a one- or two-digit number using a formal written method, and divide numbers up to 4 digits by a one-digit number using the formal written method of short division, interpreting remainders"
+  ],
+  "resumen": {
+    "titulo": "Multiplicar y dividir números grandes: el porqué de cada paso",
+    "intro": "Ya sabes multiplicar y dividir con números chicos, y hasta en qué orden se resuelve una cuenta con varias operaciones. Ahora damos el paso siguiente: hacerlo con números GRANDES, como 342 × 213 o 1000 ÷ 32, usando lápiz y papel, sin calculadora. La buena noticia es que no hay que memorizar tablas gigantes: multiplicar y dividir números grandes es repetir muchas veces las mismas cuentas chiquitas que ya conoces, ordenadas de una manera inteligente. En este tema vas a entender POR QUÉ el método funciona (por qué cada fila 'se corre' un lugar al multiplicar, por qué se 'baja' cada cifra al dividir), a estimar para saber si tu resultado tiene sentido, y a comprobar siempre que la respuesta esté bien.",
+    "secciones": [
+      {
+        "titulo": "El cimiento: el valor posicional (qué vale cada cifra según su lugar)",
+        "explicacion": "Antes de multiplicar cosas grandes hay que recordar una idea sencilla pero clave: en un número, cada cifra vale distinto según el LUGAR donde está. En 253, el 3 son 3 unidades, el 5 son 5 decenas (o sea 50) y el 2 son 2 centenas (o sea 200); por eso 253 significa 200 + 50 + 3. A eso se le llama VALOR POSICIONAL: el mismo dígito vale diez veces más cada vez que se corre un lugar a la izquierda. Esta idea es la que hace funcionar TODO el método de multiplicar y dividir números grandes. Cuando entiendas que un 4 en el lugar de las decenas no es '4' sino '40', vas a entender por qué las filas se corren y por qué se baja cada cifra en la división. No es una regla mágica: es puro valor posicional.",
+        "pasos": [
+          "Cada lugar, de derecha a izquierda, vale diez veces más que el anterior: unidades, decenas, centenas, unidades de mil.",
+          "Un número es la suma del valor de cada una de sus cifras: 253 = 200 + 50 + 3.",
+          "Cuando una cifra está en el lugar de las decenas, en realidad representa esa cantidad de dieces (el 4 de 46 vale 40)."
+        ],
+        "ejemplo": "En 1748: el 8 son 8 unidades, el 4 son 4 decenas (40), el 7 son 7 centenas (700) y el 1 son 1 unidad de mil (1000). Sumando: 1000 + 700 + 40 + 8 = 1748."
+      },
+      {
+        "titulo": "Repaso: multiplicar por un número de una cifra (y las 'llevadas')",
+        "explicacion": "Empecemos por lo más simple, que es la base de todo lo demás. Para multiplicar un número grande por una sola cifra, se multiplica esa cifra por cada dígito del número grande, empezando por las unidades (la derecha) y avanzando hacia la izquierda. La única cosa que hay que cuidar son las LLEVADAS: cuando una de esas multiplicaciones da un resultado de dos cifras (como 8 × 7 = 56), escribes solo la cifra de las unidades (el 6) y 'te llevas' la de las decenas (el 5) para sumársela a la siguiente multiplicación. ¿Por qué? Otra vez el valor posicional: ese 5 que te llevas no son 5 sueltos, son 5 decenas, así que van al lugar de las decenas, que es la cuenta que estás por hacer. Trabajar de derecha a izquierda sirve justamente para que las llevadas caigan siempre en el lugar correcto.",
+        "pasos": [
+          "Multiplica la cifra de afuera por las UNIDADES del número grande. Si da dos cifras, escribe la de la derecha y llévate la otra.",
+          "Multiplica por las DECENAS y súmale lo que te llevaste; escribe una cifra y llévate el resto si vuelve a pasar de nueve.",
+          "Sigue así hacia la izquierda hasta terminar todas las cifras.",
+          "La última llevada, si queda, se escribe tal cual delante del resultado."
+        ],
+        "ejemplo": "347 × 6: unidades 6 × 7 = 42, escribo 2 y llevo 4. Decenas 6 × 4 = 24, más 4 que llevaba = 28, escribo 8 y llevo 2. Centenas 6 × 3 = 18, más 2 = 20, escribo 20. Resultado: 2082. Comprobación: 2082 ÷ 6 = 347."
+      },
+      {
+        "titulo": "Multiplicar por un número de dos cifras: por qué cada fila se 'corre'",
+        "explicacion": "Este es el corazón del tema. Para multiplicar por un número de dos cifras, como 53 × 24, la idea es partir el 24 en sus dos pedazos según el valor posicional: 24 = 20 + 4. Entonces 53 × 24 es lo mismo que 53 × 4 más 53 × 20, y sumamos los dos resultados. Por eso el método escribe DOS filas: la primera es 53 × 4 (las unidades del 24), y la segunda es 53 × 20 (las decenas del 24). Aquí está el famoso 'correrse un lugar': la segunda fila no es 53 × 2, es 53 × 20, y por eso termina en un cero (o, lo que es igual, se escribe corrida un lugar hacia la izquierda). No es un truco para acomodar: ese cero está porque de verdad estamos multiplicando por 20, no por 2. Si te olvidas de correr la fila, en realidad estás sumando 53 × 2 en vez de 53 × 20, y el resultado sale mal. Al final, se suman las dos filas.",
+        "pasos": [
+          "Multiplica el número de arriba por las UNIDADES del de abajo. Esa es la primera fila.",
+          "Multiplica el número de arriba por las DECENAS del de abajo. Como son decenas, esa fila termina en cero (se corre un lugar a la izquierda).",
+          "Suma las dos filas: ese es el resultado.",
+          "Recuerda el porqué: partiste el número de abajo en decenas + unidades, y sumaste las dos multiplicaciones."
+        ],
+        "ejemplo": "53 × 24: primera fila 53 × 4 = 212. Segunda fila 53 × 20 = 1060 (termina en 0 porque es por 20). Suma: 212 + 1060 = 1272. Comprobación por estimación: 53 × 24 se parece a 50 × 24 = 1200, y 1272 está cerca, así que tiene sentido."
+      },
+      {
+        "titulo": "Multiplicar por un número de tres cifras: la misma idea, una fila más",
+        "explicacion": "Cuando el número de abajo tiene TRES cifras, no hay nada nuevo que aprender: se hace exactamente lo mismo, pero con tres filas en vez de dos. Partimos el número en unidades, decenas y centenas. Por ejemplo, 342 × 213 se parte como 213 = 200 + 10 + 3, así que hacemos 342 × 3, 342 × 10 y 342 × 200, y sumamos las tres. La primera fila (unidades) no se corre; la segunda (decenas) se corre un lugar y termina en un cero; la tercera (centenas) se corre dos lugares y termina en dos ceros. Otra vez, esos ceros están por el valor posicional: la tercera fila es por 200, no por 2. El truco para no marearte es alinear bien las columnas y sumar al final con cuidado, cifra por cifra.",
+        "pasos": [
+          "Multiplica por las UNIDADES del número de abajo: primera fila, sin correr.",
+          "Multiplica por las DECENAS: segunda fila, corrida un lugar (termina en un cero).",
+          "Multiplica por las CENTENAS: tercera fila, corrida dos lugares (termina en dos ceros).",
+          "Suma las tres filas alineando bien las columnas."
+        ],
+        "ejemplo": "342 × 213: fila de unidades 342 × 3 = 1026. Fila de decenas 342 × 10 = 3420. Fila de centenas 342 × 200 = 68400. Suma: 1026 + 3420 + 68400 = 72846. Comprobación por estimación: 342 × 213 se parece a 340 × 200 = 68000, y 72846 está en ese orden de tamaño, así que es razonable."
+      },
+      {
+        "titulo": "Estimar: la brújula que te dice si el resultado tiene sentido",
+        "explicacion": "Con números grandes es fácil equivocarse en una cifra y sacar un resultado disparatado sin darte cuenta. Por eso los estudiantes de los mejores sistemas del mundo hacen SIEMPRE una estimación antes o después de calcular. ESTIMAR es reemplazar cada número por otro 'redondo' cercano (uno terminado en ceros, fácil de multiplicar) para tener una idea rápida de cuánto DEBERÍA dar. Por ejemplo, para 288 × 21, redondeamos a 300 × 20 = 6000: entonces sé que la respuesta verdadera tiene que andar cerca de 6000. Si al calcular con cuidado me da 6048, ¡perfecto, está cerca! Pero si me hubiera dado 648 o 60480, la estimación me avisaría que me equivoqué en algún lugar (probablemente en un cero o en una fila corrida). La estimación no da la respuesta exacta; da un 'debería ser más o menos esto' que atrapa los errores gordos.",
+        "pasos": [
+          "Redondea cada número al valor 'redondo' más cercano (10, 100, 1000...) fácil de multiplicar o dividir.",
+          "Haz la cuenta redonda de cabeza: eso es tu estimación.",
+          "Calcula el resultado exacto con el método completo.",
+          "Compara: si el resultado exacto anda cerca de la estimación, vas bien; si está lejísimos, revisa (seguro hay un cero o una fila mal)."
+        ],
+        "ejemplo": "Para 512 × 18, estimo 500 × 20 = 10000. Calculo exacto: 512 × 18 = 9216. Como 9216 está cerca de 10000, la respuesta es razonable. Si me hubiera dado 921 o 92160, la estimación me diría que revisara."
+      },
+      {
+        "titulo": "La división larga con divisor de una cifra: repartir de a poco",
+        "explicacion": "Dividir un número grande entre una cifra parece difícil, pero es solo repartir 'de a lugares', de izquierda a derecha. Recordemos las palabras: en 968 ÷ 4, el 968 es el DIVIDENDO (lo que se reparte), el 4 es el DIVISOR (en cuántos grupos), lo que sale es el COCIENTE (cuánto toca a cada grupo) y lo que sobra sin repartir es el RESTO. La idea profunda es esta: en vez de repartir los 968 de golpe, repartimos primero las centenas, después las decenas y por último las unidades, y lo que no alcanza a repartirse en un paso se 'junta' con el siguiente. Por eso vamos tomando las cifras de a una, de izquierda a derecha, y cada vez que sobra algo, esa sobra se le pega a la cifra que baja. Suena enredado dicho así, pero mirando el ejemplo paso a paso se ve clarísimo.",
+        "pasos": [
+          "Mira la primera cifra (la de más a la izquierda). Pregunta: ¿cuántas veces entra el divisor? Escribe eso en el cociente.",
+          "Multiplica esa cifra del cociente por el divisor y resta: lo que queda es lo que 'sobró' de ese lugar.",
+          "Baja la siguiente cifra del dividendo y pégala a lo que sobró, formando un número nuevo.",
+          "Repite (dividir, multiplicar, restar, bajar) hasta que no queden cifras por bajar. Lo último que quede es el resto."
+        ],
+        "ejemplo": "968 ÷ 4: el 4 entra 2 veces en 9 (2 × 4 = 8), sobra 1; bajo el 6 y formo 16; el 4 entra 4 veces en 16 (4 × 4 = 16), sobra 0; bajo el 8, el 4 entra 2 veces (2 × 4 = 8), sobra 0. Cociente 242, resto 0. Comprobación: 242 × 4 = 968."
+      },
+      {
+        "titulo": "El resto, y dividir entre un número de dos cifras",
+        "explicacion": "No todas las divisiones dan justo: muchas veces al final SOBRA algo, y eso es el RESTO. Por ejemplo, 500 ÷ 6 no da exacto: da 83 y sobran 2, y se escribe '83, resto 2', porque 6 no alcanza a repartir esos 2 últimos. El resto SIEMPRE tiene que ser menor que el divisor (si fuera igual o mayor, todavía se podría repartir una vez más). Cuando el divisor tiene DOS cifras, como en 936 ÷ 12, el método es exactamente el mismo, solo que en cada paso preguntamos '¿cuántas veces entra 12?' en vez de un número de una cifra, y eso a veces hay que tantearlo. Un buen truco es estimar: para ver cuántas veces entra 12 en 93, pienso 'más o menos 90 ÷ 12', que es como 7, y pruebo con 7. En estos casos la estimación no es un lujo: es la herramienta que te dice por qué número tantear.",
+        "pasos": [
+          "Divide igual que con una cifra, pero preguntando cuántas veces entra el divisor de dos cifras en cada tramo.",
+          "Para saber por dónde tantear, estima: redondea y divide de cabeza (¿90 entre 12? como 7).",
+          "El resto final SIEMPRE debe ser menor que el divisor; si te queda igual o mayor, el cociente se quedó corto.",
+          "En un problema real, piensa qué significa el resto: ¿sobra?, ¿hace falta un grupo más?, ¿se ignora?"
+        ],
+        "ejemplo": "1000 ÷ 32: estimo que 32 entra unas 3 veces en 100 (3 × 32 = 96), sobra 4; bajo el 0 y formo 40; 32 entra 1 vez en 40 (1 × 32 = 32), sobra 8. Cociente 31, resto 8. Comprobación: 31 × 32 + 8 = 992 + 8 = 1000, y 8 es menor que 32, así que el resto es válido."
+      },
+      {
+        "titulo": "Comprobar siempre, y usarlo en la vida real",
+        "explicacion": "Multiplicar y dividir son operaciones OPUESTAS: una deshace a la otra. Eso te regala una manera casi infalible de comprobar: si dividiste y te dio un cociente, multiplícalo por el divisor (y súmale el resto si lo hubo) y tienes que volver al dividendo; si multiplicaste, divide el resultado entre uno de los factores y tienes que volver al otro. Comprobar así, más la estimación, hace muy difícil que un error se te escape. Y todo esto sirve de verdad: para saber cuánto cuestan 24 cajas de 36 marcadores (multiplicar), o para repartir 372 estudiantes en autobuses de 40 asientos (dividir, y decidir qué hacer con los que sobran: harán falta autobuses de más). En la vida real, después de calcular, la última pregunta es siempre '¿este número tiene sentido para lo que me preguntaron?'.",
+        "pasos": [
+          "Si dividiste sin resto: multiplica cociente × divisor; debe dar el dividendo.",
+          "Si dividiste con resto: cociente × divisor + resto; debe dar el dividendo.",
+          "Si multiplicaste: divide el resultado entre un factor; debe dar el otro factor.",
+          "Al final, relee la pregunta del problema y confirma que tu número responde justo eso (y que el resto lo interpretaste bien)."
+        ],
+        "ejemplo": "Reparto 275 caramelos entre 8 niños: 275 ÷ 8 = 34, resto 3. Cada niño recibe 34 y sobran 3. Comprobación: 34 × 8 + 3 = 272 + 3 = 275. Tiene sentido: 34 caramelos por niño es una cantidad razonable y sobran menos de 8."
+      }
+    ],
+    "idea_clave": "Multiplicar y dividir números grandes es repetir, de manera ordenada, las cuentas chiquitas que ya sabes, guiándote SIEMPRE por el valor posicional. Al multiplicar por dos o tres cifras, cada fila se 'corre' porque en realidad multiplicas por decenas o centenas (por eso aparecen los ceros). Al dividir, repartes de a lugares de izquierda a derecha, bajando cada cifra, y lo que sobra al final es el resto (siempre menor que el divisor). Estima antes para saber cuánto debería dar, y comprueba después con la operación opuesta: multiplicar y dividir se deshacen entre sí."
+  },
+  "practica": [
+    {
+      "enunciado": "Multiplica 47 × 23 usando el método de dos filas, y estima primero para ver si el resultado tiene sentido.",
+      "pista": "Parte el 23 en 20 + 3. Haz una fila para 47 × 3 y otra para 47 × 20 (esta termina en cero), y súmalas. Para estimar, redondea a 50 × 20.",
+      "solucion": "Estimación: 50 × 20 = 1000, así que la respuesta debe andar cerca de 1000. Primera fila: 47 × 3 = 141. Segunda fila: 47 × 20 = 940 (termina en 0 porque es por 20). Suma: 141 + 940 = 1081. Resultado: 1081. Comprobación: 1081 ÷ 47 = 23, se vuelve al factor de partida; y 1081 está cerca de la estimación 1000, así que tiene sentido.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Al multiplicar 53 × 24, un compañero escribió la segunda fila como 53 × 2 = 106 (sin correrla). Explica qué está mal y da el resultado correcto.",
+      "pista": "El 2 del 24 no vale 2, vale 20 (está en el lugar de las decenas). ¿Cuánto es en verdad esa segunda fila?",
+      "solucion": "El error es tratar la segunda cifra del 24 como un 2, cuando en realidad es 20 (decenas). La fila correcta es 53 × 20 = 1060, no 53 × 2 = 106; por eso esa fila debe terminar en cero (corrida un lugar). Bien hecho: 53 × 4 = 212 y 53 × 20 = 1060, suma 212 + 1060 = 1272. Resultado correcto: 1272. Comprobación: 1272 ÷ 24 = 53.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Multiplica 128 × 34.",
+      "pista": "Parte el 34 en 30 + 4. Primera fila 128 × 4, segunda fila 128 × 30 (termina en cero). Estima con 130 × 34 para chequear.",
+      "solucion": "Primera fila: 128 × 4 = 512. Segunda fila: 128 × 30 = 3840. Suma: 512 + 3840 = 4352. Resultado: 4352. Comprobación: 4352 ÷ 34 = 128. Estimación: 128 × 34 se parece a 130 × 34 = 4420, y 4352 está cerca, así que es razonable.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Multiplica 342 × 213 usando tres filas.",
+      "pista": "Parte 213 en 200 + 10 + 3. Fila de unidades (342 × 3), fila de decenas (342 × 10, un cero), fila de centenas (342 × 200, dos ceros). Suma las tres.",
+      "solucion": "Fila de unidades: 342 × 3 = 1026. Fila de decenas: 342 × 10 = 3420. Fila de centenas: 342 × 200 = 68400. Suma: 1026 + 3420 + 68400 = 72846. Resultado: 72846. Comprobación por estimación: 340 × 200 = 68000, y 72846 está en ese orden de tamaño, así que tiene sentido.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una escuela compra 24 cajas de marcadores y cada caja trae 36 marcadores. ¿Cuántos marcadores compró en total?",
+      "pista": "Es una multiplicación: 24 grupos de 36. Puedes hacer 24 × 36 con el método de dos filas.",
+      "solucion": "24 × 36: primera fila 24 × 6 = 144, segunda fila 24 × 30 = 720. Suma: 144 + 720 = 864. Compró 864 marcadores. Comprobación: 864 ÷ 36 = 24, se vuelve al número de cajas; y estimando, 24 × 36 se parece a 25 × 36 = 900, cerca de 864.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Sin calcular exacto todavía, estima cuánto da 512 × 18. Después calcula el valor exacto y compara.",
+      "pista": "Para estimar, redondea a números terminados en cero: 500 × 20. Luego haz la multiplicación completa por dos cifras.",
+      "solucion": "Estimación: 500 × 20 = 10000, así que la respuesta debe rondar los diez mil. Exacto: 512 × 8 = 4096 y 512 × 10 = 5120, suma 4096 + 5120 = 9216. Resultado: 9216. Está cerca de la estimación 10000, así que es razonable. Comprobación: 9216 ÷ 18 = 512.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Divide 784 ÷ 7 con el método de la división larga.",
+      "pista": "Ve cifra por cifra de izquierda a derecha: ¿cuántas veces entra 7 en 7?, luego baja la cifra siguiente y sigue.",
+      "solucion": "El 7 entra 1 vez en 7 (1 × 7 = 7), sobra 0; bajo el 8, el 7 entra 1 vez en 8 (1 × 7 = 7), sobra 1; bajo el 4 y formo 14, el 7 entra 2 veces en 14 (2 × 7 = 14), sobra 0. Cociente 112, resto 0. Comprobación: 112 × 7 = 784.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Divide 500 ÷ 6. Da el cociente y el resto.",
+      "pista": "No da exacto: al final va a sobrar algo. Recuerda que el resto tiene que ser menor que 6.",
+      "solucion": "El 6 no entra en 5, así que tomo 50: el 6 entra 8 veces en 50 (8 × 6 = 48), sobra 2; bajo el 0 y formo 20, el 6 entra 3 veces en 20 (3 × 6 = 18), sobra 2. Cociente 83, resto 2. Comprobación: 83 × 6 + 2 = 498 + 2 = 500, y 2 es menor que 6, así que el resto es válido.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Se reparten 275 caramelos en partes iguales entre 8 niños. ¿Cuántos le tocan a cada uno y cuántos sobran?",
+      "pista": "Es una división con resto: 275 ÷ 8. El cociente es lo que toca a cada niño y el resto es lo que sobra.",
+      "solucion": "El 8 entra 3 veces en 27 (3 × 8 = 24), sobra 3; bajo el 5 y formo 35, el 8 entra 4 veces en 35 (4 × 8 = 32), sobra 3. Cociente 34, resto 3. A cada niño le tocan 34 caramelos y sobran 3. Comprobación: 34 × 8 + 3 = 272 + 3 = 275, y 3 es menor que 8.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Divide 936 ÷ 12 (divisor de dos cifras).",
+      "pista": "Pregunta en cada tramo cuántas veces entra 12. Para tantear, estima: ¿90 entre 12 es como cuánto?",
+      "solucion": "El 12 no entra en 9, tomo 93: estimando (90 ÷ 12 es como 7), pruebo 7: 7 × 12 = 84, entra 7 veces, sobra 9; bajo el 6 y formo 96, 12 entra 8 veces en 96 (8 × 12 = 96), sobra 0. Cociente 78, resto 0. Comprobación: 78 × 12 = 936.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Divide 1000 ÷ 32. Da el cociente y el resto, y comprueba.",
+      "pista": "Divisor de dos cifras: estima cuántas veces entra 32 en 100. El resto final debe ser menor que 32.",
+      "solucion": "El 32 no entra en 1 ni en 10, tomo 100: estimando (100 ÷ 32 es como 3), pruebo 3: 3 × 32 = 96, entra 3 veces, sobra 4; bajo el 0 y formo 40, 32 entra 1 vez en 40 (1 × 32 = 32), sobra 8. Cociente 31, resto 8. Comprobación: 31 × 32 + 8 = 992 + 8 = 1000, y 8 es menor que 32.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una fábrica embotella 1440 litros de jugo en tanques de 45 litros cada uno, sin que sobre jugo. ¿Cuántos tanques usa?",
+      "pista": "Reparte 1440 en grupos de 45: es la división 1440 ÷ 45. Estima con 1440 ÷ 45 (más o menos como 1500 ÷ 50) para tantear.",
+      "solucion": "1440 ÷ 45: estimo (1500 ÷ 50 = 30, así que ronda 30). El 45 entra 3 veces en 144 (3 × 45 = 135), sobra 9; bajo el 0 y formo 90, el 45 entra 2 veces en 90 (2 × 45 = 90), sobra 0. Cociente 32, resto 0. Usa 32 tanques. Comprobación: 32 × 45 = 1440.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un teatro tiene 28 filas y en cada fila hay 45 asientos. ¿Cuántos asientos tiene en total?",
+      "pista": "Filas iguales de asientos: es una multiplicación, 28 × 45. Estima con 30 × 45 para chequear.",
+      "solucion": "28 × 45: primera fila 28 × 5 = 140, segunda fila 28 × 40 = 1120. Suma: 140 + 1120 = 1260. El teatro tiene 1260 asientos. Comprobación: 1260 ÷ 45 = 28; y estimando, 30 × 45 = 1350, cerca de 1260, así que es razonable.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un grupo de 372 estudiantes viajará en autobuses de 40 asientos cada uno. ¿Cuántos autobuses hacen falta para que TODOS viajen?",
+      "pista": "Divide 372 ÷ 40 y fíjate en el resto: si sobra aunque sea un estudiante, hace falta un autobús más.",
+      "solucion": "372 ÷ 40: el 40 entra 9 veces en 372 (9 × 40 = 360), sobra 12. El cociente 9 significa que 9 autobuses llenos llevan 360 estudiantes, pero sobran 12 que también deben viajar, así que hace falta un autobús más: 10 autobuses en total. Comprobación: 9 × 40 + 12 = 360 + 12 = 372; y como sobran estudiantes, se redondea hacia arriba a 10.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuánto es 27 × 3?",
+      "opciones": [
+        "67",
+        "621",
+        "81",
+        "61"
+      ],
+      "correcta": 2,
+      "explicacion": "Unidades: 3 × 7 = 21, escribo 1 y llevo 2. Decenas: 3 × 2 = 6, más 2 que llevaba = 8. Resultado: 81. El 61 sale si te olvidas de sumar la llevada (6 en vez de 8)."
+    },
+    {
+      "pregunta": "Al multiplicar 62 × 43, ¿por qué la segunda fila (la del 4) se escribe corrida un lugar a la izquierda o termina en cero?",
+      "opciones": [
+        "Porque el 4 está en el lugar de las decenas, así que en verdad multiplicas por 40, no por 4",
+        "Porque siempre hay que dejar un espacio para que quede ordenado",
+        "Porque la segunda fila siempre es más grande que la primera",
+        "Porque el cero hace que la suma sea más fácil"
+      ],
+      "correcta": 0,
+      "explicacion": "El 4 del 43 vale 40 (está en las decenas), así que esa fila es 62 × 40, y por eso termina en cero. No es para ordenar: es valor posicional puro. Si no la corres, sumarías 62 × 4 en lugar de 62 × 40."
+    },
+    {
+      "pregunta": "¿Cuánto es 53 × 24?",
+      "opciones": [
+        "1060",
+        "318",
+        "1272",
+        "1590"
+      ],
+      "correcta": 2,
+      "explicacion": "53 × 4 = 212 y 53 × 20 = 1060; suma 212 + 1060 = 1272. El 318 sale del error típico de no correr la segunda fila (usar 53 × 2 = 106 y sumar 212 + 106)."
+    },
+    {
+      "pregunta": "¿Cuánto es 214 × 32?",
+      "opciones": [
+        "6420",
+        "1070",
+        "7048",
+        "6848"
+      ],
+      "correcta": 3,
+      "explicacion": "214 × 2 = 428 y 214 × 30 = 6420; suma 428 + 6420 = 6848. El 1070 sale si no corres la segunda fila (usar 214 × 3 = 642 y sumar 428 + 642)."
+    },
+    {
+      "pregunta": "¿Cuál es la MEJOR estimación de 288 × 21 para chequear si un resultado tiene sentido?",
+      "opciones": [
+        "300 × 200 = 60000",
+        "30 × 20 = 600",
+        "300 × 20 = 6000",
+        "200 × 20 = 4000"
+      ],
+      "correcta": 2,
+      "explicacion": "Redondeamos cada número al valor redondo más cercano: 288 a 300 y 21 a 20, así 300 × 20 = 6000. El resultado exacto es 6048, muy cerca de 6000, así que la estimación confirma que es razonable."
+    },
+    {
+      "pregunta": "Una estudiante calculó 405 × 19 y le dio 7695. Estimando con 400 × 20 = 8000, ¿su resultado es razonable?",
+      "opciones": [
+        "No, porque 405 × 19 debería ser menor que 1000",
+        "Sí, porque 7695 está cerca de 8000",
+        "No, porque 7695 es distinto de 8000",
+        "No se puede saber sin calculadora"
+      ],
+      "correcta": 1,
+      "explicacion": "La estimación 400 × 20 = 8000 no da el valor exacto, sino un 'debería andar por ahí'. Como 7695 está muy cerca de 8000, el resultado es razonable (y en efecto 405 × 19 = 7695 es correcto)."
+    },
+    {
+      "pregunta": "¿Cuánto es 96 ÷ 8?",
+      "opciones": [
+        "14",
+        "11",
+        "12",
+        "88"
+      ],
+      "correcta": 2,
+      "explicacion": "El 8 entra 1 vez en 9 (sobra 1), bajo el 6 y formo 16, el 8 entra 2 veces en 16. Cociente 12. Comprobación: 12 × 8 = 96."
+    },
+    {
+      "pregunta": "¿Cuánto es 856 ÷ 4?",
+      "opciones": [
+        "214",
+        "204",
+        "212",
+        "231"
+      ],
+      "correcta": 0,
+      "explicacion": "El 4 entra 2 veces en 8, 1 vez en 5 (sobra 1), y bajando el 6 formo 16 donde entra 4 veces. Cociente 214. Comprobación: 214 × 4 = 856. El 204 sale si te saltas la cifra del medio."
+    },
+    {
+      "pregunta": "¿Cuál es el RESTO de 750 ÷ 7?",
+      "opciones": [
+        "7",
+        "0",
+        "1",
+        "10"
+      ],
+      "correcta": 2,
+      "explicacion": "750 ÷ 7 da cociente 107 y resto 1, porque 107 × 7 = 749 y falta 1 para llegar a 750. El resto (1) es menor que el divisor (7), como debe ser."
+    },
+    {
+      "pregunta": "¿Cuánto es 644 ÷ 14?",
+      "opciones": [
+        "46",
+        "48",
+        "44",
+        "460"
+      ],
+      "correcta": 0,
+      "explicacion": "Con divisor de dos cifras: 14 entra 4 veces en 64 (4 × 14 = 56, sobra 8), bajo el 4 y formo 84, donde 14 entra 6 veces (6 × 14 = 84). Cociente 46. Comprobación: 46 × 14 = 644."
+    },
+    {
+      "pregunta": "Al dividir 500 ÷ 16, ¿cuál es el cociente y el resto?",
+      "opciones": [
+        "31, resto 4",
+        "30, resto 20",
+        "32, resto 0",
+        "31, resto 2"
+      ],
+      "correcta": 0,
+      "explicacion": "16 entra 3 veces en 50 (48, sobra 2), bajo el 0 y formo 20, donde 16 entra 1 vez (sobra 4). Cociente 31, resto 4. Comprobación: 31 × 16 + 4 = 496 + 4 = 500, y 4 es menor que 16. La opción '30, resto 20' es imposible: el resto nunca puede ser mayor que el divisor."
+    },
+    {
+      "pregunta": "372 estudiantes viajan en autobuses de 40 asientos. ¿Cuántos autobuses hacen falta para que viajen TODOS?",
+      "opciones": [
+        "9 con 12 de resto",
+        "10",
+        "9",
+        "40"
+      ],
+      "correcta": 1,
+      "explicacion": "372 ÷ 40 = 9 con resto 12. Nueve autobuses llevan 360, pero sobran 12 estudiantes que también deben viajar, así que hace falta un autobús más: 10 en total. Aquí el resto obliga a redondear hacia arriba."
+    },
+    {
+      "pregunta": "Una tienda recibe 15 cajas y cada caja trae 24 botellas. ¿Cuántas botellas recibió?",
+      "opciones": [
+        "39",
+        "360",
+        "3600",
+        "260"
+      ],
+      "correcta": 1,
+      "explicacion": "Es una multiplicación: 15 × 24. 15 × 4 = 60 y 15 × 20 = 300; suma 60 + 300 = 360. Comprobación: 360 ÷ 24 = 15. El 39 sale de sumar en vez de multiplicar (15 + 24)."
+    },
+    {
+      "pregunta": "¿Cuánto es 738 ÷ 6?",
+      "opciones": [
+        "123",
+        "113",
+        "130",
+        "122"
+      ],
+      "correcta": 0,
+      "explicacion": "6 entra 1 vez en 7 (sobra 1), bajo el 3 y formo 13 donde entra 2 veces (12, sobra 1), bajo el 8 y formo 18 donde entra 3 veces. Cociente 123. Comprobación: 123 × 6 = 738."
+    },
+    {
+      "pregunta": "Para comprobar que 84 ÷ 12 = 7 está bien, ¿qué conviene hacer?",
+      "opciones": [
+        "Dividir 84 ÷ 7 otra vez",
+        "Restar 84 - 12 y ver si da 7",
+        "Sumar 7 + 12 y ver si da 84",
+        "Multiplicar 7 × 12 y ver si da 84"
+      ],
+      "correcta": 3,
+      "explicacion": "Multiplicar y dividir son operaciones opuestas: si 84 ÷ 12 = 7, entonces 7 × 12 debe devolver el 84. En efecto, 7 × 12 = 84, así que la división está bien."
+    },
+    {
+      "pregunta": "Al multiplicar 43 × 21, un niño escribió 43 (por el 1) y debajo 86 (por el 2) SIN correrla, y sumó 43 + 86 = 129. ¿Cuál es el resultado correcto?",
+      "opciones": [
+        "946",
+        "903",
+        "129",
+        "890"
+      ],
+      "correcta": 1,
+      "explicacion": "El 2 del 21 vale 20, así que la segunda fila es 43 × 20 = 860 (corrida, con cero), no 43 × 2 = 86. Correcto: 43 × 1 = 43 más 43 × 20 = 860, suma 43 + 860 = 903. Comprobación: 903 ÷ 21 = 43."
+    }
+  ]
+}

@@ -1,0 +1,343 @@
+{
+  "programa": "cumbre",
+  "materia": "Matemática",
+  "grado": "Cumbre Matemática 5to grado",
+  "dominio": "Números grandes y operaciones",
+  "tema": "Orden de las operaciones y paréntesis: en qué orden se resuelve",
+  "referencias": [
+    "Singapore MOE Primary 5 (Whole Numbers): order of operations and use of brackets in combined calculations with +, -, x and ÷",
+    "UK National Curriculum KS2 Year 6 (Number - Four Operations): use knowledge of the order of operations to carry out calculations involving the four operations, and the use of brackets"
+  ],
+  "resumen": {
+    "titulo": "El orden de las operaciones: quién va primero en una cuenta con varias operaciones",
+    "intro": "Hasta ahora resolviste cuentas con UNA sola operación por vez: una suma, o una resta, o una multiplicación. Pero muchas veces una misma cuenta mezcla varias, como 6 + 2 × 5. Aquí aparece un problema que sorprende a todo el mundo: si dos personas resuelven la misma cuenta pero en distinto orden, pueden sacar resultados diferentes, y solo uno es el correcto. Para que eso no pase, todos los matemáticos del mundo se pusieron de acuerdo en un ORDEN fijo para resolver: primero los paréntesis, después las multiplicaciones y divisiones, y al final las sumas y restas. En este tema vas a entender POR QUÉ existe ese orden y cómo seguirlo paso a paso, para que tu cuenta dé siempre el resultado correcto, sin importar cuántas operaciones tenga.",
+    "secciones": [
+      {
+        "titulo": "El problema: una misma cuenta, dos resultados",
+        "explicacion": "Empecemos viendo por qué hace falta un orden. Mira la cuenta 6 + 2 × 5, que tiene una suma y una multiplicación juntas. Una persona podría resolverla de izquierda a derecha, como se lee: primero 6 + 2 = 8, y después 8 × 5 = 40. Otra persona podría hacer primero la multiplicación: 2 × 5 = 10, y después 6 + 10 = 16. Fíjate el problema: una obtuvo 40 y la otra 16, con la MISMA cuenta. No pueden tener razón las dos. Por eso la matemática no puede dejar el orden 'al gusto de cada uno': necesita una regla única que todos sigan igual, para que 6 + 2 × 5 signifique una sola cosa en todo el mundo. Esa regla es el ORDEN DE LAS OPERACIONES, y dice que la respuesta correcta es 16 (la multiplicación va primero). En las secciones que siguen vas a entender por qué se eligió ese orden y cómo aplicarlo.",
+        "pasos": [
+          "Cuando una cuenta tiene varias operaciones, NO se resuelve simplemente de izquierda a derecha como se lee.",
+          "Hay un orden acordado por todos: si no lo sigues, te puede dar un resultado distinto y equivocado.",
+          "La meta de este tema es que tu cuenta dé siempre el mismo resultado correcto que la de cualquier otra persona."
+        ],
+        "ejemplo": "6 + 2 × 5: resolver mal (de corrido) da 6 + 2 = 8 y 8 × 5 = 40. Resolver bien (la multiplicación primero) da 2 × 5 = 10 y 6 + 10 = 16. El resultado correcto es 16."
+      },
+      {
+        "titulo": "Las dos familias: operaciones fuertes y operaciones suaves",
+        "explicacion": "Para recordar el orden ayuda pensar que las cuatro operaciones están en dos familias, y una familia manda sobre la otra. La familia FUERTE es la multiplicación y la división: van PRIMERO. La familia SUAVE es la suma y la resta: van DESPUÉS. Una imagen útil: multiplicar es una forma corta de sumar muchas veces lo mismo (3 × 5 es sumar cinco tres veces: 5 + 5 + 5), así que la multiplicación 'empaqueta' un montón de sumas en una sola pieza; por eso conviene resolver esa pieza compacta antes de mezclarla con las sumas sueltas. Lo mismo con la división respecto de la resta. Entonces, cuando en una cuenta veas multiplicaciones o divisiones mezcladas con sumas o restas, resuelve SIEMPRE primero las de la familia fuerte y deja las suaves para el final.",
+        "pasos": [
+          "Familia fuerte (va primero): multiplicación y división.",
+          "Familia suave (va después): suma y resta.",
+          "En una cuenta mezclada, resuelve todas las multiplicaciones y divisiones antes de tocar las sumas y restas."
+        ],
+        "ejemplo": "En 30 - 4 × 3, la resta es suave y la multiplicación es fuerte. Primero la fuerte: 4 × 3 = 12. Después la suave: 30 - 12 = 18. El resultado es 18, no 78 (que saldría si restaras primero, mal)."
+      },
+      {
+        "titulo": "La regla completa, en orden",
+        "explicacion": "Ahora juntamos todo en una lista clara. Para resolver cualquier cuenta con varias operaciones, sigue estos pasos SIEMPRE en este orden: PRIMERO, lo que esté dentro de PARÉNTESIS (los paréntesis son esos signos curvos ( ) que agrupan una parte de la cuenta para resolverla aparte). SEGUNDO, las MULTIPLICACIONES y DIVISIONES, resolviéndolas de izquierda a derecha. TERCERO, las SUMAS y RESTAS, también de izquierda a derecha. Ese es todo el secreto. A tu edad, las cuentas usan solo estas cuatro operaciones y los paréntesis; más adelante aprenderás las 'potencias' (una forma corta de multiplicar un número por sí mismo varias veces), que se resuelven justo después de los paréntesis, pero por ahora no necesitas preocuparte por ellas. Con paréntesis, familia fuerte y familia suave, en ese orden, resuelves cualquier cuenta de este tema.",
+        "pasos": [
+          "Paso 1: resuelve lo que esté dentro de los paréntesis.",
+          "Paso 2: resuelve las multiplicaciones y divisiones, de izquierda a derecha.",
+          "Paso 3: resuelve las sumas y restas, de izquierda a derecha.",
+          "Trabaja de a un paso por vez y reescribe la cuenta más corta después de cada operación."
+        ],
+        "ejemplo": "5 × 4 - 6 ÷ 2: no hay paréntesis. Familia fuerte primero: 5 × 4 = 20 y 6 ÷ 2 = 3. Ahora la cuenta quedó 20 - 3. Familia suave: 20 - 3 = 17. Resultado: 17."
+      },
+      {
+        "titulo": "Los paréntesis: el 'primero yo' de la cuenta",
+        "explicacion": "Los PARÉNTESIS son los signos ( ) que encierran una parte de la cuenta para decir: 'esto se resuelve ANTES que todo lo demás'. Sirven para cambiar el orden natural cuando queremos que una suma o una resta se haga primero, aunque normalmente iría al final. Mira la diferencia. Sin paréntesis, 8 + 2 × 5 se resuelve con la multiplicación primero: 2 × 5 = 10 y 8 + 10 = 18. Pero si ponemos paréntesis, (8 + 2) × 5, esos signos obligan a sumar primero: 8 + 2 = 10, y después 10 × 5 = 50. Misma cuenta con los mismos números, pero los paréntesis cambiaron el resultado de 18 a 50. Por eso los paréntesis son tan importantes: son la herramienta para mandar que algo se haga primero. Cuando dentro del paréntesis termina toda la operación, los signos ( ) desaparecen y sigues con el resto de la cuenta.",
+        "pasos": [
+          "Si ves paréntesis, empieza SIEMPRE por lo que está adentro.",
+          "Resuelve la operación de adentro hasta dejar un solo número en ese lugar.",
+          "Borra los paréntesis y sigue con la regla normal (fuerte, y luego suave)."
+        ],
+        "ejemplo": "3 × (10 - 4) + 8: primero el paréntesis, 10 - 4 = 6. La cuenta queda 3 × 6 + 8. Familia fuerte: 3 × 6 = 18. Familia suave: 18 + 8 = 26. Resultado: 26."
+      },
+      {
+        "titulo": "El empate: cuando toca ir de izquierda a derecha",
+        "explicacion": "Ya sabes que la familia fuerte va antes que la suave. Pero, ¿qué pasa cuando en la cuenta hay DOS operaciones de la misma familia, por ejemplo una multiplicación y una división juntas, o una suma y una resta juntas? Ahí no hay una que mande sobre la otra: están 'empatadas'. La regla para el empate es simple: se resuelven de IZQUIERDA A DERECHA, o sea en el mismo orden en que están escritas, la que aparece primero se hace primero. Esto es muy importante con la división y con la resta, porque cambiar el orden cambia el resultado. Por ejemplo, 24 ÷ 6 ÷ 2 no es lo mismo si empiezas por la izquierda que por la derecha. Empezando bien, por la izquierda: 24 ÷ 6 = 4, y después 4 ÷ 2 = 2. Si empezaras por la derecha (mal): 6 ÷ 2 = 3, y 24 ÷ 3 = 8. Da 2 o da 8 según el orden, y el correcto es 2, porque las de igual familia van de izquierda a derecha. Ojo con una confusión común: multiplicación y división son la MISMA familia; no se hace 'toda la multiplicación primero', se van tomando en el orden en que aparecen.",
+        "pasos": [
+          "Si hay dos (o más) operaciones de la misma familia, ninguna manda sobre la otra.",
+          "Resuélvelas en el orden en que están escritas: de izquierda a derecha.",
+          "Esto vale igual para multiplicación con división, y para suma con resta."
+        ],
+        "ejemplo": "20 - 8 + 5: suma y resta son la misma familia, así que van de izquierda a derecha. Primero 20 - 8 = 12, y después 12 + 5 = 17. Resultado: 17 (no 7, que saldría mal si sumaras 8 + 5 primero)."
+      },
+      {
+        "titulo": "El error más común: sumar antes de multiplicar",
+        "explicacion": "El resbalón número uno en este tema es resolver la cuenta 'de corrido', de izquierda a derecha, como si fuera un texto, sin respetar que la multiplicación y la división van primero. Casi siempre el error es sumar (o restar) antes de multiplicar (o dividir). Por ejemplo, en 4 + 6 × 2, muchos hacen 4 + 6 = 10 y después 10 × 2 = 20; pero eso está mal, porque salteaste el orden. Lo correcto es 6 × 2 = 12 primero, y después 4 + 12 = 16. Otro error frecuente es olvidar que dentro de los paréntesis todo se resuelve primero, o creer que las multiplicaciones se hacen todas antes que las divisiones (cuando en realidad van de izquierda a derecha, porque son la misma familia). Para blindarte, antes de calcular nada, mira la cuenta completa y pregunta: ¿hay paréntesis?, ¿hay multiplicaciones o divisiones? Resuelve esas primero, y recién al final las sumas y restas.",
+        "pasos": [
+          "No resuelvas 'de corrido' de izquierda a derecha si hay operaciones de distinta familia.",
+          "Antes de calcular, busca paréntesis; luego busca multiplicaciones y divisiones.",
+          "Deja las sumas y restas para el final, salvo que estén dentro de un paréntesis."
+        ],
+        "ejemplo": "En 10 - 2 × 3, el error es hacer 10 - 2 = 8 y 8 × 3 = 24. Lo correcto: 2 × 3 = 6 primero (familia fuerte), y después 10 - 6 = 4. El resultado correcto es 4, no 24."
+      },
+      {
+        "titulo": "Un método seguro para no equivocarte",
+        "explicacion": "Como las cuentas mezcladas se prestan a errores, conviene tener una manera ordenada de trabajar, para hacer una operación por vez sin marearte. La idea es no intentar resolver todo de una: resuelve solo el paso que corresponde, reescribe la cuenta ya más corta, y repite. Así, en cada renglón la cuenta tiene una operación menos, hasta que queda un solo número, que es la respuesta. Este método lo usan los estudiantes de los mejores sistemas del mundo porque hace casi imposible saltarse un paso. Al final, siempre conviene COMPROBAR: revisa que en cada renglón solo hiciste la operación que tocaba según el orden, y que no cambiaste ningún número al copiar.",
+        "pasos": [
+          "Mira la cuenta entera y decide cuál es el ÚNICO paso que va primero (paréntesis, o la fuerte de más a la izquierda).",
+          "Resuelve solo ese paso y reescribe toda la cuenta, ya con ese pedazo convertido en un número.",
+          "Repite con la nueva cuenta, siempre un paso por renglón.",
+          "Cuando quede un solo número, esa es la respuesta; comprueba que respetaste el orden en cada renglón."
+        ],
+        "ejemplo": "100 - (5 + 3) × 6, paso a paso: paréntesis, 5 + 3 = 8, queda 100 - 8 × 6. Familia fuerte, 8 × 6 = 48, queda 100 - 48. Familia suave, 100 - 48 = 52. Resultado: 52."
+      }
+    ],
+    "idea_clave": "Cuando una cuenta mezcla varias operaciones, no se resuelve de corrido: hay un orden fijo. Primero lo que está dentro de los PARÉNTESIS; después las MULTIPLICACIONES y DIVISIONES; y al final las SUMAS y RESTAS. Cuando hay dos operaciones de la misma familia (dos divisiones, o una suma y una resta), se resuelven de IZQUIERDA A DERECHA. Los paréntesis son la herramienta para obligar a que algo se haga primero, y cambian el resultado. El error más común es sumar antes de multiplicar: para evitarlo, resuelve un paso por vez y reescribe la cuenta más corta cada vez."
+  },
+  "practica": [
+    {
+      "enunciado": "Resuelve 8 + 4 × 6 respetando el orden de las operaciones.",
+      "pista": "Fíjate que hay una suma y una multiplicación. La multiplicación es de la familia fuerte, así que va primero, aunque esté más a la derecha.",
+      "solucion": "Primero la multiplicación: 4 × 6 = 24. La cuenta queda 8 + 24. Después la suma: 8 + 24 = 32. Resultado: 32. Comprobación: si al 32 le quitas la suma inicial, 32 - 8 = 24, y ese 24 es justo 4 × 6, así que está bien. (Si hubieras sumado primero, 8 + 4 = 12 y 12 × 6 = 72, te daría otro número: por eso el orden importa.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Resuelve 50 - 6 × 7.",
+      "pista": "La multiplicación (familia fuerte) va antes que la resta (familia suave), aunque la resta se lea primero.",
+      "solucion": "Primero la multiplicación: 6 × 7 = 42. La cuenta queda 50 - 42. Después la resta: 50 - 42 = 8. Resultado: 8. Comprobación: 8 + 42 = 50, así que la resta está bien. (Restar primero, 50 - 6 = 44 y 44 × 7 = 308, daría un número muy distinto y equivocado.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Resuelve (7 + 3) × 4.",
+      "pista": "Hay paréntesis: empieza SIEMPRE por lo que está adentro.",
+      "solucion": "Primero el paréntesis: 7 + 3 = 10. La cuenta queda 10 × 4. Después la multiplicación: 10 × 4 = 40. Resultado: 40. Comprobación: 40 ÷ 4 = 10, que es justo 7 + 3. (Sin paréntesis, 7 + 3 × 4 daría 7 + 12 = 19: los paréntesis cambian el resultado.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Resuelve las dos cuentas y explica por qué dan distinto: 9 + 3 × 4 y (9 + 3) × 4.",
+      "pista": "En la primera manda el orden normal (multiplicación primero). En la segunda, los paréntesis obligan a sumar primero.",
+      "solucion": "En 9 + 3 × 4: primero la multiplicación, 3 × 4 = 12, y después 9 + 12 = 21. En (9 + 3) × 4: primero el paréntesis, 9 + 3 = 12, y después 12 × 4 = 48. Dan distinto (21 y 48) porque los paréntesis cambian qué se hace primero: sin ellos se multiplica primero, con ellos se suma primero.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Resuelve 24 ÷ 6 ÷ 2.",
+      "pista": "Las dos son divisiones, o sea la misma familia. Cuando empatan, se resuelven de izquierda a derecha.",
+      "solucion": "De izquierda a derecha: primero 24 ÷ 6 = 4, y después 4 ÷ 2 = 2. Resultado: 2. Comprobación: 2 × 2 = 4 y 4 × 6 = 24, se vuelve al número de partida. (Si empezaras por la derecha, 6 ÷ 2 = 3 y 24 ÷ 3 = 8, te daría 8: por eso el orden de izquierda a derecha importa.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Resuelve 25 - 9 + 6.",
+      "pista": "Suma y resta son la misma familia: van de izquierda a derecha, no la suma primero.",
+      "solucion": "De izquierda a derecha: primero 25 - 9 = 16, y después 16 + 6 = 22. Resultado: 22. Comprobación: 22 - 6 = 16 y 16 + 9 = 25, se vuelve al inicio. (Sumar 9 + 6 = 15 primero y hacer 25 - 15 = 10 estaría mal: da 10 en vez de 22.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Resuelve 6 × 3 - 8 ÷ 4.",
+      "pista": "Hay una multiplicación y una división (familia fuerte) y una resta (suave). Resuelve las dos fuertes primero.",
+      "solucion": "Familia fuerte primero: 6 × 3 = 18 y 8 ÷ 4 = 2. La cuenta queda 18 - 2. Familia suave: 18 - 2 = 16. Resultado: 16. Comprobación: 16 + 2 = 18, que es 6 × 3; todo cuadra.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Resuelve 4 × (9 - 5) + 7.",
+      "pista": "Primero el paréntesis, después la multiplicación, y al final la suma.",
+      "solucion": "Primero el paréntesis: 9 - 5 = 4. La cuenta queda 4 × 4 + 7. Familia fuerte: 4 × 4 = 16. La cuenta queda 16 + 7. Familia suave: 16 + 7 = 23. Resultado: 23. Comprobación: 23 - 7 = 16, que es 4 × 4; correcto.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Resuelve 80 - (4 + 3) × 8.",
+      "pista": "Empieza por el paréntesis; luego la multiplicación (fuerte); al final la resta (suave).",
+      "solucion": "Primero el paréntesis: 4 + 3 = 7. La cuenta queda 80 - 7 × 8. Familia fuerte: 7 × 8 = 56. La cuenta queda 80 - 56. Familia suave: 80 - 56 = 24. Resultado: 24. Comprobación: 24 + 56 = 80, y 56 es 7 × 8; todo cierra.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Marisa compra 3 cuadernos que cuestan 5 bolívares cada uno y 2 borradores que cuestan 4 bolívares cada uno. Escribe una sola cuenta y calcula cuánto gasta en total.",
+      "pista": "El costo de los cuadernos es una multiplicación y el de los borradores otra. Suma los dos resultados. Las multiplicaciones van primero.",
+      "solucion": "La cuenta es 3 × 5 + 2 × 4. Las multiplicaciones van primero: 3 × 5 = 15 (los cuadernos) y 2 × 4 = 8 (los borradores). Después la suma: 15 + 8 = 23. Marisa gasta 23 bolívares. Comprobación: 23 - 8 = 15, que es lo de los cuadernos; correcto.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Cuatro amigos van a un paseo. Cada uno paga 10 bolívares de entrada y 5 bolívares de merienda. Escribe la cuenta usando un paréntesis y calcula cuánto pagan entre los cuatro.",
+      "pista": "Cada amigo paga entrada más merienda (una suma). Como son cuatro amigos que pagan lo mismo, multiplica esa suma por 4. El paréntesis obliga a sumar primero.",
+      "solucion": "Cada amigo paga 10 + 5 = 15 bolívares, y son 4 amigos, así que la cuenta es 4 × (10 + 5). Primero el paréntesis: 10 + 5 = 15. Después la multiplicación: 4 × 15 = 60. Pagan 60 bolívares entre los cuatro. Comprobación: 60 ÷ 4 = 15, lo que paga cada uno. (Sin paréntesis, 4 × 10 + 5 = 45 estaría mal, porque contaría una sola merienda en vez de cuatro.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero resolvió 4 + 6 × 2 y le dio 20. Explica qué hizo mal y cuál es el resultado correcto.",
+      "pista": "Piensa en qué operación tenía que hacer primero. 20 es lo que sale si sumas antes de multiplicar.",
+      "solucion": "El compañero sumó primero, 4 + 6 = 10, y después multiplicó 10 × 2 = 20; eso salteó el orden. Lo correcto es hacer primero la multiplicación (familia fuerte): 6 × 2 = 12, y después la suma: 4 + 12 = 16. El resultado correcto es 16. Comprobación: 16 - 4 = 12, que es 6 × 2; correcto.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Resuelve 18 ÷ 3 × 2.",
+      "pista": "División y multiplicación son la misma familia: van de izquierda a derecha, no la multiplicación primero.",
+      "solucion": "De izquierda a derecha: primero 18 ÷ 3 = 6, y después 6 × 2 = 12. Resultado: 12. Comprobación: 12 ÷ 2 = 6 y 6 × 3 = 18, se vuelve al inicio. (Multiplicar primero, 3 × 2 = 6 y 18 ÷ 6 = 3, daría 3: por eso, al empatar, se va de izquierda a derecha.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Resuelve (12 - 4) × (2 + 3).",
+      "pista": "Hay dos paréntesis. Resuelve cada uno por separado y después multiplica los dos resultados.",
+      "solucion": "Primero cada paréntesis: 12 - 4 = 8 y 2 + 3 = 5. La cuenta queda 8 × 5. Después la multiplicación: 8 × 5 = 40. Resultado: 40. Comprobación: 40 ÷ 5 = 8 y 40 ÷ 8 = 5, coinciden con los dos paréntesis; correcto.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuánto es 4 + 5 × 2?",
+      "opciones": [
+        "18",
+        "14",
+        "22",
+        "11"
+      ],
+      "correcta": 1,
+      "explicacion": "La multiplicación va primero: 5 × 2 = 10, y después 4 + 10 = 14. El 18 sale si sumas primero (4 + 5 = 9 y 9 × 2 = 18), que es justo el error más común. El 22 sale de multiplicar el número equivocado (4 × 5 + 2), y el 11 de sumar todo (4 + 5 + 2) como si el × fuera un +."
+    },
+    {
+      "pregunta": "En la cuenta 7 + 6 × 3, ¿qué operación se resuelve PRIMERO?",
+      "opciones": [
+        "Da igual, el resultado es el mismo",
+        "La suma 7 + 6, porque está primero al leer",
+        "La multiplicación 6 × 3, porque es familia fuerte",
+        "Primero el 7 solo"
+      ],
+      "correcta": 2,
+      "explicacion": "La multiplicación y la división (familia fuerte) van antes que la suma y la resta. Así, 6 × 3 = 18 primero, y después 7 + 18 = 25. No da igual: sumar primero daría 39, que es incorrecto."
+    },
+    {
+      "pregunta": "¿Cuánto es (9 + 1) × 5?",
+      "opciones": [
+        "15",
+        "14",
+        "50",
+        "46"
+      ],
+      "correcta": 2,
+      "explicacion": "Los paréntesis van primero: 9 + 1 = 10, y después 10 × 5 = 50. El 14 sale si ignoras el paréntesis y haces 9 + 1 × 5 = 9 + 5 = 14."
+    },
+    {
+      "pregunta": "¿Cuánto es 20 - 6 - 4?",
+      "opciones": [
+        "14",
+        "18",
+        "30",
+        "10"
+      ],
+      "correcta": 3,
+      "explicacion": "Las dos restas son la misma familia: se resuelven de izquierda a derecha. Primero 20 - 6 = 14, y después 14 - 4 = 10. El 18 sale si restas 6 - 4 = 2 primero y haces 20 - 2, que es el orden equivocado."
+    },
+    {
+      "pregunta": "¿Cuánto es 20 - 6 + 4?",
+      "opciones": [
+        "24",
+        "10",
+        "18",
+        "14"
+      ],
+      "correcta": 2,
+      "explicacion": "Suma y resta son la misma familia y van de izquierda a derecha: 20 - 6 = 14 primero, y después 14 + 4 = 18. El 10 sale si sumas 6 + 4 = 10 primero y haces 20 - 10, que es incorrecto."
+    },
+    {
+      "pregunta": "¿Cuánto es 16 ÷ 4 × 2?",
+      "opciones": [
+        "32",
+        "4",
+        "8",
+        "2"
+      ],
+      "correcta": 2,
+      "explicacion": "División y multiplicación son la misma familia: de izquierda a derecha. Primero 16 ÷ 4 = 4, y después 4 × 2 = 8. El 2 sale si multiplicas 4 × 2 = 8 primero y haces 16 ÷ 8, que no respeta el orden. El 4 sale de olvidar el último paso (16 ÷ 4 y no multiplicar por 2), y el 32 de multiplicar 16 × 2 ignorando la división."
+    },
+    {
+      "pregunta": "¿Cuánto es 36 ÷ 6 ÷ 3?",
+      "opciones": [
+        "18",
+        "6",
+        "12",
+        "2"
+      ],
+      "correcta": 3,
+      "explicacion": "Las dos divisiones van de izquierda a derecha: 36 ÷ 6 = 6 primero, y después 6 ÷ 3 = 2. El 18 sale si empiezas por la derecha (6 ÷ 3 = 2 y 36 ÷ 2 = 18), que es el orden equivocado."
+    },
+    {
+      "pregunta": "¿Cuánto es 2 + 3 × 4 - 1?",
+      "opciones": [
+        "15",
+        "14",
+        "13",
+        "19"
+      ],
+      "correcta": 2,
+      "explicacion": "Primero la multiplicación: 3 × 4 = 12. La cuenta queda 2 + 12 - 1, y de izquierda a derecha: 2 + 12 = 14 y 14 - 1 = 13. El 19 sale si sumas 2 + 3 = 5 primero (mal) y haces 5 × 4 - 1. El 15 sale de agrupar mal, (2 + 3) × (4 - 1) = 5 × 3, y el 14 de olvidar el último paso (2 + 12 sin restar el 1)."
+    },
+    {
+      "pregunta": "¿Para qué sirven los paréntesis en una cuenta?",
+      "opciones": [
+        "Para que el resultado sea siempre mayor",
+        "Solo para decorar la cuenta",
+        "No cambian nada, son opcionales",
+        "Para indicar que esa parte se resuelve PRIMERO, antes que el resto"
+      ],
+      "correcta": 3,
+      "explicacion": "Los paréntesis obligan a resolver primero lo que encierran, aunque sea una suma o una resta. Por eso pueden cambiar el resultado: 8 + 2 × 5 = 18, pero (8 + 2) × 5 = 50."
+    },
+    {
+      "pregunta": "¿Cuánto es 5 × (8 - 3)?",
+      "opciones": [
+        "15",
+        "37",
+        "25",
+        "40"
+      ],
+      "correcta": 2,
+      "explicacion": "Primero el paréntesis: 8 - 3 = 5, y después 5 × 5 = 25. El 37 sale si ignoras el paréntesis y haces 5 × 8 - 3 = 40 - 3 = 37."
+    },
+    {
+      "pregunta": "Ana compra 4 empanadas de 3 bolívares cada una y además 1 jugo de 5 bolívares. ¿Cuánto gasta en total?",
+      "opciones": [
+        "20",
+        "32",
+        "17",
+        "12"
+      ],
+      "correcta": 2,
+      "explicacion": "La cuenta es 4 × 3 + 5. La multiplicación va primero: 4 × 3 = 12, y después 12 + 5 = 17. El 32 sale si sumas 3 + 5 primero (mal) y haces 4 × (3 + 5), que no es lo que dice el problema."
+    },
+    {
+      "pregunta": "¿Cuál de estas cuentas da 30?",
+      "opciones": [
+        "2 × 10 + 5",
+        "2 + 10 × 5",
+        "2 × (10 + 5)",
+        "(2 + 10) × 5"
+      ],
+      "correcta": 2,
+      "explicacion": "2 × (10 + 5): primero el paréntesis, 10 + 5 = 15, y 2 × 15 = 30. Las otras dan distinto: 2 × 10 + 5 = 25, 2 + 10 × 5 = 52 y (2 + 10) × 5 = 60."
+    },
+    {
+      "pregunta": "Un niño resolvió 10 - 2 × 3 haciendo 10 - 2 = 8 y luego 8 × 3 = 24. ¿Cuál es el resultado CORRECTO?",
+      "opciones": [
+        "8",
+        "6",
+        "24",
+        "4"
+      ],
+      "correcta": 3,
+      "explicacion": "La multiplicación va primero: 2 × 3 = 6, y después 10 - 6 = 4. El niño restó antes de multiplicar, por eso le dio 24, que es incorrecto."
+    },
+    {
+      "pregunta": "¿Cuánto es (6 + 4) ÷ 2?",
+      "opciones": [
+        "2",
+        "5",
+        "12",
+        "8"
+      ],
+      "correcta": 1,
+      "explicacion": "Primero el paréntesis: 6 + 4 = 10, y después 10 ÷ 2 = 5. El 8 sale si ignoras el paréntesis y haces 6 + 4 ÷ 2 = 6 + 2 = 8."
+    },
+    {
+      "pregunta": "¿Cuánto es 8 × 2 + 12 ÷ 4?",
+      "opciones": [
+        "40",
+        "7",
+        "19",
+        "28"
+      ],
+      "correcta": 2,
+      "explicacion": "Familia fuerte primero: 8 × 2 = 16 y 12 ÷ 4 = 3. La cuenta queda 16 + 3 = 19. El 7 sale si resuelves todo de corrido de izquierda a derecha (16 + 12 = 28 y 28 ÷ 4 = 7), que no respeta el orden."
+    }
+  ]
+}

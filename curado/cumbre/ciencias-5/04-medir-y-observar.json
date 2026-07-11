@@ -1,0 +1,362 @@
+{
+  "programa": "cumbre",
+  "materia": "Ciencias",
+  "grado": "Cumbre Ciencias 5to grado",
+  "dominio": "Pensar como científico",
+  "tema": "Medir y observar con las herramientas correctas",
+  "referencias": [
+    "Singapore MOE Primary 5 Science — Scientific Investigation Skills: using apparatus and units correctly to make quantitative measurements",
+    "UK National Curriculum Key Stage 2 (Year 5) Science — working scientifically: taking measurements using a range of scientific equipment, with increasing accuracy, and using standard units"
+  ],
+  "resumen": {
+    "titulo": "Medir y observar con las herramientas correctas",
+    "intro": "En el tema anterior aprendiste que la variable dependiente es lo que MIDES como resultado de un experimento. Pero decir 'voy a medir' no alcanza: hace falta saber CON QUÉ herramienta medir cada cosa, en QUÉ unidad, y CÓMO leer bien esa herramienta para que el número que anotas sea confiable. En este tema vas a aprender la herramienta y la unidad correctas para longitud, masa, tiempo, temperatura y volumen de líquidos, y las reglas de oro para leerlas sin errores. Al terminar vas a poder mirar cualquier experimento y saber exactamente qué instrumento hace falta, y detectar cuándo una medición está mal tomada.",
+    "secciones": [
+      {
+        "titulo": "Observar vs medir: dos formas de recoger información",
+        "explicacion": "Cuando haces ciencia hay dos maneras distintas de recoger información sobre algo: OBSERVAR y MEDIR. Una OBSERVACIÓN CUALITATIVA describe algo con palabras, sin números: 'el agua está caliente', 'la hoja es verde oscuro', 'el sonido es fuerte'. Es útil, pero depende de quién la hace: lo que a un niño le parece 'caliente', a otro le puede parecer solo 'tibio'. Una MEDICIÓN CUANTITATIVA, en cambio, da un NÚMERO más una UNIDAD: 'el agua está a 78 °C', 'la hoja mide 6 cm de largo'. Esa combinación de número más unidad es lo que permite que dos personas, en dos lugares distintos, comparen sus resultados exactamente y estén hablando de lo mismo. Por eso, siempre que sea posible, un buen científico prefiere medir en vez de solo describir.",
+        "pasos": [
+          "Si la información es una palabra o descripción (color, textura, 'se ve grande'), es una observación CUALITATIVA.",
+          "Si la información es un número acompañado de una unidad (cm, g, °C, s, mL), es una medición CUANTITATIVA.",
+          "Ante la duda, pregúntate: ¿esto lo podría medir un instrumento y dar el mismo número sin importar quién lo use? Si sí, es cuantitativo."
+        ],
+        "ejemplo": "'El charco de agua se ve grande' es cualitativo (depende de la opinión de quien mira). 'El charco de agua mide 40 cm de ancho' es cuantitativo (cualquiera que lo mida con una cinta obtiene el mismo número)."
+      },
+      {
+        "titulo": "Longitud: la regla y la cinta métrica",
+        "explicacion": "La LONGITUD es qué tan largo, alto o ancho es algo. Para medirla se usan dos instrumentos según el tamaño de lo que quieras medir. Una REGLA sirve para objetos cortos, como un lápiz, un cuaderno o el borde de una hoja; normalmente mide hasta 30 cm y su unidad más común es el CENTÍMETRO (cm). Una CINTA MÉTRICA (o metro) sirve para distancias más largas, como el ancho de un salón, la altura de una puerta o la longitud de una cancha; su unidad más común es el METRO (m), y 1 metro equivale a 100 centímetros. Elegir el instrumento correcto según el tamaño no es un detalle menor: intentar medir el ancho de un salón completo con una regla de 30 cm sería lentísimo e introduciría muchos más errores que usar una cinta métrica de una sola vez.",
+        "pasos": [
+          "Pregúntate: ¿el objeto es pequeño, del tamaño de una mano a un brazo? Usa la REGLA (cm).",
+          "¿Es grande, del tamaño de un cuarto o más? Usa la CINTA MÉTRICA (m).",
+          "Verifica que la unidad que anotas (cm o m) sea la que corresponde a tu instrumento."
+        ],
+        "ejemplo": "Para medir el largo de un cuaderno usas una regla y anotas, por ejemplo, 21 cm. Para medir el largo de un pasillo usas una cinta métrica y anotas, por ejemplo, 8 m."
+      },
+      {
+        "titulo": "Masa: la balanza",
+        "explicacion": "La MASA es la cantidad de materia que tiene un objeto: cuánto 'hay' de esa cosa, no si se ve grande o pequeño (una piedra pequeña de metal puede tener más masa que una bolsa grande de algodón). El instrumento para medir masa es la BALANZA. Las unidades más comunes son el GRAMO (g) para objetos livianos (una manzana, una moneda, un lápiz) y el KILOGRAMO (kg) para objetos más pesados (una persona, una mochila llena, un saco de arroz); 1 kilogramo equivale a 1000 gramos. En la vida diaria usamos la palabra 'peso' para todo esto ('¿cuánto pesas?'), pero en el laboratorio la balanza mide masa, y por eso su unidad es gramos o kilogramos, no otra.",
+        "pasos": [
+          "Coloca el objeto sobre la balanza y espera a que el número deje de moverse (se estabilice) antes de leerlo.",
+          "Si el objeto es liviano (una fruta, un lápiz), la lectura probablemente esté en gramos.",
+          "Si es pesado (una persona, una maleta), probablemente esté en kilogramos."
+        ],
+        "ejemplo": "Una manzana puede tener una masa de 150 g. Una mochila llena de libros puede tener una masa de 4 kg."
+      },
+      {
+        "titulo": "Tiempo: el cronómetro",
+        "explicacion": "El TIEMPO que tarda algo en pasar se mide con un CRONÓMETRO. Las unidades más comunes son el SEGUNDO (s) para eventos rápidos (cuánto tarda una pelota en caer, cuánto tarda el agua en empezar a hervir después de encenderla) y el MINUTO (min) para eventos más largos (cuánto tarda en disolverse una cucharada de sal revolviendo, cuánto dura un recreo); 1 minuto equivale a 60 segundos. Medir tiempo tiene una dificultad especial que la longitud o la masa no tienen: el cronómetro hay que arrancarlo y detenerlo en el momento EXACTO en que empieza y termina el evento, y un retraso de solo medio segundo al presionar el botón puede cambiar bastante el resultado, sobre todo en eventos cortos.",
+        "pasos": [
+          "Decide el momento EXACTO en que empieza el evento (por ejemplo, cuando sueltas la pelota) y presiona 'iniciar' justo ahí.",
+          "Decide el momento EXACTO en que termina (por ejemplo, cuando la pelota toca el suelo) y presiona 'detener' justo ahí.",
+          "Anota el número con su unidad: segundos si fue rápido, minutos si fue más largo."
+        ],
+        "ejemplo": "Un cubo de hielo pequeño puede tardar 90 segundos en empezar a derretirse al sol; una cucharada de sal puede tardar cerca de 2 minutos en disolverse por completo en un vaso de agua mientras revuelves."
+      },
+      {
+        "titulo": "Temperatura: el termómetro",
+        "explicacion": "La TEMPERATURA indica qué tan caliente o frío está algo, y se mide con un TERMÓMETRO. La unidad más usada es el GRADO CELSIUS (°C). Un termómetro tiene una columna de líquido (o una pantalla digital) que sube o baja según la temperatura; para leerlo bien hay que esperar a que el número se ESTABILICE (deje de subir o bajar) antes de anotarlo, porque leerlo demasiado rápido, apenas se sumerge, da un valor que todavía está cambiando y no es el real. También hay que evitar tocar el bulbo o la punta del termómetro con los dedos mientras mide, porque el calor de tu mano se suma al del líquido y cambia la lectura.",
+        "pasos": [
+          "Sumerge o coloca el termómetro en contacto con lo que quieres medir (agua, aire, objeto), sin tocarlo con los dedos.",
+          "Espera unos segundos hasta que el número deje de moverse (se estabilice).",
+          "Lee el número a la altura de los ojos y anótalo en grados Celsius (°C)."
+        ],
+        "ejemplo": "El agua del grifo puede marcar 22 °C, mientras que el agua recién hervida puede marcar cerca de 95 °C."
+      },
+      {
+        "titulo": "Volumen de líquidos: la probeta y el menisco",
+        "explicacion": "El VOLUMEN de un líquido es cuánto espacio ocupa, y se mide con una PROBETA (también llamada cilindro graduado): un recipiente alto y angosto con marcas numeradas en el costado. Las unidades más comunes son el MILILITRO (mL) para cantidades pequeñas (un vaso de jugo) y el LITRO (L) para cantidades grandes (una botella grande de agua); 1 litro equivale a 1000 mililitros. Aquí aparece un detalle importante: cuando un líquido está dentro de un recipiente angosto, su superficie no queda perfectamente plana, sino ligeramente curva hacia abajo en el centro; esa curva se llama MENISCO, y aparece porque el líquido se 'pega' un poco más a las paredes de vidrio o plástico que a sí mismo. Para medir bien, hay que leer el volumen en el punto más BAJO de esa curva, no en los bordes donde el líquido sube un poco más.",
+        "pasos": [
+          "Vierte el líquido en la probeta hasta cerca de la cantidad que quieres medir.",
+          "Coloca la probeta sobre una superficie plana y agáchate (o levanta la probeta) hasta que tus ojos queden a la altura del líquido.",
+          "Busca el menisco (la curva de la superficie) y lee la marca que coincide con el punto más BAJO de esa curva, no con los bordes."
+        ],
+        "ejemplo": "Si viertes jugo en una probeta y el punto más bajo del menisco coincide con la marca de 150, el volumen es 150 mL, aunque los bordes del líquido parezcan llegar un poquito más arriba, hasta la marca de 152."
+      },
+      {
+        "titulo": "Reglas de oro para leer cualquier instrumento",
+        "explicacion": "Sin importar si mides longitud, masa, tiempo, temperatura o volumen, hay reglas que se repiten en TODOS los instrumentos y que marcan la diferencia entre una medición confiable y una llena de errores. Primero, lee siempre a la ALTURA DE LOS OJOS: si miras un instrumento desde arriba o desde un lado (en ángulo), la línea que ves no coincide con la marca real, y el número que lees queda ligeramente equivocado; a este error se le llama ERROR DE PARALAJE. Segundo, verifica desde dónde EMPIEZA la escala: algunas reglas viejas tienen el borde gastado y el '0' no está exactamente en la punta, así que hay que fijarse en la marca del cero, no asumir que empieza en el borde físico del instrumento. Tercero, anota SIEMPRE la unidad junto al número: un '20' solo no significa nada (¿20 cm? ¿20 g? ¿20 °C?); el número sin unidad es información incompleta e inútil para comparar con otros.",
+        "pasos": [
+          "Coloca tus ojos a la misma altura que la marca que vas a leer (ni por arriba ni por abajo).",
+          "Ubica dónde está el '0' real de la escala antes de empezar a medir.",
+          "Escribe siempre el número JUNTO con su unidad correspondiente."
+        ],
+        "ejemplo": "Si miras una regla desde arriba en ángulo, un lápiz que en realidad mide 10 cm te puede parecer que mide 10.5 cm; leyendo a la altura de los ojos, la medida correcta es 10 cm."
+      },
+      {
+        "titulo": "Por qué medir bien hace la ciencia confiable",
+        "explicacion": "En el tema anterior aprendiste que la variable DEPENDIENTE es la que mides como resultado de tu experimento, con un instrumento. Ahora puedes ver por qué este tema conecta directamente con ese: si eliges el instrumento equivocado, la unidad equivocada, o lees mal la escala, tu variable dependiente queda mal medida, y entonces TODA la conclusión de tu experimento queda en duda, sin importar qué tan bien hayas diseñado la prueba justa. Por ejemplo, si tu hipótesis era 'a mayor cantidad de luz, la planta crece más centímetros', pero mediste la altura con una regla mal leída (en ángulo, o sin fijarte en el cero), tus números de 'crecimiento' podrían estar todos equivocados y tu conclusión sería falsa aunque el diseño del experimento fuera perfecto. Por eso, elegir bien el instrumento y la unidad, y leerlos con cuidado, no es un paso extra: es la base que sostiene TODO lo demás en un experimento.",
+        "pasos": [
+          "Antes de medir, identifica qué MAGNITUD necesitas (longitud, masa, tiempo, temperatura o volumen).",
+          "Elige el instrumento correcto para esa magnitud (regla/cinta, balanza, cronómetro, termómetro o probeta).",
+          "Aplica las reglas de oro (altura de los ojos, cero real, menisco si es líquido) antes de anotar el número con su unidad."
+        ],
+        "ejemplo": "Si tu experimento mide 'cuánto crece una planta' (longitud, en cm, con regla) pero usas una balanza por error, no obtendrás ningún dato útil: la balanza no puede medir longitud."
+      }
+    ],
+    "idea_clave": "Cada magnitud tiene su instrumento y su unidad propios (longitud: regla o cinta, cm o m; masa: balanza, g o kg; tiempo: cronómetro, s o min; temperatura: termómetro, °C; volumen de líquidos: probeta, mL o L), y leerlos bien —a la altura de los ojos, desde el cero real, mirando el menisco en los líquidos— es lo que hace que una medición sea confiable y comparable. Una variable dependiente mal medida arruina hasta el experimento mejor diseñado."
+  },
+  "practica": [
+    {
+      "enunciado": "Quieres medir el largo de un borrador de goma pequeño. ¿Qué instrumento y qué unidad usarías?",
+      "pista": "Piensa en el tamaño del objeto: ¿es pequeño, del tamaño de una mano, o grande como un cuarto?",
+      "solucion": "Instrumento: regla. Unidad: centímetros (cm), porque el borrador es un objeto pequeño y la regla mide con precisión esas longitudes cortas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Quieres medir la altura de la puerta de tu salón de clases. ¿Qué instrumento y qué unidad usarías, y por qué no conviene usar una regla de 30 cm?",
+      "pista": "Piensa en qué tan larga es una puerta comparada con una regla.",
+      "solucion": "Instrumento: cinta métrica. Unidad: metros (m). Una regla de 30 cm requeriría colocarla muchas veces seguidas para cubrir toda la puerta, lo cual es lento e introduce más errores que medir de una sola vez con la cinta.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un niño quiere saber la masa de una naranja. Menciona el instrumento correcto y la unidad más probable.",
+      "pista": "Piensa en qué tan 'pesada' (con materia) es una naranja comparada con una persona.",
+      "solucion": "Instrumento: balanza. Unidad: gramos (g), porque una naranja es un objeto liviano; su masa probablemente esté entre 100 y 250 g aproximadamente.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Se quiere medir cuánto tiempo tarda una canica en caer desde una mesa hasta el piso. ¿Qué instrumento se usa y qué unidad es la más adecuada?",
+      "pista": "Piensa si ese evento dura segundos o minutos.",
+      "solucion": "Instrumento: cronómetro. Unidad: segundos (s), porque la caída de una canica desde una mesa es un evento muy rápido, de menos de un segundo (una fracción de segundo).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Quieres comparar la temperatura del agua de dos vasos: uno recién servido de la llave y otro que estuvo una hora al sol. ¿Qué instrumento usas y en qué unidad anotas el resultado?",
+      "pista": "¿Qué instrumento mide qué tan caliente o frío está algo?",
+      "solucion": "Instrumento: termómetro. Unidad: grados Celsius (°C). Por ejemplo, el agua de la llave podría marcar 23 °C y la que estuvo al sol, 35 °C.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un niño quiere saber cuánto jugo le cabe exactamente a un vaso pequeño. ¿Qué instrumento debería usar en vez de 'calcular a ojo', y en qué unidad anotaría el resultado?",
+      "pista": "Piensa en el instrumento que tiene marcas numeradas para líquidos.",
+      "solucion": "Instrumento: probeta (cilindro graduado). Unidad: mililitros (mL), ya que es una cantidad pequeña de líquido.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Al medir un lápiz con una regla, el extremo izquierdo del lápiz no queda exactamente en la marca de 0 cm, sino en la marca de 2 cm, y el extremo derecho llega hasta la marca de 15 cm. ¿Cuánto mide el lápiz?",
+      "pista": "No leas directamente el número donde termina el lápiz; resta el punto donde empezó.",
+      "solucion": "El lápiz mide 15 cm - 2 cm = 13 cm. Si alguien leyera solo '15 cm' sin fijarse en dónde empezó realmente el lápiz, se equivocaría por 2 cm.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Al leer una probeta con agua, el punto más bajo del menisco coincide con la marca de 80, pero los bordes del agua junto al vidrio suben hasta la marca de 83. ¿Cuál es la lectura correcta del volumen, y por qué?",
+      "pista": "Recuerda cuál parte del menisco hay que leer: el punto más bajo, no los bordes.",
+      "solucion": "La lectura correcta es 80 mL, porque el volumen de un líquido siempre se lee en el punto MÁS BAJO del menisco (el centro de la curva), no en los bordes donde el líquido sube por el efecto de las paredes del recipiente.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un niño mira la regla desde un ángulo, por arriba y desde un lado, en vez de ponerse a la altura de los ojos. Explica qué error puede cometer y cómo se llama.",
+      "pista": "Piensa en qué pasa con la línea de visión cuando miras algo en ángulo en vez de de frente.",
+      "solucion": "Puede cometer un error de paralaje: al mirar en ángulo, la línea de la marca que ve no coincide con la marca real sobre el objeto, así que el número que lee queda un poco distinto (más grande o más chico) del valor verdadero. Para evitarlo, hay que poner los ojos exactamente a la altura de la marca que se está leyendo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Clasifica cada afirmación como observación CUALITATIVA o medición CUANTITATIVA: (a) 'El agua está fría'. (b) 'El agua está a 15 °C'. (c) 'La hoja es de un verde muy oscuro'. (d) 'La hoja mide 9 cm de largo'.",
+      "pista": "Busca cuáles tienen un número más una unidad, y cuáles son solo palabras o descripciones.",
+      "solucion": "(a) Cualitativa (palabra, sin número). (b) Cuantitativa (número + unidad, °C). (c) Cualitativa (descripción sin número). (d) Cuantitativa (número + unidad, cm).",
+      "figura": ""
+    },
+    {
+      "enunciado": "En un experimento se quiere saber '¿el tipo de tela (algodón o poliéster) afecta cuánto tarda en secarse después de mojarla?'. ¿Qué instrumento se debería usar para medir la variable dependiente de este experimento, y en qué unidad?",
+      "pista": "Primero identifica cuál es la variable dependiente (lo que se mide como resultado) y luego elige el instrumento según esa magnitud.",
+      "solucion": "La variable dependiente es el tiempo que tarda en secarse, así que el instrumento correcto es el cronómetro (o un reloj), y la unidad más adecuada sería minutos, ya que una tela probablemente tarde más en secarse que unos pocos segundos.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante midió la masa de una piedra usando una regla, 'porque la piedra tenía forma alargada'. Explica por qué esto es un error, y cuál es el instrumento correcto.",
+      "pista": "Piensa en qué magnitud es la masa, y qué instrumento sirve para esa magnitud, sin importar la forma del objeto.",
+      "solucion": "Es un error porque la regla mide LONGITUD, no masa; la forma alargada de la piedra no cambia qué instrumento se necesita. Para medir la masa (cuánta materia tiene la piedra) se debe usar una balanza, y el resultado se anota en gramos o kilogramos, no en centímetros.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un niño anota en su cuaderno de experimentos: 'El objeto midió 25'. Explica qué le falta a este dato y por qué es un problema.",
+      "pista": "Piensa en qué le falta al número '25' para que tenga sentido y se pueda comparar con otras mediciones.",
+      "solucion": "Le falta la UNIDAD (cm, g, °C, s, mL, etc.). Sin la unidad, '25' no significa nada claro: podrían ser 25 centímetros, 25 gramos o 25 grados, y nadie más podría entender ni comparar ese dato correctamente.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ordena estos pasos en el orden correcto para medir bien el volumen de un líquido con una probeta: (A) Leer la marca que coincide con el punto más bajo del menisco. (B) Verter el líquido en la probeta. (C) Colocar los ojos a la altura del líquido. (D) Anotar el número junto con su unidad (mL o L).",
+      "pista": "Piensa qué necesitas hacer primero: tener el líquido dentro de la probeta, antes de poder mirarlo a la altura correcta.",
+      "solucion": "Orden correcto: B, C, A, D. Primero se vierte el líquido en la probeta; después se colocan los ojos a la altura del líquido; luego se lee el punto más bajo del menisco; y finalmente se anota el número con su unidad.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué instrumento se usa para medir la masa de un objeto?",
+      "opciones": [
+        "Balanza",
+        "Probeta",
+        "Termómetro",
+        "Cronómetro"
+      ],
+      "correcta": 0,
+      "explicacion": "La balanza mide masa (en gramos o kilogramos). El termómetro mide temperatura, el cronómetro mide tiempo y la probeta mide volumen de líquidos."
+    },
+    {
+      "pregunta": "¿Cuál es la unidad más adecuada para medir la longitud de un lápiz?",
+      "opciones": [
+        "Grados Celsius",
+        "Kilogramos",
+        "Litros",
+        "Centímetros"
+      ],
+      "correcta": 3,
+      "explicacion": "El lápiz es un objeto pequeño, así que su longitud se mide en centímetros con una regla. Kilogramos es unidad de masa, litros de volumen y grados Celsius de temperatura."
+    },
+    {
+      "pregunta": "¿Qué instrumento usarías para medir cuánto tiempo tarda una vela en apagarse?",
+      "opciones": [
+        "Balanza",
+        "Termómetro",
+        "Cronómetro",
+        "Regla"
+      ],
+      "correcta": 2,
+      "explicacion": "El cronómetro mide tiempo, en segundos o minutos. Los otros instrumentos miden longitud, masa y temperatura, no tiempo."
+    },
+    {
+      "pregunta": "¿En qué unidad se mide normalmente el volumen de un vaso de jugo?",
+      "opciones": [
+        "Kilogramos",
+        "Segundos",
+        "Metros",
+        "Mililitros"
+      ],
+      "correcta": 3,
+      "explicacion": "El volumen de líquidos se mide en mililitros (mL) o litros (L); un vaso de jugo es una cantidad pequeña, así que se usan mililitros."
+    },
+    {
+      "pregunta": "¿Qué es el 'menisco' de un líquido en una probeta?",
+      "opciones": [
+        "El nombre de la probeta",
+        "La curva que forma la superficie del líquido cerca de las paredes",
+        "Un tipo de termómetro",
+        "La cantidad total de líquido en litros"
+      ],
+      "correcta": 1,
+      "explicacion": "El menisco es la curva que se forma en la superficie de un líquido dentro de un recipiente angosto; se debe leer en su punto más bajo."
+    },
+    {
+      "pregunta": "Al leer una probeta, ¿en qué punto del menisco se debe leer el volumen?",
+      "opciones": [
+        "En cualquier punto, da lo mismo",
+        "En el punto más bajo (el centro de la curva)",
+        "En el punto más alto (los bordes)",
+        "En la mitad entre el punto más alto y el más bajo"
+      ],
+      "correcta": 1,
+      "explicacion": "Siempre se lee en el punto más bajo del menisco, no en los bordes donde el líquido sube un poco más por tocar las paredes del recipiente."
+    },
+    {
+      "pregunta": "¿Qué es el 'error de paralaje'?",
+      "opciones": [
+        "Un error al escribir mal la unidad",
+        "Un error al calibrar la balanza",
+        "El error de leer un instrumento en ángulo en vez de a la altura de los ojos",
+        "Un error de no esperar a que el termómetro se estabilice"
+      ],
+      "correcta": 2,
+      "explicacion": "El error de paralaje ocurre cuando se lee una escala desde un ángulo en vez de a la altura de los ojos, lo que hace que el número leído no coincida con el valor real."
+    },
+    {
+      "pregunta": "Un lápiz empieza en la marca de 3 cm de la regla y termina en la marca de 14 cm. ¿Cuánto mide el lápiz?",
+      "opciones": [
+        "14 cm",
+        "17 cm",
+        "3 cm",
+        "11 cm"
+      ],
+      "correcta": 3,
+      "explicacion": "Hay que restar el punto de inicio: 14 cm - 3 cm = 11 cm. Leer solo '14 cm' sería un error, porque el lápiz no empezó en el cero de la regla."
+    },
+    {
+      "pregunta": "¿Cuál de estas afirmaciones es una observación CUALITATIVA (no cuantitativa)?",
+      "opciones": [
+        "La mesa mide 80 cm de largo",
+        "La bolsa pesa 500 g en la balanza",
+        "El agua está a 30 °C",
+        "El helado sabe muy dulce"
+      ],
+      "correcta": 3,
+      "explicacion": "'Sabe muy dulce' es una descripción sin número, así que es cualitativa. Las otras tres dan un número más una unidad, así que son cuantitativas."
+    },
+    {
+      "pregunta": "¿Por qué es un error medir la masa de un objeto con una regla?",
+      "opciones": [
+        "Porque las reglas ya no se usan en ciencia",
+        "Porque la regla mide longitud, no masa",
+        "Porque la masa no se puede medir nunca",
+        "Porque la regla es muy pequeña"
+      ],
+      "correcta": 1,
+      "explicacion": "Cada instrumento mide una magnitud distinta; la regla mide longitud (cm, m), no masa. Para masa se necesita una balanza."
+    },
+    {
+      "pregunta": "¿Cuál es la relación correcta entre kilogramos y gramos?",
+      "opciones": [
+        "1 kg = 1000 g",
+        "1 kg = 100 g",
+        "1 g = 1000 kg",
+        "1 kg = 10 g"
+      ],
+      "correcta": 0,
+      "explicacion": "1 kilogramo equivale a 1000 gramos, igual que 1 litro equivale a 1000 mililitros y 1 metro a 100 centímetros."
+    },
+    {
+      "pregunta": "¿Cuál es la relación correcta entre metros y centímetros?",
+      "opciones": [
+        "1 cm = 100 m",
+        "1 m = 100 cm",
+        "1 m = 10 cm",
+        "1 m = 1000 cm"
+      ],
+      "correcta": 1,
+      "explicacion": "1 metro equivale a 100 centímetros. Por eso se usa el metro para distancias largas y el centímetro para objetos pequeños."
+    },
+    {
+      "pregunta": "Al medir la temperatura del agua con un termómetro, ¿qué se debe hacer ANTES de anotar el número?",
+      "opciones": [
+        "Esperar a que el número se estabilice (deje de subir o bajar)",
+        "Sacar el termómetro del agua antes de leerlo",
+        "Tocar la punta del termómetro con los dedos para confirmar",
+        "Anotar el primer número que aparece apenas se sumerge el termómetro"
+      ],
+      "correcta": 0,
+      "explicacion": "Hay que esperar a que la lectura se estabilice; leerla apenas se sumerge da un valor que todavía está cambiando, y tocar la punta con los dedos altera la medición."
+    },
+    {
+      "pregunta": "Un experimento mide 'cuánto crece una planta' según la cantidad de luz que recibe. ¿Qué instrumento y unidad se deberían usar para medir la variable dependiente (el crecimiento)?",
+      "opciones": [
+        "Regla o cinta métrica, en centímetros",
+        "Cronómetro, en segundos",
+        "Termómetro, en grados Celsius",
+        "Balanza, en gramos"
+      ],
+      "correcta": 0,
+      "explicacion": "El crecimiento en altura es una longitud, así que se mide con regla o cinta métrica, en centímetros. Elegir bien el instrumento para la variable dependiente es esencial para que el experimento dé resultados confiables."
+    },
+    {
+      "pregunta": "¿Qué dato está INCOMPLETO y por lo tanto no sirve para comparar con otras mediciones?",
+      "opciones": [
+        "3.5 kg",
+        "25 °C",
+        "El objeto midió 18",
+        "18 cm"
+      ],
+      "correcta": 2,
+      "explicacion": "'18' sin unidad no dice si son centímetros, gramos u otra cosa; un dato de medición siempre necesita su unidad para tener sentido y poder compararse."
+    },
+    {
+      "pregunta": "¿Cuál de estas parejas instrumento-magnitud está bien emparejada?",
+      "opciones": [
+        "Termómetro - volumen",
+        "Cronómetro - tiempo",
+        "Probeta - temperatura",
+        "Balanza - longitud"
+      ],
+      "correcta": 1,
+      "explicacion": "El cronómetro mide tiempo. Las otras parejas están mal: el termómetro mide temperatura (no volumen), la probeta mide volumen (no temperatura), y la balanza mide masa (no longitud)."
+    }
+  ]
+}

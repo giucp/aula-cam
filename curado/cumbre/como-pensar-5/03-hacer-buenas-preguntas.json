@@ -1,0 +1,345 @@
+{
+  "programa": "cumbre",
+  "materia": "Cómo Pensar",
+  "grado": "Cumbre Cómo Pensar 5to grado",
+  "dominio": "Preguntar e investigar",
+  "tema": "Hacer buenas preguntas: las que se pueden responder investigando",
+  "referencias": [
+    "NGSS (Next Generation Science Standards) — Science and Engineering Practice 1: Asking Questions and Defining Problems (nivel elemental)",
+    "UK National Curriculum, Key Stage 2 Science — 'Working scientifically': plantear preguntas que se puedan responder observando, midiendo o consultando fuentes confiables"
+  ],
+  "resumen": {
+    "titulo": "Preguntas que se pueden investigar (y preguntas que no)",
+    "intro": "Todos los días te haces preguntas: algunas sobre gustos, otras sobre el mundo, otras sobre cosas que ni siquiera pasaron. Pero no todas las preguntas se pueden responder de la misma forma. Este tema te enseña a distinguir las preguntas que SÍ se pueden responder buscando evidencia real (contando, midiendo, comparando o consultando una fuente confiable) de las que no, y a convertir una pregunta vaga o floja en una buena pregunta de investigación. Esta habilidad es la base de toda investigación seria, desde un experimento de ciencias hasta descubrir qué pasa de verdad en tu salón.",
+    "secciones": [
+      {
+        "titulo": "¿Qué es una pregunta 'investigable'?",
+        "explicacion": "Cuando te haces una pregunta, a veces existe una forma real de buscar la respuesta: observar algo, medirlo, contarlo o consultar una fuente confiable. Otras veces, por más que busques, no hay ninguna evidencia que decida la respuesta, porque depende solo de lo que cada persona piensa o siente. A esa palabra la vamos a usar mucho: EVIDENCIA es información real que se puede observar, medir o contar, y que no depende de la opinión de una sola persona. Una pregunta INVESTIGABLE es una pregunta que sí se puede responder buscando evidencia, de manera que si dos personas distintas investigan con cuidado, deberían llegar a la MISMA respuesta.",
+        "pasos": [
+          "Preguntate: ¿esta pregunta se puede responder contando, midiendo o buscando datos reales?",
+          "Preguntate: si dos personas distintas investigan con cuidado, ¿llegarían a la misma respuesta? Si sí, es investigable.",
+          "Si la respuesta depende solo de lo que cada quien siente o prefiere, no es investigable de esa manera."
+        ],
+        "ejemplo": "'¿Cuántos días llovió este mes en mi ciudad?' es investigable: revisando un registro del clima, cualquiera llega al mismo número. '¿Cuál es el mejor mes del año?' no es investigable de esa forma: cada persona puede preferir uno distinto, sin que haya un dato que decida quién tiene razón."
+      },
+      {
+        "titulo": "Preguntas de opinión: no tienen una respuesta que decida la evidencia",
+        "explicacion": "Una OPINIÓN es lo que una persona piensa, siente o prefiere, y que puede cambiar de persona a persona sin que ninguna esté equivocada. Muchas preguntas suenan como preguntas reales pero, tal como están escritas, son de opinión: no hay evidencia que decida cuál es la respuesta correcta, solo hay gustos distintos. Eso no significa que el tema no se pueda investigar para nada: a veces se puede transformar una pregunta de opinión en una investigable, cambiando 'qué es mejor' por 'cuántas personas prefieren cada opción', porque ESO sí se puede contar.",
+        "pasos": [
+          "Preguntate: ¿esto depende de lo que cada persona siente o prefiere?",
+          "Si sí, es una pregunta de opinión tal como está escrita.",
+          "Podés convertirla en investigable si preguntás CUÁNTAS personas prefieren cada opción, en vez de preguntar cuál es 'la mejor'."
+        ],
+        "ejemplo": "'¿Cuál es el mejor sabor de helado?' es opinión: cada quien prefiere uno distinto. '¿Cuál sabor de helado compran más en la heladería de mi barrio?' sí es investigable: contando las ventas de un mes, se llega a un dato real que no depende de gustos."
+      },
+      {
+        "titulo": "Preguntas imposibles (o casi) de investigar",
+        "explicacion": "Hay preguntas que no son de opinión pero tampoco se pueden investigar, porque no existe ninguna forma real de conseguir evidencia para responderlas. Esto pasa sobre todo cuando la pregunta imagina algo que NUNCA ocurrió (una historia alternativa) o pide observar algo que nadie puede observar con las herramientas disponibles. A esto lo llamamos una pregunta IMPOSIBLE DE INVESTIGAR tal como está: no es que la respuesta sea de gustos, es que sencillamente no hay manera de comprobarla con evidencia.",
+        "pasos": [
+          "Preguntate: ¿existe alguna forma real (observar, medir, buscar en fuentes confiables) de conseguir evidencia para esto?",
+          "Si la pregunta imagina algo que nunca pasó, o pide observar algo que nadie puede observar, es imposible de investigar tal como está.",
+          "A veces se puede acercar el tema con una pregunta distinta, sobre lo mismo, que sí tenga evidencia disponible."
+        ],
+        "ejemplo": "'¿Qué habría pasado si los dinosaurios no se hubieran extinguido?' es imposible de investigar: nadie puede observar esa historia que nunca ocurrió. En cambio, '¿durante cuántos millones de años vivieron los dinosaurios, según la edad de los fósiles encontrados?' sí es investigable, porque los fósiles son evidencia real que se puede medir."
+      },
+      {
+        "titulo": "De una pregunta vaga a una pregunta investigable",
+        "explicacion": "Una pregunta VAGA es una que suena razonable, pero no dice exactamente QUÉ vas a contar o medir, ni DÓNDE ni CUÁNDO, así que nadie sabría por dónde empezar a buscar la respuesta. Para arreglarla, hay que agregarle esos datos que le faltan: qué se va a medir exactamente, en qué grupo o lugar, y durante cuánto tiempo. Con esos agregados, una pregunta que sonaba floja se vuelve una pregunta que de verdad se puede investigar.",
+        "pasos": [
+          "Identificá la palabra o idea vaga (por ejemplo 'mejor', 'más', 'cambia') y preguntate: ¿en qué sentido exactamente? ¿medido cómo?",
+          "Agregá QUÉ vas a contar o medir con precisión (un número, una cantidad, un resultado).",
+          "Agregá DÓNDE y CUÁNDO (o en qué grupo) vas a buscar esa evidencia."
+        ],
+        "ejemplo": "Pregunta vaga: '¿Las plantas crecen mejor con música?' Pregunta investigable: '¿Crecen más rápido, medido en centímetros por semana, las plantas de fríjol que escuchan música todos los días, comparadas con las que no, durante un mes?'"
+      },
+      {
+        "titulo": "Qué hace BUENA a una pregunta investigable",
+        "explicacion": "Que una pregunta sea investigable no alcanza para que sea una BUENA pregunta de investigación; hacen falta tres cosas más. Primero, ESPECÍFICA: sabés exactamente qué vas a contar o medir. Segundo, JUSTA (o comparable): si comparás dos grupos, solo cambia UNA cosa entre ellos, la característica que querés estudiar; a esa característica que cambiás a propósito para comparar la llamamos VARIABLE. Tercero, POSIBLE de responder con lo que realmente tenés: el tiempo, las herramientas y el acceso a la información que están a tu alcance, no los de un científico con laboratorio.",
+        "pasos": [
+          "Preguntate: ¿es ESPECÍFICA? (sé exactamente qué voy a contar o medir).",
+          "Preguntate: ¿es JUSTA/COMPARABLE? (si comparo dos grupos, solo cambio una cosa entre ellos: la variable que quiero estudiar).",
+          "Preguntate: ¿es POSIBLE de responder con lo que tengo? (tiempo, materiales, permiso, acceso a la información)."
+        ],
+        "ejemplo": "'¿El agua salada se congela distinto que el agua dulce, medido en minutos hasta que se endurece?' es específica, comparable (solo cambia la sal) y posible (se puede hacer con el congelador de casa): una buena pregunta investigable."
+      },
+      {
+        "titulo": "Preguntas investigables en matemática y en ciencias",
+        "explicacion": "Estas mismas ideas sirven dentro de tus materias. En matemática, en vez de preguntar 'qué operación es más difícil' (opinión, depende de quién la sienta difícil), podés preguntar algo que se cuenta con evidencia real, como los aciertos y errores en una guía ya corregida. En ciencias, en vez de preguntar algo vago como 'las semillas crecen bien', podés preguntar algo medible y comparable, contando cuántas semillas germinan bajo una condición distinta. La clave siempre es la misma: cambiar palabras de opinión ('mejor', 'difícil', 'bien') por algo que se pueda contar o medir de verdad.",
+        "pasos": [
+          "En matemática: cambiá 'qué es más difícil' por 'cuántos aciertos o errores hay' en un ejercicio o una guía ya corregida.",
+          "En ciencias: cambiá 'crece bien' o 'funciona' por una cantidad medible (centímetros, días, número de semillas que germinan)."
+        ],
+        "ejemplo": "Matemática: '¿Cuántos alumnos de mi salón se equivocaron en más ejercicios de fracciones que de multiplicaciones en la última guía?' Ciencias: '¿Cuántas semillas de frijol germinan en 5 días si se riegan con agua tibia, comparadas con un grupo igual regado con agua fría?'"
+      },
+      {
+        "titulo": "Errores típicos al hacer una pregunta de investigación",
+        "explicacion": "Hay cuatro errores que se repiten muchísimo al escribir una pregunta de investigación, y conocerlos de antemano te ayuda a evitarlos. El primero es confundir opinión con hecho (preguntar 'qué es mejor' en vez de algo medible). El segundo es dejarla demasiado vaga (sin decir qué, dónde o cuándo). El tercero es pedir algo imposible de observar (un pasado que nunca ocurrió). El cuarto es hacer una pregunta SESGADA: una que ya da por hecho la respuesta antes de investigar, así que cualquier resultado 'confirma' esa idea sin haberla comprobado de verdad.",
+        "pasos": [
+          "Revisá tu pregunta buscando estos cuatro errores: opinión disfrazada, vaguedad, imposibilidad de observar, y suponer ya la respuesta.",
+          "Si encontrás alguno, corregilo antes de empezar a investigar: no sirve de nada investigar con una pregunta rota."
+        ],
+        "ejemplo": "'¿Por qué el recreo es tan corto?' ya asume que el recreo ES corto (pregunta sesgada). Mejor: '¿Cuántos minutos dura el recreo, comparado con los minutos que los alumnos de mi salón dicen que les gustaría tener, según una encuesta?'"
+      },
+      {
+        "titulo": "Cómo armar tu propia pregunta de investigación, paso a paso",
+        "explicacion": "Ahora juntemos todo en un procedimiento que podés usar siempre que quieras investigar algo, en la escuela o fuera de ella.",
+        "pasos": [
+          "Elegí un tema que te interese de verdad.",
+          "Escribí la primera pregunta que se te ocurra, tal cual, sin corregirla todavía.",
+          "Revisá: ¿es de opinión? ¿es imposible de investigar? ¿es vaga? (puede tener más de un problema a la vez).",
+          "Reescribila agregando QUÉ vas a medir o contar exactamente, y DÓNDE, CUÁNDO o en qué grupo.",
+          "Revisá que sea justa (si comparás grupos, que solo cambie una cosa) y posible con los recursos que realmente tenés."
+        ],
+        "ejemplo": "Tema: los perros del vecindario. Pregunta inicial: '¿Los perros son los mejores animales?' (opinión). Reescrita: '¿Cuántos perros hay registrados en mi vecindario, comparado con gatos, según los datos del veterinario local?' (investigable, específica y posible)."
+      }
+    ],
+    "idea_clave": "Una pregunta es investigable cuando se puede responder buscando evidencia real (contando, midiendo, comparando o consultando una fuente confiable), de modo que dos personas que investiguen bien lleguen a la misma respuesta; las preguntas de opinión dependen de lo que cada quien prefiere, y las imposibles no tienen ninguna evidencia disponible. Una BUENA pregunta investigable, además, es específica, justa (cambia solo una cosa al comparar) y posible de responder con lo que de verdad tenés."
+  },
+  "practica": [
+    {
+      "enunciado": "Para cada una de estas tres preguntas, decidí si es INVESTIGABLE, de OPINIÓN o IMPOSIBLE de investigar tal como está, y explicá por qué: (a) ¿Cuál es el mejor superhéroe? (b) ¿Cuántos alumnos de mi salón prefieren las películas de superhéroes antes que las de dibujos animados? (c) ¿Qué habría pasado si mi ciudad nunca hubiera tenido electricidad?",
+      "pista": "Preguntate para cada una: ¿depende de gustos personales? ¿se puede contar o medir con evidencia real? ¿es algo que nunca pasó y no se puede observar?",
+      "solucion": "(a) Opinión: depende de lo que cada quien prefiere, no hay evidencia que decida cuál es 'el mejor'. (b) Investigable: se puede contar cuántos alumnos prefieren cada tipo con una encuesta real, y cualquiera que pregunte bien llegaría al mismo número. (c) Imposible de investigar tal como está: imagina algo que nunca pasó, y no hay forma de observar esa historia alternativa.",
+      "figura": ""
+    },
+    {
+      "enunciado": "La pregunta '¿El desayuno es importante?' es demasiado vaga para investigar. Reescribila agregando QUÉ vas a medir, en QUÉ grupo y en QUÉ período de tiempo, para que sea investigable.",
+      "pista": "Preguntate: ¿importante en qué sentido, medido cómo? ¿en quiénes? ¿durante cuánto tiempo?",
+      "solucion": "No hay una única respuesta correcta; lo importante es agregar qué medir, en quiénes y cuándo. Ejemplo válido: '¿Los alumnos de mi salón que desayunan antes de entrar a clase se equivocan menos en las tablas de multiplicar, medido en la cantidad de aciertos de la prueba semanal, comparados con los que no desayunan, durante un mes?'",
+      "figura": ""
+    },
+    {
+      "enunciado": "'¿El agua se evapora rápido?' es vaga. Convertila en una pregunta investigable agregando qué cantidad de agua, en qué condición vas a comparar (por ejemplo sol vs sombra) y cómo la vas a medir.",
+      "pista": "Pensá en qué vas a medir exactamente (cuánta agua queda) y qué vas a cambiar entre los dos grupos que comparás.",
+      "solucion": "Ejemplo válido: '¿Un vaso con 100 mililitros de agua puesto al sol pierde más agua en 3 días, medido en mililitros restantes, que un vaso igual puesto a la sombra?' Es específica (100 ml, 3 días), justa (solo cambia sol/sombra) y medible (mililitros restantes).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero escribe esta pregunta de investigación: '¿Por qué el recreo es tan corto?' Explica qué problema tiene esta pregunta y reescribila para que sea investigable sin suponer ya la respuesta.",
+      "pista": "Fijate si la pregunta YA da por hecho algo (que el recreo es corto) antes de investigar.",
+      "solucion": "El problema es que la pregunta YA asume que el recreo es corto (pregunta sesgada); cualquier respuesta que se dé va a 'confirmar' esa idea sin haberla comprobado. Reescrita: '¿Cuántos minutos dura el recreo, comparado con la cantidad de minutos que los alumnos de mi salón dicen que les gustaría tener, según una encuesta?' Esta sí investiga sin suponer la conclusión de antemano.",
+      "figura": ""
+    },
+    {
+      "enunciado": "En la clase de matemática alguien pregunta: '¿Las fracciones son más difíciles que las multiplicaciones?' ¿Por qué esta pregunta, tal como está, es difícil de investigar? Proponé una versión investigable sobre el mismo tema.",
+      "pista": "Pensá en la palabra 'difícil': ¿difícil para quién? ¿cómo se mediría eso exactamente?",
+      "solucion": "Es difícil de investigar porque 'difícil' es algo que cada persona siente distinto (parece opinión) y no dice cómo se mediría. Versión investigable: '¿Cuántos alumnos de mi salón se equivocaron en más ejercicios de fracciones que de multiplicaciones en la última guía?' Esta sí se puede contar revisando las guías corregidas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Querés investigar si las semillas de frijol germinan más rápido con agua tibia que con agua fría. Escribí la pregunta de investigación completa (específica, justa y medible) y decí qué es lo único que deberías cambiar entre los dos grupos de semillas.",
+      "pista": "Recordá: si comparás dos grupos, solo debe cambiar UNA cosa entre ellos (la variable que estás estudiando); todo lo demás (cantidad de semillas, tipo de vaso, luz) debe ser igual.",
+      "solucion": "Pregunta investigable: '¿Cuántas semillas de frijol de un grupo regado con agua tibia germinan en 5 días, comparadas con un grupo igual regado con agua fría?' Lo único que debería cambiar entre los dos grupos es la temperatura del agua; la cantidad de semillas, el tipo de recipiente y la luz deben ser iguales en ambos, para que la comparación sea justa.",
+      "figura": ""
+    },
+    {
+      "enunciado": "¿Cuántos huesos tiene el cuerpo humano de un adulto? y ¿Es incómodo tener tantos huesos? ¿Cuál de estas dos preguntas es investigable y cuál es de opinión? Explica por qué.",
+      "pista": "Pensá si la respuesta se puede buscar en una fuente confiable (un libro de ciencias) con un número exacto, o si depende de lo que cada quien siente.",
+      "solucion": "'¿Cuántos huesos tiene el cuerpo humano de un adulto?' es investigable: se puede buscar en una fuente confiable (un libro de anatomía) y el número (206) es el mismo para cualquiera que lo busque bien. '¿Es incómodo tener tantos huesos?' es de opinión: depende de lo que cada persona sienta, no hay un dato que lo decida.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Para investigar sobre el reciclaje en tu escuela, dos compañeros proponen estas preguntas: (a) '¿A la gente le gusta reciclar?' (b) '¿Cuántos kilos de papel se reciclaron en mi escuela el mes pasado, comparado con el mes anterior?' ¿Cuál es la mejor pregunta de investigación y por qué, usando los tres criterios de una buena pregunta investigable?",
+      "pista": "Repasá los tres criterios: específica, justa/comparable y posible de responder con evidencia real.",
+      "solucion": "La pregunta (b) es la mejor: es específica (dice qué medir: kilos de papel), comparable (compara dos meses) y posible de responder (se puede pedir el dato al encargado de reciclaje de la escuela). La pregunta (a) es de opinión ('le gusta') y no dice cómo se mediría ni a quién.",
+      "figura": ""
+    },
+    {
+      "enunciado": "'¿Qué habría pasado si los dinosaurios no se hubieran extinguido?' es imposible de investigar tal como está. Proponé una pregunta distinta, pero relacionada con los dinosaurios, que SÍ sea investigable con evidencia real (fósiles, por ejemplo).",
+      "pista": "Pensá en algo que los científicos SÍ pueden observar sobre los dinosaurios (huesos, fósiles, capas de roca), en vez de imaginar una historia que nunca pasó.",
+      "solucion": "Ejemplo válido: '¿Durante cuántos millones de años vivieron los dinosaurios, según la edad de los fósiles encontrados?' Esta sí es investigable porque los científicos pueden medir la edad de los fósiles con evidencia real, sin necesidad de imaginar historias que nunca ocurrieron.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Elegís el tema 'el tiempo que los alumnos pasan usando el celular'. Tu primera pregunta es '¿Los celulares son malos?' Seguí los pasos para convertirla en una buena pregunta de investigación: identificá qué problema tiene, y reescribila agregando qué vas a medir, en quiénes y durante cuánto tiempo.",
+      "pista": "'Malos' es una palabra vaga y de opinión; pensá qué SÍ se puede medir sobre el uso del celular.",
+      "solucion": "Problema: la pregunta es vaga ('malos' no dice en qué sentido) y suena a opinión. Reescrita: '¿Cuántas horas por día usan el celular, en promedio, los alumnos de mi salón durante una semana, y cuántas de esas horas son para tareas escolares comparadas con juegos?' Esta versión dice exactamente qué medir (horas, y para qué uso), en quiénes (mi salón) y durante cuánto tiempo (una semana).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Para investigar si el agua con azúcar hace crecer más rápido a las plantas, alguien riega una planta con agua azucarada puesta en el sol, y otra con agua normal puesta en la sombra. ¿Por qué esta comparación NO es justa, y cómo la arreglarías?",
+      "pista": "Contá cuántas cosas distintas cambian entre las dos plantas, no solo el azúcar.",
+      "solucion": "No es justa porque cambian DOS cosas a la vez (el agua con azúcar Y la cantidad de sol), así que si una planta crece más no se sabría cuál de las dos causas fue. Para arreglarla, las dos plantas deberían recibir la MISMA cantidad de sol y solo cambiar el tipo de agua (una con azúcar, otra sin), que es la única variable que se quiere estudiar.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un alumno quiere investigar '¿Cuántos peces hay en el fondo del océano en este momento?' ¿Qué criterio de una buena pregunta investigable no se cumple aquí, aunque en teoría sea un hecho real y no una opinión?",
+      "pista": "Pensá en si es POSIBLE de responder con los recursos, herramientas y tiempo que un alumno de tu edad realmente tiene disponibles.",
+      "solucion": "No se cumple el criterio de ser POSIBLE de responder con lo que tenés disponible: aunque es un hecho real (no una opinión) y en teoría investigable, ningún alumno tiene forma de contar los peces del fondo del océano en este momento con las herramientas a su alcance. Sería mejor investigar algo medible con recursos reales, como la cantidad de peces en una pecera o estanque cercano.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribí una pregunta de investigación completa (específica, justa y posible) sobre un tema de tu elección de matemática o ciencias, y explicá con los tres criterios por qué cumple para ser una BUENA pregunta investigable.",
+      "pista": "Repasá los tres criterios antes de escribir: ¿qué vas a medir exactamente? ¿qué es lo único que cambia si comparás grupos? ¿podés conseguir esa evidencia de verdad?",
+      "solucion": "No hay una única respuesta correcta. Ejemplo válido: '¿Los alumnos que estudian las tablas de multiplicar con canciones se equivocan menos, medido en la cantidad de aciertos de una prueba de 10 preguntas, que los que estudian solo con la tabla escrita?' Es específica (aciertos de una prueba de 10 preguntas), justa (solo cambia el método de estudio) y posible (se puede organizar con los compañeros del salón).",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué significa que una pregunta sea 'investigable'?",
+      "opciones": [
+        "Que cualquier persona puede opinar libremente sobre ella.",
+        "Que la maestra ya sabe la respuesta de memoria.",
+        "Que se puede responder buscando evidencia real (contando, midiendo o consultando una fuente confiable).",
+        "Que suena complicada y usa palabras difíciles."
+      ],
+      "correcta": 2,
+      "explicacion": "Investigable significa que hay evidencia real disponible (contar, medir o buscar en una fuente confiable), de modo que dos personas que investiguen bien lleguen a la misma respuesta."
+    },
+    {
+      "pregunta": "¿Cuál de estas preguntas es de OPINIÓN, no investigable tal como está?",
+      "opciones": [
+        "¿Cuántos minutos dura un partido de fútbol según las reglas oficiales?",
+        "¿Cuántos goles se anotaron en el último partido de la escuela?",
+        "¿Cuál es el mejor deporte?",
+        "¿Cuántos alumnos de mi salón prefieren el fútbol sobre el baloncesto?"
+      ],
+      "correcta": 2,
+      "explicacion": "'¿Cuál es el mejor deporte?' depende de lo que cada persona prefiere, sin que haya evidencia que decida quién tiene razón. Las otras tres se pueden contar o buscar en una fuente confiable."
+    },
+    {
+      "pregunta": "¿Por qué '¿Qué habría pasado si nunca se hubiera inventado la electricidad?' es una pregunta imposible de investigar tal como está?",
+      "opciones": [
+        "Porque nadie puede observar una historia que nunca ocurrió.",
+        "Porque es una pregunta de opinión.",
+        "Porque es demasiado fácil de responder.",
+        "Porque no le interesa a nadie."
+      ],
+      "correcta": 0,
+      "explicacion": "Imagina una historia alternativa que nunca pasó, y no existe ninguna forma de observarla o medirla con evidencia real; eso la hace imposible de investigar tal como está, distinto de una pregunta de opinión."
+    },
+    {
+      "pregunta": "Una pregunta es 'vaga' cuando...",
+      "opciones": [
+        "se puede responder en menos de un minuto.",
+        "no dice exactamente qué vas a medir o contar, ni dónde ni cuándo.",
+        "usa números muy grandes.",
+        "tiene una respuesta que todos conocen de memoria."
+      ],
+      "correcta": 1,
+      "explicacion": "Una pregunta vaga suena razonable pero no aclara qué se va a medir, en quiénes o durante cuánto tiempo, así que nadie sabría por dónde empezar a buscar evidencia."
+    },
+    {
+      "pregunta": "¿Cuál es la mejor forma de convertir '¿Las plantas crecen mejor con música?' en una pregunta investigable?",
+      "opciones": [
+        "Preguntarle a la maestra cuál es la respuesta correcta.",
+        "Dejarla igual, porque ya es investigable.",
+        "Cambiarla por una pregunta de opinión sobre qué música prefieren las plantas.",
+        "Agregar qué vas a medir (por ejemplo centímetros de altura), en qué grupo de plantas, y durante cuánto tiempo."
+      ],
+      "correcta": 3,
+      "explicacion": "Para volverla investigable hay que agregar exactamente qué se va a medir (altura en centímetros), en qué grupo (por ejemplo plantas de fríjol) y durante cuánto tiempo (por ejemplo un mes)."
+    },
+    {
+      "pregunta": "¿Cuál de estas dos preguntas sobre reciclaje es MEJOR pregunta de investigación: (a) '¿A la gente le gusta reciclar?' o (b) '¿Cuántos kilos de papel se reciclaron en mi escuela este mes comparado con el mes pasado?'",
+      "opciones": [
+        "(b), porque es específica, comparable y se puede responder con datos reales.",
+        "Ninguna de las dos sirve para investigar.",
+        "(a), porque pregunta sobre gustos, que es lo más importante.",
+        "Las dos son igual de buenas."
+      ],
+      "correcta": 0,
+      "explicacion": "(b) dice exactamente qué medir (kilos de papel), compara dos períodos y se puede responder pidiendo el dato real; (a) depende de gustos personales ('le gusta'), sin decir cómo se mediría."
+    },
+    {
+      "pregunta": "¿Qué es una pregunta 'sesgada' (que ya asume la respuesta)?",
+      "opciones": [
+        "Una pregunta que compara dos grupos de manera justa.",
+        "Una pregunta que ya da por hecho algo antes de investigarlo, como '¿Por qué el recreo es tan corto?'",
+        "Una pregunta que se puede responder con un número exacto.",
+        "Una pregunta que tiene muchas palabras difíciles."
+      ],
+      "correcta": 1,
+      "explicacion": "Una pregunta sesgada ya supone la conclusión (que el recreo ES corto) antes de comprobarlo con evidencia; cualquier respuesta que se dé 'confirma' esa idea sin haberla investigado de verdad."
+    },
+    {
+      "pregunta": "Si querés comparar si las semillas germinan más rápido con agua tibia que con agua fría, ¿qué es lo único que debería cambiar entre los dos grupos de semillas para que la comparación sea justa?",
+      "opciones": [
+        "La cantidad de semillas de cada grupo.",
+        "No importa si cambian varias cosas a la vez, el resultado igual sirve.",
+        "El tipo de vaso y la cantidad de luz, además del agua.",
+        "La temperatura del agua; todo lo demás (cantidad de semillas, luz, tipo de vaso) debe ser igual."
+      ],
+      "correcta": 3,
+      "explicacion": "Para que la comparación sea justa solo debe cambiar UNA cosa (la variable que se estudia, en este caso la temperatura del agua); si cambian varias cosas a la vez, no se sabría cuál causó el resultado."
+    },
+    {
+      "pregunta": "¿Cuál de estas preguntas se puede investigar CONSULTANDO una fuente confiable, sin necesidad de hacer un experimento?",
+      "opciones": [
+        "¿Cuántos huesos tiene el cuerpo humano de un adulto?",
+        "¿Es incómodo tener tantos huesos?",
+        "¿Te gustaría tener menos huesos?",
+        "¿Cuál hueso es el más bonito?"
+      ],
+      "correcta": 0,
+      "explicacion": "Buscar en un libro de ciencias confiable da el mismo número (206) para cualquiera que lo consulte bien; las otras tres dependen de lo que cada persona sienta o prefiera, así que son opinión."
+    },
+    {
+      "pregunta": "Un alumno pregunta '¿Cuántos peces hay en el fondo del océano en este momento?' Aunque no es una pregunta de opinión, ¿qué problema tiene como pregunta de investigación PARA UN ALUMNO?",
+      "opciones": [
+        "Es una pregunta de opinión disfrazada.",
+        "Ya asume la respuesta de antemano.",
+        "No es posible responderla con las herramientas y el tiempo que un alumno realmente tiene disponibles.",
+        "No tiene ningún problema, es perfecta."
+      ],
+      "correcta": 2,
+      "explicacion": "Aunque es un hecho real (no opinión), no es POSIBLE de responder con los recursos de un alumno; una buena pregunta investigable también debe ser posible de investigar con lo que realmente tenés disponible."
+    },
+    {
+      "pregunta": "En la clase de matemática, ¿cuál de estas preguntas es investigable en vez de una opinión disfrazada?",
+      "opciones": [
+        "¿Las fracciones son más difíciles que las multiplicaciones?",
+        "¿A quién le cae mejor la maestra de matemática?",
+        "¿Cuál operación es más aburrida?",
+        "¿Cuántos alumnos de mi salón se equivocaron en más ejercicios de fracciones que de multiplicaciones en la última guía?"
+      ],
+      "correcta": 3,
+      "explicacion": "Esta pregunta dice exactamente qué contar (los errores de la última guía corregida) y da el mismo resultado para cualquiera que la revise; las otras dependen de lo que cada quien siente ('difícil', 'aburrida', 'cae mejor')."
+    },
+    {
+      "pregunta": "¿Cuáles son los TRES criterios de una BUENA pregunta investigable, según lo que aprendiste?",
+      "opciones": [
+        "Que sea específica, justa/comparable y posible de responder con lo que tenés.",
+        "Que tenga una sola palabra difícil y sea sobre animales.",
+        "Que la responda solo la maestra.",
+        "Que sea corta, graciosa y fácil de escribir."
+      ],
+      "correcta": 0,
+      "explicacion": "Una buena pregunta investigable es específica (sabés exactamente qué medir), justa (si comparás grupos, solo cambia una cosa) y posible de responder con los recursos, tiempo y acceso que realmente tenés."
+    },
+    {
+      "pregunta": "¿Cuál de estas es la mejor manera de arreglar la pregunta vaga '¿El desayuno es importante?'",
+      "opciones": [
+        "Cambiarla por '¿A todos les gusta desayunar?'",
+        "Preguntarle a un solo compañero y dar esa respuesta como definitiva.",
+        "Agregar qué se va a medir (por ejemplo, aciertos en una prueba), en quiénes y durante cuánto tiempo.",
+        "Dejarla igual, ya que 'importante' se entiende igual para todos."
+      ],
+      "correcta": 2,
+      "explicacion": "'Importante' es vago porque no dice en qué sentido; hay que agregar qué se mide exactamente (por ejemplo, aciertos en una prueba), en qué grupo y en qué período de tiempo."
+    },
+    {
+      "pregunta": "Dos plantas se comparan así: una con agua azucarada Y puesta al sol, otra con agua normal Y puesta a la sombra. ¿Por qué esta comparación NO es justa?",
+      "opciones": [
+        "Porque cambian dos cosas a la vez (el agua y la cantidad de sol), así que no se sabría cuál causó el resultado.",
+        "Porque el azúcar siempre hace crecer más a las plantas.",
+        "Porque la sombra no afecta el crecimiento de las plantas.",
+        "Porque las plantas no se pueden comparar nunca."
+      ],
+      "correcta": 0,
+      "explicacion": "Al cambiar dos cosas a la vez (tipo de agua Y cantidad de sol), si una planta crece más no se puede saber cuál de las dos causas lo provocó; una comparación justa cambia solo UNA cosa entre los grupos."
+    },
+    {
+      "pregunta": "¿Qué tienen en común las preguntas investigables, sin importar si son de matemática, ciencias o de la vida diaria?",
+      "opciones": [
+        "Nunca tienen que ver con números.",
+        "Siempre las inventa la maestra.",
+        "Se pueden responder buscando evidencia real, y dos personas que investiguen bien llegarían a la misma respuesta.",
+        "Solo sirven para tareas de ciencias."
+      ],
+      "correcta": 2,
+      "explicacion": "Sin importar la materia, lo que hace investigable a una pregunta es que se puede responder con evidencia real (contando, midiendo o consultando fuentes confiables) de forma que cualquiera que investigue bien llegue al mismo resultado."
+    }
+  ]
+}

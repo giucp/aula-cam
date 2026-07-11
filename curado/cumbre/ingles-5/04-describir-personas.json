@@ -1,0 +1,381 @@
+{
+  "programa": "cumbre",
+  "materia": "Inglés",
+  "grado": "Cumbre Inglés 5to grado",
+  "dominio": "Yo y mi gente",
+  "tema": "Puedo describir cómo es alguien (adjectives: tall, short, happy)",
+  "referencias": [
+    "Cambridge English Young Learners (Movers) — topic: describing people and things with adjectives",
+    "CEFR Pre-A1/A1 — descriptors: describir personas usando adjetivos simples de aspecto y carácter"
+  ],
+  "resumen": {
+    "titulo": "Cómo es alguien: adjetivos para describir personas",
+    "intro": "Ya sabes nombrar a tu familia (mother, father, sister, brother...) y decir cuántos tienes. Ahora vas a aprender a DESCRIBIR cómo es cada uno: si es alto o bajo, si tiene el pelo largo o corto, si es alegre o serio. Vamos palabra por palabra y regla por regla. Cada palabra en inglés viene con su significado en español y, entre comillas, cómo suena aproximadamente si la dices en voz alta.",
+    "secciones": [
+      {
+        "titulo": "Repaso: is y are para describir a alguien",
+        "explicacion": "En el tema anterior usaste 'this is' para PRESENTAR a tu familia ('This is my mother.'). Ahora vas a usar el verbo 'to be' (ser/estar) de otra forma: persona + IS o ARE + adjetivo, para decir CÓMO ES esa persona. Recuerda las formas del presente: I am (yo soy), you are (tú eres), he is / she is (él es / ella es), we are (nosotros somos), they are (ellos son). Para UNA sola persona (mi hermano, ella, mi tía) usas IS: 'My brother is tall' (Mi hermano es alto). Para DOS O MÁS personas (mis hermanos, ellos) usas ARE: 'My brothers are tall' (Mis hermanos son altos). Fíjate que el adjetivo ('tall') queda exactamente IGUAL en los dos casos: no cambia si hablas de uno o de varios.",
+        "pasos": [
+          "Para UNA persona (he, she, it, mi hermano, mi tía...) usa IS: 'My sister is happy.'",
+          "Para DOS O MÁS personas (we, you, they, mis hermanos...) usa ARE: 'My brothers are happy.'",
+          "El adjetivo (happy, tall, kind...) NUNCA cambia según el número de personas."
+        ],
+        "ejemplo": "'My mother is tall.' (Mi mamá es alta.) 'My cousins are funny.' (Mis primos son graciosos.)"
+      },
+      {
+        "titulo": "Tamaño y edad: tall, short, big, small, young, old",
+        "explicacion": "Estos seis adjetivos vienen en tres parejas de opuestos, y conviene memorizarlos así, en pareja. 'Tall' (se dice 'tol') significa alto o alta. 'Short' (se dice 'short') significa bajo o baja, hablando de una persona. 'Big' (se dice 'big') significa grande, y 'small' (se dice 'smol') significa pequeño o pequeña. 'Young' (se dice 'iáng') significa joven, y 'old' (se dice 'old') significa viejo, mayor o grande de edad. Ojo con 'old': en inglés se usa tanto para personas mayores como para cosas viejas, así que 'my grandfather is old' simplemente dice que tu abuelo tiene más edad, sin sonar feo ni ofensivo.",
+        "pasos": [
+          "Memoriza en parejas de opuestos: tall / short.",
+          "Memoriza: big / small.",
+          "Memoriza: young / old."
+        ],
+        "ejemplo": "'My father is tall.' (Mi papá es alto.) 'My little cousin is young.' (Mi primito es joven.)"
+      },
+      {
+        "titulo": "Estado de ánimo y personalidad: happy, sad, kind, funny",
+        "explicacion": "Estos cuatro adjetivos describen cómo se siente alguien o cómo es su forma de ser. 'Happy' (se dice 'jápi') significa feliz o contento/contenta. 'Sad' (se dice 'sad') significa triste. 'Kind' (se dice 'kaind') significa amable o bondadoso/bondadosa. 'Funny' (se dice 'fáni') significa gracioso, graciosa, o chistoso/chistosa (alguien que te hace reír). Estas cuatro palabras se usan igual que las del tamaño: con IS para una persona y ARE para varias.",
+        "pasos": [
+          "Repite: happy (feliz), sad (triste).",
+          "Repite: kind (amable), funny (gracioso/a).",
+          "Recuerda: van con IS/ARE, igual que tall, short, big, small, young y old."
+        ],
+        "ejemplo": "'My grandmother is very kind.' (Mi abuela es muy amable.) 'My brothers are funny.' (Mis hermanos son graciosos.)"
+      },
+      {
+        "titulo": "Describir el pelo: HAVE/HAS, no IS",
+        "explicacion": "Aquí viene una trampa importante para quien habla español. En español decís 'ella ES de pelo largo' o simplemente 'tiene el pelo largo', pero en inglés para el pelo SIEMPRE se usa 'have' o 'has' (tener), NUNCA 'is' o 'are'. Con 'he/she/it' (una sola persona) se usa 'has'; con 'I/you/we/they' se usa 'have'. Las palabras clave son: 'hair' (se dice 'jer') = pelo o cabello; 'long' (se dice 'long') = largo; 'short' (aquí significa CORTO, no bajo); y los colores 'black' (se dice 'blak') = negro, 'brown' (se dice 'braun') = castaño/marrón, 'blond' (se dice 'blond') = rubio, 'red' (se dice 'red') = pelirrojo/rojo, y 'gray' (se dice 'grei') = canoso/gris. El orden es: has/have + long/short (si hay) + color (si hay) + hair. En inglés el largo va ANTES del color: se dice 'long black hair', nunca 'black long hair'.",
+        "pasos": [
+          "Para UNA persona: 'has' + hair. Ejemplo: 'She has long hair.'",
+          "Para varias personas o para 'I/you/we/they': 'have' + hair. Ejemplo: 'I have short hair.'",
+          "Puedes combinar largo/corto y color, siempre primero el largo y después el color: 'She has long, black hair.'",
+          "NUNCA digas 'She is brown hair': el pelo SIEMPRE lleva have/has, no is/are."
+        ],
+        "ejemplo": "'My sister has long, brown hair.' (Mi hermana tiene el pelo largo y castaño.) 'My grandfather has short, gray hair.' (Mi abuelo tiene el pelo corto y canoso.)"
+      },
+      {
+        "titulo": "La regla de oro: el adjetivo va ANTES y no cambia en plural",
+        "explicacion": "Esta es la regla más importante de todo el tema, porque en español funciona AL REVÉS. En español decimos 'un niño alto' (el adjetivo va DESPUÉS del sustantivo), pero en inglés el adjetivo va SIEMPRE ANTES: 'a tall boy', nunca 'a boy tall'. Y hay una segunda parte de la regla, todavía más importante: el adjetivo en inglés NUNCA lleva la 's' del plural, aunque hables de varias personas. Decimos 'two tall boys' (el plural va en 'boy', que se vuelve 'boys'), pero JAMÁS 'two talls boys'. Esto aplica a TODOS los adjetivos de este tema: tall, short, big, small, young, old, happy, sad, kind, funny.",
+        "pasos": [
+          "El adjetivo va ANTES del sustantivo: 'a tall boy', 'a happy girl' (nunca 'a boy tall', nunca 'a girl happy').",
+          "El adjetivo NUNCA lleva 's' de plural: 'two tall boys' (no 'two talls boys'), 'three happy kids' (no 'three happys kids').",
+          "El plural va SOLO en el sustantivo (boy → boys), nunca en el adjetivo."
+        ],
+        "ejemplo": "Correcto: 'a tall boy' y 'two tall boys'. Incorrecto: 'a boy tall' y 'two talls boys'."
+      },
+      {
+        "titulo": "Combinar todo: describir a un familiar completo",
+        "explicacion": "Ahora vas a juntar lo aprendido en este tema con lo que aprendiste en el tema anterior sobre la familia. Para describir a alguien por completo, combina: presentarlo con 'This is my...', decir cómo es con IS/ARE + adjetivo, y decir cómo tiene el pelo con HAS/HAVE + hair. Puedes usar varias oraciones cortas seguidas, una por cada dato.",
+        "pasos": [
+          "Presenta a la persona: 'This is my uncle, Pedro.'",
+          "Describe su tamaño o edad con IS: 'He is tall.'",
+          "Describe su pelo con HAS: 'He has short, black hair.'",
+          "Describe su personalidad con IS: 'He is very funny.'"
+        ],
+        "ejemplo": "'This is my grandmother. She is short. She has long, gray hair. She is very kind.' (Esta es mi abuela. Es baja. Tiene el pelo largo y canoso. Es muy amable.)"
+      },
+      {
+        "titulo": "Preguntar cómo es alguien",
+        "explicacion": "Para preguntar si alguien tiene cierta característica, pones IS o ARE al PRINCIPIO de la pregunta (antes de la persona), al revés que en la oración normal. 'Is your brother tall?' (¿Tu hermano es alto?) se responde 'Yes, he is' (Sí, lo es) o 'No, he isn't' (No, no lo es). Para preguntar por el color o largo del pelo se usa 'What color is...?' (¿De qué color es...?): 'What color is her hair?' (¿De qué color es su pelo?), que se responde con 'Her hair is brown' (Su pelo es castaño) o 'She has brown hair' (Ella tiene el pelo castaño) — las dos formas son correctas para responder.",
+        "pasos": [
+          "Para preguntar sí/no: IS o ARE + persona + adjetivo + ? Ejemplo: 'Is your sister happy?'",
+          "Respuesta corta: 'Yes, she is.' o 'No, she isn't.'",
+          "Para preguntar por el pelo: 'What color is his/her hair?' Se responde con 'His/Her hair is...' o con 'He/She has... hair.'"
+        ],
+        "ejemplo": "'Is your grandfather old?' — 'Yes, he is.' 'What color is your hair?' — 'My hair is black.' / 'I have black hair.'"
+      },
+      {
+        "titulo": "Errores típicos (y una palabra con doble significado)",
+        "explicacion": "Hay cuatro trampas frecuentes en este tema. Primera: usar 'is' con el pelo en vez de 'has' ('She is brown hair' está mal; lo correcto es 'She has brown hair'). Segunda: poner el adjetivo DESPUÉS del sustantivo, calcando el español ('a boy tall' está mal; lo correcto es 'a tall boy'). Tercera: agregarle 's' de plural al adjetivo ('two talls boys' está mal; lo correcto es 'two tall boys' — el plural va en el sustantivo, no en el adjetivo). Cuarta, un caso especial que vale la pena conocer: la palabra 'short' tiene DOS significados distintos según de qué hables. Si hablas de la ESTATURA de una persona, 'short' significa bajo/baja: 'My sister is short.' Si hablas del PELO, 'short' significa corto: 'My sister has short hair.' No es un error, pero hay que fijarse bien de qué se está hablando para traducirlo bien.",
+        "pasos": [
+          "No uses 'is' para el pelo: usa 'has/have' + hair.",
+          "No pongas el adjetivo después del sustantivo: va ANTES ('a tall boy', no 'a boy tall').",
+          "No le pongas 's' al adjetivo en plural: 'two tall boys', no 'two talls boys'.",
+          "Recuerda que 'short' significa 'bajo' (con personas) o 'corto' (con pelo), según el contexto."
+        ],
+        "ejemplo": "Correcto: 'My brother is short. He has short hair.' (Mi hermano es bajo. Tiene el pelo corto.) — la misma palabra 'short' con dos significados distintos en la misma oración."
+      }
+    ],
+    "idea_clave": "Para describir a alguien uso IS (una persona) o ARE (varias) + adjetivo (tall, short, big, small, young, old, happy, sad, kind, funny), y uso HAS (una persona) o HAVE (varias) + hair para el pelo, nunca IS. La regla de oro: el adjetivo va SIEMPRE antes del sustantivo ('a tall boy') y NUNCA lleva 's' de plural ('two tall boys', no 'talls'). Y ojo: 'short' significa 'bajo' cuando hablo de estatura, pero 'corto' cuando hablo de pelo."
+  },
+  "practica": [
+    {
+      "enunciado": "Traduce al inglés: alto, bajo, grande, pequeño, joven, viejo/mayor.",
+      "pista": "Son tres parejas de opuestos: tamaño y edad.",
+      "solucion": "alto = tall, bajo = short, grande = big, pequeño = small, joven = young, viejo/mayor = old.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Traduce al inglés: feliz, triste, amable, gracioso/chistoso.",
+      "pista": "Son los cuatro adjetivos de estado de ánimo y personalidad de este tema.",
+      "solucion": "feliz = happy, triste = sad, amable = kind, gracioso/chistoso = funny.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Completa con IS o ARE: 'My grandfather ___ tall.'",
+      "pista": "¿'Grandfather' es una sola persona o varias?",
+      "solucion": "'My grandfather is tall.' Como 'grandfather' es UNA sola persona, se usa IS.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Completa con IS o ARE: 'My cousins ___ funny.'",
+      "pista": "¿'Cousins' es una sola persona o varias? Fíjate en la 's' de 'cousins'.",
+      "solucion": "'My cousins are funny.' Como 'cousins' son VARIAS personas, se usa ARE.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige el error: 'She is brown hair.'",
+      "pista": "Para el pelo en inglés no se usa 'is'; se usa otro verbo que significa 'tener'.",
+      "solucion": "Lo correcto es 'She has brown hair.' El pelo SIEMPRE se describe con have/has, nunca con is/are.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige el error: 'He is a boy tall.'",
+      "pista": "En español el adjetivo va después del sustantivo; en inglés va al revés.",
+      "solucion": "Lo correcto es 'He is a tall boy.' El adjetivo ('tall') va ANTES del sustantivo ('boy').",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige el error: 'I have two talls brothers.'",
+      "pista": "¿Los adjetivos en inglés llevan 's' cuando hablas de varias personas?",
+      "solucion": "Lo correcto es 'I have two tall brothers.' El adjetivo NUNCA lleva 's' de plural; el plural va solo en el sustantivo (brother → brothers).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ordena las palabras para formar una oración correcta: 'hair / has / long / She'",
+      "pista": "Empieza por la persona (she), después el verbo para el pelo, y al final color/largo + hair.",
+      "solucion": "'She has long hair.' (Ella tiene el pelo largo.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Traduce al inglés: 'Mi abuela es baja y muy amable.'",
+      "pista": "'Baja' aquí es sobre la estatura, no sobre el pelo.",
+      "solucion": "'My grandmother is short and very kind.'",
+      "figura": ""
+    },
+    {
+      "enunciado": "Traduce al inglés: 'Mis primos son altos y graciosos.'",
+      "pista": "'Primos' son varias personas: usa ARE. Recuerda que 'cousin' ya vale para primo y prima.",
+      "solucion": "'My cousins are tall and funny.'",
+      "figura": ""
+    },
+    {
+      "enunciado": "Completa la pregunta y su respuesta corta: '___ your brother tall? Yes, he ___.'",
+      "pista": "Para preguntar sí/no, el verbo 'to be' va al principio, antes de la persona.",
+      "solucion": "'Is your brother tall? Yes, he is.'",
+      "figura": ""
+    },
+    {
+      "enunciado": "Describe a un tío imaginario llamado Pedro usando al menos tres adjetivos y el verbo correcto para el pelo.",
+      "pista": "Presenta con 'This is my...', describe tamaño/personalidad con is, y el pelo con has.",
+      "solucion": "Ejemplo válido: 'This is my uncle, Pedro. He is tall. He has short, black hair. He is very funny.' (Cualquier combinación de adjetivos correctamente usada con is/has vale.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica con tus palabras por qué la oración 'My brother is short. He has short hair.' usa la misma palabra 'short' con dos significados distintos.",
+      "pista": "Piensa en a qué se refiere 'short' la primera vez (una persona) y la segunda vez (el pelo).",
+      "solucion": "La primera vez, 'short' describe la ESTATURA del hermano y significa 'bajo'. La segunda vez, 'short' describe el PELO y significa 'corto'. Es la misma palabra en inglés, pero se traduce distinto según de qué se hable: personas (bajo) o pelo (corto).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige el error: 'My sisters is happy.'",
+      "pista": "¿'Sisters' es una sola persona o varias? Elige el verbo que corresponda.",
+      "solucion": "Lo correcto es 'My sisters are happy.' Como 'sisters' son VARIAS personas, corresponde ARE, no IS.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué significa la palabra 'tall'?",
+      "opciones": [
+        "joven",
+        "alto",
+        "bajo",
+        "grande"
+      ],
+      "correcta": 1,
+      "explicacion": "'Tall' significa alto/alta. 'Short' es bajo, 'big' es grande y 'young' es joven.",
+      "figura": ""
+    },
+    {
+      "pregunta": "Hablando de la estatura de una persona, ¿qué significa 'short'?",
+      "opciones": [
+        "alto",
+        "bajo",
+        "grande",
+        "viejo"
+      ],
+      "correcta": 1,
+      "explicacion": "Con personas, 'short' significa bajo/baja. (Con el pelo, en cambio, 'short' significa corto.)",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es el opuesto de 'big'?",
+      "opciones": [
+        "sad",
+        "small",
+        "tall",
+        "old"
+      ],
+      "correcta": 1,
+      "explicacion": "'Big' (grande) y 'small' (pequeño) son opuestos. 'Tall' es alto, 'old' es viejo y 'sad' es triste.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Qué significa 'young'?",
+      "opciones": [
+        "joven",
+        "amable",
+        "triste",
+        "viejo"
+      ],
+      "correcta": 0,
+      "explicacion": "'Young' significa joven. 'Old' es viejo/mayor, 'kind' es amable y 'sad' es triste.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Qué significa 'kind'?",
+      "opciones": [
+        "triste",
+        "amable",
+        "alto",
+        "gracioso"
+      ],
+      "correcta": 1,
+      "explicacion": "'Kind' significa amable o bondadoso/a. 'Funny' es gracioso, 'sad' es triste y 'tall' es alto.",
+      "figura": ""
+    },
+    {
+      "pregunta": "Completa: 'My brother ___ tall.'",
+      "opciones": [
+        "are",
+        "have",
+        "am",
+        "is"
+      ],
+      "correcta": 3,
+      "explicacion": "Como 'brother' es UNA sola persona, corresponde IS.",
+      "figura": ""
+    },
+    {
+      "pregunta": "Completa: 'My sisters ___ funny.'",
+      "opciones": [
+        "is",
+        "am",
+        "are",
+        "has"
+      ],
+      "correcta": 2,
+      "explicacion": "Como 'sisters' son VARIAS personas, corresponde ARE.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál de estas frases es correcta para describir el pelo de alguien?",
+      "opciones": [
+        "She is brown hair.",
+        "She are brown hair.",
+        "She has hair brown.",
+        "She has brown hair."
+      ],
+      "correcta": 3,
+      "explicacion": "El pelo se describe con HAS (una persona), nunca con IS, y el orden correcto es 'has brown hair', no 'has hair brown'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál de estas frases sigue el orden correcto del adjetivo en inglés?",
+      "opciones": [
+        "a tall boy",
+        "tall a boy",
+        "a boy tall",
+        "boy a tall"
+      ],
+      "correcta": 0,
+      "explicacion": "En inglés el adjetivo va SIEMPRE antes del sustantivo: 'a tall boy', nunca después como en español.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál de estas frases usa correctamente el plural?",
+      "opciones": [
+        "two boy talls",
+        "two talls boys",
+        "two tall boys",
+        "two boys tall"
+      ],
+      "correcta": 2,
+      "explicacion": "El adjetivo ('tall') NUNCA lleva 's' de plural; el plural va solo en el sustantivo: 'boys'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "Completa la pregunta: '___ your grandmother short?'",
+      "opciones": [
+        "Is",
+        "Have",
+        "Are",
+        "Do"
+      ],
+      "correcta": 0,
+      "explicacion": "'Grandmother' es una sola persona, así que la pregunta empieza con IS: 'Is your grandmother short?'",
+      "figura": ""
+    },
+    {
+      "pregunta": "Te preguntan '¿Is he happy?' y la respuesta es que sí. ¿Cuál es la respuesta corta correcta?",
+      "opciones": [
+        "Yes, he happy.",
+        "Yes, he are.",
+        "Yes, he has.",
+        "Yes, he is."
+      ],
+      "correcta": 3,
+      "explicacion": "La respuesta corta repite el mismo verbo de la pregunta: 'Yes, he is.'",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál de estas palabras NO es un color de pelo?",
+      "opciones": [
+        "brown",
+        "black",
+        "blond",
+        "funny"
+      ],
+      "correcta": 3,
+      "explicacion": "'Funny' significa gracioso/a: describe personalidad, no color de pelo. Black, brown y blond sí son colores de pelo.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál de estas frases corrige bien el error 'I have two talls brothers'?",
+      "opciones": [
+        "I have two talls brothers.",
+        "I have two tall brother.",
+        "I has two tall brothers.",
+        "I have two tall brothers."
+      ],
+      "correcta": 3,
+      "explicacion": "La forma correcta es 'I have two tall brothers': sin 's' en el adjetivo, con 's' en el sustantivo, y con 'have' porque el sujeto es 'I'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "La palabra 'short' puede significar dos cosas distintas según el contexto. ¿Cuáles?",
+      "opciones": [
+        "triste y feliz",
+        "alto y bajo",
+        "bajo (de estatura) y corto (de pelo)",
+        "grande y pequeño"
+      ],
+      "correcta": 2,
+      "explicacion": "'Short' significa 'bajo' cuando describe la estatura de una persona, y 'corto' cuando describe el pelo.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es la forma correcta de preguntar si tu hermano es alto?",
+      "opciones": [
+        "Do you have a brother?",
+        "Who is this?",
+        "How many brothers do you have?",
+        "Is your brother tall?"
+      ],
+      "correcta": 3,
+      "explicacion": "'Is your brother tall?' pregunta directamente por esa característica, poniendo IS al principio.",
+      "figura": ""
+    }
+  ]
+}

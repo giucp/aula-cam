@@ -1,0 +1,345 @@
+{
+  "programa": "cumbre",
+  "materia": "Cómo Pensar",
+  "grado": "Cumbre Cómo Pensar 5to grado",
+  "dominio": "Preguntar e investigar",
+  "tema": "Una predicción que se puede probar (la hipótesis, en versión niño)",
+  "referencias": [
+    "NGSS (Next Generation Science Standards) — Science and Engineering Practice 3: Planning and Carrying Out Investigations (nivel elemental): usar predicciones basadas en evidencia previa para diseñar qué se va a observar o medir",
+    "UK National Curriculum, Key Stage 2 Science — 'Working scientifically': hacer predicciones basadas en conocimiento y observaciones previas, y reconocer cuándo una prueba justa (fair test) las pone a prueba de verdad"
+  ],
+  "resumen": {
+    "titulo": "Predicciones que se pueden poner a prueba",
+    "intro": "En el tema anterior aprendiste a convertir una pregunta floja en una pregunta investigable: una que se puede responder con evidencia real. Ahora vas a dar el siguiente paso: ANTES de investigar, vas a animarte a decir qué creés que va a pasar, y por qué. A eso se le llama predicción, y cuando tiene una base real (no es solo un deseo o un número al azar), se convierte en una herramienta poderosísima: es lo que los científicos llaman, en su forma más formal, una hipótesis. Vas a aprender a armar una buena predicción, a distinguirla de una adivinanza o un deseo, y —esto es clave— a entender que una predicción puede resultar FALSA, y que eso no es un fracaso: es información real que también enseña.",
+    "secciones": [
+      {
+        "titulo": "¿Qué es una predicción que se puede probar?",
+        "explicacion": "Una PREDICCIÓN es una idea sobre lo que va a pasar, que decís ANTES de que pase, y que después se puede comprobar con evidencia real (observando, midiendo o contando). No es lo mismo que una pregunta investigable del tema anterior: la pregunta pregunta 'qué va a pasar', y la predicción se anima a CONTESTARLA de antemano, apostando una respuesta concreta que luego vas a revisar. La diferencia con una opinión (como '¿cuál es el mejor deporte?') es enorme: una opinión depende de gustos y nunca hay evidencia que decida quién tiene razón; una predicción, en cambio, SÍ se puede comprobar como cierta o falsa una vez que investigás, porque habla de algo que va a ocurrir en la realidad, no de un gusto.",
+        "pasos": [
+          "Preguntate: ¿esto es una idea sobre algo que TODAVÍA no pasó, pero que voy a poder comprobar después?",
+          "Preguntate: ¿existe una forma real de revisar si la predicción se cumplió o no (observando, midiendo, contando)?",
+          "Si a las dos preguntas respondés que sí, tenés una predicción que se puede probar."
+        ],
+        "ejemplo": "Antes de lanzar un avión de papel hecho con una hoja más gruesa que la normal, decís: 'Este avión va a volar menos distancia que uno de papel normal'. Todavía no lo lanzaste (es ANTES), pero cuando lo hagas vas a poder medir la distancia con una cinta métrica y comprobar si tenías razón: eso es una predicción que se puede probar."
+      },
+      {
+        "titulo": "La forma que usan los científicos: SI... ENTONCES...",
+        "explicacion": "Para que una predicción quede bien armada y no se te escape ningún detalle, los científicos usan una plantilla con dos partes, unidas por dos palabras clave: SI [cambio o hago esto] ENTONCES [esto es lo que espero que pase]. La parte del SI describe la VARIABLE que estás cambiando (recordá esa palabra del tema anterior: lo único que cambia entre lo que comparás); la parte del ENTONCES describe, de forma medible, el resultado que esperás. Usar esta forma no es solo prolijidad: te OBLIGA a ser específico. Si no podés completar la plantilla con algo medible en el ENTONCES, es señal de que tu predicción todavía está vaga.",
+        "pasos": [
+          "Escribí 'SI' seguido de la única cosa que vas a cambiar o hacer.",
+          "Escribí 'ENTONCES' seguido de lo que esperás que pase, con algo que se pueda medir o contar (una cantidad, un tiempo, una distancia).",
+          "Releé la frase completa: si el ENTONCES no tiene nada medible, agregale una unidad o una cantidad."
+        ],
+        "ejemplo": "SI doblo el avión de papel con una hoja más gruesa que la normal, ENTONCES volará una distancia menor, medida en metros, que un avión igual hecho con papel normal."
+      },
+      {
+        "titulo": "De una pregunta investigable a una predicción",
+        "explicacion": "El tema anterior te enseñó a escribir preguntas investigables: específicas, justas y posibles de responder. Ahora esa pregunta es el punto de partida de tu predicción: la predicción es tu mejor respuesta ANTICIPADA a esa pregunta, antes de salir a buscar la evidencia. No cualquier respuesta vale: tiene que ser una respuesta CONCRETA (no 'no sé' ni 'depende'), y apoyada en algo que ya sabés u observaste antes, no inventada de la nada.",
+        "pasos": [
+          "Partí de una pregunta investigable ya bien escrita (específica, justa, posible).",
+          "Pensá qué ya sabés o notaste antes que se relacione con esa pregunta.",
+          "Convertí tu respuesta anticipada en la forma SI... ENTONCES..., usando esa base como razón."
+        ],
+        "ejemplo": "Pregunta investigable: '¿Los perros grandes ladran más fuerte que los perros pequeños, medido en decibeles con una app de sonido?' Predicción: 'SI mido el ladrido de un perro grande y uno pequeño con la misma app, ENTONCES el perro grande ladrará más fuerte, medido en decibeles, porque tiene cuerdas vocales y pulmones más grandes.'"
+      },
+      {
+        "titulo": "Qué hace que una predicción sea PROBABLE (y no una adivinanza)",
+        "explicacion": "Una ADIVINANZA es elegir una respuesta al azar, sin ninguna razón que la respalde, como cuando tratás de adivinar qué carta va a salir de un mazo bien mezclado: no hay evidencia previa que te ayude, así que cualquier carta tiene la misma chance. Una predicción PROBABLE es distinta: se apoya en algo real que ya observaste, escuchaste de una fuente confiable, o sabés por experiencia repetida. Eso no la vuelve una certeza absoluta (una predicción probable puede igual fallar), pero sí la hace mucho más razonable que un número al azar. La pregunta que separa una cosa de la otra es siempre la misma: '¿en qué evidencia me estoy basando para decir esto?'",
+        "pasos": [
+          "Preguntate: ¿tengo alguna razón (una observación previa, un dato conocido) para pensar esto, o lo elegí al azar?",
+          "Si tenés una razón basada en evidencia, es una predicción probable.",
+          "Si no tenés ninguna razón y solo elegiste una opción entre varias posibles, es una adivinanza, no una predicción."
+        ],
+        "ejemplo": "Adivinar cuál de cuatro vasos tapados esconde una moneda es una adivinanza: no hay ninguna pista que te ayude. Predecir que un globo inflado hasta casi su límite explota más fácil al pincharlo con un alfiler que uno inflado a la mitad es una predicción probable: se basa en haber visto antes que un globo muy estirado se rompe con más facilidad."
+      },
+      {
+        "titulo": "Predicción, deseo y opinión: no son lo mismo",
+        "explicacion": "Un DESEO es lo que uno quiere o espera que pase, por gusto o esperanza, sin que esté basado en evidencia sobre lo que realmente va a ocurrir. Se parece a una predicción porque también habla del futuro, pero la diferencia es la BASE: el deseo nace de las ganas, la predicción nace de la evidencia. Y ya conocés la OPINIÓN del tema anterior (lo que cada quien prefiere, sin que haya un dato que decida). Los tres se pueden confundir fácilmente porque los tres 'suenan' parecido, pero solo la predicción con base real se puede juzgar como cierta o falsa de manera justa: un deseo no se 'cumple o falla' con evidencia, y una opinión ni siquiera intenta comprobarse.",
+        "pasos": [
+          "Preguntate: ¿esto lo digo porque tengo ganas de que pase (deseo), porque es lo que prefiero (opinión), o porque tengo una razón basada en evidencia (predicción)?",
+          "Un deseo suele reconocerse por frases como 'ojalá' o 'espero que'; una predicción con base explica el POR QUÉ con un hecho, no con una ilusión."
+        ],
+        "ejemplo": "'Ojalá gane mi equipo el domingo' es un deseo: nace de las ganas de que gane, no de evidencia. 'Como mi equipo ganó de local sus últimos cuatro partidos, es probable que gane el próximo partido de local' es una predicción con base: se apoya en un dato real (los resultados anteriores), aunque tampoco sea una certeza."
+      },
+      {
+        "titulo": "Cuando la predicción resulta FALSA: por qué eso también es aprender",
+        "explicacion": "Acá viene una idea que muchos niños (y adultos) entienden mal: si una predicción no se cumple, NO significa que investigar 'fue tiempo perdido'. Al contrario: descubrir que una predicción con base era falsa te da información real y nueva que antes no tenías, y te ayuda a pensar mejor la próxima vez. Los científicos de verdad fallan sus predicciones constantemente, y cada vez que eso pasa, aprenden algo que su idea anterior no explicaba. Lo único que 'pierde' valor es una predicción de la que nunca te enterás si era cierta o falsa, porque nunca la comprobaste con evidencia.",
+        "pasos": [
+          "Si tu predicción se cumplió: tenías una buena razón, y ahora tenés evidencia real que lo confirma.",
+          "Si tu predicción NO se cumplió: no 'perdiste'; ganaste un dato nuevo que tu razón anterior no tomaba en cuenta.",
+          "En cualquiera de los dos casos, preguntate: ¿qué aprendí que no sabía antes de investigar?"
+        ],
+        "ejemplo": "Alguien predice: 'SI lanzo una moneda 10 veces, ENTONCES saldrán 5 caras y 5 cruces, porque es lo justo'. Al lanzarla salen 7 caras y 3 cruces: la predicción falló. Pero eso enseña algo real y valioso: en pocos lanzamientos, el azar no siempre reparte parejo, aunque a la larga (con muchísimos lanzamientos) sí se acerca a la mitad. Nada se perdió: se aprendió algo cierto sobre el azar."
+      },
+      {
+        "titulo": "Errores típicos al hacer una predicción",
+        "explicacion": "Hay tres errores que se repiten muchísimo al escribir una predicción, y conocerlos de antemano ayuda a evitarlos. El primero es confundirla con un deseo o una adivinanza: decir 'va a pasar esto' solo porque uno quiere que pase, o porque se eligió al azar, sin ninguna razón basada en evidencia. El segundo es dejarla tan vaga que no se puede comprobar: si el ENTONCES no tiene nada medible ('va a ir mejor', 'va a cambiar algo'), nadie podría decir después si se cumplió o no. El tercero, el más importante de este tema, es creer que si la predicción falla, 'se perdió' el tiempo invertido en investigar: como ya viste, una predicción falsa también enseña, y descartarla como 'inútil' te haría perder justo el aprendizaje real que te dio.",
+        "pasos": [
+          "Revisá tu predicción buscando estos tres errores: deseo o adivinanza disfrazada de predicción, vaguedad sin nada medible, y la idea de que fallar es 'perder tiempo'.",
+          "Si encontrás alguno, corregilo: agregale una base real, algo medible en el ENTONCES, o recordá que una predicción falsa también es información válida."
+        ],
+        "ejemplo": "'Va a ir bien mi presentación' es una predicción vaga y disfrazada de deseo (no dice qué es 'bien' ni por qué). Mejor: 'SI practico mi presentación en voz alta tres veces antes de exponerla, ENTONCES me voy a equivocar en menos palabras, comparado con las veces que no practiqué, porque ya me pasó antes con otras presentaciones.'"
+      },
+      {
+        "titulo": "Cómo armar tu propia predicción, paso a paso",
+        "explicacion": "Ahora juntemos todo en un procedimiento que podés usar siempre que quieras predecir algo antes de investigarlo, dentro o fuera de la escuela.",
+        "pasos": [
+          "Partí de una pregunta investigable ya bien escrita (específica, justa, posible), como aprendiste en el tema anterior.",
+          "Pensá qué ya sabés, viste o te pasó antes que se relacione con esa pregunta: esa es tu evidencia de base.",
+          "Escribí tu predicción con la forma SI... ENTONCES..., incluyendo algo medible en el ENTONCES.",
+          "Revisá que no sea un deseo ni una adivinanza disfrazada: ¿tenés una razón real, o solo ganas de que pase?",
+          "Aceptá de antemano que tu predicción puede resultar falsa, y que en ese caso vas a aprender algo igual de valioso."
+        ],
+        "ejemplo": "Pregunta investigable: '¿Los estudiantes que estudian escuchando música instrumental se equivocan menos en una prueba de ortografía, comparados con los que estudian en silencio?' Evidencia de base: ya notaste que te distraés menos con música sin letra. Predicción: 'SI estudio las palabras de ortografía escuchando música instrumental, ENTONCES voy a acertar más palabras en la prueba, comparado con estudiar en silencio, porque me distraigo menos cuando no hay letras que cantar.'"
+      }
+    ],
+    "idea_clave": "Una predicción que se puede probar no es una adivinanza (elegida al azar, sin razón) ni un deseo (elegido por ganas, sin evidencia): es una respuesta anticipada, con la forma SI... ENTONCES..., basada en algo que ya observaste o sabés, y que después se puede comprobar como cierta o falsa con evidencia real. Que resulte falsa no es un fracaso: es información nueva y valiosa que antes no tenías."
+  },
+  "practica": [
+    {
+      "enunciado": "Clasificá cada una de estas tres afirmaciones como PREDICCIÓN CON BASE, ADIVINANZA o DESEO, y explicá por qué: (a) 'Ojalá mañana no llueva para el paseo.' (b) 'Va a salir cara la moneda porque sí.' (c) 'Como las últimas cinco veces que el cielo estuvo así de nublado llovió, hoy también va a llover.'",
+      "pista": "Preguntate para cada una: ¿nace de las ganas de que pase (deseo)? ¿se eligió al azar sin ninguna razón (adivinanza)? ¿tiene una razón basada en algo observado antes (predicción con base)?",
+      "solucion": "(a) Deseo: nace de las ganas de que no llueva, sin ninguna evidencia sobre el clima real. (b) Adivinanza: no hay ninguna razón para elegir cara en vez de cruz, es puro azar. (c) Predicción con base: se apoya en una observación repetida (el mismo tipo de cielo nublado antes de lluvia), aunque no sea una certeza absoluta.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Reescribí el deseo '¡Ojalá gane mi equipo el domingo!' como una predicción con base real, usando algún dato sobre partidos anteriores.",
+      "pista": "Pensá en qué información real sobre el equipo (resultados pasados, si juega de local o visitante) podrías usar como razón.",
+      "solucion": "No hay una única respuesta correcta; lo importante es agregar una razón basada en evidencia. Ejemplo válido: 'Como mi equipo ganó sus últimos cuatro partidos jugando de local, es probable que también gane el próximo partido de local.'",
+      "figura": ""
+    },
+    {
+      "enunciado": "Tenés esta pregunta investigable: '¿Una bicicleta con las llantas más infladas rueda una distancia mayor en línea recta antes de detenerse, medida en metros, que una con las llantas menos infladas?' Escribí la predicción completa usando la forma SI... ENTONCES..., incluyendo una razón basada en algo que hayas notado antes.",
+      "pista": "Recordá la plantilla: SI [cambio esto] ENTONCES [esto es lo que espero, con algo medible], porque [tu razón].",
+      "solucion": "Ejemplo válido: 'SI ando en una bicicleta con las llantas bien infladas y después en la misma bicicleta con las llantas poco infladas, ENTONCES la bicicleta con las llantas bien infladas recorrerá una distancia mayor, medida en metros, antes de detenerse, porque las llantas poco infladas rozan más contra el suelo y eso las frena antes.'",
+      "figura": ""
+    },
+    {
+      "enunciado": "Esta predicción es demasiado vaga: 'Si uso pilas nuevas en el carrito de control remoto, va a andar mejor.' Reescribila agregando algo medible en el ENTONCES.",
+      "pista": "'Andar mejor' no dice qué se va a medir. Pensá en tiempo, distancia o velocidad.",
+      "solucion": "Ejemplo válido: 'SI uso pilas nuevas en el carrito de control remoto en vez de las gastadas, ENTONCES el carrito recorrerá una distancia mayor, medida en metros, en el mismo tiempo, porque las pilas nuevas entregan más energía.'",
+      "figura": ""
+    },
+    {
+      "enunciado": "Alguien predice: 'SI lanzo una moneda 10 veces, ENTONCES saldrán exactamente 5 caras y 5 cruces, porque es lo justo.' Al lanzarla, salen 8 caras y 2 cruces. ¿La predicción 'fracasó' y el experimento fue inútil? Explicá qué se aprendió de verdad.",
+      "pista": "Pensá en la diferencia entre que la predicción fallara y que el experimento no haya servido para nada.",
+      "solucion": "La predicción falló (no salieron 5 y 5), pero el experimento NO fue inútil: enseñó algo real, que en pocos lanzamientos el azar no siempre reparte parejo, aunque la idea de '50 y 50' se acerque más cuando se lanza la moneda muchísimas más veces. Fallar la predicción dio información nueva y válida, no fue tiempo perdido.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Comparación: (a) '¿El baloncesto es el deporte más divertido?' (b) 'SI practico 20 tiros libres cada día durante una semana, ENTONCES voy a acertar más tiros en un partido, comparado con antes de practicar, porque practicar mejora la puntería.' ¿Cuál es una predicción y cuál es una opinión? Explicá la diferencia.",
+      "pista": "Pensá si depende de gustos personales o si se puede comprobar después con un conteo real de aciertos.",
+      "solucion": "(a) es una opinión: 'más divertido' depende de lo que cada quien prefiere, y no hay evidencia que decida quién tiene razón. (b) es una predicción con base: se puede comprobar contando los aciertos antes y después de practicar, y tiene una razón (practicar mejora la puntería) que no depende de gustos.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Querés predecir si un perro ladra más fuerte cuando suena el timbre desde más cerca de la puerta. Escribí la predicción completa (SI... ENTONCES...) y decí cuál es la única cosa que debería cambiar entre las dos veces que hagas sonar el timbre.",
+      "pista": "Recordá el criterio de 'justa' del tema anterior: si comparás dos momentos, solo debe cambiar UNA cosa.",
+      "solucion": "Predicción: 'SI hago sonar el timbre desde muy cerca de la puerta y después desde lejos, con el mismo perro y el mismo timbre, ENTONCES el perro ladrará más fuerte, medido con una app de sonido, cuando el timbre suene más cerca.' Lo único que debería cambiar es la distancia del timbre a la puerta; el perro, el timbre y el momento del día deberían ser iguales en ambos casos.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero predice: 'SI doblo el avión de papel más grueso Y le hago las alas más anchas, ENTONCES volará menos distancia.' ¿Por qué esta predicción tiene un problema para comprobarse de forma justa, aunque suene razonable?",
+      "pista": "Contá cuántas cosas distintas cambia el compañero a la vez respecto a un avión normal.",
+      "solucion": "El problema es que cambia DOS cosas a la vez (el grosor del papel Y el ancho de las alas), así que si el avión vuela menos distancia no se sabría cuál de las dos causas fue la responsable. Para que la predicción se pueda comprobar de forma justa, debería cambiar solo UNA cosa por vez: primero probar solo el grosor del papel (con las mismas alas), y en otra prueba aparte, solo el ancho de las alas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explicá por qué una predicción basada en haber visto que el autobús escolar llegó tarde los últimos ocho días es más probable (aunque no segura) que una predicción basada en haberlo visto llegar tarde solo una vez.",
+      "pista": "Pensá en cuánta evidencia real respalda cada predicción: una observación sola, o muchas observaciones repetidas.",
+      "solucion": "Ocho días seguidos de evidencia real forman un patrón mucho más confiable que una sola vez, que podría haber sido casualidad (por ejemplo, un solo día de mucho tráfico). Cuantas más veces observás algo antes de predecir, más razones reales tenés para pensar que se va a repetir, aunque nunca sea una certeza del cien por ciento.",
+      "figura": ""
+    },
+    {
+      "enunciado": "¿Cuál de estas dos predicciones es POSIBLE de comprobar con lo que un alumno de 5to grado realmente tiene disponible, y cuál no lo es aunque suene interesante? (a) 'SI cuento cuántos estudiantes de mi salón traen paraguas mañana, ENTONCES más de la mitad lo traerá, porque el pronóstico anuncia lluvia.' (b) 'SI pudiera contar cada estrella de la galaxia, ENTONCES encontraría más de cien mil millones.'",
+      "pista": "Pensá en las herramientas, el tiempo y el acceso que un alumno realmente tiene, no los de un observatorio profesional.",
+      "solucion": "(a) es posible de comprobar: un alumno puede contar cuántos compañeros traen paraguas al día siguiente con sus propios ojos. (b) no es posible de comprobar con lo que un alumno tiene disponible: nadie puede contar estrella por estrella una galaxia entera sin instrumentos y datos científicos especializados, aunque el número final sea un hecho real y no una opinión.",
+      "figura": ""
+    },
+    {
+      "enunciado": "En tu escuela se acaba de poner una regla nueva: hacer una sola fila para entrar al recreo en vez de dos. Escribí una predicción completa (SI... ENTONCES..., con una razón y algo medible) sobre cómo esa regla podría cambiar el tiempo que tarda el salón en salir al patio.",
+      "pista": "Pensá en qué ibas a medir (minutos, segundos) y en una razón basada en algo que ya sabés sobre filas.",
+      "solucion": "No hay una única respuesta correcta. Ejemplo válido: 'SI el salón hace una sola fila en vez de dos para salir al recreo, ENTONCES tardará más tiempo en salir por completo, medido en segundos con un cronómetro, comparado con el tiempo que tardaba con dos filas, porque una sola fila avanza de a un estudiante por vez en lugar de dos.'",
+      "figura": ""
+    },
+    {
+      "enunciado": "Tu predicción sobre el crecimiento de dos plantines resultó falsa: creías que el que recibía más agua iba a crecer más alto, y en cambio creció menos porque se pudrió la raíz. Explicá qué aprendiste de esto que NO sabías antes de hacer la predicción, y por qué esto NO significa que perdiste el tiempo.",
+      "pista": "Pensá en la diferencia entre 'mi idea de antes era correcta' y 'aprendí algo nuevo sobre las plantas'.",
+      "solucion": "Aprendí algo real que no sabía: que darle demasiada agua a una planta puede pudrir la raíz y hacer que crezca MENOS, no más. Esto no es tiempo perdido porque ahora tengo evidencia nueva y verdadera sobre cómo funciona el riego, información que puedo usar para hacer una predicción mejor la próxima vez (por ejemplo, que existe una cantidad ideal de agua, ni poca ni demasiada).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribí tu propia predicción completa (SI... ENTONCES..., con razón basada en algo que ya notaste) sobre un tema de tu elección de la vida diaria, y explicá con tus palabras por qué NO es un deseo ni una adivinanza.",
+      "pista": "Repasá los pasos: partí de algo que ya observaste, usá la plantilla completa, y revisá que tenga una razón real y algo medible.",
+      "solucion": "No hay una única respuesta correcta. Ejemplo válido: 'SI hago mi tarea de matemática apenas llego de la escuela en vez de dejarla para la noche, ENTONCES cometeré menos errores, medido en la cantidad de ejercicios corregidos mal, porque a esa hora estoy menos cansado que en la noche.' No es un deseo porque no nace de las ganas de que algo pase, sino de haber notado antes que rendís distinto según la hora; no es una adivinanza porque tiene una razón real detrás, no fue elegida al azar.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué es una predicción que se puede probar?",
+      "opciones": [
+        "Una opinión sobre cuál es la mejor opción.",
+        "Una idea sobre lo que va a pasar, dicha antes de que pase, que después se puede comprobar con evidencia real.",
+        "Un número elegido al azar entre varias opciones posibles.",
+        "Lo que a cada persona le gustaría que pasara."
+      ],
+      "correcta": 1,
+      "explicacion": "Una predicción se dice ANTES de que algo ocurra y se puede comprobar después con evidencia real (observando, midiendo o contando), a diferencia de un deseo, una adivinanza o una opinión."
+    },
+    {
+      "pregunta": "¿Cuál es la forma SI... ENTONCES... que se usa para escribir una predicción bien armada?",
+      "opciones": [
+        "SI [cambio o hago esto] ENTONCES [esto es lo que espero que pase, de forma medible].",
+        "SI [alguien más lo dice] ENTONCES [tiene que ser cierto].",
+        "SI [lo elijo al azar] ENTONCES [tiene la misma chance que cualquier otra opción].",
+        "SI [me gusta esto] ENTONCES [debería ser lo mejor]."
+      ],
+      "correcta": 0,
+      "explicacion": "La parte del SI describe la variable que cambiás; la parte del ENTONCES describe, con algo medible, el resultado que esperás. Esta forma obliga a ser específico."
+    },
+    {
+      "pregunta": "Marcos dice: '¡Ojalá gane mi equipo el domingo!' ¿Qué es esta afirmación?",
+      "opciones": [
+        "Una adivinanza, porque nadie sabe el resultado de un partido.",
+        "Una pregunta investigable.",
+        "Una predicción con base, porque habla del futuro.",
+        "Un deseo, porque nace de las ganas de que algo pase, sin evidencia real detrás."
+      ],
+      "correcta": 3,
+      "explicacion": "Un deseo nace de las ganas o la esperanza, no de una razón basada en evidencia (como resultados anteriores). Por eso 'ojalá gane' es un deseo, no una predicción con base."
+    },
+    {
+      "pregunta": "¿Cuál de estas dos afirmaciones es una ADIVINANZA y cuál una PREDICCIÓN CON BASE? (a) 'Va a salir cara la moneda porque sí.' (b) 'Como el cielo está tan nublado como las últimas cinco veces que llovió, hoy también va a llover.'",
+      "opciones": [
+        "Las dos son predicciones con base.",
+        "Las dos son adivinanzas.",
+        "(a) es predicción con base, (b) es adivinanza.",
+        "(a) es adivinanza, (b) es predicción con base."
+      ],
+      "correcta": 3,
+      "explicacion": "(a) no tiene ninguna razón detrás, es elegir al azar: adivinanza. (b) se apoya en una observación repetida (el mismo tipo de cielo antes de lluvia): predicción con base."
+    },
+    {
+      "pregunta": "¿Qué diferencia principal hay entre una predicción con base y una adivinanza?",
+      "opciones": [
+        "La adivinanza usa números y la predicción con base no.",
+        "La predicción con base se apoya en evidencia u observaciones previas; la adivinanza se elige al azar sin ninguna razón.",
+        "No hay ninguna diferencia real entre ellas.",
+        "La predicción con base siempre se cumple; la adivinanza nunca se cumple."
+      ],
+      "correcta": 1,
+      "explicacion": "Ninguna de las dos garantiza acertar, pero la predicción con base tiene una razón real detrás (algo observado o sabido antes), mientras la adivinanza no tiene ninguna razón, solo azar."
+    },
+    {
+      "pregunta": "Esta predicción es demasiado vaga: 'Si estudio más, me va a ir mejor en la prueba.' ¿Qué le falta para ser una buena predicción?",
+      "opciones": [
+        "Algo medible en el ENTONCES, como una cantidad de aciertos o un puntaje concreto.",
+        "Nada, ya está completa.",
+        "Que la escriba otra persona.",
+        "Que sea un deseo en vez de una predicción."
+      ],
+      "correcta": 0,
+      "explicacion": "'Me va a ir mejor' no dice qué se va a medir. Habría que agregar algo concreto, como 'acertaré más preguntas, medido en el puntaje de la prueba'."
+    },
+    {
+      "pregunta": "Alguien predice que una moneda lanzada 10 veces caerá exactamente 5 veces cara y 5 cruz, 'porque es lo justo'. Al lanzarla salen 8 caras y 2 cruces. ¿Qué es correcto decir sobre esto?",
+      "opciones": [
+        "Como falló, no cuenta como una predicción válida desde el principio.",
+        "El experimento fue una pérdida de tiempo porque la predicción no se cumplió.",
+        "La predicción falló, pero el experimento enseñó algo real sobre cómo se comporta el azar en pocos lanzamientos.",
+        "La moneda estaba rota, porque debía salir exactamente 5 y 5."
+      ],
+      "correcta": 2,
+      "explicacion": "Que una predicción resulte falsa no significa que el tiempo se perdió: enseña algo real (en pocos lanzamientos el azar no siempre reparte parejo), que es justamente el punto central de este tema."
+    },
+    {
+      "pregunta": "¿Por qué creer que 'si mi predicción falla, perdí el tiempo' es un error?",
+      "opciones": [
+        "Porque una predicción falsa también da información real y nueva que antes no tenías.",
+        "Porque una predicción falsa significa que la pregunta original estaba mal escrita.",
+        "Porque solo importa acertar, no aprender nada del proceso.",
+        "Porque las predicciones nunca fallan si están bien escritas."
+      ],
+      "correcta": 0,
+      "explicacion": "Descubrir que una predicción con base era falsa te da un dato real que tu razón anterior no explicaba, y eso es aprendizaje válido, no tiempo perdido."
+    },
+    {
+      "pregunta": "'¿Cuál es el mejor deporte?' y 'SI practico 20 tiros libres cada día durante una semana, ENTONCES voy a acertar más tiros en un partido, comparado con antes.' ¿Cuál de las dos es una predicción?",
+      "opciones": [
+        "Las dos son predicciones por igual.",
+        "La segunda, porque se puede comprobar contando aciertos y tiene una razón basada en evidencia.",
+        "Ninguna de las dos es una predicción.",
+        "La primera, porque habla de deportes."
+      ],
+      "correcta": 1,
+      "explicacion": "La primera es una opinión (depende de gustos, sin evidencia que decida). La segunda sí es una predicción: se puede comprobar contando aciertos, y tiene una razón (practicar mejora la puntería)."
+    },
+    {
+      "pregunta": "Un compañero predice: 'SI uso papel más grueso Y hago las alas más anchas en mi avión de papel, ENTONCES volará menos distancia.' ¿Qué problema tiene esta predicción para comprobarse de forma justa?",
+      "opciones": [
+        "Es un deseo disfrazado de predicción.",
+        "No incluye ninguna razón.",
+        "Cambia dos cosas a la vez, así que si el avión vuela menos no se sabría cuál de las dos causas fue la responsable.",
+        "No tiene ningún problema, está perfecta."
+      ],
+      "correcta": 2,
+      "explicacion": "Al cambiar dos variables a la vez (grosor del papel y ancho de las alas), no se puede saber cuál de las dos provocó el resultado; una predicción comprobable de forma justa cambia solo UNA cosa por vez."
+    },
+    {
+      "pregunta": "¿Por qué una predicción basada en haber observado algo ocho veces seguidas es más probable que una basada en haberlo visto una sola vez?",
+      "opciones": [
+        "Porque ocho es un número más grande y siempre es mejor.",
+        "Porque ocho observaciones forman un patrón más confiable; una sola vez podría haber sido casualidad.",
+        "Porque una sola observación nunca cuenta como evidencia real.",
+        "No hay ninguna diferencia entre las dos."
+      ],
+      "correcta": 1,
+      "explicacion": "Más observaciones repetidas dan una base más sólida para predecir que algo se va a repetir, aunque ninguna cantidad de observaciones garantice una certeza absoluta."
+    },
+    {
+      "pregunta": "¿Cuál de estas predicciones es POSIBLE de comprobar con lo que un alumno de 5to grado realmente tiene disponible? (a) 'SI cuento los paraguas de mi salón mañana, más de la mitad los traerá, porque anuncian lluvia.' (b) 'SI pudiera contar cada estrella de la galaxia, encontraría más de cien mil millones.'",
+      "opciones": [
+        "Ninguna de las dos se puede comprobar nunca.",
+        "Las dos son igual de posibles para un alumno.",
+        "(b), porque el número final es un hecho científico real.",
+        "(a), porque un alumno puede contar los paraguas de su salón con sus propios ojos."
+      ],
+      "correcta": 3,
+      "explicacion": "(a) es posible de comprobar con las herramientas de un alumno (contar compañeros). (b), aunque sea un hecho real, no se puede comprobar con lo que un alumno tiene disponible, sin instrumentos y datos científicos especializados."
+    },
+    {
+      "pregunta": "¿Cuál es el primer paso para armar una buena predicción, según el procedimiento de este tema?",
+      "opciones": [
+        "Partir de una pregunta investigable ya bien escrita (específica, justa y posible).",
+        "Preguntarle a un compañero cuál es su opinión.",
+        "Escribir directamente la solución sin pensar en una razón.",
+        "Elegir una respuesta al azar entre varias opciones."
+      ],
+      "correcta": 0,
+      "explicacion": "La predicción se construye a partir de una pregunta investigable ya bien formulada (como las del tema anterior); a partir de ahí se agrega la evidencia de base y la forma SI... ENTONCES..."
+    },
+    {
+      "pregunta": "Tu predicción sobre el riego de dos plantines resultó falsa: creías que más agua haría crecer más alta a la planta, y en cambio creció menos porque se pudrió la raíz. ¿Qué es lo correcto de pensar sobre esto?",
+      "opciones": [
+        "El experimento no sirvió para nada porque la predicción falló.",
+        "La predicción original era en realidad una opinión, no una predicción.",
+        "Deberías haber adivinado el resultado en vez de predecirlo.",
+        "Aprendiste algo real y nuevo (que demasiada agua puede pudrir la raíz), y eso no es tiempo perdido."
+      ],
+      "correcta": 3,
+      "explicacion": "Una predicción falsa entrega evidencia real y nueva (en este caso, sobre el exceso de agua), que se puede usar para hacer una mejor predicción la próxima vez; no es tiempo perdido."
+    },
+    {
+      "pregunta": "¿Qué tienen en común todas las buenas predicciones que se pueden probar, sin importar el tema del que hablen?",
+      "opciones": [
+        "Tienen una base en evidencia u observación previa, se pueden expresar como SI... ENTONCES..., y se pueden comprobar después como ciertas o falsas.",
+        "Solo sirven para experimentos de ciencias con laboratorio.",
+        "Siempre se cumplen si están bien escritas.",
+        "Nunca pueden estar equivocadas."
+      ],
+      "correcta": 0,
+      "explicacion": "Toda buena predicción se apoya en evidencia real, usa la forma SI... ENTONCES... con algo medible, y acepta que puede resultar falsa; eso vale para cualquier tema, no solo para ciencias de laboratorio."
+    }
+  ]
+}

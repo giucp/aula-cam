@@ -1,0 +1,349 @@
+{
+  "programa": "cumbre",
+  "materia": "Ciencias",
+  "grado": "Cumbre Ciencias 5to grado",
+  "dominio": "Pensar como científico",
+  "tema": "Variables: qué cambio, qué mido y qué mantengo igual (la prueba justa)",
+  "referencias": [
+    "Singapore MOE Primary 5 Science — Scientific Investigation Skills: identifying variables (manipulated, responding, controlled) and planning a fair test",
+    "UK National Curriculum Key Stage 2 (Year 5) Science — working scientifically: fair testing and variables (what to change, measure, and keep the same)"
+  ],
+  "resumen": {
+    "titulo": "Variables: qué cambio, qué mido y qué mantengo igual",
+    "intro": "En el tema anterior aprendiste a escribir una hipótesis en la forma 'Si...entonces...'. Ahora vas a descubrir que esa forma no es solo una fórmula bonita: representa exactamente las tres piezas que necesita todo experimento bien diseñado. Vas a aprender qué es una variable, cuáles son sus tres papeles posibles (la que cambias, la que mides y las que mantienes igual), y por qué la regla más importante de un buen experimento es cambiar UNA SOLA cosa a la vez. Al terminar este tema vas a poder mirar cualquier experimento y decir con precisión qué se cambió, qué se midió y qué se mantuvo igual, además de detectar cuándo una prueba dejó de ser justa.",
+    "secciones": [
+      {
+        "titulo": "¿Qué es una variable?",
+        "explicacion": "En cualquier experimento hay cosas que se quedan siempre igual y cosas que pueden cambiar de un caso a otro. Una VARIABLE es exactamente eso: cualquier cosa que puede tomar valores distintos dentro de un experimento. Por ejemplo, la cantidad de agua que le das a una planta (puede ser poca o mucha), el tipo de material de un juguete (puede ser de plástico o de metal), o el tiempo que tarda algo en secarse (puede ser 10 minutos o 2 horas). Todas esas cosas son variables porque VARÍAN, es decir, pueden ser de más de una manera. Lo contrario de una variable es una CONSTANTE: algo que decides dejar fijo, sin que cambie entre una prueba y otra, como el tamaño del vaso que usas siempre igual en todas tus pruebas. Reconocer las variables de una situación es el primer paso para diseñar cualquier experimento, porque un experimento en el fondo es esto: cambiar UNA variable a propósito, y ver qué le pasa a OTRA.",
+        "pasos": [
+          "Lee la situación y pregúntate: ¿qué cosas podrían ser distintas de una prueba a otra?",
+          "Cada una de esas cosas que podría cambiar es una variable.",
+          "Lo que decides dejar fijo a propósito (y que NO cambia entre pruebas) no es una variable en ese experimento: es una constante."
+        ],
+        "ejemplo": "En un experimento sobre aviones de papel, algunas variables posibles son: el tamaño de las alas, el tipo de papel, la fuerza con que se lanza y la distancia que recorre. Si decides usar SIEMPRE el mismo tipo de papel en todas tus pruebas, el tipo de papel deja de ser una variable en tu experimento: se volvió una constante."
+      },
+      {
+        "titulo": "Los tres papeles: qué CAMBIO, qué MIDO y qué mantengo IGUAL",
+        "explicacion": "Cuando diseñas un experimento, no todas las variables cumplen el mismo papel: cada una tiene un ROL distinto. La VARIABLE INDEPENDIENTE es la que TÚ decides cambiar a propósito, porque quieres ver si tiene efecto: es 'lo que cambio'. La VARIABLE DEPENDIENTE es lo que se mide como resultado, y se llama así porque su valor DEPENDE de lo que hiciste con la variable independiente: es 'lo que mido'. Las VARIABLES CONTROLADAS son todas las demás cosas que podrían afectar el resultado, pero que decides dejar EXACTAMENTE IGUAL en todas las pruebas para que no arruinen la comparación: son 'lo que mantengo igual'. Imagina que quieres saber si el tipo de fertilizante ayuda a que una planta crezca más. El tipo de fertilizante es la variable independiente (es lo que tú decides cambiar: fertilizante A en una maceta, fertilizante B en otra). La altura de la planta después de dos semanas es la variable dependiente (es lo que vas a medir con una regla, y su resultado depende del fertilizante usado). Y la cantidad de agua, las horas de sol, el tipo de maceta y el tipo de semilla son variables controladas: deben ser EXACTAMENTE las mismas en las dos macetas, para que si una planta crece más, sepas que fue por el fertilizante y no por otra cosa.",
+        "pasos": [
+          "Pregúntate: ¿qué decidí cambiar yo a propósito para comparar? Esa es la variable independiente.",
+          "Pregúntate: ¿qué voy a medir con una regla, balanza, cronómetro u otro instrumento, como resultado? Esa es la variable dependiente.",
+          "Haz una lista de TODO lo demás que podría influir en el resultado, y asegúrate de que sea igual en todas las pruebas: esas son las variables controladas."
+        ],
+        "ejemplo": "Prueba con dos macetas: una con fertilizante A y otra con fertilizante B, mismo tipo de semilla, misma cantidad de agua, mismas horas de sol, mismo tipo de maceta. Independiente: tipo de fertilizante. Dependiente: altura de la planta a las dos semanas. Controladas: semilla, agua, sol y maceta."
+      },
+      {
+        "titulo": "La prueba justa: por qué se cambia UNA SOLA cosa a la vez",
+        "explicacion": "Ahora llegamos a la idea más importante de todo este tema. Una PRUEBA JUSTA (también llamada experimento controlado) es un experimento donde se cambia SOLAMENTE la variable independiente, y TODO lo demás (las variables controladas) se mantiene exactamente igual entre los grupos que se comparan. ¿Por qué es tan importante esta regla? Porque si cambias DOS cosas a la vez, ya no puedes saber cuál de las dos causó el resultado. Imagina que en el ejemplo de las plantas, además de cambiar el fertilizante, también le das más agua a la maceta del fertilizante A. Si esa planta crece más, ¿fue por el fertilizante o por el agua extra? No hay manera de saberlo, porque cambiaste dos cosas al mismo tiempo: el experimento dejó de ser justo. En cambio, si SOLO cambias el fertilizante y dejas todo lo demás exactamente igual, cualquier diferencia en el crecimiento solo se puede explicar por el fertilizante, porque es la única cosa que fue distinta entre las dos macetas. Por eso decimos que la prueba justa es la que te permite señalar una CAUSA con confianza.",
+        "pasos": [
+          "Identifica la única variable que vas a cambiar a propósito (la independiente).",
+          "Haz una lista de TODAS las demás variables que podrían afectar el resultado.",
+          "Revisa, una por una, que cada una de esas variables sea EXACTAMENTE igual en todos los grupos que comparas.",
+          "Si encuentras una variable controlada que quedó distinta entre grupos, corrígela antes de sacar conclusiones."
+        ],
+        "ejemplo": "No es justa: comparar una maceta con fertilizante A y MÁS agua contra una maceta con fertilizante B y MENOS agua (cambiaron dos cosas). Sí es justa: comparar una maceta con fertilizante A contra una maceta con fertilizante B, ambas con la MISMA cantidad de agua, sol, maceta y semilla (cambió solo una cosa)."
+      },
+      {
+        "titulo": "Cómo reconocer la variable independiente y la dependiente en una pregunta",
+        "explicacion": "A veces te dan una pregunta de investigación y tienes que descubrir tú mismo cuál variable es la independiente y cuál la dependiente, sin que te lo digan directamente. Un truco útil: la variable independiente casi siempre aparece como la CAUSA o la condición que se prueba ('¿el tipo de suelo afecta...', '¿la cantidad de luz influye en...', '¿el tamaño de las alas cambia...'), mientras que la variable dependiente aparece como el RESULTADO que se observa después ('...afecta cuánto crece la planta', '...influye en cuánto tarda en secarse', '...cambia qué tan lejos vuela el avión'). Otro truco: pregúntate cuál de las dos variables tiene sentido medir con un instrumento (regla, cronómetro, balanza, termómetro) DESPUÉS de hacer la prueba: esa casi siempre es la dependiente. La que tú decides ANTES de empezar (qué fertilizante usar, qué tamaño de ala cortar) es la independiente.",
+        "pasos": [
+          "Busca en la pregunta la parte que suena a 'causa' o condición que se prueba: esa suele ser la variable independiente.",
+          "Busca la parte que suena a 'resultado' o lo que se observa después: esa suele ser la variable dependiente.",
+          "Confirma preguntándote: ¿esto lo decido YO antes de empezar (independiente), o lo mido DESPUÉS con un instrumento (dependiente)?"
+        ],
+        "ejemplo": "Pregunta: '¿el tamaño de las alas de un avión de papel afecta la distancia que vuela?'. El tamaño de las alas es lo que se decide antes (independiente). La distancia que vuela es lo que se mide después con una cinta métrica (dependiente)."
+      },
+      {
+        "titulo": "Armar la lista completa de variables controladas",
+        "explicacion": "Antes de empezar cualquier experimento, un buen científico se detiene a pensar: '¿qué OTRAS cosas, además de mi variable independiente, podrían cambiar el resultado?'. Esa lista completa son las variables controladas, y hacerla con cuidado es tan importante como elegir bien la variable independiente. Si se te olvida controlar algo importante, tu prueba deja de ser justa aunque no te des cuenta: por ejemplo, si estás probando si el tamaño de las alas de un avión de papel afecta la distancia que vuela, pero un avión lo lanza un niño y el otro lo lanza otro niño con más fuerza, el resultado puede deberse a la fuerza del lanzamiento y no al tamaño de las alas, aunque tú creas que solo cambiaste el tamaño. Por eso conviene escribir la lista de variables controladas ANTES de empezar, no improvisarla sobre la marcha.",
+        "pasos": [
+          "Antes de experimentar, piensa en TODO lo que rodea al experimento: quién lo hace, dónde, con qué, cuánto tiempo, qué condiciones del ambiente.",
+          "Escribe una lista de esas cosas.",
+          "Para cada una, decide cómo la vas a mantener igual en todos los grupos (misma persona, mismo lugar, mismo instrumento, etcétera)."
+        ],
+        "ejemplo": "Para probar si el tamaño de las alas afecta la distancia de vuelo: variables controladas = mismo tipo de papel, misma persona lanzando, misma fuerza de lanzamiento, mismo lugar (adentro, sin viento), mismo piso."
+      },
+      {
+        "titulo": "Errores típicos (y cómo blindarte)",
+        "explicacion": "Estos son los tres errores que más se repiten al trabajar con variables. Primero, cambiar DOS cosas a la vez sin darse cuenta, pensando que sigue siendo una prueba justa. Segundo, confundir cuál variable es la independiente y cuál la dependiente, por ejemplo decir que 'la altura de la planta' es lo que cambias, cuando en realidad es lo que mides como resultado. Tercero, olvidar controlar algo que parece poco importante pero que sí puede afectar el resultado, como la hora del día en que se hace la medición o el tipo de recipiente que se usa.",
+        "pasos": [
+          "Antes de concluir algo, revisa: ¿de verdad cambié SOLO una cosa entre los grupos?",
+          "Revisa cuál variable decidiste ANTES (independiente) y cuál mediste DESPUÉS (dependiente): no las intercambies.",
+          "Repasa tu lista de variables controladas buscando algo que se te haya olvidado igualar."
+        ],
+        "ejemplo": "Error típico: alguien dice 'la cantidad de agua es la variable que mido', cuando en realidad el agua es lo que ÉL decidió cambiar (independiente) y lo que debía medir era la altura de la planta (dependiente). Confundir estos dos papeles es el error más común."
+      },
+      {
+        "titulo": "Cómo se conecta esto con la hipótesis: 'Si... entonces...' son tus dos variables",
+        "explicacion": "En el tema anterior aprendiste a escribir una hipótesis en la forma 'Si...entonces...'. Ahora puedes ver que esa forma no es solo una fórmula para memorizar: representa exactamente las dos variables principales de tu experimento. La parte del 'SI' siempre nombra lo que vas a CAMBIAR, es decir, tu variable independiente. La parte del 'ENTONCES' siempre nombra lo que esperas que PASE como resultado, es decir, tu variable dependiente. Fijarte en esta conexión te sirve para revisar tus propias hipótesis: si al leer tu 'Si...entonces...' no puedes identificar con claridad cuál es la variable que cambias y cuál la que mides, probablemente tu hipótesis está mal escrita y hay que aclararla.",
+        "pasos": [
+          "Lee tu hipótesis en forma 'Si...entonces...'.",
+          "Subraya la parte del 'Si': ahí está tu variable independiente.",
+          "Subraya la parte del 'entonces': ahí está tu variable dependiente.",
+          "Si no puedes distinguir las dos claramente, reescribe la hipótesis siendo más específico."
+        ],
+        "ejemplo": "Hipótesis: 'Si le doy fertilizante A a una planta y fertilizante B a otra, entonces la de fertilizante A crecerá más alto'. Variable independiente (el 'Si'): tipo de fertilizante. Variable dependiente (el 'entonces'): altura de la planta."
+      },
+      {
+        "titulo": "Ejemplo completo: diseñando un experimento justo paso a paso",
+        "explicacion": "Vamos a juntar todo lo aprendido en un ejemplo completo. Pregunta de investigación: '¿la cantidad de luz que recibe una semilla afecta cuántos días tarda en germinar (brotar)?'. Primero, identificamos la variable independiente: la cantidad de luz (mucha luz para un grupo de semillas, poca luz para otro grupo), porque es lo que decidimos cambiar a propósito. Segundo, identificamos la variable dependiente: el número de días que tarda cada semilla en germinar, porque es lo que vamos a medir como resultado con un calendario. Tercero, hacemos la lista de variables controladas: mismo tipo de semilla, misma cantidad de agua, misma temperatura, mismo tipo de tierra, mismo tamaño de maceta. Cuarto, revisamos que sea una prueba justa: ¿cambiamos SOLO la cantidad de luz? Sí. ¿Todo lo demás quedó exactamente igual entre los dos grupos de semillas? Sí. Entonces el diseño es correcto, y si un grupo germina más rápido que el otro, podremos afirmar con confianza que fue por la cantidad de luz, y no por ninguna otra razón.",
+        "pasos": [
+          "Escribe la pregunta de investigación completa.",
+          "Señala la variable independiente (qué vas a cambiar).",
+          "Señala la variable dependiente (qué vas a medir).",
+          "Haz la lista de variables controladas (todo lo demás, igual para todos los grupos).",
+          "Verifica que sea una prueba justa: ¿cambiaste solo UNA cosa?"
+        ],
+        "ejemplo": "Con las semillas: independiente = cantidad de luz; dependiente = días para germinar; controladas = tipo de semilla, agua, temperatura, tierra, tamaño de maceta. Prueba justa: sí, porque solo cambia la luz."
+      }
+    ],
+    "idea_clave": "En todo experimento hay tres papeles: la variable independiente es lo que YO decido cambiar a propósito; la variable dependiente es lo que MIDO como resultado, porque depende de lo que cambié; y las variables controladas son todo lo demás que mantengo EXACTAMENTE IGUAL en todos los grupos. Una prueba es justa cuando se cambia UNA SOLA cosa a la vez: solo así se puede señalar con confianza qué causó el resultado."
+  },
+  "practica": [
+    {
+      "enunciado": "Un niño quiere saber si el tipo de fertilizante (A o B) ayuda a que una planta crezca más alto en dos semanas. Usa la misma cantidad de agua, sol, maceta y semilla en las dos macetas. Identifica la variable independiente, la dependiente y dos variables controladas.",
+      "pista": "Piensa qué decide él a propósito, qué va a medir con una regla, y qué dejó igual en las dos macetas.",
+      "solucion": "Independiente: tipo de fertilizante (A o B). Dependiente: altura de la planta después de dos semanas. Controladas (dos de estas): cantidad de agua, horas de sol, tipo de maceta, tipo de semilla.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una niña prueba si el tamaño de las alas de un avión de papel (grandes o pequeñas) afecta la distancia que vuela. Ella misma lanza los dos aviones, con la misma fuerza, en el mismo lugar cerrado sin viento, usando el mismo tipo de papel. ¿Cuál es la variable independiente y cuál la dependiente?",
+      "pista": "¿Qué decidió cambiar ella? ¿Qué se mide con una cinta métrica al final?",
+      "solucion": "Independiente: el tamaño de las alas. Dependiente: la distancia que recorre el avión. (La persona que lanza, la fuerza y el lugar son variables controladas: se mantuvieron iguales.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante quiere comparar si el agua caliente hace que el azúcar se disuelva más rápido que el agua fría. Pero usa una cucharada de azúcar en el vaso de agua caliente y dos cucharadas en el vaso de agua fría. Explica por qué esta prueba NO es justa y cómo corregirla.",
+      "pista": "Cuenta cuántas cosas cambiaron entre los dos vasos.",
+      "solucion": "No es justa porque cambió DOS cosas a la vez: la temperatura del agua Y la cantidad de azúcar. Si el azúcar se disuelve distinto, no se sabe si fue por la temperatura o por la cantidad. Para corregirla, debe usar la MISMA cantidad de azúcar (por ejemplo, una cucharada) en los dos vasos, y solo cambiar la temperatura del agua.",
+      "figura": ""
+    },
+    {
+      "enunciado": "En un experimento sobre el derretimiento del hielo, alguien pone un cubo de hielo en un vaso de metal y otro cubo igual en un vaso de plástico, con la misma cantidad de hielo, en el mismo cuarto, a la misma hora. Identifica la variable independiente, la dependiente y menciona una variable controlada.",
+      "pista": "¿Qué cambia entre los dos vasos? ¿Qué se mide con un cronómetro?",
+      "solucion": "Independiente: el material del vaso (metal o plástico). Dependiente: el tiempo que tarda el hielo en derretirse. Controlada (una de estas): la cantidad de hielo, el cuarto donde están, la hora del día.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un niño escribe esta hipótesis: 'Si planto semillas con mucha luz y otras con poca luz, entonces las de mucha luz brotarán en menos días'. Identifica cuál es la variable independiente y cuál la dependiente dentro de esa hipótesis.",
+      "pista": "La parte del 'Si' y la parte del 'entonces' corresponden cada una a una variable distinta.",
+      "solucion": "Independiente (la parte del 'Si'): la cantidad de luz. Dependiente (la parte del 'entonces'): el número de días que tarda en brotar la semilla.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Alguien dice: 'La cantidad de agua es la variable que voy a medir en mi experimento sobre plantas'. Explica por qué esta afirmación probablemente tiene un error.",
+      "pista": "Piensa si la cantidad de agua suena a algo que se DECIDE antes o a algo que se MIDE después.",
+      "solucion": "Probablemente está confundiendo los papeles: la cantidad de agua normalmente es algo que se DECIDE antes de empezar (por ejemplo, dar mucha o poca agua a propósito), así que suele ser la variable independiente, no la dependiente. Lo que se mide como resultado (la dependiente) sería, por ejemplo, la altura o el peso de la planta.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Diseña la lista de variables controladas para este experimento: '¿el tipo de pelota (de goma o de plástico) afecta qué tan alto rebota al caer?'. Menciona al menos tres cosas que deberían mantenerse iguales.",
+      "pista": "Piensa en todo lo que rodea al experimento: desde qué altura se suelta, quién la suelta, sobre qué superficie cae.",
+      "solucion": "Variables controladas posibles: la altura desde la que se suelta la pelota, la persona que la suelta, la superficie sobre la que cae (por ejemplo, piso de cerámica), y que se mida siempre de la misma manera (con la misma cinta métrica). Todas deben ser iguales para las dos pelotas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un experimento compara si el color de la ropa (negro o blanco) afecta cuánto se calienta al sol. Una tela negra se deja al sol por 30 minutos y la tela blanca por 20 minutos. ¿Qué error de prueba justa tiene este diseño?",
+      "pista": "Compara el tiempo que cada tela pasó al sol.",
+      "solucion": "El error es que cambiaron DOS cosas: el color de la tela Y el tiempo bajo el sol. Debieron dejar las dos telas exactamente el mismo tiempo (por ejemplo, las dos 30 minutos), y así cualquier diferencia de temperatura se debería solo al color.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un niño quiere saber si la cantidad de sal que se le pone a un cubo de hielo afecta qué tan rápido se derrite. Identifica: (a) la variable independiente, (b) la variable dependiente, y (c) dos variables que debería controlar.",
+      "pista": "¿Qué decide cambiar el niño? ¿Qué mide con un cronómetro? ¿Qué otras cosas podrían afectar el derretimiento?",
+      "solucion": "(a) Independiente: la cantidad de sal. (b) Dependiente: el tiempo que tarda el hielo en derretirse. (c) Controladas (dos de estas): el tamaño del cubo de hielo, la temperatura del cuarto, el tipo de recipiente.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Lee esta descripción de un experimento y encuentra el error: 'Para ver si la marca de pila (batería) dura más tiempo encendiendo una linterna, probé la marca X en una linterna nueva y la marca Y en una linterna vieja, ambas con pilas del mismo tamaño'. ¿Qué variable no se controló correctamente?",
+      "pista": "Fíjate en las palabras 'linterna nueva' y 'linterna vieja'.",
+      "solucion": "No se controló el estado de la linterna: usó una linterna nueva para la marca X y una vieja para la marca Y. Si una pila dura más, podría deberse a la linterna (una gasta más energía que la otra) y no a la marca de pila. Debió usar la MISMA linterna (o dos linternas idénticas) para las dos marcas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ordena estos pasos en el orden correcto para diseñar un experimento sobre si la temperatura del agua afecta cuánto tarda en congelarse: (A) Verificar que solo cambió la temperatura entre los grupos. (B) Escribir la pregunta de investigación. (C) Hacer la lista de variables controladas (tipo de recipiente, cantidad de agua, congelador usado). (D) Identificar la variable independiente y la dependiente.",
+      "pista": "Piensa qué necesitas saber antes de poder hacer la lista de variables controladas.",
+      "solucion": "Orden correcto: B, D, C, A. Primero se escribe la pregunta; después se identifican las dos variables principales (independiente y dependiente); luego se listan las variables controladas; y al final se verifica que la prueba sea justa.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica con tus palabras por qué una variable controlada NO es lo mismo que una variable independiente, aunque las dos parezcan 'cosas del experimento'.",
+      "pista": "Piensa en qué se hace con cada una: ¿se cambia a propósito o se deja igual a propósito?",
+      "solucion": "La variable independiente es la ÚNICA cosa que se cambia a propósito entre los grupos, porque es lo que se quiere probar. Las variables controladas son todo lo contrario: son cosas que también podrían afectar el resultado, pero se dejan EXACTAMENTE IGUALES a propósito, para que no interfieran con la comparación. Una se cambia, las otras se mantienen fijas; por eso no son lo mismo aunque ambas sean 'variables' que podrían influir en el resultado.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un experimento sobre imanes prueba si la distancia entre un imán y unos clips de metal afecta cuántos clips puede atraer el imán. Se usa siempre el mismo imán y los mismos clips, cambiando solo la distancia (2 cm, 5 cm, 10 cm). Identifica la variable independiente, la dependiente y una variable controlada.",
+      "pista": "¿Qué se cambia entre las tres pruebas? ¿Qué se cuenta al final?",
+      "solucion": "Independiente: la distancia entre el imán y los clips. Dependiente: la cantidad de clips que el imán logra atraer. Controlada: el imán usado (siempre el mismo) y el tipo de clips (siempre los mismos).",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué es una variable independiente?",
+      "opciones": [
+        "Lo que se mide como resultado al final",
+        "Un error que arruina el experimento",
+        "Lo que se mantiene igual en todo el experimento",
+        "Lo que el experimentador decide cambiar a propósito para ver su efecto"
+      ],
+      "correcta": 3,
+      "explicacion": "La variable independiente es la que se cambia a propósito, porque se quiere ver si tiene efecto sobre otra cosa. Las otras opciones describen la variable controlada, la dependiente y un error de diseño."
+    },
+    {
+      "pregunta": "¿Qué es una variable dependiente?",
+      "opciones": [
+        "Todo lo que se mantiene exactamente igual",
+        "Lo que se decide antes de empezar el experimento",
+        "Lo que se mide como resultado, porque su valor depende de la variable independiente",
+        "Una hipótesis mal escrita"
+      ],
+      "correcta": 2,
+      "explicacion": "La variable dependiente es el resultado que se mide, y se llama así porque depende de lo que se hizo con la variable independiente."
+    },
+    {
+      "pregunta": "En el experimento '¿el tipo de fertilizante afecta la altura de una planta?', ¿cuál es la variable independiente?",
+      "opciones": [
+        "La cantidad de agua",
+        "La altura de la planta",
+        "El tipo de fertilizante",
+        "El tipo de maceta"
+      ],
+      "correcta": 2,
+      "explicacion": "El tipo de fertilizante es lo que se decide cambiar a propósito para comparar su efecto; la altura de la planta es lo que se mide (dependiente)."
+    },
+    {
+      "pregunta": "En el mismo experimento del fertilizante, ¿cuál es la variable dependiente?",
+      "opciones": [
+        "El color de la maceta",
+        "El tipo de fertilizante",
+        "La cantidad de semillas usadas",
+        "La altura de la planta después de dos semanas"
+      ],
+      "correcta": 3,
+      "explicacion": "La altura de la planta es el resultado que se mide con una regla; depende de qué fertilizante se usó."
+    },
+    {
+      "pregunta": "¿Qué son las variables controladas?",
+      "opciones": [
+        "Todo lo que podría afectar el resultado, pero se mantiene exactamente igual en todos los grupos",
+        "Las conclusiones finales",
+        "Los errores del experimento",
+        "Las que se cambian a propósito para ver su efecto"
+      ],
+      "correcta": 0,
+      "explicacion": "Las variables controladas son todo lo demás que podría influir en el resultado, y se dejan iguales a propósito para que no arruinen la comparación."
+    },
+    {
+      "pregunta": "¿Por qué una prueba justa cambia solo UNA variable a la vez?",
+      "opciones": [
+        "Porque es más rápido de hacer",
+        "Porque los científicos tienen prohibido cambiar más de una cosa",
+        "Porque si cambian dos cosas a la vez, no se puede saber cuál de las dos causó el resultado",
+        "Porque así el experimento cuesta menos dinero"
+      ],
+      "correcta": 2,
+      "explicacion": "Si se cambian dos variables a la vez, cualquier diferencia en el resultado podría deberse a cualquiera de las dos, y no hay forma de saber cuál fue la causa real."
+    },
+    {
+      "pregunta": "Un estudiante compara dos vasos de agua para ver si la temperatura afecta cuánto tarda en disolverse el azúcar, pero pone más cucharadas de azúcar en el vaso de agua fría. ¿Qué error cometió?",
+      "opciones": [
+        "Olvidó escribir una hipótesis",
+        "Usó demasiada agua",
+        "Cambió dos variables a la vez (temperatura y cantidad de azúcar), así que la prueba no es justa",
+        "Ninguno, el experimento está bien diseñado"
+      ],
+      "correcta": 2,
+      "explicacion": "Al cambiar la temperatura Y la cantidad de azúcar al mismo tiempo, ya no se puede saber cuál de las dos causó la diferencia en el tiempo de disolución."
+    },
+    {
+      "pregunta": "En la hipótesis 'Si le doy más horas de luz a una planta, entonces crecerá más centímetros en una semana', ¿cuál es la variable dependiente?",
+      "opciones": [
+        "La semana",
+        "Las horas de luz",
+        "El tipo de planta",
+        "Los centímetros que crece la planta"
+      ],
+      "correcta": 3,
+      "explicacion": "La parte del 'entonces' señala lo que se mide como resultado: los centímetros de crecimiento. Las horas de luz (la parte del 'Si') son la variable independiente."
+    },
+    {
+      "pregunta": "¿Cuál de estas listas describe MEJOR unas variables controladas para probar si el tamaño de las alas de un avión de papel afecta la distancia de vuelo?",
+      "opciones": [
+        "El color del avión y su nombre",
+        "Solo la distancia recorrida",
+        "El tipo de papel, la persona que lanza, la fuerza del lanzamiento y el lugar",
+        "El tamaño de las alas y la distancia recorrida"
+      ],
+      "correcta": 2,
+      "explicacion": "Las variables controladas son todo lo que rodea al experimento y debe mantenerse igual: el papel, quién lanza, con qué fuerza y dónde. El tamaño de las alas es la independiente y la distancia es la dependiente, no controladas."
+    },
+    {
+      "pregunta": "Un experimento pone hielo en un vaso de metal por 20 minutos y en un vaso de plástico por 15 minutos, para ver cuál se derrite más. ¿Qué salió mal?",
+      "opciones": [
+        "El hielo no se puede usar en experimentos",
+        "El tiempo de observación no fue igual para los dos, así que no es una prueba justa",
+        "Nada, los vasos son diferentes así que está bien",
+        "Se necesitaba usar tres vasos en vez de dos"
+      ],
+      "correcta": 1,
+      "explicacion": "El tiempo de observación debía ser una variable controlada (igual para los dos), pero cambió junto con el material del vaso, así que ya no se puede saber si la diferencia se debe al material o al tiempo."
+    },
+    {
+      "pregunta": "¿Cuál de estas afirmaciones sobre variable independiente y dependiente es VERDADERA?",
+      "opciones": [
+        "La dependiente siempre es un número más grande que la independiente",
+        "La independiente se decide antes; la dependiente se mide después, como resultado",
+        "La independiente nunca se puede medir",
+        "Son la misma cosa con dos nombres distintos"
+      ],
+      "correcta": 1,
+      "explicacion": "La independiente es la causa que se elige antes de experimentar; la dependiente es el efecto que se mide después, con un instrumento."
+    },
+    {
+      "pregunta": "Un niño dice: 'La cantidad de agua es la variable que voy a medir en mi experimento sobre el crecimiento de una planta'. ¿Qué es lo más probable que esté confundiendo?",
+      "opciones": [
+        "Nada, está en lo correcto",
+        "Confundió una opinión con una hipótesis",
+        "Confundió una variable controlada con una constante",
+        "Probablemente confundió la variable independiente (la cantidad de agua, que él decide) con la variable dependiente (lo que debería medir, como la altura)"
+      ],
+      "correcta": 3,
+      "explicacion": "La cantidad de agua normalmente es algo que se decide cambiar a propósito (independiente); lo que se mide como resultado (dependiente) sería, por ejemplo, la altura de la planta."
+    },
+    {
+      "pregunta": "¿Cuál de estos experimentos SÍ es una prueba justa?",
+      "opciones": [
+        "Comparar una planta con fertilizante y otra sin medir nada",
+        "Comparar dos plantas distintas sin anotar qué se cambió",
+        "Comparar dos plantas con distinto fertilizante, pero la misma agua, sol, maceta y semilla",
+        "Comparar dos plantas con distinto fertilizante Y distinta cantidad de agua"
+      ],
+      "correcta": 2,
+      "explicacion": "Una prueba justa cambia SOLO una variable (el fertilizante) y mantiene todo lo demás exactamente igual entre los grupos que se comparan."
+    },
+    {
+      "pregunta": "En el experimento de los imanes que atraen clips a distintas distancias (2 cm, 5 cm, 10 cm), usando siempre el mismo imán y los mismos clips, ¿cuál es la variable independiente?",
+      "opciones": [
+        "El tipo de clips",
+        "El tipo de imán",
+        "La cantidad de clips atraídos",
+        "La distancia entre el imán y los clips"
+      ],
+      "correcta": 3,
+      "explicacion": "La distancia es lo que se cambia a propósito entre las tres pruebas (2, 5 y 10 cm); la cantidad de clips atraídos es lo que se mide como resultado (dependiente)."
+    },
+    {
+      "pregunta": "¿Qué debe hacer un buen científico ANTES de empezar un experimento, respecto a las variables controladas?",
+      "opciones": [
+        "Medirlas al final, no antes",
+        "Cambiarlas todas junto con la variable independiente",
+        "Hacer una lista completa de todo lo que podría afectar el resultado y asegurarse de mantenerlo igual en todos los grupos",
+        "Ignorarlas porque no son importantes"
+      ],
+      "correcta": 2,
+      "explicacion": "Pensar con anticipación en todas las variables controladas evita que se te olvide igualar algo importante, lo que arruinaría la prueba justa sin que te des cuenta."
+    }
+  ]
+}

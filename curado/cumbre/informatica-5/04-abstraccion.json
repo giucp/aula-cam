@@ -1,0 +1,362 @@
+{
+  "programa": "cumbre",
+  "materia": "Informática",
+  "grado": "Cumbre Informática 5to grado",
+  "dominio": "Pensamiento computacional (sin computadora)",
+  "tema": "Abstracción: quedarse con lo importante y dejar lo que no importa",
+  "referencias": [
+    "CSTA K-12 Computer Science Standards banda 1B (ages 8-11) — Algorithms & Programming: abstraction",
+    "UK Computing KS2 (Key Stage 2) — computational thinking: abstraction"
+  ],
+  "resumen": {
+    "titulo": "Abstracción: quedarte con lo importante y dejar lo que no importa",
+    "intro": "Ya conocés dos pilares del pensamiento computacional: DESCOMPONER una tarea grande en pasos chicos, y reconocer PATRONES para convertir lo que se repite en una regla corta. Ahora viene el tercer pilar: la ABSTRACCIÓN. Cuando algo real tiene muchísima información, abstraer es elegir SOLO lo que sirve para lo que estás tratando de lograr, y dejar el resto afuera. No es un truco solo de computadoras: los mapas, los íconos, los resúmenes y las maquetas son abstracciones que usás todos los días. Su superpoder: te deja tratar algo ya resuelto como una pieza terminada, sin tener que pensar en todos sus detalles a la vez, para poder concentrarte en el resto del problema.",
+    "secciones": [
+      {
+        "titulo": "Qué es abstraer: quedarte con lo importante, dejar el resto",
+        "explicacion": "Empecemos por una palabra: DETALLE. Un detalle es cualquier información sobre algo (color, tamaño, ubicación exacta, textura...). Cuando algo real tiene muchos detalles, a veces necesitás usarlos TODOS (un doctor que te examina necesita revisar cada parte de tu cuerpo). Pero otras veces, para lograr un objetivo puntual, con unos pocos detalles alcanza y el resto solo estorba. ABSTRAER es justo eso: elegir los detalles importantes PARA UNA TAREA y dejar de lado (en tu versión simplificada, no en el mundo real) los que no hacen falta para esa tarea. Una ABSTRACCIÓN es una versión simplificada de algo real que conserva solo lo que sirve para un propósito.",
+        "pasos": [
+          "Pensá para qué vas a usar la información: ese es tu objetivo.",
+          "Preguntate, detalle por detalle: ¿esto me ayuda a lograr el objetivo?",
+          "Si sí, conservalo. Si no, dejalo fuera de tu versión simplificada."
+        ],
+        "ejemplo": "Un mapa de una ciudad no dibuja cada árbol, cada bache ni el color de cada casa: dibuja las calles y sus nombres, porque eso es lo que necesitás para llegar a un lugar. Los árboles existen en la ciudad real, pero no importan PARA ESA TAREA (orientarte), así que el mapa los deja afuera."
+      },
+      {
+        "titulo": "La clave: lo importante depende del OBJETIVO",
+        "explicacion": "Cuidado con pensar que existe una única forma correcta de abstraer algo. Un mismo objeto real puede tener MUCHAS abstracciones distintas, todas válidas, porque cada una sirve para un objetivo diferente. Pensá en una ciudad: el mapa de calles (para caminar) no tiene las mismas líneas que el mapa del metro (para viajar en tren), aunque los dos son abstracciones válidas de la misma ciudad. El mapa del metro ni siquiera respeta las distancias reales entre estaciones: solo importa el orden y en qué estación cambiar de línea, porque ese es el objetivo de quien viaja en metro. Si usaras el mapa del metro para caminar por la calle, no te serviría, porque no fue hecho para ese objetivo.",
+        "pasos": [
+          "Antes de elegir qué detalles conservar, definí con claridad el objetivo.",
+          "Recordá que dos abstracciones distintas del mismo objeto pueden ser correctas si sirven a objetivos distintos.",
+          "Si una abstracción no te sirve para tu tarea, no es que esté mal hecha: puede que sea para OTRO objetivo."
+        ],
+        "ejemplo": "El mapa de calles marca cada cuadra, semáforo y sentido de circulación (sirve para caminar o manejar). El mapa del metro marca solo estaciones y líneas de colores, en un dibujo esquemático que ni se parece a la forma real de la ciudad (sirve para saber en qué estación bajarte). Los dos son correctos: cada uno responde a una pregunta distinta."
+      },
+      {
+        "titulo": "Un ícono es una abstracción: pocos trazos, una sola idea",
+        "explicacion": "Todos los días ves abstracciones sin darte cuenta: los íconos. Un ícono es un dibujo muy simple que representa algo real (o una acción) usando poquísimos detalles, los justos para que lo reconozcas al instante. El ícono de un baño público, por ejemplo, dibuja una figura humana con un puñado de líneas: no tiene cara, ni ropa, ni pelo, porque para la tarea de encontrar el baño desde lejos y rápido esos detalles no ayudan en nada. Si el ícono tuviera 200 detalles realistas, sería más lento de reconocer, no más útil.",
+        "pasos": [
+          "Mirá qué información MÍNIMA necesita transmitir el ícono para cumplir su tarea.",
+          "Notá qué detalles del objeto real no están dibujados.",
+          "Pensá por qué esos detalles no hacían falta para esa tarea puntual."
+        ],
+        "ejemplo": "El ícono de una batería muestra un rectángulo con una porción rellena adentro: no muestra el metal ni los químicos ni el tamaño real de la batería. Basta con ver qué tan lleno está el rectángulo para saber si queda mucha o poca carga."
+      },
+      {
+        "titulo": "Resumir un cuento: la abstracción con palabras",
+        "explicacion": "Resumir también es abstraer, pero con palabras en vez de dibujos. Cuando resumís un cuento, elegís los hechos importantes de la historia (quién, qué pasó, cómo terminó) y dejás afuera detalles que no cambian el sentido general (la descripción exacta de la ropa de un personaje, por ejemplo). Un buen resumen no es simplemente más corto: es corto PORQUE conservó lo importante para entender la historia y descartó lo que no hacía falta para ese objetivo.",
+        "pasos": [
+          "Preguntate cuál es el objetivo del resumen (entender de qué trata la historia).",
+          "Marcá los hechos que, si los sacaras, harían que la historia dejara de tener sentido.",
+          "Dejá afuera las descripciones que no cambian el sentido general."
+        ],
+        "ejemplo": "Caperucita Roja resumido: una niña lleva comida a su abuela por el bosque, un lobo la engaña y se adelanta, se disfraza de la abuela, y un cazador la rescata al final. El resumen no dice de qué color era la capa ni cuántos árboles había en el bosque: esos detalles no cambian de qué trata la historia."
+      },
+      {
+        "titulo": "Modelos y maquetas: simplificar para entender mejor",
+        "explicacion": "Otra forma de abstracción son los MODELOS: versiones simplificadas de algo real que ayudan a entender una parte específica de cómo funciona. Una maqueta del sistema solar, por ejemplo, no respeta el tamaño real de los planetas ni las distancias reales entre ellos (si lo hiciera, ¡el modelo tendría que medir kilómetros!); conserva lo importante para el objetivo de la maqueta, que suele ser mostrar el orden de los planetas y que giran alrededor del Sol. Eso no es un error del modelo: es abstracción funcionando bien, porque el tamaño exacto no hacía falta para ese objetivo.",
+        "pasos": [
+          "Identificá qué parte del funcionamiento real quiere mostrar el modelo.",
+          "Revisá qué detalles del original NO respeta el modelo (tamaño, distancia, color, velocidad).",
+          "Confirmá que esos detalles no hacía falta que fueran exactos para el objetivo del modelo."
+        ],
+        "ejemplo": "Un globo terráqueo de juguete no tiene el relieve real de las montañas al tacto, pero sí conserva la forma de los continentes y el océano, porque eso es lo que hace falta para aprender geografía."
+      },
+      {
+        "titulo": "Cómo la abstracción te ayuda a pensar (y a programar): esconder detalles para no marearte",
+        "explicacion": "Acá está el verdadero poder de la abstracción. Cuando resolvés una tarea grande, si tuvieras que pensar en TODOS los detalles a la vez, te marearías y sería casi imposible avanzar. La abstracción te deja ESCONDER detalles que ya resolviste (o que no importan en ese momento) para poder concentrarte en el resto. Esto conecta directo con lo que ya sabés: cuando descomponés una tarea en pasos y después notás un patrón (un paso que se repite igual), podés convertir esos pasos repetidos en una sola regla, como viste en el tema anterior. Esa regla es una abstracción: no necesitás seguir pensando en cada caso uno por uno; usás la regla como una caja ya resuelta y seguís pensando en el resto de la tarea. Las personas que programan hacen esto todo el tiempo: usan herramientas ya armadas sin pensar en cada detalle de cómo funcionan por dentro, así pueden concentrarse en el problema nuevo que están resolviendo.",
+        "pasos": [
+          "Cuando una parte de la tarea ya la resolviste (o siempre funciona igual), tratala como una caja cerrada: sabés QUÉ hace, no hace falta seguir pensando en CÓMO lo hace.",
+          "Usá esa caja cerrada como un paso más de tu plan, sin repetir el razonamiento de adentro.",
+          "Así liberás tu atención para la parte del problema que todavía no resolviste."
+        ],
+        "ejemplo": "Cuando escribís un mensaje de texto, no pensás en cómo cada letra se convierte en señales eléctricas dentro del teléfono: usás el teclado como una caja cerrada (apretás la letra y aparece), y así te concentrás en qué querés decir, no en cómo funciona el teléfono por dentro."
+      },
+      {
+        "titulo": "El error más común: abstraer no es borrar todo",
+        "explicacion": "Hay una confusión frecuente que hay que evitar: abstraer NO significa quitar la mayor cantidad de detalles posible, ni hacerlo lo más simple que se pueda sin pensar. Abstraer significa quitar SOLO lo que no importa para el objetivo, y conservar TODO lo que sí importa, por poco que sea. Si te pasás de la raya y borrás un detalle que en realidad hacía falta, la abstracción deja de servir y se vuelve un error, no un logro.",
+        "pasos": [
+          "Antes de dejar algo afuera, preguntate de nuevo: ¿de verdad no hace falta para el objetivo, o solo parece innecesario a simple vista?",
+          "Si dudás, probá la abstracción: ¿alguien puede cumplir el objetivo usando SOLO lo que dejaste? Si falla, te pasaste quitando.",
+          "Recordá: menos detalles no es siempre mejor; lo mejor es justo los detalles necesarios, ni más ni menos."
+        ],
+        "ejemplo": "Un mapa turístico que dibuja calles pero olvida marcar el único puente que cruza el río que divide la ciudad es un mapa mal abstraído: el puente sí importaba para el objetivo (moverse por la ciudad), y quitarlo rompe el mapa, no lo simplifica bien."
+      },
+      {
+        "titulo": "Los tres pilares juntos: descomponer, reconocer patrones y abstraer",
+        "explicacion": "Ya conocés tres herramientas del pensamiento computacional, y funcionan mejor juntas que por separado. Primero DESCOMPONÉS una tarea grande en pasos chicos, para que no te abrume de una vez. Después buscás PATRONES en esos pasos (algo que se repite) y lo convertís en una regla corta. Por último, ABSTRAÉS: tratás esa regla ya armada como una pieza terminada, sin pensar más en sus detalles internos, y seguís usándola para resolver problemas más grandes. Cada pilar depende un poco del anterior: sin descomponer no hay pasos que comparar; sin ver el patrón no hay nada que convertir en regla; y sin abstraer, cada problema nuevo obligaría a empezar de cero otra vez, aunque ya hubieras resuelto una parte antes.",
+        "pasos": [
+          "Descomponé la tarea grande en pasos.",
+          "Buscá qué se repite y convertilo en una regla (patrón).",
+          "Tratá esa regla como una caja cerrada y seguí resolviendo el resto (abstracción)."
+        ],
+        "ejemplo": "Para organizar una fiesta con 20 invitados: descomponés en pasos (invitar, decorar, comida); notás el patrón de enviar la misma invitación a cada invitado y lo convertís en la regla enviar invitación a los 20; y después ABSTRAÉS esa regla completa como ya invité a todos para poder concentrarte en organizar la comida, sin seguir pensando en el detalle de cada invitación por separado."
+      }
+    ],
+    "idea_clave": "Abstraer es quedarte con los detalles importantes PARA UN OBJETIVO y dejar de lado los que no ayudan a lograrlo; lo importante nunca es fijo, depende de para qué lo vas a usar. La abstracción te deja tratar algo ya resuelto como una caja cerrada para no marearte con todos los detalles a la vez, y así concentrarte en lo que falta. Ojo con dos trampas: creer que abstraer es quitar todo lo posible (en realidad hay que conservar TODO lo que sí importa), y usar una abstracción hecha para un objetivo en una tarea distinta para la que no sirve."
+  },
+  "practica": [
+    {
+      "enunciado": "Tenés que explicarle a un turista cómo llegar caminando desde la plaza hasta el museo, cruzando 4 calles. ¿Le conviene usar el mapa de calles o el mapa del metro de la ciudad? Explica por qué, pensando en qué detalles conserva cada uno.",
+      "pista": "Pensá qué objetivo tiene cada mapa y qué detalles conserva cada uno.",
+      "solucion": "Le conviene el mapa de calles, porque para caminar necesita ver cada calle, su nombre y en qué sentido cruzarlas, justo los detalles que ese mapa conserva. El mapa del metro no sirve para esta tarea porque no muestra calles: solo estaciones y líneas de tren, detalles importantes para OTRO objetivo (viajar en metro), no para caminar.",
+      "figura": ""
+    },
+    {
+      "enunciado": "El símbolo de reciclaje son tres flechas curvas formando un triángulo, sin ningún otro detalle. Explica qué detalles de un objeto real siendo reciclado decidieron dejar afuera los diseñadores, y por qué no hacían falta.",
+      "pista": "Pensá en el objetivo del símbolo: que cualquier persona, en cualquier idioma, lo reconozca en un segundo.",
+      "solucion": "Dejaron afuera el tipo de material (plástico, papel, vidrio), el color del objeto y el proceso real de la planta de reciclaje. No hacían falta porque el objetivo del símbolo es solo avisar que algo se recicla de forma rápida y universal; agregar esos detalles solo lo haría más lento de reconocer.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Vas a resumir el cuento de los tres cerditos en dos oraciones para alguien que nunca lo escuchó y quiere saber de qué trata. Escribí el resumen y explica qué detalles decidiste dejar afuera.",
+      "pista": "Conservá solo los hechos que, si los sacaras, la historia dejaría de tener sentido.",
+      "solucion": "Resumen posible: tres cerditos construyen casas de paja, madera y ladrillo; un lobo sopla y derriba las dos primeras, pero no puede con la de ladrillo, así que los tres se salvan ahí. Detalles dejados afuera: cuántas veces sopló el lobo exactamente o de qué color eran las puertas; no cambian de qué trata la historia.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una maestra arma una maqueta del sistema solar con bolitas de distinto tamaño para representar los planetas, pero todas están a la misma distancia entre sí (no respeta las distancias reales, que son enormes y distintas). ¿Es esto un error de la maqueta? Explica usando la idea de abstracción.",
+      "pista": "Pensá cuál es el objetivo de esa maqueta: ¿mostrar distancias exactas, o mostrar el orden y tamaño relativo de los planetas?",
+      "solucion": "No es un error: es una abstracción válida. El objetivo de la maqueta es mostrar el orden de los planetas y una idea de sus tamaños relativos, no las distancias reales (que además son imposibles de representar a esa escala en un salón). Ese detalle no hacía falta para el objetivo y se dejó afuera a propósito.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Al diseñar una tarjeta de personaje para un juego de mesa, anotás solo nombre, puntos de vida y puntos de ataque. No anotás el color de ojos ni el tipo de zapatos del personaje. ¿Por qué esos detalles no entran en la tarjeta?",
+      "pista": "Pensá para qué sirve la tarjeta durante el juego (para decidir quién gana un combate).",
+      "solucion": "La tarjeta sirve para decidir combates durante el juego, y para eso solo hacen falta los puntos de vida y ataque. El color de ojos o el tipo de zapatos no afectan el resultado de un combate, así que dejarlos afuera de la tarjeta no le quita nada útil al juego.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un mapa turístico dibuja las calles principales de una ciudad, pero no marca el único puente que cruza el río que divide la ciudad en dos. Un turista usa ese mapa y no logra llegar del lado este al lado oeste. ¿Qué error de abstracción se cometió?",
+      "pista": "No toda simplificación es válida: hay que revisar si el detalle quitado en verdad no hacía falta.",
+      "solucion": "Se cometió el error de quitar algo que sí importaba: el puente era un detalle necesario para el objetivo del mapa (ayudar a moverse por la ciudad), así que no debió quitarse. No es un mapa más simple y mejor: es un mapa mal abstraído, porque falla en su propio objetivo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Descompusiste la tarea de regar 15 plantas del jardín en 15 pasos iguales, y luego, al notar el patrón, la convertiste en la regla regar cada una de las 15 plantas. Ahora que tenés esa regla, ¿cómo la usarías como una abstracción dentro de una tarea más grande, como cuidar el jardín por la mañana?",
+      "pista": "Pensá en tratar la regla ya armada como una caja cerrada: no hace falta seguir pensando en cada planta una por una.",
+      "solucion": "Dentro de la tarea más grande, podés anotar simplemente el paso regar las plantas (usando la regla ya armada como caja cerrada) y seguir pensando en los demás pasos de cuidar el jardín (podar, sacar hojas secas, etc.), sin repetir el razonamiento de planta por planta cada vez.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Necesitás dos dibujos de un mismo perro: uno para un libro de biología que explica los músculos, y otro para el logo de una tienda de mascotas. ¿Deberían tener los mismos detalles? Explica.",
+      "pista": "Pensá en el objetivo de cada dibujo por separado.",
+      "solucion": "No deberían tener los mismos detalles. El dibujo del libro de biología necesita mostrar músculos, huesos y proporciones reales, porque el objetivo es enseñar anatomía. El logo necesita ser simple y reconocible de un vistazo (una silueta, por ejemplo), porque el objetivo es que la gente lo identifique rápido en la calle. Cada uno es una abstracción distinta y válida del mismo animal, según su objetivo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "El ícono de batería del celular muestra un rectángulo con una porción rellena. ¿Qué detalle importante SÍ conserva ese ícono, a pesar de ser tan simple, y por qué no se puede quitar?",
+      "pista": "Pensá qué información es imprescindible para que el ícono cumpla su función.",
+      "solucion": "Conserva cuánto está lleno el rectángulo (la proporción de carga), porque ese es el único dato que el usuario necesita para saber si le queda mucha o poca batería. Si se quitara ese detalle, el ícono dejaría de cumplir su objetivo por completo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un juego de mesa tiene un manual completo de 20 páginas y también una hoja resumen de una sola página con las reglas básicas para empezar a jugar ya. ¿Qué detalles deja afuera la hoja resumen, y para quién está pensada?",
+      "pista": "Pensá en el objetivo de cada documento: aprender todo el juego a fondo, o empezar a jugar rápido.",
+      "solucion": "La hoja resumen deja afuera las reglas de casos especiales o poco frecuentes (excepciones, cartas raras, situaciones avanzadas) y conserva solo las reglas básicas para armar el juego y jugar el primer turno. Está pensada para alguien que quiere empezar YA, no para quien quiere dominar cada detalle del juego.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Vas a armar una maleta para un fin de semana. Si el viaje es a la playa, ¿qué llevarías? Si el viaje es a la montaña con frío, ¿qué cambiarías? Explica usando la idea de que lo importante depende del objetivo.",
+      "pista": "Los mismos días de viaje, pero objetivos distintos (nadar vs abrigarse) cambian qué es importante empacar.",
+      "solucion": "Para la playa, lo importante es traje de baño, protector solar y ropa liviana; para la montaña con frío, lo importante es abrigo, gorro y guantes. Son dos abstracciones distintas de qué llevar en la maleta, cada una válida para su propio objetivo: lo imprescindible en un viaje puede no servir para nada en el otro.",
+      "figura": ""
+    },
+    {
+      "enunciado": "El esqueleto de plástico que usan en la escuela para enseñar los huesos no tiene músculos, piel, ni órganos. ¿Es esto un problema del modelo? Explica.",
+      "pista": "Pensá en el objetivo de ese modelo específico: ¿enseñar huesos, o enseñar el cuerpo completo?",
+      "solucion": "No es un problema: el objetivo de ese modelo es enseñar los huesos y cómo se conectan, así que músculos, piel y órganos son detalles que no hacen falta para ESE objetivo y se dejaron afuera a propósito. Sería un problema distinto si el modelo tampoco mostrara bien los huesos, porque ahí sí fallaría en su propio objetivo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Alguien resume una receta de torta diciendo solo se hace una torta con ingredientes y se hornea, sin decir cuáles ingredientes ni cuánto tiempo hornear. Si el objetivo del resumen es que otra persona pueda REPRODUCIR la torta, ¿está bien abstraído este resumen?",
+      "pista": "Pensá si alguien podría cumplir el objetivo (hacer la torta) usando solo esta información.",
+      "solucion": "No está bien abstraído: para el objetivo de reproducir la torta, los ingredientes exactos y el tiempo de horneado SÍ son importantes, y este resumen los quitó. Es un ejemplo de abstraer de más: quitó información necesaria, así que deja de servir para su propio objetivo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ya sabés de memoria que 7×8=56. Cuando resolvés el problema necesito 7 cajas con 8 lápices cada una, ¿cuántos lápices en total?, ¿usás esa multiplicación como una caja cerrada? Explica qué significa eso acá.",
+      "pista": "Pensá en si necesitás volver a razonar cómo se construye ese resultado cada vez que lo usás.",
+      "solucion": "Sí: usás 7×8=56 como una caja cerrada, porque ya sabés el resultado de memoria y no hace falta volver a sumar 7 ocho veces cada vez que lo necesitás. Eso te deja concentrarte en el problema nuevo (cuántos lápices en total) en vez de gastar tiempo reconstruyendo la cuenta desde cero.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué significa abstraer, según lo que aprendiste?",
+      "opciones": [
+        "Cambiar el nombre de las cosas",
+        "Hacer un dibujo realista con todos los detalles",
+        "Quedarte con los detalles importantes para un objetivo y dejar de lado los que no ayudan a lograrlo",
+        "Borrar toda la información posible sobre algo"
+      ],
+      "correcta": 2,
+      "explicacion": "Abstraer es elegir qué conservar SEGÚN EL OBJETIVO, no borrar todo ni ser siempre lo más simple posible."
+    },
+    {
+      "pregunta": "Un mapa del metro no respeta las distancias reales entre estaciones. ¿Por qué esto NO es un error del mapa?",
+      "opciones": [
+        "Porque los mapas nunca tienen que ser exactos",
+        "Porque en realidad sí respeta las distancias, solo que no se nota",
+        "Porque el objetivo del mapa del metro es mostrar el orden de estaciones y dónde cambiar de línea, no las distancias reales",
+        "Porque es imposible dibujar distancias reales en papel"
+      ],
+      "correcta": 2,
+      "explicacion": "La distancia exacta no es importante para el objetivo de viajar en metro (saber en qué estación bajarte); por eso el mapa la deja afuera a propósito."
+    },
+    {
+      "pregunta": "Un ícono de baño tiene muy pocos detalles (sin cara, sin ropa). ¿Por qué?",
+      "opciones": [
+        "Porque los íconos siempre deben tener el menor número de líneas posible, sin importar el objetivo",
+        "Porque está prohibido dibujar caras en los íconos",
+        "Porque esos detalles no ayudan a cumplir el objetivo del ícono: ser reconocido rápido y de lejos",
+        "Porque los diseñadores no tuvieron tiempo de agregar más detalles"
+      ],
+      "correcta": 2,
+      "explicacion": "Los íconos abstraen: conservan solo lo necesario para reconocerse rápido; agregar más detalles no ayudaría al objetivo del ícono."
+    },
+    {
+      "pregunta": "Un mapa turístico no marca el único puente que cruza el río de la ciudad, y un turista no logra cruzar. ¿Qué pasó?",
+      "opciones": [
+        "El mapa quitó un detalle que SÍ era importante para su objetivo, así que la abstracción falló",
+        "Los puentes nunca deben aparecer en los mapas",
+        "El mapa abstrajo correctamente, porque cuantos menos detalles tenga un mapa, mejor",
+        "El turista no supo leer bien el mapa"
+      ],
+      "correcta": 0,
+      "explicacion": "El puente era necesario para cumplir el objetivo del mapa (moverse por la ciudad); quitarlo fue un error de abstracción, no una simplificación válida."
+    },
+    {
+      "pregunta": "¿Puede un mismo objeto real tener más de una abstracción válida?",
+      "opciones": [
+        "Sí, porque distintos objetivos necesitan conservar detalles distintos",
+        "Sí, pero solo si el objeto es muy complicado",
+        "No, abstraer siempre da el mismo resultado sin importar para qué se use",
+        "No, cada objeto tiene una sola forma correcta de simplificarse"
+      ],
+      "correcta": 0,
+      "explicacion": "Lo importante depende del objetivo: el mismo perro puede abstraerse distinto para un libro de biología que para el logo de una tienda, y ambas abstracciones son válidas."
+    },
+    {
+      "pregunta": "Resumís un cuento dejando afuera el color exacto de la ropa de los personajes. ¿Por qué está bien hacerlo?",
+      "opciones": [
+        "Porque los colores nunca importan en ningún resumen",
+        "Porque los resúmenes no pueden tener descripciones",
+        "Porque hay que borrar siempre la mayor cantidad de información posible",
+        "Porque ese detalle no cambia de qué trata la historia"
+      ],
+      "correcta": 3,
+      "explicacion": "El objetivo del resumen es entender de qué trata la historia; el color de la ropa no es necesario para ese objetivo, así que se puede dejar afuera sin problema."
+    },
+    {
+      "pregunta": "Una maqueta del sistema solar usa bolitas de distinto tamaño pero todas a la misma distancia entre sí. ¿Qué detalle del sistema solar real decidieron NO conservar?",
+      "opciones": [
+        "Las distancias reales entre planetas",
+        "El orden de los planetas",
+        "Que los planetas giran alrededor del Sol",
+        "Que existen varios planetas"
+      ],
+      "correcta": 0,
+      "explicacion": "La maqueta conserva el orden y tamaño relativo (lo importante para su objetivo educativo), pero no las distancias reales, que además serían imposibles de representar a esa escala."
+    },
+    {
+      "pregunta": "¿Cuál es el error más común al abstraer, según lo que estudiaste?",
+      "opciones": [
+        "Usar dibujos en vez de palabras",
+        "Conservar demasiados detalles importantes",
+        "Definir el objetivo antes de simplificar",
+        "Pensar que abstraer significa quitar la mayor cantidad de detalles posible, sin fijarse si alguno todavía hacía falta"
+      ],
+      "correcta": 3,
+      "explicacion": "El error típico es pasarse quitando detalles que sí importaban para el objetivo; abstraer bien significa quitar SOLO lo que no hace falta, no todo lo posible."
+    },
+    {
+      "pregunta": "Una tarjeta de personaje de videojuego anota solo vida y ataque, sin color de ojos. ¿Por qué el color de ojos no entra en la tarjeta?",
+      "opciones": [
+        "Porque no se puede dibujar color de ojos en una tarjeta",
+        "Porque hay que anotar el menor número de datos posible sin importar el juego",
+        "Porque el color de ojos no afecta el resultado de un combate, que es para lo que sirve la tarjeta",
+        "Porque los personajes de videojuego no tienen ojos"
+      ],
+      "correcta": 2,
+      "explicacion": "La tarjeta abstrae según el objetivo (decidir combates); el color de ojos no influye en eso, así que se deja afuera sin perder nada útil."
+    },
+    {
+      "pregunta": "Ya armaste la regla regar las 15 plantas a partir de un patrón. Ahora, dentro de la tarea más grande cuidar el jardín, ¿cómo usás esa regla?",
+      "opciones": [
+        "Como una caja cerrada: usás la regla ya armada sin repensar cada planta, y te concentrás en el resto de la tarea",
+        "Volviendo a pensar en cada una de las 15 plantas por separado cada vez",
+        "Ignorando el riego por completo",
+        "Descomponiendo de nuevo la tarea desde cero"
+      ],
+      "correcta": 0,
+      "explicacion": "Ese es el poder de la abstracción: tratar algo ya resuelto como una caja cerrada para poder concentrarte en lo que falta, sin repetir todo el razonamiento."
+    },
+    {
+      "pregunta": "Un esqueleto de plástico escolar no tiene músculos ni piel. ¿Está bien abstraído?",
+      "opciones": [
+        "No, porque los modelos deben ser idénticos a la realidad",
+        "Sí, pero solo porque es más barato de fabricar",
+        "Sí, porque el objetivo del modelo es enseñar los huesos, y músculos y piel no hacen falta para eso",
+        "No, porque un modelo del cuerpo siempre debe tener todos los órganos"
+      ],
+      "correcta": 2,
+      "explicacion": "El objetivo del modelo (enseñar huesos) define qué detalles conservar; los músculos y la piel no son necesarios para ese objetivo puntual."
+    },
+    {
+      "pregunta": "Un resumen de receta dice solo se hace una torta con ingredientes y se hornea, sin cantidades ni tiempo. Si el objetivo es que alguien reproduzca la torta, ¿está bien abstraído?",
+      "opciones": [
+        "Sí, porque cuanto más corto el resumen, mejor",
+        "Sí, porque las cantidades nunca importan en una receta",
+        "No, porque los resúmenes de recetas no pueden existir",
+        "No, porque quitó información que sí era necesaria para cumplir el objetivo de reproducir la torta"
+      ],
+      "correcta": 3,
+      "explicacion": "Para reproducir la torta hacen falta ingredientes exactos y tiempo de horneado; quitarlos rompe el objetivo del resumen, es un ejemplo de abstraer de más."
+    },
+    {
+      "pregunta": "¿Cuál de estas frases resume mejor la relación entre descomponer, patrones y abstracción?",
+      "opciones": [
+        "Descomponés en pasos, buscás qué se repite (patrón) y armás una regla, y luego tratás esa regla como una pieza terminada sin pensar en sus detalles (abstracción)",
+        "Los patrones y la abstracción no tienen ninguna relación",
+        "Son lo mismo, solo con nombres distintos",
+        "La abstracción se usa antes de descomponer, siempre"
+      ],
+      "correcta": 0,
+      "explicacion": "Los tres pilares se apoyan entre sí en ese orden: primero pasos chicos, después la regla que resume lo que se repite, y por último usar esa regla como caja cerrada para seguir avanzando."
+    },
+    {
+      "pregunta": "Necesitás dos dibujos del mismo perro: uno para un libro de biología y otro para un logo. ¿Deberían tener los mismos detalles?",
+      "opciones": [
+        "No, porque cada dibujo abstrae según SU objetivo: anatomía detallada en un caso, reconocimiento rápido en el otro",
+        "No, porque los perros no se pueden dibujar dos veces",
+        "Sí, siempre debe ser el mismo dibujo para cualquier objetivo",
+        "Sí, porque los logos siempre necesitan todos los detalles anatómicos"
+      ],
+      "correcta": 0,
+      "explicacion": "Cada dibujo es una abstracción distinta y válida del mismo animal real, porque responde a un objetivo distinto."
+    },
+    {
+      "pregunta": "Vas de viaje a la playa. Según la idea de que lo importante depende del objetivo, ¿qué deberías priorizar al armar la maleta?",
+      "opciones": [
+        "La mayor cantidad de ropa posible, sin pensar en el destino",
+        "Nada, porque no hace falta planificar una maleta",
+        "Lo que sirve para el objetivo de ese viaje: por ejemplo, traje de baño y protector solar",
+        "Exactamente lo mismo que llevarías a la montaña con frío"
+      ],
+      "correcta": 2,
+      "explicacion": "El objetivo del viaje (nadar en la playa) define qué prendas son importantes; sería distinto para un viaje a la montaña con frío."
+    },
+    {
+      "pregunta": "¿Cuál de estas es una señal de que una abstracción SÍ está bien hecha?",
+      "opciones": [
+        "Que alguien pueda cumplir el objetivo original usando solo la información que se conservó",
+        "Que tenga la menor cantidad de información posible, sin importar el resultado",
+        "Que sea un dibujo en vez de un texto",
+        "Que no se haya pensado en ningún objetivo antes de simplificar"
+      ],
+      "correcta": 0,
+      "explicacion": "La prueba real de una buena abstracción es si sirve para su objetivo: si alguien puede lograrlo con lo que quedó, la abstracción fue correcta; si no, se quitó algo que hacía falta."
+    }
+  ]
+}

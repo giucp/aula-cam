@@ -1,0 +1,371 @@
+{
+  "programa": "cumbre",
+  "materia": "Inglés",
+  "grado": "Cumbre Inglés 5to grado",
+  "dominio": "Yo y mi gente",
+  "tema": "Puedo hablar de mi familia (family members; this is my…)",
+  "referencias": [
+    "Cambridge English Young Learners (Movers) — topic: Family and friends / possessions",
+    "CEFR Pre-A1/A1 — descriptors: dar información personal básica sobre la familia"
+  ],
+  "resumen": {
+    "titulo": "Mi familia: quién es quién y de quién es qué",
+    "intro": "Ya sabes decir tu edad y de dónde eres. Ahora vas a aprender a hablar de tu familia: quiénes son, cómo presentarlos y cómo decir 'esto es MÍO' o 'esto es DE ÉL/ELLA' en inglés. Vamos palabra por palabra y frase por frase. No necesitas saber nada más de inglés: cada palabra y cada frase vienen con su significado en español y, entre comillas, cómo suena aproximadamente si la dices en voz alta.",
+    "secciones": [
+      {
+        "titulo": "Mi familia cercana: mother, father, sister, brother",
+        "explicacion": "Empecemos con las cuatro palabras que más vas a usar. 'Mother' (se dice 'móder') significa mamá o madre. 'Father' (se dice 'fáder') significa papá o padre. Cuando quieres nombrar a los dos juntos, usas 'parents' (se dice 'pérents'), que significa padres. 'Sister' (se dice 'síster') significa hermana, y 'brother' (se dice 'bróder') significa hermano. Estas cuatro palabras hay que memorizarlas de una vez, porque las vas a necesitar en casi todas las frases de este tema.",
+        "pasos": [
+          "Repite en voz alta: mother, father.",
+          "Repite: sister, brother.",
+          "Recuerda: 'parents' junta a mother y father (mamá y papá juntos)."
+        ],
+        "ejemplo": "Mi mamá se dice 'my mother' y mi hermano se dice 'my brother'."
+      },
+      {
+        "titulo": "Mi familia extendida: grandmother, grandfather, aunt, uncle, cousin",
+        "explicacion": "Más allá de tu casa hay más familia. 'Grandmother' (se dice 'gránmoder') es la abuela, y 'grandfather' (se dice 'gránfader') es el abuelo: fíjate que las dos palabras empiezan con 'grand-' (grande), pegado a 'mother' o 'father', porque son los padres de tus padres, 'un piso más arriba'. 'Aunt' (se dice 'ant') significa tía; ojo, suena parecido a la palabra inglesa para 'hormiga', pero no tiene nada que ver, es solo una coincidencia de sonido. 'Uncle' (se dice 'ánkel') significa tío. Y ahora la palabra más curiosa: 'cousin' (se dice 'kásin') significa primo O prima: en inglés es LA MISMA palabra para los dos, sin importar si es niño o niña, a diferencia del español, donde decimos 'primo' o 'prima' según el género.",
+        "pasos": [
+          "Repite: grandmother, grandfather.",
+          "Repite: aunt, uncle.",
+          "Recuerda: 'cousin' sirve tanto para primo como para prima; no existe una palabra distinta para cada uno."
+        ],
+        "ejemplo": "El hermano de mi papá es 'my uncle'; la hija de mi tío es 'my cousin' (sea niño o niña)."
+      },
+      {
+        "titulo": "Presentar a alguien: This is my...",
+        "explicacion": "Para presentar a una persona usas 'this is' (se dice 'dis is'), que significa 'este/esta es'. Le agregas 'my' (se dice 'mai'), que significa 'mi', y después el familiar. Por ejemplo, 'This is my mother' significa 'Esta es mi mamá'. Si quieres agregar el nombre, lo pones al final: 'This is my sister, Sofía' (Esta es mi hermana, Sofía). Esta es la frase más útil de todo el tema: sirve para presentar a cualquier miembro de tu familia, cambiando solo la palabra después de 'my'.",
+        "pasos": [
+          "Usa 'This is my' + el familiar. Ejemplo: 'This is my father.'",
+          "Si quieres, agrega el nombre al final: 'This is my brother, Luis.'",
+          "Funciona igual para toda la familia: mother, father, sister, brother, grandmother, grandfather, aunt, uncle, cousin."
+        ],
+        "ejemplo": "'This is my grandmother.' (Esta es mi abuela.) 'This is my uncle, Pedro.' (Este es mi tío, Pedro.)"
+      },
+      {
+        "titulo": "Cuántos hermanos tengo: I have...",
+        "explicacion": "Para decir cuántos familiares tienes usas 'I have' (se dice 'ai jav'), que significa 'yo tengo'. Ojo con algo importante: para la EDAD, en el tema anterior aprendiste que en inglés NO se usa 'have' (nunca 'I have nine years'), pero para la FAMILIA sí se usa 'have' normalmente, porque de verdad estás diciendo qué personas 'tienes' en tu familia: 'I have two brothers' (Tengo dos hermanos). Fíjate en la 's' al final de 'brothers': cuando hablas de MÁS DE UNO, la palabra en inglés casi siempre agrega una 's' al final (brother → brothers, sister → sisters, cousin → cousins). Si es uno solo, NO lleva 's': 'I have one sister' (no 'one sisters').",
+        "pasos": [
+          "Para decir cuántos tienes: 'I have' + número + familiar.",
+          "Si el número es 'one' (uno), la palabra NO lleva 's': 'I have one sister.'",
+          "Si el número es dos o más, la palabra SÍ lleva 's' al final: 'I have two brothers.'",
+          "Si no tienes ninguno, dices 'I don't have any brothers or sisters' (No tengo hermanos ni hermanas); también puedes decir 'I'm an only child' (Soy hijo/hija único/a)."
+        ],
+        "ejemplo": "'I have two brothers and one sister.' (Tengo dos hermanos y una hermana.)"
+      },
+      {
+        "titulo": "De quién es: los posesivos my, your, his, her",
+        "explicacion": "Ya usaste 'my' (mi) y viste 'your' en preguntas del tema anterior ('your name', 'your age'): 'your' (se dice 'iór') significa 'tu'. Ahora hacen falta dos palabras más para hablar de OTRAS personas: 'his' (se dice 'jis') significa 'de él' (cuando el dueño es un hombre o niño), y 'her' (se dice 'jer') significa 'de ella' (cuando la dueña es una mujer o niña). Aquí hay una trampa importante para quien habla español: en español, 'su' sirve para los dos géneros por igual ('su hermano' puede ser de él o de ella), pero en inglés TIENES que fijarte en el género de la PERSONA DUEÑA (no de la cosa) y elegir 'his' o 'her' correctamente. Por ejemplo, si Juan tiene una bicicleta roja, dices 'This is his bike' (Esta es SU bicicleta, de él); si María tiene un lápiz azul, dices 'This is her pencil' (Este es SU lápiz, de ella).",
+        "pasos": [
+          "'my' = mi (mío/mía). 'your' = tu (tuyo/tuya).",
+          "'his' = de él → úsalo cuando el DUEÑO es un hombre o niño.",
+          "'her' = de ella → úsalo cuando la DUEÑA es una mujer o niña.",
+          "Fíjate SIEMPRE en el género de la persona dueña, no en la cosa: 'his sister' (la hermana de él) y 'her brother' (el hermano de ella) están perfectamente bien, aunque 'sister' sea femenina y 'brother' masculino."
+        ],
+        "ejemplo": "Carlos tiene un perro: 'This is his dog.' Ana tiene un gato: 'This is her cat.'"
+      },
+      {
+        "titulo": "Preguntar por la familia de otra persona",
+        "explicacion": "Para preguntarle a alguien sobre su familia usas tres preguntas clave. 'Do you have brothers or sisters?' (se dice 'du yú jav bróders or sísters') significa '¿Tienes hermanos o hermanas?'. 'How many brothers do you have?' (se dice 'jáu méni bróders du yú jav') significa '¿Cuántos hermanos tienes?' — aquí 'how many' pregunta por una CANTIDAD. Y 'Who is this?' (se dice 'jú is dis') significa '¿Quién es este/esta?', y se responde con la frase que ya aprendiste: 'This is my...' + el familiar.",
+        "pasos": [
+          "'Do you have brothers or sisters?' (¿Tienes hermanos o hermanas?) — se responde 'Yes, I have...' o 'No, I don't have any...'",
+          "'How many brothers do you have?' (¿Cuántos hermanos tienes?) — se responde con el número: 'I have two.'",
+          "'Who is this?' (¿Quién es este/esta?) — se responde 'This is my...' + el familiar."
+        ],
+        "ejemplo": "'Do you have brothers or sisters?' — 'Yes, I have one brother.' 'Who is this?' — 'This is my cousin, Daniel.'"
+      },
+      {
+        "titulo": "Errores típicos (y un falso amigo escondido)",
+        "explicacion": "Hay tres trampas frecuentes al hablar de familia. Primera: confundir 'his' y 'her' — recuerda que dependen del género del DUEÑO, no de la cosa. Segunda: confundir 'his' (posesivo, de él) con 'he's' (contracción de 'he is', él es/él está); se escriben parecido pero significan cosas distintas: 'his brother' (su hermano, de él) no es lo mismo que 'he's my brother' (él es mi hermano). Tercera, un FALSO AMIGO importante: la palabra inglesa 'familiar' NO significa 'de la familia' como en español; en inglés 'familiar' significa 'conocido' o 'que reconoces' (algo que ya has visto antes). Para decir 'de la familia' en inglés se usa 'family' como palabra sola o 'family member' (miembro de la familia), nunca 'familiar'.",
+        "pasos": [
+          "No mezcles 'his' (de él) y 'her' (de ella): fíjate en el género del dueño.",
+          "No confundas 'his' (posesivo) con 'he's' (él es/él está, contracción de 'he is').",
+          "Cuidado con el falso amigo: 'familiar' en inglés significa 'conocido', NO 'de la familia'. Para eso usa 'family' o 'family member'.",
+          "No olvides la 's' del plural cuando son dos o más: 'two sisters', no 'two sister'."
+        ],
+        "ejemplo": "Correcto: 'He's my brother. This is his dog.' (Él es mi hermano. Este es su perro.) Incorrecto sería escribir 'This is he's dog.'"
+      }
+    ],
+    "idea_clave": "Para hablar de mi familia uso 'This is my...' para presentar (mother, father, sister, brother, grandmother, grandfather, aunt, uncle, cousin) e 'I have...' para decir cuántos tengo, agregando 's' cuando son dos o más (two brothers, one sister sin 's'). Para decir de quién es algo uso los posesivos: 'my' (mi), 'your' (tu), 'his' (de él) y 'her' (de ella) — fijándome SIEMPRE en el género del dueño, no de la cosa. Y ojo: 'familiar' en inglés no significa 'de la familia', significa 'conocido'."
+  },
+  "practica": [
+    {
+      "enunciado": "Traduce al inglés: mamá, papá, hermana, hermano.",
+      "pista": "Son las cuatro palabras de la familia cercana que se memorizan de una.",
+      "solucion": "mamá = mother, papá = father, hermana = sister, hermano = brother.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Traduce al inglés: abuela, abuelo, tía, tío, primo/prima.",
+      "pista": "Dos de estas palabras empiezan con 'grand-'. Una sirve para primo Y prima a la vez.",
+      "solucion": "abuela = grandmother, abuelo = grandfather, tía = aunt, tío = uncle, primo/prima = cousin (la misma palabra para los dos).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Completa: 'This is ___ mother.' (Esta es mi mamá, hablando tú de tu propia mamá.)",
+      "pista": "Es el posesivo que significa 'mi'.",
+      "solucion": "'This is my mother.'",
+      "figura": ""
+    },
+    {
+      "enunciado": "Traduce al inglés: 'Tengo dos hermanos y una hermana.'",
+      "pista": "Usa 'I have' + número + la palabra en plural cuando son dos o más, y sin 's' cuando es uno.",
+      "solucion": "'I have two brothers and one sister.'",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige el error: 'I have three sister.'",
+      "pista": "El número es más de uno; ¿qué le falta a la palabra 'sister'?",
+      "solucion": "Lo correcto es 'I have three sisters.' Como son tres (más de uno), la palabra necesita la 's' del plural al final.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Juan tiene una bicicleta roja. Completa: 'This is ___ bike.' (Esta es su bicicleta, de él.)",
+      "pista": "El dueño es un hombre, así que se usa el posesivo para 'de él'.",
+      "solucion": "'This is his bike.' (his = de él, porque el dueño, Juan, es un hombre.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "María tiene un lápiz azul. Completa: 'This is ___ pencil.' (Este es su lápiz, de ella.)",
+      "pista": "La dueña es una mujer, así que se usa el posesivo para 'de ella'.",
+      "solucion": "'This is her pencil.' (her = de ella, porque la dueña, María, es una mujer.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige el error: 'This is he's brother.'",
+      "pista": "Hay dos palabras parecidas: una es un posesivo ('de él') y la otra es una contracción de 'he is'. ¿Cuál corresponde aquí?",
+      "solucion": "Lo correcto es 'This is his brother.' 'He's' significa 'él es/él está' (contracción de 'he is'), pero aquí se necesita el posesivo 'his' (de él), porque se está diciendo de quién es el hermano.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Traduce al inglés la pregunta '¿Cuántos hermanos tienes?' y respóndela diciendo que tienes uno.",
+      "pista": "La pregunta empieza con 'How many'. La respuesta usa 'I have' + el número, sin 's' porque es solo uno.",
+      "solucion": "Pregunta: 'How many brothers do you have?' Respuesta: 'I have one brother.'",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ordena este mini-diálogo: (a) 'This is my cousin, Ana.' (b) 'Who is this?' (c) 'Do you have brothers or sisters?' (d) 'Yes, I have one sister.'",
+      "pista": "Primero se pregunta quién es alguien y se responde; después se pregunta por hermanos y se responde.",
+      "solucion": "Orden correcto: (b) 'Who is this?' → (a) 'This is my cousin, Ana.' → (c) 'Do you have brothers or sisters?' → (d) 'Yes, I have one sister.'",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica con tus palabras por qué la palabra inglesa 'familiar' NO se traduce como 'de la familia'.",
+      "pista": "Piensa en qué significa realmente 'familiar' en inglés, y qué palabra se usa en cambio para hablar de la familia.",
+      "solucion": "'Familiar' en inglés significa 'conocido' o 'algo que ya reconoces' (por ejemplo, una canción que ya escuchaste antes), no 'de la familia'. Es un falso amigo: se parece a la palabra española 'familiar', pero significa otra cosa. Para decir 'de la familia' en inglés se usa 'family' o 'family member'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe una mini-presentación de tu familia usando el nombre 'Carlos', que tiene una mamá, un papá, dos hermanas y un tío llamado Pedro.",
+      "pista": "Usa 'This is my...' para presentar y 'I have...' para decir cuántos hermanos tiene, con la 's' del plural donde corresponda.",
+      "solucion": "'This is my mother. This is my father. I have two sisters. This is my uncle, Pedro.' (Esta es mi mamá. Este es mi papá. Tengo dos hermanas. Este es mi tío, Pedro.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Traduce al inglés: 'Este es mi primo.' Explica por qué en inglés no hace falta aclarar si es primo o prima.",
+      "pista": "La palabra inglesa para primo y prima es una sola, a diferencia del español.",
+      "solucion": "'This is my cousin.' En inglés, 'cousin' se usa para primo Y prima por igual; no existe una palabra distinta según el género, como sí pasa en español con 'primo' y 'prima'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige el error de ortografía: 'This is my ant. She is very nice.'",
+      "pista": "La palabra para 'tía' se parece mucho a la palabra inglesa para el insecto 'hormiga', pero se escribe distinto.",
+      "solucion": "Lo correcto es 'This is my aunt. She is very nice.' 'Aunt' (tía) y 'ant' (hormiga) suenan parecido pero se escriben diferente y significan cosas totalmente distintas.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué significa la palabra 'mother'?",
+      "opciones": [
+        "madre",
+        "tía",
+        "hermana",
+        "abuela"
+      ],
+      "correcta": 0,
+      "explicacion": "'Mother' significa madre o mamá. 'Sister' es hermana, 'aunt' es tía y 'grandmother' es abuela.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Qué significa la palabra 'brother'?",
+      "opciones": [
+        "primo",
+        "tío",
+        "padre",
+        "hermano"
+      ],
+      "correcta": 3,
+      "explicacion": "'Brother' significa hermano. 'Uncle' es tío, 'cousin' es primo/prima y 'father' es padre.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál de estas palabras significa 'abuela'?",
+      "opciones": [
+        "aunt",
+        "mother",
+        "grandmother",
+        "grandfather"
+      ],
+      "correcta": 2,
+      "explicacion": "'Grandmother' es abuela. 'Grandfather' es abuelo, 'aunt' es tía y 'mother' es madre.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál de estas palabras significa 'tío'?",
+      "opciones": [
+        "cousin",
+        "uncle",
+        "aunt",
+        "father"
+      ],
+      "correcta": 1,
+      "explicacion": "'Uncle' significa tío. 'Aunt' es tía, 'cousin' es primo/prima y 'father' es padre.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Qué palabra en inglés sirve TANTO para 'primo' COMO para 'prima'?",
+      "opciones": [
+        "uncle",
+        "cousin",
+        "aunt",
+        "brother"
+      ],
+      "correcta": 1,
+      "explicacion": "'Cousin' significa primo o prima; es la misma palabra para los dos géneros, a diferencia del español.",
+      "figura": ""
+    },
+    {
+      "pregunta": "La mamá de tu mamá es tu 'grandmother'. ¿Cómo se llama el papá de tu papá?",
+      "opciones": [
+        "grandmother",
+        "father",
+        "uncle",
+        "grandfather"
+      ],
+      "correcta": 3,
+      "explicacion": "El papá de tu papá (o de tu mamá) es tu 'grandfather' (abuelo), igual que la mamá de tus papás es tu 'grandmother' (abuela).",
+      "figura": ""
+    },
+    {
+      "pregunta": "Completa correctamente: 'I have two ___.' (hablando de hermanos)",
+      "opciones": [
+        "a brother",
+        "brother's",
+        "brother",
+        "brothers"
+      ],
+      "correcta": 3,
+      "explicacion": "Como son dos (más de uno), la palabra lleva la 's' del plural: 'brothers'. 'Brother's' usa un apóstrofe que no corresponde aquí.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál de estas frases tiene un error?",
+      "opciones": [
+        "I have two brothers.",
+        "I have one brother.",
+        "I have one sister.",
+        "I have three sister."
+      ],
+      "correcta": 3,
+      "explicacion": "'I have three sister' está mal: como son tres (más de uno), debería ser 'sisters', con la 's' del plural.",
+      "figura": ""
+    },
+    {
+      "pregunta": "Carlos tiene un perro. ¿Cuál es la frase correcta para decir 'Este es su perro' (de él)?",
+      "opciones": [
+        "This is her dog.",
+        "This is my dog.",
+        "This is your dog.",
+        "This is his dog."
+      ],
+      "correcta": 3,
+      "explicacion": "Como el dueño (Carlos) es un hombre, se usa 'his' (de él): 'This is his dog.'",
+      "figura": ""
+    },
+    {
+      "pregunta": "Ana tiene un gato. ¿Cuál es la frase correcta para decir 'Este es su gato' (de ella)?",
+      "opciones": [
+        "This is your cat.",
+        "This is her cat.",
+        "This is my cat.",
+        "This is his cat."
+      ],
+      "correcta": 1,
+      "explicacion": "Como la dueña (Ana) es una mujer, se usa 'her' (de ella): 'This is her cat.'",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál de estas frases mezcla mal 'his' (posesivo) con 'he's' (él es/él está)?",
+      "opciones": [
+        "This is he's brother.",
+        "This is his brother.",
+        "He's my brother.",
+        "This is her brother."
+      ],
+      "correcta": 0,
+      "explicacion": "'This is he's brother' está mal: aquí se necesita el posesivo 'his' (de él), no la contracción 'he's' (él es). Lo correcto sería 'This is his brother.'",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Qué significa realmente la palabra inglesa 'familiar'?",
+      "opciones": [
+        "familia numerosa",
+        "conocido / que ya reconoces",
+        "pariente cercano",
+        "de la familia"
+      ],
+      "correcta": 1,
+      "explicacion": "'Familiar' en inglés es un falso amigo: significa 'conocido' o 'algo que ya reconoces', NO 'de la familia'. Para eso se usa 'family' o 'family member'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es la forma correcta de escribir la palabra que significa 'tía'?",
+      "opciones": [
+        "ant",
+        "anut",
+        "aunt",
+        "aant"
+      ],
+      "correcta": 2,
+      "explicacion": "'Aunt' (tía) se escribe distinto de 'ant' (hormiga), aunque suenan parecido. Es un error de ortografía muy común.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es la forma CORRECTA de preguntar '¿Cuántos hermanos tienes?'",
+      "opciones": [
+        "How many brothers do you have?",
+        "Where are your brothers?",
+        "Do you have brothers?",
+        "Who is this?"
+      ],
+      "correcta": 0,
+      "explicacion": "'How many brothers do you have?' pregunta por la CANTIDAD. 'Do you have brothers?' solo pregunta si sí o no tienes, sin pedir el número.",
+      "figura": ""
+    },
+    {
+      "pregunta": "Te preguntan 'Who is this?' señalando a tu primo Daniel. ¿Cuál es una buena respuesta?",
+      "opciones": [
+        "He's cousin Daniel.",
+        "This is her cousin.",
+        "I have my cousin.",
+        "This is my cousin, Daniel."
+      ],
+      "correcta": 3,
+      "explicacion": "'This is my cousin, Daniel' presenta correctamente a la persona usando 'This is my...' + el familiar + el nombre.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál de estas frases usa 'his' y 'her' de forma correcta?",
+      "opciones": [
+        "Juan has a cat. This is his cat.",
+        "Ana has a dog. This is my dog.",
+        "Ana has a dog. This is his dog.",
+        "Juan has a cat. This is her cat."
+      ],
+      "correcta": 0,
+      "explicacion": "Como Juan (hombre) es el dueño del gato, corresponde 'his cat'. Las otras opciones mezclan mal el género del dueño con 'his' o 'her'.",
+      "figura": ""
+    }
+  ]
+}

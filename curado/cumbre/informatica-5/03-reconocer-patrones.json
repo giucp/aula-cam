@@ -1,0 +1,357 @@
+{
+  "programa": "cumbre",
+  "materia": "Informática",
+  "grado": "Cumbre Informática 5to grado",
+  "dominio": "Pensamiento computacional (sin computadora)",
+  "tema": "Reconocer patrones: lo que se repite te ahorra trabajo",
+  "referencias": [
+    "CSTA K-12 Computer Science Standards banda 1B (ages 8-11) — Algorithms & Programming: pattern recognition",
+    "UK Computing KS2 (Key Stage 2) — computational thinking: pattern recognition"
+  ],
+  "resumen": {
+    "titulo": "Reconocer patrones: lo que se repite te ahorra trabajo",
+    "intro": "En el tema anterior aprendiste a DESCOMPONER una tarea grande en pasos pequeños. Ahora vas a aprender el paso siguiente del pensamiento computacional: reconocer PATRONES, es decir, darte cuenta de qué cosas se repiten siguiendo la misma idea. Esto no es solo un truco para los números: sirve para secuencias, para dibujos, para el calendario y hasta para los pasos de una tarea. Y tiene un superpoder escondido: una vez que ves el patrón, ya no necesitas resolver cada caso desde cero, porque puedes convertirlo en una regla y aplicarla directo. Por eso reconocer patrones AHORRA TRABAJO.",
+    "secciones": [
+      {
+        "titulo": "Qué es un patrón: algo que se repite",
+        "explicacion": "Para entender qué es un PATRÓN hay que empezar por una palabra: REPETICIÓN. Algo se repite cuando aparece más de una vez siguiendo la misma idea. Un patrón es justamente eso: una parte que se repite dentro de algo más grande, de forma que si la ves una vez, ya puedes esperar que vuelva a aparecer. Los patrones están en todos lados: los días de la semana se repiten cada 7 días (después del domingo siempre vuelve el lunes), una fila de baldosas repite el mismo dibujo una y otra vez, y una canción repite el mismo coro varias veces. Reconocer un patrón es notar esa repetición: ver QUÉ es lo que se repite y CADA CUÁNTO se repite.",
+        "pasos": [
+          "Mira varios elementos seguidos (números, dibujos, días, pasos de una tarea).",
+          "Pregúntate: ¿hay algo que se repite exactamente igual, o que cambia siempre de la misma manera?",
+          "Si la respuesta es sí, ya encontraste un patrón."
+        ],
+        "ejemplo": "En una fila de baldosas: círculo, cuadrado, círculo, cuadrado, círculo... el patrón es 'círculo, cuadrado' repitiéndose una y otra vez. Por eso, aunque no la hayas visto todavía, la baldosa que sigue después de un círculo siempre va a ser un cuadrado."
+      },
+      {
+        "titulo": "Cómo detectar un patrón con confianza: varios casos, no uno solo",
+        "explicacion": "Para estar seguro de que algo es un patrón (y no solo una casualidad) hace falta mirar VARIOS casos seguidos, no solamente uno o dos. Un solo caso nunca alcanza: si ves un número par una sola vez, no puedes decir 'todos los números son pares'. Necesitas ver la misma repetición al menos 3 o 4 veces seguidas para confiar en que de verdad es un patrón. Cuantos más casos veas que cumplen la misma regla, más segura es tu conclusión.",
+        "pasos": [
+          "Junta varios ejemplos seguidos del mismo tipo (una lista de números, una fila de dibujos, varios días).",
+          "Busca qué se repite en TODOS esos ejemplos, no solo en uno.",
+          "Si se repite en al menos 3 o 4 casos seguidos, es un patrón en el que puedes confiar."
+        ],
+        "ejemplo": "Si ves que 2, 4, 6 son pares y te detienes ahí, todavía no conoces el patrón completo. Pero si sigues mirando y ves también 8, 10 y 12, ya tienes 6 casos seguidos que confirman: el patrón es 'sumar 2 cada vez', y todos los resultados son números pares."
+      },
+      {
+        "titulo": "Patrón o coincidencia: la diferencia que casi nadie explica",
+        "explicacion": "No todo lo que se parece dos veces es un patrón. Una COINCIDENCIA es que algo se parezca en pocos casos, por casualidad, sin ninguna razón real que lo explique; un PATRÓN, en cambio, se repite de forma confiable en varios casos y suele tener una razón detrás. La forma de distinguirlos es hacerte dos preguntas: ¿se sigue cumpliendo si reviso más casos aparte de los que ya vi? y ¿hay alguna razón que explique por qué se repite, o solo pasó así por casualidad? Si al agregar más casos deja de cumplirse, era coincidencia, no patrón.",
+        "pasos": [
+          "Revisa si lo que notaste se sigue cumpliendo en MÁS casos, no solo en los pocos que ya viste.",
+          "Pregúntate si existe una razón que conecte los casos, o si solo pasó así por casualidad.",
+          "Si al mirar más casos la regla deja de cumplirse, era una coincidencia, no un patrón."
+        ],
+        "ejemplo": "Ana llevó paraguas dos días seguidos y esos dos días no llovió. Si dice 'llevar paraguas hace que no llueva', está confundiendo coincidencia con patrón: dos casos no alcanzan, y no existe ninguna razón real que conecte el paraguas con la lluvia."
+      },
+      {
+        "titulo": "De patrón a regla: cómo generalizar",
+        "explicacion": "Una vez que encontraste un patrón confiable, puedes convertirlo en una REGLA: una frase corta que dice cómo va a seguir, sin tener que revisar caso por caso. GENERALIZAR es exactamente eso: pasar de 'vi que esto se repite en varios casos' a 'esto siempre va a pasar así'. La regla es lo que te ahorra el trabajo: en vez de pensar desde cero cada vez, la aplicas directo y ya sabes la respuesta.",
+        "pasos": [
+          "Identifica el patrón mirando varios casos seguidos.",
+          "Escribe la regla en una frase corta y clara.",
+          "Usa esa regla para responder sobre un caso nuevo, sin tener que revisar ejemplo por ejemplo."
+        ],
+        "ejemplo": "Patrón visto en 5, 10, 15, 20: cada número aumenta 5 respecto al anterior. Regla: 'cada número es 5 veces el lugar que ocupa en la lista'. Con esa regla sabes que el vigésimo número de la lista es 5×20=100, sin necesidad de escribir los veinte números uno por uno."
+      },
+      {
+        "titulo": "Por qué reconocer patrones ahorra trabajo: el atajo",
+        "explicacion": "Este es el motivo por el que vale la pena aprender a ver patrones: una vez que tienes la regla, dejas de resolver cada caso desde cero. Sin la regla, tendrías que ir sumando o contando uno por uno cada vez que necesitas una respuesta nueva; con la regla, aplicas el atajo directo. Es la misma idea que usan las personas ordenadas y las computadoras: buscar la regla UNA sola vez y después reutilizarla todas las veces que haga falta, en vez de repetir el mismo razonamiento desde el principio cada vez.",
+        "pasos": [
+          "Encuentra el patrón una sola vez, revisando varios casos.",
+          "Convierte ese patrón en una regla corta.",
+          "A partir de ahí, usa la regla como atajo cada vez que necesites resolver un caso parecido, sin repetir todo el razonamiento."
+        ],
+        "ejemplo": "Si sabes que los días de la semana se repiten cada 7, no necesitas contar día por día para saber qué día será dentro de 30 días: divides 30 entre 7, te fijas cuánto sobra, y con eso solo cuentas esos pocos días extra. La regla te ahorra contar treinta días completos."
+      },
+      {
+        "titulo": "Patrones en los números: secuencias y tablas de multiplicar",
+        "explicacion": "Los números están llenos de patrones útiles. En una SECUENCIA (una lista de números en orden), el patrón puede ser sumar siempre la misma cantidad (como 3, 6, 9, 12: sumar 3) o multiplicar siempre por el mismo número (como 2, 4, 8, 16: multiplicar por 2, es decir, duplicar). Las tablas de multiplicar también esconden patrones en sus resultados: por ejemplo, en la tabla del 5 la última cifra del resultado siempre es 0 o 5, y en la tabla del 9 la suma de las dos cifras del resultado siempre da 9 (o un múltiplo de 9). Notar estos patrones te deja verificar cuentas rápido, sin tener que multiplicar todo de nuevo.",
+        "pasos": [
+          "Para una secuencia, compara cada número con el anterior: ¿se le suma siempre lo mismo, o se multiplica siempre por lo mismo?",
+          "Para una tabla de multiplicar, fíjate en la última cifra o en la suma de las cifras del resultado.",
+          "Usa ese patrón para predecir o verificar un resultado nuevo sin recalcular todo desde cero."
+        ],
+        "ejemplo": "Tabla del 9: 9, 18, 27, 36, 45. Sumando las cifras de cada resultado: 9, 1+8=9, 2+7=9, 3+6=9, 4+5=9. Ese patrón sirve para revisar cuentas: si alguien dice que 9×12=108, sumas 1+0+8=9 y confirmas que el resultado sí puede ser correcto (y en efecto lo es)."
+      },
+      {
+        "titulo": "Patrones y descomponer: cuando un paso se repite, se vuelve una regla",
+        "explicacion": "En el tema anterior aprendiste que una tarea grande se descompone en pasos pequeños. Ahora que sabes reconocer patrones, puedes mirar esa lista de pasos con otros ojos: a veces el MISMO paso se repite varias veces seguidas, solo cambiando un detalle (por ejemplo, qué casa, qué planta o qué globo). Cuando eso pasa, no hace falta escribir el paso repetido una y otra vez: puedes escribir una sola regla que diga 'repetir este paso tantas veces', y es exactamente la misma tarea, pero mucho más corta de anotar. Reconocer ese patrón dentro de los pasos es otro ejemplo de cómo ver la repetición ahorra trabajo.",
+        "pasos": [
+          "Mira la lista de pasos que ya descompusiste para una tarea.",
+          "Busca si algún paso se repite igual varias veces, cambiando solo un detalle.",
+          "Si se repite, reemplaza esos pasos repetidos por una sola regla: 'repetir este paso tantas veces'."
+        ],
+        "ejemplo": "Tarea: repartir un volante en cada una de las 12 casas de la cuadra. Descompuesto paso por paso sería: entregar volante en la casa 1, entregar volante en la casa 2, entregar volante en la casa 3... doce veces. Como el mismo paso se repite igual, mejor se escribe una sola regla: 'repetir el paso entregar un volante en cada una de las 12 casas'."
+      },
+      {
+        "titulo": "Errores típicos al reconocer patrones (y cómo evitarlos)",
+        "explicacion": "Estos son los errores más comunes al buscar patrones, y vale la pena conocerlos de antemano. El primero es confiar en un patrón habiendo visto muy pocos casos (uno o dos), sin revisar más. El segundo es confundir una coincidencia con un patrón, es decir, no preguntarse si existe una razón real detrás de la repetición. El tercero es 'forzar' un patrón: quedarte tan convencido de una regla que ignoras un número o un caso que en realidad no encaja, en vez de aceptar que ahí el patrón se rompe. El cuarto es no revisar la regla cuando aparecen casos nuevos: un patrón que servía puede dejar de cumplirse, y hay que estar dispuesto a corregirlo.",
+        "pasos": [
+          "Antes de confiar en un patrón, revisa que se cumpla en varios casos, no solo en uno o dos.",
+          "Pregúntate si hay una razón real detrás de la repetición, no solo una casualidad.",
+          "Si un caso no encaja con la regla, no lo ignores: revisa si la regla está incompleta o si ese caso es el error.",
+          "Si aparecen casos nuevos, vuelve a comprobar que la regla los sigue cumpliendo."
+        ],
+        "ejemplo": "Alguien ve la lista 3, 6, 9, 10, 12 y dice 'el patrón es que todos son múltiplos de 3'. Pero el 10 no es múltiplo de 3: en vez de ignorarlo o forzarlo, hay que aceptar que ese número rompe el patrón (probablemente sea un error en la lista, y el número correcto ahí era el 12 siguiente, o sea que la lista real debía decir 3, 6, 9, 12)."
+      }
+    ],
+    "idea_clave": "Un patrón es algo que se repite de forma confiable, no una sola vez ni por casualidad: hace falta ver varios casos seguidos antes de confiar en él. Una vez que lo ves con claridad, puedes convertirlo en una REGLA general y aplicarla directo, en vez de resolver cada caso desde cero: por eso reconocer patrones AHORRA TRABAJO. Ojo con dos trampas: confundir coincidencia con patrón, y forzar una regla ignorando el caso que no encaja."
+  },
+  "practica": [
+    {
+      "enunciado": "Continúa la secuencia 3, 6, 9, 12, ¿cuáles son los dos números que siguen? Explica la regla en una frase.",
+      "pista": "Compara cada número con el anterior: ¿cuánto aumenta siempre?",
+      "solucion": "Cada número aumenta 3 respecto al anterior (regla: sumar 3 al número anterior). Los dos siguientes son 15 y 18.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Continúa la secuencia 2, 4, 8, 16, ¿cuáles son los dos números que siguen? Explica la regla en una frase.",
+      "pista": "Compara cada número con el anterior: ¿se suma siempre lo mismo, o se multiplica siempre por lo mismo?",
+      "solucion": "Cada número es el doble del anterior (regla: multiplicar por 2). Los dos siguientes son 32 y 64.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Esta fila de figuras sigue un patrón: estrella, estrella, círculo, estrella, estrella, círculo, estrella, estrella, ___. ¿Qué figura sigue?",
+      "pista": "Cuenta cuántas figuras forman el bloque que se repite antes de que cambie.",
+      "solucion": "El bloque que se repite es 'estrella, estrella, círculo' (grupos de tres). Después de las dos estrellas sigue un círculo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Hoy es miércoles. Sabiendo que los días de la semana se repiten cada 7 días, ¿qué día será dentro de 21 días?",
+      "pista": "Revisa si 21 es un múltiplo exacto de 7.",
+      "solucion": "21 = 7 × 3, así que pasan exactamente 3 semanas completas. Cuando el número de días es múltiplo exacto de 7, cae el mismo día: miércoles.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Hoy es viernes. ¿Qué día será dentro de 10 días?",
+      "pista": "10 no es múltiplo exacto de 7. Averigua cuántos días sobran después de completar una semana entera.",
+      "solucion": "10 = 7 + 3. Pasa una semana completa (vuelve a ser viernes) más 3 días extra: sábado, domingo, lunes. Cae lunes.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ana notó que las primeras 2 veces que llevó paraguas al colegio, no llovió ese día. Dice: 'llevar paraguas hace que no llueva, ese es el patrón'. ¿Es correcto su razonamiento? Explica por qué.",
+      "pista": "¿Dos casos alcanzan para confiar en un patrón? ¿Existe alguna razón real que conecte el paraguas con la lluvia?",
+      "solucion": "No es correcto. Dos casos no alcanzan para confiar en un patrón, y no hay ninguna razón real que conecte llevar paraguas con que no llueva (el clima no depende de eso). Es una coincidencia, no un patrón: para confiar en un patrón hace falta que se repita en varios casos Y que tenga una razón que lo explique.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Observa la tabla del 5: 5, 10, 15, 20, 25, 30. ¿Qué patrón notas en la última cifra de cada resultado? Usa ese patrón para decir, sin multiplicar, cuál es la última cifra de 5×37.",
+      "pista": "Mira solo el último dígito de cada resultado de la tabla del 5, en orden.",
+      "solucion": "La última cifra siempre es 0 o 5, y va alternando: 5, 0, 5, 0... En las posiciones impares (1ª, 3ª, 5ª...) termina en 5, y en las pares termina en 0. Como 37 es una posición impar, 5×37 termina en 5 (en efecto, 5×37=185).",
+      "figura": ""
+    },
+    {
+      "enunciado": "En la tabla del 9: 9, 18, 27, 36, 45. Suma las dos cifras de cada resultado (9=9, 1+8=9, 2+7=9...). ¿Qué patrón notas? Usa esa regla para verificar si 9×12=108 está bien calculado.",
+      "pista": "Suma las cifras del resultado que quieres verificar y compara con 9.",
+      "solucion": "En todos los múltiplos de 9, la suma de las cifras del resultado da 9 (o un múltiplo de 9). Para 108: 1+0+8=9, así que el resultado 108 SÍ cumple el patrón y la cuenta 9×12=108 es correcta.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Vas a repartir un volante en cada una de las 12 casas de tu cuadra. Al descomponer la tarea, escribiste: 'entregar volante en casa 1, entregar volante en casa 2, entregar volante en casa 3... (doce veces)'. ¿Qué patrón hay ahí, y cómo lo escribirías como una sola regla en vez de doce pasos?",
+      "pista": "Fíjate que el mismo paso se repite igual doce veces; solo cambia el número de la casa.",
+      "solucion": "El patrón es que el paso 'entregar un volante' se repite exactamente igual 12 veces, solo cambia la casa. En vez de escribir doce pasos, se puede escribir una sola regla: 'repetir el paso entregar un volante en cada una de las 12 casas'. Es la misma tarea, pero mucho más corta de anotar.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Esta secuencia tiene un error: 4, 8, 12, 15, 20. ¿Cuál número rompe el patrón, y cuál debería ser en su lugar?",
+      "pista": "Halla primero la regla mirando los números que sí encajan entre sí (4, 8, 12... y 20).",
+      "solucion": "El patrón es sumar 4 cada vez: 4, 8, 12, 16, 20. El número 15 rompe el patrón; en su lugar debería ir 16.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un semáforo cambia siempre en este orden: rojo, amarillo, verde, rojo, amarillo, verde... Si en este momento está en 'verde', ¿en qué color estará después de 8 cambios?",
+      "pista": "El ciclo completo dura 3 cambios (rojo, amarillo, verde). Averigua cuántos ciclos completos hay en 8 cambios y cuántos sobran.",
+      "solucion": "El ciclo completo dura 3 cambios. 8 dividido entre 3 da 2 ciclos completos (6 cambios) y sobran 2 cambios. Empezando en verde: cambio 1 → rojo, cambio 2 → amarillo. Después de 8 cambios estará en amarillo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "El primer día del mes cae lunes. ¿En qué día de la semana cae el día 22? (recuerda que la semana se repite cada 7 días).",
+      "pista": "Cuenta cuántos días completos pasan del día 1 al día 22, y revisa si ese número es múltiplo exacto de 7.",
+      "solucion": "Del día 1 al día 22 pasan 21 días completos, y 21 = 7 × 3, así que se completan exactamente 3 semanas. Por eso el día 22 cae el mismo día que el día 1: lunes.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Inventa tú mismo una secuencia de números que tenga un patrón claro (al menos 5 números), y escribe la regla que la explica.",
+      "pista": "Elige una operación simple (sumar siempre el mismo número, o multiplicar siempre por el mismo número) y aplícala varias veces seguidas desde un número inicial.",
+      "solucion": "Respuesta abierta: se acepta cualquier secuencia de al menos 5 números donde la misma regla se cumpla en todos. Ejemplo válido: 10, 20, 30, 40, 50, con la regla 'sumar 10 al número anterior'. Otro ejemplo válido: 1, 3, 9, 27, 81, con la regla 'multiplicar por 3 el número anterior'.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué es un patrón?",
+      "opciones": [
+        "Cualquier lista de números, tenga o no relación entre sí",
+        "Algo que se repite siguiendo la misma idea o regla",
+        "Un error dentro de una secuencia",
+        "Un número muy grande"
+      ],
+      "correcta": 1,
+      "explicacion": "Un patrón es una repetición confiable que sigue una misma regla; no cualquier número o lista cuenta como patrón."
+    },
+    {
+      "pregunta": "¿Cuántos casos conviene ver, como mínimo, antes de confiar en que algo es un patrón?",
+      "opciones": [
+        "Con ver un solo caso ya alcanza",
+        "Con ver dos casos siempre alcanza",
+        "Nunca se puede estar seguro de nada",
+        "Varios casos seguidos (al menos 3 o 4), no solo uno o dos"
+      ],
+      "correcta": 3,
+      "explicacion": "Un solo caso o dos no bastan para confiar en un patrón; hace falta revisar varios casos seguidos para estar seguro."
+    },
+    {
+      "pregunta": "Ana ganó las primeras 2 partidas de un juego y dice: 'siempre voy a ganar, ese es mi patrón'. ¿Qué error comete?",
+      "opciones": [
+        "No existe forma de saber si algo es un patrón o no",
+        "Ninguno: con dos veces ya se puede asegurar un patrón",
+        "Confunde una coincidencia (pocos casos, sin ninguna razón real) con un patrón confiable",
+        "El error es que jugó muy pocas partidas en total, sin importar cuántas ganó"
+      ],
+      "correcta": 2,
+      "explicacion": "Dos casos, sin una razón real detrás, no forman un patrón: es una coincidencia."
+    },
+    {
+      "pregunta": "En la secuencia 5, 10, 15, 20... ¿cuál es la regla?",
+      "opciones": [
+        "Multiplicar por 5 el número anterior",
+        "Sumar 5 al número anterior",
+        "Restar 5 al número anterior",
+        "No sigue ninguna regla"
+      ],
+      "correcta": 1,
+      "explicacion": "Cada número aumenta 5 respecto al anterior: la regla es sumar 5."
+    },
+    {
+      "pregunta": "En la secuencia 3, 6, 12, 24... ¿cuál es la regla?",
+      "opciones": [
+        "Sumar 6 al número anterior",
+        "Multiplicar por 2 el número anterior",
+        "Dividir entre 2 el número anterior",
+        "Sumar 3 al número anterior"
+      ],
+      "correcta": 1,
+      "explicacion": "Cada número es el doble del anterior: 3×2=6, 6×2=12, 12×2=24. La regla es multiplicar por 2."
+    },
+    {
+      "pregunta": "¿Por qué reconocer un patrón 'ahorra trabajo'?",
+      "opciones": [
+        "Porque los patrones nunca se pueden romper ni fallar",
+        "Porque ya no hay que hacer nada en absoluto",
+        "Porque los patrones solo sirven para tareas de computadora",
+        "Porque una vez que tienes la regla, la aplicas directo en vez de resolver cada caso desde cero"
+      ],
+      "correcta": 3,
+      "explicacion": "La regla es un atajo: te evita repetir todo el razonamiento cada vez que necesitas resolver un caso parecido."
+    },
+    {
+      "pregunta": "En la tabla del 5 (5, 10, 15, 20, 25...) ¿qué patrón tiene la última cifra de cada resultado?",
+      "opciones": [
+        "Siempre termina en 5",
+        "No sigue ningún patrón",
+        "Alterna entre 0 y 5",
+        "Siempre termina en 0"
+      ],
+      "correcta": 2,
+      "explicacion": "La última cifra va alternando: 5, 0, 5, 0, 5... según la posición del resultado en la tabla."
+    },
+    {
+      "pregunta": "Esta secuencia tiene un error: 4, 8, 12, 15, 20. ¿Qué número rompe el patrón?",
+      "opciones": [
+        "4",
+        "15",
+        "12",
+        "20"
+      ],
+      "correcta": 1,
+      "explicacion": "El patrón es sumar 4 cada vez (4, 8, 12, 16, 20); el 15 no encaja, en su lugar debería ir 16."
+    },
+    {
+      "pregunta": "Hoy es viernes. Sabiendo que los días de la semana se repiten cada 7, ¿qué día será dentro de 14 días?",
+      "opciones": [
+        "Viernes",
+        "Jueves",
+        "Sábado",
+        "Lunes"
+      ],
+      "correcta": 0,
+      "explicacion": "14 es múltiplo exacto de 7 (2 semanas completas), así que cae el mismo día: viernes."
+    },
+    {
+      "pregunta": "Un semáforo cambia en el orden rojo, amarillo, verde, rojo, amarillo, verde... Si está en rojo ahora, ¿qué color tendrá después de 5 cambios?",
+      "opciones": [
+        "Verde",
+        "Amarillo",
+        "Rojo",
+        "No se puede saber"
+      ],
+      "correcta": 0,
+      "explicacion": "El ciclo dura 3 cambios. Desde rojo: cambio1→amarillo, 2→verde, 3→rojo, 4→amarillo, 5→verde."
+    },
+    {
+      "pregunta": "¿Cuál de estas afirmaciones describe mejor la diferencia entre patrón y coincidencia?",
+      "opciones": [
+        "Un patrón se repite de forma confiable en varios casos y suele tener una razón; una coincidencia es un parecido aislado, sin garantía de repetirse",
+        "Una coincidencia siempre se repite más veces que un patrón",
+        "Un patrón solo existe en los números, una coincidencia solo pasa en la vida diaria",
+        "No hay ninguna diferencia real, son exactamente lo mismo"
+      ],
+      "correcta": 0,
+      "explicacion": "La clave es la confiabilidad y la razón detrás: eso separa un patrón real de una simple coincidencia."
+    },
+    {
+      "pregunta": "Al descomponer la tarea 'regar 8 plantas' escribiste el paso 'regar una planta' ocho veces seguidas. ¿Cómo se aprovecha el patrón para escribirlo más corto?",
+      "opciones": [
+        "Escribiendo una sola regla: repetir 'regar una planta' 8 veces",
+        "No se puede acortar: hay que escribir las ocho veces igual",
+        "Cambiando el orden de las plantas cada vez",
+        "Regando solo una planta y dejando las demás sin regar"
+      ],
+      "correcta": 0,
+      "explicacion": "Cuando el mismo paso se repite igual varias veces, una sola regla que diga 'repetir tantas veces' reemplaza a todos los pasos repetidos."
+    },
+    {
+      "pregunta": "En la tabla del 9 (9, 18, 27, 36, 45...), ¿qué patrón cumple la suma de las dos cifras de cada resultado?",
+      "opciones": [
+        "No sigue ningún patrón",
+        "Siempre da un número impar",
+        "Siempre da el mismo número que el resultado completo",
+        "Siempre da 9 (o un múltiplo de 9)"
+      ],
+      "correcta": 3,
+      "explicacion": "9, 1+8=9, 2+7=9, 3+6=9, 4+5=9: la suma de cifras de los múltiplos de 9 siempre da 9 o un múltiplo de 9."
+    },
+    {
+      "pregunta": "¿Qué es 'generalizar' un patrón?",
+      "opciones": [
+        "Olvidar los casos que no encajan con la regla",
+        "Multiplicar todos los números de la lista entre sí",
+        "Hacer la tarea más rápido sin pensar en los pasos",
+        "Convertir lo que se repite en una regla que sirve para predecir sin revisar caso por caso"
+      ],
+      "correcta": 3,
+      "explicacion": "Generalizar es pasar de 'esto se repitió en varios casos' a una regla que predice el resto sin revisarlos uno por uno."
+    },
+    {
+      "pregunta": "Fila de figuras: estrella, estrella, círculo, estrella, estrella, círculo, estrella, estrella, ___. ¿Qué figura sigue?",
+      "opciones": [
+        "Círculo",
+        "Cuadrado",
+        "Estrella",
+        "Triángulo"
+      ],
+      "correcta": 0,
+      "explicacion": "El bloque que se repite es 'estrella, estrella, círculo' (grupos de 3); después de dos estrellas sigue un círculo."
+    },
+    {
+      "pregunta": "¿Cuál de estas es un error típico al reconocer patrones?",
+      "opciones": [
+        "Escribir la regla encontrada en una frase corta",
+        "Asegurar que algo es un patrón con solo 1 o 2 casos, sin buscar una razón que lo explique",
+        "Revisar varios casos antes de confiar en la regla",
+        "Usar la regla para predecir el siguiente caso"
+      ],
+      "correcta": 1,
+      "explicacion": "Confiar en un patrón con muy pocos casos, sin razón que lo respalde, es exactamente el error de confundir coincidencia con patrón."
+    }
+  ]
+}
