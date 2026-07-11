@@ -141,6 +141,9 @@
     cargarCuradoInfo(gradoDeSesion());   // qué temas tienen guía revisada (sello 📗 + botón)
     cargarAgenda();                      // horario + tareas + notas para el escritorio
     verTab("inicio");                    // el día arranca en el escritorio
+    // F4: tutorial de bienvenida — SOLO cuentas nativas (Camino B) que aún no lo vieron.
+    // Las cuentas de aula (fuente=moodle, las niñas) nunca lo ven. Se muestra una vez (persistido).
+    if(nativa && SESION && !SESION.onboarding){ setTimeout(mostrarOnboarding, 500); }
   }
 
   // ───────── pestañas (barra de navegación inferior) ─────────
@@ -793,7 +796,8 @@
   function sesionNativa(d){
     const u=d.usuario||{};
     return { id:u.id, nombre:u.nombre||"", grado:u.grado||"", plan:u.plan||"gratis",
-      token:d.token, fuente:"manual", materias:[], racha:(typeof u.racha==="number"?u.racha:0), fetched:Date.now() };
+      token:d.token, fuente:"manual", materias:[], racha:(typeof u.racha==="number"?u.racha:0),
+      onboarding:!!u.onboarding, fetched:Date.now() };
   }
 
   async function hacerRegistro(){
@@ -839,6 +843,46 @@
     finally{ btn.disabled=false; btn.textContent=t; }
   }
 
+  // ═══════════ F4: onboarding de bienvenida (solo cuentas nativas / Camino B) ═══════════
+  const ONB_STEPS = [
+    { emoji:"👋", tit:"¡Bienvenido a Chispa!", txt:"Este es tu lugar para organizarte y aprender más, a tu manera. Te mostramos lo básico en 30 segundos." },
+    { emoji:"🗓️", tit:"Tu agenda, siempre a mano", txt:"Anotá tus tareas, tus notas de examen y tu horario. Es gratis y te ayuda a no perderte de nada." },
+    { emoji:"📸", tit:"Aprendé con tus propios apuntes", txt:"Creá una materia, sacale una foto a tu cuaderno o escribí el tema, y Chispa te arma un resumen y un quiz para practicar." },
+    { emoji:"🔥", tit:"Sumá días y energía", txt:"Entrá todos los días para subir tu racha. Cada resumen o quiz que pedís usa un poquito de energía." },
+    { emoji:"📲", tit:"Llevá Chispa en tu teléfono", txt:"Abrí el menú de tu navegador y elegí “Agregar a inicio”. Así la abrís como una app, sin buscarla cada vez." },
+  ];
+  let ONB_I = 0;
+  function mostrarOnboarding(){
+    if(!(SESION && SESION.fuente==="manual")) return;   // salvaguarda: nunca a cuentas de aula
+    ONB_I = 0; renderOnbStep();
+    $("#onbOverlay").classList.remove("hidden");
+  }
+  function renderOnbStep(){
+    const s = ONB_STEPS[ONB_I]; if(!s) return;
+    $("#onbBody").innerHTML = `<div class="onbEmoji">${s.emoji}</div>`+
+      `<p class="onbTit">${escapeHtml(s.tit)}</p>`+
+      `<p class="onbTxt">${escapeHtml(s.txt)}</p>`;
+    const dots = $("#onbDots"); dots.innerHTML="";
+    ONB_STEPS.forEach((_,k)=>{ const d=document.createElement("span"); d.className="onbDot"+(k===ONB_I?" on":""); dots.appendChild(d); });
+    const ultimo = ONB_I===ONB_STEPS.length-1;
+    $("#onbSiguiente").textContent = ultimo ? "¡Empezar! ✨" : "Siguiente";
+    $("#onbSaltar").style.visibility = ultimo ? "hidden" : "visible";
+  }
+  function onbSiguiente(){
+    if(ONB_I < ONB_STEPS.length-1){ ONB_I++; renderOnbStep(); }
+    else onbTerminar();
+  }
+  function onbTerminar(){
+    $("#onbOverlay").classList.add("hidden");
+    if(SESION){ SESION.onboarding=true; try{ store.set("sesion",SESION); }catch(_){} }
+    // persistir en el server (fire-and-forget; si falla, el flag local ya evita repetirlo en este aparato)
+    if(SESION && SESION.token){
+      fetch(API_CUENTA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"onboarding_visto",token:SESION.token})}).catch(()=>{});
+    }
+  }
+  $("#onbSiguiente") && ($("#onbSiguiente").onclick=onbSiguiente);
+  $("#onbSaltar") && ($("#onbSaltar").onclick=onbTerminar);
+
   async function hacerLoginNat(){
     const usuario=$("#natUser").value.trim(), clave=$("#natPass").value, msg=$("#natMsg");
     if(!usuario||!clave){ msg.innerHTML=errBox("Escribí tu usuario y tu clave."); return; }
@@ -881,6 +925,7 @@
         SESION.nombre=d.usuario.nombre||SESION.nombre; SESION.grado=d.usuario.grado||SESION.grado;
         SESION.plan=d.usuario.plan||SESION.plan;
         if(typeof d.usuario.racha==="number") SESION.racha=d.usuario.racha;
+        if(typeof d.usuario.onboarding==="boolean") SESION.onboarding=d.usuario.onboarding;
         if(d.token) SESION.token=d.token;
         SESION.fetched=Date.now(); store.set("sesion",SESION); pintarRacha();
       }

@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v67"; // v67: F3 — formulario "agreguen mi colegio" (solicitudes) + pestaña admin
+const VERSION = "aulacam-v68"; // v68: F4 — onboarding de bienvenida (cuentas nativas / Camino B), persistido
 const SHELL = [
   "/",
   "/index.html",
