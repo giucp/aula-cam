@@ -27,6 +27,27 @@ function supabaseCfg() {
 }
 function hdr(cfg) { return { apikey: cfg.key, Authorization: `Bearer ${cfg.key}` }; }
 
+// ───────── rate-limit anti-abuso (F6) ─────────
+// IP del cliente detrás del proxy de Vercel (primera de x-forwarded-for).
+function clientIp(req) {
+  const xff = String((req.headers && req.headers["x-forwarded-for"]) || "").split(",")[0].trim();
+  return xff || (req.headers && req.headers["x-real-ip"]) || "0.0.0.0";
+}
+// true = permitido. FAIL-OPEN: si el limitador falla, NO bloqueamos (mejor no dejar afuera a un niño real).
+async function rateOk(cfg, clave, limite, ventanaSeg) {
+  try {
+    const r = await fetch(`${cfg.url}/rest/v1/rpc/rate_touch`, {
+      method: "POST", headers: { ...hdr(cfg), "Content-Type": "application/json" },
+      body: JSON.stringify({ p_clave: clave, p_limite: limite, p_ventana_seg: ventanaSeg }),
+    });
+    if (!r.ok) return true;
+    return (await r.json()) !== false;
+  } catch (e) { return true; }
+}
+// Límites por acción: [máx intentos, ventana en segundos] por IP. sesion/onboarding_visto no se limitan
+// (son por token, frecuentes e inofensivas).
+const RATE_LIMS = { registrar: [8, 3600], login: [20, 600], recuperar: [10, 3600], solicitar_colegio: [6, 3600] };
+
 // ───────── hashing de contraseña / código (scrypt) ─────────
 function hashScrypt(secreto) {
   const salt = crypto.randomBytes(16);
@@ -216,6 +237,11 @@ export default async function handler(req, res) {
   if (!cfg) return res.status(500).json({ error: "Sin configuración" });
   const body = req.body || {};
   try {
+    // anti-abuso: limitar por IP las acciones sensibles (crear cuenta, login, recuperar, solicitud)
+    const lim = RATE_LIMS[body.accion];
+    if (lim && !(await rateOk(cfg, `${body.accion}:${clientIp(req)}`, lim[0], lim[1]))) {
+      return res.status(429).json({ error: "Demasiados intentos. Esperá un momento y probá de nuevo." });
+    }
     let out;
     if (body.accion === "registrar") out = await registrar(cfg, body);
     else if (body.accion === "login") out = await login(cfg, body);
