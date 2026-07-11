@@ -316,6 +316,16 @@ function render(d, ninos, i, staleTs, detalle) {
       <p class="sub">Esto es todo lo que hizo en Chispa. Solo podés mirar; no se cambia nada.</p>
       ${chips.length ? `<div class="chips">${chips.join("")}</div>` : ""}
     </div>`,
+    `<details class="card guiaPadres">
+      <summary class="guiaSum">👋 ¿Qué veo en este panel?</summary>
+      <div class="guiaBody">
+        <p>Acá ves, <b>solo para mirar</b>, lo que ${esc(primerNombre(nombre))} hace en Chispa:</p>
+        <p>📚 su <b>actividad</b> (resúmenes, prácticas y quiz, con resultados)<br>
+           📝 sus <b>notas</b> de examen y su <b>agenda</b> (tareas y horario)<br>
+           💪 en qué le conviene <b>reforzar</b></p>
+        <p class="muted">No podés escribir ni cambiar nada. Es privado: solo con el enlace que te compartió tu hijo, y él puede quitarte el acceso cuando quiera.</p>
+      </div>
+    </details>`,
     seccionResumen(d),
     seccionActividad(d.actividad || []),
     seccionNotas(d.notas || []),

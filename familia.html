@@ -116,6 +116,15 @@
   .staleRetry{text-decoration:underline;cursor:pointer;white-space:nowrap}
   @keyframes sk{0%{background-position:200% 0}100%{background-position:-200% 0}}
   .badge{display:inline-flex;align-items:center;gap:5px;font-family:"Fredoka";font-weight:600;font-size:.74rem;padding:3px 9px;border-radius:999px;background:#F3EEF3;color:var(--muted)}
+  /* guía de padres (desplegable nativo) */
+  .guiaPadres{padding:14px 16px}
+  .guiaSum{font-family:"Fredoka";font-weight:600;font-size:.98rem;color:var(--ink);cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px}
+  .guiaSum::-webkit-details-marker{display:none}
+  .guiaSum::after{content:"▾";margin-left:auto;color:var(--muted);font-size:.9rem;transition:transform .2s}
+  .guiaPadres[open] .guiaSum::after{transform:rotate(180deg)}
+  .guiaBody{margin-top:10px}
+  .guiaBody p{margin:0 0 8px;font-size:.9rem;line-height:1.6}
+  .guiaBody p:last-child{margin-bottom:0}
 </style>
 </head>
 <body>
