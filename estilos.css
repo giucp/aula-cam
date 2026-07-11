@@ -59,6 +59,11 @@
     font-family:"Fredoka";font-weight:600;font-size:.78rem;padding:4px 11px;border-radius:999px;margin-top:8px}
   .salir{background:#fff;border:2px solid var(--line);border-radius:13px;color:var(--muted);font-family:"Nunito";font-weight:800;cursor:pointer;font-size:.86rem;padding:9px 13px;transition:all .15s;white-space:nowrap}
   .salir:hover{color:var(--mango);border-color:#FFCDBB}
+  /* cuenta propia (beta) */
+  .linkSec{display:block;width:100%;margin:14px auto 0;background:none;border:none;color:var(--grape);font-family:"Fredoka";font-weight:600;font-size:.95rem;cursor:pointer;text-align:center}
+  .selNat{width:100%;font-family:"Nunito",sans-serif;font-weight:700;font-size:1rem;color:var(--ink);padding:14px 15px;border:2px solid var(--line);border-radius:15px;background:#FFFDFB;outline:none}
+  .selNat:focus{border-color:var(--teal)}
+  .rescateCode{font-family:"Fredoka";font-weight:600;font-size:2rem;letter-spacing:.18em;color:var(--grape);margin:8px 0;word-break:break-all}
   /* racha de días seguidos (header) */
   .topRight{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
   .rachaChip{display:inline-flex;align-items:baseline;gap:5px;background:linear-gradient(160deg,#FFF2D4,#FFE1B0);

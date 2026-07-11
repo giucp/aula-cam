@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v61"; // v61: fix racha — el chip se actualiza al reabrir (refrescarMaterias), sin re-loguear
+const VERSION = "aulacam-v62"; // v62: F1(b) UI de cuenta propia (nativa) detrás del flag ?beta=1
 const SHELL = [
   "/",
   "/index.html",

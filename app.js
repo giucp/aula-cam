@@ -11,6 +11,7 @@
   const API_ACTIVIDAD = "https://aula-cam.vercel.app/api/actividad";
   const API_CURADO_INFO = "https://aula-cam.vercel.app/api/curado-info";
   const API_AGENDA = "https://aula-cam.vercel.app/api/agenda";
+  const API_CUENTA = "https://aula-cam.vercel.app/api/cuenta";   // auth propia (cuenta nativa, beta)
 
   // modos de salida
   // Ruta de aprendizaje: los 4 pasos EN ORDEN (ids internos intactos; solo cambia lo visible).
@@ -31,6 +32,8 @@
 
   const $ = (s)=>document.querySelector(s);
   let SESION = null;
+  let BETA = false;        // flujo de cuenta propia (nativa), solo con ?beta=1 — NO toca el login de aula
+  let RESCATE_SIGUE = null; // qué hacer tras mostrar el código de rescate
   let origen = "actual";   // "actual" = materias del grado; "proximo" = adelantar próximo año
   let proximoGrado = "";
   let materiaSel = null;
@@ -100,7 +103,10 @@
     $("#vLanding").classList.add("hidden");
     $("#vLogin").classList.add("hidden");
     $("#vPendiente").classList.add("hidden");
+    ["#vBeta","#vRegistro","#vRescate","#vLoginNat","#vRecuperar"].forEach(id=>{const e=$(id); if(e) e.classList.add("hidden");});
     $("#vHome").classList.remove("hidden");
+    // Familia (dar acceso a un adulto) usa el token de Moodle → no aplica a cuentas nativas (aún)
+    const bfam=$("#btnFamilia"); if(bfam) bfam.classList.toggle("hidden", !!(SESION && SESION.fuente==="manual"));
     origen = "actual";
     const primer = (SESION.nombre||"").split(" ")[0] || "";
     $("#avatar").textContent = (primer[0]||"?").toUpperCase();
@@ -762,6 +768,107 @@
   $("#btnEntrarLanding").onclick = ()=>{ $("#loginMsg").innerHTML=""; verLogin(); };
   $("#btnVolverLanding").onclick = ()=>{ $("#user").value=""; $("#pass").value=""; verLanding(); };
 
+  // ═══════════ CUENTA PROPIA (nativa, beta con ?beta=1) — via api/cuenta ═══════════
+  function ocultarBeta(){ ["#vBeta","#vRegistro","#vRescate","#vLoginNat","#vRecuperar"].forEach(id=>{const e=$(id); if(e) e.classList.add("hidden");}); }
+  function verBeta(){ ocultarVistas(); ocultarBeta(); $("#vBeta").classList.remove("hidden"); window.scrollTo({top:0}); }
+  function verRegistro(){ ocultarVistas(); ocultarBeta(); $("#regMsg").innerHTML=""; $("#vRegistro").classList.remove("hidden"); window.scrollTo({top:0}); }
+  function verLoginNat(){ ocultarVistas(); ocultarBeta(); $("#natMsg").innerHTML=""; $("#vLoginNat").classList.remove("hidden"); window.scrollTo({top:0}); }
+  function verRecuperar(){ ocultarVistas(); ocultarBeta(); $("#recMsg").innerHTML=""; $("#vRecuperar").classList.remove("hidden"); window.scrollTo({top:0}); }
+  function verRescate(codigo){ ocultarVistas(); ocultarBeta(); $("#rescateCode").textContent=codigo||"--------"; $("#vRescate").classList.remove("hidden"); window.scrollTo({top:0}); }
+
+  // arma la SESION de una cuenta nativa a partir de la respuesta de api/cuenta
+  function sesionNativa(d){
+    const u=d.usuario||{};
+    return { id:u.id, nombre:u.nombre||"", grado:u.grado||"", plan:u.plan||"gratis",
+      token:d.token, fuente:"manual", materias:[], racha:(typeof u.racha==="number"?u.racha:0), fetched:Date.now() };
+  }
+
+  async function hacerRegistro(){
+    const nombre=$("#regNombre").value.trim(), grado=$("#regGrado").value,
+      usuario=$("#regUsuario").value.trim(), clave=$("#regClave").value, msg=$("#regMsg");
+    if(!nombre){ msg.innerHTML=errBox("Escribí tu nombre."); return; }
+    if(!grado){ msg.innerHTML=errBox("Elegí tu grado."); return; }
+    if(!/^[a-zA-Z0-9._]{3,20}$/.test(usuario)){ msg.innerHTML=errBox("El usuario: 3 a 20 letras o números, sin espacios."); return; }
+    if(clave.length<6){ msg.innerHTML=errBox("La clave debe tener al menos 6 caracteres."); return; }
+    const btn=$("#btnRegistrar"); btn.disabled=true; const t=btn.textContent; btn.textContent="Creando…"; msg.innerHTML="";
+    try{
+      const r=await fetch(API_CUENTA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"registrar",usuario,clave,nombre,grado})});
+      const d=await r.json();
+      if(!d.ok){ msg.innerHTML=errBox(d.error||"No se pudo crear la cuenta."); return; }
+      SESION=sesionNativa(d); store.set("sesion",SESION);
+      $("#regNombre").value=$("#regUsuario").value=$("#regClave").value="";
+      RESCATE_SIGUE=entrarHome;
+      verRescate(d.codigoRescate);
+    }catch(e){ msg.innerHTML=errBox("No pudimos crear la cuenta. Revisá tu internet."); }
+    finally{ btn.disabled=false; btn.textContent=t; }
+  }
+
+  async function hacerLoginNat(){
+    const usuario=$("#natUser").value.trim(), clave=$("#natPass").value, msg=$("#natMsg");
+    if(!usuario||!clave){ msg.innerHTML=errBox("Escribí tu usuario y tu clave."); return; }
+    const btn=$("#btnLoginNat"); btn.disabled=true; const t=btn.textContent; btn.textContent="Entrando…"; msg.innerHTML="";
+    try{
+      const r=await fetch(API_CUENTA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"login",usuario,clave})});
+      const d=await r.json();
+      if(!d.ok){ msg.innerHTML=errBox(d.error||"Usuario o clave incorrectos."); return; }
+      SESION=sesionNativa(d); store.set("sesion",SESION);
+      $("#natUser").value=$("#natPass").value="";
+      entrarHome();
+    }catch(e){ msg.innerHTML=errBox("No pudimos entrar. Revisá tu internet."); }
+    finally{ btn.disabled=false; btn.textContent=t; }
+  }
+
+  async function hacerRecuperar(){
+    const usuario=$("#recUser").value.trim(), codigoRescate=$("#recCodigo").value.trim(), claveNueva=$("#recClave").value, msg=$("#recMsg");
+    if(!usuario||!codigoRescate){ msg.innerHTML=errBox("Escribí tu usuario y el código de rescate."); return; }
+    if(claveNueva.length<6){ msg.innerHTML=errBox("La nueva clave debe tener al menos 6 caracteres."); return; }
+    const btn=$("#btnRecuperar"); btn.disabled=true; const t=btn.textContent; btn.textContent="Cambiando…"; msg.innerHTML="";
+    try{
+      const r=await fetch(API_CUENTA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"recuperar",usuario,codigoRescate,claveNueva})});
+      const d=await r.json();
+      if(!d.ok){ msg.innerHTML=errBox(d.error||"Usuario o código incorrectos."); return; }
+      SESION=sesionNativa(d); store.set("sesion",SESION);
+      $("#recUser").value=$("#recCodigo").value=$("#recClave").value="";
+      RESCATE_SIGUE=entrarHome;
+      verRescate(d.codigoRescate);   // recuperar rota el código → mostrar el nuevo
+    }catch(e){ msg.innerHTML=errBox("No pudimos recuperar la cuenta. Revisá tu internet."); }
+    finally{ btn.disabled=false; btn.textContent=t; }
+  }
+
+  // refresco/reapertura de una cuenta nativa: valida el token y actualiza racha/plan
+  async function refrescarNativa(){
+    try{
+      const r=await fetch(API_CUENTA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"sesion",token:SESION.token})});
+      const d=await r.json().catch(()=>null);
+      if(d && d.code===401){ sesionVencidaNat(); return; }
+      if(d && d.ok && d.usuario){
+        SESION.nombre=d.usuario.nombre||SESION.nombre; SESION.grado=d.usuario.grado||SESION.grado;
+        SESION.plan=d.usuario.plan||SESION.plan;
+        if(typeof d.usuario.racha==="number") SESION.racha=d.usuario.racha;
+        if(d.token) SESION.token=d.token;
+        SESION.fetched=Date.now(); store.set("sesion",SESION); pintarRacha();
+      }
+    }catch(e){ /* sin conexión: seguimos con lo cacheado */ }
+  }
+  function sesionVencidaNat(){
+    store.del("sesion"); SESION=null; origen="actual"; materiaSel=null; temaSel=null;
+    $("#results").innerHTML=""; MIS_ERRORES=[]; PROGRESO=new Map();
+    verLoginNat(); $("#natMsg").innerHTML=errBox("Tu sesión venció. Entrá de nuevo, por favor.");
+  }
+
+  $("#btnIrRegistro") && ($("#btnIrRegistro").onclick=verRegistro);
+  $("#btnIrLoginNat") && ($("#btnIrLoginNat").onclick=verLoginNat);
+  $("#btnIrMoodle") && ($("#btnIrMoodle").onclick=()=>{ $("#loginMsg").innerHTML=""; verLogin(); });
+  $("#btnRegVolver") && ($("#btnRegVolver").onclick=verBeta);
+  $("#btnRegistrar") && ($("#btnRegistrar").onclick=hacerRegistro);
+  $("#btnRescateSeguir") && ($("#btnRescateSeguir").onclick=()=>{ const f=RESCATE_SIGUE; RESCATE_SIGUE=null; (f||verBeta)(); });
+  $("#btnLoginNatVolver") && ($("#btnLoginNatVolver").onclick=verBeta);
+  $("#btnLoginNat") && ($("#btnLoginNat").onclick=hacerLoginNat);
+  $("#natPass") && $("#natPass").addEventListener("keydown",e=>{ if(e.key==="Enter") hacerLoginNat(); });
+  $("#btnIrRecuperar") && ($("#btnIrRecuperar").onclick=verRecuperar);
+  $("#btnRecVolver") && ($("#btnRecVolver").onclick=verLoginNat);
+  $("#btnRecuperar") && ($("#btnRecuperar").onclick=hacerRecuperar);
+
   // ── Sinapsis (juego): liga privada del cole. Se abre embebido, con el nombre e id
   //    del niño; el iframe se crea SOLO al abrir (no pesa hasta que juega) y se descarta al cerrar.
   const JUEGO_URL = "https://sinapsis-mocha.vercel.app";
@@ -870,11 +977,12 @@
   $("#familiaModal").onclick = (e)=>{ if(e.target===$("#familiaModal")) cerrarFamilia(); };
 
   $("#btnSalir").onclick = ()=>{
+    const eraNativa = !!(SESION && SESION.fuente==="manual");
     store.del("sesion"); SESION=null; origen="actual";
     materiaSel=null; temaSel=null; $("#results").innerHTML="";
     MIS_ERRORES=[]; PROGRESO=new Map();
     $("#user").value=""; $("#loginMsg").innerHTML="";
-    verLanding();
+    (eraNativa || BETA) ? verBeta() : verLanding();
   };
 
   // sesión vencida (token expirado): cerrar y volver al login con aviso amable
@@ -888,6 +996,7 @@
   // usando el token guardado. Si el token venció → vuelve al login. No bloquea la app.
   async function refrescarMaterias(){
     if(!SESION || !SESION.token) return;
+    if(SESION.fuente==="manual") return refrescarNativa();   // cuenta propia: valida por api/cuenta
     try{
       const r = await fetch(API_MOODLE,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ token: SESION.token })});
       const d = await r.json().catch(()=>null);
@@ -2100,6 +2209,10 @@
       const mm=`${m.nombreCorto||""} ${m.nombre||""}`.match(/\b([1-6])\s*([GA])\b/i);
       if(mm) return { n:+mm[1], tipo:mm[2].toUpperCase() };
     }
+    // cuenta nativa: el grado viene como string en SESION.grado ("5to grado" / "1er año")
+    const g = (SESION && SESION.grado) || "";
+    const ma = g.match(/([1-6])\D*(grado|a[nñ]o)/i);
+    if(ma) return { n:+ma[1], tipo: /a[nñ]o/i.test(ma[2]) ? "A" : "G" };
     return null;
   }
   function gradoDeSesion(){
@@ -2406,6 +2519,9 @@
   (function arrancar(){
     // cuarto de pruebas (admin), oculto: si se entra por #lab, no seguir el flujo normal
     if(location.hash === "#lab"){ entrarLab(); return; }
+    // flag de cuenta propia (beta): ?beta=1 lo enciende y queda guardado (sobrevive a la PWA)
+    if(/[?&]beta=1/.test(location.search)){ try{ store.set("beta", 1); }catch(_){} }
+    BETA = store.get("beta") === 1;
     try{
       let s = store.get("sesion");
       if(!(s && s.materias)){
@@ -2422,7 +2538,9 @@
         // refresco en segundo plano si la sesión guardada ya tiene sus horas
         const viejo = !s.fetched || (Date.now() - s.fetched > 4*3600*1000);
         if(viejo) refrescarMaterias();
+        return;
       }
+      if(BETA) verBeta();   // sin sesión + flujo nativo → pantalla crear/entrar
     }catch(e){
       // si algo falla al restaurar la sesión, NO congelar: mostrar la landing
       SESION=null; try{ store.del("sesion"); }catch(_){}

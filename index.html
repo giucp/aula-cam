@@ -315,6 +315,101 @@
     </nav>
   </section>
 
+  <!-- ╔═══ CUENTA PROPIA (nativa, beta: solo con ?beta=1) ═══╗ -->
+  <section id="vBeta" class="hidden">
+    <p class="hi">Chispa</p>
+    <h1>Aprendé a tu manera <span class="star">✨</span></h1>
+    <p class="sub">Creá tu cuenta de Chispa y empezá: tu agenda, tus notas y contenido para aprender más. Si tu colegio tiene aula virtual, la conectás después.</p>
+    <div class="panel">
+      <button class="go" id="btnIrRegistro">Crear mi cuenta</button>
+      <button class="salir" id="btnIrLoginNat" style="width:100%;margin-top:12px">Ya tengo cuenta · Entrar</button>
+    </div>
+    <button class="linkSec" id="btnIrMoodle">Entrar con el aula virtual de mi colegio ›</button>
+  </section>
+
+  <section id="vRegistro" class="hidden">
+    <button class="back" id="btnRegVolver">‹ Volver</button>
+    <p class="hi">Chispa</p>
+    <h1>Crear mi cuenta</h1>
+    <p class="sub">Elegí un usuario y una clave. No hace falta correo.</p>
+    <div class="panel">
+      <div class="field">
+        <p class="lbl"><span class="n">1</span> Tu nombre</p>
+        <input id="regNombre" type="text" placeholder="Cómo te llamás" autocomplete="off" style="margin-bottom:12px" />
+        <p class="lbl"><span class="n">2</span> Tu grado</p>
+        <select id="regGrado" class="selNat" style="margin-bottom:12px">
+          <option value="">Elegí tu grado…</option>
+          <option value="1er grado">1er grado</option>
+          <option value="2do grado">2do grado</option>
+          <option value="3er grado">3er grado</option>
+          <option value="4to grado">4to grado</option>
+          <option value="5to grado">5to grado</option>
+          <option value="6to grado">6to grado</option>
+          <option value="1er año">1er año</option>
+          <option value="2do año">2do año</option>
+          <option value="3er año">3er año</option>
+          <option value="4to año">4to año</option>
+          <option value="5to año">5to año</option>
+        </select>
+        <p class="lbl"><span class="n">3</span> Usuario</p>
+        <input id="regUsuario" type="text" placeholder="letras y números, sin espacios" autocomplete="username" autocapitalize="none" style="margin-bottom:12px" />
+        <p class="lbl"><span class="n">4</span> Clave</p>
+        <input id="regClave" type="password" placeholder="mínimo 6 caracteres" autocomplete="new-password" />
+      </div>
+      <button class="go" id="btnRegistrar" style="margin-top:16px">Crear cuenta</button>
+      <div id="regMsg"></div>
+    </div>
+  </section>
+
+  <section id="vRescate" class="hidden">
+    <p class="hi">Chispa</p>
+    <h1>¡Cuenta creada! 🎉</h1>
+    <p class="sub">Guardá este <b>código de rescate</b>: te sirve para recuperar tu cuenta si olvidás la clave. Se muestra una sola vez.</p>
+    <div class="panel" style="text-align:center">
+      <p class="famMini">Tu código de rescate</p>
+      <p class="rescateCode" id="rescateCode">--------</p>
+      <p class="famHint">Anotalo o sacale una foto. Si lo perdés y olvidás la clave, tendrás que pedir ayuda para recuperar la cuenta.</p>
+      <button class="go" id="btnRescateSeguir" style="margin-top:14px">Ya lo guardé, seguir</button>
+    </div>
+  </section>
+
+  <section id="vLoginNat" class="hidden">
+    <button class="back" id="btnLoginNatVolver">‹ Volver</button>
+    <p class="hi">Chispa</p>
+    <h1>Entrar <span class="star">✨</span></h1>
+    <p class="sub">Con tu usuario y clave de Chispa.</p>
+    <div class="panel">
+      <div class="field">
+        <p class="lbl"><span class="n">1</span> Usuario</p>
+        <input id="natUser" type="text" placeholder="tu usuario" autocomplete="username" autocapitalize="none" style="margin-bottom:12px" />
+        <p class="lbl"><span class="n">2</span> Clave</p>
+        <input id="natPass" type="password" placeholder="tu clave" autocomplete="current-password" />
+      </div>
+      <button class="go" id="btnLoginNat" style="margin-top:16px">Entrar</button>
+      <div id="natMsg"></div>
+      <button class="linkSec" id="btnIrRecuperar" style="margin-top:10px">Olvidé mi clave ›</button>
+    </div>
+  </section>
+
+  <section id="vRecuperar" class="hidden">
+    <button class="back" id="btnRecVolver">‹ Volver</button>
+    <p class="hi">Chispa</p>
+    <h1>Recuperar mi cuenta</h1>
+    <p class="sub">Con tu usuario y el código de rescate que guardaste.</p>
+    <div class="panel">
+      <div class="field">
+        <p class="lbl"><span class="n">1</span> Usuario</p>
+        <input id="recUser" type="text" placeholder="tu usuario" autocomplete="username" autocapitalize="none" style="margin-bottom:12px" />
+        <p class="lbl"><span class="n">2</span> Código de rescate</p>
+        <input id="recCodigo" type="text" placeholder="el código de 8 letras" autocapitalize="characters" style="margin-bottom:12px" />
+        <p class="lbl"><span class="n">3</span> Nueva clave</p>
+        <input id="recClave" type="password" placeholder="mínimo 6 caracteres" autocomplete="new-password" />
+      </div>
+      <button class="go" id="btnRecuperar" style="margin-top:16px">Cambiar clave y entrar</button>
+      <div id="recMsg"></div>
+    </div>
+  </section>
+
   <!-- CUARTO DE PRUEBAS (admin, oculto: solo se ve navegando a #lab) -->
   <section id="vLab" class="hidden">
     <div id="labLogin" class="labWrap">
