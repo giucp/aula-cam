@@ -1090,13 +1090,17 @@
       $("#erroresWrap").classList.add("hidden");
     }else actualizarErrSub();
   }
-  // guarda las preguntas que la niña falló en un quiz (para repasarlas luego)
+  // guarda las preguntas que la niña falló en un quiz (para repasarlas luego).
+  // Incluye Cumbre: repasar un error NO gasta IA (solo muestra la pregunta + la
+  // explicación ya guardadas), y así el error también aparece en la alerta "repasar
+  // mis errores" del aula y en el panel de Familia ("para reforzar").
   async function guardarErrores(fallidas, meta){
-    if(origen==="cumbre") return;   // Cumbre no alimenta "repasar mis errores" (evita replay con IA)
     if(!SESION || SESION.id==null || !fallidas.length) return;
-    const numerica = esNumerica((meta&&meta.materia)||"") || esNumerica((meta&&meta.tema)||"");
+    const matBase = (meta&&meta.materia)||null;
+    const materia = (origen==="cumbre" && matBase) ? `Cumbre · ${matBase}` : matBase;
+    const numerica = esNumerica(matBase||"") || esNumerica((meta&&meta.tema)||"");
     const errores = fallidas.map(f=>({
-      materia:(meta&&meta.materia)||null, tema:(meta&&meta.tema)||null, grado:(meta&&meta.grado)||null,
+      materia, tema:(meta&&meta.tema)||null, grado:(meta&&meta.grado)||null,
       pregunta:f.pregunta, opciones:f.opciones, correcta:f.correcta, elegida:f.elegida,
       explicacion:f.explicacion||"", figura:f.figura||"", numerica
     }));
