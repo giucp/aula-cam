@@ -925,12 +925,16 @@
       const d=await r.json().catch(()=>null);
       if(d && d.code===401){ sesionVencidaNat(); return; }
       if(d && d.ok && d.usuario){
+        const planViejo=SESION.plan;
         SESION.nombre=d.usuario.nombre||SESION.nombre; SESION.grado=d.usuario.grado||SESION.grado;
         SESION.plan=d.usuario.plan||SESION.plan;
         if(typeof d.usuario.racha==="number") SESION.racha=d.usuario.racha;
         if(typeof d.usuario.onboarding==="boolean") SESION.onboarding=d.usuario.onboarding;
         if(d.token) SESION.token=d.token;
         SESION.fetched=Date.now(); store.set("sesion",SESION); pintarRacha();
+        // si el admin cambió el plan (p.ej. upgrade a premium), refrescar la UI que depende de él
+        // sin esperar a un re-login: el medidor de energía y el aviso premium dejan de aplicar.
+        if(SESION.plan!==planViejo) pintarEnergiaIA();
       }
     }catch(e){ /* sin conexión: seguimos con lo cacheado */ }
   }
@@ -2750,9 +2754,11 @@
       }
       if(s && s.materias){
         SESION = s; entrarHome();
-        // refresco en segundo plano si la sesión guardada ya tiene sus horas
+        // refresco en 2º plano. Nativo (Camino B): SIEMPRE — es liviano (api/cuenta sesion) y toma al
+        // instante los cambios que hace el admin (p.ej. subir a premium). Aula (Moodle): solo si la
+        // sesión ya tiene sus horas, porque su refresh pega al Moodle lento del colegio.
         const viejo = !s.fetched || (Date.now() - s.fetched > 4*3600*1000);
-        if(viejo) refrescarMaterias();
+        if(s.fuente==="manual" || viejo) refrescarMaterias();
         return;
       }
       if(BETA) verBeta();   // sin sesión + flujo nativo → pantalla crear/entrar
