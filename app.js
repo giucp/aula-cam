@@ -1014,6 +1014,7 @@
       const d=await r.json().catch(()=>null);
       if(!d||!d.ok||!d.link) throw new Error();
       await mostrarInvite(d.link, d.code);
+      if(btn){ btn.disabled=false; btn.textContent="Crear otro enlace"; }
       cargarVinculos();
     }catch(e){ if(btn){ btn.disabled=false; btn.textContent="Reintentar"; } }
   }

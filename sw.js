@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v70"; // v70: F6 — consentimiento + nota de privacidad en el registro de cuenta nativa
+const VERSION = "aulacam-v71"; // v71: fix — el botón "Crear enlace" (Familia) se resetea tras crear (no queda en "Creando…")
 const SHELL = [
   "/",
   "/index.html",
