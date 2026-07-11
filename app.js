@@ -89,6 +89,13 @@
   }
 
   // ───────── HOME ─────────
+  // pinta el chip de racha desde SESION.racha (reutilizable: login y refresco al reabrir)
+  function pintarRacha(){
+    const racha = (SESION && SESION.racha) || 0, rc = $("#rachaChip");
+    if(!rc) return;
+    if(racha>=2){ rc.innerHTML = `🔥 <b>${racha}</b> <small>días</small>`; rc.classList.remove("hidden"); }
+    else { rc.classList.add("hidden"); rc.innerHTML=""; }
+  }
   function entrarHome(){
     $("#vLanding").classList.add("hidden");
     $("#vLogin").classList.add("hidden");
@@ -100,13 +107,9 @@
     $("#avatar").style.setProperty("--c", colorCuenta(SESION.nombre||primer));
     $("#saludo").innerHTML = `¡Hola, ${escapeHtml(primer)}! 👋`;
     // racha de días seguidos (se muestra desde el 2º día, para que se sienta ganada)
-    const racha = (SESION && SESION.racha) || 0, rc = $("#rachaChip");
-    if(rc){
-      if(racha>=2){ rc.innerHTML = `🔥 <b>${racha}</b> <small>días</small>`; rc.classList.remove("hidden"); }
-      else { rc.classList.add("hidden"); rc.innerHTML=""; }
-    }
+    pintarRacha();
     // muro: una racha de 3+ días es un logro para celebrar (el server dedup 1/día)
-    if(racha>=3) publicarMuro("racha", {meta:{dias:racha}});
+    if(((SESION&&SESION.racha)||0)>=3) publicarMuro("racha", {meta:{dias:SESION.racha}});
     const g = gradoDeSesion();
     $("#gradoBadge").innerHTML = g ? `🎓 ${escapeHtml(g)}` : "";
     $("#gradoBadge").classList.toggle("hidden", !g);
@@ -893,8 +896,10 @@
       if(d && Array.isArray(d.materias) && d.materias.length){
         SESION.materias = d.materias;
         if(d.token) SESION.token = d.token;
+        if(d.usuario && typeof d.usuario.racha === "number") SESION.racha = d.usuario.racha;
         SESION.fetched = Date.now();
         store.set("sesion", SESION);
+        pintarRacha();         // la racha pudo subir hoy → refrescar el chip sin re-loguear
         detectarNovedades();   // el material fresco puede traer 🆕
         if(origen==="actual" && !$("#paneMaterias").classList.contains("hidden")) pintarMaterias();
         if(!$("#tabInicio").classList.contains("hidden")) pintarEscritorio();
