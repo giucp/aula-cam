@@ -272,5 +272,5 @@ Ajustes a tablas existentes: `muro` gana `colegio_id` (nullable); `familia_vincu
 - [x] F3: conector Moodle multi-colegio ✅ + alta de colegios en #lab ✅ + solicitud "agreguen mi colegio" ✅ (commit cb213b9)
 - [~] F4: onboarding nativo (Camino B) persistido en BD ✅ (commit 02265d0) · guía de padres en Familia → difer. a F5
 - [x] F5: Familia con hijos manuales ✅ (85d3492) · guía padres ✅ (619d27d) · muro → user eligió DEJARLO COMO ESTÁ · [F5.3 cron = infra aparte, aula-cam sin cron]
-- [ ] F6: rate-limits, alertas de gasto, privacidad de menores, advisors, índices
+- [x] F6: rate-limits ✅ · privacidad/consentimiento menores ✅ · advisors (search_path) + índices ✅ (commits 05c53b0/33bff78) · [alerta gasto=cron infra pendiente; captcha=reactivo]
 - [ ] F7: beta cerrada → métricas → 2º colegio → registro abierto + dominio propio
