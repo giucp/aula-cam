@@ -64,6 +64,9 @@
   .selNat{width:100%;font-family:"Nunito",sans-serif;font-weight:700;font-size:1rem;color:var(--ink);padding:14px 15px;border:2px solid var(--line);border-radius:15px;background:#FFFDFB;outline:none}
   .selNat:focus{border-color:var(--teal)}
   .rescateCode{font-family:"Fredoka";font-weight:600;font-size:2rem;letter-spacing:.18em;color:var(--grape);margin:8px 0;word-break:break-all}
+  .avisoPremium{background:#F1EAFB;border:1.5px solid #E0D0F5;border-radius:18px;padding:20px 18px;text-align:center;margin-top:8px}
+  .apTit{font-family:"Fredoka";font-weight:600;font-size:1.1rem;color:var(--grape);margin:0 0 8px}
+  .apTxt{font-family:"Nunito";font-weight:600;font-size:.96rem;color:var(--ink);line-height:1.5;margin:0}
   /* racha de días seguidos (header) */
   .topRight{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
   .rachaChip{display:inline-flex;align-items:baseline;gap:5px;background:linear-gradient(160deg,#FFF2D4,#FFE1B0);

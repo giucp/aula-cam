@@ -105,8 +105,11 @@
     $("#vPendiente").classList.add("hidden");
     ["#vBeta","#vRegistro","#vRescate","#vLoginNat","#vRecuperar"].forEach(id=>{const e=$(id); if(e) e.classList.add("hidden");});
     $("#vHome").classList.remove("hidden");
-    // Familia (dar acceso a un adulto) usa el token de Moodle → no aplica a cuentas nativas (aún)
-    const bfam=$("#btnFamilia"); if(bfam) bfam.classList.toggle("hidden", !!(SESION && SESION.fuente==="manual"));
+    // Familia (token Moodle) y el muro por grado del aula no aplican a cuentas nativas (aún → F5)
+    const nativa=!!(SESION && SESION.fuente==="manual");
+    const bfam=$("#btnFamilia"); if(bfam) bfam.classList.toggle("hidden", nativa);
+    const bmuro=[...document.querySelectorAll("#navbar .navBtn")].find(b=>b.dataset.tab==="muro");
+    if(bmuro) bmuro.classList.toggle("hidden", nativa);
     origen = "actual";
     const primer = (SESION.nombre||"").split(" ")[0] || "";
     $("#avatar").textContent = (primer[0]||"?").toUpperCase();
@@ -218,6 +221,8 @@
   // Se oculta si es ilimitado (hijas/elegidos) o si no se conoce el presupuesto.
   function pintarEnergiaIA(){
     const box=$("#energiaIA"); if(!box) return;
+    // cuenta gratis: no genera con IA → el medidor de energía no aplica
+    if(SESION && SESION.plan==="gratis"){ box.classList.add("hidden"); box.innerHTML=""; return; }
     const e=IA_ESTADO;
     if(!e || e.ilimitado || !e.limite){ box.classList.add("hidden"); box.innerHTML=""; return; }
     const pct=Math.max(0, Math.min(100, Math.round((e.restante/e.limite)*100)));
@@ -775,6 +780,12 @@
   function verLoginNat(){ ocultarVistas(); ocultarBeta(); $("#natMsg").innerHTML=""; $("#vLoginNat").classList.remove("hidden"); window.scrollTo({top:0}); }
   function verRecuperar(){ ocultarVistas(); ocultarBeta(); $("#recMsg").innerHTML=""; $("#vRecuperar").classList.remove("hidden"); window.scrollTo({top:0}); }
   function verRescate(codigo){ ocultarVistas(); ocultarBeta(); $("#rescateCode").textContent=codigo||"--------"; $("#vRescate").classList.remove("hidden"); window.scrollTo({top:0}); }
+
+  // aviso cuando una cuenta gratis toca algo premium (generación con IA / Cumbre / curado)
+  function avisoPremium(){
+    return `<div class="avisoPremium"><p class="apTit">✨ Esto es parte de Chispa Premium</p>`
+      + `<p class="apTxt">Con tu cuenta gratis podés usar tu agenda, tus tareas, tu horario y tus notas. Para desbloquear los resúmenes, quiz y práctica con IA, pedile acceso al administrador de Chispa.</p></div>`;
+  }
 
   // arma la SESION de una cuenta nativa a partir de la respuesta de api/cuenta
   function sesionNativa(d){
@@ -1463,6 +1474,7 @@
       const body = { materia:mat, tema, grado:gr, cantidad, modo:modoSel, programa:"cumbre", usuario_id:(SESION&&SESION.id)||null };
       const r = await fetch(API_GENERAR,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
       let d; try{ d = await r.json(); }catch(_){ throw new Error("El servidor tardó demasiado. Prueba de nuevo."); }
+      if(r.status===403 && d && d.premium){ res.innerHTML = avisoPremium(); return; }
       if(d.error){ throw new Error(d.error); }
       if(d.sinItems || d.sinBanco){ res.innerHTML = `<div class="empty">Este tema todavía no está listo en este modo. ¡Pronto! ✨</div>`; return; }
       render(d);
@@ -1761,6 +1773,7 @@
       let d;
       try { d = await r.json(); }
       catch(_){ throw new Error("El servidor tardó demasiado o se cayó. Prueba de nuevo en un momentico."); }
+      if(r.status===403 && d && d.premium){ res.innerHTML = avisoPremium(); return; }
       if(d.error){ const er=new Error(d.error); er.code=d.code; er.retryAfter=d.retryAfter; throw er; }
       // el alumno ya gastó su presupuesto de IA del mes → seguir con guías/lo cacheado
       if(d.ia){ IA_ESTADO=d.ia; pintarEnergiaIA(); }   // refresca la batería de energía IA
