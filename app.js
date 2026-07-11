@@ -107,7 +107,7 @@
     $("#vHome").classList.remove("hidden");
     // Familia (token Moodle) y el muro por grado del aula no aplican a cuentas nativas (aún → F5)
     const nativa=!!(SESION && SESION.fuente==="manual");
-    const bfam=$("#btnFamilia"); if(bfam) bfam.classList.toggle("hidden", nativa);
+    const wfam=$("#familiaWrap"); if(wfam) wfam.classList.toggle("hidden", nativa);
     const bmuro=[...document.querySelectorAll("#navbar .navBtn")].find(b=>b.dataset.tab==="muro");
     if(bmuro) bmuro.classList.toggle("hidden", nativa);
     origen = "actual";

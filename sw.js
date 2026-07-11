@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v63"; // v63: pulidos cuenta gratis (sin gauge IA, aviso premium al generar, sin muro)
+const VERSION = "aulacam-v64"; // v64: ocultar bloque "Para tu familia" completo (no solo el botón) en cuentas nativas
 const SHELL = [
   "/",
   "/index.html",
