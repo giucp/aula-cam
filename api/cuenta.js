@@ -10,6 +10,8 @@
 //   "sesion"    {token} → valida el token y devuelve el perfil (para reabrir la app).
 //   "recuperar" {usuario,codigoRescate,claveNueva} → cambia la clave usando el código; devuelve
 //               token + un código de rescate NUEVO.
+//   "solicitar_colegio" {colegio,ciudad?,estado?,tiene_aula?,moodle_url?,contacto?,nota?,token?}
+//               → guarda una solicitud "agreguen mi colegio" (F3). Público; sin cuenta obligatoria.
 //
 // Seguridad: contraseña y código con scrypt (sal por usuario, comparación timing-safe). El token de
 // sesión es HMAC-firmado (sin estado): payload "uid.iat" + firma; la clave HMAC se deriva del
@@ -150,6 +152,34 @@ async function recuperar(cfg, body) {
   return { status: 200, json: { ok: true, token: firmarToken(u.id), usuario: { id: u.id, nombre: u.nombre, grado: u.grado, plan: u.plan }, codigoRescate: nuevoCodigo } };
 }
 
+// ───────── F3: solicitud "agreguen mi colegio" (público, sin cuenta obligatoria) ─────────
+// Un niño/representante cuyo colegio no está en Chispa pide que lo agreguemos. Se guarda en
+// solicitudes_colegio para revisarla desde #lab. Validación mínima + topes de longitud (el
+// rate-limit fuerte es F6). Si viene un token de sesión válido, guarda el usuario_id de origen.
+const recorta = (s, n) => { s = String(s == null ? "" : s).trim(); return s.length > n ? s.slice(0, n) : s; };
+async function solicitarColegio(cfg, body) {
+  const colegio = recorta(body.colegio, 120);
+  if (!colegio) return { status: 400, json: { error: "Escribí el nombre de tu colegio." } };
+  const url = recorta(body.moodle_url, 300);
+  const fila = {
+    colegio,
+    ciudad: recorta(body.ciudad, 80) || null,
+    estado: recorta(body.estado, 80) || null,
+    tiene_aula: typeof body.tiene_aula === "boolean" ? body.tiene_aula : null,
+    moodle_url: url && /^https?:\/\//i.test(url) ? url : (url ? "http://" + url.replace(/^\/+/, "") : null),
+    contacto: recorta(body.contacto, 120) || null,
+    nota: recorta(body.nota, 500) || null,
+    origen_uid: validarToken(body.token) ?? null,
+  };
+  const r = await fetch(`${cfg.url}/rest/v1/solicitudes_colegio`, {
+    method: "POST",
+    headers: { ...hdr(cfg), "Content-Type": "application/json" },
+    body: JSON.stringify(fila),
+  });
+  if (!r.ok) return { status: 500, json: { error: "No se pudo enviar la solicitud. Reintentá." } };
+  return { status: 200, json: { ok: true } };
+}
+
 async function tocarAcceso(cfg, id) {
   try {
     const r = await fetch(`${cfg.url}/rest/v1/rpc/tocar_acceso`, {
@@ -177,6 +207,7 @@ export default async function handler(req, res) {
     else if (body.accion === "login") out = await login(cfg, body);
     else if (body.accion === "sesion") out = await sesion(cfg, body);
     else if (body.accion === "recuperar") out = await recuperar(cfg, body);
+    else if (body.accion === "solicitar_colegio") out = await solicitarColegio(cfg, body);
     else return res.status(400).json({ error: "acción inválida" });
     return res.status(out.status).json(out.json);
   } catch (e) {

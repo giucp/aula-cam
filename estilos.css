@@ -28,6 +28,7 @@
   .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 19px;box-shadow:var(--shadow-card)}
   .lbl{font-family:"Fredoka",sans-serif;font-weight:600;font-size:.96rem;color:var(--ink);margin:0 0 13px;display:flex;align-items:center;gap:9px}
   .lbl .n{background:var(--sun);color:var(--ink);width:25px;height:25px;border-radius:50%;display:grid;place-items:center;font-size:.85rem;font-weight:700;box-shadow:var(--shadow-xs)}
+  .lbl .lblOpt{font-weight:500;font-size:.82rem;color:var(--muted, #8a8a99)}
 
   /* inputs */
   .field input,.field textarea{width:100%;font-family:"Nunito",sans-serif;font-weight:700;font-size:1rem;color:var(--ink);

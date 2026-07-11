@@ -145,6 +145,31 @@ async function colegioGuardar(cfg, c) {
   return { ok: true, colegio: Array.isArray(out) ? out[0] : out };
 }
 
+// ───────── SOLICITUDES DE COLEGIO (F3): "agreguen mi colegio" ─────────
+async function solicitudes(cfg) {
+  const cols = "id,colegio,ciudad,estado,tiene_aula,moodle_url,contacto,nota,origen_uid,atendida,creado";
+  const r = await fetch(`${cfg.url}/rest/v1/solicitudes_colegio?select=${cols}&order=creado.desc&limit=200`, { headers: hdr(cfg) });
+  const rows = r.ok ? await r.json() : [];
+  return Array.isArray(rows) ? rows : [];
+}
+async function solicitudAtender(cfg, id, atendida) {
+  if (id == null) return { ok: false, error: "Falta el id." };
+  const r = await fetch(`${cfg.url}/rest/v1/solicitudes_colegio?id=eq.${encodeURIComponent(id)}`, {
+    method: "PATCH",
+    headers: { ...hdr(cfg), "Content-Type": "application/json", Prefer: "return=representation" },
+    body: JSON.stringify({ atendida: !!atendida }),
+  });
+  if (!r.ok) return { ok: false, error: `HTTP ${r.status}` };
+  const out = await r.json();
+  return { ok: true, solicitud: Array.isArray(out) ? out[0] : null };
+}
+async function solicitudBorrar(cfg, id) {
+  if (id == null) return { ok: false, error: "Falta el id." };
+  const r = await fetch(`${cfg.url}/rest/v1/solicitudes_colegio?id=eq.${encodeURIComponent(id)}`, { method: "DELETE", headers: hdr(cfg) });
+  if (!r.ok) return { ok: false, error: `HTTP ${r.status}` };
+  return { ok: true };
+}
+
 // Borra un colegio. Protegido por la FK usuarios.colegio_id: si algún alumno lo tiene
 // asignado (p.ej. el CAM), Postgres rechaza el DELETE → devolvemos mensaje claro.
 async function colegioBorrar(cfg, id) {
@@ -188,6 +213,9 @@ export default async function handler(req, res) {
     if (accion === "colegio_probar") return res.status(200).json(await colegioProbar((req.body || {}).moodle_url));
     if (accion === "colegio_guardar") return res.status(200).json(await colegioGuardar(cfg, (req.body || {}).colegio));
     if (accion === "colegio_borrar") return res.status(200).json(await colegioBorrar(cfg, (req.body || {}).id));
+    if (accion === "solicitudes") return res.status(200).json({ solicitudes: await solicitudes(cfg) });
+    if (accion === "solicitud_atender") return res.status(200).json(await solicitudAtender(cfg, (req.body || {}).id, (req.body || {}).atendida));
+    if (accion === "solicitud_borrar") return res.status(200).json(await solicitudBorrar(cfg, (req.body || {}).id));
     return res.status(400).json({ error: "accion inválida" });
   } catch (e) {
     return res.status(200).json({ usuarios: [], error: String(e.message || e) });

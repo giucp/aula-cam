@@ -325,6 +325,35 @@
       <button class="salir" id="btnIrLoginNat" style="width:100%;margin-top:12px">Ya tengo cuenta · Entrar</button>
     </div>
     <button class="linkSec" id="btnIrMoodle">Entrar con el aula virtual de mi colegio ›</button>
+    <button class="linkSec" id="btnIrSolicitud">¿Tu colegio tiene aula virtual y no aparece? Pedí que lo agreguemos ›</button>
+  </section>
+
+  <section id="vSolicitud" class="hidden">
+    <button class="back" id="btnSolVolver">‹ Volver</button>
+    <p class="hi">Chispa</p>
+    <h1>Agregá tu colegio</h1>
+    <p class="sub">Contanos cuál es tu colegio. Si tiene aula virtual, lo revisamos y lo conectamos a Chispa. Mientras tanto podés usar tu cuenta creando tus materias a mano.</p>
+    <div class="panel">
+      <div class="field">
+        <p class="lbl"><span class="n">1</span> Nombre del colegio</p>
+        <input id="solColegio" type="text" placeholder="U.E. ..." autocomplete="off" style="margin-bottom:12px" />
+        <p class="lbl"><span class="n">2</span> Ciudad y estado</p>
+        <input id="solCiudad" type="text" placeholder="Ciudad" autocomplete="off" style="margin-bottom:8px" />
+        <input id="solEstado" type="text" placeholder="Estado" autocomplete="off" style="margin-bottom:12px" />
+        <p class="lbl"><span class="n">3</span> ¿Tiene aula virtual?</p>
+        <select id="solTieneAula" class="selNat" style="margin-bottom:12px">
+          <option value="">No sé</option>
+          <option value="si">Sí, tiene aula virtual</option>
+          <option value="no">No tiene aula virtual</option>
+        </select>
+        <p class="lbl"><span class="n">4</span> Link del aula <span class="lblOpt">(si lo sabés)</span></p>
+        <input id="solUrl" type="text" placeholder="https://aula.tucolegio.edu.ve" autocomplete="off" inputmode="url" autocapitalize="none" style="margin-bottom:12px" />
+        <p class="lbl"><span class="n">5</span> Cómo contactarte <span class="lblOpt">(opcional)</span></p>
+        <input id="solContacto" type="text" placeholder="Tu nombre y WhatsApp o correo" autocomplete="off" />
+      </div>
+      <button class="go" id="btnEnviarSolicitud" style="margin-top:16px">Enviar solicitud</button>
+      <div id="solMsg"></div>
+    </div>
   </section>
 
   <section id="vRegistro" class="hidden">
@@ -427,10 +456,12 @@
         <div class="labTabs">
           <button id="labTabUsuarios" class="labTab on">👥 Usuarios</button>
           <button id="labTabColegios" class="labTab">🏫 Colegios</button>
+          <button id="labTabSolicitudes" class="labTab">📩 Solicitudes</button>
         </div>
       </header>
       <div id="labBody"></div>
       <div id="labColegios" class="hidden"></div>
+      <div id="labSolicitudes" class="hidden"></div>
     </div>
   </section>
 

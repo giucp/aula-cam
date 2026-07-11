@@ -104,7 +104,7 @@
     $("#vLanding").classList.add("hidden");
     $("#vLogin").classList.add("hidden");
     $("#vPendiente").classList.add("hidden");
-    ["#vBeta","#vRegistro","#vRescate","#vLoginNat","#vRecuperar"].forEach(id=>{const e=$(id); if(e) e.classList.add("hidden");});
+    ["#vBeta","#vRegistro","#vRescate","#vLoginNat","#vRecuperar","#vSolicitud"].forEach(id=>{const e=$(id); if(e) e.classList.add("hidden");});
     $("#vHome").classList.remove("hidden");
     // Familia (token Moodle) y el muro por grado del aula no aplican a cuentas nativas (aún → F5)
     const nativa=!!(SESION && SESION.fuente==="manual");
@@ -775,8 +775,9 @@
   $("#btnVolverLanding").onclick = ()=>{ $("#user").value=""; $("#pass").value=""; verLanding(); };
 
   // ═══════════ CUENTA PROPIA (nativa, beta con ?beta=1) — via api/cuenta ═══════════
-  function ocultarBeta(){ ["#vBeta","#vRegistro","#vRescate","#vLoginNat","#vRecuperar"].forEach(id=>{const e=$(id); if(e) e.classList.add("hidden");}); }
+  function ocultarBeta(){ ["#vBeta","#vRegistro","#vRescate","#vLoginNat","#vRecuperar","#vSolicitud"].forEach(id=>{const e=$(id); if(e) e.classList.add("hidden");}); }
   function verBeta(){ ocultarVistas(); ocultarBeta(); $("#vBeta").classList.remove("hidden"); window.scrollTo({top:0}); }
+  function verSolicitud(){ ocultarVistas(); ocultarBeta(); const m=$("#solMsg"); if(m) m.innerHTML=""; $("#vSolicitud").classList.remove("hidden"); window.scrollTo({top:0}); }
   function verRegistro(){ ocultarVistas(); ocultarBeta(); $("#regMsg").innerHTML=""; $("#vRegistro").classList.remove("hidden"); window.scrollTo({top:0}); }
   function verLoginNat(){ ocultarVistas(); ocultarBeta(); $("#natMsg").innerHTML=""; $("#vLoginNat").classList.remove("hidden"); window.scrollTo({top:0}); }
   function verRecuperar(){ ocultarVistas(); ocultarBeta(); $("#recMsg").innerHTML=""; $("#vRecuperar").classList.remove("hidden"); window.scrollTo({top:0}); }
@@ -812,6 +813,29 @@
       RESCATE_SIGUE=entrarHome;
       verRescate(d.codigoRescate);
     }catch(e){ msg.innerHTML=errBox("No pudimos crear la cuenta. Revisá tu internet."); }
+    finally{ btn.disabled=false; btn.textContent=t; }
+  }
+
+  // F3: enviar una solicitud "agreguen mi colegio" (público; api/cuenta accion solicitar_colegio)
+  async function enviarSolicitud(){
+    const colegio=$("#solColegio").value.trim(), msg=$("#solMsg");
+    if(!colegio){ msg.innerHTML=errBox("Escribí el nombre de tu colegio."); return; }
+    const tv=$("#solTieneAula").value;
+    const cuerpo={
+      accion:"solicitar_colegio", colegio,
+      ciudad:$("#solCiudad").value.trim(), estado:$("#solEstado").value.trim(),
+      tiene_aula: tv==="si" ? true : (tv==="no" ? false : null),
+      moodle_url:$("#solUrl").value.trim(), contacto:$("#solContacto").value.trim(),
+      token:(SESION&&SESION.token)||null
+    };
+    const btn=$("#btnEnviarSolicitud"); btn.disabled=true; const t=btn.textContent; btn.textContent="Enviando…"; msg.innerHTML="";
+    try{
+      const r=await fetch(API_CUENTA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(cuerpo)});
+      const d=await r.json();
+      if(!d.ok){ msg.innerHTML=errBox(d.error||"No se pudo enviar la solicitud."); return; }
+      $("#solColegio").value=$("#solCiudad").value=$("#solEstado").value=$("#solUrl").value=$("#solContacto").value=""; $("#solTieneAula").value="";
+      msg.innerHTML=`<div class="aviso"><span class="ico">✅</span><div>¡Gracias! Recibimos tu colegio. Lo revisamos y, si tiene aula virtual, lo conectamos pronto.</div></div>`;
+    }catch(e){ msg.innerHTML=errBox("No pudimos enviar la solicitud. Revisá tu internet."); }
     finally{ btn.disabled=false; btn.textContent=t; }
   }
 
@@ -871,6 +895,9 @@
   $("#btnIrRegistro") && ($("#btnIrRegistro").onclick=verRegistro);
   $("#btnIrLoginNat") && ($("#btnIrLoginNat").onclick=verLoginNat);
   $("#btnIrMoodle") && ($("#btnIrMoodle").onclick=()=>{ $("#loginMsg").innerHTML=""; verLogin(); });
+  $("#btnIrSolicitud") && ($("#btnIrSolicitud").onclick=verSolicitud);
+  $("#btnSolVolver") && ($("#btnSolVolver").onclick=verBeta);
+  $("#btnEnviarSolicitud") && ($("#btnEnviarSolicitud").onclick=enviarSolicitud);
   $("#btnRegVolver") && ($("#btnRegVolver").onclick=verBeta);
   $("#btnRegistrar") && ($("#btnRegistrar").onclick=hacerRegistro);
   $("#btnRescateSeguir") && ($("#btnRescateSeguir").onclick=()=>{ const f=RESCATE_SIGUE; RESCATE_SIGUE=null; (f||verBeta)(); });
@@ -2374,9 +2401,7 @@
       if(!r.ok){ $("#labErr").classList.remove("hidden"); return; }
       LAB_CLAVE=clave;
       $("#labLogin").classList.add("hidden"); $("#labApp").classList.remove("hidden");
-      $("#labTabUsuarios").classList.add("on"); $("#labTabColegios").classList.remove("on");
-      $("#labBody").classList.remove("hidden"); $("#labColegios").classList.add("hidden");
-      labCargarUsuarios();
+      labTab("usuarios");
     }catch(_){ $("#labErr").classList.remove("hidden"); }
     finally{ btn.disabled=false; }
   }
@@ -2465,14 +2490,17 @@
   }
 
   // ───────── panel de COLEGIOS (alta/edición de aulas virtuales) ─────────
-  let LAB_COLEGIOS=[];
+  let LAB_COLEGIOS=[], LAB_SOLICITUDES=[];
   function labTab(which){
-    const uOn=which==="usuarios";
-    $("#labTabUsuarios").classList.toggle("on",uOn);
-    $("#labTabColegios").classList.toggle("on",!uOn);
-    $("#labBody").classList.toggle("hidden",!uOn);
-    $("#labColegios").classList.toggle("hidden",uOn);
-    if(!uOn) labCargarColegios();
+    const tabs={usuarios:"#labTabUsuarios",colegios:"#labTabColegios",solicitudes:"#labTabSolicitudes"};
+    const panes={usuarios:"#labBody",colegios:"#labColegios",solicitudes:"#labSolicitudes"};
+    Object.keys(tabs).forEach(k=>{
+      const tb=$(tabs[k]); if(tb) tb.classList.toggle("on",k===which);
+      const pn=$(panes[k]); if(pn) pn.classList.toggle("hidden",k!==which);
+    });
+    if(which==="usuarios") labCargarUsuarios();
+    else if(which==="colegios") labCargarColegios();
+    else if(which==="solicitudes") labCargarSolicitudes();
   }
   async function labCargarColegios(){
     const cont=$("#labColegios"); cont.innerHTML=`<p class="labLoad">Cargando…</p>`;
@@ -2583,10 +2611,74 @@
     };
   }
 
+  // ───────── panel de SOLICITUDES (F3: "agreguen mi colegio") ─────────
+  async function labCargarSolicitudes(){
+    const cont=$("#labSolicitudes"); cont.innerHTML=`<p class="labLoad">Cargando…</p>`;
+    try{
+      const r=await fetch(API_LAB,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"solicitudes",clave:LAB_CLAVE})});
+      if(r.status===401){ LAB_CLAVE=""; entrarLab(); return; }
+      const d=await r.json(); LAB_SOLICITUDES=Array.isArray(d.solicitudes)?d.solicitudes:[]; labPintarSolicitudes();
+    }catch(_){ cont.innerHTML=errBox("No se pudieron cargar las solicitudes. Reintenta."); }
+  }
+  function labPintarSolicitudes(){
+    const cont=$("#labSolicitudes"); cont.innerHTML="";
+    const pend=LAB_SOLICITUDES.filter(s=>!s.atendida).length;
+    const head=document.createElement("p"); head.className="labNota";
+    head.textContent=`${LAB_SOLICITUDES.length} solicitud(es) · ${pend} sin atender`;
+    cont.appendChild(head);
+    if(!LAB_SOLICITUDES.length){ const e=document.createElement("div"); e.className="empty"; e.textContent="Todavía no hay solicitudes de colegio."; cont.appendChild(e); return; }
+    // sin atender primero, luego por fecha desc
+    LAB_SOLICITUDES.slice().sort((a,b)=>(a.atendida?1:0)-(b.atendida?1:0)).forEach(s=>cont.appendChild(labCardSolicitud(s)));
+  }
+  function labCardSolicitud(s){
+    const card=document.createElement("div"); card.className="labUser"+(s.atendida?"":" pend");
+    const top=document.createElement("div"); top.className="labUserTop";
+    const aula = s.tiene_aula===true?"🖥️ con aula":(s.tiene_aula===false?"sin aula":"aula ?");
+    top.innerHTML=`<span class="labUserInfo"><span class="labUserNom">${escapeHtml(s.colegio||"(sin nombre)")}</span>`
+      +`<span class="labUserMeta">${escapeHtml([s.ciudad,s.estado].filter(Boolean).join(", ")||"—")} · ${labFecha(s.creado)}</span></span>`
+      +`<span class="labUserGrado${s.tiene_aula==null?" sin":""}">${escapeHtml(aula)}</span>`;
+    card.appendChild(top);
+    const det=[];
+    if(s.moodle_url) det.push(`Aula: ${escapeHtml(s.moodle_url)}`);
+    if(s.contacto)   det.push(`Contacto: ${escapeHtml(s.contacto)}`);
+    if(s.nota)       det.push(escapeHtml(s.nota));
+    if(s.origen_uid) det.push(`(de la cuenta id ${s.origen_uid})`);
+    if(det.length){ const p=document.createElement("p"); p.className="labUserMeta"; p.style.padding="0 14px 4px"; p.innerHTML=det.join("<br>"); card.appendChild(p); }
+    const row=document.createElement("div"); row.className="labUserRow";
+    const at=document.createElement("button"); at.className="labToggle"+(s.atendida?" si":" no");
+    at.textContent=s.atendida?"✅ Atendida":"⬜ Marcar atendida";
+    at.onclick=()=>labSolicitudSet(s,{atendida:!s.atendida},card);
+    const del=document.createElement("button"); del.className="labToggle small no"; del.textContent="🗑 Borrar";
+    del.onclick=()=>{ if(confirm("¿Borrar esta solicitud?")) labSolicitudBorrar(s,card); };
+    row.appendChild(at); row.appendChild(del); card.appendChild(row);
+    return card;
+  }
+  async function labSolicitudSet(s,campos,card){
+    card.classList.add("saving");
+    try{
+      const r=await fetch(API_LAB,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"solicitud_atender",clave:LAB_CLAVE,id:s.id,atendida:campos.atendida})});
+      if(r.status===401){ LAB_CLAVE=""; entrarLab(); return; }
+      const d=await r.json();
+      if(d&&d.ok){ Object.assign(s,campos); card.replaceWith(labCardSolicitud(s)); }
+      else{ card.classList.remove("saving"); alert("No se pudo guardar. Reintenta."); }
+    }catch(_){ card.classList.remove("saving"); alert("Error de red. Reintenta."); }
+  }
+  async function labSolicitudBorrar(s,card){
+    card.classList.add("saving");
+    try{
+      const r=await fetch(API_LAB,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"solicitud_borrar",clave:LAB_CLAVE,id:s.id})});
+      if(r.status===401){ LAB_CLAVE=""; entrarLab(); return; }
+      const d=await r.json();
+      if(d&&d.ok){ LAB_SOLICITUDES=LAB_SOLICITUDES.filter(x=>x.id!==s.id); labPintarSolicitudes(); }
+      else{ card.classList.remove("saving"); alert("No se pudo borrar. Reintenta."); }
+    }catch(_){ card.classList.remove("saving"); alert("Error de red. Reintenta."); }
+  }
+
   $("#labEntrar").onclick=labLogin;
   $("#labClave").addEventListener("keydown",(e)=>{ if(e.key==="Enter") labLogin(); });
   $("#labTabUsuarios").onclick=()=>labTab("usuarios");
   $("#labTabColegios").onclick=()=>labTab("colegios");
+  $("#labTabSolicitudes") && ($("#labTabSolicitudes").onclick=()=>labTab("solicitudes"));
   window.addEventListener("hashchange",()=>{ if(location.hash==="#lab" && !MODO_LAB) entrarLab(); });
 
   // ───────── arranque (al final: todas las consts/funciones ya están definidas) ─────────
