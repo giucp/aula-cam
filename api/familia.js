@@ -1,9 +1,9 @@
 // api/familia.js — Panel de familia (padres): acceso de SOLO LECTURA a lo que hizo un niño.
 //
 // Modelo de vinculación (como emparejar un control con la tele):
-//   1) El niño (logueado en su aula) genera una invitación → accion "invitar", autenticado
-//      con su token de Moodle (así solo puede invitar PARA SÍ MISMO; no se puede forjar un
-//      usuario_id ajeno). Devuelve un código corto + un link.
+//   1) El niño (logueado) genera una invitación → accion "invitar", autenticado con SU token
+//      (aula Moodle O cuenta nativa Chispa/Camino B; ver useridDeNino) → solo puede invitar PARA
+//      SÍ MISMO; no se puede forjar un usuario_id ajeno. Devuelve un código corto + un link.
 //   2) El padre abre el link (familia.html?c=CODIGO) → accion "canjear" cambia el código por
 //      un TOKEN persistente que el dispositivo del padre guarda. El código se borra (1 solo uso).
 //   3) De ahí en más el padre ve el panel → accion "panel" (con su token), sin depender del niño.
@@ -50,6 +50,33 @@ async function useridDeToken(token) {
   } catch (e) { return null; }
 }
 
+// ── CUENTA NATIVA (Chispa Universal, Camino B): el niño no tiene token de Moodle sino un token
+// de sesión HMAC-firmado por api/cuenta.js (payload "uid.iat" + firma). Lo validamos igual que allá
+// (misma clave derivada del service key / AUTH_SECRET) para sacar su usuario_id, SIN tocar la red.
+function authKeyNativa() {
+  const base = process.env.AUTH_SECRET || process.env.SUPABASE_SERVICE_KEY || "chispa-dev";
+  return crypto.createHash("sha256").update(base + "|chispa-auth-v1").digest();
+}
+function uidDeTokenNativo(token) {
+  if (typeof token !== "string") return null;
+  const p = token.split(".");
+  if (p.length !== 3) return null;
+  const payload = `${p[0]}.${p[1]}`;
+  const esperado = crypto.createHmac("sha256", authKeyNativa()).update(payload).digest("base64url");
+  const a = Buffer.from(p[2]), b = Buffer.from(esperado);
+  if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) return null;
+  if (Date.now() / 1000 - Number(p[1]) > 365 * 24 * 3600) return null; // 1 año
+  const id = Number(p[0]);
+  return Number.isInteger(id) ? id : null;
+}
+// Resuelve el usuario_id del niño desde SU token, sea cuenta nativa (Camino B) o aula Moodle.
+// Prueba primero el token nativo (HMAC local, sin red); si no valida, cae al token de Moodle.
+async function useridDeNino(token) {
+  const nat = uidDeTokenNativo(token);
+  if (nat != null) return nat;
+  return await useridDeToken(token);
+}
+
 const ALFA = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // sin 0/O/1/I: legible y sin ambigüedad
 function codigoCorto(n = 8) {
   const b = crypto.randomBytes(n); let s = "";
@@ -75,7 +102,7 @@ export default async function handler(req, res) {
   try {
     // ── NIÑO: genera una invitación (código corto, válido 24 h, 1 solo uso) ──
     if (accion === "invitar") {
-      const uid = await useridDeToken(b.token);
+      const uid = await useridDeNino(b.token);
       if (!uid) return res.status(401).json({ error: "Sesión inválida" });
       // higiene: borrar invitaciones vencidas de este niño (filas con code y sin token = invitación)
       fetch(`${cfg.url}/rest/v1/familia_vinculos?usuario_id=eq.${uid}&token=is.null&code_expira=lt.${encodeURIComponent(new Date().toISOString())}`, { method: "DELETE", headers: hdr(cfg) }).catch(() => {});
@@ -93,7 +120,7 @@ export default async function handler(req, res) {
 
     // ── NIÑO: lista sus accesos otorgados (para verlos / revocarlos) ──
     if (accion === "vinculos") {
-      const uid = await useridDeToken(b.token);
+      const uid = await useridDeNino(b.token);
       if (!uid) return res.status(401).json({ error: "Sesión inválida" });
       const rows = await sbGet(cfg, `familia_vinculos?usuario_id=eq.${uid}&order=creado.desc&select=id,alias,activo,creado,ultimo_acceso,token,code,code_expira`);
       const vinculos = (Array.isArray(rows) ? rows : []).map((v) => ({
@@ -105,7 +132,7 @@ export default async function handler(req, res) {
 
     // ── NIÑO: revoca un acceso propio ──
     if (accion === "revocar") {
-      const uid = await useridDeToken(b.token);
+      const uid = await useridDeNino(b.token);
       if (!uid) return res.status(401).json({ error: "Sesión inválida" });
       const id = parseInt(b.id, 10);
       if (!id) return res.status(400).json({ error: "Falta id" });

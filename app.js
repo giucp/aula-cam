@@ -106,9 +106,11 @@
     $("#vPendiente").classList.add("hidden");
     ["#vBeta","#vRegistro","#vRescate","#vLoginNat","#vRecuperar","#vSolicitud"].forEach(id=>{const e=$(id); if(e) e.classList.add("hidden");});
     $("#vHome").classList.remove("hidden");
-    // Familia (token Moodle) y el muro por grado del aula no aplican a cuentas nativas (aún → F5)
+    // Familia YA funciona para cuentas nativas (Camino B): el niño invita con su token de Chispa y
+    // api/familia lo valida (useridDeNino). El muro social sigue siendo por grado del aula → oculto
+    // para nativas hasta F5.2 (segmentar por colegio+grado; decisión de producto pendiente).
     const nativa=!!(SESION && SESION.fuente==="manual");
-    const wfam=$("#familiaWrap"); if(wfam) wfam.classList.toggle("hidden", nativa);
+    const wfam=$("#familiaWrap"); if(wfam) wfam.classList.remove("hidden");
     const bmuro=[...document.querySelectorAll("#navbar .navBtn")].find(b=>b.dataset.tab==="muro");
     if(bmuro) bmuro.classList.toggle("hidden", nativa);
     origen = "actual";
