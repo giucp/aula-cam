@@ -155,9 +155,12 @@ export default async function handler(req, res) {
         body: JSON.stringify({ ultimo_acceso: new Date().toISOString() }),
       }).catch(() => {});
 
-      const [perfilR, actividad, notas, tareas, horario, errores, reportes] = await Promise.all([
+      const [perfilR, actividad, cumbre, notas, tareas, horario, errores, reportes] = await Promise.all([
         sbGet(cfg, `usuarios?id=eq.${uid}&select=nombre,grado,racha_dias,ultimo_acceso,accesos,ia_gasto_dia_usd,ia_limite_dia_usd,ia_ilimitado,ia_dia,reportes_ia_dia`),
         sbGet(cfg, `actividad?usuario_id=eq.${uid}&select=materia,tema,modo,aciertos,total,creado&order=creado.desc&limit=300`),
+        // Cumbre ("adelanta en vacaciones") se guarda aparte en cumbre_notas → se mezcla acá para
+        // que el panel de padres también muestre la actividad de Cumbre con su nota.
+        sbGet(cfg, `cumbre_notas?usuario_id=eq.${uid}&select=materia,tema,aciertos,total,creado&order=creado.desc&limit=100`),
         sbGet(cfg, `notas?usuario_id=eq.${uid}&select=materia,descripcion,nota,fecha,creado&order=fecha.desc.nullslast,id.desc`),
         sbGet(cfg, `tareas?usuario_id=eq.${uid}&select=materia,descripcion,tipo,fecha,hecha,creado&order=hecha.asc,fecha.asc.nullslast,id.desc&limit=200`),
         sbGet(cfg, `horario?usuario_id=eq.${uid}&select=dia,materia,orden&order=dia.asc,orden.asc`),
@@ -165,9 +168,18 @@ export default async function handler(req, res) {
         sbGet(cfg, `reportes_contenido?usuario_id=eq.${uid}&select=materia,tema,modo,creado&order=creado.desc&limit=50`),
       ]);
       const perfil = (Array.isArray(perfilR) && perfilR[0]) || {};
+      // fusionar actividad del aula + Cumbre (misma forma: materia/tema/modo/aciertos/total/creado)
+      const actArr = Array.isArray(actividad) ? actividad.slice() : [];
+      if (Array.isArray(cumbre)) {
+        for (const c of cumbre) actArr.push({
+          materia: `Cumbre · ${c.materia || ""}`.trim(), tema: c.tema, modo: "quiz",
+          aciertos: c.aciertos, total: c.total, creado: c.creado, cumbre: true,
+        });
+      }
+      actArr.sort((a, b) => new Date(b.creado || 0) - new Date(a.creado || 0));
       return res.status(200).json({
         ok: true, perfil,
-        actividad: Array.isArray(actividad) ? actividad : [],
+        actividad: actArr,
         notas: Array.isArray(notas) ? notas : [],
         tareas: Array.isArray(tareas) ? tareas : [],
         horario: Array.isArray(horario) ? horario : [],
