@@ -38,6 +38,14 @@ create sequence if not exists public.usuarios_nativos_seq start with 1000000;
 -- pass_hash: hash scrypt de la contraseña (formato "scrypt$<salt hex>$<hash hex>"). Lo usa api/cuenta.js.
 alter table public.usuarios add column if not exists pass_hash text;
 
+-- ───────── onboarding (F4, migración usuarios_onboarding_f4) ─────────
+-- onboarding: ¿el niño ya vio el tutorial de bienvenida? Solo aplica a cuentas nativas (Camino B);
+-- las cuentas de aula lo ignoran. Se marca true vía api/cuenta accion "onboarding_visto". Las filas
+-- existentes se backfillearon a true (preceden al onboarding). Persistir por usuario (no localStorage)
+-- evita que el tutorial se repita al cambiar de aparato (lección del tutorial de Sinapsis).
+alter table public.usuarios add column if not exists onboarding boolean not null default false;
+-- update public.usuarios set onboarding = true;  -- (backfill ya aplicado en la migración)
+
 -- Crea una cuenta NATIVA (no-Moodle) de forma atómica: id de usuarios_nativos_seq + insert.
 -- Devuelve el id nuevo, o NULL si el usuario ya existe (unique_violation sobre lower(usuario)).
 create or replace function public.crear_cuenta_nativa(

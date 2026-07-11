@@ -270,7 +270,7 @@ Ajustes a tablas existentes: `muro` gana `colegio_id` (nullable); `familia_vincu
 - [ ] F1: Supabase Auth + tabla colegios + registro/login propio + Moodle como conector + migrar a las 2 niñas + Familia autentica con sesión
 - [ ] F2: apuntes (fotos+texto) → Gemini vision → temas → generar resumen/quiz/práctica en modo manual + materias manuales
 - [x] F3: conector Moodle multi-colegio ✅ + alta de colegios en #lab ✅ + solicitud "agreguen mi colegio" ✅ (commit cb213b9)
-- [ ] F4: onboarding bifurcado + estados vacíos que enseñan + guía de padres (persistido en BD)
+- [~] F4: onboarding nativo (Camino B) persistido en BD ✅ (commit 02265d0) · guía de padres en Familia → difer. a F5
 - [ ] F5: Familia con hijos manuales + muro por colegio+grado + limpieza cron pendiente
 - [ ] F6: rate-limits, alertas de gasto, privacidad de menores, advisors, índices
 - [ ] F7: beta cerrada → métricas → 2º colegio → registro abierto + dominio propio
