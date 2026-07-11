@@ -342,6 +342,21 @@ async function presupuestoIA(usuarioId) {
     return { permitido: true, ilimitado: true, reportesHoy: 0 };
   }
 }
+// Tier de la cuenta (gate premium). Solo las cuentas NATIVAS gratis quedan fuera de la generación
+// (IA/Cumbre/curado); las de aula (Moodle) son plan='premium'. Fail-open: sin cfg/id/fila o error →
+// null (no bloquea) para nunca cortar por un hipo.
+async function planDe(usuarioId) {
+  const cfg = supabaseCfg();
+  if (!cfg || usuarioId == null) return null;
+  try {
+    const r = await fetch(`${cfg.url}/rest/v1/usuarios?id=eq.${encodeURIComponent(usuarioId)}&select=plan`,
+      { headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}` } });
+    if (!r.ok) return null;
+    const rows = await r.json();
+    const u = Array.isArray(rows) && rows[0];
+    return u ? (u.plan || null) : null;
+  } catch (e) { return null; }
+}
 // Estado de IA para el front (batería): sin dinero crudo, solo lo necesario para el gauge.
 // `add` = costo (USD) de la generación recién hecha, para reflejar el gasto ya actualizado.
 function iaEstado(presu, add) {
@@ -639,6 +654,12 @@ export default async function handler(req, res) {
     if (!tema) return res.status(400).json({ error: "Falta el campo 'tema'" });
     // Para el límite de gasto de IA por alumno (lo manda el front, igual que en errores/actividad).
     const usuarioId = req.body && req.body.usuario_id != null ? req.body.usuario_id : null;
+
+    // Gate de tier: la cuenta GRATIS (nativa sin premium) no accede a generación premium
+    // (IA, Cumbre, curado). Las cuentas de aula (Moodle) son premium → pasan. Fail-open.
+    if (usuarioId != null && (await planDe(usuarioId)) === "gratis") {
+      return res.status(403).json({ error: "Esta es una función premium de Chispa.", premium: true });
+    }
 
     const { gratis, pagas } = geminiKeys();
     if (!gratis.length && !pagas.length) return res.status(500).json({ error: "Falta GEMINI_API_KEY en Vercel" });
