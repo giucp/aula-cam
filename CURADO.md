@@ -128,6 +128,12 @@ ambiguo de la regla de signos ("un negativo, impar" sin aclarar que se cuentan l
 ### Fase 3 — DESPUÉS de escribir (verificación mecánica, no opcional)
 - [ ] **Estructura**: pasar cada banco por `filasDeBanco` (o `cargar-curado.mjs --solo=`)
       → 4/4 modos válidos, claves normalizadas correctas, sin avisos.
+- [ ] **Barajar la posición de la `correcta`** (la app NO baraja opciones → los redactores tienden a
+      apilar la correcta en una posición): redistribuir balanceado antes de subir. ⚠️ DOS TRAMPAS (pagadas
+      2026-07-12): (1) NO barajar preguntas cuyas OPCIONES referencian posición ("todas las anteriores",
+      "A y C", "ninguna"); (2) si una EXPLICACIÓN referencia la opción por LETRA ("el error de la opción B
+      es sumar…"), barajar la desincroniza → o no barajar ese ítem, o reescribir la explicación para que
+      cite el CONTENIDO/el error concreto, no la letra. Grep post-barajado: `opci[oó]n [a-d]`, `la [a-d]\)`.
 - [ ] **Matemática por script**: recomputar TODA la aritmética verificable (productos,
       signos, %, fracciones de cantidad, ecuaciones, valor numérico) comparando contra la
       respuesta escrita. Los ítems que el script no pueda parsear se listan y se verifican
