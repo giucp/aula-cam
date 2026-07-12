@@ -17,12 +17,19 @@
 import crypto from "node:crypto";
 import { normCurado } from "../herramientas/normcurado.mjs";
 
-// Modelo por modo: ejercicios (retos/quiz) con el flash completo (mejor en
-// matemática); resumen/examen con flash-lite (más rápido y barato).
-const MODEL_EJERCICIOS = "gemini-2.5-flash";
-const MODEL_TEXTO = "gemini-2.5-flash-lite";
+// Modelo por modo: ejercicios (retos/quiz) con el flash completo (mejor en matemática);
+// resumen/examen con flash-lite (más rápido y barato). CONFIGURABLE por env (para poder
+// flipear/revertir en Vercel sin re-deploy). Defaults = modelos 3.x (2026-07); si el flash 3.x
+// falla/satura, MODEL_EJERCICIOS_FB (flash 2.5, estable) queda de respaldo automático en la
+// cadena de modelos — ambos son "flash", así que la regla "nunca lite en numérico" se respeta.
+const MODEL_EJERCICIOS = process.env.GEMINI_MODEL_FLASH || "gemini-3.5-flash";
+const MODEL_EJERCICIOS_FB = process.env.GEMINI_MODEL_FLASH_FB || "gemini-2.5-flash";
+const MODEL_TEXTO = process.env.GEMINI_MODEL_LITE || "gemini-3.1-flash-lite";
+// cadena flash (preferido → respaldo), sin duplicar si ambos coinciden (p.ej. si se revierte por env)
+const FLASH_CHAIN = MODEL_EJERCICIOS_FB && MODEL_EJERCICIOS_FB !== MODEL_EJERCICIOS
+  ? [MODEL_EJERCICIOS, MODEL_EJERCICIOS_FB] : [MODEL_EJERCICIOS];
 // Regeneración de UN ítem reportado como incorrecto: se prioriza calidad sobre costo/velocidad.
-const MODEL_REPORTE = "gemini-2.5-pro";
+const MODEL_REPORTE = process.env.GEMINI_MODEL_REPORTE || "gemini-2.5-pro";
 const MAX_PDFS = 3;                       // cuántos PDFs leer por generación
 const MAX_PDF_BYTES = 8 * 1024 * 1024;    // por archivo
 const MAX_TOTAL_BYTES = 15 * 1024 * 1024; // suma de todos
@@ -300,6 +307,8 @@ function supabaseCfg() {
 // se les corta. Sin Supabase o sin usuario_id, no se limita (fail-open, como el resto de la app).
 // Precio por 1M de tokens (Gemini 2.5, nivel de pago). Actualizar si Google cambia tarifas.
 const PRECIO_IA = {
+  "gemini-3.5-flash": { in: 1.50, out: 9.00 },
+  "gemini-3.1-flash-lite": { in: 0.25, out: 1.50 },
   "gemini-2.5-flash": { in: 0.30, out: 2.50 },
   "gemini-2.5-flash-lite": { in: 0.10, out: 0.40 },
   "gemini-2.5-pro": { in: 1.25, out: 10.00 },
@@ -810,12 +819,12 @@ export default async function handler(req, res) {
     // gemini-2.5-pro primero (más confiable) con flash de respaldo — si pro se agota o
     // se pasa del tiempo, el niño igual recibe un reemplazo (no un error).
     const modelos = usarProReporte
-      ? [MODEL_REPORTE, MODEL_EJERCICIOS]
+      ? [MODEL_REPORTE, ...FLASH_CHAIN]
       : (numerica || analitica)
-      ? [MODEL_EJERCICIOS] // materia analítica o tema numérico: SOLO flash (nunca lite), en TODOS los modos incl. resumen
+      ? [...FLASH_CHAIN] // materia analítica o tema numérico: SOLO flash (3.5→2.5 de respaldo, nunca lite), en TODOS los modos incl. resumen
       : esPractica
-      ? [MODEL_EJERCICIOS, MODEL_TEXTO] // práctica de teoría: flash primero
-      : [MODEL_TEXTO, MODEL_EJERCICIOS]; // resumen de teoría: lite primero
+      ? [...FLASH_CHAIN, MODEL_TEXTO] // práctica de teoría: flash primero, lite como último recurso
+      : [MODEL_TEXTO, ...FLASH_CHAIN]; // resumen de teoría: lite primero, flash de respaldo
     // Probamos modelos × keys. Ante 429 (cupo) o 503 (saturado) seguimos con la
     // próxima key; agotadas todas, el próximo modelo. ESTRATEGIA DE COSTO: primero
     // TODAS las gratis (arrancando en una al azar, para repartir su cupo de ~20/min
@@ -911,7 +920,12 @@ export default async function handler(req, res) {
     // REPORTE: se cobra a la batería del niño a tarifa FLASH aunque haya corrido Pro —
     // no es justo castigar al alumno por 1 error nuestro/de Gemini. El costo real de Pro
     // lo absorbe el proyecto, acotado por el cap diario (CAP_REPORTE_PRO).
-    const modeloCobro = porReporte ? "gemini-2.5-flash" : modeloUsado;
+    // La batería es un FRENO DE USO calibrado en las tarifas 2.5 (referencia estable): se cobra
+    // por TIER del modelo (flash / flash-lite / pro), no por su versión exacta, para que subir a
+    // modelos 3.x (más caros en lista) NO drene la energía del niño más rápido — el costo real en
+    // key gratis es ~0 y lo que importa es frenar el USO del cupo compartido, no la tarifa de lista.
+    const tierRef = (m) => /lite/i.test(m) ? "gemini-2.5-flash-lite" : /pro/i.test(m) ? "gemini-2.5-pro" : "gemini-2.5-flash";
+    const modeloCobro = porReporte ? "gemini-2.5-flash" : tierRef(modeloUsado);
     const costo = costoUSD(modeloCobro, data.usageMetadata);
     await registrarGastoIA(usuarioId, costo);
     // consumió un cupo Pro de reporte de HOY → suma al contador diario (para el cap)
