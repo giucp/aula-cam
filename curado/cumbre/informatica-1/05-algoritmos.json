@@ -1,0 +1,336 @@
+{
+  "programa": "cumbre",
+  "materia": "Informática",
+  "grado": "Cumbre Informática 1er año",
+  "dominio": "Pensamiento computacional",
+  "tema": "Algoritmos: una receta paso a paso que siempre funciona",
+  "referencias": [
+    "UK Computing Key Stage 3 — Algorithms: secuencia, selección (if) e iteración (loop/repeat), el cuarto pilar del pensamiento computacional",
+    "CSTA K-12 Computer Science Standards (grades 6-8) — Algorithms & Programming: comparar algoritmos distintos que resuelven el mismo problema según corrección y eficiencia",
+    "K-12 Computer Science Framework — Practice 4/5: usar pseudocódigo y diagramas de flujo para representar un algoritmo antes de programarlo",
+    "CS Unplugged / Bebras — actividades de seguir y depurar (trace/debug) algoritmos sin computadora"
+  ],
+  "resumen": {
+    "titulo": "Algoritmos: una receta paso a paso que siempre funciona",
+    "intro": "Ya sabes descomponer un problema grande en partes más chicas, reconocer los patrones que se repiten entre casos distintos y abstraer para quedarte solo con lo esencial. Ahora llega la pieza que junta a las tres anteriores en una sola herramienta: el algoritmo. Un algoritmo es, ni más ni menos, una receta paso a paso que resuelve un problema SIEMPRE que la sigas correctamente: no una receta que a veces funciona y a veces no, sino una que garantiza el resultado cada vez, para cualquier caso válido, no solo para el ejemplo que probaste una vez. Diseñar buenos algoritmos —y saber leer, seguir, comparar y corregir los de otros— es el cuarto y último pilar del pensamiento computacional, y la puerta de entrada a programar de verdad.",
+    "secciones": [
+      {
+        "titulo": "¿Qué es exactamente un algoritmo?",
+        "explicacion": "Piensa en cómo le explicarías a alguien que jamás ha hecho un sándwich de queso, paso a paso, sin dar nada por sentado: saca dos rebanadas de pan, unta mantequilla si quieres, coloca el queso, cierra el sándwich, córtalo por la mitad. Si esas instrucciones son lo bastante claras, cualquier persona que las siga —sin haberte visto hacerlo nunca— termina con un sándwich igual de bien hecho. Eso es un ALGORITMO: una secuencia FINITA de pasos, cada uno preciso y sin ambigüedad, que resuelve un problema concreto. 'Secuencia' significa que los pasos van en un ORDEN determinado (no es lo mismo cortar el sándwich antes de armarlo que después); 'finita' significa que el algoritmo TERMINA en algún momento, no sigue para siempre; y 'sin ambigüedad' significa que cada paso se puede entender de una sola manera, sin dudas sobre qué hacer. Un algoritmo parte de una ENTRADA (los datos con los que arranca: el pan, el queso, la mantequilla) y produce una SALIDA (el resultado: el sándwich terminado).",
+        "pasos": [
+          "¿Los pasos van en un orden claro (secuencia)?",
+          "¿Cada paso dice EXACTAMENTE qué hacer, sin dejar dudas (preciso)?",
+          "¿El proceso termina después de una cantidad de pasos (finito), o podría seguir para siempre?",
+          "¿Hay una entrada clara (con qué arranca) y una salida clara (qué resultado entrega)?"
+        ],
+        "ejemplo": "La instrucción 'agrégale un poco de sal' no es un algoritmo por sí sola: ¿un poco es cuánto exactamente? Compárala con 'agrega media cucharadita de sal', que sí es precisa. Un algoritmo completo encadena varios pasos precisos como ese, uno después del otro."
+      },
+      {
+        "titulo": "Las cuatro propiedades de un buen algoritmo",
+        "explicacion": "Repasemos con calma las cuatro propiedades que debe cumplir todo algoritmo, porque son justo lo primero que hay que revisar antes de preguntarte si es bueno o malo. PRECISO: cada paso se entiende de una sola forma; 'camina un rato' no es preciso, 'camina 10 pasos' sí. FINITO: el algoritmo debe terminar después de una cantidad de pasos, por más grande que sea; uno que dice 'sigue sumando 1 para siempre, sin parar nunca' no es finito, y por lo tanto no es un algoritmo válido: es un bucle infinito, uno de los errores más comunes al diseñar uno. ENTRADA: los datos con los que el algoritmo arranca (pueden ser números, palabras, una lista); algunos algoritmos casi no necesitan que la persona escriba nada en el momento, pero igual trabajan sobre algún dato de partida. SALIDA: el resultado que el algoritmo entrega al terminar; un algoritmo que hace muchos pasos pero nunca entrega ningún resultado no sirve de nada. Si a un algoritmo le falta una sola de estas cuatro propiedades, ni siquiera está completo.",
+        "pasos": [
+          "Para revisar la PRECISIÓN: busca palabras vagas como 'un poco', 'algo' o 'rápido'; si aparecen, ese paso todavía no es preciso.",
+          "Para revisar que sea FINITO: busca la condición de parada; si ningún paso dice cuándo detenerse, es un bucle infinito, no un algoritmo.",
+          "Para revisar la ENTRADA: identifica con qué dato o datos arranca el algoritmo, aunque sean pocos.",
+          "Para revisar la SALIDA: identifica qué resultado concreto entrega el algoritmo al terminar; si no entrega ninguno, no sirve de nada aunque haga muchos pasos."
+        ],
+        "ejemplo": "'Escribe números pares mientras quieras' no es finito, porque no dice cuándo parar. 'Escribe los primeros 5 números pares' sí lo es: 2, 4, 6, 8, 10, y se detiene ahí."
+      },
+      {
+        "titulo": "Estructuras 1 y 2: secuencia y decisión",
+        "explicacion": "Todo algoritmo se construye combinando solo tres estructuras básicas, y ya conoces la primera sin saberlo: la SECUENCIA, que simplemente significa que los pasos se ejecutan uno después del otro, EN ORDEN. En la receta del sándwich, sacar el pan va antes que colocar el queso, y colocar el queso va antes que cerrar el sándwich; cambiar ese orden (cerrar el sándwich antes de meterle el queso) rompe el algoritmo, aunque los pasos sean 'los mismos'. La segunda estructura es la DECISIÓN (también llamada condicional): un punto del algoritmo donde el camino se abre en dos según se cumpla o no una condición, con la forma 'SI (condición) ENTONCES (haz esto); SI NO (haz esto otro)'. En la receta del sándwich: 'SI tienes mantequilla ENTONCES úntala en el pan; SI NO, sigue directo al queso'. La decisión es lo que le permite a un algoritmo adaptarse a situaciones distintas sin tener que escribir una receta distinta para cada caso.",
+        "pasos": [
+          "Identifica los pasos que SIEMPRE se hacen en el mismo orden: esa es la secuencia.",
+          "Busca los puntos donde el siguiente paso depende de si algo es verdadero o falso: ahí hay una decisión.",
+          "Escribe la decisión con la forma 'SI... ENTONCES...; SI NO...' para que quede sin ambigüedad."
+        ],
+        "ejemplo": "1. Saca dos rebanadas de pan. 2. SI tienes mantequilla, ENTONCES úntala en una rebanada; SI NO, pasa al siguiente paso. 3. Coloca una rebanada de queso sobre el pan. 4. Cierra el sándwich con la otra rebanada. 5. Corta el sándwich por la mitad. Los pasos 1, 3, 4 y 5 son secuencia (orden fijo); el paso 2 es una decisión (depende de si hay mantequilla)."
+      },
+      {
+        "titulo": "Estructura 3: repetición",
+        "explicacion": "La tercera estructura es la REPETICIÓN (también llamada bucle o iteración): un grupo de pasos que se repite varias veces mientras se cumpla una condición, con la forma 'REPITE MIENTRAS (condición): (haz esto)'. Sirve para no tener que escribir el mismo paso una y otra vez a mano. Un ejemplo perfecto es buscar un nombre en una lista de contactos: revisas el primer nombre; si no es el que buscas, pasas al siguiente; si no es, pasas al siguiente… y así, REPITES MIENTRAS no hayas encontrado el nombre Y todavía queden nombres por revisar. En cuanto encuentras el nombre, o se te acaba la lista sin encontrarlo, la repetición se detiene: por eso sigue siendo FINITA, aunque no sepas de antemano cuántas veces se va a repetir exactamente.",
+        "pasos": [
+          "Escribe qué pasos se repiten exactamente igual cada vez.",
+          "Escribe la condición que decide si seguir repitiendo o parar (la condición del 'mientras').",
+          "Verifica que la condición eventualmente se vuelva falsa: si nunca deja de cumplirse, tienes un bucle infinito, no un algoritmo válido."
+        ],
+        "ejemplo": "Buscar 'Pedro' en la lista [Ana, Luis, Marta, Pedro, Sofía]: revisa Ana (no es) → revisa Luis (no es) → revisa Marta (no es) → revisa Pedro (¡sí es!) → detente, lo encontraste en la 4ta posición. Si el nombre buscado no estuviera en la lista, la repetición se detendría igual al llegar al final ('Sofía', última posición) e informaría que no está: así el algoritmo sigue siendo finito incluso cuando no encuentra lo que busca."
+      },
+      {
+        "titulo": "Pseudocódigo y diagrama de flujo: cómo se escribe y se dibuja un algoritmo",
+        "explicacion": "Antes de traducir un algoritmo a un lenguaje de programación real (algo que verás más adelante), conviene escribirlo o dibujarlo de una forma clara e intermedia. El PSEUDOCÓDIGO es escribir el algoritmo en frases cortas y precisas, parecidas al lenguaje de todos los días pero ORDENADAS numéricamente y sin ambigüedad, como se ha venido haciendo en este resumen ('mayor ← a', 'SI b > mayor ENTONCES...'). El DIAGRAMA DE FLUJO hace lo mismo pero de forma visual, con formas que representan cada tipo de paso: un ÓVALO marca dónde empieza y dónde termina el algoritmo; un RECTÁNGULO representa una acción o un paso normal (como 'mayor ← a'); un ROMBO (diamante) representa una decisión, con dos flechas saliendo de él, una para 'Sí' y otra para 'No'; y las FLECHAS conectan las formas mostrando el orden exacto en que se recorre el algoritmo, de arriba hacia abajo. Ambas formas —pseudocódigo y diagrama— describen exactamente el mismo algoritmo; solo cambia si prefieres leerlo como texto o verlo como dibujo.",
+        "pasos": [
+          "Óvalo: inicio o fin del algoritmo.",
+          "Rectángulo: un paso o una acción.",
+          "Rombo (diamante): una decisión, con dos caminos posibles (Sí / No).",
+          "Flechas: el orden en que se recorre el diagrama."
+        ],
+        "ejemplo": "En la siguiente sección vas a ver el pseudocódigo Y el diagrama de flujo del mismo algoritmo (hallar el mayor de tres números), para comprobar que dicen exactamente lo mismo de dos formas distintas."
+      },
+      {
+        "titulo": "Un algoritmo completo: hallar el mayor de tres números",
+        "explicacion": "Vamos a armar, paso a paso, un algoritmo real que usa lo que ya aprendiste. El problema: dados tres números a, b y c, hallar cuál es el más grande. La idea es ir guardando un 'mayor' provisional y actualizarlo cada vez que aparece un número más grande. El pseudocódigo completo es: 1. mayor ← a (empieza suponiendo que el primero es el mayor). 2. SI b > mayor ENTONCES mayor ← b (si el segundo es más grande, lo reemplaza). 3. SI c > mayor ENTONCES mayor ← c (si el tercero es más grande que el mayor actual, lo reemplaza). 4. muestra mayor (el resultado final). Es una secuencia de cuatro pasos con dos decisiones adentro; no necesita ninguna repetición porque siempre son exactamente tres números, ni más ni menos.",
+        "pasos": [
+          "Paso 1: guarda el primer número (a) como el 'mayor' provisional.",
+          "Paso 2: SI el segundo número (b) es mayor que el 'mayor' actual, ENTONCES reemplaza el 'mayor' por b.",
+          "Paso 3: SI el tercer número (c) es mayor que el 'mayor' actual, ENTONCES reemplaza el 'mayor' por c.",
+          "Paso 4: muestra el valor final de 'mayor': ese es el número más grande de los tres."
+        ],
+        "ejemplo": "Con a=7, b=3, c=9: mayor arranca en 7 (paso 1). Paso 2: ¿3 > 7? No, mayor sigue en 7. Paso 3: ¿9 > 7? Sí, mayor pasa a ser 9. Paso 4: se muestra 9, que en efecto es el mayor de los tres. (Comprobación: entre 7, 3 y 9, el mayor es 9 ✓.)",
+        "figura": "<svg viewBox=\"0 0 440 480\" xmlns=\"http://www.w3.org/2000/svg\"><ellipse cx=\"190\" cy=\"22\" rx=\"60\" ry=\"20\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><text x=\"190\" y=\"27\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#3B2B4A\">Inicio: a, b, c</text><line x1=\"190\" y1=\"42\" x2=\"190\" y2=\"62\" stroke=\"#8C7C93\" stroke-width=\"2\"/><rect x=\"130\" y=\"62\" width=\"120\" height=\"38\" rx=\"6\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><text x=\"190\" y=\"86\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">mayor ← a</text><line x1=\"190\" y1=\"100\" x2=\"190\" y2=\"125\" stroke=\"#8C7C93\" stroke-width=\"2\"/><polygon points=\"190,125 260,158 190,191 120,158\" fill=\"none\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><text x=\"190\" y=\"155\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"#3B2B4A\">¿b &gt;</text><text x=\"190\" y=\"168\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"#3B2B4A\">mayor?</text><line x1=\"260\" y1=\"158\" x2=\"300\" y2=\"158\" stroke=\"#8C7C93\" stroke-width=\"2\"/><text x=\"277\" y=\"150\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#5A3AAF\">Sí</text><rect x=\"300\" y=\"139\" width=\"110\" height=\"38\" rx=\"6\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><text x=\"355\" y=\"163\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">mayor ← b</text><line x1=\"355\" y1=\"177\" x2=\"355\" y2=\"225\" stroke=\"#8C7C93\" stroke-width=\"2\"/><line x1=\"355\" y1=\"225\" x2=\"190\" y2=\"225\" stroke=\"#8C7C93\" stroke-width=\"2\"/><line x1=\"190\" y1=\"191\" x2=\"190\" y2=\"225\" stroke=\"#8C7C93\" stroke-width=\"2\"/><text x=\"200\" y=\"210\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#5A3AAF\">No</text><line x1=\"190\" y1=\"225\" x2=\"190\" y2=\"248\" stroke=\"#8C7C93\" stroke-width=\"2\"/><polygon points=\"190,248 260,281 190,314 120,281\" fill=\"none\" stroke=\"#7C4DFF\" stroke-width=\"2\"/><text x=\"190\" y=\"278\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"#3B2B4A\">¿c &gt;</text><text x=\"190\" y=\"291\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"#3B2B4A\">mayor?</text><line x1=\"260\" y1=\"281\" x2=\"300\" y2=\"281\" stroke=\"#8C7C93\" stroke-width=\"2\"/><text x=\"277\" y=\"273\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#5A3AAF\">Sí</text><rect x=\"300\" y=\"262\" width=\"110\" height=\"38\" rx=\"6\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><text x=\"355\" y=\"286\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">mayor ← c</text><line x1=\"355\" y1=\"300\" x2=\"355\" y2=\"348\" stroke=\"#8C7C93\" stroke-width=\"2\"/><line x1=\"355\" y1=\"348\" x2=\"190\" y2=\"348\" stroke=\"#8C7C93\" stroke-width=\"2\"/><line x1=\"190\" y1=\"314\" x2=\"190\" y2=\"348\" stroke=\"#8C7C93\" stroke-width=\"2\"/><text x=\"200\" y=\"333\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#5A3AAF\">No</text><line x1=\"190\" y1=\"348\" x2=\"190\" y2=\"371\" stroke=\"#8C7C93\" stroke-width=\"2\"/><rect x=\"130\" y=\"371\" width=\"120\" height=\"38\" rx=\"6\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><text x=\"190\" y=\"395\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">muestra mayor</text><line x1=\"190\" y1=\"409\" x2=\"190\" y2=\"430\" stroke=\"#8C7C93\" stroke-width=\"2\"/><ellipse cx=\"190\" cy=\"452\" rx=\"55\" ry=\"20\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><text x=\"190\" y=\"457\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">Fin</text></svg>"
+      },
+      {
+        "titulo": "Qué hace que un algoritmo sea BUENO: corrección y eficiencia",
+        "explicacion": "Que un algoritmo 'funcione una vez' no basta para llamarlo bueno; hacen falta dos cosas distintas. La CORRECCIÓN significa que el algoritmo da el resultado correcto para TODOS los casos válidos, no solo para el ejemplo que probaste: la misma idea de resolver el problema GENERAL que ya viste al abstraer, no quedarte atrapado en un solo caso particular. La EFICIENCIA se mide, más o menos, contando cuántos pasos o comparaciones necesita el algoritmo en el PEOR caso posible: con el mismo resultado correcto, menos pasos es más eficiente. Un algoritmo puede ser correcto pero poco eficiente (le sobran pasos), o parecer eficiente pero ser incorrecto (falla justo en algún caso que no probaste); un buen algoritmo necesita las DOS cosas a la vez.",
+        "pasos": [
+          "Para juzgar la corrección, no alcanza con probarlo una vez: hay que probarlo con varios casos distintos, incluyendo casos límite (números iguales, negativos, el mayor en distinta posición).",
+          "Para juzgar la eficiencia, cuenta cuántos pasos o comparaciones necesita el algoritmo en el peor caso posible: menos pasos para el mismo resultado correcto es más eficiente.",
+          "Un algoritmo bueno es correcto Y eficiente a la vez; le falta una de las dos, todavía se puede mejorar."
+        ],
+        "ejemplo": "Compara dos algoritmos para hallar el mayor de tres números. Algoritmo A (el de la sección anterior) siempre hace exactamente 2 comparaciones. Algoritmo B: 'SI a≥b Y a≥c ENTONCES mayor←a; SI NO SI b≥a Y b≥c ENTONCES mayor←b; SI NO mayor←c' hace hasta 4 comparaciones en el peor caso (por ejemplo con a=3, b=9, c=1). Ambos son CORRECTOS: los dos encuentran siempre el número más grande. Pero el Algoritmo A es más EFICIENTE, porque llega al mismo resultado correcto con menos trabajo."
+      },
+      {
+        "titulo": "Errores típicos al diseñar o leer algoritmos",
+        "explicacion": "Cuatro errores aparecen una y otra vez, y conocerlos de antemano evita caer en ellos. AMBIGÜEDAD: un paso que se puede entender de más de una forma ('agrega un poco') deja de ser un algoritmo válido; hay que hacerlo preciso. BUCLE INFINITO: una repetición cuya condición nunca se vuelve falsa nunca termina; hay que revisar que la condición del 'mientras' cambie en cada vuelta. CASOS LÍMITE OLVIDADOS: un algoritmo que solo se probó con un ejemplo típico puede fallar con una lista vacía, números repetidos o negativos; hay que probarlo también con esos casos. Y el cuarto, quizás el más engañoso: confundir 'funcionó en mi prueba' con 'funciona siempre' —un algoritmo es correcto solo si acierta en TODOS los casos válidos, no solo en el que se te ocurrió probar, la misma idea de resolver el problema GENERAL que ya viste al abstraer.",
+        "pasos": [
+          "Ambigüedad: revisa que cada paso se entienda de una sola manera.",
+          "Bucle infinito: revisa que la condición de cada repetición eventualmente se vuelva falsa.",
+          "Casos límite olvidados: prueba con listas vacías, números repetidos, negativos, no solo con el caso típico.",
+          "No confundas 'funcionó una vez' con 'funciona siempre': probar más casos es la única forma de acercarte a estar seguro."
+        ],
+        "ejemplo": "Un algoritmo para hallar el mayor de tres números decía: 1. mayor ← a. 2. SI b > mayor ENTONCES mayor ← a (¡error: debería ser mayor ← b!). 3. SI c > mayor ENTONCES mayor ← c. 4. muestra mayor. Con a=2, b=8, c=5: en el paso 2, como 8>2, el algoritmo reemplaza mayor por 'a' (que sigue siendo 2) en vez de por 'b' (8); en el paso 3, como 5>2, mayor pasa a ser 5. El resultado final es 5, pero el mayor de 2, 8 y 5 es en realidad 8: el algoritmo es incorrecto por ese único paso mal escrito."
+      }
+    ],
+    "idea_clave": "Un algoritmo es una secuencia FINITA de pasos PRECISOS —sin ambigüedad— que parte de una entrada y siempre llega a una salida, combinando solo tres estructuras: secuencia (orden fijo), decisión (SI...ENTONCES...) y repetición (REPITE MIENTRAS...). Un algoritmo es BUENO cuando es CORRECTO (funciona para TODOS los casos válidos, no solo el que probaste) y EFICIENTE (llega al resultado con el menor número de pasos posible). Con esto se cierran los cuatro pilares del pensamiento computacional: descompones el problema en partes, reconoces los patrones que se repiten, abstraes quedándote con lo esencial, y ahora conviertes todo eso en un algoritmo: una receta exacta que cualquiera —o cualquier computadora— puede seguir para llegar siempre al mismo resultado correcto."
+  },
+  "practica": [
+    {
+      "enunciado": "Sigue paso a paso este algoritmo con a=15, b=42, c=8: 1. mayor ← a. 2. SI b > mayor ENTONCES mayor ← b. 3. SI c > mayor ENTONCES mayor ← c. 4. muestra mayor. ¿Qué número muestra al final?",
+      "pista": "Ve paso por paso, actualizando el valor de 'mayor' solo cuando la comparación sea verdadera. No hagas los tres pasos a la vez.",
+      "solucion": "Paso 1: mayor = 15. Paso 2: ¿42 > 15? Sí, entonces mayor = 42. Paso 3: ¿8 > 42? No, mayor sigue en 42. Paso 4: muestra 42. (Comprobación: entre 15, 42 y 8, el mayor es 42 ✓.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un algoritmo para hallar el mayor de tres números dice: 1. mayor ← a. 2. SI b > mayor ENTONCES mayor ← b. 3. SI c > a ENTONCES mayor ← c. 4. muestra mayor. Pruébalo con a=3, b=9, c=5. ¿Qué resultado da, y por qué está mal?",
+      "pista": "Sigue el algoritmo tal como está escrito, sin corregirlo todavía. Fíjate bien contra qué variable se compara c en el paso 3.",
+      "solucion": "Paso 1: mayor = 3. Paso 2: ¿9 > 3? Sí, mayor = 9. Paso 3: el error está aquí: compara c contra a (que sigue siendo 3), no contra el 'mayor' actual (que es 9). ¿5 > 3? Sí, entonces mayor = 5 (se sobrescribe el 9 correcto por un 5 menor). Paso 4: muestra 5. Esto está mal: el verdadero mayor de 3, 9 y 5 es 9. El error es que el paso 3 debería comparar c contra 'mayor', no contra 'a'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una lista de 1000 nombres está ORDENADA alfabéticamente. El Algoritmo Buscar-A revisa un nombre a la vez, desde el principio, hasta encontrar el buscado. El Algoritmo Buscar-B revisa primero el nombre del MEDIO de la lista y descarta la mitad de los nombres según si el buscado va antes o después alfabéticamente, repitiendo el proceso con la mitad que queda. Evalúa: ¿cuál de los dos necesita MENOS pasos en el peor de los casos? ¿Los dos son correctos?",
+      "pista": "Piensa en cuántas veces hay que 'partir a la mitad' 1000 elementos hasta quedarte con solo uno, comparado con revisar los 1000 nombres uno por uno.",
+      "solucion": "Ambos algoritmos son correctos: si la lista está ordenada, los dos siempre terminan encontrando el nombre (o informando que no está). Pero Buscar-B necesita muchísimos menos pasos: en el peor caso, Buscar-A puede llegar a revisar los 1000 nombres uno por uno, mientras que Buscar-B, al descartar la mitad de la lista cada vez (1000→500→250→125...), llega al resultado en apenas unos 10 pasos. Buscar-B es mucho más eficiente para listas grandes, aunque solo funciona si la lista está ordenada de antemano.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe, en pseudocódigo, un algoritmo que revise una pila de libros de biblioteca uno por uno y avise cuáles están vencidos. Debe incluir al menos una DECISIÓN (SI...ENTONCES) y una REPETICIÓN (REPITE MIENTRAS).",
+      "pista": "La repetición recorre los libros uno por uno mientras queden libros por revisar; la decisión se pregunta, para cada libro, si su fecha de devolución ya pasó.",
+      "solucion": "1. Toma el primer libro de la pila. 2. REPITE MIENTRAS queden libros por revisar: a. SI la fecha de devolución del libro actual ya pasó, ENTONCES anota ese libro como vencido; SI NO, pasa al siguiente sin anotarlo. b. Pasa al siguiente libro de la pila. 3. Cuando ya no queden libros, muestra la lista de libros vencidos. (Cualquier versión con estos mismos elementos —repetición que recorre todos los libros, y una decisión que compara la fecha— es correcta.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "En el algoritmo del sándwich: 1. Saca dos rebanadas de pan. 2. SI tienes mantequilla, ENTONCES úntala en una rebanada; SI NO, pasa al paso 3. 3. Coloca una rebanada de queso sobre el pan. 4. Cierra el sándwich con la otra rebanada. 5. Corta el sándwich por la mitad. Identifica: ¿cuáles pasos son SECUENCIA y cuál paso es una DECISIÓN? ¿Hay alguna REPETICIÓN en este algoritmo?",
+      "pista": "La secuencia son los pasos que siempre se hacen en el mismo orden sin condición; la decisión es el paso que depende de si algo es verdadero o falso.",
+      "solucion": "Los pasos 1, 3, 4 y 5 son secuencia: siempre se hacen en ese orden, sin depender de ninguna condición. El paso 2 es una decisión: depende de si hay mantequilla o no. Este algoritmo NO tiene ninguna repetición, porque ningún grupo de pasos se repite varias veces; simplemente se ejecuta una vez de principio a fin.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Dos algoritmos hallan el mayor de tres números. Algoritmo A: mayor ← a; SI b > mayor ENTONCES mayor ← b; SI c > mayor ENTONCES mayor ← c. Algoritmo B: SI a≥b Y a≥c ENTONCES mayor ← a; SI NO SI b≥a Y b≥c ENTONCES mayor ← b; SI NO mayor ← c. Con a=3, b=9, c=1: cuenta cuántas comparaciones hace cada uno, y di cuál usó menos.",
+      "pista": "En el Algoritmo A cuenta las comparaciones '>' que aparecen. En el Algoritmo B, revisa cuántas comparaciones hacen falta hasta que una condición resulte verdadera.",
+      "solucion": "Algoritmo A: mayor=3; ¿9>3? sí (1 comparación) → mayor=9; ¿1>9? no (2da comparación) → mayor sigue en 9. Total: 2 comparaciones, resultado 9 (correcto). Algoritmo B: primero revisa ¿3≥9 Y 3≥1? (2 comparaciones) → falso; pasa al 'si no': ¿9≥3 Y 9≥1? (2 comparaciones más) → verdadero → mayor=9. Total: 4 comparaciones, mismo resultado 9. El Algoritmo A usó menos comparaciones (2 contra 4) para llegar al mismo resultado correcto: es más eficiente.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Evalúa el Algoritmo A (mayor ← a; SI b > mayor ENTONCES mayor ← b; SI c > mayor ENTONCES mayor ← c) con el caso límite a=-5, b=-5, c=-8 (dos números iguales y uno negativo menor). ¿Da el resultado correcto?",
+      "pista": "Recuerda que 'mayor' aquí significa el número más grande de los tres, aunque todos sean negativos. Sigue el algoritmo paso a paso sin saltarte nada.",
+      "solucion": "Paso 1: mayor = -5. Paso 2: ¿-5 > -5? No (son iguales), mayor sigue en -5. Paso 3: ¿-8 > -5? No, mayor sigue en -5. Muestra -5. El mayor real entre -5, -5 y -8 es efectivamente -5 (hay un empate entre a y b, pero -5 sí es el más grande de los tres). El algoritmo da el resultado correcto también en este caso límite con números iguales y negativos.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe en pseudocódigo un algoritmo (con una sola decisión) que reciba un número entero y diga si es PAR o IMPAR.",
+      "pista": "Un número es par si al dividirlo entre 2 no sobra nada (el residuo es 0). Puedes usar esa idea en la condición.",
+      "solucion": "1. Recibe el número n (entrada). 2. SI el residuo de dividir n entre 2 es 0, ENTONCES muestra 'par'; SI NO, muestra 'impar'. Por ejemplo, con n=7: el residuo de 7÷2 es 1 (no es 0), así que muestra 'impar', correctamente.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Sigue este algoritmo: contador ← 0. REPITE MIENTRAS contador < 5: contador ← contador + 1. ¿Cuántas veces se ejecuta el paso 'contador ← contador + 1', y en qué valor termina 'contador'?",
+      "pista": "Ve sumando 1 de a poco y revisa la condición 'contador < 5' ANTES de cada repetición: en cuanto sea falsa, la repetición se detiene.",
+      "solucion": "contador arranca en 0. Se repite mientras contador<5: 0→1 (repetición 1), 1→2 (repetición 2), 2→3 (repetición 3), 3→4 (repetición 4), 4→5 (repetición 5). Al llegar a 5, la condición '5<5' es falsa, así que se detiene. Se ejecutó 5 veces, y contador termina en 5.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un algoritmo dice: contador ← 0. REPITE MIENTRAS contador < 5: muestra contador. (nunca aparece un paso que le sume 1 a contador). Evalúa: ¿este algoritmo es finito? Explica qué falla.",
+      "pista": "Pregúntate si la condición del 'mientras' ('contador < 5') alguna vez se vuelve falsa con este algoritmo tal como está escrito.",
+      "solucion": "No es finito: es un bucle infinito. Como nunca se le suma nada a 'contador', su valor se queda fijo en 0 para siempre, así que la condición 'contador < 5' es SIEMPRE verdadera y la repetición nunca se detiene. Le falta un paso que cambie el valor de 'contador' en cada vuelta (por ejemplo, contador ← contador + 1) para que la condición eventualmente se vuelva falsa.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Compara los tres algoritmos vistos: hacer un sándwich, buscar un nombre en una lista, y hallar el mayor de tres números. ¿Cuál de los tres usa las TRES estructuras (secuencia, decisión Y repetición) a la vez? Justifica revisando cada uno.",
+      "pista": "Revisa cada algoritmo por separado: ¿tiene pasos en orden fijo? ¿tiene algún SI...ENTONCES? ¿tiene algún REPITE MIENTRAS?",
+      "solucion": "El sándwich usa secuencia y decisión, pero NO repetición (ningún grupo de pasos se repite). Hallar el mayor de tres números usa secuencia y decisión (dos SI...ENTONCES), pero tampoco repetición, porque solo hay tres números fijos, no una lista de tamaño variable. Buscar un nombre en una lista es el único que usa las TRES a la vez: secuencia (revisar los nombres en orden), decisión (SI el nombre actual es el buscado) y repetición (REPITE MIENTRAS no lo hayas encontrado y queden nombres), porque no se sabe de antemano cuántas veces hará falta repetir el paso de revisar.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un algoritmo que debía hallar el mayor de TRES números (a, b y c) quedó así por error: 1. mayor ← a. 2. SI b > mayor ENTONCES mayor ← b. 3. muestra mayor. (el paso que compara con c se perdió). Pruébalo con a=2, b=3, c=9 y evalúa si es correcto.",
+      "pista": "Sigue el algoritmo tal cual está escrito, sin agregar el paso que falta. Compara lo que muestra contra el verdadero mayor de los tres números.",
+      "solucion": "Paso 1: mayor = 2. Paso 2: ¿3 > 2? Sí, mayor = 3. Paso 3: muestra 3. Pero el verdadero mayor entre 2, 3 y 9 es 9, no 3: el algoritmo es INCORRECTO, porque nunca usa el dato c a pesar de que el problema dice que hay tres números. Es el mismo tipo de error que ignorar un detalle esencial al abstraer: aquí c es un dato esencial para resolver el problema, y el algoritmo lo dejó completamente afuera.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál de estas definiciones describe mejor qué es un algoritmo?",
+      "opciones": [
+        "Una secuencia finita de pasos precisos, sin ambigüedad, que resuelve un problema",
+        "Una idea general sobre cómo resolver un problema, sin pasos concretos",
+        "Cualquier lista de instrucciones, aunque nunca termine",
+        "Un dibujo que representa una computadora"
+      ],
+      "correcta": 0,
+      "explicacion": "Un algoritmo necesita ser una secuencia (orden), finita (que termine) y precisa (sin ambigüedad). Una idea vaga sin pasos concretos, o una lista que nunca termina, no cumplen esa definición."
+    },
+    {
+      "pregunta": "¿Cuál de estas instrucciones es PRECISA (sin ambigüedad)?",
+      "opciones": [
+        "Agrega un poco de sal",
+        "Agrega media cucharadita de sal",
+        "Cocina hasta que esté listo",
+        "Espera un rato antes de servir"
+      ],
+      "correcta": 1,
+      "explicacion": "'Media cucharadita' es una cantidad exacta que cualquiera entiende igual. 'Un poco', 'hasta que esté listo' y 'un rato' dependen de la interpretación de cada persona: son ambiguas."
+    },
+    {
+      "pregunta": "Un algoritmo dice: 'contador ← 0. REPITE MIENTRAS contador < 5: muestra contador.' (nunca le suma 1 al contador). ¿Qué propiedad de un buen algoritmo viola?",
+      "opciones": [
+        "Tener una entrada",
+        "Tener una salida",
+        "Ser finito (nunca termina: bucle infinito)",
+        "Precisión"
+      ],
+      "correcta": 2,
+      "explicacion": "Como 'contador' nunca cambia, la condición 'contador < 5' siempre es verdadera y la repetición nunca se detiene: eso rompe la propiedad de ser finito."
+    },
+    {
+      "pregunta": "En la receta 'SI tienes mantequilla, ENTONCES úntala en el pan; SI NO, sigue directo al queso', ¿qué estructura de algoritmo se está usando?",
+      "opciones": [
+        "Secuencia",
+        "Repetición",
+        "Entrada",
+        "Decisión (condicional)"
+      ],
+      "correcta": 3,
+      "explicacion": "La forma 'SI... ENTONCES...; SI NO...' es exactamente la estructura de decisión: el camino se abre en dos según se cumpla o no una condición."
+    },
+    {
+      "pregunta": "Con el algoritmo 'mayor ← a; SI b > mayor ENTONCES mayor ← b; SI c > mayor ENTONCES mayor ← c; muestra mayor', ¿qué resultado muestra con a=15, b=42, c=8?",
+      "opciones": [
+        "42",
+        "15",
+        "8",
+        "65"
+      ],
+      "correcta": 0,
+      "explicacion": "mayor arranca en 15; como 42>15, mayor pasa a ser 42; como 8>42 es falso, mayor se queda en 42. El resultado final es 42, que es efectivamente el mayor de los tres."
+    },
+    {
+      "pregunta": "Buscando 'Pedro' en la lista [Ana, Luis, Marta, Pedro, Sofía] con búsqueda secuencial (revisar uno por uno desde el principio), ¿en qué posición se encuentra?",
+      "opciones": [
+        "3ra",
+        "4ta",
+        "1ra",
+        "2da"
+      ],
+      "correcta": 1,
+      "explicacion": "Revisando en orden: Ana (1ra, no es), Luis (2da, no es), Marta (3ra, no es), Pedro (4ta, ¡sí es!). Se encuentra en la 4ta posición."
+    },
+    {
+      "pregunta": "Un algoritmo para hallar el mayor de tres números dice: 1. mayor ← a. 2. SI b > mayor ENTONCES mayor ← a. 3. SI c > mayor ENTONCES mayor ← c. 4. muestra mayor. ¿Cuál es el error?",
+      "opciones": [
+        "Le falta el paso de entrada",
+        "El paso 3 sobra",
+        "En el paso 2, debería asignar mayor ← b, no mayor ← a",
+        "No tiene salida"
+      ],
+      "correcta": 2,
+      "explicacion": "Cuando b resulta ser mayor, el algoritmo debe guardar el valor de b como nuevo 'mayor'. Al asignar mayor ← a en vez de mayor ← b, el algoritmo pierde ese valor y puede dar un resultado incorrecto."
+    },
+    {
+      "pregunta": "Comparando dos algoritmos que hallan el mayor de tres números: el Algoritmo A siempre hace 2 comparaciones; el Algoritmo B hace hasta 4 comparaciones en el peor caso. Si ambos dan siempre la respuesta correcta, ¿qué se puede afirmar?",
+      "opciones": [
+        "El Algoritmo B es mejor porque hace más pasos",
+        "El Algoritmo A es incorrecto por hacer menos pasos",
+        "La cantidad de comparaciones no importa nunca",
+        "Ambos son correctos, pero el Algoritmo A es más eficiente"
+      ],
+      "correcta": 3,
+      "explicacion": "La corrección (ambos dan siempre el resultado correcto) es independiente de la eficiencia (cuántos pasos usa cada uno). Hacer menos comparaciones para el mismo resultado correcto es justamente lo que hace más eficiente al Algoritmo A."
+    },
+    {
+      "pregunta": "¿Cuál de estas afirmaciones distingue correctamente CORRECCIÓN de EFICIENCIA en un algoritmo?",
+      "opciones": [
+        "Corrección es dar el resultado correcto en TODOS los casos válidos; eficiencia es hacerlo con el menor número de pasos posible",
+        "Corrección es qué tan rápido corre; eficiencia es si da la respuesta correcta",
+        "Son la misma cosa con distinto nombre",
+        "Un algoritmo eficiente siempre es correcto"
+      ],
+      "correcta": 0,
+      "explicacion": "Son dos cualidades distintas e independientes: un algoritmo puede ser correcto pero lento (poco eficiente), o rápido pero fallar en algún caso (incorrecto). Un buen algoritmo necesita ambas."
+    },
+    {
+      "pregunta": "En un diagrama de flujo, ¿qué forma representa una DECISIÓN (con dos caminos posibles, Sí/No)?",
+      "opciones": [
+        "Óvalo",
+        "Rombo (diamante)",
+        "Rectángulo",
+        "Línea recta"
+      ],
+      "correcta": 1,
+      "explicacion": "El óvalo marca inicio/fin, el rectángulo representa un paso normal, y las flechas conectan las formas. El rombo (diamante) es el que tiene dos salidas posibles: Sí y No."
+    },
+    {
+      "pregunta": "Un algoritmo de búsqueda revisa una lista VACÍA (sin ningún nombre). ¿Qué debería hacer un algoritmo bien diseñado?",
+      "opciones": [
+        "Repetir para siempre esperando encontrar algo",
+        "Mostrar un nombre al azar",
+        "Detenerse de inmediato e informar que no se encontró el nombre, sin fallar",
+        "No es necesario pensar en ese caso"
+      ],
+      "correcta": 2,
+      "explicacion": "Un algoritmo correcto debe funcionar también en los casos límite, como una lista vacía: debe detenerse e informar que no encontró nada, en vez de repetir para siempre o fallar."
+    },
+    {
+      "pregunta": "¿Por qué se dice que un algoritmo es correcto solo si funciona para TODOS los casos válidos, y no solo para el caso que probaste una vez?",
+      "opciones": [
+        "Porque un algoritmo nunca falla si compiló bien",
+        "Porque todos los casos dan siempre el mismo resultado",
+        "Porque no hace falta probar los algoritmos",
+        "Porque probar un solo caso no garantiza que funcione en otros casos (por ejemplo, números repetidos o el mayor en otra posición)"
+      ],
+      "correcta": 3,
+      "explicacion": "Un algoritmo puede pasar la prueba con un ejemplo y aun así fallar con números repetidos, negativos, listas vacías u otros casos límite que no se probaron."
+    },
+    {
+      "pregunta": "Un algoritmo para hallar el mayor de tres números, a, b y c, solo compara a y b, pero nunca compara con c. Con a=2, b=3, c=9, ¿qué pasa?",
+      "opciones": [
+        "Muestra 3, un resultado incorrecto, porque ignoró la entrada c",
+        "Muestra 9 correctamente",
+        "No muestra nada",
+        "Muestra 2"
+      ],
+      "correcta": 0,
+      "explicacion": "Como el algoritmo nunca compara con c, jamás actualiza 'mayor' con ese valor: muestra 3 en vez del verdadero mayor, que es 9. Es incorrecto porque ignora un dato esencial del problema."
+    },
+    {
+      "pregunta": "¿Cuál de estos NO es uno de los tres bloques básicos con los que se construye cualquier algoritmo?",
+      "opciones": [
+        "Secuencia",
+        "Abstracción",
+        "Decisión",
+        "Repetición"
+      ],
+      "correcta": 1,
+      "explicacion": "Los tres bloques con los que se arma cualquier algoritmo son secuencia, decisión y repetición. La abstracción es otro pilar del pensamiento computacional, pero no es una estructura de control dentro de un algoritmo."
+    }
+  ]
+}

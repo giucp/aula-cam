@@ -1,0 +1,328 @@
+{
+  "programa": "cumbre",
+  "materia": "Biología",
+  "grado": "Cumbre Biología 1er año",
+  "dominio": "La unidad de la vida: la célula",
+  "tema": "Célula animal y célula vegetal: partes y diferencias",
+  "referencias": [
+    "UK KS3/GCSE Biology (AQA/Edexcel) — Animal and plant cells; sub-cellular structures and their functions; comparing the two",
+    "Cambridge Lower Secondary & IGCSE Biology — Plant and animal cell structure; cell wall, chloroplasts and vacuole",
+    "Singapore MOE Lower Secondary Science — Cells and their organisation; comparing plant and animal cells",
+    "Japan MEXT Grade 8 Science (中学2年 理科) — 植物と動物の細胞のつくり: núcleo, pared celular, cloroplastos, vacuola"
+  ],
+  "resumen": {
+    "titulo": "Célula animal y célula vegetal: mismas piezas de base, tres piezas extra que lo cambian todo",
+    "intro": "En el tema anterior descubriste algo enorme: todo ser vivo está HECHO de células, toda célula tiene tres partes universales (membrana, citoplasma y material genético), y según cómo guarde ese material genético es procariota (ADN suelto) o eucariota (ADN dentro de un núcleo). Ahora vamos a hacer zoom sobre las eucariotas y a mirar de cerca las DOS que forman casi todo lo que ves a tu alrededor: la célula ANIMAL (la que forma tu cuerpo, el de un perro, el de una lombriz) y la célula VEGETAL (la que forma una hoja, un tallo, una zanahoria). Las dos son eucariotas, así que comparten muchísimo; pero la vegetal tiene TRES piezas extra que la animal no tiene, y esas tres piezas no están ahí 'porque sí': son la respuesta física a una diferencia profunda en cómo vive cada una. Una planta no puede caminar hasta su comida ni salir a cazar: se queda quieta y se fabrica su propio alimento con luz. Vas a ver que esas tres piezas extra son, exactamente, lo que le hace falta a un ser vivo para poder vivir así. El objetivo de este tema no es que te aprendas una lista de nombres: es que, si te muestran una célula desconocida, puedas DEDUCIR si es animal o vegetal mirando qué tiene, y sepas EXPLICAR por qué cada diferencia existe.",
+    "secciones": [
+      {
+        "titulo": "Lo que las DOS comparten: son de la misma familia (eucariotas)",
+        "explicacion": "Antes de buscar diferencias, hay que tener clarísimo el enorme terreno común, porque el error de principiante es exagerar las diferencias y olvidar que animal y vegetal son parientes cercanos: las dos son células eucariotas. Eso quiere decir que las dos tienen, sí o sí: la MEMBRANA PLASMÁTICA (la capa delgada que envuelve la célula, separa el adentro del afuera y controla qué entra y qué sale, como viste en el tema anterior); el CITOPLASMA (el gel acuoso que llena el interior y donde flotan las demás piezas); y el NÚCLEO (el compartimento con su propia membrana donde está guardado el ADN, el 'manual de instrucciones' de la célula). Pero además comparten una pieza nueva que conviene conocer bien: las MITOCONDRIAS. Una mitocondria es una especie de 'central de energía' de la célula: ahí ocurre la RESPIRACIÓN CELULAR, el proceso que rompe los nutrientes (sobre todo la glucosa, un azúcar) para liberar la energía que la célula necesita para todo lo que hace: moverse, crecer, fabricar cosas. Sin mitocondrias, la célula tendría 'comida' pero no podría sacarle la energía. Y acá va un dato clave para más adelante: TANTO la célula animal COMO la vegetal tienen mitocondrias, porque las dos necesitan liberar energía para vivir. Guardá bien esta idea, porque es la base de uno de los errores más comunes del tema.",
+        "pasos": [
+          "Membrana plasmática: envuelve la célula y controla qué entra y qué sale. (En las dos.)",
+          "Citoplasma: gel interior donde flotan y funcionan las piezas de la célula. (En las dos.)",
+          "Núcleo: guarda el ADN dentro de su propia membrana; dirige la célula. (En las dos, porque las dos son eucariotas.)",
+          "Mitocondrias: liberan energía de los nutrientes mediante la respiración celular. (En las dos.)"
+        ],
+        "ejemplo": "Si mirás una célula de tu mejilla y una célula del interior de una hoja, en las dos vas a encontrar exactamente lo mismo en el centro: una membrana que las envuelve, citoplasma llenándolas, un núcleo con el ADN y mitocondrias trabajando. Hasta acá, animal y vegetal son casi idénticas. Todo lo que las distingue está en lo que la vegetal AGREGA por fuera de esta base compartida.",
+        "figura": ""
+      },
+      {
+        "titulo": "Pieza extra 1: la pared celular (por qué una planta se mantiene firme)",
+        "explicacion": "La primera pieza que tiene la célula vegetal y NO tiene la animal es la PARED CELULAR. Cuidado con no confundirla con la membrana: son dos cosas distintas y la vegetal tiene LAS DOS. La membrana es la capa delgada, flexible y selectiva que ya conocés (controla qué entra y sale) y está en las dos células. La pared celular es una capa EXTRA, gruesa y rígida, hecha de un material resistente llamado CELULOSA, que la célula vegetal construye POR FUERA de su membrana, envolviéndola como una caja envuelve a una bolsa. La pared no es selectiva como la membrana: es más bien como una armadura o un cajón rígido que da FORMA, SOSTÉN y PROTECCIÓN. ¿Y por qué la planta la necesita y el animal no? Acá está la lógica profunda: un animal se mueve, camina, nada, dobla el cuerpo; para eso necesita células flexibles que puedan cambiar de forma, así que le conviene tener solo la membrana blanda. Una planta, en cambio, no se mueve de lugar: se queda plantada y tiene que SOSTENERSE ella sola, mantenerse erguida hacia la luz sin ningún esqueleto de huesos como el nuestro. La pared celular rígida de cada una de sus células es, justamente, ese 'esqueleto': millones de cajitas rígidas apiladas que le permiten a un árbol pararse derecho y a una hoja mantener su forma. Por eso, además, las células vegetales suelen verse con forma de caja, de bordes rectos y regulares (por la pared), mientras que las animales se ven más redondeadas o irregulares (solo tienen la membrana blanda).",
+        "pasos": [
+          "Membrana plasmática: fina, flexible, selectiva, controla qué entra/sale. En animal Y vegetal.",
+          "Pared celular: capa extra, gruesa y rígida, de celulosa, POR FUERA de la membrana. Solo en la vegetal.",
+          "La pared da forma, sostén y protección; NO es selectiva (no elige qué pasa, eso lo sigue haciendo la membrana).",
+          "Razón de fondo: la planta no se mueve y necesita sostenerse; el animal se mueve y necesita flexibilidad."
+        ],
+        "ejemplo": "Pensá en un tronco de árbol que aguanta su propio peso durante años sin caerse: no tiene huesos. Lo que lo mantiene erguido es la suma de las paredes celulares rígidas de todas sus células, cada una como un pequeño ladrillo de celulosa. Un animal no podría moverse si cada una de sus células fuera una caja rígida: por eso sus células solo tienen la membrana flexible.",
+        "figura": ""
+      },
+      {
+        "titulo": "Pieza extra 2: los cloroplastos (la fábrica de comida con luz)",
+        "explicacion": "La segunda pieza exclusiva de la célula vegetal es la más famosa: los CLOROPLASTOS. Un cloroplasto es una pequeña estructura, generalmente con forma de óvalo verde, que está dentro del citoplasma de muchas células vegetales (sobre todo las de las hojas). Es verde porque contiene un pigmento llamado CLOROFILA, y ese color no es un adorno: la clorofila es capaz de ATRAPAR la energía de la luz del sol. Dentro del cloroplasto ocurre la FOTOSÍNTESIS, uno de los procesos más importantes del planeta: usando la energía de la luz, la célula combina agua y dióxido de carbono (un gas del aire) y fabrica su propio alimento, la glucosa (un azúcar), liberando oxígeno como 'sobrante'. En otras palabras, el cloroplasto es una fábrica que convierte luz en comida. Y acá aparece la razón más profunda de todo el tema: hay dos maneras de conseguir alimento en el mundo vivo. Un ser AUTÓTROFO ('que se alimenta a sí mismo') fabrica su propia comida, como hacen las plantas con la fotosíntesis. Un ser HETERÓTROFO ('que se alimenta de otros') NO puede fabricarla y tiene que conseguirla comiendo a otros seres vivos, como hacemos los animales. Por eso la célula animal NO tiene cloroplastos: no le harían falta, porque el animal no fabrica su comida, la come ya hecha. La planta, en cambio, sin cloroplastos simplemente no podría comer. El cloroplasto es, literalmente, lo que le permite a un ser vivo quedarse quieto y aun así alimentarse.",
+        "pasos": [
+          "Cloroplasto: estructura verde (por la clorofila) dentro de muchas células vegetales. Solo en la vegetal.",
+          "La clorofila atrapa la energía de la luz del sol.",
+          "En el cloroplasto ocurre la FOTOSÍNTESIS: luz + agua + dióxido de carbono → glucosa (alimento) + oxígeno.",
+          "La planta es autótrofa (fabrica su comida); el animal es heterótrofo (la consigue comiendo). Por eso el animal no necesita cloroplastos."
+        ],
+        "ejemplo": "Una hoja es verde porque sus células están llenas de cloroplastos con clorofila, trabajando al sol para fabricar el alimento de toda la planta. Tu piel, en cambio, no es verde ni fabrica comida por más sol que le dé: tus células no tienen cloroplastos porque conseguís tu energía comiendo, no fotosintetizando.",
+        "figura": ""
+      },
+      {
+        "titulo": "Pieza extra 3: la gran vacuola central (el tanque de agua que da firmeza)",
+        "explicacion": "La tercera diferencia es más sutil, y es la que más malentendidos genera, así que leela con atención. Una VACUOLA es como una bolsa o 'tanque' dentro del citoplasma que sirve para almacenar cosas: sobre todo agua, pero también nutrientes o desechos. Acá está la parte que confunde a casi todo el mundo: NO es que la célula animal no tenga vacuolas; sí las tiene, pero PEQUEÑAS y varias. La diferencia real es de TAMAÑO. La célula vegetal tiene UNA VACUOLA CENTRAL enorme, que puede ocupar buena parte del interior de la célula (a veces más de la mitad), mientras que las vacuolas de la célula animal son chiquitas. ¿Para qué le sirve a la planta ese tanque gigante de agua? Para dos cosas. Primero, para ALMACENAR agua y sustancias (una reserva). Segundo, y más ingenioso: cuando la vacuola está llena de agua, se hincha y EMPUJA desde adentro contra la pared celular rígida, y esa presión (llamada presión de turgencia) es lo que mantiene a la planta FIRME y erguida. Es el mismo principio que un globo de agua dentro de una caja: mientras hay agua, todo está tenso y firme. Por eso, cuando una planta no recibe suficiente agua, sus vacuolas se vacían, dejan de empujar, y la planta se pone MUSTIA (las hojas caen blandas); si la riegas, las vacuolas se vuelven a llenar y la planta se pone firme otra vez. Fijate cómo se conectan las tres piezas extra: la vacuola llena empuja contra la pared, y juntas mantienen erguida a una planta que no puede moverse.",
+        "pasos": [
+          "Vacuola: 'tanque' interno para almacenar agua, nutrientes o desechos.",
+          "Ambas células tienen vacuolas; la diferencia es el TAMAÑO, no la presencia (mito común).",
+          "Vegetal: UNA vacuola central grande (a veces más de la mitad de la célula). Animal: varias vacuolas pequeñas.",
+          "La vacuola vegetal llena de agua empuja contra la pared (presión de turgencia) y mantiene firme a la planta; si se vacía, la planta se pone mustia."
+        ],
+        "ejemplo": "Una lechuga recién comprada está crujiente y firme: sus vacuolas están llenas de agua empujando contra las paredes celulares. Si la dejás fuera de la nevera unos días, pierde agua, las vacuolas se vacían y la lechuga queda blanda y arrugada. Meterla en agua fría un rato la vuelve a poner firme: las vacuolas se rellenan. Eso es la turgencia en acción.",
+        "figura": "<svg viewBox=\"0 0 460 260\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"110\" y=\"24\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#3B2B4A\">CÉLULA ANIMAL</text><text x=\"340\" y=\"24\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#3B2B4A\">CÉLULA VEGETAL</text><ellipse cx=\"110\" cy=\"150\" rx=\"92\" ry=\"85\" fill=\"#BFE9F2\" fill-opacity=\"0.35\" stroke=\"#3B2B4A\" stroke-width=\"3\"/><ellipse cx=\"110\" cy=\"140\" rx=\"30\" ry=\"26\" fill=\"#7C4DFF\" fill-opacity=\"0.35\" stroke=\"#5A3AAF\" stroke-width=\"2\"/><ellipse cx=\"62\" cy=\"185\" rx=\"14\" ry=\"7\" fill=\"none\" stroke=\"#C0392B\" stroke-width=\"2\"/><ellipse cx=\"150\" cy=\"95\" rx=\"14\" ry=\"7\" fill=\"none\" stroke=\"#C0392B\" stroke-width=\"2\"/><text x=\"110\" y=\"144\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" font-weight=\"700\" fill=\"#5A3AAF\">núcleo</text><rect x=\"250\" y=\"70\" width=\"180\" height=\"160\" rx=\"6\" fill=\"#8B5E3C\" fill-opacity=\"0.18\" stroke=\"#6B4423\" stroke-width=\"7\"/><rect x=\"260\" y=\"80\" width=\"160\" height=\"140\" rx=\"3\" fill=\"#BFE9F2\" fill-opacity=\"0.30\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><rect x=\"286\" y=\"110\" width=\"110\" height=\"85\" rx=\"6\" fill=\"#7FB3E8\" fill-opacity=\"0.35\" stroke=\"#3A6EA5\" stroke-width=\"2\"/><text x=\"341\" y=\"156\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" font-weight=\"700\" fill=\"#2C5578\">vacuola</text><ellipse cx=\"288\" cy=\"96\" rx=\"15\" ry=\"8\" fill=\"#2E9E5B\" fill-opacity=\"0.6\" stroke=\"#1E7A42\" stroke-width=\"2\"/><ellipse cx=\"392\" cy=\"200\" rx=\"15\" ry=\"8\" fill=\"#2E9E5B\" fill-opacity=\"0.6\" stroke=\"#1E7A42\" stroke-width=\"2\"/><ellipse cx=\"288\" cy=\"140\" rx=\"22\" ry=\"18\" fill=\"#7C4DFF\" fill-opacity=\"0.35\" stroke=\"#5A3AAF\" stroke-width=\"2\"/><text x=\"415\" y=\"64\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#6B4423\">pared</text><text x=\"288\" y=\"78\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#1E7A42\">cloroplastos</text></svg>"
+      },
+      {
+        "titulo": "La raíz de todo: dos formas de vivir explican las tres diferencias",
+        "explicacion": "Ahora viene la parte importante de verdad, la que separa 'saberse la lista' de ENTENDER el tema. Las tres piezas extra de la célula vegetal (pared, cloroplastos y vacuola central grande) no son tres diferencias sueltas: son TRES CONSECUENCIAS de una sola cosa, la forma de vida de la planta frente a la del animal. La planta es autótrofa y no se mueve: se queda en un lugar y fabrica su propia comida con luz. Para vivir así necesita, primero, una fábrica de comida con luz → CLOROPLASTOS. Segundo, como no puede caminar hasta un lugar mejor ni tiene esqueleto, necesita sostenerse por sí misma y crecer hacia la luz → PARED CELULAR rígida. Tercero, como no se mueve para buscar agua constantemente, le conviene almacenar grandes reservas y usar esa agua para mantenerse firme → VACUOLA CENTRAL grande. El animal es heterótrofo y se mueve: consigue su comida comiendo a otros y se desplaza para buscarla, escapar o cazar. Para vivir así necesita células FLEXIBLES (solo membrana, sin pared rígida que le impida moverse), NO necesita fábrica de comida (no tiene cloroplastos, come ya hecho) y no necesita un tanque gigante de agua (le bastan vacuolas pequeñas). Si entendés esta única idea —autótrofo y quieto vs. heterótrofo y en movimiento— podés RECONSTRUIR las tres diferencias tú solo, sin memorizar nada. Ese es el nivel al que apunta este tema.",
+        "pasos": [
+          "Planta = autótrofa y fija → fabrica comida (cloroplastos), se sostiene sola (pared), almacena agua y se mantiene firme (vacuola grande).",
+          "Animal = heterótrofo y móvil → come lo ya hecho (sin cloroplastos), necesita flexibilidad para moverse (sin pared), le bastan vacuolas pequeñas.",
+          "Las tres diferencias NO son independientes: las tres salen de la misma forma de vida.",
+          "Prueba de que lo entendiste: si te dan una de las tres piezas extra, deberías poder explicar por qué la planta la necesita y el animal no."
+        ],
+        "ejemplo": "Imaginá dos seres vivos: uno tiene que salir cada día a buscar comida y huir de peligros; el otro se queda parado bajo el sol y se fabrica el alimento solo. El primero necesita un cuerpo blando y ágil (células flexibles, sin pared); el segundo necesita sostenerse quieto y erguido (pared rígida), una fábrica de luz (cloroplastos) y una reserva de agua que lo mantenga firme (vacuola grande). No hace falta memorizar la lista: la forma de vida la dicta entera.",
+        "figura": ""
+      },
+      {
+        "titulo": "Cómo decidir: ¿esta célula desconocida es animal o vegetal?",
+        "explicacion": "Este tema no se evalúa preguntando '¿qué es un cloroplasto?', sino mostrándote una célula desconocida y pidiéndote que DEDUZCAS y JUSTIFIQUES qué es. Acá tenés el método para hacerlo con criterio. La clave es que la PRESENCIA de una pieza dice más que la AUSENCIA, así que buscá primero las tres piezas exclusivas de la vegetal. Si la célula tiene pared celular rígida por fuera, o cloroplastos, o una vacuola central enorme (con que aparezca UNA sola de estas tres alcanza), es VEGETAL, sin dudar. La más segura de todas es el cloroplasto: ninguna célula animal tiene cloroplastos, así que verlos cierra el caso. Si la célula NO tiene ninguna de las tres (no hay pared, no hay cloroplastos, la vacuola —si la hay— es chica) y se ve redondeada o irregular, entonces es ANIMAL. Un aviso importante para no equivocarte: que una célula NO tenga cloroplastos no la vuelve automáticamente animal, porque no todas las células vegetales tienen cloroplastos (por ejemplo, las de una raíz, que vive bajo tierra sin luz, casi no tienen). Por eso, ante la duda, el dato que nunca falla en una planta es la PARED CELULAR: todas las células vegetales la tienen, tengan o no cloroplastos. Regla práctica: para confirmar 'vegetal' basta ver UNA pieza exclusiva; para confirmar 'animal' hay que verificar que NO esté NINGUNA de las tres.",
+        "pasos": [
+          "Buscá primero las tres piezas exclusivas de la vegetal: pared celular, cloroplastos, vacuola central grande.",
+          "Si aparece AL MENOS UNA → es VEGETAL (el cloroplasto es la prueba más definitiva).",
+          "Si NO aparece NINGUNA y la célula se ve redondeada/irregular → es ANIMAL.",
+          "Ojo: 'no tiene cloroplastos' NO prueba que sea animal (las raíces son vegetales y casi no tienen). Ante la duda, la pared celular es el dato seguro de una planta."
+        ],
+        "ejemplo": "Te describen la célula X: tiene membrana, núcleo, mitocondrias, una capa rígida de celulosa por fuera y una vacuola que ocupa la mitad de su interior, pero NO tiene cloroplastos. ¿Animal o vegetal? Es VEGETAL: la pared de celulosa y la vacuola central gigante lo confirman. La ausencia de cloroplastos no la vuelve animal; probablemente sea una célula de raíz o de tallo, que no hace fotosíntesis porque no le llega luz.",
+        "figura": ""
+      },
+      {
+        "titulo": "Errores y mitos que hay que dejar atrás",
+        "explicacion": "Para cerrar, tres ideas falsas muy comunes de este tema, para que no se te cuelen. Primero, el MITO DE LAS VACUOLAS: es falso que 'las células animales no tienen vacuolas'. Sí las tienen, solo que pequeñas y varias; lo exclusivo de la vegetal no es tener vacuolas, sino tener UNA central y grande. Segundo, el MITO DE LAS MITOCONDRIAS: mucha gente cree que 'las plantas no tienen mitocondrias porque tienen cloroplastos', como si una cosa reemplazara a la otra. Es falso, y vale la pena entender por qué. El cloroplasto FABRICA el alimento (glucosa) con luz; la mitocondria LIBERA la energía de ese alimento cuando la célula la necesita. Son dos trabajos distintos y complementarios: fabricar comida no es lo mismo que sacarle la energía. Por eso la célula vegetal tiene LAS DOS estructuras: fabrica glucosa en sus cloroplastos y después le saca la energía en sus mitocondrias, igual que hacemos nosotros con la comida que tragamos. Tercero, NO confundas PARED con MEMBRANA: la membrana (fina, selectiva, en las dos células) decide qué entra y sale; la pared (gruesa, rígida, solo en la vegetal) solo da sostén y no elige nada. La vegetal tiene las dos, una por dentro de la otra. Y para no repetirlo nunca más: la única de las tres piezas exclusivas que aparece en TODA célula vegetal es la pared; los cloroplastos faltan en las células que no reciben luz.",
+        "pasos": [
+          "Mito 1 — 'Las células animales no tienen vacuolas': FALSO. Las tienen, pero pequeñas. Lo exclusivo vegetal es la vacuola central GRANDE.",
+          "Mito 2 — 'Las plantas no tienen mitocondrias porque tienen cloroplastos': FALSO. Tienen las dos: el cloroplasto fabrica el alimento, la mitocondria le saca la energía. Trabajos distintos.",
+          "Mito 3 — 'Pared y membrana son lo mismo': FALSO. La membrana (en las dos) es fina y selectiva; la pared (solo vegetal) es rígida y solo da sostén. La vegetal tiene ambas.",
+          "Recordá: de las tres piezas exclusivas, solo la PARED está en toda célula vegetal; los cloroplastos faltan donde no llega la luz (raíces)."
+        ],
+        "ejemplo": "Si alguien te dice 'las plantas hacen fotosíntesis, así que no necesitan respirar ni tienen mitocondrias', ahora sabés corregirlo: la planta fabrica glucosa con la luz en sus cloroplastos, pero para USAR esa energía tiene que respirar, y eso ocurre en sus mitocondrias, tal como en cualquier animal. Fabricar comida y quemarla para obtener energía son dos pasos distintos, y la planta hace los dos.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "La célula animal y la vegetal son las dos eucariotas: comparten membrana, citoplasma, núcleo y mitocondrias (respiración celular, en ambas). La vegetal AGREGA tres piezas exclusivas: pared celular de celulosa (rígida, la sostiene erguida), cloroplastos (fotosíntesis: fabrican su comida con luz) y una vacuola central grande (almacena agua y la mantiene firme por turgencia). Esas tres no son diferencias sueltas: salen de una sola idea —la planta es autótrofa y fija, el animal heterótrofo y móvil—. Para deducir qué es una célula desconocida, buscá las tres piezas exclusivas: con una alcanza para decir vegetal (el cloroplasto es la prueba definitiva); si no hay ninguna, es animal. Cuidado con los mitos: las animales SÍ tienen vacuolas (pequeñas) y las vegetales SÍ tienen mitocondrias."
+  },
+  "practica": [
+    {
+      "enunciado": "Te muestran una célula desconocida al microscopio. Tiene membrana, citoplasma, núcleo y mitocondrias, y además una capa rígida por fuera de la membrana, varios cloroplastos verdes y una vacuola que ocupa casi la mitad de su interior. ¿Es animal o vegetal? Justifica con al menos dos piezas.",
+      "pista": "Buscá las piezas EXCLUSIVAS de un tipo de célula. ¿Cuáles de las que se describen no aparecen nunca en el otro tipo?",
+      "solucion": "Es una célula VEGETAL. La justifican tres piezas que la célula animal no tiene: la pared celular rígida por fuera de la membrana, los cloroplastos (fábricas de fotosíntesis, la prueba más definitiva porque ninguna célula animal los tiene) y la vacuola central grande. Con que apareciera una sola de las tres bastaría para decidir; aquí aparecen las tres.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Otra célula desconocida: es redondeada, tiene membrana, citoplasma, núcleo y mitocondrias, algunas vacuolas pequeñas, pero NO tiene pared celular ni cloroplastos. ¿Animal o vegetal? Justifica y explica por qué las vacuolas pequeñas no te confunden.",
+      "pista": "Fijate qué piezas exclusivas de la vegetal FALTAN. Y recordá el mito de las vacuolas.",
+      "solucion": "Es una célula ANIMAL. No tiene ninguna de las tres piezas exclusivas de la vegetal (ni pared, ni cloroplastos, ni vacuola central grande) y su forma es redondeada, típica de una célula sin pared rígida. Las vacuolas pequeñas NO indican que sea vegetal: las células animales también tienen vacuolas, solo que chicas; lo exclusivo de la vegetal es tener UNA central y grande, no simplemente tener vacuolas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica por qué la célula vegetal tiene cloroplastos y la animal no, usando los conceptos de autótrofo y heterótrofo.",
+      "pista": "Pensá de dónde saca la comida cada uno: ¿la fabrica o la consigue comiendo?",
+      "solucion": "La planta es AUTÓTROFA: fabrica su propio alimento (glucosa) mediante la fotosíntesis, y ese proceso ocurre justamente dentro de los cloroplastos, que atrapan la energía de la luz con la clorofila. Por eso los necesita. El animal es HETERÓTROFO: no fabrica su comida, la consigue comiendo a otros seres vivos, así que no le hacen falta cloroplastos y no los tiene. En resumen, el cloroplasto es la herramienta de un ser vivo que se fabrica su propio alimento con luz; un animal, que come lo ya hecho, no lo necesita.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero afirma: 'Las plantas no tienen mitocondrias, porque para eso ya tienen los cloroplastos'. Corrige el error explicando qué hace cada estructura.",
+      "pista": "¿Es lo mismo FABRICAR el alimento que SACARLE la energía? Pensá si una cosa puede reemplazar a la otra.",
+      "solucion": "La afirmación es falsa: las células vegetales tienen mitocondrias Y cloroplastos, porque hacen dos trabajos distintos. El cloroplasto FABRICA el alimento (glucosa) usando la energía de la luz, en la fotosíntesis. La mitocondria LIBERA la energía guardada en esa glucosa cuando la célula la necesita, en la respiración celular. Fabricar comida y extraerle la energía no son lo mismo, así que una estructura no reemplaza a la otra. La planta fabrica su glucosa en los cloroplastos y luego le saca la energía en sus mitocondrias, igual que un animal hace con la comida que ingiere.",
+      "figura": ""
+    },
+    {
+      "enunciado": "La célula vegetal tiene DOS capas por fuera: la membrana plasmática y la pared celular. Explica en qué se diferencian en material y en función, y por qué la animal solo tiene una de ellas.",
+      "pista": "Una capa decide qué entra y sale; la otra solo da rigidez. ¿Cuál necesita un ser que se mueve y cuál un ser que debe sostenerse?",
+      "solucion": "La MEMBRANA plasmática es una capa fina, flexible y selectiva: controla qué entra y qué sale de la célula. Está en las dos células. La PARED celular es una capa extra, gruesa y rígida, hecha de celulosa, ubicada por fuera de la membrana; da forma, sostén y protección, pero no es selectiva (no decide qué pasa). Solo la tiene la vegetal. La animal tiene solo la membrana porque, al moverse, necesita células flexibles que cambien de forma; una pared rígida se lo impediría. La planta, que no se mueve, necesita esa pared para sostenerse erguida sin esqueleto.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una planta a la que se olvidaron de regar tiene las hojas caídas y blandas (mustia). Al regarla, en unas horas vuelve a estar firme. Explica qué está pasando dentro de sus células, nombrando la estructura responsable.",
+      "pista": "Pensá en el 'tanque de agua' de la célula vegetal y en cómo su llenado o vaciado afecta la firmeza de la planta.",
+      "solucion": "La responsable es la VACUOLA central. Cuando la planta tiene agua, sus vacuolas están llenas y empujan desde adentro contra la pared celular rígida (presión de turgencia); esa presión mantiene firmes y erguidas a las células, y por lo tanto a toda la planta. Al faltar agua, las vacuolas se vacían, dejan de empujar y las células pierden firmeza: la planta se pone mustia. Al regarla, las vacuolas se vuelven a llenar de agua, recuperan la presión contra la pared y la planta se pone firme de nuevo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ordena estas estructuras en dos grupos: COMUNES a las dos células y EXCLUSIVAS de la vegetal. Estructuras: membrana plasmática, cloroplasto, núcleo, pared celular, mitocondria, vacuola central grande, citoplasma.",
+      "pista": "Recordá que las dos son eucariotas (comparten mucho) y que la vegetal agrega exactamente TRES piezas.",
+      "solucion": "COMUNES a las dos: membrana plasmática, núcleo, mitocondria y citoplasma (las dos son eucariotas y comparten estas partes). EXCLUSIVAS de la vegetal: pared celular, cloroplasto y vacuola central grande. Nota: la célula animal también tiene vacuolas, pero pequeñas; lo exclusivo vegetal es la vacuola central GRANDE.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Se describe una célula que tiene pared celular de celulosa y una vacuola central grande, pero NO tiene cloroplastos. Un estudiante concluye: 'Como no tiene cloroplastos, es animal'. ¿Es correcto? Justifica y da un ejemplo de qué célula podría ser.",
+      "pista": "¿Todas las células vegetales tienen cloroplastos? Pensá en las partes de la planta a las que no llega la luz.",
+      "solucion": "La conclusión es INCORRECTA. Es una célula VEGETAL, no animal: tiene pared celular de celulosa y una vacuola central grande, dos piezas que ninguna célula animal posee. La ausencia de cloroplastos no la vuelve animal, porque no todas las células vegetales tienen cloroplastos: solo los tienen las que reciben luz. Una célula de RAÍZ, por ejemplo, vive bajo tierra sin luz, así que casi no tiene cloroplastos, pero sigue siendo vegetal por su pared y su vacuola central. El dato seguro para reconocer una planta es la pared celular, no el cloroplasto.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Al microscopio, un grupo de células animales se ve redondeado e irregular, mientras que las células vegetales de una hoja se ven como cajitas de bordes rectos y regulares, apiladas. Explica a qué se debe esa diferencia de forma.",
+      "pista": "¿Qué pieza rígida tiene una y no la otra, y qué le hace a la forma de la célula?",
+      "solucion": "La diferencia de forma se debe a la PARED CELULAR. La célula vegetal está envuelta por una pared rígida de celulosa que le da una forma fija, de caja de bordes rectos, y permite que muchas se apilen ordenadamente como ladrillos. La célula animal solo tiene la membrana, que es flexible y blanda, así que adopta formas más redondeadas o irregulares y puede cambiar de forma (algo necesario para un cuerpo que se mueve). En resumen: pared rígida → forma de caja regular; solo membrana flexible → forma redondeada.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Relaciona la forma de vida con la estructura: explica cómo una sola diferencia —que la planta no se mueve y fabrica su comida, mientras el animal se mueve y come a otros— explica por qué la vegetal tiene pared, cloroplastos y vacuola grande, y la animal no.",
+      "pista": "Tomá cada una de las tres piezas extra y preguntate qué necesidad de la vida 'quieta y autótrofa' resuelve.",
+      "solucion": "La planta es autótrofa y fija, y de ahí salen las tres piezas: (1) como fabrica su comida con luz, necesita la fábrica → CLOROPLASTOS; (2) como no se mueve ni tiene esqueleto, necesita sostenerse erguida hacia la luz → PARED celular rígida; (3) como no se desplaza a buscar agua todo el tiempo, le conviene almacenarla en grandes reservas y usarla para mantenerse firme → VACUOLA central grande. El animal es heterótrofo y móvil: come lo ya hecho (no necesita cloroplastos), debe ser flexible para moverse (no le sirve una pared rígida) y le bastan vacuolas pequeñas. Así, una sola diferencia de forma de vida explica las tres diferencias estructurales de golpe.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Compara la función de la mitocondria y la del cloroplasto, y explica por qué NO son la misma cosa aunque las dos tengan que ver con la energía.",
+      "pista": "Una FABRICA el alimento; la otra le SACA la energía. ¿En qué dirección va cada proceso?",
+      "solucion": "Las dos se relacionan con la energía, pero hacen trabajos opuestos y complementarios. El CLOROPLASTO (solo en la vegetal) realiza la fotosíntesis: usa la energía de la luz para FABRICAR alimento (glucosa) a partir de agua y dióxido de carbono, guardando energía dentro de ese azúcar. La MITOCONDRIA (en las dos células) realiza la respiración celular: hace lo inverso, ROMPE la glucosa para LIBERAR esa energía y que la célula pueda usarla. Es decir: el cloroplasto guarda energía en forma de comida; la mitocondria la libera para gastarla. Por eso no son lo mismo, y por eso la célula vegetal necesita las dos.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál de estas estructuras se encuentra SOLO en la célula vegetal y nunca en la animal?",
+      "opciones": [
+        "Cloroplasto",
+        "Núcleo",
+        "Mitocondria",
+        "Membrana plasmática"
+      ],
+      "correcta": 0,
+      "explicacion": "El cloroplasto (donde ocurre la fotosíntesis) es exclusivo de la célula vegetal. Núcleo, mitocondria y membrana plasmática están en las dos células, porque ambas son eucariotas."
+    },
+    {
+      "pregunta": "¿Cuál de estas estructuras tienen en común la célula animal y la vegetal?",
+      "opciones": [
+        "La pared celular",
+        "Las mitocondrias",
+        "Los cloroplastos",
+        "La vacuola central grande"
+      ],
+      "correcta": 1,
+      "explicacion": "Las mitocondrias (respiración celular, liberan energía) están en las dos células. La pared celular, los cloroplastos y la vacuola central grande son exclusivos de la vegetal."
+    },
+    {
+      "pregunta": "¿De qué material está hecha la pared celular y para qué sirve principalmente?",
+      "opciones": [
+        "De grasa; controla qué entra y sale de la célula",
+        "De clorofila; atrapa la luz del sol",
+        "De celulosa; da forma, sostén y protección a la célula vegetal",
+        "De agua; almacena reservas"
+      ],
+      "correcta": 2,
+      "explicacion": "La pared celular está hecha de celulosa, un material rígido, y su función es dar forma, sostén y protección. Controlar qué entra y sale es tarea de la membrana; atrapar la luz, del cloroplasto; almacenar agua, de la vacuola."
+    },
+    {
+      "pregunta": "¿Qué proceso ocurre dentro de los cloroplastos?",
+      "opciones": [
+        "La respiración celular, que libera energía",
+        "El control de qué entra y sale de la célula",
+        "El almacenamiento de agua para dar firmeza",
+        "La fotosíntesis, que fabrica alimento usando la energía de la luz"
+      ],
+      "correcta": 3,
+      "explicacion": "En el cloroplasto ocurre la fotosíntesis: con la energía de la luz atrapada por la clorofila, la célula fabrica glucosa (alimento) a partir de agua y dióxido de carbono. La respiración celular, en cambio, ocurre en las mitocondrias."
+    },
+    {
+      "pregunta": "Una célula tiene pared celular rígida, cloroplastos y una vacuola que ocupa gran parte de su interior. ¿Qué tipo de célula es?",
+      "opciones": [
+        "Vegetal, por la pared, los cloroplastos y la vacuola central grande",
+        "Animal, porque tiene núcleo",
+        "Animal, porque tiene mitocondrias",
+        "No se puede saber con esos datos"
+      ],
+      "correcta": 0,
+      "explicacion": "Es vegetal: tiene las tres piezas exclusivas de la célula vegetal. Tener núcleo o mitocondrias no la haría animal, porque esas partes están en las dos células."
+    },
+    {
+      "pregunta": "¿Por qué la célula animal NO tiene cloroplastos?",
+      "opciones": [
+        "Porque los animales son demasiado pequeños",
+        "Porque el animal es heterótrofo: consigue su alimento comiendo, no lo fabrica",
+        "Porque los cloroplastos solo caben en células con núcleo",
+        "Porque el animal usa las mitocondrias para fabricar su comida"
+      ],
+      "correcta": 1,
+      "explicacion": "El animal es heterótrofo: obtiene su alimento comiendo a otros seres vivos, así que no necesita fabricarlo y no tiene cloroplastos. La planta es autótrofa: fabrica su comida con luz en los cloroplastos. Las mitocondrias no fabrican comida, liberan su energía."
+    },
+    {
+      "pregunta": "¿Es cierto que las células animales no tienen vacuolas?",
+      "opciones": [
+        "Sí, las vacuolas son exclusivas de las plantas",
+        "Sí, porque los animales no almacenan nada",
+        "No: las animales también tienen vacuolas, pero pequeñas; lo exclusivo vegetal es la vacuola central grande",
+        "No, y además las animales las tienen más grandes que las plantas"
+      ],
+      "correcta": 2,
+      "explicacion": "Es un mito común. Las células animales SÍ tienen vacuolas, solo que pequeñas y varias. Lo característico de la vegetal no es tener vacuolas, sino tener UNA central y muy grande."
+    },
+    {
+      "pregunta": "La vacuola central grande, cuando está llena de agua, mantiene firme a la planta. ¿Cómo lo logra?",
+      "opciones": [
+        "Fabricando alimento con la luz",
+        "Controlando qué entra y sale de la célula",
+        "Liberando energía de la glucosa",
+        "Empujando desde adentro contra la pared celular (presión de turgencia)"
+      ],
+      "correcta": 3,
+      "explicacion": "La vacuola llena de agua empuja contra la pared celular rígida; esa presión (de turgencia) mantiene firmes y erguidas a las células. Si la vacuola se vacía, la planta se pone mustia."
+    },
+    {
+      "pregunta": "Un estudiante dice: 'Las plantas no tienen mitocondrias porque ya tienen cloroplastos'. ¿Qué error comete?",
+      "opciones": [
+        "Ninguno, es correcto",
+        "Cree que las plantas no hacen fotosíntesis",
+        "Confunde la vacuola con la pared celular",
+        "Cree que una estructura reemplaza a la otra, pero hacen trabajos distintos: el cloroplasto fabrica el alimento y la mitocondria le saca la energía; la planta tiene las dos"
+      ],
+      "correcta": 3,
+      "explicacion": "El cloroplasto FABRICA el alimento (glucosa) con luz; la mitocondria LIBERA la energía de ese alimento. Son procesos distintos, así que no se reemplazan: la célula vegetal tiene mitocondrias Y cloroplastos."
+    },
+    {
+      "pregunta": "¿Cuál es la diferencia entre la membrana plasmática y la pared celular?",
+      "opciones": [
+        "La membrana es fina y selectiva (controla qué pasa) y está en las dos células; la pared es gruesa, rígida y solo da sostén, y está solo en la vegetal",
+        "Son lo mismo, solo cambia el nombre",
+        "La membrana es rígida y la pared es flexible",
+        "La pared controla qué entra y sale, y la membrana da sostén"
+      ],
+      "correcta": 0,
+      "explicacion": "La membrana plasmática es delgada, flexible y selectiva (decide qué entra y sale), y la tienen las dos células. La pared celular es gruesa, rígida, de celulosa, solo da sostén y forma, y es exclusiva de la vegetal. La vegetal tiene ambas, una por dentro de la otra."
+    },
+    {
+      "pregunta": "Al microscopio, ¿por qué las células vegetales suelen verse con forma de caja de bordes rectos y las animales más redondeadas?",
+      "opciones": [
+        "Porque las vegetales son más grandes",
+        "Porque la pared celular rígida da a la vegetal una forma fija de caja, mientras que la animal solo tiene la membrana flexible",
+        "Porque las animales no tienen núcleo",
+        "Porque las vegetales tienen más agua"
+      ],
+      "correcta": 1,
+      "explicacion": "La pared celular rígida de la vegetal le impone una forma fija, de caja, y permite apilarlas como ladrillos. La animal solo tiene la membrana flexible, así que adopta formas redondeadas o irregulares y puede cambiar de forma."
+    },
+    {
+      "pregunta": "Se observa una célula redondeada con membrana, núcleo, mitocondrias y algunas vacuolas pequeñas, pero sin pared ni cloroplastos. ¿Qué es y por qué?",
+      "opciones": [
+        "Vegetal, porque tiene vacuolas",
+        "Vegetal, porque tiene núcleo y mitocondrias",
+        "Procariota, porque no tiene pared",
+        "Animal, porque no tiene ninguna de las tres piezas exclusivas de la vegetal"
+      ],
+      "correcta": 3,
+      "explicacion": "Es animal: le faltan las tres piezas exclusivas de la vegetal (pared, cloroplastos y vacuola central grande) y tiene forma redondeada. Las vacuolas pequeñas no la hacen vegetal (las animales también las tienen). Tiene núcleo, así que es eucariota, no procariota."
+    },
+    {
+      "pregunta": "¿Cuál de estas piezas está presente en TODA célula vegetal, tenga o no cloroplastos?",
+      "opciones": [
+        "El cloroplasto",
+        "La pared celular",
+        "Ninguna, todas pueden faltar",
+        "La vacuola pequeña"
+      ],
+      "correcta": 1,
+      "explicacion": "La pared celular está en toda célula vegetal. Los cloroplastos, en cambio, faltan en las células que no reciben luz (como las de la raíz). Por eso, ante la duda, la pared es el dato seguro para reconocer una planta."
+    },
+    {
+      "pregunta": "Una célula de la raíz de una planta casi no tiene cloroplastos. ¿Sigue siendo vegetal? ¿Por qué?",
+      "opciones": [
+        "No, sin cloroplastos ninguna célula es vegetal",
+        "Sí, porque conserva la pared celular y la vacuola central grande, que son exclusivas de la vegetal",
+        "No, pasa a ser una célula animal",
+        "Sí, pero solo porque tiene mitocondrias"
+      ],
+      "correcta": 1,
+      "explicacion": "Sigue siendo vegetal: aunque la raíz vive sin luz y casi no tiene cloroplastos, conserva la pared celular y la vacuola central grande, exclusivas de la planta. La ausencia de cloroplastos no la convierte en animal; y las mitocondrias no sirven para decidir, porque están en las dos."
+    }
+  ]
+}

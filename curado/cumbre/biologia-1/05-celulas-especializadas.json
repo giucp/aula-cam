@@ -1,0 +1,358 @@
+{
+  "programa": "cumbre",
+  "materia": "Biología",
+  "grado": "Cumbre Biología 1er año",
+  "dominio": "La unidad de la vida: la célula",
+  "tema": "Células especializadas: la forma sigue a la función",
+  "referencias": [
+    "UK KS3/GCSE Biology (AQA/Edexcel) — Specialised cells and cell differentiation; how structure relates to function (nerve, red blood, muscle, sperm, root hair, ciliated, palisade cells)",
+    "Cambridge Lower Secondary & IGCSE Biology — Cell specialisation and adaptation; levels of organisation (cells, tissues, organs, systems)",
+    "Singapore MOE Lower Secondary Science — Cells to systems; specialised cells and the structure–function relationship",
+    "Japan MEXT Grade 8 Science (中学2年 理科) — 細胞の分化と組織・器官: differentiation of cells into tissues and organs"
+  ],
+  "resumen": {
+    "titulo": "Células especializadas: la forma sigue a la función",
+    "intro": "Hasta ahora miraste la célula como una sola cosa: viste que todo ser vivo está hecho de células, que hay procariotas y eucariotas, y que animal y vegetal comparten membrana, citoplasma, núcleo y mitocondrias mientras la vegetal agrega pared, cloroplastos y una vacuola central grande. Pero hay una pregunta que quedó abierta: si todas tus células tienen el mismo manual de instrucciones (el mismo ADN en el núcleo), ¿por qué una célula de tu ojo no se parece en nada a una de tu músculo, a una de tu sangre o a una neurona de tu cerebro? La respuesta es la idea más elegante de la biología de la célula, y es la que vas a trabajar en este tema: cada célula de un ser vivo complejo se ESPECIALIZA, es decir, cambia su forma y sus piezas para hacer UN trabajo concreto muy bien, y —esto es lo importante— su FORMA no es un capricho: está diseñada al servicio de ese trabajo. Los arquitectos tienen una frase para esto: 'la forma sigue a la función', y las células la cumplen al pie de la letra. En este tema no vas a memorizar una lista de células; vas a aprender a MIRAR una célula desconocida, deducir para qué sirve a partir de su forma, y al revés: dado un trabajo, imaginar qué forma haría falta. Vas a poder justificar por qué una neurona es larga, por qué un glóbulo rojo perdió su núcleo, y hasta decidir cuál de dos células sirve mejor para una tarea. Eso es entender la célula, no solo nombrarla.",
+    "secciones": [
+      {
+        "titulo": "De una sola célula a un cuerpo lleno de células distintas: la especialización",
+        "explicacion": "Empecemos por un hecho que sorprende a casi todos: tu cuerpo entero, con sus más de 200 tipos de células diferentes, empezó siendo UNA sola célula (la célula que se formó cuando te originaste). Esa célula se dividió en dos, esas dos en cuatro, y así millones de veces. Pero si solo se dividiera, tendrías una bola de células todas iguales e inútiles. Lo que realmente pasa es que, a medida que se dividen, las células se DIFERENCIAN: cada grupo va cambiando para convertirse en un tipo especial —unas se vuelven células de músculo, otras de piel, otras neuronas— y cada tipo desarrolla una forma y unas piezas propias para cumplir un trabajo concreto. A eso lo llamamos ESPECIALIZACIÓN: una célula especializada es una que ha cambiado su forma y su contenido para hacer MUY BIEN una única tarea, a cambio de dejar de hacer otras. Definamos también el proceso: la DIFERENCIACIÓN es el camino por el que una célula sin oficio definido se transforma en una célula especializada; las células jóvenes que todavía no se han diferenciado y pueden convertirse en muchos tipos se llaman CÉLULAS MADRE. Fijate en algo clave: todas esas células distintas siguen teniendo el MISMO ADN en el núcleo (el mismo manual). La diferencia no está en tener manuales distintos, sino en qué parte del manual usa cada una: una neurona 'lee' las instrucciones para ser neurona y apaga el resto; una célula muscular lee las de músculo. Por eso pueden ser tan distintas siendo parientes idénticas de origen.",
+        "pasos": [
+          "Todo ser vivo complejo empieza como UNA célula, que se divide muchísimas veces.",
+          "Diferenciación: al dividirse, las células se van transformando en tipos distintos (músculo, nervio, piel...).",
+          "Especialización: cada tipo cambia su forma y sus piezas para hacer MUY BIEN una sola tarea.",
+          "Todas conservan el mismo ADN; lo que cambia es qué instrucciones de ese manual usa cada una."
+        ],
+        "ejemplo": "Una célula madre es como un estudiante que todavía no eligió carrera: puede llegar a ser muchas cosas. Cuando 'elige' (se diferencia), se especializa: se convierte en neurona, o en célula muscular, o en glóbulo rojo, y desde entonces se dedica a ese único oficio con una forma hecha a medida. Ninguna cambió de manual; cada una usa una parte distinta del mismo manual.",
+        "figura": ""
+      },
+      {
+        "titulo": "La gran idea: la forma sigue a la función",
+        "explicacion": "Acá está el corazón del tema, y conviene entenderlo antes de ver un solo ejemplo. 'La forma sigue a la función' quiere decir que la ESTRUCTURA de una célula (cómo es: su forma, su tamaño, qué piezas tiene de más o de menos) está determinada por su FUNCIÓN (qué trabajo hace). No es que la célula tenga una forma rara y después se le busque una utilidad; es al revés: el trabajo exige cierta forma, y la célula la desarrolla. Pensalo con herramientas cotidianas: un martillo es pesado y con mango largo porque su función es golpear; una aguja es fina y puntiaguda porque su función es coser. Si te muestran una herramienta desconocida, por su forma adivinás para qué sirve. Con las células pasa igual, y ese es exactamente el razonamiento que vas a entrenar. Este vínculo funciona en las dos direcciones, y las dos hay que dominarlas: de la FORMA a la FUNCIÓN (veo una célula muy larga → deduzco que sirve para conectar cosas lejanas) y de la FUNCIÓN a la FORMA (necesito una célula que absorba mucha agua → deduzco que le conviene ser larga y delgada para tener más superficie de contacto). Hay algunas 'estrategias de diseño' que vas a ver repetirse en muchas células distintas: alargarse para llegar lejos o para tener más superficie; llenarse de una pieza (mitocondrias, cloroplastos) para hacer mucho de un proceso; deshacerse de lo que estorba (perder el núcleo para ganar espacio); o desarrollar un apéndice para moverse (una cola, unos pelitos). En cuanto reconozcas estas estrategias, vas a poder 'leer' casi cualquier célula.",
+        "pasos": [
+          "La función (el trabajo) determina la estructura (la forma y las piezas): la forma sigue a la función.",
+          "De la forma a la función: por cómo es una célula, deducís para qué sirve.",
+          "De la función a la forma: dado un trabajo, deducís qué forma le convendría.",
+          "Estrategias que se repiten: alargarse (llegar lejos o ganar superficie), llenarse de una pieza, perder lo que estorba, tener un apéndice para moverse."
+        ],
+        "ejemplo": "Si te dieran el trabajo de 'llevar un mensaje desde la punta del pie hasta la médula espinal, sin cortes', ¿qué forma de célula pedirías? Una muy, muy larga, como un cable, que cubra toda esa distancia de una pieza. No hace falta que te digan que es una neurona: la función 'conectar cosas lejanas' ya te obliga a imaginar esa forma. Eso es leer la célula al revés, desde el trabajo.",
+        "figura": ""
+      },
+      {
+        "titulo": "La neurona: larga y ramificada para transmitir señales lejos",
+        "explicacion": "La NEURONA es la célula del sistema nervioso, y su trabajo es transmitir SEÑALES (impulsos nerviosos, que son pequeñas corrientes eléctricas) de un punto del cuerpo a otro, muchas veces muy lejano. Pensá en el trayecto que recorre una orden desde tu cerebro hasta un dedo del pie, o el aviso de dolor que vuelve desde ese dedo: es casi todo el largo de tu cuerpo. ¿Qué forma exige ese trabajo? Dos rasgos, y los dos se explican solos. Primero, la neurona es larguísima y delgada, como un cable: tiene una prolongación fina llamada AXÓN que puede medir desde milímetros hasta cerca de un metro en las neuronas más largas de tu cuerpo. Esa longitud le permite llevar la señal lejos sin interrupciones, de una sola célula, igual que un cable largo conecta dos puntos distantes sin necesidad de empalmes. Segundo, en sus extremos la neurona está muy RAMIFICADA: se abre en muchas ramitas (llamadas dendritas de un lado y terminales del otro). ¿Para qué? Porque una neurona no habla con una sola célula: recibe mensajes de muchas y los pasa a muchas. Las ramas son como muchos enchufes que le permiten conectarse con un montón de células vecinas a la vez. Uní las dos ideas: larga para llegar LEJOS, ramificada para conectarse con MUCHAS. La forma de la neurona es, literalmente, la forma de un cable de comunicaciones, porque su función es comunicar.",
+        "pasos": [
+          "Función de la neurona: transmitir señales (impulsos eléctricos) entre puntos del cuerpo, a menudo lejanos.",
+          "Es larga y delgada (el axón, hasta cerca de un metro): lleva la señal lejos de una sola pieza, como un cable.",
+          "Está muy ramificada en los extremos: se conecta con muchas células a la vez para recibir y pasar mensajes.",
+          "Forma que sigue a la función: cable largo para la distancia + muchas ramas para las conexiones."
+        ],
+        "ejemplo": "Cuando pisás algo caliente y retirás el pie sin pensarlo, una señal viajó por neuronas larguísimas desde tu pie hasta tu médula y volvió como una orden a tus músculos. Si la neurona fuera cortita y redonda como un glóbulo, harían falta miles empalmadas, con miles de puntos donde la señal podría perderse. Su forma de cable largo es justo lo que ese trabajo necesita.",
+        "figura": "<svg viewBox=\"0 0 420 160\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"70\" y1=\"80\" x2=\"20\" y2=\"45\" stroke=\"#5A3AAF\" stroke-width=\"2\"/><line x1=\"70\" y1=\"80\" x2=\"18\" y2=\"80\" stroke=\"#5A3AAF\" stroke-width=\"2\"/><line x1=\"70\" y1=\"80\" x2=\"20\" y2=\"115\" stroke=\"#5A3AAF\" stroke-width=\"2\"/><line x1=\"70\" y1=\"80\" x2=\"40\" y2=\"55\" stroke=\"#5A3AAF\" stroke-width=\"2\"/><line x1=\"70\" y1=\"80\" x2=\"40\" y2=\"105\" stroke=\"#5A3AAF\" stroke-width=\"2\"/><circle cx=\"78\" cy=\"80\" r=\"22\" fill=\"#7C4DFF\" fill-opacity=\"0.30\" stroke=\"#5A3AAF\" stroke-width=\"2\"/><circle cx=\"78\" cy=\"80\" r=\"8\" fill=\"#5A3AAF\" fill-opacity=\"0.5\"/><line x1=\"100\" y1=\"80\" x2=\"350\" y2=\"80\" stroke=\"#5A3AAF\" stroke-width=\"5\"/><line x1=\"350\" y1=\"80\" x2=\"395\" y2=\"50\" stroke=\"#5A3AAF\" stroke-width=\"2\"/><line x1=\"350\" y1=\"80\" x2=\"400\" y2=\"80\" stroke=\"#5A3AAF\" stroke-width=\"2\"/><line x1=\"350\" y1=\"80\" x2=\"395\" y2=\"110\" stroke=\"#5A3AAF\" stroke-width=\"2\"/><text x=\"78\" y=\"128\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">recibe</text><text x=\"225\" y=\"72\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">axón largo (lleva la señal lejos)</text><text x=\"372\" y=\"128\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">entrega</text></svg>"
+      },
+      {
+        "titulo": "El glóbulo rojo: sin núcleo y bicóncavo para cargar más oxígeno",
+        "explicacion": "El GLÓBULO ROJO (o eritrocito) es la célula de tu sangre encargada de transportar OXÍGENO desde los pulmones hasta cada rincón del cuerpo. El oxígeno viaja pegado a una sustancia roja llamada HEMOGLOBINA que llena el interior del glóbulo. Para hacer bien ese trabajo, esta célula tomó dos decisiones de diseño llamativas, y las dos se entienden si pensás en su función. Primera, y sorprendente: el glóbulo rojo humano maduro NO tiene núcleo. Sí, el núcleo que en el tema anterior definimos como imprescindible en las eucariotas; el glóbulo rojo lo pierde al madurar. ¿Por qué renunciaría a algo tan importante? Porque su único trabajo es cargar oxígeno, y el núcleo ocupa espacio: al deshacerse de él, queda MÁS lugar adentro para llenarse de hemoglobina y, por lo tanto, para cargar más oxígeno en cada viaje. Y no se detiene ahí: al madurar, el glóbulo rojo también se deshace de casi todas sus demás piezas internas, incluidas las MITOCONDRIAS, para dejar aún más espacio libre para la hemoglobina; la poca energía que necesita la obtiene de una manera sencilla que no requiere mitocondrias. Es la estrategia de 'deshacerse de todo lo que no ayude a cargar oxígeno' llevada al extremo. Es un intercambio: pierde la capacidad de dividirse y de repararse (por eso dura pocos meses), pero gana capacidad de carga, que es lo único que le importa. Segunda decisión: su forma es un disco BICÓNCAVO, es decir, aplanado y hundido en el centro por las dos caras, como una rosquilla sin el agujero del todo. Esa forma hundida aumenta la SUPERFICIE de la célula (la cantidad de 'cara' expuesta al exterior) sin agrandarla, y cuanta más superficie, más rápido entra y sale el oxígeno. Además, al ser delgado y flexible, el glóbulo puede doblarse para pasar por los vasos sanguíneos más finos, más estrechos que él. Todo —perder el núcleo, aplanarse, hacerse flexible— apunta a lo mismo: cargar y entregar la mayor cantidad de oxígeno posible.",
+        "pasos": [
+          "Función del glóbulo rojo: transportar oxígeno (pegado a la hemoglobina) por todo el cuerpo.",
+          "No tiene núcleo ni mitocondrias (los pierde al madurar): así queda más espacio para hemoglobina y carga más oxígeno.",
+          "Forma de disco bicóncavo (hundido en el centro): más superficie para que el oxígeno entre y salga rápido.",
+          "Delgado y flexible: se dobla para pasar por los vasos más estrechos. Todo al servicio de transportar oxígeno."
+        ],
+        "ejemplo": "Compará un glóbulo rojo con una neurona: la neurona conserva su núcleo (necesita dirigir procesos complejos toda su vida), mientras que el glóbulo rojo lo sacrifica. No es que uno esté 'mejor hecho' que el otro: cada forma responde a su trabajo. La neurona necesita durar y coordinar; el glóbulo solo necesita cargar oxígeno y hacerlo mucho, así que optimiza su interior para eso aunque le cueste el núcleo.",
+        "figura": "<svg viewBox=\"0 0 300 140\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"75\" y=\"20\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">célula común</text><text x=\"225\" y=\"20\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#3B2B4A\">glóbulo rojo (corte)</text><ellipse cx=\"75\" cy=\"80\" rx=\"48\" ry=\"38\" fill=\"#BFE9F2\" fill-opacity=\"0.35\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><circle cx=\"75\" cy=\"80\" r=\"15\" fill=\"#7C4DFF\" fill-opacity=\"0.35\" stroke=\"#5A3AAF\" stroke-width=\"2\"/><text x=\"75\" y=\"84\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"8\" fill=\"#5A3AAF\">núcleo</text><path d=\"M 177 80 Q 177 52 225 52 Q 273 52 273 80 Q 260 66 225 66 Q 190 66 177 80 Z\" fill=\"#E8888B\" fill-opacity=\"0.5\" stroke=\"#C0392B\" stroke-width=\"2\"/><path d=\"M 177 80 Q 190 94 225 94 Q 260 94 273 80 Q 273 108 225 108 Q 177 108 177 80 Z\" fill=\"#E8888B\" fill-opacity=\"0.5\" stroke=\"#C0392B\" stroke-width=\"2\"/><text x=\"225\" y=\"128\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#C0392B\">sin núcleo, hundido</text></svg>"
+      },
+      {
+        "titulo": "La célula muscular: llena de mitocondrias para tener energía de sobra",
+        "explicacion": "La CÉLULA MUSCULAR (o fibra muscular) tiene un trabajo agotador: CONTRAERSE, es decir, acortarse con fuerza una y otra vez para mover tu cuerpo, y hacerlo sin parar cuando hace falta (pensá en el músculo del corazón, que late toda tu vida). Contraerse cuesta MUCHA energía, y aquí conviene traer una pieza del tema anterior: las MITOCONDRIAS, esas 'centrales de energía' donde ocurre la respiración celular, que rompe la glucosa para liberar la energía que la célula necesita. Si una célula va a gastar mucha energía, la estrategia obvia es tener muchas centrales de energía. Y eso es exactamente lo que hace la célula muscular: está LLENA de mitocondrias, muchísimas más que una célula común, para poder producir toda la energía que exige contraerse repetidamente sin quedarse sin combustible. Fijate en el patrón, porque es una estrategia de diseño que ya te va a resultar familiar: 'si necesito hacer mucho de un proceso, me lleno de la pieza que hace ese proceso'. Es la misma lógica por la que, en el tema anterior, las células de la hoja se llenaban de cloroplastos para fabricar mucho alimento con luz: allá muchos cloroplastos para fotosintetizar mucho; acá muchas mitocondrias para producir mucha energía. Además, las fibras musculares suelen ser alargadas y agrupadas en paralelo, porque al acortarse todas juntas y en la misma dirección tiran con más fuerza; pero el rasgo que tenés que asociar con el músculo es su ABUNDANCIA de mitocondrias, porque su función es la más costosa en energía.",
+        "pasos": [
+          "Función de la célula muscular: contraerse (acortarse con fuerza) para producir movimiento, muchas veces sin parar.",
+          "Contraerse gasta mucha energía, y la energía se libera en las mitocondrias (respiración celular, del tema anterior).",
+          "Por eso está LLENA de mitocondrias: muchas centrales para producir mucha energía.",
+          "Misma estrategia que la hoja con los cloroplastos: para hacer mucho de un proceso, la célula se llena de la pieza que lo realiza."
+        ],
+        "ejemplo": "El músculo del corazón se contrae unas 100.000 veces por día durante toda tu vida, sin descansar nunca. Una célula con pocas mitocondrias se quedaría 'sin batería' en minutos. Por eso las células del corazón están entre las más cargadas de mitocondrias del cuerpo: su forma interna (muchas centrales de energía) es la respuesta directa a la función más incansable que existe.",
+        "figura": ""
+      },
+      {
+        "titulo": "El espermatozoide: con cola para nadar y energía para el viaje",
+        "explicacion": "El ESPERMATOZOIDE es la célula reproductora masculina, y su función es una sola pero exigente: MOVERSE, nadar hasta alcanzar al óvulo (la célula reproductora femenina) para unirse a él. Es una célula hecha para viajar, y cada parte de su forma resuelve un problema de ese viaje. Lo primero que salta a la vista es su COLA, una prolongación larga y delgada (llamada flagelo) que el espermatozoide agita de lado a lado como un látigo para impulsarse y nadar en el líquido, igual que la cola de un renacuajo. Ninguna de las células que vimos antes se mueve por sí sola; el espermatozoide sí, y por eso desarrolló ese 'motor'. Segundo, nadar es un trabajo que gasta energía, así que —otra vez la misma estrategia— el espermatozoide tiene MUCHAS mitocondrias, concentradas en la zona entre la cabeza y la cola, para alimentar el movimiento de la cola durante todo el trayecto. Tercero, su cabeza es pequeña y con forma aerodinámica (afinada, como la punta de una gota), para ofrecer poca resistencia y avanzar más rápido por el líquido; y en esa cabeza lleva unas sustancias (enzimas) capaces de abrir un paso en la capa externa del óvulo cuando llega. Sumá todo: cola para impulsarse, mitocondrias para la energía del viaje y cabeza afinada para avanzar rápido. Es, de principio a fin, una célula diseñada para llegar.",
+        "pasos": [
+          "Función del espermatozoide: nadar hasta el óvulo para unirse a él (reproducción).",
+          "Tiene una cola larga (flagelo) que agita como un látigo: es su motor para nadar.",
+          "Muchas mitocondrias cerca de la cola: aportan la energía que exige el viaje (misma estrategia que el músculo).",
+          "Cabeza pequeña y afinada: avanza con poca resistencia, y lleva enzimas para entrar en el óvulo al llegar."
+        ],
+        "ejemplo": "Poné lado a lado un glóbulo rojo y un espermatozoide: los dos son células, pero el glóbulo es un disco quieto que se deja llevar por la corriente de la sangre, mientras que el espermatozoide tiene cola y motor propio porque su trabajo es desplazarse activamente. El que necesita moverse desarrolla un apéndice para moverse; el que solo carga oxígeno, no. La forma delata la función.",
+        "figura": ""
+      },
+      {
+        "titulo": "Dos células que ganan por su SUPERFICIE: el pelo radical y la célula ciliada",
+        "explicacion": "Las dos células siguientes muestran una misma estrategia —aumentar la superficie de contacto— aplicada a plantas y a animales, y conectan directamente con lo que ya sabés. Primera, la CÉLULA DE PELO RADICAL, que forma la superficie de las raíces de las plantas y cuya función es ABSORBER agua y minerales del suelo. Para absorber mucho, lo que conviene es tener mucha 'cara' en contacto con la tierra, así que esta célula desarrolla una larga prolongación fina, como un pelo (de ahí su nombre), que se mete entre las partículas del suelo. Ese pelo multiplica la superficie de contacto con el agua sin que la célula sea mucho más grande: más superficie, más absorción. Y acá se conecta con el tema anterior: la célula de pelo radical es VEGETAL (tiene pared y vacuola), pero casi no tiene cloroplastos, ¿y por qué? Porque vive bajo tierra, donde no llega la luz: sin luz no hay fotosíntesis, así que gastar recursos en cloroplastos no tendría sentido. La forma sigue a la función también en lo que la célula DECIDE NO tener. Segunda, la CÉLULA CILIADA, que recubre por dentro tus vías respiratorias (la tráquea y los tubos que llevan aire a los pulmones). Su función es LIMPIAR ese aire: tiene en su superficie muchísimos pelitos diminutos y móviles llamados CILIOS, que se mueven todos juntos como un campo de trigo mecido por el viento, empujando hacia arriba el moco que atrapa el polvo y los microbios que respiraste, para alejarlos de los pulmones. Aquí la superficie no sirve para absorber sino para BARRER: muchos cilios, muchos 'remos' empujando la suciedad hacia afuera. Fijate que pelo radical y célula ciliada son opuestos en su tarea (una mete cosas, la otra las saca) pero comparten la misma idea de diseño: multiplicar la superficie con prolongaciones para hacer mucho contacto con lo que las rodea.",
+        "pasos": [
+          "Célula de pelo radical (vegetal): absorbe agua y minerales del suelo; su forma de pelo largo multiplica la superficie de contacto.",
+          "Casi no tiene cloroplastos porque vive bajo tierra, sin luz: sin luz no hay fotosíntesis (conexión con el tema anterior).",
+          "Célula ciliada (animal, en las vías respiratorias): limpia el aire; sus muchos cilios móviles barren el moco con polvo hacia afuera de los pulmones.",
+          "Misma estrategia en las dos: prolongaciones que aumentan la superficie, para absorber mucho (pelo) o para barrer mucho (cilios)."
+        ],
+        "ejemplo": "Cuando fumás, el humo paraliza los cilios de estas células, y por eso el moco con suciedad deja de subir y se acumula en los pulmones (la 'tos del fumador' es el cuerpo tratando de sacarlo a la fuerza). Ese detalle muestra lo bien ajustada que está la forma a la función: basta con dañar los cilios —la pieza que hace el trabajo— para que toda la limpieza deje de funcionar.",
+        "figura": ""
+      },
+      {
+        "titulo": "De la célula al organismo: cómo se organizan las células especializadas",
+        "explicacion": "Ya viste célula por célula; ahora subamos un nivel para ver el cuadro completo, porque las células especializadas no trabajan sueltas. Cuando muchas células del MISMO tipo, especializadas en lo mismo, se juntan para cumplir una función, forman un TEJIDO. Por ejemplo, muchas células musculares juntas forman el tejido muscular; muchas neuronas y sus apoyos forman el tejido nervioso. El siguiente escalón: cuando distintos TEJIDOS se combinan para realizar una tarea más grande, forman un ÓRGANO. El corazón es un órgano hecho sobre todo de tejido muscular, más tejido nervioso que lo coordina y otros; el estómago, la hoja de una planta, la raíz, también son órganos. Un escalón más: varios órganos que colaboran en una misma gran función forman un SISTEMA (o aparato): el corazón y los vasos sanguíneos forman el sistema circulatorio, que lleva la sangre —y con ella los glóbulos rojos cargados de oxígeno— a todo el cuerpo. Y todos los sistemas juntos forman el ORGANISMO completo, el ser vivo entero. Quedate con esta escalera, que resume la organización de la vida: célula → tejido → órgano → sistema → organismo. Y notá cómo cierra el círculo del tema: todo empezó en una sola célula que, al dividirse, se diferenció en cientos de tipos especializados; esos tipos se agrupan en tejidos, los tejidos en órganos, los órganos en sistemas, y así se construye un cuerpo completo. La especialización de cada célula es el primer ladrillo de todo el edificio del ser vivo.",
+        "pasos": [
+          "Tejido: muchas células del mismo tipo, especializadas en lo mismo, trabajando juntas (ej. tejido muscular).",
+          "Órgano: varios tejidos distintos combinados para una tarea mayor (ej. el corazón, el estómago, la hoja).",
+          "Sistema: varios órganos que colaboran en una gran función (ej. corazón + vasos = sistema circulatorio).",
+          "La escalera de la vida: célula → tejido → órgano → sistema → organismo."
+        ],
+        "ejemplo": "Seguí a un glóbulo rojo en la escalera: es una CÉLULA especializada en cargar oxígeno; junto a millones más forma la sangre, un TEJIDO; la sangre recorre el corazón, un ÓRGANO; el corazón y los vasos forman el sistema circulatorio, un SISTEMA; y ese sistema, con todos los demás, forma el ORGANISMO que sos vos. De una célula con forma de disco sin núcleo hasta un cuerpo entero, todo encaja.",
+        "figura": ""
+      },
+      {
+        "titulo": "Cómo razonar forma y función (y los errores que hay que evitar)",
+        "explicacion": "Cerramos con el método que este tema te pide dominar, y con las trampas más comunes. El razonamiento tiene dos direcciones y conviene practicar las dos. De la FORMA a la FUNCIÓN: mirá qué tiene de especial la célula y preguntate qué trabajo explica ese rasgo. ¿Es muy larga? Probablemente conecte cosas lejanas o gane superficie. ¿Está llena de mitocondrias? Hace algo que gasta mucha energía. ¿Tiene cola o cilios? Se mueve o mueve cosas. ¿Perdió el núcleo? Sacrificó espacio para llenarse de otra cosa. De la FUNCIÓN a la FORMA: dado un trabajo, pedí la forma que lo haría posible. ¿Hay que absorber mucho? Pedí mucha superficie (prolongaciones). ¿Hay que producir mucha energía? Pedí muchas mitocondrias. Ahora los errores. Error 1, el más grave: pensar que la forma es un adorno o una casualidad ('la neurona es larga porque sí'). No: cada rasgo tiene una razón funcional, y si no la ves, es que todavía no entendiste el trabajo de la célula. Error 2: creer que una célula especializada es 'más avanzada' o 'mejor' que otra. No hay mejores ni peores; hay adecuadas a su tarea. Un glóbulo rojo sin núcleo no es una célula 'defectuosa': es una célula perfectamente diseñada para cargar oxígeno. Error 3: olvidar que todas comparten el mismo ADN. Que sean tan distintas no significa que tengan manuales distintos; usan partes distintas del mismo manual. Error 4: confundir el nivel de organización, decir 'tejido' cuando es una célula o 'órgano' cuando es un tejido; repasá la escalera célula → tejido → órgano → sistema → organismo y ubicá siempre en qué escalón estás.",
+        "pasos": [
+          "De la forma a la función: identificá el rasgo raro (largo, lleno de mitocondrias, con cola, sin núcleo...) y deducí qué trabajo lo explica.",
+          "De la función a la forma: dado un trabajo, pedí la forma que lo permite (mucha superficie, muchas mitocondrias, un apéndice para moverse...).",
+          "Error clave: creer que la forma es casual o un adorno. Siempre tiene una razón funcional; si no la ves, todavía no entendiste la función.",
+          "Otros errores: pensar que una célula es 'mejor' que otra (todas son adecuadas a su tarea); olvidar que comparten el mismo ADN; confundir los niveles de la escalera célula→tejido→órgano→sistema→organismo."
+        ],
+        "ejemplo": "Te describen una célula alargada, llena de mitocondrias, agrupada en paralelo con otras iguales. Sin que te digan su nombre, podés razonar: alargada y en paralelo → sirve para tirar en una dirección; llena de mitocondrias → gasta mucha energía. Conclusión: es una célula muscular, y lo dedujiste solo desde la forma. Eso es leer una célula, que es justo lo que el tema busca que sepas hacer.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "Cada célula de un ser vivo complejo se especializa (se diferencia) para hacer muy bien un solo trabajo, y su FORMA está al servicio de esa FUNCIÓN: la forma sigue a la función. Ejemplos que hay que saber leer en las dos direcciones: la neurona es larga y ramificada para transmitir señales lejos y conectar con muchas células; el glóbulo rojo pierde el núcleo y es bicóncavo para cargar más oxígeno; la célula muscular se llena de mitocondrias porque contraerse gasta mucha energía; el espermatozoide tiene cola y mitocondrias para nadar hasta el óvulo; la célula de pelo radical se alarga para absorber más agua; la ciliada tiene cilios para barrer el moco. Todas comparten el mismo ADN, pero usan partes distintas de él. Y se organizan en escalera: célula → tejido → órgano → sistema → organismo. Regla de razonamiento: por la forma deducís la función, y dada la función deducís la forma; ningún rasgo es un adorno, todos tienen una razón."
+  },
+  "practica": [
+    {
+      "enunciado": "Te describen una célula muy larga y delgada, parecida a un cable, muy ramificada en sus dos extremos. Deduce qué función cumple y justifica cómo cada rasgo de su forma ayuda a ese trabajo.",
+      "pista": "Pensá qué necesita una célula para llevar algo de un punto lejano a otro y para conectarse con muchas células a la vez.",
+      "solucion": "Es una NEURONA, especializada en transmitir señales (impulsos eléctricos) por el cuerpo. El ser muy larga (el axón) le permite llevar la señal a lugares lejanos de una sola pieza, como un cable que conecta dos puntos distantes sin empalmes; y estar muy ramificada en los extremos le permite conectarse con muchas células a la vez, recibiendo mensajes de muchas y pasándolos a muchas. Cada rasgo responde a la función: largo para la distancia, ramificado para las conexiones múltiples.",
+      "figura": ""
+    },
+    {
+      "enunciado": "El glóbulo rojo humano maduro pierde el núcleo, algo raro en una célula eucariota. Explica por qué esta pérdida, lejos de ser un defecto, lo ayuda a cumplir su función.",
+      "pista": "¿Cuál es el único trabajo del glóbulo rojo? ¿Qué gana en su interior al deshacerse del núcleo?",
+      "solucion": "El único trabajo del glóbulo rojo es transportar oxígeno, que viaja pegado a la hemoglobina que llena su interior. El núcleo ocupa espacio; al perderlo, queda MÁS lugar adentro para hemoglobina y, por lo tanto, el glóbulo carga más oxígeno en cada viaje. No es un defecto sino una optimización: renuncia a poder dividirse y repararse (por eso dura pocos meses) a cambio de la mayor capacidad de carga posible, que es lo único que su función requiere. La forma (sin núcleo) sigue a la función (cargar oxígeno).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Dos células están llenas de mitocondrias: una es de músculo, la otra es un espermatozoide. Explica qué tienen en común sus funciones que justifica que ambas necesiten tantas mitocondrias.",
+      "pista": "Recordá qué hacen las mitocondrias (del tema anterior) y qué tienen en común contraerse y nadar.",
+      "solucion": "Las mitocondrias liberan energía rompiendo la glucosa (respiración celular). Tanto contraerse (músculo) como nadar hasta el óvulo (espermatozoide) son trabajos que gastan MUCHA energía. Por eso las dos células aplican la misma estrategia de diseño: llenarse de mitocondrias para producir toda la energía que su tarea exige. Aunque hacen cosas distintas (una mueve el cuerpo, la otra se desplaza a sí misma), comparten la necesidad de mucha energía, y esa necesidad explica la abundancia de mitocondrias en ambas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un ingeniero necesita 'diseñar' una célula cuyo trabajo sea absorber la mayor cantidad posible de agua del suelo. Sin nombrar ninguna célula real, describe qué forma le convendría y por qué. Luego di qué célula real cumple ese diseño.",
+      "pista": "Para absorber mucho hace falta mucha superficie de contacto. ¿Qué forma multiplica la superficie sin agrandar mucho la célula?",
+      "solucion": "Le convendría una forma alargada, con una prolongación fina y larga que se meta entre las partículas del suelo, porque eso multiplica la SUPERFICIE de contacto con el agua sin que la célula sea mucho más grande, y a más superficie, más absorción. La célula real que cumple este diseño es la CÉLULA DE PELO RADICAL de las raíces, cuyo 'pelo' largo es exactamente esa prolongación que aumenta la superficie para absorber agua y minerales. (Este ejercicio es 'de la función a la forma': dado el trabajo, dedujiste la forma.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Compara la célula de pelo radical y la célula ciliada: sus tareas son casi opuestas, pero usan la misma idea de diseño. Explica qué idea comparten y en qué se diferencian sus funciones.",
+      "pista": "Una mete algo hacia adentro y la otra saca algo hacia afuera, pero ambas dependen de tener muchas prolongaciones y mucha superficie.",
+      "solucion": "Comparten la idea de aumentar la SUPERFICIE con prolongaciones para hacer mucho contacto con lo que las rodea. Se diferencian en la dirección del trabajo: la célula de pelo radical ABSORBE (mete agua y minerales del suelo hacia la planta) usando su largo pelo para tener más superficie; la célula ciliada BARRE (saca hacia afuera el moco con polvo y microbios de las vías respiratorias) usando sus muchos cilios móviles como remos. Una idea de diseño común (más superficie con prolongaciones) al servicio de dos funciones opuestas: absorber versus expulsar.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante afirma: 'La neurona es larga porque sí, es una forma cualquiera; la célula podría haber sido redonda y funcionar igual'. Evalúa si tiene razón y corrígelo con un argumento basado en la función.",
+      "pista": "Pensá qué pasaría si la neurona fuera cortita y redonda a la hora de llevar una señal desde el pie hasta la médula.",
+      "solucion": "No tiene razón. La forma de la neurona no es casual: su función es transmitir señales entre puntos lejanos del cuerpo, y para cubrir grandes distancias (como del pie a la médula) necesita ser larga, de una sola pieza, como un cable. Si fuera redonda y cortita, harían falta miles de neuronas empalmadas, con miles de puntos donde la señal podría perderse o retrasarse. Su forma alargada es precisamente lo que su función exige; ningún rasgo de una célula especializada es 'porque sí': todos responden al trabajo que hace.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un espermatozoide y un glóbulo rojo están los dos en un líquido del cuerpo (la sangre y los fluidos reproductores). Sin embargo, solo uno tiene cola. Explica por qué, relacionando la forma con la función de cada uno.",
+      "pista": "¿Cuál de los dos necesita desplazarse por sí mismo hasta un destino, y cuál se deja llevar por una corriente?",
+      "solucion": "El espermatozoide tiene cola (flagelo) porque su función es MOVERSE activamente, nadar hasta alcanzar el óvulo; la cola es su motor, que agita como un látigo para impulsarse. El glóbulo rojo NO tiene cola porque no necesita nadar: su función es cargar oxígeno, y se deja llevar por la corriente de la sangre, empujado por el corazón. El que debe desplazarse por sí mismo desarrolla un apéndice para moverse; el que solo transporta algo mientras la corriente lo lleva, no lo necesita. La presencia o ausencia de cola delata la función.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Todas las células de tu cuerpo tienen el mismo ADN, y sin embargo una neurona y una célula muscular son completamente distintas. Explica cómo es posible esto.",
+      "pista": "Pensá en el ADN como un manual completo. ¿Todas las células usan el manual entero o cada una una parte?",
+      "solucion": "Es posible porque, aunque todas las células comparten el MISMO manual de instrucciones (el mismo ADN en el núcleo), cada tipo de célula USA solo una parte de ese manual y mantiene el resto apagado. Durante la diferenciación, la futura neurona 'lee' y activa las instrucciones para ser neurona (hacerse larga, ramificada) y silencia las demás; la futura célula muscular activa las de músculo (llenarse de mitocondrias, alargarse para contraerse). La diferencia entre ellas no está en tener manuales distintos, sino en qué instrucciones del mismo manual pone en marcha cada una. Por eso son tan distintas siendo, de origen, idénticas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "En el tema anterior viste que las células de la hoja se llenan de cloroplastos. En este viste que la célula muscular se llena de mitocondrias. Explica qué estrategia de diseño comparten estos dos casos, aunque las piezas y las funciones sean distintas.",
+      "pista": "¿Qué hace una célula cuando necesita realizar MUCHO de un mismo proceso?",
+      "solucion": "Comparten la estrategia 'para hacer mucho de un proceso, llenarse de la pieza que realiza ese proceso'. La célula de la hoja necesita fabricar mucho alimento con luz, así que se llena de CLOROPLASTOS (donde ocurre la fotosíntesis). La célula muscular necesita producir mucha energía para contraerse sin parar, así que se llena de MITOCONDRIAS (donde ocurre la respiración celular que libera energía). Las piezas y las funciones son distintas (fabricar alimento vs. liberar energía), pero la lógica de diseño es la misma: multiplicar la pieza clave para multiplicar el proceso. Es un patrón que se repite en muchas células especializadas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ordena de menor a mayor estos niveles de organización y define brevemente cada uno: órgano, célula, organismo, sistema, tejido. Luego ubica en la escalera a un glóbulo rojo y al corazón.",
+      "pista": "Empezá por la unidad más pequeña de la vida y subí hasta el ser vivo completo.",
+      "solucion": "De menor a mayor: CÉLULA (la unidad más pequeña; una célula especializada, como el glóbulo rojo), TEJIDO (muchas células del mismo tipo juntas, como la sangre), ÓRGANO (varios tejidos combinados para una tarea, como el corazón), SISTEMA (varios órganos que colaboran, como el circulatorio: corazón + vasos) y ORGANISMO (todos los sistemas juntos, el ser vivo completo). El glóbulo rojo se ubica en el nivel CÉLULA; el corazón, en el nivel ÓRGANO. La escalera completa es: célula → tejido → órgano → sistema → organismo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una empresa quiere una célula artificial que limpie el aire de un conducto empujando la suciedad hacia una salida. Entre estas dos, ¿cuál forma sirve mejor y por qué: (A) una célula lisa con forma de disco sin núcleo, o (B) una célula cubierta de muchos pelitos móviles? Justifica y nombra la célula real que corresponde.",
+      "pista": "Para empujar suciedad hacen falta muchos 'remos' que se muevan. ¿Cuál de las dos formas los tiene?",
+      "solucion": "Sirve mejor la opción B, la célula cubierta de muchos pelitos móviles (cilios), porque esos cilios se mueven todos juntos como remos y barren la suciedad empujándola hacia la salida; una célula lisa con forma de disco no tiene con qué empujar nada. La célula real que corresponde es la CÉLULA CILIADA de las vías respiratorias, que hace exactamente eso con el moco que atrapa el polvo y los microbios. (La opción A describe un glóbulo rojo, diseñado para cargar oxígeno, no para barrer.) Este ejercicio es de EVALUAR: elegiste entre dos formas según cuál cumple mejor la función pedida.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Te dicen que una célula está agrupada en paralelo con muchas células idénticas, es alargada, y su interior está repleto de mitocondrias. Deduce qué célula es y a qué función apunta cada uno de esos tres rasgos.",
+      "pista": "Tres pistas: forma alargada, agrupación en paralelo y muchas mitocondrias. ¿Qué trabajo une a las tres?",
+      "solucion": "Es una CÉLULA MUSCULAR, especializada en contraerse para producir movimiento. Cada rasgo apunta a esa función: ser alargada le permite acortarse a lo largo cuando se contrae; estar agrupada en paralelo con otras iguales hace que, al acortarse todas juntas y en la misma dirección, tiren con más fuerza; y estar repleta de mitocondrias le da la gran cantidad de energía que exige contraerse repetidamente sin parar. Los tres rasgos, leídos juntos, describen una célula hecha para tirar con fuerza y sin cansarse: un músculo.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué significa que una célula esté 'especializada'?",
+      "opciones": [
+        "Que ha cambiado su forma y sus piezas para hacer muy bien una tarea concreta",
+        "Que tiene un ADN distinto al de las demás células del cuerpo",
+        "Que es más grande que las otras células",
+        "Que puede convertirse en cualquier otro tipo de célula"
+      ],
+      "correcta": 0,
+      "explicacion": "Una célula especializada cambió su forma y su contenido para cumplir muy bien un solo trabajo. Su ADN es el mismo que el de las demás (usa otra parte de él); la que puede convertirse en muchos tipos es la célula madre, aún sin especializar."
+    },
+    {
+      "pregunta": "El principio 'la forma sigue a la función' aplicado a las células quiere decir que:",
+      "opciones": [
+        "La forma de la célula es casual y no depende de nada",
+        "La estructura de la célula está determinada por el trabajo que realiza",
+        "Todas las células deben tener la misma forma para funcionar",
+        "La función de una célula cambia según su color"
+      ],
+      "correcta": 1,
+      "explicacion": "La función (el trabajo) determina la estructura (forma y piezas): cada rasgo de una célula especializada existe porque ayuda a su tarea. Por eso, mirando la forma se puede deducir la función, y viceversa."
+    },
+    {
+      "pregunta": "¿Por qué la neurona es una célula muy larga?",
+      "opciones": [
+        "Para almacenar más agua",
+        "Para transmitir señales entre puntos lejanos del cuerpo, de una sola pieza",
+        "Para fabricar su propio alimento",
+        "Para poder dividirse más rápido"
+      ],
+      "correcta": 1,
+      "explicacion": "Su función es transmitir impulsos (señales eléctricas) a lugares lejanos. Ser larga, como un cable, le permite llevar la señal a distancia sin empalmes donde podría perderse. Almacenar agua o fabricar alimento son funciones de otras células."
+    },
+    {
+      "pregunta": "El glóbulo rojo humano maduro no tiene núcleo. ¿Qué ventaja le da esto para su función?",
+      "opciones": [
+        "Le permite moverse por sí mismo",
+        "Lo hace vivir más años",
+        "Deja más espacio interior para hemoglobina y así carga más oxígeno",
+        "Le permite hacer fotosíntesis"
+      ],
+      "correcta": 2,
+      "explicacion": "Al perder el núcleo, queda más lugar dentro del glóbulo para la hemoglobina, que es la que carga el oxígeno. Así transporta más oxígeno en cada viaje. Lo paga con no poder dividirse ni repararse, por eso dura pocos meses."
+    },
+    {
+      "pregunta": "La forma de disco bicóncavo (hundido en el centro) del glóbulo rojo sirve sobre todo para:",
+      "opciones": [
+        "Almacenar alimento",
+        "Atrapar la luz del sol",
+        "Producir energía",
+        "Aumentar su superficie, para que el oxígeno entre y salga más rápido"
+      ],
+      "correcta": 3,
+      "explicacion": "El hundido de las dos caras aumenta la superficie de la célula sin agrandarla; a más superficie, más rápido el intercambio de oxígeno. Además, al ser delgado y flexible, pasa por los vasos más estrechos."
+    },
+    {
+      "pregunta": "¿Por qué la célula muscular está llena de mitocondrias?",
+      "opciones": [
+        "Porque contraerse gasta mucha energía, y las mitocondrias la liberan",
+        "Porque las mitocondrias le dan color",
+        "Porque necesita almacenar mucha agua",
+        "Porque así fabrica su propio alimento"
+      ],
+      "correcta": 0,
+      "explicacion": "Las mitocondrias liberan energía (respiración celular). Contraerse una y otra vez es un trabajo muy costoso en energía, así que la célula muscular se llena de mitocondrias para producir toda la que necesita. No fabrican alimento (eso es la fotosíntesis, en los cloroplastos)."
+    },
+    {
+      "pregunta": "El espermatozoide tiene una cola larga (flagelo). ¿Para qué le sirve principalmente?",
+      "opciones": [
+        "Para absorber agua",
+        "Para nadar e impulsarse hasta el óvulo",
+        "Para transmitir señales eléctricas",
+        "Para dar sostén como un esqueleto"
+      ],
+      "correcta": 1,
+      "explicacion": "La función del espermatozoide es moverse hasta el óvulo. La cola se agita como un látigo y lo impulsa a nadar. Es el único de estos ejemplos con un apéndice propio para desplazarse, justamente porque su trabajo es viajar."
+    },
+    {
+      "pregunta": "Además de la cola, el espermatozoide tiene muchas mitocondrias cerca de ella. ¿Por qué?",
+      "opciones": [
+        "Para fabricar el óvulo",
+        "Para que la cola sea más rígida",
+        "Para dar energía al movimiento de la cola durante el viaje",
+        "Para almacenar oxígeno"
+      ],
+      "correcta": 2,
+      "explicacion": "Nadar gasta mucha energía, y las mitocondrias la liberan. Concentradas cerca de la cola, alimentan su movimiento a lo largo de todo el trayecto. Es la misma estrategia (muchas mitocondrias) que usa la célula muscular por su alto gasto de energía."
+    },
+    {
+      "pregunta": "La célula de pelo radical de una raíz tiene una prolongación larga y fina como un pelo. ¿Qué le aporta esa forma?",
+      "opciones": [
+        "Le permite hacer fotosíntesis bajo tierra",
+        "La hace más rígida para sostener la planta",
+        "Le sirve para nadar en el suelo",
+        "Aumenta su superficie de contacto para absorber más agua y minerales del suelo"
+      ],
+      "correcta": 3,
+      "explicacion": "El pelo largo se mete entre las partículas del suelo y multiplica la superficie en contacto con el agua, sin agrandar mucho la célula: más superficie, más absorción. Su función es absorber, no fotosintetizar ni sostener."
+    },
+    {
+      "pregunta": "La célula de pelo radical casi no tiene cloroplastos. ¿Por qué? (Conecta con el tema anterior.)",
+      "opciones": [
+        "Porque vive bajo tierra, sin luz, y sin luz no hay fotosíntesis",
+        "Porque es una célula animal",
+        "Porque no es una célula viva",
+        "Porque los cloroplastos solo caben en células redondas"
+      ],
+      "correcta": 0,
+      "explicacion": "Es una célula vegetal (tiene pared y vacuola), pero vive en la raíz, bajo tierra, donde no llega la luz. Sin luz no puede haber fotosíntesis, así que tener cloroplastos no le serviría. La forma sigue a la función también en lo que la célula NO tiene."
+    },
+    {
+      "pregunta": "Los cilios de la célula ciliada de las vías respiratorias sirven para:",
+      "opciones": [
+        "Absorber oxígeno del aire",
+        "Barrer el moco con polvo y microbios hacia afuera de los pulmones",
+        "Fabricar alimento con luz",
+        "Transmitir impulsos nerviosos"
+      ],
+      "correcta": 1,
+      "explicacion": "Los cilios son pelitos móviles que se mueven juntos como remos y empujan el moco (que atrapó polvo y microbios) hacia arriba, lejos de los pulmones. Su función es limpiar el aire, no absorber ni fabricar nada."
+    },
+    {
+      "pregunta": "Todas tus células tienen el mismo ADN, pero una neurona y una célula muscular son muy distintas. ¿Cómo se explica?",
+      "opciones": [
+        "En realidad tienen ADN diferente",
+        "Una de las dos no tiene núcleo",
+        "Cada tipo de célula usa una parte distinta del mismo manual de instrucciones (ADN)",
+        "La neurona es más avanzada que la muscular"
+      ],
+      "correcta": 2,
+      "explicacion": "Todas comparten el mismo ADN, pero cada célula activa solo la parte que necesita para su oficio y apaga el resto. Por eso son tan distintas siendo idénticas de origen. Ninguna es 'más avanzada': cada una es adecuada a su tarea."
+    },
+    {
+      "pregunta": "Muchas células musculares del mismo tipo, trabajando juntas, forman:",
+      "opciones": [
+        "Un órgano",
+        "Un sistema",
+        "Un organismo",
+        "Un tejido"
+      ],
+      "correcta": 3,
+      "explicacion": "Muchas células del mismo tipo especializadas en lo mismo forman un TEJIDO (aquí, tejido muscular). Varios tejidos forman un órgano; varios órganos, un sistema; y todos los sistemas, el organismo. La escalera es célula → tejido → órgano → sistema → organismo."
+    },
+    {
+      "pregunta": "¿Cuál de estas afirmaciones sobre las células especializadas es CORRECTA?",
+      "opciones": [
+        "Cada rasgo de la forma de una célula especializada responde a su función",
+        "La forma de cada célula es casual y no tiene que ver con su función",
+        "Una célula sin núcleo, como el glóbulo rojo, es una célula defectuosa",
+        "Una célula especializada puede convertirse fácilmente en cualquier otro tipo"
+      ],
+      "correcta": 0,
+      "explicacion": "En una célula especializada, cada rasgo (largo, sin núcleo, lleno de mitocondrias, con cola...) responde a su trabajo: la forma sigue a la función. El glóbulo rojo sin núcleo no es defectuoso sino optimizado para cargar oxígeno; y una célula ya especializada no cambia de tipo con facilidad."
+    }
+  ]
+}

@@ -1,0 +1,334 @@
+{
+  "programa": "cumbre",
+  "materia": "Química",
+  "grado": "Cumbre Química 1er año",
+  "dominio": "Pensar como químico",
+  "tema": "¿Cambio físico o cambio químico? Las señales de que nació una sustancia nueva",
+  "referencias": [
+    "UK KS3/GCSE Science — Physical vs chemical changes: signs of a chemical reaction (gas, precipitate, colour change, energy change), reversibility as a clue not a rule",
+    "Singapore Lower Secondary Science — Physical and chemical changes, evidence that a new substance is formed",
+    "IB MYP Sciences Year 1 — Classifying changes as physical or chemical using observable evidence",
+    "Japan MEXT Grade 7 Science — State changes as physical changes; chemical change and formation of new substances"
+  ],
+  "resumen": {
+    "titulo": "¿Cambio físico o químico? La pregunta que lo decide todo: ¿nació una sustancia nueva?",
+    "intro": "En el tema anterior aprendiste a identificar una sustancia por sus propiedades: su punto de fusión, su dureza, su solubilidad. Ahora vas a usar esa misma idea para algo más poderoso: decidir qué tipo de cambio le acaba de pasar a una sustancia. Cuando algo se derrite, se rompe, se disuelve, se oxida, se quema o cambia de color, hay una sola pregunta que separa dos mundos completamente distintos: ¿la sustancia SIGUE SIENDO LA MISMA, solo que con otra apariencia, o se convirtió en una sustancia NUEVA, distinta, con propiedades diferentes? Si sigue siendo la misma, fue un cambio FÍSICO. Si nació algo nuevo, fue un cambio QUÍMICO. Parece simple, y la idea de fondo lo es; lo difícil (y lo interesante) es que la naturaleza pone trampas: hay cambios que se ven dramáticos y son solo físicos, y señales que parecen gritar 'reacción química' pero engañan. Aprender a leer la evidencia sin dejarte engañar por la primera impresión es, otra vez, pensar como químico de verdad. No necesitas nada nuevo salvo lo que ya viste sobre propiedades y estados de la materia.",
+    "secciones": [
+      {
+        "titulo": "La única pregunta que importa: ¿nació una sustancia nueva?",
+        "explicacion": "Antes de aprender reglas y señales, quedémonos con el corazón del tema, porque todo lo demás sale de aquí. Un CAMBIO FÍSICO es un cambio en el que la sustancia sigue siendo LA MISMA sustancia: cambia su forma, su tamaño, su estado (sólido, líquido o gas) o su apariencia, pero por dentro es exactamente lo mismo que antes. Si rompes un vaso, los pedazos siguen siendo vidrio; si derrites hielo, el líquido sigue siendo agua; si disuelves azúcar, el azúcar sigue estando ahí, solo que repartido en el agua. Un CAMBIO QUÍMICO es distinto: en él DESAPARECE la sustancia con la que empezaste y APARECE una o más sustancias NUEVAS, con propiedades diferentes. A las sustancias con las que empiezas se les llama REACTIVOS y a las nuevas que se forman, PRODUCTOS; el cambio químico también se llama REACCIÓN QUÍMICA. La prueba definitiva no es cuánto cambió el aspecto, ni si hubo humo o burbujas: la prueba es preguntarte '¿lo que tengo al final es la misma sustancia que tenía al principio, o es una sustancia distinta?'. Y para responder eso, te apoyas en lo que ya sabes: si las PROPIEDADES cambiaron de verdad (el color, la dureza, si arde o no, su punto de fusión), es porque la sustancia es otra. Un químico no clasifica por la impresión, clasifica por la evidencia.",
+        "pasos": [
+          "Ante cualquier cambio, hazte SIEMPRE primero esta pregunta: ¿la sustancia que tengo al final es la misma que tenía al principio, solo que con otra apariencia?",
+          "Si la respuesta es SÍ (sigue siendo la misma sustancia), es un cambio FÍSICO.",
+          "Si la respuesta es NO (ahora hay una o más sustancias nuevas, con propiedades distintas), es un cambio QUÍMICO.",
+          "Para decidir 'si es la misma o es otra', compara las PROPIEDADES antes y después: si el color, la dureza o la capacidad de arder cambiaron de forma permanente, casi seguro nació una sustancia nueva."
+        ],
+        "ejemplo": "Doblas un clip de metal: cambia de forma, pero sigue siendo el mismo metal (mismo brillo, misma dureza) → cambio físico. Dejas ese clip a la intemperie y aparece una capa rojiza y frágil de herrumbre: esa capa NO es el metal de antes, es una sustancia nueva con otro color y otra dureza → cambio químico.",
+        "figura": "<svg viewBox=\"0 0 380 170\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"150\" y=\"20\" width=\"80\" height=\"30\" rx=\"4\" fill=\"none\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><text x=\"190\" y=\"40\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#3B2B4A\">un cambio</text><line x1=\"190\" y1=\"50\" x2=\"190\" y2=\"70\" stroke=\"#8C7C93\" stroke-width=\"1.5\"/><text x=\"190\" y=\"85\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#3B2B4A\">Nacio una sustancia nueva?</text><line x1=\"190\" y1=\"92\" x2=\"90\" y2=\"120\" stroke=\"#8C7C93\" stroke-width=\"1.5\"/><line x1=\"190\" y1=\"92\" x2=\"290\" y2=\"120\" stroke=\"#8C7C93\" stroke-width=\"1.5\"/><rect x=\"30\" y=\"122\" width=\"120\" height=\"36\" rx=\"4\" fill=\"#12B5A4\" fill-opacity=\"0.15\" stroke=\"#0E9486\" stroke-width=\"1.5\"/><text x=\"90\" y=\"138\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0E9486\">NO: misma sustancia</text><text x=\"90\" y=\"152\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#0E9486\">cambio FISICO</text><rect x=\"230\" y=\"122\" width=\"120\" height=\"36\" rx=\"4\" fill=\"#7C4DFF\" fill-opacity=\"0.15\" stroke=\"#5A3AAF\" stroke-width=\"1.5\"/><text x=\"290\" y=\"138\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#5A3AAF\">SI: sustancia nueva</text><text x=\"290\" y=\"152\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#5A3AAF\">cambio QUIMICO</text></svg>"
+      },
+      {
+        "titulo": "Por qué un cambio de estado es físico, aunque parezca dramático",
+        "explicacion": "Aquí está la primera trampa que confunde a casi todos, y vale la pena entenderla a fondo. Cuando el hielo se derrite, o el agua hierve y sale una nube de vapor, el cambio se ve enorme: un sólido duro se vuelve líquido, o un líquido 'desaparece' en el aire convertido en vapor. Es tentador pensar 'cambió tanto que tuvo que volverse otra cosa'. Pero NO nació ninguna sustancia nueva: el hielo, el agua líquida y el vapor de agua son EXACTAMENTE la misma sustancia (agua), solo que sus partículas están más juntas o más separadas. Por eso todos los cambios de estado (fundir, hervir, evaporar, condensar, congelar, y también la sublimación que viste con el hielo seco) son cambios FÍSICOS, sin excepción: la sustancia es la misma antes y después, y la prueba es que se puede volver atrás fácilmente. Si enfrías el vapor, vuelve a ser agua líquida; si congelas el agua, vuelve a ser hielo. La razón profunda conecta con lo que ya sabes: el punto de fusión y el punto de ebullición son PROPIEDADES de la sustancia, y no cambiaron; el agua sigue hirviendo a 100°C y congelándose a 0°C después del cambio, porque sigue siendo agua. Cambió el estado, no la identidad.",
+        "pasos": [
+          "Cuando veas un cambio de estado (sólido a líquido, líquido a gas, etc.), recuerda: es siempre un cambio FÍSICO.",
+          "Compruébalo con la pregunta clave: el vapor de agua, ¿es agua? Sí. El hielo, ¿es agua? Sí. Entonces la sustancia no cambió.",
+          "Fíjate además en la reversibilidad: los cambios de estado se deshacen con solo calentar o enfriar, porque no hubo ninguna sustancia nueva que 'deshacer'."
+        ],
+        "ejemplo": "El agua hirviendo suelta burbujas y vapor de forma espectacular, pero ese vapor, al enfriarse contra una tapa fría, vuelve a ser gotas de agua líquida: nunca dejó de ser agua. Un cambio muy visible NO es lo mismo que un cambio químico.",
+        "figura": ""
+      },
+      {
+        "titulo": "Las señales de que SÍ hubo un cambio químico",
+        "explicacion": "Como no siempre puedes 'ver' directamente si nació una sustancia nueva, los químicos se fijan en PISTAS observables que suelen acompañar a una reacción química. Ninguna es una prueba absoluta por sí sola (en la próxima sección verás cómo engañan), pero cuando aparecen, hay que sospechar de un cambio químico y confirmarlo con la pregunta clave. Estas son las señales principales. Primera: se forma un GAS NUEVO, es decir, aparecen burbujas o efervescencia en una situación donde antes no había gas y sin que estés simplemente hirviendo un líquido (por ejemplo, un sólido que echa espuma al caer en un líquido). Segunda: aparece un PRECIPITADO, que es un sólido que se forma de repente cuando mezclas dos líquidos que estaban transparentes; ese sólido es la sustancia nueva. Tercera: hay un CAMBIO DE COLOR PERMANENTE, uno que no se puede quitar revolviendo ni deshacer fácilmente (como el metal que se pone rojizo al oxidarse). Cuarta: se libera o se absorbe ENERGÍA de forma notable, sobre todo cuando hay LUZ y CALOR juntos, como en una llama. Quinta: aparece un OLOR NUEVO que antes no estaba (como el olor a quemado). Y muchas veces, aunque no siempre, el cambio es IRREVERSIBLE: no puedes volver fácilmente a la sustancia original. Piensa en estas señales como banderas que dicen 'mira con atención aquí', no como veredictos automáticos.",
+        "pasos": [
+          "Gas nuevo: burbujas o efervescencia donde no había gas y sin estar solo hirviendo un líquido.",
+          "Precipitado: un sólido que aparece de golpe al mezclar dos líquidos transparentes.",
+          "Cambio de color permanente: un color nuevo que no se deshace revolviendo ni fácilmente.",
+          "Energía notable: se libera o absorbe calor, y sobre todo si hay luz y calor juntos (una llama).",
+          "Olor nuevo e irreversibilidad: aparece un olor que antes no estaba, y muchas veces ya no puedes volver atrás."
+        ],
+        "ejemplo": "Echas una pastilla efervescente en agua y sube una espuma de burbujas que no para: se está formando un gas nuevo (dióxido de carbono) que antes no estaba como gas. Esa efervescencia es una señal fuerte de cambio químico.",
+        "figura": ""
+      },
+      {
+        "titulo": "Cuando las señales engañan: no toda burbuja ni todo color es química",
+        "explicacion": "Aquí está lo que separa a quien memorizó una lista de quien de verdad entiende el tema. Cada señal de la sección anterior puede APARECER también en un cambio físico, y confundirlas es el error más típico. Mira estas tres trampas. Trampa del gas: cuando el agua hierve salen muchísimas burbujas, pero eso NO es un gas nuevo: es la misma agua convertida en vapor (cambio físico). Y cuando destapas una gaseosa y sube espuma, tampoco nació nada: ese dióxido de carbono ya estaba disuelto en el líquido y solo se está escapando (físico, igual que cuando una sustancia se separa de una disolución). La diferencia con la pastilla efervescente o con el vinagre y el bicarbonato es que ahí el gas se FABRICA en una reacción, no estaba antes. Trampa del color: mezclar colorante azul en agua tiñe todo de azul, pero el colorante sigue siendo colorante y el agua sigue siendo agua (físico, es solo una mezcla); en cambio, el rojizo de un metal oxidado es una sustancia nueva (químico). La clave es si el color viene de mezclar algo ya coloreado (físico) o de que la materia misma se transformó (químico). Trampa del calor: fundir hielo ABSORBE calor y disolver algunas sales también libera o absorbe algo de calor, y ambos son físicos; por eso el calor SOLO no basta: la señal fuerte es luz y calor juntos, como en una combustión. La lección es clara: una señal te dice 'sospecha', pero la decisión final siempre la toma la pregunta clave, '¿es la misma sustancia o una nueva?'.",
+        "pasos": [
+          "Ante burbujas, pregúntate: ¿el gas se está FABRICANDO ahora en una reacción (químico), o solo es un líquido que hierve o un gas que ya estaba disuelto y escapa (físico)?",
+          "Ante un cambio de color, pregúntate: ¿el color viene de mezclar algo que ya era de ese color (físico), o la materia misma se transformó en algo nuevo de otro color (químico)?",
+          "Ante calor, recuerda que fundir o disolver también mueven calor sin ser reacciones; el calor acompañado de LUZ (una llama) es la señal fuerte de cambio químico.",
+          "Nunca cierres el caso con una sola señal: confírmalo siempre con la pregunta clave sobre si nació una sustancia nueva."
+        ],
+        "ejemplo": "Dos vasos con burbujas: en uno hierve agua, en el otro cae bicarbonato sobre vinagre. Los dos 'burbujean', pero solo el segundo es un cambio químico, porque ahí el gas (dióxido de carbono) se está fabricando en una reacción; en el primero, las burbujas son la misma agua hecha vapor.",
+        "figura": ""
+      },
+      {
+        "titulo": "La reversibilidad: una pista útil, pero no una regla absoluta",
+        "explicacion": "Muchos aprenden un atajo cómodo: 'si se puede deshacer es físico, si no se puede deshacer es químico'. Es una PISTA que funciona muchas veces, pero NO es una regla absoluta, y creerla al pie de la letra te hace equivocar en los casos límite. Por qué funciona a menudo: los cambios físicos suelen volverse atrás con facilidad (el agua congelada se descongela, el azúcar disuelto se recupera evaporando el agua, tal como recuperabas cristales al enfriar una disolución en el tema anterior), porque la sustancia nunca dejó de existir. Y los cambios químicos suelen ser difíciles de deshacer, porque para volver atrás tendrías que hacer OTRA reacción química. Pero hay dos tipos de excepciones que rompen el atajo. Primera: hay cambios FÍSICOS que son irreversibles en la práctica y aun así NO forman sustancia nueva; el ejemplo perfecto es un vaso roto: no puedes 'des-romperlo', pero cada pedazo sigue siendo vidrio, así que fue físico. Segunda: hay cambios QUÍMICOS que sí se pueden revertir con otra reacción. Por eso la reversibilidad es apenas una pista de apoyo: cuando choca con la pregunta clave, MANDA la pregunta clave. Un vaso roto es irreversible y aun así físico, porque la evidencia que decide no es 'si se deshace', sino 'si nació una sustancia nueva'.",
+        "pasos": [
+          "Usa la reversibilidad como PRIMERA pista rápida: si el cambio se deshace fácil (congelar/descongelar, disolver/evaporar), probablemente es físico.",
+          "Pero no te quedes ahí: comprueba siempre con la pregunta clave, porque hay excepciones.",
+          "Recuerda el contraejemplo que rompe el atajo: un vaso roto es irreversible y sin embargo físico, porque los pedazos siguen siendo vidrio (no nació nada nuevo).",
+          "Cuando la reversibilidad y la pregunta clave se contradigan, hazle caso a la pregunta clave: '¿es la misma sustancia o una nueva?'."
+        ],
+        "ejemplo": "Romper un vaso es irreversible: nunca vas a rearmar el vaso original. Aun así es un cambio FÍSICO, porque los pedazos siguen siendo vidrio, con el mismo brillo y la misma dureza. 'No se puede deshacer' no alcanza para llamarlo químico.",
+        "figura": ""
+      },
+      {
+        "titulo": "Casos que siempre confunden, resueltos con la pregunta clave",
+        "explicacion": "Vamos a aplicar todo a los casos límite más famosos, esos que casi todo el mundo clasifica mal la primera vez. Disolver azúcar en agua: FÍSICO. Aunque el azúcar 'desaparece' de la vista, no se convirtió en otra cosa; sigue siendo azúcar repartida entre el agua, y la prueba es que, si evaporas el agua, el azúcar reaparece intacta (misma sustancia). Hervir agua: FÍSICO. El vapor sigue siendo agua, como ya vimos; el cambio de estado no cambia la identidad. Oxidarse el hierro (formarse herrumbre): QUÍMICO. El hierro reacciona con el oxígeno del aire y forma óxido de hierro, una sustancia NUEVA de color rojizo, frágil y que se desmorona, con propiedades totalmente distintas al metal brillante y resistente del principio; además es muy difícil volver atrás. Cocinar un huevo: QUÍMICO. El calor transforma de forma permanente las sustancias transparentes y líquidas de la clara en una sustancia blanca y sólida nueva que ya no se puede volver líquida y transparente por más que la enfríes; nació algo distinto. El método siempre es el mismo, y por eso es tan poderoso: no te fíes de si el cambio se ve grande o pequeño, ni de si hubo o no una señal llamativa; pregúntate únicamente si al final tienes la misma sustancia o una nueva, y apóyate en cómo cambiaron (o no) sus propiedades.",
+        "pasos": [
+          "Disolver azúcar en agua → FÍSICO: sigue siendo azúcar (se recupera evaporando el agua).",
+          "Hervir o congelar agua → FÍSICO: el vapor y el hielo siguen siendo agua (cambio de estado).",
+          "Oxidarse el hierro (herrumbre) → QUÍMICO: nace óxido de hierro, rojizo y frágil, distinto del metal.",
+          "Cocinar un huevo, quemar papel o madera → QUÍMICO: se forman sustancias nuevas de forma permanente."
+        ],
+        "ejemplo": "Azúcar disuelta y hierro oxidado se parecen en que 'algo desapareció a la vista', pero son opuestos: el azúcar sigue siendo azúcar (físico, reaparece al evaporar el agua), mientras que el hierro se convirtió en herrumbre, una sustancia nueva (químico). La apariencia engaña; la pregunta clave no.",
+        "figura": ""
+      },
+      {
+        "titulo": "Un mismo objeto, dos cambios a la vez: la vela",
+        "explicacion": "Para cerrar, un caso precioso que demuestra que a veces un cambio físico y uno químico ocurren AL MISMO TIEMPO, y saber separarlos es la señal de que de verdad entendiste el tema. Piensa en una vela encendida. Por un lado, la cera sólida cerca de la llama se DERRITE y forma un charquito de cera líquida: eso es un cambio FÍSICO, porque la cera líquida sigue siendo cera (si la dejas enfriar, vuelve a ser cera sólida; es un cambio de estado, reversible). Por otro lado, en la punta de la mecha la cera y el pabilo se QUEMAN produciendo luz, calor, y sustancias nuevas como dióxido de carbono y vapor de agua que se van al aire: eso es un cambio QUÍMICO (combustión), porque nacen sustancias nuevas, es irreversible y libera luz y calor juntos, la señal fuerte. La misma vela, en el mismo momento, muestra los dos mundos a la vez. Para clasificar bien no basta con mirar 'la vela': hay que mirar CADA cambio por separado y hacerle a cada uno la pregunta clave. Eso es analizar como químico: descomponer una situación en sus partes y juzgar cada una con el mismo criterio.",
+        "pasos": [
+          "Cuando una situación tenga varias cosas pasando a la vez, no la clasifiques 'en bloque': sepárala en cada cambio individual.",
+          "A cada cambio por separado hazle la pregunta clave: ¿la sustancia sigue siendo la misma (físico) o nació una nueva (químico)?",
+          "En la vela: la cera que se derrite es FÍSICO (sigue siendo cera); la cera y la mecha que arden son QUÍMICO (nacen gases nuevos, con luz y calor).",
+          "Esta forma de mirar (descomponer y juzgar cada parte) es exactamente el análisis que se te pide en este nivel."
+        ],
+        "ejemplo": "En una vela encendida conviven los dos cambios: la cera derretida que gotea es físico (vuelve a ser cera al enfriarse), y la llama, que consume la mecha y la cera produciendo luz, calor y gases nuevos, es químico. Un mismo objeto, dos cambios distintos según qué parte mires.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "Lo que separa un cambio FÍSICO de uno QUÍMICO es una sola pregunta: ¿la sustancia sigue siendo la misma (físico: cambió forma, tamaño o estado) o nació una sustancia NUEVA con propiedades distintas (químico: una reacción, con reactivos que se transforman en productos)? Todos los cambios de estado son físicos aunque se vean dramáticos, porque el vapor sigue siendo agua. Las señales de cambio químico (gas nuevo, precipitado, cambio de color permanente, luz y calor juntos, olor nuevo, irreversibilidad) son PISTAS para sospechar, no veredictos: hervir agua o abrir una gaseosa hacen burbujas sin ser químicos, un colorante tiñe sin ser químico, y un vaso roto es irreversible pero físico. La reversibilidad es una pista útil, no una regla absoluta. Ante la duda, siempre manda la pregunta clave y la comparación de propiedades: ¿misma sustancia, o una nueva?"
+  },
+  "practica": [
+    {
+      "enunciado": "Clasifica cada uno de estos cambios como FÍSICO o QUÍMICO y justifica cada uno con la pregunta clave (¿sigue siendo la misma sustancia o nació una nueva?): (a) derretir un cubo de hielo, (b) quemar una hoja de papel, (c) disolver azúcar en café, (d) que un clavo de hierro se cubra de herrumbre, (e) cortar una hoja de papel en trozos, (f) cocinar (freír) un huevo.",
+      "pista": "A cada uno hazle SOLO la pregunta clave. No mires cuánto cambió el aspecto ni si hubo señales llamativas: pregúntate si la sustancia final es la misma o es otra distinta.",
+      "solucion": "Físicos: (a) derretir hielo (el líquido sigue siendo agua, solo cambió de estado), (c) disolver azúcar (sigue siendo azúcar repartida en el café; se recuperaría evaporando el agua), (e) cortar papel (los trozos siguen siendo papel, solo cambió el tamaño). Químicos: (b) quemar papel (se forman gases, humo y ceniza, sustancias nuevas; irreversible), (d) oxidarse el clavo (nace herrumbre, óxido de hierro rojizo y frágil, distinto del metal), (f) cocinar un huevo (la clara transparente y líquida se vuelve una sustancia blanca y sólida nueva, de forma permanente). La regla que decide es siempre la misma: ¿nació una sustancia nueva?",
+      "figura": ""
+    },
+    {
+      "enunciado": "En un vaso hierves agua y salen muchas burbujas. En otro vaso echas bicarbonato de sodio sobre vinagre y también sube una espuma de burbujas. Los dos 'burbujean', pero solo uno es un cambio químico. ¿Cuál, y cómo distingues una burbuja física de una química?",
+      "pista": "Pregúntate en cada caso: ¿el gas se está FABRICANDO ahora en una reacción, o ya existía y solo está cambiando de estado o escapando?",
+      "solucion": "El cambio químico es el del bicarbonato con vinagre. En el agua hirviendo, las burbujas son la misma agua convertida en vapor: no nació ninguna sustancia nueva, solo cambió de estado (físico). En el bicarbonato con vinagre, en cambio, el gas (dióxido de carbono) se FABRICA en una reacción entre las dos sustancias; ese gas no existía antes, es una sustancia nueva producida por el cambio (químico). La forma de distinguirlos: una burbuja física es un líquido que hierve o un gas que ya estaba y escapa; una burbuja química es gas que se está fabricando en una reacción que antes no había.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero afirma: 'si un cambio no se puede deshacer, entonces seguro es un cambio químico'. Evalúa si la afirmación es correcta usando el ejemplo de un vaso de vidrio que se rompe.",
+      "pista": "Piensa si un vaso roto se puede volver a armar, y por separado, si los pedazos siguen siendo vidrio o se convirtieron en otra sustancia.",
+      "solucion": "La afirmación es incorrecta: la irreversibilidad es una pista, no una regla absoluta. Un vaso roto es un contraejemplo perfecto: es irreversible (nunca vas a rearmar el vaso original), pero es un cambio FÍSICO, porque cada pedazo sigue siendo vidrio, con el mismo brillo y la misma dureza; no nació ninguna sustancia nueva. Lo que decide si un cambio es químico no es si se puede deshacer, sino si se formó una sustancia nueva. Por eso, cuando la reversibilidad choca con la pregunta clave, manda la pregunta clave.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Al destapar una botella de gaseosa fría, sube una espuma de burbujas de dióxido de carbono. ¿Es un cambio físico o químico? Justifícalo, y explica en qué se diferencia de las burbujas del bicarbonato con vinagre.",
+      "pista": "Pregúntate si ese dióxido de carbono se está fabricando en el momento por una reacción, o si ya estaba dentro del líquido y solo se está escapando.",
+      "solucion": "Es un cambio FÍSICO. El dióxido de carbono ya estaba disuelto dentro de la gaseosa a presión; al destapar, la presión baja y ese gas simplemente se escapa del líquido, igual que una sustancia que se separa de una disolución. No nació ninguna sustancia nueva: el dióxido de carbono ya era dióxido de carbono, solo pasó de estar disuelto a estar en el aire. Es distinto del bicarbonato con vinagre, donde el dióxido de carbono NO existía antes y se FABRICA en una reacción química entre las dos sustancias. En un caso el gas se escapa (físico), en el otro se produce (químico).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Compara estos dos cambios de color y di cuál es físico y cuál es químico, justificando: (1) echas unas gotas de colorante azul en un vaso de agua y toda el agua se pone azul; (2) cortas una manzana y, al rato, la parte cortada se pone marrón.",
+      "pista": "En cada caso pregúntate de dónde viene el color: ¿de mezclar algo que ya era de ese color, o de que la materia misma se transformó en algo nuevo?",
+      "solucion": "El caso (1), el colorante en el agua, es FÍSICO: el color viene de mezclar algo que ya era azul (el colorante) con el agua; el colorante sigue siendo colorante y el agua sigue siendo agua, es solo una mezcla, y no nació ninguna sustancia nueva. El caso (2), la manzana que se pone marrón, es QUÍMICO: nadie le añadió nada marrón; la propia sustancia de la manzana reaccionó con el oxígeno del aire y se transformó en una sustancia nueva de color marrón. La clave para distinguir cambios de color: si el color viene de mezclar algo ya coloreado es físico; si la materia misma se transformó, es químico.",
+      "figura": ""
+    },
+    {
+      "enunciado": "En el tema anterior viste que, al enfriar despacio una disolución caliente y casi saturada de nitrato de potasio, aparecen cristales sólidos en el fondo. ¿Ese aparecer de cristales sólidos es un cambio físico o químico? Justifícalo con la pregunta clave.",
+      "pista": "El nitrato de potasio que se disolvió y el que reaparece como cristal, ¿son la misma sustancia o una distinta? ¿Se podría volver a disolver?",
+      "solucion": "Es un cambio FÍSICO. Los cristales que aparecen son nitrato de potasio, exactamente la misma sustancia que se había disuelto: no nació nada nuevo, solo pasó de estar disuelto en el agua a estar de nuevo en estado sólido, porque el agua fría ya no puede sostener tanta cantidad disuelta. La prueba es que esos cristales se pueden volver a disolver calentando el agua otra vez: es reversible y sigue siendo la misma sustancia. Cuidado con la trampa de que 'apareció un sólido': aquí no es un precipitado de una reacción, es la misma sustancia que se separa de una disolución al enfriarse (cristalización), un cambio físico.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un clavo de hierro brillante se deja a la intemperie y semanas después está cubierto de una capa rojiza que se desmorona con los dedos. Justifica por qué esto es un cambio químico, apoyándote en cómo cambiaron las PROPIEDADES del material.",
+      "pista": "Compara las propiedades del hierro del principio (color, dureza, resistencia) con las de la capa rojiza del final. Si las propiedades cambiaron de verdad, es porque la sustancia es otra.",
+      "solucion": "Es un cambio químico porque nació una sustancia nueva con propiedades claramente distintas. El hierro del principio era gris brillante, duro y resistente; la capa rojiza del final (herrumbre, que es óxido de hierro) tiene otro color, es frágil y se desmorona. El hierro reaccionó con el oxígeno del aire (y la humedad) y se transformó en óxido de hierro, una sustancia distinta. Como el color y la dureza cambiaron de forma permanente, la sustancia final no es la misma que la inicial: por eso es químico. Además es muy difícil de revertir, otra pista coherente con un cambio químico.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Le añades unas gotas de jugo de limón a un vaso de leche y, al poco rato, la leche se corta: se forman grumos sólidos separados de un líquido. Clasifica el cambio y justifícalo. ¿Qué señal de cambio químico observas?",
+      "pista": "Piensa si los grumos sólidos son 'leche normal' o una sustancia nueva formada por la reacción con el ácido del limón. Recuerda la señal del precipitado.",
+      "solucion": "Es un cambio QUÍMICO. El ácido del limón reacciona con la leche y hace que aparezcan grumos sólidos (cuajos) que antes no existían: es una sustancia nueva separándose del líquido, es decir, un precipitado, que es una de las señales de cambio químico. La leche cortada ya no vuelve a ser leche líquida normal por más que la revuelvas o la enfríes; el cambio es permanente. Tanto la formación del sólido nuevo como la irreversibilidad apuntan a que nació una sustancia distinta: cambio químico.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero propone esta regla: 'siempre que haya calor de por medio, el cambio es químico'. Evalúa la regla usando dos contraejemplos del curso, y corrígela.",
+      "pista": "Piensa en un cambio de estado que necesita calor pero es físico, y en qué versión de la señal del calor sí es fuerte para un cambio químico.",
+      "solucion": "La regla es incorrecta: el calor por sí solo no basta para decidir. Contraejemplo 1: fundir hielo ABSORBE calor (necesitas darle calor para derretirlo) y sin embargo es un cambio físico, porque el agua líquida sigue siendo agua. Contraejemplo 2: disolver ciertas sales en agua libera o absorbe algo de calor y también es físico. Por eso el calor solo acompaña a muchos cambios físicos. La versión correcta: la señal fuerte de cambio químico no es el calor solo, sino LUZ y CALOR juntos, como en una llama (una combustión). Regla corregida: el calor es apenas una pista; solo cuando aparece junto con luz (o junto con otras señales y con la formación de una sustancia nueva) apunta con fuerza a un cambio químico.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Quieres DEMOSTRAR que disolver sal de mesa en agua es un cambio físico y no químico. Diseña un procedimiento seguro que lo pruebe, y explica qué resultado confirmaría que la sal sigue siendo la misma sustancia.",
+      "pista": "Piensa en cómo recuperar la sal después de disolverla, usando algo que ya sabes del tema anterior sobre separar una sustancia de una disolución.",
+      "solucion": "Procedimiento: (1) disolver una cantidad conocida de sal en un vaso con agua, revolviendo hasta que el agua quede transparente y no se vea sal. (2) Dejar que el agua se evapore poco a poco (al aire, o calentando suavemente con supervisión), sin probar ni tocar directamente nada. (3) Observar qué queda en el fondo cuando toda el agua se fue. Resultado que lo confirma: al final reaparece la sal como sólido, y esa sal recuperada tiene las mismas propiedades que la del principio (mismo aspecto, se vuelve a disolver igual). Que se pueda recuperar intacta demuestra que la sal nunca se convirtió en otra sustancia: solo estuvo repartida en el agua. Como sigue siendo la misma sustancia, el cambio fue físico.",
+      "figura": ""
+    },
+    {
+      "enunciado": "El hielo seco (dióxido de carbono sólido), que viste en el tema anterior, se sublima a -78°C: pasa directo de sólido a gas sin charco de líquido. ¿La sublimación del hielo seco es un cambio físico o químico? Justifícalo, y explica por qué el aspecto 'dramático' de que un bloque sólido desaparezca en el aire no lo vuelve químico.",
+      "pista": "El dióxido de carbono sólido y el dióxido de carbono gas, ¿son la misma sustancia o distintas? Recuerda que la sublimación es un cambio de estado.",
+      "solucion": "Es un cambio FÍSICO. La sublimación es un cambio de estado (de sólido a gas), y el dióxido de carbono gas es exactamente la misma sustancia que el dióxido de carbono sólido: no nació nada nuevo, solo cambió el estado. Que el bloque sólido parezca 'desaparecer' en el aire es llamativo, pero un cambio muy visible no es lo mismo que un cambio químico: la sustancia sigue siendo dióxido de carbono antes y después. Igual que el vapor de agua sigue siendo agua, el gas del hielo seco sigue siendo dióxido de carbono. La pregunta clave (¿misma sustancia o nueva?) manda por encima de lo dramático que se vea.",
+      "figura": ""
+    },
+    {
+      "enunciado": "En una vela encendida ocurren DOS cambios al mismo tiempo. Identifícalos por separado, clasifica cada uno como físico o químico y justifica cada clasificación.",
+      "pista": "No clasifiques 'la vela' en bloque. Mira por separado qué le pasa a la cera cerca de la llama y qué pasa en la punta de la mecha, y hazle a cada parte la pregunta clave.",
+      "solucion": "Cambio 1 (FÍSICO): la cera sólida cerca de la llama se derrite y forma cera líquida. Es físico porque la cera líquida sigue siendo cera (mismo material), solo cambió de estado; de hecho, al enfriarse vuelve a ser cera sólida, es reversible. Cambio 2 (QUÍMICO): en la punta de la mecha, la cera y el pabilo se queman (combustión) produciendo luz, calor y sustancias nuevas como dióxido de carbono y vapor de agua que se van al aire. Es químico porque nacen sustancias nuevas, es irreversible y libera luz y calor juntos (la señal fuerte). La misma vela muestra a la vez un cambio físico y uno químico; para clasificar bien hay que separar los dos cambios y juzgar cada uno con la pregunta clave.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué es lo que realmente distingue un cambio químico de un cambio físico?",
+      "opciones": [
+        "Que en el cambio químico aparece una o más sustancias NUEVAS, distintas de las del principio",
+        "Que el cambio químico se ve más dramático o violento",
+        "Que el cambio químico siempre suelta humo",
+        "Que el cambio físico nunca cambia el aspecto de la sustancia"
+      ],
+      "correcta": 0,
+      "explicacion": "Lo que decide es si nació una sustancia nueva. En un cambio físico la sustancia sigue siendo la misma (cambia forma, tamaño o estado); en un cambio químico se forman sustancias nuevas con propiedades distintas. Lo dramático que se vea o si hay humo son solo pistas, no la definición."
+    },
+    {
+      "pregunta": "¿Cuál de estos es un cambio FÍSICO?",
+      "opciones": [
+        "Quemar una hoja de madera",
+        "Derretir un cubo de hielo",
+        "Que un clavo de hierro se oxide y forme herrumbre",
+        "Freír un huevo hasta que la clara se pone blanca"
+      ],
+      "correcta": 1,
+      "explicacion": "Derretir hielo es físico: el agua líquida sigue siendo agua, solo cambió de estado. Quemar madera, oxidar hierro y freír un huevo forman sustancias nuevas de forma permanente, así que son cambios químicos."
+    },
+    {
+      "pregunta": "El agua hirviendo suelta muchísimas burbujas y vapor. ¿Por qué esto es un cambio físico y no químico?",
+      "opciones": [
+        "Porque el vapor sigue siendo agua: no nació ninguna sustancia nueva, solo cambió de estado",
+        "Porque el agua caliente pesa menos que el agua fría",
+        "Porque las burbujas prueban que se formó un gas nuevo",
+        "Porque hervir siempre destruye la sustancia"
+      ],
+      "correcta": 0,
+      "explicacion": "El vapor de agua es la misma sustancia que el agua líquida, solo con las partículas más separadas. Es un cambio de estado (físico). Que salgan muchas burbujas engaña: no es un gas nuevo, es la misma agua hecha vapor."
+    },
+    {
+      "pregunta": "En un vaso hierves agua (burbujas) y en otro echas bicarbonato sobre vinagre (también burbujas). ¿Cuál es un cambio QUÍMICO y por qué?",
+      "opciones": [
+        "El del agua hirviendo, porque hace más burbujas",
+        "Ninguno, porque toda burbuja es un cambio físico",
+        "Los dos por igual, porque ambos sueltan gas",
+        "El del bicarbonato con vinagre, porque ahí se FABRICA un gas nuevo en una reacción"
+      ],
+      "correcta": 3,
+      "explicacion": "En el bicarbonato con vinagre el dióxido de carbono se fabrica en una reacción: no existía antes, es una sustancia nueva (químico). En el agua hirviendo las burbujas son la misma agua convertida en vapor (físico). La clave es si el gas se produce en una reacción o solo es un líquido que hierve."
+    },
+    {
+      "pregunta": "Un vaso de vidrio se cae y se rompe en pedazos. No se puede volver a armar. ¿Cómo se clasifica este cambio?",
+      "opciones": [
+        "Químico, porque es irreversible",
+        "Físico, porque los pedazos siguen siendo vidrio: no nació ninguna sustancia nueva",
+        "Químico, porque el vidrio cambió de forma",
+        "No se puede clasificar sin calentarlo"
+      ],
+      "correcta": 1,
+      "explicacion": "Es físico: aunque es irreversible, cada pedazo sigue siendo vidrio, con el mismo brillo y dureza. La irreversibilidad es solo una pista, no una regla; lo que decide es que no se formó una sustancia nueva."
+    },
+    {
+      "pregunta": "¿Cuál de estas observaciones es una SEÑAL típica de que ocurrió un cambio químico?",
+      "opciones": [
+        "Que la sustancia cambie de forma al doblarla",
+        "Que un sólido se derrita al calentarlo",
+        "Que al mezclar dos líquidos transparentes aparezca de repente un sólido (un precipitado)",
+        "Que un líquido cambie de recipiente"
+      ],
+      "correcta": 2,
+      "explicacion": "La aparición de un precipitado (un sólido nuevo al mezclar dos líquidos) es una señal clásica de cambio químico: ese sólido es una sustancia nueva. Doblar, derretir o cambiar de recipiente son cambios físicos: la sustancia sigue siendo la misma."
+    },
+    {
+      "pregunta": "Echas colorante azul en un vaso de agua y toda el agua se pone azul. ¿Qué tipo de cambio es y por qué?",
+      "opciones": [
+        "Químico, porque cambió de color",
+        "Químico, porque el color es permanente",
+        "Físico, porque el agua se calentó",
+        "Físico, porque el color viene de mezclar algo que ya era azul; el agua y el colorante siguen siendo los mismos"
+      ],
+      "correcta": 3,
+      "explicacion": "Es físico: es solo una mezcla. El color viene del colorante, que ya era azul; ni el agua ni el colorante se transformaron en sustancias nuevas. No todo cambio de color es químico: si el color viene de mezclar algo ya coloreado, es físico."
+    },
+    {
+      "pregunta": "Un clavo de hierro brillante y duro termina cubierto de una capa rojiza y frágil (herrumbre). ¿Por qué es un cambio químico?",
+      "opciones": [
+        "Porque nació una sustancia nueva (óxido de hierro) con propiedades distintas: otro color y otra dureza",
+        "Porque el clavo cambió de tamaño",
+        "Porque el hierro se puso más pesado nada más",
+        "Porque el clavo se puede volver a pulir"
+      ],
+      "correcta": 0,
+      "explicacion": "El hierro reaccionó con el oxígeno del aire y formó óxido de hierro, una sustancia nueva: rojiza y frágil, en vez de gris brillante y dura. Como las propiedades cambiaron de forma permanente, la sustancia final es distinta de la inicial: cambio químico."
+    },
+    {
+      "pregunta": "¿Cuál de estas frases sobre la reversibilidad es CORRECTA?",
+      "opciones": [
+        "Todo cambio que no se puede deshacer es químico, sin excepción",
+        "Todo cambio que se puede deshacer es químico",
+        "La reversibilidad es una pista útil, pero no una regla absoluta: hay cambios físicos irreversibles, como romper un vaso",
+        "La reversibilidad no tiene ninguna relación con el tipo de cambio"
+      ],
+      "correcta": 2,
+      "explicacion": "La reversibilidad ayuda como primera pista (los físicos suelen deshacerse fácil), pero no es una regla absoluta: un vaso roto es irreversible y aun así físico. Cuando la pista choca con la pregunta clave (¿nació una sustancia nueva?), manda la pregunta clave."
+    },
+    {
+      "pregunta": "¿Cómo podrías demostrar que disolver azúcar en agua es un cambio FÍSICO?",
+      "opciones": [
+        "Probando el agua con la lengua para ver si sigue dulce",
+        "Evaporando el agua y comprobando que el azúcar reaparece intacta, como la misma sustancia",
+        "Calentando la mezcla hasta que arda",
+        "Mostrando que el azúcar cambió de color"
+      ],
+      "correcta": 1,
+      "explicacion": "Si al evaporar el agua el azúcar reaparece con las mismas propiedades, se prueba que nunca dejó de ser azúcar: solo estuvo repartida en el agua (físico). Probar con la lengua una sustancia nunca es un método válido ni seguro."
+    },
+    {
+      "pregunta": "Al freír un huevo, la clara transparente y líquida se vuelve blanca y sólida, y ya no vuelve a ser líquida al enfriarla. ¿Qué tipo de cambio es?",
+      "opciones": [
+        "Físico, porque solo cambió de estado como el agua al congelarse",
+        "Físico, porque el huevo sigue siendo un huevo",
+        "Químico, porque se formó una sustancia nueva de forma permanente e irreversible",
+        "No es ningún cambio, solo se calentó"
+      ],
+      "correcta": 2,
+      "explicacion": "Cocinar un huevo es químico: el calor transforma de forma permanente las sustancias de la clara en una sustancia blanca y sólida nueva que ya no vuelve a ser líquida y transparente. No es un simple cambio de estado como fundir o congelar, porque aquí la sustancia sí cambió de identidad."
+    },
+    {
+      "pregunta": "¿Por qué el calor, por sí solo, no basta para saber si un cambio es químico?",
+      "opciones": [
+        "Porque el calor nunca aparece en los cambios químicos",
+        "Porque el calor solo aparece cuando algo se rompe",
+        "Porque el calor siempre significa que algo se congela",
+        "Porque hay cambios físicos que también absorben o liberan calor, como fundir hielo (que necesita calor y es físico)"
+      ],
+      "correcta": 3,
+      "explicacion": "Muchos cambios físicos mueven calor: fundir hielo lo absorbe, y disolver ciertas sales libera o absorbe algo de calor. Por eso el calor solo es una pista débil; la señal fuerte de cambio químico es luz y calor juntos, como en una llama."
+    },
+    {
+      "pregunta": "Una vela encendida muestra la cera derritiéndose y goteando, y la llama consumiendo la mecha con luz y calor. ¿Cómo se clasifican esos dos cambios?",
+      "opciones": [
+        "La cera que se derrite es físico (sigue siendo cera) y la llama que quema mecha y cera es químico (nacen gases nuevos, con luz y calor)",
+        "Los dos son físicos",
+        "Los dos son químicos",
+        "La cera que se derrite es químico y la llama es física"
+      ],
+      "correcta": 0,
+      "explicacion": "Ocurren dos cambios a la vez. La cera que se funde es físico: sigue siendo cera y al enfriarse vuelve a solidificarse. La combustión de la mecha y la cera es químico: nacen sustancias nuevas (dióxido de carbono y vapor de agua) con luz y calor. Hay que separar los dos cambios y juzgar cada uno."
+    },
+    {
+      "pregunta": "¿Qué es exactamente un 'precipitado', esa señal de cambio químico?",
+      "opciones": [
+        "El vapor que sale de un líquido al hervir",
+        "Un sólido nuevo que se forma de repente al mezclar dos líquidos que estaban transparentes",
+        "El gas que se escapa al destapar una gaseosa",
+        "Cualquier líquido que cambia de color"
+      ],
+      "correcta": 1,
+      "explicacion": "Un precipitado es un sólido nuevo que aparece cuando se mezclan dos líquidos transparentes: ese sólido es la sustancia nueva formada por la reacción, por eso es señal de cambio químico. El vapor al hervir y el gas de la gaseosa son cambios físicos (no se fabrica una sustancia nueva)."
+    }
+  ]
+}

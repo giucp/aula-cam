@@ -1,0 +1,383 @@
+{
+  "programa": "cumbre",
+  "materia": "Inglés",
+  "grado": "Cumbre Inglés 1er año",
+  "dominio": "Hablar de mí y de otros",
+  "tema": "Puedo hablar de lo que me gusta y no me gusta (like/don't like + noun and -ing)",
+  "referencias": [
+    "MCER/CEFR A1 — puede decir lo que le gusta y no le gusta usando estructuras simples con sustantivos y verbos en -ing",
+    "Cambridge A1 Movers / A2 Key for Schools — like/love/hate/enjoy + noun/-ing; preguntas y respuestas cortas con do/does",
+    "IB Language Acquisition (Emergent/Phase 1-2) — expresar preferencias y justificar gustos con estructuras básicas",
+    "Communicative Language Teaching (CLT) — función 'can-do': hablar de gustos, aficiones y rutinas con precisión gramatical"
+  ],
+  "resumen": {
+    "titulo": "Lo que me gusta y lo que no: like, love, hate, enjoy + sustantivo o -ing",
+    "intro": "Ya sabes decir qué TIENES (have got, del tema anterior). Ahora vas a aprender a decir qué te GUSTA o no te gusta, y por qué: comida, deportes, colores, pero también ACCIONES, cosas que HACES (nadar, bailar, estudiar). Para eso necesitas cuatro piezas que trabajan juntas: los verbos de gusto (like, love, hate, enjoy); el gerundio (-ing) para cuando lo que gusta es una acción; la conjugación de la tercera persona (likes) y su desaparición con doesn't; y las preguntas con do/does, que aquí SÍ hacen falta (a diferencia de have got). Como siempre, cada regla se explica desde cero, con el PORQUÉ, y al final el reto es ANALIZAR cuál pieza corresponde en cada caso y CORREGIR los errores típicos, no solo repetir frases sueltas.",
+    "secciones": [
+      {
+        "titulo": "Like, love, hate, enjoy + sustantivo: los verbos de gusto",
+        "explicacion": "Para decir qué te gusta o no te gusta usamos un grupo de verbos llamados verbos de gusto (verbs of preference): like (gustar), love (encantar/amar), hate (odiar) y enjoy (disfrutar). A diferencia de 'have got' (que es un verbo especial), estos son verbos de ACCIÓN normales, y funcionan como cualquier otro verbo en inglés: van justo después del sujeto, y detrás puede venir directamente un SUSTANTIVO (una cosa, una comida, un día de la semana...), sin ninguna palabra en el medio. Ojo con la traducción, porque el orden cambia: en español decimos 'A mí ME GUSTA la pizza' (el sujeto de la oración en español es 'la pizza'), pero en inglés el sujeto SIEMPRE es la persona que siente el gusto, y va primero: 'I like pizza' (literalmente algo como 'yo gusto pizza'). Todos estos verbos de gusto comparten exactamente la misma estructura.",
+        "pasos": [
+          "like/love/hate/enjoy + sustantivo.",
+          "El sujeto en inglés es SIEMPRE quien siente el gusto (I, you, she...), nunca la cosa que gusta.",
+          "Los cuatro verbos (like, love, hate, enjoy) usan la MISMA estructura."
+        ],
+        "ejemplo": "'I like pizza.' (Me gusta la pizza.) 'My friend loves basketball.' (A mi amigo le encanta el basquetbol.) 'We hate rain.' (Odiamos la lluvia.) 'They enjoy music.' (Ellos disfrutan la música.)",
+        "figura": ""
+      },
+      {
+        "titulo": "Like + verbo en -ing: cuando lo que gusta es una ACCIÓN",
+        "explicacion": "¿Qué pasa si lo que te gusta no es una cosa sino una ACCIÓN, algo que HACES, como nadar o bailar? Ahí no puedes poner el verbo tal cual ('like swim'), porque en inglés dos verbos conjugados NUNCA van pegados uno junto al otro sin nada en el medio. La solución es convertir ese segundo verbo en una especie de SUSTANTIVO DE ACCIÓN, agregándole la terminación -ING: swim se convierte en swimming, dance se convierte en dancing. A esta forma se le llama GERUNDIO. Gramaticalmente, 'swimming' deja de comportarse como un verbo que se conjuga y pasa a comportarse como un sustantivo (la actividad de nadar, como si fuera 'la natación'), y por eso puede ir después de 'like' exactamente igual que 'pizza' iba después de 'like' en la sección anterior. Por eso 'I like swimming' (Me gusta nadar) es correcto, y 'I like swim' es un error: falta convertir 'swim' en la forma de sustantivo de acción 'swimming'.",
+        "pasos": [
+          "like/love/hate/enjoy + VERBO-ing (nunca el verbo sin cambiar).",
+          "El -ing convierte la acción en una especie de sustantivo (gerundio): así puede ir después de like, igual que un sustantivo normal.",
+          "'like + swim' está mal; 'like + swimming' está bien."
+        ],
+        "ejemplo": "'I like swimming.' (Me gusta nadar.) 'She loves dancing.' (A ella le encanta bailar.) 'We hate cleaning the house.' (Odiamos limpiar la casa.) 'They enjoy playing video games.' (Ellos disfrutan jugar videojuegos.)",
+        "figura": ""
+      },
+      {
+        "titulo": "Cómo se escribe el -ing: tres reglas de ortografía",
+        "explicacion": "Antes de seguir, hay que saber ESCRIBIR bien el -ing, porque no siempre es solo pegar las letras. Regla 1 (la más común): a la mayoría de los verbos se les agrega '-ing' directo, sin cambiar nada: play -> playing, cook -> cooking, watch -> watching. Regla 2: si el verbo termina en una 'e' que NO se pronuncia (e muda), esa 'e' se elimina antes de agregar '-ing': write -> writing (se quita la e y se agrega ing), dance -> dancing. Regla 3: si el verbo es de UNA sola sílaba y termina en una sola consonante precedida por una sola vocal (el patrón consonante-vocal-consonante), esa consonante final se DUPLICA antes de agregar '-ing': run -> running (dobla la n), swim -> swimming (dobla la m). Ojo con una trampa: la 'y' final NUNCA cambia antes de '-ing', ni siquiera cuando está precedida por una consonante: study -> studying (nunca 'studiing'), aunque más adelante vas a ver que esa misma 'y' SÍ cambia en otra regla distinta (la de la tercera persona del verbo).",
+        "pasos": [
+          "Regla 1 (la mayoría): verbo + ing, sin cambios (play -> playing).",
+          "Regla 2 (e muda al final): se quita la e y se agrega ing (write -> writing, dance -> dancing).",
+          "Regla 3 (una sílaba, consonante-vocal-consonante): se dobla la consonante final antes de -ing (run -> running, swim -> swimming).",
+          "La 'y' final NUNCA cambia antes de -ing (study -> studying, no 'studiing')."
+        ],
+        "ejemplo": "'I like playing football.' 'He loves writing stories.' 'She enjoys running every morning.' 'My sister hates studying on Sundays.'",
+        "figura": ""
+      },
+      {
+        "titulo": "Tercera persona (he/she/it): la -s en likes, con las mismas reglas de ortografía de los plurales",
+        "explicacion": "Cuando quien siente el gusto es HE, SHE o IT (una sola persona o cosa: tercera persona del singular), el verbo de gusto agrega una -S al final: like -> likes, love -> loves, hate -> hates, enjoy -> enjoys. 'He likes pizza' (A él le gusta la pizza), 'She loves chocolate' (A ella le encanta el chocolate). Aquí aparece una conexión útil con el tema anterior de los plurales de sustantivos: la tercera persona del verbo sigue EXACTAMENTE las mismas reglas ortográficas que el plural de un sustantivo (bus -> buses, city -> cities). Si el verbo termina en los sonidos -s, -ss, -sh, -ch, -x, -o o -z, se agrega '-es' en vez de solo '-s': watch -> watches, go -> goes, y hasta el propio auxiliar 'do' sigue esta regla: do -> does (igual que go -> goes, porque también termina en -o). Si el verbo termina en CONSONANTE + y, la 'y' cambia a 'i' antes de agregar '-es': study -> studies, try -> tries. Si termina en VOCAL + y, solo se agrega '-s', sin ningún cambio: play -> plays, enjoy -> enjoys.",
+        "pasos": [
+          "he/she/it + verbo + s (likes, loves, hates, enjoys).",
+          "Termina en -s/-ss/-sh/-ch/-x/-o/-z -> + es (watches, goes, does).",
+          "Termina en CONSONANTE + y -> cambia a 'ies' (studies, tries).",
+          "Termina en VOCAL + y -> solo + s, sin cambios (plays, enjoys)."
+        ],
+        "ejemplo": "'My brother likes basketball. He watches football every Sunday. My cousin studies English on Saturdays, and she enjoys it a lot.'",
+        "figura": ""
+      },
+      {
+        "titulo": "Negativo con I/you/we/they: don't + verbo base — y por qué like SÍ necesita 'do'",
+        "explicacion": "Para negar 'like' (y los demás verbos de gusto) con I/you/we/they, se usa 'don't' (contracción de 'do not') delante del verbo, y el verbo vuelve a su forma BASE, sin ninguna terminación: 'I don't like spiders' (No me gustan las arañas). Aquí hay una diferencia clave con el tema anterior: 'have got' NO necesitaba ningún verbo auxiliar extra para negarse (bastaba con agregar 'not': haven't got); pero 'like' SÍ necesita el auxiliar 'do' (convertido en 'don't'), porque 'like' es un verbo de ACCIÓN ordinario, y en inglés los verbos de acción ordinarios (los que NO son 'be' ni 'have got') necesitan SIEMPRE el auxiliar do/does para negarse y para preguntar. Por eso 'I don't like Mondays' es correcto, y decir simplemente 'I not like Mondays' (sin 'do') es un error: le falta el auxiliar obligatorio.",
+        "pasos": [
+          "I/you/we/they + don't + verbo BASE (sin -s, sin -ing).",
+          "'don't' = 'do not'.",
+          "'Like' es un verbo de acción normal: SIEMPRE necesita 'do/does' para negarse (a diferencia de 'have got', que se niega solo con 'not')."
+        ],
+        "ejemplo": "'I don't like spiders. You don't like rain. We don't like homework. They don't like losing.'",
+        "figura": ""
+      },
+      {
+        "titulo": "Negativo con he/she/it: doesn't + verbo base — por qué NUNCA 'doesn't likes'",
+        "explicacion": "Con he/she/it se usa 'doesn't' (contracción de 'does not'), y aquí está el punto más importante de todo el tema: cuando aparece 'doesn't', el verbo principal vuelve a su forma BASE, SIN la -s. 'Doesn't' ya 'trae' esa -s incorporada (does = do + s), así que ponerle otra -s al verbo principal marcaría la tercera persona DOS VECES en la misma frase, y eso es exactamente el error típico del hispanohablante: 'She doesn't likes vegetables' está MAL (dos marcas de tercera persona: la de 'does' y la de 'likes'); lo correcto es 'She doesn't like vegetables' (una sola marca, la de 'doesn't'). Es la misma lógica que ya viste con 'hasn't got': la marca de la conjugación vive en la palabra auxiliar (doesn't/hasn't), no en el verbo principal que la sigue.",
+        "pasos": [
+          "he/she/it + doesn't + verbo BASE (sin -s).",
+          "'doesn't' = 'does not'; 'does' ya contiene la marca de tercera persona.",
+          "Poner '-s' en el verbo principal después de 'doesn't' es un error de doble marca: 'doesn't likes' está mal; 'doesn't like' está bien."
+        ],
+        "ejemplo": "'He doesn't like vegetables. She doesn't like waiting. It doesn't like the cold.' (hablando de un animal)",
+        "figura": ""
+      },
+      {
+        "titulo": "Preguntas: Do/Does se adelanta, y el verbo principal vuelve a la forma base",
+        "explicacion": "Para preguntar con verbos de gusto se usa el mismo auxiliar 'do/does', sin contraer, adelantado al inicio de la frase, antes del sujeto: 'Do you like...?' (I/you/we/they) y 'Does she like...?' (he/she/it). Igual que en el negativo, cuando 'does' aparece en la pregunta, el verbo principal pierde la -s y vuelve a su forma base: 'Does she like football?' es correcto; 'Does she likes football?' es un error de doble marca (does ya indica tercera persona; agregarle -s a 'like' la repite). Con 'do' (I/you/we/they) no hay ningún cambio extra que memorizar, porque esos sujetos nunca llevaban -s de todas formas.",
+        "pasos": [
+          "Do + I/you/we/they + verbo BASE + ...? (Do you like...?)",
+          "Does + he/she/it + verbo BASE + ...? (Does she like...?)",
+          "Con 'does' en la pregunta, el verbo principal SIEMPRE va sin -s: 'Does he like...?', nunca 'Does he likes...?'"
+        ],
+        "ejemplo": "'Do you like reading? Does your brother like football? Does she like spiders?'",
+        "figura": ""
+      },
+      {
+        "titulo": "Respuestas cortas: Yes, I do / No, I don't; Yes, she does / No, she doesn't",
+        "explicacion": "Para responder de forma corta a estas preguntas, se repite el auxiliar 'do' o 'does' (según el sujeto de la pregunta), pero el verbo principal ('like') NUNCA aparece en la respuesta corta. A 'Do you like chocolate?' se responde 'Yes, I do.' o 'No, I don't.' (nunca 'Yes, I like.' ni 'Yes, I do like.'). A 'Does he like football?' se responde 'Yes, he does.' o 'No, he doesn't.' Esta regla recuerda a la que ya viste con 'have got' (donde 'got' desaparecía en la respuesta corta): en inglés, la respuesta corta siempre repite SOLO el auxiliar de la pregunta, y ese auxiliar depende del tipo de verbo principal: con 'have got' se repite have/has; con verbos de acción como 'like' se repite do/does.",
+        "pasos": [
+          "Pregunta con 'Do': se responde 'Yes, + sujeto + do.' / 'No, + sujeto + don't.'",
+          "Pregunta con 'Does': se responde 'Yes, + sujeto + does.' / 'No, + sujeto + doesn't.'",
+          "El verbo 'like' NUNCA aparece en la respuesta corta."
+        ],
+        "ejemplo": "'Do you like tennis? Yes, I do.' 'Does she like coffee? No, she doesn't.'",
+        "figura": ""
+      },
+      {
+        "titulo": "Antes de escribir, analiza: quién habla, sustantivo o -ing, y afirmativo/negativo/pregunta",
+        "explicacion": "Ya tienes todas las piezas; el reto ahora es combinarlas sin memorizar frases sueltas. Antes de escribir una frase sobre gustos, hazte estas preguntas EN ORDEN: PRIMERO, ¿de quién hablo? -> si es he/she/it, el verbo lleva -s en afirmativo (likes) y uso does en negativo/pregunta; si es I/you/we/they, el verbo va sin -s y uso do. SEGUNDO, ¿lo que gusta es una COSA (sustantivo) o una ACCIÓN (verbo)? -> si es una cosa, va directo después del verbo de gusto (like pizza); si es una acción, ese verbo necesita -ing (like swimming), revisando las reglas de ortografía. TERCERO, ¿es afirmativa, negativa o pregunta? -> negativa: agrego don't/doesn't y el verbo principal vuelve a su forma base, SIN doblar la -s; pregunta: adelanto do/does, y en la respuesta corta quito el verbo 'like' por completo. Analizar estas tres preguntas antes de escribir evita mezclar las categorías, como decir 'She don't likes swim' (tres errores en una sola frase).",
+        "pasos": [
+          "1. ¿Quién habla? -> like/love/hate/enjoy sin -s (I/you/we/they) o con -s (he/she/it: likes/loves/hates/enjoys).",
+          "2. ¿Sustantivo o acción? -> sustantivo directo, o verbo + -ing (revisando ortografía).",
+          "3. ¿Afirmativa, negativa o pregunta? -> don't/doesn't + verbo base en negativo; do/does adelante en pregunta; sin 'like' en la respuesta corta."
+        ],
+        "ejemplo": "Frase a analizar: 'Mi hermana no disfruta cocinar.' (1) 'my sister' = she -> forma con does. (2) 'cocinar' es una acción -> 'cooking'. (3) negativa -> 'doesn't enjoy'. Frase final: 'My sister doesn't enjoy cooking.'",
+        "figura": ""
+      },
+      {
+        "titulo": "Errores típicos (y cómo blindarte)",
+        "explicacion": "Estos son los cuatro errores que el hispanohablante comete una y otra vez con like/love/hate/enjoy. Conocerlos de antemano es la mitad de la batalla.",
+        "pasos": [
+          "Olvidar la -s de la tercera persona: 'He like pizza' está mal; debe ser 'He likes pizza'.",
+          "Usar 'don't' en vez de 'doesn't' con he/she/it: 'She don't like Mondays' está mal; debe ser 'She doesn't like Mondays'.",
+          "Dejar el verbo sin -ing después de like/love/hate/enjoy cuando lo que gusta es una acción: 'I like swim' está mal; debe ser 'I like swimming'.",
+          "Doblar la marca de tercera persona después de doesn't: 'She doesn't likes vegetables' está mal; debe ser 'She doesn't like vegetables' (doesn't ya trae la -s)."
+        ],
+        "ejemplo": "Chequeo rápido siempre: ¿el sujeto es he/she/it? ¿ya puse la -s (o ya usé doesn't sin repetirla)? ¿lo que sigue a like es una acción que necesita -ing?",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "Like/love/hate/enjoy + sustantivo cuando lo que gusta es una cosa ('I like pizza'); + verbo-ing (gerundio) cuando lo que gusta es una acción ('I like swimming'), revisando las tres reglas de ortografía del -ing (regla general, e muda, y doblar consonante en una sílaba; la 'y' nunca cambia). En tercera persona (he/she/it) el verbo agrega -s/-es siguiendo las mismas reglas que el plural de sustantivos (likes, watches, studies). A diferencia de 'have got', 'like' es un verbo de acción normal: necesita SIEMPRE do/does para negarse (don't/doesn't + verbo base) y preguntar (Do/Does + sujeto + verbo base), y en la respuesta corta el verbo 'like' desaparece (Yes, I do / No, she doesn't). El error más frecuente es doblar la marca de tercera persona después de doesn't: 'doesn't likes' está mal, porque doesn't ya la contiene; lo correcto es 'doesn't like'."
+  },
+  "practica": [
+    {
+      "enunciado": "Completa con like o likes: 'I ___ chocolate a lot.'",
+      "pista": "¿Quién habla? 'I' no lleva -s en el verbo.",
+      "solucion": "'I like chocolate a lot.' (Me gusta mucho el chocolate.) 'I' usa la forma base 'like', sin -s.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Completa con like o likes: 'My cousin ___ basketball.'",
+      "pista": "'My cousin' equivale a he/she, una sola persona: tercera persona del singular.",
+      "solucion": "'My cousin likes basketball.' (A mi primo/a le gusta el basquetbol.) He/she/it agrega -s: like -> likes.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Elige la forma -ing correcta del verbo entre paréntesis: 'My friends enjoy (swim) in the sea.'",
+      "pista": "Swim es de una sílaba y termina en consonante-vocal-consonante (i-m): hay que doblar la consonante final.",
+      "solucion": "'My friends enjoy swimming in the sea.' (Mis amigos disfrutan nadar en el mar.) Swim -> swimming (se dobla la m).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Elige la forma -ing correcta del verbo entre paréntesis: 'She loves (write) short stories.'",
+      "pista": "Write termina en 'e' muda: se quita la e antes de agregar -ing.",
+      "solucion": "'She loves writing short stories.' (A ella le encanta escribir cuentos cortos.) Write -> writing (se quita la e).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Elige la forma -ing correcta, cuidando la trampa de la 'y': 'He hates (study) on Sundays.'",
+      "pista": "La 'y' final NUNCA cambia antes de -ing, aunque sí cambia en otra regla (la de la tercera persona).",
+      "solucion": "'He hates studying on Sundays.' (Él odia estudiar los domingos.) Study -> studying, sin cambiar la y (no 'studiing').",
+      "figura": ""
+    },
+    {
+      "enunciado": "Transforma a negativo: 'We like rain.'",
+      "pista": "El sujeto es 'we' (I/you/we/they): usa 'don't' + verbo base.",
+      "solucion": "'We don't like rain.' (No nos gusta la lluvia.) 'Don't' = 'do not', y el verbo vuelve a su forma base.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Transforma a negativo SIN doblar la marca de tercera persona: 'He likes exercise.'",
+      "pista": "'Doesn't' ya trae la -s incorporada; el verbo principal debe volver a su forma base, sin -s.",
+      "solucion": "'He doesn't like exercise.' (A él no le gusta hacer ejercicio.) Nunca 'He doesn't likes exercise' (doble marca).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige el error de conjugación: 'My sister like comics.'",
+      "pista": "'My sister' equivale a 'she', tercera persona del singular: falta la -s.",
+      "solucion": "'My sister likes comics.' (A mi hermana le gustan los cómics.) He/she/it necesita 'likes', no 'like'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige el error de doble marca: 'She doesn't likes coffee.'",
+      "pista": "'Doesn't' ya indica tercera persona; el verbo que sigue va SIEMPRE en forma base.",
+      "solucion": "'She doesn't like coffee.' (A ella no le gusta el café.) 'Doesn't likes' marca la tercera persona dos veces; hay que quitarle la -s a 'like'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige el error de sustantivo/-ing: 'I like swim on weekends.'",
+      "pista": "Después de 'like', si sigue una acción (un verbo), ese verbo necesita la terminación -ing.",
+      "solucion": "'I like swimming on weekends.' (Me gusta nadar los fines de semana.) 'Swim' sin -ing no puede ir después de 'like'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Convierte en pregunta y responde que SÍ con respuesta corta: 'You like tennis.'",
+      "pista": "Adelanta 'do' antes del sujeto. En la respuesta corta, 'like' desaparece.",
+      "solucion": "Pregunta: 'Do you like tennis?' Respuesta corta: 'Yes, I do.' (Nunca 'Yes, I like.')",
+      "figura": ""
+    },
+    {
+      "enunciado": "Convierte en pregunta y responde que NO con respuesta corta: 'She likes maths.'",
+      "pista": "Adelanta 'does' antes del sujeto, y el verbo principal pierde la -s en la pregunta.",
+      "solucion": "Pregunta: 'Does she like maths?' Respuesta corta: 'No, she doesn't.' (Nunca 'Does she likes maths?' ni 'No, she don't.')",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe tres frases sobre gustos usando like/love/hate/enjoy, con al menos un sustantivo y al menos un verbo en -ing, y una de ellas en negativo o en pregunta.",
+      "pista": "Sigue el análisis en orden: quién habla -> sustantivo o -ing -> afirmativo, negativo o pregunta.",
+      "solucion": "Ejemplo válido: 'I love pizza. My brother enjoys playing football. She doesn't like doing homework.' Cualquier combinación correcta de like/love/hate/enjoy + sustantivo o -ing, con la conjugación adecuada, es válida.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál frase está correctamente conjugada para 'I'?",
+      "opciones": [
+        "I like pizza.",
+        "I likes pizza.",
+        "I do likes pizza.",
+        "I am like pizza."
+      ],
+      "correcta": 0,
+      "explicacion": "'I' usa la forma base 'like', sin -s. 'Likes' es solo para he/she/it.",
+      "figura": ""
+    },
+    {
+      "pregunta": "Completa correctamente: 'My father ___ football.'",
+      "opciones": [
+        "like",
+        "likes",
+        "liking",
+        "is like"
+      ],
+      "correcta": 1,
+      "explicacion": "'My father' equivale a 'he': tercera persona del singular necesita 'likes', con -s.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es la forma correcta después de 'enjoy' cuando lo que sigue es una acción?",
+      "opciones": [
+        "enjoy swim",
+        "enjoy to swim",
+        "enjoy swimming",
+        "enjoy swims"
+      ],
+      "correcta": 2,
+      "explicacion": "Después de like/love/hate/enjoy, un verbo que sigue debe llevar -ing (gerundio), porque funciona como un sustantivo de acción: 'enjoy swimming'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es la forma -ing correcta de 'run'?",
+      "opciones": [
+        "runing",
+        "runeing",
+        "runing e",
+        "running"
+      ],
+      "correcta": 3,
+      "explicacion": "'Run' es de una sílaba y termina en consonante-vocal-consonante (u-n): se dobla la 'n' antes de agregar -ing: 'running'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es la forma -ing correcta de 'dance'?",
+      "opciones": [
+        "dancing",
+        "danceing",
+        "dancceing",
+        "dansing"
+      ],
+      "correcta": 0,
+      "explicacion": "'Dance' termina en 'e' muda: se elimina la 'e' antes de agregar -ing: 'dancing'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es la forma -ing correcta de 'study'?",
+      "opciones": [
+        "studing",
+        "studying",
+        "studiing",
+        "studies"
+      ],
+      "correcta": 1,
+      "explicacion": "La 'y' final NUNCA cambia antes de -ing: 'study' -> 'studying' (no 'studiing'). 'Studies' es la forma de tercera persona, no el gerundio.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es la negación correcta de 'They like spiders' (con I/you/we/they)?",
+      "opciones": [
+        "They no like spiders.",
+        "They doesn't like spiders.",
+        "They don't like spiders.",
+        "They not like spiders."
+      ],
+      "correcta": 2,
+      "explicacion": "'They' usa 'don't' (do + not) + verbo base. 'Doesn't' sería para he/she/it.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es la negación correcta de 'He likes vegetables', sin doblar la marca de tercera persona?",
+      "opciones": [
+        "He don't like vegetables.",
+        "He doesn't likes vegetables.",
+        "He not likes vegetables.",
+        "He doesn't like vegetables."
+      ],
+      "correcta": 3,
+      "explicacion": "'Doesn't' ya contiene la marca de tercera persona; el verbo principal vuelve a su forma base, sin -s: 'doesn't like', nunca 'doesn't likes'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es la pregunta correcta para 'She likes coffee'?",
+      "opciones": [
+        "Does she like coffee?",
+        "Does she likes coffee?",
+        "Do she like coffee?",
+        "She likes coffee?"
+      ],
+      "correcta": 0,
+      "explicacion": "Con 'does', el verbo principal pierde la -s y vuelve a su forma base: 'Does she like coffee?', nunca 'Does she likes coffee?'",
+      "figura": ""
+    },
+    {
+      "pregunta": "Si la respuesta a '¿Do you like tennis?' es SÍ, ¿cuál es la respuesta corta correcta?",
+      "opciones": [
+        "Yes, I like.",
+        "Yes, I do.",
+        "Yes, I do like.",
+        "Yes, I am."
+      ],
+      "correcta": 1,
+      "explicacion": "En la respuesta corta, el verbo principal ('like') desaparece; solo se repite el auxiliar: 'Yes, I do.'",
+      "figura": ""
+    },
+    {
+      "pregunta": "Si la respuesta a '¿Does he like football?' es NO, ¿cuál es la respuesta corta correcta?",
+      "opciones": [
+        "No, he don't.",
+        "No, he not.",
+        "No, he doesn't.",
+        "No, he doesn't like."
+      ],
+      "correcta": 2,
+      "explicacion": "Con 'does' en la pregunta, la respuesta corta repite 'doesn't' (does + not), sin el verbo 'like'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál de estas frases usa correctamente un sustantivo (no una acción) después de 'like'?",
+      "opciones": [
+        "I like to pizza.",
+        "I like pizzaing.",
+        "I liking pizza.",
+        "I like pizza."
+      ],
+      "correcta": 3,
+      "explicacion": "Cuando lo que gusta es una COSA (un sustantivo, no una acción), va directo después de 'like', sin ningún cambio: 'I like pizza.'",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál de estas frases usa correctamente una ACCIÓN después de 'like'?",
+      "opciones": [
+        "I like reading books.",
+        "I like read books.",
+        "I likes reading books.",
+        "I like to reading books."
+      ],
+      "correcta": 0,
+      "explicacion": "Cuando lo que gusta es una acción (un verbo), ese verbo necesita la terminación -ing para poder ir después de 'like': 'reading'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Por qué 'she doesn't likes' es un error, aunque 'she' sea tercera persona?",
+      "opciones": [
+        "Porque 'doesn't' no existe en inglés.",
+        "Porque 'doesn't' ya indica tercera persona, así que el verbo principal no debe llevar -s otra vez.",
+        "Porque 'she' nunca lleva -s en ningún caso.",
+        "Porque 'likes' se escribe siempre 'like' en negativo."
+      ],
+      "correcta": 1,
+      "explicacion": "'Doesn't' (does + not) ya contiene la marca de tercera persona; agregarle otra -s al verbo principal marca lo mismo dos veces, un error típico del hispanohablante.",
+      "figura": ""
+    }
+  ]
+}

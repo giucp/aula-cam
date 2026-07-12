@@ -1,0 +1,347 @@
+{
+  "programa": "cumbre",
+  "materia": "Matemática",
+  "grado": "Cumbre Matemática 1er año",
+  "dominio": "Números y Álgebra",
+  "tema": "Operaciones con enteros y su significado",
+  "referencias": [
+    "Singapore MOE Secondary 1 (N2: the four operations on integers, real-world modelling with directed numbers, order of operations)",
+    "IB MYP Year 1 — Number: operations with integers, meaning of the sign rules, justification of negative times negative",
+    "UK KS3 — arithmetic with directed numbers, the 'subtracting a negative' misconception, order of operations (BIDMAS) with signs",
+    "Japan MEXT Grade 7 — 正の数・負の数の四則計算 (four operations with positive and negative numbers): meaning, sign rules and their justification"
+  ],
+  "resumen": {
+    "titulo": "Cuentas que cuentan historias: qué SIGNIFICA operar con enteros",
+    "intro": "En el tema anterior aprendiste que los enteros no solo dicen CUÁNTO hay, sino también HACIA QUÉ LADO del cero está algo, y ubicaste sumas y restas como movimientos sobre la recta numérica. Ahora vas a dar el paso siguiente: entender qué SIGNIFICA de verdad cada operación con enteros y, sobre todo, POR QUÉ funcionan las reglas de los signos. La meta no es que te aprendas de memoria 'menos por menos da más', sino que entiendas tan bien de dónde sale esa regla que podrías explicársela a otra persona. Para lograrlo vamos a apoyarnos en una historia que todos entienden: el DINERO. Un número positivo será dinero A FAVOR (una ganancia, un ahorro, un abono); un número negativo será una DEUDA (dinero que debes, que juega en contra). Con esa sola imagen, más la recta numérica que ya conoces, cada operación va a tener sentido.",
+    "secciones": [
+      {
+        "titulo": "Cada operación con enteros cuenta una historia",
+        "explicacion": "Antes de operar, conviene fijar el significado que le vamos a dar a los signos, porque de ahí sale todo lo demás. Un número POSITIVO representa algo A FAVOR: dinero que tienes, grados por encima del cero, pisos sobre la planta baja, puntos ganados. Un número NEGATIVO representa algo EN CONTRA: una DEUDA (dinero que debes), grados bajo cero, pisos de sótano, puntos perdidos. La palabra DEUDA la vamos a usar mucho, así que dejémosla clara: una deuda es dinero que está en tu contra, y por eso se anota con signo negativo; deber 30 se escribe -30. Con este significado, sumar, restar, multiplicar y dividir dejan de ser reglas sueltas y pasan a ser preguntas concretas: '¿cómo queda mi dinero si junto esto con aquello?', '¿cuánto cambió mi situación?', '¿qué pasa si repito la misma deuda varias veces?'. Todo el tema es aprender a traducir esas preguntas a una cuenta con enteros, y a leer el resultado de vuelta como una situación real.",
+        "pasos": [
+          "Decide qué representa el positivo en tu problema (dinero a favor, grados sobre cero, subir...).",
+          "Decide qué representa el negativo (una deuda, grados bajo cero, bajar...).",
+          "Traduce la situación a una operación entre enteros.",
+          "Al final, lee el signo del resultado como parte de la historia: si sale negativo, terminaste 'en contra' (con deuda, bajo cero, en un sótano)."
+        ],
+        "ejemplo": "Si tienes 20 de ahorro (+20) y una deuda de 50 (-50), tu situación real no es 'tener 20 y deber 50 por separado': juntando todo, quedas debiendo 30, o sea -30. La cuenta que describe eso es 20 + (-50) = -30.",
+        "figura": ""
+      },
+      {
+        "titulo": "Sumar enteros: juntar todo en un solo estado",
+        "explicacion": "Sumar dos enteros significa JUNTAR dos situaciones en una sola y preguntar cómo queda el total. Hay dos casos, y conviene distinguirlos porque se comportan distinto. PRIMER CASO: los dos números tienen el MISMO signo. Si juntas dos cosas a favor, el total es aún más a favor (dos ahorros se acumulan); si juntas dos deudas, la deuda total es más grande. En ambos, sumas los valores y conservas el signo común. SEGUNDO CASO: los números tienen signos DISTINTOS (una ganancia y una deuda). Aquí se ENFRENTAN: la ganancia paga parte de la deuda (o la deuda se come parte de la ganancia). Gana quien tenga mayor valor absoluto (el valor absoluto de un número es su tamaño sin mirar el signo: el de +40 es 40 y el de -25 es 25), y lo que queda es la diferencia entre los dos valores. Por eso, para sumar un positivo y un negativo, se RESTAN sus valores absolutos y el resultado lleva el signo del que era más grande. Fíjate cómo esto es exactamente 'caminar sobre la recta' del tema anterior, pero ahora entiendes POR QUÉ: cuando los pasos van en la misma dirección se acumulan, y cuando van en direcciones opuestas se cancelan entre sí.",
+        "pasos": [
+          "Si los dos números tienen el mismo signo: suma sus valores y deja ese mismo signo (dos deudas juntas dan una deuda mayor).",
+          "Si tienen signos distintos: resta el valor menor del mayor.",
+          "Al resultado ponle el signo del número que tenía MAYOR valor absoluto (gana el más 'fuerte').",
+          "Lee el resultado como historia: signo negativo = quedaste debiendo; positivo = quedaste a favor."
+        ],
+        "ejemplo": "Mismo signo: (-40) + (-25) = -65 (dos deudas, la total es de 65). Signos distintos: (-40) + 25 = -15 (una deuda de 40 y un abono de 25; restas 40 - 25 = 15 y como la deuda era mayor, el resultado es negativo: aún debes 15). Y al revés, 40 + (-25) = 15 (tenías 40 a favor, pagaste una deuda de 25, te quedan 15).",
+        "figura": ""
+      },
+      {
+        "titulo": "Restar enteros: el cambio entre dos estados (y por qué restar un negativo suma)",
+        "explicacion": "Restar tiene dos lecturas útiles. La primera: la resta mide el CAMBIO o la DIFERENCIA entre dos estados; 'estado final menos estado inicial' te dice cuánto y hacia dónde cambió algo. La segunda, que es la regla de oro para no equivocarse: RESTAR un número es lo mismo que SUMAR su OPUESTO (el opuesto de un número es el mismo número con el signo cambiado: el opuesto de 8 es -8, y el de -8 es 8). En símbolos, a - b = a + (opuesto de b). Esto ya lo viste en la recta; ahora vamos al POR QUÉ con la historia del dinero, que es donde de verdad se entiende el caso que confunde a todos: restar un negativo. Restar significa QUITAR. Si te QUITAN una DEUDA, ¡quedas mejor que antes, no peor! Que te perdonen (te quiten) una deuda de 8 es exactamente igual de bueno que te regalen 8: en los dos casos tu dinero SUBE 8. Por eso restar -8 es lo mismo que sumar +8. Ese es el sentido real de 'menos por menos da más' cuando aparecen dos signos negativos seguidos: el signo de restar y el signo del número negativo se combinan y el efecto neto es una suma. No es un truco de memoria: quitar algo que jugaba en contra siempre te deja mejor.",
+        "pasos": [
+          "Reescribe toda resta como una suma del opuesto: a - b se vuelve a + (opuesto de b).",
+          "Restar un positivo se vuelve sumar su opuesto negativo (tu resultado baja).",
+          "Restar un negativo se vuelve sumar su opuesto positivo (tu resultado sube): los dos signos negativos seguidos se cancelan.",
+          "Resuelve la suma que quedó con las reglas de la sección anterior."
+        ],
+        "ejemplo": "Como CAMBIO: si la temperatura pasó de -6°C a 9°C, el cambio fue 9 - (-6) = 9 + 6 = 15°C (subió 15). Como QUITAR una deuda: si tenías -3 (debías 3) y te perdonan una deuda de 8, tu situación es -3 - (-8) = -3 + 8 = 5 (pasas de deber 3 a tener 5 a favor). Restar un positivo, en cambio, baja: -3 - 8 = -3 + (-8) = -11.",
+        "figura": ""
+      },
+      {
+        "titulo": "Multiplicar enteros: repetir una situación (y el famoso menos por menos)",
+        "explicacion": "Multiplicar enteros es REPETIR una situación varias veces, y de ahí salen los signos de forma natural. Empecemos por lo fácil y subamos hasta el caso difícil. POSITIVO por POSITIVO: repetir varias ganancias da una ganancia mayor; 4 × 3 son cuatro grupos de 3 a favor = 12 a favor (positivo). POSITIVO por NEGATIVO: repetir varias veces una MISMA deuda da una deuda grande; 4 × (-3) son cuatro deudas de 3 = una deuda de 12, o sea -12 (negativo). NEGATIVO por NEGATIVO, el caso que todos temen: aquí el factor negativo se lee como 'QUITAR tantas veces'. Así, (-4) × (-3) significa QUITAR cuatro veces una deuda de 3; y ya sabes que quitar una deuda te deja mejor, así que quitar cuatro deudas de 3 te sube 12: el resultado es +12 (positivo). Si te cuesta la historia, hay una segunda prueba, puramente numérica, mirando un patrón: 3×(-2) = -6, 2×(-2) = -4, 1×(-2) = -2, 0×(-2) = 0; cada vez que el primer factor baja en 1, el resultado SUBE 2. Siguiendo ese mismo patrón, el siguiente tiene que ser (-1)×(-2) = +2 y luego (-2)×(-2) = +4. La única forma de que el patrón no se rompa es que negativo por negativo dé positivo. Las dos vías llevan al mismo sitio, y de ahí sale el atajo que ya conoces: cuenta cuántos factores negativos hay; si son una cantidad PAR el resultado es positivo, si son IMPAR es negativo.",
+        "pasos": [
+          "Multiplica los valores sin mirar los signos (como multiplicar de siempre).",
+          "Cuenta cuántos de los factores son negativos.",
+          "Cantidad PAR de negativos (0, 2, 4...) → resultado POSITIVO; cantidad IMPAR (1, 3, 5...) → resultado NEGATIVO.",
+          "Comprueba con la historia: cada factor negativo es 'quitar/invertir' una vez; dos inversiones seguidas te devuelven al lado positivo."
+        ],
+        "ejemplo": "4 × (-3) = -12 (cuatro deudas de 3). (-4) × (-3) = 12 (quitar cuatro deudas de 3, quedas 12 mejor). Con tres factores: (-2) × (-3) × (-4): son TRES negativos (cantidad impar) → negativo; los valores dan 2×3×4 = 24, así que el resultado es -24.",
+        "figura": "<svg viewBox=\"0 0 340 210\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"20\" y=\"28\" font-family=\"sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"#3B2B4A\">Sigue el patron: baja 1 el factor,</text><text x=\"20\" y=\"48\" font-family=\"sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"#3B2B4A\">sube 2 el resultado</text><text x=\"40\" y=\"80\" font-family=\"monospace\" font-size=\"15\" fill=\"#3B2B4A\">3 x (-2) = -6</text><text x=\"40\" y=\"104\" font-family=\"monospace\" font-size=\"15\" fill=\"#3B2B4A\">2 x (-2) = -4</text><text x=\"40\" y=\"128\" font-family=\"monospace\" font-size=\"15\" fill=\"#3B2B4A\">1 x (-2) = -2</text><text x=\"40\" y=\"152\" font-family=\"monospace\" font-size=\"15\" fill=\"#3B2B4A\">0 x (-2) =  0</text><text x=\"40\" y=\"176\" font-family=\"monospace\" font-size=\"15\" font-weight=\"700\" fill=\"#0E9486\">-1 x (-2) = +2</text><text x=\"40\" y=\"200\" font-family=\"monospace\" font-size=\"15\" font-weight=\"700\" fill=\"#0E9486\">-2 x (-2) = +4</text><line x1=\"250\" y1=\"70\" x2=\"250\" y2=\"196\" stroke=\"#12B5A4\" stroke-width=\"2\"/><polygon points=\"250,196 244,184 256,184\" fill=\"#12B5A4\"/><text x=\"262\" y=\"140\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#0E9486\">+2</text><text x=\"262\" y=\"156\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#0E9486\">cada</text><text x=\"262\" y=\"172\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#0E9486\">fila</text></svg>"
+      },
+      {
+        "titulo": "Dividir enteros: la operación inversa, con la misma regla de signos",
+        "explicacion": "Dividir es la operación INVERSA de multiplicar: preguntar 'a ÷ b' es preguntar '¿qué número, multiplicado por b, me devuelve a?'. Como la división deshace a la multiplicación, hereda EXACTAMENTE la misma regla de signos, y por la misma razón: cuenta los negativos, par da positivo e impar da negativo. Puedes comprobar cualquier división convirtiéndola en la multiplicación que la revierte. En términos de la historia, la división tiene dos lecturas: REPARTIR una cantidad en partes iguales, o ver CUÁNTAS VECES cabe una cantidad en otra. Repartir una deuda entre varias personas da a cada una una parte de deuda (negativa); y preguntar cuántas deudas de cierto tamaño caben en una deuda mayor da una respuesta positiva, porque estás comparando dos cosas del mismo lado.",
+        "pasos": [
+          "Divide los valores sin mirar los signos.",
+          "Cuenta los signos negativos entre los dos números (dividendo y divisor).",
+          "Par de negativos → positivo; impar → negativo (idéntico a la multiplicación).",
+          "Comprueba multiplicando: el cociente por el divisor debe devolver el dividendo, signo incluido."
+        ],
+        "ejemplo": "Repartir una deuda: una deuda de 84 (-84) repartida en partes iguales entre 6 amigos toca a cada uno -84 ÷ 6 = -14 (cada uno carga una deuda de 14). Comparar dos deudas: -84 ÷ (-6) = 14, porque en una deuda de 84 'caben' 14 deudas de 6 (dos negativos, cantidad par → positivo). Comprobación: 14 × (-6) = -84 ✓.",
+        "figura": ""
+      },
+      {
+        "titulo": "Cuando aparecen varias operaciones juntas: el orden manda",
+        "explicacion": "En cuentas reales casi nunca hay una sola operación: se mezclan sumas, restas, multiplicaciones y divisiones. Aquí un error de ORDEN arruina el resultado aunque cada signo esté bien puesto, así que hay que respetar la jerarquía. La regla es la misma que ya usas con números naturales, y no cambia por haber negativos: primero se resuelve lo que está dentro de PARÉNTESIS; después las MULTIPLICACIONES y DIVISIONES (de izquierda a derecha); y al final las SUMAS y RESTAS. Con enteros hay un cuidado extra: al resolver una multiplicación o división en medio de una suma, calcula su resultado CON su signo y recién entonces súmalo o réstalo al resto. Un buen hábito es encerrar mentalmente cada producto o cociente entre paréntesis antes de combinarlo, para no mezclar por accidente el signo de un factor con la suma que viene después.",
+        "pasos": [
+          "Resuelve primero lo que esté dentro de paréntesis.",
+          "Luego todas las multiplicaciones y divisiones, de izquierda a derecha, guardando el signo de cada resultado.",
+          "Por último las sumas y restas, de izquierda a derecha.",
+          "Antes de sumar un producto, ponle su signo completo: 3 × (-4) vale -12, y ESE -12 es lo que entra en la suma."
+        ],
+        "ejemplo": "-5 + 3 × (-4): primero el producto, 3 × (-4) = -12; luego -5 + (-12) = -17. El error clásico es sumar antes de multiplicar (-5 + 3 = -2, y 'luego' -2 × -4 = 8), lo que da un resultado equivocado. Otro: (-2) × (-6) + (-3) × 5 = 12 + (-15) = -3 (dos productos primero, después la suma).",
+        "figura": ""
+      },
+      {
+        "titulo": "El cero: el número que cambia las reglas",
+        "explicacion": "El cero merece sección propia porque se comporta distinto en cada operación, y varios errores nacen de tratarlo 'como uno más'. En la SUMA y la RESTA, el cero es NEUTRO: sumar o restar cero no cambia nada (a + 0 = a; a - 0 = a), porque no aporta ni ganancia ni deuda. En la MULTIPLICACIÓN, el cero ABSORBE: cualquier número por cero da cero (a × 0 = 0), sin importar signos, porque repetir algo cero veces no deja nada, y repetir el cero tampoco. En la DIVISIÓN hay que separar dos casos que se confunden: cero DIVIDIDO entre cualquier número distinto de cero da cero (0 ÷ 5 = 0: repartir nada deja nada a cada quien); pero dividir ENTRE cero NO tiene resultado, es una operación imposible. ¿Por qué imposible? Porque a ÷ 0 pregunta '¿qué número por 0 me devuelve a?', y como todo número por 0 da 0, jamás podrías recuperar un a distinto de cero: no existe tal número. Por eso se dice que la división entre cero 'no está definida', y nunca es una respuesta válida.",
+        "pasos": [
+          "En suma/resta: el cero no cambia nada (neutro).",
+          "En multiplicación: cualquier cosa por cero es cero (absorbe), con o sin signos.",
+          "0 dividido entre un número distinto de cero es 0.",
+          "Dividir ENTRE cero es imposible: no está definido, nunca lo escribas como resultado."
+        ],
+        "ejemplo": "(-7) + 0 = -7 (neutro). (-7) × 0 = 0 (absorbe). 0 ÷ (-7) = 0 (repartir nada). Pero (-7) ÷ 0 no tiene resultado: no hay ningún número que multiplicado por 0 devuelva -7.",
+        "figura": ""
+      },
+      {
+        "titulo": "Errores típicos y cómo juzgarlos tú mismo",
+        "explicacion": "Ahora que entiendes el POR QUÉ, puedes cazar los errores más frecuentes en vez de solo evitarlos de memoria. El PRIMERO es el doble signo mal resuelto: leer a - (-b) como a - b y restar, cuando restar un negativo SUMA (quitar una deuda te deja mejor); es el error número uno del tema. El SEGUNDO es contar mal los negativos al multiplicar o dividir: contar cuántos NÚMEROS hay en total en vez de cuántos son NEGATIVOS, o perder de vista un signo dentro de un paréntesis. El TERCERO es equivocar el orden de las operaciones: sumar antes de multiplicar. Y el CUARTO son los descuidos con el cero: escribir un resultado para una división entre cero, o creer que algo por cero conserva el signo. La defensa contra los cuatro es la misma disciplina: reescribe toda resta como suma del opuesto ANTES de operar; cuenta los signos negativos uno por uno, señalándolos; respeta paréntesis primero y productos antes que sumas; y, al terminar, pregúntate si el resultado tiene sentido en la historia (¿es razonable que, tras quitarme una deuda, yo terminara con MENOS dinero? No: entonces revisa).",
+        "pasos": [
+          "Reescribe cada resta como suma del opuesto antes de calcular (esto solo ya elimina el error del doble signo).",
+          "Cuenta los factores negativos uno por uno, no 'a ojo' ni contando todos los factores.",
+          "Aplica el orden: paréntesis, luego multiplicar/dividir, luego sumar/restar.",
+          "Verifica el resultado con la historia: si contradice el sentido común de deudas y ganancias, hay un error de signo escondido."
+        ],
+        "ejemplo": "Un estudiante escribió 5 - (-9) = -4, pensando '5 menos 9'. Es el error del doble signo: restar el negativo -9 es sumar 9, así que 5 - (-9) = 5 + 9 = 14. Prueba de sentido común: le quitaron una deuda de 9 a alguien que tenía 5 a favor; es imposible que termine peor (-4); debe terminar mejor, con 14.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "Cada operación con enteros cuenta una historia de ganancias y deudas: sumar es juntar estados, restar es medir el cambio (y restar un negativo SUMA, porque quitar una deuda te deja mejor), multiplicar es repetir una situación (y negativo por negativo da positivo porque es 'quitar' dos veces), y dividir hereda la misma regla de signos por ser la inversa de multiplicar. El signo de un producto o cociente depende solo de si la CANTIDAD de negativos es par (positivo) o impar (negativo); el cero es neutro al sumar, absorbe al multiplicar, y dividir entre él es imposible. Y siempre: paréntesis primero, productos antes que sumas, y verifica que el resultado tenga sentido en la historia.",
+    "figura": ""
+  },
+  "practica": [
+    {
+      "enunciado": "En una cuenta bancaria hay un saldo de -45 (un sobregiro: se deben 45). Ese día entra un depósito de 30. Escribe la operación con enteros que describe la situación, calcula el nuevo saldo e interpreta qué significa el signo del resultado.",
+      "pista": "Juntar un saldo negativo (deuda) con un depósito positivo es una suma de signos distintos: se restan los valores y gana el de mayor valor absoluto.",
+      "solucion": "La operación es -45 + 30 = -15. Como los signos son distintos, restas 45 - 30 = 15, y el resultado lleva el signo del mayor valor absoluto (la deuda de 45), así que es -15. Significa que, tras el depósito, todavía se deben 15: la cuenta sigue sobregirada. (Verificación: si al nuevo saldo -15 le quitas el depósito de 30 que había entrado, vuelves al saldo original: -15 - 30 = -45. ✓)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica, usando una situación de deudas y SIN decir solamente 'la regla dice que menos por menos da más', por qué (-4) × (-3) = 12.",
+      "pista": "Piensa que multiplicar por un número negativo significa QUITAR esa cantidad de veces. ¿Qué le pasa a tu dinero si te quitan una deuda? ¿Y si te quitan varias iguales?",
+      "solucion": "El factor -3 se puede leer como 'quitar 3 veces', y el -4 como una deuda de 4. Entonces (-4) × (-3) significa quitar 3 veces una deuda de 4. Cada vez que te quitan (te perdonan) una deuda de 4, tu dinero SUBE 4; quitarte 3 de esas deudas te sube 4 + 4 + 4 = 12. Por eso el resultado es +12, positivo: dos efectos 'en contra' (una deuda, que se la quiten) se combinan en algo a favor. (Comprobación numérica: 4 × 3 = 12, dos negativos = cantidad par = positivo → +12. ✓)",
+      "figura": ""
+    },
+    {
+      "enunciado": "En una partida, una jugadora gana 8 puntos, luego pierde 15, después gana 6 y por último pierde 4. Ganar es positivo y perder es negativo. ¿Con qué puntaje termina? ¿Va ganando o perdiendo?",
+      "pista": "Traduce cada jugada a un entero y súmalos en orden, arrastrando el signo. Perder es sumar un negativo.",
+      "solucion": "8 + (-15) + 6 + (-4). Paso a paso: 8 + (-15) = -7; -7 + 6 = -1; -1 + (-4) = -5. Termina con -5 puntos, así que va PERDIENDO por 5. (Verificación: ganó en total 8 + 6 = 14 y perdió 15 + 4 = 19; 14 - 19 = -5. ✓)",
+      "figura": ""
+    },
+    {
+      "enunciado": "A la medianoche un termómetro marcaba -6°C. Al mediodía marcaba 9°C. ¿Cuánto cambió la temperatura, y en qué dirección? Plantea el cambio como una resta.",
+      "pista": "El cambio es 'estado final menos estado inicial'. Restar un negativo equivale a sumar su opuesto.",
+      "solucion": "Cambio = final - inicial = 9 - (-6) = 9 + 6 = 15. La temperatura SUBIÓ 15°C. (Verificación: si desde -6°C subes 15 grados llegas a -6 + 15 = 9°C exactamente. ✓ Nótese que salió positivo porque la temperatura aumentó.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un buzo desciende a ritmo constante de 3 metros por minuto, partiendo desde la superficie (0 m). Escribe una multiplicación que dé su posición al cabo de 7 minutos y calcúlala. ¿Por qué el resultado es negativo?",
+      "pista": "Bajar es negativo. Repetir 7 veces un descenso de 3 m es multiplicar 7 por -3.",
+      "solucion": "Posición = 7 × (-3) = -21. El buzo está a -21 m (21 metros bajo la superficie). Es negativo porque multiplicar es repetir: repetir 7 veces un descenso de 3 m (una situación 'en contra', negativa) da un descenso total grande, que sigue siendo hacia abajo. Un factor negativo (impar) → resultado negativo. (Verificación: 7 × 3 = 21, con signo negativo → -21. ✓)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Decide PRIMERO si el resultado de (-3) × 4 × (-2) × (-5) es positivo o negativo (sin multiplicar), explica cómo lo decidiste, y luego calcula su valor.",
+      "pista": "Cuenta cuántos de los cuatro factores tienen signo negativo. Ojo: el 4 es positivo. Par de negativos da positivo; impar, negativo.",
+      "solucion": "Los factores negativos son -3, -2 y -5: son TRES (cantidad impar), así que el resultado es NEGATIVO. El 4 es positivo y no cuenta como negativo. Ahora los valores: 3 × 4 × 2 × 5 = 120. Entonces (-3) × 4 × (-2) × (-5) = -120. (El error a evitar es contar los cuatro factores; lo que decide el signo es cuántos son negativos: 3, impar.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Cuatro amigos comparten por partes iguales una deuda total de 84 (represéntala como -84). ¿Cuánto le corresponde de deuda a cada uno? Plantéalo como una división y comprueba tu resultado.",
+      "pista": "Repartir una deuda en partes iguales es dividir un número negativo entre un positivo (cuántos son los amigos). Un solo signo negativo → resultado negativo.",
+      "solucion": "Son cuatro amigos, así que -84 ÷ 4 = -21. A cada uno le toca una deuda de 21, es decir -21. Hay un solo signo negativo (el de la deuda), cantidad impar → resultado negativo, coherente con que cada parte también es una deuda. (Comprobación: 4 partes × (-21) = -84, la deuda total. ✓)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Calcula -8 + 5 × (-3), respetando el orden de las operaciones. Luego explica qué error comete quien obtiene 9 como respuesta.",
+      "pista": "Primero la multiplicación (con su signo), después la suma. ¿Qué pasa si alguien suma antes de multiplicar?",
+      "solucion": "Orden correcto: primero 5 × (-3) = -15; luego -8 + (-15) = -23. La respuesta es -23. Quien obtiene 9 sumó antes de multiplicar: hizo -8 + 5 = -3 y después -3 × (-3) = 9, saltándose la regla de que la multiplicación va antes que la suma. (Verificación del correcto: -8 más una deuda de 15 da una deuda de 23, o sea -23. ✓)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero afirma: 'Cuando divido dos números negativos, como el resultado viene de dos negativos, tiene que ser negativo.' Evalúa si tiene razón, justifica y da un ejemplo numérico que apoye tu conclusión.",
+      "pista": "Recuerda que la división hereda la regla de signos de la multiplicación: cuenta los negativos. ¿Dos negativos son cantidad par o impar?",
+      "solucion": "La afirmación es FALSA. Dividir dos números negativos son DOS signos negativos, cantidad PAR, así que el resultado es POSITIVO, no negativo. Ejemplo: -36 ÷ (-9) = 4 (positivo). Comprobación por la operación inversa: 4 × (-9) = -36, que devuelve el dividendo. ✓ El compañero confunde 'hay negativos' con 'cantidad impar de negativos'; lo que decide es la paridad, y dos es par.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Sin calcular todavía, decide el signo de (-2) × (-6) + (-3) × 5, y luego halla su valor completo respetando el orden de las operaciones.",
+      "pista": "No es una sola multiplicación: hay DOS productos y una suma en medio. Resuelve cada producto con su signo y recién entonces súmalos.",
+      "solucion": "Primero los productos: (-2) × (-6) = 12 (dos negativos, par → positivo) y (-3) × 5 = -15 (un negativo, impar → negativo). Luego la suma: 12 + (-15) = -3. El resultado final es -3 (negativo). (Verificación: 12 a favor y una deuda de 15 dejan una deuda de 3, o sea -3. ✓ El error típico sería multiplicar todo en cadena ignorando que la suma separa dos productos distintos.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante calculó 4 - (-10) y escribió -6, razonando '4 menos 10'. Evalúa su procedimiento: identifica el error, da la respuesta correcta y explica con una idea de deudas por qué la respuesta debe ser mayor que 4, no menor.",
+      "pista": "Fíjate en los dos signos negativos seguidos: el de restar y el del -10. ¿Se cancelan o se acumulan? Piensa qué significa 'quitar una deuda'.",
+      "solucion": "El error es tratar 4 - (-10) como 4 - 10. Pero restar un número negativo es sumar su opuesto: 4 - (-10) = 4 + 10 = 14. La respuesta correcta es 14. Con deudas: a alguien que tiene 4 a favor le QUITAN (le perdonan) una deuda de 10; quitar una deuda siempre mejora la situación, así que debe terminar con MÁS que 4, nunca con -6. El resultado 14 confirma que quedó mejor. ✓",
+      "figura": ""
+    },
+    {
+      "enunciado": "Sin calcular el valor, decide qué situación representa una deuda MAYOR: (a) 5 personas que deben 12 cada una, o (b) 3 personas que deben 20 cada una. Plantea cada una como una multiplicación de enteros y compáralas.",
+      "pista": "Cada situación es 'número de personas' por 'deuda de cada una' (negativa). Calcula ambos productos y compara los resultados como enteros (recuerda: entre negativos, el más negativo es el menor).",
+      "solucion": "(a) 5 × (-12) = -60. (b) 3 × (-20) = -60. Los dos productos dan exactamente -60: representan la MISMA deuda total, de 60. Ninguna es mayor que la otra, son iguales. (Verificación: 5 × 12 = 60 y 3 × 20 = 60; ambos negativos → -60 y -60. ✓ La respuesta correcta es 'las dos deudas son iguales', algo que no se ve hasta plantear y comparar las cuentas.)",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "Una cuenta tiene un saldo de -60 (se deben 60). Se abonan 25. ¿Cuál es el nuevo saldo?",
+      "opciones": [
+        "-35",
+        "-85",
+        "85",
+        "35"
+      ],
+      "correcta": 0,
+      "explicacion": "Signos distintos: se restan los valores (60 - 25 = 35) y gana el signo de la deuda, que era mayor: -60 + 25 = -35 (todavía se deben 35). -85 sale de sumar los valores en vez de restarlos; los positivos ignoran que la deuda no se pagó del todo."
+    },
+    {
+      "pregunta": "¿Cuál es la MEJOR explicación de por qué (-1) × (-1) = 1 y no -1?",
+      "opciones": [
+        "Porque siempre que hay signos, el resultado se vuelve positivo.",
+        "Porque quitar una vez una deuda de 1 te deja 1 a favor; dos efectos negativos se combinan en uno positivo.",
+        "Porque -1 y -1 son iguales, y dos números iguales dan positivo.",
+        "Es una convención sin ningún motivo; simplemente se acordó así."
+      ],
+      "correcta": 1,
+      "explicacion": "Multiplicar por -1 es 'quitar/invertir una vez'; invertir una deuda de 1 da 1 a favor. También se ve en el patrón (2×-1=-2, 1×-1=-1, 0×-1=0, -1×-1=+1: sube 1 cada fila). No es una convención arbitraria ni 'todo con signos da positivo' (un solo negativo daría negativo)."
+    },
+    {
+      "pregunta": "Un buzo baja a ritmo constante de 5 metros por minuto durante 6 minutos, desde la superficie. ¿En qué posición queda?",
+      "opciones": [
+        "30 m",
+        "-11 m",
+        "-30 m",
+        "-1 m"
+      ],
+      "correcta": 2,
+      "explicacion": "Repetir 6 veces un descenso de 5 m: 6 × (-5) = -30, es decir 30 m bajo la superficie. Un factor negativo (impar) → negativo. -11 y -1 confunden multiplicar con sumar/restar (6+5 o 6-5); 30 positivo olvida que va hacia abajo."
+    },
+    {
+      "pregunta": "¿Cuánto es (-2) × (-3) × (-4)?",
+      "opciones": [
+        "24",
+        "-9",
+        "9",
+        "-24"
+      ],
+      "correcta": 3,
+      "explicacion": "Tres factores negativos: cantidad IMPAR → resultado negativo. Los valores dan 2×3×4 = 24, así que el resultado es -24. El error típico es creer que 'muchos negativos' se cancelan y dar +24; lo que decide es la paridad, y 3 es impar. -9 y 9 confunden multiplicar con sumar."
+    },
+    {
+      "pregunta": "Calcula -72 ÷ (-8).",
+      "opciones": [
+        "9",
+        "-9",
+        "-64",
+        "64"
+      ],
+      "correcta": 0,
+      "explicacion": "Dos signos negativos (cantidad par) → resultado positivo: 72 ÷ 8 = 9. Comprobación por la inversa: 9 × (-8) = -72. ✓ -9 olvida que dos negativos dan positivo; -64 y 64 vienen de restar en vez de dividir."
+    },
+    {
+      "pregunta": "Respetando el orden de las operaciones, ¿cuánto vale -4 + 2 × (-5)?",
+      "opciones": [
+        "30",
+        "-14",
+        "10",
+        "-6"
+      ],
+      "correcta": 1,
+      "explicacion": "Primero la multiplicación: 2 × (-5) = -10; luego -4 + (-10) = -14. El distractor 10 sale de sumar antes de multiplicar respetando los signos (-4 + 2 = -2, luego -2 × -5 = 10); el 30 sale del mismo error del orden pero ignorando además los signos (sumar 4 + 2 = 6 y luego 6 × 5 = 30). Lo correcto es que la multiplicación va antes que la suma."
+    },
+    {
+      "pregunta": "La temperatura pasó de -7°C a 5°C. ¿Cuánto SUBIÓ?",
+      "opciones": [
+        "2°C",
+        "-2°C",
+        "12°C",
+        "-12°C"
+      ],
+      "correcta": 2,
+      "explicacion": "El cambio es final - inicial = 5 - (-7) = 5 + 7 = 12°C. Restar el negativo -7 equivale a sumar 7. El distractor 2 sale de hacer 5 - 7 sin cuidar el doble signo; los negativos invierten el sentido del cambio (sí subió)."
+    },
+    {
+      "pregunta": "Calcula -10 - (-3).",
+      "opciones": [
+        "-13",
+        "7",
+        "13",
+        "-7"
+      ],
+      "correcta": 3,
+      "explicacion": "Restar un negativo es sumar su opuesto: -10 - (-3) = -10 + 3 = -7. El distractor -13 es el error del doble signo (hacer -10 - 3); 7 y 13 invierten el signo del resultado. Con deudas: a una deuda de 10 le quitan una deuda de 3, así que queda debiendo solo 7."
+    },
+    {
+      "pregunta": "¿Cuánto es (-9) × 0?",
+      "opciones": [
+        "0",
+        "-9",
+        "9",
+        "No está definido"
+      ],
+      "correcta": 0,
+      "explicacion": "Cualquier número multiplicado por cero da 0, sin importar el signo: multiplicar 'absorbe' con el cero. 'No está definido' corresponde a DIVIDIR entre cero, no a multiplicar por cero; -9 y 9 olvidan el efecto del cero."
+    },
+    {
+      "pregunta": "Una deuda total de 60 se reparte en partes iguales entre 4 personas. ¿Cuánto le corresponde a cada una?",
+      "opciones": [
+        "15",
+        "-15",
+        "-240",
+        "-64"
+      ],
+      "correcta": 1,
+      "explicacion": "Repartir la deuda: -60 ÷ 4 = -15, o sea cada persona carga una deuda de 15. Un solo signo negativo (impar) → negativo, coherente con que cada parte es deuda. 15 positivo olvida que sigue siendo deuda; -240 multiplica en vez de dividir; -64 no tiene relación con la cuenta."
+    },
+    {
+      "pregunta": "Un estudiante afirma: 'Multiplicar dos números negativos da un resultado negativo.' ¿Es correcta la afirmación?",
+      "opciones": [
+        "Sí, porque los dos factores son negativos.",
+        "No: el resultado siempre es cero.",
+        "No: dos negativos son cantidad par, así que el producto es POSITIVO.",
+        "Solo es correcta si los dos números son iguales."
+      ],
+      "correcta": 2,
+      "explicacion": "Es falsa. La cantidad de negativos (dos) es PAR, así que el producto es positivo, por ejemplo (-6) × (-5) = 30. El error es confundir 'hay negativos' con 'cantidad impar de negativos'; lo que decide el signo es la paridad."
+    },
+    {
+      "pregunta": "Respetando el orden de las operaciones, ¿cuánto vale (-3) × (-2) + (-8)?",
+      "opciones": [
+        "14",
+        "-14",
+        "2",
+        "-2"
+      ],
+      "correcta": 3,
+      "explicacion": "Primero el producto: (-3) × (-2) = 6 (dos negativos, par → positivo); luego 6 + (-8) = -2. El distractor -14 sale de tomar el producto como negativo (-6); 14 y 2 vienen de errores de signo en la suma final."
+    },
+    {
+      "pregunta": "En un juego, un jugador gana 12 puntos y luego pierde 20. ¿Con qué puntaje queda?",
+      "opciones": [
+        "-8",
+        "32",
+        "8",
+        "-32"
+      ],
+      "correcta": 0,
+      "explicacion": "Ganar y perder es una suma de signos distintos: 12 + (-20) = -8 (restas 20 - 12 = 8 y gana el signo de la pérdida, que era mayor). Queda con -8, o sea perdiendo por 8. 32 suma los valores en vez de restarlos; 8 olvida el signo negativo."
+    },
+    {
+      "pregunta": "¿Cuál de estas operaciones NO tiene un resultado definido (es imposible)?",
+      "opciones": [
+        "0 ÷ (-6)",
+        "(-6) ÷ 0",
+        "(-6) × 0",
+        "0 + (-6)"
+      ],
+      "correcta": 1,
+      "explicacion": "Dividir ENTRE cero, (-6) ÷ 0, no está definido: ningún número multiplicado por 0 puede devolver -6. En cambio 0 ÷ (-6) = 0 (repartir nada), (-6) × 0 = 0 (absorbe) y 0 + (-6) = -6 (el cero es neutro) sí tienen resultado."
+    }
+  ]
+}

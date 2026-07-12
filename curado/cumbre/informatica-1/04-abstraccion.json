@@ -1,0 +1,312 @@
+{
+  "programa": "cumbre",
+  "materia": "Informática",
+  "grado": "Cumbre Informática 1er año",
+  "dominio": "Pensamiento computacional",
+  "tema": "Abstracción: quedarse con lo importante e ignorar lo que no importa",
+  "referencias": [
+    "UK Computing Key Stage 3 — Abstraction, el cuarto pilar del pensamiento computacional junto con descomposición, reconocer patrones y algoritmos",
+    "CSTA K-12 Computer Science Standards (grades 6-8) — Algorithms & Programming Practice: usar abstracciones (variables, nombres, categorías) para representar problemas de forma más simple y general",
+    "K-12 Computer Science Framework — Practice 5 (Abstracción y modelado): elegir qué detalles conservar y cuáles omitir según el propósito del modelo",
+    "CS Unplugged / Bebras — actividades sin computadora sobre mapas, íconos y categorías como ejemplos de abstracción cotidiana"
+  ],
+  "resumen": {
+    "titulo": "Abstracción: quedarse con lo importante e ignorar lo que no importa",
+    "intro": "Ya sabes escribir algoritmos, descomponer un problema grande en partes más chicas y reconocer patrones que se repiten entre casos distintos. Ahora llega la tercera herramienta del pensamiento computacional, la que junta a las dos anteriores: la abstracción. Consiste en decidir, a propósito, qué detalles de algo son esenciales para lo que quieres lograr y cuáles puedes ignorar sin que eso te impida resolver el problema. Un mapa del metro no dibuja cada curva de las vías ni cada calle de la ciudad, y por eso es útil: si lo dibujara todo, sería tan complicado como la ciudad misma. Aprender a abstraer bien —a elegir qué queda y qué se deja afuera— es lo que te permite resolver el problema GENERAL en vez de quedar atrapado en un solo caso particular.",
+    "secciones": [
+      {
+        "titulo": "¿Qué es abstraer? La intuición antes que la palabra",
+        "explicacion": "Piensa en un mapa del metro. No muestra las calles reales, ni las curvas exactas de las vías, ni la distancia real en metros entre una estación y la siguiente; en cambio, sí muestra con toda claridad el ORDEN de las estaciones y cómo se conectan las líneas entre sí. Eso es ABSTRAER: quedarte con los detalles que SÍ importan para lo que quieres lograr (en este caso, decidir en qué estación cambiar de tren) e ignorar, a propósito, los detalles que no cambian esa decisión (la forma exacta de las vías). La palabra clave es 'a propósito': abstraer no es olvidar información por accidente ni borrar cosas al azar, es una elección deliberada basada en para qué vas a usar esa información. Un DETALLE ESENCIAL es el que si lo quitas, ya no puedes resolver tu problema; un DETALLE ACCESORIO es el que puedes quitar sin que eso te afecte.",
+        "pasos": [
+          "Identifica para qué vas a usar la información (tu propósito).",
+          "Lista los detalles disponibles de la situación u objeto.",
+          "Para cada detalle, pregúntate: si lo quito, ¿sigo pudiendo resolver mi problema?",
+          "Si la respuesta es sí, es accesorio y puedes ignorarlo; si es no, es esencial y debes mantenerlo."
+        ],
+        "ejemplo": "El mapa del metro ignora las calles reales y las distancias exactas, pero conserva el orden de las estaciones y sus conexiones. Eso basta para decidir en qué estación bajarte, que es justamente el problema que el mapa está resuelto para resolver."
+      },
+      {
+        "titulo": "Por qué ignorar detalles nos hace GANAR, no perder",
+        "explicacion": "Parece que abstraer es 'perder información', pero en realidad se gana algo más valioso: la posibilidad de resolver el problema GENERAL, no solo un caso particular. Si el mapa del metro dibujara cada curva real de las vías, sería tan complicado de leer como la ciudad misma, y perderíamos justo la ventaja de entenderlo de un vistazo. Al ignorar lo que no sirve PARA ESE PROPÓSITO, ganamos claridad y rapidez. Aquí aparece una idea central que no debes olvidar: no existe 'LA' abstracción correcta de algo, existen abstracciones distintas según el propósito. La misma silla se describe distinto si la vas a vender, a cargar en una mudanza o a dibujar; ninguna descripción es 'más correcta' que otra, cada una es correcta PARA su propósito.",
+        "pasos": [
+          "Antes de decidir qué ignorar, define con precisión el propósito exacto (no uno vago).",
+          "Un mismo objeto puede tener varias abstracciones válidas, una por cada propósito distinto.",
+          "Nunca preguntes '¿qué detalles importan?' a secas; pregunta '¿qué detalles importan PARA ESTO?'."
+        ],
+        "ejemplo": "Una silla real tiene color, material, precio, peso, forma y marca. Para una tienda que la vende importan el material, el precio y el estilo; para una empresa de mudanzas importan el peso y el tamaño; para un dibujante importan la forma y las proporciones. Es la misma silla, pero cada quien abstrae detalles distintos según lo que necesita resolver."
+      },
+      {
+        "titulo": "Ejemplos cotidianos: íconos, categorías y nombres",
+        "explicacion": "La abstracción está en todas partes una vez que aprendes a verla. Un ÍCONO, como el dibujo de batería del teléfono, no muestra el porcentaje exacto de carga (63%, 55%...); muestra solo unos pocos niveles (vacía, baja, media, llena), porque para decidir si hay que cargar el teléfono ya alcanza con saber en qué rango está. Una CATEGORÍA, como la palabra 'perro', agrupa animales de razas, tamaños y colores completamente distintos bajo un solo nombre, ignorando esas diferencias y quedándose solo con lo que todos comparten. Un NOMBRE, como llamar a un número 'precio' en vez de escribir siempre el número exacto, es abstraer el valor concreto detrás de una palabra que sirve para CUALQUIER precio, no solo para uno. En los tres casos pasa lo mismo: se sacrifica precisión de detalle a cambio de ganar algo más útil (rapidez, generalidad, capacidad de aplicarlo a muchos casos).",
+        "ejemplo": "El ícono de batería con 4 niveles ignora el número exacto de porcentaje, pero conserva justo lo que hace falta para decidir si cargar el teléfono pronto o no."
+      },
+      {
+        "titulo": "Abstracción y nombrar: la puerta a generalizar",
+        "explicacion": "Ponerle nombre a una abstracción es lo que te permite hablar de MUCHOS casos distintos con una sola palabra. Cuando dices 'perro', no estás hablando de un animal en particular: estás hablando de millones de animales distintos que comparten lo esencial que decidiste conservar al abstraer. Lo mismo pasa con una receta escrita como 'para N personas: N tazas de arroz y el doble de agua', en vez de fijar un número exacto de comensales. Al abstraer el número específico de personas detrás de un nombre general (N), la receta deja de servir solo para una cena puntual y empieza a servir para CUALQUIER cantidad de gente. Esta es la misma idea que vas a usar más adelante con las variables en matemática y en programación: un nombre que representa cualquier valor posible, no uno fijo.",
+        "ejemplo": "Una receta que dice 'para 4 personas, usa 4 tazas de arroz y 8 de agua' solo sirve para ese caso. Una receta que dice 'para N personas, usa N tazas de arroz y el doble de agua' abstrajo el número específico y ahora sirve para cualquier cantidad."
+      },
+      {
+        "titulo": "El criterio clave: qué ignorar depende del propósito",
+        "explicacion": "Esta es la habilidad más importante de todo el tema: decidir qué detalles son esenciales y cuáles son accesorios NUNCA es una regla fija que se aplica siempre igual; depende por completo del propósito que tengas en ese momento. No hay una lista universal de 'detalles que siempre se ignoran'; lo que en un caso es accesorio, en otro caso puede ser justo lo esencial. Por eso, antes de abstraer cualquier cosa, el primer paso obligatorio es preguntarte con toda precisión: ¿para qué voy a usar esta información? Solo después de responder eso puedes decidir, detalle por detalle, si afecta o no la respuesta a tu problema.",
+        "pasos": [
+          "Define el propósito exacto antes de decidir nada (no lo des por sentado).",
+          "Recorre cada detalle disponible y pregúntate: ¿cambia la respuesta a MI problema concreto?",
+          "Si cambia la respuesta, es esencial: consérvalo. Si no la cambia, es accesorio: puedes ignorarlo.",
+          "Recuerda que el mismo objeto puede necesitar detalles esenciales distintos según quién lo use y para qué."
+        ],
+        "ejemplo": "Volviendo a la silla: para la empresa de mudanzas, el peso SÍ cambia la respuesta (decide en qué camión entra), así que es esencial. El color de la silla no cambia esa respuesta, así que es accesorio para ese propósito, aunque para el dibujante el color sí sea esencial."
+      },
+      {
+        "titulo": "Cuándo una abstracción falla: evaluar lo que se dejó afuera",
+        "explicacion": "Una abstracción falla cuando se usa para un propósito NUEVO, distinto de aquel para el que fue pensada, y justo ese propósito nuevo necesita el detalle que se ignoró a propósito. El mapa del metro es una abstracción excelente para decidir en qué estación cambiar de tren, pero es inútil para calcular cuántos metros hay que caminar entre dos estaciones que en el mapa se ven pegadas: como el mapa ignoró las distancias reales desde el principio, esas dos estaciones bien podrían estar a varios kilómetros de distancia en la calle real. Lo mismo pasa con la categoría 'perro': sirve perfecto para hablar en general, pero si una decisión concreta necesita saber la raza (por ejemplo, un seguro que evalúa el riesgo), la palabra 'perro' sola ya no alcanza, porque ignoró justo el detalle que ahora hace falta. Antes de reutilizar una abstracción ya hecha para un problema nuevo, hay que revisar si el detalle que ignoró es justo el que ahora se necesita.",
+        "pasos": [
+          "Antes de usar una abstracción existente para un problema nuevo, identifica qué detalle ignoró a propósito.",
+          "Pregúntate si ese detalle ignorado es justo el que tu problema nuevo necesita.",
+          "Si lo necesita, esa abstracción no alcanza: hace falta una versión con más detalle para ese caso."
+        ],
+        "ejemplo": "Alguien intenta usar el mapa del metro para calcular a pie la distancia entre dos estaciones que se ven cerca en el mapa, y termina caminando mucho más de lo esperado: el mapa nunca prometió esa información, porque la distancia real es justo lo que decidió ignorar."
+      },
+      {
+        "titulo": "Abstracción conecta con patrones: la plantilla YA era abstracción",
+        "explicacion": "Recuerda la plantilla que armaste al reconocer patrones: una versión fija de un patrón, con espacios en blanco justo donde van los detalles que cambian cada vez. Esa plantilla, en el fondo, YA era una abstracción: te quedaste con la estructura esencial (lo que sí importa: el orden de los pasos que funciona siempre) e ignoraste a propósito el detalle que cambia caso a caso (por ejemplo, la materia específica de un examen), dejándolo como un espacio para llenar. Así se conectan los tres pilares: primero DESCOMPONES un problema grande en partes más chicas; después RECONOCES qué patrón se repite entre varios casos parecidos; y al final ABSTRAES ese patrón, decidiendo qué parte conservar como estructura fija y qué parte dejar como detalle variable. La abstracción es lo que convierte un patrón notado en una herramienta realmente reutilizable.",
+        "ejemplo": "La plantilla de estudio (leer los temas, resumir, practicar preguntas, con un espacio para la materia) mantuvo la estructura que sirve para cualquier examen e ignoró el detalle que cambia cada vez: eso es abstraer un patrón ya reconocido."
+      },
+      {
+        "titulo": "Errores típicos al abstraer",
+        "explicacion": "Tres errores aparecen una y otra vez al abstraer, y conocerlos de antemano evita caerlos. Primero, creer que abstraer es 'resumir cualquier cosa': borrar detalles al azar, sin un criterio de propósito detrás, no es abstraer, es simplemente perder información sin control. Segundo, el error por EXCESO: quitar un detalle que en realidad SÍ era esencial para el propósito, dejando una abstracción que ya no sirve (como el mapa turístico que quitó el río y dejó a los turistas perdidos, porque el río era justo su referencia para orientarse). Tercero, el error por DEFECTO: no abstraer lo suficiente, quedarse pegado a los detalles específicos de cada caso y no construir nunca una estructura general reutilizable, repitiendo trabajo que ya podría ahorrarse (como escribir una lista de empaque completamente nueva cada viaje, sin separar nunca lo que siempre se lleva de lo que cambia según el destino).",
+        "pasos": [
+          "Antes de dar por buena una abstracción, verifica que tuvo un criterio de propósito detrás, no azar.",
+          "Revisa que no haya quitado un detalle que sí era esencial para ese propósito (error por exceso).",
+          "Revisa que sí haya separado lo general y reutilizable de los detalles específicos que cambian (error por defecto)."
+        ],
+        "ejemplo": "Un mapa turístico que quitó el río de referencia (exceso) dejó a los turistas perdidos; alguien que rehace su lista de empaque entera cada viaje (defecto) pierde tiempo que se ahorraría con una plantilla."
+      }
+    ],
+    "idea_clave": "Abstraer es decidir, a propósito y según el propósito que tengas, qué detalles de algo son esenciales (los conservas) y cuáles son accesorios (los ignoras), para poder resolver el problema GENERAL en vez de quedar atrapado en un solo caso particular. No existe una única abstracción correcta de un objeto: la misma silla, el mismo mapa o la misma categoría se abstraen distinto según para qué se usen. Una abstracción falla cuando se reutiliza para un propósito nuevo que sí necesita justo el detalle que ella ignoró; y se abstrae mal si se quita un detalle esencial (exceso) o si nunca se separa lo general de lo variable (defecto). La abstracción es el tercer pilar del pensamiento computacional: se apoya en la descomposición y en el reconocimiento de patrones, y es lo que convierte un patrón notado en una plantilla realmente reutilizable.",
+    "figura": "<svg viewBox=\"0 0 420 170\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"10\" y=\"18\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">Calle real (todas las curvas y distancias)</text><path d=\"M10,45 C40,25 60,75 90,55 S150,95 180,60 S230,25 260,65 S320,100 350,55\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"2\"/><circle cx=\"10\" cy=\"45\" r=\"4\" fill=\"#8C7C93\"/><circle cx=\"350\" cy=\"55\" r=\"4\" fill=\"#8C7C93\"/><text x=\"10\" y=\"115\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#0E9486\">Mapa del metro (abstracción)</text><line x1=\"10\" y1=\"140\" x2=\"350\" y2=\"140\" stroke=\"#12B5A4\" stroke-width=\"3\"/><circle cx=\"10\" cy=\"140\" r=\"6\" fill=\"#12B5A4\"/><circle cx=\"120\" cy=\"140\" r=\"6\" fill=\"#12B5A4\"/><circle cx=\"230\" cy=\"140\" r=\"6\" fill=\"#12B5A4\"/><circle cx=\"350\" cy=\"140\" r=\"6\" fill=\"#12B5A4\"/><text x=\"10\" y=\"162\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#0E9486\">Ignora curvas y distancias reales; conserva el orden de las estaciones y sus conexiones</text></svg>"
+  },
+  "practica": [
+    {
+      "enunciado": "Una silla real tiene: color, material (madera o plástico), precio, peso, forma y marca del fabricante. Para tres personas distintas que necesitan describir esa MISMA silla —una tienda de muebles que la vende, una empresa de mudanzas que la va a cargar, y un dibujante que la va a dibujar en una ilustración— decide qué detalles son ESENCIALES para cada una y cuáles se pueden ignorar. Explica por qué la abstracción cambia según el propósito, aunque la silla sea la misma.",
+      "pista": "Pregúntate en cada caso: ¿este detalle cambia la respuesta al problema de esa persona?",
+      "solucion": "Tienda de muebles: esenciales son material, precio y estilo (afectan la venta); el peso exacto y la marca del fabricante interno se pueden ignorar. Empresa de mudanzas: esenciales son peso y tamaño (afectan cómo cargarla y en qué camión entra); el estilo y el precio no importan para cargarla. Dibujante: esenciales son la forma y las proporciones (para que se vea como una silla); el precio y el peso no aparecen en un dibujo. La abstracción correcta no es una sola: depende de para QUÉ se usa la información, por eso la misma silla se describe distinto según el propósito.",
+      "figura": ""
+    },
+    {
+      "enunciado": "El mapa del metro ignora a propósito las distancias reales y las calles, y solo conserva el orden de las estaciones y sus conexiones. Evalúa: ¿serviría ese mismo mapa para calcular cuántos metros hay que CAMINAR entre dos estaciones que en el mapa se ven pegadas una a la otra? Justifica tu respuesta usando la idea de qué detalle se ignoró.",
+      "pista": "Piensa en qué detalle preciso decidió ignorar el mapa del metro a propósito, y si ese detalle es justo el que ahora necesitas.",
+      "solucion": "No serviría. El mapa del metro ignora a propósito las distancias reales (las dibuja todas parecidas, para que se vea simple), así que dos estaciones que en el mapa se ven pegadas pueden estar, en la calle real, a varios kilómetros de distancia. Esta es exactamente la abstracción fallando: es excelente para decidir en qué orden tomar los trenes, pero inútil para calcular una distancia real a pie, porque ese es un detalle que decidió ignorar desde el principio.",
+      "figura": ""
+    },
+    {
+      "enunciado": "La palabra 'perro' es una abstracción: agrupa animales de tamaños, colores y razas distintas bajo un solo nombre, ignorando esas diferencias. (a) ¿Qué característica debe mantenerse para que algo cuente como 'perro' (lo esencial)? (b) Da un ejemplo de una situación donde esa abstracción NO alcanza porque hace falta un detalle que 'perro' ignora.",
+      "pista": "Para (a) piensa en qué comparten TODOS los perros sin importar su raza. Para (b) piensa en una decisión donde la raza específica sí cambia la respuesta.",
+      "solucion": "(a) Lo esencial que se mantiene es pertenecer a la especie que define a un perro, sin importar tamaño, color o raza. (b) Un ejemplo donde la abstracción no alcanza: un seguro de responsabilidad civil que necesita saber si un perro es de una raza considerada de mayor riesgo antes de dar una póliza. Ahí decir simplemente 'es un perro' no basta, porque la raza (un detalle que la palabra 'perro' ignora) sí cambia la decisión. En ese caso hace falta una abstracción con más detalle que la simple categoría 'perro'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una receta dice: 'Para N personas, usa N tazas de arroz y el doble de N tazas de agua.' Explica qué se abstrajo en esta receta (qué detalle específico se ignoró) y por qué eso la hace más útil que una receta que dijera 'para la familia de Juan, el martes, usa 4 tazas de arroz y 8 de agua'.",
+      "pista": "Piensa en qué pasó con el número específico de personas: ¿sigue fijo en la receta o se convirtió en algo más general?",
+      "solucion": "Se abstrajo el número EXACTO de personas: en vez de fijar '4 personas' para siempre, se usa un nombre general (N) que representa cualquier cantidad. Esto es como una variable con nombre: no importa cuál sea el valor concreto, la estructura (una taza de arroz por cada dos de agua) sirve para cualquier caso. La receta de 'la familia de Juan, el martes' solo sirve para esa cena puntual; la receta con N sirve para resolver el problema GENERAL de cocinar arroz para cualquier número de personas, que es justo la ventaja de abstraer.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un diseñador crea un ícono de batería con solo 4 niveles (vacía, baja, media, llena), en vez de mostrar el porcentaje exacto (por ejemplo 63%). Evalúa: ¿qué se ganó al abstraer el número exacto en solo 4 niveles, y qué se perdió? ¿Te parece una abstracción bien hecha para el propósito de 'ver rápido si hay que cargar el teléfono'? Justifica.",
+      "pista": "Piensa en el propósito exacto del ícono (una mirada rápida, no un dato preciso) y si el detalle perdido (el número exacto) afecta ese propósito.",
+      "solucion": "Se ganó velocidad y claridad: de un vistazo, sin leer números, sabes si la batería está bien o hay que preocuparte. Se perdió precisión: no sabes si está en 63% o en 55%, solo que está en el rango 'media'. Para el propósito de 'ver rápido si hay que cargar el teléfono', SÍ es una abstracción bien hecha, porque ese nivel de precisión no cambia la decisión que el usuario toma con solo mirar el ícono. Sería una MALA abstracción si el propósito fuera, por ejemplo, calibrar la batería en un laboratorio, donde el número exacto sí importa.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero dice que 'abstraer' un texto es simplemente borrar la mitad de las palabras al azar para que quede más corto. Explica por qué eso NO es abstraer, y qué le falta a su método para que sí lo sea.",
+      "pista": "Recuerda que abstraer no es 'quitar cualquier cosa': es una elección deliberada de qué detalle importa para un propósito. Compara con borrar al azar.",
+      "solucion": "Borrar palabras al azar no es abstraer porque no hay ningún criterio detrás de la elección: puede borrar justo la idea esencial y dejar detalles sin importancia. Abstraer de verdad exige primero decidir el propósito (¿para qué se va a usar el resumen?) y después, con ese propósito en mente, elegir a propósito qué ideas son esenciales (se quedan) y cuáles son accesorias (se pueden quitar sin cambiar el mensaje central). A su método le falta justamente eso: un criterio de qué es esencial, en vez de azar.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un mapa turístico simplificado quitó el río que atraviesa la ciudad para que se vea 'más limpio', dejando solo calles principales y monumentos. Varios turistas se perdieron porque usaban el río como referencia para saber si iban al norte o al sur. Evalúa: ¿qué error de abstracción se cometió aquí?",
+      "pista": "Pregúntate si el detalle que se quitó (el río) realmente no afectaba el propósito del mapa (orientarse), o si sí lo afectaba.",
+      "solucion": "Se cometió el error de quitar un detalle que SÍ era esencial para el propósito del mapa. El objetivo de un mapa turístico es ayudar a orientarse, y el río era justo una referencia clave para eso; no era un detalle accesorio como el color exacto de un edificio. Esto es una abstracción fallida por exceso: se simplificó de más y se perdió algo que el propósito necesitaba, no algo que sobraba.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Cada vez que organiza un viaje, un amigo escribe una lista de empaque completamente distinta desde cero, con detalles específicos de cada viaje mezclados con lo que siempre necesita (ropa, aseo, cargador), sin separar nunca lo general de lo particular. Explica qué le falta hacer para abstraer mejor su proceso, y qué ganaría si lo hiciera.",
+      "pista": "Piensa en el error opuesto a quitar de más: quedarse pegado a los detalles específicos y no construir nunca una estructura general reutilizable.",
+      "solucion": "Le falta separar lo que se repite en TODOS sus viajes (ropa para varios días, aseo, cargador: la parte esencial y general) de lo que cambia según el destino (ropa de playa o de montaña: el detalle variable). Si abstrajera esa estructura una sola vez —igual que una plantilla con espacios en blanco para lo que cambia— ganaría dejar de reinventar la lista completa cada vez, y solo tendría que llenar los detalles específicos de cada viaje nuevo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Recuerda la plantilla de estudio que armaste al reconocer patrones (una lista fija de pasos con un espacio en blanco para la materia). Explica por qué esa plantilla ya era, en el fondo, una forma de abstracción: ¿qué detalle mantuvo y cuál ignoró a propósito?",
+      "pista": "Piensa qué parte de la plantilla queda fija siempre y cuál se deja como espacio para llenar cada vez.",
+      "solucion": "La plantilla mantuvo lo esencial: la estructura de pasos que sirve para cualquier examen (leer los temas, resumir, practicar preguntas). Ignoró a propósito el detalle que cambia cada vez: la materia específica de ese examen. Eso es exactamente abstraer: quedarse con la parte que no cambia (y por eso se puede reutilizar) e ignorar deliberadamente la parte que sí cambia (y por eso se deja como espacio en blanco). La plantilla es un patrón al que ya se le aplicó abstracción.",
+      "figura": ""
+    },
+    {
+      "enunciado": "En un programa que calcula el total de una compra, en vez de escribir siempre el número exacto (por ejemplo, 25000), se usa un nombre como precio. Evalúa: si más adelante alguien necesita calcular el impuesto exacto sobre CADA producto por separado, ¿la variable precio sola alcanza, o hace falta abstraer con más detalle? Justifica.",
+      "pista": "Piensa si 'precio' guarda suficiente información para saber de qué producto es, o si esa abstracción ignoró un dato que ahora hace falta.",
+      "solucion": "Una sola variable precio no alcanza si hay varios productos, porque esa abstracción ignoró a qué producto pertenece cada número; todos los precios quedarían mezclados sin poder distinguir cuál es de cuál. Para calcular el impuesto de cada producto por separado hace falta una abstracción con más detalle: por ejemplo, guardar cada precio junto con el nombre del producto al que pertenece. Esto muestra que el nivel correcto de abstracción depende del problema: para un total general, precio solo bastaba; para el impuesto por producto, ya no.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Diseñando el tablero de un avión (no un teléfono), decide: ¿debería el indicador de combustible mostrar solo 4 niveles como el ícono de batería del celular, o el número exacto de litros? Justifica según el propósito.",
+      "pista": "Piensa qué pasa si un piloto se equivoca por poca precisión, comparado con un usuario de celular que ve el ícono de batería.",
+      "solucion": "Debería mostrar el número exacto (o algo mucho más preciso que 4 niveles), no una versión tan abstracta como el ícono del celular. El propósito cambia el nivel correcto de abstracción: en un celular, saber que la batería está 'baja' alcanza para decidir si cargarlo pronto, pero en un avión un error de unos pocos litros de combustible puede ser crítico, así que ese detalle que en el celular se podía ignorar sin problema, en el avión es esencial y no se puede perder.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál de estas definiciones describe mejor qué es abstraer?",
+      "opciones": [
+        "Quedarte con los detalles que importan para un propósito e ignorar deliberadamente el resto",
+        "Borrar información al azar para que algo se vea más simple",
+        "Hacer cualquier resumen de un texto, sin importar qué se pierde",
+        "Dibujar algo de forma más bonita"
+      ],
+      "correcta": 0,
+      "explicacion": "Abstraer es una elección DELIBERADA basada en un propósito: se conserva lo esencial para ese propósito y se ignora lo accesorio. No es borrar al azar ni una cuestión de estética."
+    },
+    {
+      "pregunta": "¿Qué ignora a propósito el mapa del metro, y qué conserva?",
+      "opciones": [
+        "Ignora el orden de las estaciones; conserva las distancias reales",
+        "Ignora las distancias reales y las calles; conserva el orden de las estaciones y sus conexiones",
+        "Ignora todo; no conserva nada útil",
+        "Ignora los nombres de las estaciones; conserva solo los colores de las líneas"
+      ],
+      "correcta": 1,
+      "explicacion": "El mapa del metro sacrifica la geografía real (calles, curvas, distancias) para ganar claridad en lo que sí importa para viajar: el orden de las estaciones y cómo se conectan las líneas."
+    },
+    {
+      "pregunta": "¿Cuál de estas acciones NO es un ejemplo real de abstracción?",
+      "opciones": [
+        "Usar la palabra 'perro' para referirte a animales de razas distintas",
+        "Un ícono de batería con 4 niveles en vez del porcentaje exacto",
+        "Borrar la mitad de las oraciones de un texto al azar, sin revisar cuáles son importantes",
+        "Una receta escrita para 'N personas' en vez de una familia específica"
+      ],
+      "correcta": 2,
+      "explicacion": "Borrar al azar no tiene ningún criterio de propósito detrás, así que no es abstraer: podría eliminar justo la idea esencial. Las otras tres sí conservan a propósito lo que importa para su fin."
+    },
+    {
+      "pregunta": "Para una empresa de mudanzas que va a cargar una silla, ¿cuál de estos detalles es esencial (no se puede ignorar)?",
+      "opciones": [
+        "El color de la silla",
+        "La marca del fabricante",
+        "El precio de venta",
+        "El peso y el tamaño de la silla"
+      ],
+      "correcta": 3,
+      "explicacion": "El peso y el tamaño cambian directamente cómo se carga la silla y en qué camión entra: son esenciales para ese propósito. El color, la marca y el precio no afectan la mudanza."
+    },
+    {
+      "pregunta": "Un seguro necesita saber si un perro es de una raza considerada de mayor riesgo antes de dar una póliza. ¿Por qué la simple palabra 'perro' no alcanza en este caso?",
+      "opciones": [
+        "Porque la abstracción 'perro' ignoró justo el detalle (la raza) que este caso sí necesita",
+        "Porque 'perro' no es una palabra real",
+        "Porque los perros no tienen razas",
+        "Porque los seguros nunca usan categorías"
+      ],
+      "correcta": 0,
+      "explicacion": "La categoría 'perro' ignora a propósito la raza para poder hablar en general de todos los perros. Cuando un problema nuevo SÍ necesita ese detalle ignorado, la abstracción original ya no alcanza."
+    },
+    {
+      "pregunta": "¿Qué se abstrae cuando una receta se escribe como 'para N personas' en vez de fijar un número exacto?",
+      "opciones": [
+        "El tipo de comida",
+        "El número específico de personas, para que sirva para cualquier cantidad",
+        "El nombre de la receta",
+        "Nada; sigue siendo exactamente igual de específica"
+      ],
+      "correcta": 1,
+      "explicacion": "Al reemplazar un número fijo por un nombre general (N), la receta deja de servir solo para un caso puntual y pasa a servir para cualquier cantidad de personas: eso es abstraer un valor concreto."
+    },
+    {
+      "pregunta": "¿Por qué el mapa del metro NO sirve para calcular la distancia real que hay que caminar entre dos estaciones?",
+      "opciones": [
+        "Porque el mapa del metro no existe en papel",
+        "Porque las estaciones de metro no tienen calles cerca",
+        "Porque ese mapa ignoró a propósito las distancias reales, así que dos estaciones que se ven cerca pueden estar lejos en la calle",
+        "Porque los mapas de metro nunca muestran el orden correcto de las estaciones"
+      ],
+      "correcta": 2,
+      "explicacion": "El mapa fue diseñado ignorando las distancias reales para ganar simplicidad visual. Usarlo para un propósito que sí necesita esa distancia (caminar) expone justo el detalle que decidió dejar afuera."
+    },
+    {
+      "pregunta": "Un mapa turístico quitó el río de la ciudad para verse 'más limpio', y varios turistas se perdieron porque lo usaban para orientarse. ¿Qué error de abstracción es este?",
+      "opciones": [
+        "No es un error; todos los mapas deben quitar detalles",
+        "El error fue no quitar suficientes detalles",
+        "El error fue usar demasiados colores",
+        "Se ignoró un detalle que SÍ era esencial para el propósito del mapa (orientarse)"
+      ],
+      "correcta": 3,
+      "explicacion": "El río era una referencia clave para el propósito del mapa (orientarse), no un detalle accesorio. Quitarlo es un error de abstracción por exceso: se simplificó de más y se perdió algo necesario."
+    },
+    {
+      "pregunta": "¿Es una buena abstracción un ícono de batería con solo 4 niveles (en vez del porcentaje exacto) para el propósito de 'ver rápido si hay que cargar el teléfono'?",
+      "opciones": [
+        "Sí, porque el número exacto no cambia la decisión que toma el usuario con solo mirar el ícono",
+        "No, porque pierde el número exacto y eso siempre es un problema",
+        "No, porque los íconos nunca sirven para nada",
+        "Sí, pero solo si el ícono tiene animación"
+      ],
+      "correcta": 0,
+      "explicacion": "Para el propósito de 'ver rápido si hay que cargar el teléfono', el nivel de precisión de un porcentaje exacto es un detalle accesorio: los 4 niveles alcanzan para tomar la misma decisión."
+    },
+    {
+      "pregunta": "Un amigo escribe una lista de empaque completamente nueva y distinta cada vez que viaja, mezclando lo que siempre lleva con lo que cambia según el destino, sin separar nunca ambas cosas. ¿Qué le falta hacer?",
+      "opciones": [
+        "Viajar menos seguido",
+        "Abstraer: separar la estructura general que se repite (esencial) de los detalles que cambian cada vez (variables)",
+        "Escribir listas más largas",
+        "Nada; su método ya es una abstracción correcta"
+      ],
+      "correcta": 1,
+      "explicacion": "Este es el error de no abstraer lo suficiente (por defecto): existe una estructura general reutilizable en sus viajes, pero nunca la separa de los detalles variables, así que repite trabajo evitable."
+    },
+    {
+      "pregunta": "¿Por qué una plantilla (como la de una rutina de estudio con espacio para la materia) ya es un ejemplo de abstracción?",
+      "opciones": [
+        "Porque mantiene la estructura esencial que no cambia e ignora a propósito el detalle que sí cambia cada vez",
+        "Porque las plantillas no tienen ninguna relación con abstraer",
+        "Porque una plantilla siempre incluye todos los detalles posibles, sin ignorar ninguno",
+        "Porque las plantillas solo sirven para un único caso"
+      ],
+      "correcta": 0,
+      "explicacion": "La plantilla conserva la parte esencial y fija del patrón (los pasos que siempre funcionan) e ignora deliberadamente el detalle que varía, dejándolo como espacio en blanco: eso es abstraer un patrón ya reconocido."
+    },
+    {
+      "pregunta": "¿De qué depende decidir qué detalles ignorar y cuáles mantener al abstraer algo?",
+      "opciones": [
+        "Siempre se ignoran los mismos detalles, sin importar la situación",
+        "De si el detalle es fácil o difícil de dibujar",
+        "Del propósito: los detalles que cambian la respuesta al problema que se quiere resolver se mantienen; el resto se puede ignorar",
+        "De la opinión personal, sin ningún criterio"
+      ],
+      "correcta": 2,
+      "explicacion": "No existe una lista fija de 'detalles que siempre se ignoran': el criterio siempre es el propósito concreto. Lo que es accesorio en un caso puede ser esencial en otro."
+    },
+    {
+      "pregunta": "Si un programa necesita calcular el impuesto de VARIOS productos por separado, ¿por qué una sola variable llamada precio no alcanza?",
+      "opciones": [
+        "Porque los programas no pueden usar variables con nombre",
+        "Porque el impuesto nunca se calcula con variables",
+        "Porque 'precio' es una palabra prohibida en programación",
+        "Porque ignoró a qué producto pertenece cada número, y ahora hace falta ese dato"
+      ],
+      "correcta": 3,
+      "explicacion": "La abstracción 'precio' sola sirve para un total general, pero ignora a qué producto corresponde cada valor. Un problema nuevo que necesita distinguir productos exige una abstracción con más detalle."
+    },
+    {
+      "pregunta": "¿Cuál de estas frases distingue mejor a la abstracción de los otros dos pilares del pensamiento computacional (descomposición y reconocer patrones)?",
+      "opciones": [
+        "Descomposición parte un problema en piezas; reconocer patrones encuentra lo que se repite entre casos; abstracción decide qué detalles de eso son esenciales y cuáles se pueden ignorar",
+        "Los tres pilares son exactamente lo mismo con distinto nombre",
+        "Abstracción es lo mismo que descomponer un problema en partes más chicas",
+        "Reconocer patrones reemplaza por completo a la abstracción"
+      ],
+      "correcta": 0,
+      "explicacion": "Los tres pilares se apoyan entre sí pero hacen cosas distintas: descomponer parte, reconocer patrones encuentra repeticiones, y abstraer decide qué de esa repetición conservar como esencial."
+    }
+  ]
+}

@@ -1,0 +1,393 @@
+{
+  "programa": "cumbre",
+  "materia": "Matemática",
+  "grado": "Cumbre Matemática 1er año",
+  "dominio": "Números y Álgebra",
+  "tema": "Números racionales: fracciones, decimales y su unidad esencial",
+  "referencias": [
+    "Singapore MOE Secondary 1 (N1/N3: fractions and decimals as rational numbers, equivalence, ordering, the four operations, terminating vs recurring decimals)",
+    "IB MYP Year 1 — Number: rational numbers, fraction–decimal equivalence, ordering on the number line, density",
+    "UK KS3 — equivalent fractions, comparing and ordering (including negatives), recurring decimals and why 2s-and-5s denominators terminate",
+    "Japan MEXT Grade 7 — 有理数 (rational numbers): fractions as numbers, decimal representation, operations with signed rationals"
+  ],
+  "resumen": {
+    "titulo": "Entre los enteros hay un universo: los números racionales",
+    "intro": "Hasta ahora te moviste por los enteros: …, -2, -1, 0, 1, 2, … saltando de uno a otro como quien pisa baldosas. Pero entre baldosa y baldosa hay espacio, y ese espacio está lleno de números: la mitad exacta entre 0 y 1, el punto que está a tres cuartos del camino, el lugar donde cae 'menos uno coma cinco'. Todos esos números tienen algo en común: se pueden escribir como una FRACCIÓN, un entero dividido entre otro (distinto de cero). A ese club enorme lo llamamos NÚMEROS RACIONALES, y la palabra guarda una pista: viene de 'ración', de 'razón' entre dos cantidades. En este tema vas a hacer tres cosas de fondo, no de memoria. Primero, entender que una fracción es UN número por derecho propio —un punto fijo en la recta—, no solo 'pedazos de pizza'. Segundo, ver por qué toda fracción tiene un disfraz decimal, cuándo ese decimal se corta y cuándo se repite para siempre, y —esto es lo importante— POR QUÉ. Tercero, aprender a compararlos, ordenarlos y operar con ellos, incluidos los negativos que ya conociste con las deudas del tema anterior. La meta no es que sepas hacer las cuentas, sino que entiendas tan bien de dónde salen que podrías defender cada respuesta ante alguien que dude.",
+    "secciones": [
+      {
+        "titulo": "Qué es un número racional (y de dónde viene el nombre)",
+        "explicacion": "Empecemos por la definición, pero con intuición. Un NÚMERO RACIONAL es cualquier número que se puede escribir como una fracción a/b, donde 'a' (el de arriba, llamado NUMERADOR) y 'b' (el de abajo, llamado DENOMINADOR) son enteros y 'b' no es cero. El denominador dice EN CUÁNTAS partes iguales partimos la unidad, y el numerador dice CUÁNTAS de esas partes tomamos; por eso el de abajo no puede ser cero (partir algo en cero pedazos no significa nada). ¿Por qué 'racional'? No tiene que ver con 'ser razonable': viene de RAZÓN, que en matemática es la comparación entre dos cantidades por división. Una fracción ES una razón: 3/4 compara 3 con 4. Lo bueno es que este club es enorme y ya contiene a viejos conocidos: todo entero es racional, porque 5 se puede escribir 5/1, y -2 se escribe -2/1. Así que los racionales no reemplazan a los enteros: los ABRAZAN y agregan todo lo que hay en medio.",
+        "pasos": [
+          "Para saber si un número es racional, pregúntate: ¿lo puedo escribir como un entero dividido entre otro entero (sin dividir entre cero)?",
+          "El numerador (arriba) cuenta cuántas partes tomas; el denominador (abajo) dice en cuántas partes iguales se dividió la unidad.",
+          "El denominador nunca puede ser 0.",
+          "Recuerda que los enteros ya son racionales: n = n/1."
+        ],
+        "ejemplo": "3/4, -7/2, 0 (= 0/1), 5 (= 5/1) y -2 (= -2/1) son todos racionales. En cambio, escribir algo 'entre 6' no tiene sentido: 6/0 no es un número, porque —igual que en el tema de enteros— dividir entre cero no está definido.",
+        "figura": ""
+      },
+      {
+        "titulo": "La unidad esencial: una fracción es UN número, no solo 'un pedazo de'",
+        "explicacion": "Aquí está el salto de mentalidad más importante del tema. Durante años una fracción te la mostraron como 'partes de una pizza': 3/4 eran tres porciones de cuatro. Esa imagen ayuda a empezar, pero se queda corta, porque hace pensar que una fracción es un TROZO de algo, y no un número entero y completo. La verdad más potente es esta: una fracción es UN SOLO número, con un lugar exacto y único en la recta numérica, tan número como el 2 o el -5. El truco para verlo es la UNIDAD ESENCIAL. Toma el 1 (la unidad) y pártelo en 'b' partes iguales: cada parte se llama 1/b y es una FRACCIÓN UNITARIA, el ladrillo básico. Entonces cualquier fracción a/b es simplemente 'a' de esos ladrillos puestos en fila desde el cero: 3/4 es tres ladrillos de tamaño 1/4, que caen en UN punto fijo, un poco antes del 1. Y hay una segunda lectura, todavía más directa: la barra de fracción es una DIVISIÓN. 3/4 significa literalmente 3 ÷ 4, el resultado de repartir 3 unidades entre 4. Esas dos miradas —'a ladrillos de 1/b' y 'a dividido b'— dan el mismo punto, y ese punto ES el número. Cuando de verdad ves la fracción como un número y no como un trozo, todo lo demás (compararlas, sumarlas, pasarlas a decimal) deja de ser magia.",
+        "pasos": [
+          "Parte la unidad en 'b' partes iguales: cada parte es la fracción unitaria 1/b (la unidad esencial).",
+          "La fracción a/b es 'a' de esas unidades esenciales puestas en fila desde el 0: cae en UN punto exacto de la recta.",
+          "Lee también a/b como la división a ÷ b: el número que resulta de repartir 'a' unidades entre 'b'.",
+          "Conclusión: 3/4 no es 'tres trozos sueltos', es un número, ubicado entre 0 y 1, igual de legítimo que cualquier entero."
+        ],
+        "ejemplo": "3/4 = 1/4 + 1/4 + 1/4: tres unidades esenciales de tamaño 1/4, que caen justo en el punto que está a tres cuartas partes del camino de 0 a 1. También 3/4 = 3 ÷ 4 = 0,75. Un solo número, dos maneras de mirarlo.",
+        "figura": "<svg viewBox=\"0 0 400 110\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"20\" y1=\"60\" x2=\"380\" y2=\"60\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><line x1=\"20\" y1=\"52\" x2=\"20\" y2=\"68\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><line x1=\"200\" y1=\"52\" x2=\"200\" y2=\"68\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><line x1=\"380\" y1=\"52\" x2=\"380\" y2=\"68\" stroke=\"#3B2B4A\" stroke-width=\"2\"/><line x1=\"110\" y1=\"55\" x2=\"110\" y2=\"65\" stroke=\"#8C7C93\" stroke-width=\"1.5\"/><circle cx=\"65\" cy=\"60\" r=\"5\" fill=\"#7C4DFF\"/><circle cx=\"335\" cy=\"60\" r=\"5\" fill=\"#12B5A4\"/><text x=\"20\" y=\"88\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"#3B2B4A\">-1</text><text x=\"200\" y=\"88\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"#3B2B4A\">0</text><text x=\"380\" y=\"88\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"#3B2B4A\">1</text><text x=\"65\" y=\"44\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#5A3AAF\">-3/4</text><text x=\"335\" y=\"44\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#0E9486\">3/4</text></svg>"
+      },
+      {
+        "titulo": "Fracciones equivalentes: el mismo número con otro disfraz",
+        "explicacion": "Si una fracción es un punto en la recta, aparece una pregunta natural: ¿puede el MISMO punto tener varios nombres? Sí, y todo el tiempo. 1/2, 2/4, 3/6 y 50/100 son NOMBRES DISTINTOS DEL MISMO NÚMERO: todas caen exactamente en el punto medio entre 0 y 1. A esas se les llama FRACCIONES EQUIVALENTES. La razón es sencilla si piensas en la unidad esencial: partir la unidad en el doble de pedazos y tomar el doble de ellos te deja en el mismo lugar. Por eso, si multiplicas ARRIBA y ABAJO por el mismo número (distinto de cero), el punto no se mueve: cambias el disfraz, no el número. Y al revés: si arriba y abajo tienen un divisor común, puedes dividir ambos por él y llegar a un nombre más corto. Cuando ya no queda ningún divisor común aparte del 1, la fracción está en su FORMA MÁS SIMPLE (o 'irreducible'): es su nombre más limpio. Para llegar rápido a él, divide numerador y denominador por su Máximo Común Divisor, exactamente el MCD que trabajaste en el tema de primos.",
+        "pasos": [
+          "Para obtener una fracción equivalente: multiplica (o divide) numerador Y denominador por el MISMO número distinto de cero.",
+          "Para SIMPLIFICAR: busca un divisor común de arriba y abajo y divide ambos por él; repite hasta que no quede ninguno.",
+          "Atajo: divide numerador y denominador por su MCD y llegas de un golpe a la forma más simple.",
+          "Dos fracciones son equivalentes si, simplificadas al máximo, dan exactamente la misma."
+        ],
+        "ejemplo": "18/24 no está en su forma más simple: el MCD de 18 y 24 es 6, así que 18/24 = (18÷6)/(24÷6) = 3/4. Comprobación: 3/4 también es 6/8 = 9/12 = 18/24, todos el mismo punto. Y para comparar disfraces, 4/6 y 6/9 se ven distintas pero ambas se reducen a 2/3: son equivalentes.",
+        "figura": ""
+      },
+      {
+        "titulo": "Comparar y ordenar racionales: ¿cuál es mayor y por qué?",
+        "explicacion": "Comparar enteros era fácil: el que está más a la derecha en la recta es mayor. Con racionales vale la MISMA idea —a la derecha, mayor— pero a ojo no siempre se ve quién está más a la derecha: ¿es mayor 5/8 o 7/12? Para decidirlo sin adivinar hay dos técnicas seguras. La primera: llevar ambas al MISMO denominador (un denominador común, que puede ser el MCM de los dos), porque cuando los pedazos son del mismo tamaño basta comparar cuántos hay, o sea los numeradores. La segunda, más rápida para dos fracciones: la MULTIPLICACIÓN CRUZADA, comparar numerador de una por denominador de la otra; funciona porque es lo mismo que el denominador común pero sin escribirlo. Ahora, MUCHO CUIDADO con los negativos, que engañan: entre negativos, el que tiene mayor 'tamaño' es el MENOR, porque está más a la izquierda (más deuda es menos dinero). -3/4 es MENOR que -1/2, aunque 3/4 sea mayor que 1/2, porque -3/4 cae más a la izquierda del cero. La regla que nunca falla: pásalo todo a un lugar en la recta y lee de izquierda (menor) a derecha (mayor).",
+        "pasos": [
+          "Lleva las fracciones a un denominador común (o usa el MCM de los denominadores) y compara los numeradores: más numerador, mayor fracción.",
+          "Atajo para dos: multiplica en cruz (numerador de una × denominador de la otra); el producto mayor señala la fracción mayor. (Válido tal cual con fracciones positivas.)",
+          "Con negativos, ubícalas en la recta: cuanto más a la izquierda, MENOR. Entre dos negativos, el de mayor tamaño es el menor.",
+          "Para ordenar una lista, pásalas todas a un denominador común y ordénalas por sus numeradores en la recta."
+        ],
+        "ejemplo": "¿5/8 o 7/12? Denominador común 24: 5/8 = 15/24 y 7/12 = 14/24; como 15 > 14, 5/8 es mayor. Con negativos: -1/2 = -6/12 y -2/3 = -8/12; como -6 está a la derecha de -8, resulta -1/2 > -2/3 (deber 2/3 es deber más que deber 1/2).",
+        "figura": ""
+      },
+      {
+        "titulo": "El disfraz decimal: por qué 1/4 = 0,25",
+        "explicacion": "Ya sabes que a/b es la división a ÷ b. Si haces esa división obtienes el DISFRAZ DECIMAL de la fracción, y aquí conviene entender qué es de verdad un decimal, no solo cómo se escribe. Un número decimal es una fracción disfrazada cuyo denominador es una POTENCIA DE 10: la primera cifra tras la coma vale décimos (denominador 10), la segunda centésimos (denominador 100), la tercera milésimos (1000), y así. Por eso 0,25 significa literalmente 25/100. Entonces, convertir una fracción a decimal es preguntarse: ¿puedo reescribirla con denominador 10, 100, 1000...? Para 1/4 sí: 4 cabe en 100 exactamente (4 × 25 = 100), así que multiplico arriba y abajo por 25 y obtengo 1/4 = 25/100 = 0,25. No es magia ni hay que memorizarlo: es la misma idea de fracciones equivalentes, buscando un denominador que sea potencia de 10. La otra vía, siempre disponible, es hacer la división a mano (1 ÷ 4 = 0,25); da lo mismo, porque las dos preguntan lo mismo.",
+        "pasos": [
+          "Recuerda qué es un decimal: una fracción con denominador 10, 100, 1000... (una potencia de 10).",
+          "Para pasar de fracción a decimal, intenta escribirla con denominador 10, 100, 1000...: multiplica arriba y abajo por lo que falte.",
+          "Si no encuentras ese denominador cómodo, divide directamente numerador entre denominador.",
+          "El resultado es el mismo número, ahora vestido de decimal."
+        ],
+        "ejemplo": "1/4 = 25/100 = 0,25 (multipliqué por 25). 7/20 = 35/100 = 0,35 (multipliqué por 5, porque 20 × 5 = 100). 3/8 = 375/1000 = 0,375 (multipliqué por 125, porque 8 × 125 = 1000). Comprobación de este último: 8 × 0,375 = 3. ✓",
+        "figura": ""
+      },
+      {
+        "titulo": "El corazón del tema: ¿cuándo el decimal se CORTA y cuándo se REPITE para siempre?",
+        "explicacion": "Esta es la idea que separa a quien memoriza de quien ENTIENDE. Algunas fracciones dan un decimal EXACTO o FINITO, que termina (1/4 = 0,25 y ya). Otras dan un decimal PERIÓDICO, en el que un bloque de cifras se repite sin fin (1/3 = 0,333... para siempre). ¿De qué depende? De los PRIMOS del denominador, y aquí se conecta todo con el tema de factorización. Recuerda: un decimal es una fracción con denominador potencia de 10, y 10 = 2 × 5. Así que las potencias de 10 (10, 100, 1000...) están hechas SOLO de doses y cincos: 100 = 2² × 5², 1000 = 2³ × 5³. Ahora el razonamiento clave: una fracción (ya SIMPLIFICADA) se puede vestir con denominador potencia de 10 solo si su denominador está formado ÚNICAMENTE por 2 y 5, porque solo entonces le puedes completar los factores que falten para llegar a una potencia de 10. Si el denominador tiene CUALQUIER otro primo (3, 7, 11...), ninguna potencia de 10 será múltiplo suyo, la división nunca cierra, y el decimal se vuelve periódico. ¿Y por qué se repite en vez de dar cifras al azar? Porque al dividir a mano, los restos posibles son limitados (menores que el divisor), así que tarde o temprano un resto se repite, y desde ahí las cifras vuelven a salir iguales, en ciclo. Con esto ya puedes PREDECIR el tipo de decimal sin dividir: mira los primos del denominador de la fracción simplificada.",
+        "pasos": [
+          "Simplifica la fracción al máximo (esto es imprescindible: el criterio se aplica al denominador ya reducido).",
+          "Factoriza ese denominador en primos.",
+          "Si SOLO aparecen 2 y/o 5, el decimal es FINITO (exacto).",
+          "Si aparece cualquier otro primo (3, 7, 11...), el decimal es PERIÓDICO (se repite para siempre)."
+        ],
+        "ejemplo": "7/20: denominador 20 = 2² × 5, solo doses y cincos → FINITO (= 0,35). 3/8: 8 = 2³, solo doses → FINITO (= 0,375). En cambio 1/6: 6 = 2 × 3, tiene un 3 → PERIÓDICO (= 0,1666...). Y 2/11: 11 es otro primo → PERIÓDICO (= 0,1818...). Ninguna cuenta hizo falta para PREDECIR el tipo: bastaron los primos del denominador.",
+        "figura": ""
+      },
+      {
+        "titulo": "El camino de vuelta: de decimal a fracción",
+        "explicacion": "Si toda fracción tiene un disfraz decimal, todo decimal (que termina o que se repite con un patrón) esconde una fracción. Saber sacarla demuestra que decimal y fracción son el MISMO número. Hay dos casos. CASO FINITO (el decimal termina): escríbelo como lo que ya sabes que significa —las cifras sobre la potencia de 10 correspondiente— y simplifica. 0,64 son 64 centésimos = 64/100, que simplificado (÷4) da 16/25. CASO PERIÓDICO PURO (la repetición empieza justo tras la coma, como 0,3333... o 0,4545...): aquí hay una regla preciosa. Pon como numerador el bloque que se repite, y como denominador tantos NUEVES como cifras tenga ese bloque; luego simplifica. Así 0,333... = 3/9 = 1/3, y 0,4545... = 45/99 = 5/11. ¿Por qué nueves? Porque 1/9 = 0,111..., 1/99 = 0,010101..., etc.: los denominadores de solo nueves son justo los que producen repeticiones limpias, y multiplicar por el bloque las 'llena'. (Existe también el caso periódico MIXTO, donde hay una parte que no se repite antes del ciclo, como 0,1666...; se resuelve parecido y da 1/6, pero lo esencial es que también es una fracción.)",
+        "pasos": [
+          "Decimal FINITO: escríbelo como (todas las cifras después de la coma) sobre 10, 100, 1000... según cuántas haya, y simplifica.",
+          "Decimal PERIÓDICO PURO: numerador = el bloque que se repite; denominador = tantos 9 como cifras tenga ese bloque; luego simplifica.",
+          "Comprueba dividiendo la fracción que obtuviste: debe devolver el decimal de partida.",
+          "Moraleja: todo decimal finito o periódico es un número racional (una fracción escondida)."
+        ],
+        "ejemplo": "0,64 = 64/100 = 16/25 (÷4). 0,4545... = 45/99 = 5/11 (÷9); comprobación: 5 ÷ 11 = 0,4545... ✓. 0,2222... = 2/9; comprobación: 2 ÷ 9 = 0,2222... ✓.",
+        "figura": ""
+      },
+      {
+        "titulo": "Operar con fracciones: sumar, restar, multiplicar y dividir",
+        "explicacion": "Operar con racionales es operar con esos puntos de la recta, y cada operación tiene su regla y su razón. SUMAR o RESTAR: solo se pueden juntar pedazos del MISMO tamaño, así que primero hay que llevar ambas fracciones a un denominador común (piensa en las unidades esenciales: no puedes sumar 'un tercio' con 'un cuarto' sin cortarlos al mismo tamaño). Una vez igualado el denominador, sumas o restas los numeradores y dejas el denominador; al final, simplifica. MULTIPLICAR es más directo y no necesita denominador común: multiplicas numerador por numerador y denominador por denominador. La imagen es 'una parte DE otra parte': 2/3 de 3/5 achica, no agranda. DIVIDIR entre una fracción es MULTIPLICAR POR SU INVERSA (la misma fracción dada vuelta): dividir entre 2/5 es lo mismo que multiplicar por 5/2, porque preguntar '¿cuántos 2/5 caben?' se responde repartiendo al revés. En todo esto, los SIGNOS funcionan igual que con los enteros del tema anterior: cuenta los factores negativos, par da positivo e impar da negativo, y sumar/restar sigue la lógica de ganancias y deudas.",
+        "pasos": [
+          "Suma/resta: halla un denominador común, convierte ambas fracciones, suma o resta los numeradores, deja el denominador y simplifica.",
+          "Multiplicación: numerador × numerador y denominador × denominador; luego simplifica (o simplifica en cruz antes, si puedes).",
+          "División: da vuelta la segunda fracción (su inversa) y multiplica.",
+          "Signos: aplica la misma regla de los enteros (paridad de negativos; deudas para sumar y restar)."
+        ],
+        "ejemplo": "Suma: 1/2 + 1/3 = 3/6 + 2/6 = 5/6. Resta: 3/4 - 1/6 = 9/12 - 2/12 = 7/12. Producto: 2/3 × 3/5 = 6/15 = 2/5. División: 3/4 ÷ 2/5 = 3/4 × 5/2 = 15/8. Con negativo: -2/3 + 1/6 = -4/6 + 1/6 = -3/6 = -1/2.",
+        "figura": ""
+      },
+      {
+        "titulo": "Una sorpresa que solo tienen los racionales: entre dos, siempre hay otro",
+        "explicacion": "Aquí se ve por qué los racionales son un salto de verdad respecto a los enteros, no solo 'más números'. Entre dos enteros vecinos, como 3 y 4, NO hay ningún entero: están pegados, sin nada en medio. Con los racionales pasa lo contrario, y es asombroso: entre dos racionales cualesquiera, por muy cerca que estén, SIEMPRE hay otro racional; y como ese razonamiento se puede repetir sin fin, entre dos racionales hay INFINITOS. ¿Cómo encontrar uno seguro? El PROMEDIO (el punto medio) de dos números siempre cae justo entre ellos: súmalos y divide entre 2. Esta propiedad se llama DENSIDAD, y cambia la forma de imaginar la recta: ya no es una fila de baldosas separadas, sino que entre cualquier par de puntos, por juntos que parezcan, hay más y más números. Poder afirmar y justificar esto —y no solo calcular fracciones— es la clase de razonamiento que se te empieza a pedir en este nivel.",
+        "pasos": [
+          "Para hallar un racional entre dos dados, calcula su promedio: (fracción1 + fracción2) ÷ 2.",
+          "Verifica que el resultado quede entre los dos (llévalos a un denominador común y compáralos).",
+          "Repite el proceso con el nuevo par para convencerte de que el juego no termina nunca: hay infinitos en medio.",
+          "Compara mentalmente con los enteros: entre 3 y 4 no hay ningún entero; entre 3/1 y 4/1 hay infinitos racionales."
+        ],
+        "ejemplo": "Entre 2/5 y 1/2: promedio = (2/5 + 1/2) ÷ 2 = (4/10 + 5/10) ÷ 2 = (9/10) ÷ 2 = 9/20. Comprobación: 2/5 = 8/20 y 1/2 = 10/20, y en efecto 8/20 < 9/20 < 10/20. ✓ Y entre 2/5 y 9/20 podrías meter otro, y así sin fin.",
+        "figura": ""
+      },
+      {
+        "titulo": "Errores típicos (y cómo juzgarlos tú mismo)",
+        "explicacion": "Ahora que entiendes el porqué de cada cosa, puedes cazar los errores más frecuentes en vez de tropezar con ellos. PRIMERO: sumar fracciones 'en línea recta', numerador con numerador y denominador con denominador (creer que 1/2 + 1/3 = 2/5). Es falso: no puedes juntar pedazos de distinto tamaño sin igualarlos; la prueba de sentido común es que 1/2 + 1/3 tiene que ser MÁS que 1/2, y 2/5 es menos. SEGUNDO: aplicar el criterio de finito/periódico SIN simplificar antes. 15/6 parece tener un 3 y un 2 en el denominador, pero primero hay que reducir (15/6 = 5/2), y 5/2 = 2,5 es finito; el criterio se mira en el denominador YA simplificado. TERCERO: confundir el orden en los negativos, creer que -3/4 > -1/2 'porque 3/4 > 1/2'; en negativos es al revés, el de mayor tamaño está más a la izquierda y es MENOR. CUARTO: al comparar por multiplicación cruzada, olvidar que eso es un atajo del denominador común y mezclar los productos con el lado equivocado. La defensa contra todos es la misma: piensa siempre en la fracción como UN número en la recta y pregúntate si el resultado tiene sentido ahí (¿quedó donde debía, es razonable su tamaño, su signo?).",
+        "pasos": [
+          "Nunca sumes o restes fracciones sin denominador común; comprueba que el resultado tenga un tamaño razonable.",
+          "Simplifica SIEMPRE antes de decidir si un decimal será finito o periódico.",
+          "Con negativos, ubícalos en la recta: mayor tamaño = más a la izquierda = MENOR.",
+          "Ante cualquier resultado, imagina el número en la recta y pregúntate si su posición, tamaño y signo tienen sentido."
+        ],
+        "ejemplo": "Un estudiante escribió 1/2 + 1/3 = 2/5. Prueba de sentido común: la suma debe ser MAYOR que 1/2, pero 2/5 es menor que 1/2, así que algo falló. Con denominador común: 3/6 + 2/6 = 5/6, que sí es mayor que 1/2. ✓",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "Un número racional es todo lo que se escribe como fracción a/b (con b distinto de cero), y una fracción es UN número —un punto fijo en la recta, igual a a ÷ b—, no solo 'un pedazo de'. El mismo punto tiene infinitos nombres equivalentes (multiplica o divide arriba y abajo por lo mismo). Toda fracción tiene un disfraz decimal: es FINITO si el denominador SIMPLIFICADO está hecho solo de 2 y 5 (porque 10 = 2 × 5), y PERIÓDICO si aparece cualquier otro primo. El camino de vuelta también existe: todo decimal finito o periódico es una fracción. Para comparar, ubica en la recta (con negativos, mayor tamaño = menor); para sumar o restar hace falta denominador común, multiplicar es directo y dividir es multiplicar por la inversa. Y lo que distingue a los racionales de los enteros: entre dos cualesquiera siempre hay otro, de hecho infinitos (densidad).",
+    "figura": ""
+  },
+  "practica": [
+    {
+      "enunciado": "Escribe 18/24 en su forma más simple y justifica, nombrando otra fracción distinta, que sea el MISMO número.",
+      "pista": "Busca el MCD de 18 y 24 (el mismo tipo de MCD del tema de primos) y divide arriba y abajo por él. Dos fracciones son el mismo número si simplifican a la misma.",
+      "solucion": "El MCD de 18 y 24 es 6, así que 18/24 = (18÷6)/(24÷6) = 3/4. Es la forma más simple porque 3 y 4 no comparten ningún divisor mayor que 1. Otra fracción que es el mismo número: 9/12 (o 6/8), porque también se reduce a 3/4 y cae en el mismo punto de la recta. (Comprobación: 3/4 × 6/6 = 18/24. ✓)",
+      "figura": ""
+    },
+    {
+      "enunciado": "¿Cuál es mayor, 5/8 o 7/12? Decide con un método seguro y JUSTIFICA por qué tu método funciona (no adivines a ojo).",
+      "pista": "Llévalas al mismo denominador (el MCM de 8 y 12) para que los pedazos sean del mismo tamaño; entonces basta comparar los numeradores.",
+      "solucion": "El MCM de 8 y 12 es 24. Convierto: 5/8 = 15/24 y 7/12 = 14/24. Con el mismo denominador, los pedazos miden lo mismo, así que gana el de más pedazos: 15 > 14, por lo tanto 5/8 es MAYOR que 7/12. Funciona porque igualar denominadores convierte la comparación de fracciones en una simple comparación de numeradores. (Comprobación cruzada: 5 × 12 = 60 y 7 × 8 = 56; 60 > 56 confirma que 5/8 es mayor. ✓)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Sin hacer la división, DECIDE si 9/40 tiene un decimal finito o periódico, y si 5/12 lo tiene finito o periódico. Explica en qué te fijaste y luego escribe cada decimal para confirmar.",
+      "pista": "Simplifica si hace falta y mira los primos del denominador. Solo 2 y 5 → finito; cualquier otro primo → periódico.",
+      "solucion": "9/40: ya está simplificada; 40 = 2³ × 5, solo doses y cincos → FINITO. En efecto 9/40 = 225/1000 = 0,225 (multiplicando por 25). 5/12: ya está simplificada; 12 = 2² × 3, aparece un 3 → PERIÓDICO. En efecto 5/12 = 0,41666... = 0,416 con el 6 repitiéndose. Me fijé solo en los primos del denominador: eso basta para PREDECIR el tipo sin dividir. (Comprobación del finito: 40 × 0,225 = 9. ✓)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Convierte el decimal finito 0,64 a fracción en su forma más simple, explicando qué significan las cifras después de la coma.",
+      "pista": "Dos cifras tras la coma son centésimos: el decimal es esas cifras sobre 100. Luego simplifica con el MCD.",
+      "solucion": "0,64 significa 64 centésimos, o sea 64/100. El MCD de 64 y 100 es 4, así que 64/100 = 16/25. La forma más simple es 16/25, porque 16 y 25 no comparten divisores mayores que 1. (Comprobación: 16 ÷ 25 = 0,64. ✓)",
+      "figura": ""
+    },
+    {
+      "enunciado": "El decimal 0,4545... (el bloque 45 se repite para siempre) es un número racional. Encuentra la fracción, en forma más simple, que le corresponde y justifica el método.",
+      "pista": "Para un periódico PURO: el bloque que se repite va en el numerador, y en el denominador van tantos 9 como cifras tenga el bloque. Después simplifica.",
+      "solucion": "El bloque que se repite es 45 (dos cifras), así que la fracción es 45/99 (dos nueves). Simplifico: el MCD de 45 y 99 es 9, entonces 45/99 = 5/11. El método funciona porque 1/99 = 0,010101... y multiplicar por 45 'llena' el patrón hasta 0,4545... (Comprobación: 5 ÷ 11 = 0,4545... ✓, así que 0,4545... es exactamente el racional 5/11.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Ordena de MENOR a MAYOR estos racionales y explica cómo colocaste los negativos: -3/4, 1/2, -1/3, 0, 2/3.",
+      "pista": "Lleva las fracciones a un denominador común (12 sirve) y ordénalas como puntos en la recta. Recuerda: entre negativos, mayor tamaño = más a la izquierda = menor.",
+      "solucion": "Con denominador 12: -3/4 = -9/12, 1/2 = 6/12, -1/3 = -4/12, 0 = 0/12, 2/3 = 8/12. En la recta, de izquierda a derecha: -9/12, -4/12, 0, 6/12, 8/12. Por lo tanto el orden de menor a mayor es: -3/4, -1/3, 0, 1/2, 2/3. Los negativos van a la izquierda del 0, y entre ellos -3/4 (tamaño 9/12) queda más a la izquierda que -1/3 (tamaño 4/12), así que -3/4 es el MENOR. (Comprobación: cada numerador -9 < -4 < 0 < 6 < 8 sobre el mismo 12. ✓)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Calcula -2/3 + 1/6, dejando el resultado en forma más simple, e interpreta el signo del resultado como ya hacías con las deudas del tema anterior.",
+      "pista": "Halla un denominador común (6 sirve), convierte y suma los numeradores respetando los signos como con enteros.",
+      "solucion": "Denominador común 6: -2/3 = -4/6 y 1/6 se queda igual. Suma: -4/6 + 1/6 = -3/6 = -1/2. El resultado es negativo (-1/2): en la historia de deudas, una deuda de 4/6 a la que le abonas 1/6 deja una deuda de 3/6 = 1/2. Como los signos eran distintos, se restaron los tamaños (4/6 - 1/6 = 3/6) y ganó el signo de la deuda mayor. (Comprobación: -1/2 = -3/6, y -3/6 + 4/6 = 1/6, la parte que se había sumado. ✓)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Resuelve 3/4 ÷ 6/5 dejando el resultado simplificado, y explica por qué dividir entre una fracción se convierte en multiplicar.",
+      "pista": "Dividir entre una fracción es multiplicar por su inversa (la misma fracción dada vuelta). Luego simplifica.",
+      "solucion": "3/4 ÷ 6/5 = 3/4 × 5/6 = 15/24 = 5/8 (dividí arriba y abajo entre 3). Dividir entre 6/5 pregunta '¿cuántos 6/5 caben en 3/4?', y eso se responde repartiendo al revés: por eso se da vuelta la segunda fracción y se multiplica. (Comprobación: 5/8 × 6/5 = 30/40 = 3/4, se recupera el número de partida. ✓)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Encuentra un número racional que esté entre 2/5 y 1/2, y explica por qué entre esos dos hay, en realidad, INFINITOS racionales (algo que no pasa con los enteros).",
+      "pista": "El promedio de dos números siempre cae entre ellos: súmalos y divide entre 2. Para ver que hay infinitos, piensa qué pasa si repites el proceso.",
+      "solucion": "Promedio = (2/5 + 1/2) ÷ 2 = (4/10 + 5/10) ÷ 2 = (9/10) ÷ 2 = 9/20. Comprobación de que está en medio: 2/5 = 8/20 y 1/2 = 10/20, y 8/20 < 9/20 < 10/20. ✓ Hay infinitos porque el mismo truco se puede repetir sin fin: entre 2/5 y 9/20 hay otro promedio, y entre ese y 9/20 otro más, y así eternamente. Esto es la DENSIDAD de los racionales; en cambio entre los enteros 2 y 3 no cabe ningún entero.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero afirma: 'El número 0,9999... (con los nueves para siempre) es un poco menor que 1, porque nunca llega del todo.' Evalúa si tiene razón, justifícalo con lo que sabes de pasar periódicos a fracción.",
+      "pista": "0,9999... es un periódico puro con bloque 9. Aplica la regla del bloque sobre nueves y mira qué fracción sale.",
+      "solucion": "La afirmación es FALSA: 0,9999... es EXACTAMENTE 1, no un poco menos. Con la regla de los periódicos puros, el bloque que se repite es 9 (una cifra), así que 0,9999... = 9/9 = 1. No es que 'casi llegue': es otro nombre del número 1, igual que 2/2 o 3/3. La intuición de que 'nunca llega' engaña porque hay infinitas cifras; la matemática de las fracciones lo zanja: 9/9 = 1. (Comprobación coherente: 1/3 = 0,333... y 3 × 1/3 = 1, y 3 × 0,333... = 0,999..., así que 0,999... = 1.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica, con la idea de los primos del denominador, por qué 1/3 no se puede escribir como un decimal EXACTO (que termine), mientras que 1/5 sí.",
+      "pista": "Un decimal exacto es una fracción con denominador potencia de 10, y 10 = 2 × 5. Mira si el denominador se puede completar hasta una potencia de 10.",
+      "solucion": "Un decimal exacto tiene denominador 10, 100, 1000..., y todas esas potencias están hechas SOLO de doses y cincos (100 = 2² × 5², etc.). El 5 de 1/5 encaja: 1/5 = 2/10 = 0,2, porque a 5 le falta un 2 para llegar a 10. El 3 de 1/3, en cambio, no es 2 ni 5, y ninguna potencia de 10 es múltiplo de 3, así que jamás se puede vestir 1/3 con denominador potencia de 10: su división nunca cierra y se vuelve periódica (1/3 = 0,333...). Además, al dividir 1 ÷ 3 el resto se repite (siempre 1), y por eso la cifra 3 se repite sin fin. (Comprobación: 1 ÷ 5 = 0,2 exacto; 1 ÷ 3 = 0,333... sin terminar.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Entre qué dos números ENTEROS consecutivos está el racional -11/4? Justifícalo escribiéndolo también como decimal.",
+      "pista": "Divide 11 entre 4 para ver dónde cae, y no olvides el signo negativo: los negativos crecen hacia la izquierda.",
+      "solucion": "-11/4 = -(11 ÷ 4) = -2,75. Ese punto está a la izquierda del -2 y a la derecha del -3, así que -11/4 está entre los enteros -3 y -2 (más cerca de -3). Como 11/4 = 2,75 está entre 2 y 3, su opuesto -11/4 = -2,75 está entre -3 y -2. (Comprobación: -3 < -2,75 < -2. ✓ Cuidado con la trampa de decir 'entre -2 y -1': el signo empuja el número hacia la izquierda, no hacia el 0.)",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál de estas fracciones es equivalente a 2/3 (es decir, el MISMO número)?",
+      "opciones": [
+        "6/9",
+        "4/8",
+        "5/6",
+        "3/4"
+      ],
+      "correcta": 0,
+      "explicacion": "6/9 = 2/3, porque 2/3 multiplicada arriba y abajo por 3 da 6/9 (mismo punto en la recta). Las otras son otros números: 4/8 = 1/2, y 5/6 y 3/4 no se reducen a 2/3."
+    },
+    {
+      "pregunta": "Un racional es cualquier número que se puede escribir como fracción a/b de enteros con b distinto de cero. ¿Cuál de estos NO es un número racional válido tal como está escrito?",
+      "opciones": [
+        "5/1",
+        "6/0",
+        "-7/2",
+        "0/4"
+      ],
+      "correcta": 1,
+      "explicacion": "6/0 no es un número: el denominador no puede ser cero (dividir entre cero no está definido, como viste con los enteros). En cambio 5/1 = 5, -7/2 y 0/4 = 0 sí son racionales perfectamente válidos."
+    },
+    {
+      "pregunta": "Escrita en su forma más simple (mínima expresión), ¿qué fracción es 24/36?",
+      "opciones": [
+        "4/6",
+        "6/9",
+        "2/3",
+        "12/18"
+      ],
+      "correcta": 2,
+      "explicacion": "El MCD de 24 y 36 es 12, así que 24/36 = 2/3, y 2 y 3 ya no comparten divisores. Las otras (4/6, 6/9, 12/18) también valen 2/3, pero NO están en su forma más simple: la pregunta pide la mínima expresión."
+    },
+    {
+      "pregunta": "¿Cuál es mayor?",
+      "opciones": [
+        "3/5",
+        "son exactamente iguales",
+        "no se puede comparar",
+        "5/8"
+      ],
+      "correcta": 3,
+      "explicacion": "Con denominador común 40: 3/5 = 24/40 y 5/8 = 25/40. Como 25 > 24, 5/8 es mayor. (Comprobación cruzada: 3 × 8 = 24 y 5 × 5 = 25; el producto mayor va con la fracción mayor.)"
+    },
+    {
+      "pregunta": "SIN hacer la división, ¿cuál de estas fracciones tiene un decimal FINITO (exacto)?",
+      "opciones": [
+        "3/16",
+        "5/6",
+        "7/15",
+        "4/9"
+      ],
+      "correcta": 0,
+      "explicacion": "3/16 tiene denominador 16 = 2⁴, hecho solo de doses → finito (= 0,1875). Las otras tienen un 3 en el denominador (6 = 2×3, 15 = 3×5, 9 = 3²), así que dan decimales periódicos. El criterio se mira en los primos del denominador."
+    },
+    {
+      "pregunta": "¿Cuál es el decimal exacto de 7/8?",
+      "opciones": [
+        "0,78",
+        "0,875",
+        "0,87",
+        "1,142..."
+      ],
+      "correcta": 1,
+      "explicacion": "8 = 2³, así que 7/8 se puede escribir con denominador 1000: 7/8 = 875/1000 = 0,875. Comprobación: 8 × 0,875 = 7. ✓ (0,78 y 0,87 son aproximaciones mal hechas; 1,142... es 8/7, la fracción al revés.)"
+    },
+    {
+      "pregunta": "¿Cuál de estos decimales es PERIÓDICO (se repite para siempre)?",
+      "opciones": [
+        "0,375",
+        "0,05",
+        "0,272727...",
+        "0,8"
+      ],
+      "correcta": 2,
+      "explicacion": "0,272727... repite el bloque 27 sin fin: es periódico (y equivale a 27/99 = 3/11). Los otros son finitos: 0,375 = 3/8, 0,05 = 1/20 y 0,8 = 4/5, todos con denominadores de solo doses y cincos."
+    },
+    {
+      "pregunta": "El decimal periódico 0,2222... equivale a la fracción:",
+      "opciones": [
+        "1/5",
+        "22/100",
+        "2/10",
+        "2/9"
+      ],
+      "correcta": 3,
+      "explicacion": "Para un periódico puro, el bloque que se repite (2) va sobre tantos nueves como cifras tenga: 0,2222... = 2/9. Comprobación: 2 ÷ 9 = 0,2222... ✓. (2/10 = 0,2 y 22/100 = 0,22 son decimales que TERMINAN, no el periódico.)"
+    },
+    {
+      "pregunta": "Convertido a fracción en su forma más simple, el decimal finito 0,16 es:",
+      "opciones": [
+        "4/25",
+        "1/6",
+        "16/100",
+        "8/50"
+      ],
+      "correcta": 0,
+      "explicacion": "0,16 son 16 centésimos = 16/100, que simplificado (÷4) da 4/25. Cuidado con la trampa 1/6: eso es 0,1666..., un PERIÓDICO distinto de 0,16. (16/100 y 8/50 valen lo mismo pero no están en forma más simple.)"
+    },
+    {
+      "pregunta": "¿Cuál de estos cuatro números es el MENOR?",
+      "opciones": [
+        "-1/2",
+        "-5/6",
+        "-2/3",
+        "-1/4"
+      ],
+      "correcta": 1,
+      "explicacion": "Con denominador común 12: -1/2 = -6/12, -2/3 = -8/12, -1/4 = -3/12, -5/6 = -10/12. El menor está más a la izquierda: -10/12 = -5/6. Entre negativos, el de MAYOR tamaño es el menor (más deuda = menos dinero)."
+    },
+    {
+      "pregunta": "¿Cuánto es -3/4 + 1/2, en forma más simple?",
+      "opciones": [
+        "-1/2",
+        "1/4",
+        "-1/4",
+        "-5/4"
+      ],
+      "correcta": 2,
+      "explicacion": "Con denominador común 4: -3/4 + 2/4 = -1/4. Signos distintos: se restan los tamaños (3/4 - 2/4 = 1/4) y gana el signo de la deuda mayor (-3/4), así que el resultado es -1/4."
+    },
+    {
+      "pregunta": "¿Cuánto es 2/3 × 3/4, en forma más simple?",
+      "opciones": [
+        "5/7",
+        "6/7",
+        "8/9",
+        "1/2"
+      ],
+      "correcta": 3,
+      "explicacion": "Multiplicar es numerador × numerador y denominador × denominador: 2/3 × 3/4 = 6/12 = 1/2. El distractor 5/7 (sumar arriba y abajo) es el error clásico: multiplicar NO es sumar numeradores y denominadores."
+    },
+    {
+      "pregunta": "¿Cuánto es 3/5 ÷ 2/5?",
+      "opciones": [
+        "3/2",
+        "6/25",
+        "3/5",
+        "1/2"
+      ],
+      "correcta": 0,
+      "explicacion": "Dividir entre 2/5 es multiplicar por su inversa 5/2: 3/5 × 5/2 = 15/10 = 3/2. Tiene sentido: en 3/5 'caben' una vez y media los 2/5. (6/25 sería multiplicar, no dividir.)"
+    },
+    {
+      "pregunta": "¿Cuál es la mejor explicación de por qué 1/3 NO se puede escribir como decimal exacto (que termine)?",
+      "opciones": [
+        "Porque el numerador es 1 y los unos nunca dan decimales exactos.",
+        "Porque su denominador (3) no está formado solo por 2 y 5, y las potencias de 10 solo tienen esos primos.",
+        "Porque 3 es un número impar.",
+        "Porque 1/3 es menor que 1."
+      ],
+      "correcta": 1,
+      "explicacion": "Un decimal exacto es una fracción con denominador potencia de 10, y 10 = 2 × 5; solo las fracciones cuyo denominador tiene únicamente 2 y 5 se pueden vestir así. El 3 es otro primo, por eso 1/3 = 0,333... es periódico. Ni el numerador 1, ni ser impar, ni ser menor que 1 tienen que ver (1/5 también es <1 y sí es exacto)."
+    },
+    {
+      "pregunta": "¿Cuál de estos números está ENTRE 1/4 y 1/2?",
+      "opciones": [
+        "1/8",
+        "5/8",
+        "3/8",
+        "3/4"
+      ],
+      "correcta": 2,
+      "explicacion": "En octavos, 1/4 = 2/8 y 1/2 = 4/8, así que buscamos algo entre 2/8 y 4/8: 3/8 encaja. 1/8 se queda por debajo de 1/4, y 5/8 y 3/4 se pasan de 1/2. (Además muestra la densidad: entre dos racionales siempre hay otro.)"
+    },
+    {
+      "pregunta": "El racional -7/4, ¿entre qué dos enteros consecutivos está?",
+      "opciones": [
+        "entre -1 y 0",
+        "entre 1 y 2",
+        "entre -7 y -4",
+        "entre -2 y -1"
+      ],
+      "correcta": 3,
+      "explicacion": "-7/4 = -1,75, que cae a la izquierda del -1 y a la derecha del -2: está entre -2 y -1. El signo empuja el número hacia la izquierda, por eso NO está entre -1 y 0. (7/4 = 1,75 está entre 1 y 2; su opuesto, entre -2 y -1.)"
+    }
+  ]
+}

@@ -1,0 +1,372 @@
+{
+  "programa": "cumbre",
+  "materia": "Química",
+  "grado": "Cumbre Química 1er año",
+  "dominio": "Pensar como químico",
+  "tema": "El modelo de partículas visto por la química: la lente para entenderlo todo",
+  "referencias": [
+    "UK KS3/GCSE Science — Particle model of matter: states of matter, changes of state, gas pressure, diffusion, compression; common misconceptions (particles expand, air between particles, particles stop in a gas)",
+    "Singapore Lower Secondary Science — Particulate nature of matter: arrangement, movement and forces in solids, liquids and gases; explaining observable phenomena",
+    "IB MYP Sciences Year 1 — Particulate model as an explanatory tool for states, state changes and diffusion",
+    "Japan MEXT Grade 7 Science — Particle view of states of matter and state changes; thermal expansion explained by particle motion"
+  ],
+  "resumen": {
+    "titulo": "Una sola lente para todo: el modelo de partículas y su poder para explicar el mundo",
+    "intro": "Hasta ahora has DESCRITO la materia: dijiste que el hielo es sólido, el agua líquida y el vapor gaseoso; que al calentar algo se derrite o hierve; que el azúcar 'desaparece' en el agua pero sigue ahí. Todo eso lo observabas por fuera. Ahora vas a dar el salto que da un químico de verdad: dejar de solo describir lo que se ve y empezar a EXPLICAR por qué pasa, con una única idea por dentro. Esa idea se llama el MODELO DE PARTÍCULAS, y dice algo asombroso: toda la materia del universo, sin excepción, está hecha de partículas diminutas en movimiento constante. Lo poderoso no es la idea en sí, sino que un MISMO modelo, con cuatro reglas sencillas, explica cosas que parecen no tener nada que ver: por qué un sólido guarda su forma y un gas no, por qué el hielo se derrite al calentarlo, por qué un gas se comprime con facilidad y un ladrillo no, por qué un perfume llega hasta el otro lado del cuarto sin que nadie lo empuje, por qué las cosas se agrandan con el calor y por qué un gas empuja las paredes del envase que lo encierra. Un modelo, decenas de fenómenos. Aprender a usarlo como una LENTE —mirar cualquier situación y preguntarte '¿qué están haciendo las partículas aquí?'— es una de las herramientas de pensamiento más importantes de toda la ciencia. Este resumen no te va a pedir memorizar reglas: te va a enseñar a EXPLICAR con ellas.",
+    "secciones": [
+      {
+        "titulo": "Los cuatro postulados: las reglas del juego",
+        "explicacion": "Un MODELO, en ciencia, es una imagen mental sencilla que usamos para explicar y predecir lo que pasa en la realidad; no es una foto exacta, sino una herramienta que funciona. El modelo de partículas se apoya en cuatro ideas de base, llamadas POSTULADOS (afirmaciones que aceptamos como punto de partida porque explican muy bien lo que observamos). Aquí están, y conviene entenderlas de verdad, no solo leerlas. UNO: toda la materia está formada por PARTÍCULAS diminutas, tan pequeñas que no se ven ni con un microscopio común. DOS: entre una partícula y otra hay ESPACIO VACÍO; y aquí está la primera trampa que hay que desarmar de una vez: en ese espacio NO hay aire. El aire también está hecho de partículas, así que decir 'entre las partículas hay aire' es como decir 'entre los ladrillos hay una pared': no tiene sentido. Entre las partículas no hay nada, hay vacío. TRES: las partículas están en MOVIMIENTO CONSTANTE, nunca quietas del todo, y —clave— cuanto más CALIENTE está la materia, más rápido se mueven sus partículas; el calor es, por dentro, partículas moviéndose más rápido, y el frío es partículas moviéndose más despacio. CUATRO: entre las partículas hay FUERZAS DE ATRACCIÓN que tienden a mantenerlas unidas, como un pegamento invisible; esas fuerzas son fuertes cuando las partículas están muy juntas y se vuelven casi insignificantes cuando están muy separadas. Con solo estas cuatro reglas vas a poder explicar todo lo que sigue.",
+        "pasos": [
+          "Postulado 1: toda la materia está hecha de partículas diminutas.",
+          "Postulado 2: entre las partículas hay espacio vacío (NO aire: el aire también son partículas).",
+          "Postulado 3: las partículas se mueven sin parar, y se mueven más rápido cuanto más caliente está la materia.",
+          "Postulado 4: entre las partículas hay fuerzas de atracción, fuertes si están juntas y débiles si están separadas."
+        ],
+        "ejemplo": "Aviso importante que evita el error más común: al calentar la materia, las partículas NO crecen ni se hinchan, y tampoco aparecen partículas nuevas. Lo único que cambia es que se mueven más rápido y, por eso, se separan un poco más. Las partículas de un trozo de hierro caliente son iguales de grandes y son las mismas que cuando estaba frío.",
+        "figura": ""
+      },
+      {
+        "titulo": "La lente en acción: los tres estados explicados, no solo nombrados",
+        "explicacion": "Antes decías 'esto es sólido, esto es líquido, esto es gas' como quien pone etiquetas. Ahora el modelo te dice POR QUÉ cada estado se comporta como se comporta, y todo sale de combinar dos cosas: qué tan juntas están las partículas y qué tan fuertes son las fuerzas entre ellas. En un SÓLIDO las partículas están muy juntas, ordenadas y con fuerzas fuertes que las sujetan; por eso solo pueden VIBRAR en su sitio sin cambiar de lugar, como personas apretadas en un ascensor lleno que solo se mueven un poquito. Resultado: un sólido tiene forma propia y volumen propio, y casi no se comprime. En un LÍQUIDO las partículas siguen muy juntas, pero las fuerzas son medianas y les permiten DESLIZARSE unas sobre otras; por eso el líquido mantiene su volumen (las partículas siguen pegadas) pero NO su forma: toma la forma del recipiente, porque las partículas ruedan y se acomodan. En un GAS las partículas están muy SEPARADAS, las fuerzas entre ellas son tan débiles que casi no cuentan, y se mueven rápido en todas las direcciones; por eso un gas no tiene forma ni volumen propios: se esparce hasta llenar TODO el recipiente que lo contenga, por grande que sea. Fíjate en lo elegante: no memorizaste tres comportamientos sueltos; los DEDUJISTE de la misma idea mirando qué hacen las partículas en cada caso.",
+        "pasos": [
+          "Sólido: partículas muy juntas, ordenadas, fuerzas fuertes → solo vibran en su sitio → forma y volumen fijos.",
+          "Líquido: partículas juntas pero desordenadas, fuerzas medianas → se deslizan → volumen fijo, pero toma la forma del recipiente.",
+          "Gas: partículas muy separadas, fuerzas despreciables, movimiento rápido → sin forma ni volumen propios: llena todo el recipiente.",
+          "Truco para no olvidarlo: pregúntate '¿pueden las partículas cambiar de lugar?'. En el sólido no (solo vibran), en el líquido sí pero pegadas, en el gas sí y sueltas."
+        ],
+        "ejemplo": "Un mismo material, el agua, en los tres estados: como hielo tiene forma propia (partículas fijas y ordenadas); como agua líquida se amolda al vaso pero ocupa siempre el mismo volumen (partículas pegadas que se deslizan); como vapor se escapa y llena el aire de la cocina (partículas sueltas y separadas). La sustancia es la misma; lo único que cambió es cómo están y cómo se mueven sus partículas.",
+        "figura": "<svg viewBox=\"0 0 420 200\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"78\" y=\"36\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">SOLIDO</text><text x=\"213\" y=\"36\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">LIQUIDO</text><text x=\"348\" y=\"36\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">GAS</text><rect x=\"22\" y=\"48\" width=\"112\" height=\"112\" fill=\"none\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><rect x=\"157\" y=\"48\" width=\"112\" height=\"112\" fill=\"none\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><rect x=\"292\" y=\"48\" width=\"112\" height=\"112\" fill=\"none\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><circle cx=\"42\" cy=\"62\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"66\" cy=\"62\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"90\" cy=\"62\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"114\" cy=\"62\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"42\" cy=\"86\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"66\" cy=\"86\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"90\" cy=\"86\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"114\" cy=\"86\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"42\" cy=\"110\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"66\" cy=\"110\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"90\" cy=\"110\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"114\" cy=\"110\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"42\" cy=\"134\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"66\" cy=\"134\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"90\" cy=\"134\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"114\" cy=\"134\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"174\" cy=\"150\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"198\" cy=\"148\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"222\" cy=\"150\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"246\" cy=\"146\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"180\" cy=\"126\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"204\" cy=\"128\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"228\" cy=\"124\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"252\" cy=\"126\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"172\" cy=\"104\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"198\" cy=\"102\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"224\" cy=\"106\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"248\" cy=\"102\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"210\" cy=\"84\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"315\" cy=\"72\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"365\" cy=\"60\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"330\" cy=\"120\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"380\" cy=\"140\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"305\" cy=\"150\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"360\" cy=\"105\" r=\"10\" fill=\"#12B5A4\"/><circle cx=\"392\" cy=\"88\" r=\"10\" fill=\"#12B5A4\"/></svg>"
+      },
+      {
+        "titulo": "Los cambios de estado: qué les pasa a las partículas al calentar y enfriar",
+        "explicacion": "En el tema anterior aprendiste que fundir, hervir o congelar son cambios FÍSICOS porque la sustancia sigue siendo la misma. Ahora el modelo te explica el mecanismo, el 'cómo' que faltaba. Todo gira alrededor del postulado 3 (más calor, más movimiento) peleando contra el postulado 4 (las fuerzas que unen). Cuando CALIENTAS un sólido, le das energía y sus partículas vibran cada vez más fuerte; llega un punto en que vibran tanto que vencen parte de las fuerzas que las tenían fijas y empiezan a deslizarse: el sólido FUNDE y se vuelve líquido. Si sigues calentando el líquido, las partículas se mueven aún más rápido, hasta que algunas logran escaparse por completo de la atracción de las demás y salen volando sueltas: el líquido se convierte en gas (se EVAPORA o HIERVE). Al ENFRIAR ocurre exactamente lo contrario: quitas energía, las partículas se mueven más despacio, y entonces las fuerzas de atracción vuelven a ganar la pelea: en un gas las partículas se acercan y se pegan (se CONDENSA en líquido), y en un líquido se ordenan y se fijan (se CONGELA en sólido). Fíjate en lo que NO cambia: las partículas son siempre las mismas y siguen siendo iguales de grandes; no se crean ni se destruyen, solo cambian cuánto se mueven y cuánto se separan. Por eso el vapor sigue siendo agua: son las mismísimas partículas, solo que ahora sueltas y veloces.",
+        "pasos": [
+          "Calentar = dar energía = partículas más rápidas, que se separan y vencen las fuerzas.",
+          "Sólido → líquido (fundir): las partículas vibran tanto que se sueltan y empiezan a deslizarse.",
+          "Líquido → gas (evaporar/hervir): las partículas se mueven tan rápido que escapan sueltas.",
+          "Enfriar = quitar energía = partículas más lentas → las fuerzas ganan → gas se condensa y líquido se congela.",
+          "En todo el proceso las partículas son las mismas y del mismo tamaño: por eso la sustancia no cambia (es un cambio físico)."
+        ],
+        "ejemplo": "Predice con el modelo: si dejas un vaso de agua al sol, ¿por qué baja el nivel aunque no lo toque nadie? Porque las partículas de la superficie, al calentarse, se mueven lo bastante rápido como para escaparse sueltas al aire (se evaporan) una a una. No desaparecen: se van como vapor. Enfriando ese vapor volverías a juntarlas en agua líquida.",
+        "figura": ""
+      },
+      {
+        "titulo": "Por qué un gas se comprime fácil y un sólido casi nada",
+        "explicacion": "Comprimir algo significa apretarlo para que ocupe MENOS espacio, y con el modelo esto se entiende al instante: comprimir es acercar las partículas unas a otras. Ahora la pregunta clave es '¿hay sitio para acercarlas?'. En un GAS las partículas están muy separadas, con enormes espacios vacíos entre ellas, así que hay muchísimo lugar para juntarlas: por eso un gas se comprime con facilidad, solo estás recogiendo el espacio vacío que sobra. En un LÍQUIDO o un SÓLIDO, en cambio, las partículas ya están casi tocándose, prácticamente no queda espacio vacío entre ellas, así que no tienes hacia dónde apretarlas: por eso los líquidos y los sólidos casi no se comprimen. Este es un ejemplo perfecto de por qué el modelo es tan útil: dos comportamientos opuestos (el gas cede, el líquido no) salen de UNA sola diferencia (cuánto espacio vacío hay entre las partículas). Y ojo con el error clásico: cuando comprimes un gas, no estás encogiendo las partículas ni sacándoles el aire de en medio; solo estás reduciendo el espacio VACÍO que las separa.",
+        "pasos": [
+          "Comprimir = acercar las partículas para que ocupen menos espacio.",
+          "Gas: muchísimo espacio vacío entre partículas → hay hacia dónde juntarlas → se comprime fácil.",
+          "Líquido y sólido: partículas casi tocándose, casi sin espacio → no hay hacia dónde apretar → casi no se comprimen.",
+          "Al comprimir un gas no encoges las partículas: reduces el vacío que las separa."
+        ],
+        "ejemplo": "Tapa con el dedo la punta de una jeringa llena de AIRE y empuja el émbolo: baja bastante, porque estás juntando partículas muy separadas. Ahora llena la misma jeringa de AGUA, tápala y empuja: casi no se mueve, porque las partículas del agua ya están pegadas y no tienen hacia dónde acercarse más. Misma jeringa, misma fuerza, resultado opuesto: el modelo lo explica con el espacio vacío.",
+        "figura": ""
+      },
+      {
+        "titulo": "La presión de un gas: millones de choques por segundo",
+        "explicacion": "¿Por qué un gas encerrado empuja hacia afuera las paredes del recipiente que lo contiene? ¿Qué es, por dentro, la presión? El modelo da una respuesta preciosa. Como las partículas de un gas se mueven todo el tiempo y en todas las direcciones (postulado 3), sin parar CHOCAN contra las paredes del envase. Cada choque es un empujoncito minúsculo, casi nada por sí solo; pero son tantísimas partículas chocando tantísimas veces por segundo que la suma de todos esos empujoncitos es una fuerza real y constante sobre las paredes: eso es la PRESIÓN del gas. Entender la presión así te deja PREDECIR cómo cambiarla. Si metes MÁS partículas de gas en el mismo espacio (inflar una pelota con más aire), hay más choques por segundo → más presión → la pelota se pone dura. Si aprietas el mismo gas en MENOS espacio (comprimirlo), las partículas chocan contra las paredes más seguido → más presión. Y si CALIENTAS un gas encerrado, sus partículas se mueven más rápido, así que chocan más a menudo y más fuerte → más presión (por eso una lata cerrada puede reventar si la calientas: no aparece más gas, las partículas de adentro solo empujan más). La presión no es magia ni una fuerza misteriosa: es el resultado de contar choques.",
+        "pasos": [
+          "Las partículas del gas se mueven sin parar y chocan contra las paredes del recipiente.",
+          "Cada choque empuja un poquito; la suma de millones de choques por segundo ES la presión.",
+          "Más partículas en el mismo espacio → más choques → más presión (inflar una pelota).",
+          "Mismo gas en menos espacio (comprimir) → chocan más seguido → más presión.",
+          "Calentar el gas → partículas más rápidas → chocan más y más fuerte → más presión."
+        ],
+        "ejemplo": "Predice con el modelo qué pasa si dejas una pelota bien inflada al sol de mediodía. Las partículas de aire de adentro se calientan y se mueven más rápido, así que chocan más seguido y más fuerte contra la goma: la presión sube y la pelota se siente más dura (y si sube demasiado, podría reventar). No entró más aire: las mismas partículas simplemente empujan más porque van más rápido.",
+        "figura": ""
+      },
+      {
+        "titulo": "La difusión: por qué un olor cruza todo el cuarto solo",
+        "explicacion": "Entras a una habitación, alguien abre un frasco de perfume en la esquina opuesta, y al rato el olor te llega hasta donde estás, sin que ningún ventilador lo haya empujado. ¿Cómo viajó? El modelo lo explica con el postulado 3, el del movimiento constante. Las partículas del perfume, una vez en el aire, no se quedan quietas: se mueven sin parar en todas las direcciones y, chocando y rebotando entre las partículas del aire, se van esparciendo poco a poco hasta repartirse por todo el cuarto. A ese esparcirse por sí solas, sin necesidad de revolver ni de empujar, se le llama DIFUSIÓN. Es la prueba cotidiana de que las partículas de verdad se mueven solas. Y el modelo te deja predecir algo más: como el calor hace que las partículas se muevan MÁS rápido (postulado 3), la difusión es más veloz cuanto más caliente está todo. Por eso el olor de una comida caliente inunda la casa mucho más rápido que el de la misma comida fría: sus partículas se mueven más rápido y se reparten antes. Un solo postulado, el del movimiento, explica a la vez cómo huele un perfume y por qué la sopa recién hecha se anuncia sola.",
+        "pasos": [
+          "Las partículas de un gas se mueven sin parar en todas direcciones (postulado 3).",
+          "Por eso se van esparciendo y mezclando con las del aire, sin que nadie las empuje: eso es la difusión.",
+          "La difusión es la prueba directa de que las partículas se mueven solas.",
+          "Más calor → partículas más rápidas → la difusión es más veloz (el olor caliente llega antes que el frío)."
+        ],
+        "ejemplo": "Predice con el modelo: si dejas caer con cuidado una gota de tinta en un vaso de agua quieta, SIN revolver, ¿qué pasará después de un rato? La tinta se irá extendiendo sola hasta teñir toda el agua, porque sus partículas y las del agua se mueven sin parar y se mezclan por difusión. Y en agua caliente teñiría más rápido que en agua fría, porque las partículas van más veloces.",
+        "figura": ""
+      },
+      {
+        "titulo": "Disolver, visto por dentro con la misma lente",
+        "explicacion": "En el tema anterior clasificaste 'disolver azúcar en agua' como cambio físico y comprobaste que el azúcar seguía ahí porque reaparecía al evaporar el agua. Pero quedaba una pregunta sin responder: si el azúcar sigue ahí, ¿a dónde SE FUE mientras no se veía? El modelo lo contesta. Recuerda dos cosas que ya sabes: entre las partículas del agua hay espacios vacíos (postulado 2), y todas las partículas se mueven (postulado 3). Cuando echas el azúcar, las partículas del agua, en su movimiento, rodean a las partículas de azúcar, las van separando unas de otras y se las llevan a repartirse por esos espacios vacíos que hay entre las propias partículas de agua. El azúcar no desapareció ni se transformó: sus partículas quedaron dispersas, mezcladas entre las del agua, tan repartidas y tan pequeñas que ya no las ves. Por eso el líquido se ve transparente pero sigue estando dulce, y por eso al evaporar el agua las partículas de azúcar se reencuentran y vuelven a formar el sólido intacto. Mira la potencia del modelo: la MISMA idea que explicó los estados, los cambios de estado, la compresión, la presión y la difusión, explica también qué pasa cuando algo se disuelve. Una sola lente para todo.",
+        "pasos": [
+          "Entre las partículas del agua hay espacios vacíos (postulado 2), y todas se mueven (postulado 3).",
+          "Al disolver, las partículas del agua rodean y separan a las del sólido.",
+          "Las partículas del sólido se reparten por los espacios entre las partículas del agua: quedan dispersas, no desaparecidas.",
+          "Como no se transformaron, al evaporar el agua se reencuentran y vuelven a formar el sólido (por eso es un cambio físico)."
+        ],
+        "ejemplo": "Explica con el modelo por qué el agua con azúcar disuelta se ve transparente pero sabe dulce. Las partículas de azúcar siguen en el vaso, pero están tan separadas unas de otras y tan repartidas entre las partículas de agua que la vista ya no las distingue; la lengua, en cambio, sí las detecta. Ver que 'desaparecieron' es una ilusión: solo se dispersaron.",
+        "figura": ""
+      },
+      {
+        "titulo": "La dilatación: por qué las cosas se agrandan con el calor (y el error que casi todos cometen)",
+        "explicacion": "Cuando calientas casi cualquier cosa —un metal, un líquido, un gas— se hace un poquito más grande; a eso se le llama DILATACIÓN. El modelo lo explica sin esfuerzo con el postulado 3. Al calentar, las partículas se mueven con más energía; y al moverse más y más fuerte, en promedio necesitan un poco más de sitio, así que se separan un poquito más unas de otras. Como TODAS las partículas quedan un poco más separadas, el objeto entero se agranda. Aquí aparece el error más famoso del tema, y hay que clavarlo de una vez: las partículas NO crecen ni se hinchan al calentarse. Siguen siendo exactamente iguales de grandes; lo único que aumenta es la SEPARACIÓN entre ellas, no su tamaño. Tampoco aparecen partículas nuevas: son las mismas de siempre, solo que más espaciadas. Confundir 'se separan más' con 'crecen' es el clásico tropiezo, y con el modelo bien entendido no vuelves a caer. Al enfriar pasa lo contrario: las partículas se mueven menos, se juntan un poco más y el objeto se encoge (se contrae). Y una predicción que el modelo permite: los gases se dilatan mucho MÁS que los líquidos y los sólidos al calentarse la misma cantidad, porque sus partículas están sueltas y con muchísimo espacio para separarse todavía más.",
+        "pasos": [
+          "Al calentar, las partículas se mueven más fuerte y, en promedio, se separan un poco más.",
+          "Como todas quedan más separadas, el objeto entero se agranda: eso es la dilatación.",
+          "ERROR a evitar: las partículas NO crecen ni se hinchan; lo que aumenta es la distancia entre ellas, no su tamaño. Y no aparecen partículas nuevas.",
+          "Al enfriar, las partículas se juntan más y el objeto se contrae (se encoge).",
+          "Los gases se dilatan mucho más que líquidos y sólidos, porque sus partículas tienen más espacio para separarse."
+        ],
+        "ejemplo": "Explica con el modelo por qué una tapa metálica muy apretada de un frasco se afloja si le echas agua caliente por encima. El calor hace que las partículas del metal de la tapa se muevan más y se separen un poco más entre sí, así que la tapa entera se dilata (se agranda apenas lo necesario) y deja de apretar tanto contra el vidrio. Las partículas del metal no crecieron: solo se separaron un poquito más. Por la misma razón, los puentes y las vías del tren se construyen con pequeños huecos: dejan sitio para que el material se dilate en los días calurosos sin doblarse.",
+        "figura": ""
+      },
+      {
+        "titulo": "La gran idea: un modelo, un mundo entero explicado",
+        "explicacion": "Da un paso atrás y mira todo lo que acabas de hacer con una sola herramienta. Con cuatro reglas sencillas —partículas diminutas, con espacio vacío entre ellas, en movimiento que crece con el calor, y unidas por fuerzas de atracción— explicaste por qué un sólido guarda su forma y un gas llena el envase, por qué el hielo se derrite y el agua hierve, por qué un gas se comprime fácil y un ladrillo no, por qué un gas empuja las paredes que lo encierran, por qué un olor cruza el cuarto solo, por qué el azúcar se disuelve sin desaparecer y por qué las cosas se agrandan con el calor. Fenómenos que a primera vista no tienen nada que ver, todos explicados por la MISMA idea de fondo. Eso es lo que hace poderoso a un buen modelo científico: no explica una cosa, explica muchas, y encima te deja PREDECIR lo que va a pasar en situaciones nuevas antes de verlas. De ahora en adelante, frente a cualquier fenómeno de la materia, tienes una lente para mirarlo: detente y pregúntate '¿qué están haciendo aquí las partículas: cómo están de juntas, qué tan rápido se mueven, qué tan fuerte se atraen?'. Casi siempre, esa sola pregunta te lleva a la explicación. Aprender a mirar el mundo por dentro, no solo por fuera, es exactamente lo que significa empezar a pensar como químico.",
+        "pasos": [
+          "Un buen modelo no explica un solo hecho: explica muchos fenómenos distintos con las mismas reglas.",
+          "Además de explicar lo ya visto, permite PREDECIR qué pasará en situaciones nuevas.",
+          "Frente a cualquier fenómeno de la materia, usa la lente: ¿qué tan juntas están las partículas, qué tan rápido se mueven, qué tan fuerte se atraen?",
+          "Responder esa pregunta te da, casi siempre, la explicación. Eso es pensar como químico."
+        ],
+        "ejemplo": "El mismo modelo que explica por qué el vapor sigue siendo agua explica también por qué huele la comida, por qué se infla una pelota y por qué se dilata un puente. No memorizaste ocho reglas sueltas: usaste una sola idea ocho veces. Esa es la meta del tema.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "El modelo de partículas es una LENTE para explicar toda la materia con cuatro reglas: (1) está hecha de partículas diminutas, (2) con espacio VACÍO entre ellas (no aire), (3) en movimiento constante que aumenta con el calor, y (4) unidas por fuerzas de atracción fuertes si están juntas y débiles si están separadas. Con esa sola idea se explica todo: los estados (sólido = partículas juntas y fijas; líquido = juntas que se deslizan; gas = separadas y sueltas), los cambios de estado (calentar acelera las partículas hasta vencer las fuerzas; enfriar las frena y las une), la compresión (fácil en el gas porque hay mucho espacio vacío, casi nula en líquidos y sólidos), la presión (millones de choques de las partículas contra las paredes), la difusión (las partículas se esparcen solas porque se mueven), disolver (las partículas del sólido se reparten por los espacios entre las del agua) y la dilatación (al calentar las partículas se SEPARAN más, no crecen). Errores a desterrar: las partículas NO se hinchan ni crecen con el calor (solo se separan más), entre ellas NO hay aire (hay vacío), y en un gas NO se quedan quietas (se mueven más rápido que en ningún otro estado). Ante cualquier fenómeno, pregúntate qué hacen las partículas: qué tan juntas están, qué tan rápido se mueven y qué tan fuerte se atraen."
+  },
+  "practica": [
+    {
+      "enunciado": "Usa el modelo de partículas para explicar, en una sola respuesta, por qué un GAS llena por completo el recipiente que lo contiene mientras que un SÓLIDO conserva siempre su forma. Deja claro qué diferencia entre los dos es la responsable.",
+      "pista": "Piensa en dos cosas de cada estado: qué tan separadas están sus partículas y qué tan fuertes son las fuerzas que las unen. ¿Pueden las partículas cambiar de lugar en cada caso?",
+      "solucion": "En un sólido las partículas están muy juntas, ordenadas y sujetas por fuerzas fuertes, así que no pueden cambiar de lugar: solo vibran en su sitio. Por eso el sólido mantiene su forma. En un gas, en cambio, las partículas están muy separadas y las fuerzas entre ellas son tan débiles que casi no cuentan, así que se mueven libres y rápidas en todas las direcciones hasta esparcirse por todo el espacio disponible. Por eso el gas llena el recipiente entero. La diferencia responsable es doble y va junta: cuánto se atraen las partículas (fuerte en el sólido, casi nada en el gas) y, por eso, si pueden o no cambiar de lugar (no en el sólido, sí en el gas).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Tienes dos jeringas iguales con la punta tapada: una llena de aire y otra llena de agua. Al empujar el émbolo con la misma fuerza, el de la jeringa con aire baja bastante y el de la jeringa con agua casi no se mueve. Explica esta diferencia con el modelo de partículas.",
+      "pista": "Comprimir es acercar las partículas. Pregúntate en cuál de las dos hay espacio vacío para acercarlas y en cuál no.",
+      "solucion": "Comprimir significa acercar las partículas para que ocupen menos espacio. En la jeringa de aire, las partículas del gas están muy separadas, con mucho espacio vacío entre ellas, así que al empujar hay hacia dónde juntarlas y el émbolo baja bastante (estás recogiendo el vacío que sobra). En la jeringa de agua, las partículas del líquido ya están casi tocándose, prácticamente sin espacio vacío entre ellas, así que no hay hacia dónde apretarlas y el émbolo casi no se mueve. La diferencia es cuánto espacio vacío hay entre las partículas: mucho en el gas, casi nada en el líquido. Ojo: al comprimir el aire no encoges las partículas, solo reduces el vacío que las separa.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica, paso a paso y en términos de partículas, qué ocurre por dentro cuando un trozo de hielo se calienta y se convierte primero en agua líquida y luego en vapor.",
+      "pista": "Piensa en la pelea entre el movimiento (que crece con el calor) y las fuerzas de atracción. ¿Qué gana en cada etapa?",
+      "solucion": "En el hielo las partículas están muy juntas, ordenadas y sujetas por fuerzas fuertes: solo vibran en su sitio. Al calentar, les das energía y vibran cada vez más fuerte; llega un punto en que vibran tanto que vencen parte de las fuerzas que las fijaban y empiezan a deslizarse unas sobre otras: el hielo funde y se vuelve agua líquida (partículas juntas pero que ya se mueven de lugar). Si sigues calentando, las partículas del líquido se mueven todavía más rápido, hasta que algunas logran escapar por completo de la atracción de las demás y salen sueltas al aire: el agua se convierte en vapor (partículas muy separadas y veloces). En todo el proceso las partículas son las mismas y del mismo tamaño; solo cambió cuánto se mueven y cuánto se separan. Por eso el vapor sigue siendo agua.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero dice: 'cuando calientas una barra de metal y se hace más larga, es porque el calor hace que sus partículas CREZCAN'. Evalúa si esa explicación es correcta y, si no lo es, corrígela con el modelo.",
+      "pista": "Recuerda qué es lo único que el calor le cambia a las partículas según el postulado 3. ¿Cambia su tamaño o cambia cómo se mueven y cuánto se separan?",
+      "solucion": "La explicación es incorrecta. Las partículas NO crecen ni se hinchan al calentarse: siguen siendo exactamente iguales de grandes, y tampoco aparecen partículas nuevas. Lo que de verdad ocurre es que, al calentar, las partículas se mueven con más energía y, al moverse más fuerte, en promedio se separan un poco más unas de otras. Como todas quedan más separadas, la barra entera se alarga (se dilata). Es decir, lo que aumenta es la SEPARACIÓN entre las partículas, no su tamaño. Confundir 'se separan más' con 'crecen' es el error clásico de este tema.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica con el modelo de partículas por qué puedes oler la comida que se cocina desde otra habitación, aunque nadie sople ni abanique el aire. Luego predice si el olor de una comida caliente se esparce más rápido o más lento que el de la misma comida fría, y por qué.",
+      "pista": "Usa el postulado del movimiento constante. ¿Cómo viajan las partículas de olor por el aire? ¿Y cómo cambia su velocidad con la temperatura?",
+      "solucion": "Las partículas responsables del olor, una vez en el aire, no se quedan quietas: se mueven sin parar en todas las direcciones y, chocando y rebotando entre las partículas del aire, se van esparciendo poco a poco hasta llegar a la otra habitación. Ese esparcirse solas, sin que nadie las empuje, se llama difusión, y es la prueba de que las partículas de verdad se mueven por sí mismas. Predicción: el olor de la comida CALIENTE se esparce más rápido, porque el calor hace que las partículas se muevan más rápido (postulado 3), así que se reparten por el aire antes que las de la comida fría, cuyas partículas se mueven más despacio.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explica con el modelo por qué al inflar una pelota con más y más aire, la pelota se pone cada vez más dura. ¿Qué es, por dentro, esa 'dureza' o presión?",
+      "pista": "La presión es el resultado de los choques de las partículas contra las paredes. ¿Qué pasa con la cantidad de choques cuando metes más partículas en el mismo espacio?",
+      "solucion": "La presión de un gas es la suma de los millones de choques por segundo de sus partículas contra las paredes del recipiente: cada choque empuja un poquito, y todos juntos empujan las paredes hacia afuera. Al inflar la pelota metes más partículas de aire en el mismo espacio, así que hay más partículas chocando y, por lo tanto, más choques por segundo contra la goma: la presión sube y la pelota se siente más dura. La 'dureza' es eso: las partículas de adentro empujando la goma desde dentro con más choques. No hay ninguna fuerza misteriosa, solo más choques.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero afirma: 'en un gas las partículas están quietas; por eso el gas es tan ligero e invisible'. Evalúa la afirmación y corrígela con el modelo, explicando cómo se mueven realmente las partículas de un gas comparadas con las de un líquido o un sólido.",
+      "pista": "Piensa en el postulado 3 y en la difusión. Si las partículas del gas estuvieran quietas, ¿podría un olor cruzar el cuarto solo?",
+      "solucion": "La afirmación es incorrecta: en un gas las partículas NO están quietas. Todo lo contrario: se mueven rápido y libremente en todas las direcciones, y de hecho se mueven MÁS rápido que en un líquido o un sólido, no menos. La prueba directa es la difusión: si las partículas de un gas estuvieran quietas, un perfume abierto en una esquina nunca llegaría solo hasta el otro lado del cuarto, y sí llega. Lo que hace ligero e invisible a un gas no es que sus partículas estén quietas, sino que están muy SEPARADAS entre sí (mucho espacio vacío) y son diminutas. Movimiento y separación son cosas distintas: en el gas las partículas están a la vez muy separadas y moviéndose muy rápido.",
+      "figura": ""
+    },
+    {
+      "enunciado": "En el tema anterior comprobaste que el azúcar disuelto en agua sigue estando ahí porque reaparece al evaporar el agua. Usa ahora el modelo de partículas para explicar A DÓNDE se fue el azúcar mientras estaba disuelta y por qué el agua se ve transparente pero sabe dulce.",
+      "pista": "Recuerda dos postulados: entre las partículas del agua hay espacios vacíos, y todas las partículas se mueven. ¿Qué les hacen las partículas de agua a las de azúcar?",
+      "solucion": "Al echar el azúcar, las partículas del agua —que se mueven sin parar— rodean a las partículas de azúcar, las separan unas de otras y se las llevan a repartirse por los espacios vacíos que hay entre las propias partículas de agua. El azúcar no desapareció ni se transformó: sus partículas quedaron dispersas y mezcladas entre las del agua, tan separadas y tan pequeñas que la vista ya no las distingue (por eso el líquido se ve transparente), pero la lengua sí las detecta (por eso sabe dulce). Como las partículas de azúcar siguen intactas, al evaporar el agua se reencuentran y vuelven a formar el sólido: por eso es un cambio físico.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un compañero dibuja las partículas de un vaso de agua y, en los huecos entre partícula y partícula, dibuja pequeñas burbujas de aire. Evalúa si ese dibujo es correcto según el modelo y explica qué debería haber en esos espacios.",
+      "pista": "¿De qué está hecho el aire? Piensa qué dice el postulado 2 sobre lo que hay entre las partículas.",
+      "solucion": "El dibujo es incorrecto. Entre las partículas del agua NO hay aire. El aire también está hecho de partículas, así que dibujar 'aire' en los huecos es como meter otra materia dentro de los espacios, y no es eso lo que ocurre. Según el postulado 2, entre partícula y partícula hay espacio VACÍO: no hay nada, ni aire ni ninguna otra sustancia. Lo correcto sería dejar esos espacios en blanco, como vacío. Creer que 'entre las partículas hay aire' es uno de los errores más comunes del modelo, y confunde el vacío con una sustancia.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Los ingenieros dejan pequeños huecos entre los tramos de un puente y entre los rieles de una vía de tren. Explica con el modelo de partículas para qué sirven esos huecos y qué pasaría en un día muy caluroso si no existieran.",
+      "pista": "Piensa qué les pasa a las partículas del metal (y por tanto al metal entero) cuando sube la temperatura. ¿El metal necesita más o menos sitio?",
+      "solucion": "En un día caluroso, las partículas del metal se mueven con más energía y, en promedio, se separan un poco más unas de otras, así que el metal entero se dilata: cada tramo se hace un poquito más largo. Los huecos existen para dejarle ese sitio extra: al dilatarse, los tramos se acercan y ocupan el hueco sin empujarse. Si no hubiera huecos, los tramos, al alargarse, se empujarían con fuerza unos contra otros y el puente o los rieles podrían deformarse, pandearse o agrietarse. Nota importante: el metal se agranda porque sus partículas se SEPARAN más, no porque crezcan. Al enfriar de noche, las partículas se juntan de nuevo y el metal se contrae, y el hueco vuelve a abrirse.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Predice y explica con el modelo qué le pasa a la PRESIÓN del aire dentro de una lata cerrada si la calientas, sin que la lata cambie de tamaño. ¿Por qué una lata cerrada puede llegar a reventar al calentarse aunque no le metas más aire?",
+      "pista": "El gas encerrado tiene siempre la misma cantidad de partículas y el mismo espacio. Lo único que cambia es la velocidad de las partículas. ¿Cómo afecta eso a los choques contra las paredes?",
+      "solucion": "Al calentar, las partículas del aire encerrado se mueven más rápido (postulado 3). Como están en el mismo espacio y son las mismas, esa mayor velocidad hace que choquen contra las paredes de la lata más a menudo y con más fuerza. Y como la presión es justamente la suma de esos choques, la presión sube. Si la temperatura sigue subiendo, la presión puede llegar a ser tan grande que la lata no aguanta y revienta. Lo clave es que no entró ni una partícula más de aire: son exactamente las mismas partículas, pero al ir más rápido empujan las paredes con muchos más choques. Por eso nunca se calientan envases cerrados a presión.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Reúne tres fenómenos que parecen no tener nada que ver —(a) un gas se comprime fácil, (b) un olor cruza el cuarto solo, (c) las cosas se agrandan con el calor— y explica cuál postulado del modelo (o cuáles) está detrás de cada uno. La idea es mostrar cómo un mismo modelo explica cosas muy distintas.",
+      "pista": "Repasa los cuatro postulados. Para cada fenómeno pregúntate: ¿esto se explica por el espacio vacío, por el movimiento, por las fuerzas, o por una combinación?",
+      "solucion": "(a) Un gas se comprime fácil por el postulado 2 (espacio vacío): entre las partículas del gas hay grandes huecos vacíos, así que hay hacia dónde acercarlas. (b) Un olor cruza el cuarto solo por el postulado 3 (movimiento constante): las partículas del olor se mueven sin parar y se esparcen entre las del aire por difusión. (c) Las cosas se agrandan con el calor también por el postulado 3, ahora en su parte de temperatura: al calentar, las partículas se mueven más y se separan un poco más, de modo que el objeto entero se dilata (sin que las partículas crezcan). Tres fenómenos muy distintos —comprimir, oler, dilatarse— explicados por las mismas pocas reglas: esa es la fuerza del modelo, que con una sola lente entiendes cosas que a simple vista no se parecen en nada.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "Según el modelo de partículas, ¿qué hay en el espacio que queda ENTRE una partícula y otra en cualquier material?",
+      "opciones": [
+        "Espacio vacío: no hay nada",
+        "Aire",
+        "Partículas más pequeñas todavía",
+        "Agua"
+      ],
+      "correcta": 0,
+      "explicacion": "Entre las partículas hay espacio vacío, no aire. El aire también está hecho de partículas, así que decir que 'entre las partículas hay aire' no tiene sentido: sería meter otra materia en los huecos. El postulado dice claramente que ahí no hay nada."
+    },
+    {
+      "pregunta": "¿Qué le pasa a las partículas de un material cuando lo CALIENTAS?",
+      "opciones": [
+        "Las partículas crecen y se hinchan",
+        "Las partículas se mueven más rápido y se separan un poco más",
+        "Aparecen partículas nuevas",
+        "Las partículas se quedan más quietas"
+      ],
+      "correcta": 1,
+      "explicacion": "El calor hace que las partículas se muevan más rápido, y por eso en promedio se separan más. NO crecen ni se hinchan (siguen del mismo tamaño), y no aparecen partículas nuevas: son las mismas, solo más veloces y más separadas."
+    },
+    {
+      "pregunta": "En un SÓLIDO, ¿cómo están y qué hacen las partículas?",
+      "opciones": [
+        "Muy separadas y moviéndose rápido en todas direcciones",
+        "Juntas pero deslizándose unas sobre otras",
+        "Muy juntas y ordenadas, solo vibran en su sitio sin cambiar de lugar",
+        "Completamente quietas, sin ningún movimiento"
+      ],
+      "correcta": 2,
+      "explicacion": "En un sólido las partículas están muy juntas, ordenadas y sujetas por fuerzas fuertes, así que no cambian de lugar: solo vibran donde están. Por eso el sólido tiene forma y volumen fijos. (No están del todo quietas: vibran.)"
+    },
+    {
+      "pregunta": "¿Por qué un LÍQUIDO toma la forma del recipiente pero mantiene siempre el mismo volumen?",
+      "opciones": [
+        "Porque sus partículas están muy separadas como en un gas",
+        "Porque sus partículas crecen para llenar el recipiente",
+        "Porque sus partículas están fijas y solo vibran",
+        "Porque sus partículas siguen juntas (mismo volumen) pero se deslizan unas sobre otras (toma la forma)"
+      ],
+      "correcta": 3,
+      "explicacion": "En un líquido las partículas están juntas pero desordenadas, con fuerzas medianas que les permiten deslizarse: como siguen pegadas, el volumen no cambia; como pueden moverse de lugar, se amoldan a la forma del recipiente."
+    },
+    {
+      "pregunta": "Un gas se comprime con facilidad y un líquido casi nada. ¿Cuál es la razón, según el modelo?",
+      "opciones": [
+        "Que en el gas hay mucho espacio vacío entre las partículas y en el líquido casi no lo hay",
+        "Que las partículas del gas son más blandas",
+        "Que el gas no tiene partículas",
+        "Que las partículas del líquido están quietas"
+      ],
+      "correcta": 0,
+      "explicacion": "Comprimir es acercar las partículas. En el gas hay grandes espacios vacíos entre ellas, así que hay hacia dónde juntarlas (se comprime fácil). En el líquido las partículas ya están casi tocándose, sin apenas espacio, así que no hay hacia dónde apretarlas."
+    },
+    {
+      "pregunta": "¿Qué es, por dentro, la PRESIÓN de un gas encerrado en un recipiente?",
+      "opciones": [
+        "El peso del gas apoyado en el fondo",
+        "La suma de los millones de choques de las partículas del gas contra las paredes",
+        "Una fuerza misteriosa que aparece al encerrar el gas",
+        "El aire que empuja desde afuera del recipiente"
+      ],
+      "correcta": 1,
+      "explicacion": "Las partículas del gas se mueven sin parar y chocan contra las paredes; cada choque empuja un poquito, y la suma de millones de choques por segundo es la presión. No es magia ni peso: es contar choques."
+    },
+    {
+      "pregunta": "Calientas una lata cerrada con aire dentro, sin que cambie de tamaño ni entre más aire. ¿Qué le pasa a la presión y por qué?",
+      "opciones": [
+        "Baja, porque el calor separa las partículas de las paredes",
+        "No cambia, porque no entró más aire",
+        "Sube, porque las partículas se mueven más rápido y chocan más seguido y más fuerte contra las paredes",
+        "Sube, porque aparecen partículas nuevas de aire"
+      ],
+      "correcta": 2,
+      "explicacion": "Al calentar, las mismas partículas se mueven más rápido, así que chocan contra las paredes más a menudo y con más fuerza: más choques = más presión. No entró más aire ni aparecieron partículas nuevas; por eso una lata cerrada puede reventar al calentarse."
+    },
+    {
+      "pregunta": "Se abre un frasco de perfume en una esquina y al rato el olor llega al otro lado del cuarto sin que nadie sople. ¿Cómo se llama esto y qué lo explica?",
+      "opciones": [
+        "Presión; lo explican las fuerzas de atracción",
+        "Compresión; lo explica el espacio vacío",
+        "Dilatación; lo explica que el perfume crece",
+        "Difusión; lo explica que las partículas se mueven solas sin parar"
+      ],
+      "correcta": 3,
+      "explicacion": "Es la difusión: las partículas del perfume se mueven sin parar en todas direcciones y se esparcen entre las del aire hasta repartirse por el cuarto, sin que nadie las empuje. Es la prueba directa de que las partículas se mueven por sí mismas."
+    },
+    {
+      "pregunta": "Dejas caer una gota de tinta en agua QUIETA, sin revolver, y con agua CALIENTE. Comparada con agua fría, ¿qué predice el modelo?",
+      "opciones": [
+        "Se esparce más rápido en el agua caliente, porque las partículas se mueven más rápido",
+        "La tinta no se esparce si no revuelves",
+        "Se esparce igual de rápido en agua fría que en caliente",
+        "Se esparce más rápido en el agua fría"
+      ],
+      "correcta": 0,
+      "explicacion": "La tinta se esparce sola por difusión (las partículas se mueven sin parar). Como el calor hace que las partículas se muevan más rápido, en agua caliente la difusión es más veloz: la tinta tiñe el agua antes que en agua fría."
+    },
+    {
+      "pregunta": "Disuelves azúcar en agua y el líquido queda transparente pero dulce. Según el modelo, ¿dónde está el azúcar?",
+      "opciones": [
+        "Se transformó en agua",
+        "Sus partículas quedaron repartidas por los espacios entre las partículas de agua",
+        "Desapareció por completo",
+        "Se evaporó al aire"
+      ],
+      "correcta": 1,
+      "explicacion": "Las partículas de agua rodean y separan a las de azúcar y las reparten por los espacios vacíos entre las propias partículas de agua. El azúcar no desapareció ni se transformó: quedó dispersa, tan repartida que no se ve, pero la lengua sí la detecta. Por eso reaparece al evaporar el agua."
+    },
+    {
+      "pregunta": "Una barra de metal se alarga un poco al calentarla (se dilata). ¿Cuál es la explicación CORRECTA?",
+      "opciones": [
+        "Las partículas del metal crecen con el calor",
+        "Aparecen partículas nuevas de metal",
+        "Las partículas se mueven más y se separan un poco más entre sí; su tamaño no cambia",
+        "Las partículas se derriten y ocupan más sitio"
+      ],
+      "correcta": 2,
+      "explicacion": "Al calentar, las partículas se mueven más fuerte y, en promedio, se separan un poco más, así que el metal entero se agranda. Las partículas NO crecen ni se hinchan (siguen del mismo tamaño) y no aparecen nuevas: lo que aumenta es la separación entre ellas."
+    },
+    {
+      "pregunta": "¿Por qué se dejan pequeños huecos entre los rieles de una vía de tren?",
+      "opciones": [
+        "Para que las partículas del metal puedan crecer",
+        "Para que entre aire entre las partículas",
+        "Para que los rieles pesen menos",
+        "Para dejar sitio a que el metal se dilate en los días calurosos sin empujarse ni deformarse"
+      ],
+      "correcta": 3,
+      "explicacion": "Con el calor, las partículas del metal se separan un poco más y el riel se dilata (se alarga). El hueco le da ese sitio extra; sin él, los tramos se empujarían al alargarse y podrían pandearse o agrietarse. El metal se agranda porque sus partículas se separan, no porque crezcan."
+    },
+    {
+      "pregunta": "¿Cuál de estas afirmaciones sobre las partículas de un GAS es la CORRECTA?",
+      "opciones": [
+        "Están quietas y muy juntas",
+        "Están muy separadas y se mueven rápido en todas las direcciones",
+        "Están pegadas y solo vibran en su sitio",
+        "Crecen para llenar el recipiente"
+      ],
+      "correcta": 1,
+      "explicacion": "En un gas las partículas están muy separadas (mucho espacio vacío) y se mueven rápido en todas direcciones, más rápido que en el líquido o el sólido. No están quietas ni pegadas, y no crecen: el gas llena el recipiente porque sus partículas sueltas se esparcen, no porque se agranden."
+    },
+    {
+      "pregunta": "El vapor de agua sigue siendo agua. Según el modelo, ¿por qué hervir agua es un cambio de estado y no la convierte en otra sustancia?",
+      "opciones": [
+        "Porque son las mismas partículas, solo que ahora sueltas y más separadas; no cambian ni de tipo ni de tamaño",
+        "Porque las partículas se transforman en partículas de aire",
+        "Porque las partículas se destruyen y se crean otras nuevas",
+        "Porque el agua caliente pesa menos"
+      ],
+      "correcta": 0,
+      "explicacion": "Al hervir, las partículas del agua se mueven tan rápido que escapan sueltas, pero son exactamente las mismas partículas de siempre, del mismo tipo y tamaño: solo cambió cuánto se mueven y cuánto se separan. Por eso el vapor sigue siendo agua (cambio físico)."
+    },
+    {
+      "pregunta": "¿Qué es lo más poderoso del modelo de partículas como herramienta para pensar?",
+      "opciones": [
+        "Que sirve solo para explicar los gases",
+        "Que con unas pocas reglas explica y hasta predice muchos fenómenos muy distintos",
+        "Que hay que memorizar una regla distinta para cada fenómeno",
+        "Que describe cómo se ven las cosas por fuera"
+      ],
+      "correcta": 1,
+      "explicacion": "Un buen modelo no explica un solo hecho: con cuatro reglas sencillas explica los estados, los cambios de estado, la compresión, la presión, la difusión, disolver y la dilatación, y además permite predecir situaciones nuevas. Una sola lente para muchísimos fenómenos: eso es pensar como químico."
+    }
+  ]
+}

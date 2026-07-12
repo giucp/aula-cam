@@ -1,0 +1,358 @@
+{
+  "programa": "cumbre",
+  "materia": "Física",
+  "grado": "Cumbre Física 1er año",
+  "dominio": "Medir el mundo",
+  "tema": "Tablas y gráficas: presentar datos como un científico",
+  "referencias": [
+    "UK KS3/GCSE Working Scientifically — tables and graphs, independent/dependent variables, choosing line vs bar chart, drawing a line of best fit, anomalous results, misleading graphs (truncated axis, non-uniform scale)",
+    "Singapore Lower Secondary Science / IB MYP Sciences (Criterio C: procesar y presentar datos) — organizar datos en tablas con unidades, elegir el gráfico adecuado, leer tendencias, interpolar y extrapolar",
+    "Japan MEXT Grade 7 Science — registrar mediciones en tablas, representar relaciones entre variables, leer valores y tendencias en gráficas",
+    "IB MYP Sciences (Criterio D: reflexionar/evaluar) — juzgar críticamente una gráfica, detectar datos anómalos y representaciones engañosas"
+  ],
+  "resumen": {
+    "titulo": "Tablas y gráficas: contar la historia que esconden los datos",
+    "intro": "En los temas anteriores aprendiste a MEDIR con cuidado: masa con la balanza, longitud con la regla, volumen y densidad, y a juzgar qué tan buena es una medida. Pero medir es solo el primer paso. Cuando repites una medición cambiando algo —la temperatura de un agua que se enfría minuto a minuto, la longitud de un resorte al colgarle más y más masa— terminas con un montón de números sueltos que, así amontonados, no cuentan nada. Un científico da un paso más: ORGANIZA esos números en una tabla y los dibuja en una gráfica, porque una buena gráfica hace VISIBLE de un solo golpe algo que en una lista de números estaría escondido. En este tema no vas a aprender solo a ARMAR tablas y gráficas, sino algo más difícil y más valioso: a LEERLAS con ojo crítico, elegir el tipo correcto para cada dato, distinguir un error de medición de un dato bueno y descubrir cuándo una gráfica está diseñada para engañarte.",
+    "secciones": [
+      {
+        "titulo": "De números sueltos a una tabla ordenada",
+        "explicacion": "Imagina que anotas la temperatura de un agua caliente que se enfría, cada dos minutos. Si dejas los valores tirados en cualquier orden, no se entiende nada. Una TABLA DE DATOS es la forma ordenada de guardarlos: se arma con dos columnas, una para la magnitud que TÚ vas cambiando a propósito y otra para lo que MIDES cada vez. Cada columna lleva un ENCABEZADO con el nombre de la magnitud y su UNIDAD entre paréntesis; por ejemplo 'Tiempo (min)' y 'Temperatura (°C)'. Y las filas se ordenan de menor a mayor en la magnitud que cambias, para que la tabla se lea de un vistazo. Cuidado con un error muy común: olvidar las unidades en el encabezado. Un '25' a secas puede ser 25 minutos, 25 grados o 25 gramos, y nadie sabría cuál. La unidad va UNA vez en el encabezado, no repetida en cada casilla.",
+        "pasos": [
+          "Decide qué magnitud vas a cambiar tú y cuál vas a medir como respuesta.",
+          "Haz dos columnas y ponles un encabezado con el nombre y la unidad entre paréntesis.",
+          "Ordena las filas de menor a mayor según la magnitud que cambias.",
+          "Anota cada par de valores en su fila; la unidad ya está en el encabezado, no la repitas en cada casilla."
+        ],
+        "ejemplo": "Tabla del enfriamiento de un agua: la primera columna es 'Tiempo (min)' con los valores 0, 2, 4, 6, 8; la segunda es 'Temperatura (°C)' con 80, 60, 45, 35, 30. Así ordenado, ya se nota que el agua baja de temperatura, y al principio baja más rápido que al final."
+      },
+      {
+        "titulo": "Variable independiente y dependiente: quién manda a quién",
+        "explicacion": "En todo experimento hay dos protagonistas. La VARIABLE INDEPENDIENTE es la que TÚ eliges y controlas, la que cambias a propósito (o la que avanza sola sin que puedas frenarla, como el tiempo); es la 'entrada' del experimento. La VARIABLE DEPENDIENTE es la que MIDES como respuesta, la que cambia PORQUE cambió la otra; es la 'salida'. Se llama dependiente justamente porque su valor DEPENDE del de la independiente. En el agua que se enfría, tú decides en qué momentos anotar (el tiempo es la independiente) y mides la temperatura que hay en cada momento (la dependiente). En un resorte, tú eliges cuánta masa colgar (independiente) y mides cuánto se estira (dependiente). Un truco infalible para no confundirte: completa la frase 'la ___ depende de la ___'. Lo que encaja en el primer hueco es la dependiente; lo del segundo, la independiente. Suena natural decir 'la temperatura depende del tiempo', y no al revés.",
+        "pasos": [
+          "Pregúntate: ¿qué estoy cambiando yo a propósito, o qué avanza solo? Esa es la independiente.",
+          "Pregúntate: ¿qué mido como respuesta, qué cambia por culpa de lo anterior? Esa es la dependiente.",
+          "Comprueba con la frase 'la ___ depende de la ___': el primer hueco es la dependiente."
+        ],
+        "ejemplo": "Al estudiar cómo crece una planta, la independiente es el tiempo (los días que pasan) y la dependiente es la altura de la planta, porque la altura depende de cuántos días pasaron, no al revés."
+      },
+      {
+        "titulo": "Los ejes: por qué la independiente va en X y la dependiente en Y",
+        "explicacion": "Una gráfica se dibuja sobre dos rectas llamadas EJES: el eje horizontal, que se llama eje X, y el eje vertical, el eje Y. La regla que se respeta en todos los sistemas del mundo es: la variable INDEPENDIENTE va en el eje X (horizontal) y la DEPENDIENTE en el eje Y (vertical). ¿Por qué precisamente así y no al revés? Porque leemos de izquierda a derecha: al avanzar por el eje X vamos recorriendo la 'entrada' (el tiempo que pasa, la masa que agregamos), y al mirar hacia arriba vemos cómo RESPONDE la salida. Así la gráfica se lee como una historia con principio y final: 'a medida que avanza esto (X), aquello (Y) sube, baja o se mantiene'. Además de los ejes bien puestos, una gráfica completa tiene TÍTULO (qué representa), cada eje ROTULADO con el nombre de la magnitud y su UNIDAD, una ESCALA con marcas parejas, y los PUNTOS de los datos. Si falta alguna de esas partes, la gráfica queda coja: sin unidades no sabemos de qué habla, sin título no sabemos qué mide.",
+        "pasos": [
+          "Pon la variable independiente en el eje horizontal (X).",
+          "Pon la dependiente en el eje vertical (Y).",
+          "Rotula cada eje con su magnitud y su unidad, y ponle un título a la gráfica.",
+          "Marca los puntos (par de valores de la tabla) sobre esos ejes."
+        ],
+        "ejemplo": "En la gráfica del agua que se enfría, el tiempo (min) va en el eje X y la temperatura (°C) en el eje Y. Se lee de izquierda a derecha: al avanzar el tiempo, la temperatura baja, y baja más rápido al principio (la curva cae más empinada) que al final (donde casi se aplana).",
+        "figura": "<svg viewBox=\"0 0 380 280\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"195\" y=\"20\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">Enfriamiento de una taza de agua</text><line x1=\"55\" y1=\"40\" x2=\"55\" y2=\"230\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"55\" y1=\"230\" x2=\"360\" y2=\"230\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"52\" y1=\"135\" x2=\"55\" y2=\"135\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"52\" y1=\"40\" x2=\"55\" y2=\"40\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><text x=\"48\" y=\"234\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">0</text><text x=\"48\" y=\"139\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">40</text><text x=\"48\" y=\"44\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">80</text><text x=\"205\" y=\"245\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">4</text><text x=\"355\" y=\"245\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">8</text><text x=\"55\" y=\"245\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">0</text><text transform=\"rotate(-90 18 135)\" x=\"18\" y=\"135\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0E9486\">Temperatura (°C)</text><text x=\"205\" y=\"263\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0E9486\">Tiempo (min)</text><polyline points=\"55,40 130,88 205,123 280,147 355,159\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><circle cx=\"55\" cy=\"40\" r=\"3.5\" fill=\"#0E9486\"/><circle cx=\"130\" cy=\"88\" r=\"3.5\" fill=\"#0E9486\"/><circle cx=\"205\" cy=\"123\" r=\"3.5\" fill=\"#0E9486\"/><circle cx=\"280\" cy=\"147\" r=\"3.5\" fill=\"#0E9486\"/><circle cx=\"355\" cy=\"159\" r=\"3.5\" fill=\"#0E9486\"/></svg>"
+      },
+      {
+        "titulo": "Elegir bien la escala",
+        "explicacion": "La ESCALA es cuánto vale cada 'paso' o cuadrito del eje. Es una decisión tuya, pero hay dos reglas de oro. Primera: los intervalos deben ser IGUALES en todo el eje; si un cuadrito vale 5, todos valen 5, no unos 5 y otros 20. Segunda: lo ideal es que el eje empiece en 0, para que las alturas de la gráfica representen fielmente los valores. También conviene elegir una escala que aproveche el espacio: si tus datos llegan hasta 20, no pongas un eje que llegue a 1000 (los puntos quedarían todos aplastados abajo). Elegir bien la escala no es un detalle de adorno: una escala con intervalos desiguales, o que no empieza en 0, puede hacer que la gráfica CUENTE una historia falsa, como veremos al final.",
+        "pasos": [
+          "Mira el valor más grande de tus datos para saber hasta dónde llega el eje.",
+          "Reparte el eje en intervalos IGUALES (todos los cuadritos valen lo mismo).",
+          "Siempre que puedas, haz que el eje empiece en 0.",
+          "Elige el 'paso' para que los datos ocupen bien el espacio, ni aplastados ni desbordados."
+        ],
+        "ejemplo": "Si cada cuadrito del eje vertical vale 5 unidades y empieza en 0, un punto que está a la altura de 3 cuadritos vale 5 × 3 = 15. Como los cuadritos son todos iguales, contar cuadritos y leer valores es directo."
+      },
+      {
+        "titulo": "Tres tipos de gráfico y cuándo usar cada uno",
+        "explicacion": "No todos los datos se dibujan igual; elegir el gráfico equivocado es un error de análisis, no solo de estética. Hay tres tipos básicos. GRÁFICO DE LÍNEAS: se usa cuando la variable del eje X es un número que cambia de forma CONTINUA (el tiempo, la temperatura, la masa), es decir que entre dos medidas 'hay' valores intermedios que tendrían sentido. Por eso unimos los puntos con una línea: para mostrar cómo cambia una cosa a medida que cambia la otra, y poder ver la tendencia. GRÁFICO DE BARRAS: se usa cuando en el eje X hay CATEGORÍAS separadas (tipos de aves, ciudades distintas, materiales diferentes) que no tienen valores 'entre medio'. Se dibujan barras separadas para COMPARAR cantidades, y NO se unen con línea, porque no existe nada entre una categoría y la siguiente. GRÁFICO DE PUNTOS (o nube de puntos): se usa para ver la RELACIÓN entre dos cantidades medidas —¿cuando una sube, la otra también?— dibujando solo los puntos, sin unirlos, para descubrir si se acomodan siguiendo una tendencia. La prueba para decidir: pregúntate si tiene sentido un valor 'entre' dos puntos del eje X. Si lo tiene (como un tiempo de 2,5 min), va línea; si no (no existe una especie 'entre' la A y la B), van barras.",
+        "pasos": [
+          "¿El eje X es un número continuo (tiempo, temperatura, masa)? Usa gráfico de LÍNEAS.",
+          "¿El eje X son categorías separadas (tipos, lugares, objetos)? Usa gráfico de BARRAS.",
+          "¿Quieres ver si dos medidas se relacionan? Usa una nube de PUNTOS, sin unirlos.",
+          "Duda clave: ¿tiene sentido un valor intermedio en el eje X? Sí → línea; No → barras."
+        ],
+        "ejemplo": "Contar cuántas aves de cada especie (A, B, C, D) se vieron es comparar categorías, así que van BARRAS. Unir esas barras con una línea sería un error: sugeriría que existe una especie 'entre la A y la B', lo cual no significa nada.",
+        "figura": "<svg viewBox=\"0 0 340 240\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"170\" y=\"20\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">Aves observadas por especie</text><line x1=\"45\" y1=\"40\" x2=\"45\" y2=\"200\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"45\" y1=\"200\" x2=\"320\" y2=\"200\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"42\" y1=\"120\" x2=\"45\" y2=\"120\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"42\" y1=\"40\" x2=\"45\" y2=\"40\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><text x=\"40\" y=\"204\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">0</text><text x=\"40\" y=\"124\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">8</text><text x=\"40\" y=\"44\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">16</text><rect x=\"63\" y=\"80\" width=\"34\" height=\"120\" fill=\"#12B5A4\" fill-opacity=\"0.55\" stroke=\"#0E9486\" stroke-width=\"1.5\"/><rect x=\"123\" y=\"120\" width=\"34\" height=\"80\" fill=\"#12B5A4\" fill-opacity=\"0.55\" stroke=\"#0E9486\" stroke-width=\"1.5\"/><rect x=\"183\" y=\"50\" width=\"34\" height=\"150\" fill=\"#12B5A4\" fill-opacity=\"0.55\" stroke=\"#0E9486\" stroke-width=\"1.5\"/><rect x=\"243\" y=\"150\" width=\"34\" height=\"50\" fill=\"#12B5A4\" fill-opacity=\"0.55\" stroke=\"#0E9486\" stroke-width=\"1.5\"/><text x=\"80\" y=\"214\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">A</text><text x=\"140\" y=\"214\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">B</text><text x=\"200\" y=\"214\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">C</text><text x=\"260\" y=\"214\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">D</text><text x=\"182\" y=\"230\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0E9486\">Especie</text></svg>"
+      },
+      {
+        "titulo": "Leer una gráfica: valor, tendencia, máximo y mínimo",
+        "explicacion": "Una gráfica sirve de poco si no sabes SACARLE la información. Hay tres cosas que siempre puedes leer. Primero, un VALOR PUNTUAL: para saber cuánto vale la dependiente en cierto punto, subes desde ese valor del eje X hasta tocar la curva o la barra, y desde ahí te corres hacia el eje Y para leer la altura. Segundo, la TENDENCIA: la 'forma' general de la gráfica. Si la línea sube de izquierda a derecha, la magnitud aumenta; si baja, disminuye; si va horizontal, se mantiene constante. Y la INCLINACIÓN dice qué tan rápido: cuanto más empinada la línea, más rápido cambia; cuanto más plana, más despacio. Tercero, el MÁXIMO y el MÍNIMO: el punto más alto de la gráfica es el valor mayor de la dependiente, y el más bajo, el menor. Saber leer estas tres cosas es la diferencia entre 'mirar' una gráfica y ENTENDERLA.",
+        "pasos": [
+          "Para un valor: sube desde el eje X hasta la curva, y de ahí lee la altura en el eje Y.",
+          "Para la tendencia: mira si la línea sube, baja o se mantiene, y qué tan empinada está.",
+          "Para el máximo: busca el punto más alto; para el mínimo, el más bajo.",
+          "Traduce siempre la lectura a palabras con sus unidades ('a los 4 min había 45 °C')."
+        ],
+        "ejemplo": "En la gráfica del enfriamiento: a los 4 minutos la temperatura es de 45 °C (subes desde el 4 hasta la curva y lees la altura). La tendencia es que baja todo el tiempo, pero más rápido al principio, donde la línea está más empinada. El máximo está al inicio (80 °C, a los 0 min) y el mínimo al final."
+      },
+      {
+        "titulo": "Interpolar y extrapolar: estimar con cuidado",
+        "explicacion": "A veces necesitas un valor que no mediste. Hay dos maneras de estimarlo, y una es mucho más segura que la otra. INTERPOLAR es estimar un valor que cae DENTRO del rango que sí mediste, entre dos puntos conocidos. Es bastante confiable, porque si la tendencia entre esos dos puntos es clara, lo de en medio casi seguro la sigue. EXTRAPOLAR es estimar un valor MÁS ALLÁ del último dato medido, estirando la tendencia hacia afuera. Esto es arriesgado, porque no tienes ninguna garantía de que la tendencia siga igual fuera de lo que probaste: podría cambiar de golpe. Un resorte se estira de forma pareja mientras le cuelgas masas moderadas, pero si extrapolas a masas enormes, en la realidad llega un punto en que se deforma para siempre o se rompe, y la línea recta deja de valer. El agua que calientas sube de temperatura de forma constante, pero si extrapolas creyendo que llegará a 200 °C, te equivocas: al hervir se queda clavada en 100 °C. Por eso extrapolar no está prohibido, pero se hace con cuidado y avisando siempre que es una predicción, no un dato seguro.",
+        "pasos": [
+          "Interpolar: estimar un valor ENTRE dos puntos medidos; bastante seguro si la tendencia es clara.",
+          "Extrapolar: estimar un valor MÁS ALLÁ del último punto medido; arriesgado.",
+          "Antes de extrapolar, pregúntate si la tendencia podría cambiar fuera del rango probado.",
+          "Al extrapolar, deja claro que es una predicción, no una medición."
+        ],
+        "ejemplo": "Si mediste la longitud de un resorte para masas de 0 a 80 g y quieres saber cuánto se estira con 50 g, INTERPOLAS entre dos puntos medidos: es fiable. Pero decir cuánto mediría con 200 g es EXTRAPOLAR mucho más allá de lo probado, y ahí el resorte podría ya no responder igual: esa predicción hay que tomarla con pinzas."
+      },
+      {
+        "titulo": "Detectar un dato anómalo",
+        "explicacion": "Cuando dibujas tus puntos, a veces uno se sale CLARAMENTE de la tendencia que siguen todos los demás: mientras el resto forma una línea bonita, ese punto queda muy arriba o muy abajo, solo. Se llama DATO ANÓMALO (o atípico). Casi siempre no es un descubrimiento, sino un ERROR de medición: leíste mal el instrumento, anotaste un número equivocado, o algo se movió justo en esa medida. Lo importante es qué hacer con él, y aquí se separa un buen científico de uno descuidado. Lo correcto NO es borrarlo en silencio para que la gráfica quede linda: primero lo IDENTIFICAS, y si es posible, REPITES esa medición para ver si se corrige. Un dato raro se investiga, no se esconde. Y ojo: para trazar la tendencia (la línea que resume el comportamiento), el dato anómalo NO se toma en cuenta, porque no representa lo que de verdad pasa.",
+        "pasos": [
+          "Fíjate si algún punto se aleja mucho de la tendencia que siguen los demás.",
+          "Sospecha primero de un error de medición (lo más frecuente).",
+          "Si puedes, REPITE esa medición para confirmar o corregir.",
+          "No lo uses para trazar la tendencia, pero tampoco lo borres sin dejar constancia."
+        ],
+        "ejemplo": "Al calentar un líquido, cinco puntos forman una subida pareja y uno solo queda disparado muy por encima. Ese punto es un dato anómalo: lo más probable es que se leyera mal el termómetro. Lo correcto es repetir esa medida; para trazar la tendencia se ignora ese punto.",
+        "figura": "<svg viewBox=\"0 0 340 260\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"170\" y=\"20\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#3B2B4A\">Temperatura al calentar (una medida falló)</text><line x1=\"45\" y1=\"40\" x2=\"45\" y2=\"210\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"45\" y1=\"210\" x2=\"320\" y2=\"210\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"90\" y1=\"139\" x2=\"315\" y2=\"68\" stroke=\"#8C7C93\" stroke-width=\"1.5\" stroke-dasharray=\"5,4\"/><circle cx=\"90\" cy=\"139\" r=\"3.5\" fill=\"#0E9486\"/><circle cx=\"135\" cy=\"125\" r=\"3.5\" fill=\"#0E9486\"/><circle cx=\"180\" cy=\"111\" r=\"3.5\" fill=\"#0E9486\"/><circle cx=\"270\" cy=\"83\" r=\"3.5\" fill=\"#0E9486\"/><circle cx=\"315\" cy=\"68\" r=\"3.5\" fill=\"#0E9486\"/><circle cx=\"225\" cy=\"40\" r=\"7\" fill=\"none\" stroke=\"#7C4DFF\" stroke-width=\"2.5\"/><circle cx=\"225\" cy=\"40\" r=\"3\" fill=\"#5A3AAF\"/><text x=\"233\" y=\"38\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#5A3AAF\">dato anómalo</text><text x=\"182\" y=\"232\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0E9486\">Tiempo (min)</text><text transform=\"rotate(-90 16 125)\" x=\"16\" y=\"125\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0E9486\">Temperatura (°C)</text></svg>"
+      },
+      {
+        "titulo": "Gráficos engañosos: cuando la imagen miente",
+        "explicacion": "Una gráfica es muy convincente, y por eso mismo se usa a veces para engañar. El truco más común es el EJE CORTADO: en lugar de empezar el eje vertical en 0, se empieza en un número alto y cercano a los datos. Así, una diferencia pequeña entre dos valores se ve enorme, porque solo dibujamos el pedacito de arriba. Por ejemplo, dos grupos con 48 y 50 aprobados son casi iguales (se diferencian en 2), pero si el eje empieza en 46 en vez de en 0, una barra parece el DOBLE de la otra. Otro truco es usar INTERVALOS DESIGUALES: cuadritos que a veces valen 5 y a veces 20, para inflar o aplanar partes de la curva a conveniencia. Y otro es comparar dos gráficas puestas lado a lado pero con ESCALAS distintas, como si fueran comparables. La defensa es siempre la misma: antes de creerte lo que 'parece', mira DÓNDE empieza el eje y si los intervalos son parejos. La misma tabla de datos, dibujada honestamente (eje desde 0, intervalos iguales), cuenta la verdad; dibujada con trucos, cuenta una mentira.",
+        "pasos": [
+          "Revisa DÓNDE empieza el eje vertical: si no empieza en 0, sospecha.",
+          "Revisa que los intervalos del eje sean todos iguales.",
+          "Si comparan dos gráficas, comprueba que usen la MISMA escala.",
+          "Reconstruye mentalmente la gráfica con el eje desde 0 para ver la diferencia real."
+        ],
+        "ejemplo": "Con los mismos datos (48 y 50), la gráfica de la izquierda usa un eje que empieza en 46 y hace parecer que B es el doble de A; la de la derecha empieza en 0 y muestra la verdad: son casi iguales. No cambiaron los datos, cambió el eje.",
+        "figura": "<svg viewBox=\"0 0 380 250\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"105\" y=\"20\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"#5A3AAF\">Eje cortado (engañoso)</text><line x1=\"45\" y1=\"40\" x2=\"45\" y2=\"200\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"45\" y1=\"200\" x2=\"180\" y2=\"200\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><text x=\"40\" y=\"204\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#3B2B4A\">46</text><text x=\"40\" y=\"44\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#3B2B4A\">52</text><rect x=\"70\" y=\"147\" width=\"28\" height=\"53\" fill=\"#7C4DFF\" fill-opacity=\"0.55\" stroke=\"#5A3AAF\" stroke-width=\"1.5\"/><rect x=\"120\" y=\"93\" width=\"28\" height=\"107\" fill=\"#7C4DFF\" fill-opacity=\"0.55\" stroke=\"#5A3AAF\" stroke-width=\"1.5\"/><text x=\"84\" y=\"214\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#3B2B4A\">A</text><text x=\"134\" y=\"214\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#3B2B4A\">B</text><text x=\"290\" y=\"20\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"#0E9486\">Eje desde 0 (honesto)</text><line x1=\"230\" y1=\"40\" x2=\"230\" y2=\"200\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"230\" y1=\"200\" x2=\"365\" y2=\"200\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><text x=\"225\" y=\"204\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#3B2B4A\">0</text><text x=\"225\" y=\"44\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#3B2B4A\">52</text><rect x=\"255\" y=\"52\" width=\"28\" height=\"148\" fill=\"#12B5A4\" fill-opacity=\"0.55\" stroke=\"#0E9486\" stroke-width=\"1.5\"/><rect x=\"305\" y=\"46\" width=\"28\" height=\"154\" fill=\"#12B5A4\" fill-opacity=\"0.55\" stroke=\"#0E9486\" stroke-width=\"1.5\"/><text x=\"269\" y=\"214\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#3B2B4A\">A</text><text x=\"319\" y=\"214\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#3B2B4A\">B</text><text x=\"190\" y=\"240\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">Mismos datos: A = 48, B = 50</text></svg>"
+      },
+      {
+        "titulo": "Lo más importante: aprender a JUZGAR una gráfica",
+        "explicacion": "Ya sabes armar tablas, elegir el gráfico correcto y leer valores y tendencias. Ahora viene la habilidad que de verdad te separa: no solo mirar una gráfica, sino EVALUARLA, ponerle nota como haría un científico exigente. Cada vez que te topes con una gráfica —en un examen, en una noticia, en una publicidad— pásala por este control mental. Con estas preguntas dejas de creerte cualquier gráfica y empiezas a juzgar si merece tu confianza. Es exactamente lo que hace un científico antes de aceptar un resultado: dudar con método.",
+        "pasos": [
+          "¿Tiene título y ambos ejes rotulados con su unidad? Si no, algo falta.",
+          "¿La escala es uniforme (intervalos iguales) y el eje empieza en 0?",
+          "¿El tipo de gráfico (línea, barras o puntos) es el correcto para estos datos?",
+          "¿Hay algún dato anómalo que deberían haber revisado?",
+          "¿Alguien está exagerando con un eje cortado o escalas tramposas?"
+        ],
+        "ejemplo": "Te muestran una gráfica de barras impactante donde una marca 'vende el triple' que otra. Aplicas el control: miras el eje vertical y descubres que empieza en 46, no en 0. Reconstruyendo con eje desde 0, la diferencia real es mínima. Juzgaste la gráfica en vez de tragártela."
+      }
+    ],
+    "idea_clave": "Medir es solo el inicio: un científico ORGANIZA los datos en una tabla (columnas con encabezado y unidad, ordenadas) y los dibuja en una gráfica para hacer visible su historia. La variable INDEPENDIENTE (la que controlas o avanza sola) va en el eje X y la DEPENDIENTE (la que mides como respuesta) en el eje Y. Se usa gráfico de LÍNEAS para variables numéricas continuas (tiempo, temperatura), de BARRAS para categorías separadas y de PUNTOS para ver relaciones. De una gráfica se leen valores, tendencias y máximos/mínimos; INTERPOLAR (estimar dentro del rango) es seguro, EXTRAPOLAR (fuera del rango) es arriesgado. Un DATO ANÓMALO suele ser un error: se investiga, no se esconde. Y hay que JUZGAR toda gráfica: título, unidades, escala uniforme, eje desde 0 y tipo correcto, porque un eje cortado puede hacer que la imagen mienta."
+  },
+  "practica": [
+    {
+      "enunciado": "Un estudiante deja enfriar una taza de agua caliente y anota su temperatura cada cierto tiempo. Identifica cuál es la variable independiente y cuál la dependiente, di en qué eje va cada una y justifica tu elección con la frase 'la ___ depende de la ___'. ¿Qué tipo de gráfico conviene, de líneas o de barras, y por qué?",
+      "pista": "La independiente es la que avanza sola o controlas tú; la dependiente es la que mides como respuesta. Para el tipo de gráfico, pregúntate si el eje X es un número continuo (con valores intermedios que tengan sentido) o categorías separadas.",
+      "solucion": "La variable INDEPENDIENTE es el tiempo (avanza solo; tú decides cuándo anotar) y va en el eje X. La DEPENDIENTE es la temperatura (la mides como respuesta) y va en el eje Y. La frase que lo confirma es 'la temperatura depende del tiempo', no al revés. Conviene un gráfico de LÍNEAS, porque el tiempo es una magnitud continua: entre 2 y 4 minutos existen valores intermedios (como 3 min) que tienen sentido, así que unir los puntos muestra bien cómo baja la temperatura.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Observa la gráfica de la altura de una planta a lo largo de los días. (a) ¿Qué altura tenía a los 4 días? (b) Describe la tendencia. (c) Estima por interpolación la altura a los 3 días. (d) Alguien afirma que a los 30 días medirá 47 cm siguiendo la misma recta. ¿Es una interpolación o una extrapolación, y por qué hay que tomar esa afirmación con cuidado?",
+      "pista": "Para (a) sube desde el 4 del eje X hasta el punto y lee la altura. Para (c), 3 días cae entre dos puntos medidos: estima en medio. Para (d), fíjate si 30 días está dentro o fuera del rango que se midió (0 a 8 días).",
+      "solucion": "(a) A los 4 días la planta medía 8 cm (el punto cae justo sobre la marca de 8). (b) La tendencia es de crecimiento constante: la altura sube de forma pareja, en línea recta, unos 1,5 cm por día. (c) A los 3 días, interpolando entre los 5 cm de los 2 días y los 8 cm de los 4 días, la altura es de unos 6,5 cm. (d) Es una EXTRAPOLACIÓN, porque 30 días queda muy lejos del rango medido (solo se midió hasta 8 días). Hay que tomarla con cuidado porque nada garantiza que la planta siga creciendo a ese ritmo para siempre: lo normal es que en algún momento deje de crecer, así que la recta estirada tan lejos no es de fiar.",
+      "figura": "<svg viewBox=\"0 0 360 260\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"180\" y=\"20\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">Altura de una planta</text><line x1=\"50\" y1=\"40\" x2=\"50\" y2=\"210\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"50\" y1=\"210\" x2=\"335\" y2=\"210\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"47\" y1=\"125\" x2=\"50\" y2=\"125\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"47\" y1=\"40\" x2=\"50\" y2=\"40\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><text x=\"45\" y=\"214\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">0</text><text x=\"45\" y=\"129\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">8</text><text x=\"45\" y=\"44\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">16</text><text x=\"50\" y=\"225\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">0</text><text x=\"190\" y=\"225\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">4</text><text x=\"330\" y=\"225\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">8</text><polyline points=\"50,189 120,157 190,125 260,93 330,61\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><circle cx=\"50\" cy=\"189\" r=\"3.5\" fill=\"#0E9486\"/><circle cx=\"120\" cy=\"157\" r=\"3.5\" fill=\"#0E9486\"/><circle cx=\"190\" cy=\"125\" r=\"3.5\" fill=\"#0E9486\"/><circle cx=\"260\" cy=\"93\" r=\"3.5\" fill=\"#0E9486\"/><circle cx=\"330\" cy=\"61\" r=\"3.5\" fill=\"#0E9486\"/><text x=\"192\" y=\"248\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0E9486\">Tiempo (días)</text><text transform=\"rotate(-90 16 125)\" x=\"16\" y=\"125\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0E9486\">Altura (cm)</text></svg>"
+    },
+    {
+      "enunciado": "Para cada situación, decide qué tipo de gráfico (líneas, barras o nube de puntos) es el más adecuado y explica por qué: (a) cómo cambia la temperatura de un horno cada minuto mientras se calienta; (b) cuántos estudiantes de un salón prefieren cada uno de cuatro deportes; (c) si los alumnos más altos tienden a tener también el pie más grande, midiendo estatura y talla de zapato de 20 personas.",
+      "pista": "Pregúntate en cada caso qué va en el eje X: ¿un número continuo con valores intermedios, categorías separadas, o dos medidas cuya relación quieres ver?",
+      "solucion": "(a) Gráfico de LÍNEAS: el tiempo es una magnitud continua (entre minuto y minuto hay valores intermedios), y unir los puntos muestra cómo sube la temperatura. (b) Gráfico de BARRAS: los deportes son categorías separadas, sin nada 'entre medio', y las barras permiten comparar cuántos prefieren cada uno. (c) NUBE DE PUNTOS: quieres ver la relación entre dos medidas (estatura y talla), así que dibujas un punto por persona sin unirlos, para descubrir si al aumentar la estatura tiende a aumentar la talla. Elegir bien el tipo es parte del análisis: usar líneas en el caso (b) sugeriría, sin sentido, que hay deportes 'entre' dos categorías.",
+      "figura": ""
+    },
+    {
+      "enunciado": "La gráfica muestra la longitud de un resorte al colgarle distintas masas (se midió de 0 a 80 g). (a) Usando interpolación, estima la longitud del resorte con una masa de 50 g. (b) La línea punteada extiende la tendencia hasta 100 g. Explica por qué extrapolar a masas mucho mayores (por ejemplo 300 g) sería arriesgado.",
+      "pista": "Para (a), 50 g cae entre los 40 g y los 60 g medidos: lee la altura a media distancia. Para (b), piensa qué le pasa de verdad a un resorte cuando le cuelgas una masa enorme.",
+      "solucion": "(a) A 40 g el resorte mide 14 cm y a 60 g mide 16 cm; 50 g está justo en medio, así que la longitud es de unos 15 cm (interpolación segura, porque cae dentro del rango medido y la tendencia es una recta clara). (b) Extrapolar a 300 g sería arriesgado porque está muy lejos de lo que se midió (solo hasta 80 g). Un resorte se estira de forma pareja solo mientras las masas son moderadas; con una masa enorme llega a su límite, se deforma de manera permanente o se rompe, y la recta deja de valer. La predicción fuera del rango medido no es un dato de fiar.",
+      "figura": "<svg viewBox=\"0 0 360 270\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"180\" y=\"20\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">Estiramiento de un resorte</text><line x1=\"55\" y1=\"40\" x2=\"55\" y2=\"220\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"55\" y1=\"220\" x2=\"340\" y2=\"220\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"52\" y1=\"130\" x2=\"55\" y2=\"130\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"52\" y1=\"40\" x2=\"55\" y2=\"40\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><text x=\"50\" y=\"224\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">0</text><text x=\"50\" y=\"134\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">10</text><text x=\"50\" y=\"44\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">20</text><text x=\"111\" y=\"235\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">20</text><text x=\"167\" y=\"235\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">40</text><text x=\"223\" y=\"235\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">60</text><text x=\"279\" y=\"235\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">80</text><text x=\"335\" y=\"235\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">100</text><polyline points=\"55,130 111,112 167,94 223,76 279,58\" fill=\"none\" stroke=\"#12B5A4\" stroke-width=\"2\"/><line x1=\"279\" y1=\"58\" x2=\"335\" y2=\"40\" stroke=\"#8C7C93\" stroke-width=\"2\" stroke-dasharray=\"5,4\"/><circle cx=\"55\" cy=\"130\" r=\"3.5\" fill=\"#0E9486\"/><circle cx=\"111\" cy=\"112\" r=\"3.5\" fill=\"#0E9486\"/><circle cx=\"167\" cy=\"94\" r=\"3.5\" fill=\"#0E9486\"/><circle cx=\"223\" cy=\"76\" r=\"3.5\" fill=\"#0E9486\"/><circle cx=\"279\" cy=\"58\" r=\"3.5\" fill=\"#0E9486\"/><text x=\"200\" y=\"258\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0E9486\">Masa colgada (g)</text><text transform=\"rotate(-90 18 130)\" x=\"18\" y=\"130\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0E9486\">Longitud (cm)</text></svg>"
+    },
+    {
+      "enunciado": "En un experimento se midió la temperatura de un líquido cada minuto. Los valores obtenidos, en orden, fueron: 22, 27, 32, 58, 42, 47 (en °C). (a) ¿Cuál dato parece anómalo y por qué? (b) ¿Qué valor tendría más sentido en su lugar? (c) ¿Qué debería hacer el estudiante con ese dato: borrarlo sin más, dejarlo tal cual, o alguna otra cosa?",
+      "pista": "Fíjate en el patrón: casi todos suben de a 5 en 5. Busca el número que rompe ese ritmo. Para (c), recuerda lo que hace un buen científico con un dato raro.",
+      "solucion": "(a) El dato anómalo es el 58 °C. Todos los demás suben parejo, de 5 en 5 (22, 27, 32, ... 42, 47), pero el 58 se dispara muy por encima y rompe la tendencia. (b) Siguiendo el patrón, en ese lugar debería haber alrededor de 37 °C (entre 32 y 42). (c) No debe borrarlo en silencio. Lo correcto es IDENTIFICARLO como sospechoso y, si puede, REPETIR esa medición para confirmar si fue un error de lectura. Para trazar la tendencia, ese punto no se toma en cuenta, pero se deja constancia de que ocurrió: un dato raro se investiga, no se esconde.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un anuncio muestra una gráfica de barras donde el 'Producto B' parece rendir el triple que el 'Producto A'. Al mirar el eje vertical, ves que empieza en 90 y llega a 100, y que las barras reales valen A = 92 y B = 96. Explica por qué la gráfica engaña y cómo se vería la diferencia real si el eje empezara en 0.",
+      "pista": "Piensa qué parte de las barras se está mostrando cuando el eje arranca en 90 en vez de 0. Calcula la diferencia real entre 92 y 96.",
+      "solucion": "La gráfica engaña porque tiene el EJE CORTADO: empieza en 90 en lugar de en 0, así que solo se dibuja el pedacito de arriba de cada barra (de 90 hacia arriba). Como B llega a 96 y A a 92, sobre un eje que solo va de 90 a 100 la barra de B (6 unidades por encima de 90) se ve muchísimo más alta que la de A (2 unidades), y parece el triple. Pero la diferencia REAL es de solo 4 (96 frente a 92), o sea muy pequeña. Si el eje empezara en 0, las dos barras se verían casi iguales de altas y quedaría claro que los productos rinden prácticamente lo mismo. La regla: siempre mira dónde empieza el eje antes de creerte la imagen.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un grupo midió cuánto tarda en caer un objeto desde distintas alturas y quiere presentarlo en una tabla. Los datos que anotaron, revueltos, son: desde 20 m tardó 2,0 s; desde 5 m tardó 1,0 s; desde 45 m tardó 3,0 s; desde 80 m tardó 4,0 s. (a) Describe cómo debe quedar la tabla (encabezados con unidades y orden de las filas) y cuál columna es la variable independiente. (b) Si la dibujaran, ¿qué iría en cada eje?",
+      "pista": "La tabla se ordena de menor a mayor en la magnitud que se controla. Los encabezados llevan la unidad entre paréntesis. La independiente es la que se elige (la altura desde donde sueltan).",
+      "solucion": "(a) La tabla tiene dos columnas con encabezado y unidad: 'Altura (m)' y 'Tiempo de caída (s)'. Las filas se ordenan de menor a mayor altura: 5 m → 1,0 s; 20 m → 2,0 s; 45 m → 3,0 s; 80 m → 4,0 s. La variable INDEPENDIENTE es la altura, porque es la que el grupo elige a propósito antes de soltar el objeto. (b) En la gráfica, la altura (independiente) va en el eje X y el tiempo de caída (dependiente) en el eje Y, porque el tiempo depende de la altura desde la que se suelta.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Dos estudiantes dibujan la MISMA tabla de datos. El primero hace un eje vertical con intervalos iguales (cada cuadrito vale 10) que empieza en 0. El segundo hace un eje donde los primeros cuadritos valen 2 y los de arriba valen 20, y empieza en 15. ¿Cuál de las dos gráficas es honesta y cuál puede engañar? Justifica nombrando los dos problemas de la segunda.",
+      "pista": "Repasa las dos reglas de una buena escala: intervalos iguales y, de ser posible, empezar en 0.",
+      "solucion": "La gráfica HONESTA es la del primer estudiante: intervalos iguales (cada cuadrito vale lo mismo) y eje que empieza en 0, así las alturas representan fielmente los valores. La del segundo puede ENGAÑAR por dos motivos: primero, los intervalos son DESIGUALES (unos cuadritos valen 2 y otros 20), lo que estira o aplana partes de la curva a conveniencia y hace imposible leer bien; segundo, el eje NO empieza en 0 (arranca en 15), lo que exagera las diferencias entre los valores. Una escala pareja desde 0 cuenta la verdad; una con esos dos trucos, no.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Observa la gráfica de barras de la temperatura máxima registrada cada día de una semana. (a) ¿Qué día fue el más caluroso y cuál el más frío? (b) ¿Cuál es la diferencia de temperatura entre esos dos días? (c) ¿Por qué en este caso se usan barras y no una línea?",
+      "pista": "El día más caluroso es la barra más alta y el más frío la más baja. Para (c), piensa si entre 'lunes' y 'martes' existe un día intermedio con sentido para este tipo de registro por días.",
+      "solucion": "(a) El día más caluroso fue el jueves (la barra más alta, 36 °C) y el más frío el miércoles (la barra más baja, 28 °C). (b) La diferencia es 36 − 28 = 8 °C. (c) Se usan barras porque cada día es una categoría separada que se quiere COMPARAR; aunque los días van en orden, aquí se registró un solo valor por día y lo que interesa es comparar cuál fue mayor, no cómo cambia minuto a minuto. Las barras dejan comparar de un vistazo qué día fue el más caluroso.",
+      "figura": "<svg viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"170\" y=\"20\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#3B2B4A\">Temperatura máxima por día</text><line x1=\"45\" y1=\"40\" x2=\"45\" y2=\"190\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"45\" y1=\"190\" x2=\"320\" y2=\"190\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"42\" y1=\"115\" x2=\"45\" y2=\"115\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><line x1=\"42\" y1=\"40\" x2=\"45\" y2=\"40\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><text x=\"40\" y=\"194\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">0</text><text x=\"40\" y=\"119\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">20</text><text x=\"40\" y=\"44\" text-anchor=\"end\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">40</text><rect x=\"60\" y=\"78\" width=\"30\" height=\"112\" fill=\"#12B5A4\" fill-opacity=\"0.55\" stroke=\"#0E9486\" stroke-width=\"1.5\"/><rect x=\"105\" y=\"63\" width=\"30\" height=\"127\" fill=\"#12B5A4\" fill-opacity=\"0.55\" stroke=\"#0E9486\" stroke-width=\"1.5\"/><rect x=\"150\" y=\"85\" width=\"30\" height=\"105\" fill=\"#12B5A4\" fill-opacity=\"0.55\" stroke=\"#0E9486\" stroke-width=\"1.5\"/><rect x=\"195\" y=\"55\" width=\"30\" height=\"135\" fill=\"#12B5A4\" fill-opacity=\"0.55\" stroke=\"#0E9486\" stroke-width=\"1.5\"/><rect x=\"240\" y=\"70\" width=\"30\" height=\"120\" fill=\"#12B5A4\" fill-opacity=\"0.55\" stroke=\"#0E9486\" stroke-width=\"1.5\"/><text x=\"75\" y=\"204\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">Lun</text><text x=\"120\" y=\"204\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">Mar</text><text x=\"165\" y=\"204\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">Mié</text><text x=\"210\" y=\"204\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">Jue</text><text x=\"255\" y=\"204\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">Vie</text><text transform=\"rotate(-90 16 115)\" x=\"16\" y=\"115\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0E9486\">Temp. máx (°C)</text></svg>"
+    },
+    {
+      "enunciado": "Tres compañeros describen la tendencia de una misma gráfica de líneas que muestra la distancia recorrida por un carrito en función del tiempo. Ana dice: 'la línea sube todo el tiempo, así que la distancia aumenta'. Beto dice: 'la línea es más empinada al principio y luego más plana'. Carla dice: 'como sube, el carrito retrocede'. ¿Quiénes están describiendo bien la tendencia y quién se equivoca? Explica qué significa una línea más empinada.",
+      "pista": "Una línea que sube significa que la magnitud del eje Y aumenta. La inclinación (empinada o plana) dice qué tan rápido cambia. ¿'Subir' puede significar 'retroceder'?",
+      "solucion": "Ana y Beto describen bien. Ana tiene razón: si la línea sube de izquierda a derecha, la distancia AUMENTA con el tiempo. Beto también: una parte más empinada significa que la distancia crece MÁS RÁPIDO (el carrito va más veloz ahí), y una parte más plana significa que crece más despacio. Carla se equivoca: que la línea 'suba' quiere decir que la distancia aumenta, no que el carrito retroceda; retroceder haría que la distancia bajara y la línea descendería. Empinada = cambio rápido; plana = cambio lento.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un titular dice: 'La temperatura del planeta se dispara' y muestra una gráfica donde la línea parece casi vertical. Al revisar, ves que el eje vertical va de 14,0 °C a 14,8 °C y el horizontal cubre 100 años. Aplica el 'control de gráficas' y evalúa: ¿el titular exagera? ¿Qué habría que revisar para juzgar el cambio de verdad?",
+      "pista": "Fíjate dónde empieza el eje vertical y qué tan pequeño es su rango. Piensa cómo se vería la misma línea si el eje empezara en 0.",
+      "solucion": "El titular exagera por culpa del EJE CORTADO: el eje vertical solo cubre de 14,0 a 14,8 °C (un rango de apenas 0,8 °C), así que un cambio pequeño ocupa toda la altura y la línea se ve casi vertical, 'disparada'. Aplicando el control: la escala no empieza en 0 y su rango es minúsculo, lo que amplifica visualmente la subida. Para juzgar de verdad el cambio hay que mirar el NÚMERO real (subió 0,8 °C en 100 años, no 'se disparó' en el sentido de la imagen) y, si se quiere una imagen honesta, ver la línea con un eje de rango mayor. (Nota: un cambio de 0,8 °C en el promedio del planeta sí es importante en el mundo real; lo criticable aquí es que la GRÁFICA use un eje cortado para dramatizar en vez de mostrar el dato con honestidad.)",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "En un experimento sobre cómo cambia la temperatura de un agua con el tiempo, ¿en qué eje va el tiempo y por qué?",
+      "opciones": [
+        "En el eje X, porque es la variable independiente (la que avanza sola)",
+        "En el eje Y, porque es lo que medimos",
+        "En cualquiera de los dos, da igual",
+        "En el eje X, porque es la variable dependiente"
+      ],
+      "correcta": 0,
+      "explicacion": "El tiempo es la variable independiente (avanza solo; decides cuándo anotar) y por convención la independiente va en el eje X (horizontal). La temperatura, que depende del tiempo, es la dependiente y va en el eje Y."
+    },
+    {
+      "pregunta": "¿Cuál es la mejor definición de variable dependiente?",
+      "opciones": [
+        "La que el experimentador controla o cambia a propósito",
+        "La que se mide como respuesta y cuyo valor depende de la otra variable",
+        "La que siempre va en el eje horizontal",
+        "La que nunca cambia durante el experimento"
+      ],
+      "correcta": 1,
+      "explicacion": "La dependiente es la que mides como respuesta; su valor depende de la independiente. La descripcion 'la que el experimentador controla' es la independiente, no la dependiente. El truco: 'la dependiente depende de la independiente'."
+    },
+    {
+      "pregunta": "Quieres mostrar cuántos estudiantes prefieren cada una de cuatro frutas distintas. ¿Qué tipo de gráfico es el más adecuado?",
+      "opciones": [
+        "Gráfico de líneas, uniendo los puntos",
+        "Una nube de puntos sin unir",
+        "Gráfico de barras, porque son categorías separadas",
+        "Cualquiera sirve igual de bien"
+      ],
+      "correcta": 2,
+      "explicacion": "Las frutas son categorías separadas, sin valores intermedios, así que se usan barras para comparar cantidades. Unirlas con una línea sería un error: sugeriría que existe una fruta 'entre' dos categorías."
+    },
+    {
+      "pregunta": "¿Cuándo conviene usar un gráfico de LÍNEAS (uniendo los puntos)?",
+      "opciones": [
+        "Cuando el eje X son categorías como colores o marcas",
+        "Siempre que haya más de tres datos",
+        "Solo cuando los datos bajan",
+        "Cuando la variable del eje X es un número continuo, como el tiempo o la temperatura"
+      ],
+      "correcta": 3,
+      "explicacion": "El gráfico de líneas se usa cuando el eje X es una magnitud continua (tiempo, temperatura, masa), donde entre dos medidas existen valores intermedios con sentido. Por eso se unen los puntos: para mostrar cómo cambia y ver la tendencia."
+    },
+    {
+      "pregunta": "Estimar un valor que cae ENTRE dos puntos que sí mediste se llama...",
+      "opciones": [
+        "Interpolar",
+        "Extrapolar",
+        "Redondear",
+        "Promediar"
+      ],
+      "correcta": 0,
+      "explicacion": "Interpolar es estimar dentro del rango medido, entre dos puntos conocidos; es bastante seguro si la tendencia es clara. Extrapolar, en cambio, es estimar FUERA del rango medido y es más arriesgado."
+    },
+    {
+      "pregunta": "¿Por qué extrapolar (estimar más allá del último dato medido) es arriesgado?",
+      "opciones": [
+        "Porque siempre da un número negativo",
+        "Porque la tendencia podría cambiar fuera del rango que se probó",
+        "Porque está prohibido en ciencia",
+        "Porque es lo mismo que inventar datos al azar"
+      ],
+      "correcta": 1,
+      "explicacion": "Fuera del rango medido nada garantiza que la tendencia siga igual: un resorte llega a su límite y se deforma, el agua deja de subir de temperatura al hervir. No está prohibido, pero hay que avisar que es una predicción, no un dato seguro."
+    },
+    {
+      "pregunta": "Al calentar un líquido, un estudiante anota: 20, 25, 30, 55, 40, 45 (°C) en minutos consecutivos. ¿Cuál es el dato anómalo?",
+      "opciones": [
+        "El 20, porque es el más bajo",
+        "El 45, porque es el último",
+        "El 55, porque rompe la subida pareja de 5 en 5",
+        "No hay ningún dato anómalo"
+      ],
+      "correcta": 2,
+      "explicacion": "Todos suben de 5 en 5 (20, 25, 30, ... 40, 45), pero el 55 se dispara fuera de esa tendencia: en ese lugar tendría sentido un valor cercano a 35. Es un dato anómalo, casi seguro un error de medición que conviene repetir."
+    },
+    {
+      "pregunta": "¿Qué es lo correcto hacer con un dato que se sale claramente de la tendencia (un dato anómalo)?",
+      "opciones": [
+        "Borrarlo enseguida para que la gráfica quede bonita",
+        "Usarlo tal cual para trazar la tendencia",
+        "Cambiar todos los demás datos para que encajen con él",
+        "Identificarlo y, de ser posible, repetir esa medición para verificarlo"
+      ],
+      "correcta": 3,
+      "explicacion": "Un buen científico no esconde los datos raros: los identifica y, si puede, repite la medición para ver si fue un error. No se usa para trazar la tendencia, pero tampoco se borra en silencio."
+    },
+    {
+      "pregunta": "Una gráfica de barras hace que un valor de 102 parezca el doble que uno de 100. ¿Cuál es el truco más probable?",
+      "opciones": [
+        "El eje vertical no empieza en 0, sino en un número cercano a los datos",
+        "Se usaron demasiadas barras",
+        "Las barras son de colores distintos",
+        "Los datos están mal medidos"
+      ],
+      "correcta": 0,
+      "explicacion": "Es el truco del eje cortado: al empezar el eje en un número alto (por ejemplo 98), solo se dibuja el pedacito de arriba (100 queda a 2 y 102 a 4 sobre esa base, el doble), y una diferencia mínima se ve enorme. Con el eje desde 0, las barras se verían casi iguales."
+    },
+    {
+      "pregunta": "Para leer el VALOR de la variable dependiente en cierto punto de una gráfica de líneas, ¿qué haces?",
+      "opciones": [
+        "Sumas los números de los dos ejes",
+        "Subes desde ese valor del eje X hasta la curva y lees la altura en el eje Y",
+        "Mides el largo total de la línea",
+        "Cuentas cuántos puntos hay en total"
+      ],
+      "correcta": 1,
+      "explicacion": "Para leer un valor puntual subes desde el eje X (la entrada) hasta tocar la curva, y desde ahí te corres al eje Y para leer la altura, que es el valor de la dependiente. Siempre con su unidad."
+    },
+    {
+      "pregunta": "En una gráfica de líneas, una parte donde la línea está MÁS EMPINADA (más inclinada) indica que...",
+      "opciones": [
+        "La magnitud del eje Y no cambia ahí",
+        "Hubo un error de medición",
+        "La magnitud del eje Y cambia más rápido en esa parte",
+        "La gráfica está mal dibujada"
+      ],
+      "correcta": 2,
+      "explicacion": "La inclinación indica la rapidez del cambio: cuanto más empinada la línea, más rápido cambia la magnitud del eje Y; una parte más plana significa un cambio más lento. Una línea horizontal indicaría que se mantiene constante."
+    },
+    {
+      "pregunta": "A una gráfica le falta rotular el eje Y (no dice qué magnitud ni qué unidad representa). ¿Por qué es un problema grave?",
+      "opciones": [
+        "No es un problema, se entiende igual",
+        "Porque las gráficas siempre necesitan tres ejes",
+        "Porque el color se ve peor",
+        "Porque sin saber la magnitud y la unidad, un número como '25' no significa nada concreto"
+      ],
+      "correcta": 3,
+      "explicacion": "Sin el nombre de la magnitud y su unidad, un valor como 25 podría ser 25 grados, 25 gramos o 25 metros: la gráfica queda coja. Rotular ambos ejes con su magnitud y unidad es parte imprescindible de una gráfica completa."
+    },
+    {
+      "pregunta": "¿Cuál de estas gráficas está bien construida en cuanto a la escala?",
+      "opciones": [
+        "Una donde los cuadritos del eje valen 5, luego 20, luego 5",
+        "Una cuyo eje vertical empieza en 80 para agrandar las diferencias",
+        "Una con intervalos todos iguales y el eje empezando en 0",
+        "Una sin ninguna marca en los ejes"
+      ],
+      "correcta": 2,
+      "explicacion": "Una buena escala tiene intervalos iguales en todo el eje y, siempre que se pueda, empieza en 0, para que las alturas representen fielmente los valores. Intervalos desiguales o un eje que arranca alto sirven para engañar."
+    },
+    {
+      "pregunta": "Mediste la longitud de un resorte para masas de 0 a 100 g. ¿Cuál de estas estimaciones es una INTERPOLACIÓN fiable, y no una extrapolación arriesgada?",
+      "opciones": [
+        "La longitud con una masa de 70 g",
+        "La longitud con una masa de 500 g",
+        "La longitud con una masa de 250 g",
+        "La longitud con una masa de 1000 g"
+      ],
+      "correcta": 0,
+      "explicacion": "70 g cae DENTRO del rango medido (0 a 100 g), así que estimarlo es interpolar, algo fiable. Las otras masas (500, 250, 1000 g) están muy fuera del rango probado: estimarlas es extrapolar, y el resorte podría ya no comportarse igual."
+    }
+  ]
+}

@@ -1,0 +1,329 @@
+{
+  "programa": "cumbre",
+  "materia": "Cómo Pensar",
+  "grado": "Cumbre Cómo Pensar 1er año",
+  "dominio": "Preguntar e investigar",
+  "tema": "Variables: qué cambio, qué mido y qué mantengo igual",
+  "referencias": [
+    "NGSS Science and Engineering Practices — Practice 3: Planning and Carrying Out Investigations (identificar y controlar variables al diseñar una investigación)",
+    "UK National Curriculum, Working Scientifically (KS3) — variables independientes, dependientes y controladas; pruebas justas con más de un factor en juego",
+    "IB MYP Sciences, Criterio B (Inquiring and designing) — diseñar una investigación identificando variables y justificando cómo se controlan las variables de confusión",
+    "Metodología de la investigación científica — el concepto de 'variable de confusión' (confounding variable) como causa estándar de conclusiones inválidas"
+  ],
+  "resumen": {
+    "titulo": "Variables: qué cambio, qué mido y qué mantengo igual",
+    "intro": "En el tema anterior, al aprender a poner a prueba una predicción, viste de pasada tres ideas: lo que cambio, lo que mido y lo que mantengo igual. Ahora las vamos a mirar con lupa, porque son la base de CUALQUIER experimento bien diseñado, no solo de los que arrancan con una hipótesis explícita. Vas a aprender a distinguir los tres papeles incluso en casos ambiguos, a detectar cuándo una segunda variable se cuela sin que nadie se dé cuenta y arruina la conclusión, y a evaluar si un diseño completo es válido o no. Esa última parte, evaluar, es el paso que más se parece a lo que hace de verdad un investigador antes de confiar en un resultado.",
+    "secciones": [
+      {
+        "titulo": "Repaso con lupa: las tres variables y el porqué que las sostiene",
+        "explicacion": "Empecemos con un caso concreto. Querés saber si la cantidad de luz que recibe una planta afecta cuánto crece. Ponés tres macetas: una con poca luz, otra con luz media y otra con mucha luz, y después de tres semanas medís la altura de cada una con una regla. Ahí aparecen tus tres variables. La VARIABLE INDEPENDIENTE es la cantidad de luz: la elegís VOS, a propósito, ANTES de empezar, porque es justo lo que querés probar. La VARIABLE DEPENDIENTE es la altura de la planta: no la elegís, la MEDÍS DESPUÉS con un instrumento (la regla), y su valor depende de qué le pasó a la planta con esa luz. Las VARIABLES CONTROLADAS son todo lo demás que también podría afectar el crecimiento, pero que decidís dejar exactamente IGUAL en las tres macetas: la misma cantidad de agua, la misma tierra, el mismo tipo de semilla, la misma temperatura. Ahora el porqué, que es lo importante de verdad: si controlás bien todo lo demás, y las tres macetas terminan con alturas distintas, la ÚNICA explicación posible es la luz, porque fue la única cosa que cambiaste. Pero si además de la luz también cambiaste, por ejemplo, la cantidad de agua entre las macetas, ya no podés saber si la diferencia de altura se debió a la luz, al agua, o a las dos cosas juntas: perdiste la capacidad de señalar una causa con confianza. Controlar variables no es un capricho de laboratorio: es la única forma de poder decir 'esto causó aquello' en vez de 'no sé qué causó esto'.",
+        "pasos": [
+          "Nombrá primero qué decidiste cambiar a propósito: esa es la variable independiente.",
+          "Nombrá qué vas a medir con un instrumento como resultado: esa es la variable dependiente.",
+          "Hacé la lista de todo lo demás que podría influir, y asegurate de que quede IGUAL en todos los grupos: esas son las controladas.",
+          "Preguntate: si solo cambié la independiente, ¿puedo señalar con confianza qué causó el resultado?"
+        ],
+        "ejemplo": "En el experimento de las tres macetas: independiente = cantidad de luz (poca, media, mucha). Dependiente = altura de la planta en centímetros a las tres semanas. Controladas = la misma agua, tierra, semilla y temperatura en las tres macetas.",
+        "figura": ""
+      },
+      {
+        "titulo": "El truco para no confundirlas: qué decidís antes, qué medís después",
+        "explicacion": "Con la práctica te vas a encontrar con casos donde no es tan obvio quién es quién, así que conviene tener un truco fijo. Preguntate: ¿esto lo decidí YO, a propósito, ANTES de arrancar la prueba? Si la respuesta es sí, es la variable independiente. ¿Esto lo mido DESPUÉS, con un instrumento (regla, cronómetro, termómetro, balanza, un conteo), como resultado de la prueba? Si la respuesta es sí, es la variable dependiente. El caso más traicionero es cuando el mismo concepto, como 'el tiempo', puede ser cualquiera de las dos según cómo esté armado el experimento. Si decidís DEJAR el hielo distintas cantidades de tiempo al sol (5, 10 y 15 minutos) y después medís cuánto se derritió en cada caso (por ejemplo, pesando lo que quedó), el tiempo es la independiente y el peso es la dependiente. Pero si en cambio dejás el hielo hasta que se derrita COMPLETO y cronometrás cuánto tardó, ahora el tiempo es la DEPENDIENTE: es lo que medís como resultado. La palabra 'tiempo' no tiene un rol fijo: el rol depende de qué decidiste vos de antemano y qué terminaste midiendo con el cronómetro. Por eso el truco nunca es memorizar una lista de palabras que 'siempre' son independientes o dependientes, sino preguntarte, en cada caso concreto, quién decidió qué y quién midió qué.",
+        "pasos": [
+          "Preguntate: ¿esto lo elegí yo antes de empezar? Si sí, es independiente.",
+          "Preguntate: ¿esto lo medí después con un instrumento, como resultado? Si sí, es dependiente.",
+          "Desconfiá de memorizar palabras fijas ('tiempo', 'cantidad'): el mismo concepto puede jugar cualquiera de los dos papeles según cómo esté armado el experimento."
+        ],
+        "ejemplo": "Estudiar con distintos tiempos de descanso entre sesiones (5, 15 o 30 minutos) y medir cuántas palabras se recuerdan después: el tiempo de descanso es independiente. En cambio, estudiar siempre la misma cantidad de tiempo y medir cuántos minutos tarda cada quien en terminar un examen: ahí el tiempo para terminar el examen es la dependiente.",
+        "figura": ""
+      },
+      {
+        "titulo": "Variables controladas: la lista que nadie ve, pero que sostiene toda la conclusión",
+        "explicacion": "Elegir bien la variable independiente y la dependiente es solo la mitad del trabajo; la otra mitad, más silenciosa pero igual de importante, es armar la lista de variables controladas ANTES de empezar, no improvisarla sobre la marcha. Pensemos en un ejemplo distinto: querés saber si saltar la cuerda sube más el pulso cardíaco que correr en el mismo lugar. La independiente es el tipo de ejercicio (saltar la cuerda o correr en el mismo lugar); la dependiente son las pulsaciones por minuto, contadas en la muñeca o con un pulsómetro, después de hacer el ejercicio. Pero para que la comparación sea justa hace falta pensar en TODO lo demás que también podría cambiar el pulso: la misma DURACIÓN del ejercicio (por ejemplo, 3 minutos para los dos), la misma PERSONA haciendo ambos ejercicios (el pulso de base varía de una persona a otra), el mismo MOMENTO DEL DÍA (después de comer el pulso puede ser distinto que en ayunas), y dejar que el pulso vuelva a su valor normal antes de probar el segundo ejercicio. Si se te olvida controlar la duración, y alguien salta la cuerda 5 minutos pero corre solo 2, ya no sabés si el pulso más alto se debe al TIPO de ejercicio o a que hizo más tiempo. Armar esta lista con cuidado, antes de empezar, es lo que separa un experimento confiable de uno que solo lo parece.",
+        "pasos": [
+          "Antes de experimentar, escribí todo lo que rodea a la prueba: quién la hace, cuánto dura, en qué momento, con qué instrumento se mide.",
+          "Para cada cosa de esa lista, decidí CÓMO la vas a mantener exactamente igual entre los grupos que comparás.",
+          "Si algo de la lista no se puede igualar del todo (por ejemplo, el clima de un día al otro), anotalo como una LIMITACIÓN del experimento; no lo ignores."
+        ],
+        "ejemplo": "Para comparar saltar la cuerda contra correr en el mismo lugar: controladas = misma persona, misma duración (3 minutos), mismo momento del día, pulso vuelto a la normalidad antes de empezar cada prueba.",
+        "figura": ""
+      },
+      {
+        "titulo": "La variable de confusión: cuando dos cosas cambian y ya no podés separar sus efectos",
+        "explicacion": "Hay un nombre técnico para el error más peligroso al diseñar un experimento: la VARIABLE DE CONFUSIÓN (también llamada variable confusora). Es una variable que cambia AL MISMO TIEMPO que tu variable independiente, sin que te des cuenta, y que también podría explicar el resultado. El problema no es un descuido menor: una variable de confusión ARRUINA la conclusión, porque hace imposible saber cuál de las dos cosas causó lo que observaste. Ejemplo: querés saber si un frasco más GRANDE hace que una vela tarde más en apagarse (por tener más aire, y por lo tanto más oxígeno, adentro). Ponés una vela bajo un frasco chico y otra bajo un frasco grande, pero además usás una vela más gruesa para el frasco grande. Si la vela del frasco grande tarda más en apagarse, ¿fue por el tamaño del frasco o porque la vela era más gruesa y tenía más cera para quemar? No hay forma de saberlo: el grosor de la vela se volvió una variable de confusión. La única forma de evitar esto es, otra vez, controlar TODO lo demás: usar velas idénticas (mismo grosor, mismo tipo de cera) en los dos frascos, y cambiar solamente el tamaño del frasco.",
+        "pasos": [
+          "Antes de sacar una conclusión, revisá: ¿de verdad cambió UNA sola cosa entre los grupos que comparé, o se me coló otra diferencia sin darme cuenta?",
+          "Si encontrás una segunda diferencia, esa es una variable de confusión: la conclusión sobre la causa queda invalidada hasta que la corrijas.",
+          "Corregí el experimento igualando esa variable, y recién ahí volvé a comparar los resultados."
+        ],
+        "ejemplo": "Comparar dos marcas de detergente para ver cuál quita mejor una mancha, pero usando MÁS cantidad de una marca que de la otra: la cantidad de detergente se vuelve una variable de confusión, y ya no se puede saber si ganó la marca o la cantidad.",
+        "figura": ""
+      },
+      {
+        "titulo": "De la hipótesis a la variable: leer el 'si..., entonces...' con precisión",
+        "explicacion": "En el tema anterior aprendiste a escribir una predicción con la forma 'si mi hipótesis es cierta, entonces se debería observar esto'. Ahora que conocés bien los tres papeles, podés leer esa frase con más precisión: la parte del 'si' nombra lo que se cambia (la variable independiente), y la parte del 'entonces' nombra lo que se espera medir como resultado (la variable dependiente). Esto sirve como herramienta de revisión: si escribís una predicción y no podés señalar con claridad cuál es la parte que cambiás y cuál la que medís, probablemente la predicción está mal armada. Además, cuando la variable independiente tiene más de dos opciones (no solo 'con o sin', sino varios NIVELES, como poca, media y mucha luz), la predicción también puede describir una TENDENCIA, no solo una diferencia entre dos grupos. Por ejemplo, la hipótesis 'a más luz, más crece la planta' predice que la altura debería subir de forma pareja entre los tres grupos, no solo que un grupo le gane a otro. Fijarte en si tu predicción describe una tendencia con varios niveles, o una simple diferencia entre dos casos, es parte de evaluar qué tan bien armada está una prueba.",
+        "pasos": [
+          "Subrayá la parte del 'si': ahí está la variable independiente.",
+          "Subrayá la parte del 'entonces': ahí está la variable dependiente.",
+          "Si la independiente tiene varios niveles (no solo dos), revisá si la predicción describe una TENDENCIA a lo largo de esos niveles, no solo una diferencia entre dos grupos."
+        ],
+        "ejemplo": "Hipótesis: 'a más horas de luz, más crece una planta en tres semanas'. Predicción: 'si eso es cierto, entonces la maceta con mucha luz debería medir más que la de luz media, y esta más que la de poca luz: una tendencia creciente, no solo una diferencia entre dos macetas'.",
+        "figura": ""
+      },
+      {
+        "titulo": "Evaluar un diseño completo: ¿esta prueba es válida?",
+        "explicacion": "Juntemos todo en un ejercicio de evaluación completo, que es exactamente lo que hace un investigador antes de confiar en un resultado. Alguien diseña esta prueba: 'quiero saber si saltar la cuerda sube más el pulso que correr en el mismo lugar. Hago saltar la cuerda a mi hermano durante 3 minutos por la mañana, y yo corro en el mismo lugar durante 3 minutos por la tarde. Después de cada uno, tomamos el pulso.' Para evaluar si esta prueba es válida, revisamos, uno por uno, los elementos que ya conocés. Primero, ¿cuál es la variable independiente? El tipo de ejercicio. Segundo, ¿cuál es la dependiente? El pulso después del ejercicio. Tercero, ¿qué se controló? La duración: 3 minutos para los dos. Cuarto, y acá está el problema: ¿qué NO se controló? Dos cosas se colaron sin querer: la PERSONA (dos personas distintas, con pulsos de base diferentes) y el MOMENTO DEL DÍA (mañana contra tarde, y el pulso puede variar según la hora). Con dos variables de confusión sueltas, si el pulso de uno resulta más alto que el del otro, no se puede saber si fue por el tipo de ejercicio, por ser una persona distinta, o por el momento del día. Conclusión de la evaluación: esta prueba NO es válida tal como está diseñada, aunque haya identificado bien la independiente y la dependiente. Para arreglarla, la MISMA persona debería hacer los dos ejercicios, en el mismo momento del día (por ejemplo, en dos días distintos pero a la misma hora), dejando pasar tiempo suficiente para que el pulso vuelva a la normalidad entre uno y otro.",
+        "pasos": [
+          "Identificá la variable independiente y la dependiente del diseño.",
+          "Hacé la lista de lo que sí se controló.",
+          "Buscá activamente lo que NO se controló: revisá quién hace la prueba, cuándo, dónde y con qué, comparando ambos grupos punto por punto.",
+          "Si encontrás algo sin controlar, el diseño NO es válido todavía: proponé cómo corregirlo antes de confiar en la conclusión."
+        ],
+        "ejemplo": "La persona distinta y el momento distinto del día son DOS variables de confusión coladas en la prueba del pulso; corrigiéndolas (misma persona, mismo momento del día) el diseño pasa a ser válido.",
+        "figura": ""
+      },
+      {
+        "titulo": "Errores típicos (y cómo blindarte)",
+        "explicacion": "Estos son los tres errores que más se repiten al trabajar con variables, ya a este nivel de análisis. Primero, confundir una variable CONTROLADA con la variable DEPENDIENTE: creer que algo que se mantiene igual (por ejemplo, la misma cantidad de agua en dos macetas) es lo que se está midiendo, cuando en realidad lo que se mide es otra cosa (la altura de la planta). Segundo, pensar que con controlar bien las variables ya alcanza, olvidando lo que viste en el tema anterior sobre pruebas fuertes: una sola persona, probada una sola vez, sigue siendo un caso aislado aunque todo esté perfectamente controlado; hacen falta varios casos o varias repeticiones para que la conclusión sea sólida. Tercero, no darse cuenta de una variable de confusión porque parece 'poco importante', como el momento del día o el estado de ánimo de quien participa: justamente esas son las que más se cuelan sin que nadie las note, porque no parecen relacionadas con lo que se está probando a simple vista.",
+        "pasos": [
+          "Antes de decir 'esta es mi variable dependiente', preguntate si en realidad es algo que decidiste mantener IGUAL (entonces es controlada, no dependiente).",
+          "Recordá que controlar variables y repetir la prueba con varios casos son dos cosas distintas: hacen falta las dos para una conclusión sólida.",
+          "Prestá atención especial a las variables que 'parecen' poco importantes (momento del día, estado de ánimo, quién participa): son las que más se cuelan como confusión."
+        ],
+        "ejemplo": "En el experimento de las tres macetas con distinta luz, alguien dice: 'la cantidad de agua que le doy a cada maceta es lo que voy a medir'. Es un error: en ESE experimento la cantidad de agua se decidió mantener IGUAL en las tres macetas (es una variable CONTROLADA, no algo que se mide); lo que se mide como resultado (la variable dependiente) es la altura de la planta.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "La variable independiente es lo que YO decido cambiar a propósito, ANTES de empezar; la dependiente es lo que MIDO después con un instrumento, como resultado; las controladas son todo lo demás que mantengo EXACTAMENTE IGUAL para que la comparación sea justa. Si una segunda cosa cambia sin que la controle (una variable de confusión), ya no puedo saber qué causó el resultado: la conclusión queda invalidada. Evaluar si un diseño es válido significa revisar, punto por punto, qué se controló y qué se coló sin querer, no solo identificar los tres papeles."
+  },
+  "practica": [
+    {
+      "enunciado": "En el experimento de las tres macetas con distinta cantidad de luz (poca, media, mucha), identificá la variable independiente, la dependiente y al menos dos variables controladas. Justificá cada una.",
+      "pista": "Preguntate qué se decidió antes de empezar y qué se mide después con un instrumento.",
+      "solucion": "Independiente: la cantidad de luz (poca, media, mucha), porque se decide a propósito antes de empezar. Dependiente: la altura de la planta en centímetros después de tres semanas, porque se mide después con una regla y depende de la luz recibida. Controladas (dos de estas): la cantidad de agua, el tipo de tierra o semilla, la temperatura; deben quedar iguales en las tres macetas para poder atribuir cualquier diferencia de altura solo a la luz.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Para el experimento que compara saltar la cuerda contra correr en el mismo lugar, midiendo el pulso cardíaco después de cada ejercicio, identificá la variable independiente, la dependiente y menciona al menos tres variables que deberían controlarse.",
+      "pista": "Pensá en todo lo que, además del tipo de ejercicio, podría cambiar el pulso de una persona a otra o de un momento a otro.",
+      "solucion": "Independiente: el tipo de ejercicio (saltar la cuerda o correr en el mismo lugar). Dependiente: las pulsaciones por minuto después del ejercicio. Controladas (tres de estas): la misma persona haciendo ambos ejercicios, la misma duración del ejercicio, el mismo momento del día, y que el pulso vuelva a su valor normal antes de la segunda prueba.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Alguien compara dos marcas de detergente para ver cuál quita mejor una mancha de aceite, pero usa dos cucharadas de la marca X y solo una cucharada de la marca Y. Detectá qué variable no se controló y explicá por qué eso arruina la conclusión.",
+      "pista": "Contá cuántas cosas distintas cambiaron entre las dos pruebas, además de la marca.",
+      "solucion": "No se controló la cantidad de detergente: cambió junto con la marca (dos cucharadas contra una). Si la marca X quita mejor la mancha, no se puede saber si fue por ser mejor marca o por haber usado el doble de cantidad. La cantidad de detergente se volvió una variable de confusión, y la conclusión sobre cuál marca es mejor queda invalidada hasta que se pruebe con la misma cantidad para las dos.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Se prueba si un frasco más grande hace que una vela tarde más en apagarse (por tener más oxígeno adentro), pero se usa una vela más gruesa para el frasco grande y una más delgada para el frasco chico. Explicá por qué esta prueba no permite concluir nada sobre el tamaño del frasco.",
+      "pista": "Pensá en qué otra cosa, además del tamaño del frasco, podría explicar que una vela dure más encendida.",
+      "solucion": "El grosor de la vela cambió junto con el tamaño del frasco: la vela gruesa tiene más cera para quemar y podría durar más encendida por eso, sin importar el frasco. Como cambiaron dos cosas a la vez (tamaño del frasco y grosor de la vela), no se puede saber cuál de las dos causó que una vela tardara más en apagarse; para poder concluir algo sobre el frasco, habría que usar velas idénticas en ambos casos.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un cubo de hielo grande y uno pequeño se colocan en el mismo cuarto, al mismo momento, sobre el mismo tipo de plato, y se cronometra cuánto tarda cada uno en derretirse por completo. Identificá la variable independiente, la dependiente y una variable controlada de este experimento.",
+      "pista": "¿Qué es distinto entre los dos cubos? ¿Qué se mide con un cronómetro?",
+      "solucion": "Independiente: el tamaño del cubo de hielo (grande o pequeño). Dependiente: el tiempo que tarda cada cubo en derretirse por completo. Controlada: el cuarto, el momento en que se colocan y el tipo de plato, que deben ser los mismos para los dos cubos.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Compará estos dos experimentos con hielo y decidí, en cada uno, si 'el tiempo' es la variable independiente o la dependiente, justificando la diferencia: (A) se deja un cubo de hielo al sol durante 5, 10 y 15 minutos, y se pesa lo que queda en cada caso. (B) se deja un cubo de hielo al sol hasta que se derrita por completo, y se cronometra cuánto tarda.",
+      "pista": "Preguntate en cada caso: ¿el tiempo se decidió antes o se midió después como resultado?",
+      "solucion": "En (A), el tiempo (5, 10, 15 minutos) es la variable independiente, porque se decidió de antemano; lo que se mide después (el peso que queda) es la dependiente. En (B), el tiempo es la variable dependiente, porque no se decide de antemano: es justamente lo que se mide con el cronómetro como resultado de esperar a que se derrita. El mismo concepto, 'tiempo', juega un papel distinto según cómo esté armado cada experimento.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Dada la hipótesis 'a más horas de luz, más crece una planta en tres semanas', escribí la predicción con la forma 'si..., entonces...', identificando la variable independiente y la dependiente, y explicá si la predicción describe una tendencia con varios niveles o solo una diferencia entre dos grupos.",
+      "pista": "Si la independiente tiene tres niveles (poca, media, mucha luz), la predicción debería mencionar los tres, no solo dos.",
+      "solucion": "Predicción: 'si eso es cierto, entonces la maceta con mucha luz debería medir más que la de luz media, y esta más que la de poca luz'. Independiente: la cantidad de luz (con tres niveles: poca, media, mucha). Dependiente: la altura de la planta a las tres semanas. Esta predicción describe una TENDENCIA creciente a lo largo de los tres niveles, no solo una diferencia entre dos grupos, porque la variable independiente tiene más de dos opciones.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Evaluá este diseño: 'quiero saber si un par de zapatillas nuevas hace correr más rápido que uno viejo. Mi hermana corre 100 metros con las zapatillas nuevas un lunes soleado y descansada, y yo corro los mismos 100 metros con las zapatillas viejas un viernes lluvioso y cansado por el día de clases.' Identificá al menos dos variables de confusión y explicá por qué el diseño no es válido.",
+      "pista": "Contá cuántas cosas distintas hay entre las dos corridas, además del tipo de zapatilla.",
+      "solucion": "Hay al menos tres variables de confusión: la persona que corre (dos personas distintas, con capacidades físicas diferentes), el clima (soleado contra lluvioso, que puede afectar el terreno y el rendimiento), y el estado físico de quien corre (descansada contra cansado). Con tantas cosas distintas a la vez, si una corrida es más rápida que la otra, no se puede saber si fue por las zapatillas, por la persona, por el clima o por el cansancio. El diseño NO es válido: para corregirlo, la MISMA persona debería correr con ambos pares de zapatillas, en condiciones de clima y descanso parecidas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "En un experimento que compara el crecimiento de plantas dándoles MUCHA agua a unas y POCA agua a otras (todo lo demás igual), alguien afirma: 'la cantidad de agua es la variable que voy a medir'. Evaluá si esta afirmación es correcta y, si no lo es, identificá cuál sería la variable independiente y cuál la dependiente en ese experimento.",
+      "pista": "Pensá si la cantidad de agua es algo que normalmente se decide antes o se mide después.",
+      "solucion": "La afirmación es incorrecta: la cantidad de agua normalmente es algo que se decide ANTES de empezar (por ejemplo, dar mucha o poca agua a propósito para comparar), así que suele ser la variable independiente, no la dependiente. Lo que se mediría DESPUÉS como resultado (la dependiente) sería, por ejemplo, la altura o el peso de la planta.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Explicá con tus palabras por qué una variable controlada no es lo mismo que una variable independiente, aunque las dos podrían, en teoría, afectar el resultado del experimento.",
+      "pista": "Pensá en qué se hace con cada una a propósito: ¿se cambia o se deja fija?",
+      "solucion": "La variable independiente es la ÚNICA cosa que se cambia a propósito entre los grupos, porque es justo lo que se quiere probar. Las variables controladas también podrían afectar el resultado, pero se dejan EXACTAMENTE IGUALES a propósito, precisamente para que no interfieran con la comparación. Ambas 'podrían' influir en el resultado, pero una se manipula para estudiarla y las otras se fijan para que no molesten; por eso cumplen papeles opuestos, no son lo mismo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante prueba una sola vez, con una sola persona, si tomar agua fría antes de correr mejora el tiempo en 100 metros, controlando cuidadosamente la pista, la hora y el descanso previo. Evaluá: ¿alcanza con haber controlado bien las variables para confiar en la conclusión? Justificá.",
+      "pista": "Recordá lo que viste en el tema anterior sobre pruebas con una sola persona o un solo caso.",
+      "solucion": "No alcanza. Aunque las variables estén bien controladas (pista, hora, descanso iguales), sigue siendo UNA sola prueba con UNA sola persona: podría ser una casualidad de ese día (por ejemplo, que esa vez corrió mejor por cualquier otro motivo pasajero). Controlar variables evita que se confundan las causas dentro de una prueba, pero no reemplaza la necesidad de repetir la prueba varias veces o con varias personas para que la conclusión sea sólida.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Evaluá este diseño y decidí si es válido: 'para saber si el tiempo de horneado (10 o 15 minutos) afecta qué tan crocante queda una galleta, se hornean dos tandas con la MISMA receta y la MISMA masa, en el MISMO horno, y luego 5 personas prueban una galleta de cada tanda y la califican de 1 a 5 en crocancia, sin saber cuál tanda es cuál.' Explicá tu evaluación.",
+      "pista": "Revisá qué cambió y qué se mantuvo igual, y si hay suficientes catadores como para no depender de una sola opinión.",
+      "solucion": "Este diseño SÍ es válido. Independiente: el tiempo de horneado (10 o 15 minutos). Dependiente: el puntaje de crocancia (1 a 5) que dan los catadores. Controladas: la misma receta, la misma masa y el mismo horno. Además, se usan varios catadores (no una sola opinión) y ellos no saben cuál tanda es cuál, lo que evita que la expectativa influya en la calificación. La única diferencia real entre las dos tandas es el tiempo de horneado, así que cualquier diferencia de crocancia se le puede atribuir con confianza a eso.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué es la variable independiente en un experimento?",
+      "opciones": [
+        "Lo que el experimentador decide cambiar a propósito, antes de empezar",
+        "Lo que se mide como resultado al final",
+        "Todo lo que se mantiene exactamente igual",
+        "Un error que arruina la prueba"
+      ],
+      "correcta": 0,
+      "explicacion": "La variable independiente es la que se elige y se cambia a propósito, antes de la prueba, porque es justo lo que se quiere investigar. Las otras opciones describen la dependiente, la controlada y un defecto de diseño."
+    },
+    {
+      "pregunta": "¿Qué es la variable dependiente?",
+      "opciones": [
+        "Lo que se decide antes de empezar el experimento",
+        "Lo que se mide después, con un instrumento, porque su valor depende de la independiente",
+        "Una hipótesis mal escrita",
+        "Todo lo que se mantiene igual entre los grupos"
+      ],
+      "correcta": 1,
+      "explicacion": "La dependiente es el resultado que se mide con un instrumento (regla, cronómetro, balanza, un conteo) después de la prueba, y se llama así porque su valor depende de lo que se hizo con la independiente."
+    },
+    {
+      "pregunta": "En el experimento de las tres macetas con distinta cantidad de luz, midiendo la altura de la planta a las tres semanas, ¿cuál es la variable dependiente?",
+      "opciones": [
+        "La cantidad de luz",
+        "El tipo de maceta",
+        "La altura de la planta",
+        "La cantidad de agua"
+      ],
+      "correcta": 2,
+      "explicacion": "La altura de la planta es lo que se mide con la regla, después de esperar tres semanas: es el resultado, la variable dependiente. La luz es la independiente; el tipo de maceta y el agua deberían ser controladas."
+    },
+    {
+      "pregunta": "Un cubo de hielo se deja al sol durante 5, 10 y 15 minutos, y se pesa lo que queda en cada caso. ¿Qué papel juega 'el tiempo' en este experimento?",
+      "opciones": [
+        "Es la variable dependiente, porque se mide con un cronómetro",
+        "Es una variable controlada, porque queda igual siempre",
+        "No es ninguna variable, es solo un detalle sin importancia",
+        "Es la variable independiente, porque se decidió de antemano en qué momentos pesar"
+      ],
+      "correcta": 3,
+      "explicacion": "Acá el tiempo (5, 10, 15 minutos) fue decidido de antemano por quien diseñó la prueba: es la variable independiente. La dependiente es lo que se mide como resultado, el peso del hielo que queda."
+    },
+    {
+      "pregunta": "En cambio, si se deja un cubo de hielo hasta que se derrita por completo y se cronometra cuánto tardó, ¿qué papel juega ahora 'el tiempo'?",
+      "opciones": [
+        "Es la variable dependiente, porque ahora es el resultado que se mide",
+        "Sigue siendo independiente, como en el caso anterior",
+        "Es una variable controlada",
+        "Deja de ser una variable"
+      ],
+      "correcta": 0,
+      "explicacion": "Acá el tiempo no se decidió de antemano: es justamente lo que se mide con el cronómetro como resultado. El mismo concepto puede ser independiente o dependiente según cómo esté armado el experimento."
+    },
+    {
+      "pregunta": "¿Qué es una variable de confusión (o variable confusora)?",
+      "opciones": [
+        "El mismo nombre que se le da a la variable dependiente",
+        "Una variable que siempre se mantiene igual",
+        "Un error de cálculo dentro del experimento",
+        "Una variable que cambia al mismo tiempo que la independiente, sin querer, y también podría explicar el resultado"
+      ],
+      "correcta": 3,
+      "explicacion": "La variable de confusión es una segunda diferencia que se cuela junto con la independiente, sin que se controle, y que también podría causar el resultado observado. Por eso invalida la conclusión sobre la causa."
+    },
+    {
+      "pregunta": "Se compara si un frasco grande hace que una vela tarde más en apagarse que un frasco chico, pero se usa una vela más gruesa para el frasco grande. ¿Qué se coló como variable de confusión?",
+      "opciones": [
+        "El grosor de la vela",
+        "El tamaño del frasco",
+        "El color de la vela",
+        "El lugar donde se hizo la prueba"
+      ],
+      "correcta": 0,
+      "explicacion": "El grosor de la vela cambió junto con el tamaño del frasco: una vela más gruesa tiene más cera y podría durar más encendida por eso, sin importar el frasco. Eso hace imposible saber si el tamaño del frasco de verdad influyó."
+    },
+    {
+      "pregunta": "Dos marcas de detergente se comparan para ver cuál quita mejor una mancha, pero se usan dos cucharadas de una marca y solo una de la otra. ¿Cuál es el problema de este diseño?",
+      "opciones": [
+        "Ninguno, el experimento está bien diseñado",
+        "Se usó demasiado detergente en total",
+        "Las manchas de aceite no se pueden comparar",
+        "La cantidad de detergente cambió junto con la marca, así que no se puede saber cuál causó el resultado"
+      ],
+      "correcta": 3,
+      "explicacion": "Al cambiar la cantidad de detergente junto con la marca, se coló una variable de confusión: si una marca quita mejor la mancha, podría deberse a la marca o a la mayor cantidad usada, y no hay forma de distinguirlo."
+    },
+    {
+      "pregunta": "Hipótesis: 'a más horas de luz, más crece una planta en tres semanas'. La predicción dice que la maceta con mucha luz debería medir más que la de luz media, y esta más que la de poca luz. ¿Qué describe esta predicción?",
+      "opciones": [
+        "Una diferencia entre solo dos grupos",
+        "Una tendencia a lo largo de varios niveles de la variable independiente",
+        "La variable controlada del experimento",
+        "Un error en la hipótesis"
+      ],
+      "correcta": 1,
+      "explicacion": "Como la variable independiente (cantidad de luz) tiene tres niveles, la predicción describe una tendencia creciente a lo largo de esos niveles, no solo una diferencia entre dos casos."
+    },
+    {
+      "pregunta": "En el diseño donde una persona salta la cuerda por la mañana y otra corre en el mismo lugar por la tarde, ¿cuáles son las variables de confusión que invalidan la conclusión?",
+      "opciones": [
+        "El tipo de ejercicio y el pulso medido",
+        "La duración del ejercicio, que fue la misma para los dos",
+        "La persona distinta y el momento del día distinto",
+        "No hay ninguna variable de confusión en este diseño"
+      ],
+      "correcta": 2,
+      "explicacion": "La persona (dos personas con pulsos de base distintos) y el momento del día (mañana contra tarde) cambiaron junto con el tipo de ejercicio, sin controlarse. Eso hace imposible saber si la diferencia de pulso se debió al ejercicio o a esas otras dos cosas."
+    },
+    {
+      "pregunta": "¿Cuál de estas afirmaciones sobre variable controlada y variable independiente es VERDADERA?",
+      "opciones": [
+        "Son la misma cosa con dos nombres distintos",
+        "La controlada siempre es más importante que la independiente",
+        "La independiente es la única que se cambia a propósito; las controladas se dejan iguales a propósito para no interferir",
+        "Las variables controladas nunca podrían afectar el resultado"
+      ],
+      "correcta": 2,
+      "explicacion": "La independiente se manipula porque es lo que se quiere estudiar; las controladas también podrían influir en el resultado, pero se fijan a propósito para que no interfieran con la comparación. Cumplen papeles opuestos."
+    },
+    {
+      "pregunta": "Un estudiante prueba, una sola vez y con una sola persona, si tomar agua fría antes de correr mejora el tiempo en 100 metros, controlando con mucho cuidado la pista, la hora y el descanso previo. ¿Alcanza esto para confiar en la conclusión?",
+      "opciones": [
+        "Sí, porque las variables están perfectamente controladas",
+        "No, porque nunca se puede probar algo relacionado con correr",
+        "Sí, porque el agua fría siempre mejora el rendimiento",
+        "No, porque además de controlar variables hace falta repetir la prueba con varios casos o varias personas"
+      ],
+      "correcta": 3,
+      "explicacion": "Controlar bien las variables evita confundir causas DENTRO de una prueba, pero no reemplaza la necesidad de repetir con varios casos: una sola prueba con una sola persona sigue siendo un caso aislado que podría deberse a la casualidad de ese día."
+    },
+    {
+      "pregunta": "En un experimento que compara el crecimiento de plantas dándoles mucha agua a unas y poca agua a otras, alguien afirma: 'la cantidad de agua es la variable que voy a medir'. ¿Qué está confundiendo probablemente?",
+      "opciones": [
+        "Confundió la variable independiente (la cantidad de agua, que se decide) con la dependiente (lo que debería medir, como la altura)",
+        "Nada, está en lo correcto",
+        "Confundió una opinión con una hipótesis",
+        "Confundió una variable de confusión con una constante"
+      ],
+      "correcta": 0,
+      "explicacion": "La cantidad de agua normalmente es algo que se decide cambiar a propósito antes de empezar (independiente); lo que se mide después como resultado (dependiente) sería, por ejemplo, la altura de la planta."
+    },
+    {
+      "pregunta": "Se hornean dos tandas de galletas con la misma receta, la misma masa y el mismo horno, cambiando solo el tiempo de horneado (10 o 15 minutos). Cinco catadores prueban una galleta de cada tanda, sin saber cuál es cuál, y la califican en crocancia. ¿Este diseño es válido?",
+      "opciones": [
+        "No, porque hacen falta al menos 50 catadores",
+        "Sí, porque la única diferencia entre las tandas es el tiempo de horneado, y varios catadores calificaron sin saber cuál tanda era cuál",
+        "No, porque las galletas no se pueden calificar con números",
+        "Sí, pero solo si las dos tandas se hornean el mismo día"
+      ],
+      "correcta": 1,
+      "explicacion": "El diseño mantiene igual la receta, la masa y el horno, y cambia solo el tiempo de horneado; usa varios catadores (no una sola opinión) que califican sin saber cuál tanda es cuál, evitando que la expectativa influya. Con eso, cualquier diferencia de crocancia se puede atribuir con confianza al tiempo de horneado."
+    }
+  ]
+}

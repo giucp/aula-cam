@@ -1,0 +1,379 @@
+{
+  "programa": "cumbre",
+  "materia": "Cómo Pensar",
+  "grado": "Cumbre Cómo Pensar 1er año",
+  "dominio": "Preguntar e investigar",
+  "tema": "Diseñar una prueba justa: el experimento controlado (con ejemplos de física y biología)",
+  "referencias": [
+    "NGSS Science and Engineering Practices — Practice 3: Planning and Carrying Out Investigations (controlar variables, usar réplicas y un tamaño de muestra adecuado)",
+    "UK National Curriculum, Working Scientifically (KS3) — 'fair testing': controlar variables y usar experimentos de control cuando corresponde",
+    "IB MYP Sciences, Criterio B (Inquiring and designing) — diseñar una metodología con control de variables y suficientes repeticiones",
+    "Metodología de la investigación experimental — el concepto de 'grupo de control' como comparación de referencia sin el tratamiento que se estudia"
+  ],
+  "resumen": {
+    "titulo": "Diseñar una prueba justa: el experimento controlado",
+    "intro": "En el tema anterior aprendiste a distinguir la variable independiente, la dependiente y las controladas, y a detectar cuando una variable de confusión se cuela y arruina una conclusión. Ahora vas a usar esas piezas para construir algo más grande: un experimento controlado completo, de principio a fin. Vas a aprender qué hace que una prueba sea justa, para qué sirve un grupo de control, cuántas veces hay que repetir una medición para confiar en ella, y cómo detectar la falla en un diseño ajeno con solo leerlo. Ya no alcanza con nombrar variables sueltas: vas a diseñar experimentos completos y a juzgar si un diseño que te presenten es válido o no, que es el nivel más cercano a lo que hace un investigador de verdad antes de confiar en un resultado.",
+    "secciones": [
+      {
+        "titulo": "La prueba justa: la regla de oro del experimento controlado",
+        "explicacion": "Una PRUEBA JUSTA es una comparación entre dos o más situaciones que son IDÉNTICAS en todo, excepto en UNA sola cosa: la variable independiente. Si de verdad lograste que todo lo demás fuera igual, cualquier diferencia en el resultado (la variable dependiente) se puede atribuir con confianza a esa única cosa que cambiaste. Al conjunto completo de esa comparación —con la variable que se cambia a propósito y todo lo demás fijo— se lo llama EXPERIMENTO CONTROLADO. La palabra 'justa' viene de una imagen sencilla: pensá en una carrera. Si dos corredores compiten para ver quién es más rápido, pero uno corre cuesta abajo y el otro cuesta arriba, la carrera no es justa, porque la pendiente del terreno —algo que debería haber quedado igual para los dos— también cambió. Para que sea justa, ambos deberían correr la misma distancia, en el mismo terreno plano, al mismo tiempo. Diseñar un experimento es, en el fondo, diseñar una carrera justa entre dos o más condiciones.",
+        "pasos": [
+          "Definí qué es lo único que vas a cambiar a propósito: tu variable independiente.",
+          "Hacé la lista de todo lo demás que podría influir en el resultado, y fijalo IGUAL para todos los casos que compares: las controladas.",
+          "Definí qué vas a medir como resultado, y con qué instrumento: tu variable dependiente.",
+          "Preguntate: si encuentro una diferencia en el resultado, ¿puedo decir con confianza que se debió a la única cosa que cambié?"
+        ],
+        "ejemplo": "Dos corredores compiten para ver quién es más rápido, pero uno corre cuesta abajo y el otro cuesta arriba: no es una prueba justa, porque cambió la pendiente del terreno además del corredor. Para que sea justa, los dos deberían correr la misma distancia, en terreno plano, en las mismas condiciones.",
+        "figura": ""
+      },
+      {
+        "titulo": "El grupo de control: el punto de comparación que hace confiable un experimento",
+        "explicacion": "Hay dos términos nuevos que necesitás para diseñar un experimento completo. El GRUPO EXPERIMENTAL es el que recibe el cambio que estás probando. El GRUPO DE CONTROL es igual en todo al experimental, pero NO recibe ese cambio: se deja tal cual, como referencia. ¿Para qué sirve el grupo de control? Sin él, no podés saber si el resultado que observaste se debe de verdad a lo que probaste, o si hubiera pasado de todas formas aunque no hicieras nada. Ejemplo: querés saber si una crema cicatrizante ayuda a sanar heridas más rápido. Si le ponés la crema a un grupo de heridas y simplemente ves que sanan en una semana, no sabés si sanaron por la crema o porque las heridas, en general, sanan solas en más o menos ese tiempo. Necesitás un grupo de control: heridas similares, sin la crema (o con una crema neutra sin ingrediente activo), en las mismas condiciones. Si el grupo con crema sana notablemente más rápido que el de control, ahí sí podés atribuirlo a la crema.",
+        "pasos": [
+          "Armá el grupo experimental: recibe el cambio que querés probar.",
+          "Armá el grupo de control: es igual en todo, excepto que NO recibe ese cambio.",
+          "Medí el resultado en los dos grupos, con el mismo instrumento y en el mismo momento.",
+          "Compará: si el experimental da un resultado distinto del control, podés atribuirlo con confianza al cambio que probaste."
+        ],
+        "ejemplo": "Para probar una crema cicatrizante: grupo experimental = heridas similares con la crema; grupo de control = heridas similares sin la crema (o con una crema neutra). Se compara el tiempo de cicatrización de los dos grupos.",
+        "figura": ""
+      },
+      {
+        "titulo": "Por qué un solo caso no alcanza: repetición y tamaño de muestra",
+        "explicacion": "Una MUESTRA es el conjunto de casos que se prueban en un experimento: semillas, plantas, personas, objetos. El TAMAÑO DE MUESTRA es cuántos casos incluye esa muestra. Con un solo caso, un resultado puede deberse simplemente al azar —una semilla defectuosa, un pequeño error de medición, una casualidad— y no a la variable que estás probando. Por eso hacen falta dos cosas distintas, y ambas importan: repetir la medición varias veces sobre el MISMO caso (por ejemplo, cronometrar el mismo péndulo cinco veces y promediar, para que un error de reacción al arrancar el cronómetro pese menos), y además probar con VARIOS casos distintos dentro de cada grupo (varias semillas, varias plantas), para que un caso raro no arruine la conclusión general. Cuantos más casos o repeticiones uses, más confianza podés tener en que el patrón que ves es real y no solo ruido casual.",
+        "pasos": [
+          "No confíes en un solo caso: repetí la medición varias veces sobre el mismo objeto y promediá el resultado.",
+          "Probá con varios casos distintos dentro de cada grupo (varias semillas, varias plantas, varias personas), no solo uno.",
+          "Cuantos más casos o repeticiones, más confianza en que el patrón observado es real y no una casualidad."
+        ],
+        "ejemplo": "Sembrar una sola semilla en agua tibia y ver que germina en dos días no prueba nada, porque pudo ser esa semilla en particular. Sembrar veinte semillas remojadas y veinte sin remojar, y comparar el promedio de días hasta germinar de cada grupo, sí permite sacar una conclusión confiable.",
+        "figura": ""
+      },
+      {
+        "titulo": "Diseño paso a paso en física: ¿la longitud del hilo afecta el período de un péndulo?",
+        "explicacion": "Armemos un diseño completo, de principio a fin. La pregunta es si la longitud del hilo de un péndulo afecta su período: el tiempo que tarda en completar una oscilación completa (ida y vuelta). La variable independiente es la longitud del hilo, con varios niveles: por ejemplo, 20 cm, 40 cm y 60 cm. La variable dependiente es el período, medido con un cronómetro. Pero medir una sola oscilación es poco preciso, porque un pequeño error al arrancar o parar el cronómetro pesa mucho sobre un tiempo tan corto; por eso se cronometran varias oscilaciones seguidas (por ejemplo diez) y se divide el tiempo total entre diez, así ese error se reparte y pesa menos. Y hay que controlar todo lo demás: la misma masa en la pesa que cuelga del hilo, el mismo ángulo desde el que se suelta el péndulo, la misma persona soltándolo y cronometrando, y el mismo lugar, sin viento que lo perturbe.",
+        "pasos": [
+          "Definí la variable independiente: la longitud del hilo (por ejemplo, 20 cm, 40 cm y 60 cm).",
+          "Definí la variable dependiente: el período, cronometrando varias oscilaciones seguidas y dividiendo el tiempo total entre esa cantidad.",
+          "Controlá: la misma masa en la pesa, el mismo ángulo de liberación, la misma persona soltando y cronometrando, el mismo lugar sin viento.",
+          "Repetí la medición de cada longitud varias veces y promediá, antes de comparar los tres períodos."
+        ],
+        "ejemplo": "Con hilos de 20, 40 y 60 cm, cronometrando 10 oscilaciones y dividiendo entre 10, se obtiene un período promedio distinto para cada longitud. Como todo lo demás quedó igual, la diferencia se puede atribuir con confianza a la longitud del hilo.",
+        "figura": ""
+      },
+      {
+        "titulo": "Otro diseño de física: ¿la superficie afecta cuánto tarda un bloque en deslizarse por una rampa?",
+        "explicacion": "Ahora un diseño con una rampa (plano inclinado). La pregunta es si el tipo de superficie —lisa o rugosa— afecta cuánto tiempo tarda un bloque en deslizarse desde arriba hasta abajo. La variable independiente es el tipo de superficie (por ejemplo, madera pulida como superficie lisa, y una lija pegada sobre la rampa como superficie rugosa). La variable dependiente es el tiempo que tarda el bloque en recorrer la rampa, medido con cronómetro. Se controla: el mismo ángulo de la rampa, la misma longitud, el mismo bloque (mismo peso y forma), el mismo punto de partida, y la misma persona soltando y cronometrando. Aquí la rampa con superficie lisa puede pensarse como el grupo de control —la condición de base, sin el factor que se prueba— y la rampa rugosa como el grupo experimental.",
+        "pasos": [
+          "Definí la variable independiente: el tipo de superficie (lisa o rugosa).",
+          "Definí la variable dependiente: el tiempo que tarda el bloque en recorrer la rampa, con cronómetro.",
+          "Controlá: el mismo ángulo, la misma longitud de rampa, el mismo bloque, el mismo punto de partida, la misma persona soltando y cronometrando.",
+          "Repetí varias veces cada superficie y promediá, antes de comparar los tiempos."
+        ],
+        "ejemplo": "Un bloque de madera se suelta desde el mismo punto en una rampa a 30 grados, una vez sobre superficie lisa y otra sobre superficie rugosa. Si el tiempo es mayor en la rugosa, se debe a la fricción de la superficie, porque todo lo demás fue igual.",
+        "figura": ""
+      },
+      {
+        "titulo": "Diseño de biología: ¿remojar las semillas acelera la germinación?",
+        "explicacion": "Pasemos a biología. La pregunta es si remojar semillas de frijol en agua tibia durante 24 horas antes de sembrarlas acelera la germinación (el tiempo hasta que brota el primer tallo). La variable independiente es si la semilla fue remojada o no. El grupo experimental son las semillas remojadas; el grupo de control son semillas idénticas, sin remojar, sembradas directamente. La variable dependiente son los días que tarda cada semilla en germinar, contados a simple vista o con una regla si se mide el largo del brote. Se controla: el mismo tipo de semilla, la misma tierra, la misma cantidad de agua después de sembrar, la misma luz y temperatura. Y, siguiendo la idea de la sección anterior, no se usa una sola semilla por grupo: se usan varias (por ejemplo 15 remojadas y 15 sin remojar) y se compara el promedio de días de cada grupo.",
+        "pasos": [
+          "Definí la variable independiente: si la semilla se remoja en agua tibia o no.",
+          "Definí la variable dependiente: los días hasta que germina cada semilla.",
+          "Controlá: el mismo tipo de semilla, la misma tierra, la misma cantidad de agua después de sembrar, la misma luz y temperatura.",
+          "Usá varias semillas por grupo (no una sola) y compará el promedio de días de cada grupo."
+        ],
+        "ejemplo": "15 semillas remojadas 24 horas y 15 sin remojar, sembradas el mismo día en la misma tierra y con el mismo cuidado. Si el promedio de días hasta germinar es menor en las remojadas, se puede atribuir al remojo.",
+        "figura": ""
+      },
+      {
+        "titulo": "Otro diseño de biología: la levadura, el azúcar y el globo",
+        "explicacion": "Un experimento clásico de fermentación: la levadura, al alimentarse de azúcar en agua tibia, produce gas (dióxido de carbono), que se puede medir dejando un globo puesto en la boca de una botella y viendo cuánto se infla. La pregunta es si la CANTIDAD de azúcar afecta cuánto se infla el globo. La variable independiente es la cantidad de azúcar, con varios niveles: por ejemplo, 0 cucharadas (grupo de control), 1 cucharada y 3 cucharadas. La variable dependiente es cuánto se infla el globo, medido con una regla (por ejemplo, la altura que alcanza). El grupo de 0 cucharadas —sin azúcar— cumple un papel importante aunque no sea el que más interesa comparar: confirma que el gas se produce por el azúcar, y no simplemente porque el agua está tibia o porque la levadura sola ya produce algo de gas por su cuenta. Se controla: la misma cantidad de agua tibia, la misma temperatura del agua, la misma cantidad de levadura, el mismo tipo y tamaño de botella y de globo, y el mismo tiempo de espera antes de medir.",
+        "pasos": [
+          "Definí la variable independiente: la cantidad de azúcar (por ejemplo, 0, 1 y 3 cucharadas).",
+          "Definí la variable dependiente: cuánto se infla el globo, medido con una regla.",
+          "Incluí un grupo con 0 cucharadas de azúcar: sirve para confirmar que el efecto se debe al azúcar y no solo al agua tibia o a la levadura sola.",
+          "Controlá: la misma cantidad de agua tibia, la misma temperatura, la misma cantidad de levadura, el mismo tipo de botella y globo, el mismo tiempo de espera."
+        ],
+        "ejemplo": "Tres botellas idénticas con la misma agua tibia y la misma levadura: una sin azúcar, una con 1 cucharada y una con 3 cucharadas. Si el globo se infla más cuanto más azúcar hay, y la botella sin azúcar apenas se infla, se puede atribuir el efecto al azúcar.",
+        "figura": ""
+      },
+      {
+        "titulo": "Cuando el diseño falla: cómo se llega a una conclusión falsa",
+        "explicacion": "Veamos qué pasa cuando un experimento parece bien pensado pero en realidad no lo está. Alguien quiere saber si la inclinación de una rampa afecta qué tan lejos llega una pelota al salir disparada desde abajo. Suelta la pelota A desde una rampa de 20 grados y 1 metro de largo, y la pelota B —más pesada— desde una rampa de 40 grados y 1.5 metros de largo. La pelota B llega más lejos, y concluye: 'a mayor inclinación, la pelota llega más lejos'. El problema es que cambiaron TRES cosas a la vez: el ángulo, la longitud de la rampa y el peso de la pelota. No hay forma de saber si la pelota llegó más lejos por el ángulo, por la rampa más larga, o por ser una pelota distinta. Cualquiera de esas tres —o una combinación de ellas— pudo causar el resultado, así que la conclusión sobre el ángulo queda invalidada, aunque el experimento 'parezca' haber funcionado porque sí se observó una diferencia.",
+        "pasos": [
+          "Ante cualquier conclusión, revisá: ¿de verdad cambió UNA sola cosa entre lo que se compara, o se colaron otras diferencias sin darse cuenta?",
+          "Si encontrás más de una diferencia, cada una es sospechosa de ser una variable de confusión.",
+          "Una conclusión sobre la causa NO es válida mientras existan variables de confusión sin corregir, aunque sí se haya observado una diferencia en el resultado."
+        ],
+        "ejemplo": "Pelota A: rampa de 20°, 1 metro, pelota liviana. Pelota B: rampa de 40°, 1.5 metros, pelota pesada. La pelota B llega más lejos, pero cambiaron el ángulo, la longitud y el peso a la vez: no se puede saber cuál de los tres causó la diferencia.",
+        "figura": ""
+      },
+      {
+        "titulo": "Cómo detectar la falla en un diseño ajeno: el método del detective",
+        "explicacion": "Evaluar un diseño que hizo otra persona es distinto a diseñar el tuyo propio: no partís de cero, tenés que revisar lo que ya está armado y encontrar dónde se rompió la regla de la prueba justa. Para eso conviene un método fijo, en orden. Primero, identificá qué es lo único que DEBERÍA haber cambiado —la variable independiente que dice estar probando— y compará contra lo que realmente cambió entre los grupos: a veces hay más de una diferencia escondida. Segundo, revisá si existió un grupo de control cuando hacía falta uno: sin él, no se puede saber si el resultado hubiera pasado de todos modos. Tercero, revisá el tamaño de la muestra y la repetición: ¿se probó con un solo caso, sin repetir, o con varios casos y varias mediciones? Con encontrar UNA sola de estas fallas ya alcanza para decir que el diseño no es válido todavía, y lo más útil es también proponer la corrección concreta, no solo señalar el error.",
+        "pasos": [
+          "Identificá la variable independiente que el diseño dice estar probando, y compará contra todo lo que realmente cambió entre los grupos.",
+          "Si hay más de una diferencia entre los grupos, marcá cada una como variable de confusión sospechosa.",
+          "Revisá si hacía falta un grupo de control y si existió uno válido (igual en todo menos en la variable probada).",
+          "Revisá el tamaño de la muestra y la repetición: ¿un solo caso sin repetir, o varios casos con varias mediciones?",
+          "Con una sola falla encontrada alcanza para decir que el diseño no es válido; proponé además cómo corregirlo."
+        ],
+        "ejemplo": "En el experimento de las pelotas y la rampa: variable que dice probar = el ángulo. Lo que realmente cambió = ángulo, longitud de la rampa y peso de la pelota. Dos variables de confusión encontradas (longitud y peso). Corrección: usar la misma pelota y rampas de la misma longitud, cambiando solo el ángulo.",
+        "figura": ""
+      },
+      {
+        "titulo": "Errores típicos (y cómo blindarte)",
+        "explicacion": "Tres errores se repiten una y otra vez al diseñar o evaluar experimentos controlados. Primero, omitir el grupo de control cuando realmente hace falta: si querés saber si algo CAUSA un efecto (una crema que cicatriza, un fertilizante que hace crecer más), necesitás una referencia sin ese algo para saber si el efecto hubiera aparecido de todas formas. Segundo, confundir repetir la medición del MISMO caso con probar VARIOS casos distintos: son dos cosas distintas y hacen falta las dos; repetir reduce el error de medir un caso puntual, pero no evita que ESE caso en particular sea raro o atípico —para eso hace falta variedad de casos. Tercero, cambiar más de una cosa 'para ahorrar tiempo', pensando que las demás diferencias 'no importan tanto': cualquier diferencia extra entre lo que se compara es una variable de confusión en potencia, sin importar qué tan chica parezca.",
+        "pasos": [
+          "Antes de dar por bueno un diseño, preguntate si hacía falta un grupo de control y si de verdad existió uno válido.",
+          "Recordá que repetir la medición de un caso y probar varios casos distintos son cosas distintas: hacen falta las dos.",
+          "Desconfiá de cualquier diferencia extra entre los grupos, por chica que parezca: puede ser la variable de confusión que arruina la conclusión."
+        ],
+        "ejemplo": "Alguien dice 'no hace falta grupo de control, ya sé que sin fertilizante las plantas crecen menos'. Es un error: sin probarlo en las MISMAS condiciones de este experimento en particular, esa suposición no reemplaza la comparación real.",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "Una prueba justa cambia UNA sola cosa a propósito y mantiene todo lo demás igual. El grupo de control es la referencia sin ese cambio, que permite saber si el resultado se debe de verdad a lo que se probó y no a otra cosa. Repetir la medición y probar con varios casos evita que la casualidad se confunda con un patrón real. Diseñar bien significa aplicar las tres cosas juntas desde el principio; evaluar un diseño ajeno significa revisar, punto por punto, cuál de las tres falló."
+  },
+  "practica": [
+    {
+      "enunciado": "Querés averiguar si la masa de la pesa que cuelga del péndulo afecta su período, dejando la longitud del hilo fija. Diseñá el experimento: variable independiente, dependiente, y al menos tres variables controladas.",
+      "pista": "Pensá qué se cambia a propósito, qué se mide con cronómetro, y qué debe quedar exactamente igual entre las pruebas.",
+      "solucion": "Independiente: la masa de la pesa (por ejemplo, tres pesas de 50 g, 100 g y 150 g). Dependiente: el período, cronometrando varias oscilaciones seguidas y dividiendo entre esa cantidad. Controladas: la misma longitud de hilo, el mismo ángulo de liberación, la misma persona soltando y cronometrando, el mismo lugar sin viento.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Querés averiguar si la temperatura del agua (fría o tibia) afecta cuánto gas produce la levadura con azúcar, medido por cuánto se infla un globo puesto en la boca de una botella. Diseñá el experimento completo, indicando las variables controladas.",
+      "pista": "La temperatura es lo único que debería cambiar; todo lo demás (azúcar, levadura, botella, globo) debe quedar igual en ambos casos.",
+      "solucion": "Independiente: la temperatura del agua (fría o tibia). Dependiente: cuánto se infla el globo, medido con una regla. Controladas: la misma cantidad de azúcar, la misma cantidad de levadura, el mismo tipo y tamaño de botella y globo, y el mismo tiempo de espera antes de medir.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Alguien quiere saber si la inclinación de una rampa afecta la velocidad final de un carrito de juguete al llegar abajo. Suelta el carrito A desde una rampa de 20 grados y 1 metro de largo, y el carrito B (más pesado) desde una rampa de 40 grados y 1.5 metros de largo. Concluye que la rampa más inclinada hace que el carrito vaya más rápido. Encontrá las fallas del diseño.",
+      "pista": "Contá cuántas cosas distintas cambiaron entre las dos pruebas, además del ángulo.",
+      "solucion": "Cambiaron tres cosas a la vez: el ángulo de la rampa, la longitud de la rampa y el peso del carrito. No se puede saber si la mayor velocidad se debió al ángulo, a la rampa más larga, o al carrito más pesado. Para que el diseño fuera válido, debería usarse el mismo carrito en rampas de la misma longitud, cambiando solamente el ángulo.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Querés averiguar si la profundidad a la que se siembra una semilla de frijol (1 cm o 3 cm) afecta cuántos días tarda en brotar. Diseñá el experimento completo, incluyendo cuántas semillas usarías y por qué.",
+      "pista": "Pensá en qué se controla (tierra, agua, luz) y por qué conviene usar más de una semilla por grupo.",
+      "solucion": "Independiente: la profundidad de siembra (1 cm o 3 cm). Dependiente: los días hasta que brota cada semilla. Controladas: el mismo tipo de semilla, la misma tierra, la misma cantidad de agua, la misma luz y temperatura. Conviene usar varias semillas por grupo (por ejemplo 15 de cada profundidad) para promediar y que una semilla defectuosa no arruine la conclusión.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante compara dos marcas de fertilizante para tomates. Al grupo con fertilizante A le da sol pleno todo el día; al grupo con fertilizante B lo deja en semisombra. Después de un mes, las plantas con A crecieron más y concluye que el fertilizante A es mejor. ¿Qué falla tiene este diseño?",
+      "pista": "Buscá qué otra cosa, además del fertilizante, fue distinta entre los dos grupos.",
+      "solucion": "La cantidad de sol cambió junto con el fertilizante: un grupo tuvo sol pleno y el otro semisombra. Esa es una variable de confusión. No se puede saber si el mayor crecimiento se debió al fertilizante A o a que recibió más horas de sol. Para corregirlo, ambos grupos deberían recibir la misma cantidad de sol.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Diseñá un experimento con grupo de control para averiguar si un jarabe de miel ayuda a calmar la tos más rápido que no tomar nada. Especificá el grupo control, el experimental, la variable dependiente y qué controlarías.",
+      "pista": "El grupo de control no debe recibir el jarabe, pero debe ser comparable en todo lo demás.",
+      "solucion": "Grupo experimental: personas con tos que toman el jarabe de miel. Grupo de control: personas con tos similar que no toman el jarabe (o toman algo neutro sin efecto). Variable dependiente: el tiempo que tarda en calmarse la tos, o la intensidad de la tos medida con una escala. Controladas: personas con un tipo de tos parecido, la misma cantidad de descanso, y que ninguno tome otro remedio para la tos durante la prueba.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un investigador prueba una sola semilla remojada en agua tibia, ve que germina en 2 días, y concluye que remojar las semillas SIEMPRE acelera la germinación. ¿Cuál es la falla, más allá de las variables?",
+      "pista": "Pensá en el tamaño de la muestra, no en variables de confusión.",
+      "solucion": "El problema es el tamaño de muestra: probó con una sola semilla y sin grupo de control (ninguna semilla sin remojar para comparar). Un solo caso puede deberse al azar (esa semilla en particular pudo germinar rápido por cualquier motivo). No se puede generalizar 'siempre acelera' a partir de un único caso sin comparación.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Querés probar si la CANTIDAD de azúcar (1 cucharada frente a 3 cucharadas) afecta cuánto se infla el globo por el gas que produce la levadura. ¿Es necesario un grupo sin azúcar en este caso? Justificá y diseñá el experimento completo.",
+      "pista": "Pensá si comparar 1 cucharada contra 3 cucharadas ya permite ver el efecto de la cantidad, o si además conviene un tercer grupo de referencia.",
+      "solucion": "No es estrictamente necesario para comparar 1 cucharada contra 3 cucharadas, porque las dos ya tienen azúcar y se pueden comparar directamente entre sí. Sin embargo, agregar un grupo con 0 cucharadas es útil como referencia adicional: confirma que el gas se debe al azúcar y no solo al agua tibia o a la levadura sola. Diseño: independiente = cantidad de azúcar (0, 1 y 3 cucharadas); dependiente = cuánto se infla el globo, medido con una regla; controladas = misma agua tibia, misma temperatura, misma cantidad de levadura, mismo tipo de botella y globo, mismo tiempo de espera.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Alguien mide el período de un péndulo cronometrando una sola oscilación con el hilo de 30 cm y una sola con el de 60 cm, y compara esos dos únicos tiempos. ¿Qué problema tiene, incluso si controló bien la masa y el ángulo?",
+      "pista": "Pensá en la precisión de medir una sola oscilación con cronómetro.",
+      "solucion": "Medir una sola oscilación es poco preciso: un pequeño error al arrancar o parar el cronómetro pesa mucho sobre un tiempo tan corto. Conviene cronometrar varias oscilaciones seguidas (por ejemplo 10) y dividir entre esa cantidad, y además repetir la medición de cada longitud varias veces antes de comparar los períodos.",
+      "figura": ""
+    },
+    {
+      "enunciado": "En el experimento del plano inclinado, alguien arma un grupo de control con superficie lisa usando una rampa de 1 metro, y el grupo experimental con superficie rugosa usando una rampa de 1.5 metros. Explicá por qué este grupo de control no sirve como comparación válida.",
+      "pista": "Recordá qué requisito debe cumplir un grupo de control respecto del experimental.",
+      "solucion": "Un grupo de control debe ser igual al experimental en todo, excepto en la variable que se prueba (acá, la superficie). Si además cambia la longitud de la rampa, se coló una segunda variable (la longitud) junto con la superficie, y ya no se puede saber si una diferencia en el tiempo se debe a la superficie o a la longitud. El grupo de control deja de ser válido.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Vas a probar si el agua tibia acelera la germinación de semillas de frijol frente a agua fría. ¿Por qué convendría usar 15 semillas por grupo en vez de 2? Explicá usando los conceptos de muestra y casualidad.",
+      "pista": "Pensá en qué pasa si justo una de las 2 semillas de un grupo resulta defectuosa.",
+      "solucion": "Con 2 semillas por grupo, una semilla defectuosa o una casualidad (por ejemplo, que a una la haya dañado un insecto) puede cambiar todo el resultado de ese grupo. Con 15 semillas por grupo, un caso raro pesa poco sobre el promedio general, y el patrón que aparece —si el grupo de agua tibia germina antes en promedio— tiene mucha más probabilidad de ser real y no producto del azar.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un estudiante afirma haber demostrado que 'el fertilizante mágico X hace crecer las plantas el doble de rápido'. Su experimento: compró una sola planta, le puso el fertilizante X, y la comparó con una foto de una planta de una revista que 'crecía normal'. Enumerá al menos tres fallas de este diseño.",
+      "pista": "Pensá en el grupo de control, el tamaño de muestra, y qué tan comparable es de verdad una foto de otra planta.",
+      "solucion": "Primero, no hay un grupo de control real cultivado en las mismas condiciones: comparar contra una foto de otra planta, en otro lugar, con otra tierra y otro clima, no es una comparación válida. Segundo, la muestra es de tamaño 1 (una sola planta): no se puede promediar ni descartar la casualidad. Tercero, no hay ninguna variable controlada explícita entre 'su' planta y la de la foto (tierra, agua, luz, temperatura probablemente distintas), así que ni siquiera se puede identificar una única variable de confusión: el experimento directamente no es comparable.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué hace que una prueba sea 'justa'?",
+      "opciones": [
+        "Cambiar una sola cosa y mantener todo lo demás igual",
+        "Cambiar varias cosas a la vez para ir más rápido",
+        "Usar solo un caso para no perder tiempo",
+        "Medir el resultado antes de hacer el cambio"
+      ],
+      "correcta": 0,
+      "explicacion": "Una prueba justa compara situaciones idénticas en todo excepto en UNA cosa (la variable independiente), para poder atribuir cualquier diferencia de resultado a esa única cosa."
+    },
+    {
+      "pregunta": "¿Cuál es la función principal de un grupo de control?",
+      "opciones": [
+        "Recibir el cambio que se está probando para medir su efecto",
+        "Servir de referencia sin el cambio, para comparar y saber si el resultado se debe de verdad a ese cambio",
+        "Aumentar el tamaño de la muestra",
+        "Medir con mayor precisión el instrumento usado"
+      ],
+      "correcta": 1,
+      "explicacion": "El grupo de control es igual al experimental en todo excepto que no recibe el cambio que se prueba; sin esa referencia, no se puede saber si el resultado hubiera aparecido de todas formas."
+    },
+    {
+      "pregunta": "En el experimento de la levadura y el azúcar (globo que se infla), ¿para qué sirve tener un grupo sin azúcar?",
+      "opciones": [
+        "Para ahorrar azúcar",
+        "Porque sin azúcar el globo se infla más",
+        "Para confirmar que el globo se infla por el azúcar y no solo por el agua tibia o la levadura sola",
+        "No sirve para nada, es un paso innecesario"
+      ],
+      "correcta": 2,
+      "explicacion": "El grupo sin azúcar es el grupo de control: permite confirmar que el gas producido se debe al azúcar y no a otra causa, como el agua tibia o la levadura actuando sola."
+    },
+    {
+      "pregunta": "Un péndulo se prueba con hilos de distinta longitud. ¿Por qué conviene cronometrar 10 oscilaciones y dividir entre 10, en vez de cronometrar una sola?",
+      "opciones": [
+        "Porque así el experimento dura más",
+        "Porque el péndulo se cansa después de una oscilación",
+        "Porque 10 es el número mínimo que exige la ley de la física",
+        "Porque un pequeño error al arrancar o parar el cronómetro pesa menos sobre el promedio"
+      ],
+      "correcta": 3,
+      "explicacion": "Medir una sola oscilación hace que un pequeño error de reacción pese mucho sobre un tiempo corto. Cronometrar varias oscilaciones y dividir entre esa cantidad reparte ese error y da una medida más precisa."
+    },
+    {
+      "pregunta": "Alguien prueba solo 2 semillas por grupo para comparar remojo frente a no remojo. ¿Cuál es el riesgo principal?",
+      "opciones": [
+        "Que una semilla defectuosa o un caso raro cambie todo el resultado del grupo, sin que refleje un patrón real",
+        "Que las semillas se confundan entre grupos",
+        "Que el experimento tarde demasiado tiempo",
+        "No hay ningún riesgo, 2 semillas alcanzan siempre"
+      ],
+      "correcta": 0,
+      "explicacion": "Con una muestra tan chica, un caso raro (una semilla defectuosa, por ejemplo) puede dominar el resultado del grupo entero, dando una conclusión que no refleja un patrón real."
+    },
+    {
+      "pregunta": "En el diseño del carrito de juguete: se suelta el carrito A desde una rampa de 20° y 1 metro, y el carrito B (más pesado) desde una rampa de 40° y 1.5 metros. ¿Por qué no se puede concluir que el ángulo mayor causó la mayor velocidad?",
+      "opciones": [
+        "Porque los carritos de juguete no sirven para medir velocidad",
+        "Porque también cambiaron la longitud de la rampa y el peso del carrito, así que no se puede saber cuál de las tres cosas causó el resultado",
+        "Porque 40 grados es un ángulo imposible de lograr",
+        "Porque el ángulo nunca afecta la velocidad de un objeto"
+      ],
+      "correcta": 1,
+      "explicacion": "Cambiaron tres cosas a la vez: el ángulo, la longitud de la rampa y el peso del carrito. Con tres variables de confusión sueltas, no se puede aislar el efecto del ángulo."
+    },
+    {
+      "pregunta": "¿Qué es una muestra, en el contexto de un experimento?",
+      "opciones": [
+        "El instrumento con el que se mide el resultado",
+        "La hipótesis inicial del experimento",
+        "El conjunto de casos (semillas, personas, objetos) que se prueban en el experimento",
+        "El grupo de control únicamente"
+      ],
+      "correcta": 2,
+      "explicacion": "La muestra es el conjunto de casos que se someten a prueba; su tamaño (cuántos casos incluye) afecta qué tan confiable es la conclusión."
+    },
+    {
+      "pregunta": "Se comparan dos marcas de fertilizante para tomates, pero al grupo con fertilizante A le dan sol pleno y al grupo con B lo dejan en semisombra. ¿Qué se coló en este diseño?",
+      "opciones": [
+        "Ninguna variable de confusión, el diseño está bien",
+        "El tipo de maceta usada",
+        "El tamaño de la muestra",
+        "La cantidad de sol, que cambió junto con el fertilizante y también podría explicar el crecimiento"
+      ],
+      "correcta": 3,
+      "explicacion": "La cantidad de sol cambió junto con la marca de fertilizante, sin controlarse. Eso hace imposible saber si el mayor crecimiento se debió al fertilizante o a las horas de sol."
+    },
+    {
+      "pregunta": "En el diseño del plano inclinado, un grupo de control con superficie lisa usa una rampa de 1 metro, y el grupo experimental con superficie rugosa usa una rampa de 1.5 metros. ¿Este grupo de control es válido?",
+      "opciones": [
+        "Sí, porque ambos son planos inclinados",
+        "Sí, porque la superficie rugosa siempre gana",
+        "No, porque los planos inclinados no admiten grupos de control",
+        "No, porque el grupo de control debe ser igual al experimental en todo menos en la variable que se prueba, y acá también cambió la longitud"
+      ],
+      "correcta": 3,
+      "explicacion": "Un grupo de control solo sirve si es idéntico al experimental salvo en la variable estudiada. Como acá también cambió la longitud de la rampa, se coló una segunda diferencia y el control deja de ser válido."
+    },
+    {
+      "pregunta": "Un estudiante prueba una sola planta con un fertilizante y la compara contra una foto de otra planta de una revista. ¿Cuál es el problema principal de esta comparación?",
+      "opciones": [
+        "Es una comparación completamente inválida: no se sabe nada de las condiciones de la planta de la foto (tierra, agua, luz, clima), y además es una muestra de tamaño 1",
+        "Es válida porque las dos son plantas",
+        "El problema es solo que faltó repetir la medición",
+        "No hay ningún problema, las fotos son una fuente confiable"
+      ],
+      "correcta": 0,
+      "explicacion": "No hay forma de saber qué condiciones tuvo la planta de la foto, así que no es una comparación controlada; además, probar con una sola planta no permite descartar la casualidad."
+    },
+    {
+      "pregunta": "¿Cuál de estas parejas está correctamente definida en un experimento de germinación de semillas?",
+      "opciones": [
+        "Independiente = si se remojan o no las semillas; Dependiente = días hasta que brotan",
+        "Independiente = días hasta que brotan; Dependiente = si se remojan o no",
+        "Independiente = tipo de maceta; Dependiente = si se remojan o no",
+        "Ambas son la variable dependiente"
+      ],
+      "correcta": 0,
+      "explicacion": "Remojar o no la semilla es lo que se decide de antemano (independiente); los días hasta que brota es lo que se mide después como resultado (dependiente)."
+    },
+    {
+      "pregunta": "¿Por qué repetir la medición del MISMO caso varias veces (por ejemplo, cronometrar el mismo péndulo 5 veces) es distinto de probar con VARIOS casos (varias semillas o plantas)?",
+      "opciones": [
+        "Son la misma cosa, no hay diferencia",
+        "Repetir el mismo caso reduce el error de medición en ESE caso; probar varios casos evita que un caso raro arruine la conclusión general; hacen falta las dos cosas",
+        "Repetir el mismo caso es innecesario si ya se usan varios casos",
+        "Probar varios casos reemplaza la necesidad de un grupo de control"
+      ],
+      "correcta": 1,
+      "explicacion": "Repetir la medición de un mismo caso mejora la precisión de ESA medición; probar varios casos distintos evita que uno atípico arruine la conclusión general. Son necesidades distintas y complementarias."
+    },
+    {
+      "pregunta": "En el experimento del jarabe de miel para la tos, ¿qué haría el grupo de control?",
+      "opciones": [
+        "Tomar el jarabe también, pero en menor cantidad",
+        "Medir la tos con un instrumento distinto",
+        "No tomar el jarabe (o tomar algo neutro), para comparar contra el grupo que sí lo toma",
+        "No participar del experimento"
+      ],
+      "correcta": 2,
+      "explicacion": "El grupo de control debe ser comparable al experimental en todo, pero sin recibir el jarabe (o con algo neutro sin efecto), para que la comparación aísle el efecto real del jarabe."
+    },
+    {
+      "pregunta": "Alguien mide el período de un péndulo cronometrando una sola oscilación con el hilo de 30 cm y una sola con el de 60 cm, y ya saca una conclusión. Si la masa y el ángulo fueron los mismos en ambos casos, ¿qué controló bien?",
+      "opciones": [
+        "Nada, todo el diseño está mal",
+        "No se puede saber si controló algo sin ver el experimento completo",
+        "El ángulo no es una variable relevante en un péndulo",
+        "Controló bien esas dos variables (masa y ángulo); el problema es solo la falta de repetición para un período confiable"
+      ],
+      "correcta": 3,
+      "explicacion": "Controlar la masa y el ángulo está bien hecho; la falla de este diseño no es una variable de confusión, sino la falta de repetición para obtener un período preciso."
+    },
+    {
+      "pregunta": "¿Qué distingue a un experimento controlado de simplemente observar algo y sacar una conclusión?",
+      "opciones": [
+        "El experimento controlado no necesita ninguna medición",
+        "El experimento controlado cambia deliberadamente una sola variable, manteniendo las demás iguales, para poder atribuir el resultado con confianza; la observación simple no aísla causas de esa manera",
+        "Son exactamente lo mismo",
+        "El experimento controlado siempre usa animales o plantas"
+      ],
+      "correcta": 1,
+      "explicacion": "El experimento controlado manipula a propósito UNA variable mientras fija las demás, lo que permite atribuir causas con confianza; una observación simple, sin ese control, no lo permite."
+    }
+  ]
+}

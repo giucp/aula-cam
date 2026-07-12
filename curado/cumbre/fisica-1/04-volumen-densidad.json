@@ -1,0 +1,363 @@
+{
+  "programa": "cumbre",
+  "materia": "Física",
+  "grado": "Cumbre Física 1er año",
+  "dominio": "Medir el mundo",
+  "tema": "Volumen y densidad: por qué unas cosas flotan y otras se hunden",
+  "referencias": [
+    "UK KS3/GCSE Combined Science — Density (mass/volume), measuring volume of regular and irregular solids by displacement, floating and sinking, common misconceptions (size vs density)",
+    "Singapore Lower Secondary Science / IB MYP Sciences — density as a characteristic property, displacement method, relating density to floating in a fluid",
+    "Japan MEXT Grade 7 Science — density of substances, measuring volume with a measuring cylinder, comparing densities to predict flotation",
+    "IB MYP Sciences (Criterio B/C) — procesar datos de masa y volumen para hallar densidad, analizar por qué un cuerpo flota o se hunde respecto al fluido"
+  ],
+  "resumen": {
+    "titulo": "Volumen y densidad: la clave secreta de flotar o hundirse",
+    "intro": "En el tema anterior aprendiste a medir masa con la balanza y a juzgar qué tan buena es una medida. Ahora vamos a juntar dos ideas —cuánto ESPACIO ocupa algo (su volumen) y cuánta MATERIA tiene apretada en ese espacio (su densidad)— para responder una pregunta que parece de magia pero es pura física: ¿por qué un tronco enorme flota y una piedrita diminuta se hunde? La respuesta NO es el tamaño ni el peso, como casi todo el mundo cree. Es la densidad comparada con la del agua, y al terminar este tema vas a poder PREDECIR si algo flota o se hunde antes de tirarlo al agua, explicar por qué, y hasta descubrir de qué material está hecho un objeto sin romperlo.",
+    "secciones": [
+      {
+        "titulo": "Qué es el volumen (y cómo medirlo cuando el objeto tiene forma regular)",
+        "explicacion": "El VOLUMEN es la cantidad de ESPACIO que ocupa un objeto: qué tan grande es en las tres dimensiones (largo, ancho y alto) a la vez. Se mide en unidades cúbicas, porque estamos midiendo espacio en tres direcciones. La unidad más usada en el laboratorio es el centímetro cúbico (cm3): es el espacio que ocupa un cubito de 1 cm de lado en cada dirección. Cuando un objeto tiene una forma REGULAR (una figura geométrica clara, como un cubo, una caja o un cilindro), su volumen se calcula con una fórmula, midiendo sus lados con la regla que ya sabes usar. Para una caja (un ortoedro) el volumen es largo x ancho x alto; para un cubo, como los tres lados son iguales, es lado x lado x lado. Un detalle importantísimo para no equivocarse: hay que multiplicar las tres medidas en la MISMA unidad. Si mides en centimetros, el resultado sale en cm3.",
+        "pasos": [
+          "Identifica la forma del objeto (caja, cubo, cilindro...).",
+          "Mide sus dimensiones con la regla, todas en la misma unidad (por ejemplo, cm).",
+          "Aplica la formula: caja -> largo x ancho x alto; cubo -> lado x lado x lado.",
+          "El resultado queda en unidades cubicas (cm3 si mediste en cm)."
+        ],
+        "ejemplo": "Una caja mide 4 cm de largo, 3 cm de ancho y 2 cm de alto. Su volumen es 4 x 3 x 2 = 24 cm3. Un cubo de 5 cm de lado tiene un volumen de 5 x 5 x 5 = 125 cm3."
+      },
+      {
+        "titulo": "Litros y mililitros: las mismas unidades con otro nombre",
+        "explicacion": "Seguro conoces el litro (L) y el mililitro (mL) de las botellas y los envases. Resulta que son unidades del MISMO volumen, solo que pensadas para liquidos. La conexion es de oro y hay que memorizarla: 1 mL equivale EXACTAMENTE a 1 cm3. Son lo mismo, dos nombres para el mismo espacio. Y 1 litro son 1000 mL, es decir 1000 cm3. Para objetos muy grandes se usa el metro cubico (m3), el espacio de un cubo de 1 metro de lado; como 1 metro son 100 cm, un metro cubico tiene 100 x 100 x 100 = 1 000 000 cm3. Saber pasar de una unidad a otra te deja usar una probeta (que marca mL) para medir volumenes que luego usaras en cm3, sin ningun problema.",
+        "pasos": [
+          "1 mL = 1 cm3 (son exactamente iguales).",
+          "1 L = 1000 mL = 1000 cm3.",
+          "1 m3 = 1 000 000 cm3 (porque 100 x 100 x 100).",
+          "Para pasar de cm3 a L, divide entre 1000; de L a cm3, multiplica por 1000."
+        ],
+        "ejemplo": "Una pecera de 30 cm x 20 cm x 25 cm tiene un volumen de 30 x 20 x 25 = 15 000 cm3. Como 1 L = 1000 cm3, eso son 15 000 / 1000 = 15 litros de agua. Y en metros cubicos: 15 000 / 1 000 000 = 0,015 m3."
+      },
+      {
+        "titulo": "Volumen de un objeto irregular: el metodo del desplazamiento",
+        "explicacion": "Aqui aparece un problema que la formula no resuelve: una piedra, una llave o una tuerca NO tienen una forma geometrica con lados que puedas medir con la regla. Entonces, como sabes su volumen? Con un truco genial que se le atribuye a Arquimedes hace mas de 2000 anos: el METODO DEL DESPLAZAMIENTO. La idea es que un objeto solido, al sumergirse por completo en agua, EMPUJA hacia arriba (desplaza) una cantidad de agua que ocupa exactamente el mismo espacio que el objeto. Entonces, si mides cuanta agua se corrio, sabes el volumen del objeto. En la practica se usa una probeta (el cilindro graduado que marca mL): anotas el nivel del agua ANTES de meter el objeto, sumerges el objeto por completo, anotas el nivel DESPUES, y el volumen del objeto es la diferencia entre los dos niveles. Como 1 mL = 1 cm3, ese numero ya te da el volumen en cm3 directamente. Ojo con dos condiciones para que funcione: el objeto debe quedar TOTALMENTE sumergido (si sobresale, mides de menos) y no debe absorber agua ni disolverse (una esponja o un terron de azucar arruinarian la medida).",
+        "pasos": [
+          "Llena una probeta con suficiente agua y anota el nivel inicial (en mL).",
+          "Sumerge el objeto por completo, sin que sobresalga ni quede aire atrapado.",
+          "Anota el nivel final del agua (en mL).",
+          "Volumen del objeto = nivel final - nivel inicial (y como 1 mL = 1 cm3, ya esta en cm3)."
+        ],
+        "ejemplo": "Una probeta tiene agua hasta la marca de 60 mL. Al sumergir una piedra por completo, el agua sube hasta 85 mL. El volumen de la piedra es 85 - 60 = 25 mL = 25 cm3. La piedra no tiene lados que medir, pero el agua desplazada nos dio su volumen exacto.",
+        "figura": "<svg viewBox=\"0 0 300 220\" xmlns=\"http://www.w3.org/2000/svg\"><g font-family=\"sans-serif\"><text x=\"60\" y=\"18\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"#3B2B4A\">antes</text><text x=\"220\" y=\"18\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"#3B2B4A\">despues</text><rect x=\"35\" y=\"40\" width=\"50\" height=\"150\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"2\"/><rect x=\"37\" y=\"110\" width=\"46\" height=\"78\" fill=\"#12B5A4\" fill-opacity=\"0.25\"/><line x1=\"85\" y1=\"110\" x2=\"96\" y2=\"110\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><text x=\"100\" y=\"114\" font-size=\"11\" fill=\"#3B2B4A\">60 mL</text><rect x=\"195\" y=\"40\" width=\"50\" height=\"150\" fill=\"none\" stroke=\"#8C7C93\" stroke-width=\"2\"/><rect x=\"197\" y=\"85\" width=\"46\" height=\"103\" fill=\"#12B5A4\" fill-opacity=\"0.25\"/><line x1=\"245\" y1=\"85\" x2=\"256\" y2=\"85\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><text x=\"259\" y=\"89\" font-size=\"11\" fill=\"#3B2B4A\">85 mL</text><path d=\"M206 150 L234 150 L228 172 L212 172 Z\" fill=\"#7C4DFF\" fill-opacity=\"0.7\" stroke=\"#5A3AAF\" stroke-width=\"1.5\"/><text x=\"150\" y=\"210\" text-anchor=\"middle\" font-size=\"12\" fill=\"#5A3AAF\">volumen de la piedra = 85 - 60 = 25 cm3</text></g></svg>"
+      },
+      {
+        "titulo": "Que es la densidad: cuanta materia hay apretada en cada espacio",
+        "explicacion": "Ya sabes medir masa (con la balanza) y volumen. La DENSIDAD conecta las dos y responde a una pregunta clave: para un mismo tamano, cuanta materia hay adentro? Pensalo asi: una bolsa llena de plumas y una bolsa del mismo tamano llena de piedras ocupan el MISMO espacio (mismo volumen), pero la de piedras tiene mucha mas materia apretada adentro, por eso pesa mas. Decimos que las piedras son mas DENSAS que las plumas. La densidad se calcula dividiendo la masa entre el volumen: densidad = masa / volumen. Como la masa se mide en gramos y el volumen en cm3, la densidad queda en gramos por centimetro cubico (g/cm3), que se lee 'gramos por centimetro cubico' y significa cuantos gramos de materia hay en cada cm3 de ese objeto. Tambien se usa el kilogramo por metro cubico (kg/m3) para objetos grandes; la equivalencia es que 1 g/cm3 son 1000 kg/m3. La densidad es una PROPIEDAD DEL MATERIAL: todo el hierro tiene la misma densidad (unos 7,9 g/cm3), sea un clavo o una viga; toda el agua pura tiene densidad 1 g/cm3. Por eso la densidad sirve como una 'huella' para reconocer de que esta hecho algo.",
+        "pasos": [
+          "Mide la masa del objeto con la balanza (en gramos).",
+          "Halla su volumen: por formula si es regular, por desplazamiento si es irregular (en cm3).",
+          "Divide: densidad = masa / volumen.",
+          "El resultado queda en g/cm3 (gramos de materia por cada centimetro cubico)."
+        ],
+        "ejemplo": "Un bloque de metal tiene una masa de 237 g y un volumen de 30 cm3. Su densidad es 237 / 30 = 7,9 g/cm3. Ese numero coincide con la densidad del hierro, asi que el bloque probablemente es de hierro, aunque no lo hayamos partido para verlo por dentro."
+      },
+      {
+        "titulo": "La trampa numero uno: la densidad NO depende del tamano",
+        "explicacion": "Aqui esta el error que confunde a casi todos. Es muy tentador pensar 'mientras mas grande, mas denso' o 'mientras mas pesa, mas denso', pero es FALSO, y entenderlo bien es la mitad del tema. La densidad no mide cuanto pesa algo ni que tan grande es: mide la RELACION entre las dos cosas. Imagina un ladrillo de hierro y lo cortas justo por la mitad. Cada mitad tiene la mitad de la masa Y la mitad del volumen que el ladrillo entero. Al dividir masa entre volumen, la mitad de arriba y la mitad de abajo se cancelan: cada pedazo tiene EXACTAMENTE la misma densidad que el ladrillo completo. Por eso una limadura de hierro minuscula y una viga de hierro gigante tienen la misma densidad (7,9 g/cm3), aunque una quepa en tu una y la otra pese toneladas. La densidad es una cualidad del MATERIAL, no del tamano del pedazo. Este es justo el motivo por el que el tamano y el peso te enganan cuando tratas de adivinar si algo flota: lo que decide no es que tan grande o pesado es, sino su densidad.",
+        "pasos": [
+          "La densidad = masa / volumen: es una RELACION, no un peso ni un tamano.",
+          "Si partes un objeto homogeneo en pedazos, cada pedazo conserva la MISMA densidad.",
+          "Objetos del mismo material tienen la misma densidad, sin importar su tamano.",
+          "Por eso 'mas grande' o 'mas pesado' NO significa 'mas denso'."
+        ],
+        "ejemplo": "Una bolita de plomo de 2 cm3 tiene una masa de unos 22,6 g (densidad 11,3 g/cm3). Un bloque de plomo mucho mas grande, de 100 cm3, tiene una masa de 1130 g: pesa 50 veces mas, pero al dividir 1130 / 100 da otra vez 11,3 g/cm3. Mismo material, misma densidad, aunque los tamanos sean muy distintos."
+      },
+      {
+        "titulo": "La gran idea: por que algo flota o se hunde",
+        "explicacion": "Ahora si, la pregunta del titulo. Un objeto flota o se hunde segun como sea su densidad COMPARADA con la densidad del liquido en el que lo pones. La regla es sencilla y no tiene excepciones para un objeto solido y macizo: si el objeto es MENOS denso que el liquido, FLOTA; si es MAS denso, se HUNDE; y si tiene exactamente la misma densidad, se queda suspendido a media agua, ni sube ni baja. El liquido de referencia mas comun es el agua, cuya densidad es 1 g/cm3 (un numero facil y por eso muy util). Entonces, para el agua: todo lo que tenga densidad menor que 1 g/cm3 flota (madera, corcho, hielo, aceite), y todo lo que tenga densidad mayor que 1 g/cm3 se hunde (hierro, piedra, vidrio, oro). La razon fisica, en pocas palabras: el agua empuja hacia arriba a todo lo que metes en ella; si el objeto pesa menos que el agua que ocuparia su mismo espacio (porque es menos denso), ese empuje le gana y lo sostiene arriba; si pesa mas (porque es mas denso), su peso le gana al empuje y se va al fondo. Por eso te basta comparar dos numeros -la densidad del objeto y la del liquido- para predecir el resultado sin mojarte.",
+        "pasos": [
+          "Averigua la densidad del objeto (masa / volumen).",
+          "Averigua la densidad del liquido (para el agua, 1 g/cm3).",
+          "Compara: objeto MENOS denso que el liquido -> flota.",
+          "Objeto MAS denso -> se hunde. Igual de denso -> queda suspendido a media agua."
+        ],
+        "ejemplo": "Un trozo de madera de densidad 0,6 g/cm3 flota en agua, porque 0,6 es menor que 1. Un trozo de vidrio de densidad 2,5 g/cm3 se hunde, porque 2,5 es mayor que 1. No importa cual de los dos sea mas grande: lo unico que decide es la comparacion con el 1 g/cm3 del agua.",
+        "figura": "<svg viewBox=\"0 0 360 200\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"20\" y=\"55\" width=\"320\" height=\"130\" fill=\"#12B5A4\" fill-opacity=\"0.15\" stroke=\"#12B5A4\" stroke-width=\"2\"/><line x1=\"20\" y1=\"70\" x2=\"340\" y2=\"70\" stroke=\"#12B5A4\" stroke-width=\"1.5\" stroke-dasharray=\"4,3\"/><text x=\"25\" y=\"48\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0E9486\">agua: densidad 1 g/cm3</text><rect x=\"55\" y=\"60\" width=\"36\" height=\"26\" fill=\"#7C4DFF\" fill-opacity=\"0.6\" stroke=\"#5A3AAF\" stroke-width=\"1.5\"/><text x=\"73\" y=\"100\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#5A3AAF\">0,6</text><text x=\"73\" y=\"113\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#5A3AAF\">flota</text><rect x=\"162\" y=\"74\" width=\"36\" height=\"26\" fill=\"#7C4DFF\" fill-opacity=\"0.6\" stroke=\"#5A3AAF\" stroke-width=\"1.5\"/><text x=\"180\" y=\"116\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#5A3AAF\">1,0</text><text x=\"180\" y=\"123\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#5A3AAF\">suspendido</text><rect x=\"268\" y=\"150\" width=\"36\" height=\"26\" fill=\"#3B2B4A\" fill-opacity=\"0.7\" stroke=\"#3B2B4A\" stroke-width=\"1.5\"/><text x=\"286\" y=\"130\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">2,5</text><text x=\"286\" y=\"143\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#3B2B4A\">se hunde</text></svg>"
+      },
+      {
+        "titulo": "Cuando la intuicion engaña: el barco de acero y la punta del iceberg",
+        "explicacion": "Con la regla anterior podemos resolver los casos que mas confunden. Primer caso: un tronco enorme flota y un tornillo diminuto se hunde. La intuicion dice 'lo grande y pesado se hunde', pero es al reves: el tronco (madera, densidad ~0,5) es menos denso que el agua aunque sea gigante, y el tornillo (hierro, 7,9) es mas denso aunque sea chiquito. Manda la densidad, no el tamano. Segundo caso, el mas famoso: un barco esta hecho de acero, que es MAS denso que el agua (por eso una barra maciza de acero se hunde de inmediato). Entonces, por que flota un barco enorme de acero? El truco es que el barco NO es macizo: por dentro esta casi todo hueco, lleno de aire. Si sumas la masa del acero mas el aire y la divides entre TODO el volumen del casco (acero + hueco), esa densidad PROMEDIO del barco completo es MENOR que la del agua, y por eso flota. Si aplastaras el barco hasta volverlo una bola maciza de acero, su densidad volveria a ser 7,9 y se hundiria. Tercer caso: el hielo flota (densidad 0,92, un poco menos que el agua), pero apenas: por eso de un iceberg solo asoma unas pocas partes de cien y casi todo queda bajo el agua. Los tres casos se entienden con la misma idea: lo que decide es la densidad comparada con el agua, no el tamano ni el peso a secas.",
+        "pasos": [
+          "Tamano y peso enganan: lo que decide es la DENSIDAD comparada con el liquido.",
+          "Un objeto hueco (un barco, una boya) tiene una densidad PROMEDIO baja porque incluye el aire de adentro.",
+          "Para saber si algo hueco flota, usa su densidad promedio: masa total / volumen total (material + hueco).",
+          "El hielo flota por poco (0,92 < 1), por eso casi todo el iceberg queda sumergido."
+        ],
+        "ejemplo": "Una barra maciza de acero de 500 cm3 tiene una masa de unos 3950 g (densidad 7,9 g/cm3) y se hunde. Pero si con ese mismo acero fabricas un casco hueco que en total ocupa 5000 cm3 (contando el aire de adentro), la densidad promedio pasa a ser 3950 / 5000 = 0,79 g/cm3, menor que 1: ahora flota. Misma cantidad de acero, distinto resultado, porque cambio el volumen total."
+      },
+      {
+        "titulo": "Los liquidos tambien tienen densidad: por que el aceite queda arriba",
+        "explicacion": "La densidad no es solo cosa de los solidos: cada liquido tiene la suya, y eso explica algo que ves en la cocina. Si echas aceite y agua en un mismo vaso y los dejas quietos, el aceite siempre termina ARRIBA y el agua abajo, formando dos capas separadas. La razon es la misma regla de siempre: el aceite (densidad ~0,92 g/cm3) es menos denso que el agua (1 g/cm3), asi que flota sobre ella, igual que flotaria un solido menos denso. Si tuvieras varios liquidos que no se mezclan, se acomodarian en capas segun su densidad: el mas denso abajo del todo y el menos denso arriba. Esto tiene una consecuencia interesante para los solidos: un objeto podria HUNDIRSE en un liquido y FLOTAR en otro, dependiendo de las densidades. Un objeto cuya densidad este entre la del aceite y la del agua (por ejemplo, 0,95 g/cm3) se hundiria en el aceite (0,95 mayor que 0,92) pero flotaria en el agua (0,95 menor que 1): quedaria justo descansando en la frontera entre las dos capas. Por eso, cuando decimos 'flota' o 'se hunde', siempre hay que aclarar EN QUE liquido.",
+        "pasos": [
+          "Cada liquido tiene su propia densidad (agua 1; aceite ~0,92).",
+          "Si dos liquidos no se mezclan, el menos denso queda arriba.",
+          "Un mismo solido puede flotar en un liquido y hundirse en otro.",
+          "Siempre aclara EN QUE liquido, porque el resultado depende de la comparacion."
+        ],
+        "ejemplo": "Un objeto de densidad 0,95 g/cm3 se hunde en aceite (porque 0,95 es mayor que la densidad del aceite, 0,92) pero flota en agua (porque 0,95 es menor que 1). En un vaso con aceite arriba y agua abajo, el objeto atravesaria el aceite y se quedaria flotando justo sobre el agua, en la frontera entre las dos capas."
+      },
+      {
+        "titulo": "Errores tipicos que conviene reconocer antes de cometerlos",
+        "explicacion": "Cerremos con los tropiezos mas frecuentes. Primero: creer que lo pesado se hunde y lo liviano flota. Lo que decide es la DENSIDAD (masa entre volumen), no la masa sola: un barco pesadisimo flota y una moneda liviana se hunde. Segundo: pensar que un objeto grande es mas denso que uno pequeno; el tamano no dice nada sobre la densidad, un pedazo grande y uno chico del mismo material tienen la misma. Tercero: al usar el metodo del desplazamiento, dejar que el objeto sobresalga del agua o que absorba liquido; hay que sumergirlo por completo y que no chupe agua, o el volumen sale mal. Cuarto: confundir las unidades y multiplicar lados medidos en unidades distintas (unos en cm y otros en mm); todas las medidas deben ir en la misma unidad antes de multiplicar. Quinto: olvidar que 1 mL = 1 cm3 y complicarse con conversiones que en realidad no hacen falta. Revisar esta lista antes de dar por buena una respuesta te ahorra los errores mas comunes del tema.",
+        "pasos": [
+          "No confundas peso con densidad: lo que decide flotar es masa / volumen, no la masa sola.",
+          "El tamano no indica densidad: grande no es lo mismo que denso.",
+          "En el desplazamiento: sumerge el objeto por completo y que no absorba agua.",
+          "Mide todos los lados en la misma unidad antes de multiplicar para el volumen.",
+          "Recuerda: 1 mL = 1 cm3 (no necesitas convertir entre esas dos)."
+        ],
+        "ejemplo": "Un estudiante dice 'esta piedra es pesada, por eso se hunde'. La afirmacion correcta seria 'esta piedra es mas densa que el agua, por eso se hunde': si en vez de la piedra tuviera un tronco todavia mas pesado pero menos denso, el tronco flotaria aunque pese mucho mas que la piedra."
+      }
+    ],
+    "idea_clave": "El VOLUMEN es el espacio que ocupa un cuerpo (cm3; se halla por formula si es regular y por desplazamiento de agua si es irregular, con 1 mL = 1 cm3). La DENSIDAD = masa / volumen (g/cm3) mide cuanta materia hay apretada en cada espacio y es una propiedad del MATERIAL, no del tamano: partir un objeto no cambia su densidad. Un cuerpo FLOTA si es menos denso que el liquido y se HUNDE si es mas denso; el agua vale 1 g/cm3 como referencia. Por eso el tamano y el peso enganan (un barco de acero flota por su densidad PROMEDIO baja, con el aire adentro; el hielo, 0,92, flota por poco): lo unico que decide es comparar la densidad del cuerpo con la del fluido."
+  },
+  "practica": [
+    {
+      "enunciado": "Un bloque metalico con forma de caja mide 5 cm de largo, 4 cm de ancho y 2 cm de alto, y tiene una masa de 316 g. Calcula su volumen y su densidad, y decide si flotaria o se hundiria en agua (densidad del agua = 1 g/cm3). Justifica.",
+      "pista": "Primero el volumen con la formula de la caja (largo x ancho x alto). Luego densidad = masa / volumen. Para decidir, compara esa densidad con la del agua (1 g/cm3).",
+      "solucion": "Volumen = 5 x 4 x 2 = 40 cm3. Densidad = 316 / 40 = 7,9 g/cm3. Como 7,9 es mayor que 1 (la densidad del agua), el bloque se HUNDE. (Ese valor de densidad, 7,9 g/cm3, coincide ademas con el del hierro, asi que el bloque probablemente es de hierro.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una tuerca de metal no tiene forma geometrica regular, asi que no puedes medir sus lados con una regla. Se sumerge en una probeta: el agua sube de 40 mL a 55 mL, y la balanza indica que la tuerca tiene una masa de 42 g. Halla su volumen y su densidad, y di si flota o se hunde en agua.",
+      "pista": "El volumen de un objeto irregular se halla por desplazamiento: nivel final menos nivel inicial. Recuerda que 1 mL = 1 cm3. Luego densidad = masa / volumen.",
+      "solucion": "Volumen = 55 - 40 = 15 mL = 15 cm3. Densidad = 42 / 15 = 2,8 g/cm3. Como 2,8 es mayor que 1, la tuerca se HUNDE en agua. El metodo del desplazamiento nos dio el volumen exacto aunque la tuerca no tuviera lados que medir.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Dos objetos tienen la MISMA masa: 180 g cada uno. El objeto A ocupa 200 cm3 y el objeto B ocupa 60 cm3. Sin calcular todavia, predice cual sera mas denso y por que; luego calcula ambas densidades para comprobarlo, y di cual flota en agua.",
+      "pista": "Densidad = masa / volumen. Con la misma masa, el que ocupa MENOS volumen tiene la materia mas apretada, asi que es mas denso. Calcula 180 dividido entre cada volumen.",
+      "solucion": "Prediccion: con igual masa, el de menor volumen (B, 60 cm3) es mas denso, porque la misma cantidad de materia esta apretada en menos espacio. Comprobacion: densidad de A = 180 / 200 = 0,9 g/cm3; densidad de B = 180 / 60 = 3,0 g/cm3. B es mas denso, como se predijo. En agua: A flota (0,9 menor que 1) y B se hunde (3,0 mayor que 1). Mismo peso, resultados opuestos: lo que decide es la densidad, no la masa.",
+      "figura": ""
+    },
+    {
+      "enunciado": "El hielo tiene una densidad de aproximadamente 0,92 g/cm3 y el agua liquida de 1 g/cm3. Explica por que un cubo de hielo flota en un vaso de agua, y por que casi todo el hielo queda por DEBAJO de la superficie y solo asoma una parte pequena.",
+      "pista": "Compara la densidad del hielo con la del agua para saber si flota. Para saber que fraccion queda sumergida, recuerda que la parte sumergida de un cuerpo que flota es igual a la razon entre su densidad y la del liquido.",
+      "solucion": "El hielo flota porque su densidad (0,92 g/cm3) es MENOR que la del agua (1 g/cm3). En cuanto a cuanto se sumerge: la fraccion de un cuerpo flotante que queda bajo el agua es igual a su densidad dividida entre la del liquido, o sea 0,92 / 1 = 0,92, es decir el 92 %. Por eso solo un 8 % del hielo (o del iceberg) asoma sobre la superficie y el 92 % queda escondido bajo el agua. Flota, pero por muy poco.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una pecera tiene forma de caja y mide 30 cm de largo, 20 cm de ancho y 25 cm de alto. Calcula su volumen en cm3 y luego expresalo en litros (recuerda que 1 L = 1000 cm3).",
+      "pista": "Volumen de la caja = largo x ancho x alto (todo en cm, resultado en cm3). Para pasar a litros, divide entre 1000.",
+      "solucion": "Volumen = 30 x 20 x 25 = 15 000 cm3. Como 1 L = 1000 cm3, en litros son 15 000 / 1000 = 15 L. (Si se quisiera en metros cubicos: 15 000 / 1 000 000 = 0,015 m3.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un joyero afirma que una pieza es de oro puro. El oro puro tiene una densidad de 19,3 g/cm3. La pieza tiene una masa de 200 g, y al sumergirla en una probeta el agua sube de 50 mL a 65 mL. Averigua la densidad real de la pieza y decide si el joyero dice la verdad.",
+      "pista": "Halla el volumen por desplazamiento (nivel final menos inicial) y luego la densidad (masa / volumen). Compara ese resultado con la densidad del oro puro (19,3 g/cm3).",
+      "solucion": "Volumen = 65 - 50 = 15 mL = 15 cm3. Densidad = 200 / 15 = 13,3 g/cm3 (aproximadamente). Esa densidad esta MUY por debajo de la del oro puro (19,3 g/cm3), asi que la pieza NO es de oro puro: si lo fuera, con 15 cm3 deberia tener una masa de 19,3 x 15 = 289,5 g, mucho mas que los 200 g medidos. El joyero no dice la verdad. (Este es justamente el metodo con el que, segun la leyenda, Arquimedes descubrio una corona falsa.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Una barra MACIZA de acero (densidad 7,9 g/cm3) se hunde en el agua sin dudarlo. Sin embargo, un barco enorme hecho de ese mismo acero flota. Explica esta aparente contradiccion usando la idea de densidad promedio.",
+      "pista": "Piensa que el barco NO es macizo: por dentro esta casi todo hueco, lleno de aire. Calcula su densidad usando la masa total repartida en TODO el volumen del casco (acero mas hueco), no solo el del acero.",
+      "solucion": "La barra maciza tiene densidad 7,9 g/cm3 (mayor que 1) y por eso se hunde. El barco, en cambio, esta casi todo hueco: si sumas la masa del acero mas el aire de adentro y la divides entre TODO el volumen del casco (acero + espacio hueco), su densidad PROMEDIO resulta MENOR que 1 g/cm3, y por eso flota. Lo que cambia no es el material, sino el volumen total: el hueco lleno de aire baja la densidad promedio del conjunto. Si aplastaras el barco hasta volverlo una bola maciza de acero, volveria a tener densidad 7,9 y se hundiria.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Se echa aceite (densidad aproximada 0,92 g/cm3) y agua (1 g/cm3) en un mismo vaso y se dejan reposar. (a) Cual de los dos liquidos queda arriba y por que. (b) Un pequeno objeto de densidad 0,95 g/cm3 se deja caer en el vaso: donde termina, flotando en la superficie, en la frontera entre los dos liquidos, o en el fondo? Justifica con numeros.",
+      "pista": "El liquido menos denso queda arriba. Para el objeto, comparalo por separado con cada liquido: se hunde en el que sea menos denso que el y flota en el que sea mas denso que el.",
+      "solucion": "(a) El aceite queda ARRIBA porque es menos denso (0,92) que el agua (1). (b) El objeto (0,95) es MAS denso que el aceite (0,95 mayor que 0,92), asi que se hunde en el aceite; pero es MENOS denso que el agua (0,95 menor que 1), asi que flota sobre el agua. Resultado: atraviesa la capa de aceite y se queda en la FRONTERA entre el aceite y el agua, flotando justo encima del agua. Un mismo objeto flota o se hunde segun el liquido: por eso siempre hay que aclarar en cual.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Tienes que medir el volumen de dos objetos: (a) un dado de plastico con forma de cubo perfecto de 2 cm de lado, y (b) una piedra de rio de forma irregular. Explica que metodo usarias para cada uno y por que, y calcula el volumen del dado.",
+      "pista": "Un objeto con forma geometrica regular se mide con formula; uno sin forma definida, por desplazamiento de agua. El dado es un cubo: lado x lado x lado.",
+      "solucion": "(a) Para el dado (forma regular) uso la FORMULA del cubo, midiendo su lado con la regla: volumen = 2 x 2 x 2 = 8 cm3. (b) Para la piedra (forma irregular, sin lados que medir) uso el metodo del DESPLAZAMIENTO: la sumerjo por completo en una probeta con agua y su volumen es el aumento del nivel del agua. Cada metodo se elige segun la forma del objeto: la formula sirve para figuras geometricas; el desplazamiento, para todo lo demas.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un cubo de aluminio de 3 cm de lado tiene una masa de 72,9 g. (a) Calcula su volumen y su densidad. (b) Otro cubo, del mismo aluminio pero de 6 cm de lado, se corta de la misma barra: sin calcular su masa, di cuanto vale su densidad y explica por que.",
+      "pista": "Volumen del cubo = lado x lado x lado; densidad = masa / volumen. Para la parte (b), recuerda que la densidad es una propiedad del MATERIAL, no del tamano del pedazo.",
+      "solucion": "(a) Volumen = 3 x 3 x 3 = 27 cm3. Densidad = 72,9 / 27 = 2,7 g/cm3 (la densidad tipica del aluminio). (b) El cubo mas grande tiene la MISMA densidad: 2,7 g/cm3. Aunque sea mas grande y tenga mucha mas masa, es el mismo material, y la densidad no depende del tamano del pedazo: masa y volumen crecen juntos, asi que su division da siempre 2,7. (Como 2,7 es mayor que 1, ambos cubos se hundirian en agua.)",
+      "figura": ""
+    },
+    {
+      "enunciado": "Cuatro objetos tienen estas densidades: madera 0,5 g/cm3; hielo 0,92 g/cm3; plastico PVC 1,4 g/cm3; hierro 7,9 g/cm3. Ordenalos segun se hundan mas o menos en agua, e indica cuales flotan y cuales se hunden (densidad del agua = 1 g/cm3).",
+      "pista": "Compara cada densidad con 1 g/cm3: los menores que 1 flotan, los mayores se hunden. Entre los que se hunden, el mas denso llega al fondo con mas fuerza.",
+      "solucion": "Flotan los que tienen densidad MENOR que 1: la madera (0,5) y el hielo (0,92). Se hunden los que tienen densidad MAYOR que 1: el PVC (1,4) y el hierro (7,9). De menor a mayor densidad: madera (0,5) < hielo (0,92) < agua (1) < PVC (1,4) < hierro (7,9). Todo lo que este por debajo del 1 del agua flota; todo lo que este por encima se hunde, y cuanto mas denso, con mas fuerza baja.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Un liquido desconocido llena una probeta hasta la marca de 50 mL y tiene una masa de 40 g (la probeta vacia ya fue tarada). (a) Halla la densidad del liquido. (b) Un cubito de hielo (densidad 0,92 g/cm3) se echa en ese liquido: flota o se hunde? Justifica.",
+      "pista": "Densidad del liquido = masa / volumen, con 1 mL = 1 cm3. Luego compara la densidad del hielo con la del liquido: el hielo flota si es menos denso que el liquido.",
+      "solucion": "(a) El volumen es 50 mL = 50 cm3, asi que la densidad del liquido = 40 / 50 = 0,8 g/cm3. (b) El hielo (0,92 g/cm3) es MAS denso que este liquido (0,8 g/cm3), asi que el hielo se HUNDE en el. Es un resultado curioso: el hielo flota en agua (0,92 menor que 1), pero en un liquido menos denso que 0,92 se va al fondo. Por eso siempre hay que comparar con la densidad del liquido concreto.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "Que mide exactamente la densidad de un objeto?",
+      "opciones": [
+        "Cuanta materia hay apretada en cada unidad de espacio (masa dividida entre volumen)",
+        "Cuanto pesa el objeto en total",
+        "Que tan grande es el objeto",
+        "Cuanto espacio ocupa el objeto"
+      ],
+      "correcta": 0,
+      "explicacion": "La densidad es la RELACION masa / volumen: cuanta materia cabe en cada cm3. Los distractores confunden densidad con el peso total, con el tamano y con el volumen: son tres cosas distintas de la densidad."
+    },
+    {
+      "pregunta": "Un objeto tiene una masa de 240 g y un volumen de 30 cm3. Cual es su densidad?",
+      "opciones": [
+        "270 g/cm3",
+        "8 g/cm3",
+        "0,125 g/cm3",
+        "210 g/cm3"
+      ],
+      "correcta": 1,
+      "explicacion": "Densidad = masa / volumen = 240 / 30 = 8 g/cm3. Sumar (240 + 30 = 270) o restar (240 - 30 = 210) son los errores tipicos: la densidad se obtiene DIVIDIENDO, no sumando ni restando."
+    },
+    {
+      "pregunta": "En que unidad se expresa habitualmente la densidad en el laboratorio?",
+      "opciones": [
+        "Gramos (g)",
+        "Centimetros cubicos (cm3)",
+        "Gramos por centimetro cubico (g/cm3)",
+        "Gramos por centimetro (g/cm)"
+      ],
+      "correcta": 2,
+      "explicacion": "Como la densidad es masa (g) dividida entre volumen (cm3), su unidad es g/cm3. Los gramos solos miden masa, y los cm3 solos miden volumen; la densidad combina las dos."
+    },
+    {
+      "pregunta": "Se sumerge una piedra irregular en una probeta. El agua sube de 40 mL a 62 mL. Cual es el volumen de la piedra?",
+      "opciones": [
+        "40 cm3",
+        "62 cm3",
+        "102 cm3",
+        "22 cm3"
+      ],
+      "correcta": 3,
+      "explicacion": "Por el metodo del desplazamiento, el volumen es el nivel final menos el inicial: 62 - 40 = 22 mL = 22 cm3 (porque 1 mL = 1 cm3). Sumar los dos niveles (62 + 40 = 102) no tiene sentido fisico."
+    },
+    {
+      "pregunta": "Un objeto tiene una densidad de 2,5 g/cm3. Que le pasara al ponerlo en agua (densidad 1 g/cm3)?",
+      "opciones": [
+        "Se hunde, porque es mas denso que el agua",
+        "Flota, porque todo objeto solido flota",
+        "Flota, porque 2,5 es un numero grande",
+        "Se queda suspendido a media agua"
+      ],
+      "correcta": 0,
+      "explicacion": "Como 2,5 g/cm3 es MAYOR que la densidad del agua (1 g/cm3), el objeto se hunde. Un objeto solo se queda suspendido a media agua si su densidad es EXACTAMENTE igual a la del liquido."
+    },
+    {
+      "pregunta": "Cuanto es 1 mL expresado en centimetros cubicos?",
+      "opciones": [
+        "10 cm3",
+        "1 cm3 (son exactamente iguales)",
+        "1000 cm3",
+        "0,1 cm3"
+      ],
+      "correcta": 1,
+      "explicacion": "Por definicion, 1 mL equivale exactamente a 1 cm3. Por eso una probeta que marca mL nos da directamente el volumen en cm3, sin ninguna conversion."
+    },
+    {
+      "pregunta": "Dos pelotas tienen el MISMO tamano (mismo volumen), pero una pesa mucho mas que la otra. Cual es mas densa?",
+      "opciones": [
+        "La mas liviana",
+        "Tienen la misma densidad porque son del mismo tamano",
+        "La mas pesada",
+        "No se puede saber sin conocer su color"
+      ],
+      "correcta": 2,
+      "explicacion": "Con el mismo volumen, la que tiene mas masa tiene la materia mas apretada, asi que es mas densa (densidad = masa / volumen: a igual volumen, mas masa da mas densidad)."
+    },
+    {
+      "pregunta": "Cual de estos objetos flota en agua (densidad del agua = 1 g/cm3)?",
+      "opciones": [
+        "Uno de densidad 2,7 g/cm3 (aluminio)",
+        "Uno de densidad 7,9 g/cm3 (hierro)",
+        "Uno de densidad 1,2 g/cm3 (cierto plastico)",
+        "Uno de densidad 0,7 g/cm3 (cierta madera)"
+      ],
+      "correcta": 3,
+      "explicacion": "Solo flota el que tiene densidad MENOR que 1 g/cm3: la madera de 0,7. Los otros tres (2,7; 7,9; 1,2) superan el 1 del agua, asi que se hunden."
+    },
+    {
+      "pregunta": "Un tronco enorme flota en un rio, pero un tornillo de hierro diminuto se va al fondo. Que explica mejor esta situacion?",
+      "opciones": [
+        "Que la madera es menos densa que el agua y el hierro es mas denso, sin importar el tamano de cada uno",
+        "Que el tronco es mas grande, y lo grande siempre flota",
+        "Que el tornillo es mas pesado que el tronco",
+        "Que el agua del rio empuja mas a los objetos grandes"
+      ],
+      "correcta": 0,
+      "explicacion": "Lo que decide flotar o hundirse es la DENSIDAD comparada con el agua, no el tamano ni el peso. La madera (~0,5) es menos densa que el agua aunque el tronco sea gigante; el hierro (7,9) es mas denso aunque el tornillo sea chiquito."
+    },
+    {
+      "pregunta": "Cortas un ladrillo de hierro justo por la mitad. Que le pasa a la densidad de cada mitad, comparada con la del ladrillo entero?",
+      "opciones": [
+        "Cada mitad tiene la mitad de la densidad",
+        "Cada mitad tiene la misma densidad que el ladrillo entero",
+        "Cada mitad tiene el doble de densidad",
+        "Depende de por donde lo cortes"
+      ],
+      "correcta": 1,
+      "explicacion": "Cada mitad tiene la mitad de la masa Y la mitad del volumen, asi que al dividir da la misma densidad. La densidad es una propiedad del MATERIAL, no del tamano del pedazo: partirlo no la cambia."
+    },
+    {
+      "pregunta": "Un barco esta hecho de acero, que es mas denso que el agua. Por que flota en lugar de hundirse?",
+      "opciones": [
+        "Porque el acero en realidad es menos denso que el agua",
+        "Porque el agua salada empuja mas fuerte que cualquier objeto",
+        "Porque el barco es hueco: contando el aire de adentro, su densidad PROMEDIO es menor que la del agua",
+        "Porque los barcos son muy grandes y lo grande flota"
+      ],
+      "correcta": 2,
+      "explicacion": "El casco esta casi todo hueco y lleno de aire. Al repartir la masa del acero en TODO el volumen del barco (acero + hueco), la densidad promedio queda por debajo de 1 g/cm3 y flota. Una barra maciza del mismo acero se hundiria."
+    },
+    {
+      "pregunta": "Un objeto flota en agua (densidad 1 g/cm3) pero se hunde en aceite (densidad 0,92 g/cm3). Cual de estas puede ser su densidad?",
+      "opciones": [
+        "0,80 g/cm3",
+        "1,10 g/cm3",
+        "0,50 g/cm3",
+        "0,95 g/cm3"
+      ],
+      "correcta": 3,
+      "explicacion": "Para hundirse en aceite debe ser mas denso que 0,92, y para flotar en agua debe ser menos denso que 1. El unico valor entre 0,92 y 1 es 0,95 g/cm3. Un mismo objeto puede flotar o hundirse segun el liquido."
+    },
+    {
+      "pregunta": "El hielo tiene densidad 0,92 g/cm3 y el agua 1 g/cm3. Por que flota el hielo, y por que casi todo el iceberg queda bajo el agua?",
+      "opciones": [
+        "Flota porque es un poco menos denso que el agua (0,92 < 1); y como la diferencia es pequena, alrededor del 92 % queda sumergido",
+        "Flota porque el hielo es mas liviano que cualquier cantidad de agua",
+        "Flota porque el hielo esta frio y el frio sube",
+        "No flota: los icebergs estan apoyados en el fondo del mar"
+      ],
+      "correcta": 0,
+      "explicacion": "El hielo flota por ser menos denso que el agua, pero por muy poco (0,92 frente a 1). La fraccion sumergida de un cuerpo flotante es su densidad dividida entre la del liquido: 0,92/1 = 0,92, o sea el 92 % bajo el agua y solo un 8 % a la vista."
+    },
+    {
+      "pregunta": "Un cubo mide 10 cm de lado. Cual es su volumen?",
+      "opciones": [
+        "30 cm3",
+        "1000 cm3",
+        "100 cm3",
+        "300 cm3"
+      ],
+      "correcta": 1,
+      "explicacion": "El volumen de un cubo es lado x lado x lado = 10 x 10 x 10 = 1000 cm3 (que ademas equivale a 1 litro). El error tipico es sumar los lados (10 + 10 + 10 = 30) en vez de multiplicarlos."
+    },
+    {
+      "pregunta": "El aluminio tiene una densidad de 2,7 g/cm3. Cual es la masa de un trozo de aluminio de 50 cm3?",
+      "opciones": [
+        "52,7 g",
+        "18,5 g",
+        "135 g",
+        "47,3 g"
+      ],
+      "correcta": 2,
+      "explicacion": "Si densidad = masa / volumen, entonces masa = densidad x volumen = 2,7 x 50 = 135 g. Dividir (50 / 2,7 = 18,5) invierte la formula; la densidad se MULTIPLICA por el volumen para obtener la masa."
+    }
+  ]
+}

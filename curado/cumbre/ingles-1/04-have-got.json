@@ -1,0 +1,367 @@
+{
+  "programa": "cumbre",
+  "materia": "Inglés",
+  "grado": "Cumbre Inglés 1er año",
+  "dominio": "Hablar de mí y de otros",
+  "tema": "Puedo decir qué tengo y qué no tengo (have got; a/an; plurals)",
+  "referencias": [
+    "MCER/CEFR A1-A2 — puede usar estructuras básicas de posesión ('have got') y formar el plural de sustantivos comunes, regulares e irregulares",
+    "Cambridge A1 Movers / A2 Key for Schools — 'have got' en afirmativo, negativo y pregunta; artículos 'a/an' con sustantivos contables; plurales frecuentes",
+    "IB Language Acquisition (Emergent/Phase 1-2) — describir objetos, mascotas y posesiones cotidianas con precisión",
+    "Communicative Language Teaching (CLT) — función 'can-do': decir con exactitud qué tengo, qué no tengo, y en qué cantidad"
+  ],
+  "resumen": {
+    "titulo": "Qué tengo y qué no tengo: have got, a/an y los plurales",
+    "intro": "Ya sabes presentarte, hablar de tu familia y describir cómo es alguien. Ahora vas a aprender a decir con precisión qué COSAS tienes (una mascota, hermanos, útiles escolares) y cuántas de ellas. Para eso necesitas tres piezas que trabajan juntas: 'have got', una forma muy común en inglés para decir 'tengo'; los artículos 'a' y 'an' (un/una), que dependen del SONIDO y no de la letra; y los plurales, que en inglés a veces siguen una regla y a veces no siguen ninguna. Como siempre, cada palabra y cada regla se explica desde cero, y al final vas a tener que ANALIZAR cuál de las tres piezas usar en cada caso, no solo repetir frases sueltas.",
+    "secciones": [
+      {
+        "titulo": "'Have got': otra forma de decir 'tengo'",
+        "explicacion": "En los temas anteriores usaste 'have'/'has' para hablar del pelo y los ojos de alguien ('She has curly hair'). Ahora vas a conocer una forma hermana, muy usada para hablar de POSESIÓN (tener algo: un objeto, una mascota, un familiar): 'have got' (o 'has got'). Significa EXACTAMENTE lo mismo que 'have': 'I have got a dog' y 'I have a dog' quieren decir lo mismo, 'tengo un perro'. La palabra 'got' no añade ningún significado nuevo; es simplemente la forma que se usa muchísimo en el inglés hablado (sobre todo británico) para hablar de lo que tienes en este momento. Vas a aprender 'have got' porque aparece todo el tiempo en libros, series y conversaciones, y porque tiene sus propias reglas de negación y pregunta que vale la pena dominar bien.",
+        "pasos": [
+          "'have got' = 'have' → los dos significan 'tener' (posesión).",
+          "'got' no cambia el significado, solo la forma.",
+          "Se usa mucho para hablar de lo que alguien tiene: familia, mascotas, objetos."
+        ],
+        "ejemplo": "'I have got a bicycle.' = 'I have a bicycle.' (Tengo una bicicleta.) Las dos frases son correctas y significan lo mismo.",
+        "figura": ""
+      },
+      {
+        "titulo": "Have got afirmativo: have o has según quién habla",
+        "explicacion": "'Have got' se conjuga exactamente con la misma pareja que ya conoces de 'have': para I/you/we/they se usa 'have got', y para he/she/it se usa 'has got'. La razón es la misma que en el tema anterior con el pelo y los ojos: 'has' es solo para UNA persona o cosa (tercera persona del singular), y 'have' es para todos los demás casos. En el habla y la escritura informal casi siempre se contrae: I've got, you've got, he's got, she's got, it's got, we've got, they've got. Aquí aparece una trampa nueva: 's ya significaba dos cosas distintas en el tema anterior (contracción de 'is' y posesivo con apóstrofe); ahora significa una TERCERA cosa más: contracción de 'has'. 'She's got a cat' = 'She has got a cat' (Ella tiene un gato) — el 's aquí es 'has', no 'is' ni posesivo. La única forma de saber cuál de las tres es: si después viene 'got' + sustantivo, es 'has'; si viene un adjetivo o un verbo en -ing, es 'is'; si viene directamente un sustantivo (la cosa que se posee) sin 'got', es posesivo.",
+        "pasos": [
+          "I/you/we/they → have got.",
+          "he/she/it → has got.",
+          "Contracciones: I've got, you've got, he's got, she's got, it's got, we've got, they've got.",
+          "El 's ahora puede significar TRES cosas: is, has, o posesivo — mira qué palabra sigue para saber cuál es."
+        ],
+        "ejemplo": "'I've got a new phone.' (Tengo un teléfono nuevo.) 'My brother's got a bike.' (Mi hermano tiene una bicicleta — aquí 's = has, porque después viene 'got'.) Compara con 'My brother's happy' ('s = is) y 'my brother's bike' sin 'got' (posesivo).",
+        "figura": ""
+      },
+      {
+        "titulo": "Have got negativo: haven't/hasn't got — y por qué el inglés NUNCA dobla la negación",
+        "explicacion": "Para negar, se agrega 'not' después de have/has, casi siempre contraído: 'have not' → 'haven't', 'has not' → 'hasn't'. La regla de quién usa cuál es la misma: I/you/we/they → haven't got; he/she/it → hasn't got. Ahora, el punto más importante de esta sección: en español, para negar algo se usan DOS palabras negativas juntas sin problema ('no tengo NINGÚN hermano', 'no tengo NADA'). En inglés esto está PROHIBIDO: una frase negativa lleva UNA sola palabra de negación, nunca dos. Por eso, cuando conviertes 'some' (algo/algunos) a negativo, NO se convierte en 'no', sino en 'any': 'I have got SOME cousins' (afirmativo) se convierte en 'I haven't got ANY cousins' (negativo), nunca en 'I haven't got no cousins'. Esa última frase suena como un error claro para cualquier hablante de inglés, aunque en español sea perfectamente normal decir lo equivalente.",
+        "pasos": [
+          "I/you/we/they → haven't got (= have not got).",
+          "he/she/it → hasn't got (= has not got).",
+          "Una frase negativa en inglés lleva UNA sola negación, nunca dos.",
+          "En negativo, 'some' cambia a 'any': 'I haven't got any pets.', NUNCA 'I haven't got no pets.'"
+        ],
+        "ejemplo": "Afirmativo: 'She has got some brothers.' Negativo correcto: 'She hasn't got any brothers.' (No tiene hermanos.) Incorrecto (doble negación): 'She hasn't got no brothers.'",
+        "figura": ""
+      },
+      {
+        "titulo": "Have got en pregunta: Have/Has se adelanta, y la respuesta corta NO lleva 'got'",
+        "explicacion": "Para preguntar con 'have got' no hace falta agregar 'do' o 'does' como con otros verbos: 'have' o 'has' simplemente se ADELANTA al principio de la frase, delante del sujeto (igual que hace 'is' con 'to be'). 'You have got a dog' se convierte en '¿Have you got a dog?' (¿Tienes un perro?); 'She has got a sister' se convierte en 'Has she got a sister?' (¿Tiene ella una hermana?). Ahora, una trampa que casi todo el mundo comete al empezar: al RESPONDER de forma corta, la palabra 'got' DESAPARECE. La respuesta correcta a '¿Have you got a dog?' es 'Yes, I have.' o 'No, I haven't.' — nunca 'Yes, I have got.' Es una regla que hay que memorizar tal cual: 'got' se usa en la pregunta y en la frase completa, pero NUNCA en la respuesta corta.",
+        "pasos": [
+          "Para preguntar: Have/Has se adelanta antes del sujeto → 'Have/Has + sujeto + got + ...?'",
+          "'Have you got...?' (I/you/we/they); 'Has she/he/it got...?'",
+          "Respuesta corta SIN 'got': 'Yes, I have.' / 'No, I haven't.' / 'Yes, she has.' / 'No, she hasn't.'"
+        ],
+        "ejemplo": "'Has your grandmother got a car?' (¿Tiene tu abuela un carro?) 'Yes, she has.' (Sí.) 'No, she hasn't.' (No.) Nunca 'Yes, she has got.'",
+        "figura": ""
+      },
+      {
+        "titulo": "a / an: la regla es por el SONIDO, no por la letra",
+        "explicacion": "Ya usaste 'a' y 'an' antes de un sustantivo singular contable (uno que se puede contar: a book, an apple), pero vale la pena entender bien la regla, porque tiene trampas. La regla NO dice 'usa an si la palabra empieza con las letras a, e, i, o, u'; dice: usa 'an' si la palabra empieza con SONIDO DE VOCAL al pronunciarla, y 'a' si empieza con SONIDO DE CONSONANTE, sin importar cuál sea la letra escrita. La mayoría de las veces letra y sonido coinciden ('an apple' porque se oye 'ápel', empieza en vocal), pero hay dos trampas clásicas que hay que analizar con cuidado: primero, algunas palabras empiezan con la letra 'h' pero esa 'h' NO SUENA (es muda), así que en realidad empiezan con sonido de vocal: 'an hour' (se dice 'áuar', la h no suena). Segundo, algunas palabras empiezan con la letra 'u' pero suenan como la consonante 'y' (el sonido /iu/): 'a university' (se dice 'yuniversiti', suena como si empezara con 'y', una consonante), por eso es 'a', no 'an', aunque la letra sea una vocal.",
+        "pasos": [
+          "Pregúntate: ¿cómo SUENA la primera letra al decir la palabra en voz alta? (no qué letra es).",
+          "Sonido de vocal → an: an apple, an orange, an elephant, an hour (la h no suena).",
+          "Sonido de consonante → a: a book, a car, a university, a European trip (la u/eu suenan como 'y')."
+        ],
+        "ejemplo": "'an umbrella' (la u SÍ suena vocal, 'ómbrela') pero 'a uniform' (la u suena 'y', 'yúniform'): misma letra inicial, sonido distinto, artículo distinto.",
+        "figura": ""
+      },
+      {
+        "titulo": "a / an solo van con singular: y desaparecen en plural",
+        "explicacion": "Un dato clave que conecta esta sección con la siguiente: 'a' y 'an' SOLO se usan delante de un sustantivo contable en SINGULAR (uno solo). Cuando el sustantivo pasa a PLURAL (más de uno), el artículo 'a/an' simplemente DESAPARECE, no se convierte en otra palabra: 'I have got a cat' (un gato) se convierte en 'I have got cats' (gatos, en general) o 'I have got two cats' (dos gatos) — nunca 'I have got a cats' ni 'an cats'. Por eso, antes de decidir entre 'a' y 'an', primero hay que confirmar que el sustantivo esté en singular; si ya es plural, ninguno de los dos se usa.",
+        "pasos": [
+          "a/an → solo delante de sustantivo SINGULAR contable.",
+          "Sustantivo en PLURAL → sin artículo 'a/an' (o con un número: two cats, three books)."
+        ],
+        "ejemplo": "'She has got a brother.' (singular, con 'a') → 'She has got two brothers.' (plural, sin artículo, con número).",
+        "figura": ""
+      },
+      {
+        "titulo": "Plurales regulares: -s, y cuándo hace falta agregar -es",
+        "explicacion": "Para formar el plural de la mayoría de los sustantivos en inglés basta con agregar '-s' al final: book → books, dog → dogs, phone → phones. Pero hay un grupo de palabras donde agregar solo '-s' sería imposible de pronunciar junto, así que se agrega '-es' en su lugar: cuando la palabra termina en los sonidos -s, -ss, -sh, -ch, -x o -z. Por ejemplo, 'bus' termina en -s → 'buses'; 'watch' termina en -ch → 'watches'; 'box' termina en -x → 'boxes'. Hay otro caso especial: cuando la palabra termina en CONSONANTE + y, esa 'y' se convierte en 'i' y se agrega '-es': 'city' (consonante t + y) → 'cities'; 'baby' → 'babies'. Pero si termina en VOCAL + y, la regla no aplica y solo se agrega '-s' normal: 'boy' (vocal o + y) → 'boys'; 'day' → 'days'.",
+        "pasos": [
+          "Regla general: sustantivo + s (book → books).",
+          "Termina en -s, -ss, -sh, -ch, -x, -z → + es (bus → buses, watch → watches, box → boxes).",
+          "Termina en CONSONANTE + y → cambia 'y' por 'i' y + es (city → cities, baby → babies).",
+          "Termina en VOCAL + y → solo + s, sin cambiar nada (boy → boys, day → days)."
+        ],
+        "ejemplo": "'I have got two boxes and three watches.' (Tengo dos cajas y tres relojes.) 'She has got many cousins in two cities.' (Ella tiene muchos primos en dos ciudades.)",
+        "figura": ""
+      },
+      {
+        "titulo": "Plurales irregulares: no siguen ninguna regla, solo se memorizan",
+        "explicacion": "Un grupo pequeño pero muy frecuente de sustantivos NO sigue ninguna de las reglas anteriores: cambian de forma por completo, sin agregar '-s' ni '-es'. Son palabras muy antiguas del idioma que quedaron así desde hace siglos, y no hay ningún truco lógico para deducirlas: hay que aprenderlas de memoria, igual que aprendiste 'children' en el tema anterior. Los más comunes son: 'man' (hombre) → 'men' (hombres); 'woman' (mujer) → 'women' (mujeres); 'child' (niño/hijo) → 'children' (niños/hijos); 'person' (persona) → 'people' (personas); 'tooth' (diente) → 'teeth' (dientes); 'foot' (pie) → 'feet' (pies); 'mouse' (ratón) → 'mice' (ratones). El error típico del hispanohablante es aplicarles la regla regular por costumbre ('mans', 'childs', 'persons' para el plural general de gente), así que hay que estar alerta con este grupo en particular.",
+        "pasos": [
+          "man → men; woman → women.",
+          "child → children; person → people.",
+          "tooth → teeth; foot → feet; mouse → mice.",
+          "Ninguno lleva '-s': son excepciones que se memorizan, no se deducen."
+        ],
+        "ejemplo": "'My family has got four children and two men.' (Mi familia tiene cuatro niños y dos hombres.) Incorrecto: 'four childs and two mans.'",
+        "figura": ""
+      },
+      {
+        "titulo": "Antes de escribir, analiza: quién habla, afirmativo/negativo/pregunta, sonido inicial, singular o plural",
+        "explicacion": "Ya tienes todas las piezas; el reto ahora es combinarlas sin memorizar frases sueltas. Antes de escribir una frase sobre lo que tienes, hazte estas preguntas EN ORDEN: PRIMERO, ¿de quién hablo? → si es he/she/it, uso 'has got'; si es I/you/we/they, uso 'have got'. SEGUNDO, ¿es afirmativa, negativa o pregunta? → negativa: agrego 'not' (haven't/hasn't) y cambio 'some' por 'any', sin doblar la negación; pregunta: adelanto have/has, y en la respuesta corta quito 'got'. TERCERO, si hay un sustantivo singular contable, ¿qué SONIDO tiene al principio (no qué letra)? → sonido de vocal = an; sonido de consonante = a. CUARTO, ¿el sustantivo es singular o plural? → si es plural, no uso 'a/an', y me fijo si es un plural regular (-s/-es) o uno de los irregulares que memoricé. Analizar estas cuatro preguntas antes de escribir evita mezclar las categorías, como decir 'She have got an cats' (tres errores en una sola frase).",
+        "pasos": [
+          "1. ¿Quién habla? → have got (I/you/we/they) o has got (he/she/it).",
+          "2. ¿Afirmativa, negativa o pregunta? → not/any en negativo; have/has adelante en pregunta; sin 'got' en la respuesta corta.",
+          "3. Si es singular: ¿qué SONIDO tiene al inicio? → a o an.",
+          "4. ¿Singular o plural? → si es plural, sin artículo, y reviso si es regular o irregular."
+        ],
+        "ejemplo": "Frase a analizar: 'Mi tío no tiene hijos.' (1) 'my uncle' = he → has got / hasn't got. (2) negativa → 'hasn't got'. (4) 'hijos' es plural irregular → 'children', sin artículo, y con 'any' porque es negativo. Frase final: 'My uncle hasn't got any children.'",
+        "figura": ""
+      }
+    ],
+    "idea_clave": "'Have got' significa lo mismo que 'have' (tener): have got para I/you/we/they, has got para he/she/it; en negativo se usa haven't/hasn't got y SIEMPRE una sola negación (some → any, nunca 'no' junto a 'not'); en pregunta, have/has se adelanta y la respuesta corta NUNCA lleva 'got'. 'A' y 'an' dependen del SONIDO inicial (no de la letra) y solo existen delante de un singular contable; en plural desaparecen. Los plurales van con '-s' salvo tres casos: '-es' después de -s/-sh/-ch/-x/-z, 'y' → 'ies' después de consonante, y un grupo de irregulares (man/men, child/children, person/people...) que no siguen ninguna regla y se memorizan."
+  },
+  "practica": [
+    {
+      "enunciado": "Completa con have o has: 'I ___ got a bicycle and a skateboard.'",
+      "pista": "¿Quién habla? I siempre va con la misma forma que you/we/they.",
+      "solucion": "'I have got a bicycle and a skateboard.' (Tengo una bicicleta y una patineta.) 'I' usa 'have got', nunca 'has got'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Completa con have o has: 'My sister ___ got a lot of books.'",
+      "pista": "'My sister' equivale a 'she', una sola persona (he/she/it).",
+      "solucion": "'My sister has got a lot of books.' (Mi hermana tiene muchos libros.) He/she/it usa 'has got'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Transforma a negativo: 'They have got a dog.'",
+      "pista": "'Have not' se contrae en 'haven't'. La estructura no cambia de orden, solo se agrega la negación después de 'have'.",
+      "solucion": "'They haven't got a dog.' (No tienen perro.) 'Haven't' = 'have not'.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Transforma a negativo, sin doblar la negación: 'She has got some cousins.'",
+      "pista": "En negativo, 'some' cambia a 'any'. Recuerda: en inglés una frase negativa lleva UNA sola palabra de negación.",
+      "solucion": "'She hasn't got any cousins.' (Ella no tiene primos.) Nunca 'She hasn't got no cousins' — eso doblaría la negación.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Convierte en pregunta y responde que SÍ con respuesta corta: 'He has got a cat.'",
+      "pista": "Adelanta 'has' antes del sujeto para la pregunta. En la respuesta corta, 'got' desaparece.",
+      "solucion": "Pregunta: 'Has he got a cat?' Respuesta corta: 'Yes, he has.' (Nunca 'Yes, he has got.')",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige el error de conjugación: 'My brother have got a new phone.'",
+      "pista": "'My brother' equivale a 'he', una sola persona.",
+      "solucion": "'My brother has got a new phone.' (Mi hermano tiene un teléfono nuevo.) He/she/it → has got, no have got.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Corrige el error típico de doble negación: 'I haven't got no sisters.'",
+      "pista": "Una frase negativa en inglés lleva UNA sola negación; 'no' debe cambiar a otra palabra.",
+      "solucion": "'I haven't got any sisters.' (No tengo hermanas.) 'No' se reemplaza por 'any' para no doblar la negación.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Elige a o an para cada palabra (piensa en el SONIDO): ___ elephant, ___ dog, ___ umbrella, ___ book.",
+      "pista": "Di cada palabra en voz alta y fíjate si el primer sonido es de vocal o de consonante.",
+      "solucion": "an elephant, a dog, an umbrella, a book. Elephant y umbrella empiezan con sonido de vocal; dog y book empiezan con sonido de consonante.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Elige a o an, cuidando la trampa del sonido (no la letra): ___ hour, ___ university.",
+      "pista": "En 'hour' la h no suena. En 'university' la u suena como la consonante 'y'.",
+      "solucion": "'an hour' (la h es muda, el sonido empieza en vocal) y 'a university' (la u suena 'yu', sonido de consonante, aunque la letra sea una vocal).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe el plural de: bus, watch, box, city.",
+      "pista": "Bus, watch y box terminan en sonidos que necesitan '-es'. City termina en consonante + y.",
+      "solucion": "buses, watches, boxes, cities. Los tres primeros llevan '-es' (terminan en -s, -ch, -x); 'city' cambia la 'y' por 'i' y agrega '-es' porque antes de la 'y' hay una consonante (t).",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe el plural de: man, woman, child, person, tooth.",
+      "pista": "Ninguno de estos sigue la regla de agregar '-s' o '-es'; son irregulares y se memorizan.",
+      "solucion": "men, women, children, people, teeth. Ninguno lleva '-s' al final: son plurales irregulares.",
+      "figura": ""
+    },
+    {
+      "enunciado": "Escribe tres frases sobre lo que tienes y no tienes, usando have got/haven't got, al menos un a/an y al menos un plural (regular o irregular).",
+      "pista": "Sigue el análisis en orden: quién habla → afirmativo/negativo → sonido del artículo si hay singular → tipo de plural si hay más de uno.",
+      "solucion": "Ejemplo válido: 'I have got a dog and two cats. I haven't got any brothers. My best friend has got three children in her family.' Cualquier combinación correcta de have/has got + a/an por sonido + plural (regular o irregular) es válida.",
+      "figura": ""
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál frase está correctamente conjugada para 'I'?",
+      "opciones": [
+        "I have got a dog.",
+        "I has got a dog.",
+        "I haves got a dog.",
+        "I am got a dog."
+      ],
+      "correcta": 0,
+      "explicacion": "'I' usa 'have got', nunca 'has got'. 'Has' es solo para he/she/it.",
+      "figura": ""
+    },
+    {
+      "pregunta": "Completa correctamente: 'My father ___ got a car.'",
+      "opciones": [
+        "have",
+        "has",
+        "haves",
+        "is"
+      ],
+      "correcta": 1,
+      "explicacion": "'My father' equivale a 'he', una sola persona: le corresponde 'has got', no 'have got'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es la negación correcta de 'They have got a cat'?",
+      "opciones": [
+        "They no have got a cat.",
+        "They hasn't got a cat.",
+        "They haven't got a cat.",
+        "They don't got a cat."
+      ],
+      "correcta": 2,
+      "explicacion": "'They' usa 'have got' en afirmativo, así que su negación es 'haven't got' (have + not). 'Hasn't' sería para he/she/it.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál de estas frases es gramaticalmente correcta en inglés?",
+      "opciones": [
+        "I haven't got no pets.",
+        "I don't haven't got pets.",
+        "I haven't got some pets.",
+        "I haven't got any pets."
+      ],
+      "correcta": 3,
+      "explicacion": "El inglés no permite doblar la negación: en negativo, 'some' cambia a 'any'. 'Haven't got no' junta dos negaciones, algo que el español sí permite pero el inglés no.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es la pregunta correcta para 'She has got a sister'?",
+      "opciones": [
+        "Has she got a sister?",
+        "Does she has got a sister?",
+        "She has got a sister?",
+        "Has got she a sister?"
+      ],
+      "correcta": 0,
+      "explicacion": "Con 'have got' no se usa 'does': 'has' se adelanta directamente antes del sujeto, igual que hace 'is': 'Has she got...?'",
+      "figura": ""
+    },
+    {
+      "pregunta": "Si la respuesta a '¿Have you got a bike?' es SÍ, ¿cuál es la respuesta corta correcta?",
+      "opciones": [
+        "Yes, I have got.",
+        "Yes, I have.",
+        "Yes, I do.",
+        "Yes, I got."
+      ],
+      "correcta": 1,
+      "explicacion": "En la respuesta corta con 'have got', la palabra 'got' desaparece: 'Yes, I have.' / 'No, I haven't.'",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es el artículo correcto para 'apple'?",
+      "opciones": [
+        "a",
+        "some",
+        "an",
+        "the"
+      ],
+      "correcta": 2,
+      "explicacion": "'Apple' empieza con sonido de vocal, así que le corresponde 'an', no 'a'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es el artículo correcto para 'book'?",
+      "opciones": [
+        "some",
+        "an",
+        "the",
+        "a"
+      ],
+      "correcta": 3,
+      "explicacion": "'Book' empieza con sonido de consonante (b), así que le corresponde 'a', no 'an'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es el artículo correcto para 'hour', y por qué?",
+      "opciones": [
+        "an hour, porque la h no suena y el sonido inicial es de vocal",
+        "a hour, porque empieza con la letra h",
+        "the hour, porque es una palabra especial",
+        "some hour, porque no se puede contar"
+      ],
+      "correcta": 0,
+      "explicacion": "La regla de a/an es por el SONIDO, no por la letra. En 'hour' la h es muda, así que suena como si empezara en vocal: 'an hour'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es el artículo correcto para 'university', y por qué?",
+      "opciones": [
+        "an university, porque empieza con la letra u",
+        "a university, porque la u suena como la consonante 'y'",
+        "the university, porque es un lugar",
+        "some university, porque no se puede contar"
+      ],
+      "correcta": 1,
+      "explicacion": "Aunque 'university' empieza con la letra 'u' (vocal), suena 'yuniversiti': el sonido inicial es de consonante, así que le corresponde 'a', no 'an'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es el plural correcto de 'watch'?",
+      "opciones": [
+        "watchs",
+        "watchies",
+        "watches",
+        "watch"
+      ],
+      "correcta": 2,
+      "explicacion": "'Watch' termina en el sonido -ch, así que se agrega '-es' (no solo '-s') para poder pronunciarlo: 'watches'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es el plural correcto de 'city'?",
+      "opciones": [
+        "citys",
+        "cityes",
+        "citie",
+        "cities"
+      ],
+      "correcta": 3,
+      "explicacion": "'City' termina en consonante (t) + y: la 'y' cambia a 'i' y se agrega '-es': 'cities'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es el plural correcto de 'child'?",
+      "opciones": [
+        "children",
+        "childs",
+        "childes",
+        "child"
+      ],
+      "correcta": 0,
+      "explicacion": "'Child' tiene un plural irregular, 'children', que no sigue ninguna regla de agregar '-s' o '-es'.",
+      "figura": ""
+    },
+    {
+      "pregunta": "¿Cuál es el plural correcto de 'tooth'?",
+      "opciones": [
+        "tooths",
+        "teeth",
+        "teeths",
+        "toothes"
+      ],
+      "correcta": 1,
+      "explicacion": "'Tooth' es un plural irregular: cambia por completo a 'teeth', sin agregar ninguna terminación.",
+      "figura": ""
+    }
+  ]
+}
