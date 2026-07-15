@@ -202,6 +202,12 @@
 
   // fechas locales sin sorpresas de zona horaria
   const DIAS_NOM=["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+  // Abreviados para el encabezado del Inicio: "miércoles 15 de julio" era tan largo que se
+  // montaba sobre la mano de Chispa. Sin acento: en la abreviatura no hace falta.
+  // El MES también se abrevia: con el nombre completo, septiembre/noviembre/diciembre se
+  // montan igual (medido: septiembre se pasa 40px a 360 y 4px hasta a 414).
+  const DIAS_ABR=["Dom","Lun","Mar","Mie","Jue","Vie","Sab"];
+  const MESES_ABR=["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
   const MESES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
   function diasHasta(fecha){            // "YYYY-MM-DD" → días desde hoy (0=hoy, <0=vencida)
     if(!fecha || !/^\d{4}-\d{2}-\d{2}/.test(fecha)) return null;
@@ -431,8 +437,12 @@
   }
   function pintarEscritorio(){
     const d=new Date();
-    const f=`${DIAS_NOM[d.getDay()]} ${d.getDate()} de ${MESES[d.getMonth()]}`;
-    $("#fechaHoy").textContent=f[0].toUpperCase()+f.slice(1);
+    // "Mie · 15 Jul" — día y mes abreviados, punto central como separador, SIN "de".
+    // El "de" costaba ~20px y dejaba el peor caso ("Dom · 28 de May.") entrando por 1px, que
+    // se volvía -6px si las fuentes de Google no cargaban y entraba la del sistema. Así hay
+    // 26px de aire (19px sin las fuentes de marca). (El CSS ya NO usa text-transform:
+    // capitalize, que capitalizaba todo y ponía "De Julio").
+    $("#fechaHoy").textContent=`${DIAS_ABR[d.getDay()]} · ${d.getDate()} ${MESES_ABR[d.getMonth()]}`;
     pintarHomeEncabezado();
     pintarEnergiaIA();
     pintarHomeStats();

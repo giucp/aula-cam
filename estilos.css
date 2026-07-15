@@ -1019,7 +1019,8 @@
   .h2Name{color:var(--chispa-primary)}
   .h2Context{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:9px 0 0;font-family:"Nunito";font-size:.78rem;font-weight:700;color:var(--h2-muted)}
   .h2Grade{font-weight:800;color:#0F8A7D}
-  .h2Date{text-transform:capitalize}
+  /* .h2Date va SIN text-transform:capitalize a propósito: capitalizaba TODAS las palabras y
+     salía "15 De Julio". El texto ya viene armado desde app.js ("Mie · 15 de Julio"). */
   /* Chispa en DOS CAPAS: cuerpo detrás (z1, el borde del hero lo tapa redondeado) +
      una capa SOLO de la mano por delante (::after, z3) para que los dedos entren y
      toquen la tarjeta — integración real, no un recorte plano. Ambas comparten --hw/--ht/--hr. */
