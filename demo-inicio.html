@@ -101,7 +101,10 @@
           <summary aria-label="Abrir menú de cuenta">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="12" cy="19" r="1.4"/></svg>
           </summary>
-          <div class="h3AccountPopover"><button class="h2QuietAction" id="btnSalirHome" type="button">Salir</button></div>
+          <div class="h3AccountPopover">
+            <div id="familiaWrap"><button class="h2QuietAction" id="btnFamilia" type="button">Dar acceso a un adulto</button></div>
+            <button class="h2QuietAction" id="btnSalirHome" type="button">Salir</button>
+          </div>
         </details>
         <img class="h2HeroChispa" src="assets/hero/chispa.png" alt="Chispa, tu compañera de aprendizaje" />
         <span class="h2HeroHand" aria-hidden="true"><img src="assets/hero/chispa-mano.png" alt="" /></span>
@@ -109,15 +112,16 @@
         <div id="examenBanner" class="h2MissionWrap"></div>
       </div>
 
-      <!-- barra de racha/energía/metas: DEBAJO del hero -->
+      <!-- 2 · barra de racha/energía/metas: DEBAJO del hero -->
       <div class="h2Stats" id="homeStats" aria-label="Resumen de hoy"></div>
 
       <!-- el medidor original conserva su ID y datos; Home 2.0 los resume en homeStats -->
       <div id="energiaIA" class="hidden" aria-hidden="true"></div>
 
+      <!-- 3 · HOY = ¿qué debo hacer? Pendientes + "lo que viene" (entregas + qué toca mañana). -->
       <section class="h2Section" aria-labelledby="homeHoyTit">
         <div class="h2SectionHead">
-          <h2 id="homeHoyTit">Para hoy</h2>
+          <h2 id="homeHoyTit">Hoy</h2>
           <div class="h2SectionActions">
             <button class="h2TextAction" id="btnNuevaTareaHome" type="button">Anotar</button>
             <button class="h2TextAction hidden" id="btnVerAgenda" type="button">Ver agenda</button>
@@ -125,52 +129,11 @@
         </div>
         <span class="h2A11yLabel" id="homePendienteTit">Pendientes para hoy</span>
         <div id="tareasResumen" class="h2Today"></div>
-      </section>
 
-      <section class="h2Section" aria-labelledby="homeContinuarTit">
-        <div class="h2SectionHead">
-          <h2 id="homeContinuarTit">Continúa aprendiendo</h2>
-          <span class="h2SectionHint">Elige cuando quieras</span>
-        </div>
-        <div id="homeContinue" class="h2ContinueWrap"></div>
-      </section>
-
-      <section class="h2Section" aria-labelledby="homeProximasTit">
-        <div class="h2SectionHead">
-          <h2 id="homeProximasTit">Próximas entregas y eventos</h2>
-          <button class="h2TextAction hidden" id="btnHomeVerAgenda" type="button">Ver todas</button>
-        </div>
-        <div id="homeUpcoming" class="h2Upcoming"></div>
-      </section>
-
-      <section class="h2Section" aria-labelledby="homeMateriasTit">
-        <div class="h2SectionHead">
-          <h2 id="homeMateriasTit">Mis materias</h2>
-          <button class="h2TextAction" id="btnHomeVerMaterias" type="button">Ver todas</button>
-        </div>
-        <div id="homeSubjects" class="h2Subjects"></div>
-      </section>
-
-      <section class="h2Section" aria-labelledby="homeProgresoTit">
-        <div id="homeProgress" class="h2ProgressCard"></div>
-      </section>
-
-      <!-- funcionalidades existentes conservadas en una zona secundaria menos ruidosa -->
-      <details class="h2More" id="homeMore">
-        <summary>Más para ti</summary>
-        <div class="h2MoreBody">
-          <div id="novedadesWrap"></div>
-          <div id="efemeride" class="hidden"></div>
-
-          <div id="juegoWrap">
-            <button class="h3MoreRow" id="btnJuego" type="button" style="--tone:#12B5A4">
-              <span class="h3MoreRowIcon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4.5A2.5 2.5 0 0 0 5.6 6 2.5 2.5 0 0 0 4.5 10a2.5 2.5 0 0 0 .6 4.4V17a2.5 2.5 0 0 0 4.9.6z"/><path d="M14 4.5A2.5 2.5 0 0 1 18.4 6a2.5 2.5 0 0 1 1.1 4 2.5 2.5 0 0 1-.6 4.4V17a2.5 2.5 0 0 1-4.9.6z"/></svg></span>
-              <span class="h3MoreRowTx"><b>Sinapsis</b><small>Recreo mental · entrena tu mente y compite con tu cole</small></span>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"/></svg>
-            </button>
-          </div>
-
-          <div class="h3MoreCard h2SupportCard" style="--tone:#6753E8">
+        <div class="h2Next">
+          <p class="h2NextTit">Lo que viene</p>
+          <div id="homeUpcoming" class="h2Upcoming"></div>
+          <div class="h3MoreCard" style="--tone:#6753E8">
             <div class="h3MoreHead">
               <span class="h3MoreMark"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10.5h16"/></svg></span>
               <h3 id="horarioTit">Mañana toca</h3>
@@ -178,18 +141,45 @@
             </div>
             <div id="horarioChips" class="h3MoreChips"></div>
           </div>
+        </div>
+      </section>
 
-          <div id="notasInicio"></div>
+      <!-- 4 · ¿qué sigo estudiando? La acción principal. "Ver todas" va a Materias. -->
+      <section class="h2Section" aria-labelledby="homeContinuarTit">
+        <div class="h2SectionHead">
+          <h2 id="homeContinuarTit">Continúa aprendiendo</h2>
+          <button class="h2TextAction" id="btnHomeVerMaterias" type="button">Ver todas</button>
+        </div>
+        <div id="homeContinue" class="h2ContinueWrap"></div>
+      </section>
 
-          <div id="familiaWrap">
-            <button class="h3MoreRow" id="btnFamilia" type="button" style="--tone:#FF7A5C">
-              <span class="h3MoreRowIcon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 19.5a6 6 0 0 1 12 0"/><path d="M16.5 6.4a2.8 2.8 0 0 1 0 5.6M17 19.5a5 5 0 0 0-1.8-3.8"/></svg></span>
-              <span class="h3MoreRowTx"><b>Dar acceso a un adulto</b><small>Para tu familia · que vean lo que hacés (solo mirar)</small></span>
+      <!-- 5 · ¿qué debo corregir? Notas + refuerzo. Solo si hay notas. -->
+      <div id="notasInicio" class="h2Loose"></div>
+
+      <!-- 6 · ¿qué hay de nuevo? Novedades del aula. Solo si hay. -->
+      <div id="novedadesWrap" class="h2Loose"></div>
+
+      <!-- 7 · ¿cómo voy en total? El cierre. -->
+      <section class="h2Section" aria-labelledby="homeProgresoTit">
+        <div id="homeProgress" class="h2ProgressCard"></div>
+      </section>
+
+      <!-- 8 · UN RESPIRO: la zona de premio, al final. -->
+      <section class="h2Section" aria-labelledby="homeRespiroTit">
+        <div class="h2SectionHead">
+          <h2 id="homeRespiroTit">Un respiro</h2>
+        </div>
+        <div class="h2Break">
+          <div id="juegoWrap">
+            <button class="h3MoreRow" id="btnJuego" type="button" style="--tone:#12B5A4">
+              <span class="h3MoreRowIcon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4.5A2.5 2.5 0 0 0 5.6 6 2.5 2.5 0 0 0 4.5 10a2.5 2.5 0 0 0 .6 4.4V17a2.5 2.5 0 0 0 4.9.6z"/><path d="M14 4.5A2.5 2.5 0 0 1 18.4 6a2.5 2.5 0 0 1 1.1 4 2.5 2.5 0 0 1-.6 4.4V17a2.5 2.5 0 0 1-4.9.6z"/></svg></span>
+              <span class="h3MoreRowTx"><b>Sinapsis</b><small>Recreo mental · entrena tu mente y compite con tu cole</small></span>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"/></svg>
             </button>
           </div>
+          <div id="efemeride" class="hidden"></div>
         </div>
-      </details>
+      </section>
     </div>
 
     <!-- ═══ pestaña AGENDA: tareas + horario ═══ -->

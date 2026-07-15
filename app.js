@@ -341,17 +341,6 @@
     box.dataset.count=String(items.length);
     box.innerHTML=items.map(x=>`<div class="h2Stat h2Stat--${x.icon}"><span class="h2StatIcon"><img src="assets/stats/${STAT_IMG[x.icon]||"metas"}.png" alt="" aria-hidden="true"></span><span class="h2StatMeta"><span class="h2StatValue">${x.value}</span><span class="h2StatLabel">${x.label}</span></span></div>`).join("");
   }
-  function pintarHomeMore(){
-    const more=$("#homeMore"); if(!more) return;
-    const body=more.querySelector(".h2MoreBody");
-    const tieneContenido=body&&Array.from(body.children).some(el=>{
-      if(el.hidden||el.classList.contains("hidden")) return false;
-      if(el.id==="novedadesWrap"||el.id==="notasInicio"||el.id==="efemeride") return el.childElementCount>0;
-      return !!el.querySelector("button:not(.hidden),a:not(.hidden)")||el.childElementCount>0||el.textContent.trim().length>0;
-    });
-    more.classList.toggle("hidden",!tieneContenido);
-    if(!tieneContenido) more.open=false;
-  }
   function pintarHomeContinue(){
     const cont=$("#homeContinue"); if(!cont) return; cont.innerHTML="";
     const materias=homeMaterias(), hoy=new Date().getDay(), diaHorario=(hoy>=1&&hoy<=5)?hoy:proximoDiaEscolar().dia;
@@ -400,11 +389,11 @@
     const visiblesHoy=new Set(homePendientesHoy().slice(0,2).map(homeTareaKey));
     const items=TAREAS.filter(t=>!t.hecha&&t.fecha&&!visiblesHoy.has(homeTareaKey(t))).map(t=>({t,n:diasHasta(t.fecha)}))
       .filter(x=>x.n!==null&&x.n>0).sort((a,b)=>a.n-b.n);
-    const verAgenda=$("#btnHomeVerAgenda"); if(verAgenda) verAgenda.classList.toggle("hidden",items.length<=2);
-    if(!items.length){
-      box.innerHTML='<div class="h2UpcomingEmpty"><b>No tienes entregas próximas</b><span>Tu agenda está tranquila por ahora.</span></div>';
-      return;
-    }
+    // Sin entregas próximas no se dice nada: "Hoy" ya avisa que está todo al día y debajo sigue
+    // el horario. La tarjeta "No tienes entregas próximas" que había antes, dentro de "Lo que
+    // viene", solo repetía el vacío.
+    box.classList.toggle("hidden",!items.length);
+    if(!items.length) return;
     items.slice(0,2).forEach(({t})=>{
       const [y,m,d]=t.fecha.slice(0,10).split("-").map(Number);
       const card=document.createElement("button"), visual=homeMateriaVisual(t.materia||t.tipo||""); card.type="button"; card.className="h2UpcomingCard";
@@ -422,19 +411,6 @@
     const pct=total?Math.round(dominados/total*100):0;
     box.innerHTML=`<div class="h2ProgressHead"><h2 id="homeProgresoTit">Tu progreso</h2><span>Progreso académico</span></div><div class="h3AcademicProgress"><div><b>${dominados}</b><small>temas dominados</small></div><div><b>${total}</b><small>temas disponibles</small></div><div><b>${pct}%</b><small>del recorrido</small></div></div><span class="h3AcademicBar"><i style="width:${pct}%"></i></span>`;
   }
-  function pintarHomeMaterias(){
-    const box=$("#homeSubjects"); if(!box) return; box.innerHTML="";
-    const materias=homeMaterias().slice(0,6);
-    if(!materias.length){ box.innerHTML='<p class="h2Empty">Tus materias aparecerán aquí cuando estén disponibles.</p>'; return; }
-    materias.forEach(m=>{
-      const p=progresoMateria(m), v=homeMateriaVisual(m.nombre);
-      const card=document.createElement("button"); card.type="button"; card.className="h2SubjectCard";
-      card.style.setProperty("--subject",v.color); card.dataset.subjectKind=v.key;
-      card.innerHTML=`<span class="h2SubjectIcon"><img src="assets/materias/${v.img}.png" alt="" aria-hidden="true"></span><b>${escapeHtml(capMateria(limpiaNombreMateria(m.nombre)))}</b><small>${p?`${p.done} de ${p.total} temas`:"Disponible"}</small>${p?`<span class="h2SubjectBar"><i style="width:${p.pct}%"></i></span>`:""}`;
-      card.onclick=()=>abrirMateria(m);
-      box.appendChild(card);
-    });
-  }
   function pintarEscritorio(){
     const d=new Date();
     // "Mie · 15 Jul" — día y mes abreviados, punto central como separador, SIN "de".
@@ -446,7 +422,7 @@
     pintarHomeEncabezado();
     pintarEnergiaIA();
     pintarHomeStats();
-    cargarEfemerides().then(()=>{ pintarEfemeride(); pintarHomeMore(); });
+    cargarEfemerides().then(pintarEfemeride);
     pintarExamenBanner();
     pintarNovedadesInicio();
     pintarHorarioInicio();
@@ -455,8 +431,6 @@
     pintarHomeUpcoming();
     pintarNotasInicio();
     pintarHomeProgreso();
-    pintarHomeMaterias();
-    pintarHomeMore();
   }
 
   // "Un día como hoy": efeméride del día (archivo estático curado, cacheado offline por el SW).
@@ -604,7 +578,6 @@
   }
   $("#btnVerAgenda").onclick=()=>verTab("agenda");
   $("#btnNuevaTareaHome").onclick=()=>{ verTab("agenda"); abrirFormTarea(); };
-  $("#btnHomeVerAgenda").onclick=()=>verTab("agenda");
   $("#btnHomeVerMaterias").onclick=()=>verTab("materias");
 
   // ───────── tareas (pestaña Agenda) ─────────

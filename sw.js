@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v82"; // v82: la laptop del login ya no tapa los libros en NINGÚN modelo (fórmula por alto) + vista de PC propia
+const VERSION = "aulacam-v83"; // v83: Inicio ordenado por jerarquía de uso (sin redundancias: fuera la grilla de materias y el cajón "Más para ti")
 const SHELL = [
   "/",
   "/index.html",
