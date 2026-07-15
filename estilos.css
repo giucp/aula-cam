@@ -1061,11 +1061,12 @@
   .h2HeroHand img{display:block;width:100%;height:auto;object-fit:contain}
   .h3AccountMenu{right:-1px;top:-8px}
   .h3AccountMenu>summary{
-    width:44px;height:44px;border-radius:15px;
+    width:36px;height:36px;border-radius:12px;
     background:rgba(255,255,255,.58);
     box-shadow:0 8px 24px -18px rgba(38,25,58,.45);
     backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
   }
+  .h3AccountMenu>summary svg{width:17px;height:17px}
 
   /* Hero: el libro y sus destellos forman una sola escena con el texto. */
   .h2Mission{

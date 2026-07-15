@@ -239,7 +239,10 @@
       {key:"religion",match:/religi/,color:"#9A62D5",img:"religion"},
       {key:"pensar",match:/pensar|orient|metodolog|filos|acert|razon|convivencia/,color:"#E4A91B",img:"como-pensar"}
     ];
-    return visuales.find(v=>v.match.test(n))||{key:"general",color:colorMateria(nombre||""),img:"como-pensar"};
+    // OJO: el fallback NO puede llamar a colorMateria() — colorMateria delega en esta función,
+    // así que sería recursión infinita para cualquier materia que no matchee (stack overflow que
+    // rompía el forEach de la grilla y dejaba materias sin pintar). Color literal por defecto.
+    return visuales.find(v=>v.match.test(n))||{key:"general",color:"#6753E8",img:"como-pensar"};
   }
   function homeMarcaMateria(nombre,clase){
     const v=homeMateriaVisual(nombre);
