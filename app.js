@@ -676,7 +676,7 @@
     function pintarToggle(){
       const sel=getSel(), abierto=!panel.classList.contains("hidden");
       const etiqueta = sel
-        ? `<span class="selMatCur">${iconMateria(sel)} ${escapeHtml(limpiaNombreMateria(sel))}</span>`
+        ? `<span class="selMatCur" style="--c:${homeMateriaVisual(sel).color}"><i class="matDot"></i>${escapeHtml(capMateria(limpiaNombreMateria(sel)))}</span>`
         : `<span class="selMatPh">📚 Elegir materia</span>`;
       toggle.innerHTML = etiqueta + `<span class="selMatCar" aria-hidden="true"></span>`;
       toggle.classList.toggle("abierto", abierto);
@@ -686,7 +686,8 @@
     toggle.onclick=()=>abrir(panel.classList.contains("hidden"));
     materiasParaFormularios().forEach(nombre=>{
       const b=document.createElement("button"); b.type="button"; b.className="chip";
-      b.innerHTML=`${iconMateria(nombre)} ${escapeHtml(limpiaNombreMateria(nombre))}`;
+      b.style.setProperty("--c", homeMateriaVisual(nombre).color);
+      b.innerHTML=`<i class="matDot"></i>${escapeHtml(capMateria(limpiaNombreMateria(nombre)))}`;
       b.setAttribute("aria-pressed", String(getSel()===nombre));
       b.onclick=()=>{
         const nuevo = getSel()===nombre ? "" : nombre; setSel(nuevo);
@@ -732,7 +733,8 @@
       const i=dia.indexOf(nombre);
       const b=document.createElement("button"); b.className="chip";
       b.setAttribute("aria-pressed", String(i>=0));
-      b.innerHTML=`${i>=0?`<span class="chipN">${i+1}º</span>`:""}${iconMateria(nombre)} ${escapeHtml(limpiaNombreMateria(nombre))}`;
+      b.style.setProperty("--c", homeMateriaVisual(nombre).color);
+      b.innerHTML=`${i>=0?`<span class="chipN">${i+1}º</span>`:""}<i class="matDot"></i>${escapeHtml(capMateria(limpiaNombreMateria(nombre)))}`;
       b.onclick=()=>{ const j=dia.indexOf(nombre); if(j>=0) dia.splice(j,1); else dia.push(nombre); renderEditorHorario(); };
       chips.appendChild(b);
     });
@@ -1615,7 +1617,7 @@
       const nuevo = (m.id!=null && NOVEDADES[m.id]) ? `<span class="nuevoBadge">🆕</span>` : "";
       const pr = progresoMateria(m);
       const barra = pr ? `<span class="matBar" title="${pr.done} de ${pr.total} temas"><i style="width:${pr.pct}%;background:${colorMateria(m.nombre)}"></i></span>` : "";
-      b.innerHTML=`<span class="em">${iconMateria(m.nombre)}</span><span class="matMid"><span class="nom">${escapeHtml(limpiaNombreMateria(m.nombre))}</span>${barra}</span>${nuevo}<span class="chev">›</span>`;
+      b.innerHTML=`<span class="em"><img src="assets/materias/${homeMateriaVisual(m.nombre).img}.png" alt="" aria-hidden="true"></span><span class="matMid"><span class="nom">${escapeHtml(limpiaNombreMateria(m.nombre))}</span>${barra}</span>${nuevo}<span class="chev">›</span>`;
       b.onclick=()=>abrirMateria(m);
       g.appendChild(b);
     });
@@ -1649,7 +1651,7 @@
     mats.forEach(m=>{
       const mo={ nombre:m.nombre, nombreCorto:"", temas:[], _manual:true, _id:m.id, emoji:m.emoji };
       const b=document.createElement("button"); b.className="mat"; b.style.setProperty("--c", m.color||colorMateria(m.nombre));
-      b.innerHTML=`<span class="em">${m.emoji||iconMateria(m.nombre)}</span><span class="matMid"><span class="nom">${escapeHtml(m.nombre)}</span></span><span class="chev">›</span>`;
+      b.innerHTML=`<span class="em">${m.emoji||`<img src="assets/materias/${homeMateriaVisual(m.nombre).img}.png" alt="" aria-hidden="true">`}</span><span class="matMid"><span class="nom">${escapeHtml(m.nombre)}</span></span><span class="chev">›</span>`;
       b.onclick=()=>abrirMateria(mo);
       g.appendChild(b);
     });
@@ -1777,7 +1779,7 @@
       const prog = `${m.curados||0} de ${m.total||0} listo${(m.total===1)?"":"s"}`;
       const head = document.createElement("button"); head.type="button"; head.className="cMatHead";
       head.setAttribute("aria-expanded","false");
-      head.innerHTML = `<span class="em">${iconMateria(m.materia)}</span><span class="cMatNom">${escapeHtml(m.materia)}</span><span class="cMatProg">${prog}</span><span class="cMatChevron">▾</span>`;
+      head.innerHTML = `<span class="em"><img src="assets/materias/${homeMateriaVisual(m.materia).img}.png" alt="" aria-hidden="true"></span><span class="cMatNom">${escapeHtml(m.materia)}</span><span class="cMatProg">${prog}</span><span class="cMatChevron">▾</span>`;
       const body = document.createElement("div"); body.className="cMatBody";
       let html = "";
       (m.dominios||[]).forEach((dom, di)=>{
@@ -1883,7 +1885,8 @@
     // banner de refuerzo: solo si esta materia es la de la nota floja
     if(REFUERZO && norm(m.nombre)!==norm(REFUERZO.materia||"")) limpiarRefuerzo();
     else pintarRefuerzoBanner();
-    $("#tituloMateria").textContent = `${iconMateria(m.nombre)}  ${limpiaNombreMateria(m.nombre)}`;
+    $("#tituloMateria").innerHTML = `${homeMarcaMateria(m.nombre,"em")}<span>${escapeHtml(capMateria(limpiaNombreMateria(m.nombre)))}</span>`;
+    $("#tituloMateria").style.setProperty("--c", homeMateriaVisual(m.nombre).color);
     // las fotos del cuaderno solo aplican a las materias actuales
     $("#pasoFotos").classList.toggle("hidden", esProx);
     if(esProx){
@@ -2648,18 +2651,8 @@
     return "📘";
   }
   function colorMateria(nombre){
-    const n=(nombre||"").toLowerCase();
-    const map=[["lógic","#7C4DFF"],["logic","#7C4DFF"],["matemát","#12B5A4"],["matemat","#12B5A4"],
-      ["lenguaje","#FF6B3D"],["lengua","#FF6B3D"],["inglés","#3A8DFF"],["ingles","#3A8DFF"],["natural","#1FA86A"],["social","#F2934A"],
-      ["educación f","#EF476F"],["educacion f","#EF476F"],["físic","#D7263D"],["fisic","#D7263D"],
-      ["químic","#0FA3B1"],["quimic","#0FA3B1"],["biolog","#1FA86A"],["geograf","#F2934A"],["historia","#F2934A"],
-      ["metodolog","#5A6B8C"],["orientac","#6C7BD1"],["electrón","#F4A300"],["electron","#F4A300"],["puente","#8E5AE8"],
-      ["estétic","#E84CA0"],["estetic","#E84CA0"],["arte","#E84CA0"],
-      ["músic","#9B5DE5"],["music","#9B5DE5"],["religi","#6C7BD1"],["informát","#2DA8B8"],["informat","#2DA8B8"],
-      ["robót","#5A6B8C"],["robot","#5A6B8C"],["emocional","#FF74A3"],["lideraz","#F4A300"],["comunic","#F4A300"],
-      ["olimpiad","#FFB703"]];
-    for(const [k,c] of map){ if(n.includes(k)) return c; }
-    return "#FF6B3D";
+    // Chispa 2.0: una sola fuente de verdad para el color de materia (§8 de la spec).
+    return homeMateriaVisual(nombre).color;
   }
   // Color por perfil (según el nombre) para que las cuentas se distingan.
   function colorCuenta(nombre){

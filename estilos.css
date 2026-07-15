@@ -1,28 +1,40 @@
   :root{
-    --mango:#FF6B3D;--mango-dark:#E8511F;--teal:#12B5A4;--teal-dark:#0E9486;--sun:#FFC83D;
-    --grape:#7C4DFF;--ink:#3B2B4A;--muted:#8C7C93;--surface:#FFFFFF;--line:#F0E3EC;--ok:#1FA86A;--bad:#EF476F;
-    /* Chispa 2.0 — tokens oficiales (CHISPA_2.0_DESIGN_SPECIFICATION.md §3). Fuente de verdad
-       para todo componente NUEVO. Los --mango/--teal/--grape viejos NO se borran (los usa la app
-       actual) pero no deben iniciar componentes nuevos. */
+    /* ═══ Chispa 2.0 — tokens oficiales (CHISPA_2.0_DESIGN_SPECIFICATION.md §3). FUENTE DE VERDAD. ═══ */
     --chispa-primary:#6753E8;--chispa-primary-deep:#4933C8;--chispa-primary-soft:#F0EDFF;
     --chispa-turquoise:#23BFAE;--chispa-coral:#FF795F;--chispa-green:#2DBE72;--chispa-yellow:#F3B51B;
     --chispa-ink:#211B3A;--chispa-muted:#77718F;--chispa-line:#ECEAF5;--chispa-surface:#FFFFFF;
     --chispa-canvas-warm:#FFF3E4;--chispa-canvas-pink:#FDE8F2;--chispa-canvas-blue:#E9F5FF;
-    --shadow:0 18px 38px -16px rgba(90,40,70,.34);
-    --shadow-sm:0 8px 20px -10px rgba(90,40,70,.30);
-    --shadow-xs:0 3px 10px -4px rgba(90,40,70,.26);
-    --shadow-card:0 14px 30px -18px rgba(90,40,70,.4),0 2px 6px -3px rgba(90,40,70,.12);
-    --radius:24px;
+
+    /* ═══ Tokens VIEJOS → ahora APUNTAN al esquema 2.0 ═══
+       Las pantallas viejas (Materias, Agenda, Amigos, Cumbre, Login) no tienen clases propias:
+       comparten estas primitivas. Reapuntando los tokens, TODA la app adopta la paleta 2.0 sin
+       reescribir el markup de cada pantalla. Para componentes nuevos usar --chispa-* directo. */
+    --mango:var(--chispa-primary);--mango-dark:var(--chispa-primary-deep);
+    --grape:var(--chispa-primary);
+    --teal:var(--chispa-turquoise);--teal-dark:#159E90;
+    --sun:var(--chispa-yellow);
+    --ink:var(--chispa-ink);--muted:var(--chispa-muted);
+    --surface:var(--chispa-surface);--line:var(--chispa-line);
+    --ok:var(--chispa-green);--bad:var(--chispa-coral);   /* nunca rojo duro para un niño */
+
+    /* sombras 2.0: difusas, tenues, nunca duras */
+    --shadow:0 24px 48px -30px rgba(38,25,58,.42);
+    --shadow-sm:0 14px 30px -18px rgba(38,25,58,.34);
+    --shadow-xs:0 8px 20px -12px rgba(38,25,58,.26);
+    --shadow-card:0 20px 44px -34px rgba(38,25,58,.38);
+    --radius:23px;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0}
+  /* Canvas 2.0 GLOBAL: wash pastel muy sutil (antes este fondo calmo solo existía en el Inicio;
+     el resto de la app tenía el degradado viejo, mucho más fuerte). */
   body{
     font-family:"Nunito",-apple-system,"Segoe UI",sans-serif;color:var(--ink);min-height:100dvh;
     background:
-      radial-gradient(130% 85% at 8% -10%, #FFE6B8 0%, transparent 44%),
-      radial-gradient(130% 85% at 102% -4%, #FFC9DD 0%, transparent 40%),
-      radial-gradient(120% 90% at 50% 115%, #CDEBFF 0%, transparent 50%),
-      linear-gradient(160deg,#FFF3E4 0%,#FDE8F2 55%,#E9F5FF 100%);
+      radial-gradient(105% 48% at 2% -4%, rgba(255,220,169,.28), transparent 46%),
+      radial-gradient(92% 46% at 102% 2%, rgba(246,197,226,.24), transparent 45%),
+      radial-gradient(100% 52% at 50% 106%, rgba(193,221,255,.18), transparent 48%),
+      #FDFBFE;
     background-attachment:fixed;padding:max(18px,env(safe-area-inset-top)) 16px 48px;
   }
   .wrap{max-width:620px;margin:0 auto}
@@ -53,7 +65,7 @@
   .field input:focus,.field textarea:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(18,181,164,.14)}
 
   .go{margin-top:6px;width:100%;border:none;cursor:pointer;font-family:"Fredoka",sans-serif;font-weight:600;font-size:1.18rem;color:#fff;
-    padding:16px;border-radius:18px;background:linear-gradient(180deg,#FF8158,var(--mango));box-shadow:0 14px 24px -11px rgba(232,81,31,.72);
+    padding:16px;border-radius:18px;background:linear-gradient(180deg,#7C68F0,var(--chispa-primary));box-shadow:0 16px 30px -14px rgba(73,51,200,.55);
     transition:transform .12s,box-shadow .2s,filter .2s;display:flex;align-items:center;justify-content:center;gap:10px}
   .go:hover{filter:brightness(1.04)}
   .go:active{transform:translateY(2px) scale(.99)}
@@ -66,7 +78,7 @@
   .handoff .hoTit{font-family:"Fredoka";font-weight:600;font-size:1.12rem;color:var(--ink);margin:0 0 4px}
   .handoff .hoSub{color:var(--muted);font-weight:600;margin:0 0 14px;line-height:1.4}
   .handoff .go{max-width:280px;margin:0 auto}
-  .otros.ia{border-color:#FFCDBB}
+  .otros.ia{border-color:#CFC6F7}
   .otros.ia:hover{border-color:var(--mango)}
 
   /* top bar (home) */
@@ -74,7 +86,7 @@
   .gradoBadge{display:inline-flex;align-items:center;gap:6px;background:rgba(18,181,164,.12);color:var(--teal-dark);
     font-family:"Fredoka";font-weight:600;font-size:.78rem;padding:4px 11px;border-radius:999px;margin-top:8px}
   .salir{background:#fff;border:2px solid var(--line);border-radius:13px;color:var(--muted);font-family:"Nunito";font-weight:800;cursor:pointer;font-size:.86rem;padding:9px 13px;transition:all .15s;white-space:nowrap}
-  .salir:hover{color:var(--mango);border-color:#FFCDBB}
+  .salir:hover{color:var(--mango);border-color:#CFC6F7}
   /* cuenta propia (beta) */
   .linkSec{display:block;width:100%;margin:14px auto 0;background:none;border:none;color:var(--grape);font-family:"Fredoka";font-weight:600;font-size:.95rem;cursor:pointer;text-align:center}
   .selNat{width:100%;font-family:"Nunito",sans-serif;font-weight:700;font-size:1rem;color:var(--ink);padding:14px 15px;border:2px solid var(--line);border-radius:15px;background:#FFFDFB;outline:none}
@@ -104,7 +116,7 @@
 
   /* tarjeta destacada: adelantar próximo año */
   .destacada{display:flex;align-items:center;gap:14px;width:100%;text-align:left;cursor:pointer;border:none;
-    background:linear-gradient(120deg,#7C4DFF,#9B5DE5);color:#fff;border-radius:20px;padding:16px 18px;margin-bottom:22px;
+    background:linear-gradient(130deg,#735DF0,#5B43D8);color:#fff;border-radius:20px;padding:16px 18px;margin-bottom:22px;
     box-shadow:0 14px 26px -12px rgba(124,77,255,.7);transition:transform .14s,box-shadow .2s}
   .destacada:hover{transform:translateY(-2px)}
   .destacada:active{transform:scale(.99)}
@@ -116,7 +128,7 @@
   .dArrow{font-family:"Fredoka";font-size:1.7rem;opacity:.9;flex:none}
   /* tarjeta Cumbre: gradiente más profundo (premium, distinto de "Adelántate") */
   #cumbreWrap{margin-top:-6px}
-  .destacada.cumbre{background:linear-gradient(120deg,#3B2B4A,#5A3AAF 55%,#7C4DFF);box-shadow:0 16px 30px -12px rgba(59,43,74,.75)}
+  .destacada.cumbre{background:linear-gradient(130deg,#211B3A,#4933C8 55%,#735DF0);box-shadow:0 20px 40px -20px rgba(33,27,58,.6)}
 
   /* tarjeta Sinapsis (recreo mental): gradiente oscuro tipo "espacio", distinto de lo académico */
   #juegoWrap{margin:14px 0 2px}
@@ -190,7 +202,15 @@
   #cumbreMaterias{margin-top:4px}
   .cMat{background:var(--surface);border-radius:18px;padding:8px 14px;margin-bottom:11px;box-shadow:var(--shadow-card)}
   .cMatHead{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:none;background:transparent;cursor:pointer;padding:6px 0}
-  .cMatHead .em{flex:none;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-size:1.2rem;background:#F1EAFB}
+  .cMatHead .em{flex:none;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-size:1.2rem;background:color-mix(in srgb,var(--c,var(--chispa-primary)) 14%,#fff)}
+  /* Chispa 2.0: las placas de materia llevan el ícono 3D (PNG), no un emoji */
+  .em img{width:82%;height:82%;object-fit:contain;display:block}
+  /* punto de color de materia (reemplaza el emoji en los chips de los formularios) */
+  .matDot{display:inline-block;width:8px;height:8px;flex:none;border-radius:50%;margin-right:7px;
+    background:var(--c,var(--chispa-primary));vertical-align:middle;transform:translateY(-1px)}
+  .chip[aria-pressed="true"] .matDot,.modo[aria-pressed="true"] .matDot{background:#fff}
+  #tituloMateria{display:flex;align-items:center;gap:11px;color:var(--chispa-ink)!important}
+  #tituloMateria>span{min-width:0;font-family:"Fredoka";font-weight:600;font-size:1.12rem;line-height:1.2;overflow-wrap:anywhere}
   .cMatNom{flex:1;font-family:"Nunito";font-weight:800;font-size:1.02rem;color:var(--ink);min-width:0}
   .cMatProg{font-size:.74rem;font-weight:700;color:#1B8F5A;background:#E3F6EB;padding:3px 9px;border-radius:20px;white-space:nowrap}
   .cMatChevron{flex:none;color:var(--muted);font-family:"Fredoka";font-size:1.1rem;opacity:.6;transition:transform .2s}
@@ -255,8 +275,8 @@
 
   /* tarjeta "repasar mis errores" */
   .repasar{display:flex;align-items:center;gap:14px;width:100%;text-align:left;cursor:pointer;border:none;
-    background:linear-gradient(120deg,#FF6B3D,#FF9558);color:#fff;border-radius:20px;padding:15px 18px;margin-bottom:22px;
-    box-shadow:0 14px 26px -12px rgba(232,81,31,.6);transition:transform .14s,box-shadow .2s}
+    background:linear-gradient(120deg,var(--chispa-coral),#FF9E7F);color:#fff;border-radius:20px;padding:15px 18px;margin-bottom:22px;
+    box-shadow:0 18px 34px -18px rgba(255,121,95,.6);transition:transform .14s,box-shadow .2s}
   .repasar:hover{transform:translateY(-2px)}
   .repasar:active{transform:scale(.99)}
   /* fichas de error en el repaso */
@@ -309,16 +329,16 @@
   .chip{border:2px solid var(--line);background:#fff;color:var(--ink);font-family:"Nunito";font-weight:700;font-size:.92rem;
     padding:9px 14px;border-radius:14px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
     box-shadow:var(--shadow-xs);transition:transform .12s,border-color .15s,background .15s,color .15s}
-  .chip:hover{border-color:#FFCDBB}
+  .chip:hover{border-color:#CFC6F7}
   .chip:active{transform:scale(.96)}
-  .chip[aria-pressed="true"]{background:linear-gradient(180deg,#FF8158,var(--mango));border-color:transparent;color:#fff;box-shadow:var(--shadow-sm)}
+  .chip[aria-pressed="true"]{background:linear-gradient(180deg,#7C68F0,var(--chispa-primary));border-color:transparent;color:#fff;box-shadow:var(--shadow-sm)}
   /* selector de materia compacto (elige UNA): botón que abre los chips */
   .selMat{display:block}
   .selMatBtn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;
     font-family:"Nunito",sans-serif;font-weight:700;font-size:1rem;color:var(--ink);
     padding:13px 15px;border:2px solid var(--line);border-radius:15px;background:#FFFDFB;
     box-shadow:var(--shadow-xs);transition:border-color .15s,box-shadow .15s}
-  .selMatBtn:hover{border-color:#FFCDBB}
+  .selMatBtn:hover{border-color:#CFC6F7}
   .selMatBtn.abierto{border-color:var(--teal);box-shadow:0 0 0 4px rgba(18,181,164,.14)}
   .selMatCur{display:inline-flex;align-items:center;gap:8px}
   .selMatPh{color:#BBA9C0;font-weight:600;display:inline-flex;align-items:center;gap:8px}
@@ -339,7 +359,7 @@
     transition:transform .12s,border-color .15s,background .15s,color .15s;position:relative}
   .modo:hover{border-color:#A9E6DE}
   .modo:active{transform:scale(.99)}
-  .modo[aria-pressed="true"]{background:linear-gradient(180deg,#1ECAB8,var(--teal));border-color:transparent;color:#fff;box-shadow:var(--shadow-sm)}
+  .modo[aria-pressed="true"]{background:linear-gradient(180deg,#2FD3C0,var(--chispa-turquoise));border-color:transparent;color:#fff;box-shadow:var(--shadow-sm)}
   .pmNum{flex:none;width:26px;height:26px;border-radius:50%;background:var(--sun);color:var(--ink);display:grid;place-items:center;font-family:"Fredoka";font-weight:700;font-size:.85rem}
   .modo[aria-pressed="true"] .pmNum{background:rgba(255,255,255,.9);color:var(--teal-dark)}
   .pmIcon{flex:none;font-size:1.4rem}
@@ -568,14 +588,14 @@
 
   /* aviso de examen próximo */
   .examenAviso{width:100%;display:flex;align-items:center;gap:12px;text-align:left;border:none;cursor:pointer;
-    background:linear-gradient(120deg,#7C4DFF,#9C6BFF);color:#fff;border-radius:var(--radius);padding:16px;
+    background:linear-gradient(130deg,#735DF0,#5B43D8);color:#fff;border-radius:var(--radius);padding:16px;
     box-shadow:0 14px 26px -12px rgba(124,77,255,.6);margin-bottom:14px;transition:transform .12s}
   .examenAviso:active{transform:scale(.98)}
   .examenAviso .dTxt b{display:block;font-family:"Fredoka";font-weight:600;font-size:1.02rem}
   .examenAviso .dTxt small{opacity:.9;font-weight:600}
   .examenAviso .dArrow{margin-left:auto;font-size:1.4rem;opacity:.85}
   /* tarjeta de exámenes (2+ el mismo día): UN solo bloque en vez de varios banners */
-  .examenCard{background:linear-gradient(120deg,#7C4DFF,#9C6BFF);color:#fff;border-radius:var(--radius);
+  .examenCard{background:linear-gradient(130deg,#735DF0,#5B43D8);color:#fff;border-radius:var(--radius);
     padding:16px;box-shadow:0 14px 26px -12px rgba(124,77,255,.6);margin-bottom:14px}
   .examenCard .ecHead{display:flex;align-items:center;gap:12px;margin-bottom:12px}
   .examenCard .ecIcon{font-size:1.4rem}
