@@ -1245,6 +1245,72 @@
   .h3Chip b{font-family:"Fredoka";font-weight:600;font-size:.78rem}
   .h3MoreEmpty{margin:0;font-size:.75rem;font-weight:700;color:var(--h2-muted);line-height:1.45}
 
+  /* ═══ MIS NOTAS — el boletín (Chispa 2.0, 2026-07-16) ═══
+     Reemplaza la tira de chips (plana, y sin los íconos 3D de materia que el resto del Inicio sí usa).
+     Jerarquía: promedio general → fila por materia (placa + barra + nota) → refuerzo.
+     La barra es literal: la nota es sobre 20, así que se llena nota/20 y se comparan de un vistazo. */
+  .nbCard{background:#fff;border:1px solid rgba(255,255,255,.92);border-radius:23px;padding:6px 14px 13px;box-shadow:0 18px 38px -30px rgba(38,25,58,.4)}
+  /* semántica de nota, compartida por promedio/materia/nota suelta. Coral, NUNCA rojo duro. */
+  .nb-buena{--nb:var(--chispa-green)}
+  .nb-media{--nb:var(--chispa-yellow)}
+  .nb-floja{--nb:var(--chispa-coral)}
+
+  /* 1 · el promedio manda */
+  .nbTop{display:grid;grid-template-columns:44px minmax(0,1fr);align-items:center;gap:12px;padding:13px 2px 14px;border-bottom:1px solid var(--h2-line)}
+  .nbAvgMark{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:color-mix(in srgb,var(--nb) 14%,#fff);color:var(--nb)}
+  .nbAvgMark svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .nbAvgTx{display:flex;align-items:baseline;gap:11px;min-width:0}
+  .nbAvgNum{font-family:"Fredoka";font-weight:600;font-size:2.1rem;line-height:1;color:var(--nb);letter-spacing:-.02em}
+  .nbAvgLbl{display:flex;flex-direction:column;gap:2px;min-width:0;font-family:"Nunito";font-weight:800;font-size:.84rem;color:var(--h2-ink)}
+  .nbAvgLbl small{font-size:.68rem;font-weight:700;color:var(--h2-muted);line-height:1.3;overflow-wrap:anywhere}
+
+  /* 2 · una materia por fila, desplegable con <details> nativo */
+  /* El divisor va en TODAS las filas: así el pie ("Ver más") siempre queda separado de la lista,
+     abierta o cerrada. Solo se quita en la última fila cuando la lista cierra la tarjeta. */
+  .nbRow{--subject:var(--chispa-primary);border-bottom:1px solid var(--h2-line)}
+  .nbCard>.nbList:last-child>.nbRow:last-child{border-bottom:0}
+  .nbRow>summary{display:grid;grid-template-columns:40px minmax(0,1fr) auto 14px;align-items:center;gap:11px;padding:11px 2px;min-height:56px;cursor:pointer;list-style:none}
+  .nbRow>summary::-webkit-details-marker{display:none}
+  .nbRow>summary:active{opacity:.72}
+  .nbMark{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;background:color-mix(in srgb,var(--subject) 13%,#fff);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--subject) 16%,transparent)}
+  .nbBody{display:flex;flex-direction:column;gap:5px;min-width:0}
+  .nbName{font-family:"Fredoka";font-weight:600;font-size:.9rem;line-height:1.2;color:var(--h2-ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .nbBar{display:block;width:100%;height:6px;border-radius:99px;background:#ECEAF4;overflow:hidden}
+  .nbBar i{display:block;height:100%;border-radius:inherit;background:var(--subject)}
+  .nbCount{font-size:.62rem;font-weight:800;color:var(--h2-muted);line-height:1}
+  .nbVal{font-family:"Fredoka";font-weight:600;font-size:1.3rem;line-height:1;color:var(--nb)}
+  .nbChev{width:14px;height:14px;fill:none;stroke:var(--h2-muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transform:rotate(90deg);transition:transform .18s}
+  .nbRow[open]>summary .nbChev{transform:rotate(-90deg)}
+
+  /* Pie "Ver N materias más": acción discreta al FINAL de la lista, nunca en el medio (eso partía
+     el bloque en dos). Las materias de más se ocultan en su sitio: la lista es una sola. */
+  .nbExtra{display:none}
+  .nbCard.nb-todo .nbExtra{display:block}
+  .nbToggle{width:100%;min-height:44px;display:flex;align-items:center;justify-content:center;gap:6px;border:0;background:transparent;padding:4px;cursor:pointer;font-family:"Nunito";font-weight:800;font-size:.74rem;color:var(--chispa-primary)}
+  .nbToggle:active{opacity:.7}
+  .nbToggle .nbChev{stroke:var(--chispa-primary)}
+  .nbCard.nb-todo .nbToggle .nbChev{transform:rotate(-90deg)}
+
+  /* 3b · "Practicar lo que salió mal": vive DENTRO de la materia, alineado con sus notas.
+     Tintado con el color de ESA materia, no con un color de alarma: es una invitación. */
+  /* margin-left 51px = 40px de la placa + 11px del gap: queda alineado con las notas de arriba */
+  .nbFix{display:grid;grid-template-columns:32px minmax(0,1fr) 14px;align-items:center;gap:10px;margin:0 2px 12px 51px;padding:9px 11px;border:0;border-radius:14px;background:color-mix(in srgb,var(--subject) 9%,#fff);text-align:left;cursor:pointer;font-family:"Nunito"}
+  .nbFix:active{transform:scale(.99)}
+  .nbFixIco{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--subject) 16%,#fff);color:var(--subject)}
+  .nbFixIco svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .nbFixTx{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .nbFixTx b{font-family:"Fredoka";font-weight:600;font-size:.79rem;line-height:1.2;color:var(--h2-ink)}
+  .nbFixTx small{font-size:.64rem;font-weight:700;color:var(--h2-muted);line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .nbFix>svg{width:14px;height:14px;fill:none;stroke:var(--subject);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+  /* 3 · las notas de esa materia, al desplegar */
+  .nbNotas{list-style:none;margin:0 0 10px;padding:0 2px 0 51px;display:flex;flex-direction:column;gap:8px}
+  .nbNotas li{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0}
+  .nbNotaTx{display:flex;flex-direction:column;gap:2px;min-width:0;font-family:"Nunito"}
+  .nbNotaTx>:first-child,.nbNotas li>span{font-size:.78rem;font-weight:800;color:var(--h2-ink);overflow-wrap:anywhere}
+  .nbNotaTx small{font-size:.65rem;font-weight:700;color:var(--h2-muted)}
+  .nbNotas li b{font-family:"Fredoka";font-weight:600;font-size:.95rem;color:var(--nb);flex:none}
+
   /* navegación compartida: mismos destinos y eventos, iconografía consistente */
   body.home-v2-page #vHome{padding-bottom:calc(44px + env(safe-area-inset-bottom))}
   .navbar{left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom));max-width:410px;background:rgba(255,255,255,.9);border:0;border-radius:24px;padding:7px 6px;box-shadow:0 16px 40px -24px rgba(38,25,58,.4),0 3px 12px -8px rgba(38,25,58,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}

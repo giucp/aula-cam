@@ -619,8 +619,15 @@
     {id:10,materia:"CIENCIAS SOCIALES 6G",tipo:"tarea",descripcion:"Mapa de los estados",fecha:dd(-1),hecha:false},
     {id:11,materia:"EDUCACIÓN ESTÉTICA 6G",tipo:"trabajo",descripcion:"Práctica",fecha:null,hecha:false}
   ];
+  // Ordenadas por fecha DESC: promediosPorMateria() toma la 1ª de cada materia como "la última".
+  // Incluye a propósito los casos que el boletín tiene que aguantar y antes no se probaban:
+  // una materia con VARIAS notas (Matemática, Inglés → el desplegable) y una FLOJA (<14 → color
+  // coral + fila de refuerzo). Sin descripción (id 8) también pasa: cae a "Examen".
   var NOTAS=[
+    {id:7,materia:"INGLÉS 6G",descripcion:"Examen de present simple",nota:11,fecha:dd(-1)},
+    {id:6,materia:"MATEMÁTICA 6G",descripcion:"Quiz de fracciones",nota:13,fecha:dd(-2)},
     {id:1,materia:"MATEMÁTICA 6G",descripcion:"Examen de decimales",nota:18,fecha:dd(-5)},
+    {id:8,materia:"LENGUAJE 6G",descripcion:null,nota:14,fecha:dd(-6)},
     {id:2,materia:"LENGUAJE 6G",descripcion:"Prueba de ortografía",nota:16,fecha:dd(-8)},
     {id:3,materia:"CIENCIAS NATURALES 6G",descripcion:"Examen del cuerpo humano",nota:19,fecha:dd(-12)},
     {id:4,materia:"INGLÉS 6G",descripcion:"Quiz de vocabulario",nota:15,fecha:dd(-15)},

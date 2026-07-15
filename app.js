@@ -215,6 +215,7 @@
     const a=new Date(y,m-1,dd); const b=new Date(); b.setHours(0,0,0,0);
     return Math.round((a-b)/86400000);
   }
+  // Para TAREAS: una fecha pasada es un vencimiento ("venció").
   function fechaBonita(fecha){
     const n=diasHasta(fecha);
     if(n===null) return "";
@@ -223,6 +224,16 @@
     if(n<0) return "venció";
     const [y,m,dd]=fecha.slice(0,10).split("-").map(Number);
     return `${DIAS_NOM[new Date(y,m-1,dd).getDay()]} ${dd}`;
+  }
+  // Para NOTAS: son hechos que YA pasaron, no vencimientos. Usar fechaBonita acá hacía que un
+  // examen de la semana pasada dijera "Venció", que no significa nada para una nota.
+  function fechaNota(fecha){
+    const n=diasHasta(fecha);
+    if(n===null) return "Sin fecha";
+    if(n===0) return "Hoy";
+    if(n===-1) return "Ayer";
+    const [y,m,dd]=fecha.slice(0,10).split("-").map(Number);
+    return `${dd} ${MESES_ABR[m-1]}`;
   }
 
   // ───────── escritorio (pestaña Inicio) ─────────
@@ -955,33 +966,109 @@
     }
     NOTAS.forEach(t=>cont.appendChild(filaNota(t)));
   }
-  // escritorio: PROMEDIO por materia + sugerencia de refuerzo (solo si hay notas)
+  // ───────── "Mis notas" en el Inicio: EL BOLETÍN (rediseñado 2026-07-16) ─────────
+  // Antes era una tira de chips (puntito de color + materia + número): plano, sin jerarquía, y
+  // tiraba a la basura el mejor asset que hay — los íconos 3D de materia, que "Hoy" y "Continúa
+  // aprendiendo" SÍ usan. Decisiones del rediseño:
+  //  · El PROMEDIO GENERAL manda (es la pregunta real: "¿cómo voy?"). Va grande, en Fredoka.
+  //  · Una FILA por materia con su placa de ícono 3D (componente §3.5 del doc) + barra + nota.
+  //  · La barra NO es una metáfora: la nota es sobre 20, así que la barra ES la nota (nota/20).
+  //    Por eso se puede comparar de un vistazo quién va bien y quién no, sin leer números.
+  //  · INTERACTIVO con `<details>` nativo (mismo patrón que el menú de cuenta y la guía de padres):
+  //    tocar una materia despliega SUS notas. Cero JS de toggle, accesible por teclado.
+  //  · Ordenado de PEOR a MEJOR (promediosPorMateria ya lo hace): lo que necesita atención, arriba.
+  // Escala: hoy las niñas tienen 1-3 notas → tiene que verse bien con UNA sola, no solo con seis.
+  function promedioGeneral(){
+    if(!NOTAS.length) return null;
+    return Math.round((NOTAS.reduce((s,t)=>s+Number(t.nota),0)/NOTAS.length)*10)/10;
+  }
+  const NOTA_MAX=20;                                  // la escala venezolana; la barra se llena nota/20
+  // Cuántas materias se ven de entrada. Con todas a la vista (6-7 filas) el bloque se vuelve una
+  // pared y rompe la estética del Inicio: son 3, y el resto queda a un toque. Como vienen
+  // ordenadas de peor a mejor, las 3 visibles son justo las que piden atención.
+  const NB_VISIBLES=3;
   function pintarNotasInicio(){
     const box=$("#notasInicio"); if(!box) return; box.innerHTML="";
-    if(!NOTAS.length) return;
-    const w=document.createElement("div"); w.className="h3MoreCard"; w.style.setProperty("--tone","#2DAE68");
-    w.innerHTML=`<div class="h3MoreHead"><span class="h3MoreMark">${homeIcono("nota")}</span><h3>Mis notas</h3><button class="h2TextAction" id="btnVerNotas" type="button">Ver todas</button></div>`;
-    const chips=document.createElement("div"); chips.className="h3MoreChips";
-    const proms=promediosPorMateria();
-    proms.slice(0,4).forEach(p=>{                       // chip 2.0: punto del color de la materia + promedio
+    if(!NOTAS.length) return;                         // sin notas, la sección entera no existe
+    const proms=promediosPorMateria();                // ya viene de peor a mejor
+    const gen=promedioGeneral();
+
+    // Encabezado al MISMO nivel que "Hoy" / "Continúa aprendiendo" (antes era un <h3> dentro de una
+    // tarjeta: un nivel de jerarquía de más, que lo hacía ver como un widget suelto).
+    const head=document.createElement("div"); head.className="h2SectionHead";
+    head.innerHTML=`<h2 id="homeNotasTit">Mis notas</h2><button class="h2TextAction" id="btnVerNotas" type="button">Ver todas</button>`;
+    box.appendChild(head);
+
+    const card=document.createElement("div"); card.className="nbCard";
+
+    // 1 · el promedio, protagonista
+    const nNotas=NOTAS.length, nMat=proms.length;
+    const top=document.createElement("div"); top.className=`nbTop nb-${colorNota(gen)}`;
+    top.innerHTML=`<span class="nbAvgMark">${homeIcono("nota")}</span>`+
+      `<span class="nbAvgTx"><b class="nbAvgNum">${escapeHtml(String(gen))}</b>`+
+      `<span class="nbAvgLbl">Tu promedio<small>${nNotas} ${nNotas===1?"nota":"notas"} en ${nMat} ${nMat===1?"materia":"materias"}</small></span></span>`;
+    card.appendChild(top);
+
+    // 2 · una fila por materia, desplegable
+    const filaDeMateria=p=>{
       const v=homeMateriaVisual(p.materia);
-      const s=document.createElement("span"); s.className="h3Chip"; s.style.setProperty("--tone",v.color);
-      s.innerHTML=`<i></i><span>${escapeHtml(capMateria(limpiaNombreMateria(p.materia))||"General")}</span><b>${escapeHtml(String(p.prom))}</b>`;
-      chips.appendChild(s);
+      const nombre=capMateria(limpiaNombreMateria(p.materia))||"General";
+      const pct=Math.max(0,Math.min(100,Math.round(p.prom/NOTA_MAX*100)));
+      const fila=document.createElement("details"); fila.className="nbRow";
+      fila.style.setProperty("--subject",v.color);
+      const suyas=NOTAS.filter(t=>t.materia&&norm(t.materia)===norm(p.materia));
+      fila.innerHTML=`<summary>`+
+          `${homeMarcaMateria(p.materia,"nbMark")}`+
+          `<span class="nbBody"><b class="nbName">${escapeHtml(nombre)}</b>`+
+          `<span class="nbBar"><i style="width:${pct}%"></i></span>`+
+          `<small class="nbCount">${p.n} ${p.n===1?"nota":"notas"}</small></span>`+
+          `<span class="nbVal nb-${colorNota(p.prom)}">${escapeHtml(String(p.prom))}</span>`+
+          `<svg class="nbChev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>`+
+        `</summary>`+
+        `<ul class="nbNotas">`+suyas.map(t=>
+          `<li><span class="nbNotaTx">${escapeHtml(t.descripcion||"Examen")}`+
+          `<small>${escapeHtml(fechaNota(t.fecha))}</small></span>`+
+          `<b class="nb-${colorNota(Number(t.nota))}">${escapeHtml(String(Number(t.nota)))}</b></li>`).join("")+
+        `</ul>`;
+      // La sugerencia de reforzar vive DENTRO de su materia: es SU sugerencia. Suelta al final de
+      // la tarjeta se veía como un cuerpo extraño y tenía que repetir el nombre de la materia
+      // ("Inglés se puede reforzar") para que se entendiera de quién era. Acá el contexto ya es la
+      // materia → el texto habla de la ACCIÓN, y el ícono es el de reforzar (el de la materia ya
+      // está en la fila, repetirlo sería ruido). `suyas` viene por fecha desc → la más reciente.
+      const floja=suyas.find(t=>Number(t.nota)<NOTA_REFUERZO);
+      if(floja){
+        const b=document.createElement("button"); b.type="button"; b.className="nbFix";
+        b.innerHTML=`<span class="nbFixIco">${homeIcono("refuerzo")}</span>`+
+          `<span class="nbFixTx"><b>Practicar lo que salió mal</b>`+
+          `<small>${escapeHtml(floja.descripcion||"tu examen")}</small></span>${homeIcono("flecha")}`;
+        b.onclick=e=>{ e.preventDefault(); e.stopPropagation(); irARefuerzo(floja); };
+        fila.appendChild(b);
+      }
+      return fila;
+    };
+    // UNA sola lista continua: las de más se ocultan con una clase, NO se meten en otro contenedor.
+    // Con <details> el botón queda por FUERZA encima de lo oculto → al abrir daba
+    // lista → botón → lista → refuerzo, o sea el bloque partido en dos. El toggle es un PIE.
+    const lista=document.createElement("div"); lista.className="nbList";
+    proms.forEach((p,i)=>{
+      const fila=filaDeMateria(p);
+      if(i>=NB_VISIBLES) fila.classList.add("nbExtra");
+      lista.appendChild(fila);
     });
-    w.appendChild(chips);
-    // la nota más reciente floja → empuje a reforzar (con fotos del examen)
-    const floja=NOTAS.find(t=>Number(t.nota)<NOTA_REFUERZO && t.materia);
-    if(floja){
-      const v=homeMateriaVisual(floja.materia);
-      const b=document.createElement("button"); b.type="button"; b.className="h3MoreRow h3MoreRow--inCard";
-      b.style.setProperty("--tone",v.color);
-      b.innerHTML=`<span class="h3MoreRowIcon">${homeIcono("refuerzo")}</span><span class="h3MoreRowTx"><b>${escapeHtml(capMateria(limpiaNombreMateria(floja.materia)))} se puede reforzar</b><small>Practicá justo lo que salió mal</small></span>${homeIcono("flecha")}`;
-      b.onclick=()=>irARefuerzo(floja);
-      w.appendChild(b);
+    card.appendChild(lista);
+
+    const nExtra=proms.length-NB_VISIBLES;
+    if(nExtra>0){
+      const t=document.createElement("button"); t.type="button"; t.className="nbToggle";
+      const rotulo=()=>card.classList.contains("nb-todo")
+        ? "Ver menos" : `Ver ${nExtra} ${nExtra===1?"materia más":"materias más"}`;
+      t.innerHTML=`<span>${rotulo()}</span><svg class="nbChev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>`;
+      t.onclick=()=>{ card.classList.toggle("nb-todo"); t.querySelector("span").textContent=rotulo(); };
+      card.appendChild(t);
     }
-    box.appendChild(w);
-    const link=w.querySelector("#btnVerNotas"); if(link) link.onclick=()=>verTab("agenda");
+
+    box.appendChild(card);
+    const link=$("#btnVerNotas"); if(link) link.onclick=()=>verTab("agenda");
   }
   // ───────── refuerzo desde una nota floja (con fotos del examen corregido) ─────────
   // Al tocar "Reforzar" en una nota, se abre la materia en modo refuerzo: un banner
