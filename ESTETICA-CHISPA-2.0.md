@@ -11,7 +11,15 @@ Relacionados: **fuente de verdad = `aula-cam-estetica-local/docs/CHISPA_2.0_DESI
 
 ---
 
-> ## ⚡ RETOMAR EN CHAT NUEVO (cierre 2026-07-14) — leer en este orden
+> ## ⚡ RETOMAR EN CHAT NUEVO (cierre 2026-07-15) — leer en este orden
+> **§15 = LOGIN 2.0, LIVE y aprobado.** La escena la ajustó el USUARIO con `tuner-login.html` (§10.4);
+> las perillas son variables CSS sobre `.lgHero`, no tocar a mano. Incluye las **alertas 2.0 globales**
+> (sin emojis). Falta `#vPendiente` y el flujo beta (ese último, por decisión del usuario, recién
+> cuando se vaya a usar Chispa Universal).
+> **§14 = SISTEMA DE MOVIMIENTO: norte FIJO del proyecto, pero NO implementar todavía** (el usuario lo
+> dejó para más adelante). Regla: `Nivel 1 Diseño → 2 Microinteracciones → 3 Animaciones → 4 Magia`;
+> estamos terminando el 1, **no saltar al 4**. Y ojo §14.6: choca con el "mascota SIN animación" que él
+> mismo pidió, y el parpadeo/llama **necesitan assets que no existen**.
 > 0. **§13 — MATERIAS 2.0: hecho y verificado en LOCAL, SIN desplegar.** Espera el OK del usuario en
 >    su teléfono. Es lo único sin commitear. Incluye un **bug de producción arreglado** (la placa del
 >    ícono en el pane de temas salía a 180px). **Falta la 2ª mitad: el pane de temas** (chips, modos,
@@ -465,6 +473,18 @@ Objetivo: que las estrellas que caen sobre el texto no le quiten fuerza, **sin t
    *(Pasó: quedó un recorte viejo de 1010×690 y el libro salía gigante.)*
 
 ## 10.4 Herramientas de trabajo (siguen sirviendo)
+- **`tuner-login.html`** — panel para la escena del LOGIN: carga el login REAL en un iframe y mueve
+  la laptop (ancho/tope/⇄/⇅), el rectángulo de la pantalla (%) y el formulario (alto de campo,
+  separación, margen). Presets 360/390/430 + ancho libre + zoom. Dos casillas clave: **"Marcar la
+  pantalla"** (rectángulo rojo, para ver si el form cae adentro) y **"Simular teclado abierto"**
+  (baja a 420px de alto). El cuadro de arriba **mide el DOM real** y avisa si el form entra, si la
+  pantalla se ve completa y si la laptop se recorta. Devuelve el CSS listo para pegar, un set por
+  breakpoint. **Con esto el usuario ajustó la escena a mano (2026-07-15) y quedó aprobada.**
+  ⚠️ Dos cosas que hubo que resolver y valen para cualquier tuner futuro: (1) **forzar `estilos.css`
+  fresco** (`?tuner=<ts>`) — el navegador/SW lo cachean y el panel te deja mover sliders sobre una
+  versión vieja, o sea ajustar a ciegas; hay un chequeo que avisa en rojo si el CSS no trae las
+  variables; (2) los campos y el botón llevan **`flex:none`** — sin eso flexbox los APLASTA para
+  simular que entran (el botón caía de 48px a 33px) y el diagnóstico mentía.
 - **`tuner.html`** — panel interactivo: carga el hero REAL en un iframe, sliders de mano
   (`--hand-w/--hand-t/--hand-r`) y libro (`width/right/bottom`), botones 360/390/430 + ancho libre,
   **zoom** (−/+/⟲) y caja con los valores exactos para pegar en el CSS.
@@ -626,12 +646,145 @@ Se borró `assets/hero/chispa-bienvenida.png`, huérfano al caer la landing ante
       que ya hacía). Se preguntó y quedó sin responder. Alternativa: llevar a `chispa-familia`.
 - [ ] El `#lab`, el onboarding de 5 pasos y el login siguen sin migrar.
 
+---
+
+# 🔐 15. LOGIN 2.0 (2026-07-15) — LIVE. El formulario vive dentro de la laptop
+
+**Assets del usuario** (`aula-cam-estetica-local/assets/onboarding-2.0/screen-login/`): `fondo-login-aula-v2.png`
+(el v2 es el bueno: tiene libros y cuadernos) + `laptop-login-marco.png` **en capa aparte, con alpha y la
+pantalla VACÍA**. Importados y optimizados a `assets/onboarding/login-{fondo,laptop}.webp`: **2.1 MB → 70 KB**.
+
+## 15.1 Cómo está armado
+Misma lengua que la landing: escena a sangre, por capas, sin tarjeta. El **formulario es HTML dentro de la
+pantalla de la laptop**, anclado en **%** sobre el asset → queda clavado a cualquier escala.
+**Medida del PNG original (1192×956): pantalla interior = x 154-1036, y 68-594** → `left 12.92% / top 7.11%
+/ width 74% / height 55.02%`. **Es un rectángulo RECTO** (sin perspectiva) → no hace falta transform 3D.
+La laptop **se sale por los costados a propósito**: su cuerpo se recorta, la pantalla queda entera.
+
+## 15.2 ⚠️ El problema que definió todo: la pantalla del asset es 16:10
+La del mockup era ~1,25 (casi cuadrada) y la del asset es **1,67**. Consecuencia dura y medida:
+**no entran etiquetas encima de los campos** (el botón se sale). Por eso **ícono + placeholder dentro** y la
+etiqueta real oculta (`.lgSr`) para lectores de pantalla. Si algún día se rehace el asset con la pantalla
+más alta (~1,25), se podrían recuperar las etiquetas.
+**Primer intento = FALLÓ ("horrible"):** agrandé la laptop hasta que entrara el form y quedó **cortada por
+los dos lados, sin cuarto, un rectángulo blanco flotando**. Maté la escena para salvar el formulario.
+**Lección: yo mismo diagnostiqué que el problema era el asset y me puse a hackearlo igual.**
+
+## 15.3 Los valores los ajustó el USUARIO con `tuner-login.html` (y quedó aprobado)
+La salida no fue mía: le di el panel y él subió la laptop y la achicó un toque.
+`--lap-w` 143/145/150% · `--lap-y` −79/−84/−87px (390/360/430). Todo vive en **perillas CSS** sobre
+`.lgHero` (`--lap-*`, `--scr-*`, `--fld-*`) — no tocar a mano, usar el tuner.
+
+## 15.4 Bugs encontrados al probar funcionalidad (no se ven mirando)
+1. **El `<form>` recargaba la página** (submit nativo con el botón `type="submit"`) → `preventDefault`.
+   A cambio el teclado del celu muestra "Ir" y Enter envía.
+2. **El error quedaba fuera de vista** con el teclado abierto (aparecía en y=564 con viewport de 420):
+   el niño tocaba Entrar y no veía nada → `loginError()` lo trae con `scrollIntoView`.
+3. **★ El error tapaba el subtítulo:** `#loginMsg` estaba EN EL FLUJO después de la laptop; al llenarse
+   la empujaba hacia arriba (tiene `margin-top:auto`) y, sumado al `--lap-y` negativo, la laptop trepaba
+   sobre el texto (medido: top 272 → 140, subtítulo terminaba en 165). **Fix: el error va absoluto,
+   flotando sobre la mesa. La escena NO se reacomoda por un error.**
+4. Franja del canvas asomando bajo la escena → `margin-bottom:-48px` se come el padding del body.
+
+## 15.5 Alertas 2.0 (globales, pedido del usuario: "me da gastritis el estilo viejo")
+`errBox()`/`avisoBox()` reescritas: superficie blanca + placa tintada + **SVG, cero emojis** (adiós 😅/🔑/✅).
+**Coral** = algo falló (nunca rojo duro), **turquesa** = info. Se cambiaron las 2 funciones, no las 34
+llamadas → limpia TODA la app (login, registro, login nativo, recuperar, solicitud, materias).
+Sumado `role="alert"`/`role="status"`. **Los SVG van INLINE a propósito: como `const` arriba quedaban en
+TDZ** (el mismo bug que costó medio chat en el panel de familia).
+
+## 15.6 Verificado
+360/390/430: pantalla completa, form dentro, subtítulo libre, cero scroll horizontal, botón 48px sin
+aplastarse, fuente 16px (iOS no hace zoom). **Teclado abierto (360×420): entran campos, botón y error.**
+Login real fallido: "Entrando…" → se recupera → error visible. Ojo de la clave OK. Enter OK. Volver limpia
+los campos. Cero errores de consola. **sw v80.**
+
+## 15.7 Pendiente
+- [ ] `#vPendiente` ("acceso en revisión") sigue viejo, con ⏳. Es la pantalla siguiente al login.
+- [ ] El flujo beta (`#vBeta`, `#vRegistro`, `#vLoginNat`, `#vRecuperar`, `#vRescate`, `#vSolicitud`) sigue
+      sin migrar — **decisión del usuario: se trabaja cuando se vaya a usar Chispa Universal, no antes.**
+
 ## 12.6 Estado del código al cerrar el chat anterior (histórico)
 - La landing en `index.html` (`.h3Bienvenida`) es la **2ª versión (superada)**: Chispa brazos-abiertos
   centrada sobre glow + CTA + `.h3Steps` + padres colapsado. **Se va a reemplazar** por 12.2 cuando
   lleguen los assets. El CSS vive en `estilos.css` (buscar `.h3Bienvenida`).
 - `assets/hero/chispa-bienvenida.png` = pose 02 a 510px (135 KB). Se puede reusar o descartar.
 - El `#btnEntrarLanding` NO se puede renombrar (lo cablea `app.js`).
+
+---
+
+# ✨ 14. SISTEMA DE MOVIMIENTO — norte FIJO (2026-07-14) · **NO implementar todavía**
+
+> **Estado: DOCUMENTADO, sin una línea de código.** El usuario lo trajo para que sea **algo fijo** del
+> proyecto y se haga **más adelante**, no ya. Amplía la §4 (movimiento y estados de la mascota) y se
+> apoya en el mapa de poses de la §11.
+
+## 14.0 La regla de escalada (lo que manda)
+```
+Nivel 1 → Diseño            ← ESTAMOS ACÁ (terminado: Inicio, Materias, Landing)
+Nivel 2 → Microinteracciones
+Nivel 3 → Animaciones
+Nivel 4 → Magia
+```
+**No saltar al Nivel 4.** El Nivel 1 recién quedó bien; se sube de a un escalón.
+
+## 14.1 La filosofía (lo más importante de esta sección)
+> **La mejor animación es la que el usuario SIENTE, no la que NOTA.**
+> Si alguien abre la app y dice *"¡wow, qué animación!"* → probablemente es demasiado.
+> Si después de una semana siente que *"esta app tiene vida"* sin saber por qué → acertaste.
+
+**No animar escenas completas** (costosísimo y se nota). Con **5 cosas** toda la app parece viva.
+
+## 14.2 Las 5 primeras (en este orden)
+| # | Qué | Cómo | Ritmo |
+|---|---|---|---|
+| ① | **Chispa respira** | escala `100% → 102% → 100%` | 4 s |
+| ② | **Parpadea** | 2 frames, ojos abiertos → cerrados → abiertos | cada 6–8 s, dura **120 ms** |
+| ③ | **La llama oscila** ← *acá está la magia* | SOLO las puntas, no el cuerpo: `2° 3° 2° 3°`, **nunca igual** | muy lento |
+| ④ | **Brillo del portátil** | una línea de reflejo que recorre la pantalla (estilo Apple mostrando un iPhone) | cada 12 s |
+| ⑤ | **Las estrellas** | ni moverlas: opacidad `100% → 70% → 100%` + un escalado | — |
+
+## 14.3 El sistema (no "una animación": un SISTEMA)
+**~10 estados reutilizados en toda la app**, en CSS, no una animación por pantalla:
+`Idle · Blink · Wave · Celebrate · Thinking · Sad · Sleep · Reading · Typing · Pointing · Floating`
+Keyframes base a reutilizar: `breathe`, `blink`, `float`, `glow`, `flicker`.
+> Apple no tiene miles de animaciones: tiene ~20 reutilizadas. Duolingo igual (respirar, parpadear,
+> inclinarse, saltar, celebrar). Bien hechas, parecen infinitas.
+
+**Ojo:** esos 10 estados **ya casi son el mapa de poses de la §11** (saludando, pensando, leyendo,
+escribiendo, celebrando, animando, descansando, señalando, estrella…). El sistema de movimiento debe
+**montarse sobre ese mapa**, no inventar una taxonomía paralela.
+
+## 14.4 La idea grande: Chispa INTERACTÚA con el contenido
+Gestos pequeños **con contexto** — hacen que el personaje parezca inteligente y presente:
+- En la landing: escribe en el portátil y **de repente levanta la vista y sonríe**.
+- Noticia del espacio → aparece con casco de astronauta.
+- Lección de mate → sostiene un lápiz enorme y escribe una operación.
+- Termina un simulacro → **1 segundo** de lluvia de confeti.
+
+## 14.5 Instrucción explícita del usuario sobre CÓMO hacerlo
+> *"No intentes que Claude genere estas animaciones. Claude es muy bueno diseñando, pero para
+> animaciones es demasiado impredecible. Hazlo con CSS."*
+
+→ **`@keyframes` a mano, reutilizables y pocos.** Nada de generar movimiento "a ojo" ni librerías.
+
+## 14.6 ⚠️ Choques con lo que YA existe (leer antes de implementar)
+1. **El usuario pidió QUITAR el movimiento de la mascota.** §1 y §10 dicen textual: *"la mascota SIN
+   animación — no volver a agregar sube-y-baja ni floteos"*, y se eliminó `chispaBob`. **Respirar y
+   parpadear NO son lo mismo que el bob** que él mató, pero **el hero del Inicio está CONGELADO (§10)**:
+   no tocarlo sin pedido explícito. **Confirmar con él dónde sí y dónde no** antes de animar.
+2. **Faltan assets para ② y ③.** Hoy hay **1 PNG estático por pose**:
+   - **Parpadeo** necesita un **2º frame con los ojos cerrados** por pose → asset nuevo.
+   - **Oscilar solo las puntas de la llama** exige la **llama como capa aparte**; un `rotate` sobre el
+     PNG entero movería también el cuerpo → asset nuevo (o descartar ③ hasta tenerlo).
+   - **①, ④ y ⑤ se pueden hacer HOY sin assets nuevos.**
+3. **⑤ ya tiene su asset y está SIN USAR:** `assets/onboarding/destellos.svg` (el "grupo decorativo
+   escalable" del kit). Las estrellitas del hero están **horneadas dentro de `aula-fondo.webp`** → esas
+   no se pueden animar; hay que superponer el SVG.
+4. **`prefers-reduced-motion` ya está resuelto** (`estilos.css` ~641: mata toda animación y transición).
+   El sistema lo hereda gratis. **No romperlo.**
+5. Ya existen `@keyframes` sueltos (`bob`, `shimmer`, `deal`, `pop`). Al armar el sistema, **consolidar**,
+   no apilar unos nuevos encima.
 
 ---
 

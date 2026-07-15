@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Chispa · Ajuste del login</title>
+<style>
+  :root{--ink:#26193A;--muted:#786E8C;--line:#E7E1EE;--purple:#6753E8;--bg:#F6F4FB}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+  header{padding:12px 16px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+  header h1{margin:0;font-size:1rem}
+  header p{margin:4px 0 0;font-size:.78rem;color:var(--muted)}
+  .wrap{display:flex;gap:16px;flex-wrap:wrap;padding:16px;align-items:flex-start}
+  .previewCol{flex:0 0 auto;position:sticky;top:70px}
+  .frameBox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;box-shadow:0 10px 30px -20px rgba(0,0,0,.3)}
+  .frameLbl{font-size:.72rem;color:var(--muted);text-align:center;margin-bottom:6px}
+  .zoomBar{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:8px}
+  .zBtn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:4px 12px;font-weight:700;cursor:pointer;font-size:.95rem;line-height:1}
+  #zLbl{font-size:.8rem;color:var(--muted);min-width:44px;text-align:center}
+  .scrollArea{overflow:auto;max-height:620px;background:#fff;border-radius:8px}
+  .scaleBox{transform-origin:0 0}
+  iframe{border:0;background:#fff;display:block;transform-origin:0 0}
+  .controls{flex:1 1 340px;min-width:320px;max-width:560px}
+  .widths{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center}
+  .wBtn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 14px;font-weight:700;cursor:pointer;font-size:.85rem}
+  .wBtn.on{background:var(--purple);color:#fff;border-color:var(--purple)}
+  .wCustom{margin-left:auto;font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:6px}
+  .wCustom input{width:64px;padding:6px;border:1px solid var(--line);border-radius:8px}
+  .toggles{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:12px;font-size:.8rem}
+  .toggles label{display:flex;align-items:center;gap:6px;cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:9px;padding:7px 11px}
+  .group{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:12px}
+  .group h2{margin:0 0 4px;font-size:.9rem}
+  .group .hint{margin:0 0 10px;font-size:.72rem;color:var(--muted);line-height:1.45}
+  .row{display:grid;grid-template-columns:104px 1fr 76px;align-items:center;gap:10px;margin:9px 0}
+  .row label{font-size:.79rem}
+  .row input[type=range]{width:100%}
+  .row .num{display:flex;align-items:center;gap:3px}
+  .row .num input{width:52px;padding:5px;border:1px solid var(--line);border-radius:7px;text-align:right;font-size:.78rem}
+  .row .num span{font-size:.7rem;color:var(--muted)}
+  .diag{border-radius:10px;padding:10px 12px;font-size:.76rem;line-height:1.55;margin-bottom:12px;font-weight:600}
+  .diag.ok{background:#E7F7EF;color:#126B45;border:1px solid #B9E8D0}
+  .diag.bad{background:#FDECEF;color:#9B2740;border:1px solid #F5C2CD}
+  .out{background:#1e1730;color:#e8e2f5;border-radius:12px;padding:12px 14px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.72rem;line-height:1.5;white-space:pre;overflow:auto}
+  .outHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px}
+  .copyBtn{border:0;background:var(--purple);color:#fff;border-radius:8px;padding:7px 12px;font-weight:700;cursor:pointer;font-size:.78rem}
+  .reset{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 12px;cursor:pointer;font-size:.76rem;color:var(--muted)}
+  @media (max-width:900px){ .previewCol{position:static} .scrollArea{max-height:480px} .controls{max-width:none} }
+</style>
+</head>
+<body>
+<header>
+  <h1>Chispa · ajuste del login (la laptop y su pantalla)</h1>
+  <p>Es el login REAL, no una maqueta. Movés los sliders y lo ves al toque. Los números de abajo son EXACTAMENTE los que van al CSS.</p>
+</header>
+
+<div class="wrap">
+  <div class="previewCol">
+    <div class="frameBox">
+      <div class="frameLbl" id="frameLbl">390 px</div>
+      <div class="zoomBar">
+        <button class="zBtn" id="zOut" title="Alejar">−</button>
+        <span id="zLbl">1×</span>
+        <button class="zBtn" id="zIn" title="Acercar">+</button>
+        <button class="zBtn" id="zReset" title="Reset">⟲</button>
+      </div>
+      <div class="scrollArea">
+        <div class="scaleBox" id="scaleBox">
+          <iframe id="preview" src="index.html?tuner=1"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="widths">
+      <button class="wBtn" data-w="360">360</button>
+      <button class="wBtn on" data-w="390">390</button>
+      <button class="wBtn" data-w="430">430</button>
+      <span class="wCustom">ancho libre <input type="number" id="wInput" value="390" /> px</span>
+    </div>
+
+    <div class="toggles">
+      <label><input type="checkbox" id="tMarca" /> Marcar la pantalla (rojo)</label>
+      <label><input type="checkbox" id="tTeclado" /> Simular teclado abierto</label>
+    </div>
+
+    <div class="diag" id="diag">—</div>
+
+    <div class="group">
+      <h2>La laptop</h2>
+      <p class="hint">Ancho = % del ancho disponible, con un tope en px. Si la laptop se sale por los costados, el cuerpo se recorta pero la pantalla puede seguir entera — mirá el diagnóstico de arriba.</p>
+      <div class="row"><label>Ancho (%)</label><input type="range" id="lw" min="80" max="220" step="1" /><span class="num"><input type="number" id="lwN" /><span>%</span></span></div>
+      <div class="row"><label>Tope (px)</label><input type="range" id="lm" min="280" max="760" step="2" /><span class="num"><input type="number" id="lmN" /><span>px</span></span></div>
+      <div class="row"><label>Mover ⇄</label><input type="range" id="lx" min="-80" max="80" step="1" /><span class="num"><input type="number" id="lxN" /><span>px</span></span></div>
+      <div class="row"><label>Mover ⇅</label><input type="range" id="ly" min="-160" max="120" step="1" /><span class="num"><input type="number" id="lyN" /><span>px</span></span></div>
+    </div>
+
+    <div class="group">
+      <h2>La pantalla (dónde cae el formulario)</h2>
+      <p class="hint">En % del asset de la laptop, así queda clavada aunque cambie la escala. Medido sobre el PNG original: left 12.92 · top 7.11 · ancho 74 · alto 55.02. Tocalo solo si el form no calza justo dentro del marco.</p>
+      <div class="row"><label>Izquierda</label><input type="range" id="sl" min="0" max="40" step="0.1" /><span class="num"><input type="number" id="slN" step="0.1" /><span>%</span></span></div>
+      <div class="row"><label>Arriba</label><input type="range" id="st" min="0" max="30" step="0.1" /><span class="num"><input type="number" id="stN" step="0.1" /><span>%</span></span></div>
+      <div class="row"><label>Ancho</label><input type="range" id="sw" min="40" max="95" step="0.1" /><span class="num"><input type="number" id="swN" step="0.1" /><span>%</span></span></div>
+      <div class="row"><label>Alto</label><input type="range" id="sh" min="25" max="85" step="0.1" /><span class="num"><input type="number" id="shN" step="0.1" /><span>%</span></span></div>
+    </div>
+
+    <div class="group">
+      <h2>El formulario</h2>
+      <p class="hint">Ojo: por debajo de 16px de fuente iOS hace zoom solo al tocar el campo. Los campos de menos de 44px son incómodos para un niño.</p>
+      <div class="row"><label>Alto campo</label><input type="range" id="fh" min="34" max="60" step="1" /><span class="num"><input type="number" id="fhN" /><span>px</span></span></div>
+      <div class="row"><label>Separación</label><input type="range" id="sg" min="2" max="22" step="1" /><span class="num"><input type="number" id="sgN" /><span>px</span></span></div>
+      <div class="row"><label>Margen int.</label><input type="range" id="sp" min="4" max="40" step="1" /><span class="num"><input type="number" id="spN" /><span>px</span></span></div>
+    </div>
+
+    <div class="group">
+      <div class="outHead">
+        <h2 style="margin:0">Para pegar en estilos.css</h2>
+        <div style="display:flex;gap:8px">
+          <button class="reset" id="resetBtn">Volver al inicio</button>
+          <button class="copyBtn" id="copyBtn">Copiar</button>
+        </div>
+      </div>
+      <div class="out" id="out"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Valores ACTUALES del CSS (punto de partida). Si cambia la base en estilos.css, actualizar acá.
+  var BASE = {
+    '360': {lw:150, lm:520, lx:0, ly:0, sl:12.92, st:7.11, sw:74, sh:55.02, fh:44, sg:8,  sp:12, media:'@media (max-width:374px)'},
+    '390': {lw:150, lm:520, lx:0, ly:0, sl:12.92, st:7.11, sw:74, sh:55.02, fh:46, sg:10, sp:14, media:'base (sin media)'},
+    '430': {lw:150, lm:520, lx:0, ly:0, sl:12.92, st:7.11, sw:74, sh:55.02, fh:46, sg:10, sp:16, media:'@media (min-width:420px)'}
+  };
+  var SETS = JSON.parse(JSON.stringify(BASE));
+  var IDS  = ['lw','lm','lx','ly','sl','st','sw','sh','fh','sg','sp'];
+  var INT  = {lw:1,lm:1,lx:1,ly:1,fh:1,sg:1,sp:1};   // estos van sin decimales
+  var cur = '390', curW = 390, zoom = 1, BASEH = 760;
+
+  var iframe = document.getElementById('preview');
+  var scaleBox = document.getElementById('scaleBox');
+
+  function layout(){
+    var h = document.getElementById('tTeclado').checked ? 420 : BASEH;
+    iframe.style.width = curW+'px'; iframe.style.height = h+'px';
+    iframe.style.transform = 'scale('+zoom+')';
+    scaleBox.style.width = (curW*zoom)+'px'; scaleBox.style.height = (h*zoom)+'px';
+    document.getElementById('zLbl').textContent = String(Math.round(zoom*100)/100)+'×';
+  }
+  function setZoom(z){ zoom = Math.max(0.5, Math.min(3, Math.round(z*20)/20)); layout(); }
+  document.getElementById('zIn').onclick  = function(){ setZoom(zoom+0.1); };
+  document.getElementById('zOut').onclick = function(){ setZoom(zoom-0.1); };
+  document.getElementById('zReset').onclick = function(){ setZoom(1); };
+
+  function setForWidth(w){ if(w<=374) return '360'; if(w>=420) return '430'; return '390'; }
+
+  // El iframe carga index.html y hay que llevarlo al login.
+  // ⚠️ CLAVE: forzar estilos.css FRESCO. El navegador (y el service worker) lo cachean, y
+  // entonces el panel te deja mover sliders sobre una versión VIEJA del CSS: los números
+  // que copiás no corresponden a nada. Ya pasó. Con ?tuner=<ts> el pedido no matchea la
+  // entrada cacheada y sale a la red. Se rehace en cada load porque el reload lo revierte.
+  var cssFresco = false;
+  function prepararIframe(){
+    try{
+      var doc = iframe.contentDocument;
+      if(!doc || !doc.head || !doc.body) return false;
+      if(!cssFresco){
+        var link = doc.querySelector('link[rel="stylesheet"][href*="estilos.css"]');
+        if(link){ cssFresco = true; link.href = 'estilos.css?tuner=' + Date.now(); return false; }
+      }
+      var landing = doc.getElementById('vLanding'), login = doc.getElementById('vLogin');
+      if(!login) return false;
+      if(login.classList.contains('hidden')){        // ir al login sin pasar por la landing
+        if(landing) landing.classList.add('hidden');
+        login.classList.remove('hidden');
+      }
+      return true;
+    }catch(e){ return false; }
+  }
+  // Aviso si el CSS que corre NO tiene las variables (= el panel no puede ajustar nada).
+  function chequearBase(){
+    try{
+      var doc = iframe.contentDocument, win = iframe.contentWindow;
+      var lap = doc.querySelector('.lgLaptop'); if(!lap) return true;
+      for(var i=0;i<doc.styleSheets.length;i++){
+        var rules; try{ rules = doc.styleSheets[i].cssRules; }catch(e){ continue; }
+        for(var j=0;j<rules.length;j++){
+          if(rules[j].selectorText === '.lgLaptop'){
+            return /var\(--lap-w\)/.test(rules[j].cssText);
+          }
+        }
+      }
+      return true;
+    }catch(e){ return true; }
+  }
+
+  function inject(){
+    if(!prepararIframe()) return;
+    var doc = iframe.contentDocument;
+    var st = doc.getElementById('tuner-ov');
+    if(!st){ st = doc.createElement('style'); st.id='tuner-ov'; doc.head.appendChild(st); }
+    var s = SETS[cur];
+    st.textContent =
+      '.lgHero{--lap-w:'+s.lw+'% !important;--lap-max:'+s.lm+'px !important;' +
+      '--lap-x:'+s.lx+'px !important;--lap-y:'+s.ly+'px !important;' +
+      '--scr-l:'+s.sl+'% !important;--scr-t:'+s.st+'% !important;' +
+      '--scr-w:'+s.sw+'% !important;--scr-h:'+s.sh+'% !important;' +
+      '--fld-h:'+s.fh+'px !important;--scr-gap:'+s.sg+'px !important;--scr-pad:'+s.sp+'px !important}';
+    var hero = doc.querySelector('.lgHero');
+    if(hero) hero.classList.toggle('tunerMarca', document.getElementById('tMarca').checked);
+    medir();
+  }
+
+  // Diagnóstico honesto: mide el DOM real del iframe, no estima.
+  function medir(){
+    var out = document.getElementById('diag');
+    try{
+      var doc = iframe.contentDocument, win = iframe.contentWindow;
+      var scr = doc.querySelector('.lgScreen'), lap = doc.querySelector('.lgLaptop');
+      var go  = doc.querySelector('.lgGo'),     u   = doc.querySelector('#user');
+      if(!scr || !lap || !go || !u){ out.className='diag'; out.textContent='—'; return; }
+      if(!chequearBase()){
+        out.className = 'diag bad';
+        out.innerHTML = '⚠️ El CSS que corre es VIEJO (sin las variables --lap-*). Los sliders no van a mover nada.<br>Recargá esta página (Ctrl+F5).';
+        return;
+      }
+      var s = scr.getBoundingClientRect(), l = lap.getBoundingClientRect();
+      var g = go.getBoundingClientRect(),  uu = u.getBoundingClientRect();
+      var vw = win.innerWidth;
+      var pantallaEntera = s.left >= -0.5 && s.right <= vw + 0.5;
+      var formDentro = (uu.top >= s.top - 1) && (g.bottom <= s.bottom + 1);
+      var laptopEntera = l.left >= -0.5 && l.right <= vw + 0.5;
+      var sobra = Math.round(s.bottom - g.bottom);
+      var msgs = [];
+      msgs.push('Pantalla útil: ' + Math.round(s.width) + ' × ' + Math.round(s.height) + ' px');
+      msgs.push(formDentro ? ('✅ El formulario entra (le sobran ' + sobra + ' px abajo)')
+                           : ('❌ El formulario NO entra: se pasa ' + Math.abs(sobra) + ' px'));
+      msgs.push(pantallaEntera ? '✅ La pantalla se ve completa' : '❌ La pantalla se sale del celular');
+      msgs.push(laptopEntera ? '✅ La laptop se ve entera' : '⚠️ La laptop se recorta por los costados');
+      out.className = 'diag ' + ((formDentro && pantallaEntera) ? 'ok' : 'bad');
+      out.innerHTML = msgs.join('<br>');
+    }catch(e){ out.className='diag'; out.textContent='—'; }
+  }
+
+  function loadSliders(){
+    var s = SETS[cur];
+    IDS.forEach(function(k){ document.getElementById(k).value = s[k]; document.getElementById(k+'N').value = s[k]; });
+  }
+
+  function renderOut(){
+    var L = [];
+    L.push('/* .lgHero — perillas de la escena del login */');
+    ['390','360','430'].forEach(function(w){
+      var s = SETS[w];
+      L.push('');
+      L.push('/* ' + w + 'px  ·  ' + s.media + ' */');
+      L.push('.lgHero{');
+      L.push('  --lap-w:' + s.lw + '%; --lap-max:' + s.lm + 'px; --lap-x:' + s.lx + 'px; --lap-y:' + s.ly + 'px;');
+      L.push('  --scr-l:' + s.sl + '%; --scr-t:' + s.st + '%; --scr-w:' + s.sw + '%; --scr-h:' + s.sh + '%;');
+      L.push('  --fld-h:' + s.fh + 'px; --scr-gap:' + s.sg + 'px; --scr-pad:' + s.sp + 'px;');
+      L.push('}');
+    });
+    document.getElementById('out').textContent = L.join('\n');
+  }
+
+  function setActive(w){
+    cur = w; curW = parseInt(w,10); layout();
+    document.getElementById('frameLbl').textContent = w + ' px  ·  ' + SETS[w].media;
+    document.getElementById('wInput').value = w;
+    document.querySelectorAll('.wBtn').forEach(function(b){ b.classList.toggle('on', b.dataset.w===w); });
+    loadSliders(); inject(); renderOut();
+  }
+
+  IDS.forEach(function(k){
+    var r = document.getElementById(k), n = document.getElementById(k+'N');
+    function upd(v){
+      v = INT[k] ? parseInt(v,10) : parseFloat(v);
+      if(isNaN(v)) return;
+      SETS[cur][k] = v; r.value = v; n.value = v;
+      inject(); renderOut();
+    }
+    r.addEventListener('input', function(){ upd(r.value); });
+    n.addEventListener('input', function(){ upd(n.value); });
+  });
+
+  document.querySelectorAll('.wBtn').forEach(function(b){ b.onclick = function(){ setActive(b.dataset.w); }; });
+  document.getElementById('wInput').addEventListener('input', function(){
+    var w = parseInt(this.value,10); if(isNaN(w) || w < 240) return;
+    curW = w; layout(); cur = setForWidth(w);
+    document.getElementById('frameLbl').textContent = w + ' px  ·  usa el set ' + cur;
+    document.querySelectorAll('.wBtn').forEach(function(b){ b.classList.toggle('on', b.dataset.w===cur); });
+    loadSliders(); inject(); renderOut();
+  });
+  document.getElementById('tMarca').onchange = inject;
+  document.getElementById('tTeclado').onchange = function(){ layout(); setTimeout(inject, 60); };
+  document.getElementById('resetBtn').onclick = function(){
+    SETS = JSON.parse(JSON.stringify(BASE)); loadSliders(); inject(); renderOut();
+  };
+  document.getElementById('copyBtn').onclick = function(){
+    var b = this;
+    navigator.clipboard && navigator.clipboard.writeText(document.getElementById('out').textContent);
+    b.textContent = '¡Copiado!'; setTimeout(function(){ b.textContent = 'Copiar'; }, 1200);
+  };
+
+  iframe.addEventListener('load', function(){ cssFresco = false; setTimeout(inject, 120); });
+  setInterval(inject, 500);   // el iframe se rearma solo (app.js, SW): reinyectar siempre
+  setActive('390');
+</script>
+</body>
+</html>

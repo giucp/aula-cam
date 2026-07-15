@@ -491,6 +491,104 @@
     .lxFeat{padding:12px 10px}
   }
 
+  /* ════════════════════════════════════════════════════════════════════════
+     LOGIN — Chispa 2.0 (assets: login-fondo + login-laptop)
+     Misma lengua que la landing: escena a sangre, por capas, sin tarjeta.
+     El formulario vive DENTRO de la pantalla de la laptop, anclado en % sobre
+     el asset → queda clavado a cualquier escala. Medido sobre el PNG original
+     (1192x956): pantalla interior x 154-1036, y 68-594. Es un rectángulo RECTO
+     (sin perspectiva), así que no hace falta transform 3D.
+     ⚠️ La pantalla del asset es 16:10 (achatada): NO entran etiquetas encima de
+     los campos (el botón se sale). Por eso ícono + placeholder dentro, y la
+     etiqueta real oculta (.lgSr) para lectores de pantalla.
+     ════════════════════════════════════════════════════════════════════════ */
+  .lgHero{
+    /* ── Perillas de la escena. Se ajustan con tuner-login.html (§10.4) ──
+       lap-*  = la laptop (tamaño y posición dentro del cuarto)
+       scr-*  = el rectángulo interior de la PANTALLA, en % del asset de la laptop
+                (medido sobre el PNG de 1192x956: x 154-1036, y 68-594)
+       fld-*  = el formulario que vive dentro de esa pantalla                     */
+    /* Valores ajustados por el usuario con tuner-login.html (2026-07-15): la laptop
+       más chica y subida, para que la escena se lea en todos los anchos. */
+    --lap-w:143%; --lap-max:520px; --lap-x:0px; --lap-y:-79px;
+    --scr-l:12.92%; --scr-t:7.11%; --scr-w:74%; --scr-h:55.02%;
+    --fld-h:46px; --scr-gap:10px; --scr-pad:14px;
+
+    position:relative;overflow:hidden;min-height:100svh;
+    /* el -48px de abajo se come el padding-bottom del body: si no, asoma una franja
+       del canvas de la app por debajo de la escena y se ve una costura */
+    margin:calc(-1 * max(18px,env(safe-area-inset-top))) -16px -48px;
+    padding:calc(max(18px,env(safe-area-inset-top)) + 12px) 20px 22px;
+    display:flex;flex-direction:column;
+    background:#FDF0E3 url("assets/onboarding/login-fondo.webp") center bottom/cover no-repeat;
+  }
+  .lgBack{align-self:flex-start;display:inline-flex;align-items:center;gap:5px;margin:0 0 4px -6px;padding:8px 6px;
+    border:0;background:none;cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:.9rem;color:var(--chispa-primary)}
+  .lgBack svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .lgHeroTx{text-align:center}
+  .lgEyebrow{margin:0 0 6px;font-family:"Fredoka";font-weight:600;font-size:.72rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--chispa-primary)}
+  .lgTitle{margin:0;font-family:"Fredoka";font-weight:700;font-size:clamp(1.75rem,8vw,2.2rem);
+    line-height:1.08;letter-spacing:-.025em;color:var(--chispa-ink)}
+  .lgTitle span{color:var(--chispa-primary)}
+  .lgLede{margin:9px auto 0;max-width:26ch;font-size:.82rem;font-weight:700;line-height:1.45;color:#6A6180}
+
+  /* La laptop se sale por los COSTADOS a propósito: es la única forma de que su
+     pantalla (74% de su ancho) dé la altura que el formulario necesita. El cuerpo
+     se recorta, la pantalla queda entera. */
+  .lgLaptop{position:relative;width:min(var(--lap-w),var(--lap-max));margin-left:50%;margin-top:auto;
+    transform:translateX(calc(-50% + var(--lap-x))) translateY(var(--lap-y))}
+  .lgLaptopArt{display:block;width:100%;height:auto;object-fit:contain;
+    filter:drop-shadow(0 22px 26px rgba(69,48,163,.22))}
+  .lgScreen{position:absolute;left:var(--scr-l);top:var(--scr-t);width:var(--scr-w);height:var(--scr-h);
+    display:flex;flex-direction:column;justify-content:center;gap:var(--scr-gap);padding:0 var(--scr-pad)}
+  /* ayuda del tuner: marca el rectángulo de la pantalla para ver si el form cae adentro */
+  .lgHero.tunerMarca .lgScreen{outline:2px solid #FF3B3B;outline-offset:0}
+  .lgHero.tunerMarca .lgLaptopArt{opacity:.85}
+  .lgSr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+  /* flex:none = si no hay espacio, que se DESBORDE en vez de encogerse. Un botón
+     aplastado a 33px "entra" pero no se puede tocar, y encima disimula el problema. */
+  .lgField{position:relative;display:flex;align-items:center;flex:none}
+  .lgFieldIco{position:absolute;left:12px;width:17px;height:17px;pointer-events:none;
+    fill:none;stroke:#9A93AE;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  /* font-size 1rem (16px) NO se baja: con menos, iOS hace zoom solo al tocar el campo */
+  .lgField input{width:100%;height:var(--fld-h);padding:0 12px 0 38px;border:1.5px solid #E5DFF4;border-radius:12px;
+    background:#fff;outline:none;font-family:"Nunito";font-weight:700;font-size:1rem;color:var(--chispa-ink);
+    transition:border-color .15s,box-shadow .15s}
+  .lgField input::placeholder{color:#A9A2BC;font-weight:600}
+  .lgField input:focus{border-color:var(--chispa-primary);box-shadow:0 0 0 3px rgba(103,83,232,.16)}
+  .lgField:has(.lgEye) input{padding-right:42px}
+  .lgEye{position:absolute;right:4px;width:38px;height:38px;display:grid;place-items:center;border:0;
+    background:none;cursor:pointer;padding:0}
+  .lgEye svg{width:19px;height:19px;fill:none;stroke:#9A93AE;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .lgEye[aria-pressed="true"] .lgEyeSlash{display:none}   /* clave visible → sin la barrita */
+
+  .lgGo{width:100%;height:calc(var(--fld-h) + 2px);flex:none;margin-top:2px;border:0;border-radius:12px;cursor:pointer;
+    font-family:"Fredoka";font-weight:600;font-size:1.02rem;color:#fff;
+    background:linear-gradient(180deg,#7C68F0,var(--chispa-primary));
+    box-shadow:0 14px 24px -12px rgba(73,51,200,.6)}
+  .lgGo:active{transform:translateY(1px) scale(.99)}
+  .lgGo:disabled{background:#DDD6EA;color:#fff;box-shadow:none;cursor:not-allowed}
+
+  /* El error va FUERA DEL FLUJO, flotando sobre la mesa. Si queda en el flujo, al
+     aparecer empuja la laptop hacia arriba (tiene margin-top:auto) y, sumado al
+     --lap-y negativo, la laptop termina tapando el subtítulo. La escena NO se
+     reacomoda por un error. */
+  #vLogin #loginMsg{position:absolute;left:20px;right:20px;bottom:48px;margin:0;z-index:2}
+  #vLogin #loginMsg:empty{display:none}
+  .lgSafe{display:flex;align-items:center;justify-content:center;gap:7px;margin:14px 0 0;
+    font-size:.74rem;font-weight:700;color:#8A8299}
+  .lgSafe svg{width:15px;height:15px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;
+    stroke-linecap:round;stroke-linejoin:round}
+
+  @media (max-width:374px){
+    .lgHero{--lap-w:145%; --lap-y:-84px; --fld-h:44px; --scr-gap:8px; --scr-pad:12px}
+  }
+  @media (min-width:420px){
+    .lgHero{--lap-w:150%; --lap-y:-87px; --fld-h:46px; --scr-gap:10px; --scr-pad:16px}
+  }
+
   .paso{margin-top:18px}
   .count{display:flex;gap:7px}
   .count button{width:48px;height:48px;border-radius:15px;border:2px solid var(--line);background:#fff;font-family:"Fredoka";font-weight:600;font-size:1.05rem;color:var(--ink);cursor:pointer;box-shadow:var(--shadow-xs);transition:all .14s}
@@ -521,11 +619,25 @@
   .skel .bar.s{width:38%;height:10px}
   .skel .bar.m{width:88%}.skel .bar.l{width:66%}
   @keyframes shimmer{0%{background-position:100% 0}100%{background-position:0 0}}
-  .err{background:#FFF2EE;border:2px solid #FFD3C5;border-radius:18px;padding:16px;color:var(--ink);font-weight:700;margin-top:14px;display:flex;gap:11px;align-items:flex-start}
-  .err .ico{font-size:1.4rem;line-height:1}
-  .err small{display:block;margin-top:6px;color:var(--muted);font-weight:600;font-size:.8rem;word-break:break-word}
-  .aviso{background:#EAF8F6;border:2px solid #BEE9E1;border-radius:18px;padding:16px;color:var(--ink);font-weight:700;margin-top:14px;display:flex;gap:11px;align-items:flex-start}
-  .aviso .ico{font-size:1.4rem;line-height:1}
+  /* ═══ Alertas — Chispa 2.0 ═══
+     Mismo lenguaje que el resto de la app (superficie blanca, placa de ícono tintada
+     por --tone, sombra difusa, SVG). Reemplazan las cajas viejas de borde grueso con
+     emoji. Las usan TODAS las pantallas vía errBox()/avisoBox(): coral = algo falló,
+     turquesa = información. Nunca rojo duro, nunca emojis. */
+  .err,.aviso{
+    --tone:var(--chispa-coral);
+    display:grid;grid-template-columns:34px minmax(0,1fr);gap:11px;align-items:start;margin-top:14px;
+    background:#fff;border:1px solid var(--chispa-line);border-radius:16px;padding:13px 14px;
+    box-shadow:0 16px 36px -30px rgba(38,25,58,.4);
+    font-family:"Nunito";font-weight:700;font-size:.88rem;line-height:1.4;color:var(--chispa-ink);
+  }
+  .aviso{--tone:var(--chispa-turquoise)}
+  .err .ico,.aviso .ico{width:34px;height:34px;flex:none;border-radius:11px;display:grid;place-items:center;
+    color:var(--tone);background:color-mix(in srgb,var(--tone) 14%,#fff);font-size:0}
+  .err .ico svg,.aviso .ico svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;
+    stroke-linecap:round;stroke-linejoin:round}
+  .err small,.aviso small{display:block;margin-top:5px;color:var(--chispa-muted);font-weight:700;
+    font-size:.72rem;line-height:1.35;word-break:break-word}
   .empty{color:var(--muted);font-weight:700;padding:8px 2px 0;line-height:1.5}
 
   /* "basado en tu clase" banner */

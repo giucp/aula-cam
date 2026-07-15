@@ -103,21 +103,51 @@
     </details>
   </section>
 
-  <!-- ╔═══ LOGIN ═══╗ -->
+  <!-- ╔═══ LOGIN ═══╗
+       Misma lengua que la landing: escena a sangre por capas (cuarto + laptop), texto en HTML.
+       El formulario va DENTRO de la pantalla de la laptop, posicionado en % sobre el asset
+       (medido: pantalla interior = x 154-1036, y 68-594 de 1192x956 → left 12.92% / top 7.11%
+       / width 74% / height 55.02%). Como es un rectángulo recto, no hace falta perspectiva.
+       Sin etiquetas encima de los campos: la pantalla del asset es 16:10 y no dan los píxeles
+       (con etiquetas el botón se sale por abajo). El ícono + placeholder cumplen esa función y
+       la etiqueta real va oculta para lectores de pantalla.
+  ═══╗ -->
   <section id="vLogin" class="hidden">
-    <button class="back" id="btnVolverLanding">‹ Volver</button>
-    <p class="hi">Chispa</p>
-    <h1>Entrá a tus <span class="h2Name">retos</span></h1>
-    <p class="sub">Con tu usuario y clave del aula virtual. Chispa arma la práctica con el material de tus maestros.</p>
-    <div class="panel">
-      <div class="field">
-        <p class="lbl"><span class="n">1</span> Usuario</p>
-        <input id="user" type="text" placeholder="tu usuario o correo" autocomplete="username" autocapitalize="none" style="margin-bottom:12px" />
-        <p class="lbl"><span class="n">2</span> Clave</p>
-        <input id="pass" type="password" placeholder="tu contraseña" autocomplete="current-password" />
+    <div class="lgHero">
+      <button class="lgBack" id="btnVolverLanding">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Volver
+      </button>
+      <div class="lgHeroTx">
+        <p class="lgEyebrow">Chispa</p>
+        <h1 class="lgTitle">Conecta con <span>tu aula</span></h1>
+        <p class="lgLede">Usa los datos que te dieron en el colegio.</p>
       </div>
-      <button class="go" id="btnLogin" style="margin-top:16px">Entrar</button>
+
+      <div class="lgLaptop">
+        <img class="lgLaptopArt" src="assets/onboarding/login-laptop.webp" alt="" aria-hidden="true" />
+        <form class="lgScreen" id="lgForm" novalidate>
+          <label class="lgSr" for="user">Usuario</label>
+          <div class="lgField">
+            <svg class="lgFieldIco" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg>
+            <input id="user" type="text" placeholder="Usuario" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" />
+          </div>
+          <label class="lgSr" for="pass">Contraseña</label>
+          <div class="lgField">
+            <svg class="lgFieldIco" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>
+            <input id="pass" type="password" placeholder="Contraseña" autocomplete="current-password" />
+            <button type="button" class="lgEye" id="btnVerPass" aria-label="Mostrar contraseña" aria-pressed="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="2.8"/><path class="lgEyeSlash" d="M4 20L20 4"/></svg>
+            </button>
+          </div>
+          <button class="lgGo" id="btnLogin" type="submit">Entrar</button>
+        </form>
+      </div>
+
       <div id="loginMsg"></div>
+      <p class="lgSafe">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>
+        Tus datos están protegidos.
+      </p>
     </div>
   </section>
 

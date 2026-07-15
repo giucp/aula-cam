@@ -52,14 +52,32 @@
   // (el arranque corre al FINAL del script, cuando todas las consts/funciones ya existen)
 
   // ───────── LOGIN ─────────
-  $("#btnLogin").onclick = hacerLogin;
+  // El campo vive dentro de un <form> (así el teclado del celu muestra "Ir" y Enter envía).
+  // Hay que frenar el submit nativo o la página se recarga y se pierde todo.
+  $("#lgForm") && $("#lgForm").addEventListener("submit", e=>{ e.preventDefault(); hacerLogin(); });
+  $("#btnLogin").onclick = (e)=>{ if(e) e.preventDefault(); hacerLogin(); };
   $("#pass").addEventListener("keydown", e=>{ if(e.key==="Enter") hacerLogin(); });
+  // ver/ocultar la clave: para un niño que la escribe mal, es la diferencia entre entrar o no
+  $("#btnVerPass") && ($("#btnVerPass").onclick = ()=>{
+    const i = $("#pass"), b = $("#btnVerPass");
+    const ver = i.type === "password";
+    i.type = ver ? "text" : "password";
+    b.setAttribute("aria-pressed", String(ver));
+    b.setAttribute("aria-label", ver ? "Ocultar contraseña" : "Mostrar contraseña");
+  });
 
+  // El error vive DEBAJO de la laptop, así que con el teclado abierto queda fuera de vista:
+  // el niño toca "Entrar" y no ve pasar nada. Al mostrarlo, lo traemos a la pantalla.
+  function loginError(html){
+    const msg = $("#loginMsg");
+    msg.innerHTML = html;
+    try{ msg.scrollIntoView({block:"nearest", behavior:"smooth"}); }catch(_){}
+  }
   async function hacerLogin(){
     const user = $("#user").value.trim();
     const pass = $("#pass").value;
     const msg = $("#loginMsg");
-    if(!user || !pass){ msg.innerHTML = errBox("Escribe tu usuario y tu clave."); return; }
+    if(!user || !pass){ loginError(errBox("Escribe tu usuario y tu clave.")); return; }
     const btn = $("#btnLogin");
     btn.disabled = true; const txt = btn.textContent; btn.textContent = "Entrando…";
     msg.innerHTML = "";
@@ -88,7 +106,7 @@
       const txtErr = /invalid|inválid|incorrect/i.test(String(e.message))
         ? "Usuario o clave incorrectos. Revisa e intenta de nuevo."
         : "No pudimos entrar. Revisa tu internet e intenta otra vez.";
-      msg.innerHTML = errBox(txtErr, String(e.message||e));
+      loginError(errBox(txtErr, String(e.message||e)));
     }finally{ btn.disabled=false; btn.textContent=txt; }
   }
 
@@ -1087,7 +1105,7 @@
       const d=await r.json();
       if(!d.ok){ msg.innerHTML=errBox(d.error||"No se pudo enviar la solicitud."); return; }
       $("#solColegio").value=$("#solCiudad").value=$("#solEstado").value=$("#solUrl").value=$("#solContacto").value=""; $("#solTieneAula").value="";
-      msg.innerHTML=`<div class="aviso"><span class="ico">✅</span><div>¡Gracias! Recibimos tu colegio. Lo revisamos y, si tiene aula virtual, lo conectamos pronto.</div></div>`;
+      msg.innerHTML=avisoBox("¡Gracias! Recibimos tu colegio. Lo revisamos y, si tiene aula virtual, lo conectamos pronto.");
     }catch(e){ msg.innerHTML=errBox("No pudimos enviar la solicitud. Revisá tu internet."); }
     finally{ btn.disabled=false; btn.textContent=t; }
   }
@@ -2568,11 +2586,16 @@
     e.target.value="";
     pintarFotos();
   });
+  // Alertas 2.0: placa tintada + ícono SVG, sin emojis (las usan TODAS las pantallas).
+  // Los SVG van INLINE a propósito: como const arriba quedarían en zona muerta (TDZ) si
+  // alguien llamara a estas funciones durante la evaluación del script.
   function errBox(titulo, detalle){
-    return `<div class="err"><span class="ico">😅</span><div>${escapeHtml(titulo)}${detalle?`<small>${escapeHtml(detalle)}</small>`:""}</div></div>`;
+    return `<div class="err" role="alert"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.6v5"/><path d="M12 16.3h.01"/></svg></span>`
+      + `<div>${escapeHtml(titulo)}${detalle?`<small>${escapeHtml(detalle)}</small>`:""}</div></div>`;
   }
   function avisoBox(titulo){
-    return `<div class="aviso"><span class="ico">🔑</span><div>${escapeHtml(titulo)}</div></div>`;
+    return `<div class="aviso" role="status"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.7h.01"/></svg></span>`
+      + `<div>${escapeHtml(titulo)}</div></div>`;
   }
   // tras un 429 (límite por minuto), bloquea el botón con cuenta regresiva para no empeorar el límite
   function enfriar(btn, segs){
