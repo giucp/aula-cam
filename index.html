@@ -22,38 +22,84 @@
 <body>
 <div class="wrap">
 
-  <!-- ╔═══ LANDING ═══╗ -->
+  <!-- ╔═══ LANDING ═══╗
+       UNA sola pantalla que se scrollea (no 3): el principio 10 de la lámina define el recorrido
+       Chispa → Valor → CTA → Pasos → Padres, que es UNA secuencia. El niño que ya conoce Chispa
+       toca el CTA y nunca baja; las secciones de abajo son para el adulto que evalúa (F7).
+       "Para los padres" va UNA vez, al final: en los mockups se repetía por ser el mismo
+       componente dibujado en cada frame. Kit de assets: assets/onboarding/ (ver ASSET_INVENTORY).
+  ═══╗ -->
   <section id="vLanding">
-    <!-- Bienvenida (Chispa 2.0): Chispa es la marca, así que da la cara. Mismo lenguaje que el
-         hero del Inicio: texto a la izquierda, mascota asomada a la derecha. Sin emojis. -->
-    <!-- BIENVENIDA (Chispa 2.0): el momento de marca. Chispa RECIBE con los brazos abiertos y es
-         la protagonista, sobre un glow cálido. Composición centrada = ritmo propio, distinto del
-         Inicio (que es texto a la izquierda + tarjeta). Cada momento tiene su pose (§4). -->
-    <div class="h3Bienvenida">
-      <div class="h3BienvenidaArt">
-        <img src="assets/hero/chispa-bienvenida.png" alt="Chispa te da la bienvenida" />
+    <!-- HERO — manda la ESCENA, no una tarjeta. Dos capas reales: el aula a sangre (el fondo deja
+         la pared vacía arriba a propósito, ahí va el texto) y Chispa apoyada en el piso. Jamás
+         envolver esto en una caja blanca: eso la volvería un sticker (el error de las 2 landings
+         anteriores). Texto, números y botón son HTML/CSS, nunca imagen (regla del inventario). -->
+    <header class="lxHero">
+      <div class="lxHeroTx">
+        <p class="lxEyebrow">Chispa</p>
+        <h1 class="lxTitle">Tu aula virtual,<br /><span>hecha para ti</span></h1>
+        <p class="lxLede">Todo lo que aprendes en clase, ahora en un solo lugar para que practiques, entiendas y apruebes.</p>
       </div>
-      <p class="hi">Chispa</p>
-      <h1>Tu aula virtual, convertida en <span class="h2Name">práctica</span></h1>
-      <p class="h3BienvenidaSub">Lo que tus maestros suben al aula, convertido en resúmenes, retos y exámenes hechos para ti.</p>
-      <button class="go" id="btnEntrarLanding">Entrar a practicar</button>
-    </div>
+      <img class="lxChispa" src="assets/onboarding/chispa-laptop.webp" alt="Chispa practicando en su laptop" />
+      <button class="lxCta" id="btnEntrarLanding">
+        <span>Entrar a practicar</span>
+        <span class="lxCtaIco" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+      </button>
+    </header>
 
-    <div class="panel h3Steps">
-      <p class="lbl">¿Cómo funciona?</p>
-      <div class="comoPasos">
-        <div class="comoPaso"><span class="n">1</span><div><b>Entra con tu usuario del aula virtual</b><small>El mismo de siempre.</small></div></div>
-        <div class="comoPaso"><span class="n">2</span><div><b>Escoge tu materia y tu tema</b><small>Los mismos que estás viendo en clase.</small></div></div>
-        <div class="comoPaso"><span class="n">3</span><div><b>Aprende, practica y ponte a prueba</b><small>Primero entiendes, después practicas, y al final simulas tu examen.</small></div></div>
-      </div>
-    </div>
+    <!-- Cómo funciona: para el que llega nuevo (y para el adulto). El niño ya no está acá. -->
+    <section class="lxSection">
+      <h2 class="lxH2">¿Cómo funciona?</h2>
+      <p class="lxSub">Así es tu aula virtual en 3 simples pasos.</p>
+      <ol class="lxSteps">
+        <li class="lxStep">
+          <span class="lxStepN">1</span>
+          <div class="lxStepTx"><b>Entra con tu usuario del aula</b><small>El mismo de siempre.</small></div>
+          <span class="lxStepArt" aria-hidden="true"><img src="assets/onboarding/paso-acceso.webp" alt="" /></span>
+        </li>
+        <li class="lxStep">
+          <span class="lxStepN">2</span>
+          <div class="lxStepTx"><b>Escoge tu materia y tu tema</b><small>Los mismos que estás viendo en clase.</small></div>
+          <span class="lxStepArt" aria-hidden="true"><img src="assets/onboarding/paso-materias.webp" alt="" /></span>
+        </li>
+        <li class="lxStep">
+          <span class="lxStepN">3</span>
+          <div class="lxStepTx"><b>Aprende, practica y ponte a prueba</b><small>Primero entiendes, después practicas, y al final simulas tu examen.</small></div>
+          <!-- el inventario pide Chispa y la lista como DOS capas independientes -->
+          <span class="lxStepArt lxStepArt--dual" aria-hidden="true">
+            <img class="lxStepLista" src="assets/onboarding/paso-lista.webp" alt="" />
+            <img src="assets/onboarding/chispa-escribiendo.webp" alt="" />
+          </span>
+        </li>
+      </ol>
+    </section>
 
-    <!-- texto legal: informa, pero no compite. Colapsado como en "Más para ti". -->
-    <details class="h2More h3Padres">
-      <summary>Para los padres</summary>
-      <div class="h2MoreBody">
-        <p class="txtPadres">Chispa se conecta al aula virtual del colegio con el usuario del alumno únicamente para leer sus materias y guías. La clave se usa una sola vez para conectarse y no se guarda. Los ejercicios se generan a partir del material real que asignan los docentes, y la app registra el avance del niño (temas practicados y resultados de sus quizzes) solo para guiar su aprendizaje.</p>
+    <!-- Beneficios: la otra pose protagonista (una por pantalla, regla del inventario). -->
+    <section class="lxSection">
+      <h2 class="lxH2">Todo en un solo lugar para que avances <span>más y mejor</span></h2>
+      <div class="lxShow" aria-hidden="true">
+        <img class="lxShowChispa" src="assets/onboarding/chispa-brazos.webp" alt="" />
+        <img class="lxBadge lxBadge--lista"  src="assets/onboarding/badge-lista.webp" alt="" />
+        <img class="lxBadge lxBadge--check"  src="assets/onboarding/badge-check.webp" alt="" />
+        <img class="lxBadge lxBadge--morado" src="assets/onboarding/badge-trofeo-morado.webp" alt="" />
+        <img class="lxBadge lxBadge--dorado" src="assets/onboarding/badge-trofeo-dorado.webp" alt="" />
       </div>
+      <div class="lxFeats">
+        <div class="lxFeat"><img src="assets/onboarding/icono-resumenes.webp" alt="" aria-hidden="true" /><b>Resúmenes inteligentes</b><small>Entiende rápido lo más importante.</small></div>
+        <div class="lxFeat"><img src="assets/onboarding/icono-retos.webp" alt="" aria-hidden="true" /><b>Retos y prácticas</b><small>Ejercicios para reforzar lo aprendido.</small></div>
+        <div class="lxFeat"><img src="assets/onboarding/icono-simulacros.webp" alt="" aria-hidden="true" /><b>Simulacros de examen</b><small>Practica como si fuera el día real.</small></div>
+        <div class="lxFeat"><img src="assets/onboarding/icono-progreso.webp" alt="" aria-hidden="true" /><b>Tu progreso</b><small>Sigue tu avance y celebra logros.</small></div>
+      </div>
+    </section>
+
+    <!-- Padres: secundaria, neutra y al final. Informa sin competir con el CTA (principio 7). -->
+    <details class="lxPadres">
+      <summary>
+        <img src="assets/onboarding/icono-padres.webp" alt="" aria-hidden="true" />
+        <span class="lxPadresTx"><b>Para los padres</b><small>Consulta el acceso y la seguridad</small></span>
+        <svg class="lxPadresChev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </summary>
+      <p class="lxPadresBody">Chispa se conecta al aula virtual del colegio con el usuario del alumno únicamente para leer sus materias y guías. La clave se usa una sola vez para conectarse y no se guarda. Los ejercicios se generan a partir del material real que asignan los docentes, y la app registra el avance del niño (temas practicados y resultados de sus quizzes) solo para guiar su aprendizaje.</p>
     </details>
   </section>
 

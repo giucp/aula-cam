@@ -380,40 +380,116 @@
   .pmRec{background:#FFF1CF;color:#8a5a00;font-family:"Fredoka";font-weight:600;font-size:.72rem;padding:3px 9px;border-radius:999px;white-space:nowrap}
   .modo[aria-pressed="true"] .pmRec{background:rgba(255,255,255,.92);color:var(--mango-dark)}
 
-  /* landing */
-  /* ═══ Bienvenida / Login — Chispa 2.0 ═══
-     Chispa es la marca: da la cara en su pantalla de bienvenida, con el mismo lenguaje que
-     el hero del Inicio (texto a la izquierda, mascota asomada a la derecha). */
-  /* Momento de marca: Chispa RECIBE con los brazos abiertos (pose 02), centrada, sobre un glow
-     cálido. Ritmo propio (centrado) — NO se clona la tarjeta morada del Inicio. Cada momento
-     de la app tiene SU pose (hay 20 en aula-cam-estetica-local: explicando, leyendo, estrella…). */
-  .h3Bienvenida{text-align:center;margin:4px 0 16px}
-  .h3BienvenidaArt{position:relative;width:186px;height:186px;margin:0 auto 4px;display:grid;place-items:center}
-  .h3BienvenidaArt::before{content:"";position:absolute;inset:-16%;border-radius:50%;pointer-events:none;
-    background:radial-gradient(circle at 50% 56%, rgba(255,206,138,.6), rgba(255,190,214,.3) 50%, transparent 72%)}
-  .h3BienvenidaArt img{position:relative;width:100%;height:100%;object-fit:contain;display:block;
-    filter:drop-shadow(0 18px 24px rgba(69,48,163,.22))}
-  .h3Bienvenida .hi{margin:0}
-  .h3Bienvenida h1{margin:2px 0 9px;letter-spacing:-.02em;overflow-wrap:anywhere}
-  .h3BienvenidaSub{max-width:32ch;margin:0 auto 20px;color:var(--chispa-muted);font-weight:600;font-size:.98rem;line-height:1.5}
-  .h3Bienvenida .go{margin:0}                          /* la acción principal: sola y dominante */
-  #vLanding>.panel{text-align:left}
-  .h3Steps{margin-bottom:12px}
-  .h3Padres>summary{color:var(--chispa-muted)}        /* legal: informa, no compite */
-  .h3Padres .h2MoreBody{display:block;padding:0 16px 14px}
-  @media (max-width:374px){
-    .h3BienvenidaArt{width:156px;height:156px}
-    .h3BienvenidaSub{font-size:.92rem;margin-bottom:16px}
-  }
+  /* ════════════════════════════════════════════════════════════════════════
+     LANDING — Chispa 2.0 (kit assets/onboarding/, spec §12 + ASSET_INVENTORY)
+     UNA pantalla que se scrollea. Recorrido del principio 10 de la lámina:
+     Chispa → Valor → CTA → Pasos → Padres.
+     REGLA DURA: la escena va A SANGRE y SIN tarjeta. Envolverla en una caja
+     blanca la convierte en sticker — el error de las 2 landings anteriores.
+     El texto/CTA/números/tarjetas son HTML, nunca imagen (ASSET_INVENTORY).
+     ════════════════════════════════════════════════════════════════════════ */
 
-  .comoPasos{display:flex;flex-direction:column;gap:15px}
-  .comoPaso{display:flex;gap:12px;align-items:flex-start}
-  .comoPaso .n{flex:none;background:var(--chispa-primary-soft);color:var(--chispa-primary);width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-family:"Fredoka";font-weight:700;font-size:.85rem;box-shadow:none;margin-top:1px}
-  .comoPaso b{font-family:"Fredoka";font-weight:600;font-size:1rem;display:block;margin-bottom:2px}
-  .comoPaso small{color:var(--muted);font-weight:600;font-size:.9rem;line-height:1.45}
-  .panelPadres{margin-top:16px;background:#FBF7FB;box-shadow:none}
-  .lblPadres{font-family:"Fredoka";font-weight:600;color:var(--ink);margin:0 0 8px}
-  .txtPadres{color:var(--muted);font-weight:600;font-size:.92rem;line-height:1.55;margin:0}
+  /* HERO: dos capas reales. El fondo del aula deja la pared vacía arriba a
+     propósito → ahí va el texto; el piso queda abajo → ahí se apoya Chispa.
+     Sangra rompiendo el padding del body (16px) y el del tope; se evita 100vw
+     para no provocar scroll horizontal por la barra del navegador. */
+  .lxHero{
+    position:relative;isolation:isolate;overflow:hidden;
+    margin:calc(-1 * max(18px,env(safe-area-inset-top))) -16px 26px;
+    padding:calc(max(18px,env(safe-area-inset-top)) + 20px) 20px 24px;
+    border-radius:0 0 30px 30px;
+    display:flex;flex-direction:column;align-items:center;
+    background:#FFF3E7 url("assets/onboarding/aula-fondo.webp") center bottom/cover no-repeat;
+  }
+  /* El texto va a la IZQUIERDA (como el mockup): da un borde de lectura firme y deja
+     que la escena respire a la derecha. Centrarlo lo volvía un póster. */
+  .lxHeroTx{width:100%;text-align:left}
+  .lxEyebrow{margin:0 0 6px;font-family:"Fredoka";font-weight:600;font-size:.72rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--chispa-primary)}
+  .lxTitle{margin:0;font-family:"Fredoka";font-weight:700;font-size:clamp(1.85rem,8.4vw,2.32rem);
+    line-height:1.08;letter-spacing:-.025em;color:var(--chispa-ink)}
+  .lxTitle span{color:var(--chispa-primary)}
+  .lxLede{margin:10px 0 0;max-width:24ch;font-size:.85rem;font-weight:700;line-height:1.5;color:#6A6180}
+  /* la mascota nunca se deforma ni se recorta (object-fit:contain, regla del inventario) */
+  .lxChispa{display:block;width:clamp(240px,68%,286px);height:auto;margin:2px auto -10px;
+    object-fit:contain;filter:drop-shadow(0 22px 26px rgba(69,48,163,.2))}
+  /* CTA: el único botón de la pantalla. Se monta sobre la escena (capas, no cajas). */
+  .lxCta{position:relative;z-index:1;width:100%;max-width:330px;min-height:60px;display:flex;
+    align-items:center;justify-content:center;gap:12px;border:0;border-radius:20px;cursor:pointer;
+    font-family:"Fredoka";font-weight:600;font-size:1.12rem;color:#fff;padding:14px 18px;
+    background:linear-gradient(180deg,#7C68F0,var(--chispa-primary));
+    box-shadow:0 20px 34px -14px rgba(73,51,200,.62)}
+  .lxCta:active{transform:translateY(2px) scale(.99)}
+  .lxCtaIco{width:30px;height:30px;flex:none;border-radius:50%;display:grid;place-items:center;
+    background:rgba(255,255,255,.22)}
+  .lxCtaIco svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+  /* Secciones de abajo: para el adulto que evalúa. Ritmo grande/chico (principio 8). */
+  .lxSection{margin:0 0 26px}
+  .lxH2{margin:0;font-family:"Fredoka";font-weight:600;font-size:clamp(1.3rem,5.6vw,1.55rem);
+    line-height:1.18;letter-spacing:-.02em;color:var(--chispa-ink)}
+  .lxH2 span{color:var(--chispa-primary)}
+  .lxSub{margin:7px 0 0;font-size:.8rem;font-weight:700;color:var(--chispa-muted);line-height:1.45}
+
+  /* 3 pasos: tarjeta horizontal, número + texto + ilustración a la derecha */
+  .lxSteps{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
+  .lxStep{display:grid;grid-template-columns:28px minmax(0,1fr) 104px;align-items:center;gap:11px;
+    background:#fff;border-radius:22px;padding:14px 14px 14px 15px;
+    box-shadow:0 18px 40px -32px rgba(38,25,58,.5)}
+  .lxStepN{width:28px;height:28px;flex:none;border-radius:50%;display:grid;place-items:center;
+    font-family:"Fredoka";font-weight:700;font-size:.85rem;
+    background:var(--chispa-primary-soft);color:var(--chispa-primary)}
+  .lxStepTx{min-width:0}
+  .lxStepTx b{display:block;font-family:"Fredoka";font-weight:600;font-size:.95rem;line-height:1.2;
+    color:var(--chispa-ink);overflow-wrap:anywhere}
+  .lxStepTx small{display:block;margin-top:3px;font-size:.72rem;font-weight:700;line-height:1.4;color:var(--chispa-muted)}
+  .lxStepArt{position:relative;width:104px;height:92px;display:grid;place-items:center}
+  .lxStepArt img{width:100%;height:100%;object-fit:contain;display:block}
+  /* Paso 3: Chispa y la lista son DOS capas independientes (regla del inventario).
+     La pose es VERTICAL (715x1178): si se la mete en una caja horizontal con contain
+     queda diminuta → acá manda la ALTURA y el ancho sale solo. */
+  .lxStepArt--dual img{position:absolute;width:auto;height:104%;max-width:none;right:-4px;bottom:-8px;object-fit:contain}
+  .lxStepArt--dual .lxStepLista{width:56%;height:auto;left:-2px;top:-2px;right:auto;bottom:auto;opacity:.97}
+
+  /* Beneficios: Chispa protagonista con las insignias flotando alrededor (sin tarjeta) */
+  .lxShow{position:relative;height:230px;margin:16px 0 4px;display:grid;place-items:center}
+  .lxShowChispa{width:clamp(165px,52%,195px);height:auto;object-fit:contain;
+    filter:drop-shadow(0 18px 22px rgba(69,48,163,.2))}
+  .lxBadge{position:absolute;width:54px;height:54px;object-fit:contain;
+    filter:drop-shadow(0 10px 16px rgba(38,25,58,.18))}
+  .lxBadge--lista {left:2%;  top:16%}
+  .lxBadge--check {left:6%;  bottom:16%; width:48px;height:48px}
+  .lxBadge--morado{right:3%; top:9%;     width:50px;height:50px}
+  .lxBadge--dorado{right:1%; bottom:20%; width:60px;height:60px}
+
+  .lxFeats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:6px}
+  .lxFeat{background:#fff;border-radius:20px;padding:14px 13px;text-align:center;
+    box-shadow:0 18px 40px -32px rgba(38,25,58,.5)}
+  .lxFeat img{width:44px;height:44px;object-fit:contain;display:block;margin:0 auto 8px}
+  .lxFeat b{display:block;font-family:"Fredoka";font-weight:600;font-size:.83rem;line-height:1.2;color:var(--chispa-ink)}
+  .lxFeat small{display:block;margin-top:4px;font-size:.68rem;font-weight:700;line-height:1.35;color:var(--chispa-muted)}
+
+  /* Padres: neutra, discreta, al final. Importante pero no compite (principio 7). */
+  .lxPadres{background:rgba(255,255,255,.72);border:1px solid rgba(240,228,236,.9);
+    border-radius:22px;margin:0 0 10px}
+  .lxPadres>summary{display:flex;align-items:center;gap:12px;padding:13px 15px;cursor:pointer;list-style:none}
+  .lxPadres>summary::-webkit-details-marker{display:none}
+  .lxPadres>summary img{width:34px;height:34px;flex:none;object-fit:contain}
+  .lxPadresTx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+  .lxPadresTx b{font-family:"Fredoka";font-weight:600;font-size:.9rem;color:var(--chispa-ink)}
+  .lxPadresTx small{font-size:.68rem;font-weight:700;color:var(--chispa-muted)}
+  .lxPadresChev{width:15px;height:15px;flex:none;fill:none;stroke:var(--chispa-muted);stroke-width:2;
+    stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+  .lxPadres[open] .lxPadresChev{transform:rotate(90deg)}
+  .lxPadresBody{margin:0;padding:0 16px 15px;font-size:.8rem;font-weight:600;line-height:1.55;color:var(--chispa-muted)}
+
+  @media (max-width:374px){
+    .lxChispa{width:250px}
+    .lxStep{grid-template-columns:26px minmax(0,1fr) 84px;padding:12px}
+    .lxStepArt{width:84px;height:76px}
+    .lxShow{height:206px}
+    .lxFeat{padding:12px 10px}
+  }
 
   .paso{margin-top:18px}
   .count{display:flex;gap:7px}

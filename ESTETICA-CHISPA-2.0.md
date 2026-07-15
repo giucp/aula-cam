@@ -579,7 +579,54 @@ NUNCA a 1254px. Los assets actuales pesan 1.2 MB en total; no romper eso.
 ningún lugar dirá eso". Nada de "miles de estudiantes", ni avatares, ni una versión suavizada. Además
 dejó la regla general: **los mockups son referencia de COMPOSICIÓN; el texto lo ponemos nosotros.**
 
-## 12.6 Estado del código al cerrar este chat
+## 12.7 ✅ CONSTRUIDA (2026-07-14) — verificada en LOCAL, falta el OK del usuario
+
+**Decisión estructural (la duda de "¿3 pantallas o 1?"): UNA sola que se scrollea.** La respuesta
+estaba en la propia lámina: el **principio 10** define el recorrido `Chispa → Valor → CTA → Pasos →
+Padres`, que es UNA secuencia — si fueran 3 pantallas no habría un recorrido que validar, habría tres.
+Además **un carrusel de 3 pisaría el onboarding de 5 pasos que ya existe** (F4, cuentas nativas), y
+forzar a un niño a pasar 3 pantallas antes de entrar es maltratarlo.
+**Reparto de audiencia:** arriba (hero + CTA) = el niño, que toca y entra sin enterarse de que hay más
+abajo. Abajo (Pasos + Beneficios) = el adulto/colegio que evalúa (F7). Cada uno agarra lo suyo del
+mismo scroll. **"Para los padres" va UNA vez, al final** (en los mockups se repetía por ser el mismo
+componente dibujado en cada frame).
+
+**El kit del usuario** está en `aula-cam-estetica-local/assets/onboarding-2.0/` (con su
+`ASSET_INVENTORY.md`: capas, tamaños de display sugeridos y reglas de producción). **Importado y
+optimizado a `aula-cam/assets/onboarding/`.**
+
+### ★ Peso: 8.5 MB → 350 KB (regla §10.3 aplicada)
+El kit crudo pesaba **8578 KB** (badges de 650px para mostrarse a 50px). Se redimensionó cada asset a
+**~3× su display** (según el inventario) y se convirtió a **WebP**: PNG habría quedado en 3.2 MB,
+**WebP quedó en 301 KB** (+ SVGs = 350 KB). Script reutilizable: `scratchpad/opt_assets.py`.
+**PIL 12.2 está disponible** (`python -c "from PIL import Image"`) — no hace falta ImageMagick.
+`avatares-estudiantes.png` **NO se importó** (iba con la prueba social descartada).
+Se borró `assets/hero/chispa-bienvenida.png`, huérfano al caer la landing anterior.
+
+### Cómo quedó (clases `lx*` en `estilos.css`, markup en `index.html`)
+- **HERO:** `.lxHero` sangra rompiendo el padding del body (`margin:… -16px`) — **se evita `100vw`
+  a propósito** (provoca scroll horizontal por la barra del navegador). Dos capas reales: el fondo
+  `aula-fondo.webp` (`center bottom/cover`) y `chispa-laptop.webp` encima. **El fondo deja la pared
+  vacía arriba a propósito → ahí va el texto; el piso abajo → ahí se apoya Chispa.**
+- **Texto a la IZQUIERDA** (como el mockup). Centrado lo volvía un póster.
+- **CTA** único, morado, con flecha en círculo; se monta sobre la escena (capas, no cajas).
+- **Paso 3:** Chispa + lista como dos capas. ⚠️ La pose es **VERTICAL (715×1178)**: metida en una caja
+  horizontal con `contain` quedaba diminuta → **manda la altura** (`height:104%`), el ancho sale solo.
+  Asoma fuera de la tarjeta y eso suma.
+- **Beneficios:** `chispa-brazos` con las 4 insignias en `position:absolute` alrededor, sin tarjeta.
+- **Padres:** `<details>` neutro con candado + chevron que gira. Conserva el texto legal que ya existía.
+
+### Verificado en LOCAL (index.html real, no el demo)
+360px y 414px: **hero a sangre (360/360), CERO scroll horizontal, el CTA se ve sin scrollear**
+(614 de 780), `#btnEntrarLanding` → login → volver OK, **cero errores de consola**. sw → **v79**.
+
+### Falta
+- [ ] **OK del usuario** → recién ahí push (auto-deploy a producción).
+- [ ] **Decisión pendiente: qué hace "Para los padres" al tocarlo.** Hoy despliega el texto legal (lo
+      que ya hacía). Se preguntó y quedó sin responder. Alternativa: llevar a `chispa-familia`.
+- [ ] El `#lab`, el onboarding de 5 pasos y el login siguen sin migrar.
+
+## 12.6 Estado del código al cerrar el chat anterior (histórico)
 - La landing en `index.html` (`.h3Bienvenida`) es la **2ª versión (superada)**: Chispa brazos-abiertos
   centrada sobre glow + CTA + `.h3Steps` + padres colapsado. **Se va a reemplazar** por 12.2 cuando
   lleguen los assets. El CSS vive en `estilos.css` (buscar `.h3Bienvenida`).
