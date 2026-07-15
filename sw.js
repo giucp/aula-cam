@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v72"; // v72: fix — cuenta nativa refresca su plan al arrancar (upgrade a premium se ve al instante)
+const VERSION = "aulacam-v73"; // v73: Chispa 2.0 — hero (mascota+mano+libro) y "Más para ti" con el lenguaje nuevo
 const SHELL = [
   "/",
   "/index.html",

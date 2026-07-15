@@ -567,6 +567,97 @@
 
 </div>
 
-<script src="app.js"></script>
+<script>
+/* ── Datos de prueba RICOS: refleja una Chispa real de 6to grado ──
+   Alimenta TODAS las secciones del Inicio: hero/misión, stats, Para hoy,
+   Continúa aprendiendo, Próximas entregas, Tu progreso, Mis materias y Más para ti. */
+(function(){
+  var HOY=new Date();
+  function iso(d){return d.toISOString().slice(0,10);}
+  function dd(n){var d=new Date(HOY); d.setDate(HOY.getDate()+n); return iso(d);}
+  // tema "practicable": necesita seccion (sin "general"/"lapso") + un modulo page/resource/url
+  function mkTemas(lista){ return lista.map(function(n,i){
+    return {nombre:n, seccion:"Tema "+(i+1)+" · "+n, modulos:[{tipo:"page",nombre:"Guía de clase"}]};
+  }); }
+
+  var MATERIAS=[
+    {id:81,nombre:"MATEMÁTICA 6G",temas:mkTemas(["Fracciones","Números decimales","Porcentajes","Figuras geométricas","Área y perímetro","Proporcionalidad","Estadística","Ecuaciones sencillas"])},
+    {id:83,nombre:"LENGUAJE 6G",temas:mkTemas(["Ortografía","Comprensión lectora","Sustantivos y adjetivos","El cuento","Acentuación","Redacción"])},
+    {id:85,nombre:"CIENCIAS NATURALES 6G",temas:mkTemas(["El sistema solar","El cuerpo humano","Ecosistemas","Materia y energía","La célula","Cadena alimenticia"])},
+    {id:87,nombre:"CIENCIAS SOCIALES 6G",temas:mkTemas(["Independencia de Venezuela","Geografía de Venezuela","Los estados","Regiones naturales","Símbolos patrios"])},
+    {id:89,nombre:"INGLÉS 6G",temas:mkTemas(["Present simple","Numbers","Family members","Colors and shapes","Daily routines"])},
+    {id:91,nombre:"INFORMÁTICA 6G",temas:mkTemas(["Partes del computador","Internet seguro","Procesador de texto","Scratch"])},
+    {id:93,nombre:"EDUCACIÓN FÍSICA 6G",temas:mkTemas(["El calentamiento","Voleibol","Atletismo"])}
+  ];
+  var FL={usuario:{id:211,nombre:"Martina Bambini",racha:7},token:"t",materias:MATERIAS};
+
+  var TAREAS=[
+    {id:1,materia:"MATEMÁTICA 6G",tipo:"tarea",descripcion:"Ejercicios 1 al 10 de fracciones",fecha:dd(0),hecha:false},
+    {id:2,materia:"LENGUAJE 6G",tipo:"tarea",descripcion:"Leer el capítulo 3 y hacer el resumen",fecha:dd(0),hecha:false},
+    {id:3,materia:"CIENCIAS NATURALES 6G",tipo:"trabajo",descripcion:"Maqueta del sistema solar",fecha:dd(0),hecha:false},
+    {id:4,materia:"MATEMÁTICA 6G",tipo:"examen",descripcion:"Examen de fracciones y decimales",fecha:dd(2),hecha:false},
+    {id:5,materia:"CIENCIAS SOCIALES 6G",tipo:"trabajo",descripcion:"Exposición: regiones de Venezuela",fecha:dd(4),hecha:false},
+    {id:6,materia:"INGLÉS 6G",tipo:"examen",descripcion:"Quiz de present simple",fecha:dd(6),hecha:false},
+    {id:7,materia:"INFORMÁTICA 6G",tipo:"tarea",descripcion:"Proyecto en Scratch",fecha:dd(9),hecha:false},
+    {id:8,materia:"LENGUAJE 6G",tipo:"tarea",descripcion:"Copiar las palabras nuevas",fecha:dd(-2),hecha:true},
+    {id:9,materia:"MATEMÁTICA 6G",tipo:"tarea",descripcion:"Tabla del 7 y del 8",fecha:dd(-4),hecha:true}
+  ];
+  var NOTAS=[
+    {id:1,materia:"MATEMÁTICA 6G",descripcion:"Examen de decimales",nota:18,fecha:dd(-5)},
+    {id:2,materia:"LENGUAJE 6G",descripcion:"Prueba de ortografía",nota:16,fecha:dd(-8)},
+    {id:3,materia:"CIENCIAS NATURALES 6G",descripcion:"Examen del cuerpo humano",nota:19,fecha:dd(-12)},
+    {id:4,materia:"INGLÉS 6G",descripcion:"Quiz de vocabulario",nota:15,fecha:dd(-15)},
+    {id:5,materia:"CIENCIAS SOCIALES 6G",descripcion:"Examen de independencia",nota:17,fecha:dd(-20)}
+  ];
+  var HORARIO=[
+    {dia:1,materia:"MATEMÁTICA 6G",orden:1},{dia:1,materia:"LENGUAJE 6G",orden:2},{dia:1,materia:"INGLÉS 6G",orden:3},{dia:1,materia:"EDUCACIÓN FÍSICA 6G",orden:4},
+    {dia:2,materia:"CIENCIAS NATURALES 6G",orden:1},{dia:2,materia:"MATEMÁTICA 6G",orden:2},{dia:2,materia:"CIENCIAS SOCIALES 6G",orden:3},
+    {dia:3,materia:"LENGUAJE 6G",orden:1},{dia:3,materia:"MATEMÁTICA 6G",orden:2},{dia:3,materia:"INFORMÁTICA 6G",orden:3},
+    {dia:4,materia:"CIENCIAS SOCIALES 6G",orden:1},{dia:4,materia:"CIENCIAS NATURALES 6G",orden:2},{dia:4,materia:"INGLÉS 6G",orden:3},
+    {dia:5,materia:"MATEMÁTICA 6G",orden:1},{dia:5,materia:"INFORMÁTICA 6G",orden:2},{dia:5,materia:"EDUCACIÓN FÍSICA 6G",orden:3}
+  ];
+  var FA={horario:HORARIO,tareas:TAREAS,notas:NOTAS,ia:{limite:300,restante:216,ilimitado:false}};
+
+  // progreso: alimenta "Continúa aprendiendo", las barras y "Tu progreso"
+  function P(m,t,modos,q){ return {materia:m,tema:t,modos:modos,quizMejor:q}; }
+  var PROG=[
+    P("MATEMÁTICA 6G","Fracciones",["resumen","practica","quiz"],0.90),
+    P("MATEMÁTICA 6G","Números decimales",["resumen","practica","quiz"],0.85),
+    P("MATEMÁTICA 6G","Porcentajes",["resumen","practica"],0.60),
+    P("MATEMÁTICA 6G","Figuras geométricas",["resumen"],null),
+    P("MATEMÁTICA 6G","Área y perímetro",["resumen","quiz"],0.80),
+    P("LENGUAJE 6G","Ortografía",["resumen","practica","quiz"],0.95),
+    P("LENGUAJE 6G","Comprensión lectora",["resumen","practica"],0.70),
+    P("LENGUAJE 6G","Sustantivos y adjetivos",["resumen","quiz"],0.85),
+    P("CIENCIAS NATURALES 6G","El sistema solar",["resumen","practica","quiz"],0.90),
+    P("CIENCIAS NATURALES 6G","El cuerpo humano",["resumen"],null),
+    P("CIENCIAS SOCIALES 6G","Independencia de Venezuela",["resumen","quiz"],0.82),
+    P("INGLÉS 6G","Present simple",["resumen","practica"],0.55)
+  ];
+
+  function json(o){ return Promise.resolve(new Response(JSON.stringify(o),{status:200,headers:{"Content-Type":"application/json"}})); }
+  var rf=window.fetch.bind(window);
+  window.fetch=function(u,o){
+    u=String(u);
+    var b={}; try{ b=JSON.parse((o&&o.body)||"{}"); }catch(e){}
+    if(u.indexOf("/api/moodle")>-1) return json(FL);
+    if(u.indexOf("/api/agenda")>-1) return json(FA);
+    if(u.indexOf("/api/actividad")>-1) return json(b.accion==="resumen" ? {progreso:PROG} : {ok:true});
+    if(u.indexOf("/api/errores")>-1) return json({errores:[]});
+    if(u.indexOf("/api/curado-info")>-1) return json({});
+    if(u.indexOf("/api/curriculo")>-1) return json({});
+    return rf(u,o);
+  };
+  if(navigator.serviceWorker&&navigator.serviceWorker.getRegistrations)navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){r.unregister();});});
+})();
+</script>
+<script src="app.js"></script><script>
+window.addEventListener("load",function(){setTimeout(function(){
+  var b=document.querySelector("#btnEntrarLanding");if(b)b.click();
+  setTimeout(function(){var u=document.querySelector("#user"),p=document.querySelector("#pass"),l=document.querySelector("#btnLogin");
+  if(u)u.value="demo";if(p)p.value="demo";if(l)l.click();},350);
+},200);});
+</script>
+
 </body>
 </html>

@@ -1,6 +1,13 @@
   :root{
     --mango:#FF6B3D;--mango-dark:#E8511F;--teal:#12B5A4;--teal-dark:#0E9486;--sun:#FFC83D;
     --grape:#7C4DFF;--ink:#3B2B4A;--muted:#8C7C93;--surface:#FFFFFF;--line:#F0E3EC;--ok:#1FA86A;--bad:#EF476F;
+    /* Chispa 2.0 — tokens oficiales (CHISPA_2.0_DESIGN_SPECIFICATION.md §3). Fuente de verdad
+       para todo componente NUEVO. Los --mango/--teal/--grape viejos NO se borran (los usa la app
+       actual) pero no deben iniciar componentes nuevos. */
+    --chispa-primary:#6753E8;--chispa-primary-deep:#4933C8;--chispa-primary-soft:#F0EDFF;
+    --chispa-turquoise:#23BFAE;--chispa-coral:#FF795F;--chispa-green:#2DBE72;--chispa-yellow:#F3B51B;
+    --chispa-ink:#211B3A;--chispa-muted:#77718F;--chispa-line:#ECEAF5;--chispa-surface:#FFFFFF;
+    --chispa-canvas-warm:#FFF3E4;--chispa-canvas-pink:#FDE8F2;--chispa-canvas-blue:#E9F5FF;
     --shadow:0 18px 38px -16px rgba(90,40,70,.34);
     --shadow-sm:0 8px 20px -10px rgba(90,40,70,.30);
     --shadow-xs:0 3px 10px -4px rgba(90,40,70,.26);
@@ -368,6 +375,14 @@
   .results{margin-top:24px;display:flex;flex-direction:column;gap:14px}
   .loading{display:flex;flex-direction:column;align-items:center;gap:12px;padding:20px 10px 6px;color:var(--muted);font-weight:700;text-align:center}
   .brain{font-size:2.7rem;animation:bob 1.1s ease-in-out infinite}
+  /* Chispa "pensando" mientras la IA genera (reemplaza el 🧠) */
+  .loading .chispaThinking{width:104px;height:104px;object-fit:contain}
+  .quizFin{text-align:center}
+  .quizFin .chispaFin{display:block;width:120px;height:120px;object-fit:contain;margin:2px auto 6px}
+  /* Chispa "leyendo" acompaña el resumen — estática (no distraer durante la lectura, §10) */
+  .sumHead{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+  .sumHead .tag{margin-bottom:0}
+  .sumChispa{width:54px;height:54px;object-fit:contain;flex:none}
   .dots span{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--mango);margin:0 3px;animation:bob 1s infinite}
   .dots span:nth-child(2){background:var(--sun);animation-delay:.15s}
   .dots span:nth-child(3){background:var(--teal);animation-delay:.3s}
@@ -729,3 +744,392 @@
   .labColFormBtns .go{margin-top:0;flex:1;width:auto;min-width:0;padding:12px 22px}
   .labColCancel{flex:none;border:2px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:.9rem;padding:11px 18px;border-radius:12px}
   .labColBorrar{margin-top:14px;width:100%;border:2px solid #F6C6D2;background:#fff;color:var(--bad);cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:.9rem;padding:10px 16px;border-radius:12px}
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     CHISPA 2.0 — INICIO (rediseño por composición; ver ESTETICA-CHISPA-2.0.md)
+     Alcance intencional: pestaña Inicio + apariencia de la navegación.
+     Tokens oficiales --chispa-* (spec §3); los --h2-* del Inicio los referencian.
+     La misión es un HERO editorial morado con orbes sobrios (sin montaña de
+     triángulos). Si más adelante hay una ilustración real, va dentro de .h2Mission.
+     ═══════════════════════════════════════════════════════════════════════ */
+  body.home-v2-page{
+    background:
+      radial-gradient(115% 68% at 4% -8%, rgba(255,214,150,.24) 0%, transparent 42%),
+      radial-gradient(115% 68% at 106% -4%, rgba(255,190,214,.20) 0%, transparent 40%),
+      radial-gradient(120% 78% at 50% 114%, rgba(190,220,255,.18) 0%, transparent 48%),
+      #FCFBFE;
+    background-attachment:fixed;
+  }
+  #vHome.home-v2-active>.topbar{display:none}
+  #tabInicio.homeV2>#energiaIA{display:none!important}
+  /* Los --h2-* del Inicio ahora REFERENCIAN los tokens oficiales (§3.4: transición).
+     Así todo el CSS .h2* adopta los colores de la spec sin reescribir cada regla. */
+  #tabInicio.homeV2{
+    --h2-purple:var(--chispa-primary);--h2-purple-dark:var(--chispa-primary-deep);--h2-purple-soft:var(--chispa-primary-soft);
+    --h2-teal:var(--chispa-turquoise);--h2-coral:var(--chispa-coral);--h2-green:var(--chispa-green);
+    --h2-ink:var(--chispa-ink);--h2-muted:var(--chispa-muted);--h2-line:var(--chispa-line);
+    color:var(--h2-ink);padding:8px 0 12px;min-width:0;
+  }
+  /* Bloque HERO: la mascota grande se apoya sobre la tarjeta de misión (peeking sobre el borde
+     superior). Chispa z-index 1 (detrás) → el borde de la tarjeta (z-index 2) la "sostiene". */
+  .h2Top{position:relative;margin:2px 2px 26px;--hw:150px;--ht:0px;--hr:-4px}
+  .h2Greeting{position:relative;z-index:3;min-width:0;padding:4px 122px 0 0}
+  .h2Daypart{font-family:"Nunito",sans-serif;font-size:.82rem;font-weight:700;color:var(--h2-muted);margin:0 0 3px}
+  .h2Greeting h1{font-family:"Fredoka",sans-serif;font-size:clamp(1.9rem,8.4vw,2.5rem);font-weight:600;line-height:1.05;color:var(--h2-ink);margin:0;overflow-wrap:anywhere}
+  .h2Name{color:var(--chispa-primary)}
+  .h2Context{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:9px 0 0;font-family:"Nunito";font-size:.78rem;font-weight:700;color:var(--h2-muted)}
+  .h2Grade{font-weight:800;color:#0F8A7D}
+  .h2Date{text-transform:capitalize}
+  /* Chispa en DOS CAPAS: cuerpo detrás (z1, el borde del hero lo tapa redondeado) +
+     una capa SOLO de la mano por delante (::after, z3) para que los dedos entren y
+     toquen la tarjeta — integración real, no un recorte plano. Ambas comparten --hw/--ht/--hr. */
+  .h2HeroChispa{position:absolute;z-index:1;top:var(--ht);right:var(--hr);width:var(--hw);height:auto;pointer-events:none;filter:drop-shadow(0 12px 16px rgba(69,48,163,.22))}
+  .h2Top::after{content:"";position:absolute;z-index:3;top:var(--ht);right:var(--hr);width:var(--hw);height:var(--hw);background:url(assets/hero/chispa.png) center/contain no-repeat;clip-path:inset(56% 12% 15% 62%);pointer-events:none;filter:drop-shadow(0 5px 4px rgba(69,48,163,.30))}
+  .h3AccountMenu{position:absolute;z-index:8;right:2px;top:2px;height:40px;margin:0}
+  .h3AccountMenu>summary{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;color:#9A94A8;cursor:pointer;list-style:none}
+  .h3AccountMenu>summary::-webkit-details-marker{display:none}
+  .h3AccountMenu>summary svg{width:20px;height:20px;fill:currentColor}
+  .h3AccountMenu[open]>summary{background:rgba(103,83,232,.08);color:var(--h2-purple)}
+  .h3AccountPopover{position:absolute;z-index:20;right:0;top:40px;min-width:104px;padding:5px;border-radius:15px;background:#fff;border:1px solid var(--h2-line);box-shadow:0 16px 34px -18px rgba(38,25,58,.45)}
+  .h2QuietAction{width:100%;min-width:44px;min-height:44px;border:0;background:transparent;color:#8A8599;font-family:"Nunito";font-weight:800;font-size:.76rem;padding:7px 12px;border-radius:11px;cursor:pointer;text-align:left}
+  .h2QuietAction:active{background:rgba(103,83,232,.08)}
+  .h2A11yLabel{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+  /* Stats: UN resumen integrado y compacto (corrección #2), no 3 cards. Acompaña al saludo.
+     PENDIENTE ASSETS: los íconos de racha y de metas son SVG placeholder → rehacer con assets nuevos. */
+  .h2Stats{display:grid;grid-template-columns:repeat(3,1fr);margin:0 2px 26px;padding:12px 8px;background:rgba(255,255,255,.62);border-radius:18px;box-shadow:0 10px 26px -22px rgba(38,25,58,.24)}
+  .h2Stats[data-count="2"]{grid-template-columns:repeat(2,1fr)}
+  .h2Stat{position:relative;display:flex;align-items:center;justify-content:center;gap:9px;min-width:0;padding:2px 6px}
+  .h2Stat+.h2Stat::before{content:"";position:absolute;left:0;top:5px;bottom:5px;width:1px;background:var(--h2-line)}
+  .h2StatIcon{width:32px;height:32px;flex:none;display:grid;place-items:center}
+  .h2StatIcon img{width:100%;height:100%;object-fit:contain;display:block}
+  .h2StatMeta{display:flex;flex-direction:column;min-width:0}
+  .h2StatValue{font-family:"Fredoka";font-weight:600;font-size:1.15rem;line-height:1;color:var(--h2-ink);white-space:nowrap}
+  .h2StatLabel{font-size:.6rem;font-weight:800;color:var(--h2-muted);line-height:1.15;margin-top:2px;white-space:nowrap}
+
+  /* Misión = HERO editorial (corrección #3). Superficie morada rica + orbes sobrios (sin triángulos). */
+  .h2MissionWrap{position:relative;z-index:2;margin:0}
+  .h2Mission{position:relative;overflow:hidden;border-radius:28px;padding:22px 22px;min-height:184px;background:linear-gradient(140deg,#6E58EC 0%,#5A43D6 58%,#4A34BE 100%);box-shadow:0 26px 52px -30px rgba(69,48,163,.6)}
+  .h2Mission::before{content:"";position:absolute;right:-46px;top:-56px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.20),transparent 70%);pointer-events:none}
+  .h2Mission::after{content:"";position:absolute;right:6px;bottom:-84px;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,rgba(255,205,120,.26),transparent 66%);pointer-events:none}
+  .h2MissionContent{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;max-width:72%}
+  .h2MissionArt{position:absolute;z-index:1;right:-8px;bottom:-4px;width:186px;height:auto;pointer-events:none}
+  .h2MissionEyebrow{font-family:"Fredoka";font-size:.74rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.82);margin:0 0 9px}
+  .h2Mission h2{font-family:"Fredoka";font-size:clamp(1.5rem,6.4vw,1.9rem);font-weight:600;line-height:1.14;color:#fff;margin:0 0 8px;overflow-wrap:normal;text-wrap:balance}
+  .h2MissionContent>p:not(.h2MissionEyebrow){font-size:.92rem;font-weight:700;line-height:1.4;color:rgba(255,255,255,.85);margin:0 0 18px;max-width:30ch;overflow-wrap:anywhere}
+  .h2MissionAction{min-height:46px;display:inline-flex;align-items:center;gap:9px;border:0;border-radius:16px;padding:12px 22px;background:#fff;color:var(--chispa-primary-deep);font-family:"Fredoka";font-weight:600;font-size:1rem;box-shadow:0 12px 24px -14px rgba(0,0,0,.38);cursor:pointer}
+  .h2MissionAction svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .h2MissionAction:active{transform:translateY(1px)}
+
+  .h2Section{margin:0 0 26px;min-width:0}
+  .h2SectionHead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 2px 12px}
+  .h2SectionHead h2,.h2ProgressHead h2{font-family:"Fredoka";font-weight:600;font-size:1.16rem;line-height:1.2;color:var(--h2-ink);margin:0}
+  .h2SectionHint{font-family:"Nunito";font-size:.72rem;font-weight:800;color:var(--h2-muted)}
+  .h2SectionActions{display:flex;align-items:center;gap:2px}
+  .h2TextAction{min-height:44px;display:inline-flex;align-items:center;border:0;background:transparent;color:var(--chispa-primary);font-family:"Nunito";font-size:.8rem;font-weight:800;padding:8px 6px;border-radius:11px;cursor:pointer;white-space:nowrap}
+  .h2TextAction:active{background:var(--h2-purple-soft)}
+
+  .h2ContinueWrap{min-width:0}
+  .h2Today{background:var(--chispa-surface);border-radius:20px;padding:2px 16px;box-shadow:0 14px 32px -28px rgba(38,25,58,.3)}
+  .h2Today.is-empty{background:transparent;box-shadow:none;padding:0}
+  .h2TodayRow{width:100%;min-height:70px;display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:center;gap:11px;border:0;border-bottom:1px solid var(--h2-line);background:transparent;text-align:left;padding:10px 0;color:var(--h2-ink);font-family:"Nunito";min-width:0}
+  .h2TodayRow:last-child{border-bottom:0}
+  button.h2TodayRow{cursor:pointer}
+  button.h2TodayRow:active{opacity:.72}
+  /* Fila-tarea: [ícono materia] [título + contexto] [check discreto a la derecha].
+     El ícono 3D es la única identidad visual a la izquierda; el check no roba protagonismo. */
+  .h2TodayRow--task{grid-template-columns:44px minmax(0,1fr) 44px;grid-template-rows:auto}
+  .h2TaskCheck{width:44px;height:44px;display:grid;place-items:center;border:0;background:transparent;cursor:pointer;padding:0}
+  .h2TaskBox{width:26px;height:26px;border-radius:50%;border:1.5px solid #D8D3E6;background:#fff;display:grid;place-items:center;color:#fff;font-size:.76rem;font-weight:900;transition:background .15s,border-color .15s}
+  .h2TodayRow.is-done .h2TaskBox{background:var(--chispa-green);border-color:var(--chispa-green)}
+  .h2SubjectMark{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:color-mix(in srgb,var(--subject) 13%,#fff);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--subject) 16%,transparent)}
+  /* íconos de materia = PNG (claymorphism de Codex); rellenan ~82% del contenedor tintado */
+  .h2SubjectVisual img,.h2SubjectIcon img{width:84%;height:84%;object-fit:contain;display:block}
+  .h2SubjectVisual svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .h2TodayText{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .h2TodayText b{font-family:"Fredoka";font-size:1.02rem;font-weight:600;line-height:1.25;color:var(--h2-ink);overflow-wrap:anywhere}
+  .h2TodayText small{font-size:.78rem;font-weight:700;color:var(--h2-muted);line-height:1.3;overflow-wrap:anywhere}
+  .h2TodayRow.is-done .h2TodayText b{text-decoration:line-through;color:var(--h2-muted)}
+  .h2Empty{font-size:.9rem;font-weight:700;color:var(--h2-muted);line-height:1.5;margin:0;padding:14px 4px}
+  .h2Empty--positive{display:flex;align-items:center;gap:12px;padding:6px 2px;min-height:0}
+  .h2Empty--positive::before{content:"✓";width:32px;height:32px;flex:none;display:grid;place-items:center;border-radius:11px;background:#EAF8F0;color:var(--chispa-green);font-family:"Fredoka";font-size:1rem;font-weight:600}
+
+  .h3ContinuePrimary{width:100%;min-height:108px;display:grid;grid-template-columns:52px minmax(0,1fr) auto;align-items:center;gap:12px;border:0;border-radius:23px;background:linear-gradient(130deg,color-mix(in srgb,var(--subject) 10%,#fff),rgba(255,255,255,.97));padding:14px;text-align:left;color:var(--h2-ink);font-family:"Nunito";box-shadow:0 18px 38px -30px rgba(38,25,58,.4);cursor:pointer}
+  .h3ContinueIcon{width:52px;height:52px;border-radius:17px;display:grid;place-items:center;background:color-mix(in srgb,var(--subject) 17%,#fff);color:var(--subject);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--subject) 18%,transparent)}
+  .h3ContinueIcon svg{width:28px;height:28px}
+  .h3ContinueCopy{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .h3ContinueCopy>small{font-size:.62rem;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:var(--subject)}
+  .h3ContinueCopy>b{font-family:"Fredoka";font-size:1rem;font-weight:600;line-height:1.2;overflow-wrap:anywhere}
+  .h3ContinueCopy>span{font-size:.7rem;font-weight:800;color:var(--h2-muted);line-height:1.25}
+  .h3ContinueCopy>i{width:100%;max-width:126px;height:5px;border-radius:99px;background:#E9E8F0;overflow:hidden;margin-top:3px}
+  .h3ContinueCopy>i em{display:block;height:100%;border-radius:inherit;background:var(--subject)}
+  .h3ContinueAction{min-height:44px;display:inline-flex;align-items:center;gap:5px;border:1.5px solid color-mix(in srgb,var(--subject) 42%,#fff);border-radius:14px;padding:8px 10px;color:var(--subject);font-family:"Nunito";font-size:.72rem;font-weight:900;white-space:nowrap}
+  .h3ContinueAction svg,.h3ContinueMini>svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .h3ContinueSecondary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:9px}
+  .h3ContinueMini{min-width:0;min-height:68px;display:grid;grid-template-columns:36px minmax(0,1fr) 15px;align-items:center;gap:8px;border:0;border-radius:18px;background:rgba(255,255,255,.92);padding:9px;color:var(--subject);text-align:left;font-family:"Nunito";box-shadow:0 14px 30px -28px rgba(38,25,58,.45);cursor:pointer}
+  .h3ContinueMiniIcon{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--subject) 15%,#fff);color:var(--subject)}
+  .h3ContinueMiniIcon svg{width:20px;height:20px}
+  .h3ContinueMini>span:nth-child(2){display:flex;flex-direction:column;gap:3px;min-width:0;color:var(--h2-ink)}
+  .h3ContinueMini b{font-family:"Fredoka";font-size:.76rem;line-height:1.15;overflow-wrap:anywhere}
+  .h3ContinueMini small{font-size:.59rem;font-weight:800;color:var(--h2-muted);line-height:1.2;overflow-wrap:anywhere}
+
+  .h2Upcoming{display:grid;grid-template-columns:1fr;gap:10px;min-width:0}
+  .h2UpcomingCard{min-height:78px;display:grid;grid-template-columns:48px 38px minmax(0,1fr);align-items:center;gap:9px;border:0;border-radius:19px;background:rgba(255,255,255,.95);padding:10px 11px;text-align:left;color:var(--h2-ink);font-family:"Nunito";box-shadow:0 16px 34px -28px rgba(38,25,58,.42);cursor:pointer;min-width:0}
+  .h2UpcomingCard:active{transform:scale(.99)}
+  .h2DateTile{height:56px;border-radius:13px;background:linear-gradient(180deg,var(--h2-purple-soft) 0 25%,#fff 25%);display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid #E9E5FB}
+  .h2DateTile small{font-size:.64rem;font-weight:900;text-transform:uppercase;color:var(--h2-purple);line-height:1;margin-bottom:7px}
+  .h2DateTile b{font-family:"Fredoka";font-size:1.35rem;line-height:1;color:var(--h2-ink)}
+  .h2UpcomingMark{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--subject) 14%,#fff);color:var(--subject)}
+  .h2UpcomingMark svg{width:21px;height:21px}
+  .h2UpcomingText{display:flex;flex-direction:column;gap:5px;min-width:0}
+  .h2UpcomingText b{font-family:"Fredoka";font-size:.9rem;line-height:1.25;overflow-wrap:anywhere}
+  .h2UpcomingText small{font-size:.72rem;font-weight:700;color:var(--h2-muted);line-height:1.3;overflow-wrap:anywhere}
+  .h2UpcomingEmpty{display:flex;flex-direction:column;gap:4px;padding:17px 18px;border-radius:20px;background:rgba(255,255,255,.9);box-shadow:0 16px 34px -30px rgba(38,25,58,.38)}
+  .h2UpcomingEmpty b{font-family:"Fredoka";font-size:.94rem;color:var(--h2-ink)}
+  .h2UpcomingEmpty span{font-size:.8rem;font-weight:700;color:var(--h2-muted)}
+
+  .h2ProgressCard{background:rgba(255,255,255,.95);border-radius:23px;padding:15px 16px;box-shadow:0 18px 38px -30px rgba(38,25,58,.4)}
+  .h2ProgressHead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:11px}
+  .h2ProgressHead span{font-size:.72rem;font-weight:800;color:var(--h2-muted);text-align:right}
+  .h3AcademicProgress{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+  .h3AcademicProgress>div{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4px 8px}
+  .h3AcademicProgress>div+div{border-left:1px solid var(--h2-line)}
+  .h3AcademicProgress b{font-family:"Fredoka";font-size:1.12rem;line-height:1;color:var(--h2-ink)}
+  .h3AcademicProgress small{font-size:.61rem;font-weight:800;color:var(--h2-muted);line-height:1.2;margin-top:4px}
+  .h3AcademicBar{display:block;width:100%;height:5px;border-radius:99px;background:#ECEAF4;overflow:hidden;margin-top:10px}
+  .h3AcademicBar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--h2-purple),var(--h2-teal))}
+
+  .h2Subjects{display:flex;gap:9px;min-width:0;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x proximity;padding:1px 2px 7px;scrollbar-width:none}
+  .h2Subjects::-webkit-scrollbar{display:none}
+  .h2SubjectCard{flex:0 0 142px;min-width:142px;min-height:122px;scroll-snap-align:start;border:0;border-radius:19px;background:rgba(255,255,255,.95);display:flex;flex-direction:column;align-items:flex-start;padding:12px;text-align:left;color:var(--h2-ink);font-family:"Nunito";box-shadow:0 16px 34px -28px rgba(38,25,58,.4);cursor:pointer}
+  .h2SubjectCard:active{transform:scale(.98)}
+  .h2SubjectIcon{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;background:color-mix(in srgb,var(--subject) 16%,#fff);color:var(--subject);margin-bottom:8px}
+  .h2SubjectCard>b{width:100%;min-height:2.3em;font-family:"Fredoka";font-size:.82rem;line-height:1.15;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;white-space:normal;overflow-wrap:anywhere}
+  .h2SubjectCard>small{font-size:.64rem;font-weight:800;color:var(--h2-muted);margin:3px 0 8px;line-height:1.2;overflow-wrap:anywhere}
+  .h2SubjectBar{width:100%;height:6px;border-radius:99px;background:#ECEBF2;overflow:hidden;margin-top:auto}
+  .h2SubjectBar i{display:block;height:100%;border-radius:inherit;background:var(--subject)}
+
+  .h2More{margin:2px 0 12px;background:rgba(255,255,255,.7);border:1px solid rgba(240,228,236,.9);border-radius:22px;overflow:hidden}
+  .h2More>summary{min-height:52px;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;cursor:pointer;list-style:none;font-family:"Fredoka";font-size:.92rem;font-weight:600;color:var(--h2-purple)}
+  .h2More>summary::-webkit-details-marker{display:none}
+  .h2More>summary:after{content:"+";font-family:"Fredoka";font-size:1.2rem;color:var(--h2-muted)}
+  .h2More[open]>summary:after{content:"−"}
+  /* ═══ "Más para ti" — Chispa 2.0 (reemplaza los parches sobre .widget/.destacada/.cumEyebrow)
+     Mismo lenguaje que el resto de la Home: superficie blanca, placa de ícono tintada por --tone,
+     título Fredoka, chevron SVG. NADA de emojis como iconografía. ═══ */
+  .h2MoreBody{padding:4px 12px 14px;display:flex;flex-direction:column;gap:10px}
+  .h2MoreBody>div:empty{display:none}
+
+  /* tarjeta con encabezado (efeméride, horario, notas, novedades) */
+  .h3MoreCard{--tone:var(--chispa-primary);background:#fff;border:1px solid rgba(255,255,255,.92);border-radius:19px;padding:13px 14px;box-shadow:0 16px 36px -30px rgba(38,25,58,.36)}
+  .h3MoreHead{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+  .h3MoreHead h3{flex:1;min-width:0;margin:0;font-family:"Fredoka";font-weight:600;font-size:.92rem;line-height:1.2;color:var(--h2-ink)}
+  .h3MoreHead .h2TextAction{margin:-8px -6px;font-size:.74rem}
+  .h3MoreMark{width:32px;height:32px;flex:none;border-radius:11px;display:grid;place-items:center;background:color-mix(in srgb,var(--tone) 14%,#fff);color:var(--tone)}
+  .h3MoreMark svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+  /* fila accionable (Sinapsis, Familia, novedad, refuerzo) */
+  .h3MoreRow{--tone:var(--chispa-primary);width:100%;min-height:64px;display:grid;grid-template-columns:40px minmax(0,1fr) 15px;align-items:center;gap:11px;border:1px solid rgba(255,255,255,.92);border-radius:18px;background:#fff;padding:10px 13px;box-shadow:0 16px 36px -30px rgba(38,25,58,.36);cursor:pointer;text-align:left}
+  .h3MoreRow:active{transform:scale(.99)}
+  .h3MoreRow>svg{width:15px;height:15px;fill:none;stroke:var(--h2-muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .h3MoreRowIcon{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;background:color-mix(in srgb,var(--tone) 15%,#fff);color:var(--tone)}
+  .h3MoreRowIcon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .h3MoreRowIcon img{width:82%;height:82%;object-fit:contain;display:block}   /* placa de materia (PNG) */
+  .h3MoreRowTx{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .h3MoreRowTx b{font-family:"Fredoka";font-weight:600;font-size:.85rem;line-height:1.15;color:var(--h2-ink);overflow-wrap:anywhere}
+  .h3MoreRowTx small{font-size:.66rem;font-weight:800;color:var(--h2-muted);line-height:1.25;overflow-wrap:anywhere}
+  .h3MoreRow--inCard{margin-top:10px;box-shadow:none;border-color:var(--h2-line)}
+
+  /* efeméride "Un día como hoy" */
+  .h3Efe{display:grid;grid-template-columns:46px minmax(0,1fr);gap:11px;align-items:center}
+  .h3EfeArt{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(140deg,#F2EDFF,#FFF1E6);font-size:1.45rem;line-height:1}
+  .h3EfeTx{min-width:0}
+  .h3EfeTx small{display:block;font-family:"Fredoka";font-weight:600;font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--chispa-primary);margin-bottom:3px}
+  .h3EfeTx p{margin:0;font-size:.79rem;font-weight:700;line-height:1.42;color:var(--h2-ink);overflow-wrap:anywhere}
+
+  /* chips (horario del día / promedios) */
+  .h3MoreChips{display:flex;flex-wrap:wrap;gap:7px}
+  .h3Chip{--tone:var(--chispa-primary);display:inline-flex;align-items:center;gap:7px;min-height:34px;padding:6px 12px;border:0;border-radius:999px;background:color-mix(in srgb,var(--tone) 12%,#fff);color:color-mix(in srgb,var(--tone) 78%,#26193A);font-family:"Nunito";font-weight:800;font-size:.71rem;line-height:1;cursor:default;max-width:100%}
+  .h3Chip--go{cursor:pointer}
+  .h3Chip--go:active{transform:scale(.97)}
+  .h3Chip i{width:7px;height:7px;flex:none;border-radius:50%;background:var(--tone)}
+  .h3Chip span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .h3Chip b{font-family:"Fredoka";font-weight:600;font-size:.78rem}
+  .h3MoreEmpty{margin:0;font-size:.75rem;font-weight:700;color:var(--h2-muted);line-height:1.45}
+
+  /* navegación compartida: mismos destinos y eventos, iconografía consistente */
+  body.home-v2-page #vHome{padding-bottom:calc(44px + env(safe-area-inset-bottom))}
+  .navbar{left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom));max-width:410px;background:rgba(255,255,255,.9);border:0;border-radius:24px;padding:7px 6px;box-shadow:0 16px 40px -24px rgba(38,25,58,.4),0 3px 12px -8px rgba(38,25,58,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+  .navBtn{position:relative;min-height:52px;gap:4px;color:#9A94A8;padding:5px;border-radius:16px;font-size:.69rem;font-weight:700}
+  .navBtn .nIcon{width:28px;height:24px;display:grid;place-items:center;color:currentColor;font-size:inherit;filter:none;opacity:1}
+  .navBtn .nIcon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .navBtn[aria-pressed="true"]{color:var(--chispa-primary);background:transparent}
+  .navBtn[aria-pressed="true"]::before{content:"";position:absolute;top:1px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:var(--chispa-primary)}
+  .navBtn[aria-pressed="true"] .nIcon{filter:none;opacity:1}
+
+  @media (min-width:420px){
+    .h2SubjectCard{flex-basis:146px;min-width:146px}
+  }
+  @media (min-width:560px){
+    .h2Upcoming{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .h2UpcomingCard{grid-template-columns:52px 36px minmax(0,1fr);padding:11px;gap:8px}
+  }
+  @media (max-width:374px){
+    .h2Greeting{padding-right:104px}
+    .h2Greeting h1{font-size:1.72rem}
+    .h2Top{--hw:140px;--ht:-2px;--hr:-4px}
+    .h2QuietAction{padding-left:10px;padding-right:10px}
+    .h2Stat{gap:7px;padding:2px 4px}
+    .h2StatIcon{width:27px;height:27px}
+    .h2StatValue{font-size:1.05rem}
+    .h2StatLabel{font-size:.56rem}
+    .h2Mission{padding:20px 18px}
+    .h2SectionHead h2{font-size:1.06rem}
+    .h2TodayRow{grid-template-columns:42px minmax(0,1fr);gap:10px}
+    .h2TodayRow--task{grid-template-columns:42px minmax(0,1fr) 40px}
+    .h3ContinuePrimary{grid-template-columns:48px minmax(0,1fr);gap:10px}
+    .h3ContinueIcon{width:48px;height:48px}
+    .h3ContinueAction{grid-column:2;justify-self:start;margin-top:2px}
+    .h3ContinueSecondary{grid-template-columns:1fr}
+    .h3ContinueMini{min-height:62px}
+    .h3AcademicProgress>div{padding-left:5px;padding-right:5px}
+    .h3AcademicProgress small{font-size:.57rem}
+  }
+
+  /* ========================================================================
+     CHISPA 2.0 — HOME · FINAL COMPOSITION PASS
+     Solo afina Inicio. La mascota, la misión y la navegación conservan su
+     estructura, datos y eventos; estas reglas resuelven jerarquía y capas.
+     ======================================================================== */
+  body.home-v2-page{
+    background:
+      radial-gradient(105% 48% at 2% -4%,rgba(255,220,169,.28),transparent 46%),
+      radial-gradient(92% 46% at 102% 2%,rgba(246,197,226,.24),transparent 45%),
+      radial-gradient(100% 52% at 50% 106%,rgba(193,221,255,.18),transparent 48%),
+      #FDFBFE;
+  }
+  #tabInicio.homeV2{padding-top:10px}
+
+  /* Encabezado editorial: aire real para saludo, contexto y mascota. */
+  .h2Top{
+    --hw:152px;--ht:4px;--hr:-16px;
+    --hand-w:17px;--hand-t:107px;--hand-r:13px;
+    margin:0 2px 24px;
+  }
+  .h2Greeting{
+    min-height:108px;
+    padding:4px 114px 0 1px;
+  }
+  .h2Daypart{font-size:.8rem;letter-spacing:.01em;margin-bottom:5px}
+  .h2Greeting h1{font-size:clamp(1.9rem,8.15vw,2.38rem);letter-spacing:-.025em;line-height:1.02}
+  .h2Context{width:max-content;max-width:none;gap:0;flex-wrap:nowrap;margin-top:10px;font-size:.7rem;white-space:nowrap}
+  .h2Grade{display:inline-flex;align-items:center;min-height:25px;padding:3px 9px;border-radius:999px;background:#E8F7F2;color:#087E72}
+  .h2Date{display:inline-flex;align-items:center;width:auto;margin:0!important}
+  .h2Date::before{content:"";width:4px;height:4px;border-radius:50%;background:#C8C2D2;margin:0 9px}
+
+  .h2HeroChispa{
+    z-index:1;
+    filter:drop-shadow(0 13px 18px rgba(69,48,163,.17));
+  }
+  .h2Top::after{content:none}
+  .h2HeroHand{
+    position:absolute;z-index:4;top:var(--hand-t);right:var(--hand-r);
+    width:var(--hand-w);height:auto;pointer-events:none;
+    transform:rotate(8deg);transform-origin:top center;
+    filter:drop-shadow(0 6px 5px rgba(57,34,135,.26));
+  }
+  .h2HeroHand img{display:block;width:100%;height:auto;object-fit:contain}
+  .h3AccountMenu{right:-1px;top:-8px}
+  .h3AccountMenu>summary{
+    width:44px;height:44px;border-radius:15px;
+    background:rgba(255,255,255,.58);
+    box-shadow:0 8px 24px -18px rgba(38,25,58,.45);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  }
+
+  /* Hero: el libro y sus destellos forman una sola escena con el texto. */
+  .h2Mission{
+    min-height:202px;
+    padding:23px 22px 22px;
+    border-radius:29px;
+    background:
+      radial-gradient(120% 100% at 104% -10%,rgba(255,255,255,.22),transparent 46%),
+      linear-gradient(142deg,#735DF0 0%,#5B43D8 56%,#4931BD 100%);
+    box-shadow:0 28px 52px -28px rgba(70,47,177,.55),0 8px 18px -16px rgba(51,31,135,.38);
+    isolation:isolate;
+  }
+  .h2Mission::before{right:-38px;top:-72px;width:236px;height:236px;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 68%)}
+  .h2Mission::after{right:-54px;bottom:-104px;width:250px;height:250px;background:radial-gradient(circle,rgba(250,198,255,.18),transparent 67%)}
+  .h2MissionContent{z-index:3;max-width:64%}
+  .h2MissionEyebrow{font-size:.72rem;letter-spacing:.085em;margin-bottom:10px}
+  .h2Mission h2{font-size:clamp(1.48rem,6.15vw,1.82rem);line-height:1.12;letter-spacing:-.012em;margin-bottom:8px}
+  .h2MissionContent>p:not(.h2MissionEyebrow){font-size:.88rem;line-height:1.38;margin-bottom:17px}
+  .h2MissionAction{min-height:48px;border-radius:16px;padding:12px 20px;box-shadow:0 14px 28px -16px rgba(23,13,75,.5)}
+  .h2MissionArt{
+    z-index:2;right:16px;bottom:35px;width:266px;
+    filter:drop-shadow(0 16px 18px rgba(28,16,93,.18));
+    opacity:.98;
+  }
+
+  /* Ritmo y superficies: menos “plantilla”, más producto terminado. */
+  .h2Stats{
+    margin:0 2px 28px;padding:11px 8px;border:1px solid rgba(255,255,255,.84);
+    background:rgba(255,255,255,.72);
+    box-shadow:0 18px 40px -32px rgba(38,25,58,.36);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  }
+  .h2StatIcon{width:34px;height:34px}
+  .h2StatValue{font-size:1.18rem}
+  .h2Section{margin-bottom:28px}
+  .h2SectionHead{margin-bottom:13px}
+  .h2SectionHead h2,.h2ProgressHead h2{font-size:1.2rem;letter-spacing:-.012em}
+  .h2Today,.h2UpcomingCard,.h2ProgressCard,.h2SubjectCard{
+    border:1px solid rgba(255,255,255,.92);
+    box-shadow:0 20px 44px -34px rgba(38,25,58,.38);
+  }
+  .h2TodayRow{min-height:74px}
+  .h2Empty--positive{padding:7px 2px}
+  .h3ContinuePrimary{
+    min-height:112px;border:1px solid rgba(255,255,255,.9);
+    box-shadow:0 24px 48px -36px rgba(53,36,111,.42);
+  }
+  .h3ContinueAction{background:rgba(255,255,255,.68)}
+  .h3ContinueMini{border:1px solid rgba(255,255,255,.9)}
+
+  /* Barra cómoda y flotante, con reserva suficiente para el último contenido. */
+  body.home-v2-page #vHome{padding-bottom:calc(108px + env(safe-area-inset-bottom))}
+  .navbar{
+    bottom:calc(12px + env(safe-area-inset-bottom));
+    border:1px solid rgba(255,255,255,.92);
+    background:rgba(255,255,255,.88);
+    box-shadow:0 24px 52px -30px rgba(35,23,66,.42),0 4px 16px -12px rgba(35,23,66,.18);
+  }
+  .navBtn[aria-pressed="true"]{background:rgba(103,83,232,.085)}
+  .navBtn[aria-pressed="true"]::before{content:none}
+
+  @media (max-width:374px){
+    #tabInicio.homeV2{padding-top:8px}
+    .h2Top{--hw:142px;--ht:5px;--hr:-14px;--hand-w:16px;--hand-t:102px;--hand-r:13px;margin-bottom:22px}
+    .h2Greeting{min-height:103px;padding-right:101px}
+    .h2Greeting h1{font-size:1.73rem}
+    .h2Context{font-size:.64rem}
+    .h2Grade{padding-left:8px;padding-right:8px}
+    .h2Date::before{margin-left:7px;margin-right:7px}
+    .h2Mission{min-height:196px;padding:21px 18px}
+    .h2MissionContent{max-width:66%}
+    .h2Mission h2{font-size:1.4rem}
+    .h2MissionContent>p:not(.h2MissionEyebrow){font-size:.82rem}
+    .h2MissionArt{width:245px;right:6px;bottom:40px}
+    .h2StatIcon{width:29px;height:29px}
+    .h2Stat{gap:6px}
+    .h2SectionHead h2{font-size:1.08rem}
+    .h2SectionHint{font-size:.65rem}
+    body.home-v2-page #vHome{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
+  }
+
+  @media (min-width:420px){
+    .h2Top{--hw:158px;--ht:2px;--hr:-14px;--hand-w:18px;--hand-t:110px;--hand-r:16px}
+    .h2Greeting{min-height:112px;padding-right:124px}
+    .h2Mission{min-height:208px;padding:25px 24px 23px}
+    .h2MissionArt{width:285px;right:24px;bottom:24px}
+  }

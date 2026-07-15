@@ -154,6 +154,8 @@
     $("#tabMaterias").classList.toggle("hidden", id!=="materias");
     $("#tabMuro").classList.toggle("hidden", id!=="muro");
     $("#tabAgenda").classList.toggle("hidden", id!=="agenda");
+    $("#vHome").classList.toggle("home-v2-active", id==="inicio");
+    document.body.classList.toggle("home-v2-page", id==="inicio");
     document.querySelectorAll("#navbar .navBtn").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.tab===id)));
     if(id==="inicio") pintarEscritorio();
     if(id==="muro") cargarMuro();
@@ -187,7 +189,7 @@
   function fechaBonita(fecha){
     const n=diasHasta(fecha);
     if(n===null) return "";
-    if(n===0) return "¡hoy!";
+    if(n===0) return "hoy";
     if(n===1) return "mañana";
     if(n<0) return "venció";
     const [y,m,dd]=fecha.slice(0,10).split("-").map(Number);
@@ -197,21 +199,228 @@
   // ───────── escritorio (pestaña Inicio) ─────────
   function proximoDiaEscolar(){          // → {dia:1..5, titulo}
     const hoy=new Date().getDay();       // 0=dom … 6=sáb
-    if(hoy>=1 && hoy<=4) return {dia:hoy+1, titulo:"📅 Mañana toca"};
-    if(hoy===0) return {dia:1, titulo:"📅 Mañana toca"};   // domingo → lunes
-    return {dia:1, titulo:"📅 El lunes toca"};              // viernes y sábado → lunes
+    if(hoy>=1 && hoy<=4) return {dia:hoy+1, titulo:"Mañana toca"};
+    if(hoy===0) return {dia:1, titulo:"Mañana toca"};   // domingo → lunes
+    return {dia:1, titulo:"El lunes toca"};              // viernes y sábado → lunes
+  }
+  // ───────── CHISPA 2.0 · INICIO (solo presentación de la pestaña Inicio) ─────────
+  function homeMaterias(){ return (SESION&&Array.isArray(SESION.materias)) ? SESION.materias : []; }
+  function homeEnergiaPct(){
+    if((SESION&&SESION.plan==="gratis") || !IA_ESTADO || IA_ESTADO.ilimitado || !IA_ESTADO.limite) return null;
+    return Math.max(0,Math.min(100,Math.round((IA_ESTADO.restante/IA_ESTADO.limite)*100)));
+  }
+  function homeTareaKey(t){
+    return t&&t.id!=null?`id:${t.id}`:[t&&t.fecha,t&&t.materia,t&&t.tipo,t&&t.descripcion].map(x=>norm(x||"")).join("|");
+  }
+  function homePendientesHoy(){
+    return TAREAS.filter(t=>!t.hecha&&t.fecha&&diasHasta(t.fecha)===0);
+  }
+  // Identidad visual centralizada de materias para toda la Home (color de acento + ícono PNG).
+  // Los PNG (estilo claymorphism de Codex) viven en assets/materias/. El ORDEN importa:
+  // lo más específico primero (sociales antes que ciencias; ed. física antes que física;
+  // química/física/biología antes que "ciencias" genérico).
+  function homeMateriaVisual(nombre){
+    const n=norm(limpiaNombreMateria(nombre||""));
+    // Acentos alineados a CHISPA_2.0_DESIGN_SPECIFICATION.md §8 (tabla de materias).
+    const visuales=[
+      {key:"sociales",match:/social|historia|geograf|ciudadan/,color:"#4F83D8",img:"ciencias-sociales"},
+      {key:"edfisica",match:/deporte|educaci[oó]n f[ií]sic|ed\.? ?f[ií]sic/,color:"#FF795F",img:"educacion-fisica"},
+      {key:"quimica",match:/qu[ií]m/,color:"#2EAF69",img:"quimica"},
+      {key:"fisica",match:/f[ií]sic/,color:"#2EAF69",img:"fisica"},
+      {key:"biologia",match:/biolog|ambient/,color:"#2EAF69",img:"biologia"},
+      {key:"ciencias",match:/cienc|natural/,color:"#2EAF69",img:"ciencias-naturales"},
+      {key:"matematica",match:/matem|l[oó]gic|algebra|álgebra/,color:"#6753E8",img:"matematica"},
+      {key:"ingles",match:/ingl|idioma|franc/,color:"#9A62D5",img:"ingles"},
+      {key:"lenguaje",match:/lengua|castell|literat|comunic|lider/,color:"#F06F58",img:"lenguaje"},
+      {key:"informatica",match:/inform|comput|tecnolog|program|digital/,color:"#19B8B0",img:"informatica"},
+      {key:"robotica",match:/robot|electr[oó]n/,color:"#19B8B0",img:"robotica"},
+      {key:"musica",match:/m[uú]sic/,color:"#E987AA",img:"musica"},
+      {key:"arte",match:/est[eé]tic|arte|dibujo|pl[aá]st/,color:"#E987AA",img:"educacion-estetica"},
+      {key:"religion",match:/religi/,color:"#9A62D5",img:"religion"},
+      {key:"pensar",match:/pensar|orient|metodolog|filos|acert|razon|convivencia/,color:"#E4A91B",img:"como-pensar"}
+    ];
+    return visuales.find(v=>v.match.test(n))||{key:"general",color:colorMateria(nombre||""),img:"como-pensar"};
+  }
+  function homeMarcaMateria(nombre,clase){
+    const v=homeMateriaVisual(nombre);
+    return `<span class="${clase} h2SubjectVisual h2SubjectVisual--${v.key}"><img src="assets/materias/${v.img}.png" alt="" aria-hidden="true"></span>`;
+  }
+  function homeIcono(tipo){
+    const paths={
+      racha:'<path d="M12 2c1 4-1 5-1 8 0 2 1 3 3 3 2 0 3-2 3-4 3 3 4 6 3 9-1 4-4 6-8 6s-8-3-8-8c0-4 3-7 6-10 0 3 1 5 3 5 2 0 3-3 2-9z"/>',
+      energia:'<path d="m13 2-8 12h6l-1 8 9-13h-6z"/>',
+      tarea:'<path d="M7 4h10a2 2 0 0 1 2 2v14H5V6a2 2 0 0 1 2-2z"/><path d="M9 4V2h6v2M8 10h8M8 14h5"/>',
+      flecha:'<path d="M5 12h13M14 7l5 5-5 5"/>',
+      chispa:'<path d="M12 3c.7 4.7 2.3 6.3 7 7-4.7.7-6.3 2.3-7 7-.7-4.7-2.3-6.3-7-7 4.7-.7 6.3-2.3 7-7z"/>',
+      // ── íconos de "Más para ti" (Chispa 2.0: SVG, nunca emojis) ──
+      juego:'<path d="M10 4.5A2.5 2.5 0 0 0 5.6 6 2.5 2.5 0 0 0 4.5 10a2.5 2.5 0 0 0 .6 4.4V17a2.5 2.5 0 0 0 4.9.6z"/><path d="M14 4.5A2.5 2.5 0 0 1 18.4 6a2.5 2.5 0 0 1 1.1 4 2.5 2.5 0 0 1-.6 4.4V17a2.5 2.5 0 0 1-4.9.6z"/>',
+      calendario:'<rect x="4" y="5.5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10.5h16"/>',
+      nota:'<path d="M12 4 2.8 8.5 12 13l9.2-4.5z"/><path d="M6.5 10.8V15c0 1.7 2.5 3 5.5 3s5.5-1.3 5.5-3v-4.2"/>',
+      familia:'<circle cx="9" cy="8" r="3.2"/><path d="M3 19.5a6 6 0 0 1 12 0"/><path d="M16.5 6.4a2.8 2.8 0 0 1 0 5.6M17 19.5a5 5 0 0 0-1.8-3.8"/>',
+      novedad:'<path d="M12 3.5a5 5 0 0 0-5 5c0 4-1.8 4.8-1.8 6.8h13.6c0-2-1.8-2.8-1.8-6.8a5 5 0 0 0-5-5z"/><path d="M10.2 18.5a1.9 1.9 0 0 0 3.6 0"/>',
+      refuerzo:'<path d="M12 19.5V6.5"/><path d="M6.5 12 12 6.5l5.5 5.5"/>',
+      lapiz:'<path d="M14.8 5.2 18.8 9.2M4.5 19.5l4.4-.9 9.4-9.4a2 2 0 0 0 0-2.8l-1.2-1.2a2 2 0 0 0-2.8 0L5 14.6z"/>'
+    };
+    return `<svg viewBox="0 0 24 24" aria-hidden="true">${paths[tipo]||paths.tarea}</svg>`;
+  }
+  // ───────── Chispa (mascota) — config CENTRAL (spec §13: una sola fuente, fallback seguro) ─────────
+  // Los 5 estados oficiales (§9) viven en assets/chispa-3d/; las 15 poses adicionales en poses/png/.
+  const CHISPA_ESTADOS=["saludando","pensando","animando","celebrando","descansando"];
+  function chispaSrc(estado){
+    const e=CHISPA_ESTADOS.includes(estado)?estado:"saludando";  // fallback seguro a saludando
+    return `assets/chispa-3d/chispa-3d-${e}.png`;
+  }
+  const CHISPA_POSES={
+    reposo:"01-reposo",brazosAbiertos:"02-brazos-abiertos",senalaDerecha:"03-senala-derecha",
+    senalaIzquierda:"04-senala-izquierda",pulgarArriba:"05-pulgar-arriba",escuchando:"06-escuchando",
+    leyendo:"07-leyendo",escribiendo:"08-escribiendo",estrella:"09-estrella",explicando:"10-explicando",
+    sorprendido:"11-sorprendido",caminando:"12-caminando",saltando:"13-saltando",estirando:"14-estirando",
+    parpadeando:"15-parpadeando"
+  };
+  function chispaPoseSrc(nombre){
+    const f=CHISPA_POSES[nombre]||CHISPA_POSES.reposo;   // fallback seguro a reposo
+    return `assets/chispa-3d/poses/png/chispa-3d-${f}.png`;
+  }
+  // Nombre de materia en caso título ("CIENCIAS NATURALES" → "Ciencias Naturales"): evita las
+  // MAYÚSCULAS gritonas en la Home (spec §4 voz calmada / §3 evitar caps sostenidas).
+  function capMateria(s){
+    return String(s||"").toLowerCase().replace(/(^|[\s(¿"'\-/])([a-záéíóúñü])/g,(m,p,c)=>p+c.toUpperCase());
+  }
+  // Capitaliza solo la primera letra (para chips de fecha: "hoy"→"Hoy", "vie 16"→"Vie 16").
+  function capPrimera(s){ s=String(s||""); return s?s.charAt(0).toUpperCase()+s.slice(1):s; }
+  function pintarHomeEncabezado(){
+    const primer=((SESION&&SESION.nombre)||"").trim().split(/\s+/)[0]||"";
+    const h=new Date().getHours();
+    $("#homeSaludo").innerHTML=primer?`¡Hola, <span class="h2Name">${escapeHtml(primer)}</span>!`:"¡Hola!";
+    $("#homeDaypart").textContent=h<12?"Buenos días":(h<19?"Buenas tardes":"Buenas noches");
+    const grado=gradoDeSesion();
+    $("#homeGrade").textContent=grado||"";
+    $("#homeGrade").classList.toggle("hidden",!grado);
+  }
+  function pintarHomeStats(){
+    const box=$("#homeStats"); if(!box) return;
+    const racha=Number((SESION&&SESION.racha)||0);
+    const energia=homeEnergiaPct();
+    const pendientes=TAREAS.filter(t=>!t.hecha).length;
+    const items=[{icon:"racha",value:racha,label:racha===1?"día de racha":"días de racha"}];
+    if(energia!==null) items.push({icon:"energia",value:`${energia}%`,label:"energía"});
+    items.push({icon:"tarea",value:pendientes,label:pendientes===1?"meta activa":"metas activas"});
+    const STAT_IMG={racha:"racha",energia:"energia",tarea:"metas"};   // íconos 3D en assets/stats/
+    box.dataset.count=String(items.length);
+    box.innerHTML=items.map(x=>`<div class="h2Stat h2Stat--${x.icon}"><span class="h2StatIcon"><img src="assets/stats/${STAT_IMG[x.icon]||"metas"}.png" alt="" aria-hidden="true"></span><span class="h2StatMeta"><span class="h2StatValue">${x.value}</span><span class="h2StatLabel">${x.label}</span></span></div>`).join("");
+  }
+  function pintarHomeMore(){
+    const more=$("#homeMore"); if(!more) return;
+    const body=more.querySelector(".h2MoreBody");
+    const tieneContenido=body&&Array.from(body.children).some(el=>{
+      if(el.hidden||el.classList.contains("hidden")) return false;
+      if(el.id==="novedadesWrap"||el.id==="notasInicio"||el.id==="efemeride") return el.childElementCount>0;
+      return !!el.querySelector("button:not(.hidden),a:not(.hidden)")||el.childElementCount>0||el.textContent.trim().length>0;
+    });
+    more.classList.toggle("hidden",!tieneContenido);
+    if(!tieneContenido) more.open=false;
+  }
+  function pintarHomeContinue(){
+    const cont=$("#homeContinue"); if(!cont) return; cont.innerHTML="";
+    const materias=homeMaterias(), hoy=new Date().getDay(), diaHorario=(hoy>=1&&hoy<=5)?hoy:proximoDiaEscolar().dia;
+    const elegidas=[], vistas=new Set();
+    const agregar=m=>{ if(!m) return; const k=norm(m.nombre); if(vistas.has(k)||elegidas.length>=3) return; vistas.add(k); elegidas.push(m); };
+    materias.map(m=>({m,p:progresoMateria(m)})).filter(x=>x.p&&x.p.done>0&&x.p.done<x.p.total)
+      .sort((a,b)=>b.p.pct-a.p.pct).forEach(x=>agregar(x.m));
+    HORARIO.filter(h=>h.dia===diaHorario&&esMateriaAula(h.materia)).sort((a,b)=>(a.orden||0)-(b.orden||0))
+      .forEach(h=>agregar(materias.find(m=>norm(m.nombre)===norm(h.materia))));
+    materias.forEach(agregar);
+    if(!elegidas.length){
+      const p=document.createElement("p"); p.className="h2Empty"; p.textContent="Tus materias aparecerán aquí cuando estén disponibles.";
+      cont.appendChild(p);
+      return;
+    }
+    const principal=elegidas[0], progreso=progresoMateria(principal), nombre=capMateria(limpiaNombreMateria(principal.nombre)), visual=homeMateriaVisual(principal.nombre);
+    const destacado=document.createElement("button"); destacado.type="button"; destacado.className="h3ContinuePrimary";
+    destacado.style.setProperty("--subject",visual.color); destacado.dataset.subjectKind=visual.key;
+    destacado.innerHTML=`${homeMarcaMateria(principal.nombre,"h3ContinueIcon")}<span class="h3ContinueCopy"><small>Para continuar</small><b>${escapeHtml(nombre)}</b><span>${progreso?`${progreso.done} de ${progreso.total} temas practicados`:"Materia disponible"}</span>${progreso?`<i><em style="width:${progreso.pct}%"></em></i>`:""}</span><span class="h3ContinueAction">Continuar ${homeIcono("flecha")}</span>`;
+    destacado.onclick=()=>irAPractica(principal.nombre); cont.appendChild(destacado);
+    if(elegidas.length>1){
+      const secundarios=document.createElement("div"); secundarios.className="h3ContinueSecondary";
+      elegidas.slice(1,3).forEach(m=>{
+        const p=progresoMateria(m), v=homeMateriaVisual(m.nombre), b=document.createElement("button"); b.type="button"; b.className="h3ContinueMini";
+        b.style.setProperty("--subject",v.color); b.dataset.subjectKind=v.key;
+        b.innerHTML=`${homeMarcaMateria(m.nombre,"h3ContinueMiniIcon")}<span><b>${escapeHtml(capMateria(limpiaNombreMateria(m.nombre)))}</b><small>${p?`${p.done} de ${p.total} temas`:"Materia disponible"}</small></span>${homeIcono("flecha")}`;
+        b.onclick=()=>irAPractica(m.nombre); secundarios.appendChild(b);
+      });
+      cont.appendChild(secundarios);
+    }
+  }
+  function homeFilaTarea(t){
+    const row=document.createElement("div"); row.className="h2TodayRow h2TodayRow--task"+(t.hecha?" is-done":"");
+    const materia=capMateria(limpiaNombreMateria(t.materia||""))||"General";
+    const visual=homeMateriaVisual(materia); row.style.setProperty("--subject",visual.color);
+    row.dataset.subjectKind=visual.key;
+    row.innerHTML=`${homeMarcaMateria(materia,"h2SubjectMark")}<span class="h2TodayText"><b>${escapeHtml(t.descripcion||"Tarea")}</b><small>${escapeHtml(materia)}${t.fecha?` · ${escapeHtml(capPrimera(fechaBonita(t.fecha)))}`:""}</small></span><button class="h2TaskCheck" type="button" aria-label="${t.hecha?"Marcar como pendiente":"Marcar como completada"}"><span class="h2TaskBox">${t.hecha?"✓":""}</span></button>`;
+    row.querySelector(".h2TaskCheck").onclick=async()=>{
+      t.hecha=!t.hecha; pintarTareas(); pintarEscritorio();
+      try{ await apiAgenda({accion:"tarea_hecha",id:t.id,hecha:t.hecha}); }catch(_){}
+    };
+    return row;
+  }
+  function pintarHomeUpcoming(){
+    const box=$("#homeUpcoming"); if(!box) return; box.innerHTML="";
+    const visiblesHoy=new Set(homePendientesHoy().slice(0,2).map(homeTareaKey));
+    const items=TAREAS.filter(t=>!t.hecha&&t.fecha&&!visiblesHoy.has(homeTareaKey(t))).map(t=>({t,n:diasHasta(t.fecha)}))
+      .filter(x=>x.n!==null&&x.n>0).sort((a,b)=>a.n-b.n);
+    const verAgenda=$("#btnHomeVerAgenda"); if(verAgenda) verAgenda.classList.toggle("hidden",items.length<=2);
+    if(!items.length){
+      box.innerHTML='<div class="h2UpcomingEmpty"><b>No tienes entregas próximas</b><span>Tu agenda está tranquila por ahora.</span></div>';
+      return;
+    }
+    items.slice(0,2).forEach(({t})=>{
+      const [y,m,d]=t.fecha.slice(0,10).split("-").map(Number);
+      const card=document.createElement("button"), visual=homeMateriaVisual(t.materia||t.tipo||""); card.type="button"; card.className="h2UpcomingCard";
+      card.style.setProperty("--subject",visual.color); card.dataset.subjectKind=visual.key;
+      card.innerHTML=`<span class="h2DateTile"><small>${escapeHtml(MESES[m-1].slice(0,3))}</small><b>${d}</b></span>${homeMarcaMateria(t.materia||t.tipo||"","h2UpcomingMark")}<span class="h2UpcomingText"><b>${escapeHtml(t.descripcion||"Entrega")}</b><small>${escapeHtml(capMateria(limpiaNombreMateria(t.materia||""))||"General")} · ${escapeHtml(capPrimera(fechaBonita(t.fecha)))}</small></span>`;
+      card.onclick=()=>verTab("agenda");
+      box.appendChild(card);
+    });
+  }
+  function pintarHomeProgreso(){
+    const box=$("#homeProgress"); if(!box) return;
+    let total=0; homeMaterias().forEach(m=>{ total+=temasPracticables(m).length; });
+    let dominados=0; PROGRESO.forEach(p=>{ if(p&&typeof p.quizMejor==="number"&&p.quizMejor>=.8) dominados++; });
+    if(total) dominados=Math.min(dominados,total);
+    const pct=total?Math.round(dominados/total*100):0;
+    box.innerHTML=`<div class="h2ProgressHead"><h2 id="homeProgresoTit">Tu progreso</h2><span>Progreso académico</span></div><div class="h3AcademicProgress"><div><b>${dominados}</b><small>temas dominados</small></div><div><b>${total}</b><small>temas disponibles</small></div><div><b>${pct}%</b><small>del recorrido</small></div></div><span class="h3AcademicBar"><i style="width:${pct}%"></i></span>`;
+  }
+  function pintarHomeMaterias(){
+    const box=$("#homeSubjects"); if(!box) return; box.innerHTML="";
+    const materias=homeMaterias().slice(0,6);
+    if(!materias.length){ box.innerHTML='<p class="h2Empty">Tus materias aparecerán aquí cuando estén disponibles.</p>'; return; }
+    materias.forEach(m=>{
+      const p=progresoMateria(m), v=homeMateriaVisual(m.nombre);
+      const card=document.createElement("button"); card.type="button"; card.className="h2SubjectCard";
+      card.style.setProperty("--subject",v.color); card.dataset.subjectKind=v.key;
+      card.innerHTML=`<span class="h2SubjectIcon"><img src="assets/materias/${v.img}.png" alt="" aria-hidden="true"></span><b>${escapeHtml(capMateria(limpiaNombreMateria(m.nombre)))}</b><small>${p?`${p.done} de ${p.total} temas`:"Disponible"}</small>${p?`<span class="h2SubjectBar"><i style="width:${p.pct}%"></i></span>`:""}`;
+      card.onclick=()=>abrirMateria(m);
+      box.appendChild(card);
+    });
   }
   function pintarEscritorio(){
     const d=new Date();
     const f=`${DIAS_NOM[d.getDay()]} ${d.getDate()} de ${MESES[d.getMonth()]}`;
     $("#fechaHoy").textContent=f[0].toUpperCase()+f.slice(1);
+    pintarHomeEncabezado();
     pintarEnergiaIA();
-    cargarEfemerides().then(pintarEfemeride);
+    pintarHomeStats();
+    cargarEfemerides().then(()=>{ pintarEfemeride(); pintarHomeMore(); });
     pintarExamenBanner();
     pintarNovedadesInicio();
     pintarHorarioInicio();
     pintarTareasResumen();
+    pintarHomeContinue();
+    pintarHomeUpcoming();
     pintarNotasInicio();
+    pintarHomeProgreso();
+    pintarHomeMaterias();
+    pintarHomeMore();
   }
 
   // "Un día como hoy": efeméride del día (archivo estático curado, cacheado offline por el SW).
@@ -248,47 +457,61 @@
     const e=EFEMERIDES&&EFEMERIDES[key];
     if(!e||!e.texto){ box.classList.add("hidden"); box.innerHTML=""; return; }
     const anio=e.anio?`En ${escapeHtml(String(e.anio))}, `:"";
-    box.innerHTML=`<div class="efeIn"><span class="efeEmoji">${escapeHtml(e.emoji||"📅")}</span><div class="efeTx"><span class="efeTit">Un día como hoy</span><p class="efePar">${anio}${escapeHtml(e.texto)}</p></div></div>`;
+    // Chispa 2.0: tarjeta blanca + placa de ilustración. El emoji viene del DATO del día
+    // (no es iconografía de UI), por eso se presenta dentro de una placa tintada.
+    box.innerHTML=`<div class="h3MoreCard"><div class="h3Efe"><span class="h3EfeArt">${escapeHtml(e.emoji||"✨")}</span><span class="h3EfeTx"><small>Un día como hoy</small><p>${anio}${escapeHtml(e.texto)}</p></span></div></div>`;
     box.classList.remove("hidden");
   }
-  // pegamento examen→simulacro. Muestra SOLO el día más próximo con examen (no
-  // los de 2-3 días después, para no llenar el inicio). Si ese día tiene 1 examen,
-  // es el banner de siempre; si tiene 2 o más, se juntan en UNA tarjeta compacta
-  // (una fila por materia), no varios banners apilados.
+  // Misión principal de Inicio: resume una acción real (no copia el título de agenda).
+  // Prioriza un examen, luego una entrega y por último una materia real de la sesión.
   // Un examen de HOY se oculta a partir de CORTE_MANANA (1 PM, hora del aparato):
   // pasada la mañana escolar se asume presentado y se pasa a mostrar el día siguiente.
   const CORTE_MANANA = 13; // hora local a partir de la cual un examen de hoy ya no se recuerda
   function pintarExamenBanner(){
-    const box=$("#examenBanner"); box.innerHTML="";
+    const box=$("#examenBanner"); if(!box) return; box.innerHTML="";
     const horaLocal=new Date().getHours();
-    const todos=TAREAS.filter(t=>t.tipo==="examen" && !t.hecha && t.fecha)
+    const examenes=TAREAS.filter(t=>t.tipo==="examen" && !t.hecha && t.fecha)
       .map(t=>({t,n:diasHasta(t.fecha)}))
       .filter(x=>x.n!==null && x.n>=0 && x.n<=3 && (x.n>0 || horaLocal<CORTE_MANANA))
       .sort((a,b)=>a.n-b.n);
-    if(!todos.length) return;
-    const minN=todos[0].n;                                   // día más próximo con examen
-    const dia=todos.filter(x=>x.n===minN).slice(0,6);        // solo ese día
-    const cuando = minN===0?"¡es hoy!":(minN===1?"es mañana":`en ${minN} días`);
-    const cuandoCorto = minN===0?"hoy":(minN===1?"mañana":`en ${minN} días`);
-    if(dia.length===1){
-      const ex=dia[0];
-      const b=document.createElement("button"); b.className="examenAviso";
-      b.innerHTML=`<span class="dIcon">📋</span><span class="dTxt"><b>Examen de ${escapeHtml(limpiaNombreMateria(ex.t.materia||"")||"…")} ${cuando}</b><small>¿Simulamos uno para practicar? →</small></span><span class="dArrow">›</span>`;
-      b.onclick=()=>irAPractica(ex.t.materia, "examen");
-      box.appendChild(b);
-      return;
+    const entregas=TAREAS.filter(t=>t.tipo!=="examen" && !t.hecha && t.fecha)
+      .map(t=>({t,n:diasHasta(t.fecha)})).filter(x=>x.n!==null && x.n>=0).sort((a,b)=>a.n-b.n);
+    const materias=homeMaterias();
+    const materiaSugerida=materias.find(m=>{ const p=progresoMateria(m); return p&&p.done>0&&p.done<p.total; })||materias[0]||null;
+
+    let titulo="Todo está tranquilo por ahora.";
+    let texto="Puedes revisar tu agenda cuando quieras.";
+    let accionTexto="Ver agenda";
+    let accion=()=>verTab("materias");
+
+    if(examenes.length){
+      const min=examenes[0].n, dia=examenes.filter(x=>x.n===min);
+      const cuando=min===0?"hoy":(min===1?"mañana":`en ${min} días`);
+      const primera=dia[0].t, materia=capMateria(limpiaNombreMateria(primera.materia||""))||"tu materia";
+      titulo=dia.length===1?`Prepárate para ${materia}`:`Prepárate para ${dia.length} exámenes`;
+      texto=dia.length===1?`El examen es ${cuando}.`:`Los exámenes son ${cuando}.`;
+      accionTexto="Practicar";
+      accion=()=>irAPractica(primera.materia,"examen");
+    }else if(entregas.length){
+      const proxima=entregas[0].t, cuando=fechaBonita(proxima.fecha);
+      const materia=capMateria(limpiaNombreMateria(proxima.materia||""));
+      titulo=materia?`Revisa tu pendiente de ${materia}`:"Revisa tu próximo pendiente";
+      texto=cuando?`Está previsto para ${cuando}.`:"Está guardado en tu agenda.";
+      accionTexto="Ver agenda";
+      accion=()=>verTab("agenda");
+    }else if(materiaSugerida){
+      const p=progresoMateria(materiaSugerida), nombre=capMateria(limpiaNombreMateria(materiaSugerida.nombre));
+      titulo=p&&p.done>0?`Continúa avanzando con ${nombre}`:`Empieza hoy con ${nombre}`;
+      texto=p?`Ya recorriste ${p.done} de ${p.total} temas.`:"Tu materia está lista para practicar.";
+      accionTexto=p&&p.done>0?"Continuar":"Empezar";
+      accion=()=>irAPractica(materiaSugerida.nombre);
+    }else{
+      accion=()=>verTab("agenda");
     }
-    // 2+ exámenes el mismo día → una sola tarjeta con una fila por materia
-    const card=document.createElement("div"); card.className="examenCard";
-    const head=document.createElement("div"); head.className="ecHead";
-    head.innerHTML=`<span class="ecIcon">📋</span><span class="ecHeadTxt"><b>Tienes ${dia.length} exámenes ${cuandoCorto}</b><small>Toca uno para simularlo y practicar</small></span>`;
-    card.appendChild(head);
-    dia.forEach(ex=>{
-      const row=document.createElement("button"); row.className="ecRow";
-      row.innerHTML=`<span class="ecMat">${iconMateria(ex.t.materia)} ${escapeHtml(limpiaNombreMateria(ex.t.materia||"")||"…")}</span><span class="ecGo">Practicar ›</span>`;
-      row.onclick=()=>irAPractica(ex.t.materia, "examen");
-      card.appendChild(row);
-    });
+
+    const card=document.createElement("article"); card.className="h2Mission";
+    card.innerHTML=`<div class="h2MissionContent"><p class="h2MissionEyebrow">Tu misión de hoy</p><h2>${escapeHtml(titulo)}</h2><p>${escapeHtml(texto)}</p><button class="h2MissionAction" type="button">${escapeHtml(accionTexto)} ${homeIcono("flecha")}</button></div><img class="h2MissionArt" src="assets/hero/libro.png" alt="" aria-hidden="true">`;
+    card.querySelector(".h2MissionAction").onclick=accion;
     box.appendChild(card);
   }
   function pintarHorarioInicio(){
@@ -297,44 +520,45 @@
     const cont=$("#horarioChips"); cont.innerHTML="";
     const del=HORARIO.filter(h=>h.dia===dia).sort((a,b)=>(a.orden||0)-(b.orden||0));
     if(!del.length){
-      const p=document.createElement("p"); p.className="wVacio";
-      p.textContent=HORARIO.length ? "No anotaste materias para ese día." : "Configura tu horario una sola vez y te diré qué toca cada día. 👇";
+      const p=document.createElement("p"); p.className="h3MoreEmpty";
+      p.textContent=HORARIO.length ? "No anotaste materias para ese día." : "Configura tu horario una sola vez y te diré qué toca cada día.";
       cont.appendChild(p);
       if(!HORARIO.length){
-        const b=document.createElement("button"); b.className="otros"; b.textContent="✏️ Configurar mi horario";
+        const b=document.createElement("button"); b.type="button"; b.className="h2TextAction"; b.style.padding="8px 0";
+        b.textContent="Configurar mi horario";
         b.onclick=()=>{ verTab("agenda"); abrirEditorHorario(); };
         cont.appendChild(b);
       }
       return;
     }
-    const chips=document.createElement("div"); chips.className="chips";
+    const chips=cont;   // Chispa 2.0: los chips van directo en .h3MoreChips
     del.forEach(h=>{
       const enAula=esMateriaAula(h.materia);
       // materia del aula → botón que lleva a practicar; propia (caligrafía…) → chip simple
-      const b=document.createElement(enAula?"button":"span"); b.className="chip"+(enAula?"":" propia");
-      b.innerHTML=`${iconMateria(h.materia)} ${escapeHtml(limpiaNombreMateria(h.materia))}`;
+      const v=homeMateriaVisual(h.materia);
+      const b=document.createElement(enAula?"button":"span");
+      b.className="h3Chip"+(enAula?" h3Chip--go":""); b.style.setProperty("--tone",v.color);
+      if(enAula) b.type="button";
+      b.innerHTML=`<i></i><span>${escapeHtml(capMateria(limpiaNombreMateria(h.materia)))}</span>`;
       if(enAula) b.onclick=()=>irAPractica(h.materia);
       chips.appendChild(b);
     });
-    cont.appendChild(chips);
     if(del.some(h=>esMateriaAula(h.materia))){
-      const hint=document.createElement("p"); hint.className="wHint"; hint.textContent="Toca una materia para repasarla ✨";
+      const hint=document.createElement("p"); hint.className="h3MoreEmpty"; hint.style.width="100%"; hint.style.marginTop="2px";
+      hint.textContent="Toca una materia para repasarla.";
       cont.appendChild(hint);
     }
   }
   function pintarTareasResumen(){
     const cont=$("#tareasResumen"); cont.innerHTML="";
-    const pend=TAREAS.filter(t=>!t.hecha);
-    if(!pend.length){
-      const p=document.createElement("p"); p.className="wVacio"; p.textContent="Sin tareas pendientes 🎉 ¿Anotas las de hoy?";
+    const tareasHoy=homePendientesHoy();
+    tareasHoy.slice(0,2).forEach(t=>cont.appendChild(homeFilaTarea(t)));
+    const verAgenda=$("#btnVerAgenda"); if(verAgenda) verAgenda.classList.toggle("hidden",tareasHoy.length<=2);
+    cont.classList.toggle("is-empty", !tareasHoy.length);   // vacío = fila ligera, no card grande (#4)
+    if(!cont.children.length){
+      const p=document.createElement("p"); p.className="h2Empty h2Empty--positive"; p.textContent="Todo al día por ahora.";
       cont.appendChild(p);
-    }else{
-      pend.slice(0,4).forEach(t=>cont.appendChild(filaTarea(t,true)));
-      if(pend.length>4){ const p=document.createElement("p"); p.className="wHint"; p.textContent=`…y ${pend.length-4} más en tu agenda`; cont.appendChild(p); }
     }
-    const b=document.createElement("button"); b.className="otros"; b.textContent="＋ Anotar tarea";
-    b.onclick=()=>{ verTab("agenda"); abrirFormTarea(); };
-    cont.appendChild(b);
   }
   // ir a practicar una materia (desde el horario o el aviso de examen)
   function irAPractica(nombreMateria, modo){
@@ -343,6 +567,9 @@
     if(m){ abrirMateria(m); if(modo) setModo(modo); }
   }
   $("#btnVerAgenda").onclick=()=>verTab("agenda");
+  $("#btnNuevaTareaHome").onclick=()=>{ verTab("agenda"); abrirFormTarea(); };
+  $("#btnHomeVerAgenda").onclick=()=>verTab("agenda");
+  $("#btnHomeVerMaterias").onclick=()=>verTab("materias");
 
   // ───────── tareas (pestaña Agenda) ─────────
   const TIPO_ICON={tarea:"📝",trabajo:"📚",examen:"📋"};
@@ -613,14 +840,16 @@
   function pintarNovedadesInicio(){
     const box=$("#novedadesWrap"); if(!box) return; box.innerHTML="";
     const ids=Object.keys(NOVEDADES); if(!ids.length) return;
-    const w=document.createElement("div"); w.className="widget";
-    w.innerHTML=`<div class="wHead"><span class="wTit">🆕 Nuevo en tu aula</span></div>`;
+    const w=document.createElement("div"); w.className="h3MoreCard";
+    w.innerHTML=`<div class="h3MoreHead"><span class="h3MoreMark">${homeIcono("novedad")}</span><h3>Nuevo en tu aula</h3></div>`;
     ids.forEach(id=>{
       const m=((SESION&&SESION.materias)||[]).find(x=>String(x.id)===String(id)); if(!m) return;
       const items=NOVEDADES[id];
-      const b=document.createElement("button"); b.className="novItem";
+      const v=homeMateriaVisual(m.nombre);
+      const b=document.createElement("button"); b.type="button"; b.className="h3MoreRow h3MoreRow--inCard";
+      b.style.setProperty("--tone",v.color);
       const detalle=items.slice(0,2).map(i=>escapeHtml(i.nombre)).join(" · ")+(items.length>2?` · y ${items.length-2} más`:"");
-      b.innerHTML=`<span class="dIcon">${iconMateria(m.nombre)}</span><span class="dTxt"><b>${escapeHtml(limpiaNombreMateria(m.nombre))} <span class="novN">${items.length} ${items.length===1?"novedad":"novedades"}</span></b><small>${detalle}</small></span><span class="dArrow">›</span>`;
+      b.innerHTML=`${homeMarcaMateria(m.nombre,"h3MoreRowIcon")}<span class="h3MoreRowTx"><b>${escapeHtml(capMateria(limpiaNombreMateria(m.nombre)))} · ${items.length} ${items.length===1?"novedad":"novedades"}</b><small>${detalle}</small></span>${homeIcono("flecha")}`;
       b.onclick=()=>{ verTab("materias"); abrirMateria(m); };
       w.appendChild(b);
     });
@@ -689,17 +918,24 @@
   function pintarNotasInicio(){
     const box=$("#notasInicio"); if(!box) return; box.innerHTML="";
     if(!NOTAS.length) return;
-    const w=document.createElement("div"); w.className="widget";
-    w.innerHTML=`<div class="wHead"><span class="wTit">🎓 Mis notas</span><button class="wLink" id="btnVerNotas">Ver todas</button></div>`;
-    const chips=document.createElement("div"); chips.className="chips";
+    const w=document.createElement("div"); w.className="h3MoreCard"; w.style.setProperty("--tone","#2DAE68");
+    w.innerHTML=`<div class="h3MoreHead"><span class="h3MoreMark">${homeIcono("nota")}</span><h3>Mis notas</h3><button class="h2TextAction" id="btnVerNotas" type="button">Ver todas</button></div>`;
+    const chips=document.createElement("div"); chips.className="h3MoreChips";
     const proms=promediosPorMateria();
-    proms.slice(0,4).forEach(p=>chips.appendChild(chipPromedio(p)));
+    proms.slice(0,4).forEach(p=>{                       // chip 2.0: punto del color de la materia + promedio
+      const v=homeMateriaVisual(p.materia);
+      const s=document.createElement("span"); s.className="h3Chip"; s.style.setProperty("--tone",v.color);
+      s.innerHTML=`<i></i><span>${escapeHtml(capMateria(limpiaNombreMateria(p.materia))||"General")}</span><b>${escapeHtml(String(p.prom))}</b>`;
+      chips.appendChild(s);
+    });
     w.appendChild(chips);
     // la nota más reciente floja → empuje a reforzar (con fotos del examen)
     const floja=NOTAS.find(t=>Number(t.nota)<NOTA_REFUERZO && t.materia);
     if(floja){
-      const b=document.createElement("button"); b.className="otros refuerzo";
-      b.textContent=`💪 ${limpiaNombreMateria(floja.materia)} se puede reforzar →`;
+      const v=homeMateriaVisual(floja.materia);
+      const b=document.createElement("button"); b.type="button"; b.className="h3MoreRow h3MoreRow--inCard";
+      b.style.setProperty("--tone",v.color);
+      b.innerHTML=`<span class="h3MoreRowIcon">${homeIcono("refuerzo")}</span><span class="h3MoreRowTx"><b>${escapeHtml(capMateria(limpiaNombreMateria(floja.materia)))} se puede reforzar</b><small>Practicá justo lo que salió mal</small></span>${homeIcono("flecha")}`;
       b.onclick=()=>irARefuerzo(floja);
       w.appendChild(b);
     }
@@ -1076,6 +1312,7 @@
     $("#user").value=""; $("#loginMsg").innerHTML="";
     (eraNativa || BETA) ? verBeta() : verLanding();
   };
+  $("#btnSalirHome").onclick=()=>$("#btnSalir").click();
 
   // sesión vencida (token expirado): cerrar y volver al login con aviso amable
   function sesionVencida(mensaje){
@@ -2141,7 +2378,8 @@
 
   function renderResumen(res, d){
     const c=document.createElement("div"); c.className="sumCard";
-    let html=`<span class="tag t2">📝 Resumen</span>`;
+    // Chispa "leyendo" acompaña el resumen (compañera de estudio; presencia única en esta vista).
+    let html=`<div class="sumHead"><img class="sumChispa" src="${chispaPoseSrc('leyendo')}" alt="" aria-hidden="true"><span class="tag t2">📝 Resumen</span></div>`;
     if(d.titulo) html+=`<h2>${escapeHtml(d.titulo)}</h2>`;
     if(d.intro)  html+=`<p class="sumIntro">${escapeHtml(d.intro)}</p>`;
     const secciones = Array.isArray(d.secciones) ? d.secciones : [];
@@ -2233,9 +2471,11 @@
     else if(pct>=0.7) msg="¡Muy bien! 💪 Vas por buen camino.";
     else if(pct>=0.5) msg="¡Bien! 📚 Sigue practicando un poquito más.";
     else              msg="¡No te rindas! 🙌 Repasa y vuelve a intentarlo.";
-    const c=document.createElement("div"); c.className="card";
+    const emo = pct>=0.7 ? "celebrando" : "animando";
+    const c=document.createElement("div"); c.className="card quizFin";
     c.style.animationDelay="0.05s";
-    c.innerHTML=`<span class="tag t3">🎉 ¡Terminaste!</span>
+    c.innerHTML=`<img class="chispaFin" src="${chispaSrc(emo)}" alt="" aria-hidden="true">
+      <span class="tag t3">🎉 ¡Terminaste!</span>
       <p class="q">Nota: ${nota}/20 · acertaste ${estado.ok} de ${estado.total}</p>
       <div class="sumKey"><b>${escapeHtml(msg)}</b></div>`;
     res.appendChild(c);
@@ -2248,7 +2488,7 @@
   function vacio(t){ const d=document.createElement("div"); d.className="empty"; d.textContent=t; return d; }
   function vistaCargando(tema, mo, conFotos){
     const extra = conFotos ? " y leyendo tus apuntes" : "";
-    return `<div class="loading"><div class="brain">🧠</div>
+    return `<div class="loading"><img class="chispaThinking" src="${chispaSrc('pensando')}" alt="" aria-hidden="true">
       <div>${escapeHtml(mo.carga)} de <b>${escapeHtml(tema)}</b>${extra}…</div>
       <div class="dots"><span></span><span></span><span></span></div></div>
       ${[0,1,2].map(()=>`<div class="skel"><div class="bar s"></div><div class="bar m"></div><div class="bar l"></div></div>`).join("")}`;
