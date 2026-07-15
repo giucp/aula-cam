@@ -11,9 +11,22 @@ Relacionados: **fuente de verdad = `aula-cam-estetica-local/docs/CHISPA_2.0_DESI
 
 ---
 
-> 🔒 **HERO RESUELTO Y CONGELADO (2026-07-14) → ver §10 al final del documento.** Ahí están los
-> valores finales de mano/libro por ancho, los assets válidos, la receta de atenuado de destellos y
-> las 3 trampas que NO hay que repetir. **No tocar sin pedido explícito.**
+> ## ⚡ RETOMAR EN CHAT NUEVO (cierre 2026-07-14) — leer en este orden
+> 1. **§12 — LANDING: dirección definitiva.** Es la tarea EN CURSO. El usuario trajo la spec + 3
+>    mockups y **está creando los assets** (avisa dónde quedan). Todo lo anterior de la landing queda
+>    superado. **Regla que manda: Chispa va EN UNA ESCENA, nunca como sticker flotante.**
+> 2. **§11 — Mapa de poses.** Hay **20 poses** en `aula-cam-estetica-local/assets/chispa-3d/`.
+>    **No repetir la misma mascota entre pantallas ni clonar composiciones.**
+> 3. **§10 — Hero del Inicio: CONGELADO.** Valores finales de mano/libro por ancho, assets válidos,
+>    receta del atenuado y las 3 trampas. **No tocar sin pedido explícito.** Incluye la **regla de
+>    peso: todo asset nuevo se exporta a ~3× su display, NUNCA a 1254px.**
+>
+> **Ya está LIVE en producción** (aula-cam.vercel.app, sw v77): hero del Inicio, "Más para ti" en 2.0,
+> y la **base 2.0 en toda la app** (tokens viejos reapuntados, canvas global, íconos de materia 3D).
+> **Falta convertir:** Materias (la próxima), Agenda, Amigos/Muro, Cumbre, onboarding, #lab.
+>
+> **Lección de este chat (no repetir):** hice la landing 2 veces y las 2 fueron malas por esperar
+> guía en vez de traer decisiones, y por no mirar el material que el usuario ya había creado.
 
 ## ✅ ESTADO — Inicio reconstruido por composición (2026-07-14, verificado en LOCAL, sin desplegar)
 Los 8 cambios del brief están implementados y probados a 360/375px, sin scroll horizontal, sin errores
@@ -484,3 +497,85 @@ Objetivo: que las estrellas que caen sobre el texto no le quiten fuerza, **sin t
 
 **Al agregar una pose:** exportarla a **~3× su tamaño de display** (regla de peso de §10.3), NO a
 1254px. Ej.: `chispa-bienvenida.png` = pose 02 a 510px (135 KB) para mostrarse a ~186px.
+
+---
+
+# 🎯 12. LANDING — DIRECCIÓN DEFINITIVA (spec del usuario, 2026-07-14) ← **RETOMAR ACÁ**
+
+> El usuario trajo una lámina con la metodología + 3 mockups. **Esto manda sobre todo lo anterior
+> de la landing.** Las 2 versiones que hice antes NO sirven y quedan superadas.
+>
+> **Autocrítica (para no repetirlo):** hice la landing dos veces y las dos fueron malas.
+> 1ª: diseño viejo recoloreado (mascota flotando al lado de un párrafo, cero hero, cero color).
+> 2ª: Chispa brazos-abiertos centrada sobre un glow → **sigue siendo un sticker flotante**.
+> El error de fondo: **no miré las 20 poses que ya existían** y **clonaba la composición del Inicio**
+> en vez de componer. Y esperaba que el usuario me guiara pixel a pixel en vez de traer decisiones.
+
+## 12.1 Los 10 principios (de la lámina)
+1. **Objetivo único:** que el usuario entienda el valor y quiera entrar a practicar. Todo el diseño
+   guía al botón principal, sin competir por atención.
+2. **Jerarquía fuerte:** el ojo ve 1º la mascota y el valor, 2º el botón, 3º cómo funciona, 4º padres.
+   Se logra con tamaño, color, contraste y espacio.
+3. **⭐ Chispa es el PROTAGONISTA, no decoración: es el guía.** Debe aparecer **EN UNA ESCENA**
+   (entorno del aula, interactuando con elementos educativos), **NO como un sticker flotante**.
+4. **El valor en una frase:** clara, corta y emocional.
+5. **3 pasos visuales:** que se entiendan en 2 segundos. Tarjetas con ilustraciones 3D coherentes y
+   texto mínimo.
+6. **CTA imposible de ignorar:** grande, con degradado, ícono y microcopia orientada a la acción.
+7. **Padres, discreto:** tarjeta secundaria al final, estilo neutro, ícono de seguridad. Importante
+   pero no compite.
+8. **Ritmo:** márgenes amplios, radios grandes, mucho aire. Alternar bloques grandes/chicos.
+9. **Consistencia:** paleta, tipografía y estilo 3D ya definidos.
+10. **Validar el recorrido** (test de 5 segundos): **Chispa → Valor → CTA → Pasos → Padres**.
+
+## 12.2 Mockup 1 — Landing (la pantalla principal)
+- Eyebrow `CHISPA` morado.
+- **H1:** "Tu aula virtual, **hecha para ti**" ("para ti" en morado).
+- **Sub:** "Todo lo que aprendes en clase, ahora en un solo lugar para que practiques, entiendas y apruebes."
+- **ESCENA (el asset clave):** Chispa **en un escritorio con una laptop**, pizarrón de fondo, planta —
+  ambiente de aula. Ocupa el bloque central, a sangre con el fondo cálido.
+- **CTA:** "Entrar a practicar" + flecha en círculo. Grande, degradado morado.
+- **Prueba social:** fila de avatares + "Únete a miles de estudiantes que ya están aprendiendo con Chispa".
+  ⚠️ **Decisión pendiente del usuario:** hoy Chispa la usan 2 niñas — esa frase sería falsa. Ver 12.5.
+- **Padres:** tarjeta neutra al final: ícono candado + "Para los padres · Consulta el acceso y la
+  seguridad" + chevron.
+
+## 12.3 Mockup 2 — "¿Cómo funciona?"
+- Título + bajada: "Así es tu aula virtual en 3 simples pasos".
+- 3 **tarjetas horizontales**: nº morado + título + texto corto + **ilustración 3D a la derecha**:
+  1. "Entra con tu usuario del aula" · "El mismo de siempre." → ilustración: tarjeta de acceso.
+  2. "Escoge tu materia y tu tema" · "Los mismos que estás viendo en clase." → libros + matraz.
+  3. "Aprende, practica y ponte a prueba" · "Primero entiendes, después practicas, y al final simulas
+     tu examen." → **Chispa escribiendo en un cuaderno** (pose 08-escribiendo, en escena).
+- Cierra con la tarjeta de padres.
+
+## 12.4 Mockup 3 — "Todo en un solo lugar"
+- **H1:** "Todo en un solo lugar para que avances **más y mejor**".
+- **Chispa brazos-abiertos EN ESCENA**, rodeada de elementos 3D flotantes (trofeo, checks, checklist).
+- **Grid 2×2** de features, cada una con ícono 3D:
+  | Resúmenes inteligentes · "Entiende rápido lo más importante" | Retos y prácticas · "Ejercicios para reforzar lo aprendido" |
+  | Simulacros de examen · "Practica como si fuera el día real" | Tu progreso · "Sigue tu avance y celebra logros" |
+- Cierra con la tarjeta de padres.
+
+## 12.5 ASSETS — los está creando el usuario (avisa dónde quedan)
+Necesarios para poder maquetar esto:
+- [ ] **Escena landing:** Chispa en el escritorio con laptop + pizarrón + planta.
+- [ ] **3 ilustraciones de los pasos** (acceso / libros+matraz / Chispa escribiendo).
+- [ ] **Escena "todo en un lugar":** Chispa brazos-abiertos + elementos flotantes (trofeo, checks).
+- [ ] **4 íconos 3D** de features (resúmenes, retos, simulacros, progreso).
+- [ ] **Ícono candado** (padres).
+- [ ] Avatares de prueba social *(solo si se resuelve 12.5-a)*.
+
+**⚠️ Al recibirlos: exportar/redimensionar a ~3× su tamaño de display** (regla de peso de §10.3),
+NUNCA a 1254px. Los assets actuales pesan 1.2 MB en total; no romper eso.
+
+**12.5-a · Decisión abierta:** la prueba social ("miles de estudiantes") **hoy sería mentira** (Chispa
+la usan 2 niñas del Arzobispo Méndez). Opciones: (a) sacarla, (b) reemplazarla por algo honesto
+("Hecho para el aula virtual de tu colegio"), (c) dejarla para cuando haya base real. **Preguntar.**
+
+## 12.6 Estado del código al cerrar este chat
+- La landing en `index.html` (`.h3Bienvenida`) es la **2ª versión (superada)**: Chispa brazos-abiertos
+  centrada sobre glow + CTA + `.h3Steps` + padres colapsado. **Se va a reemplazar** por 12.2 cuando
+  lleguen los assets. El CSS vive en `estilos.css` (buscar `.h3Bienvenida`).
+- `assets/hero/chispa-bienvenida.png` = pose 02 a 510px (135 KB). Se puede reusar o descartar.
+- El `#btnEntrarLanding` NO se puede renombrar (lo cablea `app.js`).
