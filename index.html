@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
 <!-- El `?v=` va apareado con el V de sw.js — subir los DOS juntos. Sin él, la 1ª apertura tras un
      deploy mezcla index nuevo + app.js viejo (cache-first) y el arranque muere. Ver sw.js. -->
-<link rel="stylesheet" href="estilos.css?v=86">
+<link rel="stylesheet" href="estilos.css?v=87">
 </head>
 <body>
 <div class="wrap">
@@ -288,65 +288,113 @@
       </section>
     </div>
 
-    <!-- ═══ pestaña AGENDA: tareas + horario ═══ -->
-    <div id="tabAgenda" class="hidden">
-      <div class="widget">
-        <div class="wHead"><span class="wTit">📝 Tareas</span><button class="wLink" id="btnNuevaTarea">＋ Anotar</button></div>
-        <div id="formTarea" class="hidden">
-          <div class="field"><input id="tDesc" type="text" maxlength="300" placeholder="¿Qué te mandaron? (ej: página 42, ejercicios 1 al 5)" /></div>
-          <p class="lblMini">Materia</p>
+    <!-- ═══ pestaña AGENDA 2.0 — "Todo lo importante, en calma" ═══
+         Encabezado propio (la .topbar vieja se oculta acá, como en Inicio y Materias): título
+         protagonista + el libro 3D a sangre, sin caja. Tira de semana → Tareas → Notas → Horario.
+         Los formularios y el editor de horario son los MISMOS de siempre (ids intactos), solo
+         cambia el envoltorio. Íconos 3D en assets/agenda/. -->
+    <div id="tabAgenda" class="hidden agendaV2">
+      <header class="agTop">
+        <div class="agTitle">
+          <p class="agEyebrow">Chispa</p>
+          <h1>Mi agenda</h1>
+        </div>
+        <img class="agBook" src="assets/agenda/agenda.webp" alt="" aria-hidden="true" />
+        <!-- destellos de 4 puntas (los del mockup): SVG con lados cóncavos, no un truco de máscara -->
+        <svg class="agStar agStar--a" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1.1 7.4 4.6 10.9 12 12-7.4 1.1-10.9 4.6-12 12-1.1-7.4-4.6-10.9-12-12 7.4-1.1 10.9-4.6 12-12Z"/></svg>
+        <svg class="agStar agStar--b" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1.1 7.4 4.6 10.9 12 12-7.4 1.1-10.9 4.6-12 12-1.1-7.4-4.6-10.9-12-12 7.4-1.1 10.9-4.6 12-12Z"/></svg>
+        <button class="agAdd" id="btnNuevaTarea" type="button" aria-label="Anotar una tarea">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+      </header>
+
+      <!-- tira de la semana: orienta sin pedir nada. El punto = ese día tiene algo. -->
+      <div class="agWeek" id="agWeek" aria-label="Esta semana"></div>
+
+      <section class="agCard">
+        <div class="agHead">
+          <img class="agMark" src="assets/agenda/tareas.webp" alt="" aria-hidden="true" />
+          <h2>Tareas</h2>
+          <button class="agAction" id="btnNuevaTarea2" type="button">＋ Anotar</button>
+        </div>
+        <!-- Anotar una tarea. El TIPO es un control segmentado (3 partes iguales, la activa en
+             pastilla blanca): son opciones excluyentes, no etiquetas sueltas. -->
+        <div id="formTarea" class="agForm hidden">
+          <p class="agFormTit">Nueva tarea</p>
+          <label class="agLbl" for="tDesc">¿Qué te mandaron?</label>
+          <div class="field"><input id="tDesc" type="text" maxlength="300" placeholder="ej: página 42, ejercicios 1 al 5" /></div>
+          <p class="agLbl">Materia</p>
           <div class="chips" id="tMaterias"></div>
-          <p class="lblMini">Tipo</p>
-          <div class="chips" id="tTipos">
-            <button class="chip" data-tipo="tarea" aria-pressed="true">📝 Tarea</button>
-            <button class="chip" data-tipo="trabajo" aria-pressed="false">📚 Trabajo</button>
-            <button class="chip" data-tipo="examen" aria-pressed="false">📋 Examen</button>
+          <p class="agLbl">Tipo</p>
+          <div class="agSeg" id="tTipos" role="group">
+            <button class="chip" data-tipo="tarea" aria-pressed="true"><img class="agSegIco" src="assets/agenda/tipo-tarea.webp" alt="" aria-hidden="true" />Tarea</button>
+            <button class="chip" data-tipo="trabajo" aria-pressed="false"><img class="agSegIco" src="assets/agenda/tipo-trabajo.webp" alt="" aria-hidden="true" />Trabajo</button>
+            <button class="chip" data-tipo="examen" aria-pressed="false"><img class="agSegIco" src="assets/agenda/tipo-examen.webp" alt="" aria-hidden="true" />Examen</button>
           </div>
-          <p class="lblMini">¿Para cuándo?</p>
+          <label class="agLbl" for="tFecha">¿Para cuándo?</label>
           <div class="field"><input id="tFecha" type="date" /></div>
           <div id="tMsg"></div>
-          <div class="acciones" style="margin-top:12px">
+          <div class="acciones">
             <button class="go guia" id="btnGuardarTarea">Guardar</button>
             <button class="otros" id="btnCancelarTarea">Cancelar</button>
           </div>
         </div>
         <div id="tareasList"></div>
-      </div>
+      </section>
 
-      <div class="widget">
-        <div class="wHead"><span class="wTit">🎓 Notas de exámenes</span><button class="wLink" id="btnNuevaNota">＋ Anotar</button></div>
+      <section class="agCard">
+        <div class="agHead">
+          <img class="agMark" src="assets/agenda/notas-examenes.webp" alt="" aria-hidden="true" />
+          <h2>Notas de exámenes</h2>
+          <button class="agAction" id="btnNuevaNota" type="button">＋ Anotar</button>
+        </div>
         <div id="notasProm"></div>
-        <div id="formNota" class="hidden">
-          <div class="field"><input id="nDesc" type="text" maxlength="120" placeholder="¿De qué fue? (ej: examen de fracciones)" /></div>
-          <p class="lblMini">Materia</p>
+        <!-- Anotar una nota. La NOTA va en un campo propio y grande (es el dato protagonista, igual
+             que en la fila y en el boletín), con el "/ 20" fijo al lado para no repetirlo en la
+             etiqueta ni obligar a leerlo. -->
+        <div id="formNota" class="agForm hidden">
+          <p class="agFormTit">Nueva nota</p>
+          <label class="agLbl" for="nDesc">¿De qué fue?</label>
+          <div class="field"><input id="nDesc" type="text" maxlength="120" placeholder="ej: examen de fracciones" /></div>
+          <p class="agLbl">Materia</p>
           <div class="chips" id="nMaterias"></div>
-          <p class="lblMini">Nota (sobre 20)</p>
-          <div class="field"><input id="nNota" type="number" min="0" max="20" step="0.5" placeholder="ej: 16" /></div>
-          <p class="lblMini">¿Cuándo te la entregaron?</p>
+          <label class="agLbl" for="nNota">¿Qué sacaste?</label>
+          <div class="agNotaIn">
+            <input id="nNota" type="number" min="0" max="20" step="0.5" inputmode="decimal" placeholder="16" />
+            <span class="agSobre">/ 20</span>
+          </div>
+          <label class="agLbl" for="nFecha">¿Cuándo te la entregaron?</label>
           <div class="field"><input id="nFecha" type="date" /></div>
           <div id="nMsg"></div>
-          <div class="acciones" style="margin-top:12px">
+          <div class="acciones">
             <button class="go guia" id="btnGuardarNota">Guardar</button>
             <button class="otros" id="btnCancelarNota">Cancelar</button>
           </div>
         </div>
         <div id="notasList"></div>
-      </div>
+      </section>
 
-      <div class="widget">
-        <div class="wHead"><span class="wTit">📅 Mi horario</span><button class="wLink" id="btnEditarHorario2">Editar</button></div>
+      <section class="agCard">
+        <div class="agHead">
+          <img class="agMark" src="assets/agenda/horario.webp" alt="" aria-hidden="true" />
+          <h2>Mi horario</h2>
+          <button class="agAction" id="btnEditarHorario2" type="button">Editar</button>
+        </div>
         <div id="horarioSemana"></div>
-      </div>
+      </section>
 
       <!-- editor del horario (configuración de una sola vez) -->
-      <div class="widget hidden" id="horarioEditor">
-        <div class="wHead"><span class="wTit">✏️ Editar horario</span></div>
+      <section class="agCard hidden" id="horarioEditor">
+        <div class="agHead">
+          <img class="agMark" src="assets/agenda/horario.webp" alt="" aria-hidden="true" />
+          <h2>Editar horario</h2>
+        </div>
         <div id="horarioEditorDias"></div>
         <div class="acciones" style="margin-top:12px">
           <button class="go guia" id="btnGuardarHorario">Guardar horario</button>
           <button class="otros" id="btnCancelarHorario">Cancelar</button>
         </div>
-      </div>
+      </section>
     </div>
 
     <!-- ═══ pestaña MATERIAS (la práctica de siempre) ═══ -->
@@ -686,6 +734,6 @@
 
 </div>
 
-<script src="app.js?v=86"></script>
+<script src="app.js?v=87"></script>
 </body>
 </html>

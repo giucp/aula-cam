@@ -174,15 +174,16 @@
     $("#tabAgenda").classList.toggle("hidden", id!=="agenda");
     $("#vHome").classList.toggle("home-v2-active", id==="inicio");
     document.body.classList.toggle("home-v2-page", id==="inicio");
-    // Materias 2.0 trae su propio encabezado (título protagonista), así que la .topbar vieja
-    // —saludo + grado + racha + Salir— sobra ahí: duplicaba el saludo del Inicio y competía
-    // con el título. Salir sigue estando en el Inicio (#btnSalirHome). Agenda y Amigos aún
-    // NO están migradas: conservan la topbar hasta que les toque.
+    // Materias 2.0 y Agenda 2.0 traen su propio encabezado (título protagonista), así que la
+    // .topbar vieja —saludo + grado + racha + Salir— sobra ahí: duplicaba el saludo del Inicio y
+    // competía con el título. Salir sigue estando en el Inicio (#btnSalirHome). Amigos aún NO está
+    // migrada: conserva la topbar hasta que le toque.
     document.body.classList.toggle("materias-v2-page", id==="materias");
+    document.body.classList.toggle("agenda-v2-page", id==="agenda");
     document.querySelectorAll("#navbar .navBtn").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.tab===id)));
     if(id==="inicio") pintarEscritorio();
     if(id==="muro") cargarMuro();
-    if(id==="agenda"){ pintarTareas(); pintarNotas(); pintarHorarioSemana(); }
+    if(id==="agenda"){ pintarSemana(); pintarTareas(); pintarNotas(); pintarHorarioSemana(); }
     window.scrollTo({top:0});
   }
   document.querySelectorAll("#navbar .navBtn").forEach(b=>b.onclick=()=>verTab(b.dataset.tab));
@@ -614,40 +615,92 @@
   $("#btnNuevaTareaHome").onclick=()=>{ verTab("agenda"); abrirFormTarea(); };
   $("#btnHomeVerMaterias").onclick=()=>verTab("materias");
 
+  // ───────── Agenda 2.0: tira de la semana ─────────
+  // Orienta sin pedir nada: la semana de HOY (lunes a domingo), hoy en pastilla morada y un punto
+  // en los días que tienen algo. No es un selector todavía — tocar un día lleva a sus tareas.
+  const DIAS_SEM=["Lun","Mar","Mié","Jue","Vie","Sáb","Dom"];
+  function pintarSemana(){
+    const box=$("#agWeek"); if(!box) return; box.innerHTML="";
+    const hoy=new Date(); hoy.setHours(0,0,0,0);
+    const dow=(hoy.getDay()+6)%7;                       // 0=lunes … 6=domingo
+    const lunes=new Date(hoy); lunes.setDate(hoy.getDate()-dow);
+    for(let i=0;i<7;i++){
+      const d=new Date(lunes); d.setDate(lunes.getDate()+i);
+      const iso=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+      const conAlgo=TAREAS.some(t=>!t.hecha && t.fecha && t.fecha.slice(0,10)===iso);
+      const b=document.createElement("button"); b.type="button";
+      b.className="agDay"+(i===dow?" is-hoy":"")+(conAlgo?" has-algo":"");
+      b.innerHTML=`<span class="agDayName">${DIAS_SEM[i]}</span><span class="agDayNum">${d.getDate()}</span><span class="agDot"></span>`;
+      b.setAttribute("aria-label",`${DIAS_SEM[i]} ${d.getDate()}${conAlgo?" · tienes algo":""}`);
+      b.onclick=()=>{ const l=$("#tareasList"); if(l) l.scrollIntoView({block:"center",behavior:"smooth"}); };
+      box.appendChild(b);
+    }
+  }
+
   // ───────── tareas (pestaña Agenda) ─────────
-  const TIPO_ICON={tarea:"📝",trabajo:"📚",examen:"📋"};
-  function filaTarea(t, mini){
-    const div=document.createElement("div"); div.className="tarea"+(t.hecha?" hecha":"");
+  // Íconos 3D del tipo (assets/agenda/tipo-*.webp). Reemplazan a los emojis provisionales, igual
+  // que pasó con los de materia. Fuente ÚNICA: si cambia el archivo, cambia en la fila de la
+  // Agenda, en el segmentado del formulario y en el resumen del Inicio, sin tocar nada más.
+  const TIPO_IMG={tarea:"tipo-tarea",trabajo:"tipo-trabajo",examen:"tipo-examen"};
+  function tipoIcono(tipo,clase){
+    return `<img class="${clase||"agTipoImg"}" src="assets/agenda/${TIPO_IMG[tipo]||TIPO_IMG.tarea}.webp" alt="" aria-hidden="true" />`;
+  }
+  // Fila 2.0 (mismo lenguaje que "Hoy" del Inicio): placa tintada del color de la MATERIA con el
+  // emoji del tipo (provisional hasta los íconos 3D) · título Fredoka · "Materia · cuándo" ·
+  // check circular a la derecha. El cuándo urgente (venció/hoy/mañana) va en coral de marca.
+  function filaTarea(t){
     const n=diasHasta(t.fecha);
     const vencida=!t.hecha && n!==null && n<0;
-    const fecha=t.fecha?`<span class="tFechaBadge${vencida?" vencida":""}">${vencida?"⏰ venció":escapeHtml(fechaBonita(t.fecha))}</span>`:"";
-    div.innerHTML=`<button class="tCheck" aria-label="Marcar como hecha">${t.hecha?"✅":"⬜"}</button>
-      <div class="tBody"><p class="tDescTxt">${escapeHtml(t.descripcion)}</p>
-      <p class="tMeta">${TIPO_ICON[t.tipo]||"📝"} ${escapeHtml(limpiaNombreMateria(t.materia||"")||"General")} ${fecha}</p></div>
-      ${mini?"":`<button class="tBorrar" aria-label="Borrar">×</button>`}`;
-    div.querySelector(".tCheck").onclick=async()=>{
+    const urgente=!t.hecha && n!==null && n<=1;
+    const div=document.createElement("div"); div.className="agTarea"+(t.hecha?" is-done":"");
+    const materia=capMateria(limpiaNombreMateria(t.materia||""))||"General";
+    const v=homeMateriaVisual(materia); div.style.setProperty("--subject",v.color);
+    const cuando=t.fecha?capPrimera(fechaBonita(t.fecha)):"Sin fecha";
+    div.innerHTML=`<span class="agTipo">${tipoIcono(t.tipo)}</span>`+
+      `<span class="agTx"><b>${escapeHtml(t.descripcion)}</b>`+
+      `<small>${escapeHtml(materia)} · <i class="agCuando${(vencida||urgente)?" is-urgente":""}">${escapeHtml(cuando)}</i></small></span>`+
+      `<button class="h2TaskCheck" type="button" aria-label="${t.hecha?"Marcar como pendiente":"Marcar como hecha"}"><span class="h2TaskBox">${t.hecha?"✓":""}</span></button>`+
+      `<button class="agBorrar" type="button" aria-label="Borrar">×</button>`;
+    div.querySelector(".h2TaskCheck").onclick=async()=>{
       t.hecha=!t.hecha; pintarTareas(); pintarEscritorio();
       try{ await apiAgenda({accion:"tarea_hecha", id:t.id, hecha:t.hecha}); }catch(_){}
     };
-    const del=div.querySelector(".tBorrar");
-    if(del) del.onclick=async()=>{
+    div.querySelector(".agBorrar").onclick=async()=>{
       TAREAS=TAREAS.filter(x=>x!==t); pintarTareas(); pintarEscritorio();
       try{ await apiAgenda({accion:"tarea_borrar", id:t.id}); }catch(_){}
     };
     return div;
   }
+  // Lista colapsable de la Agenda: los primeros `visibles` se ven, el resto queda tras un pie
+  // "Ver N más" (el MISMO patrón del boletín del Inicio: una sola lista continua + pie al final,
+  // nunca un botón en el medio). Con 20 tareas la tarjeta ya no se come la pantalla.
+  function agColapsable(cont, filas, visibles, rotuloMas){
+    filas.forEach((f,i)=>{ if(i>=visibles) f.classList.add("agExtra"); cont.appendChild(f); });
+    const extra=filas.length-visibles;
+    if(extra<=0) return;
+    const t=document.createElement("button"); t.type="button"; t.className="nbToggle";
+    const rot=()=>cont.classList.contains("ag-todo")?"Ver menos":(rotuloMas||`Ver ${extra} más`);
+    t.innerHTML=`<span></span><svg class="nbChev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>`;
+    const set=()=>t.querySelector("span").textContent=rot();
+    set();
+    t.onclick=()=>{ cont.classList.toggle("ag-todo"); set(); };
+    cont.appendChild(t);
+  }
+  const AG_TAREAS_VISIBLES=4, AG_NOTAS_VISIBLES=3;
   function pintarTareas(){
-    const cont=$("#tareasList"); if(!cont) return; cont.innerHTML="";
+    const cont=$("#tareasList"); if(!cont) return; cont.innerHTML=""; cont.classList.remove("ag-todo");
     if(!TAREAS.length){
-      cont.innerHTML=`<p class="wVacio">Anota aquí lo que te manden: tareas, trabajos y fechas de exámenes. Te lo recordamos en Inicio. 📌</p>`;
+      cont.innerHTML=`<p class="h2Empty">Anota aquí lo que te manden: tareas, trabajos y fechas de exámenes. Te lo recordamos en Inicio.</p>`;
       return;
     }
+    // pendientes primero; las hechas SIEMPRE quedan tras el pie (son historial, no urgencia)
     const pend=TAREAS.filter(t=>!t.hecha), listas=TAREAS.filter(t=>t.hecha);
-    pend.forEach(t=>cont.appendChild(filaTarea(t)));
+    const filas=pend.map(t=>filaTarea(t));
     if(listas.length){
-      const h=document.createElement("p"); h.className="lblMini"; h.textContent=`Hechas (${listas.length})`; cont.appendChild(h);
-      listas.slice(0,10).forEach(t=>cont.appendChild(filaTarea(t)));
+      const h=document.createElement("p"); h.className="agHechasTit"; h.textContent=`Hechas (${listas.length})`;
+      filas.push(h, ...listas.slice(0,10).map(t=>filaTarea(t)));
     }
+    agColapsable(cont, filas, Math.min(AG_TAREAS_VISIBLES, Math.max(pend.length,1)));
   }
   let tipoSel="tarea", tMatSel="";
   // La fecha arranca en HOY (antes quedaba vacía). Una tarea sin fecha no salía en ninguna parte
@@ -664,7 +717,9 @@
     document.querySelectorAll("#tTipos .chip").forEach(c=>c.setAttribute("aria-pressed", String(c.dataset.tipo==="tarea")));
     $("#tDesc").focus();
   }
+  // dos entradas al mismo formulario: el + flotante del encabezado y el "Anotar" de la tarjeta
   $("#btnNuevaTarea").onclick=abrirFormTarea;
+  $("#btnNuevaTarea2").onclick=abrirFormTarea;
   $("#btnCancelarTarea").onclick=()=>$("#formTarea").classList.add("hidden");
   document.querySelectorAll("#tTipos .chip").forEach(b=>{
     b.onclick=()=>{ tipoSel=b.dataset.tipo;
@@ -686,18 +741,29 @@
 
   // ───────── horario: vista semanal + editor ─────────
   const DIAS_CORT=["","Lunes","Martes","Miércoles","Jueves","Viernes"];
+  // Vista 2.0: de entrada se ve SOLO el próximo día escolar (pill morada llena) — es la única
+  // pregunta del día a día ("¿qué toca?"). "Ver toda la semana" despliega el resto. Chips de
+  // materia con punto de color (.h3Chip, el mismo componente de "Mañana toca" en el Inicio).
   function pintarHorarioSemana(){
-    const cont=$("#horarioSemana"); if(!cont) return; cont.innerHTML="";
+    const cont=$("#horarioSemana"); if(!cont) return; cont.innerHTML=""; cont.classList.remove("ag-todo");
     if(!HORARIO.length){
-      cont.innerHTML=`<p class="wVacio">Aún no configuraste tu horario. Toca "Editar" y lo armas en 2 minutos (una sola vez).</p>`;
+      cont.innerHTML=`<p class="h2Empty">Aún no configuraste tu horario. Toca "Editar" y lo armas en 2 minutos (una sola vez).</p>`;
       return;
     }
-    for(let d=1; d<=5; d++){
+    const prox=proximoDiaEscolar().dia;
+    const fila=d=>{
       const del=HORARIO.filter(h=>h.dia===d).sort((a,b)=>(a.orden||0)-(b.orden||0));
-      const row=document.createElement("div"); row.className="hsRow";
-      row.innerHTML=`<span class="hsDia">${DIAS_CORT[d]}</span><span class="hsMats">${del.length?del.map(h=>escapeHtml(limpiaNombreMateria(h.materia))).join(" · "):"—"}</span>`;
-      cont.appendChild(row);
-    }
+      const row=document.createElement("div"); row.className="agDiaRow";
+      const chips=del.length?del.map(h=>{
+        const v=homeMateriaVisual(h.materia);
+        return `<span class="h3Chip" style="--tone:${v.color}"><i></i><span>${escapeHtml(capMateria(limpiaNombreMateria(h.materia)))}</span></span>`;
+      }).join(""):`<span class="agDiaLibre">Libre</span>`;
+      row.innerHTML=`<span class="agDiaPill${d===prox?" is-prox":""}">${DIAS_CORT[d]}</span><span class="h3MoreChips">${chips}</span>`;
+      return row;
+    };
+    // el próximo día primero; los demás en orden de semana, tras el pie
+    const orden=[prox, ...[1,2,3,4,5].filter(d=>d!==prox)];
+    agColapsable(cont, orden.map(fila), 1, "Ver toda la semana");
   }
   // materias base (del aula) + las "propias" que el niño agregó (caligrafía, lectura…)
   function materiasBase(){ return ((SESION&&SESION.materias)||[]).map(m=>m.nombre); }
@@ -727,7 +793,7 @@
       const sel=getSel(), abierto=!panel.classList.contains("hidden");
       const etiqueta = sel
         ? `<span class="selMatCur" style="--c:${homeMateriaVisual(sel).color}"><i class="matDot"></i>${escapeHtml(capMateria(limpiaNombreMateria(sel)))}</span>`
-        : `<span class="selMatPh">📚 Elegir materia</span>`;
+        : `<span class="selMatPh">Elegir materia</span>`;
       toggle.innerHTML = etiqueta + `<span class="selMatCar" aria-hidden="true"></span>`;
       toggle.classList.toggle("abierto", abierto);
       toggle.setAttribute("aria-expanded", String(abierto));
@@ -924,34 +990,30 @@
       .map(a=>({materia:a.materia, prom:Math.round((a.suma/a.n)*10)/10, n:a.n, ultima:a.ultima}))
       .sort((a,b)=>a.prom-b.prom);
   }
-  function chipPromedio(p){
-    const s=document.createElement("span"); s.className=`chip notaChip ${colorNota(p.prom)}`;
-    s.textContent=`${limpiaNombreMateria(p.materia)||"General"}: ${p.prom}${p.n>1?` (${p.n})`:""}`;
-    return s;
-  }
-  // resumen de promedios arriba de la lista de notas (pestaña Agenda)
+  // Arriba de la lista va UNA línea quieta con el promedio general (los promedios POR materia ya
+  // viven en el boletín del Inicio — repetir los chips acá era ruido y estética vieja).
   function pintarPromedios(){
     const box=$("#notasProm"); if(!box) return; box.innerHTML="";
-    const proms=promediosPorMateria(); if(!proms.length) return;
-    const tit=document.createElement("p"); tit.className="lblMini"; tit.textContent="Promedio por materia";
-    box.appendChild(tit);
-    const chips=document.createElement("div"); chips.className="chips";
-    proms.forEach(p=>chips.appendChild(chipPromedio(p)));
-    box.appendChild(chips);
+    if(!NOTAS.length) return;
+    const gen=promedioGeneral();
+    box.innerHTML=`<p class="agProm">Promedio general <b class="nb-${colorNota(gen)}">${escapeHtml(String(gen))}</b> · ${NOTAS.length} ${NOTAS.length===1?"nota":"notas"}</p>`;
   }
+  // Fila 2.0: la NOTA es la protagonista (placa grande coloreada por cómo salió: verde/ámbar/coral)
+  // + título + "Materia · fecha legible" (nunca el ISO crudo). La floja invita a practicar con el
+  // mismo botón del boletín del Inicio (.nbFix), no con un pill suelto de emoji.
   function filaNota(t){
-    const div=document.createElement("div"); div.className="tarea";
-    const fecha=t.fecha?`<span class="tFechaBadge">${escapeHtml(t.fecha.slice(0,10))}</span>`:"";
-    div.innerHTML=`<span class="notaBadge ${colorNota(Number(t.nota))}">${escapeHtml(String(t.nota))}</span>
-      <div class="tBody"><p class="tDescTxt">${escapeHtml(t.descripcion||"Examen")}</p>
-      <p class="tMeta">${escapeHtml(limpiaNombreMateria(t.materia||"")||"General")} ${fecha}</p></div>
-      <button class="tBorrar" aria-label="Borrar">×</button>`;
-    if(Number(t.nota)<NOTA_REFUERZO && t.materia){
-      const ref=document.createElement("button"); ref.className="otros refuerzo"; ref.textContent="💪 Reforzar →";
-      ref.onclick=()=>irARefuerzo(t);
-      div.querySelector(".tBody").appendChild(ref);
-    }
-    div.querySelector(".tBorrar").onclick=async()=>{
+    const val=Number(t.nota);
+    const div=document.createElement("div"); div.className="agNota";
+    const materia=capMateria(limpiaNombreMateria(t.materia||""))||"General";
+    const v=homeMateriaVisual(materia); div.style.setProperty("--subject",v.color);
+    div.innerHTML=`<span class="agNotaVal nb-${colorNota(val)}">${escapeHtml(String(val))}</span>`+
+      `<span class="agTx"><b>${escapeHtml(t.descripcion||"Examen")}</b>`+
+      `<small>${escapeHtml(materia)} · ${escapeHtml(fechaNota(t.fecha))}</small></span>`+
+      `<button class="agBorrar" type="button" aria-label="Borrar">×</button>`;
+    // Acá NO va la invitación a reforzar: metida entre los exámenes les quitaba vista (decisión
+    // del usuario 2026-07-16). El empuje a practicar vive en el boletín del Inicio; si algún día
+    // vuelve a la Agenda será como pieza propia, no como anuncio entre filas.
+    div.querySelector(".agBorrar").onclick=async()=>{
       NOTAS=NOTAS.filter(x=>x!==t); pintarNotas(); pintarEscritorio();
       try{ await apiAgenda({accion:"nota_borrar", id:t.id}); }catch(_){}
     };
@@ -959,12 +1021,12 @@
   }
   function pintarNotas(){
     pintarPromedios();
-    const cont=$("#notasList"); if(!cont) return; cont.innerHTML="";
+    const cont=$("#notasList"); if(!cont) return; cont.innerHTML=""; cont.classList.remove("ag-todo");
     if(!NOTAS.length){
-      cont.innerHTML=`<p class="wVacio">Cuando te entreguen un examen, anota aquí la nota. Así ves cómo vas en cada materia y te decimos qué reforzar. 🎓</p>`;
+      cont.innerHTML=`<p class="h2Empty">Cuando te entreguen un examen, anota aquí la nota. Así ves cómo vas en cada materia y te decimos qué reforzar.</p>`;
       return;
     }
-    NOTAS.forEach(t=>cont.appendChild(filaNota(t)));
+    agColapsable(cont, NOTAS.map(t=>filaNota(t)), AG_NOTAS_VISIBLES);
   }
   // ───────── "Mis notas" en el Inicio: EL BOLETÍN (rediseñado 2026-07-16) ─────────
   // Antes era una tira de chips (puntito de color + materia + número): plano, sin jerarquía, y
