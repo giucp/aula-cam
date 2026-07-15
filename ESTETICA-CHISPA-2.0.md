@@ -455,3 +455,32 @@ Objetivo: que las estrellas que caen sobre el texto no le quiten fuerza, **sin t
 - **`../chispa-viewing.bat`** — sirve la carpeta en LAN (`0.0.0.0:8080`) para verlo en el celular.
   PC: `http://localhost:8080/…` · Celu (misma WiFi): `http://192.168.68.109:8080/…`
   *(si la IP cambia: `ipconfig` → IPv4 del adaptador Wi-Fi; y permitir Python en el Firewall).*
+
+---
+
+# 🎭 11. MAPA DE POSES DE CHISPA — una pose por momento (2026-07-14)
+
+> **Regla dura: NO repetir la misma Chispa en pantallas distintas.** Hay **20 poses** en
+> `aula-cam-estetica-local/assets/chispa-3d/` (15 en `poses/png/` + 5 estados). Usar una sola para
+> todo mata la personalidad y hace que dos pantallas parezcan la misma. Cada momento tiene SU pose.
+> **Tampoco clonar la composición**: el hero del Inicio es una tarjeta morada con la mano apoyada;
+> otra pantalla NO debe copiar esa tarjeta — necesita su propio ritmo.
+
+| Momento | Pose | Estado |
+|---|---|---|
+| **Inicio · hero** | `saludando` + `chispa-mano` apoyada (2 capas) | ✅ hecho (§10) |
+| **Bienvenida / landing** | **`02-brazos-abiertos`** (recibe), centrada sobre glow cálido | ✅ hecho |
+| **Login** | `05-pulgar-arriba` o `06-escuchando` | ⬜ pendiente (decidir con el user) |
+| **¿Cómo funciona?** | `10-explicando` | ⬜ idea |
+| **Carga de IA** | `pensando` | ✅ ya estaba |
+| **Resumen** | `07-leyendo` | ✅ ya estaba |
+| **Antes de practicar** | `08-escribiendo` | ⬜ pendiente |
+| **Quiz aprobado (≥70%)** | `celebrando` | ✅ ya estaba |
+| **Quiz bajo (<70%)** | `animando` (nunca castiga) | ✅ ya estaba |
+| **Racha / logro** | `09-estrella` | ⬜ pendiente |
+| **Vacío "todo al día"** | `descansando` | ⬜ pendiente |
+| **Materias vacío / guiar** | `03-senala-derecha` | ⬜ idea |
+| **Onboarding nativo** | `02`, `10-explicando`, `05-pulgar-arriba` | ⬜ pendiente |
+
+**Al agregar una pose:** exportarla a **~3× su tamaño de display** (regla de peso de §10.3), NO a
+1254px. Ej.: `chispa-bienvenida.png` = pose 02 a 510px (135 KB) para mostrarse a ~186px.
