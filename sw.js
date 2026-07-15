@@ -1,13 +1,24 @@
 // sw.js — Service Worker de Aula CAM
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
-// Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v83"; // v83: Inicio ordenado por jerarquía de uso (sin redundancias: fuera la grilla de materias y el cajón "Más para ti")
+// Subir V cuando cambie el cascarón para forzar la actualización a todos.
+//
+// ★★ POR QUÉ app.js Y estilos.css VAN CON `?v=` — NO QUITARLO (roto en prod 2026-07-16) ★★
+// El index.html se sirve NETWORK-FIRST (siempre fresco) pero los assets van CACHE-FIRST.
+// Sin el `?v=`, la 1ª apertura tras un deploy mezclaba **index.html NUEVO + app.js VIEJO**
+// (del caché de la versión anterior). Si el index nuevo borró un elemento que el app.js viejo
+// toca sin guarda (fue `$("#btnHomeVerAgenda").onclick`), eso es un TypeError que MATA el
+// script entero: la app no abría desde el ícono, en todos los teléfonos ya instalados.
+// Con el `?v=`, el SW VIEJO busca "/app.js?v=NN" en su caché, NO lo encuentra, y cae a la red
+// → recibe el app.js nuevo → el par index+app.js SIEMPRE viaja junto, ya en la 1ª apertura.
+// Los `?v=` de index.html y este V tienen que subir JUNTOS.
+const V = "84";
+const VERSION = `aulacam-v${V}`; // v84: rescate del arranque (assets versionados: index y app.js ya no se desparejan)
 const SHELL = [
   "/",
   "/index.html",
-  "/app.js",
-  "/estilos.css",
+  `/app.js?v=${V}`,
+  `/estilos.css?v=${V}`,
   "/un-dia-como-hoy.json",
   "/manifest.webmanifest",
   "/icon-192.png",
