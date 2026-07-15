@@ -46,7 +46,9 @@
 
   .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 19px;box-shadow:var(--shadow-card)}
   .lbl{font-family:"Fredoka",sans-serif;font-weight:600;font-size:.96rem;color:var(--ink);margin:0 0 13px;display:flex;align-items:center;gap:9px}
-  .lbl .n{background:var(--sun);color:var(--ink);width:25px;height:25px;border-radius:50%;display:grid;place-items:center;font-size:.85rem;font-weight:700;box-shadow:var(--shadow-xs)}
+  /* Chispa 2.0: los numeritos de paso van en morado suave (antes amarillo --sun, paleta vieja).
+     Esta regla la comparten TODOS los formularios de la app (login, tema, nota, tarea, registro). */
+  .lbl .n{background:var(--chispa-primary-soft);color:var(--chispa-primary);width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.85rem;font-weight:700;box-shadow:none;flex:none}
   .lbl .lblOpt{font-weight:500;font-size:.82rem;color:var(--muted, #8a8a99)}
   /* consentimiento + nota de privacidad (registro de cuenta nativa) */
   .consent{display:flex;gap:10px;align-items:flex-start;margin:16px 0 0;cursor:pointer;font-size:.9rem;line-height:1.45;color:var(--ink)}
@@ -374,9 +376,28 @@
   .modo[aria-pressed="true"] .pmRec{background:rgba(255,255,255,.92);color:var(--mango-dark)}
 
   /* landing */
+  /* ═══ Bienvenida / Login — Chispa 2.0 ═══
+     Chispa es la marca: da la cara en su pantalla de bienvenida, con el mismo lenguaje que
+     el hero del Inicio (texto a la izquierda, mascota asomada a la derecha). */
+  /* el TÍTULO es el hero: va a todo el ancho. La mascota acompaña al subtítulo, no lo encajona. */
+  .h3Welcome{margin:2px 0 20px}
+  .h3Welcome h1{overflow-wrap:anywhere;letter-spacing:-.02em;margin-bottom:10px}
+  .h3WelcomeRow{display:grid;grid-template-columns:minmax(0,1fr) 132px;gap:10px;align-items:end}
+  .h3WelcomeRow .sub{margin:0 0 6px}
+  .h3WelcomeChispa{width:132px;height:auto;justify-self:end;align-self:end;pointer-events:none;
+    filter:drop-shadow(0 14px 20px rgba(69,48,163,.2))}
+  #vLanding>.go{margin:0 0 18px}                     /* la acción principal: sola y dominante */
+  .h3Steps{margin-bottom:12px}
+  .h3Padres>summary{color:var(--chispa-muted)}        /* legal: informa, no compite */
+  .h3Padres .h2MoreBody{display:block;padding:0 16px 14px}
+  @media (max-width:374px){
+    .h3WelcomeRow{grid-template-columns:minmax(0,1fr) 108px}
+    .h3WelcomeChispa{width:108px}
+  }
+
   .comoPasos{display:flex;flex-direction:column;gap:15px}
   .comoPaso{display:flex;gap:12px;align-items:flex-start}
-  .comoPaso .n{flex:none;background:var(--sun);color:var(--ink);width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-family:"Fredoka";font-weight:700;font-size:.85rem;box-shadow:var(--shadow-xs);margin-top:2px}
+  .comoPaso .n{flex:none;background:var(--chispa-primary-soft);color:var(--chispa-primary);width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-family:"Fredoka";font-weight:700;font-size:.85rem;box-shadow:none;margin-top:1px}
   .comoPaso b{font-family:"Fredoka";font-weight:600;font-size:1rem;display:block;margin-bottom:2px}
   .comoPaso small{color:var(--muted);font-weight:600;font-size:.9rem;line-height:1.45}
   .panelPadres{margin-top:16px;background:#FBF7FB;box-shadow:none}

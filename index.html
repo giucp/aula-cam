@@ -24,30 +24,44 @@
 
   <!-- ╔═══ LANDING ═══╗ -->
   <section id="vLanding">
-    <p class="hi">Chispa</p>
-    <h1>Tu aula virtual, convertida en práctica <span class="star">✨</span></h1>
-    <p class="sub">Chispa toma lo que tus maestros suben al aula virtual y lo convierte en resúmenes, retos, quiz y exámenes de práctica hechos para ti.</p>
-    <div class="panel">
+    <!-- Bienvenida (Chispa 2.0): Chispa es la marca, así que da la cara. Mismo lenguaje que el
+         hero del Inicio: texto a la izquierda, mascota asomada a la derecha. Sin emojis. -->
+    <div class="h3Welcome">
+      <p class="hi">Chispa</p>
+      <h1>Tu aula virtual, convertida en <span class="h2Name">práctica</span></h1>
+      <div class="h3WelcomeRow">
+        <p class="sub">Chispa toma lo que tus maestros suben al aula y lo convierte en resúmenes, retos y exámenes de práctica hechos para ti.</p>
+        <img class="h3WelcomeChispa" src="assets/hero/chispa.png" alt="Chispa, tu compañera de aprendizaje" />
+      </div>
+    </div>
+
+    <!-- una sola acción importante (§ regla 2.0), fuera de la tarjeta -->
+    <button class="go" id="btnEntrarLanding">Entrar a practicar</button>
+
+    <div class="panel h3Steps">
       <p class="lbl">¿Cómo funciona?</p>
       <div class="comoPasos">
         <div class="comoPaso"><span class="n">1</span><div><b>Entra con tu usuario del aula virtual</b><small>El mismo de siempre, nada nuevo que memorizar.</small></div></div>
         <div class="comoPaso"><span class="n">2</span><div><b>Escoge tu materia y tu tema</b><small>Verás los mismos temas que están viendo en clase.</small></div></div>
         <div class="comoPaso"><span class="n">3</span><div><b>Aprende, practica y ponte a prueba</b><small>La IA crea ejercicios a partir de tus propias guías de clase, y te guía paso a paso: primero entiendes, luego practicas, y al final simulas tu examen.</small></div></div>
       </div>
-      <button class="go" id="btnEntrarLanding" style="margin-top:18px">Entrar a practicar</button>
     </div>
-    <div class="panel panelPadres">
-      <p class="lblPadres">Para los padres</p>
-      <p class="txtPadres">Chispa se conecta al aula virtual del colegio con el usuario del alumno únicamente para leer sus materias y guías. La clave se usa una sola vez para conectarse y no se guarda. Los ejercicios se generan a partir del material real que asignan los docentes, y la app registra el avance del niño (temas practicados y resultados de sus quizzes) solo para guiar su aprendizaje.</p>
-    </div>
+
+    <!-- texto legal: informa, pero no compite. Colapsado como en "Más para ti". -->
+    <details class="h2More h3Padres">
+      <summary>Para los padres</summary>
+      <div class="h2MoreBody">
+        <p class="txtPadres">Chispa se conecta al aula virtual del colegio con el usuario del alumno únicamente para leer sus materias y guías. La clave se usa una sola vez para conectarse y no se guarda. Los ejercicios se generan a partir del material real que asignan los docentes, y la app registra el avance del niño (temas practicados y resultados de sus quizzes) solo para guiar su aprendizaje.</p>
+      </div>
+    </details>
   </section>
 
   <!-- ╔═══ LOGIN ═══╗ -->
   <section id="vLogin" class="hidden">
     <button class="back" id="btnVolverLanding">‹ Volver</button>
     <p class="hi">Chispa</p>
-    <h1>Mis Retos <span class="star">✨</span></h1>
-    <p class="sub">Entra con tu usuario y clave del aula virtual y aprende con cosas hechas para ti.</p>
+    <h1>Entrá a tus <span class="h2Name">retos</span></h1>
+    <p class="sub">Con tu usuario y clave del aula virtual. Chispa arma la práctica con el material de tus maestros.</p>
     <div class="panel">
       <div class="field">
         <p class="lbl"><span class="n">1</span> Usuario</p>
