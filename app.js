@@ -241,8 +241,24 @@
   function homeTareaKey(t){
     return t&&t.id!=null?`id:${t.id}`:[t&&t.fecha,t&&t.materia,t&&t.tipo,t&&t.descripcion].map(x=>norm(x||"")).join("|");
   }
+  // Cuántos pendientes entran en "Hoy" antes de mandar a la agenda. Con 2 se quedaba corto
+  // ahora que la sección carga tres estados (vencida / hoy / sin fecha).
+  const HOY_MAX = 4;
+  // "Hoy" = TODO lo que el niño tiene encima ahora, en orden de urgencia:
+  //   vencidas (lo más atrasado primero) → lo de hoy → lo que anotó sin fecha.
+  // Antes esto devolvía SOLO diasHasta===0. Como "Lo que viene" toma únicamente diasHasta>0,
+  // una tarea VENCIDA o SIN FECHA no aparecía en NINGUNA parte del Inicio: lo más urgente que
+  // puede tener (algo que ya se le pasó) era justo lo que se escondía, y "Todo al día por ahora"
+  // mentía. Los 4 casos posibles de diasHasta (<0, 0, >0, null) ahora están todos cubiertos:
+  // los >0 en "Lo que viene", el resto acá.
   function homePendientesHoy(){
-    return TAREAS.filter(t=>!t.hecha&&t.fecha&&diasHasta(t.fecha)===0);
+    const pend=TAREAS.filter(t=>!t.hecha);
+    const dias=t=>diasHasta(t.fecha);
+    const vencidas=pend.filter(t=>dias(t)!==null&&dias(t)<0)
+      .sort((a,b)=>String(a.fecha).localeCompare(String(b.fecha)));   // la más atrasada primero
+    const hoy=pend.filter(t=>dias(t)===0);
+    const sinFecha=pend.filter(t=>dias(t)===null);                    // sin fecha o fecha ilegible
+    return [...vencidas,...hoy,...sinFecha];
   }
   // Identidad visual centralizada de materias para toda la Home (color de acento + ícono PNG).
   // Los PNG (estilo claymorphism de Codex) viven en assets/materias/. El ORDEN importa:
@@ -373,11 +389,18 @@
     }
   }
   function homeFilaTarea(t){
-    const row=document.createElement("div"); row.className="h2TodayRow h2TodayRow--task"+(t.hecha?" is-done":"");
+    const n=diasHasta(t.fecha);
+    const vencida=!t.hecha&&n!==null&&n<0;
+    const row=document.createElement("div");
+    row.className="h2TodayRow h2TodayRow--task"+(t.hecha?" is-done":"")+(vencida?" is-late":"");
     const materia=capMateria(limpiaNombreMateria(t.materia||""))||"General";
     const visual=homeMateriaVisual(materia); row.style.setProperty("--subject",visual.color);
     row.dataset.subjectKind=visual.key;
-    row.innerHTML=`${homeMarcaMateria(materia,"h2SubjectMark")}<span class="h2TodayText"><b>${escapeHtml(t.descripcion||"Tarea")}</b><small>${escapeHtml(materia)}${t.fecha?` · ${escapeHtml(capPrimera(fechaBonita(t.fecha)))}`:""}</small></span><button class="h2TaskCheck" type="button" aria-label="${t.hecha?"Marcar como pendiente":"Marcar como completada"}"><span class="h2TaskBox">${t.hecha?"✓":""}</span></button>`;
+    // El estado SIEMPRE se dice: "Venció" / "Hoy" / "Mañana" / la fecha / "Sin fecha". Antes, una
+    // tarea sin fecha no mostraba nada después de la materia y no había forma de saber por qué
+    // estaba ahí.
+    const cuando=n===null?"Sin fecha":capPrimera(fechaBonita(t.fecha));
+    row.innerHTML=`${homeMarcaMateria(materia,"h2SubjectMark")}<span class="h2TodayText"><b>${escapeHtml(t.descripcion||"Tarea")}</b><small>${escapeHtml(materia)} · <span class="h2TodayWhen">${escapeHtml(cuando)}</span></small></span><button class="h2TaskCheck" type="button" aria-label="${t.hecha?"Marcar como pendiente":"Marcar como completada"}"><span class="h2TaskBox">${t.hecha?"✓":""}</span></button>`;
     row.querySelector(".h2TaskCheck").onclick=async()=>{
       t.hecha=!t.hecha; pintarTareas(); pintarEscritorio();
       try{ await apiAgenda({accion:"tarea_hecha",id:t.id,hecha:t.hecha}); }catch(_){}
@@ -386,7 +409,7 @@
   }
   function pintarHomeUpcoming(){
     const box=$("#homeUpcoming"); if(!box) return; box.innerHTML="";
-    const visiblesHoy=new Set(homePendientesHoy().slice(0,2).map(homeTareaKey));
+    const visiblesHoy=new Set(homePendientesHoy().slice(0,HOY_MAX).map(homeTareaKey));
     const items=TAREAS.filter(t=>!t.hecha&&t.fecha&&!visiblesHoy.has(homeTareaKey(t))).map(t=>({t,n:diasHasta(t.fecha)}))
       .filter(x=>x.n!==null&&x.n>0).sort((a,b)=>a.n-b.n);
     // Sin entregas próximas no se dice nada: "Hoy" ya avisa que está todo al día y debajo sigue
@@ -562,8 +585,8 @@
   function pintarTareasResumen(){
     const cont=$("#tareasResumen"); cont.innerHTML="";
     const tareasHoy=homePendientesHoy();
-    tareasHoy.slice(0,2).forEach(t=>cont.appendChild(homeFilaTarea(t)));
-    const verAgenda=$("#btnVerAgenda"); if(verAgenda) verAgenda.classList.toggle("hidden",tareasHoy.length<=2);
+    tareasHoy.slice(0,HOY_MAX).forEach(t=>cont.appendChild(homeFilaTarea(t)));
+    const verAgenda=$("#btnVerAgenda"); if(verAgenda) verAgenda.classList.toggle("hidden",tareasHoy.length<=HOY_MAX);
     cont.classList.toggle("is-empty", !tareasHoy.length);   // vacío = fila ligera, no card grande (#4)
     if(!cont.children.length){
       const p=document.createElement("p"); p.className="h2Empty h2Empty--positive"; p.textContent="Todo al día por ahora.";
@@ -616,9 +639,16 @@
     }
   }
   let tipoSel="tarea", tMatSel="";
+  // La fecha arranca en HOY (antes quedaba vacía). Una tarea sin fecha no salía en ninguna parte
+  // del Inicio, así que el niño la anotaba y desaparecía. Sigue siendo opcional: si no sabe
+  // cuándo es, borra el campo y la tarea cae en el grupo "Sin fecha" de "Hoy" — visible igual.
+  function hoyISO(){
+    const d=new Date();
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+  }
   function abrirFormTarea(){
     $("#formTarea").classList.remove("hidden");
-    $("#tDesc").value=""; $("#tFecha").value=""; tipoSel="tarea"; tMatSel=""; $("#tMsg").innerHTML="";
+    $("#tDesc").value=""; $("#tFecha").value=hoyISO(); tipoSel="tarea"; tMatSel=""; $("#tMsg").innerHTML="";
     montarSelectorMateria($("#tMaterias"), ()=>tMatSel, v=>{ tMatSel=v; });
     document.querySelectorAll("#tTipos .chip").forEach(c=>c.setAttribute("aria-pressed", String(c.dataset.tipo==="tarea")));
     $("#tDesc").focus();
