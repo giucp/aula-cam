@@ -257,36 +257,59 @@
     <div id="tabMaterias">
     <!-- paso A: materias -->
     <div id="paneMaterias">
-      <div id="destacadaWrap">
-        <button class="destacada" id="btnProximo">
-          <span class="dIcon">🚀</span>
-          <span class="dTxt"><b>Adelántate en vacaciones</b><small id="proxSub">Practica el próximo año</small></span>
-          <span class="dArrow">›</span>
+      <!-- Encabezado: el título manda; el contexto es una línea tranquila (sin badges compitiendo). -->
+      <div class="m2Head">
+        <button class="m2Back hidden" id="volverActual">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Mis materias
         </button>
+        <h2 class="m2Title" id="materiasHead">Tus materias</h2>
+        <p class="m2Sub" id="materiasSub"></p>
       </div>
-      <div id="cumbreWrap">
-        <p class="cumEyebrow">🏖️ Adelanta en vacaciones con Cumbre</p>
-        <button class="destacada cumbre" id="btnCumbre">
-          <span class="dIcon">🏔️</span>
-          <span class="dTxt"><b>Cumbre</b><small>La mejor educación del mundo, para ti</small></span>
-          <span class="dArrow">›</span>
-        </button>
-      </div>
+
+      <!-- Recordatorio amable (coral): fila ligera, solo si hay errores por repasar. -->
       <div id="erroresWrap" class="hidden">
-        <button class="repasar" id="btnErrores">
-          <span class="dIcon">🩹</span>
-          <span class="dTxt"><b>Repasar mis errores</b><small id="errSub">0 para repasar</small></span>
-          <span class="dArrow">›</span>
+        <button class="m2Row m2Row--coral" id="btnErrores">
+          <span class="m2RowIcon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></span>
+          <span class="m2RowTx"><b>Repasar mis errores</b><small id="errSub">0 para repasar</small></span>
+          <svg class="m2Chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
         </button>
       </div>
-      <div class="secTitle" id="materiasHead">📚 Tus materias</div>
-      <div class="grid" id="gridMaterias"></div>
+
+      <!-- El protagonista de la pantalla: las materias. -->
+      <div class="m2Grid" id="gridMaterias"></div>
+
+      <!-- Adelantarse = invitación al FINAL: no le roba el arranque a las materias. -->
+      <div id="cumbreWrap" class="m2Aside">
+        <button class="m2Cumbre" id="btnCumbre">
+          <span class="m2CumbreArt" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M2 20h20L14.5 5.5 10.6 13 8 9.4z"/><path d="M12.2 13.6l2.3-3.1"/></svg>
+          </span>
+          <span class="m2CumbreTx">
+            <small>Adelanta en vacaciones</small>
+            <b>Cumbre</b>
+            <span>La mejor educación del mundo, para ti</span>
+          </span>
+          <svg class="m2Chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+      <div id="destacadaWrap" class="m2Aside">
+        <button class="m2Row m2Row--next" id="btnProximo">
+          <span class="m2RowIcon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></span>
+          <span class="m2RowTx"><b>Adelántate en vacaciones</b><small id="proxSub">Practica el próximo año</small></span>
+          <svg class="m2Chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
     </div>
 
     <!-- repasar mis errores -->
     <div id="paneErrores" class="hidden">
-      <button class="back" id="btnBackErr">‹ Inicio</button>
-      <div class="secTitle">🩹 Repasar mis errores</div>
+      <div class="m2Head">
+        <button class="m2Back" id="btnBackErr">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Inicio
+        </button>
+        <h2 class="m2Title">Repasar mis errores</h2>
+        <p class="m2Sub">Lo que fallaste, para entenderlo bien.</p>
+      </div>
       <div id="erroresList"></div>
     </div>
 
@@ -301,7 +324,7 @@
     <div id="paneTemas" class="hidden">
       <button class="back" id="btnBack">‹ Materias</button>
       <div class="panel">
-        <p class="lbl" id="tituloMateria" style="color:var(--mango)"></p>
+        <p class="lbl" id="tituloMateria"></p>
         <div id="refuerzoBanner" class="hidden"></div>
 
         <div id="pasoTema">

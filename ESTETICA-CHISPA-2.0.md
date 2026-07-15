@@ -12,9 +12,14 @@ Relacionados: **fuente de verdad = `aula-cam-estetica-local/docs/CHISPA_2.0_DESI
 ---
 
 > ## ⚡ RETOMAR EN CHAT NUEVO (cierre 2026-07-14) — leer en este orden
-> 1. **§12 — LANDING: dirección definitiva.** Es la tarea EN CURSO. El usuario trajo la spec + 3
->    mockups y **está creando los assets** (avisa dónde quedan). Todo lo anterior de la landing queda
->    superado. **Regla que manda: Chispa va EN UNA ESCENA, nunca como sticker flotante.**
+> 0. **§13 — MATERIAS 2.0: hecho y verificado en LOCAL, SIN desplegar.** Espera el OK del usuario en
+>    su teléfono. Es lo único sin commitear. Incluye un **bug de producción arreglado** (la placa del
+>    ícono en el pane de temas salía a 180px). **Falta la 2ª mitad: el pane de temas** (chips, modos,
+>    cantidad, fotos, acciones siguen viejos).
+> 1. **§12 — LANDING: dirección definitiva.** Tarea EN CURSO pero **BLOQUEADA**: el usuario todavía
+>    está creando los assets (avisa dónde quedan). Todo lo anterior de la landing queda superado.
+>    **Regla que manda: Chispa va EN UNA ESCENA, nunca como sticker flotante.**
+>    **Prueba social DESCARTADA** (12.5-a) y **los textos de los mockups NO se copian: los ponemos nosotros.**
 > 2. **§11 — Mapa de poses.** Hay **20 poses** en `aula-cam-estetica-local/assets/chispa-3d/`.
 >    **No repetir la misma mascota entre pantallas ni clonar composiciones.**
 > 3. **§10 — Hero del Inicio: CONGELADO.** Valores finales de mano/libro por ancho, assets válidos,
@@ -535,8 +540,9 @@ Objetivo: que las estrellas que caen sobre el texto no le quiten fuerza, **sin t
 - **ESCENA (el asset clave):** Chispa **en un escritorio con una laptop**, pizarrón de fondo, planta —
   ambiente de aula. Ocupa el bloque central, a sangre con el fondo cálido.
 - **CTA:** "Entrar a practicar" + flecha en círculo. Grande, degradado morado.
-- **Prueba social:** fila de avatares + "Únete a miles de estudiantes que ya están aprendiendo con Chispa".
-  ⚠️ **Decisión pendiente del usuario:** hoy Chispa la usan 2 niñas — esa frase sería falsa. Ver 12.5.
+- **Prueba social: DESCARTADA (decisión del usuario, 2026-07-14).** No va fila de avatares ni "miles de
+  estudiantes" ni ninguna variante — sería falso (Chispa la usan 2 niñas). **NO reabrir.** Los mockups
+  son REFERENCIA de composición; **el texto lo escribimos nosotros**, no se copia el de la lámina.
 - **Padres:** tarjeta neutra al final: ícono candado + "Para los padres · Consulta el acceso y la
   seguridad" + chevron.
 
@@ -564,14 +570,14 @@ Necesarios para poder maquetar esto:
 - [ ] **Escena "todo en un lugar":** Chispa brazos-abiertos + elementos flotantes (trofeo, checks).
 - [ ] **4 íconos 3D** de features (resúmenes, retos, simulacros, progreso).
 - [ ] **Ícono candado** (padres).
-- [ ] Avatares de prueba social *(solo si se resuelve 12.5-a)*.
+- ~~Avatares de prueba social~~ → **descartada, no hace falta ningún asset** (ver 12.2 / 12.5-a).
 
 **⚠️ Al recibirlos: exportar/redimensionar a ~3× su tamaño de display** (regla de peso de §10.3),
 NUNCA a 1254px. Los assets actuales pesan 1.2 MB en total; no romper eso.
 
-**12.5-a · Decisión abierta:** la prueba social ("miles de estudiantes") **hoy sería mentira** (Chispa
-la usan 2 niñas del Arzobispo Méndez). Opciones: (a) sacarla, (b) reemplazarla por algo honesto
-("Hecho para el aula virtual de tu colegio"), (c) dejarla para cuando haya base real. **Preguntar.**
+**12.5-a · RESUELTO (2026-07-14):** la prueba social **se saca del todo**. El usuario fue tajante: "en
+ningún lugar dirá eso". Nada de "miles de estudiantes", ni avatares, ni una versión suavizada. Además
+dejó la regla general: **los mockups son referencia de COMPOSICIÓN; el texto lo ponemos nosotros.**
 
 ## 12.6 Estado del código al cerrar este chat
 - La landing en `index.html` (`.h3Bienvenida`) es la **2ª versión (superada)**: Chispa brazos-abiertos
@@ -579,3 +585,54 @@ la usan 2 niñas del Arzobispo Méndez). Opciones: (a) sacarla, (b) reemplazarla
   lleguen los assets. El CSS vive en `estilos.css` (buscar `.h3Bienvenida`).
 - `assets/hero/chispa-bienvenida.png` = pose 02 a 510px (135 KB). Se puede reusar o descartar.
 - El `#btnEntrarLanding` NO se puede renombrar (lo cablea `app.js`).
+
+---
+
+# 📚 13. MATERIAS 2.0 (2026-07-14) — hecho en LOCAL, falta aprobar y falta el pane de temas
+
+## 13.1 El diagnóstico (por qué se rehízo, no se recoloreó)
+`#paneMaterias` era **el mismo pecado del Inicio viejo: cajas apiladas.** Tres `.destacada` idénticas
+(Adelántate / Cumbre / Repasar errores) **arriba**, empujando abajo del fold las materias —que son el
+motivo de la pantalla—; emojis como iconografía (🚀🏔️🩹📚); sombras rosadas (`rgba(90,40,70,…)`) que ya
+no existen en el sistema; y los nombres **GRITANDO EN MAYÚSCULAS** (`limpiaNombreMateria` las devuelve
+así y la grilla no pasaba por `capMateria`). Encima la Home ya tenía su lista 2.0 (`.h2SubjectCard`) →
+**dos sistemas visuales para lo mismo.**
+
+## 13.2 Lo que se hizo (jerarquía invertida)
+`título → recordatorio (si hay) → GRILLA → invitación (Cumbre) al final`
+- **Encabezado propio:** `.m2Title` "Tus materias" protagonista + `.m2Sub` con un dato real y tranquilo
+  ("7 materias · 5 empezadas", de `resumenMaterias()`), sin badges compitiendo.
+- **La `.topbar` VIEJA se oculta en Materias** (`body.materias-v2-page .topbar{display:none}`, gate nuevo
+  en `verTab`, app.js). Traía el saludo del Inicio ("¡Hola, Martina! 👋" + 🎓 grado + 🔥 racha + Salir) y
+  **competía con el título de la pantalla**. **Salir sigue estando en el Inicio** (`#btnSalirHome`).
+  ⚠️ **Agenda y Amigos NO están migradas → conservan la topbar.** Al migrarlas, sumarles su gate.
+- **Grilla `.m2Grid` de 2 columnas** (3 desde 560px) = el protagonista. Misma LENGUA que la Home (placa
+  tintada por `--c`, Fredoka, sombra difusa) pero **otro RITMO a propósito**: la Home es una tira que se
+  desliza, acá es grilla. **No clonar composiciones.** Nombres por fin con `capMateria()`.
+- **Recordatorio de errores** = `.m2Row--coral`, fila ligera (coral = recordatorio amable), no caja.
+- **Cumbre** = `.m2Cumbre`, **lo único grande y va al FINAL** (ritmo grande/chico del principio 8).
+- **Emojis fuera:** SVG stroke para volver/errores/adelantarse/+; `🆕` → pill `.m2New` "Nuevo".
+- **Camino B:** `.m2Card--nueva` (hueco punteado). El emoji de materia manual **se conserva** — es
+  elección del niño y vive en la BD, no es iconografía nuestra.
+
+## 13.3 ★ BUG DE PRODUCCIÓN ARREGLADO (no era mío, está LIVE hoy)
+En el pane de temas, `#tituloMateria` reusa `homeMarcaMateria(nombre,"em")`, pero **`.em` solo tenía
+tamaño dentro de `.mat`** → la placa quedaba sin medida y **el PNG se disparaba a ~180px**. Ahora
+`#tituloMateria>.em` tiene su placa de 44px tintada. De paso salió el `style="color:var(--mango)"`
+inline del HTML (y con él el `!important` que lo peleaba). **Lección: `.h2SubjectVisual`/`.em` NO se
+autodimensionan — quien las use DEBE darles tamaño.**
+
+## 13.4 Verificado (LOCAL, demo-inicio.html a 375px)
+Grilla 2 col sin scroll horizontal · nav no tapa el final · entrar a materia OK (8 chips, título bien) ·
+fila coral OK · Cumbre OK · **cero errores de consola** · `node --check app.js` OK.
+
+## 13.5 FALTA
+- [ ] **OK del usuario en su teléfono** → recién ahí commitear/desplegar (subir `VERSION` de `sw.js`).
+- [ ] **La 2ª mitad: `#paneTemas`** — siguen viejos los chips/lapsos (`.chip`, `.lapso`), los modos
+      (`.modo`, `.pmNum` con `--sun`), `#pasoCantidad` (`.count`, teal viejo), `#pasoFotos` (`.addFoto`),
+      `.acciones` (`.go.guia` con teal literal `#34C6A6`) y `.accInfo`. La referencia de §5 es la **ruta
+      de aprendizaje Aprende→Practica→Quiz→Examen** con stepper y pills de estado.
+- [ ] Clases viejas que quedaron SIN USO al migrar (no se borraron por seguridad; barrer cuando Agenda/
+      Amigos/Cumbre estén migradas): `.destacada`+`.dIcon/.dTxt/.dArrow`, `.repasar`, `.cumEyebrow`,
+      `.grid`, `.mat`+`.em/.matMid/.nom/.matBar/.chev`, `.matHint`, `.nuevoBadge`, `.proxTag`.
+- [ ] `iconMateria()` (app.js ~2642) sigue muerto (mapa de ~40 emojis).

@@ -2,7 +2,7 @@
 // Objetivo: que la app sea instalable (PWA) y abra rápido/offline el cascarón,
 // SIN cachear nunca las APIs (/api/*), que deben ir siempre a la red (datos en vivo).
 // Subir VERSION cuando cambie el cascarón para forzar la actualización a todos.
-const VERSION = "aulacam-v77"; // v77: bienvenida rediseñada con Chispa brazos-abiertos (una pose por momento)
+const VERSION = "aulacam-v78"; // v78: Materias 2.0 (jerarquía nueva) + fix del ícono de materia que salía a 180px
 const SHELL = [
   "/",
   "/index.html",

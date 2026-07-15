@@ -128,8 +128,8 @@
   .dTxt b{font-family:"Fredoka";font-weight:600;font-size:1.12rem}
   .dTxt small{opacity:.92;font-weight:700;font-size:.9rem}
   .dArrow{font-family:"Fredoka";font-size:1.7rem;opacity:.9;flex:none}
-  /* tarjeta Cumbre: gradiente más profundo (premium, distinto de "Adelántate") */
-  #cumbreWrap{margin-top:-6px}
+  /* tarjeta Cumbre: gradiente más profundo (premium, distinto de "Adelántate").
+     Materias 2.0 ya no usa .destacada — su invitación a Cumbre es .m2Cumbre. */
   .destacada.cumbre{background:linear-gradient(130deg,#211B3A,#4933C8 55%,#735DF0);box-shadow:0 20px 40px -20px rgba(33,27,58,.6)}
 
   /* tarjeta Sinapsis (recreo mental): gradiente oscuro tipo "espacio", distinto de lo académico */
@@ -211,8 +211,13 @@
   .matDot{display:inline-block;width:8px;height:8px;flex:none;border-radius:50%;margin-right:7px;
     background:var(--c,var(--chispa-primary));vertical-align:middle;transform:translateY(-1px)}
   .chip[aria-pressed="true"] .matDot,.modo[aria-pressed="true"] .matDot{background:#fff}
-  #tituloMateria{display:flex;align-items:center;gap:11px;color:var(--chispa-ink)!important}
+  #tituloMateria{display:flex;align-items:center;gap:11px;color:var(--chispa-ink)}
   #tituloMateria>span{min-width:0;font-family:"Fredoka";font-weight:600;font-size:1.12rem;line-height:1.2;overflow-wrap:anywhere}
+  /* BUG (estaba en producción): el título reusa homeMarcaMateria(...,"em"), pero .em solo tenía
+     tamaño DENTRO de .mat → acá la placa quedaba sin medida y el PNG se disparaba a ~180px.
+     Se le da su propia placa tintada, del tamaño del sistema. */
+  #tituloMateria>.em{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;
+    background:color-mix(in srgb,var(--c,var(--chispa-primary)) 16%,#fff)}
   .cMatNom{flex:1;font-family:"Nunito";font-weight:800;font-size:1.02rem;color:var(--ink);min-width:0}
   .cMatProg{font-size:.74rem;font-weight:700;color:#1B8F5A;background:#E3F6EB;padding:3px 9px;border-radius:20px;white-space:nowrap}
   .cMatChevron{flex:none;color:var(--muted);font-family:"Fredoka";font-size:1.1rem;opacity:.6;transition:transform .2s}
@@ -1180,4 +1185,96 @@
     .h2Greeting{min-height:112px;padding-right:124px}
     .h2Mission{min-height:208px;padding:25px 24px 23px}
     .h2MissionArt{width:285px;right:24px;bottom:24px}
+  }
+
+  /* ========================================================================
+     CHISPA 2.0 — MATERIAS
+     Misma LENGUA que la Home (superficie blanca, placa de ícono tintada por
+     --c, Fredoka, chevron SVG, nada de emojis como iconografía) pero con su
+     propio RITMO: la Home es una tira que se desliza, acá las materias son el
+     protagonista en grilla. Jerarquía real de la pantalla:
+       título → recordatorio (si hay) → GRILLA → invitación (Cumbre) al final.
+     Antes eran 3 cajas iguales apiladas ARRIBA que empujaban las materias —el
+     motivo de la pantalla— abajo del fold. Se invirtió.
+     Estas clases son propias (m2*): no tocan .destacada/.mat/.grid, que
+     todavía usan las pantallas sin migrar.
+     ======================================================================== */
+  /* La pantalla tiene UN solo título. La .topbar vieja (saludo + grado + racha + Salir)
+     pertenece al Inicio; acá competía con "Tus materias". Salir vive en el Inicio. */
+  body.materias-v2-page .topbar{display:none}
+  body.materias-v2-page #vHome{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
+  #tabMaterias{padding-top:10px}
+
+  .m2Head{margin:2px 2px 16px}
+  .m2Back{display:inline-flex;align-items:center;gap:5px;margin:0 0 8px -4px;padding:6px 4px;border:0;background:none;cursor:pointer;
+    font-family:"Fredoka";font-weight:600;font-size:.86rem;color:var(--chispa-primary)}
+  .m2Back svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .m2Title{margin:0;font-family:"Fredoka";font-weight:600;font-size:clamp(1.5rem,6.4vw,1.78rem);line-height:1.08;
+    letter-spacing:-.02em;color:var(--chispa-ink)}
+  .m2Sub{margin:6px 0 0;font-size:.75rem;font-weight:800;line-height:1.35;color:var(--chispa-muted)}
+  .m2Sub:empty{display:none}
+
+  /* fila accionable: recordatorio de errores / adelantarse. Ligera, nunca una caja gritona. */
+  .m2Row{--tone:var(--chispa-primary);width:100%;min-height:64px;display:grid;grid-template-columns:40px minmax(0,1fr) 15px;
+    align-items:center;gap:11px;border:1px solid rgba(255,255,255,.92);border-radius:18px;background:#fff;padding:10px 13px;
+    box-shadow:0 16px 36px -30px rgba(38,25,58,.36);cursor:pointer;text-align:left;margin-bottom:16px}
+  .m2Row:active{transform:scale(.99)}
+  .m2Row[disabled]{opacity:.6;cursor:default}
+  .m2Row--coral{--tone:var(--chispa-coral)}   /* coral = recordatorio amable (nunca reproche) */
+  .m2RowIcon{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;color:var(--tone);
+    background:color-mix(in srgb,var(--tone) 15%,#fff)}
+  .m2RowIcon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .m2RowTx{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .m2RowTx b{font-family:"Fredoka";font-weight:600;font-size:.85rem;line-height:1.15;color:var(--chispa-ink);overflow-wrap:anywhere}
+  .m2RowTx small{font-size:.66rem;font-weight:800;color:var(--chispa-muted);line-height:1.25;overflow-wrap:anywhere}
+  .m2Chev{width:15px;height:15px;fill:none;stroke:var(--chispa-muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+  /* la grilla: el protagonista. 2 columnas → se ven ~6 materias sin scroll y el
+     ícono 3D tiene aire para ser identidad, en vez de una fila casi vacía. */
+  .m2Grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;align-items:stretch}
+  .m2Card{--c:var(--chispa-primary);position:relative;min-height:132px;display:flex;flex-direction:column;align-items:flex-start;
+    border:0;border-radius:19px;background:rgba(255,255,255,.95);padding:13px;text-align:left;color:var(--chispa-ink);
+    font-family:"Nunito";box-shadow:0 16px 34px -28px rgba(38,25,58,.4);cursor:pointer}
+  .m2Card:active{transform:scale(.98)}
+  .m2CardIcon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;margin-bottom:9px;
+    color:var(--c);font-size:1.3rem;line-height:1;background:color-mix(in srgb,var(--c) 16%,#fff)}
+  .m2CardIcon img{width:82%;height:82%;object-fit:contain;display:block}
+  .m2CardIcon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .m2Card b{width:100%;min-height:2.3em;font-family:"Fredoka";font-weight:600;font-size:.86rem;line-height:1.15;
+    overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;white-space:normal;overflow-wrap:anywhere}
+  .m2Card small{font-size:.63rem;font-weight:800;color:var(--chispa-muted);margin:4px 0 9px;line-height:1.2}
+  .m2CardBar{width:100%;height:6px;border-radius:99px;background:#ECEBF2;overflow:hidden;margin-top:auto}
+  .m2CardBar i{display:block;height:100%;border-radius:inherit;background:var(--c);transition:width .5s ease}
+  .m2New{position:absolute;top:9px;right:9px;font-family:"Fredoka";font-weight:600;font-size:.55rem;letter-spacing:.06em;
+    text-transform:uppercase;line-height:1;padding:3px 7px;border-radius:999px;color:var(--chispa-coral);
+    background:color-mix(in srgb,var(--chispa-coral) 14%,#fff)}
+  /* crear materia (Camino B): misma silueta, tratamiento de "hueco" que se llena */
+  .m2Card--nueva{background:rgba(255,255,255,.5);border:2px dashed #DCD6EE;box-shadow:none;align-items:center;justify-content:center;text-align:center}
+  .m2Card--nueva .m2CardIcon{margin-bottom:7px}
+  .m2Card--nueva b{min-height:0;text-align:center;color:var(--chispa-primary)}
+
+  /* invitación a Cumbre: lo ÚNICO grande de la pantalla, y va al final (ritmo grande/chico). */
+  .m2Aside{margin-top:22px}
+  .m2Aside .m2Row{margin-bottom:0}
+  .m2Cumbre{width:100%;display:grid;grid-template-columns:52px minmax(0,1fr) 15px;align-items:center;gap:13px;
+    border:0;border-radius:22px;padding:16px 17px;cursor:pointer;text-align:left;color:#fff;font-family:"Nunito";
+    background:linear-gradient(130deg,#211B3A,#4933C8 55%,#735DF0);box-shadow:0 22px 44px -26px rgba(33,27,58,.75)}
+  .m2Cumbre:active{transform:scale(.99)}
+  .m2CumbreArt{width:52px;height:52px;border-radius:17px;display:grid;place-items:center;background:rgba(255,255,255,.14)}
+  .m2CumbreArt svg{width:27px;height:27px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .m2CumbreTx{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .m2CumbreTx small{font-family:"Fredoka";font-weight:600;font-size:.63rem;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+  .m2CumbreTx b{font-family:"Fredoka";font-weight:600;font-size:1.16rem;line-height:1.15}
+  .m2CumbreTx span{font-size:.74rem;font-weight:700;line-height:1.3;color:rgba(255,255,255,.82);overflow-wrap:anywhere}
+  .m2Cumbre .m2Chev{stroke:rgba(255,255,255,.7)}
+
+  .m2Empty{grid-column:1/-1;margin:0;padding:2px;font-size:.8rem;font-weight:700;line-height:1.5;color:var(--chispa-muted)}
+
+  @media (max-width:374px){
+    .m2Grid{gap:9px}
+    .m2Card{min-height:126px;padding:11px}
+    .m2CardIcon{width:40px;height:40px}
+  }
+  @media (min-width:560px){
+    .m2Grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   }

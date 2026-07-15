@@ -156,6 +156,11 @@
     $("#tabAgenda").classList.toggle("hidden", id!=="agenda");
     $("#vHome").classList.toggle("home-v2-active", id==="inicio");
     document.body.classList.toggle("home-v2-page", id==="inicio");
+    // Materias 2.0 trae su propio encabezado (título protagonista), así que la .topbar vieja
+    // —saludo + grado + racha + Salir— sobra ahí: duplicaba el saludo del Inicio y competía
+    // con el título. Salir sigue estando en el Inicio (#btnSalirHome). Agenda y Amigos aún
+    // NO están migradas: conservan la topbar hasta que les toque.
+    document.body.classList.toggle("materias-v2-page", id==="materias");
     document.querySelectorAll("#navbar .navBtn").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.tab===id)));
     if(id==="inicio") pintarEscritorio();
     if(id==="muro") cargarMuro();
@@ -1612,21 +1617,35 @@
     done = Math.min(done, total);
     return { done, total, pct: Math.round(done/total*100) };
   }
+  // Tarjeta de materia (Chispa 2.0): placa de ícono 3D tintada + nombre en caso
+  // título (NUNCA a los gritos: limpiaNombreMateria devuelve MAYÚSCULAS) + progreso real.
   function gridMaterias(lista){
     const g = $("#gridMaterias"); g.innerHTML="";
     lista.forEach(m=>{
-      const b=document.createElement("button"); b.className="mat";
-      b.style.setProperty("--c", colorMateria(m.nombre));
-      const nuevo = (m.id!=null && NOVEDADES[m.id]) ? `<span class="nuevoBadge">🆕</span>` : "";
+      const vis = homeMateriaVisual(m.nombre);
+      const b=document.createElement("button"); b.className="m2Card";
+      b.style.setProperty("--c", vis.color);
+      const nuevo = (m.id!=null && NOVEDADES[m.id]) ? `<span class="m2New">Nuevo</span>` : "";
       const pr = progresoMateria(m);
-      const barra = pr ? `<span class="matBar" title="${pr.done} de ${pr.total} temas"><i style="width:${pr.pct}%;background:${colorMateria(m.nombre)}"></i></span>` : "";
-      b.innerHTML=`<span class="em"><img src="assets/materias/${homeMateriaVisual(m.nombre).img}.png" alt="" aria-hidden="true"></span><span class="matMid"><span class="nom">${escapeHtml(limpiaNombreMateria(m.nombre))}</span>${barra}</span>${nuevo}<span class="chev">›</span>`;
+      const dato = pr ? `<small>${pr.done} de ${pr.total} temas</small>` : "";
+      const barra = pr ? `<span class="m2CardBar" title="${pr.done} de ${pr.total} temas"><i style="width:${pr.pct}%"></i></span>` : "";
+      b.innerHTML=`${nuevo}<span class="m2CardIcon"><img src="assets/materias/${vis.img}.png" alt="" aria-hidden="true"></span>`
+        + `<b>${escapeHtml(capMateria(limpiaNombreMateria(m.nombre)))}</b>${dato}${barra}`;
       b.onclick=()=>abrirMateria(m);
       g.appendChild(b);
     });
   }
+  // Línea de contexto del encabezado: dato real y tranquilo, nunca un badge decorativo.
+  function resumenMaterias(lista){
+    const n = lista.length;
+    if(!n) return "";
+    const conProgreso = lista.filter(m=>{ const p=progresoMateria(m); return p && p.done>0; }).length;
+    const base = `${n} ${n===1?"materia":"materias"}`;
+    return conProgreso ? `${base} · ${conProgreso} ${conProgreso===1?"empezada":"empezadas"}` : base;
+  }
   function pintarMaterias(){
     origen = "actual";
+    $("#volverActual").classList.add("hidden");
     // Cumbre es el "adelanta en vacaciones" cuando hay track (5to/1er año). Si no hay
     // track de Cumbre para el próximo grado, se muestra el adelántate viejo como respaldo.
     const track = cumbreTrack();
@@ -1634,32 +1653,38 @@
     $("#destacadaWrap").classList.toggle("hidden", !!track || !siguienteGradoLabel());
     $("#erroresWrap").classList.toggle("hidden", !MIS_ERRORES.length);
     if(SESION && SESION.fuente==="manual"){ pintarMateriasManuales(); return; }  // Camino B
-    $("#materiasHead").innerHTML = "📚 Tus materias";
-    gridMaterias(SESION.materias||[]);
+    $("#materiasHead").textContent = "Tus materias";
+    const lista = SESION.materias||[];
+    $("#materiasSub").textContent = resumenMaterias(lista);
+    gridMaterias(lista);
   }
 
   // ───────── Camino B: materias creadas a mano (cuentas nativas) ─────────
   const MAT_EMOJIS = ["📐","🔢","📖","🔬","🌎","🎨","🎵","💻","🏃","⚗️","🧮","🗣️"];
   let MAT_EMOJI_SEL = MAT_EMOJIS[0];
   async function pintarMateriasManuales(){
-    $("#materiasHead").innerHTML = "📚 Mis materias";
-    const g=$("#gridMaterias"); g.innerHTML=`<p class="labLoad">Cargando…</p>`;
+    $("#materiasHead").textContent = "Mis materias";
+    $("#materiasSub").textContent = "";
+    const g=$("#gridMaterias"); g.innerHTML=`<p class="m2Empty">Cargando…</p>`;
     let mats=[];
     try{
       const r=await fetch(API_MANUAL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"materias",token:SESION.token})});
       const d=await r.json(); mats=Array.isArray(d.materias)?d.materias:[];
     }catch(_){}
     g.innerHTML="";
-    if(!mats.length){ const e=document.createElement("p"); e.className="matHint"; e.textContent="Todavía no tenés materias. Creá la primera y estudiá con tus propios apuntes. 👇"; g.appendChild(e); }
+    if(!mats.length){ const e=document.createElement("p"); e.className="m2Empty"; e.textContent="Todavía no tenés materias. Creá la primera y estudiá con tus propios apuntes."; g.appendChild(e); }
+    else $("#materiasSub").textContent = resumenMaterias(mats);
     mats.forEach(m=>{
       const mo={ nombre:m.nombre, nombreCorto:"", temas:[], _manual:true, _id:m.id, emoji:m.emoji };
-      const b=document.createElement("button"); b.className="mat"; b.style.setProperty("--c", m.color||colorMateria(m.nombre));
-      b.innerHTML=`<span class="em">${m.emoji||`<img src="assets/materias/${homeMateriaVisual(m.nombre).img}.png" alt="" aria-hidden="true">`}</span><span class="matMid"><span class="nom">${escapeHtml(m.nombre)}</span></span><span class="chev">›</span>`;
+      const b=document.createElement("button"); b.className="m2Card"; b.style.setProperty("--c", m.color||colorMateria(m.nombre));
+      // El emoji acá es elección del niño y vive en la BD (no es iconografía nuestra); si no eligió, va la placa 3D.
+      b.innerHTML=`<span class="m2CardIcon">${m.emoji?escapeHtml(m.emoji):`<img src="assets/materias/${homeMateriaVisual(m.nombre).img}.png" alt="" aria-hidden="true">`}</span>`
+        + `<b>${escapeHtml(capMateria(m.nombre))}</b>`;
       b.onclick=()=>abrirMateria(mo);
       g.appendChild(b);
     });
-    const add=document.createElement("button"); add.className="mat matNueva";
-    add.innerHTML=`<span class="em">➕</span><span class="matMid"><span class="nom">Nueva materia</span></span>`;
+    const add=document.createElement("button"); add.className="m2Card m2Card--nueva";
+    add.innerHTML=`<span class="m2CardIcon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span><b>Nueva materia</b>`;
     add.onclick=abrirMatModal;
     g.appendChild(add);
   }
@@ -1695,6 +1720,9 @@
 
   // ───────── adelantar próximo año (lee el currículo guardado) ─────────
   $("#btnProximo").onclick = entrarProximo;
+  // El "volver" del modo próximo año ahora vive en el HTML (antes se inyectaba con el
+  // encabezado): se cablea una sola vez y pintarMaterias() lo vuelve a ocultar.
+  $("#volverActual") && ($("#volverActual").onclick = ()=>{ pintarMaterias(); window.scrollTo({top:0,behavior:"smooth"}); });
   async function entrarProximo(){
     const grado = siguienteGradoLabel();
     if(!grado) return;
@@ -1712,9 +1740,10 @@
       $("#destacadaWrap").classList.add("hidden");
       $("#cumbreWrap").classList.add("hidden");
       $("#erroresWrap").classList.add("hidden");
-      $("#materiasHead").innerHTML = `<button class="volver" id="volverActual">‹ Mis materias</button><span class="proxTag">🚀 ${escapeHtml(grado)} · próximo año</span>`;
-      $("#volverActual").onclick = ()=>{ pintarMaterias(); window.scrollTo({top:0,behavior:"smooth"}); };
-      if(!mats.length){ $("#gridMaterias").innerHTML = `<div class="empty">Todavía no tenemos ${escapeHtml(grado)} cargado. ¡Pronto!</div>`; }
+      $("#volverActual").classList.remove("hidden");
+      $("#materiasHead").textContent = grado;
+      $("#materiasSub").textContent = "Próximo año · adelántate en vacaciones";
+      if(!mats.length){ $("#gridMaterias").innerHTML = `<p class="m2Empty">Todavía no tenemos ${escapeHtml(grado)} cargado. ¡Pronto!</p>`; }
       else gridMaterias(mats);
       window.scrollTo({top:0,behavior:"smooth"});
     }catch(e){
