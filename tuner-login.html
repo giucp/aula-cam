@@ -46,6 +46,13 @@
   .copyBtn{border:0;background:var(--purple);color:#fff;border-radius:8px;padding:7px 12px;font-weight:700;cursor:pointer;font-size:.78rem}
   .reset{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 12px;cursor:pointer;font-size:.76rem;color:var(--muted)}
   @media (max-width:900px){ .previewCol{position:static} .scrollArea{max-height:480px} .controls{max-width:none} }
+  /* Modo PC: el preview mide 1920 y no entra en una columna al lado de los sliders (quedaba una
+     estampilla al 42%, imposible de ajustar). Pasa a ocupar TODO el ancho, controles abajo. */
+  body.pcMode .wrap{flex-direction:column}
+  body.pcMode .previewCol{position:static;width:100%;flex:0 0 auto}
+  body.pcMode .frameBox{width:100%}
+  body.pcMode .scrollArea{max-height:none}
+  body.pcMode .controls{max-width:none;width:100%}
 </style>
 </head>
 <body>
@@ -76,7 +83,9 @@
     <div class="widths">
       <button class="wBtn" data-w="360">360</button>
       <button class="wBtn on" data-w="390">390</button>
+      <button class="wBtn" data-w="414">414</button>
       <button class="wBtn" data-w="430">430</button>
+      <button class="wBtn" data-w="PC">PC</button>
       <span class="wCustom">ancho libre <input type="number" id="wInput" value="390" /> px</span>
     </div>
 
@@ -87,9 +96,20 @@
 
     <div class="diag" id="diag">—</div>
 
+    <div class="group" id="grupoPC" style="display:none;border-color:#C9BCF7;background:#FBFAFF">
+      <h2>La columna (SOLO PC)</h2>
+      <p class="hint">Este es el único slider que arregla la vista de PC. El problema nunca fue el tamaño de la laptop, sino que el hero quedaba demasiado <b>ancho</b> (652px) y perdía la proporción de un teléfono: por eso la laptop no sangraba, y al agrandarla se comía el título. Angostá la columna hasta que se vea como en el celular.</p>
+      <div class="row"><label>Ancho columna</label><input type="range" id="hw" min="360" max="660" step="2" /><span class="num"><input type="number" id="hwN" /><span>px</span></span></div>
+    </div>
+
     <div class="group">
       <h2>La laptop</h2>
       <p class="hint">Ancho = % del ancho disponible, con un tope en px. Si la laptop se sale por los costados, el cuerpo se recorta pero la pantalla puede seguir entera — mirá el diagnóstico de arriba.</p>
+      <p class="hint" id="hintLy" style="background:#FFF6E5;border:1px solid #F3D9A0;border-radius:8px;padding:8px 10px;color:#8a5a00">
+        <b>⚠️ En los teléfonos, "Mover ⇅" no hace nada.</b> Ahí la altura la resuelve sola la fórmula
+        <code>--lap-y: calc(17px − 13.67svh)</code>, que deja un margen fijo de 45px sobre los libros en
+        cualquier modelo. <b>En PC sí funciona</b> y sale en el CSS, porque esa vista se ajusta aparte.
+      </p>
       <div class="row"><label>Ancho (%)</label><input type="range" id="lw" min="80" max="220" step="1" /><span class="num"><input type="number" id="lwN" /><span>%</span></span></div>
       <div class="row"><label>Tope (px)</label><input type="range" id="lm" min="280" max="760" step="2" /><span class="num"><input type="number" id="lmN" /><span>px</span></span></div>
       <div class="row"><label>Mover ⇄</label><input type="range" id="lx" min="-80" max="80" step="1" /><span class="num"><input type="number" id="lxN" /><span>px</span></span></div>
@@ -128,32 +148,43 @@
 
 <script>
   // Valores ACTUALES del CSS (punto de partida). Si cambia la base en estilos.css, actualizar acá.
+  // `alto` = el alto REAL del teléfono: la laptop está anclada al fondo del hero (100svh), así que
+  // ajustar a 414x760 no sirve para un iPhone de 414x896. Cada preset trae su alto de verdad.
   var BASE = {
-    '360': {lw:150, lm:520, lx:0, ly:0, sl:12.92, st:7.11, sw:74, sh:55.02, fh:44, sg:8,  sp:12, media:'@media (max-width:374px)'},
-    '390': {lw:150, lm:520, lx:0, ly:0, sl:12.92, st:7.11, sw:74, sh:55.02, fh:46, sg:10, sp:14, media:'base (sin media)'},
-    '430': {lw:150, lm:520, lx:0, ly:0, sl:12.92, st:7.11, sw:74, sh:55.02, fh:46, sg:10, sp:16, media:'@media (min-width:420px)'}
+    '360': {w:360, alto:780, lw:145, lm:520, lx:0, ly:-84, sl:12.92, st:7.11, sw:74, sh:55.02, fh:44, sg:8,  sp:12, media:'@media (max-width:374px)',                  nota:'Android chico'},
+    '390': {w:390, alto:844, lw:143, lm:520, lx:0, ly:-79, sl:12.92, st:7.11, sw:74, sh:55.02, fh:46, sg:10, sp:14, media:'base (sin media)',                          nota:'iPhone 12/13/14'},
+    '414': {w:414, alto:896, lw:143, lm:520, lx:0, ly:-79, sl:12.92, st:7.11, sw:74, sh:55.02, fh:46, sg:10, sp:14, media:'@media (min-width:400px) and (max-width:419px)', nota:'iPhone Xs Max / XR / 11 Pro Max'},
+    '430': {w:430, alto:932, lw:150, lm:520, lx:0, ly:-87, sl:12.92, st:7.11, sw:74, sh:55.02, fh:46, sg:10, sp:16, media:'@media (min-width:420px)',                  nota:'iPhone 14 Pro Max / 15 Plus'},
+    // PC: el único que se ajusta acá es --hero-w (el ancho de la columna). El resto lo hereda
+    // del bloque >=420. La altura NO se toca: la resuelve calc(17px - 13.67svh).
+    // PC: pantalla REAL de escritorio (1920x950) y zoom automático para verla ENTERA, no un
+    // recorte. Sus perillas de laptop son PROPIAS: si se tocaran las del bloque >=420 se
+    // rompería el iPhone de 430, que ya está bien.
+    'PC':  {w:1920, alto:950, zoom:0.42, hw:652, lw:150, lm:520, lx:0, ly:-112, sl:12.92, st:7.11, sw:74, sh:55.02, fh:46, sg:10, sp:16, media:'@media (min-width:560px)', nota:'PC / escritorio real'}
   };
   var SETS = JSON.parse(JSON.stringify(BASE));
-  var IDS  = ['lw','lm','lx','ly','sl','st','sw','sh','fh','sg','sp'];
-  var INT  = {lw:1,lm:1,lx:1,ly:1,fh:1,sg:1,sp:1};   // estos van sin decimales
-  var cur = '390', curW = 390, zoom = 1, BASEH = 760;
+  var IDS  = ['hw','lw','lm','lx','ly','sl','st','sw','sh','fh','sg','sp'];
+  var INT  = {hw:1,lw:1,lm:1,lx:1,ly:1,fh:1,sg:1,sp:1};   // estos van sin decimales
+  var cur = '390', curW = 390, zoom = 1;
 
   var iframe = document.getElementById('preview');
   var scaleBox = document.getElementById('scaleBox');
 
   function layout(){
-    var h = document.getElementById('tTeclado').checked ? 420 : BASEH;
+    var h = document.getElementById('tTeclado').checked ? 420 : SETS[cur].alto;
     iframe.style.width = curW+'px'; iframe.style.height = h+'px';
     iframe.style.transform = 'scale('+zoom+')';
     scaleBox.style.width = (curW*zoom)+'px'; scaleBox.style.height = (h*zoom)+'px';
     document.getElementById('zLbl').textContent = String(Math.round(zoom*100)/100)+'×';
   }
-  function setZoom(z){ zoom = Math.max(0.5, Math.min(3, Math.round(z*20)/20)); layout(); }
+  /* min 0.2: en PC el preview mide 1920px y hay que poder verlo ENTERO, no un recorte */
+  function setZoom(z){ zoom = Math.max(0.2, Math.min(3, Math.round(z*100)/100)); layout(); }
   document.getElementById('zIn').onclick  = function(){ setZoom(zoom+0.1); };
   document.getElementById('zOut').onclick = function(){ setZoom(zoom-0.1); };
   document.getElementById('zReset').onclick = function(){ setZoom(1); };
 
-  function setForWidth(w){ if(w<=374) return '360'; if(w>=420) return '430'; return '390'; }
+  // Mismos cortes que los @media de estilos.css. Si cambian allá, cambian acá.
+  function setForWidth(w){ if(w<=374) return '360'; if(w>=420) return '430'; if(w>=400) return '414'; return '390'; }
 
   // El iframe carga index.html y hay que llevarlo al login.
   // ⚠️ CLAVE: forzar estilos.css FRESCO. El navegador (y el service worker) lo cachean, y
@@ -169,12 +200,13 @@
         var link = doc.querySelector('link[rel="stylesheet"][href*="estilos.css"]');
         if(link){ cssFresco = true; link.href = 'estilos.css?tuner=' + Date.now(); return false; }
       }
-      var landing = doc.getElementById('vLanding'), login = doc.getElementById('vLogin');
+      var login = doc.getElementById('vLogin');
       if(!login) return false;
-      if(login.classList.contains('hidden')){        // ir al login sin pasar por la landing
-        if(landing) landing.classList.add('hidden');
-        login.classList.remove('hidden');
-      }
+      // Ocultar TODO lo demás: si el navegador tiene sesión guardada, el iframe abre en el Home
+      // y quedaba pintado debajo del login (se veía la escena y abajo "¡Hola, Martina!").
+      ['vLanding','vHome','vPendiente','vBeta','vRegistro','vLoginNat','vRecuperar','vRescate','vSolicitud','vLab']
+        .forEach(function(id){ var e = doc.getElementById(id); if(e) e.classList.add('hidden'); });
+      login.classList.remove('hidden');
       return true;
     }catch(e){ return false; }
   }
@@ -202,8 +234,12 @@
     if(!st){ st = doc.createElement('style'); st.id='tuner-ov'; doc.head.appendChild(st); }
     var s = SETS[cur];
     st.textContent =
-      '.lgHero{--lap-w:'+s.lw+'% !important;--lap-max:'+s.lm+'px !important;' +
-      '--lap-x:'+s.lx+'px !important;--lap-y:'+s.ly+'px !important;' +
+      (cur === 'PC' ? '.lgHero{--hero-w:'+s.hw+'px !important;width:'+s.hw+'px !important;max-width:none !important;'
+                      + 'margin-left:calc(50% - '+(s.hw/2)+'px) !important;margin-right:0 !important}\n' : '') +
+      '.lgHero{--lap-w:'+s.lw+'% !important;--lap-max:'+s.lm+'px !important;--lap-x:'+s.lx+'px !important;' +
+      // --lap-y SOLO se pisa en PC. En los teléfonos manda la fórmula calc(17px - 13.67svh):
+      // si acá lo forzáramos a px, el preview mostraría algo distinto de lo que corre de verdad.
+      (cur === 'PC' ? '--lap-y:'+s.ly+'px !important;' : '') +
       '--scr-l:'+s.sl+'% !important;--scr-t:'+s.st+'% !important;' +
       '--scr-w:'+s.sw+'% !important;--scr-h:'+s.sh+'% !important;' +
       '--fld-h:'+s.fh+'px !important;--scr-gap:'+s.sg+'px !important;--scr-pad:'+s.sp+'px !important}';
@@ -245,18 +281,43 @@
 
   function loadSliders(){
     var s = SETS[cur];
-    IDS.forEach(function(k){ document.getElementById(k).value = s[k]; document.getElementById(k+'N').value = s[k]; });
+    IDS.forEach(function(k){
+      if(s[k] === undefined) return;                      // hw solo existe en PC
+      document.getElementById(k).value = s[k]; document.getElementById(k+'N').value = s[k];
+    });
+    document.getElementById('grupoPC').style.display = (cur === 'PC') ? '' : 'none';
   }
 
   function renderOut(){
     var L = [];
+    if(cur === 'PC'){
+      // Solo PC: lo único que cambia es el ancho de la columna.
+      var p = SETS['PC'];
+      L.push('/* ═══ SOLO PC / escritorio (≥560px). Ningún teléfono vertical llega acá ═══ */');
+      L.push('@media (min-width:560px){');
+      L.push('  .lgHero{');
+      L.push('    --hero-w:' + p.hw + 'px;');
+      // OJO: centrado con width + margin-left calc, NO con margin:auto. Con auto el hero
+      // queda encerrado en el .wrap (620px) y sale 32px más angosto que en vivo.
+      L.push('    width:var(--hero-w); max-width:none;');
+      L.push('    margin-left:calc(50% - var(--hero-w) / 2); margin-right:0;');
+      L.push('    border-radius:0 0 30px 30px;');
+      L.push('    /* perillas PROPIAS de PC: no tocan el iPhone de 430 */');
+      L.push('    --lap-w:' + p.lw + '%; --lap-max:' + p.lm + 'px; --lap-x:' + p.lx + 'px;');
+      L.push('    --lap-y:' + p.ly + 'px;');
+      L.push('  }');
+      L.push('}');
+      document.getElementById('out').textContent = L.join('\n');
+      return;
+    }
     L.push('/* .lgHero — perillas de la escena del login */');
-    ['390','360','430'].forEach(function(w){
+    ['390','360','414','430'].forEach(function(w){
       var s = SETS[w];
       L.push('');
-      L.push('/* ' + w + 'px  ·  ' + s.media + ' */');
+      L.push('/* ' + w + 'px (' + s.nota + ')  ·  ' + s.media + ' */');
       L.push('.lgHero{');
-      L.push('  --lap-w:' + s.lw + '%; --lap-max:' + s.lm + 'px; --lap-x:' + s.lx + 'px; --lap-y:' + s.ly + 'px;');
+      L.push('  --lap-w:' + s.lw + '%; --lap-max:' + s.lm + 'px; --lap-x:' + s.lx + 'px;');
+      L.push('  /* --lap-y NO va acá: lo resuelve calc(17px - 13.67svh) en el bloque base */');
       L.push('  --scr-l:' + s.sl + '%; --scr-t:' + s.st + '%; --scr-w:' + s.sw + '%; --scr-h:' + s.sh + '%;');
       L.push('  --fld-h:' + s.fh + 'px; --scr-gap:' + s.sg + 'px; --scr-pad:' + s.sp + 'px;');
       L.push('}');
@@ -264,10 +325,20 @@
     document.getElementById('out').textContent = L.join('\n');
   }
 
+  // En PC el preview se ajusta SOLO al ancho disponible: nada de un zoom fijo que deje una
+  // estampilla. Si el tuner se abre maximizado en un browser de 1920, queda casi 1:1.
+  function zoomQueEntra(w){
+    if(w < 560) return 1;
+    var disp = (document.querySelector('.previewCol').clientWidth || window.innerWidth) - 28;
+    return Math.max(0.2, Math.min(1, Math.floor(disp / w * 100) / 100));
+  }
   function setActive(w){
-    cur = w; curW = parseInt(w,10); layout();
-    document.getElementById('frameLbl').textContent = w + ' px  ·  ' + SETS[w].media;
-    document.getElementById('wInput').value = w;
+    cur = w; curW = SETS[w].w;
+    document.body.classList.toggle('pcMode', w === 'PC');
+    zoom = zoomQueEntra(curW);
+    layout();
+    document.getElementById('frameLbl').textContent = SETS[w].w + ' × ' + SETS[w].alto + '  ·  ' + SETS[w].nota;
+    document.getElementById('wInput').value = SETS[w].w;
     document.querySelectorAll('.wBtn').forEach(function(b){ b.classList.toggle('on', b.dataset.w===w); });
     loadSliders(); inject(); renderOut();
   }
@@ -287,8 +358,8 @@
   document.querySelectorAll('.wBtn').forEach(function(b){ b.onclick = function(){ setActive(b.dataset.w); }; });
   document.getElementById('wInput').addEventListener('input', function(){
     var w = parseInt(this.value,10); if(isNaN(w) || w < 240) return;
-    curW = w; layout(); cur = setForWidth(w);
-    document.getElementById('frameLbl').textContent = w + ' px  ·  usa el set ' + cur;
+    cur = setForWidth(w); curW = w; layout();
+    document.getElementById('frameLbl').textContent = w + ' px  ·  usa el set ' + cur + ' (' + SETS[cur].nota + ')';
     document.querySelectorAll('.wBtn').forEach(function(b){ b.classList.toggle('on', b.dataset.w===cur); });
     loadSliders(); inject(); renderOut();
   });

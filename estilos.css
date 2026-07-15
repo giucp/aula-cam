@@ -510,7 +510,25 @@
        fld-*  = el formulario que vive dentro de esa pantalla                     */
     /* Valores ajustados por el usuario con tuner-login.html (2026-07-15): la laptop
        más chica y subida, para que la escena se lea en todos los anchos. */
-    --lap-w:143%; --lap-max:520px; --lap-x:0px; --lap-y:-79px;
+    --lap-w:143%; --lap-max:520px; --lap-x:0px;
+    /* ── --lap-y NO se fija por ancho: se CALCULA con el alto de pantalla ──
+       Los libros del fondo están anclados abajo con `cover`, así que su posición escala con el
+       ALTO, no con el ancho — y los @media cortan por ancho. Por eso el mismo valor servía en un
+       teléfono y tapaba los libros en otro (un iPhone SE de 375x667 caía en el bucket de 390,
+       pensado para 844, y recibía un empujón 30% mayor del que le toca).
+
+       La fórmula NO está adivinada, está DERIVADA de medir el asset:
+         · el borde superior de los libros de la esquina inferior derecha (los más altos) está
+           al 13.67% del alto de la imagen, contando desde abajo → en pantalla: 0.1367 * alto
+         · el PNG de la laptop tiene 2.71% de transparencia abajo (~10.5px), así que su base
+           VISIBLE queda más arriba que su caja
+         · base_visible (desde abajo) = 22px (padding del hero) − lap_y + 10.5px
+         · el margen que el usuario dejó al calibrar a ojo fue ~15.6px de promedio (9/13/22/18)
+         → lap_y = 22 + 10.5 − 15.6 − 0.1367*alto  =  17px − 13.67svh
+
+       Da un margen CONSTANTE de ~15px sobre los libros de 640 a 932 de alto, y reproduce los
+       4 valores calibrados a mano con ±6px. NO volver a fijarlo en px por breakpoint. */
+    --lap-y:calc(17px - 13.67svh);
     --scr-l:12.92%; --scr-t:7.11%; --scr-w:74%; --scr-h:55.02%;
     --fld-h:46px; --scr-gap:10px; --scr-pad:14px;
 
@@ -582,11 +600,41 @@
   .lgSafe svg{width:15px;height:15px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;
     stroke-linecap:round;stroke-linejoin:round}
 
+  /* Estos breakpoints ya NO tocan --lap-y (lo resuelve la fórmula de arriba con el alto).
+     Solo ajustan lo que SÍ depende del ancho: el tamaño de la laptop y del formulario. */
   @media (max-width:374px){
-    .lgHero{--lap-w:145%; --lap-y:-84px; --fld-h:44px; --scr-gap:8px; --scr-pad:12px}
+    .lgHero{--lap-w:145%; --fld-h:44px; --scr-gap:8px; --scr-pad:12px}
   }
   @media (min-width:420px){
-    .lgHero{--lap-w:150%; --lap-y:-87px; --fld-h:46px; --scr-gap:10px; --scr-pad:16px}
+    .lgHero{--lap-w:150%; --fld-h:46px; --scr-gap:10px; --scr-pad:16px}
+  }
+  /* ═══ PC / escritorio (≥560px) — ningún teléfono en vertical llega acá (el más ancho es 430) ═══
+     Vista con perillas PROPIAS, ajustada por el usuario con tuner-login.html (preset "PC").
+     Acá la laptop NO sangra (el hero es de 652 y ella topa en 520): queda apoyada dentro de la
+     escena, con el cuarto visible a los lados. Es una composición distinta a la del celular, a
+     propósito — la ventana de una PC no tiene la proporción de un teléfono (0.71 vs 0.46).
+     Dos trampas ya pisadas, NO repetirlas:
+       · agrandar la laptop para forzarla a sangrar → se come el título;
+       · centrar el hero con margin:auto → queda encerrado en el .wrap (620px) y sale 32px más
+         angosto que en vivo. Por eso va width + margin-left:calc.
+     Para tocar esto: tuner-login.html → botón PC (arranca exactamente en lo que hay en vivo). */
+  @media (min-width:560px){
+    .lgHero{
+      /* 652px = EXACTAMENTE lo que hay hoy en vivo (.wrap 620 + los 32 de los márgenes).
+         Es el punto de partida para ajustar con el tuner, no un valor elegido. */
+      --hero-w:652px;
+      /* Centrado SIN encerrarse en el .wrap (620px): con margin:auto el hero no podía pasar
+         de 620 y quedaba 32px más angosto que en vivo. Así admite cualquier --hero-w. */
+      width:var(--hero-w); max-width:none;
+      margin-left:calc(50% - var(--hero-w) / 2); margin-right:0;
+      border-radius:0 0 30px 30px;
+      /* Perillas PROPIAS de PC (ajustadas por el usuario con tuner-login.html, preset PC):
+         no tocan el iPhone de 430, que hereda las suyas del bloque >=420.
+         --lap-y va en px acá a propósito: PC es la única vista donde NO aplica la fórmula
+         del alto, porque la ventana no tiene la proporción de un teléfono. */
+      --lap-w:150%; --lap-max:520px; --lap-x:0px;
+      --lap-y:-153px;
+    }
   }
 
   .paso{margin-top:18px}
