@@ -1717,7 +1717,8 @@
      pertenece al Inicio; acá competía con "Tus materias". Salir vive en el Inicio. */
   body.materias-v2-page .topbar{display:none}
   body.materias-v2-page #vHome{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
-  #tabMaterias{padding-top:10px}
+  /* --h2-* también acá: la tarjeta protagonista (.h3ContinuePrimary, reusada del Inicio) los usa */
+  #tabMaterias{padding-top:10px;--h2-ink:var(--chispa-ink);--h2-muted:var(--chispa-muted);--h2-line:var(--chispa-line)}
 
   .m2Head{margin:2px 2px 16px}
   .m2Back{display:inline-flex;align-items:center;gap:5px;margin:0 0 8px -4px;padding:6px 4px;border:0;background:none;cursor:pointer;
@@ -1725,8 +1726,19 @@
   .m2Back svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
   .m2Title{margin:0;font-family:"Fredoka";font-weight:600;font-size:clamp(1.5rem,6.4vw,1.78rem);line-height:1.08;
     letter-spacing:-.02em;color:var(--chispa-ink)}
-  .m2Sub{margin:6px 0 0;font-size:.75rem;font-weight:800;line-height:1.35;color:var(--chispa-muted)}
-  .m2Sub:empty{display:none}
+  .m2Lede{margin:5px 0 0;font-size:.92rem;font-weight:700;line-height:1.3;color:var(--chispa-muted)}
+  .m2Lede:empty{display:none}
+  .m2Sub{margin:5px 0 0;font-size:.78rem;font-weight:800;line-height:1.35;color:var(--chispa-muted)}
+  .m2Sub b{color:var(--chispa-primary);font-weight:900}
+  .m2Sub:empty,.m2Sub.hidden{display:none}
+
+  /* tarjeta protagonista (reusa .h3ContinuePrimary) + segmentado En progreso | Todas */
+  #materiaDestacada{margin:16px 0 0}
+  #materiaDestacada:empty,#materiaDestacada.hidden{display:none}
+  .m2Destacada--vacia{padding:18px 16px;border-radius:19px;background:var(--chispa-primary-soft);text-align:center}
+  .m2Destacada--vacia p{margin:0;font-family:"Fredoka";font-weight:600;font-size:.95rem;color:var(--chispa-primary)}
+  .m2Seg{grid-template-columns:repeat(2,minmax(0,1fr));margin:16px 0 14px}
+  .m2Seg.hidden{display:none}
 
   /* fila accionable: recordatorio de errores / adelantarse. Ligera, nunca una caja gritona. */
   .m2Row{--tone:var(--chispa-primary);width:100%;min-height:64px;display:grid;grid-template-columns:40px minmax(0,1fr) 15px;
@@ -1746,25 +1758,34 @@
   /* la grilla: el protagonista. 2 columnas → se ven ~6 materias sin scroll y el
      ícono 3D tiene aire para ser identidad, en vez de una fila casi vacía. */
   .m2Grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;align-items:stretch}
-  .m2Card{--c:var(--chispa-primary);position:relative;min-height:132px;display:flex;flex-direction:column;align-items:flex-start;
-    border:0;border-radius:19px;background:rgba(255,255,255,.95);padding:13px;text-align:left;color:var(--chispa-ink);
-    font-family:"Nunito";box-shadow:0 16px 34px -28px rgba(38,25,58,.4);cursor:pointer}
+  .m2Card{--c:var(--chispa-primary);position:relative;min-height:150px;display:flex;flex-direction:column;align-items:flex-start;
+    border:0;border-radius:20px;background:color-mix(in srgb,var(--c) 7%,#fff);padding:14px 14px 13px;text-align:left;color:var(--chispa-ink);
+    font-family:"Nunito";box-shadow:0 14px 30px -26px rgba(38,25,58,.42);cursor:pointer;transition:transform .1s}
   .m2Card:active{transform:scale(.98)}
-  .m2CardIcon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;margin-bottom:9px;
-    color:var(--c);font-size:1.3rem;line-height:1;background:color-mix(in srgb,var(--c) 16%,#fff)}
-  .m2CardIcon img{width:82%;height:82%;object-fit:contain;display:block}
-  .m2CardIcon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  .m2Card b{width:100%;min-height:2.3em;font-family:"Fredoka";font-weight:600;font-size:.86rem;line-height:1.15;
+  /* ícono integrado: halo pastel radial detrás + 3D con sombra corta (no un sticker en un cuadrado) */
+  .m2CardIcon{width:58px;height:58px;display:grid;place-items:center;margin:0 0 10px;color:var(--c);font-size:1.5rem;line-height:1;
+    background:radial-gradient(circle at 50% 46%,color-mix(in srgb,var(--c) 26%,#fff) 0%,color-mix(in srgb,var(--c) 11%,#fff) 46%,transparent 72%)}
+  .m2CardIcon img{width:88%;height:88%;object-fit:contain;display:block;transform:translateY(-1px);filter:drop-shadow(0 6px 8px color-mix(in srgb,var(--c) 40%,transparent))}
+  .m2CardIcon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .m2Card b{width:100%;min-height:2.3em;font-family:"Fredoka";font-weight:600;font-size:.88rem;line-height:1.15;
     overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;white-space:normal;overflow-wrap:anywhere}
-  .m2Card small{font-size:.63rem;font-weight:800;color:var(--chispa-muted);margin:4px 0 9px;line-height:1.2}
-  .m2CardBar{width:100%;height:6px;border-radius:99px;background:#ECEBF2;overflow:hidden;margin-top:auto}
+  .m2Card small{font-size:.66rem;font-weight:800;color:var(--chispa-muted);margin:4px 0 0;line-height:1.2;margin-top:auto}
+  .m2Ready{color:var(--chispa-muted)}
+  .m2Done{display:inline-flex;align-items:center;gap:5px;color:var(--chispa-green)}
+  .m2Done svg{width:14px;height:14px;flex:none;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+  .m2CardBar{width:100%;height:7px;border-radius:99px;background:color-mix(in srgb,var(--c) 15%,#fff);overflow:hidden;margin-top:7px}
   .m2CardBar i{display:block;height:100%;border-radius:inherit;background:var(--c);transition:width .5s ease}
-  .m2New{position:absolute;top:9px;right:9px;font-family:"Fredoka";font-weight:600;font-size:.55rem;letter-spacing:.06em;
+  .m2CardChev{position:absolute;top:14px;right:13px;width:16px;height:16px;fill:none;stroke:color-mix(in srgb,var(--c) 58%,#fff);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  /* jerarquía por estado: en progreso = más contraste · disponible = más suave · completada = acento verde */
+  .m2Card--progreso{background:color-mix(in srgb,var(--c) 12%,#fff);box-shadow:0 16px 30px -24px color-mix(in srgb,var(--c) 55%,rgba(38,25,58,.5))}
+  .m2Card--disponible{background:color-mix(in srgb,var(--c) 5%,#fff)}
+  .m2Card--completada{background:color-mix(in srgb,var(--chispa-green) 9%,#fff)}
+  .m2New{position:absolute;top:11px;right:11px;font-family:"Fredoka";font-weight:600;font-size:.55rem;letter-spacing:.06em;
     text-transform:uppercase;line-height:1;padding:3px 7px;border-radius:999px;color:var(--chispa-coral);
     background:color-mix(in srgb,var(--chispa-coral) 14%,#fff)}
   /* crear materia (Camino B): misma silueta, tratamiento de "hueco" que se llena */
   .m2Card--nueva{background:rgba(255,255,255,.5);border:2px dashed #DCD6EE;box-shadow:none;align-items:center;justify-content:center;text-align:center}
-  .m2Card--nueva .m2CardIcon{margin-bottom:7px}
+  .m2Card--nueva .m2CardIcon{margin-bottom:7px;background:none}
   .m2Card--nueva b{min-height:0;text-align:center;color:var(--chispa-primary)}
 
   /* invitación a Cumbre: lo ÚNICO grande de la pantalla, y va al final (ritmo grande/chico). */
@@ -1786,8 +1807,8 @@
 
   @media (max-width:374px){
     .m2Grid{gap:9px}
-    .m2Card{min-height:126px;padding:11px}
-    .m2CardIcon{width:40px;height:40px}
+    .m2Card{min-height:144px;padding:12px}
+    .m2CardIcon{width:52px;height:52px}
   }
   @media (min-width:560px){
     .m2Grid{grid-template-columns:repeat(3,minmax(0,1fr))}

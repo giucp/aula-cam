@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
 <!-- El `?v=` va apareado con el V de sw.js — subir los DOS juntos. Sin él, la 1ª apertura tras un
      deploy mezcla index nuevo + app.js viejo (cache-first) y el arranque muere. Ver sw.js. -->
-<link rel="stylesheet" href="estilos.css?v=95">
+<link rel="stylesheet" href="estilos.css?v=96">
 </head>
 <body>
 <div class="wrap">
@@ -397,6 +397,7 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Mis materias
         </button>
         <h2 class="m2Title" id="materiasHead">Tus materias</h2>
+        <p class="m2Lede" id="materiasLede">Continúa aprendiendo a tu ritmo.</p>
         <p class="m2Sub" id="materiasSub"></p>
       </div>
 
@@ -409,7 +410,12 @@
         </button>
       </div>
 
-      <!-- El protagonista de la pantalla: las materias. -->
+      <!-- La única acción dominante: seguir con la materia empezada más reciente. -->
+      <div id="materiaDestacada"></div>
+      <!-- Único control segmentado: filtra la grilla (se oculta si no hay materias empezadas). -->
+      <div id="materiasSeg" class="agSeg m2Seg hidden" role="group" aria-label="Filtrar materias"></div>
+
+      <!-- Las materias, como grilla con estado. -->
       <div class="m2Grid" id="gridMaterias"></div>
 
       <!-- Adelantarse = invitación al FINAL: no le roba el arranque a las materias. -->
@@ -744,6 +750,6 @@
 
 </div>
 
-<script src="app.js?v=95"></script>
+<script src="app.js?v=96"></script>
 </body>
 </html>

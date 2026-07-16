@@ -183,6 +183,7 @@
     document.querySelectorAll("#navbar .navBtn").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.tab===id)));
     if(id==="inicio") pintarEscritorio();
     if(id==="muro") cargarMuro();
+    if(id==="materias" && origen==="actual" && $("#paneMaterias") && !$("#paneMaterias").classList.contains("hidden")) pintarMaterias();
     if(id==="agenda"){ pintarSemana(); pintarTareas(); pintarNotas(); pintarHorarioSemana(); }
     window.scrollTo({top:0});
   }
@@ -1881,8 +1882,12 @@
   }
   function repintarProgreso(){
     if($("#paneTemas") && !$("#paneTemas").classList.contains("hidden")){ pintarModos(); marcarChips(); pintarAcciones(); }
-    // refresca la barra de progreso de las tarjetas de materia (materias actuales)
-    if(origen==="actual" && $("#gridMaterias") && SESION && SESION.materias && SESION.materias.length) gridMaterias(SESION.materias);
+    // refresca protagonista + estados de las tarjetas de materia (materias actuales)
+    if(origen==="actual" && $("#gridMaterias") && SESION && SESION.materias && SESION.materias.length && !(SESION.fuente==="manual")){
+      const lista=SESION.materias;
+      const sub=$("#materiasSub"); if(sub){ sub.innerHTML=resumenMaterias(lista); }
+      pintarDestacadaMateria(lista); pintarSegMaterias(lista); pintarGridMaterias(lista);
+    }
   }
 
   // grilla de materias (sirve para las actuales y para las del próximo año)
@@ -1897,31 +1902,101 @@
     done = Math.min(done, total);
     return { done, total, pct: Math.round(done/total*100) };
   }
-  // Tarjeta de materia (Chispa 2.0): placa de ícono 3D tintada + nombre en caso
-  // título (NUNCA a los gritos: limpiaNombreMateria devuelve MAYÚSCULAS) + progreso real.
+  // Estado de una materia por su progreso real: "progreso" (empezada, sin terminar),
+  // "completada" (todos los temas) o "disponible" (sin empezar / sin temas practicables).
+  function estadoMateria(m){
+    const p = progresoMateria(m);
+    if(!p) return { tipo:"disponible", p:null };
+    if(p.done>=p.total) return { tipo:"completada", p };
+    if(p.done>0) return { tipo:"progreso", p };
+    return { tipo:"disponible", p };
+  }
+  // Orden útil: en progreso (más avanzada primero) → disponibles → completadas.
+  // Dentro de cada grupo, alfabético. La última usada ya va de protagonista arriba.
+  function ordenarMaterias(lista){
+    const rank = { progreso:0, disponible:1, completada:2 };
+    const nom = m => capMateria(limpiaNombreMateria(m.nombre));
+    return lista.map(m=>({ m, e:estadoMateria(m) })).sort((a,b)=>{
+      if(rank[a.e.tipo]!==rank[b.e.tipo]) return rank[a.e.tipo]-rank[b.e.tipo];
+      if(a.e.tipo==="progreso") return b.e.p.pct - a.e.p.pct;
+      return nom(a.m).localeCompare(nom(b.m),"es");
+    }).map(x=>x.m);
+  }
+  const M2_CHECK = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>`;
+  // Tarjeta de materia (Chispa 2.0) CON ESTADO: ícono 3D integrado (halo pastel + sombra) +
+  // nombre en caso título + estado (barra de progreso / "Lista para empezar" / "Materia completada").
+  // Sin barras vacías: la materia no empezada muestra texto, no una barra al 0%.
   function gridMaterias(lista){
     const g = $("#gridMaterias"); g.innerHTML="";
+    if(!lista.length){ const e=document.createElement("p"); e.className="m2Empty"; e.textContent="No hay materias para mostrar."; g.appendChild(e); return; }
     lista.forEach(m=>{
-      const vis = homeMateriaVisual(m.nombre);
-      const b=document.createElement("button"); b.className="m2Card";
+      const vis = homeMateriaVisual(m.nombre), e = estadoMateria(m);
+      const b=document.createElement("button"); b.className="m2Card m2Card--"+e.tipo;
       b.style.setProperty("--c", vis.color);
-      const nuevo = (m.id!=null && NOVEDADES[m.id]) ? `<span class="m2New">Nuevo</span>` : "";
-      const pr = progresoMateria(m);
-      const dato = pr ? `<small>${pr.done} de ${pr.total} temas</small>` : "";
-      const barra = pr ? `<span class="m2CardBar" title="${pr.done} de ${pr.total} temas"><i style="width:${pr.pct}%"></i></span>` : "";
-      b.innerHTML=`${nuevo}<span class="m2CardIcon"><img src="assets/materias/${vis.img}.png" alt="" aria-hidden="true"></span>`
-        + `<b>${escapeHtml(capMateria(limpiaNombreMateria(m.nombre)))}</b>${dato}${barra}`;
+      const nuevo = (m.id!=null && NOVEDADES[m.id]);
+      const esquina = nuevo ? `<span class="m2New">Nuevo</span>`
+        : `<svg class="m2CardChev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>`;
+      let estado;
+      if(e.tipo==="progreso") estado = `<small>${e.p.done} de ${e.p.total} temas</small><span class="m2CardBar"><i style="width:${e.p.pct}%"></i></span>`;
+      else if(e.tipo==="completada") estado = `<small class="m2Done">${M2_CHECK}Materia completada</small>`;
+      else estado = `<small class="m2Ready">Lista para empezar</small>`;
+      b.innerHTML=`${esquina}<span class="m2CardIcon"><img src="assets/materias/${vis.img}.png" alt="" aria-hidden="true"></span>`
+        + `<b>${escapeHtml(capMateria(limpiaNombreMateria(m.nombre)))}</b>${estado}`;
       b.onclick=()=>abrirMateria(m);
       g.appendChild(b);
     });
   }
-  // Línea de contexto del encabezado: dato real y tranquilo, nunca un badge decorativo.
+  // ── Materias: protagonista + segmentado ──
+  let matSeg = "progreso";   // segmento activo del grid ("progreso" | "todas")
+  let matSegUser = false;    // ¿el usuario tocó el segmentado? (si no, el default sigue a los datos)
+  // Elige la materia protagonista: la EMPEZADA más avanzada. Si ninguna está empezada, null
+  // (se muestra "Elige una materia para empezar" — sin inventar recomendaciones, pedido del user).
+  function materiaDestacadaElegir(lista){
+    const conProg = lista.map(m=>({m,p:progresoMateria(m)})).filter(x=>x.p&&x.p.done>0&&x.p.done<x.p.total).sort((a,b)=>b.p.pct-a.p.pct);
+    return conProg.length ? conProg[0].m : null;
+  }
+  function pintarDestacadaMateria(lista){
+    const cont=$("#materiaDestacada"); if(!cont) return; cont.innerHTML="";
+    const m=materiaDestacadaElegir(lista);
+    if(!m){ cont.innerHTML=`<div class="m2Destacada--vacia"><p>Elige una materia para empezar.</p></div>`; return; }
+    const vis=homeMateriaVisual(m.nombre), p=progresoMateria(m), nombre=capMateria(limpiaNombreMateria(m.nombre));
+    const b=document.createElement("button"); b.type="button"; b.className="h3ContinuePrimary";
+    b.style.setProperty("--subject",vis.color); b.dataset.subjectKind=vis.key;
+    b.innerHTML=`${homeMarcaMateria(m.nombre,"h3ContinueIcon")}<span class="h3ContinueCopy"><small>Continúa donde lo dejaste</small><b>${escapeHtml(nombre)}</b><span>${p?`${p.done} de ${p.total} temas`:"Materia disponible"}</span>${p?`<i><em style="width:${p.pct}%"></em></i>`:""}</span><span class="h3ContinueAction">Continuar ${homeIcono("flecha")}</span>`;
+    b.onclick=()=>irAPractica(m.nombre); cont.appendChild(b);
+  }
+  function pintarSegMaterias(lista){
+    const cont=$("#materiasSeg"); if(!cont) return;
+    const enProg = lista.filter(m=>estadoMateria(m).tipo==="progreso").length;
+    if(!enProg){ matSeg="todas"; cont.classList.add("hidden"); cont.innerHTML=""; return; }
+    if(!matSegUser) matSeg = "progreso";   // default automático: si hay empezadas, arranca en "En progreso"
+    cont.classList.remove("hidden");
+    cont.innerHTML=`<button class="chip" type="button" data-seg="progreso" aria-pressed="${matSeg==='progreso'}">En progreso</button>`
+      + `<button class="chip" type="button" data-seg="todas" aria-pressed="${matSeg==='todas'}">Todas</button>`;
+    cont.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{
+      matSegUser=true; matSeg=c.dataset.seg;
+      cont.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",String(x===c)));
+      pintarGridMaterias(lista);
+    });
+  }
+  function pintarGridMaterias(lista){
+    const sub = (matSeg==="progreso") ? lista.filter(m=>estadoMateria(m).tipo==="progreso") : ordenarMaterias(lista);
+    gridMaterias(sub);
+  }
+  // Línea de contexto del encabezado: dato real y tranquilo (sin chips). "N en progreso" en acento.
   function resumenMaterias(lista){
     const n = lista.length;
     if(!n) return "";
-    const conProgreso = lista.filter(m=>{ const p=progresoMateria(m); return p && p.done>0; }).length;
-    const base = `${n} ${n===1?"materia":"materias"}`;
-    return conProgreso ? `${base} · ${conProgreso} ${conProgreso===1?"empezada":"empezadas"}` : base;
+    const enProg = lista.filter(m=>estadoMateria(m).tipo==="progreso").length;
+    if(!enProg) return `${n} ${n===1?"materia":"materias"}`;
+    const disp = n - enProg;
+    return `<b>${enProg} en progreso</b> · ${disp} ${disp===1?"disponible":"disponibles"}`;
+  }
+  // Muestra/oculta la tarjeta protagonista y el segmentado (no aplican en Camino B).
+  function verDestacadoMaterias(ver){
+    const d=$("#materiaDestacada"), s=$("#materiasSeg");
+    if(d){ d.classList.toggle("hidden", !ver); if(!ver) d.innerHTML=""; }
+    if(s && !ver){ s.classList.add("hidden"); s.innerHTML=""; }
   }
   function pintarMaterias(){
     origen = "actual";
@@ -1932,11 +2007,14 @@
     $("#cumbreWrap").classList.toggle("hidden", !track);
     $("#destacadaWrap").classList.toggle("hidden", !!track || !siguienteGradoLabel());
     $("#erroresWrap").classList.toggle("hidden", !MIS_ERRORES.length);
-    if(SESION && SESION.fuente==="manual"){ pintarMateriasManuales(); return; }  // Camino B
+    if(SESION && SESION.fuente==="manual"){ verDestacadoMaterias(false); pintarMateriasManuales(); return; }  // Camino B
     $("#materiasHead").textContent = "Tus materias";
     const lista = SESION.materias||[];
-    $("#materiasSub").textContent = resumenMaterias(lista);
-    gridMaterias(lista);
+    const sub=$("#materiasSub"); sub.innerHTML = resumenMaterias(lista); sub.classList.toggle("hidden", !sub.innerHTML);
+    verDestacadoMaterias(true);
+    pintarDestacadaMateria(lista);
+    pintarSegMaterias(lista);
+    pintarGridMaterias(lista);
   }
 
   // ───────── Camino B: materias creadas a mano (cuentas nativas) ─────────
