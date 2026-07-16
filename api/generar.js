@@ -19,10 +19,13 @@ import { normCurado } from "../herramientas/normcurado.mjs";
 
 // Modelo por modo: ejercicios (retos/quiz) con el flash completo (mejor en matemática);
 // resumen/examen con flash-lite (más rápido y barato). CONFIGURABLE por env (para poder
-// flipear/revertir en Vercel sin re-deploy). Defaults = modelos 3.x (2026-07); si el flash 3.x
-// falla/satura, MODEL_EJERCICIOS_FB (flash 2.5, estable) queda de respaldo automático en la
-// cadena de modelos — ambos son "flash", así que la regla "nunca lite en numérico" se respeta.
-const MODEL_EJERCICIOS = process.env.GEMINI_MODEL_FLASH || "gemini-3.5-flash";
+// flipear/revertir en Vercel sin re-deploy).
+// ⚠️ 2026-07-16: gemini-3.5-flash quedó COLGADO (cada request cuelga ~52s → 503; NO da error
+// rápido, así que el respaldo 2.5 tampoco llegaba a tiempo y quiz/examen/práctica fallaban con
+// "Uy, no llegó"). Diagnóstico en vivo: resumen (lite) 200 en 5s, quiz (flash) 503 en 52s.
+// Se revierte el default del flash a 2.5-flash (estable, el que andaba antes del upgrade a 3.x).
+// Para volver a 3.x cuando se recupere: poner GEMINI_MODEL_FLASH=gemini-3.5-flash en Vercel.
+const MODEL_EJERCICIOS = process.env.GEMINI_MODEL_FLASH || "gemini-2.5-flash";
 const MODEL_EJERCICIOS_FB = process.env.GEMINI_MODEL_FLASH_FB || "gemini-2.5-flash";
 const MODEL_TEXTO = process.env.GEMINI_MODEL_LITE || "gemini-3.1-flash-lite";
 // cadena flash (preferido → respaldo), sin duplicar si ambos coinciden (p.ej. si se revierte por env)
