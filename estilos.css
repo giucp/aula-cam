@@ -1205,6 +1205,8 @@
   .h3MoreHead{display:flex;align-items:center;gap:9px;margin-bottom:10px}
   /* "Mañana toca": banda de encabezado morada MUY suave, a sangre, para despegar el título de las filas */
   .h3MoreCard--horario .h3MoreHead{background:color-mix(in srgb,var(--chispa-primary) 5%,#fff);margin:-13px -14px 12px;padding:12px 14px;border-radius:18px 18px 0 0}
+  /* pie "Ver N más/menos": pegado al fondo del card, sin el hueco blanco de abajo (área táctil 44px intacta) */
+  .h3MoreCard--horario{padding-bottom:3px}
   .h3MoreHead h3{flex:1;min-width:0;margin:0;font-family:"Fredoka";font-weight:600;font-size:.92rem;line-height:1.2;color:var(--h2-ink)}
   .h3MoreHead .h2TextAction{margin:-8px -6px;font-size:.74rem}
   .h3MoreMark{width:32px;height:32px;flex:none;border-radius:11px;display:grid;place-items:center;background:color-mix(in srgb,var(--tone) 14%,#fff);color:var(--tone)}
