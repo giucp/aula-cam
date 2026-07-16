@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
 <!-- El `?v=` va apareado con el V de sw.js — subir los DOS juntos. Sin él, la 1ª apertura tras un
      deploy mezcla index nuevo + app.js viejo (cache-first) y el arranque muere. Ver sw.js. -->
-<link rel="stylesheet" href="estilos.css?v=87">
+<link rel="stylesheet" href="estilos.css?v=88">
 </head>
 <body>
 <div class="wrap">
@@ -374,27 +374,20 @@
         <div id="notasList"></div>
       </section>
 
+      <!-- Mi horario: UN día a la vez. Sigue siendo una tarjeta de la Agenda (no una pantalla
+           aparte, no lleva fondo propio). El ícono 3D introduce la sección, no adorna. -->
       <section class="agCard">
         <div class="agHead">
           <img class="agMark" src="assets/agenda/horario.webp" alt="" aria-hidden="true" />
-          <h2>Mi horario</h2>
+          <div class="agHeadTx">
+            <h2>Mi horario</h2>
+            <p class="agHeadSub">Tus clases de la semana</p>
+          </div>
           <button class="agAction" id="btnEditarHorario2" type="button">Editar</button>
         </div>
         <div id="horarioSemana"></div>
       </section>
 
-      <!-- editor del horario (configuración de una sola vez) -->
-      <section class="agCard hidden" id="horarioEditor">
-        <div class="agHead">
-          <img class="agMark" src="assets/agenda/horario.webp" alt="" aria-hidden="true" />
-          <h2>Editar horario</h2>
-        </div>
-        <div id="horarioEditorDias"></div>
-        <div class="acciones" style="margin-top:12px">
-          <button class="go guia" id="btnGuardarHorario">Guardar horario</button>
-          <button class="otros" id="btnCancelarHorario">Cancelar</button>
-        </div>
-      </section>
     </div>
 
     <!-- ═══ pestaña MATERIAS (la práctica de siempre) ═══ -->
@@ -706,6 +699,26 @@
     </div>
   </div>
 
+  <!-- Editar horario — VISTA PROPIA, no mezclada con la lectura (§5 del protocolo).
+       Antes se desplegaba debajo del horario: lectura y configuración compitiendo en la misma
+       pantalla. Acá es una hoja aparte; al cerrarla se vuelve a la Agenda de siempre. -->
+  <div id="horarioEditor" class="hidden famOverlay">
+    <div class="famSheet heSheet">
+      <button class="famClose" id="btnCancelarHorario" aria-label="Cerrar sin guardar">✕</button>
+      <div class="heTop">
+        <img class="heMark" src="assets/agenda/horario.webp" alt="" aria-hidden="true" />
+        <div class="agHeadTx">
+          <h2>Editar horario</h2>
+          <p class="agHeadSub">Elige las materias de cada día</p>
+        </div>
+      </div>
+      <div id="horarioEditorDias"></div>
+      <div class="acciones heAcciones">
+        <button class="go" id="btnGuardarHorario">Guardar horario</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Nueva materia (Camino B, cuentas nativas) -->
   <div id="matModal" class="hidden famOverlay">
     <div class="famSheet">
@@ -734,6 +747,6 @@
 
 </div>
 
-<script src="app.js?v=87"></script>
+<script src="app.js?v=88"></script>
 </body>
 </html>

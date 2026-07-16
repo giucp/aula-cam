@@ -741,29 +741,90 @@
 
   // ───────── horario: vista semanal + editor ─────────
   const DIAS_CORT=["","Lunes","Martes","Miércoles","Jueves","Viernes"];
-  // Vista 2.0: de entrada se ve SOLO el próximo día escolar (pill morada llena) — es la única
-  // pregunta del día a día ("¿qué toca?"). "Ver toda la semana" despliega el resto. Chips de
-  // materia con punto de color (.h3Chip, el mismo componente de "Mañana toca" en el Inicio).
+  // ───────── Mi horario: UN día a la vez ─────────
+  // Antes se pintaban los 5 días abiertos, cada materia en una cápsula de color. Problemas reales
+  // (auditoría del usuario): el color hacía todo el trabajo de identificación, los días y las
+  // materias competían, las materias largas rompían la composición y la semana entera era una
+  // pantalla interminable que la nav de abajo terminaba tapando.
+  // Ahora: un SELECTOR de días (control segmentado — acá sí corresponde superficie, porque es un
+  // selector real, no decoración) + el día elegido con sus materias en FILAS (ícono oficial +
+  // nombre protagonista, sin píldora) + "Resto de la semana" como lista de días, no como chips.
+  // NO se inventan horas: si no hay orden real, se respeta el guardado y no se rotula "Primera
+  // materia" (sería un dato falso).
+  let HORARIO_DIA=null;                       // 1..5, el día que se está mirando
+  function diaEscolarDeHoy(){                 // fin de semana → lunes
+    const d=new Date().getDay();              // 0=dom … 6=sáb
+    return (d>=1 && d<=5) ? d : 1;
+  }
+  function materiasDelDia(d){
+    return HORARIO.filter(h=>h.dia===d).sort((a,b)=>(a.orden||0)-(b.orden||0));
+  }
+  function conteoMaterias(n){ return n ? `${n} ${n===1?"materia":"materias"}` : "Sin clases"; }
+  const CHEV=`<svg class="hoChev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>`;
   function pintarHorarioSemana(){
-    const cont=$("#horarioSemana"); if(!cont) return; cont.innerHTML=""; cont.classList.remove("ag-todo");
+    const cont=$("#horarioSemana"); if(!cont) return; cont.innerHTML="";
     if(!HORARIO.length){
       cont.innerHTML=`<p class="h2Empty">Aún no configuraste tu horario. Toca "Editar" y lo armas en 2 minutos (una sola vez).</p>`;
       return;
     }
-    const prox=proximoDiaEscolar().dia;
-    const fila=d=>{
-      const del=HORARIO.filter(h=>h.dia===d).sort((a,b)=>(a.orden||0)-(b.orden||0));
-      const row=document.createElement("div"); row.className="agDiaRow";
-      const chips=del.length?del.map(h=>{
-        const v=homeMateriaVisual(h.materia);
-        return `<span class="h3Chip" style="--tone:${v.color}"><i></i><span>${escapeHtml(capMateria(limpiaNombreMateria(h.materia)))}</span></span>`;
-      }).join(""):`<span class="agDiaLibre">Libre</span>`;
-      row.innerHTML=`<span class="agDiaPill${d===prox?" is-prox":""}">${DIAS_CORT[d]}</span><span class="h3MoreChips">${chips}</span>`;
-      return row;
-    };
-    // el próximo día primero; los demás en orden de semana, tras el pie
-    const orden=[prox, ...[1,2,3,4,5].filter(d=>d!==prox)];
-    agColapsable(cont, orden.map(fila), 1, "Ver toda la semana");
+    if(!HORARIO_DIA) HORARIO_DIA=diaEscolarDeHoy();
+    const hoy=new Date().getDay();
+
+    // 1 · selector de días
+    const sel=document.createElement("div"); sel.className="hoSel"; sel.setAttribute("role","group");
+    sel.setAttribute("aria-label","Elegir día");
+    for(let d=1; d<=5; d++){
+      const b=document.createElement("button"); b.type="button";
+      b.className="hoDia"+(d===HORARIO_DIA?" is-sel":"");
+      b.setAttribute("aria-pressed", String(d===HORARIO_DIA));
+      b.innerHTML=`<span class="hoAbr">${DIAS_SEM[d-1]}</span>`+(d===hoy?`<span class="hoHoy">Hoy</span>`:"");
+      b.onclick=()=>{ HORARIO_DIA=d; pintarHorarioSemana(); };
+      sel.appendChild(b);
+    }
+    cont.appendChild(sel);
+
+    // 2 · el día elegido
+    const mats=materiasDelDia(HORARIO_DIA);
+    const head=document.createElement("div"); head.className="hoHead";
+    head.innerHTML=`<h3>${DIAS_CORT[HORARIO_DIA]}</h3><span>${conteoMaterias(mats.length)}</span>`;
+    cont.appendChild(head);
+
+    const lista=document.createElement("div"); lista.className="hoList";
+    if(!mats.length){
+      lista.innerHTML=`<p class="h2Empty">Este día no tienes clases.</p>`;
+    }else{
+      mats.forEach(h=>{
+        // materia del aula → la fila lleva a practicarla (por eso el chevron). Las propias
+        // (Caligrafía, Inteligencia Emocional…) no se practican: fila sin chevron ni acción.
+        const enAula=esMateriaAula(h.materia), v=homeMateriaVisual(h.materia);
+        const row=document.createElement(enAula?"button":"div");
+        row.className="hoRow"; if(enAula) row.type="button";
+        row.style.setProperty("--subject",v.color);
+        row.innerHTML=homeMarcaMateria(h.materia,"hoMark")+
+          `<b>${escapeHtml(capMateria(limpiaNombreMateria(h.materia)))}</b>`+(enAula?CHEV:"");
+        if(enAula) row.onclick=()=>irAPractica(h.materia);
+        lista.appendChild(row);
+      });
+    }
+    cont.appendChild(lista);
+
+    // 3 · resto de la semana: lista de días, NO chips. Tocar uno lo selecciona arriba.
+    const tit=document.createElement("p"); tit.className="hoRestoTit"; tit.textContent="Resto de la semana";
+    cont.appendChild(tit);
+    const resto=document.createElement("div"); resto.className="hoResto";
+    for(let d=1; d<=5; d++){
+      if(d===HORARIO_DIA) continue;
+      const mats=materiasDelDia(d);
+      // El punto NO es decoración: lleva el color de la materia con la que ARRANCA ese día.
+      // Se ve igual que en el mockup (chico y discreto) pero dice algo. Día sin clases → gris.
+      const tono=mats.length ? homeMateriaVisual(mats[0].materia).color : "#D7D2E4";
+      const b=document.createElement("button"); b.type="button"; b.className="hoRestoRow";
+      b.style.setProperty("--tone",tono);
+      b.innerHTML=`<i class="hoDot"></i><b>${DIAS_CORT[d]}</b><span>${conteoMaterias(mats.length)}</span>${CHEV}`;
+      b.onclick=()=>{ HORARIO_DIA=d; pintarHorarioSemana(); cont.scrollIntoView({block:"start",behavior:"smooth"}); };
+      resto.appendChild(b);
+    }
+    cont.appendChild(resto);
   }
   // materias base (del aula) + las "propias" que el niño agregó (caligrafía, lectura…)
   function materiasBase(){ return ((SESION&&SESION.materias)||[]).map(m=>m.nombre); }
@@ -821,53 +882,93 @@
   function abrirEditorHorario(){
     EDIT_HORARIO={};
     for(let d=1; d<=5; d++) EDIT_HORARIO[d]=HORARIO.filter(h=>h.dia===d).sort((a,b)=>(a.orden||0)-(b.orden||0)).map(h=>h.materia);
-    EDIT_DIA=1; EDIT_EXTRAS=[];
+    // arranca en el día que se estaba MIRANDO: si tocaste "Editar" viendo el jueves, editás el
+    // jueves. Antes siempre abría en lunes y había que volver a buscar el día.
+    EDIT_DIA=HORARIO_DIA||diaEscolarDeHoy(); EDIT_EXTRAS=[];
     $("#horarioEditor").classList.remove("hidden");
     renderEditorHorario();
-    $("#horarioEditor").scrollIntoView({behavior:"smooth", block:"start"});
+    $("#horarioEditor").scrollTop=0;
   }
+  // El editor habla el MISMO idioma que la lectura: selector de días arriba (idéntico al de
+  // "Mi horario", con el conteo del día) y las materias como FILAS con su ícono, nunca chips.
+  // Antes eran chips donde había que tocar en el orden correcto y volver a tocar para quitar:
+  // el orden vivía en un superíndice diminuto y no se veía qué tenía el día sin leer 15 cápsulas.
+  // Ahora se separa en dos listas: LO QUE TIENE ESE DÍA (numerado, con quitar explícito) y LO QUE
+  // SE PUEDE AGREGAR. El orden sigue siendo el de agregado — reordenar es una función que hoy no
+  // existe y esto es una migración de estética, no una feature nueva.
   function renderEditorHorario(){
     const cont=$("#horarioEditorDias"); cont.innerHTML="";
-    // 1) selector de día (pills) — se ve UN día a la vez, con contador de materias
-    const sel=document.createElement("div"); sel.className="heDiaSel";
+    const dia=EDIT_HORARIO[EDIT_DIA];
+
+    // 1 · selector de días, con el conteo de cada uno
+    const sel=document.createElement("div"); sel.className="hoSel"; sel.setAttribute("role","group");
+    sel.setAttribute("aria-label","Elegir día a editar");
     for(let d=1; d<=5; d++){
-      const cnt=(EDIT_HORARIO[d]||[]).length;
-      const b=document.createElement("button"); b.className="heDiaPill"+(d===EDIT_DIA?" on":"");
-      b.innerHTML=`${DIAS_CORT[d].slice(0,3)}${cnt?`<span class="hePillN">${cnt}</span>`:""}`;
+      const n=(EDIT_HORARIO[d]||[]).length;
+      const b=document.createElement("button"); b.type="button";
+      b.className="hoDia"+(d===EDIT_DIA?" is-sel":"");
+      b.setAttribute("aria-pressed", String(d===EDIT_DIA));
+      b.innerHTML=`<span class="hoAbr">${DIAS_SEM[d-1]}</span><span class="heN">${n||"·"}</span>`;
       b.onclick=()=>{ EDIT_DIA=d; renderEditorHorario(); };
       sel.appendChild(b);
     }
     cont.appendChild(sel);
-    // 2) guía del día
-    const sub=document.createElement("p"); sub.className="ayuda";
-    sub.textContent=`Toca las materias del ${DIAS_CORT[EDIT_DIA].toLowerCase()}, en el orden en que las tienes. Toca de nuevo para quitarla.`;
-    cont.appendChild(sub);
-    // 3) chips SOLO del día elegido
-    const chips=document.createElement("div"); chips.className="chips heChips";
-    poolEditor().forEach(nombre=>{
-      const dia=EDIT_HORARIO[EDIT_DIA];
-      const i=dia.indexOf(nombre);
-      const b=document.createElement("button"); b.className="chip";
-      b.setAttribute("aria-pressed", String(i>=0));
-      b.style.setProperty("--c", homeMateriaVisual(nombre).color);
-      b.innerHTML=`${i>=0?`<span class="chipN">${i+1}º</span>`:""}<i class="matDot"></i>${escapeHtml(capMateria(limpiaNombreMateria(nombre)))}`;
-      b.onclick=()=>{ const j=dia.indexOf(nombre); if(j>=0) dia.splice(j,1); else dia.push(nombre); renderEditorHorario(); };
-      chips.appendChild(b);
-    });
-    cont.appendChild(chips);
-    // 4) agregar una materia propia (no está en el aula: caligrafía, lectura…)
-    const addLbl=document.createElement("p"); addLbl.className="heAddLbl";
-    addLbl.textContent="¿Falta una materia? (caligrafía, lectura…)";
+
+    // 2 · lo que tiene ese día
+    const head=document.createElement("div"); head.className="hoHead";
+    head.innerHTML=`<h3>${DIAS_CORT[EDIT_DIA]}</h3><span>${conteoMaterias(dia.length)}</span>`;
+    cont.appendChild(head);
+
+    const suyas=document.createElement("div"); suyas.className="hoList";
+    if(!dia.length){
+      suyas.innerHTML=`<p class="h2Empty">Aún no agregaste materias a este día. Elegilas abajo 👇</p>`;
+    }else{
+      dia.forEach((nombre,i)=>{
+        const v=homeMateriaVisual(nombre);
+        const row=document.createElement("div"); row.className="heRow";
+        row.style.setProperty("--subject",v.color);
+        row.innerHTML=`<span class="heOrden">${i+1}</span>`+homeMarcaMateria(nombre,"hoMark")+
+          `<b>${escapeHtml(capMateria(limpiaNombreMateria(nombre)))}</b>`+
+          `<button class="heQuitar" type="button" aria-label="Quitar ${escapeHtml(capMateria(limpiaNombreMateria(nombre)))} del ${DIAS_CORT[EDIT_DIA].toLowerCase()}"><span>−</span></button>`;
+        row.querySelector(".heQuitar").onclick=()=>{ dia.splice(i,1); renderEditorHorario(); };
+        suyas.appendChild(row);
+      });
+    }
+    cont.appendChild(suyas);
+
+    // 3 · lo que se puede agregar (solo lo que NO está ya en el día)
+    const libres=poolEditor().filter(n=>!dia.some(x=>norm(x)===norm(n)));
+    const tit=document.createElement("p"); tit.className="hoRestoTit";
+    tit.textContent=`Agregar al ${DIAS_CORT[EDIT_DIA].toLowerCase()}`;
+    cont.appendChild(tit);
+    const dispo=document.createElement("div"); dispo.className="hoList";
+    if(!libres.length){
+      dispo.innerHTML=`<p class="h2Empty">Ya agregaste todas tus materias a este día.</p>`;
+    }else{
+      libres.forEach(nombre=>{
+        const v=homeMateriaVisual(nombre);
+        const row=document.createElement("button"); row.type="button"; row.className="heRow heRow--add";
+        row.style.setProperty("--subject",v.color);
+        row.innerHTML=homeMarcaMateria(nombre,"hoMark")+
+          `<b>${escapeHtml(capMateria(limpiaNombreMateria(nombre)))}</b><span class="heMas" aria-hidden="true">＋</span>`;
+        row.onclick=()=>{ dia.push(nombre); renderEditorHorario(); };
+        dispo.appendChild(row);
+      });
+    }
+    cont.appendChild(dispo);
+
+    // 4 · agregar una materia propia (no está en el aula: caligrafía, lectura…)
+    const addLbl=document.createElement("p"); addLbl.className="hoRestoTit";
+    addLbl.textContent="¿Falta una materia?";
     cont.appendChild(addLbl);
     const add=document.createElement("div"); add.className="heAdd";
     const inp=document.createElement("input"); inp.type="text"; inp.maxLength=40;
-    inp.placeholder="Escribe el nombre"; inp.autocapitalize="characters";
-    const btn=document.createElement("button"); btn.className="heAddBtn"; btn.textContent="＋ Agregar";
+    inp.placeholder="Caligrafía, lectura…"; inp.autocapitalize="characters";
+    const btn=document.createElement("button"); btn.type="button"; btn.className="heAddBtn"; btn.textContent="Agregar";
     const agregar=()=>{
       const v=inp.value.trim(); if(!v) return;
       const V=v.toUpperCase();                        // en MAYÚSCULAS, como las demás
       if(!poolEditor().some(x=>norm(x)===norm(V))) EDIT_EXTRAS.push(V);
-      const dia=EDIT_HORARIO[EDIT_DIA];
       if(!dia.some(x=>norm(x)===norm(V))) dia.push(V); // la suma directo al día actual
       inp.value=""; renderEditorHorario();
     };
