@@ -718,7 +718,6 @@
     $("#tDesc").focus();
   }
   // dos entradas al mismo formulario: el + flotante del encabezado y el "Anotar" de la tarjeta
-  $("#btnNuevaTarea").onclick=abrirFormTarea;
   $("#btnNuevaTarea2").onclick=abrirFormTarea;
   $("#btnCancelarTarea").onclick=()=>$("#formTarea").classList.add("hidden");
   document.querySelectorAll("#tTipos .chip").forEach(b=>{

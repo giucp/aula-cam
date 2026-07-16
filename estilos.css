@@ -1312,7 +1312,7 @@
   /* El + vive en un CARRIL PROPIO de 62px a la derecha (padding-right del header): el libro
      termina antes de ese carril y el botón flota en él. Así es IMPOSIBLE que el + pise el libro,
      a 375px o con la ventana maximizada en PC (el bug de la 1ª versión). */
-  .agTop{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:6px;margin:2px 0 18px;padding-right:62px}
+  .agTop{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:6px;margin:2px 0 18px}
   /* sin lede: el bloque de texto baja para quedar ópticamente centrado contra el libro (medido) */
   .agTitle{padding-top:46px}
   .agEyebrow{margin:0 0 6px;font-family:"Nunito";font-weight:900;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--chispa-primary)}
@@ -1321,11 +1321,8 @@
   /* destellos de 4 puntas (SVG inline en el header): ámbar arriba-izquierda del libro, rosa abajo
      a la derecha. Anclados al lado del libro, que está fijado a la derecha → sirven a todo ancho. */
   .agStar{position:absolute;pointer-events:none}
-  .agStar--a{width:17px;height:17px;right:202px;top:2px;fill:#FDC64B}
-  .agStar--b{width:13px;height:13px;right:62px;top:136px;fill:#F8A9C8;transform:rotate(18deg)}
-  .agAdd{position:absolute;right:0;top:56px;width:52px;height:52px;border:0;border-radius:50%;background:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 12px 26px -12px rgba(103,83,232,.45)}
-  .agAdd:active{transform:scale(.95)}
-  .agAdd svg{width:22px;height:22px;fill:none;stroke:var(--chispa-primary);stroke-width:2.6;stroke-linecap:round}
+  .agStar--a{width:17px;height:17px;right:140px;top:2px;fill:#FDC64B}
+  .agStar--b{width:13px;height:13px;right:0;top:136px;fill:#F8A9C8;transform:rotate(18deg)}
 
   /* tira de semana */
   .agWeek{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px;background:#fff;border-radius:22px;padding:11px 5px;margin-bottom:18px;box-shadow:0 16px 36px -30px rgba(38,25,58,.4)}
@@ -1508,8 +1505,6 @@
   @media (max-width:359px){
     .agTitle h1{font-size:2rem}
     .agBook{width:114px}
-    .agTop::before{right:182px}
-    .agTop::after{top:120px}
     .agMark{width:46px;height:46px}
     .agHead{grid-template-columns:46px minmax(0,1fr) auto;gap:9px}
     .agHead h2{font-size:1.14rem}
