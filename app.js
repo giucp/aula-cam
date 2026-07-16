@@ -578,7 +578,8 @@
     }
     // Chispa 2.0: las materias del día van como FILAS (mismo patrón que "Mi horario" de la Agenda),
     // no como chips. Materia del aula → fila-botón que lleva a practicar (chevron); propia → fila sin acción.
-    del.forEach(h=>{
+    // Desplegable: se ven 2, el resto tras el pie "Ver N más" (mismo colapsable que Tareas/Notas).
+    const filas=del.map(h=>{
       const enAula=esMateriaAula(h.materia), v=homeMateriaVisual(h.materia);
       const row=document.createElement(enAula?"button":"div");
       row.className="hoRow"; if(enAula) row.type="button";
@@ -586,13 +587,9 @@
       row.innerHTML=homeMarcaMateria(h.materia,"hoMark")+
         `<b>${escapeHtml(capMateria(limpiaNombreMateria(h.materia)))}</b>`+(enAula?CHEV:"");
       if(enAula) row.onclick=()=>irAPractica(h.materia);
-      cont.appendChild(row);
+      return row;
     });
-    if(del.some(h=>esMateriaAula(h.materia))){
-      const hint=document.createElement("p"); hint.className="h3MoreEmpty"; hint.style.width="100%"; hint.style.marginTop="2px";
-      hint.textContent="Toca una materia para repasarla.";
-      cont.appendChild(hint);
-    }
+    agColapsable(cont, filas, HOME_HORARIO_VISIBLES);
   }
   function pintarTareasResumen(){
     const cont=$("#tareasResumen"); cont.innerHTML="";
@@ -687,7 +684,7 @@
     t.onclick=()=>{ cont.classList.toggle("ag-todo"); set(); };
     cont.appendChild(t);
   }
-  const AG_TAREAS_VISIBLES=4, AG_NOTAS_VISIBLES=3;
+  const AG_TAREAS_VISIBLES=4, AG_NOTAS_VISIBLES=3, HOME_HORARIO_VISIBLES=2;
   function pintarTareas(){
     const cont=$("#tareasList"); if(!cont) return; cont.innerHTML=""; cont.classList.remove("ag-todo");
     if(!TAREAS.length){
