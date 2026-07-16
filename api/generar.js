@@ -20,14 +20,22 @@ import { normCurado } from "../herramientas/normcurado.mjs";
 // Modelo por modo: ejercicios (retos/quiz) con el flash completo (mejor en matemática);
 // resumen/examen con flash-lite (más rápido y barato). CONFIGURABLE por env (para poder
 // flipear/revertir en Vercel sin re-deploy).
-// ⚠️ 2026-07-16: gemini-3.5-flash quedó COLGADO (cada request cuelga ~52s → 503; NO da error
-// rápido, así que el respaldo 2.5 tampoco llegaba a tiempo y quiz/examen/práctica fallaban con
-// "Uy, no llegó"). Diagnóstico en vivo: resumen (lite) 200 en 5s, quiz (flash) 503 en 52s.
-// Se revierte el default del flash a 2.5-flash (estable, el que andaba antes del upgrade a 3.x).
-// Para volver a 3.x cuando se recupere: poner GEMINI_MODEL_FLASH=gemini-3.5-flash en Vercel.
-const MODEL_EJERCICIOS = process.env.GEMINI_MODEL_FLASH || "gemini-2.5-flash";
+const MODEL_EJERCICIOS = process.env.GEMINI_MODEL_FLASH || "gemini-3.5-flash";
 const MODEL_EJERCICIOS_FB = process.env.GEMINI_MODEL_FLASH_FB || "gemini-2.5-flash";
 const MODEL_TEXTO = process.env.GEMINI_MODEL_LITE || "gemini-3.1-flash-lite";
+// ── Plan de respuesta AUTOMÁTICA ante un modelo enfermo (2026-07-16) ──
+// El 3.5-flash quedó COLGADO (no fallaba rápido: cada request colgaba hasta el timeout, se comía
+// el presupuesto de 52s y el respaldo 2.5 nunca llegaba → "Uy, no llegó" en quiz/examen). Tres capas:
+// 1. FAST-FAIL: ningún intento espera más de IA_TIMEOUT_MS (antes 45s). Un modelo colgado pierde
+//    ~12s, no el request entero; un hang salta DIRECTO al próximo modelo (es del modelo, no de la key).
+// 2. CIRCUIT BREAKER (tabla ia_modelo_salud, compartida entre instancias): SALUD_K hangs/503s
+//    seguidos marcan el modelo caído por SALUD_COOLDOWN_MS → los requests lo saltan sin perder tiempo.
+// 3. AUTO-RECUPERACIÓN: vencido el cooldown, el próximo request lo SONDEA una vez (1 key, 1 intento);
+//    si responde se limpia y todos vuelven al modelo bueno; si no, se re-extiende el cooldown.
+// Fail-open en todo: sin Supabase o con la tabla caída, la generación sigue como siempre.
+const IA_TIMEOUT_MS = parseInt(process.env.GEMINI_TIMEOUT_MS, 10) || 12000;
+const SALUD_K = 3;                          // fallos seguidos para abrir el breaker
+const SALUD_COOLDOWN_MS = 8 * 60 * 1000;    // cuánto se salta un modelo caído antes de re-sondearlo
 // cadena flash (preferido → respaldo), sin duplicar si ambos coinciden (p.ej. si se revierte por env)
 const FLASH_CHAIN = MODEL_EJERCICIOS_FB && MODEL_EJERCICIOS_FB !== MODEL_EJERCICIOS
   ? [MODEL_EJERCICIOS, MODEL_EJERCICIOS_FB] : [MODEL_EJERCICIOS];
@@ -614,15 +622,18 @@ async function cacheSet(clave, fila) {
 // Llama a Gemini con reintentos: ante 429 (límite por minuto) o 503 (saturado)
 // espera un poco y reintenta, en vez de fallarle al niño de una.
 async function pedirAGemini(url, payload, intentos = 2, deadline = 0) {
-  let ultimo = { data: null, status: 0 };
+  let ultimo = { data: null, status: 0, hang: false };
   for (let i = 0; i < intentos; i++) {
     // No arrancamos una llamada si casi no queda presupuesto de tiempo (evita el 504 de
     // Vercel: mejor cortar amable a que la función muera a los 60s).
     const restante = deadline ? deadline - Date.now() : 45000;
-    if (restante < 4000) { ultimo = { data: null, status: 503 }; break; }
+    if (restante < 4000) { ultimo = { data: null, status: 503, hang: false }; break; }
     const ctrl = new AbortController();
-    const to = setTimeout(() => ctrl.abort(), Math.min(restante, 45000));
-    let data = null, status = 0;
+    // FAST-FAIL: techo corto por intento. Un modelo COLGADO (el modo de falla del 3.5-flash
+    // el 2026-07-16: no responde ni error) pierde ~12s y el chain sigue con el próximo modelo,
+    // en vez de comerse los 45s y dejar sin tiempo al respaldo.
+    const to = setTimeout(() => ctrl.abort(), Math.min(restante, IA_TIMEOUT_MS));
+    let data = null, status = 0, hang = false;
     try {
       const r = await fetch(url, {
         method: "POST",
@@ -633,11 +644,13 @@ async function pedirAGemini(url, payload, intentos = 2, deadline = 0) {
       try { data = await r.json(); } catch (e) { data = null; }
       status = (data && data.error && data.error.code) || r.status;
     } catch (e) {
-      // timeout (abort) o red caída → lo tratamos como saturación transitoria (amable/retriable)
-      data = null; status = 503;
+      // abort (cuelgue) o red caída → 503 retriable, marcado como HANG: el caller salta de
+      // modelo directamente (un cuelgue es del modelo/servicio, no de la key) y el breaker lo cuenta.
+      data = null; status = 503; hang = true;
     } finally { clearTimeout(to); }
-    ultimo = { data, status };
-    // Solo reintentamos en 503 (saturación transitoria) y si aún queda tiempo. En 429
+    ultimo = { data, status, hang };
+    if (hang) return ultimo; // un cuelgue no se resuelve con backoff de 1s: que decida el caller
+    // Solo reintentamos en 503 real (saturación transitoria) y si aún queda tiempo. En 429
     // (límite por minuto) NO reintentamos: gastaría más cuota y la empeora.
     if (status === 503 && i < intentos - 1 && (!deadline || deadline - Date.now() > 5000)) {
       await dormir(900 * (i + 1)); // backoff corto: 0.9s, 1.8s
@@ -652,6 +665,67 @@ async function pedirAGemini(url, payload, intentos = 2, deadline = 0) {
 function segReintento(msg) {
   const m = String(msg || "").match(/retry in\s+([\d.]+)\s*s/i);
   return m ? Math.ceil(parseFloat(m[1])) : null;
+}
+
+// ───────── circuit breaker de modelos (tabla ia_modelo_salud) ─────────
+// Lee la salud de los modelos de la cadena (1 GET, techo 1.5s). Fail-open: cualquier
+// problema devuelve un Map vacío y la generación sigue como si todos estuvieran sanos.
+async function saludLeer(modelos) {
+  const cfg = supabaseCfg();
+  const salud = new Map();
+  if (!cfg || !modelos.length) return salud;
+  try {
+    const ctrl = new AbortController();
+    const to = setTimeout(() => ctrl.abort(), 1500);
+    const lista = modelos.map((m) => `"${m}"`).join(",");
+    const r = await fetch(
+      `${cfg.url}/rest/v1/ia_modelo_salud?modelo=in.(${encodeURIComponent(lista)})&select=modelo,fallos,caido_hasta`,
+      { headers: { apikey: cfg.key, Authorization: `Bearer ${cfg.key}` }, signal: ctrl.signal }
+    );
+    clearTimeout(to);
+    if (!r.ok) return salud;
+    const rows = await r.json();
+    (Array.isArray(rows) ? rows : []).forEach((f) => salud.set(f.modelo, f));
+  } catch (e) { /* fail-open */ }
+  return salud;
+}
+// Estado de un modelo según su fila: "ok" (sano) · "caido" (breaker abierto: se salta) ·
+// "sonda" (cooldown vencido: se prueba UNA vez; si responde se limpia, si no se re-extiende).
+function saludEstado(salud, modelo, ahora) {
+  const f = salud.get(modelo);
+  if (!f) return "ok";
+  if (f.caido_hasta && new Date(f.caido_hasta).getTime() > ahora) return "caido";
+  if ((f.fallos || 0) >= SALUD_K) return "sonda";
+  return "ok";
+}
+// Registra el resultado (upsert, techo 1.5s, fail-open). ok=true limpia; ok=false suma un
+// fallo y, al llegar a SALUD_K, abre el breaker por SALUD_COOLDOWN_MS.
+async function saludMarcar(modelo, ok, salud) {
+  const cfg = supabaseCfg();
+  if (!cfg || !modelo) return;
+  const prev = (salud && salud.get(modelo)) || null;
+  if (ok && !prev) return; // sano y sin historial: no hay nada que limpiar (evita un write por request)
+  const fallos = ok ? 0 : ((prev && prev.fallos) || 0) + 1;
+  const fila = {
+    modelo,
+    fallos,
+    caido_hasta: !ok && fallos >= SALUD_K ? new Date(Date.now() + SALUD_COOLDOWN_MS).toISOString() : null,
+    actualizado: new Date().toISOString(),
+  };
+  try {
+    const ctrl = new AbortController();
+    const to = setTimeout(() => ctrl.abort(), 1500);
+    await fetch(`${cfg.url}/rest/v1/ia_modelo_salud?on_conflict=modelo`, {
+      method: "POST",
+      headers: {
+        apikey: cfg.key, Authorization: `Bearer ${cfg.key}`,
+        "Content-Type": "application/json", Prefer: "resolution=merge-duplicates",
+      },
+      body: JSON.stringify(fila),
+      signal: ctrl.signal,
+    });
+    clearTimeout(to);
+  } catch (e) { /* fail-open */ }
 }
 
 export default async function handler(req, res) {
@@ -840,32 +914,60 @@ export default async function handler(req, res) {
     // de free-tier, más fiable y rápida — pro en particular casi no tiene cupo gratis) y
     // las gratis quedan de respaldo. Para todo lo demás: gratis primero (costo).
     const ordenKeys = (analitica || usarProReporte) ? [...pagas, ...gratisRot] : [...gratisRot, ...pagas];
+    // ── circuit breaker: la cadena se reordena por SALUD ──
+    // Los CAÍDOS van al FINAL (último recurso: mejor un modelo enfermo que ningún intento) →
+    // mientras dure la caída, ningún request paga su timeout. Las SONDAS (cooldown vencido)
+    // CONSERVAN su posición de preferencia: es el "half-open" del breaker — un request las
+    // prueba de verdad (acotado a 1 intento por key, corta al primer fallo); si responde, el
+    // modelo se limpia y todos vuelven a él; si no, el cooldown se re-extiende. Sin esto la
+    // sonda nunca correría (el respaldo sano respondería antes) y el modelo bueno jamás volvería.
+    const salud = await saludLeer(modelos);
+    const ahoraSalud = Date.now();
+    const caidos = modelos.filter((m) => saludEstado(salud, m, ahoraSalud) === "caido");
+    const cadena = [...modelos.filter((m) => !caidos.includes(m)), ...caidos];
     let data = null,
       status = 0,
-      modeloUsado = modelos[0],
+      modeloUsado = cadena[0],
       keyUsada = null;
     // Presupuesto de tiempo: cortamos antes del maxDuration de 60s de Vercel para devolver
     // un 503 amable (el front reintenta) en vez de un 504 crudo que rompe la pantalla.
     const DEADLINE = Date.now() + 52000;
     let parsed = null, malformado = false;
-    buscar: for (const m of modelos) {
+    // Qué aprendió este request de cada modelo (para el breaker): exito | fallo.
+    // Los 429 puros son cupo de la KEY, no salud del modelo → no cuentan.
+    const resultadoModelo = new Map();
+    buscar: for (const m of cadena) {
       const ep = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`;
+      // Sonda (modelo con historial de fallos): UNA probada real (1 intento por key y
+      // cortar al primer fallo de servicio) — si responde se limpia, si no seguimos de largo.
+      const esSonda = saludEstado(salud, m, ahoraSalud) !== "ok";
+      let vio503 = false;
       for (const key of ordenKeys) {
         if (Date.now() > DEADLINE - 4000) { status = 503; break buscar; } // sin tiempo → cortamos amable
-        const r = await pedirAGemini(`${ep}?key=${key}`, payload, 2, DEADLINE);
+        const r = await pedirAGemini(`${ep}?key=${key}`, payload, esSonda ? 1 : 2, DEADLINE);
         data = r.data;
         status = r.status;
         modeloUsado = m;
         keyUsada = key;
-        if (status === 429 || status === 503) continue;   // cupo/saturado → próxima key
-        if (data && data.error) break buscar;               // error no recuperable (ej. 400)
+        if (r.hang) { resultadoModelo.set(m, "fallo"); break; }   // cuelgue = del modelo → PRÓXIMO MODELO ya
+        if (status === 429) continue;                              // cupo de esta key → próxima key
+        if (status === 503) {                                      // saturación del servicio
+          vio503 = true;
+          if (esSonda) { resultadoModelo.set(m, "fallo"); break; } // la sonda no insiste
+          continue;                                                // próxima key
+        }
+        if (data && data.error) { resultadoModelo.set(m, "fallo"); break; } // error duro (400/404) → próximo modelo
         // 200: parseamos y validamos ACÁ. Si el JSON viene malformado/incompleto (varianza del
         // modelo), lo tratamos como reintentable: probamos otra key/modelo si queda tiempo.
         const p = parsearGemini(data);
-        if (p && esValido(modo, p)) { parsed = p; break buscar; }
+        if (p && esValido(modo, p)) { parsed = p; resultadoModelo.set(m, "exito"); break buscar; }
         malformado = true;
       }
+      // agotó todas las keys y al menos una dio 503 real → cuenta como fallo del modelo
+      if (!resultadoModelo.has(m) && vio503) resultadoModelo.set(m, "fallo");
     }
+    // Registrar lo aprendido en el breaker (writes cortos, fail-open; en el camino sano no escribe nada).
+    for (const [m, resu] of resultadoModelo) await saludMarcar(m, resu === "exito", salud);
     // ¿la sirvió la key de pago? (true = esta generación costó plata de verdad)
     const usoPaga = keyUsada != null && pagas.includes(keyUsada);
 
