@@ -64,7 +64,7 @@
     padding:14px 15px;border:2px solid var(--line);border-radius:15px;background:#FFFDFB;outline:none;transition:border-color .15s,box-shadow .15s}
   .field textarea{resize:vertical;line-height:1.45;box-sizing:border-box}
   .field input::placeholder,.field textarea::placeholder{color:#BBA9C0;font-weight:600}
-  .field input:focus,.field textarea:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(18,181,164,.14)}
+  .field input:focus,.field textarea:focus{border-color:var(--chispa-primary);box-shadow:0 0 0 4px rgba(103,83,232,.14)}
 
   .go{margin-top:6px;width:100%;border:none;cursor:pointer;font-family:"Fredoka",sans-serif;font-weight:600;font-size:1.18rem;color:#fff;
     padding:16px;border-radius:18px;background:linear-gradient(180deg,#7C68F0,var(--chispa-primary));box-shadow:0 16px 30px -14px rgba(73,51,200,.55);
@@ -340,18 +340,26 @@
     padding:6px 2px;margin:0 0 10px;display:inline-flex;align-items:center;gap:6px}
   .back:hover{text-decoration:underline}
 
-  /* lapsos como acordeón (menú desplegable) + chips */
+  /* .chips: fila de fichas suelta — la usan los selectores de materia de la Agenda (#tMaterias/#nMaterias) */
   .chips{display:flex;flex-wrap:wrap;gap:9px}
-  .lapso{border:1px solid var(--line);border-radius:16px;background:#fff;margin-bottom:11px;overflow:hidden;box-shadow:var(--shadow-card)}
-  .lapHead{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;background:#fff;border:none;
-    padding:13px 15px;font-family:"Fredoka";font-weight:600;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--grape)}
-  .lapHead:hover{background:#FBF7FB}
-  .lapHead:active{background:#F6EEF6}
-  .lapRight{display:inline-flex;align-items:center;gap:9px;color:var(--muted);font-weight:600;font-size:.78rem;letter-spacing:0;text-transform:none}
-  .lapChevron{transition:transform .22s;font-size:.8rem}
-  .lapso .chips{display:none;padding:0 14px 14px}
-  .lapso.open .chips{display:flex}
-  .lapso.open .lapChevron{transform:rotate(180deg)}
+  /* ═══ INTERIOR DE MATERIA — "Escoge un tema" ═══
+     Lapsos = barra superior .hoSel/.hoDia + subcabecera .hoHead (reusa Mi horario, ver #tabMaterias
+     donde --h2-* está en scope). Temas = LISTA seleccionable (radio), nunca chips (§5/§6). */
+  .temaList{margin-top:2px}
+  .temaRow{width:100%;display:grid;grid-template-columns:22px minmax(0,1fr) auto;align-items:center;gap:12px;min-height:54px;
+    padding:10px 6px;border:0;border-bottom:1px solid var(--chispa-line);background:transparent;text-align:left;cursor:pointer;
+    font-family:"Nunito";transition:background .15s}
+  .temaRow:last-child{border-bottom:0}
+  .temaRow:active{opacity:.75}
+  .temaRadio{position:relative;width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 2px var(--chispa-line);transition:box-shadow .15s}
+  .temaRadio::after{content:"";position:absolute;inset:5px;border-radius:50%;background:transparent;transition:background .15s}
+  .temaRow>b{min-width:0;font-family:"Fredoka";font-weight:600;font-size:1rem;line-height:1.25;color:var(--chispa-ink);overflow-wrap:anywhere}
+  .temaState{flex:none;display:inline-flex;align-items:center;justify-content:center;min-width:18px}
+  .temaState svg{width:18px;height:18px;display:block}
+  .temaRow.is-sel{background:var(--chispa-primary-soft)}
+  .temaRow.is-sel .temaRadio{box-shadow:inset 0 0 0 2px var(--chispa-primary)}
+  .temaRow.is-sel .temaRadio::after{background:var(--chispa-primary)}
+  .temaRow.is-sel>b{color:var(--chispa-primary)}
   .chip{border:2px solid var(--line);background:#fff;color:var(--ink);font-family:"Nunito";font-weight:700;font-size:.92rem;
     padding:9px 14px;border-radius:14px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
     box-shadow:var(--shadow-xs);transition:transform .12s,border-color .15s,background .15s,color .15s}

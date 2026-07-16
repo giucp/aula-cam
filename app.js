@@ -40,6 +40,7 @@
   let materiaSel = null;
   let lapsoMap = {};
   let temaSel = null;
+  let lapsoSel = null;   // lapso activo en "Escoge un tema" (interior de materia)
   let cantidad = 5;
   let modoSel = "retos";
   let MODO_LAB = false;   // true dentro del "cuarto de pruebas" (admin): no escribe nada, sin botones de generar
@@ -727,6 +728,10 @@
   }
   function conteoMaterias(n){ return n ? `${n} ${n===1?"materia":"materias"}` : "Sin clases"; }
   const CHEV=`<svg class="hoChev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>`;
+  // estado compacto de un tema (uno solo por fila): dominado ⭐ · practicado ✓ · guía revisada. SVG, no emoji.
+  const ICON_CHECK=`<svg viewBox="0 0 24 24" fill="none" stroke="var(--chispa-green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>`;
+  const ICON_STAR=`<svg viewBox="0 0 24 24" fill="var(--chispa-yellow)"><path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.4 9.7l5.8-.8z"/></svg>`;
+  const ICON_GUIA=`<svg viewBox="0 0 24 24" fill="var(--chispa-turquoise)"><path d="M7 3.5h10a1 1 0 0 1 1 1V20a.6.6 0 0 1-.94.5L12 17.2 6.94 20.5A.6.6 0 0 1 6 20V4.5a1 1 0 0 1 1-1z"/></svg>`;
   function pintarHorarioSemana(){
     const cont=$("#horarioSemana"); if(!cont) return; cont.innerHTML="";
     if(!HORARIO.length){
@@ -1840,12 +1845,16 @@
   // marca ✓ (hecho) / ⭐ (dominado ≥80%) en los chips del panel abierto
   function marcarChips(){
     const mat=(materiaSel&&materiaSel.nombre)||"";
-    $("#grupos").querySelectorAll(".chip").forEach(c=>{
-      const tema=c.dataset.tema||"";
+    $("#grupos").querySelectorAll(".temaRow").forEach(row=>{
+      const tema=row.dataset.tema||"";
       const pr=PROGRESO.get(norm(mat)+"|"+norm(tema));
-      const marca = pr ? ((pr.quizMejor!=null && pr.quizMejor>=0.8) ? " ⭐" : " ✓") : "";
-      const guia = temaTieneGuia(mat, tema) ? " 📗" : "";
-      c.textContent = tema + marca + guia;
+      const st=row.querySelector(".temaState"); if(!st) return;
+      let svg="", lbl="";
+      if(pr && pr.quizMejor!=null && pr.quizMejor>=0.8){ svg=ICON_STAR; lbl="Tema dominado"; }
+      else if(pr){ svg=ICON_CHECK; lbl="Ya lo practicaste"; }
+      else if(temaTieneGuia(mat, tema)){ svg=ICON_GUIA; lbl="Tiene guía revisada"; }
+      st.innerHTML=svg;
+      if(lbl){ st.title=lbl; st.setAttribute("aria-label",lbl); } else { st.removeAttribute("title"); st.removeAttribute("aria-label"); }
     });
   }
   function repintarProgreso(){
@@ -2264,7 +2273,7 @@
 
   function abrirMateria(m){
     $("#paneTemas").classList.remove("cumbre");   // por si veníamos de un tema de Cumbre
-    materiaSel=m; temaSel=null; clearOtro(); $("#results").innerHTML="";
+    materiaSel=m; temaSel=null; lapsoSel=null; clearOtro(); $("#results").innerHTML="";
     fotos=[]; pintarFotos();
     const esProx = origen==="proximo";
     if(!esProx) marcarAulaVista(m);   // abrirla marca las novedades 🆕 como vistas
@@ -2293,81 +2302,82 @@
     window.scrollTo({top:0,behavior:"smooth"});
   }
 
-  // temas del próximo año (currículo guardado: grupos por lapso) — acordeón.
-  // Cada tema puede ser un string (temario viejo) o {t:"título", d:"enfoque"}: el
-  // "enfoque" (subtemas, nivel, errores típicos) se guarda en PROX_DESC y se manda
-  // como contexto a la IA para que genere ESPECÍFICO y no genérico.
+  // temas de la materia, agrupados por lapso. El "enfoque" de cada tema del currículo del próximo
+  // año (subtemas, nivel, errores típicos) se guarda en PROX_DESC y se manda como contexto a la IA
+  // para que genere ESPECÍFICO y no genérico.
   let PROX_DESC = {};
+
+  function abrevLapso(name){ const o=ordenLapso(name); return o===1?"1er":o===2?"2do":o===3?"3er":(name?"Otros":"Temas"); }
+  function tituloLapso(name){ return name ? name.charAt(0).toUpperCase()+name.slice(1).toLowerCase() : "Temas"; }
+
+  function mkTemaRow(t){
+    const row=document.createElement("button"); row.type="button"; row.className="temaRow"; row.setAttribute("aria-pressed","false");
+    row.dataset.tema=t.key;
+    row.innerHTML=`<i class="temaRadio" aria-hidden="true"></i><b>${escapeHtml(t.title)}</b><span class="temaState"></span>`;
+    row.onclick=()=>{ temaSel=(temaSel===t.key)?null:t.key; clearOtro(); alSeleccionarTema(); };
+    return row;
+  }
+
+  // grupos: [{lapso, temas:[{title,key}]}] ya ordenados. Barra de lapsos (reusa .hoSel/.hoDia de Mi
+  // horario) solo si hay ≥2 lapsos; abajo, la lista de temas del lapso activo. Antes: acordeón + chips.
+  function pintarTemas(grupos){
+    const cont = $("#grupos"); cont.innerHTML="";
+    grupos = (grupos||[]).filter(g=>g.temas && g.temas.length);
+    if(!grupos.length) return;
+    const keys = grupos.map((g,i)=> g.lapso || ("g"+i));
+    if(lapsoSel==null || !keys.includes(lapsoSel)) lapsoSel = keys[0];
+    const conBarra = grupos.length>=2;
+    if(conBarra){
+      const sel=document.createElement("div"); sel.className="hoSel";
+      sel.style.gridTemplateColumns=`repeat(${grupos.length},minmax(0,1fr))`;
+      sel.setAttribute("role","group"); sel.setAttribute("aria-label","Elegir lapso");
+      grupos.forEach((g,i)=>{
+        const on=keys[i]===lapsoSel;
+        const b=document.createElement("button"); b.type="button";
+        b.className="hoDia"+(on?" is-sel":""); b.setAttribute("aria-pressed",String(on));
+        b.innerHTML=`<span class="hoAbr">${escapeHtml(abrevLapso(g.lapso))}</span>`;
+        b.onclick=()=>{ lapsoSel=keys[i]; pintarTemas(grupos); };
+        sel.appendChild(b);
+      });
+      cont.appendChild(sel);
+    }
+    const activa = grupos[Math.max(0, keys.indexOf(lapsoSel))];
+    if(conBarra){
+      const head=document.createElement("div"); head.className="hoHead";
+      const n=activa.temas.length;
+      head.innerHTML=`<h3>${escapeHtml(tituloLapso(activa.lapso))}</h3><span>${n} ${n===1?"tema":"temas"}</span>`;
+      cont.appendChild(head);
+    }
+    const lista=document.createElement("div"); lista.className="temaList";
+    activa.temas.forEach(t=>lista.appendChild(mkTemaRow(t)));
+    cont.appendChild(lista);
+    marcarChips(); pintarChips();
+  }
+
+  // currículo del próximo año: grupos ya vienen por lapso; cada tema es string o {t,d}
   function pintarGruposProximo(grupos){
-    const cont = $("#grupos"); cont.innerHTML="";
     PROX_DESC = {};
-    const varios = grupos.length>1;
-    const mkChip=(x)=>{
-      const t = (x && typeof x==="object") ? x.t : x;
+    const normG=(g)=>({ lapso:g.lapso||null, temas:(g.temas||[]).map(x=>{
+      const t=(x && typeof x==="object") ? x.t : x;
       if(x && typeof x==="object" && x.d) PROX_DESC[norm(t)] = x.d;
-      const b=document.createElement("button"); b.className="chip"; b.setAttribute("aria-pressed","false");
-      b.textContent=t; b.dataset.tema=t;
-      b.onclick=()=>{ temaSel=(temaSel===t)?null:t; clearOtro(); alSeleccionarTema(); };
-      return b;
-    };
-    grupos.forEach((g,idx)=>{
-      const temas=g.temas||[];
-      if(varios && g.lapso){
-        const chips=crearLapso(cont, g.lapso, temas.length, false);
-        temas.forEach(t=>chips.appendChild(mkChip(t)));
-      }else{
-        const chips=document.createElement("div"); chips.className="chips";
-        temas.forEach(t=>chips.appendChild(mkChip(t)));
-        cont.appendChild(chips);
-      }
-    });
-    marcarChips();
+      return { title:t, key:t };
+    })});
+    pintarTemas((grupos||[]).map(normG));
   }
 
-  // crea un lapso desplegable (acordeón) y devuelve el contenedor donde poner los chips
-  function crearLapso(cont, titulo, n, abierto){
-    const wrap=document.createElement("div"); wrap.className="lapso"+(abierto?" open":"");
-    const head=document.createElement("button"); head.type="button"; head.className="lapHead";
-    head.setAttribute("aria-expanded", String(!!abierto));
-    head.innerHTML=`<span>${escapeHtml(titulo)}</span><span class="lapRight">${n} ${n===1?"tema":"temas"} <span class="lapChevron">▾</span></span>`;
-    const chips=document.createElement("div"); chips.className="chips";
-    head.onclick=()=>{ const op=wrap.classList.toggle("open"); head.setAttribute("aria-expanded", String(op)); };
-    wrap.appendChild(head); wrap.appendChild(chips); cont.appendChild(wrap);
-    return chips;
-  }
-
-  // temas agrupados por lapso (cada lapso es un menú desplegable; todos cerrados al inicio)
+  // temas de la materia actual, agrupados por lapso vía lapsoMap
   function pintarGrupos(temas){
-    const cont = $("#grupos"); cont.innerHTML="";
-    const grupos = new Map();
-    temas.forEach(t=>{
+    const map = new Map();
+    (temas||[]).forEach(t=>{
       const lap = lapsoMap[norm(t.seccion)] || "Otros temas";
-      if(!grupos.has(lap)) grupos.set(lap, []);
-      grupos.get(lap).push(t);
+      if(!map.has(lap)) map.set(lap, []);
+      map.get(lap).push({ title:t.seccion, key:t.seccion });
     });
-    const orden = [...grupos.keys()].sort((a,b)=>ordenLapso(a)-ordenLapso(b));
-    const varios = orden.length>1;
-    const mkChip=(t)=>{
-      const b=document.createElement("button");
-      b.className="chip"; b.setAttribute("aria-pressed","false");
-      b.textContent=t.seccion; b.dataset.tema=t.seccion;
-      b.onclick=()=>{ temaSel=(temaSel===t.seccion)?null:t.seccion; clearOtro(); alSeleccionarTema(); };
-      return b;
-    };
-    orden.forEach((lap,idx)=>{
-      const items=grupos.get(lap);
-      if(varios){
-        const chips=crearLapso(cont, lap, items.length, false);
-        items.forEach(t=>chips.appendChild(mkChip(t)));
-      }else{
-        const chips=document.createElement("div"); chips.className="chips";
-        items.forEach(t=>chips.appendChild(mkChip(t)));
-        cont.appendChild(chips);
-      }
-    });
-    marcarChips();
+    const orden = [...map.keys()].sort((a,b)=>ordenLapso(a)-ordenLapso(b));
+    pintarTemas(orden.map(lap=>({ lapso:lap, temas:map.get(lap) })));
   }
-  function pintarChips(){ $("#grupos").querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed", String(c.dataset.tema===temaSel))); }
+
+  function pintarChips(){ $("#grupos").querySelectorAll(".temaRow").forEach(r=>{ const on=r.dataset.tema===temaSel; r.classList.toggle("is-sel",on); r.setAttribute("aria-pressed",String(on)); }); }
 
   // ───────── ruta de aprendizaje ─────────
   // Devuelve {modo, motivo} — motivo es el texto corto del badge.

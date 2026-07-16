@@ -359,12 +359,12 @@ Todo eso es git y es reversible. Lo caro nunca fue eso: fue entregar y que lo de
 |---|---|
 | Landing | ✅ 2.0 — aprobada ("quedó de 10") |
 | Login | ✅ 2.0 — aprobado, congelado |
-| Inicio | ✅ 2.0 — orden por jerarquía + boletín de notas |
+| Inicio | ✅ 2.0 — jerarquía + boletín de notas; se retiró "Continúa aprendiendo" (vive en Materias) |
 | Agenda | ✅ 2.0 **completa** — encabezado, semana, tareas, notas, horario, formularios y editor |
-| Materias | ✅ 2.0 — lista rediseñada (protagonista + segmentado En progreso/Todas + tarjetas con estado). **`#paneTemas` (interior de cada materia) sigue viejo** |
+| Materias | ✅ 2.0 — lista + **`#paneTemas` paso 1 "Escoge un tema"**: lapsos = barra superior tipo Mi horario (reusa `.hoSel`/`.hoDia`) · temas = LISTA con radio (`.temaRow`, single-select) con estado compacto SVG (practicado/dominado/guía, ya no emojis). **Falta el paso 2 "¿Qué quieres hacer?"** (modos/cantidad/fotos/acciones) — se remodela con assets en camino |
+| Cumbre | 🟡 2.0 **primer pase** (hero + principios + familia + materias con acordeón). Iterar (fondo ambiental, lema, alto del hero). **El interior de un tema** (`abrirTemaCumbre`→`#paneTemas`) sigue viejo |
 | `#vPendiente` | ❌ vieja |
 | Amigos / Muro | ❌ vieja |
-| Cumbre | ❌ vieja |
 | Onboarding 5 pasos | ❌ vieja (solo cuentas nativas, ver Chispa Universal — en pausa) |
 | `#lab` | ❌ vieja (admin, no lo ven niñas) |
 
