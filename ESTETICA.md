@@ -287,6 +287,11 @@ ImageMagick. Referencia real: 4.9 MB → 64 KB en la Agenda.
 
 ## B.5 Reglas duras (cada una se pagó con una sesión)
 
+0. **★ Migrar una pantalla = envoltorio + INTERIORES.** No está migrada hasta que sus FILAS,
+   FORMULARIOS y ESTADOS lo estén. El 2026-07-16 se entregó la Agenda con encabezado y tarjetas
+   2.0 pero las listas crudas adentro (chips de promedio, fechas `2026-07-14`, emoji de bíceps) y
+   se dijo "listo, falta la 2ª mitad". No es media pantalla: es una pantalla mal entregada.
+   Avisar del defecto en el mensaje no lo convierte en aceptable.
 1. **La escena va A SANGRE, sin tarjeta.** Envolver a Chispa o al libro en una caja blanca los
    vuelve sticker. Es el error de las 2 landings malas.
 2. **Cero emojis** como iconografía final (excepción provisional en §17).
@@ -297,9 +302,17 @@ ImageMagick. Referencia real: 4.9 MB → 64 KB en la Agenda.
    detalle de UN elemento.
 6. **Medir el efecto observable, no la propiedad CSS.** `getComputedStyle` miente con propiedades en
    transición y dentro de `<details>` cerrado. ¿Se despliega? → el alto de la FILA.
-7. **El mockup es una GUÍA, no una plantilla.** No copiar medidas: tomar la intención.
-8. **Mirar el material que el usuario YA creó** antes de decidir (inventarios, mockups, assets).
-9. Las decisiones **congeladas** no se tocan sin pedido explícito (B.6).
+7. **El mockup es una GUÍA, no una plantilla.** No copiar medidas: tomar la intención. Medir sus
+   píxeles es señal de que se está replicando en vez de diseñar. La IA que lo dibuja tampoco es
+   exacta: exagera tamaños, trata una tarjeta como si fuera una pantalla entera, inventa fondos.
+8. **★ Antes de descartar algo del mockup por "decorativo", buscarle el significado.** El usuario
+   dibuja INTENCIÓN, no adorno. Los puntos de color de los días se descartaron por "no significan
+   nada"; él los pidió igual y tenía razón — le daban a la fila un ancla que se lee antes que el
+   texto. La salida buena no era ponerlos porque sí ni sacarlos: fue **darles significado** (el
+   color de la materia con la que arranca el día). Preguntarse "¿qué PODRÍA significar?" antes de
+   "no significa nada".
+9. **Mirar el material que el usuario YA creó** antes de decidir (inventarios, mockups, assets).
+10. Las decisiones **congeladas** no se tocan sin pedido explícito (B.6).
 
 ## B.6 Congelado — no tocar sin pedido explícito
 
@@ -311,6 +324,31 @@ ImageMagick. Referencia real: 4.9 MB → 64 KB en la Agenda.
 - **Canvas del Inicio**: "casi blanco" por decisión del usuario.
 - **Paleta**: B.1.
 
+## B.6-b ★ Cómo trabajamos (el flujo que funcionó, 2026-07-16)
+
+En un mismo día se entregaron cinco pantallas malas y una buena. La buena (Mi horario) salió **a la
+primera**. La diferencia NO fue que el usuario diera más instrucciones — fue el FORMATO:
+
+**Los 3 insumos que hacen que salga bien:**
+1. **Un paso a paso escrito** — qué está mal hoy y cómo lo rediseñaría él, en prosa.
+2. **Un mockup como GUÍA visual** — la intención, no la plantilla.
+3. **Las aclaraciones de qué NO copiar** — "sigue siendo una tarjeta, no una pantalla" · "los
+   íconos no tan grandes" · "no necesita fondo propio" · "la IA que lo dibuja no es exacta".
+
+**Qué hace Claude con eso:**
+- El paso a paso **manda** sobre el mockup cuando se contradicen (el mockup exagera).
+- **No medir el mockup.** Tomar la intención. Si aparece un `getpixel` sobre un mockup, algo va mal.
+- Apartarse de él **está permitido y se agradece** — pero se declara y se justifica en el mensaje.
+  Ejemplos que el usuario aceptó: sacar "Ver semana completa" (reintroduce la pantalla
+  interminable), no poner "Primera materia" (sería un dato falso).
+- **Traer decisiones, no opciones.** "Ya ni sé qué hacer porque o te digo literalmente qué hacer o
+  lo hacés mal" es el peor lugar al que se puede llegar. Preguntar de nuevo lo ya autorizado es
+  parte de eso.
+- **Correr la §18 y mostrarla** antes de decir "listo", incluida la casilla que NO se puede marcar.
+
+**Y lo que NO cuesta y da miedo por mi culpa:** borrar un `.md`, reordenar docs, limpiar CSS muerto.
+Todo eso es git y es reversible. Lo caro nunca fue eso: fue entregar y que lo descubra él.
+
 ## B.7 Estado por pantalla
 
 | Pantalla | Estado |
@@ -318,7 +356,7 @@ ImageMagick. Referencia real: 4.9 MB → 64 KB en la Agenda.
 | Landing | ✅ 2.0 — aprobada ("quedó de 10") |
 | Login | ✅ 2.0 — aprobado, congelado |
 | Inicio | ✅ 2.0 — orden por jerarquía + boletín de notas |
-| Agenda | ✅ 2.0 — falta el **editor de horario** |
+| Agenda | ✅ 2.0 **completa** — encabezado, semana, tareas, notas, horario, formularios y editor |
 | Materias | 🟡 mitad: la grilla sí, **`#paneTemas` no** |
 | `#vPendiente` | ❌ vieja |
 | Amigos / Muro | ❌ vieja |
@@ -328,18 +366,30 @@ ImageMagick. Referencia real: 4.9 MB → 64 KB en la Agenda.
 
 ## B.8 Deuda conocida (violaciones vivas de la Parte A)
 
-Detectadas al correr la §17 contra lo que está en producción (2026-07-16):
+Detectadas al correr la §17 contra producción. **Se resuelven cuando toque cada pantalla; anotarlas
+no las perdona.**
 
-- **"X" de borrar permanente** en cada fila de tarea y de nota (`.agBorrar`) → viola §13 y §17.
-- **Chips para nombres de materia** en el horario → viola §5.
-- **Ícono 3D en todas las filas** de tarea → tensiona §9 (los 3D son para encabezados y momentos).
-- **Editor de horario** sin migrar.
-- Barra de stats del Inicio: "días de racha" roza el divisor entre 375 y 387px (cosmético).
+- **"X" de borrar permanente** en cada fila de tarea y de nota de la Agenda (`.agBorrar`) → viola
+  §13 y §17. El horario ya lo resolvió bien: las acciones destructivas viven en el modo edición, no
+  en la lectura. Las tareas y notas deberían seguir el mismo camino.
+- **Ícono 3D en todas las filas** de tarea (`.agTipo`) → tensiona §9 (los 3D son para encabezados y
+  momentos, no para cada fila). El usuario los pidió y funcionan; queda anotado, no es urgente.
+- Barra de stats del Inicio: "días de racha" roza el divisor entre 375 y 387px (cosmético; hueco
+  entre el `@media max-width:374` y el ancho donde ya entra solo).
+- ~~Chips para nombres de materia en el horario~~ → resuelto: ahora son filas.
+- ~~Editor de horario sin migrar~~ → resuelto: hoja aparte.
 
 ## B.9 Herramientas
 
-- `demo-inicio.html` — la app con datos mockeados, sin backend. **Mantenerlo SIEMPRE en sync con
-  `index.html`**: si miente, el preview no sirve (y `app.js` revienta por ids que no existen).
+- `demo-inicio.html` — la app con datos mockeados, sin backend. Dos obligaciones:
+  1. **Mantenerlo SIEMPRE en sync con `index.html`**: si miente, el preview no sirve (y `app.js`
+     revienta por ids que no existen).
+  2. **★ Sus datos deben ejercitar los estados REALES, no los cómodos.** Los mocks alegres esconden
+     bugs. Cada estado que se agregó al demo cazó uno de verdad el mismo día: una nota sin fecha
+     (la tarea que desaparecía del Inicio), una nota vieja (decía "Venció" porque se reusó
+     `fechaBonita`, que es para tareas), una materia PROPIA (Caligrafía → no se practica), un día
+     sin clases, un nombre largo. **Antes de dar por buena una pantalla: ¿el demo tiene el caso
+     feo?** Si el usuario lo encuentra usando la app y el demo no lo tenía, el demo estaba mal.
 - `tuner.html` / `tuner-login.html` — paneles con sliders sobre el render real. **Darle el panel al
   usuario en vez de adivinar por él** — es lo que funcionó con el hero y el login.
 - `chispa-viewing.bat` — sirve en LAN para probar en el celular.
