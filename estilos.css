@@ -1250,8 +1250,8 @@
 
   /* 1 · el promedio manda */
   .nbTop{display:grid;grid-template-columns:44px minmax(0,1fr);align-items:center;gap:12px;padding:13px 2px 14px;border-bottom:1px solid var(--h2-line)}
-  .nbAvgMark{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:color-mix(in srgb,var(--nb) 14%,#fff);color:var(--nb)}
-  .nbAvgMark svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .nbAvgMark{width:44px;height:44px;display:grid;place-items:center}
+  .nbAvgMark img{width:100%;height:100%;object-fit:contain;display:block}
   .nbAvgTx{display:flex;align-items:baseline;gap:11px;min-width:0}
   .nbAvgNum{font-family:"Fredoka";font-weight:600;font-size:2.1rem;line-height:1;color:var(--nb);letter-spacing:-.02em}
   .nbAvgLbl{display:flex;flex-direction:column;gap:2px;min-width:0;font-family:"Nunito";font-weight:800;font-size:.84rem;color:var(--h2-ink)}

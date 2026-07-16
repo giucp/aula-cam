@@ -1166,7 +1166,7 @@
     // 1 · el promedio, protagonista
     const nNotas=NOTAS.length, nMat=proms.length;
     const top=document.createElement("div"); top.className=`nbTop nb-${colorNota(gen)}`;
-    top.innerHTML=`<span class="nbAvgMark">${homeIcono("nota")}</span>`+
+    top.innerHTML=`<span class="nbAvgMark"><img src="assets/agenda/notas-examenes.webp" alt="" aria-hidden="true" /></span>`+
       `<span class="nbAvgTx"><b class="nbAvgNum">${escapeHtml(String(gen))}</b>`+
       `<span class="nbAvgLbl">Tu promedio<small>${nNotas} ${nNotas===1?"nota":"notas"} en ${nMat} ${nMat===1?"materia":"materias"}</small></span></span>`;
     card.appendChild(top);
