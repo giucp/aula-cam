@@ -2114,30 +2114,58 @@
     }catch(e){ renderCumbreIntro({}); renderCumbreMaterias([]); }
   }
   function renderCumbreIntro(x){
-    // el ícono de montaña grande (cumMonte) ya está arriba → quitamos la 🏔️ del título para no repetir.
-    const titulo = ((x.titulo || "Cumbre").replace(/[\u{1F3D4}\u{FE0F}]/gu, "").trim()) || "Cumbre";
-    const bajada = x.bajada || "La mejor educación del mundo, para ti.";
+    // Cumbre 2.0: identidad editorial FIJA (hero + principios + calma). Del server solo se conserva
+    // el texto para la familia (curado); el resto es copy propio de la pantalla.
+    x = x || {};
     const track = cumbreTrack();
-    const badge = track ? `<span class="cumGrado">🎓 Materias de ${escapeHtml(track)}</span>` : "";
-    let html = `<div class="cumHero"><div class="cumMonte">🏔️</div><h2 class="cumTit">${escapeHtml(titulo)}</h2><p class="cumBaj">${escapeHtml(bajada)}</p>${badge}</div>`;
-    if(x.texto_nino) html += `<p class="cumPar">${escapeHtml(x.texto_nino)}</p>`;
-    if(x.cierre) html += `<p class="cumCierre">${escapeHtml(x.cierre)}</p>`;
-    if(x.texto_padre){
-      html += `<details class="cumMas"><summary>Para los padres</summary><p class="cumPar">${escapeHtml(x.texto_padre)}</p></details>`;
-    }
-    $("#cumbreIntro").innerHTML = html;
+    const pill = track ? `<span class="cumGradoPill">Retos de ${escapeHtml(track)}</span>` : "";
+    const padre = x.texto_padre ? escapeHtml(x.texto_padre)
+      : "Cumbre no reemplaza al colegio: lo complementa. Tu hijo aprende el porqué de las cosas, conecta ideas entre materias y practica a su ritmo, sin notas ni presión. Todo el contenido está curado a mano.";
+    const hero = `<div class="cumHero">`
+      + `<img class="cumHeroImg" src="assets/cumbre/cumbre-hero.webp" alt="" aria-hidden="true">`
+      + `<span class="cumHeroGrad"></span>`
+      + `<div class="cumHeroTx">`
+      +   `<p class="cumEyebrow">Cumbre</p>`
+      +   `<h2 class="cumTitle">Descubre hasta dónde puedes llegar.</h2>`
+      +   `<p class="cumDesc">Aprende, conecta ideas y supera nuevos retos a tu ritmo.</p>`
+      +   pill
+      + `</div>`
+      + `<p class="cumLema">Chispa te acompaña. Cumbre te espera.</p>`
+      + `</div>`;
+    const principios = `<h3 class="cumSecTitle">Aprende más allá de la clase</h3>`
+      + `<p class="cumSecPar">En Cumbre no solo descubres qué funciona. Aprendes por qué funciona, conectas ideas y te retas a pensar cada vez mejor.</p>`
+      + `<div class="cumPrincipios">`
+      +   `<div class="cumPrin"><b>Entiende</b><small>Descubre el porqué.</small><img class="cumPrinIco" src="assets/cumbre/cumbre-entiende.webp" alt="" aria-hidden="true"></div>`
+      +   `<div class="cumPrin"><b>Conecta</b><small>Relaciona ideas.</small><img class="cumPrinIco" src="assets/cumbre/cumbre-conecta.webp" alt="" aria-hidden="true"></div>`
+      +   `<div class="cumPrin"><b>Supérate</b><small>Ve un paso más allá.</small><img class="cumPrinIco" src="assets/cumbre/cumbre-superate.webp" alt="" aria-hidden="true"></div>`
+      + `</div>`;
+    const familia = `<details class="cumFamilia">`
+      + `<summary><img class="cumFamiliaIco" src="assets/cumbre/cumbre-familia.webp" alt="" aria-hidden="true">`
+      +   `<span class="cumFamiliaTx"><b>Para tu familia</b><small>Cómo funciona Cumbre y qué aprendes aquí.</small></span>`
+      +   `<svg class="cumFamiliaChev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></summary>`
+      + `<p class="cumFamiliaBody">${padre}</p></details>`;
+    $("#cumbreIntro").innerHTML = hero + principios + familia;
   }
   // materias del track de Cumbre con sus dominios/temas. Curados = practicables (📗);
   // sin curar = "Próximamente" (Gemini nunca los genera). Índices para evitar comillas en atributos.
   function renderCumbreMaterias(materias, openMi){
     const cont = $("#cumbreMaterias"); cont.innerHTML = "";
-    if(!materias.length){ cont.innerHTML = `<div class="empty">Tus materias de Cumbre están en camino. ¡Pronto! ✨</div>`; return; }
+    const head0 = document.createElement("div"); head0.className = "cumRetoHead";
+    head0.innerHTML = `<h3 class="cumSecTitle">Elige tu próximo reto</h3><p class="cumSecPar cumSecPar--tight">Puedes empezar por cualquier materia.</p>`;
+    cont.appendChild(head0);
+    if(!materias.length){ const e=document.createElement("p"); e.className="cumEmpty"; e.textContent="Tus materias de Cumbre están en camino. ¡Pronto!"; cont.appendChild(e); return; }
     materias.forEach((m, mi)=>{
+      const vis = homeMateriaVisual(m.materia);
       const card = document.createElement("div"); card.className = "cMat";  // plegada por defecto
-      const prog = `${m.curados||0} de ${m.total||0} listo${(m.total===1)?"":"s"}`;
+      card.style.setProperty("--c", vis.color);
+      const done = m.curados||0, total = m.total||0, pct = total ? Math.round(done/total*100) : 0;
       const head = document.createElement("button"); head.type="button"; head.className="cMatHead";
       head.setAttribute("aria-expanded","false");
-      head.innerHTML = `<span class="em"><img src="assets/materias/${homeMateriaVisual(m.materia).img}.png" alt="" aria-hidden="true"></span><span class="cMatNom">${escapeHtml(m.materia)}</span><span class="cMatProg">${prog}</span><span class="cMatChevron">▾</span>`;
+      head.innerHTML = `<span class="cMatIco"><img src="assets/materias/${vis.img}.png" alt="" aria-hidden="true"></span>`
+        + `<span class="cMatMid"><b class="cMatNom">${escapeHtml(capMateria(limpiaNombreMateria(m.materia)))}</b>`
+        +   `<span class="cMatProg">${done} de ${total}</span>`
+        +   `<span class="cMatBar"><i style="width:${pct}%"></i></span></span>`
+        + `<svg class="cMatChevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>`;
       const body = document.createElement("div"); body.className="cMatBody";
       let html = "";
       (m.dominios||[]).forEach((dom, di)=>{
@@ -2147,7 +2175,7 @@
           if(t.curado){
             const nf = notaCumbre(m.materia, t.tema);
             const notaHtml = (nf!=null) ? `<span class="cNota ${colorNota(Math.round(nf*20))}">${Math.round(nf*20)}/20</span>` : "";
-            html += `<button class="cTema ok" data-mi="${mi}" data-di="${di}" data-ti="${ti}"><span class="cBadge">📗</span><span class="cNom">${escapeHtml(t.tema)}</span><span class="cTemaR">${notaHtml}<span class="cGo">Practicar ›</span></span></button>`;
+            html += `<button class="cTema ok" data-mi="${mi}" data-di="${di}" data-ti="${ti}"><span class="cNom">${escapeHtml(t.tema)}</span><span class="cTemaR">${notaHtml}<span class="cGo">Practicar ›</span></span></button>`;
           }
           else html += `<div class="cTema no"><span class="cNom">${escapeHtml(t.tema)}</span><span class="cSoon">Próximamente</span></div>`;
         });

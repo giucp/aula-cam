@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
 <!-- El `?v=` va apareado con el V de sw.js — subir los DOS juntos. Sin él, la 1ª apertura tras un
      deploy mezcla index nuevo + app.js viejo (cache-first) y el arranque muere. Ver sw.js. -->
-<link rel="stylesheet" href="estilos.css?v=98">
+<link rel="stylesheet" href="estilos.css?v=99">
 </head>
 <body>
 <div class="wrap">
@@ -445,9 +445,9 @@
       <div id="erroresList"></div>
     </div>
 
-    <!-- presentación del espacio Cumbre (acceso listo; contenido próximamente) -->
-    <div id="paneCumbre" class="hidden">
-      <button class="back" id="btnBackCumbre">‹ Inicio</button>
+    <!-- Cumbre 2.0: hero editorial + principios + materias. El interior lo arma el JS (renderCumbre*). -->
+    <div id="paneCumbre" class="hidden cumbreV2">
+      <button class="m2Back" id="btnBackCumbre"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Materias</button>
       <div id="cumbreIntro"></div>
       <div id="cumbreMaterias"></div>
     </div>
@@ -742,6 +742,6 @@
 
 </div>
 
-<script src="app.js?v=98"></script>
+<script src="app.js?v=99"></script>
 </body>
 </html>
