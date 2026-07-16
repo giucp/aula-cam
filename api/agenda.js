@@ -102,7 +102,7 @@ export default async function handler(req, res) {
         tipo: TIPOS.has(t.tipo) ? t.tipo : "tarea",
         fecha: fechaValida(t.fecha),
       };
-      if (!fila.descripcion) return res.status(400).json({ error: "Falta la descripción" });
+      // descripción OPCIONAL: se puede anotar solo materia + tipo (la fila usa el tipo como título)
       const r = await fetch(`${cfg.url}/rest/v1/tareas`, {
         method: "POST", headers: hdr(cfg, { Prefer: "return=representation" }), body: JSON.stringify(fila),
       });

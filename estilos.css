@@ -1456,6 +1456,7 @@
   .agForm{background:linear-gradient(180deg,rgba(240,238,252,.72),rgba(247,246,253,.72));border:1px solid rgba(226,222,247,.9);border-radius:20px;padding:14px;margin:2px 0 14px}
   .agFormTit{margin:0 0 12px;font-family:"Fredoka";font-weight:600;font-size:1rem;color:var(--h2-ink)}
   .agLbl{display:block;margin:12px 2px 7px;font-family:"Nunito";font-weight:900;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--h2-muted)}
+  .agLblOpt{font-weight:700;text-transform:none;letter-spacing:0;color:var(--h2-muted);opacity:.7}
   .agForm>.agLbl:first-of-type,.agForm>label.agLbl:first-of-type{margin-top:0}
   .agForm .field{margin:0}
   .agForm .field input{border:1px solid rgba(222,217,242,.9);border-radius:14px;background:#fff;padding:13px 14px;font-size:.95rem;font-weight:700;color:var(--h2-ink);box-shadow:none;transition:border-color .15s,box-shadow .15s}
@@ -1484,9 +1485,21 @@
   .agForm .selMatBtn:hover{border-color:#CFC6F7}
   .agForm .selMatBtn.abierto{border-color:var(--chispa-primary)}
   .agForm .selMatPh{color:#B6AEC9;font-weight:700}
-  .agForm .selMatPanel{gap:7px;margin-top:9px}
-  .agForm .selMatPanel .chip{min-height:44px;border:0;border-radius:999px;background:color-mix(in srgb,var(--c,var(--chispa-primary)) 11%,#fff);color:color-mix(in srgb,var(--c,var(--chispa-primary)) 76%,var(--h2-ink));box-shadow:none;padding:7px 15px;font-weight:800;font-size:.78rem}
-  .agForm .selMatPanel .chip[aria-pressed="true"]{background:var(--c,var(--chispa-primary));color:#fff}
+  /* mini placa del ícono en el botón colapsado (materia elegida) */
+  .agForm .selMatCur{gap:9px}
+  .selMatCurIco{width:26px;height:26px;flex:none;border-radius:8px;display:grid;place-items:center;background:color-mix(in srgb,var(--c,var(--chispa-primary)) 14%,#fff);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c,var(--chispa-primary)) 17%,transparent)}
+  .selMatCurIco img{width:80%;height:80%;object-fit:contain;display:block}
+  /* panel abierto: GRILLA de fichas de materia (no chips) — 2 col en móvil, 3 en PC */
+  .agForm .selMatPanel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
+  .selMatTile{display:flex;flex-direction:column;align-items:flex-start;gap:8px;text-align:left;border:1px solid var(--chispa-line);border-radius:16px;background:#fff;padding:11px 11px 12px;cursor:pointer;transition:border-color .15s,background .15s,box-shadow .15s,transform .1s}
+  .selMatTileIco{width:38px;height:38px;flex:none;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--c,var(--chispa-primary)) 13%,#fff);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c,var(--chispa-primary)) 16%,transparent);transition:background .15s,box-shadow .15s}
+  .selMatTileIco img{width:82%;height:82%;object-fit:contain;display:block}
+  .selMatTileNom{width:100%;min-height:2.25em;font-family:"Fredoka";font-weight:600;font-size:.84rem;line-height:1.12;color:var(--h2-ink);overflow-wrap:break-word;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .selMatTile:hover{border-color:color-mix(in srgb,var(--c,var(--chispa-primary)) 40%,var(--chispa-line))}
+  .selMatTile:active{transform:scale(.98)}
+  .selMatTile[aria-pressed="true"]{border-color:transparent;background:var(--c,var(--chispa-primary));box-shadow:0 8px 18px -10px color-mix(in srgb,var(--c,var(--chispa-primary)) 70%,transparent)}
+  .selMatTile[aria-pressed="true"] .selMatTileNom{color:#fff}
+  .selMatTile[aria-pressed="true"] .selMatTileIco{background:rgba(255,255,255,.24);box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
 
   /* acciones: primaria morada plana (sin el gradiente viejo) + cancelar callado */
   .agForm .acciones{gap:8px;margin-top:16px}
@@ -1525,6 +1538,7 @@
   @media (min-width:560px){
     .h2Upcoming{grid-template-columns:repeat(2,minmax(0,1fr))}
     .h2UpcomingCard{grid-template-columns:52px 36px minmax(0,1fr);padding:11px;gap:8px}
+    .agForm .selMatPanel{grid-template-columns:repeat(3,minmax(0,1fr))}
   }
   @media (max-width:374px){
     .h2Greeting{padding-right:104px}

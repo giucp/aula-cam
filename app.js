@@ -412,7 +412,7 @@
     // tarea sin fecha no mostraba nada después de la materia y no había forma de saber por qué
     // estaba ahí.
     const cuando=n===null?"Sin fecha":capPrimera(fechaBonita(t.fecha));
-    row.innerHTML=`${homeMarcaMateria(materia,"h2SubjectMark")}<span class="h2TodayText"><b>${escapeHtml(t.descripcion||"Tarea")}</b><small>${escapeHtml(materia)} · <span class="h2TodayWhen">${escapeHtml(cuando)}</span></small></span><button class="h2TaskCheck" type="button" aria-label="${t.hecha?"Marcar como pendiente":"Marcar como completada"}"><span class="h2TaskBox">${t.hecha?"✓":""}</span></button>`;
+    row.innerHTML=`${homeMarcaMateria(materia,"h2SubjectMark")}<span class="h2TodayText"><b>${escapeHtml(t.descripcion||TIPO_LABEL[t.tipo]||"Tarea")}</b><small>${escapeHtml(materia)} · <span class="h2TodayWhen">${escapeHtml(cuando)}</span></small></span><button class="h2TaskCheck" type="button" aria-label="${t.hecha?"Marcar como pendiente":"Marcar como completada"}"><span class="h2TaskBox">${t.hecha?"✓":""}</span></button>`;
     row.querySelector(".h2TaskCheck").onclick=async()=>{
       t.hecha=!t.hecha; pintarTareas(); pintarEscritorio();
       try{ await apiAgenda({accion:"tarea_hecha",id:t.id,hecha:t.hecha}); }catch(_){}
@@ -642,6 +642,7 @@
   // que pasó con los de materia. Fuente ÚNICA: si cambia el archivo, cambia en la fila de la
   // Agenda, en el segmentado del formulario y en el resumen del Inicio, sin tocar nada más.
   const TIPO_IMG={tarea:"tipo-tarea",trabajo:"tipo-trabajo",examen:"tipo-examen"};
+  const TIPO_LABEL={tarea:"Tarea",trabajo:"Trabajo",examen:"Examen"};
   function tipoIcono(tipo,clase){
     return `<img class="${clase||"agTipoImg"}" src="assets/agenda/${TIPO_IMG[tipo]||TIPO_IMG.tarea}.webp" alt="" aria-hidden="true" />`;
   }
@@ -657,7 +658,7 @@
     const v=homeMateriaVisual(materia); div.style.setProperty("--subject",v.color);
     const cuando=t.fecha?capPrimera(fechaBonita(t.fecha)):"Sin fecha";
     div.innerHTML=`<span class="agTipo">${tipoIcono(t.tipo)}</span>`+
-      `<span class="agTx"><b>${escapeHtml(t.descripcion)}</b>`+
+      `<span class="agTx"><b>${escapeHtml(t.descripcion||TIPO_LABEL[t.tipo]||"Tarea")}</b>`+
       `<small>${escapeHtml(materia)} · <i class="agCuando${(vencida||urgente)?" is-urgente":""}">${escapeHtml(cuando)}</i></small></span>`+
       `<button class="h2TaskCheck" type="button" aria-label="${t.hecha?"Marcar como pendiente":"Marcar como hecha"}"><span class="h2TaskBox">${t.hecha?"✓":""}</span></button>`+
       `<button class="agBorrar" type="button" aria-label="Borrar">×</button>`;
@@ -725,7 +726,7 @@
       document.querySelectorAll("#tTipos .chip").forEach(c=>c.setAttribute("aria-pressed", String(c===b))); };
   });
   $("#btnGuardarTarea").onclick=async()=>{
-    const desc=$("#tDesc").value.trim(); if(!desc){ $("#tDesc").focus(); return; }
+    const desc=$("#tDesc").value.trim(); // opcional: se puede anotar solo materia + tipo
     const btn=$("#btnGuardarTarea"); btn.disabled=true; $("#tMsg").innerHTML="";
     try{
       const d=await apiAgenda({accion:"tarea_guardar", tarea:{descripcion:desc, materia:tMatSel, tipo:tipoSel, fecha:$("#tFecha").value||null}});
@@ -851,8 +852,9 @@
     const panel=document.createElement("div"); panel.className="selMatPanel hidden";
     function pintarToggle(){
       const sel=getSel(), abierto=!panel.classList.contains("hidden");
+      const vs = sel ? homeMateriaVisual(sel) : null;
       const etiqueta = sel
-        ? `<span class="selMatCur" style="--c:${homeMateriaVisual(sel).color}"><i class="matDot"></i>${escapeHtml(capMateria(limpiaNombreMateria(sel)))}</span>`
+        ? `<span class="selMatCur" style="--c:${vs.color}"><span class="selMatCurIco"><img src="assets/materias/${vs.img}.png" alt="" aria-hidden="true"></span>${escapeHtml(capMateria(limpiaNombreMateria(sel)))}</span>`
         : `<span class="selMatPh">Elegir materia</span>`;
       toggle.innerHTML = etiqueta + `<span class="selMatCar" aria-hidden="true"></span>`;
       toggle.classList.toggle("abierto", abierto);
@@ -861,13 +863,14 @@
     function abrir(v){ panel.classList.toggle("hidden", !v); pintarToggle(); }
     toggle.onclick=()=>abrir(panel.classList.contains("hidden"));
     materiasParaFormularios().forEach(nombre=>{
-      const b=document.createElement("button"); b.type="button"; b.className="chip";
-      b.style.setProperty("--c", homeMateriaVisual(nombre).color);
-      b.innerHTML=`<i class="matDot"></i>${escapeHtml(capMateria(limpiaNombreMateria(nombre)))}`;
+      const v=homeMateriaVisual(nombre);
+      const b=document.createElement("button"); b.type="button"; b.className="selMatTile";
+      b.style.setProperty("--c", v.color);
+      b.innerHTML=`<span class="selMatTileIco"><img src="assets/materias/${v.img}.png" alt="" aria-hidden="true"></span><span class="selMatTileNom">${escapeHtml(capMateria(limpiaNombreMateria(nombre)))}</span>`;
       b.setAttribute("aria-pressed", String(getSel()===nombre));
       b.onclick=()=>{
         const nuevo = getSel()===nombre ? "" : nombre; setSel(nuevo);
-        panel.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed", String(c===b && !!nuevo)));
+        panel.querySelectorAll(".selMatTile").forEach(c=>c.setAttribute("aria-pressed", String(c===b && !!nuevo)));
         pintarToggle(); abrir(false);
       };
       panel.appendChild(b);

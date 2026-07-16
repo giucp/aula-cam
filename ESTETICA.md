@@ -256,6 +256,7 @@ en los docs de Codex como propuesta que nunca se implementó (0 usos en el repo,
 | **Pie colapsable** | `.nbToggle` + `.nbExtra`/`.agExtra` + clase `nb-todo`/`ag-todo` | boletín, Agenda | **lista continua + pie "Ver N más" AL FINAL.** Nunca `<details>` para esto: obliga a poner el botón encima de lo oculto y parte el bloque en dos |
 | Chip con punto de color | `.h3Chip` (`--tone`) | horario, "Mañana toca" | solo estados/categorías compactas |
 | Control segmentado | `.agSeg` + `.chip[aria-pressed]` | formulario de tarea | opciones **excluyentes** (tipo) |
+| **Selector de materia** | `montarSelectorMateria()` en `app.js` → `.selMat*` + `.selMatTile` | formularios de tarea y nota (Agenda) | toggle compacto ("Elegir materia") que abre una **GRILLA de fichas de materia** (ícono 3D + color + nombre, como Materias 2.0): 2 col móvil / 3 col ≥560px. Elige UNA; la elegida rellena con su color. **Nunca chips para nombres de materia** (§5). Fuente única: `homeMateriaVisual()` |
 | Barra de progreso | `.nbBar` / `.h2SubjectBar` / `.h3AcademicBar` | boletín, materias | `--subject` de relleno |
 | Semáforo de nota | `.nb-buena` / `.nb-media` / `.nb-floja` → `--nb` | boletín, Agenda | verde ≥16 · ámbar ≥14 · coral <14 |
 | Formulario | `.agForm` (+ `.agLbl`, `.field`, `.acciones`) | Agenda | panel lavanda, campos sin borde duro, foco morado |
@@ -377,6 +378,8 @@ no las perdona.**
 - Barra de stats del Inicio: "días de racha" roza el divisor entre 375 y 387px (cosmético; hueco
   entre el `@media max-width:374` y el ancho donde ya entra solo).
 - ~~Chips para nombres de materia en el horario~~ → resuelto: ahora son filas.
+- ~~Chips para nombres de materia en los selectores de tarea/nota~~ → resuelto 2026-07-16: grilla
+  de fichas de materia (`.selMatTile`, ícono 3D + color), 2 col móvil / 3 col PC.
 - ~~Editor de horario sin migrar~~ → resuelto: hoja aparte.
 
 ## B.9 Herramientas
