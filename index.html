@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
 <!-- El `?v=` va apareado con el V de sw.js — subir los DOS juntos. Sin él, la 1ª apertura tras un
      deploy mezcla index nuevo + app.js viejo (cache-first) y el arranque muere. Ver sw.js. -->
-<link rel="stylesheet" href="estilos.css?v=97">
+<link rel="stylesheet" href="estilos.css?v=98">
 </head>
 <body>
 <div class="wrap">
@@ -248,15 +248,7 @@
         </div>
       </section>
 
-      <!-- 4 · ¿qué sigo estudiando? La acción principal de la app. "Ver todas" va a Materias:
-           por eso el Inicio ya NO repite la grilla de materias. -->
-      <section class="h2Section" aria-labelledby="homeContinuarTit">
-        <div class="h2SectionHead">
-          <h2 id="homeContinuarTit">Continúa aprendiendo</h2>
-          <button class="h2TextAction" id="btnHomeVerMaterias" type="button">Ver todas</button>
-        </div>
-        <div id="homeContinue" class="h2ContinueWrap"></div>
-      </section>
+      <!-- ("Continúa aprendiendo" se retiró: continuar vive en Materias, con su propia protagonista) -->
 
       <!-- 5 · ¿qué debo corregir? Notas + refuerzo. Salió del cajón: es un circuito de
            aprendizaje real, no un extra. Se pinta solo si hay notas (si no, queda vacío). -->
@@ -750,6 +742,6 @@
 
 </div>
 
-<script src="app.js?v=97"></script>
+<script src="app.js?v=98"></script>
 </body>
 </html>

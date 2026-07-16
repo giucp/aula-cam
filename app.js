@@ -370,37 +370,7 @@
     box.dataset.count=String(items.length);
     box.innerHTML=items.map(x=>`<div class="h2Stat h2Stat--${x.icon}"><span class="h2StatIcon"><img src="assets/stats/${STAT_IMG[x.icon]||"metas"}.png" alt="" aria-hidden="true"></span><span class="h2StatMeta"><span class="h2StatValue">${x.value}</span><span class="h2StatLabel">${x.label}</span></span></div>`).join("");
   }
-  function pintarHomeContinue(){
-    const cont=$("#homeContinue"); if(!cont) return; cont.innerHTML="";
-    const materias=homeMaterias(), hoy=new Date().getDay(), diaHorario=(hoy>=1&&hoy<=5)?hoy:proximoDiaEscolar().dia;
-    const elegidas=[], vistas=new Set();
-    const agregar=m=>{ if(!m) return; const k=norm(m.nombre); if(vistas.has(k)||elegidas.length>=3) return; vistas.add(k); elegidas.push(m); };
-    materias.map(m=>({m,p:progresoMateria(m)})).filter(x=>x.p&&x.p.done>0&&x.p.done<x.p.total)
-      .sort((a,b)=>b.p.pct-a.p.pct).forEach(x=>agregar(x.m));
-    HORARIO.filter(h=>h.dia===diaHorario&&esMateriaAula(h.materia)).sort((a,b)=>(a.orden||0)-(b.orden||0))
-      .forEach(h=>agregar(materias.find(m=>norm(m.nombre)===norm(h.materia))));
-    materias.forEach(agregar);
-    if(!elegidas.length){
-      const p=document.createElement("p"); p.className="h2Empty"; p.textContent="Tus materias aparecerán aquí cuando estén disponibles.";
-      cont.appendChild(p);
-      return;
-    }
-    const principal=elegidas[0], progreso=progresoMateria(principal), nombre=capMateria(limpiaNombreMateria(principal.nombre)), visual=homeMateriaVisual(principal.nombre);
-    const destacado=document.createElement("button"); destacado.type="button"; destacado.className="h3ContinuePrimary";
-    destacado.style.setProperty("--subject",visual.color); destacado.dataset.subjectKind=visual.key;
-    destacado.innerHTML=`${homeMarcaMateria(principal.nombre,"h3ContinueIcon")}<span class="h3ContinueCopy"><small>Para continuar</small><b>${escapeHtml(nombre)}</b><span>${progreso?`${progreso.done} de ${progreso.total} temas practicados`:"Materia disponible"}</span>${progreso?`<i><em style="width:${progreso.pct}%"></em></i>`:""}</span><span class="h3ContinueAction">Continuar ${homeIcono("flecha")}</span>`;
-    destacado.onclick=()=>irAPractica(principal.nombre); cont.appendChild(destacado);
-    if(elegidas.length>1){
-      const secundarios=document.createElement("div"); secundarios.className="h3ContinueSecondary";
-      elegidas.slice(1,3).forEach(m=>{
-        const p=progresoMateria(m), v=homeMateriaVisual(m.nombre), b=document.createElement("button"); b.type="button"; b.className="h3ContinueMini";
-        b.style.setProperty("--subject",v.color); b.dataset.subjectKind=v.key;
-        b.innerHTML=`${homeMarcaMateria(m.nombre,"h3ContinueMiniIcon")}<span><b>${escapeHtml(capMateria(limpiaNombreMateria(m.nombre)))}</b><small>${p?`${p.done} de ${p.total} temas`:"Materia disponible"}</small></span>${homeIcono("flecha")}`;
-        b.onclick=()=>irAPractica(m.nombre); secundarios.appendChild(b);
-      });
-      cont.appendChild(secundarios);
-    }
-  }
+  // ("Continúa aprendiendo" del Inicio se retiró: continuar vive en Materias, con su protagonista.)
   function homeFilaTarea(t){
     const n=diasHasta(t.fecha);
     const vencida=!t.hecha&&n!==null&&n<0;
@@ -463,7 +433,6 @@
     pintarNovedadesInicio();
     pintarHorarioInicio();
     pintarTareasResumen();
-    pintarHomeContinue();
     pintarHomeUpcoming();
     pintarNotasInicio();
     pintarHomeProgreso();
@@ -611,7 +580,6 @@
   }
   $("#btnVerAgenda").onclick=()=>verTab("agenda");
   $("#btnNuevaTareaHome").onclick=()=>{ verTab("agenda"); abrirFormTarea(); };
-  $("#btnHomeVerMaterias").onclick=()=>verTab("materias");
 
   // ───────── Agenda 2.0: tira de la semana ─────────
   // Orienta sin pedir nada: la semana de HOY (lunes a domingo), hoy en pastilla morada y un punto
