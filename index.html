@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
 <!-- El `?v=` va apareado con el V de sw.js — subir los DOS juntos. Sin él, la 1ª apertura tras un
      deploy mezcla index nuevo + app.js viejo (cache-first) y el arranque muere. Ver sw.js. -->
-<link rel="stylesheet" href="estilos.css?v=90">
+<link rel="stylesheet" href="estilos.css?v=91">
 </head>
 <body>
 <div class="wrap">
@@ -239,7 +239,7 @@
           <div id="homeUpcoming" class="h2Upcoming"></div>
           <div class="h3MoreCard" style="--tone:#6753E8">
             <div class="h3MoreHead">
-              <span class="h3MoreMark"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10.5h16"/></svg></span>
+              <span class="h3MoreMark h3MoreMark--img"><img src="assets/agenda/horario.webp" alt="" aria-hidden="true" /></span>
               <h3 id="horarioTit">Mañana toca</h3>
               <button class="h2TextAction" id="btnEditarHorario" type="button">Editar</button>
             </div>
@@ -744,6 +744,6 @@
 
 </div>
 
-<script src="app.js?v=90"></script>
+<script src="app.js?v=91"></script>
 </body>
 </html>

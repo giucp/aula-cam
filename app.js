@@ -576,17 +576,17 @@
       }
       return;
     }
-    const chips=cont;   // Chispa 2.0: los chips van directo en .h3MoreChips
+    // Chispa 2.0: las materias del día van como FILAS (mismo patrón que "Mi horario" de la Agenda),
+    // no como chips. Materia del aula → fila-botón que lleva a practicar (chevron); propia → fila sin acción.
     del.forEach(h=>{
-      const enAula=esMateriaAula(h.materia);
-      // materia del aula → botón que lleva a practicar; propia (caligrafía…) → chip simple
-      const v=homeMateriaVisual(h.materia);
-      const b=document.createElement(enAula?"button":"span");
-      b.className="h3Chip"+(enAula?" h3Chip--go":""); b.style.setProperty("--tone",v.color);
-      if(enAula) b.type="button";
-      b.innerHTML=`<i></i><span>${escapeHtml(capMateria(limpiaNombreMateria(h.materia)))}</span>`;
-      if(enAula) b.onclick=()=>irAPractica(h.materia);
-      chips.appendChild(b);
+      const enAula=esMateriaAula(h.materia), v=homeMateriaVisual(h.materia);
+      const row=document.createElement(enAula?"button":"div");
+      row.className="hoRow"; if(enAula) row.type="button";
+      row.style.setProperty("--subject",v.color);
+      row.innerHTML=homeMarcaMateria(h.materia,"hoMark")+
+        `<b>${escapeHtml(capMateria(limpiaNombreMateria(h.materia)))}</b>`+(enAula?CHEV:"");
+      if(enAula) row.onclick=()=>irAPractica(h.materia);
+      cont.appendChild(row);
     });
     if(del.some(h=>esMateriaAula(h.materia))){
       const hint=document.createElement("p"); hint.className="h3MoreEmpty"; hint.style.width="100%"; hint.style.marginTop="2px";
