@@ -345,18 +345,20 @@
   /* ═══ INTERIOR DE MATERIA — "Escoge un tema" ═══
      Lapsos = barra superior .hoSel/.hoDia + subcabecera .hoHead (reusa Mi horario, ver #tabMaterias
      donde --h2-* está en scope). Temas = LISTA seleccionable (radio), nunca chips (§5/§6). */
-  .temaList{margin-top:2px}
-  .temaRow{width:100%;display:grid;grid-template-columns:22px minmax(0,1fr) auto;align-items:center;gap:12px;min-height:54px;
-    padding:10px 6px;border:0;border-bottom:1px solid var(--chispa-line);background:transparent;text-align:left;cursor:pointer;
-    font-family:"Nunito";transition:background .15s}
-  .temaRow:last-child{border-bottom:0}
-  .temaRow:active{opacity:.75}
+  /* lista de temas: mismo envoltorio (.modosPanel) y trato de fila que las actividades del Paso 2 */
+  .temaList{display:flex;flex-direction:column}
+  .temaRow{width:100%;display:grid;grid-template-columns:22px minmax(0,1fr) auto;align-items:center;gap:13px;min-height:60px;
+    padding:13px 12px;border:2px solid transparent;border-radius:19px;background:transparent;text-align:left;cursor:pointer;
+    font-family:"Nunito";transition:background .15s,border-color .15s}
+  .temaRow:not(:last-child){box-shadow:inset 0 -1px 0 color-mix(in srgb,var(--chispa-line) 75%,#fff)}
+  .temaRow:has(+ .temaRow.is-sel){box-shadow:none}
+  .temaRow:active{transform:scale(.995)}
   .temaRadio{position:relative;width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 2px var(--chispa-line);transition:box-shadow .15s}
   .temaRadio::after{content:"";position:absolute;inset:5px;border-radius:50%;background:transparent;transition:background .15s}
-  .temaRow>b{min-width:0;font-family:"Nunito";font-weight:700;font-size:1rem;line-height:1.25;color:var(--chispa-ink);overflow-wrap:anywhere}
+  .temaRow>b{min-width:0;font-family:"Fredoka";font-weight:600;font-size:1.05rem;line-height:1.22;color:var(--chispa-ink);overflow-wrap:anywhere}
   .temaState{flex:none;display:inline-flex;align-items:center;justify-content:center;min-width:18px}
   .temaState svg{width:18px;height:18px;display:block}
-  .temaRow.is-sel{background:var(--chispa-primary-soft)}
+  .temaRow.is-sel{background:var(--chispa-primary-soft);border-color:var(--chispa-primary);box-shadow:none}
   .temaRow.is-sel .temaRadio{box-shadow:inset 0 0 0 2px var(--chispa-primary)}
   .temaRow.is-sel .temaRadio::after{background:var(--chispa-primary)}
   .temaRow.is-sel>b{color:var(--chispa-primary)}

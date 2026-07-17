@@ -2307,10 +2307,13 @@
   function abrevLapso(name){ const o=ordenLapso(name); return o===1?"1er":o===2?"2do":o===3?"3er":(name?"Otros":"Temas"); }
   function tituloLapso(name){ return name ? name.charAt(0).toUpperCase()+name.slice(1).toLowerCase() : "Temas"; }
 
+  // "des-grita" un título que viene TODO en mayúsculas (secciones de Moodle) a frase; respeta lo mixto
+  function capFrase(s){ s=(s||"").trim(); if(!s) return s;
+    return (s===s.toLocaleUpperCase()) ? s.charAt(0).toLocaleUpperCase()+s.slice(1).toLocaleLowerCase() : s; }
   function mkTemaRow(t){
     const row=document.createElement("button"); row.type="button"; row.className="temaRow"; row.setAttribute("aria-pressed","false");
     row.dataset.tema=t.key;
-    row.innerHTML=`<i class="temaRadio" aria-hidden="true"></i><b>${escapeHtml(t.title)}</b><span class="temaState"></span>`;
+    row.innerHTML=`<i class="temaRadio" aria-hidden="true"></i><b>${escapeHtml(capFrase(t.title))}</b><span class="temaState"></span>`;
     row.onclick=()=>{ temaSel=(temaSel===t.key)?null:t.key; clearOtro(); alSeleccionarTema(); };
     return row;
   }
@@ -2345,9 +2348,10 @@
       head.innerHTML=`<h3>${escapeHtml(tituloLapso(activa.lapso))}</h3><span>${n} ${n===1?"tema":"temas"}</span>`;
       cont.appendChild(head);
     }
+    const panel=document.createElement("div"); panel.className="modosPanel";   // mismo envoltorio que el Paso 2
     const lista=document.createElement("div"); lista.className="temaList";
     activa.temas.forEach(t=>lista.appendChild(mkTemaRow(t)));
-    cont.appendChild(lista);
+    panel.appendChild(lista); cont.appendChild(panel);
     marcarChips(); pintarChips();
   }
 
