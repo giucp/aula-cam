@@ -76,9 +76,9 @@
   .acciones{display:flex;gap:10px;margin-top:6px}
   .acciones .go{margin-top:0;flex:1;min-width:0;font-size:1.06rem;padding:15px}
   .go.guia{background:linear-gradient(180deg,#34C6A6,#12B5A4);box-shadow:0 14px 24px -11px rgba(18,181,164,.6)}
-  .handoff{background:#F4FBF9;border:2px solid #BEE9E1;border-radius:18px;padding:20px 16px;text-align:center;margin-top:6px}
-  .handoff .hoTit{font-family:"Fredoka";font-weight:600;font-size:1.12rem;color:var(--ink);margin:0 0 4px}
-  .handoff .hoSub{color:var(--muted);font-weight:600;margin:0 0 14px;line-height:1.4}
+  .handoff{background:#fff;border:1px solid var(--chispa-line);border-radius:20px;padding:20px 16px;text-align:center;margin-top:6px;box-shadow:0 14px 32px -22px rgba(103,83,232,.2)}
+  .handoff .hoTit{font-family:"Fredoka";font-weight:600;font-size:1.12rem;color:var(--chispa-ink);margin:0 0 4px}
+  .handoff .hoSub{color:var(--chispa-muted);font-family:"Nunito";font-weight:700;margin:0 0 14px;line-height:1.45}
   .handoff .go{max-width:280px;margin:0 auto}
   .otros.ia{border-color:#CFC6F7}
   .otros.ia:hover{border-color:var(--mango)}
@@ -94,9 +94,9 @@
   .selNat{width:100%;font-family:"Nunito",sans-serif;font-weight:700;font-size:1rem;color:var(--ink);padding:14px 15px;border:2px solid var(--line);border-radius:15px;background:#FFFDFB;outline:none}
   .selNat:focus{border-color:var(--teal)}
   .rescateCode{font-family:"Fredoka";font-weight:600;font-size:2rem;letter-spacing:.18em;color:var(--grape);margin:8px 0;word-break:break-all}
-  .avisoPremium{background:#F1EAFB;border:1.5px solid #E0D0F5;border-radius:18px;padding:20px 18px;text-align:center;margin-top:8px}
-  .apTit{font-family:"Fredoka";font-weight:600;font-size:1.1rem;color:var(--grape);margin:0 0 8px}
-  .apTxt{font-family:"Nunito";font-weight:600;font-size:.96rem;color:var(--ink);line-height:1.5;margin:0}
+  .avisoPremium{background:var(--chispa-primary-soft);border:1px solid color-mix(in srgb,var(--chispa-primary) 20%,#fff);border-radius:20px;padding:20px 18px;text-align:center;margin-top:8px}
+  .apTit{font-family:"Fredoka";font-weight:600;font-size:1.1rem;color:var(--chispa-primary);margin:0 0 8px}
+  .apTxt{font-family:"Nunito";font-weight:700;font-size:.92rem;color:var(--chispa-muted);line-height:1.5;margin:0}
   /* Camino B: materias manuales */
   .matEmojiRow{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
   .matEmojiBtn{width:44px;height:44px;border:2px solid var(--line);background:#fff;border-radius:12px;font-size:1.35rem;cursor:pointer;display:grid;place-items:center;line-height:1}
@@ -767,19 +767,19 @@
   .empty{color:var(--muted);font-weight:700;padding:8px 2px 0;line-height:1.5}
 
   /* "basado en tu clase" banner */
-  .basado{background:linear-gradient(180deg,#ECFBF7,#E2F7F1);border:1px solid #BDEBE1;border-radius:18px;padding:14px 16px;box-shadow:var(--shadow-xs)}
-  .basado .t{font-family:"Fredoka";font-weight:600;color:var(--teal-dark);font-size:.92rem;display:flex;align-items:center;gap:8px;margin:0 0 7px}
-  .basado ul{margin:0;padding-left:20px;color:var(--ink);font-weight:600;font-size:.9rem;line-height:1.5}
+  /* banner de origen: tarjeta blanca (mismo lenguaje que el resto), acento morado/turquesa */
+  .basado{background:#fff;border:1px solid var(--chispa-line);border-radius:18px;padding:14px 16px;box-shadow:0 12px 28px -20px rgba(38,25,58,.14)}
+  .basado .t{font-family:"Fredoka";font-weight:600;color:var(--chispa-primary);font-size:.95rem;margin:0 0 6px}
+  .basado ul{margin:0;padding-left:20px;color:var(--chispa-muted);font-family:"Nunito";font-weight:700;font-size:.87rem;line-height:1.5}
   .basado li{margin:2px 0}
-  .basado .sub{color:var(--muted);font-weight:600;font-size:.82rem;line-height:1.4;margin:0 0 6px}
+  .basado .sub{color:var(--chispa-muted);font-family:"Nunito";font-weight:700;font-size:.82rem;line-height:1.45;margin:0 0 6px}
   .basado ul + .sub, .basado .sub.ia{margin:7px 0 0}
   /* explicacion del boton Reportar: separada con una linea punteada suave */
-  .basado .sub.rep{margin:9px 0 0;padding-top:9px;border-top:1px dashed rgba(0,0,0,.12)}
-  .basado .sub.rep b{color:var(--ink)}
-  /* banner naranja cuando el contenido es generado por IA (contraste con la guia verde) */
-  .basado.ia{background:linear-gradient(180deg,#FFF3EC,#FFE9DE);border-color:#FFD3BE}
-  .basado.ia .t{color:#C85A2B}
-  .basado .sub.ia{color:#C85A2B}
+  .basado .sub.rep{margin:9px 0 0;padding-top:9px;border-top:1px dashed var(--chispa-line)}
+  .basado .sub.rep b{color:var(--chispa-primary)}
+  /* IA: mismo card blanco, solo cambia el acento (turquesa = "creado al momento") */
+  .basado.ia .t{color:var(--chispa-turquoise)}
+  .basado .sub.ia{color:var(--chispa-turquoise)}
   /* explicacion desplegable "cual elijo" bajo los botones de accion */
   .accInfo{margin-top:8px}
   .accInfo summary{cursor:pointer;list-style:none;text-align:center;padding:7px;font-family:"Fredoka";font-weight:600;font-size:.92rem;color:var(--teal-dark)}
@@ -795,75 +795,79 @@
   .card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow-card);
     opacity:0;transform:translateY(14px) rotate(-.6deg);animation:deal .45s cubic-bezier(.2,.9,.3,1.2) forwards}
   @keyframes deal{to{opacity:1;transform:none}}
-  .tag{display:inline-flex;align-items:center;gap:7px;font-family:"Fredoka";font-weight:600;font-size:.82rem;color:var(--mango);background:#FFEEE6;padding:5px 12px;border-radius:999px;margin-bottom:11px}
-  .tag.t2{color:var(--teal-dark);background:#E2F7F1}
-  .tag.t3{color:var(--grape);background:#EDE7FF}
+  /* tag = pastilla neutra (no un color por tipo, §2): identifica el bloque sin gritar */
+  .tag{display:inline-flex;align-items:center;font-family:"Nunito";font-weight:800;font-size:.71rem;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--chispa-muted);background:color-mix(in srgb,var(--chispa-muted) 11%,#fff);padding:4px 11px;border-radius:999px;margin-bottom:12px}
   /* fila superior de la tarjeta: etiqueta a la izquierda + banderita "Reportar" a la derecha */
   .cardTop{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:11px}
   .cardTop .tag{margin-bottom:0}
   .repBtn{flex:none;max-width:62%;text-align:right;border:none;background:none;cursor:pointer;
     font-family:"Nunito",sans-serif;font-weight:800;font-size:.76rem;color:var(--muted);opacity:.75;
     padding:5px 9px;border-radius:11px;transition:all .14s;line-height:1.3}
-  .repBtn:hover{color:var(--bad);background:#FDEDF1;opacity:1}
-  .repBtn.arm{color:#fff;background:var(--bad);opacity:1}
-  .repBtn[disabled]{cursor:default;opacity:1;color:var(--teal-dark);background:#EAF8F6}
-  .q{font-size:1.08rem;font-weight:700;line-height:1.5;margin:0}
+  .repBtn:hover{color:var(--chispa-coral);background:color-mix(in srgb,var(--chispa-coral) 10%,#fff);opacity:1}
+  .repBtn.arm{color:#fff;background:var(--chispa-coral);opacity:1}
+  .repBtn[disabled]{cursor:default;opacity:1;color:var(--chispa-green);background:color-mix(in srgb,var(--chispa-green) 10%,#fff)}
+  /* la pregunta/enunciado es el foco del card: queda oscura (no es "prosa general") */
+  .q{font-family:"Nunito";font-weight:800;font-size:1.06rem;line-height:1.45;margin:0;color:var(--chispa-ink)}
   .reveals{display:flex;gap:10px;margin-top:15px;flex-wrap:wrap}
-  .mini{border:2px solid var(--line);background:#fff;cursor:pointer;font-family:"Nunito";font-weight:800;font-size:.9rem;color:var(--ink);padding:9px 14px;border-radius:13px;display:inline-flex;align-items:center;gap:7px;transition:all .14s}
+  .mini{border:1.5px solid var(--chispa-line);background:#fff;cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:.9rem;color:var(--chispa-primary);
+    padding:10px 15px;border-radius:13px;display:inline-flex;align-items:center;gap:7px;transition:background .14s,border-color .14s}
+  .mini:hover{border-color:var(--chispa-primary);background:var(--chispa-primary-soft)}
   .mini:active{transform:scale(.96)}
-  .mini.hint:hover{border-color:var(--sun)}
-  .mini.ans:hover{border-color:var(--ok)}
-  .mini[disabled]{opacity:.5;cursor:default}
-  .reveal{margin-top:13px;border-radius:14px;padding:13px 15px;font-weight:700;line-height:1.5;animation:pop .3s ease;display:none}
+  .mini[disabled]{opacity:.45;cursor:default}
+  .reveal{margin-top:13px;border-radius:14px;padding:13px 15px;font-family:"Nunito";font-weight:700;line-height:1.5;color:var(--chispa-muted);animation:pop .3s ease;display:none}
   .reveal.show{display:block}
-  .reveal.hint{background:#FFF8E6;border:1px solid #FFE7A8}
-  .reveal.ans{background:#EAF8F1;border:1px solid #B9E8D0;color:#13694A}
-  .reveal b{font-family:"Fredoka"}
-  .comoRes{margin-top:9px;padding-top:9px;border-top:1px dashed rgba(19,105,74,.28);line-height:1.5}
+  .reveal.hint{background:color-mix(in srgb,var(--chispa-yellow) 13%,#fff);border:1px solid color-mix(in srgb,var(--chispa-yellow) 34%,#fff)}
+  .reveal.ans{background:color-mix(in srgb,var(--chispa-green) 10%,#fff);border:1px solid color-mix(in srgb,var(--chispa-green) 26%,#fff)}
+  .reveal b{font-family:"Fredoka";font-weight:600;color:var(--chispa-ink)}
+  .reveal.ans b{color:var(--chispa-green)}
+  .comoRes{margin-top:9px;padding-top:9px;border-top:1px dashed color-mix(in srgb,var(--chispa-green) 30%,transparent);line-height:1.5;color:var(--chispa-muted)}
   @keyframes pop{from{transform:scale(.97);opacity:0}to{transform:scale(1);opacity:1}}
-  .footer{text-align:center;color:var(--muted);font-weight:800;margin:26px 4px 0;font-size:.98rem}
+  .footer{display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center;margin:28px 4px 6px}
+  .footer .footerChispa{width:66px;height:66px;object-fit:contain}
+  .footer span{font-family:"Fredoka";font-weight:600;color:var(--chispa-primary);font-size:1.04rem}
 
   /* resumen */
-  .sumCard{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--shadow-card)}
-  .sumCard h2{font-family:"Fredoka";font-weight:700;font-size:1.3rem;margin:.2em 0 .5em;color:var(--ink)}
+  .sumCard{background:var(--chispa-surface);border:1px solid var(--chispa-line);border-radius:24px;padding:20px 19px;box-shadow:0 16px 34px -22px rgba(103,83,232,.18),0 2px 8px -5px rgba(38,25,58,.06)}
+  .sumCard h2{font-family:"Fredoka";font-weight:600;font-size:1.4rem;margin:.15em 0 .45em;color:var(--chispa-ink);line-height:1.15}
   .sumPts{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
-  .sumPts li{position:relative;padding-left:30px;font-weight:700;line-height:1.5}
-  .sumPts li::before{content:"✦";position:absolute;left:4px;top:0;color:var(--teal);font-size:1rem}
-  .sumIntro{font-weight:700;line-height:1.55;margin:0 0 2px;color:var(--ink)}
-  .sumSec{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
-  .sumSec h3{font-family:"Fredoka";font-weight:600;font-size:1.08rem;margin:0 0 6px;color:var(--teal)}
-  .sumSec p{margin:0 0 8px;font-weight:600;line-height:1.55;white-space:pre-line}
+  .sumPts li{position:relative;padding-left:22px;font-family:"Nunito";font-weight:700;line-height:1.55;color:var(--chispa-muted)}
+  .sumPts li::before{content:"";position:absolute;left:2px;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--chispa-primary)}
+  .sumIntro{font-family:"Nunito";font-weight:700;line-height:1.55;margin:0 0 2px;color:var(--chispa-muted)}
+  .sumSec{margin-top:16px;padding-top:14px;border-top:1px solid var(--chispa-line)}
+  .sumSec h3{font-family:"Fredoka";font-weight:600;font-size:1.08rem;margin:0 0 6px;color:var(--chispa-primary)}
+  .sumSec p{margin:0 0 8px;font-family:"Nunito";font-weight:700;line-height:1.55;color:var(--chispa-muted);white-space:pre-line}
   .sumPasos{margin:8px 0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
-  .sumPasos li{font-weight:700;line-height:1.5}
-  .sumEj{margin-top:6px;background:#EAF8F1;border:1px solid #B9E8D0;border-radius:12px;padding:11px 14px;font-weight:700;line-height:1.55;color:#13694A;white-space:pre-line}
-  .sumEj b{font-family:"Fredoka"}
-  .sumKey{margin-top:16px;background:#FFF8E6;border:1px solid #FFE7A8;border-radius:14px;padding:13px 15px;font-weight:700;line-height:1.5}
-  .sumKey b{font-family:"Fredoka"}
+  .sumPasos li{font-family:"Nunito";font-weight:700;line-height:1.5;color:var(--chispa-muted)}
+  .sumEj{margin-top:6px;background:color-mix(in srgb,var(--chispa-turquoise) 10%,#fff);border:1px solid color-mix(in srgb,var(--chispa-turquoise) 28%,#fff);border-radius:14px;padding:11px 14px;font-family:"Nunito";font-weight:700;line-height:1.55;color:var(--chispa-muted);white-space:pre-line}
+  .sumEj b{font-family:"Fredoka";font-weight:600;color:var(--chispa-turquoise)}
+  .sumKey{margin-top:16px;background:var(--chispa-primary-soft);border:1px solid color-mix(in srgb,var(--chispa-primary) 22%,#fff);border-radius:14px;padding:13px 15px;font-family:"Nunito";font-weight:700;line-height:1.5;color:var(--chispa-ink)}
+  .sumKey b{font-family:"Fredoka";font-weight:600;color:var(--chispa-primary)}
 
   /* quiz */
-  .score{align-self:center;font-family:"Fredoka";font-weight:600;color:var(--grape);background:#EDE7FF;border-radius:999px;padding:7px 16px;font-size:.95rem}
+  .score{align-self:center;font-family:"Fredoka";font-weight:600;color:var(--chispa-primary);background:var(--chispa-primary-soft);border-radius:999px;padding:7px 16px;font-size:.95rem}
   .opts{display:flex;flex-direction:column;gap:9px;margin-top:14px}
-  .opt{text-align:left;border:2px solid var(--line);background:#fff;cursor:pointer;font-family:"Nunito";font-weight:700;font-size:1rem;color:var(--ink);
-    padding:13px 15px;border-radius:14px;display:flex;align-items:center;gap:11px;transition:all .14s}
-  .opt .letra{flex:none;width:26px;height:26px;border-radius:8px;background:#F3ECF1;display:grid;place-items:center;font-family:"Fredoka";font-weight:600;font-size:.9rem;color:var(--muted)}
-  .opt:not([disabled]):hover{border-color:#A9E6DE}
+  .opt{text-align:left;border:1.5px solid var(--chispa-line);background:#fff;cursor:pointer;font-family:"Nunito";font-weight:700;font-size:1rem;color:var(--chispa-ink);
+    padding:13px 15px;border-radius:14px;display:flex;align-items:center;gap:11px;transition:border-color .14s,background .14s}
+  .opt .letra{flex:none;width:26px;height:26px;border-radius:8px;background:var(--chispa-primary-soft);display:grid;place-items:center;font-family:"Fredoka";font-weight:600;font-size:.9rem;color:var(--chispa-primary)}
+  .opt:not([disabled]):hover{border-color:var(--chispa-primary)}
   .opt:not([disabled]):active{transform:scale(.99)}
   .opt[disabled]{cursor:default}
-  .opt.ok{border-color:var(--ok);background:#EAF8F1;color:#13694A}
-  .opt.ok .letra{background:var(--ok);color:#fff}
-  .opt.bad{border-color:var(--bad);background:#FFEDF1;color:#9B1B3C}
-  .opt.bad .letra{background:var(--bad);color:#fff}
-  .qexp{margin-top:12px;border-radius:14px;padding:12px 15px;font-weight:700;line-height:1.5;background:#EDE7FF;border:1px solid #D6C9FF;color:#4a3a7a;display:none}
+  .opt.ok{border-color:var(--chispa-green);background:color-mix(in srgb,var(--chispa-green) 10%,#fff);color:var(--chispa-green)}
+  .opt.ok .letra{background:var(--chispa-green);color:#fff}
+  .opt.bad{border-color:var(--chispa-coral);background:color-mix(in srgb,var(--chispa-coral) 10%,#fff);color:var(--chispa-coral)}
+  .opt.bad .letra{background:var(--chispa-coral);color:#fff}
+  .qexp{margin-top:12px;border-radius:14px;padding:12px 15px;font-family:"Nunito";font-weight:700;line-height:1.5;background:var(--chispa-primary-soft);border:1px solid color-mix(in srgb,var(--chispa-primary) 20%,#fff);color:var(--chispa-muted);display:none}
   .qexp.show{display:block;animation:pop .3s ease}
-  .qexp b{font-family:"Fredoka"}
+  .qexp b{font-family:"Fredoka";font-weight:600;color:var(--chispa-primary)}
 
   /* figura (SVG dibujado por la IA) */
   .figura{display:flex;justify-content:center;margin:6px 0}
   .figura img{max-width:100%;height:auto;max-height:280px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px}
   /* botón "generar otros" */
   .otrosWrap{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:4px}
-  .otros{border:2px solid var(--line);background:#fff;cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:1rem;color:var(--ink);padding:11px 20px;border-radius:14px;box-shadow:var(--shadow-xs);transition:all .14s}
-  .otros:hover{border-color:#A9E6DE}
+  .otros{border:1.5px solid var(--chispa-line);background:#fff;cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:1rem;color:var(--chispa-primary);padding:11px 20px;border-radius:14px;box-shadow:var(--shadow-xs);transition:background .14s,border-color .14s}
+  .otros:hover{border-color:var(--chispa-primary);background:var(--chispa-primary-soft)}
   .otros:active{transform:scale(.97)}
 
   /* fotos del cuaderno (apuntes) */

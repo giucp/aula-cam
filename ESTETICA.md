@@ -361,7 +361,7 @@ Todo eso es git y es reversible. Lo caro nunca fue eso: fue entregar y que lo de
 | Login | ✅ 2.0 — aprobado, congelado |
 | Inicio | ✅ 2.0 — jerarquía + boletín de notas; se retiró "Continúa aprendiendo" (vive en Materias) |
 | Agenda | ✅ 2.0 **completa** — encabezado, semana, tareas, notas, horario, formularios y editor |
-| Materias | ✅ 2.0 — lista + **interior = asistente de 3 pasos** (`#paneTemas`): **P1** elegir tema (barra de lapsos + lista con radio, títulos Nunito 700) · **P2** elegir actividad = el mockup (panel único de 4 modos con PNG 3D `assets/tema/`, selección lavanda+morado sin turquesa, sin números, segmentado 3/5/8, tarjeta "Tus apuntes", **un** botón dominante + link IA secundario, copy de modos del mockup) · **P3** resultados (render existente, NO rediseñado). Estado `wizPaso`+`mostrarPaso(n)`; header eyebrow+título+progreso. Cumbre entra directo al P2 |
+| Materias | ✅ 2.0 — **interior = asistente de 3 pasos COMPLETO** (`#paneTemas`): **P1** elegir tema (barra de lapsos + lista con radio en el mismo panel que P2, títulos Nunito 700 gris) · **P2** elegir actividad = el mockup (panel único de 4 modos PNG 3D `assets/tema/`, selección lavanda+morado, segmentado 3/5/8, "Tus apuntes", **un** botón dominante + link IA) · **P3** resultados **rediseñados** (sin emojis, prosa en `--chispa-muted`, callouts a `--chispa-*`, tags neutros, footer con pose de Chispa `pulgarArriba`; el loading quedó intacto). Estado `wizPaso`+`mostrarPaso(n)`. Cumbre entra directo al P2 |
 | Cumbre | 🟡 2.0 **primer pase** (hero + principios + familia + materias con acordeón). Iterar (fondo ambiental, lema, alto del hero). El interior de un tema ahora reusa el **Paso 2 del asistente** (`.cumbre` oculta el header/progreso/tema; los resultados conservan su render) |
 | `#vPendiente` | ❌ vieja |
 | Amigos / Muro | ❌ vieja |
@@ -373,11 +373,10 @@ Todo eso es git y es reversible. Lo caro nunca fue eso: fue entregar y que lo de
 Detectadas al correr la §17 contra producción. **Se resuelven cuando toque cada pantalla; anotarlas
 no las perdona.**
 
-- **Resultados del interior (Paso 3) sin migrar:** el contenido generado (resumen/quiz/examen/
-  handoff/límite/premium) conserva su render viejo; el asistente solo lo envuelve como paso. Se
-  rediseña cuando toque (no había spec, fuera de alcance de esta tanda). También se retiró del panel
-  de actividades el badge "sugerido" y el check de "ya hecho" por fila (§6 limpio): la sugerencia
-  sobrevive como el modo **preseleccionado** al entrar.
+- En el panel de actividades (Paso 2) se retiró el badge "sugerido" y el check de "ya hecho" por
+  fila (§6 limpio): la sugerencia sobrevive como el modo **preseleccionado** al entrar. En el Paso 3
+  (resultados) el texto de **pregunta y opciones del quiz queda oscuro a propósito** (foco
+  interactivo); la prosa (explicaciones/pasos/respuestas) va gris. El **loading** no se tocó.
 - **"X" de borrar permanente** en cada fila de tarea y de nota de la Agenda (`.agBorrar`) → viola
   §13 y §17. El horario ya lo resolvió bien: las acciones destructivas viven en el modo edición, no
   en la lectura. Las tareas y notas deberían seguir el mismo camino.

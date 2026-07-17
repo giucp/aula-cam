@@ -1292,7 +1292,7 @@
 
   // aviso cuando una cuenta gratis toca algo premium (generación con IA / Cumbre / curado)
   function avisoPremium(){
-    return `<div class="avisoPremium"><p class="apTit">✨ Esto es parte de Chispa Premium</p>`
+    return `<div class="avisoPremium"><p class="apTit">Esto es parte de Chispa Premium</p>`
       + `<p class="apTxt">Con tu cuenta gratis podés usar tu agenda, tus tareas, tu horario y tus notas. Para desbloquear los resúmenes, quiz y práctica con IA, pedile acceso al administrador de Chispa.</p></div>`;
   }
 
@@ -2602,7 +2602,7 @@
   function renderLimite(res){
     res.innerHTML="";
     const box=document.createElement("div"); box.className="handoff";
-    box.innerHTML=`<p class="hoTit">Por hoy ya practicaste bastante con IA 🎈</p><p class="hoSub">¡Mañana tienes más! Mientras tanto puedes seguir con las Guías revisadas 📗 y con todo lo que ya practicaste.</p>`;
+    box.innerHTML=`<p class="hoTit">Por hoy ya practicaste bastante con IA</p><p class="hoSub">¡Mañana tienes más! Mientras tanto puedes seguir con las Guías revisadas y con todo lo que ya practicaste.</p>`;
     res.appendChild(box);
     res.scrollIntoView({behavior:"smooth",block:"nearest"});
   }
@@ -2610,10 +2610,10 @@
   function renderHandoff(res, d){
     res.innerHTML="";
     const box=document.createElement("div"); box.className="handoff";
-    const tit = d.sinBanco ? "Este tema todavía no tiene guía revisada 📗" : "¡Completaste toda la guía revisada! 🎉";
+    const tit = d.sinBanco ? "Este tema todavía no tiene guía revisada" : "¡Completaste toda la guía revisada!";
     const sub = d.sinBanco ? "¿Quieres practicar con ejercicios generados por IA?" : "¿Quieres seguir practicando con ejercicios nuevos hechos por IA?";
     box.innerHTML=`<p class="hoTit">${tit}</p><p class="hoSub">${sub}</p>`;
-    const b=document.createElement("button"); b.className="go"; b.textContent="✨ Seguir con IA";
+    const b=document.createElement("button"); b.className="go"; b.textContent="Seguir con IA";
     b.onclick=()=>generar({via:"ia", nocache:true});
     box.appendChild(b); res.appendChild(box);
     res.scrollIntoView({behavior:"smooth",block:"nearest"});
@@ -2659,36 +2659,36 @@
   function renderBanner(res, fuentes, basado, apuntes, curado, modo){
     const pdfs = Array.isArray(fuentes) ? fuentes : [];
     const acts = (ultimoContexto && ultimoContexto.actividades) ? ultimoContexto.actividades : [];
-    const apunte = apuntes ? `<li>📓 + tus apuntes del cuaderno</li>` : "";
+    const apunte = apuntes ? `<li>+ tus apuntes del cuaderno</li>` : "";
     let html = "", esIA = !curado;
     if(curado){
       // banco preparado y revisado por nosotros: se aclara su origen (base sólida) como señal de confianza
       const items = pdfs.slice(0,4).map(f=>`<li>${escapeHtml(f)}</li>`).join("");
-      html = `<p class="t">✅ Guía de estudio revisada</p><p class="sub">La preparamos nosotros con una IA más avanzada y la revisamos para que sea correcta y completa: es tu base sólida del tema.</p>${items?`<ul>${items}</ul>`:""}`;
+      html = `<p class="t">Guía de estudio revisada</p><p class="sub">La preparamos nosotros con una IA más avanzada y la revisamos para que sea correcta y completa: es tu base sólida del tema.</p>${items?`<ul>${items}</ul>`:""}`;
     }else if(pdfs.length){
       const items = pdfs.slice(0,4).map(f=>`<li>${escapeHtml(f)}</li>`).join("");
-      html = `<p class="t">📄 Basado en tus guías de clase</p><ul>${items}${apunte}</ul>`;
+      html = `<p class="t">Basado en tus guías de clase</p><ul>${items}${apunte}</ul>`;
     }else if(apuntes){
       const items = acts.slice(0,4).map(a=>`<li>${escapeHtml(a.nombre)}</li>`).join("");
-      html = `<p class="t">📓 Basado en tus apuntes del cuaderno</p>${items?`<ul>${items}</ul>`:""}`;
+      html = `<p class="t">Basado en tus apuntes del cuaderno</p>${items?`<ul>${items}</ul>`:""}`;
     }else if(basado && acts.length){
       const items = acts.slice(0,4).map(a=>`<li>${escapeHtml(a.nombre)}</li>`).join("");
       const extra = acts.length>4 ? `<li>…y ${acts.length-4} más</li>` : "";
-      html = `<p class="t">🔗 Basado en tu clase</p><ul>${items}${extra}</ul>`;
+      html = `<p class="t">Basado en tu clase</p><ul>${items}${extra}</ul>`;
     }else{
       // IA pura (tema del próximo año por título, o tema sin guía): que quede claro que es al momento
-      html = `<p class="t">✨ Creado con IA en el momento</p><p class="sub">Contenido nuevo hecho por inteligencia artificial, distinto cada vez. Ideal para practicar más.</p>`;
+      html = `<p class="t">Creado con IA en el momento</p><p class="sub">Contenido nuevo hecho por inteligencia artificial, distinto cada vez. Ideal para practicar más.</p>`;
     }
     // cuando es IA con material real, se agrega la aclaración de que la actividad se generó al momento
-    if(esIA && (pdfs.length || apuntes || (basado && acts.length))) html += `<p class="sub ia">✨ Ejercicios creados con IA en el momento.</p>`;
+    if(esIA && (pdfs.length || apuntes || (basado && acts.length))) html += `<p class="sub ia">Ejercicios creados con IA en el momento.</p>`;
     // explicación breve del botón Reportar (solo donde aparece: práctica/quiz/examen, con sesión, no Cumbre)
     if(puedeReportar() && (modo==="retos"||modo==="quiz"||modo==="examen"))
-      html += `<p class="sub rep">🚩 ¿Un ejercicio salió mal o no se entiende? Toca <b>Reportar</b> (dos toques para confirmar) y te damos otro en su lugar.</p>`;
+      html += `<p class="sub rep">¿Un ejercicio salió mal o no se entiende? Toca <b>Reportar</b> (dos toques para confirmar) y te damos otro en su lugar.</p>`;
     if(html){ const b=document.createElement("div"); b.className="basado"+(esIA?" ia":""); b.innerHTML=html; res.appendChild(b); }
   }
   function renderFooter(res){
     const f=document.createElement("p"); f.className="footer";
-    f.textContent=`¡Tú puedes, ${(SESION.nombre||"").split(" ")[0]||""}! 🌟`;
+    f.innerHTML=`<img class="footerChispa" src="${chispaPoseSrc('pulgarArriba')}" alt="" aria-hidden="true"><span>¡Tú puedes, ${escapeHtml((SESION.nombre||"").split(" ")[0]||"")}!</span>`;
     res.appendChild(f);
   }
 
@@ -2726,24 +2726,24 @@
   function zonaReporte(getItem, meta, modo, alReemplazar, soloReporte){
     if(!puedeReportar()) return null;
     const b=document.createElement("button"); b.type="button"; b.className="repBtn";
-    b.textContent="🚩 Reportar"; b.title="¿Está malo este ejercicio? Repórtalo y te doy otro";
+    b.textContent="Reportar"; b.title="¿Está malo este ejercicio? Repórtalo y te doy otro";
     b.onclick=async ()=>{
       if(b.dataset.busy) return;
       if(!b.dataset.arm){
         b.dataset.arm="1"; b.classList.add("arm"); b.textContent="¿Cambiarlo por otro? Toca de nuevo";
-        setTimeout(()=>{ if(!b.dataset.busy){ delete b.dataset.arm; b.classList.remove("arm"); b.textContent="🚩 Reportar"; } }, 4500);
+        setTimeout(()=>{ if(!b.dataset.busy){ delete b.dataset.arm; b.classList.remove("arm"); b.textContent="Reportar"; } }, 4500);
         return;
       }
       b.dataset.busy="1"; b.disabled=true;
       enviarReporte(getItem(), meta, modo);   // el reporte se guarda SIEMPRE (aunque el cambio falle)
-      if(soloReporte && soloReporte()){ b.textContent="¡Gracias! Quedó reportado ✔"; return; }
+      if(soloReporte && soloReporte()){ b.textContent="¡Gracias! Quedó reportado"; return; }
       b.textContent="Cambiándolo…";
       const nuevo=await regenerarItem(meta, modo);
       if(nuevo){ alReemplazar(nuevo); }
       else{
         delete b.dataset.busy; delete b.dataset.arm; b.classList.remove("arm"); b.disabled=false;
-        b.textContent="Reportado ✔ · no pude cambiarlo, prueba luego";
-        setTimeout(()=>{ b.textContent="🚩 Reportar"; }, 3400);
+        b.textContent="Reportado · no pude cambiarlo, prueba luego";
+        setTimeout(()=>{ b.textContent="Reportar"; }, 3400);
       }
     };
     return b;
@@ -2755,14 +2755,14 @@
     ejercicios.forEach((e,i)=>{
       const c=tarjeta(i);
       const llenar=(e)=>{
-        c.innerHTML=`<div class="cardTop"><span class="tag">🎯 Reto ${i+1}</span></div>
+        c.innerHTML=`<div class="cardTop"><span class="tag">Reto ${i+1}</span></div>
           <p class="q">${escapeHtml(e.enunciado||"")}</p>
           ${figuraHTML(e.figura)}
           <div class="reveals">
-            ${e.pista?`<button class="mini hint">💡 Pista</button>`:``}
-            <button class="mini ans">✅ Ver respuesta</button>
+            ${e.pista?`<button class="mini hint">Pista</button>`:``}
+            <button class="mini ans">Ver respuesta</button>
           </div>
-          ${e.pista?`<div class="reveal hint"><b>💡 Pista:</b> ${escapeHtml(e.pista)}</div>`:``}
+          ${e.pista?`<div class="reveal hint"><b>Pista:</b> ${escapeHtml(e.pista)}</div>`:``}
           <div class="reveal ans"><b>Respuesta:</b> ${escapeHtml(e.solucion||"")}</div>`;
         const h=c.querySelector(".mini.hint"), a=c.querySelector(".mini.ans");
         if(h) h.onclick=()=>{ c.querySelector(".reveal.hint").classList.add("show"); h.disabled=true; };
@@ -2782,10 +2782,10 @@
     preguntas.forEach((p,i)=>{
       const c=tarjeta(i);
       const llenar=(p)=>{
-        c.innerHTML=`<div class="cardTop"><span class="tag t2">📋 Pregunta ${i+1}</span></div>
+        c.innerHTML=`<div class="cardTop"><span class="tag">Pregunta ${i+1}</span></div>
           <p class="q">${escapeHtml(p.pregunta||"")}</p>
-          <div class="reveals"><button class="mini ans">✅ Ver respuesta</button></div>
-          <div class="reveal ans"><b>Respuesta:</b> ${escapeHtml(p.respuesta||"")}${p.explicacion?`<div class="comoRes"><b>✏️ Cómo se resuelve:</b> ${escapeHtml(p.explicacion)}</div>`:``}</div>`;
+          <div class="reveals"><button class="mini ans">Ver respuesta</button></div>
+          <div class="reveal ans"><b>Respuesta:</b> ${escapeHtml(p.respuesta||"")}${p.explicacion?`<div class="comoRes"><b>Cómo se resuelve:</b> ${escapeHtml(p.explicacion)}</div>`:``}</div>`;
         const a=c.querySelector(".mini.ans");
         a.onclick=()=>{ c.querySelector(".reveal.ans").classList.add("show"); a.disabled=true;
           if(!registrado){ registrado=true; registrarActividad(meta, "examen"); } };
@@ -2800,7 +2800,7 @@
   function renderResumen(res, d){
     const c=document.createElement("div"); c.className="sumCard";
     // Chispa "leyendo" acompaña el resumen (compañera de estudio; presencia única en esta vista).
-    let html=`<div class="sumHead"><img class="sumChispa" src="${chispaPoseSrc('leyendo')}" alt="" aria-hidden="true"><span class="tag t2">📝 Resumen</span></div>`;
+    let html=`<div class="sumHead"><img class="sumChispa" src="${chispaPoseSrc('leyendo')}" alt="" aria-hidden="true"><span class="tag">Resumen</span></div>`;
     if(d.titulo) html+=`<h2>${escapeHtml(d.titulo)}</h2>`;
     if(d.intro)  html+=`<p class="sumIntro">${escapeHtml(d.intro)}</p>`;
     const secciones = Array.isArray(d.secciones) ? d.secciones : [];
@@ -2812,7 +2812,7 @@
           ${s.explicacion?`<p>${escapeHtml(s.explicacion)}</p>`:``}
           ${figuraHTML(s.figura)}
           ${pasos.length?`<ol class="sumPasos">${pasos.map(p=>`<li>${escapeHtml(p)}</li>`).join("")}</ol>`:``}
-          ${s.ejemplo?`<div class="sumEj"><b>✏️ Ejemplo:</b> ${escapeHtml(s.ejemplo)}</div>`:``}
+          ${s.ejemplo?`<div class="sumEj"><b>Ejemplo:</b> ${escapeHtml(s.ejemplo)}</div>`:``}
         </div>`;
       }).join("");
     }
@@ -2821,7 +2821,7 @@
     if(!secciones.length && puntos.length){
       html+=`<ul class="sumPts">${puntos.map(p=>`<li>${escapeHtml(p)}</li>`).join("")}</ul>`;
     }
-    if(d.idea_clave) html+=`<div class="sumKey"><b>💡 Lo más importante:</b> ${escapeHtml(d.idea_clave)}</div>`;
+    if(d.idea_clave) html+=`<div class="sumKey"><b>Lo más importante:</b> ${escapeHtml(d.idea_clave)}</div>`;
     c.innerHTML=html;
     res.appendChild(c);
   }
@@ -2840,7 +2840,7 @@
         const correcta = Number(p.correcta);
         delete c.dataset.done;
         const letras="ABCDE";
-        c.innerHTML=`<div class="cardTop"><span class="tag t3">🎮 Pregunta ${i+1}</span></div>
+        c.innerHTML=`<div class="cardTop"><span class="tag">Pregunta ${i+1}</span></div>
           <p class="q">${escapeHtml(p.pregunta||"")}</p>
           ${figuraHTML(p.figura)}
           <div class="opts">${opciones.map((o,j)=>`<button class="opt"><span class="letra">${letras[j]||"•"}</span><span>${escapeHtml(o)}</span></button>`).join("")}</div>
@@ -2888,15 +2888,15 @@
     const pct = estado.total ? estado.ok/estado.total : 0;
     const nota = Math.max(1, Math.round(pct*20));
     let msg;
-    if(pct>=0.9)      msg="¡Excelente! 🌟 Dominaste el tema.";
-    else if(pct>=0.7) msg="¡Muy bien! 💪 Vas por buen camino.";
-    else if(pct>=0.5) msg="¡Bien! 📚 Sigue practicando un poquito más.";
-    else              msg="¡No te rindas! 🙌 Repasa y vuelve a intentarlo.";
+    if(pct>=0.9)      msg="¡Excelente! Dominaste el tema.";
+    else if(pct>=0.7) msg="¡Muy bien! Vas por buen camino.";
+    else if(pct>=0.5) msg="¡Bien! Sigue practicando un poquito más.";
+    else              msg="¡No te rindas! Repasa y vuelve a intentarlo.";
     const emo = pct>=0.7 ? "celebrando" : "animando";
     const c=document.createElement("div"); c.className="card quizFin";
     c.style.animationDelay="0.05s";
     c.innerHTML=`<img class="chispaFin" src="${chispaSrc(emo)}" alt="" aria-hidden="true">
-      <span class="tag t3">🎉 ¡Terminaste!</span>
+      <span class="tag">¡Terminaste!</span>
       <p class="q">Nota: ${nota}/20 · acertaste ${estado.ok} de ${estado.total}</p>
       <div class="sumKey"><b>${escapeHtml(msg)}</b></div>`;
     res.appendChild(c);
@@ -2985,10 +2985,10 @@
     const wrap=document.createElement("div"); wrap.className="otrosWrap";
     if(ultimoCurado){
       // lo mostrado vino de nuestra guía: "otra de la guía" (sin repetir) o pasar a IA
-      wrap.appendChild(botonOtros("📗 Otra de la guía", ()=>generar({via:"guia"})));
-      wrap.appendChild(botonOtros("✨ Con IA", ()=>generar({via:"ia", nocache:true}), true));
+      wrap.appendChild(botonOtros("Otra de la guía", ()=>generar({via:"guia"})));
+      wrap.appendChild(botonOtros("Con IA", ()=>generar({via:"ia", nocache:true}), true));
     }else{
-      wrap.appendChild(botonOtros("✨ Otros con IA", ()=>generar({via:"ia", nocache:true})));
+      wrap.appendChild(botonOtros("Otros con IA", ()=>generar({via:"ia", nocache:true})));
     }
     res.appendChild(wrap);
   }
