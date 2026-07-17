@@ -355,7 +355,7 @@
   .temaRow:active{transform:scale(.995)}
   .temaRadio{position:relative;width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 2px var(--chispa-line);transition:box-shadow .15s}
   .temaRadio::after{content:"";position:absolute;inset:5px;border-radius:50%;background:transparent;transition:background .15s}
-  .temaRow>b{min-width:0;font-family:"Fredoka";font-weight:600;font-size:1.05rem;line-height:1.22;color:var(--chispa-ink);overflow-wrap:anywhere}
+  .temaRow>b{min-width:0;font-family:"Nunito";font-weight:700;font-size:1rem;line-height:1.3;color:var(--chispa-muted);overflow-wrap:anywhere}
   .temaState{flex:none;display:inline-flex;align-items:center;justify-content:center;min-width:18px}
   .temaState svg{width:18px;height:18px;display:block}
   .temaRow.is-sel{background:var(--chispa-primary-soft);border-color:var(--chispa-primary);box-shadow:none}
