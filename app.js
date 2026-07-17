@@ -2307,8 +2307,10 @@
   function abrevLapso(name){ const o=ordenLapso(name); return o===1?"1er":o===2?"2do":o===3?"3er":(name?"Otros":"Temas"); }
   function tituloLapso(name){ return name ? name.charAt(0).toUpperCase()+name.slice(1).toLowerCase() : "Temas"; }
 
-  // "des-grita" un título que viene TODO en mayúsculas (secciones de Moodle) a frase; respeta lo mixto
-  function capFrase(s){ s=(s||"").trim(); if(!s) return s;
+  // quita emojis (algunas secciones de Moodle los traen en el título) y "des-grita" lo que viene
+  // TODO en mayúsculas a frase; respeta lo que ya está en mezcla.
+  function sinEmojis(s){ return (s||"").replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{2190}-\u{21FF}\u{2300}-\u{23FF}\u{25A0}-\u{25FF}\u{FE00}-\u{FE0F}\u{200D}\u{20E3}\u{2122}\u{2139}]/gu,"").replace(/\s{2,}/g," ").trim(); }
+  function capFrase(s){ s=sinEmojis(s); if(!s) return s;
     return (s===s.toLocaleUpperCase()) ? s.charAt(0).toLocaleUpperCase()+s.slice(1).toLocaleLowerCase() : s; }
   function mkTemaRow(t){
     const row=document.createElement("button"); row.type="button"; row.className="temaRow"; row.setAttribute("aria-pressed","false");
@@ -2350,7 +2352,9 @@
     }
     const panel=document.createElement("div"); panel.className="modosPanel";   // mismo envoltorio que el Paso 2
     const lista=document.createElement("div"); lista.className="temaList";
-    activa.temas.forEach(t=>lista.appendChild(mkTemaRow(t)));
+    const filas=activa.temas.map(t=>mkTemaRow(t));
+    const nMas=filas.length-4;   // >4 temas por lapso → desplegable "Ver N más" (reusa agColapsable)
+    agColapsable(lista, filas, 4, `Ver ${nMas} ${nMas===1?"tema más":"temas más"}`);
     panel.appendChild(lista); cont.appendChild(panel);
     marcarChips(); pintarChips();
   }
@@ -2409,7 +2413,7 @@
     const tt=$("#temaTitulo"); if(tt) tt.textContent=matCap;
     const te=$("#temaEyebrow"); if(te) te.textContent="";
     const ae=$("#actEyebrow"); if(ae) ae.textContent=matCap;
-    const at=$("#actTitulo"); if(at) at.textContent=temaActual()||"";
+    const at=$("#actTitulo"); if(at) at.textContent=capFrase(temaActual())||"";
   }
   // muestra el paso n del asistente (1 tema · 2 actividad · 3 resultados) y ajusta el back
   function mostrarPaso(n){
@@ -2910,7 +2914,7 @@
   function vistaCargando(tema, mo, conFotos){
     const extra = conFotos ? " y leyendo tus apuntes" : "";
     return `<div class="loading"><img class="chispaThinking" src="${chispaSrc('pensando')}" alt="" aria-hidden="true">
-      <div>${escapeHtml(mo.carga)} de <b>${escapeHtml(tema)}</b>${extra}…</div>
+      <div>${escapeHtml(mo.carga)} de <b>${escapeHtml(capFrase(tema))}</b>${extra}…</div>
       <div class="dots"><span></span><span></span><span></span></div></div>
       ${[0,1,2].map(()=>`<div class="skel"><div class="bar s"></div><div class="bar m"></div><div class="bar l"></div></div>`).join("")}`;
   }
