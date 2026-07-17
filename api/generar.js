@@ -20,7 +20,7 @@ import { normCurado } from "../herramientas/normcurado.mjs";
 // Modelo por modo: ejercicios (retos/quiz) con el flash completo (mejor en matemática);
 // resumen/examen con flash-lite (más rápido y barato). CONFIGURABLE por env (para poder
 // flipear/revertir en Vercel sin re-deploy).
-const MODEL_EJERCICIOS = process.env.GEMINI_MODEL_FLASH || "gemini-3.5-flash";
+const MODEL_EJERCICIOS = process.env.GEMINI_MODEL_FLASH || "gemini-2.5-flash";
 const MODEL_EJERCICIOS_FB = process.env.GEMINI_MODEL_FLASH_FB || "gemini-2.5-flash";
 const MODEL_TEXTO = process.env.GEMINI_MODEL_LITE || "gemini-3.1-flash-lite";
 // ── Plan de respuesta AUTOMÁTICA ante un modelo enfermo (2026-07-16) ──
@@ -41,6 +41,14 @@ const FLASH_CHAIN = MODEL_EJERCICIOS_FB && MODEL_EJERCICIOS_FB !== MODEL_EJERCIC
   ? [MODEL_EJERCICIOS, MODEL_EJERCICIOS_FB] : [MODEL_EJERCICIOS];
 // Regeneración de UN ítem reportado como incorrecto: se prioriza calidad sobre costo/velocidad.
 const MODEL_REPORTE = process.env.GEMINI_MODEL_REPORTE || "gemini-2.5-pro";
+// Modelos VETADOS: se quitan de la cadena pase lo que pase (aunque un env var los apunte), hasta
+// que vuelvan a ser confiables. gemini-3.5-flash quedó muerto (colgaba sin responder, 13 fallos
+// seguidos) → fuera de la ecuación por decisión del user (2026-07-17). Editable por env sin deploy:
+// GEMINI_MODELOS_VETADOS="" lo re-habilita; "gemini-3.5-flash,otro" veta varios.
+const MODELOS_VETADOS = new Set(
+  (process.env.GEMINI_MODELOS_VETADOS == null ? "gemini-3.5-flash" : process.env.GEMINI_MODELOS_VETADOS)
+    .split(",").map((s) => s.trim()).filter(Boolean)
+);
 const MAX_PDFS = 3;                       // cuántos PDFs leer por generación
 const MAX_PDF_BYTES = 8 * 1024 * 1024;    // por archivo
 const MAX_TOTAL_BYTES = 15 * 1024 * 1024; // suma de todos
@@ -895,13 +903,21 @@ export default async function handler(req, res) {
     // REPORTE (2026-07-08): regenerar un ítem que alguien marcó como incorrecto usa
     // gemini-2.5-pro primero (más confiable) con flash de respaldo — si pro se agota o
     // se pasa del tiempo, el niño igual recibe un reemplazo (no un error).
-    const modelos = usarProReporte
+    // Pro (2.5-pro) = ÚLTIMO respaldo en TODAS las cadenas: cuando el flash (y el lite, donde
+    // aplica) se agota o Google lo SATURA (503) en todas las keys, la key PAGA sobre pro —un
+    // modelo DISTINTO, confiable y de alta calidad (seguro también para matemática)— entrega igual
+    // en vez de un 503. Pro casi nunca está saturado al mismo tiempo que flash → es el "respaldo
+    // que no debería fallar". Solo se alcanza si todo lo de arriba falló, y solo corre si queda
+    // tiempo antes del deadline (pedirAGemini no arranca sin presupuesto) → nunca empeora, solo salva.
+    const rawChain = usarProReporte
       ? [MODEL_REPORTE, ...FLASH_CHAIN]
       : (numerica || analitica)
-      ? [...FLASH_CHAIN] // materia analítica o tema numérico: SOLO flash (3.5→2.5 de respaldo, nunca lite), en TODOS los modos incl. resumen
+      ? [...FLASH_CHAIN, MODEL_REPORTE] // analítica/numérico: flash → pro (NUNCA lite: se equivoca en cálculo)
       : esPractica
-      ? [...FLASH_CHAIN, MODEL_TEXTO] // práctica de teoría: flash primero, lite como último recurso
-      : [MODEL_TEXTO, ...FLASH_CHAIN]; // resumen de teoría: lite primero, flash de respaldo
+      ? [...FLASH_CHAIN, MODEL_TEXTO, MODEL_REPORTE] // práctica de teoría: flash → lite → pro
+      : [MODEL_TEXTO, ...FLASH_CHAIN, MODEL_REPORTE]; // resumen de teoría: lite → flash → pro
+    // sin duplicados y SIN los modelos vetados (3.5-flash queda fuera pase lo que pase)
+    const modelos = [...new Set(rawChain)].filter((m) => !MODELOS_VETADOS.has(m));
     // Probamos modelos × keys. Ante 429 (cupo) o 503 (saturado) seguimos con la
     // próxima key; agotadas todas, el próximo modelo. ESTRATEGIA DE COSTO: primero
     // TODAS las gratis (arrancando en una al azar, para repartir su cupo de ~20/min
@@ -1030,7 +1046,9 @@ export default async function handler(req, res) {
     // modelos 3.x (más caros en lista) NO drene la energía del niño más rápido — el costo real en
     // key gratis es ~0 y lo que importa es frenar el USO del cupo compartido, no la tarifa de lista.
     const tierRef = (m) => /lite/i.test(m) ? "gemini-2.5-flash-lite" : /pro/i.test(m) ? "gemini-2.5-pro" : "gemini-2.5-flash";
-    const modeloCobro = porReporte ? "gemini-2.5-flash" : tierRef(modeloUsado);
+    // Pro se pensó SOLO para el reporte; si acá lo usó fue como respaldo por saturación de flash →
+    // se cobra a la batería a tarifa FLASH (el niño no tiene la culpa de que Google saturara).
+    const modeloCobro = (porReporte || /pro/i.test(modeloUsado)) ? "gemini-2.5-flash" : tierRef(modeloUsado);
     const costo = costoUSD(modeloCobro, data.usageMetadata);
     await registrarGastoIA(usuarioId, costo);
     // consumió un cupo Pro de reporte de HOY → suma al contador diario (para el cap)
