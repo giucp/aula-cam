@@ -17,10 +17,10 @@
   // modos de salida
   // Ruta de aprendizaje: los 4 pasos EN ORDEN (ids internos intactos; solo cambia lo visible).
   const MODOS = [
-    { id:"resumen", icon:"📝", nombre:"Aprende",          desc:"Lee un resumen que te explica el tema paso a paso",        verbo:"📝 Hacer resumen",     carga:"Armando tu resumen",   conteo:false },
-    { id:"retos",   icon:"🎯", nombre:"Practica",         desc:"Ejercicios con pistas y sin nota, para agarrar confianza", verbo:"✨ Crear mis retos",    carga:"Inventando retos",     conteo:true  },
-    { id:"quiz",    icon:"🎮", nombre:"Demuestra",        desc:"Un quiz con nota: mira cuánto dominas ya",                 verbo:"🎮 Crear quiz",        carga:"Armando tu quiz",      conteo:true  },
-    { id:"examen",  icon:"📋", nombre:"Simula tu examen", desc:"Preguntas como las que te pueden poner en clase",          verbo:"📋 Crear examen",      carga:"Preparando preguntas", conteo:true  },
+    { id:"resumen", img:"tema-entiende",  nombre:"Entiende el tema",         desc:"Una explicación clara, paso a paso.",       cta:"Preparar mi resumen", verbo:"📝 Hacer resumen",  carga:"Armando tu resumen",   conteo:false },
+    { id:"retos",   img:"tema-practica",  nombre:"Practica a tu ritmo",      desc:"Ejercicios con pistas, sin calificación.",  cta:"Empezar práctica",    verbo:"✨ Crear mis retos", carga:"Inventando retos",     conteo:true  },
+    { id:"quiz",    img:"tema-comprueba", nombre:"Comprueba lo aprendido",   desc:"Un quiz corto para revisar tu avance.",     cta:"Comenzar quiz",       verbo:"🎮 Crear quiz",     carga:"Armando tu quiz",      conteo:true  },
+    { id:"examen",  img:"tema-examen",    nombre:"Prepárate para el examen", desc:"Preguntas similares a las de clase.",       cta:"Iniciar simulacro",   verbo:"📋 Crear examen",   carga:"Preparando preguntas", conteo:true  },
   ];
 
   // almacenamiento seguro: localStorage si existe, si no, memoria
@@ -41,6 +41,7 @@
   let lapsoMap = {};
   let temaSel = null;
   let lapsoSel = null;   // lapso activo en "Escoge un tema" (interior de materia)
+  let wizPaso = 1;       // asistente del interior: 1 = tema · 2 = actividad · 3 = resultados
   let cantidad = 5;
   let modoSel = "retos";
   let MODO_LAB = false;   // true dentro del "cuarto de pruebas" (admin): no escribe nada, sin botones de generar
@@ -732,6 +733,7 @@
   const ICON_CHECK=`<svg viewBox="0 0 24 24" fill="none" stroke="var(--chispa-green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>`;
   const ICON_STAR=`<svg viewBox="0 0 24 24" fill="var(--chispa-yellow)"><path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.4 9.7l5.8-.8z"/></svg>`;
   const ICON_GUIA=`<svg viewBox="0 0 24 24" fill="var(--chispa-turquoise)"><path d="M7 3.5h10a1 1 0 0 1 1 1V20a.6.6 0 0 1-.94.5L12 17.2 6.94 20.5A.6.6 0 0 1 6 20V4.5a1 1 0 0 1 1-1z"/></svg>`;
+  const ICON_CHECK_SOLID=`<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="var(--chispa-primary)"/><path d="M7 12.4l3.2 3.2L17 9" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   function pintarHorarioSemana(){
     const cont=$("#horarioSemana"); if(!cont) return; cont.innerHTML="";
     if(!HORARIO.length){
@@ -2098,7 +2100,7 @@
   let CUMBRE_OPEN_MI = null;    // índice de la materia abierta (para reabrirla al volver y ver la nota)
   let CUMBRE_NOTAS = new Map(); // notas del Demuestra por (materia|tema) del niño; sincroniza por cuenta (server)
   // Cumbre es SOLO curado: los botones NO dicen "crear/inventar" (eso es IA), sino "leer/empezar".
-  const CUMBRE_VERBO = { resumen:"📖 Leer el resumen", retos:"🎯 Empezar a practicar", quiz:"🎮 Empezar el quiz", examen:"📋 Empezar el examen" };
+  const CUMBRE_VERBO = { resumen:"Leer el resumen", retos:"Empezar a practicar", quiz:"Empezar el quiz", examen:"Empezar el examen" };
   const CUMBRE_CARGA = { resumen:"Abriendo tu resumen", retos:"Abriendo tu práctica", quiz:"Abriendo tu quiz", examen:"Abriendo tu examen" };
   async function entrarCumbre(){
     $("#paneMaterias").classList.add("hidden");
@@ -2214,28 +2216,22 @@
     fotos = []; $("#results").innerHTML = "";
     $("#paneCumbre").classList.add("hidden");
     const pt = $("#paneTemas"); pt.classList.add("cumbre"); pt.classList.remove("hidden");
-    $("#tituloMateria").innerHTML = `🏔️ ${escapeHtml(mat)} · ${escapeHtml(tema)}`;
+    const bIA=$("#btnIA"); if(bIA) bIA.classList.add("hidden");
     const first = ["resumen","retos","quiz","examen"].find(id=>cumbreModosTema.includes(id)) || cumbreModosTema[0];
     setModoCumbre(first);
-    window.scrollTo({top:0,behavior:"smooth"});
+    mostrarPaso(2);   // Cumbre entra directo a la actividad (el tema ya está elegido)
   }
   function pintarModosCumbre(){
     const cont = $("#modos"); cont.innerHTML="";
-    MODOS.filter(mo=>cumbreModosTema.includes(mo.id)).forEach((mo, idx)=>{
-      const b=document.createElement("button");
-      b.className="modo"; b.dataset.modo=mo.id; b.setAttribute("aria-pressed", String(mo.id===modoSel));
-      b.innerHTML=`<span class="pmNum">${idx+1}</span><span class="pmIcon">${mo.icon}</span>`+
-        `<span class="pmTxt"><span class="pmNom">${mo.nombre}</span><span class="pmDesc">${mo.desc}</span></span><span class="pmEstado"></span>`;
-      b.onclick=()=>setModoCumbre(mo.id);
-      cont.appendChild(b);
-    });
+    MODOS.filter(mo=>cumbreModosTema.includes(mo.id)).forEach((mo)=>cont.appendChild(mkModoRow(mo, mo.id===modoSel, setModoCumbre)));
   }
   function setModoCumbre(id){
     modoSel = id;
     const mo = MODOS.find(m=>m.id===id) || MODOS[0];
     $("#pasoCantidad").classList.toggle("hidden", !mo.conteo);
     pintarModosCumbre();
-    const btnGen=$("#btnGen"); if(btnGen){ btnGen.textContent = CUMBRE_VERBO[id] || mo.verbo; btnGen.disabled=false; }
+    setBtnGenTexto(CUMBRE_VERBO[id] || mo.cta);
+    const btnGen=$("#btnGen"); if(btnGen) btnGen.disabled=false;
   }
   // generar contenido de Cumbre: SOLO curado (programa=cumbre); reusa render(). Nunca IA/caché.
   async function generarCumbre(){
@@ -2245,6 +2241,7 @@
     const res=$("#results"), btnGen=$("#btnGen");
     if(btnGen) btnGen.disabled=true;
     res.innerHTML = vistaCargando(tema, { ...mo, carga: CUMBRE_CARGA[modoSel] || "Abriendo" }, false);
+    mostrarPaso(3);   // a la vista de resultados
     try{
       const body = { materia:mat, tema, grado:gr, cantidad, modo:modoSel, programa:"cumbre", usuario_id:(SESION&&SESION.id)||null };
       const r = await fetch(API_GENERAR,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
@@ -2260,7 +2257,8 @@
     }finally{ if(btnGen) btnGen.disabled=false; }
   }
   $("#btnBack").onclick = ()=>{
-    if(origen==="cumbre"){                 // del tema de Cumbre → volver a la lista de materias de Cumbre
+    if(wizPaso===3){ $("#results").innerHTML=""; mostrarPaso(2); return; }   // resultados → actividad
+    if(origen==="cumbre"){                 // en Cumbre la actividad vuelve a la lista de materias de Cumbre
       const pt=$("#paneTemas"); pt.classList.remove("cumbre"); pt.classList.add("hidden");
       temaSel=null; $("#results").innerHTML="";
       renderCumbreMaterias(CUMBRE_MATERIAS, CUMBRE_OPEN_MI);   // repinta para mostrar la nota recién sacada, reabriendo la materia
@@ -2268,7 +2266,8 @@
       window.scrollTo({top:0,behavior:"smooth"});
       return;
     }
-    temaSel=null; $("#results").innerHTML=""; fotos=[]; pintarFotos(); limpiarRefuerzo(); verMaterias();
+    if(wizPaso===2){ mostrarPaso(1); return; }                                // actividad → tema
+    temaSel=null; $("#results").innerHTML=""; fotos=[]; pintarFotos(); limpiarRefuerzo(); verMaterias();  // tema → materias
   };
 
   function abrirMateria(m){
@@ -2280,8 +2279,6 @@
     // banner de refuerzo: solo si esta materia es la de la nota floja
     if(REFUERZO && norm(m.nombre)!==norm(REFUERZO.materia||"")) limpiarRefuerzo();
     else pintarRefuerzoBanner();
-    $("#tituloMateria").innerHTML = `${homeMarcaMateria(m.nombre,"em")}<span>${escapeHtml(capMateria(limpiaNombreMateria(m.nombre)))}</span>`;
-    $("#tituloMateria").style.setProperty("--c", homeMateriaVisual(m.nombre).color);
     // las fotos del cuaderno solo aplican a las materias actuales
     $("#pasoFotos").classList.toggle("hidden", esProx);
     if(esProx){
@@ -2296,10 +2293,10 @@
       $("#sinTemas").classList.toggle("hidden", temas.length>0);
       pintarGrupos(temas);
     }
-    setModo("resumen");   // al abrir (sin tema) se preselecciona "Aprende"
+    setModo("resumen");   // al abrir (sin tema) se preselecciona el primer modo
     checkReady();
     $("#paneMaterias").classList.add("hidden"); $("#paneTemas").classList.remove("hidden");
-    window.scrollTo({top:0,behavior:"smooth"});
+    mostrarPaso(1);
   }
 
   // temas de la materia, agrupados por lapso. El "enfoque" de cada tema del currículo del próximo
@@ -2390,23 +2387,40 @@
     if(!p.modos.has("examen"))     return { modo:"examen",  motivo:"¡Listo para el examen!" };
     return { modo:"examen", motivo:"Tema dominado ⭐" };
   }
-  function pintarModos(){
-    const cont = $("#modos"); cont.innerHTML="";
+  // una fila del panel de actividades (Paso 2). Compartida por aula y Cumbre (cambia el onSel).
+  function mkModoRow(mo, sel, onSel){
+    const b=document.createElement("button"); b.type="button";
+    b.className="modo"; b.dataset.modo=mo.id; b.setAttribute("aria-pressed", String(!!sel));
+    b.innerHTML=`<img class="pmIco" src="assets/tema/${mo.img}.webp" alt="" width="52" height="52" loading="lazy" />`+
+      `<span class="pmTxt"><span class="pmNom">${escapeHtml(mo.nombre)}</span><span class="pmDesc">${escapeHtml(mo.desc)}</span></span>`+
+      `<span class="pmMark" aria-hidden="true">${sel?ICON_CHECK_SOLID:CHEV}</span>`;
+    b.onclick=()=>onSel(mo.id);
+    return b;
+  }
+  function setBtnGenTexto(txt){ const s=$("#btnGen span"); if(s) s.textContent=txt; }
+  // encabezados del asistente (materia como eyebrow del paso 2, tema como título)
+  function pintarWizHeaders(){
     const mat=(materiaSel&&materiaSel.nombre)||"";
-    const tema=temaActual();
-    const p = tema ? PROGRESO.get(norm(mat)+"|"+norm(tema)) : null;
-    const sug = tema ? pasoSugerido(mat, tema) : null;
-    MODOS.forEach((mo,idx)=>{
-      const hecho = p && p.modos.has(mo.id);
-      const esSug = sug && sug.modo===mo.id;
-      const b=document.createElement("button");
-      b.className="modo"; b.dataset.modo=mo.id; b.setAttribute("aria-pressed", String(mo.id===modoSel));
-      b.innerHTML=`<span class="pmNum">${idx+1}</span><span class="pmIcon">${mo.icon}</span>`+
-        `<span class="pmTxt"><span class="pmNom">${mo.nombre}</span><span class="pmDesc">${mo.desc}</span></span>`+
-        `<span class="pmEstado">${esSug?`<span class="pmRec">✨ ${escapeHtml(sug.motivo)}</span>`:``}${hecho?`<span class="pmCheck">✓</span>`:``}</span>`;
-      b.onclick=()=>setModo(mo.id);
-      cont.appendChild(b);
-    });
+    const matCap=capMateria(limpiaNombreMateria(mat));
+    const tt=$("#temaTitulo"); if(tt) tt.textContent=matCap;
+    const te=$("#temaEyebrow"); if(te) te.textContent="";
+    const ae=$("#actEyebrow"); if(ae) ae.textContent=matCap;
+    const at=$("#actTitulo"); if(at) at.textContent=temaActual()||"";
+  }
+  // muestra el paso n del asistente (1 tema · 2 actividad · 3 resultados) y ajusta el back
+  function mostrarPaso(n){
+    wizPaso=n;
+    $("#wizTema").classList.toggle("hidden", n!==1);
+    $("#wizActividad").classList.toggle("hidden", n!==2);
+    const res=$("#results"); if(res) res.classList.toggle("hidden", n!==3);
+    const bt=$("#backTxt"); if(bt) bt.textContent=(n===1?"Materias":"Atrás");
+    if(n===2){ const bg=$("#btnGen"); if(bg) bg.disabled=false; }   // reactivar el botón al volver de resultados
+    pintarWizHeaders();
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+  function pintarModos(){
+    const cont=$("#modos"); cont.innerHTML="";
+    MODOS.forEach((mo)=>cont.appendChild(mkModoRow(mo, mo.id===modoSel, setModo)));
   }
   function setModo(id){
     modoSel = id;
@@ -2433,7 +2447,7 @@
   });
 
   function temaActual(){ return $("#otro").value.trim() || temaSel; }
-  function checkReady(){ pintarAcciones(); }
+  function checkReady(){ pintarAcciones(); const c=$("#btnContinuar"); if(c) c.disabled=!temaActual(); }
 
   // ───────── caché local (en el teléfono) ─────────
   // ───────── contenido curado (guía revisada por nosotros) ─────────
@@ -2490,20 +2504,23 @@
   // muestra/oculta el botón "Guía revisada" y ajusta el de "Con IA" según el tema+modo
   function pintarAcciones(){
     const tema=temaActual();
-    const btnGuia=$("#btnGuia"), btnGen=$("#btnGen"); if(!btnGen) return;
+    const btnGen=$("#btnGen"); if(!btnGen) return;
     const mo=MODOS.find(m=>m.id===modoSel)||MODOS[0];
-    const hayGuia = temaModoCurado() && !(fotos.length>0);
-    if(btnGuia){ btnGuia.classList.toggle("hidden", !hayGuia); btnGuia.disabled = !tema; }
-    btnGen.textContent = hayGuia ? "✨ Con IA" : mo.verbo;
+    // el botón principal va por la ruta por defecto (guía si el tema+modo está curado, si no IA)
+    const hayGuia = temaModoCurado() && !(fotos.length>0) && origen!=="cumbre";
+    setBtnGenTexto(mo.cta);
     btnGen.disabled = !tema;
-    // la explicación "¿cuál elijo?" solo tiene sentido cuando hay las dos opciones
+    const btnIA=$("#btnIA"); if(btnIA) btnIA.classList.toggle("hidden", !(hayGuia && tema));
+    // la explicación "¿cuál elijo?" solo tiene sentido cuando hay guía + IA
     const info=$("#accInfo"); if(info){ info.classList.toggle("hidden", !hayGuia); if(!hayGuia) info.open=false; }
   }
 
   // ───────── GENERAR ─────────
-  $("#btnGuia").onclick = ()=>generar({via:"guia"});
-  // en modo Cumbre el botón usa el flujo aislado (solo curado); en el aula, el de siempre.
-  $("#btnGen").onclick  = ()=> origen==="cumbre" ? generarCumbre() : generar({via:"ia"});
+  // Cumbre usa el flujo aislado (solo curado). En el aula, el botón principal va por la ruta por
+  // defecto (guía si el tema+modo está curado, si no IA); el link "con IA" fuerza la IA.
+  $("#btnGen").onclick = ()=> origen==="cumbre" ? generarCumbre() : generar();
+  $("#btnIA").onclick  = ()=> generar({via:"ia"});
+  $("#btnContinuar").onclick = ()=>{ if(temaActual()) mostrarPaso(2); };
   async function generar(opts){
     opts = opts||{};
     const tema = temaActual(); if(!tema) return;
@@ -2526,10 +2543,11 @@
       : construirContexto(tema);
     ultimoContexto = contexto;
 
-    const res=$("#results"); const btnGuia=$("#btnGuia"), btnGen=$("#btnGen");
-    if(btnGuia) btnGuia.disabled=true; btnGen.disabled=true;
+    const res=$("#results"), btnGen=$("#btnGen");
+    if(btnGen) btnGen.disabled=true;
     let cool=0;
     res.innerHTML = vistaCargando(tema, mo, usaFotos);
+    mostrarPaso(3);   // a la vista de resultados (arranca con el estado de carga)
     try{
       const body = { materia:mat, tema, grado:gr, cantidad, contexto, modo:modoSel,
         token:(!esProx && SESION && SESION.token)||null, fotos: esProx?[]:fotos,

@@ -260,12 +260,12 @@
   .cTema.no .cNom{font-weight:700;color:var(--chispa-muted)}
   .cTema.no .cSoon{font-size:.7rem;font-weight:800;color:var(--chispa-muted);white-space:nowrap;justify-self:end}
   /* modo Cumbre en el panel de tema: se oculta lo que no aplica (Cumbre es solo curado) */
-  #paneTemas.cumbre #pasoTema,
+  #paneTemas.cumbre #wizTema,
   #paneTemas.cumbre #pasoFotos,
   #paneTemas.cumbre #pasoCantidad,
-  #paneTemas.cumbre #btnGuia,
+  #paneTemas.cumbre #btnIA,
   #paneTemas.cumbre #accInfo,
-  #paneTemas.cumbre .n{display:none}
+  #paneTemas.cumbre .wizProg{display:none}
 
   /* "energía de IA": medidor de barra (cupo diario del alumno) en Inicio */
   #energiaIA{margin-bottom:14px}
@@ -336,7 +336,7 @@
   .mat .chev{flex:none;color:var(--muted);font-family:"Fredoka";font-size:1.4rem;opacity:.5;padding-right:2px}
 
   /* back */
-  .back{background:none;border:none;color:var(--mango);font-family:"Fredoka";font-weight:600;cursor:pointer;font-size:1rem;
+  .back{background:none;border:none;color:var(--chispa-primary);font-family:"Fredoka";font-weight:600;cursor:pointer;font-size:1rem;
     padding:6px 2px;margin:0 0 10px;display:inline-flex;align-items:center;gap:6px}
   .back:hover{text-decoration:underline}
 
@@ -353,7 +353,7 @@
   .temaRow:active{opacity:.75}
   .temaRadio{position:relative;width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 2px var(--chispa-line);transition:box-shadow .15s}
   .temaRadio::after{content:"";position:absolute;inset:5px;border-radius:50%;background:transparent;transition:background .15s}
-  .temaRow>b{min-width:0;font-family:"Fredoka";font-weight:600;font-size:1rem;line-height:1.25;color:var(--chispa-ink);overflow-wrap:anywhere}
+  .temaRow>b{min-width:0;font-family:"Nunito";font-weight:700;font-size:1rem;line-height:1.25;color:var(--chispa-ink);overflow-wrap:anywhere}
   .temaState{flex:none;display:inline-flex;align-items:center;justify-content:center;min-width:18px}
   .temaState svg{width:18px;height:18px;display:block}
   .temaRow.is-sel{background:var(--chispa-primary-soft)}
@@ -382,26 +382,77 @@
   .selMatPanel{display:flex;flex-wrap:wrap;gap:9px;margin-top:10px}
   .selMatPanel.hidden{display:none}
 
-  /* modos = pasos de la ruta de aprendizaje (lista vertical) */
-  .modos{display:flex;flex-direction:column;gap:10px}
-  .modo{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:2px solid var(--line);background:#fff;color:var(--ink);
-    font-family:"Nunito";cursor:pointer;padding:12px 14px;border-radius:16px;box-shadow:var(--shadow-xs);
-    transition:transform .12s,border-color .15s,background .15s,color .15s;position:relative}
-  .modo:hover{border-color:#A9E6DE}
-  .modo:active{transform:scale(.99)}
-  .modo[aria-pressed="true"]{background:linear-gradient(180deg,#2FD3C0,var(--chispa-turquoise));border-color:transparent;color:#fff;box-shadow:var(--shadow-sm)}
-  .pmNum{flex:none;width:26px;height:26px;border-radius:50%;background:var(--sun);color:var(--ink);display:grid;place-items:center;font-family:"Fredoka";font-weight:700;font-size:.85rem}
-  .modo[aria-pressed="true"] .pmNum{background:rgba(255,255,255,.9);color:var(--teal-dark)}
-  .pmIcon{flex:none;font-size:1.4rem}
-  .pmTxt{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
-  .pmNom{font-family:"Fredoka";font-weight:600;font-size:1.02rem}
-  .pmDesc{font-weight:600;font-size:.82rem;color:var(--muted);line-height:1.3}
-  .modo[aria-pressed="true"] .pmDesc{color:rgba(255,255,255,.92)}
-  .pmEstado{flex:none;display:flex;align-items:center;gap:7px}
-  .pmCheck{color:var(--ok);font-weight:800;font-size:1.15rem}
-  .modo[aria-pressed="true"] .pmCheck{color:#fff}
-  .pmRec{background:#FFF1CF;color:#8a5a00;font-family:"Fredoka";font-weight:600;font-size:.72rem;padding:3px 9px;border-radius:999px;white-space:nowrap}
-  .modo[aria-pressed="true"] .pmRec{background:rgba(255,255,255,.92);color:var(--mango-dark)}
+  /* ═══════════ INTERIOR DE MATERIA · asistente de 3 pasos (Chispa 2.0) ═══════════
+     Paso 1 elegir tema · Paso 2 elegir actividad (el mockup) · Paso 3 resultados.
+     Columna angosta y enfocada (máx 430, spec); el body ya da 16px de gutter lateral. */
+  #paneTemas{max-width:430px;margin:0 auto}
+
+  /* encabezado de contexto: eyebrow (materia) + título grande + auxiliar */
+  .wizHead{margin:2px 0 0}
+  .wizEyebrow{margin:0 0 6px;font-family:"Nunito";font-weight:900;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--chispa-muted)}
+  .wizEyebrow:empty{display:none}
+  .wizTitle{margin:0;font-family:"Fredoka";font-weight:600;font-size:2rem;line-height:1.08;color:var(--chispa-ink);overflow-wrap:anywhere}
+  .wizAux{margin:6px 0 0;font-family:"Nunito";font-weight:700;font-size:1rem;color:var(--chispa-muted);line-height:1.4}
+
+  /* progreso PASO n DE 3: etiqueta + 3 barritas */
+  .wizProg{margin:18px 0 28px}
+  .wizStep{display:block;font-family:"Nunito";font-weight:800;font-size:.8rem;letter-spacing:.02em;color:var(--chispa-muted);margin-bottom:9px}
+  .wizStep b{color:var(--chispa-primary);font-weight:900}
+  .wizBars{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+  .wizBars i{height:5px;border-radius:999px;background:color-mix(in srgb,var(--chispa-primary) 15%,var(--chispa-line))}
+  .wizBars i.on{background:var(--chispa-primary)}
+
+  /* títulos de sección (¿Cómo…? · Personaliza…) — sin tarjeta detrás */
+  .wizSec{margin-top:30px}
+  .wizSecTit{margin:0;font-family:"Fredoka";font-weight:600;font-size:1.42rem;line-height:1.15;color:var(--chispa-ink)}
+  .wizSec .wizAux{margin-top:6px}
+  .wizField{margin-top:14px}
+
+  /* panel único de actividades: las 4 filas viven en UNA tarjeta con divisores internos */
+  .modosPanel{margin-top:16px;background:#fff;border:1px solid var(--chispa-line);border-radius:24px;padding:5px;
+    box-shadow:0 16px 34px -20px rgba(103,83,232,.22),0 2px 8px -5px rgba(38,25,58,.06)}
+  .modos{display:flex;flex-direction:column}
+  .modo{display:grid;grid-template-columns:52px minmax(0,1fr) 28px;align-items:center;gap:14px;width:100%;text-align:left;
+    min-height:90px;padding:14px 13px;border:2px solid transparent;border-radius:19px;background:transparent;color:var(--chispa-ink);
+    font-family:"Nunito";cursor:pointer;transition:background .15s,border-color .15s}
+  .modo:not(:last-child){box-shadow:inset 0 -1px 0 color-mix(in srgb,var(--chispa-line) 75%,#fff)}
+  .modo:has(+ .modo[aria-pressed="true"]){box-shadow:none}
+  .modo[aria-pressed="true"]{background:var(--chispa-primary-soft);border-color:var(--chispa-primary);box-shadow:none}
+  .modo:active{transform:scale(.995)}
+  .pmIco{width:52px;height:52px;object-fit:contain;display:block}
+  .pmTxt{min-width:0;display:flex;flex-direction:column;gap:3px}
+  .pmNom{font-family:"Fredoka";font-weight:600;font-size:1.05rem;line-height:1.2;color:var(--chispa-ink)}
+  .pmDesc{font-family:"Nunito";font-weight:700;font-size:.85rem;color:var(--chispa-muted);line-height:1.32}
+  .pmMark{display:grid;place-items:center;width:28px;height:28px}
+  .pmMark .hoChev{width:17px;height:17px;stroke:#CFC9DE}
+  .pmMark svg{width:26px;height:26px;display:block}
+
+  /* tarjeta "Tus apuntes" */
+  .apuntesCard{display:flex;align-items:center;flex-wrap:wrap;gap:14px;margin-top:26px;background:#fff;border:1px solid var(--chispa-line);
+    border-radius:22px;padding:16px 17px;box-shadow:0 12px 28px -18px rgba(38,25,58,.16)}
+  .apuntesIco{width:60px;height:60px;object-fit:contain;display:block;flex:none}
+  .apuntesBody{flex:1 1 150px;min-width:0}
+  .apuntesTit{margin:0 0 4px;font-family:"Fredoka";font-weight:600;font-size:1.05rem;color:var(--chispa-ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .apuntesOpt{font-family:"Nunito";font-weight:800;font-size:.64rem;letter-spacing:.04em;text-transform:uppercase;color:var(--chispa-muted);
+    background:color-mix(in srgb,var(--chispa-muted) 12%,#fff);padding:3px 9px;border-radius:999px}
+  .apuntesDesc{margin:0;font-family:"Nunito";font-weight:700;font-size:.84rem;color:var(--chispa-muted);line-height:1.4}
+  .apuntesCard .fotos{margin-top:10px;width:100%}
+  .addFoto{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1.5px solid var(--chispa-primary);background:#fff;
+    color:var(--chispa-primary);font-family:"Fredoka";font-weight:600;font-size:.92rem;padding:12px 16px;border-radius:14px;cursor:pointer;transition:background .15s}
+  .addFoto svg{width:20px;height:20px;fill:none;stroke:var(--chispa-primary);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .addFoto:hover{background:var(--chispa-primary-soft)}
+  @media(max-width:379px){ .addFoto{width:100%;order:3} .apuntesBody{flex-basis:calc(100% - 74px)} }
+
+  /* acción principal: único botón dominante, gradiente morado + flecha */
+  .wizGo{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:58px;margin-top:26px;border:0;border-radius:20px;
+    background:linear-gradient(180deg,#7C68F0,var(--chispa-primary));color:#fff;font-family:"Fredoka";font-weight:600;font-size:1.1rem;cursor:pointer;
+    box-shadow:0 16px 30px -12px rgba(103,83,232,.6);transition:transform .12s,box-shadow .15s,opacity .15s}
+  .wizGo:active{transform:scale(.99)}
+  .wizGo:disabled{opacity:.45;cursor:default;box-shadow:none}
+  .wizArrow{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  /* alternativa discreta, nunca un segundo botón dominante */
+  .linkIA{display:block;margin:14px auto 0;background:none;border:0;color:var(--chispa-primary);font-family:"Fredoka";font-weight:600;font-size:.92rem;cursor:pointer;padding:8px}
+  .linkIA:hover{text-decoration:underline}
 
   /* ════════════════════════════════════════════════════════════════════════
      LANDING — Chispa 2.0 (kit assets/onboarding/, spec §12 + ASSET_INVENTORY)
@@ -660,11 +711,13 @@
     }
   }
 
-  .paso{margin-top:18px}
-  .count{display:flex;gap:7px}
-  .count button{width:48px;height:48px;border-radius:15px;border:2px solid var(--line);background:#fff;font-family:"Fredoka";font-weight:600;font-size:1.05rem;color:var(--ink);cursor:pointer;box-shadow:var(--shadow-xs);transition:all .14s}
-  .count button[aria-pressed="true"]{background:var(--teal);border-color:transparent;color:#fff}
-  .count button:active{transform:scale(.94)}
+  /* selector de cantidad: UN control segmentado, no 3 botones sueltos */
+  .count{display:grid;grid-template-columns:repeat(3,1fr);width:min(280px,100%);margin-top:2px;background:#fff;
+    border:1px solid var(--chispa-line);border-radius:16px;padding:4px;box-shadow:var(--shadow-xs)}
+  .count button{min-height:48px;border:0;border-radius:12px;background:transparent;font-family:"Fredoka";font-weight:600;font-size:1.05rem;
+    color:var(--chispa-ink);cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+  .count button[aria-pressed="true"]{background:var(--chispa-primary);color:#fff;box-shadow:0 6px 14px -6px rgba(103,83,232,.6)}
+  .count button:active{transform:scale(.96)}
 
   .sep{height:1px;background:var(--line);margin:20px 0 4px;border:0}
 

@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
 <!-- El `?v=` va apareado con el V de sw.js — subir los DOS juntos. Sin él, la 1ª apertura tras un
      deploy mezcla index nuevo + app.js viejo (cache-first) y el arranque muere. Ver sw.js. -->
-<link rel="stylesheet" href="estilos.css?v=100">
+<link rel="stylesheet" href="estilos.css?v=101">
 </head>
 <body>
 <div class="wrap">
@@ -454,29 +454,44 @@
 
     <!-- paso B: tema + modo + generar -->
     <div id="paneTemas" class="hidden">
-      <button class="back" id="btnBack">‹ Materias</button>
-      <div class="panel">
-        <p class="lbl" id="tituloMateria"></p>
+      <button class="back" id="btnBack">‹ <span id="backTxt">Materias</span></button>
+
+      <!-- ══════ PASO 1 · elegir un tema ══════ -->
+      <section id="wizTema" class="wizView">
+        <header class="wizHead">
+          <p class="wizEyebrow" id="temaEyebrow"></p>
+          <h1 class="wizTitle" id="temaTitulo"></h1>
+          <p class="wizAux">Elige un tema para estudiar.</p>
+        </header>
+        <div class="wizProg"><span class="wizStep"><b>Paso 1</b> de 3</span><span class="wizBars" aria-hidden="true"><i class="on"></i><i></i><i></i></span></div>
         <div id="refuerzoBanner" class="hidden"></div>
-
-        <div id="pasoTema">
-          <p class="lbl"><span class="n">1</span> Escoge un tema</p>
-          <div id="grupos"></div>
-          <div id="sinTemas" class="empty hidden">Esta materia aún no tiene temas para practicar. Puedes escribir uno abajo. 👇</div>
-          <div class="field" style="margin-top:14px"><input id="otro" type="text" placeholder="…o escribe otro tema" autocomplete="off" /></div>
-          <div class="field hidden" id="otroDatosWrap" style="margin-top:10px">
-            <textarea id="otroDatos" rows="3" placeholder="¿De qué trata? Escríbele a la IA lo que sepas: subtemas, palabras clave, un ejemplo del cuaderno… (opcional, pero ayuda mucho si no hay material en el aula)"></textarea>
-            <p class="ayuda" style="margin:8px 2px 0">Y si tienes apuntes, súmale fotos del cuaderno más abajo. 📷</p>
-          </div>
+        <div id="grupos"></div>
+        <div id="sinTemas" class="empty hidden">Esta materia aún no tiene temas para practicar. Puedes escribir uno abajo.</div>
+        <div class="field wizField"><input id="otro" type="text" placeholder="…o escribe otro tema" autocomplete="off" /></div>
+        <div class="field hidden wizField" id="otroDatosWrap">
+          <textarea id="otroDatos" rows="3" placeholder="¿De qué trata? Escríbele a la IA lo que sepas: subtemas, palabras clave, un ejemplo del cuaderno… (opcional, pero ayuda mucho si no hay material en el aula)"></textarea>
+          <p class="ayuda">Y si tienes apuntes, se los sumas en el paso siguiente.</p>
         </div>
+        <button class="go wizGo" id="btnContinuar" disabled><span>Continuar</span><svg class="wizArrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </section>
 
-        <div class="paso">
-          <p class="lbl"><span class="n">2</span> ¿Qué quieres hacer?</p>
-          <div class="modos" id="modos" role="group" aria-label="Tipo de actividad"></div>
+      <!-- ══════ PASO 2 · elegir la actividad ══════ -->
+      <section id="wizActividad" class="wizView hidden">
+        <header class="wizHead">
+          <p class="wizEyebrow" id="actEyebrow"></p>
+          <h1 class="wizTitle" id="actTitulo"></h1>
+          <p class="wizAux">Elige cómo quieres estudiar este tema.</p>
+        </header>
+        <div class="wizProg"><span class="wizStep"><b>Paso 2</b> de 3</span><span class="wizBars" aria-hidden="true"><i></i><i class="on"></i><i></i></span></div>
+        <div class="wizSec">
+          <h2 class="wizSecTit">¿Cómo quieres estudiar?</h2>
+          <p class="wizAux">Elige la opción que mejor te sirva hoy.</p>
         </div>
+        <div class="modosPanel"><div class="modos" id="modos" role="group" aria-label="Tipo de actividad"></div></div>
 
-        <div class="paso" id="pasoCantidad">
-          <p class="lbl"><span class="n">3</span> ¿Cuántos?</p>
+        <div class="wizSec" id="pasoCantidad">
+          <h2 class="wizSecTit">Personaliza tu actividad</h2>
+          <p class="wizAux">¿Cuántas preguntas quieres?</p>
           <div class="count" id="count" role="group" aria-label="Cantidad">
             <button data-n="3">3</button>
             <button data-n="5" aria-pressed="true">5</button>
@@ -484,28 +499,31 @@
           </div>
         </div>
 
-        <div class="paso" id="pasoFotos">
-          <p class="lbl">📓 Mis apuntes <span style="color:var(--muted);font-weight:600">(opcional)</span></p>
-          <p class="ayuda">¿Tomaste apuntes en clase? Súmale fotos de tu cuaderno y la IA también las usará para este tema.</p>
-          <div class="fotos" id="fotos"></div>
-          <label class="addFoto" id="addFoto">📷 Agregar foto
+        <div class="apuntesCard" id="pasoFotos">
+          <img class="apuntesIco" src="assets/tema/tema-apuntes.webp" alt="" width="60" height="60" loading="lazy" />
+          <div class="apuntesBody">
+            <p class="apuntesTit">Tus apuntes <span class="apuntesOpt">Opcional</span></p>
+            <p class="apuntesDesc">Añade fotos de tu cuaderno para que Chispa las tenga en cuenta al preparar esta actividad.</p>
+            <div class="fotos" id="fotos"></div>
+          </div>
+          <label class="addFoto" id="addFoto">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 8h3l1.4-2h6.2L16.5 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.2"/></svg>
+            <span>Añadir fotos</span>
             <input id="fotoInput" type="file" accept="image/*" multiple hidden />
           </label>
         </div>
 
-        <hr class="sep" />
-        <div class="acciones">
-          <button class="go guia hidden" id="btnGuia" disabled>📗 Guía revisada</button>
-          <button class="go" id="btnGen" disabled>✨ Crear mis retos</button>
-        </div>
+        <button class="go wizGo" id="btnGen" disabled><span>Empezar práctica</span><svg class="wizArrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button class="linkIA hidden" id="btnIA">Prefiero generarlo con IA</button>
         <details class="accInfo hidden" id="accInfo">
-          <summary>¿Cuál elijo? 📗 vs ✨</summary>
+          <summary>¿Cuál elijo?</summary>
           <div class="accInfoBody">
-            <p><span class="tagG">📗 Guía revisada</span> La preparamos nosotros con una inteligencia artificial más avanzada y la revisamos para que sea correcta y completa. Es tu base sólida y confiable para aprender el tema.</p>
-            <p><span class="tagIA">✨ Con IA</span> Se crea al instante con inteligencia artificial y sale distinta cada vez. Ideal para practicar más y tener variedad.</p>
+            <p><span class="tagG">Guía revisada</span> La preparamos nosotros con una inteligencia artificial más avanzada y la revisamos para que sea correcta y completa. Es tu base sólida y confiable para aprender el tema.</p>
+            <p><span class="tagIA">Con IA</span> Se crea al instante con inteligencia artificial y sale distinta cada vez. Ideal para practicar más y tener variedad.</p>
           </div>
         </details>
-      </div>
+      </section>
+
       <div class="results" id="results" aria-live="polite"></div>
     </div>
     </div><!-- /tabMaterias -->
@@ -742,6 +760,6 @@
 
 </div>
 
-<script src="app.js?v=100"></script>
+<script src="app.js?v=101"></script>
 </body>
 </html>
