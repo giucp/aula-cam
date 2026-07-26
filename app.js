@@ -127,12 +127,10 @@
     ["#vBeta","#vRegistro","#vRescate","#vLoginNat","#vRecuperar","#vSolicitud"].forEach(id=>{const e=$(id); if(e) e.classList.add("hidden");});
     $("#vHome").classList.remove("hidden");
     // Familia YA funciona para cuentas nativas (Camino B): el niño invita con su token de Chispa y
-    // api/familia lo valida (useridDeNino). El muro social sigue siendo por grado del aula → oculto
-    // para nativas hasta F5.2 (segmentar por colegio+grado; decisión de producto pendiente).
+    // api/familia lo valida (useridDeNino).
     const nativa=!!(SESION && SESION.fuente==="manual");
     const wfam=$("#familiaWrap"); if(wfam) wfam.classList.remove("hidden");
-    const bmuro=[...document.querySelectorAll("#navbar .navBtn")].find(b=>b.dataset.tab==="muro");
-    if(bmuro) bmuro.classList.toggle("hidden", nativa);
+    pintarNavCumbre();   // la pestaña Cumbre solo existe si hay track para el próximo grado
     origen = "actual";
     const primer = (SESION.nombre||"").split(" ")[0] || "";
     $("#avatar").textContent = (primer[0]||"?").toUpperCase();
@@ -140,8 +138,6 @@
     $("#saludo").innerHTML = `¡Hola, ${escapeHtml(primer)}! 👋`;
     // racha de días seguidos (se muestra desde el 2º día, para que se sienta ganada)
     pintarRacha();
-    // muro: una racha de 3+ días es un logro para celebrar (el server dedup 1/día)
-    if(((SESION&&SESION.racha)||0)>=3) publicarMuro("racha", {meta:{dias:SESION.racha}});
     const g = gradoDeSesion();
     $("#gradoBadge").innerHTML = g ? `🎓 ${escapeHtml(g)}` : "";
     $("#gradoBadge").classList.toggle("hidden", !g);
@@ -169,22 +165,30 @@
   }
 
   // ───────── pestañas (barra de navegación inferior) ─────────
+  // La pestaña Cumbre solo se ofrece si el próximo grado tiene track curado (mismo criterio con el
+  // que antes aparecía la tarjeta al final de Materias). Sin track, el niño ve el "Adelántate" viejo.
+  function pintarNavCumbre(){
+    const b=[...document.querySelectorAll("#navbar .navBtn")].find(x=>x.dataset.tab==="cumbre");
+    if(b) b.classList.toggle("hidden", !cumbreTrack());
+  }
   function verTab(id){
     $("#tabInicio").classList.toggle("hidden", id!=="inicio");
     $("#tabMaterias").classList.toggle("hidden", id!=="materias");
-    $("#tabMuro").classList.toggle("hidden", id!=="muro");
+    $("#tabCumbre").classList.toggle("hidden", id!=="cumbre");
     $("#tabAgenda").classList.toggle("hidden", id!=="agenda");
     $("#vHome").classList.toggle("home-v2-active", id==="inicio");
     document.body.classList.toggle("home-v2-page", id==="inicio");
-    // Materias 2.0 y Agenda 2.0 traen su propio encabezado (título protagonista), así que la
-    // .topbar vieja —saludo + grado + racha + Salir— sobra ahí: duplicaba el saludo del Inicio y
-    // competía con el título. Salir sigue estando en el Inicio (#btnSalirHome). Amigos aún NO está
-    // migrada: conserva la topbar hasta que le toque.
+    // Inicio, Materias, Cumbre y Agenda traen su propio encabezado (título protagonista), así que la
+    // .topbar vieja —saludo + grado + racha + Salir— sobra: duplicaba el saludo del Inicio y competía
+    // con el título. Salir sigue estando en el Inicio (#btnSalirHome).
     document.body.classList.toggle("materias-v2-page", id==="materias");
     document.body.classList.toggle("agenda-v2-page", id==="agenda");
+    document.body.classList.toggle("cumbre-v2-page", id==="cumbre");
     document.querySelectorAll("#navbar .navBtn").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.tab===id)));
     if(id==="inicio") pintarEscritorio();
-    if(id==="muro") cargarMuro();
+    // salir de Cumbre por la navbar: el asistente vuelve al aula (origen "cumbre" no debe quedar pegado)
+    if(id!=="cumbre" && origen==="cumbre"){ $("#paneTemas").classList.remove("cumbre"); pintarMaterias(); verMaterias(); }
+    if(id==="cumbre") entrarCumbre();
     if(id==="materias" && origen==="actual" && $("#paneMaterias") && !$("#paneMaterias").classList.contains("hidden")) pintarMaterias();
     if(id==="agenda"){ pintarSemana(); pintarTareas(); pintarNotas(); pintarHorarioSemana(); }
     window.scrollTo({top:0});
@@ -1706,95 +1710,11 @@
     repintarProgreso();
   }
   // registra que el niño hizo una actividad; actualiza PROGRESO al instante + guarda (fire-and-forget)
-  // ───────── MURO: logros del grado + reacciones (mini red social sana) ─────────
-  // Segmentado por el grado REAL del niño (a uno de 1er año no le interesa 3er grado).
-  // Solo publica LO QUE HIZO (nunca notas). Reacciones = set curado y positivo.
-  const MURO_REACS = ["👏","🔥","💪","🎉","⭐"];
-  let MURO_POSTS = [];
-  function nombreMuro(){                       // "Ana B." (primer nombre + inicial), amable y sin exponer
-    const p = ((SESION&&SESION.nombre)||"").trim().split(/\s+/).filter(Boolean);
-    return p[0] ? (p[0] + (p[1] ? " "+p[1].charAt(0).toUpperCase()+"." : "")) : "Alguien";
-  }
-  // publica un logro (fire-and-forget; el server dedup 1/día y COMPONE el texto — el front no manda texto libre)
-  function publicarMuro(tipo, opt){
-    opt = opt || {};
-    if(!SESION || SESION.id==null) return;
-    const grado = gradoDeSesion(); if(!grado) return;
-    try{ fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
-      accion:"muro_publicar", usuario_id:SESION.id, nombre:nombreMuro(), grado, tipo,
-      materia:opt.materia||null, tema:opt.tema||null, meta:opt.meta||null })}); }catch(_){}
-  }
-  async function cargarMuro(){
-    const cont=$("#tabMuro"); if(!cont) return;
-    if(!SESION || SESION.id==null){ cont.innerHTML=""; return; }
-    const grado = gradoDeSesion();
-    cont.innerHTML = muroHead(grado) + `<div class="muroSkel">Cargando…</div>`;
-    try{
-      const r=await fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"muro_feed",usuario_id:SESION.id,grado})});
-      const d=await r.json().catch(()=>null);
-      MURO_POSTS = (d&&Array.isArray(d.posts))?d.posts:[];
-    }catch(_){ MURO_POSTS=[]; }
-    pintarMuro();
-  }
-  function muroHead(grado){
-    return `<div class="muroHead"><h2>🎉 Amigos de ${escapeHtml(grado||"tu grado")}</h2>`+
-      `<p>Lo que lograron tú y tus compañeros. ¡Reacciona para animarlos!</p></div>`;
-  }
-  function pintarMuro(){
-    const cont=$("#tabMuro"); if(!cont) return;
-    let html = muroHead(gradoDeSesion());
-    if(!MURO_POSTS.length){
-      html += `<div class="muroVacio"><div class="mvIco">🌱</div>`+
-        `<p><b>Todavía no hay logros por aquí.</b></p>`+
-        `<p>Practica una materia, juega el reto de Sinapsis o avanza en Cumbre: tu primer logro aparecerá acá. Cuando entren más compañeros de tu grado, verás también los suyos.</p></div>`;
-      cont.innerHTML = html; return;
-    }
-    html += `<div class="muroList">` + MURO_POSTS.map(tarjetaMuro).join("") + `</div>`;
-    cont.innerHTML = html;
-    cont.querySelectorAll("[data-reac]").forEach(b=>{ b.onclick=()=>reaccionar(b.dataset.id, b.dataset.reac); });
-  }
-  function tarjetaMuro(p){
-    const quien = p.mio ? "Tú" : escapeHtml(p.nombre||"Alguien");
-    const base = p.mio ? (SESION.nombre||"T") : (p.nombre||"?");
-    const ini = (base[0]||"?").toUpperCase();
-    const color = colorCuenta(base);
-    const filaReac = MURO_REACS.map(e=>{
-      const n = (p.reacciones && p.reacciones[e]) || 0;
-      const on = p.miReaccion===e ? " on" : "";
-      return `<button class="reacBtn${on}" data-reac="${e}" data-id="${p.id}">${e}${n?`<b>${n}</b>`:""}</button>`;
-    }).join("");
-    return `<div class="muroCard${p.mio?" mio":""}">`+
-      `<div class="mcTop"><span class="mcAv" style="--c:${color}">${escapeHtml(ini)}</span>`+
-      `<span class="mcTxt"><b>${quien}</b> ${escapeHtml(p.texto||"")}</span>`+
-      `<span class="mcTime">${haceCuanto(p.creado)}</span></div>`+
-      `<div class="mcReac">${filaReac}</div></div>`;
-  }
-  async function reaccionar(muroId, emoji){
-    const p = MURO_POSTS.find(x=>String(x.id)===String(muroId)); if(!p) return;
-    const quitar = p.miReaccion===emoji;   // tocar mi emoji actual = quitarlo (toggle, estilo WhatsApp)
-    p.reacciones = p.reacciones || {};
-    if(p.miReaccion){ p.reacciones[p.miReaccion]=Math.max(0,(p.reacciones[p.miReaccion]||1)-1); if(!p.reacciones[p.miReaccion]) delete p.reacciones[p.miReaccion]; }
-    if(!quitar){ p.reacciones[emoji]=(p.reacciones[emoji]||0)+1; p.miReaccion=emoji; } else { p.miReaccion=null; }
-    pintarMuro();   // optimista
-    try{ fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"muro_reaccion",usuario_id:SESION.id,muro_id:muroId,emoji:quitar?null:emoji})}); }catch(_){}
-  }
-  function haceCuanto(iso){
-    const t = Date.parse(iso); if(!t) return "";
-    const s = Math.max(0, (Date.now()-t)/1000);
-    if(s<60) return "ahora";
-    const min=Math.floor(s/60); if(min<60) return `hace ${min} min`;
-    const h=Math.floor(min/60); if(h<24) return `hace ${h} h`;
-    const d=Math.floor(h/24); if(d===1) return "ayer";
-    if(d<7) return `hace ${d} días`;
-    const sem=Math.floor(d/7); return sem<5?`hace ${sem} sem`:"hace tiempo";
-  }
   // Sinapsis (iframe, otro dominio) nos habla por postMessage.
   window.addEventListener("message", (ev)=>{
     if(!/sinapsis/i.test(ev.origin||"")) return;
     const m = ev.data;
     if(!m) return;
-    // score del RETO DIARIO → lo publicamos en el muro.
-    if(m.tipo==="sinapsis_diario" && Number.isFinite(+m.score)) publicarMuro("sinapsis", {meta:{score:+m.score}});
     // estado del tutorial → lo guardamos por niño (persistimos por él, ver abrirJuego).
     if(m.tipo==="sinapsis_onb" && SESION){
       try{ const t = Array.isArray(m.t) ? m.t.filter(x=>typeof x==="string").slice(0,12) : []; store.set(juegoOnbKey(), {i: m.i?1:0, t}); }catch(e){}
@@ -1820,8 +1740,6 @@
     const body={accion:"guardar",usuario_id:SESION.id,materia:mat,tema,grado:(meta&&meta.grado)||gradoActivo(),modo};
     if(modo==="quiz" && extra){ body.aciertos=extra.aciertos; body.total=extra.total; }
     try{ fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}); }catch(_){}
-    // muro: publica el logro (solo lo que hizo; resumen no cuenta). Usa el grado REAL, no el "adelanta".
-    if(modo==="retos"||modo==="quiz"||modo==="examen") publicarMuro(modo==="retos"?"practica":modo, {materia:mat, tema});
   }
   // Nota del "Demuestra" (quiz) de Cumbre: se guarda en Supabase por niño (tabla cumbre_notas
   // vía api/actividad), así SIGUE al niño en cualquier dispositivo. Se muestra la MEJOR.
@@ -1980,10 +1898,9 @@
   function pintarMaterias(){
     origen = "actual";
     $("#volverActual").classList.add("hidden");
-    // Cumbre es el "adelanta en vacaciones" cuando hay track (5to/1er año). Si no hay
-    // track de Cumbre para el próximo grado, se muestra el adelántate viejo como respaldo.
+    // Cumbre vive en su propia pestaña cuando hay track (5to/1er año). Si no hay track para el
+    // próximo grado, acá se muestra el "adelántate" viejo como respaldo.
     const track = cumbreTrack();
-    $("#cumbreWrap").classList.toggle("hidden", !track);
     $("#destacadaWrap").classList.toggle("hidden", !!track || !siguienteGradoLabel());
     $("#erroresWrap").classList.toggle("hidden", !MIS_ERRORES.length);
     if(SESION && SESION.fuente==="manual"){ verDestacadoMaterias(false); pintarMateriasManuales(); return; }  // Camino B
@@ -2075,7 +1992,6 @@
       origen = "proximo"; proximoGrado = grado;
       cargarCuradoInfo(grado);   // guía revisada del próximo grado (si la hubiera)
       $("#destacadaWrap").classList.add("hidden");
-      $("#cumbreWrap").classList.add("hidden");
       $("#erroresWrap").classList.add("hidden");
       $("#volverActual").classList.remove("hidden");
       $("#materiasHead").textContent = grado;
@@ -2088,13 +2004,12 @@
     }finally{ btn.disabled=false; }
   }
 
-  function verMaterias(){ $("#paneTemas").classList.add("hidden"); $("#paneErrores").classList.add("hidden"); $("#paneCumbre").classList.add("hidden"); $("#paneMaterias").classList.remove("hidden"); }
+  function verMaterias(){ $("#paneTemas").classList.add("hidden"); $("#paneErrores").classList.add("hidden"); $("#paneMaterias").classList.remove("hidden"); }
 
-  // ───────── Cumbre: "adelanta en vacaciones" (SOLO contenido curado; Gemini nunca toca Cumbre) ─────────
-  $("#btnCumbre").onclick = entrarCumbre;
-  // volver al Inicio desde Cumbre: repinta materias (resetea origen="actual" para no dejar
-  // el flujo en modo cumbre) y muestra la grilla del aula.
-  $("#btnBackCumbre").onclick = ()=>{ pintarMaterias(); verMaterias(); };
+  // ───────── Cumbre: pestaña propia (SOLO contenido curado; Gemini nunca toca Cumbre) ─────────
+  // Se entra por la navbar (verTab → entrarCumbre). El interior de un tema reusa el asistente
+  // (#paneTemas), que vive en #tabMaterias: por eso abrirTemaCumbre/btnBack intercambian los
+  // contenedores de pestaña a mano, dejando la navbar marcada en Cumbre.
   let CUMBRE_MATERIAS = [];     // materias del track (para el render y los clicks)
   let cumbreModosTema = [];     // modos disponibles del tema abierto en Cumbre
   let CUMBRE_OPEN_MI = null;    // índice de la materia abierta (para reabrirla al volver y ver la nota)
@@ -2103,9 +2018,8 @@
   const CUMBRE_VERBO = { resumen:"Leer el resumen", retos:"Empezar a practicar", quiz:"Empezar el quiz", examen:"Empezar el examen" };
   const CUMBRE_CARGA = { resumen:"Abriendo tu resumen", retos:"Abriendo tu práctica", quiz:"Abriendo tu quiz", examen:"Abriendo tu examen" };
   async function entrarCumbre(){
-    $("#paneMaterias").classList.add("hidden");
-    $("#paneErrores").classList.add("hidden");
-    $("#paneTemas").classList.add("hidden");
+    // ojo: NO se toca el estado interno de #tabMaterias (paneMaterias/paneTemas) — es otra pestaña
+    // y dejarla a medio ocultar la mostraría vacía al volver.
     $("#paneCumbre").classList.remove("hidden");
     $("#cumbreIntro").innerHTML = `<p class="labLoad">Cargando…</p>`;
     $("#cumbreMaterias").innerHTML = "";
@@ -2214,7 +2128,11 @@
     temaSel = tema; clearOtro();
     cumbreModosTema = (modos && modos.length) ? modos : ["resumen"];
     fotos = []; $("#results").innerHTML = "";
-    $("#paneCumbre").classList.add("hidden");
+    // el asistente vive en #tabMaterias: se muestra ese contenedor (la navbar sigue en Cumbre)
+    $("#tabCumbre").classList.add("hidden");
+    $("#tabMaterias").classList.remove("hidden");
+    $("#paneMaterias").classList.add("hidden");
+    $("#paneErrores").classList.add("hidden");
     const pt = $("#paneTemas"); pt.classList.add("cumbre"); pt.classList.remove("hidden");
     const bIA=$("#btnIA"); if(bIA) bIA.classList.add("hidden");
     const first = ["resumen","retos","quiz","examen"].find(id=>cumbreModosTema.includes(id)) || cumbreModosTema[0];
@@ -2248,10 +2166,8 @@
       let d; try{ d = await r.json(); }catch(_){ throw new Error("El servidor tardó demasiado. Prueba de nuevo."); }
       if(r.status===403 && d && d.premium){ res.innerHTML = avisoPremium(); return; }
       if(d.error){ throw new Error(d.error); }
-      if(d.sinItems || d.sinBanco){ res.innerHTML = `<div class="empty">Este tema todavía no está listo en este modo. ¡Pronto! ✨</div>`; return; }
+      if(d.sinItems || d.sinBanco){ res.innerHTML = `<div class="empty">Este tema todavía no está listo en este modo. ¡Pronto!</div>`; return; }
       render(d);
-      // muro: avanzar en un tema de Cumbre (practica/quiz/examen, no el resumen) es un logro
-      if(modoSel!=="resumen") publicarMuro("cumbre", {materia:mat, tema});
     }catch(e){
       res.innerHTML = errBox("No pudimos cargar esto. Intenta de nuevo.", String(e.message||e));
     }finally{ if(btnGen) btnGen.disabled=false; }
@@ -2262,6 +2178,10 @@
       const pt=$("#paneTemas"); pt.classList.remove("cumbre"); pt.classList.add("hidden");
       temaSel=null; $("#results").innerHTML="";
       renderCumbreMaterias(CUMBRE_MATERIAS, CUMBRE_OPEN_MI);   // repinta para mostrar la nota recién sacada, reabriendo la materia
+      // volver a la pestaña Cumbre (el asistente se veía dentro de #tabMaterias)
+      $("#tabMaterias").classList.add("hidden");
+      $("#paneMaterias").classList.remove("hidden");   // deja Materias lista para cuando el niño vuelva
+      $("#tabCumbre").classList.remove("hidden");
       $("#paneCumbre").classList.remove("hidden");
       window.scrollTo({top:0,behavior:"smooth"});
       return;

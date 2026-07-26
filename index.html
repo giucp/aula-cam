@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
 <!-- El `?v=` va apareado con el V de sw.js — subir los DOS juntos. Sin él, la 1ª apertura tras un
      deploy mezcla index nuevo + app.js viejo (cache-first) y el arranque muere. Ver sw.js. -->
-<link rel="stylesheet" href="estilos.css?v=105">
+<link rel="stylesheet" href="estilos.css?v=106">
 </head>
 <body>
 <div class="wrap">
@@ -410,20 +410,7 @@
       <!-- Las materias, como grilla con estado. -->
       <div class="m2Grid" id="gridMaterias"></div>
 
-      <!-- Adelantarse = invitación al FINAL: no le roba el arranque a las materias. -->
-      <div id="cumbreWrap" class="m2Aside">
-        <button class="m2Cumbre" id="btnCumbre">
-          <span class="m2CumbreArt" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M2 20h20L14.5 5.5 10.6 13 8 9.4z"/><path d="M12.2 13.6l2.3-3.1"/></svg>
-          </span>
-          <span class="m2CumbreTx">
-            <small>Adelanta en vacaciones</small>
-            <b>Cumbre</b>
-            <span>La mejor educación del mundo, para ti</span>
-          </span>
-          <svg class="m2Chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-      </div>
+      <!-- Cumbre ya NO se entra por acá: tiene su propia pestaña en la navbar. -->
       <div id="destacadaWrap" class="m2Aside">
         <button class="m2Row m2Row--next" id="btnProximo">
           <span class="m2RowIcon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></span>
@@ -445,12 +432,6 @@
       <div id="erroresList"></div>
     </div>
 
-    <!-- Cumbre 2.0: hero editorial + principios + materias. El interior lo arma el JS (renderCumbre*). -->
-    <div id="paneCumbre" class="hidden cumbreV2">
-      <button class="m2Back" id="btnBackCumbre"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Materias</button>
-      <div id="cumbreIntro"></div>
-      <div id="cumbreMaterias"></div>
-    </div>
 
     <!-- paso B: tema + modo + generar -->
     <div id="paneTemas" class="hidden">
@@ -528,14 +509,21 @@
     </div>
     </div><!-- /tabMaterias -->
 
-    <!-- MURO: logros de los compañeros del mismo grado + reacciones (lo llena app.js) -->
-    <div id="tabMuro" class="hidden"></div>
+    <!-- CUMBRE: pestaña propia (antes se entraba por una tarjeta al final de Materias).
+         Hero editorial + principios + materias; el interior lo arma el JS (renderCumbre*).
+         Al abrir un tema se usa el asistente (#paneTemas, que vive en #tabMaterias). -->
+    <div id="tabCumbre" class="hidden">
+      <div id="paneCumbre" class="cumbreV2">
+        <div id="cumbreIntro"></div>
+        <div id="cumbreMaterias"></div>
+      </div>
+    </div>
 
     <!-- barra de navegación inferior -->
     <nav class="navbar" id="navbar" aria-label="Navegación principal">
       <button class="navBtn" data-tab="inicio" aria-pressed="true"><span class="nIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.5 10.5 12 3l8.5 7.5v9a1.5 1.5 0 0 1-1.5 1.5h-4.5v-6h-5v6H5a1.5 1.5 0 0 1-1.5-1.5z"/></svg></span><span class="nTxt">Inicio</span></button>
       <button class="navBtn" data-tab="materias" aria-pressed="false"><span class="nIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H11a3 3 0 0 1 3 3v15a3 3 0 0 0-3-3H4z"/><path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H14v18a3 3 0 0 1 3-3h3z"/></svg></span><span class="nTxt">Materias</span></button>
-      <button class="navBtn" data-tab="muro" aria-pressed="false"><span class="nIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 5h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-4.5 3V18H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/><circle cx="8" cy="11.5" r="1"/><circle cx="12" cy="11.5" r="1"/><circle cx="16" cy="11.5" r="1"/></svg></span><span class="nTxt">Amigos</span></button>
+      <button class="navBtn" data-tab="cumbre" aria-pressed="false"><span class="nIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 20h20L14.5 5.5 10.6 13 8 9.4z"/><path d="M12.2 13.6l2.3-3.1"/></svg></span><span class="nTxt">Cumbre</span></button>
       <button class="navBtn" data-tab="agenda" aria-pressed="false"><span class="nIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="3"/><path d="M8 3v4M16 3v4M4 10h16M8 14h3M8 17h6"/></svg></span><span class="nTxt">Agenda</span></button>
     </nav>
   </section>
@@ -760,6 +748,6 @@
 
 </div>
 
-<script src="app.js?v=105"></script>
+<script src="app.js?v=106"></script>
 </body>
 </html>

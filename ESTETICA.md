@@ -362,9 +362,9 @@ Todo eso es git y es reversible. Lo caro nunca fue eso: fue entregar y que lo de
 | Inicio | ✅ 2.0 — jerarquía + boletín de notas; se retiró "Continúa aprendiendo" (vive en Materias) |
 | Agenda | ✅ 2.0 **completa** — encabezado, semana, tareas, notas, horario, formularios y editor |
 | Materias | ✅ 2.0 — **interior = asistente de 3 pasos COMPLETO** (`#paneTemas`): **P1** elegir tema (barra de lapsos + lista con radio en el mismo panel que P2, títulos Nunito 700 gris) · **P2** elegir actividad = el mockup (panel único de 4 modos PNG 3D `assets/tema/`, selección lavanda+morado, segmentado 3/5/8, "Tus apuntes", **un** botón dominante + link IA) · **P3** resultados **rediseñados** (sin emojis, prosa en `--chispa-muted`, callouts a `--chispa-*`, tags neutros, footer con pose de Chispa `pulgarArriba`; el loading quedó intacto). Estado `wizPaso`+`mostrarPaso(n)`. Cumbre entra directo al P2 |
-| Cumbre | 🟡 2.0 **primer pase** (hero + principios + familia + materias con acordeón). Iterar (fondo ambiental, lema, alto del hero). El interior de un tema ahora reusa el **Paso 2 del asistente** (`.cumbre` oculta el header/progreso/tema; los resultados conservan su render) |
+| Cumbre | 🟡 2.0 **primer pase**, ahora en **PESTAÑA PROPIA** (2026-07-17: dejó de entrarse por una tarjeta al final de Materias y ocupó el lugar de Amigos en la navbar; `#tabCumbre`). Iterar (fondo ambiental, lema, alto del hero). El interior de un tema reusa el **Paso 2 del asistente** — como `#paneTemas` vive en `#tabMaterias`, `abrirTemaCumbre`/`btnBack` intercambian los contenedores de pestaña a mano y la navbar queda marcada en Cumbre. **La pestaña se oculta si no hay track** (`cumbreTrack()`; sin track, Materias muestra el "Adelántate" viejo) |
 | `#vPendiente` | ❌ vieja |
-| Amigos / Muro | ❌ vieja |
+| ~~Amigos / Muro~~ | 🗑️ **ELIMINADA** (2026-07-17, pedido del user): su lugar en la navbar lo tomó Cumbre. Se borró markup, JS (bloque MURO + `publicarMuro`), CSS y las 3 acciones muertas de `api/actividad.js`. **La tabla `muro` de Supabase se conserva** (datos). **NO afectó al panel de familia**: ese lee la tabla `actividad`, que escribe `registrarActividad()` — verificado con diff (`api/actividad.js`: 0 líneas agregadas, la acción `guardar` intacta) |
 | Onboarding 5 pasos | ❌ vieja (solo cuentas nativas, ver Chispa Universal — en pausa) |
 | `#lab` | ❌ vieja (admin, no lo ven niñas) |
 
@@ -373,6 +373,10 @@ Todo eso es git y es reversible. Lo caro nunca fue eso: fue entregar y que lo de
 Detectadas al correr la §17 contra producción. **Se resuelven cuando toque cada pantalla; anotarlas
 no las perdona.**
 
+- **La `.topbar` vieja quedó huérfana** (saludo + grado + racha + Salir): la ocultan las 4 pestañas
+  (Inicio/Materias/Agenda/Cumbre traen su propio encabezado) — antes solo se veía en Amigos. No se
+  borró junto con Amigos porque `entrarHome()` escribe en sus nodos (`#avatar`, `#saludo`,
+  `#gradoBadge`, `pintarRacha`); sacarla es una limpieza aparte (con esos refs).
 - En el panel de actividades (Paso 2) se retiró el badge "sugerido" y el check de "ya hecho" por
   fila (§6 limpio): la sugerencia sobrevive como el modo **preseleccionado** al entrar. En el Paso 3
   (resultados) el texto de **pregunta y opciones del quiz queda oscuro a propósito** (foco
