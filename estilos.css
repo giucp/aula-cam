@@ -812,20 +812,23 @@
   .repBtn.arm{color:#fff;background:var(--chispa-coral);opacity:1}
   .repBtn[disabled]{cursor:default;opacity:1;color:var(--chispa-green);background:color-mix(in srgb,var(--chispa-green) 10%,#fff)}
   /* la pregunta/enunciado es el foco del card: queda oscura (no es "prosa general") */
-  .q{font-family:"Nunito";font-weight:800;font-size:1.06rem;line-height:1.45;margin:0;color:var(--chispa-ink)}
+  /* pre-line: la IA YA manda el enunciado formateado con saltos (opciones "a. / b. / c." una por
+     línea, tablas de datos, secuencias). Sin esto el HTML los aplasta en un párrafo corrido y las
+     opciones quedan pegadas al enunciado — se veía así hasta 2026-07-29. */
+  .q{font-family:"Nunito";font-weight:800;font-size:1.06rem;line-height:1.45;margin:0;color:var(--chispa-ink);white-space:pre-line}
   .reveals{display:flex;gap:10px;margin-top:15px;flex-wrap:wrap}
   .mini{border:1.5px solid var(--chispa-line);background:#fff;cursor:pointer;font-family:"Fredoka";font-weight:600;font-size:.9rem;color:var(--chispa-primary);
     padding:10px 15px;border-radius:13px;display:inline-flex;align-items:center;gap:7px;transition:background .14s,border-color .14s}
   .mini:hover{border-color:var(--chispa-primary);background:var(--chispa-primary-soft)}
   .mini:active{transform:scale(.96)}
   .mini[disabled]{opacity:.45;cursor:default}
-  .reveal{margin-top:13px;border-radius:14px;padding:13px 15px;font-family:"Nunito";font-weight:700;line-height:1.5;color:var(--chispa-muted);animation:pop .3s ease;display:none}
+  .reveal{margin-top:13px;border-radius:14px;padding:13px 15px;font-family:"Nunito";font-weight:700;line-height:1.5;color:var(--chispa-muted);animation:pop .3s ease;display:none;white-space:pre-line}
   .reveal.show{display:block}
   .reveal.hint{background:color-mix(in srgb,var(--chispa-yellow) 13%,#fff);border:1px solid color-mix(in srgb,var(--chispa-yellow) 34%,#fff)}
   .reveal.ans{background:color-mix(in srgb,var(--chispa-green) 10%,#fff);border:1px solid color-mix(in srgb,var(--chispa-green) 26%,#fff)}
   .reveal b{font-family:"Fredoka";font-weight:600;color:var(--chispa-ink)}
   .reveal.ans b{color:var(--chispa-green)}
-  .comoRes{margin-top:9px;padding-top:9px;border-top:1px dashed color-mix(in srgb,var(--chispa-green) 30%,transparent);line-height:1.5;color:var(--chispa-muted)}
+  .comoRes{margin-top:9px;padding-top:9px;border-top:1px dashed color-mix(in srgb,var(--chispa-green) 30%,transparent);line-height:1.5;color:var(--chispa-muted);white-space:pre-line}
   @keyframes pop{from{transform:scale(.97);opacity:0}to{transform:scale(1);opacity:1}}
   .footer{display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center;margin:28px 4px 6px}
   .footer .footerChispa{width:66px;height:66px;object-fit:contain}
@@ -861,7 +864,7 @@
   .opt.ok .letra{background:var(--chispa-green);color:#fff}
   .opt.bad{border-color:var(--chispa-coral);background:color-mix(in srgb,var(--chispa-coral) 10%,#fff);color:var(--chispa-coral)}
   .opt.bad .letra{background:var(--chispa-coral);color:#fff}
-  .qexp{margin-top:12px;border-radius:14px;padding:12px 15px;font-family:"Nunito";font-weight:700;line-height:1.5;background:var(--chispa-primary-soft);border:1px solid color-mix(in srgb,var(--chispa-primary) 20%,#fff);color:var(--chispa-muted);display:none}
+  .qexp{margin-top:12px;border-radius:14px;padding:12px 15px;font-family:"Nunito";font-weight:700;line-height:1.5;background:var(--chispa-primary-soft);border:1px solid color-mix(in srgb,var(--chispa-primary) 20%,#fff);color:var(--chispa-muted);display:none;white-space:pre-line}
   .qexp.show{display:block;animation:pop .3s ease}
   .qexp b{font-family:"Fredoka";font-weight:600;color:var(--chispa-primary)}
 

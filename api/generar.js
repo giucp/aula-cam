@@ -33,7 +33,14 @@ const MODEL_TEXTO = process.env.GEMINI_MODEL_LITE || "gemini-3.1-flash-lite";
 // 3. AUTO-RECUPERACIÓN: vencido el cooldown, el próximo request lo SONDEA una vez (1 key, 1 intento);
 //    si responde se limpia y todos vuelven al modelo bueno; si no, se re-extiende el cooldown.
 // Fail-open en todo: sin Supabase o con la tabla caída, la generación sigue como siempre.
-const IA_TIMEOUT_MS = parseInt(process.env.GEMINI_TIMEOUT_MS, 10) || 12000;
+// ⚠️ NO bajar de ~35s sin medir. Este techo se puso en 12s para fast-fail del 3.5-flash COLGADO;
+// con ese modelo ya vetado, 12s pasó a MATAR requests legítimos: un quiz/reto numérico piensa
+// (thinkingBudget 4096) y además lee los PDFs del aula → pasa de 12s con material real. Cada intento
+// se abortaba, se contaba como "hang" (= modelo enfermo), saltaba al próximo modelo, se abortaba de
+// nuevo… y el niño veía "El servicio está ocupado" con flash Y pro marcados caídos a la vez
+// (2026-07-29: 6 fallos cada uno, en el mismo request — imposible que Google caiga en ambos).
+// El corte real lo pone DEADLINE (52s) + el guard de `restante`, no este techo.
+const IA_TIMEOUT_MS = parseInt(process.env.GEMINI_TIMEOUT_MS, 10) || 38000;
 const SALUD_K = 3;                          // fallos seguidos para abrir el breaker
 const SALUD_COOLDOWN_MS = 8 * 60 * 1000;    // cuánto se salta un modelo caído antes de re-sondearlo
 // cadena flash (preferido → respaldo), sin duplicar si ambos coinciden (p.ej. si se revierte por env)
@@ -929,7 +936,13 @@ export default async function handler(req, res) {
     // Materias analíticas o regeneración por reporte: la key PAGA va PRIMERO (sin cupos
     // de free-tier, más fiable y rápida — pro en particular casi no tiene cupo gratis) y
     // las gratis quedan de respaldo. Para todo lo demás: gratis primero (costo).
-    const ordenKeys = (analitica || usarProReporte) ? [...pagas, ...gratisRot] : [...gratisRot, ...pagas];
+    // KEY PAGA PRIMERO EN TODO (decisión del user, 2026-07-29: "si hay que dejar solo la api paga,
+    // hazlo — estoy cansado de tener tantos problemas"). Antes las gratis iban primero salvo en
+    // materias analíticas, para ahorrar; pero las gratis tienen cupo de free-tier (429/503) y cada
+    // fallo suyo gasta tiempo del presupuesto del request. Con 2 niñas el costo real es de centavos
+    // al día: la fiabilidad vale más. Las gratis quedan de RESPALDO (si la paga fallara, siguen
+    // sirviendo). El freno de gasto por niño (ia_limite_dia_usd) sigue igual.
+    const ordenKeys = [...pagas, ...gratisRot];
     // ── circuit breaker: la cadena se reordena por SALUD ──
     // Los CAÍDOS van al FINAL (último recurso: mejor un modelo enfermo que ningún intento) →
     // mientras dure la caída, ningún request paga su timeout. Las SONDAS (cooldown vencido)
