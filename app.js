@@ -165,8 +165,8 @@
   }
 
   // ───────── pestañas (barra de navegación inferior) ─────────
-  // La pestaña Cumbre solo se ofrece si el próximo grado tiene track curado (mismo criterio con el
-  // que antes aparecía la tarjeta al final de Materias). Sin track, el niño ve el "Adelántate" viejo.
+  // La pestaña Cumbre se ofrece si el grado que CURSA tiene track curado; si no, si lo tiene el
+  // siguiente (ver cumbreTrackInfo). Sin ninguno, el niño ve el "Adelántate" viejo en Materias.
   function pintarNavCumbre(){
     const b=[...document.querySelectorAll("#navbar .navBtn")].find(x=>x.dataset.tab==="cumbre");
     if(b) b.classList.toggle("hidden", !cumbreTrack());
@@ -1898,8 +1898,8 @@
   function pintarMaterias(){
     origen = "actual";
     $("#volverActual").classList.add("hidden");
-    // Cumbre vive en su propia pestaña cuando hay track (5to/1er año). Si no hay track para el
-    // próximo grado, acá se muestra el "adelántate" viejo como respaldo.
+    // Cumbre vive en su propia pestaña cuando hay track (5to/1er año), sea el grado actual o el
+    // siguiente. Sin ningún track, acá se muestra el "adelántate" viejo como respaldo.
     const track = cumbreTrack();
     $("#destacadaWrap").classList.toggle("hidden", !!track || !siguienteGradoLabel());
     $("#erroresWrap").classList.toggle("hidden", !MIS_ERRORES.length);
@@ -1995,7 +1995,7 @@
       $("#erroresWrap").classList.add("hidden");
       $("#volverActual").classList.remove("hidden");
       $("#materiasHead").textContent = grado;
-      $("#materiasSub").textContent = "Próximo año · adelántate en vacaciones";
+      $("#materiasSub").textContent = "Próximo año · ve un paso adelante";
       if(!mats.length){ $("#gridMaterias").innerHTML = `<p class="m2Empty">Todavía no tenemos ${escapeHtml(grado)} cargado. ¡Pronto!</p>`; }
       else gridMaterias(mats);
       window.scrollTo({top:0,behavior:"smooth"});
@@ -2042,8 +2042,12 @@
     // Cumbre 2.0: identidad editorial FIJA (hero + principios + calma). Del server solo se conserva
     // el texto para la familia (curado); el resto es copy propio de la pantalla.
     x = x || {};
-    const track = cumbreTrack();
-    const pill = track ? `<span class="cumGradoPill">Retos de ${escapeHtml(track)}</span>` : "";
+    // El track del grado que cursa se anuncia tal cual; el del grado siguiente (vacaciones) se
+    // rotula como adelanto para que el niño sepa que es material que todavía no vio en clase.
+    const { track, cuando } = cumbreTrackInfo();
+    const pill = track
+      ? `<span class="cumGradoPill">${cuando==="proximo" ? "Adelántate · retos de" : "Retos de"} ${escapeHtml(track)}</span>`
+      : "";
     const padre = x.texto_padre ? escapeHtml(x.texto_padre)
       : "Cumbre no reemplaza al colegio: lo complementa. Tu hijo aprende el porqué de las cosas, conecta ideas entre materias y practica a su ritmo, sin notas ni presión. Todo el contenido está curado a mano.";
     const hero = `<div class="cumHero">`
@@ -2969,10 +2973,23 @@
     if(g.tipo==="G") return g.n<6 ? `${ORDN[g.n+1]} grado` : "1er año";
     return g.n<5 ? `${ORDN[g.n+1]} año` : null;
   }
-  // Tracks de Cumbre que existen hoy (2 pistas). El "adelanta en vacaciones" es Cumbre
-  // cuando el próximo grado tiene track; si no, cae al temario oficial viejo (respaldo).
+  // Tracks de Cumbre que existen hoy (2 pistas).
   const CUMBRE_TRACKS = new Set(["5to grado", "1er año"]);
-  function cumbreTrack(){ const g = siguienteGradoLabel(); return (g && CUMBRE_TRACKS.has(g)) ? g : null; }
+  // Cumbre acompaña al grado que el niño CURSA. Si su grado tiene track curado, ese es el track
+  // (año escolar: Cumbre profundiza lo que está viendo en clase). Si su grado no tiene track pero
+  // el siguiente sí, Cumbre vuelve a ser "adelantarse" (vacaciones — así nació, 2026-07). Sin
+  // ninguno de los dos no hay Cumbre y Materias muestra el "Adelántate" viejo como respaldo.
+  // ★ 2026-09: antes esto colgaba SOLO de siguienteGradoLabel(). Al pasar las niñas a 5to/1er año
+  //   el track quedaba en 6to/2do (sin curar) y la pestaña Cumbre DESAPARECÍA de la navbar con
+  //   todo el contenido curado detrás. No repetir: el default es el grado actual.
+  function cumbreTrackInfo(){
+    const act = gradoDeSesion();
+    if(act && CUMBRE_TRACKS.has(act)) return { track: act, cuando: "actual" };
+    const sig = siguienteGradoLabel();
+    if(sig && CUMBRE_TRACKS.has(sig)) return { track: sig, cuando: "proximo" };
+    return { track: null, cuando: null };
+  }
+  function cumbreTrack(){ return cumbreTrackInfo().track; }
   // grado con el que se genera/cachea según el modo (actual vs próximo año)
   function gradoActivo(){ return origen==="proximo" ? (proximoGrado||"") : (gradoDeSesion()||"4to grado"); }
 

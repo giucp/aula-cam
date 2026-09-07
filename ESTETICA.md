@@ -362,7 +362,7 @@ Todo eso es git y es reversible. Lo caro nunca fue eso: fue entregar y que lo de
 | Inicio | ✅ 2.0 — jerarquía + boletín de notas; se retiró "Continúa aprendiendo" (vive en Materias) |
 | Agenda | ✅ 2.0 **completa** — encabezado, semana, tareas, notas, horario, formularios y editor |
 | Materias | ✅ 2.0 — **interior = asistente de 3 pasos COMPLETO** (`#paneTemas`): **P1** elegir tema (barra de lapsos + lista con radio en el mismo panel que P2, títulos Nunito 700 gris) · **P2** elegir actividad = el mockup (panel único de 4 modos PNG 3D `assets/tema/`, selección lavanda+morado, segmentado 3/5/8, "Tus apuntes", **un** botón dominante + link IA) · **P3** resultados **rediseñados** (sin emojis, prosa en `--chispa-muted`, callouts a `--chispa-*`, tags neutros, footer con pose de Chispa `pulgarArriba`; el loading quedó intacto). Estado `wizPaso`+`mostrarPaso(n)`. Cumbre entra directo al P2 |
-| Cumbre | 🟡 2.0 **primer pase**, ahora en **PESTAÑA PROPIA** (2026-07-26: dejó de entrarse por una tarjeta al final de Materias y ocupó el lugar de Amigos en la navbar; `#tabCumbre`). Iterar (fondo ambiental, lema, alto del hero). El interior de un tema reusa el **Paso 2 del asistente** — como `#paneTemas` vive en `#tabMaterias`, `abrirTemaCumbre`/`btnBack` intercambian los contenedores de pestaña a mano y la navbar queda marcada en Cumbre. **La pestaña se oculta si no hay track** (`cumbreTrack()`; sin track, Materias muestra el "Adelántate" viejo) |
+| Cumbre | 🟡 2.0 **primer pase**, ahora en **PESTAÑA PROPIA** (2026-07-26: dejó de entrarse por una tarjeta al final de Materias y ocupó el lugar de Amigos en la navbar; `#tabCumbre`). Iterar (fondo ambiental, lema, alto del hero). El interior de un tema reusa el **Paso 2 del asistente** — como `#paneTemas` vive en `#tabMaterias`, `abrirTemaCumbre`/`btnBack` intercambian los contenedores de pestaña a mano y la navbar queda marcada en Cumbre. **La pestaña se oculta si no hay track**. ★ 2026-09 (vuelta a clases): el track ya NO sale del grado siguiente sino del **grado que CURSA** (`cumbreTrackInfo()`), con el siguiente como respaldo — antes, al pasar las niñas a 5to/1er año la pestaña habría DESAPARECIDO con todo el curado detrás. La píldora dice "Retos de X" en el grado actual y "Adelántate · retos de X" en el siguiente. Sin ningún track, Materias muestra el "Adelántate" viejo |
 | `#vPendiente` | ❌ vieja |
 | ~~Amigos / Muro~~ | 🗑️ **ELIMINADA** (2026-07-26, pedido del user): su lugar en la navbar lo tomó Cumbre. Se borró markup, JS (bloque MURO + `publicarMuro`), CSS y las 3 acciones muertas de `api/actividad.js`. **La tabla `muro` de Supabase se conserva** (datos). **NO afectó al panel de familia**: ese lee la tabla `actividad`, que escribe `registrarActividad()` — verificado con diff (`api/actividad.js`: 0 líneas agregadas, la acción `guardar` intacta) |
 | Onboarding 5 pasos | ❌ vieja (solo cuentas nativas, ver Chispa Universal — en pausa) |
@@ -404,6 +404,19 @@ no las perdona.**
      `fechaBonita`, que es para tareas), una materia PROPIA (Caligrafía → no se practica), un día
      sin clases, un nombre largo. **Antes de dar por buena una pantalla: ¿el demo tiene el caso
      feo?** Si el usuario lo encuentra usando la app y el demo no lo tenía, el demo estaba mal.
+  3. **★ 2026-09 — el demo se rompió en silencio y nadie lo notó por 6 semanas.** Desde Materias
+     2.0 + Cumbre en pestaña propia (26/07), `demo-inicio.html` se quedó sin `#tabCumbre`,
+     `#btnIA`, `#btnContinuar`, `#wizTema` ni `#wizActividad`, y conservaba la navbar con Amigos.
+     `$("#btnIA").onclick` sobre `null` es un TypeError que **mata app.js entero**: el demo ni
+     siquiera pasaba del login. Se reparó sincronizando el `#vHome` COMPLETO desde `index.html`
+     (el script de mocks vive fuera de esa sección, así que el reemplazo en bloque es seguro).
+     **Regla:** tocar el markup de `index.html` y no el del demo es dejar una bomba de tiempo —
+     el diff de `id="..."` entre los dos archivos es la verificación de 5 segundos.
+
+- `herramientas/demo-servidor.mjs` — `node herramientas/demo-servidor.mjs` → http://localhost:4321
+  sirve el repo (raíz = `demo-inicio.html`). `file://` no sirve para el demo y el pane del navegador
+  necesita un http:// al que apuntar. `.claude/launch.json` ya lo trae como configuración "demo".
+
 - `tuner.html` / `tuner-login.html` — paneles con sliders sobre el render real. **Darle el panel al
   usuario en vez de adivinar por él** — es lo que funcionó con el hero y el login.
 - `chispa-viewing.bat` — sirve en LAN para probar en el celular.
