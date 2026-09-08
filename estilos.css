@@ -491,8 +491,15 @@
   .lxTitle span{color:var(--chispa-primary)}
   .lxLede{margin:10px 0 0;max-width:24ch;font-size:.85rem;font-weight:700;line-height:1.5;color:#6A6180}
   /* la mascota nunca se deforma ni se recorta (object-fit:contain, regla del inventario) */
+  /* ★ SIN filter:drop-shadow — NO REPONERLO (cuadro negro en iPhone, 2026-09-08) ★
+     drop-shadow obliga a WebKit a reservar una superficie de filtro aparte para la imagen
+     (846x1176 con alfa, x3 por la densidad del iPhone). Cuando esa reserva no entra, iOS
+     pinta el rectangulo COMPLETAMENTE NEGRO en vez de omitir la sombra. Pasaba en Safari y
+     Chrome del iPhone; Android y escritorio se veian bien. La regla no se habia tocado desde
+     el 14/07: el disparador es el telefono, no el CSS, asi que puede volver en cualquier
+     momento. La sombra era decorativa y va sobre el fondo del aula, que ya da profundidad. */
   .lxChispa{display:block;width:clamp(240px,68%,286px);height:auto;margin:2px auto -10px;
-    object-fit:contain;filter:drop-shadow(0 22px 26px rgba(69,48,163,.2))}
+    object-fit:contain}
   /* CTA: el único botón de la pantalla. Se monta sobre la escena (capas, no cajas). */
   .lxCta{position:relative;z-index:1;width:100%;max-width:330px;min-height:60px;display:flex;
     align-items:center;justify-content:center;gap:12px;border:0;border-radius:20px;cursor:pointer;
@@ -636,8 +643,9 @@
      se recorta, la pantalla queda entera. */
   .lgLaptop{position:relative;width:min(var(--lap-w),var(--lap-max));margin-left:50%;margin-top:auto;
     transform:translateX(calc(-50% + var(--lap-x))) translateY(var(--lap-y))}
-  .lgLaptopArt{display:block;width:100%;height:auto;object-fit:contain;
-    filter:drop-shadow(0 22px 26px rgba(69,48,163,.22))}
+  /* sin drop-shadow por lo mismo que .lxChispa: este asset es aun MAS grande (1060x850 con
+     alfa) y ademas vive dentro de un padre con transform — el peor caso para iOS. */
+  .lgLaptopArt{display:block;width:100%;height:auto;object-fit:contain}
   .lgScreen{position:absolute;left:var(--scr-l);top:var(--scr-t);width:var(--scr-w);height:var(--scr-h);
     display:flex;flex-direction:column;justify-content:center;gap:var(--scr-gap);padding:0 var(--scr-pad)}
   /* ayuda del tuner: marca el rectángulo de la pantalla para ver si el form cae adentro */
