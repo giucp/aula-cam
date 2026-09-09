@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Prueba sin app.js — Chispa</title>
+<meta name="description" content="Practica y aprende con tu aula virtual: retos, resúmenes, exámenes y quiz." />
+<!-- PWA / instalar como app -->
+<link rel="manifest" href="/manifest.webmanifest" />
+<meta name="theme-color" content="#6753E8" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Chispa" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<!-- El `?v=` va apareado con el V de sw.js — subir los DOS juntos. Sin él, la 1ª apertura tras un
+     deploy mezcla index nuevo + app.js viejo (cache-first) y el arranque muere. Ver sw.js. -->
+<link rel="stylesheet" href="estilos.css?v=109">
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ╔═══ LANDING ═══╗
+       UNA sola pantalla que se scrollea (no 3): el principio 10 de la lámina define el recorrido
+       Chispa → Valor → CTA → Pasos → Padres, que es UNA secuencia. El niño que ya conoce Chispa
+       toca el CTA y nunca baja; las secciones de abajo son para el adulto que evalúa (F7).
+       "Para los padres" va UNA vez, al final: en los mockups se repetía por ser el mismo
+       componente dibujado en cada frame. Kit de assets: assets/onboarding/ (ver ASSET_INVENTORY).
+  ═══╗ -->
+  <section id="vLanding">
+    <!-- HERO — manda la ESCENA, no una tarjeta. Dos capas reales: el aula a sangre (el fondo deja
+         la pared vacía arriba a propósito, ahí va el texto) y Chispa apoyada en el piso. Jamás
+         envolver esto en una caja blanca: eso la volvería un sticker (el error de las 2 landings
+         anteriores). Texto, números y botón son HTML/CSS, nunca imagen (regla del inventario). -->
+    <header class="lxHero">
+      <div class="lxHeroTx">
+        <p class="lxEyebrow">Chispa</p>
+        <h1 class="lxTitle">Tu aula virtual,<br /><span>hecha para ti</span></h1>
+        <p class="lxLede">Todo lo que aprendes en clase, ahora en un solo lugar para que practiques, entiendas y apruebes.</p>
+      </div>
+      <img class="lxChispa" src="assets/onboarding/chispa-laptop.webp" alt="Chispa practicando en su laptop" />
+      <button class="lxCta" id="btnEntrarLanding">
+        <span>Entrar a practicar</span>
+        <span class="lxCtaIco" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+      </button>
+    </header>
+
+    <!-- Cómo funciona: para el que llega nuevo (y para el adulto). El niño ya no está acá. -->
+    <section class="lxSection">
+      <h2 class="lxH2">¿Cómo funciona?</h2>
+      <p class="lxSub">Así es tu aula virtual en 3 simples pasos.</p>
+      <ol class="lxSteps">
+        <li class="lxStep">
+          <span class="lxStepN">1</span>
+          <div class="lxStepTx"><b>Entra con tu usuario del aula</b><small>El mismo de siempre.</small></div>
+          <span class="lxStepArt" aria-hidden="true"><img src="assets/onboarding/paso-acceso.webp" alt="" /></span>
+        </li>
+        <li class="lxStep">
+          <span class="lxStepN">2</span>
+          <div class="lxStepTx"><b>Escoge tu materia y tu tema</b><small>Los mismos que estás viendo en clase.</small></div>
+          <span class="lxStepArt" aria-hidden="true"><img src="assets/onboarding/paso-materias.webp" alt="" /></span>
+        </li>
+        <li class="lxStep">
+          <span class="lxStepN">3</span>
+          <div class="lxStepTx"><b>Aprende, practica y ponte a prueba</b><small>Primero entiendes, después practicas, y al final simulas tu examen.</small></div>
+          <!-- el inventario pide Chispa y la lista como DOS capas independientes -->
+          <span class="lxStepArt lxStepArt--dual" aria-hidden="true">
+            <img class="lxStepLista" src="assets/onboarding/paso-lista.webp" alt="" />
+            <img src="assets/onboarding/chispa-escribiendo.webp" alt="" />
+          </span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Beneficios: la otra pose protagonista (una por pantalla, regla del inventario). -->
+    <section class="lxSection">
+      <h2 class="lxH2">Todo en un solo lugar para que avances <span>más y mejor</span></h2>
+      <div class="lxShow" aria-hidden="true">
+        <img class="lxShowChispa" src="assets/onboarding/chispa-brazos.webp" alt="" />
+        <img class="lxBadge lxBadge--lista"  src="assets/onboarding/badge-lista.webp" alt="" />
+        <img class="lxBadge lxBadge--check"  src="assets/onboarding/badge-check.webp" alt="" />
+        <img class="lxBadge lxBadge--morado" src="assets/onboarding/badge-trofeo-morado.webp" alt="" />
+        <img class="lxBadge lxBadge--dorado" src="assets/onboarding/badge-trofeo-dorado.webp" alt="" />
+      </div>
+      <div class="lxFeats">
+        <div class="lxFeat"><img src="assets/onboarding/icono-resumenes.webp" alt="" aria-hidden="true" /><b>Resúmenes inteligentes</b><small>Entiende rápido lo más importante.</small></div>
+        <div class="lxFeat"><img src="assets/onboarding/icono-retos.webp" alt="" aria-hidden="true" /><b>Retos y prácticas</b><small>Ejercicios para reforzar lo aprendido.</small></div>
+        <div class="lxFeat"><img src="assets/onboarding/icono-simulacros.webp" alt="" aria-hidden="true" /><b>Simulacros de examen</b><small>Practica como si fuera el día real.</small></div>
+        <div class="lxFeat"><img src="assets/onboarding/icono-progreso.webp" alt="" aria-hidden="true" /><b>Tu progreso</b><small>Sigue tu avance y celebra logros.</small></div>
+      </div>
+    </section>
+
+    <!-- Padres: secundaria, neutra y al final. Informa sin competir con el CTA (principio 7). -->
+    <details class="lxPadres">
+      <summary>
+        <img src="assets/onboarding/icono-padres.webp" alt="" aria-hidden="true" />
+        <span class="lxPadresTx"><b>Para los padres</b><small>Consulta el acceso y la seguridad</small></span>
+        <svg class="lxPadresChev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </summary>
+      <p class="lxPadresBody">Chispa se conecta al aula virtual del colegio con el usuario del alumno únicamente para leer sus materias y guías. La clave se usa una sola vez para conectarse y no se guarda. Los ejercicios se generan a partir del material real que asignan los docentes, y la app registra el avance del niño (temas practicados y resultados de sus quizzes) solo para guiar su aprendizaje.</p>
+    </details>
+  </section>
+
+  <!-- ╔═══ LOGIN ═══╗
+       Misma lengua que la landing: escena a sangre por capas (cuarto + laptop), texto en HTML.
+       El formulario va DENTRO de la pantalla de la laptop, posicionado en % sobre el asset
+       (medido: pantalla interior = x 154-1036, y 68-594 de 1192x956 → left 12.92% / top 7.11%
+       / width 74% / height 55.02%). Como es un rectángulo recto, no hace falta perspectiva.
+       Sin etiquetas encima de los campos: la pantalla del asset es 16:10 y no dan los píxeles
+       (con etiquetas el botón se sale por abajo). El ícono + placeholder cumplen esa función y
+       la etiqueta real va oculta para lectores de pantalla.
+  ═══╗ -->
+  <section id="vLogin" class="hidden">
+    <div class="lgHero">
+      <button class="lgBack" id="btnVolverLanding">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Volver
+      </button>
+      <div class="lgHeroTx">
+        <p class="lgEyebrow">Chispa</p>
+        <h1 class="lgTitle">Conecta con <span>tu aula</span></h1>
+        <p class="lgLede">Usa los datos que te dieron en el colegio.</p>
+      </div>
+
+      <div class="lgLaptop">
+        <img class="lgLaptopArt" src="assets/onboarding/login-laptop.webp" alt="" aria-hidden="true" />
+        <form class="lgScreen" id="lgForm" novalidate>
+          <label class="lgSr" for="user">Usuario</label>
+          <div class="lgField">
+            <svg class="lgFieldIco" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg>
+            <input id="user" type="text" placeholder="Usuario" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" />
+          </div>
+          <label class="lgSr" for="pass">Contraseña</label>
+          <div class="lgField">
+            <svg class="lgFieldIco" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>
+            <input id="pass" type="password" placeholder="Contraseña" autocomplete="current-password" />
+            <button type="button" class="lgEye" id="btnVerPass" aria-label="Mostrar contraseña" aria-pressed="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="2.8"/><path class="lgEyeSlash" d="M4 20L20 4"/></svg>
+            </button>
+          </div>
+          <button class="lgGo" id="btnLogin" type="submit">Entrar</button>
+        </form>
+      </div>
+
+      <div id="loginMsg"></div>
+      <p class="lgSafe">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>
+        Tus datos están protegidos.
+      </p>
+    </div>
+  </section>
+
+  <!-- ╔═══ ACCESO EN REVISIÓN ═══╗ -->
+  <section id="vPendiente" class="hidden">
+    <div class="pendCard">
+      <span class="pendIco">⏳</span>
+      <h1 id="pendNombre">¡Hola!</h1>
+      <p class="pendTxt">Tu acceso a <b>Chispa</b> está en revisión. El administrador te habilitará muy pronto para que puedas empezar a practicar. ✨</p>
+      <button class="go" id="btnReintentar">Ya me habilitaron · Entrar</button>
+      <button class="back" id="btnSalirPend" style="margin-top:12px">‹ Volver</button>
+    </div>
+  </section>
+
+  <!-- ╔═══ HOME ═══╗ -->
+  <section id="vHome" class="hidden">
+    <div class="topbar">
+      <div class="who">
+        <span class="avatar" id="avatar">?</span>
+        <div>
+          <p class="hi">Chispa</p>
+          <h1 id="saludo">¡Hola!</h1>
+          <span class="gradoBadge" id="gradoBadge"></span>
+        </div>
+      </div>
+      <div class="topRight">
+        <div class="rachaChip hidden" id="rachaChip"></div>
+        <button class="salir" id="btnSalir">Salir</button>
+      </div>
+    </div>
+
+    <!-- ═══ pestaña INICIO: el escritorio diario (Chispa 2.0) ═══
+         ORDEN POR JERARQUÍA DE USO (2026-07-16). El Inicio contesta "¿qué hago ahora?"; NO es un
+         índice de la app. Materias y Agenda están a UN TOQUE en la nav → lo que el Inicio duplicaba
+         de ellas se quitó. La secuencia baja de urgencia:
+           ¿cómo estoy? → ¿qué debo hacer? → ¿qué sigo estudiando? → ¿qué debo corregir?
+           → ¿qué hay de nuevo? → ¿cómo voy en total? → un respiro.
+         Se ELIMINARON, por redundantes: la grilla "Mis materias" (era la pestaña Materias otra vez),
+         "Próximas entregas" y "Mañana toca" como secciones sueltas (tres bloques decían "tu agenda"
+         → ahora viven dentro de "Hoy"), y el cajón "Más para ti" (escondía refuerzo y novedades, que
+         sí importan, para guardar cosas que no justificaban un cajón). Familia se mudó al menú ⋮:
+         es una acción de cuenta que se hace una vez, no contenido diario. -->
+    <div id="tabInicio" class="hidden homeV2">
+      <!-- 1 · HERO: saludo + Chispa apoyada sobre la tarjeta de misión (integrada de verdad) -->
+      <div class="h2Top">
+        <div class="h2Greeting" aria-labelledby="homeSaludo">
+          <p class="h2Daypart" id="homeDaypart">Buenos días</p>
+          <h1 id="homeSaludo">¡Hola!</h1>
+          <p class="h2Context"><span class="h2Grade hidden" id="homeGrade"></span><span class="fechaHoy h2Date" id="fechaHoy"></span></p>
+        </div>
+        <details class="h3AccountMenu">
+          <summary aria-label="Abrir menú de cuenta">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="12" cy="19" r="1.4"/></svg>
+          </summary>
+          <div class="h3AccountPopover">
+            <div id="familiaWrap"><button class="h2QuietAction" id="btnFamilia" type="button">Dar acceso a un adulto</button></div>
+            <button class="h2QuietAction" id="btnSalirHome" type="button">Salir</button>
+          </div>
+        </details>
+        <img class="h2HeroChispa" src="assets/hero/chispa.png" alt="Chispa, tu compañera de aprendizaje" />
+        <span class="h2HeroHand" aria-hidden="true"><img src="assets/hero/chispa-mano.png" alt="" /></span>
+        <!-- misión principal: examen, tarea, horario o progreso real disponible -->
+        <div id="examenBanner" class="h2MissionWrap"></div>
+      </div>
+
+      <!-- 2 · barra de racha/energía/metas: DEBAJO del hero -->
+      <div class="h2Stats" id="homeStats" aria-label="Resumen de hoy"></div>
+
+      <!-- el medidor original conserva su ID y datos; Home 2.0 los resume en homeStats -->
+      <div id="energiaIA" class="hidden" aria-hidden="true"></div>
+
+      <!-- 3 · HOY = ¿qué debo hacer? Los pendientes de hoy y, debajo, "lo que viene" (entregas
+           próximas + qué toca mañana). Antes eran TRES secciones distintas diciendo "tu agenda". -->
+      <section class="h2Section" aria-labelledby="homeHoyTit">
+        <div class="h2SectionHead">
+          <h2 id="homeHoyTit">Hoy</h2>
+          <div class="h2SectionActions">
+            <button class="h2TextAction" id="btnNuevaTareaHome" type="button">Anotar</button>
+            <button class="h2TextAction hidden" id="btnVerAgenda" type="button">Ver agenda</button>
+          </div>
+        </div>
+        <span class="h2A11yLabel" id="homePendienteTit">Pendientes para hoy</span>
+        <div id="tareasResumen" class="h2Today"></div>
+
+        <div class="h2Next">
+          <p class="h2NextTit">Lo que viene</p>
+          <div id="homeUpcoming" class="h2Upcoming"></div>
+          <div class="h3MoreCard h3MoreCard--horario" style="--tone:#6753E8">
+            <div class="h3MoreHead">
+              <span class="h3MoreMark h3MoreMark--img"><img src="assets/agenda/horario.webp" alt="" aria-hidden="true" /></span>
+              <h3 id="horarioTit">Mañana toca</h3>
+              <button class="h2TextAction" id="btnEditarHorario" type="button">Editar</button>
+            </div>
+            <div id="horarioChips" class="h3MoreChips"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ("Continúa aprendiendo" se retiró: continuar vive en Materias, con su propia protagonista) -->
+
+      <!-- 5 · ¿qué debo corregir? Notas + refuerzo. Salió del cajón: es un circuito de
+           aprendizaje real, no un extra. Se pinta solo si hay notas (si no, queda vacío). -->
+      <div id="notasInicio" class="h2Loose"></div>
+
+      <!-- 6 · ¿qué hay de nuevo? Novedades del aula. Solo si hay. -->
+      <div id="novedadesWrap" class="h2Loose"></div>
+
+      <!-- 7 · ¿cómo voy en total? El cierre, con poco peso visual. -->
+      <section class="h2Section" aria-labelledby="homeProgresoTit">
+        <div id="homeProgress" class="h2ProgressCard"></div>
+      </section>
+
+      <!-- 8 · UN RESPIRO: la zona de premio va al final, después del trabajo. -->
+      <section class="h2Section" aria-labelledby="homeRespiroTit">
+        <div class="h2SectionHead">
+          <h2 id="homeRespiroTit">Un respiro</h2>
+        </div>
+        <div class="h2Break">
+          <div id="juegoWrap">
+            <button class="h3MoreRow" id="btnJuego" type="button" style="--tone:#12B5A4">
+              <span class="h3MoreRowIcon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4.5A2.5 2.5 0 0 0 5.6 6 2.5 2.5 0 0 0 4.5 10a2.5 2.5 0 0 0 .6 4.4V17a2.5 2.5 0 0 0 4.9.6z"/><path d="M14 4.5A2.5 2.5 0 0 1 18.4 6a2.5 2.5 0 0 1 1.1 4 2.5 2.5 0 0 1-.6 4.4V17a2.5 2.5 0 0 1-4.9.6z"/></svg></span>
+              <span class="h3MoreRowTx"><b>Sinapsis</b><small>Recreo mental · entrena tu mente y compite con tu cole</small></span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"/></svg>
+            </button>
+          </div>
+          <div id="efemeride" class="hidden"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ═══ pestaña AGENDA 2.0 — "Todo lo importante, en calma" ═══
+         Encabezado propio (la .topbar vieja se oculta acá, como en Inicio y Materias): título
+         protagonista + el libro 3D a sangre, sin caja. Tira de semana → Tareas → Notas → Horario.
+         Los formularios y el editor de horario son los MISMOS de siempre (ids intactos), solo
+         cambia el envoltorio. Íconos 3D en assets/agenda/. -->
+    <div id="tabAgenda" class="hidden agendaV2">
+      <header class="agTop">
+        <div class="agTitle">
+          <p class="agEyebrow">Chispa</p>
+          <h1>Mi agenda</h1>
+        </div>
+        <img class="agBook" src="assets/agenda/agenda.webp" alt="" aria-hidden="true" />
+        <!-- destellos de 4 puntas (los del mockup): SVG con lados cóncavos, no un truco de máscara -->
+        <svg class="agStar agStar--a" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1.1 7.4 4.6 10.9 12 12-7.4 1.1-10.9 4.6-12 12-1.1-7.4-4.6-10.9-12-12 7.4-1.1 10.9-4.6 12-12Z"/></svg>
+        <svg class="agStar agStar--b" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1.1 7.4 4.6 10.9 12 12-7.4 1.1-10.9 4.6-12 12-1.1-7.4-4.6-10.9-12-12 7.4-1.1 10.9-4.6 12-12Z"/></svg>
+      </header>
+
+      <!-- tira de la semana: orienta sin pedir nada. El punto = ese día tiene algo. -->
+      <div class="agWeek" id="agWeek" aria-label="Esta semana"></div>
+
+      <section class="agCard">
+        <div class="agHead">
+          <img class="agMark" src="assets/agenda/tareas.webp" alt="" aria-hidden="true" />
+          <h2>Tareas</h2>
+          <button class="agAction" id="btnNuevaTarea2" type="button">＋ Anotar</button>
+        </div>
+        <!-- Anotar una tarea. El TIPO es un control segmentado (3 partes iguales, la activa en
+             pastilla blanca): son opciones excluyentes, no etiquetas sueltas. -->
+        <div id="formTarea" class="agForm hidden">
+          <p class="agFormTit">Nueva tarea</p>
+          <label class="agLbl" for="tDesc">¿Qué te mandaron? <span class="agLblOpt">(opcional)</span></label>
+          <div class="field"><input id="tDesc" type="text" maxlength="300" placeholder="ej: página 42, ejercicios 1 al 5" /></div>
+          <p class="agLbl">Materia</p>
+          <div class="chips" id="tMaterias"></div>
+          <p class="agLbl">Tipo</p>
+          <div class="agSeg" id="tTipos" role="group">
+            <button class="chip" data-tipo="tarea" aria-pressed="true"><img class="agSegIco" src="assets/agenda/tipo-tarea.webp" alt="" aria-hidden="true" />Tarea</button>
+            <button class="chip" data-tipo="trabajo" aria-pressed="false"><img class="agSegIco" src="assets/agenda/tipo-trabajo.webp" alt="" aria-hidden="true" />Trabajo</button>
+            <button class="chip" data-tipo="examen" aria-pressed="false"><img class="agSegIco" src="assets/agenda/tipo-examen.webp" alt="" aria-hidden="true" />Examen</button>
+          </div>
+          <label class="agLbl" for="tFecha">¿Para cuándo?</label>
+          <div class="field"><input id="tFecha" type="date" /></div>
+          <div id="tMsg"></div>
+          <div class="acciones">
+            <button class="go guia" id="btnGuardarTarea">Guardar</button>
+            <button class="otros" id="btnCancelarTarea">Cancelar</button>
+          </div>
+        </div>
+        <div id="tareasList"></div>
+      </section>
+
+      <section class="agCard">
+        <div class="agHead">
+          <img class="agMark" src="assets/agenda/notas-examenes.webp" alt="" aria-hidden="true" />
+          <h2>Notas de exámenes</h2>
+          <button class="agAction" id="btnNuevaNota" type="button">＋ Anotar</button>
+        </div>
+        <div id="notasProm"></div>
+        <!-- Anotar una nota. La NOTA va en un campo propio y grande (es el dato protagonista, igual
+             que en la fila y en el boletín), con el "/ 20" fijo al lado para no repetirlo en la
+             etiqueta ni obligar a leerlo. -->
+        <div id="formNota" class="agForm hidden">
+          <p class="agFormTit">Nueva nota</p>
+          <label class="agLbl" for="nDesc">¿De qué fue?</label>
+          <div class="field"><input id="nDesc" type="text" maxlength="120" placeholder="ej: examen de fracciones" /></div>
+          <p class="agLbl">Materia</p>
+          <div class="chips" id="nMaterias"></div>
+          <label class="agLbl" for="nNota">¿Qué sacaste?</label>
+          <div class="agNotaIn">
+            <input id="nNota" type="number" min="0" max="20" step="0.5" inputmode="decimal" placeholder="16" />
+            <span class="agSobre">/ 20</span>
+          </div>
+          <label class="agLbl" for="nFecha">¿Cuándo te la entregaron?</label>
+          <div class="field"><input id="nFecha" type="date" /></div>
+          <div id="nMsg"></div>
+          <div class="acciones">
+            <button class="go guia" id="btnGuardarNota">Guardar</button>
+            <button class="otros" id="btnCancelarNota">Cancelar</button>
+          </div>
+        </div>
+        <div id="notasList"></div>
+      </section>
+
+      <!-- Mi horario: UN día a la vez. Sigue siendo una tarjeta de la Agenda (no una pantalla
+           aparte, no lleva fondo propio). El ícono 3D introduce la sección, no adorna. -->
+      <section class="agCard">
+        <div class="agHead">
+          <img class="agMark" src="assets/agenda/horario.webp" alt="" aria-hidden="true" />
+          <div class="agHeadTx">
+            <h2>Mi horario</h2>
+            <p class="agHeadSub">Tus clases de la semana</p>
+          </div>
+          <button class="agAction" id="btnEditarHorario2" type="button">Editar</button>
+        </div>
+        <div id="horarioSemana"></div>
+      </section>
+
+    </div>
+
+    <!-- ═══ pestaña MATERIAS (la práctica de siempre) ═══ -->
+    <div id="tabMaterias">
+    <!-- paso A: materias -->
+    <div id="paneMaterias">
+      <!-- Encabezado: el título manda; el contexto es una línea tranquila (sin badges compitiendo). -->
+      <div class="m2Head">
+        <button class="m2Back hidden" id="volverActual">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Mis materias
+        </button>
+        <h2 class="m2Title" id="materiasHead">Tus materias</h2>
+        <p class="m2Lede" id="materiasLede">Continúa aprendiendo a tu ritmo.</p>
+        <p class="m2Sub" id="materiasSub"></p>
+      </div>
+
+      <!-- Recordatorio amable (coral): fila ligera, solo si hay errores por repasar. -->
+      <div id="erroresWrap" class="hidden">
+        <button class="m2Row m2Row--coral" id="btnErrores">
+          <span class="m2RowIcon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></span>
+          <span class="m2RowTx"><b>Repasar mis errores</b><small id="errSub">0 para repasar</small></span>
+          <svg class="m2Chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <!-- La única acción dominante: seguir con la materia empezada más reciente. -->
+      <div id="materiaDestacada"></div>
+      <!-- Único control segmentado: filtra la grilla (se oculta si no hay materias empezadas). -->
+      <div id="materiasSeg" class="agSeg m2Seg hidden" role="group" aria-label="Filtrar materias"></div>
+
+      <!-- Las materias, como grilla con estado. -->
+      <div class="m2Grid" id="gridMaterias"></div>
+
+      <!-- Cumbre ya NO se entra por acá: tiene su propia pestaña en la navbar. -->
+      <div id="destacadaWrap" class="m2Aside">
+        <button class="m2Row m2Row--next" id="btnProximo">
+          <span class="m2RowIcon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></span>
+          <span class="m2RowTx"><b>Adelántate al próximo año</b><small id="proxSub">Practica el próximo año</small></span>
+          <svg class="m2Chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- repasar mis errores -->
+    <div id="paneErrores" class="hidden">
+      <div class="m2Head">
+        <button class="m2Back" id="btnBackErr">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Inicio
+        </button>
+        <h2 class="m2Title">Repasar mis errores</h2>
+        <p class="m2Sub">Lo que fallaste, para entenderlo bien.</p>
+      </div>
+      <div id="erroresList"></div>
+    </div>
+
+
+    <!-- paso B: tema + modo + generar -->
+    <div id="paneTemas" class="hidden">
+      <button class="back" id="btnBack">‹ <span id="backTxt">Materias</span></button>
+
+      <!-- ══════ PASO 1 · elegir un tema ══════ -->
+      <section id="wizTema" class="wizView">
+        <header class="wizHead">
+          <p class="wizEyebrow" id="temaEyebrow"></p>
+          <h1 class="wizTitle" id="temaTitulo"></h1>
+          <p class="wizAux">Elige un tema para estudiar.</p>
+        </header>
+        <div class="wizProg"><span class="wizStep"><b>Paso 1</b> de 3</span><span class="wizBars" aria-hidden="true"><i class="on"></i><i></i><i></i></span></div>
+        <div id="refuerzoBanner" class="hidden"></div>
+        <div id="grupos"></div>
+        <div id="sinTemas" class="empty hidden">Esta materia aún no tiene temas para practicar. Puedes escribir uno abajo.</div>
+        <div class="field wizField"><input id="otro" type="text" placeholder="…o escribe otro tema" autocomplete="off" /></div>
+        <div class="field hidden wizField" id="otroDatosWrap">
+          <textarea id="otroDatos" rows="3" placeholder="¿De qué trata? Escríbele a la IA lo que sepas: subtemas, palabras clave, un ejemplo del cuaderno… (opcional, pero ayuda mucho si no hay material en el aula)"></textarea>
+          <p class="ayuda">Y si tienes apuntes, se los sumas en el paso siguiente.</p>
+        </div>
+        <button class="go wizGo" id="btnContinuar" disabled><span>Continuar</span><svg class="wizArrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </section>
+
+      <!-- ══════ PASO 2 · elegir la actividad ══════ -->
+      <section id="wizActividad" class="wizView hidden">
+        <header class="wizHead">
+          <p class="wizEyebrow" id="actEyebrow"></p>
+          <h1 class="wizTitle" id="actTitulo"></h1>
+          <p class="wizAux">Elige cómo quieres estudiar este tema.</p>
+        </header>
+        <div class="wizProg"><span class="wizStep"><b>Paso 2</b> de 3</span><span class="wizBars" aria-hidden="true"><i></i><i class="on"></i><i></i></span></div>
+        <div class="wizSec">
+          <h2 class="wizSecTit">¿Cómo quieres estudiar?</h2>
+          <p class="wizAux">Elige la opción que mejor te sirva hoy.</p>
+        </div>
+        <div class="modosPanel"><div class="modos" id="modos" role="group" aria-label="Tipo de actividad"></div></div>
+
+        <div class="wizSec" id="pasoCantidad">
+          <h2 class="wizSecTit">Personaliza tu actividad</h2>
+          <p class="wizAux">¿Cuántas preguntas quieres?</p>
+          <div class="count" id="count" role="group" aria-label="Cantidad">
+            <button data-n="3">3</button>
+            <button data-n="5" aria-pressed="true">5</button>
+            <button data-n="8">8</button>
+          </div>
+        </div>
+
+        <div class="apuntesCard" id="pasoFotos">
+          <img class="apuntesIco" src="assets/tema/tema-apuntes.webp" alt="" width="60" height="60" loading="lazy" />
+          <div class="apuntesBody">
+            <p class="apuntesTit">Tus apuntes <span class="apuntesOpt">Opcional</span></p>
+            <p class="apuntesDesc">Añade fotos de tu cuaderno para que Chispa las tenga en cuenta al preparar esta actividad.</p>
+            <div class="fotos" id="fotos"></div>
+          </div>
+          <label class="addFoto" id="addFoto">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 8h3l1.4-2h6.2L16.5 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.2"/></svg>
+            <span>Añadir fotos</span>
+            <input id="fotoInput" type="file" accept="image/*" multiple hidden />
+          </label>
+        </div>
+
+        <button class="go wizGo" id="btnGen" disabled><span>Empezar práctica</span><svg class="wizArrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button class="linkIA hidden" id="btnIA">Prefiero generarlo con IA</button>
+        <details class="accInfo hidden" id="accInfo">
+          <summary>¿Cuál elijo?</summary>
+          <div class="accInfoBody">
+            <p><span class="tagG">Guía revisada</span> La preparamos nosotros con una inteligencia artificial más avanzada y la revisamos para que sea correcta y completa. Es tu base sólida y confiable para aprender el tema.</p>
+            <p><span class="tagIA">Con IA</span> Se crea al instante con inteligencia artificial y sale distinta cada vez. Ideal para practicar más y tener variedad.</p>
+          </div>
+        </details>
+      </section>
+
+      <div class="results" id="results" aria-live="polite"></div>
+    </div>
+    </div><!-- /tabMaterias -->
+
+    <!-- CUMBRE: pestaña propia (antes se entraba por una tarjeta al final de Materias).
+         Hero editorial + principios + materias; el interior lo arma el JS (renderCumbre*).
+         Al abrir un tema se usa el asistente (#paneTemas, que vive en #tabMaterias). -->
+    <div id="tabCumbre" class="hidden">
+      <div id="paneCumbre" class="cumbreV2">
+        <div id="cumbreIntro"></div>
+        <div id="cumbreMaterias"></div>
+      </div>
+    </div>
+
+    <!-- barra de navegación inferior -->
+    <nav class="navbar" id="navbar" aria-label="Navegación principal">
+      <button class="navBtn" data-tab="inicio" aria-pressed="true"><span class="nIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.5 10.5 12 3l8.5 7.5v9a1.5 1.5 0 0 1-1.5 1.5h-4.5v-6h-5v6H5a1.5 1.5 0 0 1-1.5-1.5z"/></svg></span><span class="nTxt">Inicio</span></button>
+      <button class="navBtn" data-tab="materias" aria-pressed="false"><span class="nIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H11a3 3 0 0 1 3 3v15a3 3 0 0 0-3-3H4z"/><path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H14v18a3 3 0 0 1 3-3h3z"/></svg></span><span class="nTxt">Materias</span></button>
+      <button class="navBtn" data-tab="cumbre" aria-pressed="false"><span class="nIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 20h20L14.5 5.5 10.6 13 8 9.4z"/><path d="M12.2 13.6l2.3-3.1"/></svg></span><span class="nTxt">Cumbre</span></button>
+      <button class="navBtn" data-tab="agenda" aria-pressed="false"><span class="nIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="3"/><path d="M8 3v4M16 3v4M4 10h16M8 14h3M8 17h6"/></svg></span><span class="nTxt">Agenda</span></button>
+    </nav>
+  </section>
+
+  <!-- ╔═══ CUENTA PROPIA (nativa, beta: solo con ?beta=1) ═══╗ -->
+  <section id="vBeta" class="hidden">
+    <p class="hi">Chispa</p>
+    <h1>Aprendé a tu manera <span class="star">✨</span></h1>
+    <p class="sub">Creá tu cuenta de Chispa y empezá: tu agenda, tus notas y contenido para aprender más. Si tu colegio tiene aula virtual, la conectás después.</p>
+    <div class="panel">
+      <button class="go" id="btnIrRegistro">Crear mi cuenta</button>
+      <button class="salir" id="btnIrLoginNat" style="width:100%;margin-top:12px">Ya tengo cuenta · Entrar</button>
+    </div>
+    <button class="linkSec" id="btnIrMoodle">Entrar con el aula virtual de mi colegio ›</button>
+    <button class="linkSec" id="btnIrSolicitud">¿Tu colegio tiene aula virtual y no aparece? Pedí que lo agreguemos ›</button>
+  </section>
+
+  <section id="vSolicitud" class="hidden">
+    <button class="back" id="btnSolVolver">‹ Volver</button>
+    <p class="hi">Chispa</p>
+    <h1>Agregá tu colegio</h1>
+    <p class="sub">Contanos cuál es tu colegio. Si tiene aula virtual, lo revisamos y lo conectamos a Chispa. Mientras tanto podés usar tu cuenta creando tus materias a mano.</p>
+    <div class="panel">
+      <div class="field">
+        <p class="lbl"><span class="n">1</span> Nombre del colegio</p>
+        <input id="solColegio" type="text" placeholder="U.E. ..." autocomplete="off" style="margin-bottom:12px" />
+        <p class="lbl"><span class="n">2</span> Ciudad y estado</p>
+        <input id="solCiudad" type="text" placeholder="Ciudad" autocomplete="off" style="margin-bottom:8px" />
+        <input id="solEstado" type="text" placeholder="Estado" autocomplete="off" style="margin-bottom:12px" />
+        <p class="lbl"><span class="n">3</span> ¿Tiene aula virtual?</p>
+        <select id="solTieneAula" class="selNat" style="margin-bottom:12px">
+          <option value="">No sé</option>
+          <option value="si">Sí, tiene aula virtual</option>
+          <option value="no">No tiene aula virtual</option>
+        </select>
+        <p class="lbl"><span class="n">4</span> Link del aula <span class="lblOpt">(si lo sabés)</span></p>
+        <input id="solUrl" type="text" placeholder="https://aula.tucolegio.edu.ve" autocomplete="off" inputmode="url" autocapitalize="none" style="margin-bottom:12px" />
+        <p class="lbl"><span class="n">5</span> Cómo contactarte <span class="lblOpt">(opcional)</span></p>
+        <input id="solContacto" type="text" placeholder="Tu nombre y WhatsApp o correo" autocomplete="off" />
+      </div>
+      <button class="go" id="btnEnviarSolicitud" style="margin-top:16px">Enviar solicitud</button>
+      <div id="solMsg"></div>
+    </div>
+  </section>
+
+  <section id="vRegistro" class="hidden">
+    <button class="back" id="btnRegVolver">‹ Volver</button>
+    <p class="hi">Chispa</p>
+    <h1>Crear mi cuenta</h1>
+    <p class="sub">Elegí un usuario y una clave. No hace falta correo.</p>
+    <div class="panel">
+      <div class="field">
+        <p class="lbl"><span class="n">1</span> Tu nombre</p>
+        <input id="regNombre" type="text" placeholder="Cómo te llamás" autocomplete="off" style="margin-bottom:12px" />
+        <p class="lbl"><span class="n">2</span> Tu grado</p>
+        <select id="regGrado" class="selNat" style="margin-bottom:12px">
+          <option value="">Elegí tu grado…</option>
+          <option value="1er grado">1er grado</option>
+          <option value="2do grado">2do grado</option>
+          <option value="3er grado">3er grado</option>
+          <option value="4to grado">4to grado</option>
+          <option value="5to grado">5to grado</option>
+          <option value="6to grado">6to grado</option>
+          <option value="1er año">1er año</option>
+          <option value="2do año">2do año</option>
+          <option value="3er año">3er año</option>
+          <option value="4to año">4to año</option>
+          <option value="5to año">5to año</option>
+        </select>
+        <p class="lbl"><span class="n">3</span> Usuario</p>
+        <input id="regUsuario" type="text" placeholder="letras y números, sin espacios" autocomplete="username" autocapitalize="none" style="margin-bottom:12px" />
+        <p class="lbl"><span class="n">4</span> Clave</p>
+        <input id="regClave" type="password" placeholder="mínimo 6 caracteres" autocomplete="new-password" />
+      </div>
+      <label class="consent">
+        <input type="checkbox" id="regConsent" />
+        <span>Soy mayor de edad, o tengo permiso de mi mamá, papá o representante para usar Chispa.</span>
+      </label>
+      <details class="privNota">
+        <summary>¿Qué hacemos con tus datos?</summary>
+        <p>Guardamos tu usuario, tu grado y lo que practicás en Chispa, solo para ayudarte a aprender. No te pedimos correo ni teléfono, y no compartimos tus datos con nadie. Si querés, un adulto de tu familia puede ver tu progreso cuando vos le das acceso; nunca puede cambiar nada.</p>
+      </details>
+      <button class="go" id="btnRegistrar" style="margin-top:16px">Crear cuenta</button>
+      <div id="regMsg"></div>
+    </div>
+  </section>
+
+  <section id="vRescate" class="hidden">
+    <p class="hi">Chispa</p>
+    <h1>¡Cuenta creada! 🎉</h1>
+    <p class="sub">Guardá este <b>código de rescate</b>: te sirve para recuperar tu cuenta si olvidás la clave. Se muestra una sola vez.</p>
+    <div class="panel" style="text-align:center">
+      <p class="famMini">Tu código de rescate</p>
+      <p class="rescateCode" id="rescateCode">--------</p>
+      <p class="famHint">Anotalo o sacale una foto. Si lo perdés y olvidás la clave, tendrás que pedir ayuda para recuperar la cuenta.</p>
+      <button class="go" id="btnRescateSeguir" style="margin-top:14px">Ya lo guardé, seguir</button>
+    </div>
+  </section>
+
+  <section id="vLoginNat" class="hidden">
+    <button class="back" id="btnLoginNatVolver">‹ Volver</button>
+    <p class="hi">Chispa</p>
+    <h1>Entrar <span class="star">✨</span></h1>
+    <p class="sub">Con tu usuario y clave de Chispa.</p>
+    <div class="panel">
+      <div class="field">
+        <p class="lbl"><span class="n">1</span> Usuario</p>
+        <input id="natUser" type="text" placeholder="tu usuario" autocomplete="username" autocapitalize="none" style="margin-bottom:12px" />
+        <p class="lbl"><span class="n">2</span> Clave</p>
+        <input id="natPass" type="password" placeholder="tu clave" autocomplete="current-password" />
+      </div>
+      <button class="go" id="btnLoginNat" style="margin-top:16px">Entrar</button>
+      <div id="natMsg"></div>
+      <button class="linkSec" id="btnIrRecuperar" style="margin-top:10px">Olvidé mi clave ›</button>
+    </div>
+  </section>
+
+  <section id="vRecuperar" class="hidden">
+    <button class="back" id="btnRecVolver">‹ Volver</button>
+    <p class="hi">Chispa</p>
+    <h1>Recuperar mi cuenta</h1>
+    <p class="sub">Con tu usuario y el código de rescate que guardaste.</p>
+    <div class="panel">
+      <div class="field">
+        <p class="lbl"><span class="n">1</span> Usuario</p>
+        <input id="recUser" type="text" placeholder="tu usuario" autocomplete="username" autocapitalize="none" style="margin-bottom:12px" />
+        <p class="lbl"><span class="n">2</span> Código de rescate</p>
+        <input id="recCodigo" type="text" placeholder="el código de 8 letras" autocapitalize="characters" style="margin-bottom:12px" />
+        <p class="lbl"><span class="n">3</span> Nueva clave</p>
+        <input id="recClave" type="password" placeholder="mínimo 6 caracteres" autocomplete="new-password" />
+      </div>
+      <button class="go" id="btnRecuperar" style="margin-top:16px">Cambiar clave y entrar</button>
+      <div id="recMsg"></div>
+    </div>
+  </section>
+
+  <!-- CUARTO DE PRUEBAS (admin, oculto: solo se ve navegando a #lab) -->
+  <section id="vLab" class="hidden">
+    <div id="labLogin" class="labWrap">
+      <div class="labCard">
+        <h1 class="labH">🧪 Cuarto de pruebas</h1>
+        <p class="labSub">Vista privada de administrador. Ingresa tu clave para revisar el contenido.</p>
+        <input id="labClave" type="password" class="labInput" placeholder="Clave de administrador" autocomplete="off" />
+        <button id="labEntrar" class="go">Entrar</button>
+        <p id="labErr" class="labErr hidden">Clave incorrecta.</p>
+      </div>
+    </div>
+    <div id="labApp" class="hidden">
+      <header class="labTop">
+        <span class="labTitle">🧪 Panel</span>
+        <div class="labTabs">
+          <button id="labTabUsuarios" class="labTab on">👥 Usuarios</button>
+          <button id="labTabColegios" class="labTab">🏫 Colegios</button>
+          <button id="labTabSolicitudes" class="labTab">📩 Solicitudes</button>
+        </div>
+      </header>
+      <div id="labBody"></div>
+      <div id="labColegios" class="hidden"></div>
+      <div id="labSolicitudes" class="hidden"></div>
+    </div>
+  </section>
+
+  <!-- Sinapsis a pantalla completa (el iframe se crea SOLO al abrir → no pesa hasta que el niño juega) -->
+  <div id="juegoOverlay" class="hidden">
+    <button id="btnCerrarJuego" class="juegoCerrar">✕ Volver a Chispa</button>
+    <div id="juegoFrameWrap"></div>
+  </div>
+
+  <!-- Familia: modal para invitar a un adulto (crea un enlace/QR) y ver/quitar accesos -->
+  <div id="familiaModal" class="hidden famOverlay">
+    <div class="famSheet">
+      <button class="famClose" id="btnCerrarFamilia" aria-label="Cerrar">✕</button>
+      <div id="famBody"></div>
+    </div>
+  </div>
+
+  <!-- Editar horario — VISTA PROPIA, no mezclada con la lectura (§5 del protocolo).
+       Antes se desplegaba debajo del horario: lectura y configuración compitiendo en la misma
+       pantalla. Acá es una hoja aparte; al cerrarla se vuelve a la Agenda de siempre. -->
+  <div id="horarioEditor" class="hidden famOverlay">
+    <div class="famSheet heSheet">
+      <button class="famClose" id="btnCancelarHorario" aria-label="Cerrar sin guardar">✕</button>
+      <div class="heTop">
+        <img class="heMark" src="assets/agenda/horario.webp" alt="" aria-hidden="true" />
+        <div class="agHeadTx">
+          <h2>Editar horario</h2>
+          <p class="agHeadSub">Elige las materias de cada día</p>
+        </div>
+      </div>
+      <div id="horarioEditorDias"></div>
+      <div class="acciones heAcciones">
+        <button class="go" id="btnGuardarHorario">Guardar horario</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nueva materia (Camino B, cuentas nativas) -->
+  <div id="matModal" class="hidden famOverlay">
+    <div class="famSheet">
+      <button class="famClose" id="btnCerrarMat" aria-label="Cerrar">✕</button>
+      <p class="famEyebrow">📚 Mis materias</p>
+      <p class="famTit">Nueva materia</p>
+      <input id="matNombre" class="labInput2" placeholder="Ej: Matemática" maxlength="60" autocomplete="off" />
+      <p class="famMini" style="margin-top:14px">Elegí un ícono</p>
+      <div id="matEmojis" class="matEmojiRow"></div>
+      <button class="go" id="btnGuardarMat" style="margin-top:16px">Crear materia</button>
+      <div id="matMsg"></div>
+    </div>
+  </div>
+
+  <!-- Onboarding de bienvenida (F4) — solo cuentas nativas (Camino B), una vez por usuario -->
+  <div id="onbOverlay" class="hidden famOverlay">
+    <div class="famSheet onbSheet">
+      <div id="onbBody" class="onbBody"></div>
+      <div class="onbDots" id="onbDots"></div>
+      <div class="onbNav">
+        <button class="linkSec" id="onbSaltar" style="margin:0">Saltar</button>
+        <button class="go" id="onbSiguiente" style="width:auto;flex:1">Siguiente</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- PRUEBA: app.js quitado a proposito. El landing (#vLanding) se pinta sin el. -->
+</body>
+</html>
