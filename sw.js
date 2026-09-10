@@ -12,8 +12,8 @@
 // Con el `?v=`, el SW VIEJO busca "/app.js?v=NN" en su caché, NO lo encuentra, y cae a la red
 // → recibe el app.js nuevo → el par index+app.js SIEMPRE viaja junto, ya en la 1ª apertura.
 // Los `?v=` de index.html y este V tienen que subir JUNTOS.
-const V = "114";
-const VERSION = `aulacam-v${V}`; // v114: Materias ya no arranca filtrada (materias nuevas invisibles)
+const V = "115";
+const VERSION = `aulacam-v${V}`; // v115: las materias del año pasado ya no vuelven al horario
 const SHELL = [
   "/",
   "/index.html",

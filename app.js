@@ -817,9 +817,25 @@
     return out;
   }
   // materias propias ya guardadas (aparecen en el horario pero no vienen del aula)
+  // ★ Una materia con marca de grado que NO es el que cursa es del AÑO PASADO, no es "propia".
+  //   Sin este filtro, al cambiar de grado pasaba esto: el horario guardado decia "MUSICA 4G",
+  //   el aula nueva dice "MUSICA 5G", no coincidian, y Chispa ascendia a las 22 materias viejas
+  //   a "materias propias". La niña las quitaba de un dia y REAPARECIAN al instante en la lista
+  //   "Agregar al lunes" de abajo — se veia como que no se podian borrar. Las materias propias
+  //   de verdad (Caligrafia, Biblioteca, Comprension lectora) no llevan marca de grado y siguen
+  //   pasando el filtro.
+  const MARCA_GRADO = /\b([1-6])\s*([GA])\b/i;
+  function esDeOtroGrado(nombre){
+    const t = String(nombre || "").match(MARCA_GRADO);
+    if(!t) return false;                       // sin marca de grado: materia propia legitima
+    const g = infoGrado();
+    if(!g) return false;                       // sin grado conocido: no descartar nada
+    return `${t[1]}${t[2].toUpperCase()}` !== `${g.n}${g.tipo}`;
+  }
   function materiasExtraGuardadas(){
     const base=materiasBase().map(norm);
-    return unicasPorNombre(HORARIO.map(h=>h.materia).filter(m=>m && !base.includes(norm(m))));
+    return unicasPorNombre(HORARIO.map(h=>h.materia)
+      .filter(m=>m && !base.includes(norm(m)) && !esDeOtroGrado(m)));
   }
   // pool completo de materias para los formularios (aula + propias)
   function materiasParaFormularios(){ return unicasPorNombre([...materiasBase(), ...materiasExtraGuardadas()]); }
