@@ -1813,8 +1813,16 @@
     });
   }
   // ── Materias: protagonista + segmentado ──
-  let matSeg = "progreso";   // segmento activo del grid ("progreso" | "todas")
-  let matSegUser = false;    // ¿el usuario tocó el segmentado? (si no, el default sigue a los datos)
+  // ★ EL DEFAULT ES "todas" — NO VOLVER A "progreso" (materias nuevas invisibles, 2026-09) ★
+  // El filtro "En progreso" descarta toda materia con avance 0, y una materia RECIEN ASIGNADA
+  // por el colegio tiene avance 0. Al empezar el año escolar eso dejaba a la niña viendo solo
+  // las materias del curso ANTERIOR (las unicas con progreso) y las nuevas escondidas detras
+  // del chip "Todas". Peor: matSegUser no se persiste, asi que volvia a "En progreso" en CADA
+  // apertura de la app. Sintoma reportado: "las materias ya estan asignadas en el aula virtual,
+  // por que no salen en Chispa?". El orden de ordenarMaterias() ya pone las empezadas primero,
+  // asi que arrancar en "todas" no pierde nada y no esconde nada.
+  let matSeg = "todas";      // segmento activo del grid ("progreso" | "todas")
+  let matSegUser = false;    // ¿el usuario tocó el segmentado? (si no, se queda en el default)
   // Elige la materia protagonista: la EMPEZADA más avanzada. Si ninguna está empezada, null
   // (se muestra "Elige una materia para empezar" — sin inventar recomendaciones, pedido del user).
   function materiaDestacadaElegir(lista){
@@ -1835,7 +1843,7 @@
     const cont=$("#materiasSeg"); if(!cont) return;
     const enProg = lista.filter(m=>estadoMateria(m).tipo==="progreso").length;
     if(!enProg){ matSeg="todas"; cont.classList.add("hidden"); cont.innerHTML=""; return; }
-    if(!matSegUser) matSeg = "progreso";   // default automático: si hay empezadas, arranca en "En progreso"
+    if(!matSegUser) matSeg = "todas";      // sin eleccion explicita, NUNCA esconder materias
     cont.classList.remove("hidden");
     cont.innerHTML=`<button class="chip" type="button" data-seg="progreso" aria-pressed="${matSeg==='progreso'}">En progreso</button>`
       + `<button class="chip" type="button" data-seg="todas" aria-pressed="${matSeg==='todas'}">Todas</button>`;
