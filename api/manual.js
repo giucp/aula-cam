@@ -95,11 +95,13 @@ async function usuarioPerfil(cfg, uid) {
 // de Gemini se conserva entero y apagado; IA_PROVEEDOR=gemini lo devuelve. deepseek-flash
 // acepta imagenes (verificado contra la API), que es justo lo que necesita este endpoint.
 const IA_PROVEEDOR = String(process.env.IA_PROVEEDOR || "deepseek").trim().toLowerCase();
-// ★ RED DE SEGURIDAD: si se elige DeepSeek pero la key NO esta cargada en Vercel, se sigue
-//   usando Gemini en vez de romper cada generacion con un 500. Asi el deploy nunca deja a las
-//   niñas sin IA por una variable de entorno que falta: en cuanto aparece la key, cambia solo.
-const hayKeyDeepSeek = !!String(process.env.DEEPSEEK_API_KEY || process.env.DEEPSEEK_API_KEYS || "").trim();
-const esDeepSeek = IA_PROVEEDOR === "deepseek" && hayKeyDeepSeek;
+// ★ SOLO DEEPSEEK (decision del user, 2026-09-10: "ya no quiero a gemini respondiendo en nada").
+//   Antes habia una vuelta atras automatica a Gemini si faltaba la key; se retiro A PROPOSITO.
+//   Si DEEPSEEK_API_KEY falta, la generacion devuelve un error claro en vez de contestar con
+//   Gemini a escondidas. El codigo de Gemini sigue entero y solo se enciende a mano con
+//   IA_PROVEEDOR=gemini. OJO: la key esta cargada en Production; los deploys de Preview no la
+//   tienen, asi que ahi la IA no va a responder hasta que se agregue tambien a Preview.
+const esDeepSeek = IA_PROVEEDOR === "deepseek";
 const DEEPSEEK_URL = process.env.DEEPSEEK_URL || "https://api.deepseek.com/chat/completions";
 const DEEPSEEK_MODEL = process.env.DEEPSEEK_MODEL || "deepseek-flash";
 // Holgado a proposito: el modelo razona y esos tokens salen del mismo presupuesto.
