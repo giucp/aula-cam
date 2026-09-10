@@ -35,7 +35,13 @@
       radial-gradient(92% 46% at 102% 2%, rgba(246,197,226,.24), transparent 45%),
       radial-gradient(100% 52% at 50% 106%, rgba(193,221,255,.18), transparent 48%),
       #FDFBFE;
-    background-attachment:fixed;padding:max(18px,env(safe-area-inset-top)) 16px 48px;
+    /* ★ SIN background-attachment:fixed — NO REPONERLO (cuadro negro en iPhone, 2026-09) ★
+       fixed manda el fondo a una capa fija aparte, y esa capa es de lo mas roto que hay en
+       WebKit/iOS. Se veia un RECTANGULO NEGRO arriba a la izquierda — justo donde ancla el
+       primer gradiente (at 2% -4%) — tapando el rotulo y la esquina del titulo del landing.
+       Pasaba en Safari, Chrome y la app instalada del iPhone; Android y escritorio limpios.
+       El gradiente ahora scrollea con la pagina: es un wash sutil, no se nota. */
+    padding:max(18px,env(safe-area-inset-top)) 16px 48px;
   }
   .wrap{max-width:620px;margin:0 auto}
   .hi{font-family:"Fredoka",sans-serif;font-weight:600;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mango);margin:6px 0 0}
@@ -1083,7 +1089,7 @@
       radial-gradient(115% 68% at 106% -4%, rgba(255,190,214,.20) 0%, transparent 40%),
       radial-gradient(120% 78% at 50% 114%, rgba(190,220,255,.18) 0%, transparent 48%),
       #FCFBFE;
-    background-attachment:fixed;
+    /* sin background-attachment:fixed, por lo mismo que el body base (ver arriba) */
   }
   /* La Agenda usa el wash del mockup: cálido arriba (crema→durazno→rosa) enfriándose a azul
      lavanda abajo. Más presente que el canvas del Inicio A PROPÓSITO: el del Inicio es "casi
@@ -1094,7 +1100,7 @@
       radial-gradient(72% 30% at 12% -2%, rgba(255,222,170,.5), transparent 68%),
       radial-gradient(72% 30% at 88% -2%, rgba(255,196,214,.42), transparent 66%),
       linear-gradient(180deg,#FFF7EC 0%,#FCF3F2 26%,#F8F4FB 56%,#EEF3FD 100%);
-    background-attachment:fixed;
+    /* sin background-attachment:fixed, por lo mismo que el body base (ver arriba) */
   }
   /* La Agenda trae su propio encabezado ("Mi agenda" + el libro) → fuera la .topbar vieja, igual
      que en Inicio y Materias. Salir sigue viviendo en el Inicio. */
