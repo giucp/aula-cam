@@ -12,8 +12,8 @@
 // Con el `?v=`, el SW VIEJO busca "/app.js?v=NN" en su caché, NO lo encuentra, y cae a la red
 // → recibe el app.js nuevo → el par index+app.js SIEMPRE viaja junto, ya en la 1ª apertura.
 // Los `?v=` de index.html y este V tienen que subir JUNTOS.
-const V = "109";
-const VERSION = `aulacam-v${V}`; // v109: fuera drop-shadow de la mascota (cuadro negro en iPhone)
+const V = "110";
+const VERSION = `aulacam-v${V}`; // v110: fuera Sinapsis (juego) de toda la app
 const SHELL = [
   "/",
   "/index.html",

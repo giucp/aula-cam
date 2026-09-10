@@ -27,6 +27,11 @@ http.createServer((req, res) => {
     res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
     return res.end("404");
   }
-  res.writeHead(200, { "Content-Type": MIME[path.extname(f).toLowerCase()] || "application/octet-stream" });
+  // no-store SIEMPRE: un servidor de desarrollo que cachea hace perder horas verificando
+  // una version vieja del archivo que acabas de editar (paso el 2026-09-10 con las efemerides).
+  res.writeHead(200, {
+    "Content-Type": MIME[path.extname(f).toLowerCase()] || "application/octet-stream",
+    "Cache-Control": "no-store, must-revalidate",
+  });
   fs.createReadStream(f).pipe(res);
 }).listen(PUERTO, () => console.log(`demo en http://localhost:${PUERTO}  (raiz: ${ROOT})`));

@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
 <!-- El `?v=` va apareado con el V de sw.js — subir los DOS juntos. Sin él, la 1ª apertura tras un
      deploy mezcla index nuevo + app.js viejo (cache-first) y el arranque muere. Ver sw.js. -->
-<link rel="stylesheet" href="estilos.css?v=109">
+<link rel="stylesheet" href="estilos.css?v=110">
 </head>
 <body>
 <div class="wrap">
@@ -263,18 +263,11 @@
       </section>
 
       <!-- 8 · UN RESPIRO: la zona de premio va al final, después del trabajo. -->
-      <section class="h2Section" aria-labelledby="homeRespiroTit">
+      <section class="h2Section" aria-labelledby="homeRespiroTit" id="secRespiro">
         <div class="h2SectionHead">
           <h2 id="homeRespiroTit">Un respiro</h2>
         </div>
         <div class="h2Break">
-          <div id="juegoWrap">
-            <button class="h3MoreRow" id="btnJuego" type="button" style="--tone:#12B5A4">
-              <span class="h3MoreRowIcon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4.5A2.5 2.5 0 0 0 5.6 6 2.5 2.5 0 0 0 4.5 10a2.5 2.5 0 0 0 .6 4.4V17a2.5 2.5 0 0 0 4.9.6z"/><path d="M14 4.5A2.5 2.5 0 0 1 18.4 6a2.5 2.5 0 0 1 1.1 4 2.5 2.5 0 0 1-.6 4.4V17a2.5 2.5 0 0 1-4.9.6z"/></svg></span>
-              <span class="h3MoreRowTx"><b>Sinapsis</b><small>Recreo mental · entrena tu mente y compite con tu cole</small></span>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"/></svg>
-            </button>
-          </div>
           <div id="efemeride" class="hidden"></div>
         </div>
       </section>
@@ -686,12 +679,6 @@
     </div>
   </section>
 
-  <!-- Sinapsis a pantalla completa (el iframe se crea SOLO al abrir → no pesa hasta que el niño juega) -->
-  <div id="juegoOverlay" class="hidden">
-    <button id="btnCerrarJuego" class="juegoCerrar">✕ Volver a Chispa</button>
-    <div id="juegoFrameWrap"></div>
-  </div>
-
   <!-- Familia: modal para invitar a un adulto (crea un enlace/QR) y ver/quitar accesos -->
   <div id="familiaModal" class="hidden famOverlay">
     <div class="famSheet">
@@ -748,6 +735,6 @@
 
 </div>
 
-<script src="app.js?v=109"></script>
+<script src="app.js?v=110"></script>
 </body>
 </html>

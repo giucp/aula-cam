@@ -320,7 +320,6 @@
       flecha:'<path d="M5 12h13M14 7l5 5-5 5"/>',
       chispa:'<path d="M12 3c.7 4.7 2.3 6.3 7 7-4.7.7-6.3 2.3-7 7-.7-4.7-2.3-6.3-7-7 4.7-.7 6.3-2.3 7-7z"/>',
       // ── íconos de "Más para ti" (Chispa 2.0: SVG, nunca emojis) ──
-      juego:'<path d="M10 4.5A2.5 2.5 0 0 0 5.6 6 2.5 2.5 0 0 0 4.5 10a2.5 2.5 0 0 0 .6 4.4V17a2.5 2.5 0 0 0 4.9.6z"/><path d="M14 4.5A2.5 2.5 0 0 1 18.4 6a2.5 2.5 0 0 1 1.1 4 2.5 2.5 0 0 1-.6 4.4V17a2.5 2.5 0 0 1-4.9.6z"/>',
       calendario:'<rect x="4" y="5.5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10.5h16"/>',
       nota:'<path d="M12 4 2.8 8.5 12 13l9.2-4.5z"/><path d="M6.5 10.8V15c0 1.7 2.5 3 5.5 3s5.5-1.3 5.5-3v-4.2"/>',
       familia:'<circle cx="9" cy="8" r="3.2"/><path d="M3 19.5a6 6 0 0 1 12 0"/><path d="M16.5 6.4a2.8 2.8 0 0 1 0 5.6M17 19.5a5 5 0 0 0-1.8-3.8"/>',
@@ -471,17 +470,23 @@
       `<div class="enMeter"><i style="width:${pct}%"></i></div><p class="enMsg">${msg}</p></div></div>`;
     box.classList.remove("hidden");
   }
+  // "Un respiro" quedo con la efemeride como UNICO contenido (Sinapsis se retiro el 2026-09-10).
+  // Solo 62 dias del año tienen efemeride: los otros 304 quedaria el titulo solo, sin nada debajo.
+  // Por eso el guardian oculta la SECCION entera, no solo la tarjeta.
   function pintarEfemeride(){
     const box=$("#efemeride"); if(!box) return;
+    const sec=$("#secRespiro");
+    const verSeccion=(v)=>{ if(sec) sec.classList.toggle("hidden", !v); };
     const d=new Date();
     const key=String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
     const e=EFEMERIDES&&EFEMERIDES[key];
-    if(!e||!e.texto){ box.classList.add("hidden"); box.innerHTML=""; return; }
+    if(!e||!e.texto){ box.classList.add("hidden"); box.innerHTML=""; verSeccion(false); return; }
     const anio=e.anio?`En ${escapeHtml(String(e.anio))}, `:"";
     // Chispa 2.0: tarjeta blanca + placa de ilustración. El emoji viene del DATO del día
     // (no es iconografía de UI), por eso se presenta dentro de una placa tintada.
     box.innerHTML=`<div class="h3MoreCard"><div class="h3Efe"><span class="h3EfeArt">${escapeHtml(e.emoji||"✨")}</span><span class="h3EfeTx"><small>Un día como hoy</small><p>${anio}${escapeHtml(e.texto)}</p></span></div></div>`;
     box.classList.remove("hidden");
+    verSeccion(true);
   }
   // Misión principal de Inicio: resume una acción real (no copia el título de agenda).
   // Prioriza un examen, luego una entrega y por último una materia real de la sesión.
@@ -1466,32 +1471,6 @@
   $("#btnRecVolver") && ($("#btnRecVolver").onclick=verLoginNat);
   $("#btnRecuperar") && ($("#btnRecuperar").onclick=hacerRecuperar);
 
-  // ── Sinapsis (juego): liga privada del cole. Se abre embebido, con el nombre e id
-  //    del niño; el iframe se crea SOLO al abrir (no pesa hasta que juega) y se descarta al cerrar.
-  const JUEGO_URL = "https://sinapsis-mocha.vercel.app";
-  function nombreJuego(){
-    const p = ((SESION&&SESION.nombre)||"").trim().split(/\s+/).filter(Boolean);
-    return p[0] ? (p[0] + (p[1] ? " "+p[1].charAt(0).toUpperCase()+"." : "")) : "jugador";
-  }
-  function juegoOnbKey(){ return "sxOnb:" + (SESION ? SESION.id : ""); }
-  function abrirJuego(){
-    if(!SESION) return;
-    // El iframe de Sinapsis es de otro dominio → su localStorage no persiste (iOS/ITP).
-    // Chispa (first-party) recuerda si este niño ya vio el tutorial y se lo pasa (?onb).
-    let onb = ""; try{ const o = store.get(juegoOnbKey()); if(o) onb = "&onb=" + encodeURIComponent(JSON.stringify(o)); }catch(e){}
-    const url = JUEGO_URL + "/?grupo=chispa&nombre=" + encodeURIComponent(nombreJuego()) + "&uid=" + encodeURIComponent(String(SESION.id)) + onb;
-    $("#juegoFrameWrap").innerHTML = '<iframe id="juegoFrame" title="Sinapsis" src="'+url+'" allow="autoplay; fullscreen"></iframe>';
-    $("#juegoOverlay").classList.remove("hidden");
-    document.body.classList.add("juegoAbierto");
-  }
-  function cerrarJuego(){
-    $("#juegoOverlay").classList.add("hidden");
-    $("#juegoFrameWrap").innerHTML = "";   // descarga el juego: libera memoria y detiene sonido/timers
-    document.body.classList.remove("juegoAbierto");
-  }
-  $("#btnJuego").onclick = abrirJuego;
-  $("#btnCerrarJuego").onclick = cerrarJuego;
-
   // ── Familia (padres): el niño genera un enlace/QR para dar acceso de SOLO LECTURA a un
   //    adulto. La generación va autenticada con su token de Moodle (api/familia). El QR se
   //    carga perezosamente (solo al invitar) para no pesar el arranque.
@@ -1710,16 +1689,6 @@
     repintarProgreso();
   }
   // registra que el niño hizo una actividad; actualiza PROGRESO al instante + guarda (fire-and-forget)
-  // Sinapsis (iframe, otro dominio) nos habla por postMessage.
-  window.addEventListener("message", (ev)=>{
-    if(!/sinapsis/i.test(ev.origin||"")) return;
-    const m = ev.data;
-    if(!m) return;
-    // estado del tutorial → lo guardamos por niño (persistimos por él, ver abrirJuego).
-    if(m.tipo==="sinapsis_onb" && SESION){
-      try{ const t = Array.isArray(m.t) ? m.t.filter(x=>typeof x==="string").slice(0,12) : []; store.set(juegoOnbKey(), {i: m.i?1:0, t}); }catch(e){}
-    }
-  });
 
   function registrarActividad(meta, modo, extra){
     if(origen==="cumbre"){          // Cumbre no se mezcla con el progreso del aula, pero SÍ guarda la nota del quiz (local)

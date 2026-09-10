@@ -132,18 +132,6 @@
      Materias 2.0 ya no usa .destacada — su invitación a Cumbre es .m2Cumbre. */
   .destacada.cumbre{background:linear-gradient(130deg,#211B3A,#4933C8 55%,#735DF0);box-shadow:0 20px 40px -20px rgba(33,27,58,.6)}
 
-  /* tarjeta Sinapsis (recreo mental): gradiente oscuro tipo "espacio", distinto de lo académico */
-  #juegoWrap{margin:14px 0 2px}
-  .destacada.juego{background:linear-gradient(120deg,#0E1230,#1B1E52 52%,#2A2E7A);box-shadow:0 16px 30px -12px rgba(20,22,60,.7)}
-  /* juego a pantalla completa: overlay que cubre Chispa; el iframe se inyecta al abrir */
-  #juegoOverlay{position:fixed;inset:0;z-index:9999;background:#0A0A1E;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top)}
-  #juegoOverlay.hidden{display:none}
-  .juegoCerrar{flex:0 0 auto;align-self:flex-end;margin:8px 10px 6px;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:8px 14px;font-family:"Fredoka";font-weight:600;font-size:.9rem;cursor:pointer}
-  .juegoCerrar:active{transform:scale(.97)}
-  #juegoFrameWrap{flex:1;min-height:0}
-  #juegoFrameWrap iframe{width:100%;height:100%;border:0;display:block}
-  body.juegoAbierto{overflow:hidden}
-
   /* tarjeta Familia (dar acceso a un adulto): teal amistoso, distinto de lo académico */
   #familiaWrap{margin:16px 0 2px}
   .destacada.familia{background:linear-gradient(120deg,#0E9486,#12B5A4 55%,#3FD0B0);box-shadow:0 16px 30px -12px rgba(14,148,134,.6)}
@@ -1258,7 +1246,9 @@
      Reemplaza al `.h2MoreBody>div:empty` que hacía este trabajo dentro del cajón "Más para ti". */
   .h2Loose{margin:0 0 26px;min-width:0}
   .h2Loose:empty{display:none}
-  /* "Un respiro": Sinapsis + efeméride, la zona de premio al final de la Home */
+  /* "Un respiro": la efeméride del día, la zona de premio al final de la Home. La sección se
+     oculta entera los días sin efeméride (ver pintarEfemeride) — antes la acompañaba Sinapsis,
+     retirado el 2026-09-10. */
   .h2Break{display:flex;flex-direction:column;gap:10px}
 
   /* ═══ Tarjetas y filas de la Home — Chispa 2.0 (reemplazan los parches sobre .widget/.destacada/
@@ -1280,7 +1270,7 @@
   .h3MoreMark--img{width:38px;height:38px;border-radius:0;background:none}
   .h3MoreMark--img img{width:100%;height:100%;object-fit:contain;display:block}
 
-  /* fila accionable (Sinapsis, Familia, novedad, refuerzo) */
+  /* fila accionable (Familia, novedad, refuerzo) */
   .h3MoreRow{--tone:var(--chispa-primary);width:100%;min-height:64px;display:grid;grid-template-columns:40px minmax(0,1fr) 15px;align-items:center;gap:11px;border:1px solid rgba(255,255,255,.92);border-radius:18px;background:#fff;padding:10px 13px;box-shadow:0 16px 36px -30px rgba(38,25,58,.36);cursor:pointer;text-align:left}
   .h3MoreRow:active{transform:scale(.99)}
   .h3MoreRow>svg{width:15px;height:15px;fill:none;stroke:var(--h2-muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
