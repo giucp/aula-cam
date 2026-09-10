@@ -56,6 +56,27 @@ const MODELOS_VETADOS = new Set(
   (process.env.GEMINI_MODELOS_VETADOS == null ? "gemini-3.5-flash" : process.env.GEMINI_MODELOS_VETADOS)
     .split(",").map((s) => s.trim()).filter(Boolean)
 );
+// ══════════════ PROVEEDOR DE IA ══════════════
+// Chispa nacio sobre Gemini. Desde 2026-09 corre sobre DeepSeek: mejor relacion
+// precio/valor (deepseek-flash sale $0.22/$0.66 por 1M off-peak contra $0.30/$2.50 de
+// gemini-2.5-flash, o sea ~4x mas barato en salida). TODA la maquinaria de Gemini se
+// conserva intacta y apagada: cadenas de modelos, breaker, rotacion de keys, vetos.
+// Para volver a Gemini alcanza con IA_PROVEEDOR=gemini en Vercel. No borrar su codigo.
+//
+// ★ deepseek-flash RAZONA antes de responder, y esos tokens salen del MISMO presupuesto
+//   que la respuesta. Medido el 2026-09-10: un quiz de 3 preguntas gasto 219 tokens de
+//   razonamiento sobre 587 de salida; con max_tokens corto la respuesta vuelve VACIA.
+//   Por eso DEEPSEEK_MAX_TOKENS es holgado. Bajarlo rompe las generaciones en silencio.
+const IA_PROVEEDOR = String(process.env.IA_PROVEEDOR || "deepseek").trim().toLowerCase();
+// ★ RED DE SEGURIDAD: si se elige DeepSeek pero la key NO esta cargada en Vercel, se sigue
+//   usando Gemini en vez de romper cada generacion con un 500. Asi el deploy nunca deja a las
+//   niñas sin IA por una variable de entorno que falta: en cuanto aparece la key, cambia solo.
+const hayKeyDeepSeek = !!String(process.env.DEEPSEEK_API_KEY || process.env.DEEPSEEK_API_KEYS || "").trim();
+const esDeepSeek = IA_PROVEEDOR === "deepseek" && hayKeyDeepSeek;
+const DEEPSEEK_URL = process.env.DEEPSEEK_URL || "https://api.deepseek.com/chat/completions";
+const DEEPSEEK_MODEL = process.env.DEEPSEEK_MODEL || "deepseek-flash";
+const DEEPSEEK_MAX_TOKENS = Number(process.env.DEEPSEEK_MAX_TOKENS) || 8000;
+
 const MAX_PDFS = 3;                       // cuántos PDFs leer por generación
 const MAX_PDF_BYTES = 8 * 1024 * 1024;    // por archivo
 const MAX_TOTAL_BYTES = 15 * 1024 * 1024; // suma de todos
@@ -338,11 +359,24 @@ const PRECIO_IA = {
   "gemini-2.5-flash": { in: 0.30, out: 2.50 },
   "gemini-2.5-flash-lite": { in: 0.10, out: 0.40 },
   "gemini-2.5-pro": { in: 1.25, out: 10.00 },
+  // DeepSeek cobra distinto en horario pico (el doble): usamos la tarifa PICO a proposito,
+  // asi el freno de gasto por niño (ia_limite_dia_usd) nunca subestima lo que se gasto.
+  // Off-peak real: 0.22 / 0.66. Los aciertos de cache bajan a 0.007-0.014, no se modelan.
+  "deepseek-flash": { in: 0.44, out: 1.32 },
+  "deepseek-v4-pro": { in: 0.88, out: 2.64 },
 };
 const LIMITE_DIA_USD = 0.20; // tope diario por defecto si la fila no trae ia_limite_dia_usd
 // Máx. regeneraciones POR REPORTE que usan Pro por alumno y día. Pasado el tope, el reporte
 // igual regenera pero por el flujo normal (Flash) → acota el costo Pro que absorbe el proyecto.
 const CAP_REPORTE_PRO = 3;
+// Normaliza el "usage" de cualquiera de los dos proveedores a la forma de Gemini.
+// DeepSeek: prompt_tokens / completion_tokens (este YA incluye los de razonamiento).
+function usoNormalizado(data) {
+  if (data && data.usageMetadata) return data.usageMetadata;
+  const u = (data && data.usage) || null;
+  if (!u) return null;
+  return { promptTokenCount: u.prompt_tokens || 0, candidatesTokenCount: u.completion_tokens || 0, thoughtsTokenCount: 0 };
+}
 function costoUSD(model, usage) {
   const p = PRECIO_IA[model] || PRECIO_IA["gemini-2.5-flash"];
   const inp = (usage && usage.promptTokenCount) || 0;
@@ -556,6 +590,14 @@ function geminiKeys() {
     .filter((k) => !pagas.includes(k));
   return { gratis, pagas };
 }
+// Keys del proveedor activo. DeepSeek usa DEEPSEEK_API_KEY (o DEEPSEEK_API_KEYS, coma-separadas)
+// y todas cuentan como PAGAS: no hay free-tier que agotar, y asi el control de gasto las cobra.
+function iaKeys() {
+  if (!esDeepSeek) return geminiKeys();
+  const limpiar = (x) => String(x || "").split(",").map((k) => k.trim()).filter(Boolean);
+  const pagas = [...new Set([...limpiar(process.env.DEEPSEEK_API_KEY), ...limpiar(process.env.DEEPSEEK_API_KEYS)])];
+  return { gratis: [], pagas };
+}
 function claveCache(o) {
   const ver = PROMPT_VER[o.modo] || "";
   // El resumen no usa "cantidad": la ignoramos en la clave para no fragmentar el
@@ -596,6 +638,12 @@ function esValido(modo, d) {
 }
 // Concatena TODOS los parts de la respuesta de Gemini (a veces la parte en varios) y
 // devuelve el JSON parseado, o null si no es JSON válido (truncado/malformado).
+// Respuesta de DeepSeek (estilo OpenAI). Misma tolerancia a ```json que el de Gemini.
+function parsearDeepSeek(data) {
+  const texto = String((data && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || "").trim() || "{}";
+  try { return JSON.parse(texto.replace(/```json|```/g, "").trim()); } catch (e) { return null; }
+}
+function parsearIA(data) { return esDeepSeek ? parsearDeepSeek(data) : parsearGemini(data); }
 function parsearGemini(data) {
   const partes = (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) || [];
   const texto = (partes.map((p) => (p && p.text) || "").join("").trim()) || "{}";
@@ -636,7 +684,9 @@ async function cacheSet(clave, fila) {
 
 // Llama a Gemini con reintentos: ante 429 (límite por minuto) o 503 (saturado)
 // espera un poco y reintenta, en vez de fallarle al niño de una.
-async function pedirAGemini(url, payload, intentos = 2, deadline = 0) {
+// Sirve para los dos proveedores: Gemini lleva la key en la URL y DeepSeek en un header,
+// por eso headersExtra. Todo lo demas (fast-fail, backoff, deteccion de cuelgue) es igual.
+async function pedirAGemini(url, payload, intentos = 2, deadline = 0, headersExtra = null) {
   let ultimo = { data: null, status: 0, hang: false };
   for (let i = 0; i < intentos; i++) {
     // No arrancamos una llamada si casi no queda presupuesto de tiempo (evita el 504 de
@@ -652,12 +702,15 @@ async function pedirAGemini(url, payload, intentos = 2, deadline = 0) {
     try {
       const r = await fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...(headersExtra || {}) },
         body: JSON.stringify(payload),
         signal: ctrl.signal,
       });
       try { data = await r.json(); } catch (e) { data = null; }
-      status = (data && data.error && data.error.code) || r.status;
+      // OJO: Gemini manda error.code numerico; DeepSeek manda un string ("invalid_request_error").
+      // Si se cuela un string, las comparaciones con 429/503 fallan y el chain se rompe.
+      const codeNum = data && data.error && typeof data.error.code === "number" ? data.error.code : 0;
+      status = codeNum || r.status;
     } catch (e) {
       // abort (cuelgue) o red caída → 503 retriable, marcado como HANG: el caller salta de
       // modelo directamente (un cuelgue es del modelo/servicio, no de la key) y el breaker lo cuenta.
@@ -762,8 +815,10 @@ export default async function handler(req, res) {
       return res.status(403).json({ error: "Esta es una función premium de Chispa.", premium: true });
     }
 
-    const { gratis, pagas } = geminiKeys();
-    if (!gratis.length && !pagas.length) return res.status(500).json({ error: "Falta GEMINI_API_KEY en Vercel" });
+    const { gratis, pagas } = iaKeys();
+    if (!gratis.length && !pagas.length) {
+      return res.status(500).json({ error: `Falta ${esDeepSeek ? "DEEPSEEK_API_KEY" : "GEMINI_API_KEY"} en Vercel` });
+    }
 
     const modo = MODOS_VALIDOS.has(req.body && req.body.modo) ? req.body.modo : "retos";
     const n = Math.min(Math.max(parseInt(cantidad, 10) || 5, 1), 10);
@@ -895,7 +950,25 @@ export default async function handler(req, res) {
     // Numérico: thinking amplio (los cálculos lo necesitan). No numérico (teoría/verbal):
     // thinking liviano → mucho más rápido, para no pasar del límite de 60s de Vercel.
     if (necesitaMate) genCfg.thinkingConfig = { thinkingBudget: numerica ? 4096 : 1024 };
-    const payload = { contents: [{ parts }], generationConfig: genCfg };
+    const payloadGemini = { contents: [{ parts }], generationConfig: genCfg };
+    // Traduccion a la API estilo OpenAI de DeepSeek: las parts de texto se concatenan y
+    // cada inline_data (foto del cuaderno, pagina de PDF) va como image_url en data URI.
+    // Verificado el 2026-09-10 contra la API real: deepseek-flash ACEPTA imagenes.
+    const contenidoDS = [];
+    for (const p of parts) {
+      if (p && p.text) contenidoDS.push({ type: "text", text: p.text });
+      else if (p && p.inline_data) {
+        contenidoDS.push({ type: "image_url", image_url: { url: `data:${p.inline_data.mime_type};base64,${p.inline_data.data}` } });
+      }
+    }
+    const payloadDeepSeek = {
+      model: DEEPSEEK_MODEL,
+      messages: [{ role: "user", content: contenidoDS }],
+      temperature: genCfg.temperature,
+      response_format: { type: "json_object" },
+      max_tokens: DEEPSEEK_MAX_TOKENS,
+    };
+    const payload = esDeepSeek ? payloadDeepSeek : payloadGemini;
     // REGLA DE MODELOS (2026-07-04): flash-lite NUNCA toca contenido numérico/lógico —
     // por más blindado que esté el prompt, se equivoca. Prioridades:
     // - Tema NUMÉRICO (mate/lógica/olimpiada, cualquier modo): SOLO flash. Sin respaldo
@@ -924,7 +997,11 @@ export default async function handler(req, res) {
       ? [...FLASH_CHAIN, MODEL_TEXTO, MODEL_REPORTE] // práctica de teoría: flash → lite → pro
       : [MODEL_TEXTO, ...FLASH_CHAIN, MODEL_REPORTE]; // resumen de teoría: lite → flash → pro
     // sin duplicados y SIN los modelos vetados (3.5-flash queda fuera pase lo que pase)
-    const modelos = [...new Set(rawChain)].filter((m) => !MODELOS_VETADOS.has(m));
+    // Con DeepSeek la cadena es UN solo modelo (decision del user: "el unico que vamos a usar
+    // es el deepseek flash"). El breaker y el resto del loop funcionan igual con un elemento.
+    const modelos = esDeepSeek
+      ? [DEEPSEEK_MODEL]
+      : [...new Set(rawChain)].filter((m) => !MODELOS_VETADOS.has(m));
     // Probamos modelos × keys. Ante 429 (cupo) o 503 (saturado) seguimos con la
     // próxima key; agotadas todas, el próximo modelo. ESTRATEGIA DE COSTO: primero
     // TODAS las gratis (arrancando en una al azar, para repartir su cupo de ~20/min
@@ -966,14 +1043,17 @@ export default async function handler(req, res) {
     // Los 429 puros son cupo de la KEY, no salud del modelo → no cuentan.
     const resultadoModelo = new Map();
     buscar: for (const m of cadena) {
-      const ep = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`;
+      const ep = esDeepSeek ? DEEPSEEK_URL : `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`;
       // Sonda (modelo con historial de fallos): UNA probada real (1 intento por key y
       // cortar al primer fallo de servicio) — si responde se limpia, si no seguimos de largo.
       const esSonda = saludEstado(salud, m, ahoraSalud) !== "ok";
       let vio503 = false;
       for (const key of ordenKeys) {
         if (Date.now() > DEADLINE - 4000) { status = 503; break buscar; } // sin tiempo → cortamos amable
-        const r = await pedirAGemini(`${ep}?key=${key}`, payload, esSonda ? 1 : 2, DEADLINE);
+        // Gemini: la key va en la query. DeepSeek: en el header Authorization.
+        const url = esDeepSeek ? ep : `${ep}?key=${key}`;
+        const hdrs = esDeepSeek ? { Authorization: `Bearer ${key}` } : null;
+        const r = await pedirAGemini(url, payload, esSonda ? 1 : 2, DEADLINE, hdrs);
         data = r.data;
         status = r.status;
         modeloUsado = m;
@@ -988,7 +1068,7 @@ export default async function handler(req, res) {
         if (data && data.error) { resultadoModelo.set(m, "fallo"); break; } // error duro (400/404) → próximo modelo
         // 200: parseamos y validamos ACÁ. Si el JSON viene malformado/incompleto (varianza del
         // modelo), lo tratamos como reintentable: probamos otra key/modelo si queda tiempo.
-        const p = parsearGemini(data);
+        const p = parsearIA(data);
         if (p && esValido(modo, p)) { parsed = p; resultadoModelo.set(m, "exito"); break buscar; }
         malformado = true;
       }
@@ -1062,7 +1142,7 @@ export default async function handler(req, res) {
     // Pro se pensó SOLO para el reporte; si acá lo usó fue como respaldo por saturación de flash →
     // se cobra a la batería a tarifa FLASH (el niño no tiene la culpa de que Google saturara).
     const modeloCobro = (porReporte || /pro/i.test(modeloUsado)) ? "gemini-2.5-flash" : tierRef(modeloUsado);
-    const costo = costoUSD(modeloCobro, data.usageMetadata);
+    const costo = costoUSD(modeloCobro, usoNormalizado(data));
     await registrarGastoIA(usuarioId, costo);
     // consumió un cupo Pro de reporte de HOY → suma al contador diario (para el cap)
     if (usarProReporte) await sumarReporteIA(usuarioId);

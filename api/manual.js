@@ -90,15 +90,35 @@ async function usuarioPerfil(cfg, uid) {
   } catch (e) { return {}; }
 }
 
-// ───────── Gemini Vision: lee un apunte (foto/texto) y saca tema + conceptos + OCR ─────────
+// ───────── Vision: lee un apunte (foto/texto) y saca tema + conceptos + OCR ─────────
+// Proveedor activo: DeepSeek desde 2026-09 (ver el bloque largo en api/generar.js). El camino
+// de Gemini se conserva entero y apagado; IA_PROVEEDOR=gemini lo devuelve. deepseek-flash
+// acepta imagenes (verificado contra la API), que es justo lo que necesita este endpoint.
+const IA_PROVEEDOR = String(process.env.IA_PROVEEDOR || "deepseek").trim().toLowerCase();
+// ★ RED DE SEGURIDAD: si se elige DeepSeek pero la key NO esta cargada en Vercel, se sigue
+//   usando Gemini en vez de romper cada generacion con un 500. Asi el deploy nunca deja a las
+//   niñas sin IA por una variable de entorno que falta: en cuanto aparece la key, cambia solo.
+const hayKeyDeepSeek = !!String(process.env.DEEPSEEK_API_KEY || process.env.DEEPSEEK_API_KEYS || "").trim();
+const esDeepSeek = IA_PROVEEDOR === "deepseek" && hayKeyDeepSeek;
+const DEEPSEEK_URL = process.env.DEEPSEEK_URL || "https://api.deepseek.com/chat/completions";
+const DEEPSEEK_MODEL = process.env.DEEPSEEK_MODEL || "deepseek-flash";
+// Holgado a proposito: el modelo razona y esos tokens salen del mismo presupuesto.
+const DEEPSEEK_MAX_TOKENS = Number(process.env.DEEPSEEK_MAX_TOKENS) || 4000;
 function geminiKeys() {
   const limpiar = (s) => String(s || "").split(",").map((k) => k.trim()).filter(Boolean);
   const pagas = [...new Set(limpiar(process.env.GEMINI_API_KEY_PAGA))];
   const gratis = [...new Set([...limpiar(process.env.GEMINI_API_KEY), ...limpiar(process.env.GEMINI_API_KEYS)])].filter((k) => !pagas.includes(k));
   return { gratis, pagas };
 }
+function iaKeys() {
+  if (!esDeepSeek) return geminiKeys();
+  const limpiar = (x) => String(x || "").split(",").map((k) => k.trim()).filter(Boolean);
+  const pagas = [...new Set([...limpiar(process.env.DEEPSEEK_API_KEY), ...limpiar(process.env.DEEPSEEK_API_KEYS)])];
+  return { gratis: [], pagas };
+}
+// (el nombre queda por compatibilidad con quien la llama; ya no es solo Gemini)
 async function procesarConGemini({ foto, texto, grado }) {
-  const { gratis, pagas } = geminiKeys();
+  const { gratis, pagas } = iaKeys();
   const keys = [...gratis, ...pagas]; // lectura simple → gratis primero
   if (!keys.length) return null;
   const prompt =
@@ -109,16 +129,33 @@ async function procesarConGemini({ foto, texto, grado }) {
   const parts = [{ text: prompt }];
   if (foto && foto.data) parts.push({ inline_data: { mime_type: foto.mime || "image/jpeg", data: foto.data } });
   if (texto) parts.push({ text: "\n\nApunte (texto del alumno):\n" + texto });
-  const payload = { contents: [{ parts }], generationConfig: { temperature: 0.2, responseMimeType: "application/json" } };
+  const payloadGemini = { contents: [{ parts }], generationConfig: { temperature: 0.2, responseMimeType: "application/json" } };
+  // Mismas parts traducidas al formato estilo OpenAI de DeepSeek.
+  const contenidoDS = parts.map((p) => (p.text
+    ? { type: "text", text: p.text }
+    : { type: "image_url", image_url: { url: `data:${p.inline_data.mime_type};base64,${p.inline_data.data}` } }));
+  const payloadDeepSeek = {
+    model: DEEPSEEK_MODEL,
+    messages: [{ role: "user", content: contenidoDS }],
+    temperature: 0.2,
+    response_format: { type: "json_object" },
+    max_tokens: DEEPSEEK_MAX_TOKENS,
+  };
+  const payload = esDeepSeek ? payloadDeepSeek : payloadGemini;
   for (const key of keys) {
     try {
-      const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`, {
-        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload), signal: AbortSignal.timeout(45000),
+      const url = esDeepSeek ? DEEPSEEK_URL : `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`;
+      const cab = { "Content-Type": "application/json" };
+      if (esDeepSeek) cab.Authorization = `Bearer ${key}`;   // DeepSeek: key en el header, no en la URL
+      const r = await fetch(url, {
+        method: "POST", headers: cab, body: JSON.stringify(payload), signal: AbortSignal.timeout(45000),
       });
       if (r.status === 429 || r.status === 503) continue;
       const data = await r.json();
       if (!data || data.error) continue;
-      const txt = (((data.candidates || [])[0] || {}).content || {}).parts ? data.candidates[0].content.parts.map((p) => p.text || "").join("") : "";
+      const txt = esDeepSeek
+        ? String((((data.choices || [])[0] || {}).message || {}).content || "")
+        : ((((data.candidates || [])[0] || {}).content || {}).parts ? data.candidates[0].content.parts.map((p) => p.text || "").join("") : "");
       if (!txt) continue;
       let j = null;
       try { j = JSON.parse(txt); } catch { const m = txt.match(/\{[\s\S]*\}/); if (m) { try { j = JSON.parse(m[0]); } catch {} } }
