@@ -28,13 +28,20 @@
   html,body{margin:0}
   /* Canvas 2.0 GLOBAL: wash pastel muy sutil (antes este fondo calmo solo existía en el Inicio;
      el resto de la app tenía el degradado viejo, mucho más fuerte). */
+  /* ★ FONDO PLANO Y 100vh — NO VOLVER A GRADIENTES NI A dvh ACA (cuadro negro en iPhone) ★
+     Sintoma: rectangulo NEGRO arriba a la izquierda del landing, tapando el rotulo CHISPA y la
+     esquina del titulo. En Safari, Chrome y la app instalada del iPhone; Android y escritorio
+     limpios. No era la mascota, ni un elemento del markup, ni app.js: se biseco contra el
+     aparato (ver el historial de commits del 2026-09-10). El body llevaba tres radial-gradient
+     y el primero anclaba en 2% -4%, es decir ESA misma esquina. Quitar solo
+     background-attachment:fixed NO alcanzo. La unica configuracion que se vio LIMPIA en el
+     iPhone fue la pagina de prueba, cuyo body tenia un color plano — asi que va plano.
+     dvh cambia de valor cuando iOS esconde la barra del navegador y redimensiona la capa del
+     fondo en pleno scroll: con un hijo a sangre encima, es otra fuente del mismo artefacto.
+     Los washes de color siguen vivos en Inicio y Agenda, que son superficies propias. */
   body{
-    font-family:"Nunito",-apple-system,"Segoe UI",sans-serif;color:var(--ink);min-height:100dvh;
-    background:
-      radial-gradient(105% 48% at 2% -4%, rgba(255,220,169,.28), transparent 46%),
-      radial-gradient(92% 46% at 102% 2%, rgba(246,197,226,.24), transparent 45%),
-      radial-gradient(100% 52% at 50% 106%, rgba(193,221,255,.18), transparent 48%),
-      #FDFBFE;
+    font-family:"Nunito",-apple-system,"Segoe UI",sans-serif;color:var(--ink);min-height:100vh;
+    background:#FDFBFE;
     /* ★ SIN background-attachment:fixed — NO REPONERLO (cuadro negro en iPhone, 2026-09) ★
        fixed manda el fondo a una capa fija aparte, y esa capa es de lo mas roto que hay en
        WebKit/iOS. Se veia un RECTANGULO NEGRO arriba a la izquierda — justo donde ancla el
@@ -468,7 +475,9 @@
      Sangra rompiendo el padding del body (16px) y el del tope; se evita 100vw
      para no provocar scroll horizontal por la barra del navegador. */
   .lxHero{
-    position:relative;isolation:isolate;overflow:hidden;
+    /* sin isolation:isolate — forzaba un grupo de composicion propio para el hero a sangre,
+       justo donde aparecia el cuadro negro. .lxCta ya se apila bien con su position+z-index. */
+    position:relative;overflow:hidden;
     margin:calc(-1 * max(18px,env(safe-area-inset-top))) -16px 26px;
     padding:calc(max(18px,env(safe-area-inset-top)) + 20px) 20px 24px;
     border-radius:0 0 30px 30px;
