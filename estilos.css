@@ -25,6 +25,17 @@
     --radius:23px;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  /* ★ color-scheme + fondo en html — NO QUITARLO (cuadro negro en iPhone, 2026-09-10) ★
+     Chispa es una app de tema CLARO unicamente: no tiene ni una regla prefers-color-scheme.
+     Pero nunca declaraba color-scheme, y una pagina que no lo declara le deja a iOS decidir
+     el color de todo lo que ella no pinta. Con el telefono en modo oscuro ese lienzo es NEGRO.
+     Sintoma: rectangulo negro arriba a la izquierda del landing, en Safari, Chrome y la app
+     instalada del iPhone, y en ninguna otra plataforma. Aparecio sin cambios de codigo porque
+     lo que cambio fue la apariencia del telefono (iOS pasa a oscuro al atardecer si esta en
+     Automatico). El hero del landing se sale del padding del body con margen negativo y con
+     viewport-fit=cover: esa esquina es justo donde puede quedar lienzo sin pintar.
+     html tampoco tenia background, asi que no habia nada que propagar. Ahora hay las dos cosas. */
+  html{color-scheme:light;background:#FDFBFE}
   html,body{margin:0}
   /* Canvas 2.0 GLOBAL: wash pastel muy sutil (antes este fondo calmo solo existía en el Inicio;
      el resto de la app tenía el degradado viejo, mucho más fuerte). */
