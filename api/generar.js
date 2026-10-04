@@ -16,6 +16,7 @@
 
 import crypto from "node:crypto";
 import { normCurado } from "../herramientas/normcurado.mjs";
+import { extractText, getDocumentProxy } from "unpdf";
 
 // Modelo por modo: ejercicios (retos/quiz) con el flash completo (mejor en matemática);
 // resumen/examen con flash-lite (más rápido y barato). CONFIGURABLE por env (para poder
@@ -180,6 +181,27 @@ async function pdfDeActividad(a, token) {
   }
   return null;
 }
+
+// ★ DeepSeek NO lee PDF (2026-10-04). Su API solo acepta imagenes webp/png/jpeg/gif, ni como
+//   image_url ni como "file" — verificado contra la API. Gemini si los leia nativo, y al migrar
+//   los PDF del aula se mandaban disfrazados de imagen: DeepSeek respondia 400 "unsupported
+//   image" y la niña veia ese error al tocar "Entiende el tema" en cualquier tema con guia en
+//   PDF (asi aparecio, con Geografia de 1er año). Ahora, con DeepSeek, el PDF se convierte a
+//   TEXTO aca en el servidor y viaja como texto.
+const MAX_TEXTO_PDF = 40000;   // chars por PDF (~10k tokens): acota costo con el tope diario por niña
+async function textoDePdf(buf) {
+  try {
+    const doc = await getDocumentProxy(new Uint8Array(buf));
+    const { text } = await extractText(doc, { mergePages: true });
+    const limpio = String(text || "").replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n").trim();
+    return limpio.length > MAX_TEXTO_PDF ? limpio.slice(0, MAX_TEXTO_PDF) + "\n[...]" : limpio;
+  } catch (e) {
+    return "";   // PDF roto o cifrado: se sigue sin el, nunca se rompe la generacion
+  }
+}
+// Formatos de imagen que DeepSeek acepta. Cualquier otro (p. ej. HEIC del iPhone) se descarta
+// en vez de mandarse y tumbar el request entero con un 400.
+const IMAGEN_DS = new Set(["image/png", "image/jpeg", "image/jpg", "image/webp", "image/gif"]);
 
 // Junta hasta MAX_PDFS PDFs de las actividades del tema.
 async function juntarPdfs(contexto, token) {
@@ -953,14 +975,22 @@ export default async function handler(req, res) {
     // thinking liviano → mucho más rápido, para no pasar del límite de 60s de Vercel.
     if (necesitaMate) genCfg.thinkingConfig = { thinkingBudget: numerica ? 4096 : 1024 };
     const payloadGemini = { contents: [{ parts }], generationConfig: genCfg };
-    // Traduccion a la API estilo OpenAI de DeepSeek: las parts de texto se concatenan y
-    // cada inline_data (foto del cuaderno, pagina de PDF) va como image_url en data URI.
-    // Verificado el 2026-09-10 contra la API real: deepseek-flash ACEPTA imagenes.
+    // Traduccion a la API estilo OpenAI de DeepSeek. Se arma desde las FUENTES (prompt, pdfs,
+    // fotos) y no desde parts, para conservar el nombre de cada guia:
+    //   - PDF  -> su TEXTO extraido aca (DeepSeek no lee PDF; ver textoDePdf).
+    //   - foto -> image_url, SOLO si es un formato que DeepSeek acepta.
+    // Un PDF escaneado (sin texto) o una foto en formato raro se omiten: la generacion sigue
+    // con el resto del material en vez de fallar entera.
     const contenidoDS = [];
-    for (const p of parts) {
-      if (p && p.text) contenidoDS.push({ type: "text", text: p.text });
-      else if (p && p.inline_data) {
-        contenidoDS.push({ type: "image_url", image_url: { url: `data:${p.inline_data.mime_type};base64,${p.inline_data.data}` } });
+    if (esDeepSeek) {
+      contenidoDS.push({ type: "text", text: prompt });
+      const textos = await Promise.all(pdfs.map((p) => textoDePdf(p.buf)));
+      textos.forEach((t, i) => {
+        if (t) contenidoDS.push({ type: "text", text: `\n\n=== Material del aula: "${pdfs[i].nombre || "guia"}" ===\n${t}` });
+      });
+      for (const f of fotos) {
+        const mime = String(f.mime || "").toLowerCase();
+        if (IMAGEN_DS.has(mime)) contenidoDS.push({ type: "image_url", image_url: { url: `data:${mime};base64,${f.data}` } });
       }
     }
     const payloadDeepSeek = {
