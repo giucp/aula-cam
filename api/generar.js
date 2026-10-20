@@ -741,7 +741,10 @@ async function pedirAGemini(url, payload, intentos = 2, deadline = 0, headersExt
     // FAST-FAIL: techo corto por intento. Un modelo COLGADO (el modo de falla del 3.5-flash
     // el 2026-07-16: no responde ni error) pierde ~12s y el chain sigue con el próximo modelo,
     // en vez de comerse los 45s y dejar sin tiempo al respaldo.
-    const to = setTimeout(() => ctrl.abort(), Math.min(restante, IA_TIMEOUT_MS));
+    // DeepSeek es UN solo modelo y razona antes de responder (un quiz de 8 con guías puede pasar
+    // los 38s): cortarlo antes no deja respaldo al que saltar, solo un error. Usa todo el plazo.
+    const techo = headersExtra ? restante : IA_TIMEOUT_MS;
+    const to = setTimeout(() => ctrl.abort(), Math.min(restante, techo));
     let data = null, status = 0, hang = false;
     try {
       const r = await fetch(url, {

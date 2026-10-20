@@ -767,6 +767,8 @@
   .sigTx b{font-family:"Fredoka";font-weight:600;font-size:1.08rem;line-height:1.2;color:var(--chispa-ink)}
   .sigTx small{font-family:"Nunito";font-weight:700;font-size:.84rem;line-height:1.35;color:var(--chispa-muted)}
   .sigPaso .sigGo{margin-top:0}
+  .sigPaso .wizAux{margin:0 0 -6px}
+  .sigCount{align-self:center}
   .sigOtra{align-self:center;border:0;background:none;cursor:pointer;padding:6px 10px;font-family:"Nunito";
     font-weight:800;font-size:.86rem;color:var(--chispa-muted);text-decoration:underline;text-underline-offset:3px}
   .sigOtra:hover{color:var(--chispa-primary)}

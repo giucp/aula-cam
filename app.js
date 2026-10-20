@@ -2671,8 +2671,19 @@
       c.innerHTML=`<div class="sigHead"><img class="sigIco" src="assets/tema/${mo.img}.webp" alt="" aria-hidden="true">`+
         `<span class="sigTx"><span class="sigEyebrow">Siguiente paso</span><b>${escapeHtml(mo.nombre)}</b>`+
         `<small>${escapeHtml(s.motivo||mo.desc)}</small></span></div>`+
+        // misma elección de cantidad que en "Personaliza tu actividad" (sin esto el paso salía
+        // con la cantidad vieja y la niña no podía elegir)
+        (mo.conteo ? `<p class="wizAux">¿Cuántas preguntas quieres?</p><div class="count sigCount" role="group" aria-label="Cantidad">`+
+          [3,5,8].map(n=>`<button type="button" data-n="${n}" aria-pressed="${n===cantidad}">${n}</button>`).join("")+`</div>` : "")+
         `<button class="go wizGo sigGo" type="button"><span>${escapeHtml(cta)}</span>${flecha}</button>`+
         `<button class="sigOtra" type="button">Elegir otra actividad</button>`;
+      c.querySelectorAll(".sigCount button").forEach(btn=>{
+        btn.onclick=()=>{
+          cantidad=Number(btn.dataset.n);
+          c.querySelectorAll(".sigCount button").forEach(b=>b.setAttribute("aria-pressed",String(b===btn)));
+          $("#count").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(Number(b.dataset.n)===cantidad)));
+        };
+      });
       c.querySelector(".sigGo").onclick=()=>{
         if(origen==="cumbre"){ setModoCumbre(mo.id); generarCumbre(); }
         else { setModo(mo.id); generar(); }
