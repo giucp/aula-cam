@@ -2606,7 +2606,7 @@
     else if(modo==="examen"){  renderExamen(res, d.preguntas||[], meta); renderOtros(res); }
     else if(modo==="quiz")     renderQuiz(res, d.preguntas||[], meta);   // "otros" se agrega al terminar
     else {                     renderRetos(res, d.ejercicios||[], meta); renderOtros(res); }
-    if(modo!=="quiz") renderFooter(res);   // el quiz cierra con su nota + mensaje
+    if(modo!=="quiz"){ renderSiguientePaso(res, meta, modo); renderFooter(res); }   // el quiz cierra con su nota + mensaje
     res.scrollIntoView({behavior:"smooth",block:"nearest"});
   }
 
@@ -2639,6 +2639,54 @@
     if(puedeReportar() && (modo==="retos"||modo==="quiz"||modo==="examen"))
       html += `<p class="sub rep">¿Un ejercicio salió mal o no se entiende? Toca <b>Reportar</b> (dos toques para confirmar) y te damos otro en su lugar.</p>`;
     if(html){ const b=document.createElement("div"); b.className="basado"+(esIA?" ia":""); b.innerHTML=html; res.appendChild(b); }
+  }
+  // ── "Siguiente paso" al terminar una actividad (2026-10-20) ──
+  // Antes el resultado terminaba en "¡Tú puedes!" y para seguir había que tocar Atrás y elegir
+  // otra actividad a mano. Las cuatro ya forman un camino (Entiende → Practica → Comprueba →
+  // Examen) y pasoSugerido() ya sabía qué toca según lo hecho con ESE tema, nota del quiz incluida
+  // (menos de 80% → repetir el quiz). Solo faltaba ofrecerlo: UN botón dominante que lanza el
+  // paso directo, y un enlace secundario para elegir otra actividad.
+  const ORDEN_MODOS=["resumen","retos","quiz","examen"];
+  function siguienteModo(meta, modoActual){
+    if(origen==="cumbre"){   // Cumbre: solo los modos curados de ese tema, en orden
+      const disp=ORDEN_MODOS.filter(id=>cumbreModosTema.includes(id));
+      const i=disp.indexOf(modoActual);
+      return (i>=0 && i<disp.length-1) ? { modo:disp[i+1], motivo:"Sigue con el próximo paso" } : null;
+    }
+    const sug=pasoSugerido(meta&&meta.materia, meta&&meta.tema);
+    if(sug.modo!==modoActual || modoActual==="quiz") return sug;   // quiz flojo → repetir es lo correcto
+    // la práctica/examen se registran recién al revelar una respuesta: si la sugerencia todavía es
+    // el mismo modo, se ofrece el siguiente del camino
+    const i=ORDEN_MODOS.indexOf(modoActual);
+    return (i>=0 && i<ORDEN_MODOS.length-1) ? { modo:ORDEN_MODOS[i+1], motivo:"Sigue con el próximo paso" } : null;
+  }
+  function renderSiguientePaso(res, meta, modoActual){
+    if(MODO_LAB) return;
+    const s=siguienteModo(meta, modoActual);
+    const mo=s && MODOS.find(m=>m.id===s.modo);
+    const c=document.createElement("div"); c.className="card sigPaso";
+    const flecha=`<svg class="wizArrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
+    if(mo){
+      const cta=(origen==="cumbre" ? CUMBRE_VERBO[mo.id] : mo.cta) || "Seguir";
+      c.innerHTML=`<div class="sigHead"><img class="sigIco" src="assets/tema/${mo.img}.webp" alt="" aria-hidden="true">`+
+        `<span class="sigTx"><span class="sigEyebrow">Siguiente paso</span><b>${escapeHtml(mo.nombre)}</b>`+
+        `<small>${escapeHtml(s.motivo||mo.desc)}</small></span></div>`+
+        `<button class="go wizGo sigGo" type="button"><span>${escapeHtml(cta)}</span>${flecha}</button>`+
+        `<button class="sigOtra" type="button">Elegir otra actividad</button>`;
+      c.querySelector(".sigGo").onclick=()=>{
+        if(origen==="cumbre"){ setModoCumbre(mo.id); generarCumbre(); }
+        else { setModo(mo.id); generar(); }
+      };
+    }else{
+      // camino completo (examen hecho y quiz aprobado): el siguiente paso es otro tema
+      c.innerHTML=`<div class="sigHead"><span class="sigTx"><span class="sigEyebrow">Siguiente paso</span>`+
+        `<b>¡Terminaste este tema!</b><small>Elige otro para seguir aprendiendo.</small></span></div>`+
+        `<button class="go wizGo sigGo" type="button"><span>Elegir otro tema</span>${flecha}</button>`+
+        `<button class="sigOtra" type="button">Elegir otra actividad</button>`;
+      c.querySelector(".sigGo").onclick=()=>mostrarPaso(1);
+    }
+    c.querySelector(".sigOtra").onclick=()=>mostrarPaso(2);
+    res.appendChild(c);
   }
   function renderFooter(res){
     const f=document.createElement("p"); f.className="footer";
@@ -2855,6 +2903,7 @@
       <div class="sumKey"><b>${escapeHtml(msg)}</b></div>`;
     res.appendChild(c);
     if(!MODO_LAB) renderOtros(res);   // en el cuarto no hay "generar otros"
+    renderSiguientePaso(res, meta, "quiz");
     c.scrollIntoView({behavior:"smooth",block:"nearest"});
   }
 

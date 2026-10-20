@@ -756,6 +756,20 @@
   /* Chispa "pensando" mientras la IA genera (reemplaza el 🧠) */
   .loading .chispaThinking{width:104px;height:104px;object-fit:contain}
   .quizFin{text-align:center}
+  /* "Siguiente paso" al final de cada actividad: UNA accion dominante (el paso que toca) y un
+     enlace discreto para elegir otra. Reusa .go.wizGo (el boton del asistente) y los iconos 3D de
+     assets/tema, para que se lea como continuacion del mismo asistente y no como algo nuevo. */
+  .sigPaso{display:flex;flex-direction:column;gap:14px;padding:18px}
+  .sigHead{display:flex;align-items:center;gap:14px}
+  .sigIco{width:56px;height:56px;flex:none;object-fit:contain}
+  .sigTx{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .sigEyebrow{font-family:"Fredoka";font-weight:600;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--chispa-primary)}
+  .sigTx b{font-family:"Fredoka";font-weight:600;font-size:1.08rem;line-height:1.2;color:var(--chispa-ink)}
+  .sigTx small{font-family:"Nunito";font-weight:700;font-size:.84rem;line-height:1.35;color:var(--chispa-muted)}
+  .sigPaso .sigGo{margin-top:0}
+  .sigOtra{align-self:center;border:0;background:none;cursor:pointer;padding:6px 10px;font-family:"Nunito";
+    font-weight:800;font-size:.86rem;color:var(--chispa-muted);text-decoration:underline;text-underline-offset:3px}
+  .sigOtra:hover{color:var(--chispa-primary)}
   .quizFin .chispaFin{display:block;width:120px;height:120px;object-fit:contain;margin:2px auto 6px}
   /* Chispa "leyendo" acompaña el resumen — estática (no distraer durante la lectura, §10) */
   .sumHead{display:flex;align-items:center;gap:10px;margin-bottom:11px}

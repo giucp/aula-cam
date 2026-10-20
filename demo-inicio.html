@@ -739,6 +739,15 @@
     if(u.indexOf("/api/errores")>-1) return json({errores:[]});
     if(u.indexOf("/api/curado-info")>-1) return json({});
     if(u.indexOf("/api/curriculo")>-1) return json({});
+    // generar: contenido SIMULADO. El demo no debe gastar IA real, y desde 2026-10-20 produccion
+    // exige sesion firmada (que el demo no tiene). Forma minima de cada modo, para ver la pantalla.
+    if(u.indexOf("/api/generar")>-1){
+      var m=b.modo||"retos", base={tema:b.tema, materia:b.materia, modo:m, basadoEnMaterial:true, fuentes:["Guía de clase"]};
+      var preg=function(i){ return {pregunta:"Pregunta de ejemplo "+(i+1)+" sobre "+b.tema+"?", opciones:["Opción A","Opción B","Opción C","Opción D"], correcta:0, explicacion:"La A es la correcta porque es un ejemplo."}; };
+      if(m==="resumen") return json(Object.assign(base,{titulo:b.tema, intro:"Resumen de ejemplo del demo.", idea_clave:"La idea clave del tema.", secciones:[{titulo:"Primera parte",explicacion:"Explicación de ejemplo."},{titulo:"Segunda parte",explicacion:"Otra explicación."}]}));
+      if(m==="quiz"||m==="examen") return json(Object.assign(base,{preguntas:[0,1,2].map(preg)}));
+      return json(Object.assign(base,{ejercicios:[0,1,2].map(function(i){ return {enunciado:"Ejercicio de ejemplo "+(i+1), pista:"Una pista.", solucion:"La solución."}; })}));
+    }
     return rf(u,o);
   };
   if(navigator.serviceWorker&&navigator.serviceWorker.getRegistrations)navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){r.unregister();});});
