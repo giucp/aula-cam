@@ -12,8 +12,8 @@
 // Con el `?v=`, el SW VIEJO busca "/app.js?v=NN" en su caché, NO lo encuentra, y cae a la red
 // → recibe el app.js nuevo → el par index+app.js SIEMPRE viaja junto, ya en la 1ª apertura.
 // Los `?v=` de index.html y este V tienen que subir JUNTOS.
-const V = "115";
-const VERSION = `aulacam-v${V}`; // v115: las materias del año pasado ya no vuelven al horario
+const V = "116";
+const VERSION = `aulacam-v${V}`; // v116: sesion firmada + SW sin skipWaiting/claim
 const SHELL = [
   "/",
   "/index.html",
@@ -31,7 +31,11 @@ const SHELL = [
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
-    caches.open(VERSION).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting())
+    // SIN skipWaiting() ni clients.claim() (regla 6.5 del plan; ya corregido en familia-sw.js):
+    // tomaban el control de la pagina abierta a mitad de un fetch y lo mataban en cada deploy.
+    // No hacen falta: el index es network-first y app.js/estilos.css van con ?v= apareado, asi
+    // que el codigo nuevo llega aunque el SW viejo siga activo hasta que se cierre la app.
+    caches.open(VERSION).then((c) => c.addAll(SHELL))
   );
 });
 
@@ -41,7 +45,6 @@ self.addEventListener("activate", (e) => {
       // SOLO limpiar cachés propios ("aulacam-*"): el panel de familia tiene su propio SW
       // y caché ("familia-*") en el mismo origen — no tocarlo.
       .then((ks) => Promise.all(ks.filter((k) => k.startsWith("aulacam-") && k !== VERSION).map((k) => caches.delete(k))))
-      .then(() => self.clients.claim())
   );
 });
 
