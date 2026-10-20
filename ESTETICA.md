@@ -413,6 +413,10 @@ no las perdona.**
      **Regla:** tocar el markup de `index.html` y no el del demo es dejar una bomba de tiempo —
      el diff de `id="..."` entre los dos archivos es la verificación de 5 segundos.
 
+- `herramientas/chequear-ids.mjs` — `node herramientas/chequear-ids.mjs`: verifica que cada `$("#id")` que
+  app.js usa SIN guarda exista en index.html y en el demo. Uno que falte es un TypeError que mata la
+  app entera al cargar (pasó con el demo, 6 semanas). Correrlo antes de cada deploy que toque HTML/JS.
+
 - `herramientas/demo-servidor.mjs` — `node herramientas/demo-servidor.mjs` → http://localhost:4321
   sirve el repo (raíz = `demo-inicio.html`). `file://` no sirve para el demo y el pane del navegador
   necesita un http:// al que apuntar. `.claude/launch.json` ya lo trae como configuración "demo".
