@@ -17,6 +17,7 @@
 import crypto from "node:crypto";
 import { normCurado } from "../herramientas/normcurado.mjs";
 import { extractText, getDocumentProxy } from "unpdf";
+import { sesionDe, NO_AUTORIZADO } from "../herramientas/sesion.mjs";
 
 // Modelo por modo: ejercicios (retos/quiz) con el flash completo (mejor en matemática);
 // resumen/examen con flash-lite (más rápido y barato). CONFIGURABLE por env (para poder
@@ -823,7 +824,7 @@ async function saludMarcar(modelo, ok, salud) {
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "https://aula-cam.vercel.app");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, x-chispa-sesion");
   if (req.method === "OPTIONS") return res.status(200).end();
   if (req.method !== "POST") return res.status(405).json({ error: "Solo POST" });
 
@@ -832,6 +833,11 @@ export default async function handler(req, res) {
     if (!tema) return res.status(400).json({ error: "Falta el campo 'tema'" });
     // Para el límite de gasto de IA por alumno (lo manda el front, igual que en errores/actividad).
     const usuarioId = req.body && req.body.usuario_id != null ? req.body.usuario_id : null;
+    // Sin sesion firmada no hay IA: antes un usuario_id INVENTADO generaba gratis y sin tope,
+    // a cuenta de la key de DeepSeek (el limite diario era fail-open para usuarios inexistentes).
+    // ★ La firma de sesion (header x-chispa-sesion) tiene que ser de ESTE usuario. Antes se le creia
+    //   al usuario_id del body y cualquiera podia leer/escribir los datos de otra niña. Ver herramientas/sesion.mjs.
+    if (sesionDe(req, usuarioId) == null) return res.status(401).json(NO_AUTORIZADO);
 
     // Gate de tier: la cuenta GRATIS (nativa sin premium) no accede a generación premium
     // (IA, Cumbre, curado). Las cuentas de aula (Moodle) son premium → pasan. Fail-open.

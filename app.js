@@ -33,6 +33,38 @@
 
   const $ = (s)=>document.querySelector(s);
   let SESION = null;
+  // ── Firma de sesion en TODA llamada a /api/ (2026-10-20) ──
+  // Los endpoints del niño (agenda, actividad, errores, generar) ya no le creen al usuario_id del
+  // body: exigen la firma que emite el servidor al iniciar sesion (ver herramientas/sesion.mjs).
+  // Se agrega ACA, en un solo lugar, para que ninguna llamada —ni las que se agreguen despues—
+  // salga sin ella. Si el servidor responde 401 con code "sesion" (firma vieja o ausente: p. ej.
+  // la sesion guardada de ANTES de este cambio), se renueva la firma con el aula y se reintenta
+  // UNA vez; el niño no ve nada. Si no se puede renovar, el flujo normal de sesion vencida decide.
+  const _fetchOriginal = window.fetch.bind(window);
+  // estos endpoints se autentican solos (token del aula, cuenta nativa, panel de padres, admin) o son publicos
+  const API_SIN_FIRMA = /\/api\/(moodle|cuenta|familia|curriculo|curado-info|lab|manual)\b/;
+  function firmaSesion(){ return (SESION && (SESION.sesion || (SESION.fuente==="manual" ? SESION.token : null))) || null; }
+  let renovandoFirma=null;
+  function renovarFirma(){
+    if(!renovandoFirma) renovandoFirma=(async()=>{ try{ await refrescarMaterias(); } finally{ renovandoFirma=null; } })();
+    return renovandoFirma;
+  }
+  window.fetch = async function(url, opts){
+    const u = String((url && url.url) || url || "");
+    const propia = /\/api\//.test(u) && (u.startsWith("/") || u.startsWith(location.origin) || u.startsWith("https://aula-cam.vercel.app"));
+    if(!propia || API_SIN_FIRMA.test(u)) return _fetchOriginal(url, opts);
+    const conFirma = ()=>{
+      const o = { ...(opts||{}) }; const h = new Headers(o.headers||{});
+      const f = firmaSesion(); if(f) h.set("x-chispa-sesion", f);
+      o.headers = h; return _fetchOriginal(url, o);
+    };
+    let r = await conFirma();
+    if(r.status===401 && SESION){
+      let code=null; try{ code=(await r.clone().json()).code; }catch(_){}
+      if(code==="sesion"){ const antes=firmaSesion(); await renovarFirma(); if(firmaSesion() && firmaSesion()!==antes) r = await conFirma(); }
+    }
+    return r;
+  };
   let BETA = false;        // flujo de cuenta propia (nativa), solo con ?beta=1 — NO toca el login de aula
   let RESCATE_SIGUE = null; // qué hacer tras mostrar el código de rescate
   let origen = "actual";   // "actual" = materias del grado; "proximo" = adelantar próximo año
@@ -99,7 +131,7 @@
       SESION = {
         id: (d.usuario && d.usuario.id!=null) ? d.usuario.id : ("u_"+user.toLowerCase()),
         nombre:(d.usuario&&d.usuario.nombre)||user, token:d.token, materias:d.materias||[],
-        racha:(d.usuario&&d.usuario.racha)||0, fetched: Date.now()
+        racha:(d.usuario&&d.usuario.racha)||0, fetched: Date.now(), sesion:d.sesion||null
       };
       store.set("sesion", SESION);
       $("#user").value=""; $("#pass").value="";
@@ -1298,7 +1330,7 @@
       if(d.pendiente){ btn.textContent="Todavía no 😅 Prueba en un rato"; setTimeout(()=>{btn.textContent=txt;btn.disabled=false;},2600); return; }
       SESION = { id:(d.usuario&&d.usuario.id!=null)?d.usuario.id:("u_"+(nombrePendiente||"x").toLowerCase()),
         nombre:(d.usuario&&d.usuario.nombre)||nombrePendiente, token:d.token, materias:d.materias||[],
-        racha:(d.usuario&&d.usuario.racha)||0, fetched:Date.now() };
+        racha:(d.usuario&&d.usuario.racha)||0, fetched:Date.now(), sesion:d.sesion||null };
       store.set("sesion", SESION); tokenPendiente=null; entrarHome();
     }catch(e){ btn.textContent="No se pudo, reintenta"; setTimeout(()=>{btn.textContent=txt;btn.disabled=false;},2600); }
   };
@@ -1325,7 +1357,7 @@
   function sesionNativa(d){
     const u=d.usuario||{};
     return { id:u.id, nombre:u.nombre||"", grado:u.grado||"", plan:u.plan||"gratis",
-      token:d.token, fuente:"manual", materias:[], racha:(typeof u.racha==="number"?u.racha:0),
+      token:d.token, sesion:d.token, fuente:"manual", materias:[], racha:(typeof u.racha==="number"?u.racha:0),
       onboarding:!!u.onboarding, fetched:Date.now() };
   }
 
@@ -1457,7 +1489,7 @@
         SESION.plan=d.usuario.plan||SESION.plan;
         if(typeof d.usuario.racha==="number") SESION.racha=d.usuario.racha;
         if(typeof d.usuario.onboarding==="boolean") SESION.onboarding=d.usuario.onboarding;
-        if(d.token) SESION.token=d.token;
+        if(d.token){ SESION.token=d.token; SESION.sesion=d.token; }
         SESION.fetched=Date.now(); store.set("sesion",SESION); pintarRacha();
         // si el admin cambió el plan (p.ej. upgrade a premium), refrescar la UI que depende de él
         // sin esperar a un re-login: el medidor de energía y el aviso premium dejan de aplicar.
@@ -1596,6 +1628,7 @@
       const d = await r.json().catch(()=>null);
       if(d && d.code===401){ sesionVencida(); return; }
       if(d && d.pendiente){ sesionVencida("Tu acceso fue pausado. Habla con el administrador."); return; }
+      if(d && d.sesion){ SESION.sesion = d.sesion; store.set("sesion", SESION); }   // firma renovada
       if(d && Array.isArray(d.materias) && d.materias.length){
         SESION.materias = d.materias;
         if(d.token) SESION.token = d.token;
@@ -3348,7 +3381,9 @@
         // instante los cambios que hace el admin (p.ej. subir a premium). Aula (Moodle): solo si la
         // sesión ya tiene sus horas, porque su refresh pega al Moodle lento del colegio.
         const viejo = !s.fetched || (Date.now() - s.fetched > 4*3600*1000);
-        if(s.fuente==="manual" || viejo) refrescarMaterias();
+        // sin firma (sesiones guardadas antes de 2026-10-20) tambien se refresca YA, asi la primera
+        // llamada a la agenda no tiene que fallar y reintentar.
+        if(s.fuente==="manual" || viejo || !firmaSesion()) renovarFirma();
         return;
       }
       if(BETA) verBeta();   // sin sesión + flujo nativo → pantalla crear/entrar

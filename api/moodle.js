@@ -7,6 +7,8 @@
 // actuales NUNCA depende de Supabase ni paga latencia extra. Cualquier OTRO colegio se
 // resuelve desde la tabla public.colegios (anti-SSRF: solo colegios verificados nuestros;
 // el cliente jamás inyecta una URL arbitraria).
+import { firmarSesion } from "../herramientas/sesion.mjs";
+
 const DEFAULT_COLEGIO = {
   id: 1,
   base: "https://aulacam.uearzobispomendez.edu.ve",
@@ -195,6 +197,9 @@ export default async function handler(req, res) {
       // devolvemos el token para que la PWA lo guarde y no repita login cada vez:
       token,
       materias,
+      // Firma de sesion de Chispa (no es el token de Moodle): la exigen agenda, actividad, errores
+      // y generar. Se renueva en cada refresco. Solo se emite aca, para un alumno AUTORIZADO.
+      sesion: firmarSesion(userid),
     });
   } catch (e) {
     // Token guardado vencido/ inválido → 401 claro para que el front vuelva al login.

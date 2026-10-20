@@ -12,6 +12,8 @@
 // Si las tablas no existen aún (falta correr supabase-agenda.sql), degrada:
 // devuelve listas vacías / ok:false sin romper la app.
 
+import { sesionDe, NO_AUTORIZADO } from "../herramientas/sesion.mjs";
+
 function supabaseCfg() {
   const url = process.env.SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_KEY;
@@ -46,7 +48,7 @@ function fechaValida(s) {
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "https://aula-cam.vercel.app");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, x-chispa-sesion");
   if (req.method === "OPTIONS") return res.status(200).end();
   if (req.method !== "POST") return res.status(405).json({ error: "Solo POST" });
 
@@ -56,6 +58,9 @@ export default async function handler(req, res) {
   if (!cfg || !Number.isInteger(uid)) {
     return res.status(200).json({ ok: false, horario: [], tareas: [] }); // degrada sin romper
   }
+  // ★ La firma de sesion (header x-chispa-sesion) tiene que ser de ESTE usuario. Antes se le creia
+  //   al usuario_id del body y cualquiera podia leer/escribir los datos de otra niña. Ver herramientas/sesion.mjs.
+  if (sesionDe(req, uid) == null) return res.status(401).json(NO_AUTORIZADO);
 
   try {
     if (accion === "todo") {

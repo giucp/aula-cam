@@ -10,6 +10,7 @@
 //   { "accion":"resolver","usuario_id":118, "id":42 }
 
 import crypto from "node:crypto";
+import { sesionDe, NO_AUTORIZADO } from "../herramientas/sesion.mjs";
 
 function supabaseCfg() {
   const url = process.env.SUPABASE_URL;
@@ -22,7 +23,7 @@ const rec = (s, n) => { s = String(s == null ? "" : s); return s.length > n ? s.
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "https://aula-cam.vercel.app");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, x-chispa-sesion");
   if (req.method === "OPTIONS") return res.status(200).end();
   if (req.method !== "POST") return res.status(405).json({ error: "Solo POST" });
 
@@ -32,6 +33,9 @@ export default async function handler(req, res) {
   const b = req.body || {};
   const uid = parseInt(b.usuario_id, 10);
   if (!uid) return res.status(400).json({ error: "Falta usuario_id" });
+  // ★ La firma de sesion (header x-chispa-sesion) tiene que ser de ESTE usuario. Antes se le creia
+  //   al usuario_id del body y cualquiera podia leer/escribir los datos de otra niña. Ver herramientas/sesion.mjs.
+  if (sesionDe(req, uid) == null) return res.status(401).json(NO_AUTORIZADO);
 
   try {
     if (b.accion === "listar") {
