@@ -12,8 +12,8 @@
 // Con el `?v=`, el SW VIEJO busca "/app.js?v=NN" en su caché, NO lo encuentra, y cae a la red
 // → recibe el app.js nuevo → el par index+app.js SIEMPRE viaja junto, ya en la 1ª apertura.
 // Los `?v=` de index.html y este V tienen que subir JUNTOS.
-const V = "116";
-const VERSION = `aulacam-v${V}`; // v116: sesion firmada + SW sin skipWaiting/claim
+const V = "117";
+const VERSION = `aulacam-v${V}`; // v117: "Siguiente paso" al terminar cada actividad
 const SHELL = [
   "/",
   "/index.html",
