@@ -13,6 +13,7 @@
 // devuelve listas vacías / ok:false sin romper la app.
 
 import { sesionDe, NO_AUTORIZADO } from "../herramientas/sesion.mjs";
+import { esDelAnioEnCurso, esDelGradoActual } from "../herramientas/anio-escolar.mjs";
 
 function supabaseCfg() {
   const url = process.env.SUPABASE_URL;
@@ -64,17 +65,22 @@ export default async function handler(req, res) {
 
   try {
     if (accion === "todo") {
-      const [h, t, n, ia] = await Promise.all([
+      const [h, t, n, ia, u] = await Promise.all([
         fetch(`${cfg.url}/rest/v1/horario?usuario_id=eq.${uid}&select=dia,materia,orden&order=dia,orden`, { headers: hdr(cfg) }),
-        fetch(`${cfg.url}/rest/v1/tareas?usuario_id=eq.${uid}&select=id,materia,descripcion,tipo,fecha,hecha&order=hecha,fecha.asc.nullslast,id.desc&limit=200`, { headers: hdr(cfg) }),
-        fetch(`${cfg.url}/rest/v1/notas?usuario_id=eq.${uid}&select=id,materia,descripcion,nota,fecha&order=fecha.desc.nullslast,id.desc&limit=100`, { headers: hdr(cfg) }),
+        fetch(`${cfg.url}/rest/v1/tareas?usuario_id=eq.${uid}&select=id,materia,descripcion,tipo,fecha,hecha,creado&order=hecha,fecha.asc.nullslast,id.desc&limit=200`, { headers: hdr(cfg) }),
+        fetch(`${cfg.url}/rest/v1/notas?usuario_id=eq.${uid}&select=id,materia,descripcion,nota,fecha,creado&order=fecha.desc.nullslast,id.desc&limit=100`, { headers: hdr(cfg) }),
         estadoIA(cfg, uid),
+        fetch(`${cfg.url}/rest/v1/usuarios?id=eq.${uid}&select=nombre_corto`, { headers: hdr(cfg) }),
       ]);
+      // Solo lo del AÑO ESCOLAR en curso (ver herramientas/anio-escolar.mjs). Nada se borra: lo
+      // viejo deja de mostrarse solo cada septiembre, sin limpiezas a mano.
+      const corto = u.ok ? ((await u.json())[0] || {}).nombre_corto : null;
+      const lista = async (r) => (r.ok ? await r.json() : []);
       return res.status(200).json({
         ok: true,
-        horario: h.ok ? await h.json() : [],
-        tareas: t.ok ? await t.json() : [],
-        notas: n.ok ? await n.json() : [],
+        horario: (await lista(h)).filter((x) => esDelGradoActual(x.materia, corto)),
+        tareas: (await lista(t)).filter((x) => esDelAnioEnCurso(x)),
+        notas: (await lista(n)).filter((x) => esDelAnioEnCurso(x)),
         ia,
       });
     }

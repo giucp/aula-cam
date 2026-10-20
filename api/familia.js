@@ -13,6 +13,7 @@
 // solo usuario_id; el panel es de solo lectura (el padre NO puede escribir nada del niño).
 
 import crypto from "crypto";
+import { esDelAnioEnCurso, esDelGradoActual } from "../herramientas/anio-escolar.mjs";
 
 const BASE = "https://aulacam.uearzobispomendez.edu.ve";
 const ORIGIN = "https://aula-cam.vercel.app";
@@ -183,7 +184,7 @@ export default async function handler(req, res) {
       }).catch(() => {});
 
       const [perfilR, actividad, cumbre, notas, tareas, horario, errores, reportes] = await Promise.all([
-        sbGet(cfg, `usuarios?id=eq.${uid}&select=nombre,grado,racha_dias,ultimo_acceso,accesos,ia_gasto_dia_usd,ia_limite_dia_usd,ia_ilimitado,ia_dia,reportes_ia_dia`),
+        sbGet(cfg, `usuarios?id=eq.${uid}&select=nombre,grado,nombre_corto,racha_dias,ultimo_acceso,accesos,ia_gasto_dia_usd,ia_limite_dia_usd,ia_ilimitado,ia_dia,reportes_ia_dia`),
         sbGet(cfg, `actividad?usuario_id=eq.${uid}&select=materia,tema,modo,aciertos,total,creado&order=creado.desc&limit=300`),
         // Cumbre ("adelanta en vacaciones") se guarda aparte en cumbre_notas → se mezcla acá para
         // que el panel de padres también muestre la actividad de Cumbre con su nota.
@@ -207,9 +208,10 @@ export default async function handler(req, res) {
       return res.status(200).json({
         ok: true, perfil,
         actividad: actArr,
-        notas: Array.isArray(notas) ? notas : [],
-        tareas: Array.isArray(tareas) ? tareas : [],
-        horario: Array.isArray(horario) ? horario : [],
+        // mismo criterio que api/agenda: solo el año escolar en curso (herramientas/anio-escolar.mjs)
+        notas: (Array.isArray(notas) ? notas : []).filter((x) => esDelAnioEnCurso(x)),
+        tareas: (Array.isArray(tareas) ? tareas : []).filter((x) => esDelAnioEnCurso(x)),
+        horario: (Array.isArray(horario) ? horario : []).filter((x) => esDelGradoActual(x.materia, perfil.nombre_corto)),
         errores: Array.isArray(errores) ? errores : [],
         reportes: Array.isArray(reportes) ? reportes : [],
       });
