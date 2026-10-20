@@ -16,7 +16,7 @@
 
 import crypto from "node:crypto";
 import { normCurado } from "../herramientas/normcurado.mjs";
-import { extractText, getDocumentProxy } from "unpdf";
+import { extractText, getDocumentProxy, renderPageAsImage } from "unpdf";
 import { sesionDe, NO_AUTORIZADO } from "../herramientas/sesion.mjs";
 
 // Modelo por modo: ejercicios (retos/quiz) con el flash completo (mejor en matemática);
@@ -190,14 +190,33 @@ async function pdfDeActividad(a, token) {
 //   PDF (asi aparecio, con Geografia de 1er año). Ahora, con DeepSeek, el PDF se convierte a
 //   TEXTO aca en el servidor y viaja como texto.
 const MAX_TEXTO_PDF = 40000;   // chars por PDF (~10k tokens): acota costo con el tope diario por niña
-async function textoDePdf(buf) {
+// ★ Guias ESCANEADAS (2026-10-20): un PDF que es foto de papel no tiene texto que extraer, y al
+//   principio simplemente se omitia. Pero deepseek-flash SI lee imagenes (verificado: transcribio
+//   sin errores una pagina con datos imposibles de adivinar). Asi que si el PDF casi no tiene
+//   texto, sus primeras paginas se dibujan como PNG y viajan como imagen, igual que una foto del
+//   cuaderno. Tope de paginas por costo (cada imagen cuenta tokens) y por el deadline de 52s.
+const MIN_CHARS_POR_PAGINA = 60;      // menos que esto por pagina = escaneo
+const MAX_PAGINAS_IMAGEN = 4;         // en TOTAL por generacion, sumando todos los PDF
+const ANCHO_PAGINA_PX = 1100;         // legible para la IA sin inflar el request
+async function contenidoDePdf(buf, paginasDisponibles) {
   try {
     const doc = await getDocumentProxy(new Uint8Array(buf));
-    const { text } = await extractText(doc, { mergePages: true });
+    const { text, totalPages } = await extractText(doc, { mergePages: true });
     const limpio = String(text || "").replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n").trim();
-    return limpio.length > MAX_TEXTO_PDF ? limpio.slice(0, MAX_TEXTO_PDF) + "\n[...]" : limpio;
+    const texto = limpio.length > MAX_TEXTO_PDF ? limpio.slice(0, MAX_TEXTO_PDF) + "\n[...]" : limpio;
+    if (limpio.length >= MIN_CHARS_POR_PAGINA * Math.max(1, totalPages) || paginasDisponibles <= 0) {
+      return { texto, imagenes: [] };
+    }
+    const imagenes = [];
+    for (let n = 1; n <= Math.min(totalPages, paginasDisponibles); n++) {
+      try {
+        const png = await renderPageAsImage(doc, n, { canvasImport: () => import("@napi-rs/canvas"), width: ANCHO_PAGINA_PX });
+        imagenes.push(Buffer.from(png).toString("base64"));
+      } catch (e) { break; }   // si dibujar falla (p. ej. falta el binario), se sigue con lo que haya
+    }
+    return { texto, imagenes };
   } catch (e) {
-    return "";   // PDF roto o cifrado: se sigue sin el, nunca se rompe la generacion
+    return { texto: "", imagenes: [] };   // PDF roto o cifrado: se sigue sin el
   }
 }
 // Formatos de imagen que DeepSeek acepta. Cualquier otro (p. ej. HEIC del iPhone) se descarta
@@ -983,17 +1002,25 @@ export default async function handler(req, res) {
     const payloadGemini = { contents: [{ parts }], generationConfig: genCfg };
     // Traduccion a la API estilo OpenAI de DeepSeek. Se arma desde las FUENTES (prompt, pdfs,
     // fotos) y no desde parts, para conservar el nombre de cada guia:
-    //   - PDF  -> su TEXTO extraido aca (DeepSeek no lee PDF; ver textoDePdf).
+    //   - PDF  -> su TEXTO extraido aca; si es un escaneo, sus paginas como imagen (ver contenidoDePdf).
     //   - foto -> image_url, SOLO si es un formato que DeepSeek acepta.
     // Un PDF escaneado (sin texto) o una foto en formato raro se omiten: la generacion sigue
     // con el resto del material en vez de fallar entera.
     const contenidoDS = [];
     if (esDeepSeek) {
       contenidoDS.push({ type: "text", text: prompt });
-      const textos = await Promise.all(pdfs.map((p) => textoDePdf(p.buf)));
-      textos.forEach((t, i) => {
-        if (t) contenidoDS.push({ type: "text", text: `\n\n=== Material del aula: "${pdfs[i].nombre || "guia"}" ===\n${t}` });
-      });
+      // en serie, para repartir el tope de paginas-imagen entre los PDF en orden
+      let paginasLibres = MAX_PAGINAS_IMAGEN;
+      for (const p of pdfs) {
+        const c = await contenidoDePdf(p.buf, paginasLibres);
+        const nombre = p.nombre || "guia";
+        if (c.texto) contenidoDS.push({ type: "text", text: `\n\n=== Material del aula: "${nombre}" ===\n${c.texto}` });
+        if (c.imagenes.length) {
+          contenidoDS.push({ type: "text", text: `\n\n=== Material del aula: "${nombre}" (guia escaneada, ${c.imagenes.length} pagina(s) como imagen) ===` });
+          for (const img of c.imagenes) contenidoDS.push({ type: "image_url", image_url: { url: `data:image/png;base64,${img}` } });
+          paginasLibres -= c.imagenes.length;
+        }
+      }
       for (const f of fotos) {
         const mime = String(f.mime || "").toLowerCase();
         if (IMAGEN_DS.has(mime)) contenidoDS.push({ type: "image_url", image_url: { url: `data:${mime};base64,${f.data}` } });
