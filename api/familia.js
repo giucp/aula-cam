@@ -207,13 +207,15 @@ export default async function handler(req, res) {
       actArr.sort((a, b) => new Date(b.creado || 0) - new Date(a.creado || 0));
       return res.status(200).json({
         ok: true, perfil,
-        actividad: actArr,
+        // la actividad, los errores y los reportes también: si no, el resumen de la semana y
+        // "para reforzar" mezclaban lo del grado pasado (2026-10-28)
+        actividad: actArr.filter((x) => esDelAnioEnCurso(x)),
         // mismo criterio que api/agenda: solo el año escolar en curso (herramientas/anio-escolar.mjs)
         notas: (Array.isArray(notas) ? notas : []).filter((x) => esDelAnioEnCurso(x)),
         tareas: (Array.isArray(tareas) ? tareas : []).filter((x) => esDelAnioEnCurso(x)),
         horario: (Array.isArray(horario) ? horario : []).filter((x) => esDelGradoActual(x.materia, perfil.nombre_corto)),
-        errores: Array.isArray(errores) ? errores : [],
-        reportes: Array.isArray(reportes) ? reportes : [],
+        errores: (Array.isArray(errores) ? errores : []).filter((x) => esDelAnioEnCurso(x)),
+        reportes: (Array.isArray(reportes) ? reportes : []).filter((x) => esDelAnioEnCurso(x)),
       });
     }
 

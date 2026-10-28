@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Panel de familia · Chispa</title>
-<meta name="description" content="Mirá exactamente qué hizo tu hijo en Chispa: prácticas, quiz, exámenes, notas y agenda." />
+<meta name="description" content="Mira exactamente qué hizo tu hijo en Chispa: prácticas, quiz, exámenes, notas y agenda." />
 <meta name="theme-color" content="#E85C7A" />
 <meta name="color-scheme" content="light" />
 <meta name="robots" content="noindex" />
@@ -127,6 +127,32 @@
   .guiaBody{margin-top:10px}
   .guiaBody p{margin:0 0 8px;font-size:.9rem;line-height:1.6}
   .guiaBody p:last-child{margin-bottom:0}
+  /* 2026-10-28 · pendiente primero + tareas legibles */
+  .tiles3{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .tiles3 .tile{padding:11px 10px}
+  .tiles3 .tile .n{font-size:1.3rem}
+  .tiles3 .tile .l{font-size:.72rem;line-height:1.3}
+  .pend{border-color:#F6D3DC}
+  .pendSub{margin:-4px 0 6px;font-size:.84rem;font-weight:800;color:var(--bad)}
+  .tarea{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+  .secTit+.tarea,.pendSub+.tarea,.card>.tarea:first-of-type{border-top:none}
+  .tarea .tb{flex:1;min-width:0}
+  .tarea .tt{font-weight:700;font-size:.9rem;line-height:1.4;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;cursor:pointer}
+  .tarea .tt.abierta{display:block}
+  .tarea .tm{font-size:.78rem;color:var(--muted);margin-top:2px}
+  .tarea.hecha .tt{text-decoration:line-through;color:var(--muted)}
+  .tw{flex:none;font-weight:800;font-size:.74rem;padding:3px 9px;border-radius:999px;white-space:nowrap;background:#F3EEF3;color:var(--muted);margin-top:1px}
+  .w-bad{background:#FDE7ED;color:var(--bad)}
+  .w-hoy{background:#FFF3DA;color:#B8770A}
+  .w-exam{background:#EFE8FF;color:var(--grape)}
+  .w-ok{background:#E5F7EF;color:var(--ok)}
+  .plegable{margin-top:10px}
+  .plegable summary,.plegCard summary{cursor:pointer;list-style:none}
+  .plegable summary{font-family:"Fredoka";font-weight:600;font-size:.86rem;color:var(--teal-dark);padding:6px 0}
+  .plegable summary::-webkit-details-marker,.plegCard summary::-webkit-details-marker{display:none}
+  .plegCard summary{margin:0}
+  .plegCard summary::after{content:"▾";margin-left:auto;color:var(--muted);font-size:.9rem;transition:transform .2s}
+  .plegCard[open] summary::after{transform:rotate(180deg)}
 </style>
 </head>
 <body>

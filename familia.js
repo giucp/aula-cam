@@ -35,7 +35,7 @@ function tituloDia(iso) {
 }
 function hora(iso) { try { return FMT_HORA.format(new Date(iso)).replace(/\s?[.]?\s?m[.]?/i, (m) => m.trim()); } catch (e) { return ""; } }
 
-const FAMILIA_V = "v8"; // versión visible del panel (carga + footer + errores) para saber qué código corre
+const FAMILIA_V = "v9"; // versión visible del panel (carga + footer + errores) para saber qué código corre
 // fetch con TIMEOUT (25 s): en redes lentas un fetch sin límite puede colgarse minutos
 // y dejar la página "en blanco". Si falla la red devuelve status 0 (NUNCA lanza): el que
 // llama decide qué mostrar, y un fallo de red JAMÁS se confunde con "token inválido".
@@ -106,7 +106,7 @@ function setActivo(i) { localStorage.setItem(KEY_ACTIVO, String(i)); }
       } else if (status === 0 && !getNinos().length) {
         return estadoRed(() => location.reload(), "sin respuesta de red al canjear");
       } else if (!getNinos().length) {
-        return mostrarVincular(false, (d && d.error) || "Ese enlace no es válido o venció. Escribí el código o pedí uno nuevo.");
+        return mostrarVincular(false, (d && d.error) || "Ese enlace no es válido o venció. Escribe el código o pide uno nuevo.");
       }
       if (getNinos().length) history.replaceState(null, "", location.pathname);
     }
@@ -130,13 +130,13 @@ function mostrarVincular(volver, errMsg) {
   app.innerHTML =
     `<div class="estado vincular">
       <div class="em">🔗</div>
-      <h2>Vinculá tu acceso</h2>
-      <p>Usá el código que te dio tu hijo (Chispa → Familia → Invitar): escaneá el QR o escribilo.</p>
+      <h2>Vincula tu acceso</h2>
+      <p>Usa el código que te dio tu hijo (Chispa → Familia → Invitar): escanea el QR o escríbelo.</p>
       ${errMsg ? `<p class="vincErr">${esc(errMsg)}</p>` : ""}
-      ${hayCamara() ? `<button class="btn" id="scanGo">📷 Escanear QR con la cámara</button><p class="scanSub">o escribí el código:</p>` : ""}
+      ${hayCamara() ? `<button class="btn" id="scanGo">📷 Escanear QR con la cámara</button><p class="scanSub">o escribe el código:</p>` : ""}
       <input id="codeInput" class="codeIn" autocapitalize="characters" autocomplete="off" spellcheck="false" maxlength="8" placeholder="Ej: ABCD2345" />
       <button class="btn ${hayCamara() ? "ghost" : ""}" id="codeGo">Entrar con el código</button>
-      <p class="foot" style="margin-top:20px">📱 <b>En iPhone</b>, para que quede en el ícono: primero "Agregar a inicio", después abrí el ícono y vinculá acá. El mismo código sirve por 24 horas.</p>
+      <p class="foot" style="margin-top:20px">📱 <b>En iPhone</b>, para que quede en el ícono: primero "Agregar a inicio", después abre el ícono y vincula aquí. El mismo código sirve por 24 horas.</p>
       ${volver ? '<button class="btn ghost" id="codeBack" style="margin-top:10px">← Volver</button>' : ""}
     </div>`;
   const inp = document.getElementById("codeInput"), go = document.getElementById("codeGo");
@@ -147,12 +147,12 @@ function mostrarVincular(volver, errMsg) {
 }
 async function vincularConCodigo(code) {
   code = String(code || "").trim().toUpperCase();
-  if (code.length < 6) return mostrarVincular(getNinos().length > 0, "El código tiene 8 letras y números. Revisalo.");
+  if (code.length < 6) return mostrarVincular(getNinos().length > 0, "El código tiene 8 letras y números. Revísalo.");
   const go = document.getElementById("codeGo"); if (go) { go.disabled = true; go.textContent = "Entrando…"; }
   const { status, d } = await api({ accion: "canjear", code });
   if (d && d.ok && d.token) { setActivo(addNino(d.token, d.nino)); cargarYrender(); }
-  else if (status === 0) mostrarVincular(getNinos().length > 0, "Parece un problema de conexión. Probá de nuevo en un momento.");
-  else mostrarVincular(getNinos().length > 0, (d && d.error) || "No pudimos entrar. Probá de nuevo.");
+  else if (status === 0) mostrarVincular(getNinos().length > 0, "Parece un problema de conexión. Prueba de nuevo en un momento.");
+  else mostrarVincular(getNinos().length > 0, (d && d.error) || "No pudimos entrar. Prueba de nuevo.");
 }
 
 // ───────── escanear el QR con la cámara (jsQR, se carga perezosamente) ─────────
@@ -173,7 +173,7 @@ async function escanearQR() {
   app.innerHTML =
     `<div class="estado scanWrap">
       <video id="scanVid" playsinline muted></video>
-      <p class="scanMsg">Apuntá la cámara al código QR</p>
+      <p class="scanMsg">Apunta la cámara al código QR</p>
       <button class="btn ghost" id="scanCancel">Cancelar</button>
     </div>`;
   document.getElementById("scanCancel").onclick = () => { pararScan(); mostrarVincular(getNinos().length > 0); };
@@ -202,7 +202,7 @@ async function escanearQR() {
     SCAN_RAF = requestAnimationFrame(tick);
   } catch (e) {
     pararScan();
-    mostrarVincular(getNinos().length > 0, "No pudimos usar la cámara. Escribí el código a mano.");
+    mostrarVincular(getNinos().length > 0, "No pudimos usar la cámara. Escribe el código a mano.");
   }
 }
 
@@ -241,7 +241,7 @@ async function cargarYrender(recargar) {
   if (getActivo() !== i || getNinos().length !== ninos.length) return; // cambió de hijo mientras cargaba
   if (res.status === 401) {
     const arr = getNinos().filter((x) => x.token !== nino.token); setNinos(arr); setActivo(0);
-    if (!arr.length) return estadoError("El acceso caducó", (res.d && res.d.error) || "Pedile a tu hijo un enlace nuevo.", false);
+    if (!arr.length) return estadoError("El acceso caducó", (res.d && res.d.error) || "Pídele a tu hijo un enlace nuevo.", false);
     return cargarYrender();
   }
   try {
@@ -275,14 +275,14 @@ function estadoError(titulo, msg, reintentar) {
 function estadoRed(onRetry, detalle) {
   app.innerHTML =
     `<div class="estado" id="estadoRed"><div class="em">📶</div><h2>No pudimos cargar</h2>
-      <p>Parece un problema de conexión. Tus accesos siguen guardados: probá de nuevo.</p>
+      <p>Parece un problema de conexión. Tus accesos siguen guardados: prueba de nuevo.</p>
       <button class="btn" id="btnRetry">Reintentar</button>
       <button class="btn ghost" id="btnRedCodigo" style="margin-top:10px">Entrar con un código</button>
       <p class="foot" style="margin-top:16px"><span id="btnReset" style="text-decoration:underline;cursor:pointer">Empezar de cero</span></p>
       <p class="foot" style="margin-top:10px;opacity:.7">${FAMILIA_V}${detalle ? " · " + esc(detalle) : ""}</p></div>`;
   const b = document.getElementById("btnRetry"); if (b) b.onclick = onRetry || (() => location.reload());
   const c = document.getElementById("btnRedCodigo"); if (c) c.onclick = () => mostrarVincular(getNinos().length > 0);
-  const r = document.getElementById("btnReset"); if (r) r.onclick = () => { if (confirm("¿Borrar todo de este dispositivo y empezar de cero? Vas a tener que vincular de nuevo.")) { limpiarTodo(); mostrarVincular(false); } };
+  const r = document.getElementById("btnReset"); if (r) r.onclick = () => { if (confirm("¿Borrar todo de este dispositivo y empezar de cero? Tendrás que vincular de nuevo.")) { limpiarTodo(); mostrarVincular(false); } };
 }
 
 // ───────── selector de hijos (solo si hay 2+) ─────────
@@ -313,25 +313,29 @@ function render(d, ninos, i, staleTs, detalle) {
     `<div class="hdr">
       <p class="hi" style="color:rgba(255,255,255,.85)">Panel de familia</p>
       <h1>${esc(primerNombre(nombre))}</h1>
-      <p class="sub">Esto es todo lo que hizo en Chispa. Solo podés mirar; no se cambia nada.</p>
+      <p class="sub">Lo que tiene pendiente y lo que estudió en Chispa.</p>
       ${chips.length ? `<div class="chips">${chips.join("")}</div>` : ""}
     </div>`,
-    `<details class="card guiaPadres">
-      <summary class="guiaSum">👋 ¿Qué veo en este panel?</summary>
-      <div class="guiaBody">
-        <p>Acá ves, <b>solo para mirar</b>, lo que ${esc(primerNombre(nombre))} hace en Chispa:</p>
-        <p>📚 su <b>actividad</b> (resúmenes, prácticas y quiz, con resultados)<br>
-           📝 sus <b>notas</b> de examen y su <b>agenda</b> (tareas y horario)<br>
-           💪 en qué le conviene <b>reforzar</b></p>
-        <p class="muted">No podés escribir ni cambiar nada. Es privado: solo con el enlace que te compartió tu hijo, y él puede quitarte el acceso cuando quiera.</p>
-      </div>
-    </details>`,
+    // 2026-10-28: ORDEN POR LO QUE UN PADRE QUIERE SABER PRIMERO. Antes arrancaba con una guía
+    // y un resumen, y lo urgente (tareas vencidas, el examen del jueves) quedaba al fondo, con
+    // fechas en crudo ("2026-10-27"). Ahora: pendiente → semana → actividad → notas → resto.
+    seccionPendiente(d.tareas || []),
     seccionResumen(d),
     seccionActividad(d.actividad || []),
     seccionNotas(d.notas || []),
     seccionTareas(d.tareas || []),
-    seccionHorario(d.horario || []),
     seccionRefuerzo(d.errores || [], d.reportes || []),
+    seccionHorario(d.horario || []),
+    `<details class="card guiaPadres">
+      <summary class="guiaSum">👋 ¿Qué veo en este panel?</summary>
+      <div class="guiaBody">
+        <p>Aquí ves, <b>solo para mirar</b>, lo que ${esc(primerNombre(nombre))} hace en Chispa:</p>
+        <p>⏰ lo que tiene <b>pendiente</b> (tareas vencidas, exámenes de la semana)<br>
+           📚 su <b>actividad</b> (resúmenes, prácticas y quiz, con resultados)<br>
+           📝 sus <b>notas</b> de examen, su agenda y en qué le conviene <b>reforzar</b></p>
+        <p class="muted">No puedes escribir ni cambiar nada. Es privado: solo con el enlace que te compartió tu hijo, y él puede quitarte el acceso cuando quiera.</p>
+      </div>
+    </details>`,
     `<div class="center" style="margin-top:8px">
       <button class="btn ghost" id="btnAgregarHijo">＋ Agregar otro hijo</button>
     </div>
@@ -344,6 +348,8 @@ function render(d, ninos, i, staleTs, detalle) {
   app.innerHTML = html.join("");
   wireTabs(ninos);
   wireActividad();
+  // texto largo de una tarea: cortado a 2 líneas, tocar lo abre completo
+  document.querySelectorAll(".tarea .tt").forEach((t) => t.onclick = () => t.classList.toggle("abierta"));
   document.getElementById("btnAgregarHijo").onclick = () => mostrarVincular(true);
   document.getElementById("btnRecargar").onclick = () => cargarYrender(true);
   document.getElementById("btnSalir").onclick = desvincularActivo;
@@ -355,7 +361,7 @@ function primerNombre(n) { const p = String(n || "").trim().split(/\s+/); return
 function desvincularActivo() {
   const ninos = getNinos(), i = getActivo();
   const nom = primerNombre((ninos[i] && ninos[i].nombre) || "este hijo");
-  if (!confirm(`¿Desvincular a ${nom} de este dispositivo? Vas a necesitar un enlace nuevo para volver a verlo.`)) return;
+  if (!confirm(`¿Desvincular a ${nom} de este dispositivo? Necesitarás un enlace nuevo para volver a verlo.`)) return;
   const arr = ninos.filter((_, idx) => idx !== i); setNinos(arr); setActivo(0);
   if (!arr.length) { location.href = location.pathname; return; }
   cargarYrender();
@@ -366,13 +372,13 @@ function seccionResumen(d) {
   const act = d.actividad || [];
   const desde = Date.now() - 7 * 86400000;
   const sem = act.filter((a) => Date.parse(a.creado) >= desde);
-  const quizzes = act.filter((a) => a.modo === "quiz" && a.total > 0);
+  // "días que estudió" dice más que la racha (que ya va en el encabezado) o cuántas notas anotó
+  const dias = new Set(sem.map((a) => claveDia(a.creado))).size;
+  const quizzes = sem.filter((a) => a.modo === "quiz" && a.total > 0);
   const prom = quizzes.length ? Math.round(quizzes.reduce((s, q) => s + q.aciertos / q.total, 0) / quizzes.length * 100) : null;
-  const tiles = [tile(sem.length, "actividades esta semana")];
-  if (prom != null) tiles.push(tile(prom + "%", "promedio en quiz"));
-  tiles.push(tile((d.perfil && d.perfil.racha_dias) || 0, "días de racha"));
-  tiles.push(tile((d.notas || []).length, "notas anotadas"));
-  return `<div class="card"><p class="secTit"><span class="ic">📊</span> Resumen</p><div class="tiles">${tiles.join("")}</div></div>`;
+  const tiles = [tile(`${dias} de 7`, "días que estudió"), tile(sem.length, "actividades")];
+  tiles.push(tile(prom != null ? prom + "%" : "—", prom != null ? "promedio en quiz" : "sin quiz esta semana"));
+  return `<div class="card"><p class="secTit"><span class="ic">📊</span> Últimos 7 días</p><div class="tiles tiles3">${tiles.join("")}</div></div>`;
 }
 function tile(n, l) { return `<div class="tile"><div class="n">${esc(String(n))}</div><div class="l">${esc(l)}</div></div>`; }
 
@@ -442,22 +448,73 @@ function seccionNotas(notas) {
     const val = Number(n.nota);
     return `<div class="notaRow"><span class="notaBadge ${colorNota(val)}">${esc(String(n.nota).replace(/\.0$/, ""))}</span>
       <div style="min-width:0"><div style="font-weight:800">${esc(limpiaMateria(n.materia || "General"))}</div>
-      <div class="at" style="color:var(--muted);font-size:.82rem">${esc(n.descripcion || "Examen")}${n.fecha ? " · " + esc(String(n.fecha).slice(0, 10)) : ""}</div></div></div>`;
+      <div class="at" style="color:var(--muted);font-size:.82rem">${esc(n.descripcion || "Examen")}${n.fecha ? " · " + esc(fechaCorta(n.fecha)) : ""}</div></div></div>`;
   }).join("");
-  return card("🎓", "Notas de exámenes", `<div style="margin-bottom:10px">${chips}</div>${filas}`);
+  // promedios por materia: solo aportan si alguna materia tiene 2+ notas (si no, repiten la lista)
+  const conProm = Object.values(acc).some((a) => a.n > 1);
+  return card("🎓", "Notas de exámenes", `${conProm ? `<div style="margin-bottom:10px">${chips}</div>` : ""}${filas}`);
 }
 function colorNota(n) { return n >= 16 ? "nb-buena" : n >= 14 ? "nb-media" : "nb-floja"; }
 function notaBg(n) { return n >= 16 ? "#E5F7EF" : n >= 14 ? "#FFF3DA" : "#FDE7ED"; }
 function notaFg(n) { return n >= 16 ? "#1FA86A" : n >= 14 ? "#B8770A" : "#EF476F"; }
 
-// ───────── tareas ─────────
+// ───────── fechas legibles ("mar 27 oct", "venció hace 2 días") ─────────
+const DIAS_C = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
+const MESES_C = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+function diasHasta(ymd) {   // "YYYY-MM-DD" → días desde hoy en Caracas (0 hoy, <0 pasado), o null
+  if (!/^\d{4}-\d{2}-\d{2}/.test(String(ymd || ""))) return null;
+  const a = Date.UTC(...String(ymd).slice(0, 10).split("-").map((n, i) => +n - (i === 1 ? 1 : 0)));
+  const b = Date.UTC(...hoyYMD().split("-").map((n, i) => +n - (i === 1 ? 1 : 0)));
+  return Math.round((a - b) / 86400000);
+}
+function fechaCorta(ymd) {
+  if (!/^\d{4}-\d{2}-\d{2}/.test(String(ymd || ""))) return "";
+  const [y, m, d] = String(ymd).slice(0, 10).split("-").map(Number);
+  return `${DIAS_C[new Date(Date.UTC(y, m - 1, d)).getUTCDay()]} ${d} ${MESES_C[m - 1]}`;
+}
+function cuandoTarea(t) {   // → {txt, cls}
+  const n = diasHasta(t.fecha);
+  if (n === null) return { txt: "sin fecha", cls: "" };
+  if (n < 0) return { txt: n === -1 ? "venció ayer" : `venció hace ${-n} días`, cls: "w-bad" };
+  if (n === 0) return { txt: "hoy", cls: "w-hoy" };
+  if (n === 1) return { txt: "mañana", cls: "w-hoy" };
+  return { txt: n <= 6 ? `en ${n} días · ${fechaCorta(t.fecha)}` : fechaCorta(t.fecha), cls: "" };
+}
+const TIPO_T = { tarea: "Tarea", trabajo: "Trabajo", examen: "Examen" };
+function filaTarea(t) {
+  const c = t.hecha ? { txt: "hecha", cls: "w-ok" } : cuandoTarea(t);
+  if (!t.hecha && t.tipo === "examen" && c.cls !== "w-bad") c.cls = "w-exam";   // el examen se distingue
+  const meta = [TIPO_T[t.tipo] || "Tarea", t.materia && limpiaMateria(t.materia)].filter(Boolean).map(esc).join(" · ");
+  return `<div class="tarea${t.hecha ? " hecha" : ""}"><div class="tb"><div class="tt">${esc(t.descripcion || TIPO_T[t.tipo] || "Tarea")}</div>
+    <div class="tm">${meta}</div></div><span class="tw ${c.cls}">${esc(c.txt)}</span></div>`;
+}
+
+// ───────── lo pendiente: lo PRIMERO que ve el padre ─────────
+// Tareas vencidas sin hacer, exámenes de los próximos 7 días y lo que hay para hoy/mañana.
+function esUrgente(t) {
+  if (t.hecha) return false;
+  const n = diasHasta(t.fecha);
+  if (n === null) return false;
+  return n < 0 || n <= 1 || (t.tipo === "examen" && n <= 7);
+}
+function seccionPendiente(tareas) {
+  const urg = tareas.filter(esUrgente).sort((a, b) => diasHasta(a.fecha) - diasHasta(b.fecha));
+  if (!urg.length) return `<div class="card alDia"><p class="secTit" style="margin:0"><span class="ic">✅</span> Todo al día</p>
+    <p class="muted" style="margin:6px 0 0;font-size:.9rem">No tiene tareas vencidas ni exámenes esta semana.</p></div>`;
+  const venc = urg.filter((t) => diasHasta(t.fecha) < 0).length;
+  const sub = venc ? `<p class="pendSub">${venc} ${venc === 1 ? "tarea vencida sin marcar como hecha" : "tareas vencidas sin marcar como hechas"}</p>` : "";
+  return `<div class="card pend"><p class="secTit"><span class="ic">⏰</span> Para estar pendiente</p>${sub}${urg.map(filaTarea).join("")}</div>`;
+}
+
+// ───────── tareas: lo que viene más adelante + las hechas (plegadas) ─────────
 function seccionTareas(tareas) {
-  if (!tareas.length) return card("📝", "Tareas", vacio("Todavía no cargó tareas."));
-  const pend = tareas.filter((t) => !t.hecha), hechas = tareas.filter((t) => t.hecha);
-  const filaT = (t, done) => `<div class="li"><span class="lic">${done ? "☑️" : "⬜"}</span><span class="${done ? "tacha" : ""}">${esc(t.descripcion || "Tarea")}${t.materia ? ` · <span class="muted">${esc(limpiaMateria(t.materia))}</span>` : ""}${t.fecha ? ` <span class="muted">(${esc(String(t.fecha).slice(0, 10))})</span>` : ""}</span></div>`;
-  let body = pend.length ? pend.map((x) => filaT(x, false)).join("") : `<p class="muted" style="font-size:.88rem;margin:0 0 4px">Sin tareas pendientes 🎉</p>`;
-  if (hechas.length) { body += `<p class="lblMini" style="margin:12px 0 6px">Hechas</p>` + hechas.slice(0, 8).map((x) => filaT(x, true)).join(""); }
-  return card("📝", "Tareas", body);
+  if (!tareas.length) return card("📝", "Tareas", vacio("Todavía no ha anotado tareas en su agenda."));
+  const resto = tareas.filter((t) => !t.hecha && !esUrgente(t));
+  const hechas = tareas.filter((t) => t.hecha);
+  if (!resto.length && !hechas.length) return "";
+  let body = resto.map(filaTarea).join("");
+  if (hechas.length) body += `<details class="plegable"${resto.length ? "" : ` style="margin-top:0"`}><summary>Ver ${hechas.length} ${hechas.length === 1 ? "tarea hecha" : "tareas hechas"}</summary>${hechas.slice(0, 15).map(filaTarea).join("")}</details>`;
+  return card("📝", resto.length ? "Más adelante" : "Tareas", body);
 }
 
 // ───────── horario semanal ─────────
@@ -471,7 +528,8 @@ function seccionHorario(horario) {
     const ms = (porDia[d] || []).sort((a, b) => (a.orden || 0) - (b.orden || 0)).map((x) => limpiaMateria(x.materia));
     if (ms.length) body += `<div class="hday"><div class="hd">${DIAS[d]}</div><div class="hm">${esc(ms.join(" · "))}</div></div>`;
   }
-  return card("📅", "Horario", body);
+  // se consulta poco: plegado, para que no empuje lo importante
+  return `<details class="card plegCard"><summary class="secTit"><span class="ic">📅</span> Horario de la semana</summary><div style="margin-top:12px">${body}</div></details>`;
 }
 
 // ───────── refuerzo: errores + reportes ─────────

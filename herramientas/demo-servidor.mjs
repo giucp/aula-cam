@@ -8,6 +8,7 @@ import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { panelDemo } from "./demo-familia.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url)).split(path.sep).join("/").replace(/\/herramientas$/, "");
 const PUERTO = Number(process.env.PORT) || 4321;
@@ -36,6 +37,15 @@ http.createServer(async (req, res) => {
       res.writeHead(r.status, { "Content-Type": r.headers.get("content-type") || "application/json" });
       return res.end(Buffer.from(await r.arrayBuffer()));
     } catch (e) { res.writeHead(502); return res.end(String(e)); }
+  }
+  // sin proxy, el panel de familia (/familia.html) responde con datos FICTICIOS: cualquier código entra
+  if (!PROXY && req.url.startsWith("/api/familia")) {
+    const cuerpo = [];
+    for await (const c of req) cuerpo.push(c);
+    let b = {}; try { b = JSON.parse(Buffer.concat(cuerpo).toString() || "{}"); } catch (e) {}
+    const d = b.accion === "canjear" ? { ok: true, token: "demo", nino: { nombre: "Martina Bambini", grado: "5to grado" } } : panelDemo();
+    res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
+    return res.end(JSON.stringify(d));
   }
   let ruta = decodeURIComponent(req.url.split("?")[0]);
   if (ruta === "/") ruta = "/demo-inicio.html";
