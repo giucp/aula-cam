@@ -41,7 +41,7 @@ function tituloDia(iso) {
 }
 function hora(iso) { try { return FMT_HORA.format(new Date(iso)).replace(/\s?[.]?\s?m[.]?/i, (m) => m.trim()); } catch (e) { return ""; } }
 
-const FAMILIA_V = "v13"; // versión visible del panel (carga + footer + errores) para saber qué código corre
+const FAMILIA_V = "v14"; // versión visible del panel (carga + footer + errores) para saber qué código corre
 // fetch con TIMEOUT (25 s): en redes lentas un fetch sin límite puede colgarse minutos
 // y dejar la página "en blanco". Si falla la red devuelve status 0 (NUNCA lanza): el que
 // llama decide qué mostrar, y un fallo de red JAMÁS se confunde con "token inválido".
@@ -137,7 +137,7 @@ function mostrarVincular(volver, errMsg) {
     `<div class="estado vincular">
       <div class="em">🔗</div>
       <h2>Vincula tu acceso</h2>
-      <p>Usa el código que te dio tu hijo (Chispa → Familia → Invitar): escanea el QR o escríbelo.</p>
+      <p>Usa el código que te dio tu hijo (en su Chispa: menú ⋮ → Dar acceso a un adulto): escanea el QR o escríbelo.</p>
       ${errMsg ? `<p class="vincErr">${esc(errMsg)}</p>` : ""}
       ${hayCamara() ? `<button class="btn" id="scanGo">📷 Escanear QR con la cámara</button><p class="scanSub">o escribe el código:</p>` : ""}
       <input id="codeInput" class="codeIn" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="Ej: ABCD2345" />
