@@ -1931,3 +1931,17 @@
     filter:drop-shadow(0 12px 16px rgba(28,16,93,.28))}
   .h2MissionAction{white-space:nowrap}
   .h2Mission .h2MissionContent{max-width:70%}
+
+  /* 2026-10-28 · Materias: 15 materias en tarjetas de 150px a 2 columnas eran 8 filas de scroll.
+     Ahora 3 columnas, tarjetas centradas y bajas; el estado solo aparece si dice algo (avance o
+     completada). La esquina (chevron / "Nuevo") se mantiene. */
+  .m2Grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+  .m2Card{min-height:0;padding:12px 8px 11px;align-items:center;text-align:center;border-radius:18px}
+  .m2CardIcon{width:48px;height:48px;margin:2px 0 7px}
+  .m2Card b{min-height:0;font-size:.8rem;line-height:1.18;text-align:center}
+  .m2Card small{margin-top:5px;font-size:.62rem}
+  .m2Card .m2CardBar{height:5px;margin-top:5px}
+  .m2CardChev{display:none}
+  .m2New{top:6px;right:6px;font-size:.5rem;padding:2px 5px}
+  @media (max-width:374px){ .m2Card{padding:10px 6px} .m2CardIcon{width:42px;height:42px} }
+  #materiasSeg.hidden+.m2Grid,#materiasSeg.hidden~#gridMaterias{margin-top:16px}

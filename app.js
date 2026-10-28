@@ -385,7 +385,9 @@
   // Nombre de materia en caso título ("CIENCIAS NATURALES" → "Ciencias Naturales"): evita las
   // MAYÚSCULAS gritonas en la Home (spec §4 voz calmada / §3 evitar caps sostenidas).
   function capMateria(s){
-    return String(s||"").toLowerCase().replace(/(^|[\s(¿"'\-/])([a-záéíóúñü])/g,(m,p,c)=>p+c.toUpperCase());
+    // conectores en minúscula ("Proyecto de Aprendizaje", no "Proyecto De Aprendizaje")
+    return String(s||"").toLowerCase().replace(/(^|[\s(¿"'\-/])([a-záéíóúñü])/g,(m,p,c)=>p+c.toUpperCase())
+      .replace(/(?!^)\b(De|Del|La|Las|Los|El|Y|E|En|Para|Con)\b/g,w=>w.toLowerCase());
   }
   // Capitaliza solo la primera letra (para chips de fecha: "hoy"→"Hoy", "vie 16"→"Vie 16").
   function capPrimera(s){ s=String(s||""); return s?s.charAt(0).toUpperCase()+s.slice(1):s; }
@@ -1916,7 +1918,7 @@
       let estado;
       if(e.tipo==="progreso") estado = `<small>${e.p.done} de ${e.p.total} temas</small><span class="m2CardBar"><i style="width:${e.p.pct}%"></i></span>`;
       else if(e.tipo==="completada") estado = `<small class="m2Done">${M2_CHECK}Materia completada</small>`;
-      else estado = `<small class="m2Ready">Lista para empezar</small>`;
+      else estado = "";   // "Lista para empezar" se repetía en 13 de 14 tarjetas: no decía nada
       b.innerHTML=`${esquina}<span class="m2CardIcon"><img src="assets/materias/${vis.img}.png" alt="" aria-hidden="true"></span>`
         + `<b>${escapeHtml(capMateria(limpiaNombreMateria(m.nombre)))}</b>${estado}`;
       b.onclick=()=>abrirMateria(m);
@@ -1953,7 +1955,8 @@
   function pintarSegMaterias(lista){
     const cont=$("#materiasSeg"); if(!cont) return;
     const enProg = lista.filter(m=>estadoMateria(m).tipo==="progreso").length;
-    if(!enProg){ matSeg="todas"; cont.classList.add("hidden"); cont.innerHTML=""; return; }
+    // con 0 o 1 empezada el filtro no aporta: esa única ya está arriba en "Continúa donde lo dejaste"
+    if(enProg<2){ matSeg="todas"; cont.classList.add("hidden"); cont.innerHTML=""; return; }
     if(!matSegUser) matSeg = "todas";      // sin eleccion explicita, NUNCA esconder materias
     cont.classList.remove("hidden");
     cont.innerHTML=`<button class="chip" type="button" data-seg="progreso" aria-pressed="${matSeg==='progreso'}">En progreso</button>`
