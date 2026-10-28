@@ -78,6 +78,16 @@ async function useridDeNino(token) {
   return await useridDeToken(token);
 }
 
+// El niño se identifica primero con la firma de sesión de Chispa (b.sesion: mismo formato y clave
+// que el token nativo, ver herramientas/sesion.mjs) — sin ir al Moodle del colegio. Solo si no viene
+// o no valida, se usa el token (Moodle o nativo) como antes. Así invitar/ver/quitar adultos no falla
+// por un Moodle lento ni por un token del aula que el colegio dio por vencido.
+async function ninoDe(b) {
+  const uid = uidDeTokenNativo(b && b.sesion);
+  if (uid != null) return uid;
+  return await useridDeNino(b && b.token);
+}
+
 const ALFA = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // sin 0/O/1/I: legible y sin ambigüedad
 function codigoCorto(n = 8) {
   const b = crypto.randomBytes(n); let s = "";
@@ -103,7 +113,7 @@ export default async function handler(req, res) {
   try {
     // ── NIÑO: genera una invitación (código corto, válido 24 h, 1 solo uso) ──
     if (accion === "invitar") {
-      const uid = await useridDeNino(b.token);
+      const uid = await ninoDe(b);
       if (!uid) return res.status(401).json({ error: "Sesión inválida" });
       // higiene: borrar invitaciones vencidas de este niño (filas con code y sin token = invitación)
       fetch(`${cfg.url}/rest/v1/familia_vinculos?usuario_id=eq.${uid}&token=is.null&code_expira=lt.${encodeURIComponent(new Date().toISOString())}`, { method: "DELETE", headers: hdr(cfg) }).catch(() => {});
@@ -121,7 +131,7 @@ export default async function handler(req, res) {
 
     // ── NIÑO: lista sus accesos otorgados (para verlos / revocarlos) ──
     if (accion === "vinculos") {
-      const uid = await useridDeNino(b.token);
+      const uid = await ninoDe(b);
       if (!uid) return res.status(401).json({ error: "Sesión inválida" });
       const rows = await sbGet(cfg, `familia_vinculos?usuario_id=eq.${uid}&order=creado.desc&select=id,alias,activo,creado,ultimo_acceso,token,code,code_expira`);
       const vinculos = (Array.isArray(rows) ? rows : []).map((v) => ({
@@ -133,7 +143,7 @@ export default async function handler(req, res) {
 
     // ── NIÑO: revoca un acceso propio ──
     if (accion === "revocar") {
-      const uid = await useridDeNino(b.token);
+      const uid = await ninoDe(b);
       if (!uid) return res.status(401).json({ error: "Sesión inválida" });
       const id = parseInt(b.id, 10);
       if (!id) return res.status(400).json({ error: "Falta id" });
@@ -155,7 +165,7 @@ export default async function handler(req, res) {
       if (!code) return res.status(400).json({ error: "Falta código" });
       const nowISO = new Date().toISOString();
       // La invitación es la fila con ese code aún vigente (token null la identifica como invitación).
-      const rows = await sbGet(cfg, `familia_vinculos?code=eq.${encodeURIComponent(code)}&token=is.null&code_expira=gt.${encodeURIComponent(nowISO)}&select=usuario_id,alias&limit=1`);
+      const rows = await sbGet(cfg, `familia_vinculos?code=eq.${encodeURIComponent(code)}&token=is.null&activo=is.true&code_expira=gt.${encodeURIComponent(nowISO)}&select=usuario_id,alias&limit=1`);
       const inv = Array.isArray(rows) && rows[0];
       if (!inv) return res.status(404).json({ error: "Código inválido o vencido. Pídele a tu hijo un código nuevo." });
       const token = tokenLargo();

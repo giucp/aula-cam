@@ -1945,3 +1945,10 @@
   .m2New{top:6px;right:6px;font-size:.5rem;padding:2px 5px}
   @media (max-width:374px){ .m2Card{padding:10px 6px} .m2CardIcon{width:42px;height:42px} }
   #materiasSeg.hidden+.m2Grid,#materiasSeg.hidden~#gridMaterias{margin-top:16px}
+
+  /* 2026-10-28 · invitación de familia: el código se puede seleccionar a mano (respaldo si el
+     portapapeles falla) y cada adulto muestra desde cuándo tiene acceso. */
+  .famCode{-webkit-user-select:all;user-select:all}
+  .famVinNom{display:flex;flex-direction:column;min-width:0}
+  .famVinNom small{font-size:.74rem;font-weight:700;color:var(--muted);margin-top:1px}
+  .famErr{color:var(--bad);font-weight:700}

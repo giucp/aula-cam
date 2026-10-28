@@ -1611,13 +1611,16 @@
   async function crearInvite(){
     const btn=$("#btnCrearInvite"); if(btn){ btn.disabled=true; btn.textContent="Creando…"; }
     try{
-      const r=await fetch(API_FAMILIA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"invitar", token:SESION.token})});
+      const r=await fetch(API_FAMILIA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"invitar", token:SESION.token, sesion:firmaSesion()})});
       const d=await r.json().catch(()=>null);
       if(!d||!d.ok||!d.link) throw new Error();
       await mostrarInvite(d.link, d.code);
       if(btn){ btn.disabled=false; btn.textContent="Crear otro enlace"; }
       cargarVinculos();
-    }catch(e){ if(btn){ btn.disabled=false; btn.textContent="Reintentar"; } }
+    }catch(e){
+      if(btn){ btn.disabled=false; btn.textContent="Reintentar"; }
+      const box=$("#famInviteBox"); if(box) box.innerHTML=`<p class="famHint famErr">No se pudo crear el enlace. Revisa tu conexión y toca Reintentar.</p>`;
+    }
   }
   async function mostrarInvite(link, code){
     const box=$("#famInviteBox"); if(!box) return;
@@ -1628,37 +1631,69 @@
       `<div class="famCard">
         <p class="famMini">Muéstraselo a tu adulto o compártelo</p>
         ${img?`<img class="famQR" src="${img}" alt="Código QR" />`:""}
-        <div class="famCode">${escapeHtml(code)}</div>
+        <div class="famCode" id="famCode">${escapeHtml(code)}</div>
         <p class="famHint">Que abra <b>${escapeHtml(donde)}</b> y escriba el código, o que escanee el QR.</p>
-        <div class="famBtns"><button class="otros" id="btnCompartir">📤 Compartir</button><button class="otros" id="btnCopiar">📋 Copiar</button></div>
+        <div class="famBtns"><button class="otros" id="btnCompartir" type="button">📤 Compartir</button><button class="otros" id="btnCopiar" type="button">📋 Copiar código</button></div>
+        <p class="famHint" id="famCopyMsg" hidden></p>
         <p class="famHint">Vale 24 horas y sirve en más de un teléfono (mamá, papá, o el ícono de inicio del iPhone).</p>
       </div>`;
     const share=$("#btnCompartir"), copy=$("#btnCopiar");
-    if(share) share.onclick=async()=>{ try{ if(navigator.share){ await navigator.share({title:"Chispa · Familia", text:"Mira lo que hago en Chispa:", url:link}); } else { copiar(link,copy); } }catch(_){} };
-    if(copy) copy.onclick=()=>copiar(link,copy);
+    // ★ "Copiar" copia el CÓDIGO (8 letras), no el enlace: el adulto lo pega en la casilla del panel.
+    //   Antes copiaba el enlace entero y, al pegarlo en la casilla de 8 letras, quedaba "https://"
+    //   y el panel decía que el código no servía (2026-10-28). "Compartir" sí manda el enlace,
+    //   que abre el panel ya vinculado, y además lleva el código escrito por si acaso.
+    // (el espacio antes del salto: si lo pegan en una casilla de una línea, el salto desaparece)
+    const mensaje=`Para ver lo que hago en Chispa, abre este enlace: ${link} \nO entra a ${donde} y escribe el código: ${code}`;
+    if(share) share.onclick=async()=>{
+      if(navigator.share){
+        try{ await navigator.share({title:"Chispa · Familia", text:mensaje}); }
+        catch(e){ if(e && e.name!=="AbortError") copiar(mensaje, share, "✓ Mensaje copiado"); }   // cancelar no es error
+      } else copiar(mensaje, share, "✓ Mensaje copiado");
+    };
+    if(copy) copy.onclick=()=>copiar(code, copy, "✓ Código copiado");
   }
-  function copiar(txt, btn){
-    const ok=()=>{ if(btn){ const t=btn.textContent; btn.textContent="✓ Copiado"; setTimeout(()=>btn.textContent=t,1800); } };
-    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok).catch(()=>fallbackCopy(txt,ok));
-    else fallbackCopy(txt, ok);
+  // Copiar al portapapeles con respaldo. Si NADA funciona (navegadores viejos, permisos), no se
+  // finge el "Copiado": se selecciona el código en pantalla y se explica cómo copiarlo a mano.
+  function copiar(txt, btn, rotulo){
+    const msg=$("#famCopyMsg");
+    const ok=()=>{ if(msg){ msg.hidden=true; } if(btn){ const t=btn.textContent; btn.textContent=rotulo||"✓ Copiado"; setTimeout(()=>btn.textContent=t,2000); } };
+    const falla=()=>{
+      const c=$("#famCode");
+      if(c){ try{ const r=document.createRange(); r.selectNodeContents(c); const s=getSelection(); s.removeAllRanges(); s.addRange(r); }catch(_){} }
+      if(msg){ msg.hidden=false; msg.textContent="No se pudo copiar solo: mantén presionado el código para copiarlo."; }
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText && window.isSecureContext)
+      navigator.clipboard.writeText(txt).then(ok).catch(()=>{ fallbackCopy(txt) ? ok() : falla(); });
+    else fallbackCopy(txt) ? ok() : falla();
   }
-  function fallbackCopy(txt, ok){ try{ const ta=document.createElement("textarea"); ta.value=txt; ta.style.position="fixed"; ta.style.opacity="0"; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); ok&&ok(); }catch(_){} }
+  function fallbackCopy(txt){
+    try{
+      const ta=document.createElement("textarea"); ta.value=txt; ta.setAttribute("readonly","");
+      ta.style.cssText="position:fixed;top:0;left:0;opacity:0;font-size:16px";   // 16px: iOS no hace zoom
+      document.body.appendChild(ta); ta.focus(); ta.select(); ta.setSelectionRange(0, txt.length);
+      const hecho=document.execCommand("copy"); ta.remove(); return !!hecho;
+    }catch(_){ return false; }
+  }
   async function cargarVinculos(){
     const box=$("#famVinculos"); if(!box) return;
     try{
-      const r=await fetch(API_FAMILIA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"vinculos", token:SESION.token})});
+      const r=await fetch(API_FAMILIA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"vinculos", token:SESION.token, sesion:firmaSesion()})});
       const d=await r.json().catch(()=>null);
       const activos=((d&&d.vinculos)||[]).filter(v=>v.estado==="activo");
       if(!activos.length){ box.innerHTML=""; return; }
+      // con varios "Adulto" iguales no se sabía cuál quitar: se agrega desde cuándo y cuándo miró
+      const f=(iso)=>{ if(!iso) return ""; const n=-diasHasta(String(iso).slice(0,10)); return n===0?"hoy":n===1?"ayer":fechaNota(String(iso).slice(0,10)).toLowerCase(); };
       box.innerHTML=`<p class="famMini" style="margin-top:18px">Adultos con acceso</p>` + activos.map(v=>
-        `<div class="famVin"><span class="famVinNom">👤 ${escapeHtml(v.alias||"Adulto")}</span><button class="famQuitar" data-id="${v.id}">Quitar</button></div>`).join("");
+        `<div class="famVin"><span class="famVinNom">👤 ${escapeHtml(v.alias||"Adulto")}<small>desde ${escapeHtml(f(v.creado))}${v.ultimo_acceso?` · miró ${escapeHtml(f(v.ultimo_acceso))}`:""}</small></span><button class="famQuitar" data-id="${v.id}" type="button">Quitar</button></div>`).join("");
       box.querySelectorAll(".famQuitar").forEach(b=>b.onclick=()=>revocarVinculo(+b.dataset.id, b));
     }catch(e){ box.innerHTML=""; }
   }
   async function revocarVinculo(id, btn){
     if(!confirm("¿Quitarle el acceso a este adulto?")) return;
     if(btn){ btn.disabled=true; btn.textContent="…"; }
-    try{ await fetch(API_FAMILIA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"revocar", token:SESION.token, id})}); }catch(_){}
+    let ok=false;
+    try{ const r=await fetch(API_FAMILIA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"revocar", token:SESION.token, sesion:firmaSesion(), id})}); ok=r.ok; }catch(_){}
+    if(!ok){ alert("No se pudo quitar el acceso. Revisa tu conexión y vuelve a intentar."); }   // antes fallaba en silencio
     cargarVinculos();
   }
   $("#btnFamilia").onclick = abrirFamilia;

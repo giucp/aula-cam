@@ -41,7 +41,7 @@ function tituloDia(iso) {
 }
 function hora(iso) { try { return FMT_HORA.format(new Date(iso)).replace(/\s?[.]?\s?m[.]?/i, (m) => m.trim()); } catch (e) { return ""; } }
 
-const FAMILIA_V = "v10"; // versión visible del panel (carga + footer + errores) para saber qué código corre
+const FAMILIA_V = "v12"; // versión visible del panel (carga + footer + errores) para saber qué código corre
 // fetch con TIMEOUT (25 s): en redes lentas un fetch sin límite puede colgarse minutos
 // y dejar la página "en blanco". Si falla la red devuelve status 0 (NUNCA lanza): el que
 // llama decide qué mostrar, y un fallo de red JAMÁS se confunde con "token inválido".
@@ -140,19 +140,23 @@ function mostrarVincular(volver, errMsg) {
       <p>Usa el código que te dio tu hijo (Chispa → Familia → Invitar): escanea el QR o escríbelo.</p>
       ${errMsg ? `<p class="vincErr">${esc(errMsg)}</p>` : ""}
       ${hayCamara() ? `<button class="btn" id="scanGo">📷 Escanear QR con la cámara</button><p class="scanSub">o escribe el código:</p>` : ""}
-      <input id="codeInput" class="codeIn" autocapitalize="characters" autocomplete="off" spellcheck="false" maxlength="8" placeholder="Ej: ABCD2345" />
+      <input id="codeInput" class="codeIn" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="Ej: ABCD2345" />
       <button class="btn ${hayCamara() ? "ghost" : ""}" id="codeGo">Entrar con el código</button>
       <p class="foot" style="margin-top:20px">📱 <b>En iPhone</b>, para que quede en el ícono: primero "Agregar a inicio", después abre el ícono y vincula aquí. El mismo código sirve por 24 horas.</p>
       ${volver ? '<button class="btn ghost" id="codeBack" style="margin-top:10px">← Volver</button>' : ""}
     </div>`;
   const inp = document.getElementById("codeInput"), go = document.getElementById("codeGo");
   go.onclick = () => vincularConCodigo(inp.value);
+  inp.addEventListener("input", () => {
+    const v = inp.value;
+    if (v.length > 8 || /\s|-/.test(v)) { const c = codeDeTexto(v); if (c) inp.value = c; }
+  });
   inp.addEventListener("keydown", (e) => { if (e.key === "Enter") vincularConCodigo(inp.value); });
   const scan = document.getElementById("scanGo"); if (scan) scan.onclick = escanearQR;
   const back = document.getElementById("codeBack"); if (back) back.onclick = () => cargarYrender();
 }
 async function vincularConCodigo(code) {
-  code = String(code || "").trim().toUpperCase();
+  code = codeDeTexto(code) || String(code || "").trim().replace(/[\s-]/g, "").toUpperCase();
   if (code.length < 6) return mostrarVincular(getNinos().length > 0, "El código tiene 8 letras y números. Revísalo.");
   const go = document.getElementById("codeGo"); if (go) { go.disabled = true; go.textContent = "Entrando…"; }
   const { status, d } = await api({ accion: "canjear", code });
@@ -171,9 +175,19 @@ function cargarJsQR() {
   if (window.jsQR) return Promise.resolve();
   return new Promise((res, rej) => { const s = document.createElement("script"); s.src = "jsQR.js"; s.onload = res; s.onerror = rej; document.head.appendChild(s); });
 }
+// Saca el código de lo que sea que pegue el adulto: el código solo, el enlace, o el mensaje entero
+// de "Compartir" ("…abre este enlace: https://…?c=ABCD2345 … escribe el código: ABCD2345").
+// Antes tomaba la primera palabra de 6+ letras, y del mensaje sacaba "CHISPA" como código.
 function codeDeTexto(txt) {
-  try { const u = new URL(txt); const c = u.searchParams.get("c"); if (c) return c.toUpperCase(); } catch (e) {}
-  const m = String(txt).match(/[A-Za-z2-9]{6,8}/); return m ? m[0].toUpperCase() : null;
+  const ALFA_CODE = "A-HJ-NP-Z2-9";   // el alfabeto del servidor (api/familia ALFA): sin 0/O/1/I
+  const t = String(txt || "");
+  // exactamente 8 del alfabeto: una casilla de una línea BORRA los saltos al pegar, y el mensaje
+  // "…?c=PQRS2345⏎O entra…" quedaba "…?c=PQRS2345O entra…" → se leía "PQRS2345O"
+  const c = t.match(new RegExp("[?&]c=([" + ALFA_CODE + "]{8})", "i")); if (c) return c[1].toUpperCase();
+  const solo = t.trim().replace(/[\s-]/g, "").toUpperCase();
+  if (new RegExp("^[" + ALFA_CODE + "]{8}$").test(solo)) return solo;
+  const m = t.toUpperCase().match(new RegExp("(?:^|[^A-Z0-9])([" + ALFA_CODE + "]{8})(?![A-Z0-9])"));
+  return m ? m[1] : null;
 }
 async function escanearQR() {
   app.innerHTML =

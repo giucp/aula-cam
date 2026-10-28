@@ -728,6 +728,7 @@
     P("INGLÉS 6G","Present simple",["resumen","practica"],0.55)
   ];
 
+  var DEMO_VINC=[{id:1,alias:null,estado:"activo",creado:dd(-12)+"T12:00:00Z",ultimo_acceso:dd(-1)+"T20:00:00Z"},{id:2,alias:"Mamá",estado:"activo",creado:dd(-3)+"T12:00:00Z",ultimo_acceso:null}];
   function json(o){ return Promise.resolve(new Response(JSON.stringify(o),{status:200,headers:{"Content-Type":"application/json"}})); }
   var rf=window.fetch.bind(window);
   window.fetch=function(u,o){
@@ -739,6 +740,12 @@
     if(u.indexOf("/api/errores")>-1) return json({errores:[]});
     if(u.indexOf("/api/curado-info")>-1) return json({});
     if(u.indexOf("/api/curriculo")>-1) return json({});
+    // familia: invitar → código que el panel de demo (/familia.html, datos ficticios) acepta
+    if(u.indexOf("/api/familia")>-1){
+      if(b.accion==="invitar") return json({ok:true, code:"PQRS2345", link:location.origin+"/familia.html?c=PQRS2345"});
+      if(b.accion==="vinculos") return json({ok:true, vinculos:DEMO_VINC.filter(function(v){return v.estado==="activo";})});
+      if(b.accion==="revocar"){ DEMO_VINC=DEMO_VINC.filter(function(v){return v.id!==b.id;}); return json({ok:true}); }
+    }
     // generar: contenido SIMULADO. El demo no debe gastar IA real, y desde 2026-10-20 produccion
     // exige sesion firmada (que el demo no tiene). Forma minima de cada modo, para ver la pantalla.
     if(u.indexOf("/api/generar")>-1){
