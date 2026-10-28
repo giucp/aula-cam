@@ -20,6 +20,10 @@ let ACT_DIAS = [];      // actividad del hijo activo, agrupada por día (para el
 
 const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
+// (arriba por lo mismo que PANEL_CACHE: el primer render corre antes de llegar al final del archivo)
+const DIAS_C = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
+const MESES_C = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+const TIPO_T = { tarea: "Tarea", trabajo: "Trabajo", examen: "Examen" };
 const FMT_DIA = new Intl.DateTimeFormat("es", { weekday: "long", day: "numeric", month: "long", timeZone: "America/Caracas" });
 const FMT_HORA = new Intl.DateTimeFormat("es", { hour: "numeric", minute: "2-digit", hour12: true, timeZone: "America/Caracas" });
 const FMT_YMD = new Intl.DateTimeFormat("en-CA", { year: "numeric", month: "2-digit", day: "2-digit", timeZone: "America/Caracas" });
@@ -30,12 +34,14 @@ function tituloDia(iso) {
   const k = claveDia(iso);
   if (k === hoyYMD()) return "Hoy";
   if (k === ayerYMD()) return "Ayer";
-  const t = FMT_DIA.format(new Date(iso));
+  // "Martes 20 oct": la forma larga ("martes, 20 de octubre") no entraba en el selector del celular
+  const [y, m, d] = k.split("-").map(Number);
+  const t = `${FMT_DIA.format(new Date(iso)).split(",")[0]} ${d} ${MESES_C[m - 1]}`;
   return t.charAt(0).toUpperCase() + t.slice(1);
 }
 function hora(iso) { try { return FMT_HORA.format(new Date(iso)).replace(/\s?[.]?\s?m[.]?/i, (m) => m.trim()); } catch (e) { return ""; } }
 
-const FAMILIA_V = "v9"; // versión visible del panel (carga + footer + errores) para saber qué código corre
+const FAMILIA_V = "v10"; // versión visible del panel (carga + footer + errores) para saber qué código corre
 // fetch con TIMEOUT (25 s): en redes lentas un fetch sin límite puede colgarse minutos
 // y dejar la página "en blanco". Si falla la red devuelve status 0 (NUNCA lanza): el que
 // llama decide qué mostrar, y un fallo de red JAMÁS se confunde con "token inválido".
@@ -305,7 +311,7 @@ function render(d, ninos, i, staleTs, detalle) {
   const chips = [];
   if (p.grado) chips.push(`<span class="hchip">🎓 ${esc(p.grado)}</span>`);
   if (p.racha_dias >= 2) chips.push(`<span class="hchip">🔥 ${p.racha_dias} días seguidos</span>`);
-  if (p.ultimo_acceso) chips.push(`<span class="hchip">🕒 Última vez: ${esc(tituloDia(p.ultimo_acceso).toLowerCase())}</span>`);
+  if (p.ultimo_acceso) chips.push(`<span class="hchip">🕒 Abrió Chispa: ${esc(tituloDia(p.ultimo_acceso).toLowerCase())}</span>`);
 
   const html = [
     tabsHijos(ninos, i),
@@ -426,7 +432,7 @@ function resumenDia(items) {
   if (c.retos) partes.push(`${c.retos} práctica${c.retos > 1 ? "s" : ""}`);
   if (c.quiz) partes.push(`${c.quiz} quiz`);
   if (c.examen) partes.push(`${c.examen} examen${c.examen > 1 ? "es" : ""}`);
-  if (c.resumen) partes.push(`${c.resumen} resumen${c.resumen > 1 ? "es" : ""}`);
+  if (c.resumen) partes.push(`${c.resumen} ${c.resumen > 1 ? "resúmenes" : "resumen"}`);
   return partes.join(" · ");
 }
 function resultBadge(a, t) {
@@ -459,8 +465,6 @@ function notaBg(n) { return n >= 16 ? "#E5F7EF" : n >= 14 ? "#FFF3DA" : "#FDE7ED
 function notaFg(n) { return n >= 16 ? "#1FA86A" : n >= 14 ? "#B8770A" : "#EF476F"; }
 
 // ───────── fechas legibles ("mar 27 oct", "venció hace 2 días") ─────────
-const DIAS_C = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
-const MESES_C = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
 function diasHasta(ymd) {   // "YYYY-MM-DD" → días desde hoy en Caracas (0 hoy, <0 pasado), o null
   if (!/^\d{4}-\d{2}-\d{2}/.test(String(ymd || ""))) return null;
   const a = Date.UTC(...String(ymd).slice(0, 10).split("-").map((n, i) => +n - (i === 1 ? 1 : 0)));
@@ -480,7 +484,6 @@ function cuandoTarea(t) {   // → {txt, cls}
   if (n === 1) return { txt: "mañana", cls: "w-hoy" };
   return { txt: n <= 6 ? `en ${n} días · ${fechaCorta(t.fecha)}` : fechaCorta(t.fecha), cls: "" };
 }
-const TIPO_T = { tarea: "Tarea", trabajo: "Trabajo", examen: "Examen" };
 function filaTarea(t) {
   const c = t.hecha ? { txt: "hecha", cls: "w-ok" } : cuandoTarea(t);
   if (!t.hecha && t.tipo === "examen" && c.cls !== "w-bad") c.cls = "w-exam";   // el examen se distingue

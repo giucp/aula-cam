@@ -1414,7 +1414,7 @@
   // aviso cuando una cuenta gratis toca algo premium (generación con IA / Cumbre / curado)
   function avisoPremium(){
     return `<div class="avisoPremium"><p class="apTit">Esto es parte de Chispa Premium</p>`
-      + `<p class="apTxt">Con tu cuenta gratis podés usar tu agenda, tus tareas, tu horario y tus notas. Para desbloquear los resúmenes, quiz y práctica con IA, pedile acceso al administrador de Chispa.</p></div>`;
+      + `<p class="apTxt">Con tu cuenta gratis puedes usar tu agenda, tus tareas, tu horario y tus notas. Para desbloquear los resúmenes, quiz y práctica con IA, pídele acceso al administrador de Chispa.</p></div>`;
   }
 
   // arma la SESION de una cuenta nativa a partir de la respuesta de api/cuenta
@@ -1428,8 +1428,8 @@
   async function hacerRegistro(){
     const nombre=$("#regNombre").value.trim(), grado=$("#regGrado").value,
       usuario=$("#regUsuario").value.trim(), clave=$("#regClave").value, msg=$("#regMsg");
-    if(!nombre){ msg.innerHTML=errBox("Escribí tu nombre."); return; }
-    if(!grado){ msg.innerHTML=errBox("Elegí tu grado."); return; }
+    if(!nombre){ msg.innerHTML=errBox("Escribe tu nombre."); return; }
+    if(!grado){ msg.innerHTML=errBox("Elige tu grado."); return; }
     if(!/^[a-zA-Z0-9._]{3,20}$/.test(usuario)){ msg.innerHTML=errBox("El usuario: 3 a 20 letras o números, sin espacios."); return; }
     if(clave.length<6){ msg.innerHTML=errBox("La clave debe tener al menos 6 caracteres."); return; }
     if(!($("#regConsent")&&$("#regConsent").checked)){ msg.innerHTML=errBox("Marcá la casilla de permiso para crear tu cuenta."); return; }
@@ -1442,14 +1442,14 @@
       $("#regNombre").value=$("#regUsuario").value=$("#regClave").value="";
       RESCATE_SIGUE=entrarHome;
       verRescate(d.codigoRescate);
-    }catch(e){ msg.innerHTML=errBox("No pudimos crear la cuenta. Revisá tu internet."); }
+    }catch(e){ msg.innerHTML=errBox("No pudimos crear la cuenta. Revisa tu internet."); }
     finally{ btn.disabled=false; btn.textContent=t; }
   }
 
   // F3: enviar una solicitud "agreguen mi colegio" (público; api/cuenta accion solicitar_colegio)
   async function enviarSolicitud(){
     const colegio=$("#solColegio").value.trim(), msg=$("#solMsg");
-    if(!colegio){ msg.innerHTML=errBox("Escribí el nombre de tu colegio."); return; }
+    if(!colegio){ msg.innerHTML=errBox("Escribe el nombre de tu colegio."); return; }
     const tv=$("#solTieneAula").value;
     const cuerpo={
       accion:"solicitar_colegio", colegio,
@@ -1465,17 +1465,17 @@
       if(!d.ok){ msg.innerHTML=errBox(d.error||"No se pudo enviar la solicitud."); return; }
       $("#solColegio").value=$("#solCiudad").value=$("#solEstado").value=$("#solUrl").value=$("#solContacto").value=""; $("#solTieneAula").value="";
       msg.innerHTML=avisoBox("¡Gracias! Recibimos tu colegio. Lo revisamos y, si tiene aula virtual, lo conectamos pronto.");
-    }catch(e){ msg.innerHTML=errBox("No pudimos enviar la solicitud. Revisá tu internet."); }
+    }catch(e){ msg.innerHTML=errBox("No pudimos enviar la solicitud. Revisa tu internet."); }
     finally{ btn.disabled=false; btn.textContent=t; }
   }
 
   // ═══════════ F4: onboarding de bienvenida (solo cuentas nativas / Camino B) ═══════════
   const ONB_STEPS = [
     { emoji:"👋", tit:"¡Bienvenido a Chispa!", txt:"Este es tu lugar para organizarte y aprender más, a tu manera. Te mostramos lo básico en 30 segundos." },
-    { emoji:"🗓️", tit:"Tu agenda, siempre a mano", txt:"Anotá tus tareas, tus notas de examen y tu horario. Es gratis y te ayuda a no perderte de nada." },
-    { emoji:"📸", tit:"Aprendé con tus propios apuntes", txt:"Creá una materia, sacale una foto a tu cuaderno o escribí el tema, y Chispa te arma un resumen y un quiz para practicar." },
-    { emoji:"🔥", tit:"Sumá días y energía", txt:"Entrá todos los días para subir tu racha. Cada resumen o quiz que pedís usa un poquito de energía." },
-    { emoji:"📲", tit:"Llevá Chispa en tu teléfono", txt:"Abrí el menú de tu navegador y elegí “Agregar a inicio”. Así la abrís como una app, sin buscarla cada vez." },
+    { emoji:"🗓️", tit:"Tu agenda, siempre a mano", txt:"Anota tus tareas, tus notas de examen y tu horario. Es gratis y te ayuda a no perderte de nada." },
+    { emoji:"📸", tit:"Aprende con tus propios apuntes", txt:"Crea una materia, sácale una foto a tu cuaderno o escribe el tema, y Chispa te arma un resumen y un quiz para practicar." },
+    { emoji:"🔥", tit:"Suma días y energía", txt:"Entra todos los días para subir tu racha. Cada resumen o quiz que pides usa un poquito de energía." },
+    { emoji:"📲", tit:"Lleva Chispa en tu teléfono", txt:"Abre el menú de tu navegador y elige “Agregar a inicio”. Así la abres como una app, sin buscarla cada vez." },
   ];
   let ONB_I = 0;
   function mostrarOnboarding(){
@@ -1511,7 +1511,7 @@
 
   async function hacerLoginNat(){
     const usuario=$("#natUser").value.trim(), clave=$("#natPass").value, msg=$("#natMsg");
-    if(!usuario||!clave){ msg.innerHTML=errBox("Escribí tu usuario y tu clave."); return; }
+    if(!usuario||!clave){ msg.innerHTML=errBox("Escribe tu usuario y tu clave."); return; }
     const btn=$("#btnLoginNat"); btn.disabled=true; const t=btn.textContent; btn.textContent="Entrando…"; msg.innerHTML="";
     try{
       const r=await fetch(API_CUENTA,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"login",usuario,clave})});
@@ -1520,13 +1520,13 @@
       SESION=sesionNativa(d); store.set("sesion",SESION);
       $("#natUser").value=$("#natPass").value="";
       entrarHome();
-    }catch(e){ msg.innerHTML=errBox("No pudimos entrar. Revisá tu internet."); }
+    }catch(e){ msg.innerHTML=errBox("No pudimos entrar. Revisa tu internet."); }
     finally{ btn.disabled=false; btn.textContent=t; }
   }
 
   async function hacerRecuperar(){
     const usuario=$("#recUser").value.trim(), codigoRescate=$("#recCodigo").value.trim(), claveNueva=$("#recClave").value, msg=$("#recMsg");
-    if(!usuario||!codigoRescate){ msg.innerHTML=errBox("Escribí tu usuario y el código de rescate."); return; }
+    if(!usuario||!codigoRescate){ msg.innerHTML=errBox("Escribe tu usuario y el código de rescate."); return; }
     if(claveNueva.length<6){ msg.innerHTML=errBox("La nueva clave debe tener al menos 6 caracteres."); return; }
     const btn=$("#btnRecuperar"); btn.disabled=true; const t=btn.textContent; btn.textContent="Cambiando…"; msg.innerHTML="";
     try{
@@ -1537,7 +1537,7 @@
       $("#recUser").value=$("#recCodigo").value=$("#recClave").value="";
       RESCATE_SIGUE=entrarHome;
       verRescate(d.codigoRescate);   // recuperar rota el código → mostrar el nuevo
-    }catch(e){ msg.innerHTML=errBox("No pudimos recuperar la cuenta. Revisá tu internet."); }
+    }catch(e){ msg.innerHTML=errBox("No pudimos recuperar la cuenta. Revisa tu internet."); }
     finally{ btn.disabled=false; btn.textContent=t; }
   }
 
@@ -1564,7 +1564,7 @@
   function sesionVencidaNat(){
     store.del("sesion"); SESION=null; origen="actual"; materiaSel=null; temaSel=null;
     $("#results").innerHTML=""; MIS_ERRORES=[]; PROGRESO=new Map();
-    verLoginNat(); $("#natMsg").innerHTML=errBox("Tu sesión venció. Entrá de nuevo, por favor.");
+    verLoginNat(); $("#natMsg").innerHTML=errBox("Tu sesión venció. Entra de nuevo, por favor.");
   }
 
   $("#btnIrRegistro") && ($("#btnIrRegistro").onclick=verRegistro);
@@ -1600,7 +1600,7 @@
     $("#famBody").innerHTML =
       `<p class="famEyebrow">👨‍👩‍👧 Para tu familia</p>
        <h2 class="famTit">Dar acceso a un adulto</h2>
-       <p class="famTxt">Crea un enlace para que tu mamá o papá vea lo que hacés en Chispa: prácticas, quiz, exámenes, notas y agenda. <b>Solo pueden mirar</b>, no cambian nada.</p>
+       <p class="famTxt">Crea un enlace para que tu mamá o papá vea lo que haces en Chispa: prácticas, quiz, exámenes, notas y agenda. <b>Solo pueden mirar</b>, no cambian nada.</p>
        <button class="go" id="btnCrearInvite">Crear enlace de invitación</button>
        <div id="famInviteBox"></div>
        <div id="famVinculos"></div>`;
@@ -1626,7 +1626,7 @@
     let donde="el enlace"; try{ donde=new URL(link).host+"/familia"; }catch(_){}
     box.innerHTML =
       `<div class="famCard">
-        <p class="famMini">Mostráselo a tu adulto o compartilo</p>
+        <p class="famMini">Muéstraselo a tu adulto o compártelo</p>
         ${img?`<img class="famQR" src="${img}" alt="Código QR" />`:""}
         <div class="famCode">${escapeHtml(code)}</div>
         <p class="famHint">Que abra <b>${escapeHtml(donde)}</b> y escriba el código, o que escanee el QR.</p>
@@ -1634,7 +1634,7 @@
         <p class="famHint">Vale 24 horas y sirve en más de un teléfono (mamá, papá, o el ícono de inicio del iPhone).</p>
       </div>`;
     const share=$("#btnCompartir"), copy=$("#btnCopiar");
-    if(share) share.onclick=async()=>{ try{ if(navigator.share){ await navigator.share({title:"Chispa · Familia", text:"Mirá lo que hago en Chispa:", url:link}); } else { copiar(link,copy); } }catch(_){} };
+    if(share) share.onclick=async()=>{ try{ if(navigator.share){ await navigator.share({title:"Chispa · Familia", text:"Mira lo que hago en Chispa:", url:link}); } else { copiar(link,copy); } }catch(_){} };
     if(copy) copy.onclick=()=>copiar(link,copy);
   }
   function copiar(txt, btn){
@@ -2017,7 +2017,7 @@
       const d=await r.json(); mats=Array.isArray(d.materias)?d.materias:[];
     }catch(_){}
     g.innerHTML="";
-    if(!mats.length){ const e=document.createElement("p"); e.className="m2Empty"; e.textContent="Todavía no tenés materias. Creá la primera y estudiá con tus propios apuntes."; g.appendChild(e); }
+    if(!mats.length){ const e=document.createElement("p"); e.className="m2Empty"; e.textContent="Todavía no tienes materias. Crea la primera y estudia con tus propios apuntes."; g.appendChild(e); }
     else $("#materiasSub").textContent = resumenMaterias(mats);
     mats.forEach(m=>{
       const mo={ nombre:m.nombre, nombreCorto:"", temas:[], _manual:true, _id:m.id, emoji:m.emoji };
@@ -2048,14 +2048,14 @@
   function cerrarMatModal(){ $("#matModal").classList.add("hidden"); }
   async function guardarMateriaManual(){
     const nombre=($("#matNombre").value||"").trim(); const msg=$("#matMsg");
-    if(!nombre){ msg.innerHTML=errBox("Escribí el nombre de la materia."); return; }
+    if(!nombre){ msg.innerHTML=errBox("Escribe el nombre de la materia."); return; }
     const btn=$("#btnGuardarMat"); btn.disabled=true; const t=btn.textContent; btn.textContent="Creando…";
     try{
       const r=await fetch(API_MANUAL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"materia_guardar",token:SESION.token,materia:{nombre,emoji:MAT_EMOJI_SEL}})});
       const d=await r.json();
       if(d && d.ok){ cerrarMatModal(); pintarMateriasManuales(); }
       else { msg.innerHTML=errBox((d&&d.error)||"No se pudo crear."); }
-    }catch(_){ msg.innerHTML=errBox("Error de red. Reintentá."); }
+    }catch(_){ msg.innerHTML=errBox("Error de red. Reintenta."); }
     finally{ btn.disabled=false; btn.textContent=t; }
   }
   $("#btnCerrarMat") && ($("#btnCerrarMat").onclick=cerrarMatModal);
@@ -3318,7 +3318,7 @@
     const add=document.createElement("button"); add.className="labNuevoCol"; add.textContent="＋ Nuevo colegio";
     add.onclick=()=>labEditorColegio(null);
     head.appendChild(t); head.appendChild(add); cont.appendChild(head);
-    if(!LAB_COLEGIOS.length){ const e=document.createElement("div"); e.className="empty"; e.textContent="Aún no hay colegios. Agregá el primero."; cont.appendChild(e); return; }
+    if(!LAB_COLEGIOS.length){ const e=document.createElement("div"); e.className="empty"; e.textContent="Aún no hay colegios. Agrega el primero."; cont.appendChild(e); return; }
     LAB_COLEGIOS.forEach(c=>cont.appendChild(labCardColegio(c)));
   }
   function labCardColegio(c){
