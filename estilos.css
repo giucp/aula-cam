@@ -1907,3 +1907,27 @@
   @media (min-width:560px){
     .m2Grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   }
+
+  /* ========================================================================
+     2026-10-28 · INICIO MÁS CLARO
+     Las tareas que anotan (o copian del aula) son párrafos largos: en Fredoka 600 de 16px se
+     veían gigantes y en negrita, y una sola llenaba media pantalla. Ahora van en Nunito normal,
+     cortadas a 2 líneas (3 en la Agenda); tocarlas las abre completas.
+     ======================================================================== */
+  .h2TodayText b,.agTx b{font-family:"Nunito";font-weight:700;font-size:.9rem;line-height:1.38;
+    display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;cursor:pointer}
+  .agTx b{-webkit-line-clamp:3}
+  .is-open .h2TodayText b,.is-open .agTx b{-webkit-line-clamp:unset;display:block}
+  .h2TodayRow{min-height:60px}
+
+  /* Misión: más compacta (era la mitad de la primera pantalla) y con el ícono de la MATERIA en vez
+     del libro genérico, para que se lea de un vistazo de qué se trata. */
+  .h2Mission{min-height:0;padding:20px 20px 20px}
+  .h2Mission h2{font-size:clamp(1.28rem,5.5vw,1.55rem);line-height:1.16}
+  .h2MissionContent>p:not(.h2MissionEyebrow){font-size:.86rem;margin-bottom:15px;max-width:none;
+    display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+  .h2MissionArt{width:200px;bottom:20px}
+  .h2MissionArt--materia{width:112px;right:14px;top:50%;bottom:auto;transform:translateY(-62%);
+    filter:drop-shadow(0 12px 16px rgba(28,16,93,.28))}
+  .h2MissionAction{white-space:nowrap}
+  .h2Mission .h2MissionContent{max-width:70%}

@@ -18,7 +18,25 @@ const MIME = {
   ".jpg": "image/jpeg", ".svg": "image/svg+xml", ".webmanifest": "application/manifest+json",
 };
 
-http.createServer((req, res) => {
+// PROXY_API=1 → modo "datos reales": app.js se sirve llamando a /api/ local y este servidor reenvía
+// esas llamadas a producción (de servidor a servidor no hay CORS). Sirve para probar un cambio de
+// app.js/estilos.css con la cuenta real de una alumna ANTES de publicarlo: se abre /index.html y se
+// copia la sesión del localStorage de producción. Sin la variable, el servidor no toca nada.
+const PROD = "https://aula-cam.vercel.app";
+const PROXY = process.env.PROXY_API === "1";
+
+http.createServer(async (req, res) => {
+  if (PROXY && req.url.startsWith("/api/")) {
+    const cuerpo = [];
+    for await (const c of req) cuerpo.push(c);
+    const h = { "Content-Type": req.headers["content-type"] || "application/json" };
+    if (req.headers["x-chispa-sesion"]) h["x-chispa-sesion"] = req.headers["x-chispa-sesion"];
+    try {
+      const r = await fetch(PROD + req.url, { method: req.method, headers: h, body: ["GET", "HEAD"].includes(req.method) ? undefined : Buffer.concat(cuerpo) });
+      res.writeHead(r.status, { "Content-Type": r.headers.get("content-type") || "application/json" });
+      return res.end(Buffer.from(await r.arrayBuffer()));
+    } catch (e) { res.writeHead(502); return res.end(String(e)); }
+  }
   let ruta = decodeURIComponent(req.url.split("?")[0]);
   if (ruta === "/") ruta = "/demo-inicio.html";
   const f = path.join(ROOT, ruta).split(path.sep).join("/");
@@ -33,5 +51,6 @@ http.createServer((req, res) => {
     "Content-Type": MIME[path.extname(f).toLowerCase()] || "application/octet-stream",
     "Cache-Control": "no-store, must-revalidate",
   });
+  if (PROXY && /\/app\.js$/.test(f)) return res.end(fs.readFileSync(f, "utf8").split(PROD + "/api/").join("/api/"));
   fs.createReadStream(f).pipe(res);
 }).listen(PUERTO, () => console.log(`demo en http://localhost:${PUERTO}  (raiz: ${ROOT})`));

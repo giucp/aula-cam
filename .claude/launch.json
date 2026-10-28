@@ -6,6 +6,13 @@
       "runtimeExecutable": "node",
       "runtimeArgs": ["herramientas/demo-servidor.mjs"],
       "port": 4321
+    },
+    {
+      "name": "real",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["herramientas/demo-servidor.mjs"],
+      "env": { "PROXY_API": "1", "PORT": "4322" },
+      "port": 4322
     }
   ]
 }

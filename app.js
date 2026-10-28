@@ -199,9 +199,12 @@
   // ───────── pestañas (barra de navegación inferior) ─────────
   // La pestaña Cumbre se ofrece si el grado que CURSA tiene track curado; si no, si lo tiene el
   // siguiente (ver cumbreTrackInfo). Sin ninguno, el niño ve el "Adelántate" viejo en Materias.
+  // 2026-10-28: Cumbre se RETIRÓ de la navegación (no se usa). Todo su código, íconos e imágenes
+  // siguen intactos: para volver a ofrecerla basta con poner esto en true.
+  const CUMBRE_ACTIVA=false;
   function pintarNavCumbre(){
     const b=[...document.querySelectorAll("#navbar .navBtn")].find(x=>x.dataset.tab==="cumbre");
-    if(b) b.classList.toggle("hidden", !cumbreTrack());
+    if(b) b.classList.toggle("hidden", !CUMBRE_ACTIVA || !cumbreTrack());
   }
   function verTab(id){
     $("#tabInicio").classList.toggle("hidden", id!=="inicio");
@@ -397,6 +400,9 @@
   }
   function pintarHomeStats(){
     const box=$("#homeStats"); if(!box) return;
+    // 2026-10-28: la barra se retiró del Inicio. "Metas activas" repetía la lista de Hoy y la energía
+    // de las niñas siempre dice 100% (no tienen tope): era ruido. La racha pasó a "Tu progreso".
+    box.classList.add("hidden"); box.innerHTML=""; return;
     const racha=Number((SESION&&SESION.racha)||0);
     const energia=homeEnergiaPct();
     const pendientes=TAREAS.filter(t=>!t.hecha).length;
@@ -421,6 +427,7 @@
     // estaba ahí.
     const cuando=n===null?"Sin fecha":capPrimera(fechaBonita(t.fecha));
     row.innerHTML=`${homeMarcaMateria(materia,"h2SubjectMark")}<span class="h2TodayText"><b>${escapeHtml(t.descripcion||TIPO_LABEL[t.tipo]||"Tarea")}</b><small>${escapeHtml(materia)} · <span class="h2TodayWhen">${escapeHtml(cuando)}</span></small></span><button class="h2TaskCheck" type="button" aria-label="${t.hecha?"Marcar como pendiente":"Marcar como completada"}"><span class="h2TaskBox">${t.hecha?"✓":""}</span></button>`;
+    row.querySelector(".h2TodayText").onclick=()=>row.classList.toggle("is-open");   // texto largo: tocar lo abre
     row.querySelector(".h2TaskCheck").onclick=async()=>{
       t.hecha=!t.hecha; pintarTareas(); pintarEscritorio();
       try{ await apiAgenda({accion:"tarea_hecha",id:t.id,hecha:t.hecha}); }catch(_){}
@@ -452,7 +459,8 @@
     let dominados=0; PROGRESO.forEach(p=>{ if(p&&typeof p.quizMejor==="number"&&p.quizMejor>=.8) dominados++; });
     if(total) dominados=Math.min(dominados,total);
     const pct=total?Math.round(dominados/total*100):0;
-    box.innerHTML=`<div class="h2ProgressHead"><h2 id="homeProgresoTit">Tu progreso</h2><span>Progreso académico</span></div><div class="h3AcademicProgress"><div><b>${dominados}</b><small>temas dominados</small></div><div><b>${total}</b><small>temas disponibles</small></div><div><b>${pct}%</b><small>del recorrido</small></div></div><span class="h3AcademicBar"><i style="width:${pct}%"></i></span>`;
+    const racha=Number((SESION&&SESION.racha)||0);
+    box.innerHTML=`<div class="h2ProgressHead"><h2 id="homeProgresoTit">Tu progreso</h2><span>${total} temas en tu aula</span></div><div class="h3AcademicProgress"><div><b>${dominados}</b><small>temas dominados</small></div><div><b>${racha}</b><small>${racha===1?"día de racha":"días de racha"}</small></div><div><b>${pct}%</b><small>del recorrido</small></div></div><span class="h3AcademicBar"><i style="width:${pct}%"></i></span>`;
   }
   function pintarEscritorio(){
     const d=new Date();
@@ -525,6 +533,52 @@
   // Un examen de HOY se oculta a partir de CORTE_MANANA (1 PM, hora del aparato):
   // pasada la mañana escolar se asume presentado y se pasa a mostrar el día siguiente.
   const CORTE_MANANA = 13; // hora local a partir de la cual un examen de hoy ya no se recuerda
+  const ACCION_MODO={resumen:"Entender el tema",retos:"Practicar",quiz:"Hacer el quiz",examen:"Simular examen"};
+  function temaDeMateria(m, nombreTema){ return temasPracticables(m).find(t=>norm(t.seccion)===norm(nombreTema||""))||null; }
+  // el tema que están viendo AHORA en clase: el del material más reciente del aula (saltando los
+  // que ya domina). Moodle no marca "tema actual"; la fecha del último archivo subido es la mejor pista.
+  function temaRecienteDe(m){
+    let mejor=null, mx=-1;
+    temasPracticables(m).forEach(t=>{
+      const p=PROGRESO.get(norm(m.nombre)+"|"+norm(t.seccion));
+      if(p && typeof p.quizMejor==="number" && p.quizMejor>=.8) return;
+      let ts=0; (t.modulos||[]).forEach(mod=>(mod.archivos||[]).forEach(f=>{ if((f.modificado||0)>ts) ts=f.modificado; }));
+      if(ts>=mx){ mx=ts; mejor=t; }   // >= : a igual fecha gana el que va más abajo en el aula
+    });
+    return mejor;
+  }
+  function homeMisionTema(){
+    const materias=homeMaterias(); if(!materias.length) return null;
+    const arma=(m,seccion,titulo,modo)=>{
+      const s=modo?{modo}:pasoSugerido(m.nombre,seccion);
+      return { materia:m, tema:seccion, modo:s.modo, titulo, accion:ACCION_MODO[s.modo]||"Practicar" };
+    };
+    // 1 · material nuevo que subió el profe
+    for(const id of Object.keys(NOVEDADES)){
+      const m=materias.find(x=>String(x.id)===String(id)); if(!m) continue;
+      for(const it of NOVEDADES[id]){ const t=temaDeMateria(m,it.tema); if(t) return arma(m,t.seccion,mat=>`Hay material nuevo en ${mat}`); }
+    }
+    // 2 · el quiz más flojo (menos de 80%)
+    let peor=null;
+    PROGRESO.forEach((p,k)=>{
+      if(!p || typeof p.quizMejor!=="number" || p.quizMejor>=.8) return;
+      const i=k.indexOf("|"), m=materias.find(x=>norm(x.nombre)===k.slice(0,i)); if(!m) return;
+      const t=temasPracticables(m).find(x=>norm(x.seccion)===k.slice(i+1)); if(!t) return;
+      if(!peor || p.quizMejor<peor.v) peor={m,t,v:p.quizMejor};
+    });
+    if(peor) return arma(peor.m, peor.t.seccion, mat=>`Sube tu nota en ${mat}`, "quiz");
+    // 3 · lo que toca el próximo día de clases
+    const {dia,titulo}=proximoDiaEscolar();
+    const cuando=titulo.replace(/\s*toca$/,"");   // "Mañana" / "El lunes"
+    for(const h of HORARIO.filter(h=>h.dia===dia).sort((a,b)=>(a.orden||0)-(b.orden||0))){
+      const m=materias.find(x=>norm(x.nombre)===norm(h.materia)); if(!m) continue;
+      const t=temaRecienteDe(m); if(t) return arma(m,t.seccion,mat=>`${cuando} tienes ${mat}`);
+    }
+    // 4 · seguir donde iba (o arrancar por lo más reciente del aula)
+    for(const m of materias){ const p=progresoMateria(m); if(p && p.done>0 && p.done<p.total){ const t=temaRecienteDe(m); if(t) return arma(m,t.seccion,mat=>`Sigue con ${mat}`); } }
+    for(const m of materias){ const t=temaRecienteDe(m); if(t) return arma(m,t.seccion,mat=>`Empieza con ${mat}`); }
+    return null;
+  }
   function pintarExamenBanner(){
     const box=$("#examenBanner"); if(!box) return; box.innerHTML="";
     const horaLocal=new Date().getHours();
@@ -532,15 +586,17 @@
       .map(t=>({t,n:diasHasta(t.fecha)}))
       .filter(x=>x.n!==null && x.n>=0 && x.n<=3 && (x.n>0 || horaLocal<CORTE_MANANA))
       .sort((a,b)=>a.n-b.n);
-    const entregas=TAREAS.filter(t=>t.tipo!=="examen" && !t.hecha && t.fecha)
-      .map(t=>({t,n:diasHasta(t.fecha)})).filter(x=>x.n!==null && x.n>=0).sort((a,b)=>a.n-b.n);
-    const materias=homeMaterias();
-    const materiaSugerida=materias.find(m=>{ const p=progresoMateria(m); return p&&p.done>0&&p.done<p.total; })||materias[0]||null;
-
+    // 2026-10-28: la misión ya no dice cosas genéricas ("Continúa avanzando con X · 1 de 3 temas"
+    // ni "Revisa tu pendiente", que repetía la lista de Hoy de abajo). Ahora siempre propone UN tema
+    // concreto y el botón la deja dentro de ese tema, con la actividad que le toca ya elegida.
+    // Orden: examen cercano → material NUEVO que subió el profe → quiz flojo → lo que toca mañana
+    // → seguir donde iba.
+    const m=homeMisionTema();
     let titulo="Todo está tranquilo por ahora.";
-    let texto="Puedes revisar tu agenda cuando quieras.";
-    let accionTexto="Ver agenda";
+    let texto="Elige una materia y practica lo que quieras.";
+    let accionTexto="Ver materias";
     let accion=()=>verTab("materias");
+    let materiaArte=null;
 
     if(examenes.length){
       const min=examenes[0].n, dia=examenes.filter(x=>x.n===min);
@@ -550,25 +606,20 @@
       texto=dia.length===1?`El examen es ${cuando}.`:`Los exámenes son ${cuando}.`;
       accionTexto="Practicar";
       accion=()=>irAPractica(primera.materia,"examen");
-    }else if(entregas.length){
-      const proxima=entregas[0].t, cuando=fechaBonita(proxima.fecha);
-      const materia=capMateria(limpiaNombreMateria(proxima.materia||""));
-      titulo=materia?`Revisa tu pendiente de ${materia}`:"Revisa tu próximo pendiente";
-      texto=cuando?`Está previsto para ${cuando}.`:"Está guardado en tu agenda.";
-      accionTexto="Ver agenda";
-      accion=()=>verTab("agenda");
-    }else if(materiaSugerida){
-      const p=progresoMateria(materiaSugerida), nombre=capMateria(limpiaNombreMateria(materiaSugerida.nombre));
-      titulo=p&&p.done>0?`Continúa avanzando con ${nombre}`:`Empieza hoy con ${nombre}`;
-      texto=p?`Ya recorriste ${p.done} de ${p.total} temas.`:"Tu materia está lista para practicar.";
-      accionTexto=p&&p.done>0?"Continuar":"Empezar";
-      accion=()=>irAPractica(materiaSugerida.nombre);
-    }else{
-      accion=()=>verTab("agenda");
+      materiaArte=primera.materia;
+    }else if(m){
+      const tema=capFrase(m.tema), materia=capMateria(limpiaNombreMateria(m.materia.nombre));
+      titulo=m.titulo(materia); texto=tema;
+      accionTexto=m.accion;
+      accion=()=>irAPractica(m.materia.nombre, m.modo, m.tema);
+      materiaArte=m.materia.nombre;
     }
 
+    const arte=materiaArte
+      ? `<img class="h2MissionArt h2MissionArt--materia" src="assets/materias/${homeMateriaVisual(materiaArte).img}.png" alt="" aria-hidden="true">`
+      : `<img class="h2MissionArt" src="assets/hero/libro.png" alt="" aria-hidden="true">`;
     const card=document.createElement("article"); card.className="h2Mission";
-    card.innerHTML=`<div class="h2MissionContent"><p class="h2MissionEyebrow">Tu misión de hoy</p><h2>${escapeHtml(titulo)}</h2><p>${escapeHtml(texto)}</p><button class="h2MissionAction" type="button">${escapeHtml(accionTexto)} ${homeIcono("flecha")}</button></div><img class="h2MissionArt" src="assets/hero/libro.png" alt="" aria-hidden="true">`;
+    card.innerHTML=`<div class="h2MissionContent"><p class="h2MissionEyebrow">Tu misión de hoy</p><h2>${escapeHtml(titulo)}</h2><p>${escapeHtml(texto)}</p><button class="h2MissionAction" type="button">${escapeHtml(accionTexto)} ${homeIcono("flecha")}</button></div>${arte}`;
     card.querySelector(".h2MissionAction").onclick=accion;
     box.appendChild(card);
   }
@@ -616,10 +667,15 @@
     }
   }
   // ir a practicar una materia (desde el horario o el aviso de examen)
-  function irAPractica(nombreMateria, modo){
+  function irAPractica(nombreMateria, modo, tema){
     const m=((SESION&&SESION.materias)||[]).find(x=>norm(x.nombre)===norm(nombreMateria||""));
     verTab("materias");
-    if(m){ abrirMateria(m); if(modo) setModo(modo); }
+    if(!m) return;
+    abrirMateria(m);
+    // con tema: directo a "¿Cómo quieres estudiar?" de ESE tema (sin buscarlo en la lista)
+    const t=tema && temaDeMateria(m, tema);
+    if(t){ temaSel=t.seccion; alSeleccionarTema(); if(modo) setModo(modo); mostrarPaso(2); }
+    else if(modo) setModo(modo);
   }
   $("#btnVerAgenda").onclick=()=>verTab("agenda");
   $("#btnNuevaTareaHome").onclick=()=>{ verTab("agenda"); abrirFormTarea(); };
@@ -671,6 +727,7 @@
       `<small>${escapeHtml(materia)} · <i class="agCuando${(vencida||urgente)?" is-urgente":""}">${escapeHtml(cuando)}</i></small></span>`+
       `<button class="h2TaskCheck" type="button" aria-label="${t.hecha?"Marcar como pendiente":"Marcar como hecha"}"><span class="h2TaskBox">${t.hecha?"✓":""}</span></button>`+
       `<button class="agBorrar" type="button" aria-label="Borrar">×</button>`;
+    div.querySelector(".agTx").onclick=()=>div.classList.toggle("is-open");   // texto largo: tocar lo abre
     div.querySelector(".h2TaskCheck").onclick=async()=>{
       t.hecha=!t.hecha; pintarTareas(); pintarEscritorio();
       try{ await apiAgenda({accion:"tarea_hecha", id:t.id, hecha:t.hecha}); }catch(_){}
@@ -1093,6 +1150,7 @@
     const ids=Object.keys(NOVEDADES); if(!ids.length) return;
     const w=document.createElement("div"); w.className="h3MoreCard";
     w.innerHTML=`<div class="h3MoreHead"><span class="h3MoreMark">${homeIcono("novedad")}</span><h3>Nuevo en tu aula</h3></div>`;
+    const filas=[];
     ids.forEach(id=>{
       const m=((SESION&&SESION.materias)||[]).find(x=>String(x.id)===String(id)); if(!m) return;
       const items=NOVEDADES[id];
@@ -1102,8 +1160,12 @@
       const detalle=items.slice(0,2).map(i=>escapeHtml(i.nombre)).join(" · ")+(items.length>2?` · y ${items.length-2} más`:"");
       b.innerHTML=`${homeMarcaMateria(m.nombre,"h3MoreRowIcon")}<span class="h3MoreRowTx"><b>${escapeHtml(capMateria(limpiaNombreMateria(m.nombre)))} · ${items.length} ${items.length===1?"novedad":"novedades"}</b><small>${detalle}</small></span>${homeIcono("flecha")}`;
       b.onclick=()=>{ verTab("materias"); abrirMateria(m); };
-      w.appendChild(b);
+      filas.push(b);
     });
+    // 6 materias con novedades eran media pantalla: se ven 3 y el resto tras "Ver N más"
+    const lista=document.createElement("div"); lista.className="h3MoreList";
+    agColapsable(lista, filas, 3);
+    w.appendChild(lista);
     box.appendChild(w);
   }
 
