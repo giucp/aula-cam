@@ -41,7 +41,7 @@ function tituloDia(iso) {
 }
 function hora(iso) { try { return FMT_HORA.format(new Date(iso)).replace(/\s?[.]?\s?m[.]?/i, (m) => m.trim()); } catch (e) { return ""; } }
 
-const FAMILIA_V = "v12"; // versión visible del panel (carga + footer + errores) para saber qué código corre
+const FAMILIA_V = "v13"; // versión visible del panel (carga + footer + errores) para saber qué código corre
 // fetch con TIMEOUT (25 s): en redes lentas un fetch sin límite puede colgarse minutos
 // y dejar la página "en blanco". Si falla la red devuelve status 0 (NUNCA lanza): el que
 // llama decide qué mostrar, y un fallo de red JAMÁS se confunde con "token inválido".
@@ -261,7 +261,8 @@ async function cargarYrender(recargar) {
   if (getActivo() !== i || getNinos().length !== ninos.length) return; // cambió de hijo mientras cargaba
   if (res.status === 401) {
     const arr = getNinos().filter((x) => x.token !== nino.token); setNinos(arr); setActivo(0);
-    if (!arr.length) return estadoError("El acceso caducó", (res.d && res.d.error) || "Pídele a tu hijo un enlace nuevo.", false);
+    // ya no queda ningún hijo: la misma pantalla de vincular, con el aviso (antes era un callejón sin salida)
+    if (!arr.length) return mostrarVincular(false, "Tu acceso a " + primerNombre(nino.nombre || "tu hijo") + " ya no está activo (pudo quitarlo desde su Chispa). Pídele un código nuevo.");
     return cargarYrender();
   }
   try {

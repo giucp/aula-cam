@@ -186,7 +186,7 @@ export default async function handler(req, res) {
       if (!ptoken) return res.status(400).json({ error: "Falta token" });
       const vs = await sbGet(cfg, `familia_vinculos?token=eq.${encodeURIComponent(ptoken)}&activo=is.true&select=id,usuario_id&limit=1`);
       const v = Array.isArray(vs) && vs[0];
-      if (!v) return res.status(401).json({ error: "Acceso no válido. Pídele a tu hijo un enlace nuevo." });
+      if (!v) return res.status(401).json({ error: "Acceso no válido. Pídele a tu hijo un código nuevo." });
       const uid = v.usuario_id;
       fetch(`${cfg.url}/rest/v1/familia_vinculos?id=eq.${v.id}`, {
         method: "PATCH", headers: hdr(cfg, { "Content-Type": "application/json" }),
