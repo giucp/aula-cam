@@ -21,7 +21,7 @@ const KEY_NINOS = "familia_ninos";        // [{token, nombre, grado}]
 const KEY_ACTIVO = "familia_activo";      // índice del hijo que se está viendo
 const KEY_TOKEN_VIEJO = "familia_ptoken"; // migración desde la versión de 1 solo hijo
 const KEY_PERIODO = "familia_periodo";    // "7" | "30" | "anio"
-const FAMILIA_V = "v15";                   // versión visible (footer y errores) para saber qué código corre
+const FAMILIA_V = "v16";                   // versión visible (footer y errores) para saber qué código corre
 const app = document.getElementById("app");
 const PANEL_CACHE = {};                   // token -> data del panel (en memoria, esta sesión)
 let PANEL_ACTUAL = null;                  // { d, ninos, i, staleTs, detalle } para re-pintar al cambiar filtros
@@ -459,8 +459,11 @@ function barraSuperior(ninos, activo) {
   </div>${tabs}`;
 }
 
-function kpi(label, valor, sub, cls) {
-  return `<div class="kpi${cls ? " " + cls : ""}"><span class="kLbl">${esc(label)}</span><span class="kVal">${valor}</span>${sub ? `<span class="kSub">${sub}</span>` : ""}</div>`;
+// 2026-10-29 · toques de color con intención: cada indicador y cada sección tiene SU tono (índigo,
+// verde azulado, azul, violeta, ámbar, rosa), siempre en placas suaves sobre la base gris. El color
+// "semáforo" (verde/ámbar/rojo) queda reservado para lo que es bueno o malo de verdad.
+function kpi(label, valor, sub, cls, tono, icono) {
+  return `<div class="kpi${cls ? " " + cls : ""}" style="--k:var(--t-${tono || "acc"})"><div class="kHead"><span class="kIco">${ico(icono || "lista")}</span><span class="kLbl">${esc(label)}</span></div><span class="kVal">${valor}</span>${sub ? `<span class="kSub">${sub}</span>` : ""}</div>`;
 }
 function seccionKpis(A, d) {
   const t = A.act;
@@ -474,12 +477,12 @@ function seccionKpis(A, d) {
   const errs = (d.errores || []).length;
   const temasErr = new Set((d.errores || []).map((e) => (e.materia || "") + "|" + (e.tema || ""))).size;
   return `<section class="kpis" aria-label="Indicadores ${esc(A.P.etiqueta)}">
-    ${kpi("Tiempo de estudio", A.midiendo ? esc(fmtDur(A.segundos)) : "—", A.midiendo ? (promDia ? `${esc(promDia)} por día con estudio` : "sin estudio en el periodo") : "se mide desde el 29 oct")}
-    ${kpi("Días con estudio", `${dAct}<small>/${A.P.dias}</small>`, esc(A.P.etiqueta))}
-    ${kpi("Actividades", String(t.length), desglose ? esc(desglose) : "ninguna en el periodo")}
-    ${kpi("Promedio en quiz", A.promQuiz == null ? "—" : `${A.promQuiz}%`, A.quizzes.length ? `${A.quizzes.length} quiz · mejor ${Math.max(...A.quizzes.map((q) => pct(q.aciertos, q.total)))}%` : "sin quiz en el periodo", A.promQuiz == null ? "" : claseNota(A.promQuiz))}
-    ${kpi("Tareas pendientes", String(pend), venc ? `<b class="t-bad">${venc} vencida${venc > 1 ? "s" : ""}</b>` : "ninguna vencida", venc ? "bad" : "")}
-    ${kpi("Preguntas falladas", String(errs), errs ? `en ${temasErr} tema${temasErr > 1 ? "s" : ""} · para repasar` : "ninguna pendiente")}
+    ${kpi("Tiempo de estudio", A.midiendo ? esc(fmtDur(A.segundos)) : "—", A.midiendo ? (promDia ? `${esc(promDia)} por día con estudio` : "sin estudio en el periodo") : "se mide desde el 29 oct", "", "ind", "reloj")}
+    ${kpi("Días con estudio", `${dAct}<small>/${A.P.dias}</small>`, esc(A.P.etiqueta), "", "tea", "cal")}
+    ${kpi("Actividades", String(t.length), desglose ? esc(desglose) : "ninguna en el periodo", "", "blu", "libro")}
+    ${kpi("Promedio en quiz", A.promQuiz == null ? "—" : `${A.promQuiz}%`, A.quizzes.length ? `${A.quizzes.length} quiz · mejor ${Math.max(...A.quizzes.map((q) => pct(q.aciertos, q.total)))}%` : "sin quiz en el periodo", A.promQuiz == null ? "" : claseNota(A.promQuiz), "vio", "check")}
+    ${kpi("Tareas pendientes", String(pend), venc ? `<b class="t-bad">${venc} vencida${venc > 1 ? "s" : ""}</b>` : "ninguna vencida", venc ? "bad" : "", "amb", "lista")}
+    ${kpi("Preguntas falladas", String(errs), errs ? `en ${temasErr} tema${temasErr > 1 ? "s" : ""} · para repasar` : "ninguna pendiente", "", "ros", "x")}
   </section>`;
 }
 
@@ -519,7 +522,7 @@ function seccionGrafico(A) {
     for (let k = A.P.dias - 1; k >= 0; k--) {
       const ymd = sumarDias(hoyYMD(), -k), D = A.porDia[ymd] || { n: 0, seg: 0 };
       const [, , dd] = ymd.split("-").map(Number);
-      barras.push({ lbl: A.P.dias <= 7 ? DIAS_C[diaSemana(ymd)] : String(dd), tip: tituloDia(ymd), ...D });
+      barras.push({ lbl: A.P.dias <= 7 ? DIAS_C[diaSemana(ymd)] : String(dd), tip: tituloDia(ymd), hoy: k === 0, ...D });
     }
   } else {
     let ini = A.P.desde; ini = sumarDias(ini, -((diaSemana(ini) + 6) % 7));
@@ -544,7 +547,7 @@ function seccionGrafico(A) {
     ${barras.map((b, k) => {
       const v = val(b), h = v ? Math.max(3, (H - 14) * v / max) : 0, x = pad + k * bw + bw * 0.18;
       return `<g><title>${esc(b.tip)}: ${usarTiempo ? fmtDur(b.seg) : b.n + " actividades"}</title>
-        ${h ? `<rect x="${x.toFixed(1)}" y="${(H - h).toFixed(1)}" width="${(bw * 0.64).toFixed(1)}" height="${h.toFixed(1)}" rx="3" class="bar"/>` : ""}
+        ${h ? `<rect x="${x.toFixed(1)}" y="${(H - h).toFixed(1)}" width="${(bw * 0.64).toFixed(1)}" height="${h.toFixed(1)}" rx="3" class="bar${b.hoy ? " hoy" : ""}"/>` : ""}
         ${h && conValor ? `<text x="${(x + bw * 0.32).toFixed(1)}" y="${(H - h - 4).toFixed(1)}" class="gv">${Math.round(v)}</text>` : ""}
         ${k % cada === 0 ? `<text x="${(x + bw * 0.32).toFixed(1)}" y="${H + 16}" class="gx">${esc(b.lbl)}</text>` : ""}</g>`;
     }).join("")}
@@ -569,7 +572,7 @@ function seccionMaterias(A) {
     }).join("");
     return `<details class="mat"${k === 0 ? " open" : ""}>
       <summary>
-        <span class="mNom">${esc(M.materia)}</span>
+        <span class="mNom" style="--m:${colorMateria(M.materia)}"><i class="mDot"></i>${esc(M.materia)}</span>
         <span class="mCel"><b>${temas.length}</b><small>tema${temas.length > 1 ? "s" : ""}</small></span>
         <span class="mCel"><b>${M.eventos}</b><small>activ.</small></span>
         ${A.midiendo ? `<span class="mCel"><b>${esc(fmtDur(M.segundos))}</b><small>tiempo</small></span>` : ""}
@@ -649,7 +652,7 @@ function seccionHistorial(A) {
         const p = e.modo === "quiz" && e.total > 0 ? pct(e.aciertos, e.total) : null;
         return `<div class="ev">
           <span class="evH">${esc(hora(e.creado))}</span>
-          <div class="evTx"><b>${esc(tituloEvento(e))}${p != null ? ` <span class="pill ${claseNota(p)}">${p}%</span>` : ""}</b>
+          <div class="evTx"><span class="tipo t-${e.modo}">${esc((MODO[e.modo] || { l: e.modo }).l)}</span><b>${esc(tituloEvento(e))}${p != null ? ` <span class="pill ${claseNota(p)}">${p}%</span>` : ""}</b>
             <span>${esc(limpiaMateria(e.materia))} · ${esc(limpiaTema(e.tema))}</span>
             ${det.length ? `<small>${esc(det.join(" · "))}</small>` : ""}</div>
         </div>`;
@@ -724,8 +727,22 @@ function seccionReportes(reportes) {
     <ul class="lista">${reportes.slice(0, 20).map((r) => `<li><span>${esc(limpiaMateria(r.materia))} · ${esc(limpiaTema(r.tema))}</span><b>${esc(fechaCorta(claveDia(r.creado)))}</b></li>`).join("")}</ul>`, `${reportes.length}`);
 }
 
+const SECCION = {
+  sAtencion: ["amb", "alerta"], sGrafico: ["ind", "reloj"], sMaterias: ["blu", "libro"], sQuiz: ["vio", "check"],
+  sErrores: ["ros", "x"], sHistorial: ["tea", "lista"], sAgenda: ["amb", "cal"], sUso: ["ind", "cel"], sReportes: ["gri", "alerta"],
+};
 function card(id, titulo, cuerpo, badge) {
-  return `<section class="card" id="${id}"><h2>${esc(titulo)}${badge ? `<span class="cnt">${esc(badge)}</span>` : ""}</h2>${cuerpo}</section>`;
+  const [tono, icono] = SECCION[id] || ["acc", "lista"];
+  return `<section class="card" id="${id}" style="--k:var(--t-${tono})"><h2><span class="hIco">${ico(icono)}</span>${esc(titulo)}${badge ? `<span class="cnt">${esc(badge)}</span>` : ""}</h2>${cuerpo}</section>`;
+}
+// color estable por materia (mismas familias que la app de las niñas, en tonos sobrios)
+function colorMateria(m) {
+  const n = String(m || "").toLowerCase();
+  const t = [[/social|historia|geograf/, "#2563EB"], [/f[ií]sica.*educ|educ.*f[ií]sica|deporte/, "#EA580C"], [/natural|biolog|qu[ií]m|ciencia/, "#059669"],
+    [/matem|l[oó]gic/, "#4F46E5"], [/ingl/, "#7C3AED"], [/lengua|lider|comunic|castell/, "#DC2626"], [/inform|rob[oó]t|tecnol/, "#0891B2"],
+    [/m[uú]sic|est[eé]tic|arte/, "#DB2777"], [/relig|emocional|proyecto/, "#CA8A04"]];
+  const f = t.find(([re]) => re.test(n));
+  return f ? f[1] : "#64748B";
 }
 function vacio(msg) { return `<p class="vacio">${esc(msg)}</p>`; }
 

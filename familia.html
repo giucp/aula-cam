@@ -203,6 +203,30 @@
   @media (max-width:360px){ .mCel{min-width:38px} .evH{width:54px} .seg button{padding:7px 9px} }
   .graf .gv{font-size:11px;fill:var(--ink2);font-weight:600;text-anchor:middle;font-family:inherit}
   .alertas li b{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+
+  /* toques de color (2026-10-29): tonos propios por indicador y sección, siempre en placas suaves */
+  :root{--t-acc:#4338CA;--t-ind:#4F46E5;--t-tea:#0D9488;--t-blu:#2563EB;--t-vio:#7C3AED;--t-amb:#D97706;--t-ros:#E11D48;--t-gri:#64748B}
+  .kpi{position:relative;overflow:hidden}
+  .kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--k)}
+  .kHead{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+  .kIco{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;flex:none;color:var(--k);background:color-mix(in srgb,var(--k) 12%,#fff)}
+  .kIco .ico{width:16px;height:16px}
+  .kLbl{line-height:1.2}
+  .hIco{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;flex:none;color:var(--k);background:color-mix(in srgb,var(--k) 12%,#fff)}
+  .hIco .ico{width:16px;height:16px}
+  .mNom{display:flex;align-items:center;gap:8px}
+  .mDot{width:10px;height:10px;border-radius:3px;flex:none;background:var(--m)}
+  .mat[open] .temas{border-left:3px solid color-mix(in srgb,var(--k) 30%,#fff);padding-left:8px}
+  .tipo{align-self:flex-start;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:6px;margin-bottom:2px}
+  .t-resumen{background:#EFF6FF;color:#1D4ED8}
+  .t-retos{background:#F0FDFA;color:#0F766E}
+  .t-quiz{background:#F5F3FF;color:#6D28D9}
+  .t-examen{background:#FFFBEB;color:#B45309}
+  .graf .bar{fill:#A5B4FC}
+  .graf .bar.hoy{fill:var(--acc)}
+  .indice a:hover{border-color:#C7D2FE;color:var(--acc)}
+  .fr em{background:linear-gradient(90deg,#818CF8,#4F46E5)}
+  .resp.ok .ico{color:var(--ok)}.resp.bad .ico{color:var(--bad)}
 </style>
 </head>
 <body>
