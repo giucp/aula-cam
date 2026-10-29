@@ -191,6 +191,7 @@
     cargarCuradoInfo(gradoDeSesion());   // qué temas tienen guía revisada (sello 📗 + botón)
     cargarAgenda();                      // horario + tareas + notas para el escritorio
     verTab("inicio");                    // el día arranca en el escritorio
+    registrarApertura();                 // panel de padres: a qué hora usa la app
     // F4: tutorial de bienvenida — SOLO cuentas nativas (Camino B) que aún no lo vieron.
     // Las cuentas de aula (fuente=moodle, las niñas) nunca lo ven. Se muestra una vez (persistido).
     if(nativa && SESION && !SESION.onboarding){ setTimeout(mostrarOnboarding, 500); }
@@ -207,6 +208,7 @@
     if(b) b.classList.toggle("hidden", !CUMBRE_ACTIVA || !cumbreTrack());
   }
   function verTab(id){
+    estudioCerrar();
     $("#tabInicio").classList.toggle("hidden", id!=="inicio");
     $("#tabMaterias").classList.toggle("hidden", id!=="materias");
     $("#tabCumbre").classList.toggle("hidden", id!=="cumbre");
@@ -1858,6 +1860,62 @@
     if(modo==="quiz" && extra){ body.aciertos=extra.aciertos; body.total=extra.total; }
     try{ fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}); }catch(_){}
   }
+  // ───────── panel de padres: tiempo REAL de estudio y uso de la app (2026-10-29) ─────────
+  // Cada actividad en pantalla es una "sesión de estudio": cuenta segundos solo con la app VISIBLE
+  // y con algún toque/scroll en los últimos 2 minutos (un teléfono olvidado con el quiz abierto no
+  // suma), cuántas respuestas reveló, cuántas pistas abrió y cuántas preguntas del quiz contestó.
+  // Se envía al salir de la actividad (otra actividad, Atrás, otra pestaña, app en segundo plano).
+  // Tabla `estudio` (supabase-panel-padres.sql). Nunca bloquea ni rompe la app.
+  let ESTUDIO=null, ESTUDIO_TICK=null, ULTIMO_TOQUE=Date.now();
+  ["pointerdown","keydown","scroll","touchstart"].forEach(ev=>document.addEventListener(ev,()=>{ ULTIMO_TOQUE=Date.now(); },{passive:true,capture:true}));
+  function estudioIniciar(meta, modo, d){
+    estudioCerrar();
+    if(!SESION || SESION.id==null || MODO_LAB || !meta || !meta.tema) return;
+    const items=(d && (d.preguntas||d.ejercicios||[]).length) || null;
+    ESTUDIO={ materia:meta.materia||null, tema:meta.tema, modo, items,
+      fuente: origen==="cumbre" ? "cumbre" : (d && d.curado ? "guia" : "ia"),
+      ms:0, revelados:0, pistas:0, respondidas:0, aciertos:null, total:null };
+    ULTIMO_TOQUE=Date.now();
+    ESTUDIO_TICK=setInterval(()=>{
+      if(ESTUDIO && !document.hidden && Date.now()-ULTIMO_TOQUE < 120000) ESTUDIO.ms+=5000;
+    },5000);
+  }
+  function estudioCuenta(campo){ if(ESTUDIO && campo in ESTUDIO) ESTUDIO[campo]++; }
+  function estudioCerrar(){
+    if(ESTUDIO_TICK){ clearInterval(ESTUDIO_TICK); ESTUDIO_TICK=null; }
+    const e=ESTUDIO; ESTUDIO=null;
+    if(!e || !SESION || SESION.id==null) return e;
+    const segundos=Math.min(7200, Math.round(e.ms/1000));
+    if(segundos<5) return e;   // abrir y salir al instante no es estudiar
+    const body={ accion:"estudio", usuario_id:SESION.id, materia:e.materia, tema:e.tema, modo:e.modo, fuente:e.fuente,
+      segundos, items:e.items, revelados:e.revelados, pistas:e.pistas, respondidas:e.respondidas, aciertos:e.aciertos, total:e.total };
+    // keepalive: el envío sobrevive aunque la app se cierre o pase a segundo plano
+    try{ fetch(API_ACTIVIDAD,{method:"POST",keepalive:true,headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}).catch(()=>{}); }catch(_){}
+    return e;
+  }
+  // segundo plano: se manda lo acumulado (iOS puede matar la app ahí); al volver, sigue una sesión nueva
+  let ESTUDIO_PAUSADO=null;
+  document.addEventListener("visibilitychange",()=>{
+    if(document.hidden){ const e=estudioCerrar(); if(e) ESTUDIO_PAUSADO=e; }
+    else if(ESTUDIO_PAUSADO){
+      const e=ESTUDIO_PAUSADO; ESTUDIO_PAUSADO=null;
+      if(wizPaso===3 && !$("#results").classList.contains("hidden")){
+        estudioIniciar({materia:e.materia, tema:e.tema}, e.modo, null);
+        if(ESTUDIO){ ESTUDIO.fuente=e.fuente; ESTUDIO.items=e.items; }
+      }
+    }
+  });
+  window.addEventListener("pagehide",()=>{ estudioCerrar(); });
+  // Aperturas: cada vez que abre Chispa o vuelve después de 20+ minutos (tabla `aperturas`).
+  function registrarApertura(){
+    if(!SESION || SESION.id==null || MODO_LAB) return;
+    const ult=Number(store.get("ult_apertura"))||0;
+    if(Date.now()-ult < 20*60000) return;
+    store.set("ult_apertura", Date.now());
+    try{ fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"abrir", usuario_id:SESION.id})}).catch(()=>{}); }catch(_){}
+  }
+  document.addEventListener("visibilitychange",()=>{ if(!document.hidden) registrarApertura(); });
+
   // Nota del "Demuestra" (quiz) de Cumbre: se guarda en Supabase por niño (tabla cumbre_notas
   // vía api/actividad), así SIGUE al niño en cualquier dispositivo. Se muestra la MEJOR.
   async function cargarNotasCumbre(){
@@ -2283,6 +2341,7 @@
   }
   // generar contenido de Cumbre: SOLO curado (programa=cumbre); reusa render(). Nunca IA/caché.
   async function generarCumbre(){
+    estudioCerrar();
     const mat=(materiaSel&&materiaSel.nombre)||"", tema=temaSel, gr=(materiaSel&&materiaSel.grado)||"";
     if(!tema) return;
     const mo = MODOS.find(m=>m.id===modoSel) || MODOS[0];
@@ -2468,6 +2527,7 @@
   // muestra el paso n del asistente (1 tema · 2 actividad · 3 resultados) y ajusta el back
   function mostrarPaso(n){
     wizPaso=n;
+    if(n!==3) estudioCerrar();   // dejó la actividad (Atrás / otra actividad)
     $("#wizTema").classList.toggle("hidden", n!==1);
     $("#wizActividad").classList.toggle("hidden", n!==2);
     const res=$("#results"); if(res) res.classList.toggle("hidden", n!==3);
@@ -2581,6 +2641,7 @@
   $("#btnContinuar").onclick = ()=>{ if(temaActual()) mostrarPaso(2); };
   async function generar(opts){
     opts = opts||{};
+    estudioCerrar();   // la actividad anterior termina acá (la espera de la IA no cuenta como estudio)
     const tema = temaActual(); if(!tema) return;
     const mo = MODOS.find(m=>m.id===modoSel) || MODOS[0];
     const esProx = origen==="proximo";
@@ -2702,6 +2763,7 @@
     const modo = d.modo || modoSel;
     renderBanner(res, d.fuentes, d.basadoEnMaterial, d.apuntes, d.curado, modo);
     const meta = { materia:d.materia, tema:d.tema, grado:gradoActivo() };
+    estudioIniciar(meta, modo, d);   // panel de padres: tiempo real en esta actividad
     if(modo==="resumen"){      renderResumen(res, d); registrarActividad(meta, "resumen"); }
     else if(modo==="examen"){  renderExamen(res, d.preguntas||[], meta); renderOtros(res); }
     else if(modo==="quiz")     renderQuiz(res, d.preguntas||[], meta);   // "otros" se agrega al terminar
@@ -2878,8 +2940,8 @@
           ${e.pista?`<div class="reveal hint"><b>Pista:</b> ${escapeHtml(e.pista)}</div>`:``}
           <div class="reveal ans"><b>Respuesta:</b> ${escapeHtml(e.solucion||"")}</div>`;
         const h=c.querySelector(".mini.hint"), a=c.querySelector(".mini.ans");
-        if(h) h.onclick=()=>{ c.querySelector(".reveal.hint").classList.add("show"); h.disabled=true; };
-        a.onclick=()=>{ c.querySelector(".reveal.ans").classList.add("show"); a.disabled=true;
+        if(h) h.onclick=()=>{ c.querySelector(".reveal.hint").classList.add("show"); h.disabled=true; estudioCuenta("pistas"); };
+        a.onclick=()=>{ c.querySelector(".reveal.ans").classList.add("show"); a.disabled=true; estudioCuenta("revelados");
           if(!registrado){ registrado=true; registrarActividad(meta, "retos"); } };
         const z=zonaReporte(()=>ejercicios[i], meta, "retos", (nuevo)=>{ ejercicios[i]=nuevo; llenar(nuevo); });
         if(z) c.querySelector(".cardTop").appendChild(z);
@@ -2900,7 +2962,7 @@
           <div class="reveals"><button class="mini ans">Ver respuesta</button></div>
           <div class="reveal ans"><b>Respuesta:</b> ${escapeHtml(p.respuesta||"")}${p.explicacion?`<div class="comoRes"><b>Cómo se resuelve:</b> ${escapeHtml(p.explicacion)}</div>`:``}</div>`;
         const a=c.querySelector(".mini.ans");
-        a.onclick=()=>{ c.querySelector(".reveal.ans").classList.add("show"); a.disabled=true;
+        a.onclick=()=>{ c.querySelector(".reveal.ans").classList.add("show"); a.disabled=true; estudioCuenta("revelados");
           if(!registrado){ registrado=true; registrarActividad(meta, "examen"); } };
         const z=zonaReporte(()=>preguntas[i], meta, "examen", (nuevo)=>{ preguntas[i]=nuevo; llenar(nuevo); });
         if(z) c.querySelector(".cardTop").appendChild(z);
@@ -2970,6 +3032,7 @@
             }
             const exp=c.querySelector(".qexp"); if(exp) exp.classList.add("show");
             estado.resp++; if(j===correcta) estado.ok++;
+            estudioCuenta("respondidas");
             score.textContent=`Puntaje: ${estado.ok}/${estado.total}`;
             if(estado.resp===estado.total){ estado.done=true; mostrarResultadoQuiz(res, estado, meta); }
           };
@@ -2998,6 +3061,7 @@
     if(estado.fallidas && estado.fallidas.length){ guardarErrores(estado.fallidas, meta).then(cargarErrores); }
     // registra el quiz con su nota (alimenta la ruta de aprendizaje y las marcas ⭐)
     registrarActividad(meta, "quiz", { aciertos:estado.ok, total:estado.total });
+    if(ESTUDIO){ ESTUDIO.aciertos=estado.ok; ESTUDIO.total=estado.total; }
     const pct = estado.total ? estado.ok/estado.total : 0;
     const nota = Math.max(1, Math.round(pct*20));
     let msg;

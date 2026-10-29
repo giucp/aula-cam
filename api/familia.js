@@ -13,7 +13,7 @@
 // solo usuario_id; el panel es de solo lectura (el padre NO puede escribir nada del niño).
 
 import crypto from "crypto";
-import { esDelAnioEnCurso, esDelGradoActual } from "../herramientas/anio-escolar.mjs";
+import { esDelAnioEnCurso, esDelGradoActual, inicioAnioEscolar } from "../herramientas/anio-escolar.mjs";
 
 const BASE = "https://aulacam.uearzobispomendez.edu.ve";
 const ORIGIN = "https://aula-cam.vercel.app";
@@ -193,17 +193,23 @@ export default async function handler(req, res) {
         body: JSON.stringify({ ultimo_acceso: new Date().toISOString() }),
       }).catch(() => {});
 
-      const [perfilR, actividad, cumbre, notas, tareas, horario, errores, reportes] = await Promise.all([
+      const desde = inicioAnioEscolar() + "T04:00:00Z";   // 1-sep 00:00 hora de Caracas
+      const [perfilR, actividad, cumbre, notas, tareas, horario, errores, reportes, estudio, aperturas] = await Promise.all([
         sbGet(cfg, `usuarios?id=eq.${uid}&select=nombre,grado,nombre_corto,racha_dias,ultimo_acceso,accesos,ia_gasto_dia_usd,ia_limite_dia_usd,ia_ilimitado,ia_dia,reportes_ia_dia`),
-        sbGet(cfg, `actividad?usuario_id=eq.${uid}&select=materia,tema,modo,aciertos,total,creado&order=creado.desc&limit=300`),
+        sbGet(cfg, `actividad?usuario_id=eq.${uid}&creado=gte.${desde}&select=materia,tema,modo,aciertos,total,creado&order=creado.desc&limit=2000`),
         // Cumbre ("adelanta en vacaciones") se guarda aparte en cumbre_notas → se mezcla acá para
         // que el panel de padres también muestre la actividad de Cumbre con su nota.
         sbGet(cfg, `cumbre_notas?usuario_id=eq.${uid}&select=materia,tema,aciertos,total,creado&order=creado.desc&limit=100`),
         sbGet(cfg, `notas?usuario_id=eq.${uid}&select=materia,descripcion,nota,fecha,creado&order=fecha.desc.nullslast,id.desc`),
         sbGet(cfg, `tareas?usuario_id=eq.${uid}&select=materia,descripcion,tipo,fecha,hecha,creado&order=hecha.asc,fecha.asc.nullslast,id.desc&limit=200`),
         sbGet(cfg, `horario?usuario_id=eq.${uid}&select=dia,materia,orden&order=dia.asc,orden.asc`),
-        sbGet(cfg, `errores?usuario_id=eq.${uid}&select=materia,tema,pregunta,creado&order=creado.desc&limit=100`),
+        // el detalle de cada pregunta fallada (su respuesta vs la correcta + explicación). Sin `figura`:
+        // es un SVG hecho por la IA y no se inyecta en el panel.
+        sbGet(cfg, `errores?usuario_id=eq.${uid}&select=materia,tema,pregunta,opciones,correcta,elegida,explicacion,creado&order=creado.desc&limit=200`),
         sbGet(cfg, `reportes_contenido?usuario_id=eq.${uid}&select=materia,tema,modo,creado&order=creado.desc&limit=50`),
+        // supabase-panel-padres.sql: si las tablas aún no existen, sbGet devuelve [] y el panel sigue
+        sbGet(cfg, `estudio?usuario_id=eq.${uid}&creado=gte.${desde}&select=materia,tema,modo,fuente,segundos,items,revelados,pistas,respondidas,aciertos,total,creado&order=creado.desc&limit=3000`),
+        sbGet(cfg, `aperturas?usuario_id=eq.${uid}&creado=gte.${desde}&select=creado&order=creado.desc&limit=3000`),
       ]);
       const perfil = (Array.isArray(perfilR) && perfilR[0]) || {};
       // fusionar actividad del aula + Cumbre (misma forma: materia/tema/modo/aciertos/total/creado)
@@ -226,6 +232,9 @@ export default async function handler(req, res) {
         horario: (Array.isArray(horario) ? horario : []).filter((x) => esDelGradoActual(x.materia, perfil.nombre_corto)),
         errores: (Array.isArray(errores) ? errores : []).filter((x) => esDelAnioEnCurso(x)),
         reportes: (Array.isArray(reportes) ? reportes : []).filter((x) => esDelAnioEnCurso(x)),
+        estudio: Array.isArray(estudio) ? estudio : [],
+        aperturas: (Array.isArray(aperturas) ? aperturas : []).map((x) => x.creado),
+        anioDesde: inicioAnioEscolar(),
       });
     }
 

@@ -139,6 +139,33 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true });
     }
 
+    // ── Panel de padres (supabase-panel-padres.sql): tiempo real de estudio y uso de la app ──
+    //    Escrituras "fire and forget": si la tabla todavía no existe, no rompe nada.
+    if (b.accion === "estudio") {
+      const n = (v, max) => (Number.isInteger(v) && v >= 0 ? Math.min(v, max) : null);
+      const segundos = n(b.segundos, 7200);
+      if (!segundos || !MODOS_VALIDOS.has(b.modo)) return res.status(200).json({ ok: true });
+      await fetch(`${cfg.url}/rest/v1/estudio`, {
+        method: "POST",
+        headers: { ...hdr(cfg), "Content-Type": "application/json" },
+        body: JSON.stringify({
+          usuario_id: uid, materia: rec(b.materia, 120) || null, tema: rec(b.tema, 200) || null,
+          modo: b.modo, fuente: ["guia", "ia", "cumbre"].includes(b.fuente) ? b.fuente : null, segundos,
+          items: n(b.items, 50), revelados: n(b.revelados, 50), pistas: n(b.pistas, 50),
+          respondidas: n(b.respondidas, 50), aciertos: n(b.aciertos, 50), total: n(b.total, 50),
+        }),
+      }).catch(() => {});
+      return res.status(200).json({ ok: true });
+    }
+    if (b.accion === "abrir") {
+      await fetch(`${cfg.url}/rest/v1/aperturas`, {
+        method: "POST",
+        headers: { ...hdr(cfg), "Content-Type": "application/json" },
+        body: JSON.stringify({ usuario_id: uid }),
+      }).catch(() => {});
+      return res.status(200).json({ ok: true });
+    }
+
     // ── Novedades del aula: "foto" de lo último que vio el alumno, guardada POR USUARIO
     //    (no por aparato) en usuarios.aula_snap (jsonb). Así la alerta 🆕 es consistente
     //    entre PC y celular y se apaga en todos lados al abrir la materia.
