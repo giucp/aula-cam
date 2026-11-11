@@ -249,7 +249,7 @@ const MODOS_VALIDOS = new Set(["retos", "resumen", "examen", "quiz"]);
 // acertijos de deducción (purga del caché los acertijos ambiguos/sin solución previos).
 // retos 5 (2026-07-07): regla de respuesta exacta ampliada (entero cuando se pueda;
 // decimal/fracción EXACTOS en temas de fracciones/decimales/porcentajes/dinero/medidas).
-const PROMPT_VER = { resumen: "3", retos: "5", examen: "5", quiz: "6" };
+const PROMPT_VER = { resumen: "3", retos: "5", examen: "5", quiz: "7" };
 function esNumerica(txt) {
   return /matemát|matemat|lógic|logic|olimpiad/i.test(txt || "");
 }
@@ -548,29 +548,54 @@ function barajarOpciones(p) {
   const idx = mezcladas.indexOf(correctaTxt);
   return { ...p, opciones: mezcladas, correcta: idx >= 0 ? idx : p.correcta };
 }
-// Normaliza texto para casar opciones (sin acentos, minúsculas, solo letras/números).
-function normTxt(s) {
+// Normalización SUAVE para casar opciones: sin acentos, minúsculas, sin espacios ni
+// puntuación final, y los guiones raros (− – —) pasan a "-". CONSERVA el signo, la coma
+// decimal y la barra de fracción: "-30" y "30" son respuestas DISTINTAS.
+function normSuave(s) {
   return String(s == null ? "" : s).normalize("NFD").replace(/[̀-ͯ]/g, "")
-    .toLowerCase().replace(/[^a-z0-9]/g, "");
+    .toLowerCase().replace(/[−–—]/g, "-").replace(/["'«»“”]/g, "")
+    .replace(/\s+/g, "").replace(/[.;:!]+$/g, "");
+}
+// Normalización FUERTE (solo como segundo intento): letras y números, pero el "-" pegado a
+// un número, y "/" "," "." entre dígitos, se quedan. BUG 2026-11-11: la versión vieja
+// borraba el signo menos → "-30" y "30" quedaban iguales y el sello "Respuesta correcta: 30"
+// casaba con "-30" (la primera de la lista): el quiz de números enteros marcaba mal la buena.
+function normTxt(s) {
+  return normSuave(s)
+    .replace(/[^a-z0-9\-\/.,]/g, "")
+    .replace(/-(?!\d)/g, "")
+    .replace(/(^|[^\d])[\/.,]|[\/.,](?!\d)/g, "$1");
+}
+// Índice ÚNICO que casa con el objetivo según `norm`; si casan varias, prefiere la que la
+// IA ya marcó; si es ambiguo, -1 (no tocar).
+function casarUnico(opciones, target, norm, actual, parcial = false) {
+  const t = norm(target);
+  if (!t) return -1;
+  const opt = opciones.map(norm);
+  const cand = opt.map((o, i) => ({ o, i }))
+    .filter(({ o }) => o && (parcial ? (t.includes(o) || o.includes(t)) : o === t))
+    .map(({ i }) => i);
+  if (cand.length === 1) return cand[0];
+  if (cand.length > 1 && cand.includes(actual)) return actual;
+  return -1;
 }
 // BLINDAJE del quiz: alinea "correcta" con la respuesta que declara la propia explicación.
 // La IA termina la explicación con un sello "Respuesta correcta: <texto de la opción>";
-// acá casamos ese texto contra las opciones (robusto, sin parsear números), forzamos el
-// índice a esa opción y quitamos el sello del texto visible. Si no hay sello o no casa,
-// se deja la pregunta como vino (el índice ya pasó la validación estructural).
+// acá casamos ese texto contra las opciones, forzamos el índice a esa opción y quitamos el
+// sello del texto visible. Orden: igual exacto (suave) → igual sin símbolos → contenido
+// parcial (solo textos, nunca un número suelto: "3" está dentro de "-3" y de "13").
+// Si no hay sello o es ambiguo, se deja la pregunta como vino.
 function alinearCorrecta(p) {
   if (!p || !Array.isArray(p.opciones) || p.opciones.length < 2) return p;
   const exp = String(p.explicacion || "");
   const m = exp.match(/respuesta\s+correcta\s*:\s*([^\n]+?)\s*$/i);
   if (!m) return p;
-  const target = normTxt(m[1]);
+  const sello = m[1];
   const limpia = exp.replace(/\s*respuesta\s+correcta\s*:\s*[^\n]+?\s*$/i, "").trim();
-  const opt = p.opciones.map(normTxt);
-  let idx = opt.findIndex((o) => o && o === target);
-  if (idx < 0) {
-    const cand = opt.map((o, i) => ({ o, i })).filter(({ o }) => o && (target.includes(o) || o.includes(target)));
-    if (cand.length === 1) idx = cand[0].i; // solo si UNA opción casa (evita ambigüedad)
-  }
+  const actual = Number.isInteger(p.correcta) ? p.correcta : -1;
+  let idx = casarUnico(p.opciones, sello, normSuave, actual);
+  if (idx < 0) idx = casarUnico(p.opciones, sello, normTxt, actual);
+  if (idx < 0 && /[a-z]{3,}/.test(normTxt(sello))) idx = casarUnico(p.opciones, sello, normTxt, actual, true);
   return idx >= 0 ? { ...p, correcta: idx, explicacion: limpia } : { ...p, explicacion: limpia };
 }
 // Firma estable de un item de banco (para no repetir): hash corto del texto principal.
