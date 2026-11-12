@@ -211,6 +211,7 @@
   }
   function verTab(id){
     estudioCerrar(); quizModo(null);
+    if(id!=="agenda") document.body.classList.remove("ag-form-abierto");
     $("#tabInicio").classList.toggle("hidden", id!=="inicio");
     $("#tabMaterias").classList.toggle("hidden", id!=="materias");
     $("#tabCumbre").classList.toggle("hidden", id!=="cumbre");
@@ -420,6 +421,26 @@
     box.innerHTML=items.map(x=>`<div class="h2Stat h2Stat--${x.icon}"><span class="h2StatIcon"><img src="assets/stats/${STAT_IMG[x.icon]||"metas"}.png" alt="" aria-hidden="true"></span><span class="h2StatMeta"><span class="h2StatValue">${x.value}</span><span class="h2StatLabel">${x.label}</span></span></div>`).join("");
   }
   // ("Continúa aprendiendo" del Inicio se retiró: continuar vive en Materias, con su protagonista.)
+  // ★ 2026-11-12 (MEJORAS 14): una tarea vencida pregunta "¿La entregaste?": "Sí" la marca hecha;
+  //   "Es para otro día" abre el calendario y la mueve. Antes las vencidas se acumulaban.
+  function zonaVencida(t){
+    const z=document.createElement("span"); z.className="tVencida";
+    z.innerHTML=`<span>¿La entregaste?</span><button type="button" class="tvSi">Sí</button><button type="button" class="tvOtro">Es para otro día</button><input type="date" class="tvFecha" aria-label="Nueva fecha" tabindex="-1">`;
+    z.onclick=(e)=>e.stopPropagation();
+    z.querySelector(".tvSi").onclick=async()=>{
+      t.hecha=true; pintarTareas(); pintarEscritorio();
+      try{ await apiAgenda({accion:"tarea_hecha",id:t.id,hecha:true}); }catch(_){}
+    };
+    const inp=z.querySelector(".tvFecha");
+    inp.value=fechaProximaClase(t.materia)||isoDe(enDias(1));
+    z.querySelector(".tvOtro").onclick=()=>{ z.classList.add("is-fecha"); try{ inp.showPicker(); }catch(_){ inp.focus(); } };
+    inp.onchange=async()=>{
+      if(!inp.value) return;
+      t.fecha=inp.value; pintarTareas(); pintarEscritorio();
+      try{ await apiAgenda({accion:"tarea_fecha",id:t.id,fecha:t.fecha}); }catch(_){}
+    };
+    return z;
+  }
   function homeFilaTarea(t){
     const n=diasHasta(t.fecha);
     const vencida=!t.hecha&&n!==null&&n<0;
@@ -434,6 +455,7 @@
     const cuando=n===null?"Sin fecha":capPrimera(fechaBonita(t.fecha));
     row.innerHTML=`${homeMarcaMateria(materia,"h2SubjectMark")}<span class="h2TodayText"><b>${escapeHtml(t.descripcion||TIPO_LABEL[t.tipo]||"Tarea")}</b><small>${escapeHtml(materia)} · <span class="h2TodayWhen">${escapeHtml(cuando)}</span></small></span><button class="h2TaskCheck" type="button" aria-label="${t.hecha?"Marcar como pendiente":"Marcar como completada"}"><span class="h2TaskBox">${t.hecha?"✓":""}</span></button>`;
     row.querySelector(".h2TodayText").onclick=()=>row.classList.toggle("is-open");   // texto largo: tocar lo abre
+    if(vencida) row.querySelector(".h2TodayText").appendChild(zonaVencida(t));
     row.querySelector(".h2TaskCheck").onclick=async()=>{
       t.hecha=!t.hecha; pintarTareas(); pintarEscritorio();
       try{ await apiAgenda({accion:"tarea_hecha",id:t.id,hecha:t.hecha}); }catch(_){}
@@ -769,6 +791,7 @@
       `<button class="h2TaskCheck" type="button" aria-label="${t.hecha?"Marcar como pendiente":"Marcar como hecha"}"><span class="h2TaskBox">${t.hecha?"✓":""}</span></button>`+
       `<button class="agBorrar" type="button" aria-label="Borrar">×</button>`;
     div.querySelector(".agTx").onclick=()=>div.classList.toggle("is-open");   // texto largo: tocar lo abre
+    if(vencida) div.querySelector(".agTx").appendChild(zonaVencida(t));
     div.querySelector(".h2TaskCheck").onclick=async()=>{
       t.hecha=!t.hecha; pintarTareas(); pintarEscritorio();
       try{ await apiAgenda({accion:"tarea_hecha", id:t.id, hecha:t.hecha}); }catch(_){}
@@ -809,6 +832,17 @@
       filas.push(h, ...listas.slice(0,10).map(t=>filaTarea(t)));
     }
     agColapsable(cont, filas, Math.min(AG_TAREAS_VISIBLES, Math.max(pend.length,1)));
+    // 3+ vencidas: limpiarlas de un toque (MEJORAS 14)
+    const venc=pend.filter(t=>{ const n=diasHasta(t.fecha); return n!==null && n<0; });
+    if(venc.length>=3){
+      const bar=document.createElement("div"); bar.className="agVencBar";
+      bar.innerHTML=`<span>Tienes ${venc.length} tareas vencidas</span><button type="button">Marcar todas como entregadas</button>`;
+      bar.querySelector("button").onclick=async()=>{
+        venc.forEach(t=>t.hecha=true); pintarTareas(); pintarEscritorio();
+        for(const t of venc){ try{ await apiAgenda({accion:"tarea_hecha",id:t.id,hecha:true}); }catch(_){} }
+      };
+      cont.insertBefore(bar, cont.firstChild);
+    }
   }
   let tipoSel="tarea", tMatSel="";
   // La fecha arranca en HOY (antes quedaba vacía). Una tarea sin fecha no salía en ninguna parte
@@ -818,13 +852,48 @@
     const d=new Date();
     return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
   }
+  // ★ 2026-11-12 (MEJORAS 13): anotar con menos pasos. La fecha ya no sale en "hoy" (casi nunca es
+  //   para hoy): sale en el próximo día de clases y, al elegir materia, en su PRÓXIMA CLASE según el
+  //   horario. Atajos "Mañana" / "Próxima clase" / "Otra fecha". La descripción es obligatoria (una
+  //   tarea sin texto no dice nada) y el formulario se trae a la vista entero.
+  function isoDe(d){ return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; }
+  function enDias(n){ const d=new Date(); d.setHours(12,0,0,0); d.setDate(d.getDate()+n); return d; }
+  function fechaProximaClase(materia){
+    const tiene=(dow)=>HORARIO.some(h=>h.dia===dow && (!materia || norm(h.materia)===norm(materia) || norm(limpiaNombreMateria(h.materia))===norm(limpiaNombreMateria(materia))));
+    for(let k=1;k<=14;k++){ const d=enDias(k), dow=d.getDay(); if(dow>=1 && dow<=5 && (!materia || tiene(dow))) return isoDe(d); }
+    return null;
+  }
+  let fechaTocada=false;
+  function pintarAtajosFecha(){
+    const cont=$("#tAtajos"); if(!cont) return;
+    const manana=isoDe(enDias(1)), prox=fechaProximaClase(tMatSel||null), actual=$("#tFecha").value;
+    const ops=[{k:"manana",t:"Mañana",f:manana}];
+    if(prox && prox!==manana) ops.push({k:"prox",t:tMatSel?"Próxima clase":"Próximo día de clases",f:prox});
+    ops.push({k:"otra",t:"Otra fecha",f:null});
+    cont.innerHTML=ops.map(o=>`<button type="button" class="chip" data-k="${o.k}" aria-pressed="${o.f?String(o.f===actual):String(!ops.some(x=>x.f===actual))}">${escapeHtml(o.t)}${o.f&&o.k==="prox"?` <small>${escapeHtml(fechaBonita(o.f))}</small>`:""}</button>`).join("");
+    cont.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
+      const o=ops.find(x=>x.k===b.dataset.k); fechaTocada=true;
+      if(o.f){ $("#tFecha").value=o.f; pintarAtajosFecha(); }
+      else{ const i=$("#tFecha"); try{ i.showPicker(); }catch(_){ i.focus(); } }
+    });
+  }
   function abrirFormTarea(){
     $("#formTarea").classList.remove("hidden");
-    $("#tDesc").value=""; $("#tFecha").value=hoyISO(); tipoSel="tarea"; tipoTocado=false; tMatSel=""; $("#tMsg").innerHTML="";
-    montarSelectorMateria($("#tMaterias"), ()=>tMatSel, v=>{ tMatSel=v; });
+    document.body.classList.add("ag-form-abierto");
+    fechaTocada=false;
+    $("#tDesc").value=""; $("#tFecha").value=fechaProximaClase(null)||isoDe(enDias(1)); tipoSel="tarea"; tipoTocado=false; tMatSel=""; $("#tMsg").innerHTML="";
+    montarSelectorMateria($("#tMaterias"), ()=>tMatSel, v=>{
+      tMatSel=v;
+      if(!fechaTocada){ const f=fechaProximaClase(v); if(f) $("#tFecha").value=f; }   // su próxima clase
+      pintarAtajosFecha();
+    });
     document.querySelectorAll("#tTipos .chip").forEach(c=>c.setAttribute("aria-pressed", String(c.dataset.tipo==="tarea")));
-    $("#tDesc").focus();
+    pintarAtajosFecha();
+    try{ $("#formTarea").scrollIntoView({block:"start"}); }catch(_){}   // directo: el Guardar debe quedar a la vista
+    setTimeout(()=>$("#tDesc").focus({preventScroll:true}), 250);
   }
+  function cerrarFormTarea(){ $("#formTarea").classList.add("hidden"); document.body.classList.remove("ag-form-abierto"); }
+  $("#tFecha").addEventListener("change",()=>{ fechaTocada=true; pintarAtajosFecha(); });
   // dos entradas al mismo formulario: el + flotante del encabezado y el "Anotar" de la tarjeta
   // al escribir "examen", "evaluación", "prueba"… el tipo pasa solo a Examen (si no lo cambió a mano)
   let tipoTocado=false;
@@ -834,19 +903,20 @@
     if(t!==tipoSel){ tipoSel=t; document.querySelectorAll("#tTipos .chip").forEach(c=>c.setAttribute("aria-pressed", String(c.dataset.tipo===t))); }
   });
   $("#btnNuevaTarea2").onclick=abrirFormTarea;
-  $("#btnCancelarTarea").onclick=()=>$("#formTarea").classList.add("hidden");
+  $("#btnCancelarTarea").onclick=cerrarFormTarea;
   document.querySelectorAll("#tTipos .chip").forEach(b=>{
     b.onclick=()=>{ tipoSel=b.dataset.tipo; tipoTocado=true;
       document.querySelectorAll("#tTipos .chip").forEach(c=>c.setAttribute("aria-pressed", String(c===b))); };
   });
   $("#btnGuardarTarea").onclick=async()=>{
-    const desc=$("#tDesc").value.trim(); // opcional: se puede anotar solo materia + tipo
+    const desc=$("#tDesc").value.trim();
+    if(!desc){ $("#tMsg").innerHTML=`<p class="wVacio" style="color:var(--bad)">Escribe qué te mandaron (por ejemplo: "página 42, ejercicios 1 al 5").</p>`; $("#tDesc").focus(); return; }
     const btn=$("#btnGuardarTarea"); btn.disabled=true; $("#tMsg").innerHTML="";
     try{
       const d=await apiAgenda({accion:"tarea_guardar", tarea:{descripcion:desc, materia:tMatSel, tipo:tipoSel, fecha:$("#tFecha").value||null}});
       if(!d || !d.ok || !d.tarea) throw new Error((d&&d.error)||"no se pudo guardar");
       TAREAS.unshift(d.tarea);
-      $("#formTarea").classList.add("hidden");
+      cerrarFormTarea();
       pintarTareas(); pintarEscritorio();
     }catch(e){
       $("#tMsg").innerHTML=`<p class="wVacio" style="color:var(--bad)">No se pudo guardar. Revisa tu conexión e intenta de nuevo.</p>`;

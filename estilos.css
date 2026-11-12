@@ -2009,3 +2009,25 @@ body.quiz-activo #vHome{padding-bottom:calc(28px + env(safe-area-inset-bottom))}
 .autoFinTit{margin:0 0 4px;font-family:"Fredoka";font-weight:600;font-size:1.2rem;color:var(--chispa-ink)}
 .autoFinTx{margin:0;font-weight:700;color:var(--chispa-muted);line-height:1.45}
 .autoRepetir{margin-top:14px}
+
+/* ═══ Agenda e Inicio (MEJORAS 13-16, 2026-11-12) ═══ */
+/* 13 · atajos de fecha + dibujo más chico con el formulario abierto */
+.agAtajos{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 8px}
+.agAtajos .chip{border:1.5px solid var(--chispa-line);background:#fff;border-radius:12px;padding:8px 12px;font:800 .84rem/1.1 Nunito,system-ui,sans-serif;color:var(--chispa-ink);cursor:pointer}
+.agAtajos .chip small{font-weight:700;color:var(--chispa-muted)}
+.agAtajos .chip[aria-pressed="true"]{border-color:var(--chispa-primary);background:var(--chispa-primary-soft);color:var(--chispa-primary-deep)}
+body.ag-form-abierto .agTop .agBook{width:84px;height:auto;opacity:.9}
+body.ag-form-abierto .agTop .agStar{display:none}
+#formTarea{scroll-margin-top:12px}
+/* 14 · ¿La entregaste? */
+.tVencida{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:7px;font:800 .78rem/1.2 Nunito,system-ui,sans-serif;color:#C2410C}
+.tVencida button{border:1.5px solid var(--chispa-line);background:#fff;border-radius:10px;padding:6px 10px;font:800 .78rem/1 Nunito,system-ui,sans-serif;color:var(--chispa-ink);cursor:pointer}
+.tVencida .tvSi{border-color:#B9E8D0;color:#13694A}
+.tVencida .tvFecha{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.tVencida.is-fecha .tvFecha{position:static;opacity:1;width:auto;height:auto;pointer-events:auto;border:1.5px solid var(--chispa-line);border-radius:10px;padding:5px 8px;font:700 .8rem Nunito,system-ui,sans-serif}
+.agVencBar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 10px;padding:10px 12px;border-radius:14px;background:#FFF1EC;font:800 .84rem/1.3 Nunito,system-ui,sans-serif;color:#C2410C}
+.agVencBar button{border:0;border-radius:11px;padding:8px 11px;background:#fff;color:#C2410C;font:800 .8rem/1 Nunito,system-ui,sans-serif;cursor:pointer;box-shadow:var(--shadow-xs)}
+/* 15 · "Lo que viene" con la misma letra que "Hoy" (era Fredoka, como un título) */
+.h2UpcomingText b{font-family:"Nunito";font-weight:700;font-size:.9rem;line-height:1.38}
+/* 16 · el botón principal del asistente siempre a la vista, sobre la barra de navegación */
+#wizTema #btnContinuar,#wizActividad #btnGen{position:sticky;bottom:calc(92px + env(safe-area-inset-bottom));z-index:6}

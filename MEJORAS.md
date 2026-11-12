@@ -167,7 +167,7 @@ En `familia.js` (`construirEventos`, ~622 y ~635), ignorar sesiones de menos de 
 
 ## C. Inicio y agenda
 
-### 13. Anotar una tarea con menos pasos
+### 13. Anotar una tarea con menos pasos — ✅ HECHO 2026-11-12
 `abrirFormTarea()` (~784):
 - La fecha sale en hoy. Debe salir en el próximo día de clases (`proximoDiaEscolar()`), o en la próxima
   clase de la materia elegida según el horario.
@@ -177,15 +177,15 @@ En `familia.js` (`construirEventos`, ~622 y ~635), ignorar sesiones de menos de 
 - La descripción dice "(opcional)": una tarea sin descripción no sirve; pedirla.
 - Con el formulario abierto, encoger el dibujo grande de "Mi agenda".
 
-### 14. Limpiar tareas vencidas con un toque
+### 14. Limpiar tareas vencidas con un toque — ✅ HECHO 2026-11-12
 En `homeFilaTarea()` (~421) y `filaTarea()` (~721), a las vencidas agregar "¿La entregaste?": "Sí" la
 marca hecha; "Es para otro día" abre la fecha. Si hay 3 o más, un "Marcar todas como entregadas".
 
-### 15. Tipografía pareja en Inicio
+### 15. Tipografía pareja en Inicio — ✅ HECHO 2026-11-12
 "Lo que viene" (`.h2UpcomingCard`) usa letra gruesa de título y "Hoy" letra normal, siendo la misma clase
 de lista. Unificar con el estilo de "Hoy" (en `estilos.css`).
 
-### 16. Botón principal siempre a la vista
+### 16. Botón principal siempre a la vista — ✅ HECHO 2026-11-12
 En "¿Cómo quieres estudiar?" (`#wizActividad`), `#btnGen` queda fuera de pantalla. Dejarlo fijo sobre la
 barra inferior. Lo mismo con "Continuar" del paso 1 cuando la lista es larga.
 

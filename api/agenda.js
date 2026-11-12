@@ -132,6 +132,19 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true });
     }
 
+    // "Es para otro día" (2026-11-12): mover una tarea vencida a otra fecha (o quitarle la fecha)
+    if (accion === "tarea_fecha") {
+      const id = parseInt(req.body.id, 10);
+      if (!Number.isInteger(id)) return res.status(400).json({ error: "Falta id" });
+      const f = req.body.fecha == null || req.body.fecha === "" ? null : String(req.body.fecha);
+      if (f !== null && !/^\d{4}-\d{2}-\d{2}$/.test(f)) return res.status(400).json({ error: "Fecha inválida" });
+      const r = await fetch(`${cfg.url}/rest/v1/tareas?id=eq.${id}&usuario_id=eq.${uid}`, {
+        method: "PATCH", headers: hdr(cfg), body: JSON.stringify({ fecha: f }),
+      });
+      if (!r.ok) throw new Error(`patch fecha: HTTP ${r.status}`);
+      return res.status(200).json({ ok: true });
+    }
+
     if (accion === "nota_guardar") {
       const t = req.body.nota || {};
       const valor = Number(t.nota);
