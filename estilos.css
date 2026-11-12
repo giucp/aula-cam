@@ -2052,3 +2052,6 @@ body.ag-form-abierto .agTop .agStar{display:none}
 .respMsg:empty{display:none}
 .respMsg.ok{color:#13694A}
 .respMsg.mal{color:#C2410C}
+
+/* espera larga de la IA */
+.loadingMas{margin:10px 0 0;font:700 .86rem/1.4 Nunito,system-ui,sans-serif;color:var(--chispa-muted)}

@@ -3064,6 +3064,9 @@
     let cool=0;
     res.innerHTML = vistaCargando(tema, mo, usaFotos);
     mostrarPaso(3);   // a la vista de resultados (arranca con el estado de carga)
+    // 2026-11-12: los temas difíciles pueden tardar más de un minuto (la IA razona más). Se avisa para que no parezca colgada.
+    const avisosEspera=[[20000,"Este tema necesita pensarse con calma. Ya casi…"],[50000,"Sigue trabajando: los temas difíciles pueden tardar hasta dos minutos."]]
+      .map(([ms,txt])=>setTimeout(()=>{ const l=res.querySelector(".loading"); if(!l) return; let p=l.querySelector(".loadingMas"); if(!p){ p=document.createElement("p"); p.className="loadingMas"; l.appendChild(p); } p.textContent=txt; }, ms));
     try{
       const body = { materia:mat, tema, grado:gr, cantidad, contexto, modo:modoSel,
         token:(!esProx && SESION && !SESION.aulaOff && SESION.token)||null, fotos: esProx?[]:fotos,
@@ -3112,7 +3115,7 @@
       }else{
         res.innerHTML = errBox("Uy, no llegó. Intenta otra vez en un momentico.", String(e.message||e));
       }
-    }finally{ if(cool>0){ enfriar(btnGen, cool); } else if(cool===0){ pintarAcciones(); } }
+    }finally{ avisosEspera.forEach(clearTimeout); if(cool>0){ enfriar(btnGen, cool); } else if(cool===0){ pintarAcciones(); } }
   }
   // el alumno llegó a su tope diario de práctica con IA: mensaje amable (no queda
   // bloqueado — sigue teniendo las guías revisadas 📗 y todo lo que ya practicó; mañana

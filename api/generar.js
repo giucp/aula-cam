@@ -79,7 +79,9 @@ const IA_PROVEEDOR = String(process.env.IA_PROVEEDOR || "deepseek").trim().toLow
 const esDeepSeek = IA_PROVEEDOR === "deepseek";
 const DEEPSEEK_URL = process.env.DEEPSEEK_URL || "https://api.deepseek.com/chat/completions";
 const DEEPSEEK_MODEL = process.env.DEEPSEEK_MODEL || "deepseek-flash";
-const DEEPSEEK_MAX_TOKENS = Number(process.env.DEEPSEEK_MAX_TOKENS) || 8000;
+// 2026-11-12: 8000 → 20000. Con 8000 los temas difíciles se quedaban razonando y volvían vacíos.
+// A ~260 tokens/s son hasta ~77 s; por eso el límite de la función subió a 120 s (vercel.json).
+const DEEPSEEK_MAX_TOKENS = Number(process.env.DEEPSEEK_MAX_TOKENS) || 20000;
 
 const MAX_PDFS = 3;                       // cuántos PDFs leer por generación
 const MAX_PDF_BYTES = 8 * 1024 * 1024;    // por archivo
@@ -308,15 +310,7 @@ ${ctx}${pdfNota}${fotosNota}\n`;
   // inventar acertijos sin solución única o razonar mal). Solo en temas numéricos/lógicos.
   // Protocolo CONSTRUIR→ENUMERAR→VERIFICAR: la instrucción vaga "comprueba que sea única"
   // no bastaba (salían acertijos ambiguos, sin solución o con explicación contradictoria).
-  // ★ 2026-11-12: estrellas / pirámides / cuadrados mágicos. La IA buscaba números que cuadraran
-  //   probando combinaciones y agotaba los tokens razonando (respuesta vacía → "No pudimos armar la
-  //   actividad"). Construir primero la figura completa y después ocultar casillas no requiere buscar.
-  const esMagico = /m[aá]gic|pir[aá]mide/i.test(String(tema || ""));
-  const notaMagicos = esMagico
-    ? `
-Para estrellas, cuadrados o pirámides mágicas/numéricas: NO busques la solución probando números. CONSTRUYE primero la figura COMPLETA con todos sus números (usa una disposición sencilla y conocida que ya sepas que cumple la regla), verifica la suma UNA sola vez, y recién entonces oculta algunas casillas para el alumno. La respuesta son los números ocultos.`
-    : ``;
-  const reglasDeduccion = notaMagicos + (numerica
+  const reglasDeduccion = (numerica
     ? `\nSi el ejercicio es de deducción, ordenamiento o ubicación (quién se sienta dónde, en qué orden llegan o se colocan, acertijos con pistas), sigue OBLIGATORIAMENTE este protocolo:
 1. CONSTRUYE PRIMERO la solución: decide la disposición u orden final completo ANTES de redactar el enunciado, y escribe las pistas describiendo ESA disposición.
 2. Redacta SIN ambigüedad: escribe siempre "inmediatamente a la derecha/izquierda de" o "en algún lugar a la derecha/izquierda de" (nunca "a la derecha de" a secas, que se entiende de dos formas); "justo antes/después" significa en la posición inmediata. En mesas redondas, aclara en el enunciado que la derecha y la izquierda son las de la persona sentada (no las del lector), y recuerda: en una mesa de 4, el que está al frente de tu vecino de la derecha es tu vecino de la izquierda.
@@ -774,6 +768,22 @@ async function cacheGet(clave) {
     return null;
   }
 }
+// ★ 2026-11-12 · ESFUERZO ADAPTATIVO (arreglo general de "No pudimos armar la actividad").
+//   deepseek-flash razona con esfuerzo "high" por defecto y sin tope propio: en temas difíciles
+//   (acertijos, figuras) piensa más de lo que entra en nuestros ~50 s / max_tokens y devuelve VACÍO
+//   (finish_reason "length"). La API tiene reasoning_effort: "low" | "high" | "max".
+//   - Primer intento: como siempre ("high"), para no bajar la calidad donde ya funciona.
+//   - Si vuelve vacío por "length": se reintenta con "low" y se ANOTA el tema (fila marcador en
+//     cache_generaciones, clave "esfuerzo-…"). Las próximas veces ese tema arranca directo en
+//     "low", con todo el tiempo y todos los ítems, sin hacer esperar al niño por un intento perdido.
+//   - El marcador vence a los 30 días: se vuelve a probar "high" por si el modelo mejoró.
+function claveEsfuerzo(o) {
+  return "esfuerzo-" + crypto.createHash("sha1").update([o.materia || "", o.tema || "", o.modo || "", o.grado || ""].join("|").toLowerCase()).digest("hex");
+}
+async function esfuerzoBajoGet(clave) {
+  const c = await cacheGet(clave);
+  return !!(c && c.bajo && Date.now() - Number(c.ts || 0) < 30 * 864e5);
+}
 async function cacheSet(clave, fila) {
   const cfg = supabaseCfg();
   if (!cfg) return;
@@ -940,10 +950,7 @@ export default async function handler(req, res) {
     }
 
     const modo = MODOS_VALIDOS.has(req.body && req.body.modo) ? req.body.modo : "retos";
-    let n = Math.min(Math.max(parseInt(cantidad, 10) || 5, 1), 10);
-    // ★ 2026-11-12: estrellas/pirámides mágicas: máximo 3 por tanda. Con 5, la IA gastaba todos los
-    //   tokens razonando y devolvía vacío. Con 3 el razonamiento alcanza y la calidad se mantiene.
-    if (/m[aá]gic|pir[aá]mide/i.test(String(tema || "")) && modo !== "resumen") n = Math.min(n, 3);
+    const n = Math.min(Math.max(parseInt(cantidad, 10) || 5, 1), 10);
     // Regeneración de un ítem reportado como malo (botón "🚩 Reportar"): se usa el
     // modelo más confiable (pro) en vez de flash/lite. Solo vale de a UNO (n===1) para
     // que no se pueda pedir un lote entero con pro por este camino.
@@ -1011,6 +1018,7 @@ export default async function handler(req, res) {
     const firma = firmaContenido(contexto);
     const clave = claveCache({ materia, tema, modo, grado, cantidad: n, firma });
     const noCache = nocache || tieneFotos || recientes.length > 0;
+    const claveEsf = claveEsfuerzo({ materia, tema, modo, grado });
     if (!noCache) {
       const hit = await cacheGet(clave);
       if (hit) return res.status(200).json({ ...hit, cacheado: true });
@@ -1106,6 +1114,9 @@ export default async function handler(req, res) {
       response_format: { type: "json_object" },
       max_tokens: DEEPSEEK_MAX_TOKENS,
     };
+    // ¿este tema ya demostró que con razonamiento completo no llega? → directo en "low"
+    let esfuerzoBajo = false;
+    if (esDeepSeek && await esfuerzoBajoGet(claveEsf)) { esfuerzoBajo = true; payloadDeepSeek.reasoning_effort = "low"; }
     const payload = esDeepSeek ? payloadDeepSeek : payloadGemini;
     // REGLA DE MODELOS (2026-07-04): flash-lite NUNCA toca contenido numérico/lógico —
     // por más blindado que esté el prompt, se equivoca. Prioridades:
@@ -1175,9 +1186,9 @@ export default async function handler(req, res) {
       keyUsada = null;
     // Presupuesto de tiempo: cortamos antes del maxDuration de 60s de Vercel para devolver
     // un 503 amable (el front reintenta) en vez de un 504 crudo que rompe la pantalla.
-    const DEADLINE = Date.now() + 52000;
+    // DeepSeek: 110 s (la función tiene 120). Gemini conserva sus 52 s de siempre.
+    const DEADLINE = Date.now() + (esDeepSeek ? 110000 : 52000);
     let parsed = null, malformado = false, reintentoMalformado = false;
-    let usoRespaldo = false;   // true = salió del reintento SIN razonamiento (calidad menor: no se cachea)
     let diagMalformado = [];   // por qué no sirvió cada intento (finish_reason/largo/motivo), para el 502
     // Qué aprendió este request de cada modelo (para el breaker): exito | fallo.
     // Los 429 puros son cupo de la KEY, no salud del modelo → no cuentan.
@@ -1193,7 +1204,8 @@ export default async function handler(req, res) {
         // Gemini: la key va en la query. DeepSeek: en el header Authorization.
         const url = esDeepSeek ? ep : `${ep}?key=${key}`;
         const hdrs = esDeepSeek ? { Authorization: `Bearer ${key}` } : null;
-        const r = await pedirAGemini(url, payload, esSonda ? 1 : 2, DEADLINE, hdrs);
+        // DeepSeek: el primer intento deja 22 s de reserva para el segundo (esfuerzo "low") si este vuelve vacío
+        const r = await pedirAGemini(url, payload, esSonda ? 1 : 2, esDeepSeek ? DEADLINE - 22000 : DEADLINE, hdrs);
         data = r.data;
         status = r.status;
         modeloUsado = m;
@@ -1218,24 +1230,24 @@ export default async function handler(req, res) {
           const txt = String((ch && ch.message && ch.message.content) || ""); let motivo = "json"; try { JSON.parse(txt.replace(/```json|```/g, "").trim()); motivo = "items"; } catch (e2) { motivo = "json:" + String(e2.message).slice(0, 60); }
           diagMalformado.push(`${(ch && ch.finish_reason) || "?"}|${txt.length}|${motivo}|t${Math.round((DEADLINE - Date.now()) / 1000)}`);
         } catch (e) { /* solo log */ }
-        // con UNA sola key, un JSON roto no tenía segunda oportunidad: se reintenta una vez si hay tiempo
-        //   El reintento pide la MITAD de ítems: el fallo típico (temas de dibujos como Estrellas Mágicas)
-        //   es que la IA gasta todo max_tokens razonando y devuelve vacío (finish_reason "length").
+        // Segundo intento (uno solo, si queda tiempo). Si el primero volvió VACÍO por "length" es que se
+        // quedó razonando: se anota el tema y se reintenta con esfuerzo "low" y la mitad de ítems
+        // (queda poco tiempo). Otros JSON rotos se reintentan igual que el original.
+        const chF = data && data.choices && data.choices[0];
+        const seAhogo = esDeepSeek && !esfuerzoBajo && chF && chF.finish_reason === "length";
+        if (seAhogo) cacheSet(claveEsf, { materia: materia || null, tema, modo, grado, cantidad: 0, contenido: { bajo: true, ts: Date.now() } }).catch(() => {});
         if (!reintentoMalformado && ordenKeys.length === 1 && Date.now() < DEADLINE - 14000) {
           reintentoMalformado = true;
           let payload2 = payload, n2 = n;
-          if (esDeepSeek && n > 2) {
-            n2 = Math.max(2, Math.ceil(n / 2));
-            const prompt2 = armarPrompt({ modo, material, tienePdf: pdfs.length > 0, tieneFotos, fotosExamen, grado, tema, materia, n: n2, numerica, recientes })
-              + `
-IMPORTANTE: el intento anterior se quedó sin tiempo. Piensa poco: elige ejercicios SENCILLOS que puedas verificar de inmediato y responde ya.`;
-            // sin razonamiento: si el primer intento se ahogó pensando, este responde rápido en vez de nada
-            payload2 = { ...payloadDeepSeek, thinking: { type: "disabled" }, messages: [{ role: "user", content: [{ type: "text", text: prompt2 }, ...contenidoDS.slice(1)] }] };
+          if (seAhogo) {
+            if (n > 2) n2 = Math.max(2, Math.ceil(n / 2));
+            const prompt2 = armarPrompt({ modo, material, tienePdf: pdfs.length > 0, tieneFotos, fotosExamen, grado, tema, materia, n: n2, numerica, recientes });
+            payload2 = { ...payloadDeepSeek, reasoning_effort: "low", messages: [{ role: "user", content: [{ type: "text", text: prompt2 }, ...contenidoDS.slice(1)] }] };
           }
           const r2 = await pedirAGemini(url, payload2, 1, DEADLINE, hdrs); data = r2.data; status = r2.status;
           if (status === 200 && !(data && data.error)) {
             const p2 = depurar(modo, parsearIA(data), n2);
-            if (p2 && esValido(modo, p2)) { delete p2._rescatado; parsed = p2; usoRespaldo = true; resultadoModelo.set(m, "exito"); console.log(`[generar] ${modo} salió en el reintento con ${n2} ítems: ${materia || ""} · ${tema}`); break buscar; }
+            if (p2 && esValido(modo, p2)) { delete p2._rescatado; parsed = p2; if (seAhogo) esfuerzoBajo = true; resultadoModelo.set(m, "exito"); console.log(`[generar] ${modo} salió en el segundo intento (${seAhogo ? "esfuerzo low, " + n2 + " ítems" : "igual"}): ${materia || ""} · ${tema}`); break buscar; }
             const ch2 = data && data.choices && data.choices[0];
             diagMalformado.push(`reintento:${(ch2 && ch2.finish_reason) || "?"}|${String((ch2 && ch2.message && ch2.message.content) || "").length}|t${Math.round((DEADLINE - Date.now()) / 1000)}`);
           } else diagMalformado.push(`reintento:http${status}:${String((data && data.error && (data.error.message || data.error)) || "").slice(0, 80)}`);
@@ -1294,14 +1306,14 @@ IMPORTANTE: el intento anterior se quedó sin tiempo. Piensa poco: elige ejercic
       materia: materia || null,
       modo,
       basadoEnMaterial: !!material || pdfs.length > 0 || tieneFotos,
-      ...(usoRespaldo ? { respaldo: true } : {}),
+      ...(esfuerzoBajo ? { esfuerzo: "bajo" } : {}),   // diagnóstico: este tema se genera con razonamiento corto
       fuentes: pdfs.map((p) => p.nombre), // PDFs que Gemini realmente leyó
       apuntes: tieneFotos, // usó fotos del cuaderno del alumno
       iaVia: usoPaga ? "paga" : "gratis", // diagnóstico: qué tipo de key sirvió esta generación
       iaModelo: modeloUsado, // diagnóstico: qué modelo generó (auditar que lo numérico salga de flash)
     };
     // 2) guardamos en caché para la próxima vez — SALVO si usó fotos (resultado personal del alumno)
-    if (!tieneFotos && !usoRespaldo) {
+    if (!tieneFotos) {
       await cacheSet(clave, { materia: materia || null, tema, modo, grado, cantidad: n, contenido: respuesta });
     }
     // 3) sumamos el costo estimado al gasto de HOY del alumno (límite de IA). Cuenta
