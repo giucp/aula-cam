@@ -1997,3 +1997,15 @@ body.quiz-activo #vHome{padding-bottom:calc(28px + env(safe-area-inset-bottom))}
 .temaState.ts-bajo{background:#FFEDE8;color:#C2410C}
 .temaState.ts-emp{background:#F1F0F6;color:var(--chispa-muted)}
 .temaState.ts-nov{background:#FFF4D6;color:#8A5A00}
+
+/* "¿Te salió?" en práctica y simulacro (MEJORAS 3, 2026-11-12) */
+.autoEval{margin-top:12px;padding-top:12px;border-top:1px dashed color-mix(in srgb,var(--chispa-primary) 25%,transparent);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.autoEval>span{font-family:"Fredoka";font-weight:600;color:var(--chispa-ink)}
+.autoEvalBtns{display:flex;gap:8px}
+.autoEvalBtns button{border:1.5px solid var(--chispa-line);background:#fff;border-radius:12px;padding:8px 14px;font:800 .9rem/1 Nunito,system-ui,sans-serif;color:var(--chispa-ink);cursor:pointer}
+.autoEvalBtns .aeSi[aria-pressed="true"]{border-color:var(--chispa-green);background:#EAF8F1;color:#13694A}
+.autoEvalBtns .aeNo[aria-pressed="true"]{border-color:var(--chispa-coral);background:#FFEDE8;color:#C2410C}
+.autoFin{text-align:center}
+.autoFinTit{margin:0 0 4px;font-family:"Fredoka";font-weight:600;font-size:1.2rem;color:var(--chispa-ink)}
+.autoFinTx{margin:0;font-weight:700;color:var(--chispa-muted);line-height:1.45}
+.autoRepetir{margin-top:14px}

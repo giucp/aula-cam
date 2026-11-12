@@ -25,7 +25,7 @@ export function panelDemo() {
     ],
     estudio: [
       { materia: "LÓGICA MATEMÁTICA 5G", tema: "Tema 1 · Patrones numéricos", modo: "resumen", fuente: "ia", segundos: 410, items: null, creado: mas(a1, 7) },
-      { materia: "LÓGICA MATEMÁTICA 5G", tema: "Tema 1 · Patrones numéricos", modo: "retos", fuente: "ia", segundos: 760, items: 5, revelados: 5, pistas: 2, creado: mas(a2, 14) },
+      { materia: "LÓGICA MATEMÁTICA 5G", tema: "Tema 1 · Patrones numéricos", modo: "retos", fuente: "ia", segundos: 760, items: 5, revelados: 5, pistas: 2, aciertos: 3, total: 5, creado: mas(a2, 14) },
       { materia: "LÓGICA MATEMÁTICA 5G", tema: "Tema 1 · Patrones numéricos", modo: "quiz", fuente: "ia", segundos: 300, items: 5, respondidas: 5, aciertos: 4, total: 5, creado: mas(a3, 5) },
       { materia: "CIENCIAS SOCIALES 5G", tema: "TEMA 2. Clima y vegetación.", modo: "resumen", fuente: "guia", segundos: 250, creado: mas(a4, 4) },
       { materia: "CIENCIAS SOCIALES 5G", tema: "TEMA 2. Clima y vegetación.", modo: "quiz", fuente: "guia", segundos: 180, items: 5, respondidas: 5, aciertos: 2, total: 5, creado: mas(a5, 3) },

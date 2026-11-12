@@ -21,7 +21,7 @@ const KEY_NINOS = "familia_ninos";        // [{token, nombre, grado}]
 const KEY_ACTIVO = "familia_activo";      // índice del hijo que se está viendo
 const KEY_TOKEN_VIEJO = "familia_ptoken"; // migración desde la versión de 1 solo hijo
 const KEY_PERIODO = "familia_periodo";    // "7" | "30" | "anio"
-const FAMILIA_V = "v17";                   // versión visible (footer y errores) para saber qué código corre
+const FAMILIA_V = "v18";                   // versión visible (footer y errores) para saber qué código corre
 const app = document.getElementById("app");
 const PANEL_CACHE = {};                   // token -> data del panel (en memoria, esta sesión)
 let PANEL_ACTUAL = null;                  // { d, ninos, i, staleTs, detalle } para re-pintar al cambiar filtros
@@ -640,6 +640,8 @@ function detalleEvento(e) {
   if (s) {
     partes.push(fmtDur(s.segundos));
     if ((e.modo === "retos" || e.modo === "examen") && s.items) partes.push(`vio ${s.revelados || 0} de ${s.items} respuestas`);
+    // autoevaluación (desde 2026-11-12): después de ver cada respuesta marca si le salió
+    if ((e.modo === "retos" || e.modo === "examen") && s.total > 0) partes.push(`le salieron ${s.aciertos || 0} de ${s.total}`);
     if (e.modo === "retos" && s.pistas) partes.push(`${s.pistas} pista${s.pistas > 1 ? "s" : ""}`);
     if (s.fuente && FUENTE[s.fuente]) partes.push(FUENTE[s.fuente]);
   }

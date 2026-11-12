@@ -3077,12 +3077,51 @@
     return b;
   }
 
+  // ★ 2026-11-12 (MEJORAS 3): después de "Ver respuesta" se pregunta "¿Te salió?" (Sí / Todavía no).
+  //   Antes bastaba con tocar "Ver respuesta" una vez para que el tema contara como practicado, y se
+  //   podían abrir todas en segundos. Ahora la actividad cuenta cuando se autoevaluó al menos la
+  //   mitad; el resultado va al registro de estudio (Familia: "le salieron 3 de 5") y al final se
+  //   ofrece repetir los que no salieron.
+  function crearAutoEval(n, meta, modo, fin, reabrir){
+    const est=new Array(n).fill(null);   // por ítem: "si" | "no" | null
+    let registrado=false;
+    const actualizar=()=>{
+      const ev=est.filter(Boolean).length, si=est.filter(x=>x==="si").length;
+      if(ESTUDIO){ ESTUDIO.aciertos=si; ESTUDIO.total=ev; }
+      if(!registrado && ev>=Math.ceil(n/2)){ registrado=true; registrarActividad(meta, modo); }
+      fin.innerHTML=""; fin.className="autoFin hidden";
+      if(ev<n) return;
+      const no=est.map((x,i)=>x==="no"?i:-1).filter(i=>i>=0);
+      fin.className="card autoFin";
+      fin.innerHTML=`<p class="autoFinTit">Te salieron ${si} de ${n}</p>`+(no.length
+        ? `<p class="autoFinTx">Vuelve a intentar ${no.length===1?"el que no te salió":"los que no te salieron"}, esta vez sin mirar la respuesta.</p><button class="go autoRepetir" type="button">${no.length===1?"Repetir el que no me salió":`Repetir los ${no.length} que no me salieron`}</button>`
+        : `<p class="autoFinTx">¡Muy bien! Ya puedes pasar al siguiente paso.</p>`);
+      const b=fin.querySelector(".autoRepetir");
+      if(b) b.onclick=()=>{ no.forEach(i=>{ est[i]=null; reabrir(i); }); actualizar(); reabrir(no[0], true); };
+    };
+    return {
+      marcar(i, v){ est[i]=v; actualizar(); },
+      limpiar(i){ est[i]=null; actualizar(); },
+    };
+  }
+  // la pregunta "¿Te salió?" bajo la respuesta revelada
+  function zonaAutoEval(c, i, ae, pregunta){
+    const z=document.createElement("div"); z.className="autoEval";
+    z.innerHTML=`<span>${escapeHtml(pregunta)}</span><div class="autoEvalBtns"><button type="button" class="aeSi" aria-pressed="false">Sí</button><button type="button" class="aeNo" aria-pressed="false">Todavía no</button></div>`;
+    const si=z.querySelector(".aeSi"), no=z.querySelector(".aeNo");
+    const elegir=(v)=>{ si.setAttribute("aria-pressed",String(v==="si")); no.setAttribute("aria-pressed",String(v==="no")); c.dataset.ae=v; ae.marcar(i, v); };
+    si.onclick=()=>elegir("si"); no.onclick=()=>elegir("no");
+    return z;
+  }
   function renderRetos(res, ejercicios, meta){
     if(!ejercicios.length){ res.appendChild(vacio("No llegaron retos. Intenta otra vez.")); return; }
-    let registrado=false;
+    const fin=document.createElement("div"); fin.className="autoFin hidden";
+    const llenadores=[], tarjetas=[];
+    const ae=crearAutoEval(ejercicios.length, meta, "retos", fin, (i, ir)=>{ if(ir){ try{ tarjetas[i].scrollIntoView({behavior:"smooth",block:"start"}); }catch(_){} } else llenadores[i](ejercicios[i]); });
     ejercicios.forEach((e,i)=>{
       const c=tarjeta(i);
       const llenar=(e)=>{
+        delete c.dataset.ae;
         c.innerHTML=`<div class="cardTop"><span class="tag">Reto ${i+1}</span></div>
           <p class="q">${escapeHtml(e.enunciado||"")}</p>
           ${figuraHTML(e.figura)}
@@ -3094,35 +3133,42 @@
           <div class="reveal ans"><b>Respuesta:</b> ${escapeHtml(e.solucion||"")}</div>`;
         const h=c.querySelector(".mini.hint"), a=c.querySelector(".mini.ans");
         if(h) h.onclick=()=>{ c.querySelector(".reveal.hint").classList.add("show"); h.disabled=true; estudioCuenta("pistas"); };
-        a.onclick=()=>{ c.querySelector(".reveal.ans").classList.add("show"); a.disabled=true; estudioCuenta("revelados");
-          if(!registrado){ registrado=true; registrarActividad(meta, "retos"); } };
-        const z=zonaReporte(()=>ejercicios[i], meta, "retos", (nuevo)=>{ ejercicios[i]=nuevo; llenar(nuevo); });
+        a.onclick=()=>{ const r=c.querySelector(".reveal.ans"); r.classList.add("show"); a.disabled=true; estudioCuenta("revelados");
+          r.appendChild(zonaAutoEval(c, i, ae, "¿Te salió?")); };
+        const z=zonaReporte(()=>ejercicios[i], meta, "retos", (nuevo)=>{ ejercicios[i]=nuevo; ae.limpiar(i); llenar(nuevo); });
         if(z) c.querySelector(".cardTop").appendChild(z);
       };
+      llenadores[i]=llenar; tarjetas[i]=c;
       llenar(e);
       res.appendChild(c);
     });
+    res.appendChild(fin);
   }
 
   function renderExamen(res, preguntas, meta){
-    let registrado=false;
     if(!preguntas.length){ res.appendChild(vacio("No llegaron preguntas. Intenta otra vez.")); return; }
+    const fin=document.createElement("div"); fin.className="autoFin hidden";
+    const llenadores=[], tarjetas=[];
+    const ae=crearAutoEval(preguntas.length, meta, "examen", fin, (i, ir)=>{ if(ir){ try{ tarjetas[i].scrollIntoView({behavior:"smooth",block:"start"}); }catch(_){} } else llenadores[i](preguntas[i]); });
     preguntas.forEach((p,i)=>{
       const c=tarjeta(i);
       const llenar=(p)=>{
+        delete c.dataset.ae;
         c.innerHTML=`<div class="cardTop"><span class="tag">Pregunta ${i+1}</span></div>
           <p class="q">${escapeHtml(p.pregunta||"")}</p>
           <div class="reveals"><button class="mini ans">Ver respuesta</button></div>
           <div class="reveal ans"><b>Respuesta:</b> ${escapeHtml(p.respuesta||"")}${p.explicacion?`<div class="comoRes"><b>Cómo se resuelve:</b> ${escapeHtml(p.explicacion)}</div>`:``}</div>`;
         const a=c.querySelector(".mini.ans");
-        a.onclick=()=>{ c.querySelector(".reveal.ans").classList.add("show"); a.disabled=true; estudioCuenta("revelados");
-          if(!registrado){ registrado=true; registrarActividad(meta, "examen"); } };
-        const z=zonaReporte(()=>preguntas[i], meta, "examen", (nuevo)=>{ preguntas[i]=nuevo; llenar(nuevo); });
+        a.onclick=()=>{ const r=c.querySelector(".reveal.ans"); r.classList.add("show"); a.disabled=true; estudioCuenta("revelados");
+          r.appendChild(zonaAutoEval(c, i, ae, "¿La respondiste bien?")); };
+        const z=zonaReporte(()=>preguntas[i], meta, "examen", (nuevo)=>{ preguntas[i]=nuevo; ae.limpiar(i); llenar(nuevo); });
         if(z) c.querySelector(".cardTop").appendChild(z);
       };
+      llenadores[i]=llenar; tarjetas[i]=c;
       llenar(p);
       res.appendChild(c);
     });
+    res.appendChild(fin);
   }
 
   function renderResumen(res, d){
