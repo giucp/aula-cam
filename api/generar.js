@@ -1166,6 +1166,7 @@ export default async function handler(req, res) {
     // un 503 amable (el front reintenta) en vez de un 504 crudo que rompe la pantalla.
     const DEADLINE = Date.now() + 52000;
     let parsed = null, malformado = false, reintentoMalformado = false;
+    let diagMalformado = [];   // por qué no sirvió cada intento (finish_reason/largo/motivo), para el 502
     // Qué aprendió este request de cada modelo (para el breaker): exito | fallo.
     // Los 429 puros son cupo de la KEY, no salud del modelo → no cuentan.
     const resultadoModelo = new Map();
@@ -1202,6 +1203,8 @@ export default async function handler(req, res) {
         try {
           const ch = data && data.choices && data.choices[0];
           console.log(`[generar] ${modo} inválido (${(ch && ch.finish_reason) || "?"}, ${String((ch && ch.message && ch.message.content) || "").length} chars): ${materia || ""} · ${tema}`);
+          const txt = String((ch && ch.message && ch.message.content) || ""); let motivo = "json"; try { JSON.parse(txt.replace(/```json|```/g, "").trim()); motivo = "items"; } catch (e2) { motivo = "json:" + String(e2.message).slice(0, 60); }
+          diagMalformado.push(`${(ch && ch.finish_reason) || "?"}|${txt.length}|${motivo}|t${Math.round((DEADLINE - Date.now()) / 1000)}`);
         } catch (e) { /* solo log */ }
         // con UNA sola key, un JSON roto no tenía segunda oportunidad: se reintenta una vez si hay tiempo
         if (!reintentoMalformado && ordenKeys.length === 1 && Date.now() < DEADLINE - 25000) { reintentoMalformado = true; const r2 = await pedirAGemini(url, payload, 1, DEADLINE, hdrs); data = r2.data; status = r2.status;
@@ -1229,7 +1232,7 @@ export default async function handler(req, res) {
       }
       // JSON malformado tras agotar reintentos (con tiempo): 502 (armar de nuevo).
       if (malformado && status !== 503) {
-        return res.status(502).json({ error: "No pudimos armar la actividad. Intenta de nuevo.", code: 502 });
+        return res.status(502).json({ error: "No pudimos armar la actividad. Intenta de nuevo.", code: 502, diag: diagMalformado });
       }
       // Saturado / sin tiempo / sin respuesta: 503 amable (el front reintenta solo).
       return res.status(503).json({ error: "El servicio está ocupado en este momento. Intenta de nuevo en unos segundos.", code: 503 });
