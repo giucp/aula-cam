@@ -308,14 +308,22 @@ ${ctx}${pdfNota}${fotosNota}\n`;
   // inventar acertijos sin solución única o razonar mal). Solo en temas numéricos/lógicos.
   // Protocolo CONSTRUIR→ENUMERAR→VERIFICAR: la instrucción vaga "comprueba que sea única"
   // no bastaba (salían acertijos ambiguos, sin solución o con explicación contradictoria).
-  const reglasDeduccion = numerica
+  // ★ 2026-11-12: estrellas / pirámides / cuadrados mágicos. La IA buscaba números que cuadraran
+  //   probando combinaciones y agotaba los tokens razonando (respuesta vacía → "No pudimos armar la
+  //   actividad"). Construir primero la figura completa y después ocultar casillas no requiere buscar.
+  const esMagico = /m[aá]gic|pir[aá]mide/i.test(String(tema || ""));
+  const notaMagicos = esMagico
+    ? `
+Para estrellas, cuadrados o pirámides mágicas/numéricas: NO busques la solución probando números. CONSTRUYE primero la figura COMPLETA con todos sus números (usa una disposición sencilla y conocida que ya sepas que cumple la regla), verifica la suma UNA sola vez, y recién entonces oculta algunas casillas para el alumno. La respuesta son los números ocultos.`
+    : ``;
+  const reglasDeduccion = notaMagicos + (numerica
     ? `\nSi el ejercicio es de deducción, ordenamiento o ubicación (quién se sienta dónde, en qué orden llegan o se colocan, acertijos con pistas), sigue OBLIGATORIAMENTE este protocolo:
 1. CONSTRUYE PRIMERO la solución: decide la disposición u orden final completo ANTES de redactar el enunciado, y escribe las pistas describiendo ESA disposición.
 2. Redacta SIN ambigüedad: escribe siempre "inmediatamente a la derecha/izquierda de" o "en algún lugar a la derecha/izquierda de" (nunca "a la derecha de" a secas, que se entiende de dos formas); "justo antes/después" significa en la posición inmediata. En mesas redondas, aclara en el enunciado que la derecha y la izquierda son las de la persona sentada (no las del lector), y recuerda: en una mesa de 4, el que está al frente de tu vecino de la derecha es tu vecino de la izquierda.
 3. VERIFICA LA UNICIDAD enumerando: con 3 o 4 elementos las disposiciones posibles son pocas (6 o 24; en mesa redonda, fija a una persona y ordena el resto). Recorre TODAS y cuenta cuántas cumplen todas las pistas: debe quedar EXACTAMENTE UNA. Si quedan cero o más de una, DESCARTA el acertijo y construye otro desde el paso 1. No uses más de 5 elementos.
 4. La respuesta debe cumplir TODAS las pistas: verifícala pista por pista antes de entregar.
 5. La explicación deduce la respuesta PASO A PASO citando en cada paso la pista que lo justifica. Nada de "por descarte" sin mostrar por qué cada alternativa es imposible, y NUNCA afirmes algo que contradiga una pista (ejemplo de error prohibido: "como el verde no está en los extremos, va al final" — el final ES un extremo).\n`
-    : ``;
+    : ``);
 
   // Tanda anterior a la vista: PROHIBIDO repetirla. Gemini no recuerda entre llamadas —
   // sin esta lista, pedir 5 y luego 3 del mismo tema repetía ejercicios casi iguales.
@@ -1214,7 +1222,9 @@ export default async function handler(req, res) {
           let payload2 = payload, n2 = n;
           if (esDeepSeek && n > 2) {
             n2 = Math.max(2, Math.ceil(n / 2));
-            const prompt2 = armarPrompt({ modo, material, tienePdf: pdfs.length > 0, tieneFotos, fotosExamen, grado, tema, materia, n: n2, numerica, recientes });
+            const prompt2 = armarPrompt({ modo, material, tienePdf: pdfs.length > 0, tieneFotos, fotosExamen, grado, tema, materia, n: n2, numerica, recientes })
+              + `
+IMPORTANTE: el intento anterior se quedó sin tiempo. Piensa poco: elige ejercicios SENCILLOS que puedas verificar de inmediato y responde ya.`;
             payload2 = { ...payloadDeepSeek, messages: [{ role: "user", content: [{ type: "text", text: prompt2 }, ...contenidoDS.slice(1)] }] };
           }
           const r2 = await pedirAGemini(url, payload2, 1, DEADLINE, hdrs); data = r2.data; status = r2.status;
