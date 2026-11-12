@@ -940,7 +940,10 @@ export default async function handler(req, res) {
     }
 
     const modo = MODOS_VALIDOS.has(req.body && req.body.modo) ? req.body.modo : "retos";
-    const n = Math.min(Math.max(parseInt(cantidad, 10) || 5, 1), 10);
+    let n = Math.min(Math.max(parseInt(cantidad, 10) || 5, 1), 10);
+    // ★ 2026-11-12: estrellas/pirámides mágicas: máximo 3 por tanda. Con 5, la IA gastaba todos los
+    //   tokens razonando y devolvía vacío. Con 3 el razonamiento alcanza y la calidad se mantiene.
+    if (/m[aá]gic|pir[aá]mide/i.test(String(tema || "")) && modo !== "resumen") n = Math.min(n, 3);
     // Regeneración de un ítem reportado como malo (botón "🚩 Reportar"): se usa el
     // modelo más confiable (pro) en vez de flash/lite. Solo vale de a UNO (n===1) para
     // que no se pueda pedir un lote entero con pro por este camino.
@@ -1174,6 +1177,7 @@ export default async function handler(req, res) {
     // un 503 amable (el front reintenta) en vez de un 504 crudo que rompe la pantalla.
     const DEADLINE = Date.now() + 52000;
     let parsed = null, malformado = false, reintentoMalformado = false;
+    let usoRespaldo = false;   // true = salió del reintento SIN razonamiento (calidad menor: no se cachea)
     let diagMalformado = [];   // por qué no sirvió cada intento (finish_reason/largo/motivo), para el 502
     // Qué aprendió este request de cada modelo (para el breaker): exito | fallo.
     // Los 429 puros son cupo de la KEY, no salud del modelo → no cuentan.
@@ -1231,7 +1235,7 @@ IMPORTANTE: el intento anterior se quedó sin tiempo. Piensa poco: elige ejercic
           const r2 = await pedirAGemini(url, payload2, 1, DEADLINE, hdrs); data = r2.data; status = r2.status;
           if (status === 200 && !(data && data.error)) {
             const p2 = depurar(modo, parsearIA(data), n2);
-            if (p2 && esValido(modo, p2)) { delete p2._rescatado; parsed = p2; resultadoModelo.set(m, "exito"); console.log(`[generar] ${modo} salió en el reintento con ${n2} ítems: ${materia || ""} · ${tema}`); break buscar; }
+            if (p2 && esValido(modo, p2)) { delete p2._rescatado; parsed = p2; usoRespaldo = true; resultadoModelo.set(m, "exito"); console.log(`[generar] ${modo} salió en el reintento con ${n2} ítems: ${materia || ""} · ${tema}`); break buscar; }
             const ch2 = data && data.choices && data.choices[0];
             diagMalformado.push(`reintento:${(ch2 && ch2.finish_reason) || "?"}|${String((ch2 && ch2.message && ch2.message.content) || "").length}|t${Math.round((DEADLINE - Date.now()) / 1000)}`);
           } else diagMalformado.push(`reintento:http${status}:${String((data && data.error && (data.error.message || data.error)) || "").slice(0, 80)}`);
@@ -1290,13 +1294,14 @@ IMPORTANTE: el intento anterior se quedó sin tiempo. Piensa poco: elige ejercic
       materia: materia || null,
       modo,
       basadoEnMaterial: !!material || pdfs.length > 0 || tieneFotos,
+      ...(usoRespaldo ? { respaldo: true } : {}),
       fuentes: pdfs.map((p) => p.nombre), // PDFs que Gemini realmente leyó
       apuntes: tieneFotos, // usó fotos del cuaderno del alumno
       iaVia: usoPaga ? "paga" : "gratis", // diagnóstico: qué tipo de key sirvió esta generación
       iaModelo: modeloUsado, // diagnóstico: qué modelo generó (auditar que lo numérico salga de flash)
     };
     // 2) guardamos en caché para la próxima vez — SALVO si usó fotos (resultado personal del alumno)
-    if (!tieneFotos) {
+    if (!tieneFotos && !usoRespaldo) {
       await cacheSet(clave, { materia: materia || null, tema, modo, grado, cantidad: n, contenido: respuesta });
     }
     // 3) sumamos el costo estimado al gasto de HOY del alumno (límite de IA). Cuenta
