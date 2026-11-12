@@ -2031,3 +2031,11 @@ body.ag-form-abierto .agTop .agStar{display:none}
 .h2UpcomingText b{font-family:"Nunito";font-weight:700;font-size:.9rem;line-height:1.38}
 /* 16 · el botón principal del asistente siempre a la vista, sobre la barra de navegación */
 #wizTema #btnContinuar,#wizActividad #btnGen{position:sticky;bottom:calc(92px + env(safe-area-inset-bottom));z-index:6}
+
+/* "¿Te aviso por la tarde?" (MEJORAS 2) */
+.ofreceAvisos{margin-top:14px;padding:13px 14px;border-radius:16px;background:var(--chispa-primary-soft);text-align:left}
+.ofreceAvisos p{margin:0;font-weight:700;line-height:1.45;color:var(--chispa-ink);font-size:.92rem}
+.ofreceAvisos div{display:flex;gap:8px;margin-top:10px}
+.ofreceAvisos button{border:0;border-radius:12px;padding:10px 14px;font:800 .88rem/1 Nunito,system-ui,sans-serif;cursor:pointer}
+.ofreceAvisos .oaSi{background:var(--chispa-primary);color:#fff}
+.ofreceAvisos .oaNo{background:#fff;color:var(--chispa-muted)}

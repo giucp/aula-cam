@@ -1,14 +1,52 @@
 {
   "functions": {
-    "api/generar.js": { "maxDuration": 60 },
-    "api/moodle.js": { "maxDuration": 60 },
-    "api/manual.js": { "maxDuration": 60 }
+    "api/generar.js": {
+      "maxDuration": 60
+    },
+    "api/moodle.js": {
+      "maxDuration": 60
+    },
+    "api/manual.js": {
+      "maxDuration": 60
+    },
+    "api/familia.js": {
+      "maxDuration": 60
+    }
   },
   "redirects": [
-    { "source": "/", "has": [{ "type": "host", "value": "chispa-familia.vercel.app" }], "destination": "/familia.html", "permanent": false },
-    { "source": "/index.html", "has": [{ "type": "host", "value": "chispa-familia.vercel.app" }], "destination": "/familia.html", "permanent": false }
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "chispa-familia.vercel.app"
+        }
+      ],
+      "destination": "/familia.html",
+      "permanent": false
+    },
+    {
+      "source": "/index.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "chispa-familia.vercel.app"
+        }
+      ],
+      "destination": "/familia.html",
+      "permanent": false
+    }
   ],
   "rewrites": [
-    { "source": "/familia", "destination": "/familia.html" }
+    {
+      "source": "/familia",
+      "destination": "/familia.html"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/familia?cron=avisos",
+      "schedule": "30 20 * * *"
+    }
   ]
 }

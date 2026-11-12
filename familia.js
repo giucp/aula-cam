@@ -21,7 +21,7 @@ const KEY_NINOS = "familia_ninos";        // [{token, nombre, grado}]
 const KEY_ACTIVO = "familia_activo";      // índice del hijo que se está viendo
 const KEY_TOKEN_VIEJO = "familia_ptoken"; // migración desde la versión de 1 solo hijo
 const KEY_PERIODO = "familia_periodo";    // "7" | "30" | "anio"
-const FAMILIA_V = "v18";                   // versión visible (footer y errores) para saber qué código corre
+const FAMILIA_V = "v19";                   // versión visible (footer y errores) para saber qué código corre
 const app = document.getElementById("app");
 const PANEL_CACHE = {};                   // token -> data del panel (en memoria, esta sesión)
 let PANEL_ACTUAL = null;                  // { d, ninos, i, staleTs, detalle } para re-pintar al cambiar filtros
@@ -98,6 +98,7 @@ function primerNombre(n) { const p = String(n || "").trim().split(/\s+/); return
 
 // íconos de línea (sin emojis: es una herramienta para adultos)
 const ICO = {
+  campana: '<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/>',
   reloj: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
   cal: '<rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/>',
   lista: '<path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.2"/><circle cx="4.5" cy="12" r="1.2"/><circle cx="4.5" cy="18" r="1.2"/>',
@@ -468,6 +469,7 @@ function barraSuperior(ninos, activo) {
       <button class="icoBtn" id="btnRecargar" type="button" title="Actualizar" aria-label="Actualizar">${ico("recargar")}</button>
       <details class="menu"><summary class="icoBtn" aria-label="Más opciones">⋯</summary>
         <div class="menuPop">
+          <button type="button" id="btnAvisos">${ico("campana")} ${avisosActivos() ? "Avisos: activados" : "Activar avisos"}</button>
           <button type="button" id="btnAgregarHijo">${ico("mas")} Agregar otro hijo</button>
           <button type="button" id="btnSalir">${ico("salir")} Quitar de este dispositivo</button>
         </div>
@@ -773,6 +775,7 @@ function conectar() {
   document.querySelectorAll(".clamp").forEach((t) => t.onclick = () => t.classList.toggle("abierto"));
   document.getElementById("btnRecargar").onclick = () => cargarYrender(true);
   document.getElementById("btnAgregarHijo").onclick = () => mostrarVincular(true);
+  const ba = document.getElementById("btnAvisos"); if (ba) ba.onclick = alternarAvisos;
   document.getElementById("btnSalir").onclick = desvincularActivo;
   const sr = document.getElementById("staleRetry"); if (sr) sr.onclick = () => cargarYrender(true);
 }
@@ -786,6 +789,57 @@ function repintar(anclaId) {
   if (a) a.scrollIntoView({ block: "start" }); else window.scrollTo(0, y);
 }
 
+// ───────── avisos al teléfono del adulto (MEJORAS 18 y 19, 2026-11-12) ─────────
+// Los domingos, el resumen de la semana; cualquier día, lo importante (examen en 2 días sin
+// practicar, 3+ días sin abrir Chispa, 3+ tareas atrasadas), sin repetir el mismo motivo.
+// Lo decide y lo manda el servidor (herramientas/avisos.mjs). Una suscripción por hijo vinculado.
+const VAPID_PUBLICA = "BGmaLBol9IU95zJpvzqhMvU8OWyRjGFRZNNUI5fpcXmaZOb8lIwqmEkFBlQj2EobmopDaaPxn1xgO5hfuqKDUa4";
+const KEY_AVISOS = "familia_avisos";
+const esIOSf = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+function instaladaF() { try { return matchMedia("(display-mode: standalone)").matches || navigator.standalone === true; } catch (e) { return false; } }
+function avisosPosibles() { return "serviceWorker" in navigator && "PushManager" in window && "Notification" in window; }
+function avisosActivos() { return avisosPosibles() && Notification.permission === "granted" && localStorage.getItem(KEY_AVISOS) === "1"; }
+function claveB64(b64) { const p = "=".repeat((4 - b64.length % 4) % 4); const x = atob((b64 + p).replace(/-/g, "+").replace(/_/g, "/")); return Uint8Array.from([...x].map((c) => c.charCodeAt(0))); }
+async function suscripcion(crear) {
+  const reg = await navigator.serviceWorker.ready;
+  let sub = await reg.pushManager.getSubscription();
+  if (!sub && crear) sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: claveB64(VAPID_PUBLICA) });
+  return sub;
+}
+async function enviarSub(sub, activo) {
+  const ninos = getNinos(); let ok = false;
+  for (const n of ninos) { const r = await apiUna({ accion: "push_sub", ptoken: n.token, sub: sub.toJSON(), activo }); if (r.d && r.d.ok) ok = true; }
+  return ok;
+}
+async function alternarAvisos() {
+  const m = document.querySelector("details.menu"); if (m) m.open = false;
+  if (avisosActivos()) {
+    localStorage.setItem(KEY_AVISOS, "0");
+    try { const sub = await suscripcion(false); if (sub) { await enviarSub(sub, false); await sub.unsubscribe(); } } catch (e) {}
+    aviso("Avisos apagados en este teléfono."); return repintar();
+  }
+  if (esIOSf && !instaladaF()) return aviso("En iPhone los avisos funcionan con el panel instalado: toca Compartir → \"Agregar a inicio\", ábrelo desde ese ícono y actívalos ahí.");
+  if (!avisosPosibles()) return aviso("Este navegador no permite avisos.");
+  const p = await Notification.requestPermission();
+  if (p !== "granted") return aviso("Los avisos están bloqueados para este sitio. Puedes permitirlos en los ajustes del navegador.");
+  try {
+    const sub = await suscripcion(true);
+    if (!(await enviarSub(sub, true))) throw new Error("no se guardó");
+    localStorage.setItem(KEY_AVISOS, "1");
+    aviso("Listo. Te avisaremos de lo importante y cada domingo te llegará el resumen de la semana.");
+  } catch (e) { aviso("No se pudieron activar los avisos. Intenta de nuevo más tarde."); }
+  repintar();
+}
+// mensaje breve arriba del panel (se va solo)
+function aviso(txt) {
+  let el = document.getElementById("avisoFlotante");
+  if (!el) { el = document.createElement("div"); el.id = "avisoFlotante"; el.setAttribute("role", "status"); document.body.appendChild(el); }
+  el.textContent = txt; el.className = "visible";
+  clearTimeout(aviso.t); aviso.t = setTimeout(() => { el.className = ""; }, 6000);
+}
+// al tocar un aviso con el panel ya abierto: traerlo al frente y actualizar los datos
+if ("serviceWorker" in navigator) navigator.serviceWorker.addEventListener("message", (e) => { if (e.data && e.data.chispa === "ir") cargarYrender(true); });
+
 // ───────── arranque (AL FINAL: todo lo de arriba ya existe) ─────────
 // Blindado: pase lo que pase el padre ve algo accionable, nunca una página en blanco.
 async function boot() {
@@ -796,6 +850,8 @@ async function boot() {
       const { status, d } = await api({ accion: "canjear", code });
       if (d && d.ok && d.token) {
         setActivo(addNino(d.token, d.nino));
+        // con avisos ya activos en este teléfono, el hijo nuevo también los manda
+        if (avisosActivos()) suscripcion(false).then((sub) => sub && enviarSub(sub, true)).catch(() => {});
       } else if (status === 0 && !getNinos().length) {
         return estadoRed(() => location.reload(), "sin respuesta de red al canjear");
       } else if (!getNinos().length) {

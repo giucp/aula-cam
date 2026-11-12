@@ -49,7 +49,7 @@ progreso, errores y notas funcionan con ella, y `SESION.materias` ya está guard
 Listo cuando: con un token inválido la app abre, muestra agenda y materias, deja hacer un quiz y enseña
 el aviso de reconexión.
 
-### 2. Recordatorios al teléfono
+### 2. Recordatorios al teléfono — ✅ HECHO 2026-11-12
 La app nunca avisa nada (no hay código de notificaciones en `app.js` ni `sw.js`).
 
 - Notificaciones web push: pedir permiso en un momento con sentido (al anotar un examen o tras terminar
@@ -197,11 +197,11 @@ la misma búsqueda de tema del punto 5 con la descripción de la nota, y entrar 
 
 ## D. Familia
 
-### 18. Resumen semanal para el adulto
+### 18. Resumen semanal para el adulto — ✅ HECHO 2026-11-12
 Cada domingo: días que estudió, tiempo, quiz y notas, tareas vencidas, exámenes de la semana que viene.
 Por notificación del panel (misma infraestructura del punto 2, en `familia-sw.js`), con enlace al panel.
 
-### 19. Avisos de lo importante
+### 19. Avisos de lo importante — ✅ HECHO 2026-11-12
 Examen en 2 días sin haber practicado ese tema; 3 días sin abrir la app; tareas vencidas acumuladas.
 Un aviso por motivo, no repetido cada día. Con interruptor en el panel.
 

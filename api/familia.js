@@ -14,6 +14,7 @@
 
 import crypto from "crypto";
 import { esDelAnioEnCurso, esDelGradoActual, inicioAnioEscolar } from "../herramientas/anio-escolar.mjs";
+import { guardarSuscripcion, enviarAvisosDelDia } from "../herramientas/avisos.mjs";
 
 const BASE = "https://aulacam.uearzobispomendez.edu.ve";
 const ORIGIN = "https://aula-cam.vercel.app";
@@ -102,6 +103,18 @@ export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   if (req.method === "OPTIONS") return res.status(200).end();
+
+  // ── CRON diario de avisos (vercel.json → /api/familia?cron=avisos, ~4:30 pm Caracas) ──
+  //    Vercel lo llama por GET con "Authorization: Bearer CRON_SECRET". Vive acá para no gastar
+  //    otra función (el plan Hobby permite 12). La lógica está en herramientas/avisos.mjs.
+  if (req.method === "GET" && req.query && req.query.cron === "avisos") {
+    const secreto = process.env.CRON_SECRET;
+    if (!secreto || req.headers.authorization !== `Bearer ${secreto}`) return res.status(401).json({ error: "no autorizado" });
+    const cfgCron = supabaseCfg();
+    if (!cfgCron) return res.status(500).json({ error: "Sin configuración" });
+    try { return res.status(200).json(await enviarAvisosDelDia(cfgCron)); }
+    catch (e) { return res.status(500).json({ error: String(e.message || e) }); }
+  }
   if (req.method !== "POST") return res.status(405).json({ error: "Solo POST" });
 
   const cfg = supabaseCfg();
@@ -178,6 +191,16 @@ export default async function handler(req, res) {
       const u = await sbGet(cfg, `usuarios?id=eq.${inv.usuario_id}&select=nombre,grado`);
       const nino = (Array.isArray(u) && u[0]) || {};
       return res.status(200).json({ ok: true, token, nino: { nombre: nino.nombre || null, grado: nino.grado || null } });
+    }
+
+    // ── PADRE: activar / apagar avisos en este teléfono (MEJORAS 18 y 19) ──
+    if (accion === "push_sub") {
+      const ptoken = String(b.ptoken || "").trim();
+      const vs = ptoken ? await sbGet(cfg, `familia_vinculos?token=eq.${encodeURIComponent(ptoken)}&activo=is.true&select=id,usuario_id&limit=1`) : [];
+      const v = Array.isArray(vs) && vs[0];
+      if (!v) return res.status(401).json({ error: "Acceso no válido." });
+      const ok = await guardarSuscripcion(cfg, v.usuario_id, v.id, b.sub, b.activo !== false).catch(() => false);
+      return res.status(ok ? 200 : 400).json({ ok });
     }
 
     // ── PADRE: el panel (SOLO LECTURA) ──

@@ -164,6 +164,7 @@
     const nativa=!!(SESION && SESION.fuente==="manual");
     const wfam=$("#familiaWrap"); if(wfam) wfam.classList.remove("hidden");
     pintarAvisoAula();   // aula desconectada → aviso de reconectar
+    pintarBtnAvisos();
     pintarNavCumbre();   // la pestaña Cumbre solo existe si hay track para el próximo grado
     origen = "actual";
     const primer = (SESION.nombre||"").split(" ")[0] || "";
@@ -1891,6 +1892,88 @@
   document.addEventListener("visibilitychange", ()=>{ if(!document.hidden) refrescarAlVolver(); });
   window.addEventListener("pageshow", (e)=>{ if(e.persisted) refrescarAlVolver(); });
 
+  // ───────── avisos al teléfono (MEJORAS 2, 2026-11-12) ─────────
+  // Un aviso al día, por la tarde (~4:30 pm), con lo más importante: examen mañana o pasado, algo
+  // para mañana, tareas atrasadas o "hoy no has estudiado". Lo decide y lo manda el servidor
+  // (herramientas/avisos.mjs). Acá: pedir permiso en un buen momento, guardar la suscripción, el
+  // interruptor del menú ⋮ y abrir el lugar correcto al tocar el aviso.
+  // iPhone: solo funciona con Chispa instalada en la pantalla de inicio (iOS 16.4+).
+  const VAPID_PUBLICA="BGmaLBol9IU95zJpvzqhMvU8OWyRjGFRZNNUI5fpcXmaZOb8lIwqmEkFBlQj2EobmopDaaPxn1xgO5hfuqKDUa4";
+  const esIOS=/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform==="MacIntel" && navigator.maxTouchPoints>1);
+  const instalada=()=>{ try{ return window.matchMedia("(display-mode: standalone)").matches || navigator.standalone===true; }catch(_){ return false; } };
+  function avisosPosibles(){ return "serviceWorker" in navigator && "PushManager" in window && "Notification" in window; }
+  function avisosActivos(){ return avisosPosibles() && Notification.permission==="granted" && store.get("avisos")===true; }
+  function claveB64(b64){ const p="=".repeat((4-b64.length%4)%4); const s=atob((b64+p).replace(/-/g,"+").replace(/_/g,"/")); return Uint8Array.from([...s].map(c=>c.charCodeAt(0))); }
+  async function suscripcionPush(crear){
+    const reg=await navigator.serviceWorker.ready;
+    let sub=await reg.pushManager.getSubscription();
+    if(!sub && crear) sub=await reg.pushManager.subscribe({ userVisibleOnly:true, applicationServerKey:claveB64(VAPID_PUBLICA) });
+    return sub;
+  }
+  // → "ok" | "ios" (falta instalar) | "no" (no soportado) | "denegado"
+  async function activarAvisos(){
+    if(esIOS && !instalada()) return "ios";
+    if(!avisosPosibles()) return "no";
+    const p=await Notification.requestPermission();
+    if(p!=="granted"){ store.set("avisos", false); pintarBtnAvisos(); return "denegado"; }
+    try{
+      const sub=await suscripcionPush(true);
+      const r=await fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"push_sub",usuario_id:SESION.id,sub:sub.toJSON(),activo:true})});
+      if(!r.ok) throw new Error("no se guardó");
+      store.set("avisos", true); pintarBtnAvisos(); return "ok";
+    }catch(e){ return "no"; }
+  }
+  async function desactivarAvisos(){
+    store.set("avisos", false); pintarBtnAvisos();
+    try{
+      const sub=await suscripcionPush(false);
+      if(sub){ fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"push_sub",usuario_id:SESION.id,sub:sub.toJSON(),activo:false})}).catch(()=>{}); await sub.unsubscribe(); }
+    }catch(_){}
+  }
+  function msgAvisos(res){
+    return res==="ok" ? "Listo: te aviso por la tarde lo que tengas pendiente."
+      : res==="ios" ? "En iPhone, primero instala Chispa: toca Compartir y luego \"Agregar a inicio\". Después actívalos desde ahí."
+      : res==="denegado" ? "El teléfono tiene los avisos bloqueados para Chispa. Puedes permitirlos en los ajustes del navegador."
+      : "Este teléfono no permite avisos de Chispa.";
+  }
+  function pintarBtnAvisos(){
+    const b=$("#btnAvisos"); if(!b) return;
+    b.textContent = avisosActivos() ? "Avisos por la tarde: activados" : "Activar avisos por la tarde";
+  }
+  { const b=$("#btnAvisos"); if(b) b.onclick=async()=>{
+      if(avisosActivos()){ if(await preguntar("¿Apagar los avisos?","Ya no te llegará el recordatorio de la tarde.","Apagar","Dejarlos")) await desactivarAvisos(); return; }
+      const r=await activarAvisos();
+      await preguntar(r==="ok"?"Avisos activados":"No se pudieron activar", msgAvisos(r), "Entendido", "Cerrar");
+    }; }
+  // Tarjeta "¿Te aviso por la tarde?" al terminar una actividad (un buen momento para pedir permiso).
+  // No insiste: si dice "Ahora no", vuelve a ofrecerse recién en 7 días.
+  function ofrecerAvisos(cont){
+    if(!cont || MODO_LAB || !SESION || avisosActivos()) return;
+    if(!avisosPosibles() && !(esIOS && !instalada())) return;
+    if(avisosPosibles() && Notification.permission==="denied") return;
+    if(Date.now()-(Number(store.get("avisos_no"))||0) < 7*864e5) return;
+    const c=document.createElement("div"); c.className="ofreceAvisos";
+    c.innerHTML=`<p><b>¿Te aviso por la tarde?</b> Un recordatorio al día con lo más importante: exámenes, tareas para mañana o tu misión.</p><div><button type="button" class="oaSi">Activar avisos</button><button type="button" class="oaNo">Ahora no</button></div>`;
+    c.querySelector(".oaNo").onclick=()=>{ store.set("avisos_no", Date.now()); c.remove(); };
+    c.querySelector(".oaSi").onclick=async()=>{ const r=await activarAvisos(); c.innerHTML=`<p>${escapeHtml(msgAvisos(r))}</p>`; if(r!=="ok") store.set("avisos_no", Date.now()); };
+    cont.appendChild(c);
+  }
+  // Al tocar un aviso: "?ir=mision" abre la misión de hoy; "?ir=agenda", la agenda.
+  function irDesdeAviso(dest){
+    if(!SESION || !dest) return;
+    if(dest==="agenda"){ verTab("agenda"); return; }
+    if(dest==="mision"){ verTab("inicio"); setTimeout(()=>{ const b=document.querySelector(".h2MissionAction"); if(b) b.click(); }, 300); }
+  }
+  function irPendiente(){
+    const m=/[?&]ir=(mision|agenda)\b/.exec(location.search); if(!m) return;
+    try{ history.replaceState(null, "", location.pathname); }catch(_){}
+    setTimeout(()=>irDesdeAviso(m[1]), 1200);   // deja cargar la agenda (la misión depende de ella)
+  }
+  if("serviceWorker" in navigator) navigator.serviceWorker.addEventListener("message",(e)=>{
+    const d=e.data||{}; if(d.chispa!=="ir") return;
+    const m=/[?&]ir=(mision|agenda)\b/.exec(String(d.url||"")); if(m) irDesdeAviso(m[1]);
+  });
+
   // ───────── repasar mis errores ─────────
   async function cargarErrores(){
     const wrap=$("#erroresWrap"); if(!wrap) return;
@@ -3166,6 +3249,7 @@
       fin.innerHTML=`<p class="autoFinTit">Te salieron ${si} de ${n}</p>`+(no.length
         ? `<p class="autoFinTx">Vuelve a intentar ${no.length===1?"el que no te salió":"los que no te salieron"}, esta vez sin mirar la respuesta.</p><button class="go autoRepetir" type="button">${no.length===1?"Repetir el que no me salió":`Repetir los ${no.length} que no me salieron`}</button>`
         : `<p class="autoFinTx">¡Muy bien! Ya puedes pasar al siguiente paso.</p>`);
+      ofrecerAvisos(fin);
       const b=fin.querySelector(".autoRepetir");
       if(b) b.onclick=()=>{ no.forEach(i=>{ est[i]=null; reabrir(i); }); actualizar(); reabrir(no[0], true); };
     };
@@ -3426,6 +3510,7 @@
     };
     if(!MODO_LAB) renderOtros(res);   // en el cuarto no hay "generar otros"
     renderSiguientePaso(res, meta, "quiz");
+    ofrecerAvisos(c);
     try{ c.scrollIntoView({behavior:"smooth",block:"start"}); }catch(_){}
   }
 
@@ -3958,6 +4043,7 @@
         // sin firma (sesiones guardadas antes de 2026-10-20) tambien se refresca YA, asi la primera
         // llamada a la agenda no tiene que fallar y reintentar.
         if(s.fuente==="manual" || viejo || !firmaSesion()) renovarFirma();
+        irPendiente();   // se abrió tocando un aviso
         return;
       }
       if(BETA) verBeta();   // sin sesión + flujo nativo → pantalla crear/entrar

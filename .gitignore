@@ -9,3 +9,6 @@ curado/material/
 # Node / Vercel
 node_modules/
 .vercel/
+
+# Claves de notificaciones (VAPID) generadas localmente
+*.local.txt

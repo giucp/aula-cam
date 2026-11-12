@@ -9,6 +9,7 @@
 //   { "accion":"resumen", "usuario_id":118 }  → { progreso:[{materia,tema,modos[],quizMejor}] }
 
 import { sesionDe, NO_AUTORIZADO } from "../herramientas/sesion.mjs";
+import { guardarSuscripcion } from "../herramientas/avisos.mjs";
 const MODOS_VALIDOS = new Set(["resumen", "retos", "quiz", "examen"]);
 const norm = (s) => String(s == null ? "" : s).replace(/\s+/g, " ").trim().toLowerCase();
 const rec = (s, n) => { s = String(s == null ? "" : s); return s.length > n ? s.slice(0, n) : s; };
@@ -174,6 +175,11 @@ export default async function handler(req, res) {
       }
       if (!guardado && (b.fin !== false || !sid)) await insertar(fila).catch(() => {});
       return res.status(200).json({ ok: true });
+    }
+    // avisos al teléfono del niño (MEJORAS 2): guarda o apaga la suscripción de este aparato
+    if (b.accion === "push_sub") {
+      const ok = await guardarSuscripcion(cfg, uid, null, b.sub, b.activo !== false).catch(() => false);
+      return res.status(ok ? 200 : 400).json({ ok });
     }
     if (b.accion === "abrir") {
       await fetch(`${cfg.url}/rest/v1/aperturas`, {

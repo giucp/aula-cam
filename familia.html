@@ -227,6 +227,9 @@
   .indice a:hover{border-color:#C7D2FE;color:var(--acc)}
   .fr em{background:linear-gradient(90deg,#818CF8,#4F46E5)}
   .resp.ok .ico{color:var(--ok)}.resp.bad .ico{color:var(--bad)}
+    /* mensaje breve (avisos) */
+    #avisoFlotante{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:50;max-width:480px;margin:0 auto;padding:12px 14px;border-radius:12px;background:#1F2937;color:#fff;font-size:.88rem;line-height:1.4;opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s;pointer-events:none}
+    #avisoFlotante.visible{opacity:1;transform:none}
 </style>
 </head>
 <body>
