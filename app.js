@@ -239,16 +239,47 @@
 
   // ───────── agenda: datos (horario + tareas en Supabase) ─────────
   let HORARIO=[], TAREAS=[], NOTAS=[], IA_ESTADO=null;
+  // ★ 2026-11-12 (MEJORAS 21): sin internet la app muestra lo último guardado en el teléfono (agenda,
+  //   notas, progreso y los resúmenes ya abiertos) con un aviso, en vez de quedar vacía. Marcar una
+  //   tarea hecha o cambiarle la fecha sin conexión queda en cola y se envía al volver la señal.
+  const COLA_OFFLINE=new Set(["tarea_hecha","tarea_fecha"]);
   async function apiAgenda(body){
-    const r=await fetch(API_AGENDA,{method:"POST",headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({...body, usuario_id:(SESION&&SESION.id)||null})});
-    return r.json();
+    try{
+      const r=await fetch(API_AGENDA,{method:"POST",headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({...body, usuario_id:(SESION&&SESION.id)||null})});
+      return r.json();
+    }catch(e){
+      if(COLA_OFFLINE.has(body.accion)){ const c=store.get("agenda_cola")||[]; c.push(body); store.set("agenda_cola", c.slice(-50)); marcarSinConexion(true); return { ok:true, enCola:true }; }
+      throw e;
+    }
   }
+  async function enviarColaAgenda(){
+    const c=store.get("agenda_cola")||[]; if(!c.length) return;
+    store.set("agenda_cola", []);
+    for(const b of c){ try{ await apiAgenda(b); }catch(_){} }
+  }
+  function guardarCacheAgenda(){ if(SESION) store.set("agenda_cache", { uid:SESION.id, ts:Date.now(), horario:HORARIO, tareas:TAREAS, notas:NOTAS }); }
   async function cargarAgenda(){
-    try{ const d=await apiAgenda({accion:"todo"}); HORARIO=d.horario||[]; TAREAS=d.tareas||[]; NOTAS=d.notas||[]; IA_ESTADO=d.ia||IA_ESTADO; }
-    catch(_){ HORARIO=[]; TAREAS=[]; NOTAS=[]; }
+    try{
+      await enviarColaAgenda();
+      const d=await apiAgenda({accion:"todo"}); HORARIO=d.horario||[]; TAREAS=d.tareas||[]; NOTAS=d.notas||[]; IA_ESTADO=d.ia||IA_ESTADO;
+      guardarCacheAgenda(); marcarSinConexion(false);
+    }catch(_){
+      const c=store.get("agenda_cache");
+      if(c && SESION && c.uid===SESION.id){ HORARIO=c.horario||[]; TAREAS=c.tareas||[]; NOTAS=c.notas||[]; marcarSinConexion(true, c.ts); }
+      else { HORARIO=[]; TAREAS=[]; NOTAS=[]; marcarSinConexion(true); }
+    }
     if(!$("#tabInicio").classList.contains("hidden")) pintarEscritorio();
   }
+  function marcarSinConexion(sin, ts){
+    let a=$("#avisoOffline");
+    if(!sin){ if(a) a.remove(); return; }
+    if(!a){ a=document.createElement("div"); a.id="avisoOffline"; a.className="avisoAula avisoOffline"; a.setAttribute("role","status"); const h=$("#vHome"); if(h) h.insertBefore(a, h.firstChild); }
+    const cuando = ts ? ` (guardado ${new Date(ts).toLocaleDateString("es",{weekday:"long",day:"numeric",month:"short"})})` : "";
+    a.innerHTML=`<span class="avisoAulaTx"><b>Sin conexión.</b> Ves lo último que se guardó en el teléfono${escapeHtml(cuando)}. Puedes repasar los resúmenes que ya abriste.</span>`;
+  }
+  window.addEventListener("online", ()=>{ if(SESION){ cargarAgenda(); cargarProgreso(); } });
+  window.addEventListener("offline", ()=>{ if(SESION) marcarSinConexion(true, (store.get("agenda_cache")||{}).ts); });
 
   // fechas locales sin sorpresas de zona horaria
   const DIAS_NOM=["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
@@ -870,6 +901,7 @@
   }
   const AG_TAREAS_VISIBLES=4, AG_NOTAS_VISIBLES=3, HOME_HORARIO_VISIBLES=2;
   function pintarTareas(){
+    guardarCacheAgenda();
     const cont=$("#tareasList"); if(!cont) return; cont.innerHTML=""; cont.classList.remove("ag-todo");
     if(!TAREAS.length){
       cont.innerHTML=`<p class="h2Empty">Anota aquí lo que te manden: tareas, trabajos y fechas de exámenes. Te lo recordamos en Inicio.</p>`;
@@ -1503,14 +1535,17 @@
   let REFUERZO=null;   // {materia, desc}
   function irARefuerzo(t){
     REFUERZO={ materia:t.materia, desc:(t.descripcion||"tu examen") };
-    irAPractica(t.materia, "retos");   // reforzar = practicar
+    // MEJORAS 17 (2026-11-12): con la descripción de la nota ("Prueba de fracciones") se busca el tema
+    // del aula y se entra directo a practicarlo (antes dejaba la lista de temas sin nada elegido)
+    const m=materiaParecida(t.materia), tema=m && t.descripcion ? temaParaTexto(m, t.descripcion) : null;
+    irAPractica(t.materia, "retos", tema && tema.seccion);   // reforzar = practicar
     pintarRefuerzoBanner();
   }
   function pintarRefuerzoBanner(){
     const b=$("#refuerzoBanner"); if(!b) return;
     if(!REFUERZO){ b.classList.add("hidden"); b.innerHTML=""; return; }
     b.innerHTML=`<p class="refTit">💪 Reforzando: ${escapeHtml(REFUERZO.desc)}</p>
-      <p class="refTxt">Escoge el tema del examen y, si puedes, 📸 súbele fotos del examen corregido en "Mis apuntes": la práctica atacará justo lo que salió mal. Las fotos no se guardan.</p>`;
+      <p class="refTxt">Si el tema no es este, vuelve atrás y elige el del examen. Si puedes, súbele fotos del examen corregido en "Tus apuntes": la práctica atacará justo lo que salió mal. Las fotos no se guardan.</p>`;
     b.classList.remove("hidden");
   }
   function limpiarRefuerzo(){ REFUERZO=null; pintarRefuerzoBanner(); }
@@ -2136,12 +2171,19 @@
     try{
       const r=await fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"resumen",usuario_id:SESION.id})});
       const d=await r.json().catch(()=>null);
-      const prog=(d&&Array.isArray(d.progreso))?d.progreso:[];
+      let prog=(d&&Array.isArray(d.progreso))?d.progreso:null;
+      if(prog) store.set("progreso_cache",{ uid:SESION.id, prog });
+      else { const c=store.get("progreso_cache"); prog=(c && c.uid===SESION.id) ? c.prog : []; }
       prog.forEach(row=>{
         PROGRESO.set(norm(row.materia||"")+"|"+norm(row.tema||""),
           { modos:new Set(row.modos||[]), quizMejor:(typeof row.quizMejor==="number"?row.quizMejor:null), dominado:!!row.dominado });
       });
-    }catch(e){ PROGRESO=new Map(); }
+    }catch(e){
+      PROGRESO=new Map();
+      const c=store.get("progreso_cache");   // sin conexión: el último progreso guardado
+      if(c && c.uid===SESION.id) (c.prog||[]).forEach(row=>PROGRESO.set(norm(row.materia||"")+"|"+norm(row.tema||""),
+        { modos:new Set(row.modos||[]), quizMejor:(typeof row.quizMejor==="number"?row.quizMejor:null), dominado:!!row.dominado }));
+    }
     repintarProgreso();
   }
   // registra que el niño hizo una actividad; actualiza PROGRESO al instante + guarda (fire-and-forget)
@@ -3058,6 +3100,12 @@
         await new Promise(r=>setTimeout(r,1500));
         return generar({...opts,_retry:true});   // saturación transitoria: reintenta una vez
       }
+      if(!e.code && (navigator.onLine===false || /failed to fetch|networkerror|load failed/i.test(String(e.message||"")))){
+        const loc = modoSel==="resumen" ? resumenLocal(mat, tema) : null;
+        if(loc){ render(loc); const b=document.createElement("div"); b.innerHTML=avisoBox("Sin conexión: es el resumen que guardaste la última vez que lo abriste."); res.insertBefore(b.firstChild, res.firstChild); return; }
+        res.innerHTML = errBox("Sin conexión. Cuando vuelva la señal, intenta de nuevo.", modoSel==="resumen" ? "Este resumen todavía no lo habías abierto." : "Mientras tanto puedes repasar los resúmenes que ya abriste.");
+        return;
+      }
       if(e.code===429){
         cool = Math.min(Math.max(e.retryAfter||10, 5), 60);
         res.innerHTML = errBox(`Llegaste al límite gratis del momento. Espera ${cool} segundos y vuelve a intentar. ⏳`);
@@ -3119,7 +3167,7 @@
     renderBanner(res, d.fuentes, d.basadoEnMaterial, d.apuntes, d.curado, modo);
     const meta = { materia:d.materia, tema:d.tema, grado:gradoActivo() };
     estudioIniciar(meta, modo, d);   // panel de padres: tiempo real en esta actividad
-    if(modo==="resumen"){      renderResumen(res, d); registrarActividad(meta, "resumen"); }
+    if(modo==="resumen"){      renderResumen(res, d); registrarActividad(meta, "resumen"); guardarResumenLocal(d); }
     else if(modo==="examen"){  renderExamen(res, d.preguntas||[], meta); renderOtros(res); }
     else if(modo==="quiz")     renderQuiz(res, d.preguntas||[], meta);   // "otros" se agrega al terminar
     else {                     renderRetos(res, d.ejercicios||[], meta); renderOtros(res); }
@@ -3127,6 +3175,19 @@
     res.scrollIntoView({behavior:"smooth",block:"nearest"});
   }
 
+  function claveResumen(materia, tema){ return norm(materia||"")+"|"+norm(tema||""); }
+  function guardarResumenLocal(d){
+    if(!d || d.offline || !SESION) return;
+    try{
+      const l=(store.get("resumenes")||[]).filter(x=>x.k!==claveResumen(d.materia,d.tema));
+      l.unshift({ k:claveResumen(d.materia,d.tema), uid:SESION.id, d });
+      store.set("resumenes", l.slice(0,15));
+    }catch(_){}
+  }
+  function resumenLocal(materia, tema){
+    const x=(store.get("resumenes")||[]).find(r=>r.k===claveResumen(materia,tema) && SESION && r.uid===SESION.id);
+    return x ? { ...x.d, offline:true } : null;
+  }
   function renderBanner(res, fuentes, basado, apuntes, curado, modo){
     const pdfs = Array.isArray(fuentes) ? fuentes : [];
     const acts = (ultimoContexto && ultimoContexto.actividades) ? ultimoContexto.actividades : [];

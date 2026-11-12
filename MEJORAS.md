@@ -133,7 +133,7 @@ En `mostrarResultadoQuiz()` (~3059), si falló alguna: "Repasar las 2 que fallé
 etiqueta legible por tema: "Nuevo", "Empezado", "Quiz 60%", "Dominado". Marcar también el tema con
 material recién subido por el profesor.
 
-### 11. Segunda revisión de las respuestas de matemática
+### 11. Segunda revisión de las respuestas de matemática — ✅ HECHO 2026-11-12 (sin el cambio opcional de prompt)
 El error del signo (−30 tomado como 30) se corrigió en `alinearCorrecta()` de `api/generar.js`. Falta:
 - Si en un tema numérico el sello "Respuesta correcta: …" no coincide con ninguna opción, descartar esa
   pregunta en vez de dejarla como vino.
@@ -189,7 +189,7 @@ de lista. Unificar con el estilo de "Hoy" (en `estilos.css`).
 En "¿Cómo quieres estudiar?" (`#wizActividad`), `#btnGen` queda fuera de pantalla. Dejarlo fijo sobre la
 barra inferior. Lo mismo con "Continuar" del paso 1 cuando la lista es larga.
 
-### 17. Notas conectadas con un tema concreto
+### 17. Notas conectadas con un tema concreto — ✅ HECHO 2026-11-12
 Ya existe "Practicar lo que salió mal" (`irARefuerzo()` ~1339), pero deja en la lista de temas. Aplicar
 la misma búsqueda de tema del punto 5 con la descripción de la nota, y entrar directo a ese tema.
 
@@ -215,7 +215,7 @@ muestra si la cumplió.
 
 ## E. Técnico
 
-### 21. Algo útil sin internet
+### 21. Algo útil sin internet — ✅ HECHO 2026-11-12
 `sw.js` guarda los archivos de la app, no los datos. Guardar en el teléfono la última agenda, las notas y
 los resúmenes ya abiertos, y mostrarlos con el aviso "Sin conexión: esto es lo último que se guardó".
 Las tareas marcadas sin conexión se envían al volver.

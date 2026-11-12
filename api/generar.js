@@ -596,7 +596,9 @@ function alinearCorrecta(p) {
   let idx = casarUnico(p.opciones, sello, normSuave, actual);
   if (idx < 0) idx = casarUnico(p.opciones, sello, normTxt, actual);
   if (idx < 0 && /[a-z]{3,}/.test(normTxt(sello))) idx = casarUnico(p.opciones, sello, normTxt, actual, true);
-  return idx >= 0 ? { ...p, correcta: idx, explicacion: limpia } : { ...p, explicacion: limpia };
+  // _sello/_casa/_cambio: marcas internas para el handler (se quitan antes de responder)
+  return idx >= 0 ? { ...p, correcta: idx, explicacion: limpia, _sello: true, _casa: true, _cambio: idx !== actual }
+    : { ...p, explicacion: limpia, _sello: true, _casa: false };
 }
 // Firma estable de un item de banco (para no repetir): hash corto del texto principal.
 function sigItem(modo, it) {
@@ -1195,8 +1197,15 @@ export default async function handler(req, res) {
     // BLINDAJE del quiz: alinea "correcta" con la respuesta que la propia explicación
     // declara (sello "Respuesta correcta: ..."), para que el índice marcado NUNCA
     // contradiga el cálculo. Determinista, sin llamadas extra a Gemini.
+    // 2026-11-12 (MEJORAS 11): en un tema NUMÉRICO, si el sello no casa con NINGUNA opción, la pregunta
+    // se descarta (antes quedaba con el índice que eligió la IA, sin verificar). Cada corrección o
+    // descarte queda en los logs de Vercel ("[quiz]") para vigilar cuánto se equivoca la IA.
     if (modo === "quiz" && parsed && Array.isArray(parsed.preguntas)) {
-      parsed.preguntas = parsed.preguntas.map(alinearCorrecta);
+      let cambiadas = 0, descartadas = 0;
+      parsed.preguntas = parsed.preguntas.map(alinearCorrecta)
+        .filter((q) => { if (numerica && q && q._sello && !q._casa) { descartadas++; return false; } if (q && q._cambio) cambiadas++; return true; })
+        .map((q) => { if (!q || typeof q !== "object") return q; const { _sello, _casa, _cambio, ...limpio } = q; return limpio; });
+      if (cambiadas || descartadas) console.log(`[quiz] ${materia || ""} · ${tema}: ${cambiadas} corregida(s), ${descartadas} descartada(s)`);
     }
     // Si salió vacío o malformado, NO lo cacheamos (evita envenenar el tema para todos).
     if (!esValido(modo, parsed)) {

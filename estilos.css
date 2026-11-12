@@ -2039,3 +2039,6 @@ body.ag-form-abierto .agTop .agStar{display:none}
 .ofreceAvisos button{border:0;border-radius:12px;padding:10px 14px;font:800 .88rem/1 Nunito,system-ui,sans-serif;cursor:pointer}
 .ofreceAvisos .oaSi{background:var(--chispa-primary);color:#fff}
 .ofreceAvisos .oaNo{background:#fff;color:var(--chispa-muted)}
+
+/* sin conexión (MEJORAS 21) */
+.avisoOffline{background:#EEF2FF;border-color:#C7D2FE}
