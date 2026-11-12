@@ -23,6 +23,7 @@ Los números de línea son de `app.js` al commit `274fd63`; se mueven, buscar po
   id o por usuario, nunca tablas enteras.
 - IA: solo DeepSeek (`deepseek-flash`). No empeorar lo que genera: cualquier cambio de prompt se prueba
   contra la IA real antes de publicar y sube `PROMPT_VER` en `api/generar.js`.
+- Tiempo de la IA (2026-11-12): `api/generar.js` tiene 120 s (vercel.json), plazo interno 110 s y max_tokens 20000. Los temas difíciles tardan 70-85 s con razonamiento completo. Si aun así la respuesta vuelve vacía, el segundo intento usa `reasoning_effort: "low"` y el tema queda anotado 30 días (fila `esfuerzo-…` en cache_generaciones). No bajar esos límites.
 - La clave de DeepSeek nunca va al repositorio (vive en Vercel, `DEEPSEEK_API_KEY`).
 - Textos de la app en español neutro, de tú (no voseo), sin emojis nuevos en alertas.
 - Usuarias: 118 = Martina (5to grado), 211 = Alessandra (1er año).
