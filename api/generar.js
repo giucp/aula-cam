@@ -1207,8 +1207,24 @@ export default async function handler(req, res) {
           diagMalformado.push(`${(ch && ch.finish_reason) || "?"}|${txt.length}|${motivo}|t${Math.round((DEADLINE - Date.now()) / 1000)}`);
         } catch (e) { /* solo log */ }
         // con UNA sola key, un JSON roto no tenía segunda oportunidad: se reintenta una vez si hay tiempo
-        if (!reintentoMalformado && ordenKeys.length === 1 && Date.now() < DEADLINE - 25000) { reintentoMalformado = true; const r2 = await pedirAGemini(url, payload, 1, DEADLINE, hdrs); data = r2.data; status = r2.status;
-          if (status === 200 && !(data && data.error)) { const p2 = depurar(modo, parsearIA(data), n); if (p2 && esValido(modo, p2)) { delete p2._rescatado; parsed = p2; resultadoModelo.set(m, "exito"); break buscar; } } }
+        //   El reintento pide la MITAD de ítems: el fallo típico (temas de dibujos como Estrellas Mágicas)
+        //   es que la IA gasta todo max_tokens razonando y devuelve vacío (finish_reason "length").
+        if (!reintentoMalformado && ordenKeys.length === 1 && Date.now() < DEADLINE - 14000) {
+          reintentoMalformado = true;
+          let payload2 = payload, n2 = n;
+          if (esDeepSeek && n > 2) {
+            n2 = Math.max(2, Math.ceil(n / 2));
+            const prompt2 = armarPrompt({ modo, material, tienePdf: pdfs.length > 0, tieneFotos, fotosExamen, grado, tema, materia, n: n2, numerica, recientes });
+            payload2 = { ...payloadDeepSeek, messages: [{ role: "user", content: [{ type: "text", text: prompt2 }, ...contenidoDS.slice(1)] }] };
+          }
+          const r2 = await pedirAGemini(url, payload2, 1, DEADLINE, hdrs); data = r2.data; status = r2.status;
+          if (status === 200 && !(data && data.error)) {
+            const p2 = depurar(modo, parsearIA(data), n2);
+            if (p2 && esValido(modo, p2)) { delete p2._rescatado; parsed = p2; resultadoModelo.set(m, "exito"); console.log(`[generar] ${modo} salió en el reintento con ${n2} ítems: ${materia || ""} · ${tema}`); break buscar; }
+            const ch2 = data && data.choices && data.choices[0];
+            diagMalformado.push(`reintento:${(ch2 && ch2.finish_reason) || "?"}|${String((ch2 && ch2.message && ch2.message.content) || "").length}|t${Math.round((DEADLINE - Date.now()) / 1000)}`);
+          } else diagMalformado.push(`reintento:http${status}`);
+        }
       }
       // agotó todas las keys y al menos una dio 503 real → cuenta como fallo del modelo
       if (!resultadoModelo.has(m) && vio503) resultadoModelo.set(m, "fallo");
