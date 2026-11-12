@@ -713,7 +713,38 @@ function esValido(modo, d) {
 // Respuesta de DeepSeek (estilo OpenAI). Misma tolerancia a ```json que el de Gemini.
 function parsearDeepSeek(data) {
   const texto = String((data && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || "").trim() || "{}";
-  try { return JSON.parse(texto.replace(/```json|```/g, "").trim()); } catch (e) { return null; }
+  const limpio = texto.replace(/```json|```/g, "").trim();
+  try { return JSON.parse(limpio); } catch (e) { return rescatarJSON(limpio); }
+}
+// ★ 2026-11-12: respuesta CORTADA (se acabaron los tokens; pasa en temas con dibujos SVG, que son
+//   largos). Antes se tiraba entera → "No pudimos armar la actividad". Ahora se rescatan los ítems
+//   que llegaron completos: se corta en cada "}," desde el final y se cierra la lista.
+function rescatarJSON(t) {
+  const m = /^\{\s*"(ejercicios|preguntas)"\s*:\s*\[/.exec(t);
+  if (!m) return null;
+  let fin = t.length;
+  for (let k = 0; k < 40; k++) {
+    fin = t.lastIndexOf("},", fin - 1);
+    if (fin < 0) return null;
+    try {
+      const o = JSON.parse(t.slice(0, fin + 1) + "]}");
+      if (o && Array.isArray(o[m[1]]) && o[m[1]].length) { o._rescatado = true; return o; }
+    } catch (e) { /* sigue probando más atrás */ }
+  }
+  return null;
+}
+// Quita los ítems rotos de una tanda (antes UNO roto invalidaba los cinco). Si quedan menos de la
+// mitad de los pedidos, la tanda no sirve y se pide de nuevo.
+function depurar(modo, d, pedidos) {
+  if (!d || typeof d !== "object" || modo === "resumen") return d;
+  const k = modo === "retos" ? "ejercicios" : "preguntas";
+  if (!Array.isArray(d[k])) return d;
+  const ok = (x) => modo === "retos" ? !!(x && String(x.enunciado || "").trim())
+    : modo === "examen" ? !!(x && String(x.pregunta || "").trim())
+    : !!(x && String(x.pregunta || "").trim() && Array.isArray(x.opciones) && x.opciones.length >= 2 && Number.isInteger(x.correcta) && x.correcta >= 0 && x.correcta < x.opciones.length);
+  const buenos = d[k].filter(ok);
+  if (buenos.length < Math.max(1, Math.ceil((pedidos || 1) / 2))) return null;
+  return { ...d, [k]: buenos };
 }
 function parsearIA(data) { return esDeepSeek ? parsearDeepSeek(data) : parsearGemini(data); }
 function parsearGemini(data) {
@@ -1134,7 +1165,7 @@ export default async function handler(req, res) {
     // Presupuesto de tiempo: cortamos antes del maxDuration de 60s de Vercel para devolver
     // un 503 amable (el front reintenta) en vez de un 504 crudo que rompe la pantalla.
     const DEADLINE = Date.now() + 52000;
-    let parsed = null, malformado = false;
+    let parsed = null, malformado = false, reintentoMalformado = false;
     // Qué aprendió este request de cada modelo (para el breaker): exito | fallo.
     // Los 429 puros son cupo de la KEY, no salud del modelo → no cuentan.
     const resultadoModelo = new Map();
@@ -1164,9 +1195,17 @@ export default async function handler(req, res) {
         if (data && data.error) { resultadoModelo.set(m, "fallo"); break; } // error duro (400/404) → próximo modelo
         // 200: parseamos y validamos ACÁ. Si el JSON viene malformado/incompleto (varianza del
         // modelo), lo tratamos como reintentable: probamos otra key/modelo si queda tiempo.
-        const p = parsearIA(data);
-        if (p && esValido(modo, p)) { parsed = p; resultadoModelo.set(m, "exito"); break buscar; }
+        const p = depurar(modo, parsearIA(data), n);
+        if (p && esValido(modo, p)) { parsed = p; resultadoModelo.set(m, "exito"); if (p._rescatado) { console.log(`[generar] ${modo} rescatado de respuesta cortada: ${materia || ""} · ${tema}`); delete p._rescatado; } break buscar; }
         malformado = true;
+        // diagnóstico en los logs de Vercel: por qué no sirvió (cortada por tokens / JSON roto / ítems inválidos)
+        try {
+          const ch = data && data.choices && data.choices[0];
+          console.log(`[generar] ${modo} inválido (${(ch && ch.finish_reason) || "?"}, ${String((ch && ch.message && ch.message.content) || "").length} chars): ${materia || ""} · ${tema}`);
+        } catch (e) { /* solo log */ }
+        // con UNA sola key, un JSON roto no tenía segunda oportunidad: se reintenta una vez si hay tiempo
+        if (!reintentoMalformado && ordenKeys.length === 1 && Date.now() < DEADLINE - 25000) { reintentoMalformado = true; const r2 = await pedirAGemini(url, payload, 1, DEADLINE, hdrs); data = r2.data; status = r2.status;
+          if (status === 200 && !(data && data.error)) { const p2 = depurar(modo, parsearIA(data), n); if (p2 && esValido(modo, p2)) { delete p2._rescatado; parsed = p2; resultadoModelo.set(m, "exito"); break buscar; } } }
       }
       // agotó todas las keys y al menos una dio 503 real → cuenta como fallo del modelo
       if (!resultadoModelo.has(m) && vio503) resultadoModelo.set(m, "fallo");

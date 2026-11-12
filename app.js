@@ -3388,7 +3388,12 @@
   function mismoResultado(dado, esperado){
     const a=numeroDe(dado), b=numeroDe(esperado);
     if(a!=null && b!=null) return Math.abs(a-b) <= 1e-6*Math.max(1,Math.abs(b));
-    return !!textoPlano(dado) && textoPlano(dado)===textoPlano(esperado);
+    if(!textoPlano(dado)) return false;
+    if(textoPlano(dado)===textoPlano(esperado)) return true;
+    // respuestas en palabras: vale si escribió todas las palabras de la esperada ("hacia abajo" ⊇ "abajo")
+    const pal=(t)=>String(t||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").split(/[^a-z0-9ñ]+/).filter(w=>w && !["a","al","el","la","los","las","un","una","de","del","hacia","es","son","cada","uno"].includes(w));
+    const esp=pal(esperado), dad=new Set(pal(dado));
+    return esp.length>0 && esp.length<=4 && !esp.some(w=>/^d/.test(w)) && esp.every(w=>dad.has(w));
   }
   // la pregunta "¿Te salió?" bajo la respuesta revelada (inicial: "si" si ya lo comprobó la app)
   function zonaAutoEval(c, i, ae, pregunta, inicial){
