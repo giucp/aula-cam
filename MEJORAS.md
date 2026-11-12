@@ -205,7 +205,7 @@ Por notificación del panel (misma infraestructura del punto 2, en `familia-sw.j
 Examen en 2 días sin haber practicado ese tema; 3 días sin abrir la app; tareas vencidas acumuladas.
 Un aviso por motivo, no repetido cada día. Con interruptor en el panel.
 
-### 20. Mandar una misión desde el panel
+### 20. Mandar una misión desde el panel — ✅ HECHO 2026-11-12 (requiere supabase-misiones.sql)
 El adulto elige materia y tema ("hoy estudia fracciones") y eso aparece como "Tu misión de hoy", con
 prioridad sobre las automáticas en `homeMisionTema()` (~554). Tabla nueva (`misiones`: usuario_id,
 materia, tema, modo, creada, hecha), acciones nuevas en `api/familia.js` y lectura desde la app. El panel

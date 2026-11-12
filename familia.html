@@ -230,6 +230,14 @@
     /* mensaje breve (avisos) */
     #avisoFlotante{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:50;max-width:480px;margin:0 auto;padding:12px 14px;border-radius:12px;background:#1F2937;color:#fff;font-size:.88rem;line-height:1.4;opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s;pointer-events:none}
     #avisoFlotante.visible{opacity:1;transform:none}
+    /* misión para hoy */
+    .misionForm{display:grid;gap:10px;margin-top:12px}
+    .misionForm label{display:grid;gap:4px;font-size:.86rem;font-weight:600}
+    .misionForm select,.misionForm input{font:inherit;font-weight:500;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff;color:var(--ink);width:100%}
+    .misionEst{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;padding:10px 12px;border-radius:10px;font-size:.9rem}
+    .misionEst.pend{background:color-mix(in srgb,var(--t-tea) 10%,#fff);border:1px solid color-mix(in srgb,var(--t-tea) 30%,#fff)}
+    .misionEst.ok{background:#F0FDF4;border:1px solid #BBF7D0}
+    .misionMsg:empty{display:none}
 </style>
 </head>
 <body>

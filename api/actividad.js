@@ -181,6 +181,24 @@ export default async function handler(req, res) {
       const ok = await guardarSuscripcion(cfg, uid, null, b.sub, b.activo !== false).catch(() => false);
       return res.status(ok ? 200 : 400).json({ ok });
     }
+    // misión que mandó un adulto desde el panel (MEJORAS 20): la pendiente más reciente (7 días)
+    if (b.accion === "mision_get") {
+      const desde = new Date(Date.now() - 7 * 864e5).toISOString();
+      const r = await fetch(`${cfg.url}/rest/v1/misiones?usuario_id=eq.${uid}&activa=is.true&hecha_en=is.null&creada=gte.${encodeURIComponent(desde)}&select=id,vinculo_id,materia,tema,modo,nota,creada&order=creada.desc&limit=1`, { headers: hdr(cfg) });
+      const m = r.ok ? (await r.json())[0] || null : null;
+      if (m && m.vinculo_id) {
+        const v = await fetch(`${cfg.url}/rest/v1/familia_vinculos?id=eq.${m.vinculo_id}&select=alias`, { headers: hdr(cfg) }).then((x) => (x.ok ? x.json() : [])).catch(() => []);
+        m.de = (v[0] && v[0].alias) || null;
+      }
+      return res.status(200).json({ ok: true, mision: m });
+    }
+    if (b.accion === "mision_hecha") {
+      const id = parseInt(b.id, 10);
+      if (id) await fetch(`${cfg.url}/rest/v1/misiones?id=eq.${id}&usuario_id=eq.${uid}&hecha_en=is.null`, {
+        method: "PATCH", headers: { ...hdr(cfg), "Content-Type": "application/json" }, body: JSON.stringify({ hecha_en: new Date().toISOString() }),
+      }).catch(() => {});
+      return res.status(200).json({ ok: true });
+    }
     if (b.accion === "abrir") {
       await fetch(`${cfg.url}/rest/v1/aperturas`, {
         method: "POST",

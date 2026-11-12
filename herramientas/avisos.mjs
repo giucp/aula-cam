@@ -160,6 +160,20 @@ export async function enviarAvisosDelDia(cfg, ahora = new Date()) {
   return { ok: true, enviados, fallidos };
 }
 
+// Aviso inmediato a los teléfonos del NIÑO (p. ej. "tienes una misión nueva"). Sin clave VAPID, no hace nada.
+export async function avisarNino(cfg, usuarioId, a) {
+  const priv = process.env.VAPID_PRIVATE_KEY;
+  if (!priv) return 0;
+  webpush.setVapidDetails(process.env.VAPID_SUBJECT || "https://aula-cam.vercel.app", process.env.VAPID_PUBLIC_KEY || VAPID_PUBLICA, priv);
+  const subs = await sbGet(cfg, `push_subs?usuario_id=eq.${usuarioId}&vinculo_id=is.null&activo=is.true&select=id,endpoint,p256dh,auth`);
+  let n = 0;
+  for (const s of Array.isArray(subs) ? subs : []) {
+    try { await webpush.sendNotification({ endpoint: s.endpoint, keys: { p256dh: s.p256dh, auth: s.auth } }, JSON.stringify(a), { TTL: 12 * 3600 }); n++; }
+    catch (e) { if (e && (e.statusCode === 404 || e.statusCode === 410)) await fetch(`${cfg.url}/rest/v1/push_subs?id=eq.${s.id}`, { method: "PATCH", headers: hdr(cfg, { "Content-Type": "application/json" }), body: JSON.stringify({ activo: false }) }).catch(() => {}); }
+  }
+  return n;
+}
+
 // Guarda (o apaga) la suscripción de un teléfono. vinculoId null = el niño; si no, el adulto.
 export async function guardarSuscripcion(cfg, usuarioId, vinculoId, sub, activo) {
   const ep = sub && String(sub.endpoint || "");

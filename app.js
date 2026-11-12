@@ -193,6 +193,7 @@
     cargarProgreso();
     cargarCuradoInfo(gradoDeSesion());   // qué temas tienen guía revisada (sello 📗 + botón)
     cargarAgenda();                      // horario + tareas + notas para el escritorio
+    cargarMisionFamilia(true);           // misión que mandó un adulto desde el panel
     verTab("inicio");                    // el día arranca en el escritorio
     registrarApertura();                 // panel de padres: a qué hora usa la app
     // F4: tutorial de bienvenida — SOLO cuentas nativas (Camino B) que aún no lo vieron.
@@ -226,7 +227,7 @@
     document.body.classList.toggle("agenda-v2-page", id==="agenda");
     document.body.classList.toggle("cumbre-v2-page", id==="cumbre");
     document.querySelectorAll("#navbar .navBtn").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.tab===id)));
-    if(id==="inicio") pintarEscritorio();
+    if(id==="inicio"){ pintarEscritorio(); cargarMisionFamilia(); }
     // salir de Cumbre por la navbar: el asistente vuelve al aula (origen "cumbre" no debe quedar pegado)
     if(id!=="cumbre" && origen==="cumbre"){ $("#paneTemas").classList.remove("cumbre"); pintarMaterias(); verMaterias(); }
     if(id==="cumbre") entrarCumbre();
@@ -631,6 +632,45 @@
     for(const m of materias){ const t=temaRecienteDe(m); if(t) return arma(m,t.seccion,mat=>`Empieza con ${mat}`); }
     return null;
   }
+  // ★ 2026-11-12 (MEJORAS 20): misión que manda un adulto desde el panel de familia. Va ANTES que las
+  //   automáticas (incluso que el examen). El adulto escribe el tema con sus palabras ("fracciones"):
+  //   se busca el tema del aula que mejor coincide (temaParaTexto). Se cumple al estudiar esa materia
+  //   (y ese tema, si se encontró): registrarActividad avisa al servidor y el panel la muestra cumplida.
+  let MISION_FAMILIA=null, MISION_CARGADA=0;
+  async function cargarMisionFamilia(forzar){
+    if(!SESION || SESION.id==null || MODO_LAB) return;
+    if(!forzar && Date.now()-MISION_CARGADA < 120000) return;
+    MISION_CARGADA=Date.now();
+    try{
+      const r=await fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"mision_get",usuario_id:SESION.id})});
+      const d=await r.json().catch(()=>null);
+      const antes=MISION_FAMILIA&&MISION_FAMILIA.id, ahora=d&&d.mision&&d.mision.id;
+      if(antes!==ahora) MISION_FAMILIA=(d&&d.mision)||null;   // misma misión: se conserva (ya tiene su tema resuelto)
+      if(antes!==ahora && !$("#tabInicio").classList.contains("hidden")) pintarExamenBanner();
+    }catch(_){}
+  }
+  function materiaParecida(nombre){
+    const lista=homeMaterias();
+    return materiaDeSesion(nombre) || lista.find(m=>norm(limpiaNombreMateria(m.nombre))===norm(limpiaNombreMateria(nombre||""))) || null;
+  }
+  function misionFamiliaResuelta(){
+    const mf=MISION_FAMILIA; if(!mf) return null;
+    const m=materiaParecida(mf.materia); if(!m) return null;
+    const t=(mf.tema && temaParaTexto(m, mf.tema)) || null;
+    const tt=t || temaRecienteDe(m);
+    const modo=mf.modo || (tt ? pasoSugerido(m.nombre, tt.seccion).modo : "resumen");
+    mf.resuelta={ materia:m.nombre, tema: t ? t.seccion : null };
+    return { m, t:tt, modo };
+  }
+  function cumplirMisionFamilia(materia, tema){
+    const mf=MISION_FAMILIA; if(!mf) return;
+    if(!mf.resuelta) misionFamiliaResuelta();
+    if(!mf.resuelta) return;
+    if(norm(limpiaNombreMateria(materia||""))!==norm(limpiaNombreMateria(mf.resuelta.materia))) return;
+    if(mf.resuelta.tema && norm(tema||"")!==norm(mf.resuelta.tema)) return;
+    MISION_FAMILIA=null;
+    try{ fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"mision_hecha",usuario_id:SESION.id,id:mf.id})}).catch(()=>{}); }catch(_){}
+  }
   function pintarExamenBanner(){
     const box=$("#examenBanner"); if(!box) return; box.innerHTML="";
     const horaLocal=new Date().getHours();
@@ -649,8 +689,18 @@
     let accionTexto="Ver materias";
     let accion=()=>verTab("materias");
     let materiaArte=null;
+    let eyebrow="Tu misión de hoy";
+    const mfr=misionFamiliaResuelta();
 
-    if(examenes.length){
+    if(mfr){
+      const mf=MISION_FAMILIA, quien=mf.de || "Tu familia";
+      eyebrow=`Misión de ${quien}`;
+      titulo=`${capMateria(limpiaNombreMateria(mfr.m.nombre))}${mfr.t?": "+capFrase(mfr.t.seccion):""}`;
+      texto=mf.nota || (mf.tema && !mf.resuelta.tema ? `Tema: ${mf.tema}` : "Te la mandaron desde el panel de familia.");
+      accionTexto=ACCION_MODO[mfr.modo]||"Practicar";
+      accion=()=>irAPractica(mfr.m.nombre, mfr.modo, mfr.t&&mfr.t.seccion);
+      materiaArte=mfr.m.nombre;
+    }else if(examenes.length){
       const min=examenes[0].n, dia=examenes.filter(x=>x.n===min);
       const cuando=min===0?"hoy":(min===1?"mañana":`en ${min} días`);
       const primera=dia[0].t, materia=capMateria(limpiaNombreMateria(primera.materia||""))||"tu materia";
@@ -682,7 +732,7 @@
       ? `<img class="h2MissionArt h2MissionArt--materia" src="assets/materias/${homeMateriaVisual(materiaArte).img}.png" alt="" aria-hidden="true">`
       : `<img class="h2MissionArt" src="assets/hero/libro.png" alt="" aria-hidden="true">`;
     const card=document.createElement("article"); card.className="h2Mission";
-    card.innerHTML=`<div class="h2MissionContent"><p class="h2MissionEyebrow">Tu misión de hoy</p><h2>${escapeHtml(titulo)}</h2><p>${escapeHtml(texto)}</p><button class="h2MissionAction" type="button">${escapeHtml(accionTexto)} ${homeIcono("flecha")}</button></div>${arte}`;
+    card.innerHTML=`<div class="h2MissionContent"><p class="h2MissionEyebrow">${escapeHtml(eyebrow)}</p><h2>${escapeHtml(titulo)}</h2><p>${escapeHtml(texto)}</p><button class="h2MissionAction" type="button">${escapeHtml(accionTexto)} ${homeIcono("flecha")}</button></div>${arte}`;
     card.querySelector(".h2MissionAction").onclick=accion;
     box.appendChild(card);
   }
@@ -2113,6 +2163,7 @@
       if(v>=.8 && extra.total>=MIN_PREG_DOMINIO) p.dominado=true;
     }
     repintarProgreso();
+    cumplirMisionFamilia(mat, tema);
     const body={accion:"guardar",usuario_id:SESION.id,materia:mat,tema,grado:(meta&&meta.grado)||gradoActivo(),modo};
     if(modo==="quiz" && extra){ body.aciertos=extra.aciertos; body.total=extra.total; }
     try{ fetch(API_ACTIVIDAD,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}); }catch(_){}

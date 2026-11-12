@@ -58,6 +58,10 @@ export function panelDemo() {
       { materia: "CIENCIAS SOCIALES 5G", tema: "TEMA 2. Clima y vegetación.", pregunta: "¿Cuál región tiene el clima más frío?", opciones: ["Los Andes", "La Guayana", "Los Llanos"], correcta: 0, elegida: 2, explicacion: "A mayor altura, menor temperatura. Los Andes son la región más alta.\nRespuesta correcta: Los Andes", creado: hace(2) },
       { materia: "LÓGICA MATEMÁTICA 5G", tema: "Tema 1 · Patrones numéricos", pregunta: "¿Qué número sigue? 3, 6, 12, 24, …", opciones: ["30", "36", "48"], correcta: 2, elegida: 1, explicacion: "Cada número es el doble del anterior: 24 × 2 = 48.\nRespuesta correcta: 48", creado: hace(0) },
     ],
+    misiones: [
+      { id: 2, materia: "MATEMÁTICAS 5G", tema: "porcentajes", modo: "quiz", nota: "El viernes es la prueba", activa: true, creada: hace(0, 9), hecha_en: null },
+      { id: 1, materia: "LENGUAJE 5G", tema: "El texto narrativo", modo: null, nota: null, activa: true, creada: hace(3, 9), hecha_en: hace(3, 17) },
+    ],
     reportes: [{ materia: "MATEMÁTICAS 5G", tema: "TEMA 2. Polígonos y su clasificación", modo: "quiz", creado: hace(12) }],
   };
 }

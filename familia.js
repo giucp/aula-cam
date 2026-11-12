@@ -21,7 +21,7 @@ const KEY_NINOS = "familia_ninos";        // [{token, nombre, grado}]
 const KEY_ACTIVO = "familia_activo";      // índice del hijo que se está viendo
 const KEY_TOKEN_VIEJO = "familia_ptoken"; // migración desde la versión de 1 solo hijo
 const KEY_PERIODO = "familia_periodo";    // "7" | "30" | "anio"
-const FAMILIA_V = "v19";                   // versión visible (footer y errores) para saber qué código corre
+const FAMILIA_V = "v20";                   // versión visible (footer y errores) para saber qué código corre
 const app = document.getElementById("app");
 const PANEL_CACHE = {};                   // token -> data del panel (en memoria, esta sesión)
 let PANEL_ACTUAL = null;                  // { d, ninos, i, staleTs, detalle } para re-pintar al cambiar filtros
@@ -438,9 +438,10 @@ function render(d, ninos, i, staleTs, detalle) {
       </div>
     </header>`,
     `<nav class="indice" aria-label="Secciones">
-      ${[["sAtencion", "Atención"], ["sMaterias", "Materias"], ["sQuiz", "Quiz"], ["sErrores", "Errores"], ["sHistorial", "Historial"], ["sAgenda", "Agenda"], ["sUso", "Uso de la app"]].map(([id, l]) => `<a href="#${id}">${l}</a>`).join("")}
+      ${[["sMision", "Misión"], ["sAtencion", "Atención"], ["sMaterias", "Materias"], ["sQuiz", "Quiz"], ["sErrores", "Errores"], ["sHistorial", "Historial"], ["sAgenda", "Agenda"], ["sUso", "Uso de la app"]].map(([id, l]) => `<a href="#${id}">${l}</a>`).join("")}
     </nav>`,
     seccionKpis(A, d),
+    seccionMision(d, nombre),
     seccionAtencion(A, d),
     seccionGrafico(A),
     seccionMaterias(A),
@@ -503,6 +504,51 @@ function seccionKpis(A, d) {
     ${kpi("Tareas pendientes", String(pend), venc ? `<b class="t-bad">${venc} vencida${venc > 1 ? "s" : ""}</b>` : "ninguna vencida", venc ? "bad" : "", "amb", "lista")}
     ${kpi("Preguntas falladas", String(errs), errs ? `en ${temasErr} tema${temasErr > 1 ? "s" : ""} · para repasar` : "ninguna pendiente", "", "ros", "x")}
   </section>`;
+}
+
+// ── Misión para hoy (MEJORAS 20, 2026-11-12) ──
+// El adulto sugiere qué estudiar: materia + tema con sus palabras ("fracciones") + tipo de actividad.
+// En la app del niño aparece como "Tu misión de hoy" (encima de las automáticas) y, si tiene los
+// avisos activos, le llega al teléfono. Se marca cumplida cuando estudia esa materia.
+const MODO_MISION = [["", "Lo que le toque"], ["resumen", "Entender el tema"], ["retos", "Practicar"], ["quiz", "Hacer un quiz"], ["examen", "Simulacro de examen"]];
+function seccionMision(d, nombre) {
+  const ms = d.misiones || [];
+  const pend = ms.find((m) => m.activa && !m.hecha_en);
+  const ult = ms.find((m) => m.hecha_en);
+  const desc = (m) => [limpiaMateria(m.materia), m.tema, m.modo && (MODO_MISION.find((x) => x[0] === m.modo) || [])[1]].filter(Boolean).join(" · ");
+  let estado = "";
+  if (pend) estado += `<div class="misionEst pend"><div><b>Pendiente:</b> ${esc(desc(pend))}${pend.nota ? `<span class="sec"> — ${esc(pend.nota)}</span>` : ""}<span class="sec"> · enviada ${esc(haceTxt(pend.creada))}</span></div><button type="button" class="btn link" id="misionCancelar" data-id="${pend.id}">Cancelar</button></div>`;
+  if (ult) estado += `<div class="misionEst ok"><div><b>Cumplida:</b> ${esc(desc(ult))}<span class="sec"> · ${esc(haceTxt(ult.hecha_en))}</span></div></div>`;
+  // materias que conoce el panel (horario, actividad, tareas); temas sugeridos de lo que ya estudió
+  const crudas = [...(d.horario || []), ...(d.actividad || []), ...(d.tareas || [])].map((x) => x.materia).filter(Boolean);
+  const mats = []; const vistas = new Set();
+  crudas.forEach((m) => { const k = limpiaMateria(m); if (!vistas.has(k)) { vistas.add(k); mats.push([m, k]); } });
+  mats.sort((a, b) => a[1].localeCompare(b[1], "es"));
+  const temas = [...new Set((d.actividad || []).map((a) => limpiaTema(a.tema)).filter(Boolean))].slice(0, 40);
+  const form = mats.length ? `<form class="misionForm" id="misionForm">
+      <label>Materia<select id="misionMateria" required>${mats.map(([v, l]) => `<option value="${esc(v)}">${esc(l)}</option>`).join("")}</select></label>
+      <label><span>Tema <span class="sec">(como lo dicen en clase; opcional)</span></span><input id="misionTema" list="misionTemas" maxlength="120" placeholder="ej: fracciones"><datalist id="misionTemas">${temas.map((t) => `<option value="${esc(t)}">`).join("")}</datalist></label>
+      <label>Qué hacer<select id="misionModo">${MODO_MISION.map(([v, l]) => `<option value="${v}">${esc(l)}</option>`).join("")}</select></label>
+      <label><span>Nota <span class="sec">(opcional)</span></span><input id="misionNota" maxlength="140" placeholder="ej: el viernes es el examen"></label>
+      <button class="btn" type="submit" id="misionEnviar">${pend ? "Reemplazar misión" : "Enviar misión"}</button>
+      <p class="sec misionMsg" id="misionMsg" role="status"></p>
+    </form>` : vacio("Cuando tenga horario o actividad en Chispa podrás mandarle una misión.");
+  return card("sMision", `Misión para ${primerNombre(nombre)}`, `<p class="sec">Le aparece en Chispa como "Tu misión de hoy", antes que las sugerencias automáticas.</p>${estado}${form}`);
+}
+async function enviarMision(e) {
+  e.preventDefault();
+  const nino = getNinos()[getActivo()]; if (!nino) return;
+  const btn = document.getElementById("misionEnviar"), msg = document.getElementById("misionMsg");
+  btn.disabled = true; msg.textContent = "Enviando…";
+  const { d } = await apiUna({ accion: "mision_set", ptoken: nino.token, materia: document.getElementById("misionMateria").value,
+    tema: document.getElementById("misionTema").value, modo: document.getElementById("misionModo").value, nota: document.getElementById("misionNota").value });
+  if (d && d.ok) { msg.textContent = "Listo, ya la tiene en su app."; setTimeout(() => cargarYrender(true), 700); }
+  else { msg.textContent = (d && d.error) || "No se pudo enviar. Intenta de nuevo."; btn.disabled = false; }
+}
+async function cancelarMision(id) {
+  const nino = getNinos()[getActivo()]; if (!nino) return;
+  await apiUna({ accion: "mision_cancelar", ptoken: nino.token, id });
+  cargarYrender(true);
 }
 
 function seccionAtencion(A, d) {
@@ -749,7 +795,7 @@ function seccionReportes(reportes) {
 }
 
 const SECCION = {
-  sAtencion: ["amb", "alerta"], sGrafico: ["ind", "reloj"], sMaterias: ["blu", "libro"], sQuiz: ["vio", "check"],
+  sMision: ["tea", "check"], sAtencion: ["amb", "alerta"], sGrafico: ["ind", "reloj"], sMaterias: ["blu", "libro"], sQuiz: ["vio", "check"],
   sErrores: ["ros", "x"], sHistorial: ["tea", "lista"], sAgenda: ["amb", "cal"], sUso: ["ind", "cel"], sReportes: ["gri", "alerta"],
 };
 function card(id, titulo, cuerpo, badge) {
@@ -776,6 +822,8 @@ function conectar() {
   document.getElementById("btnRecargar").onclick = () => cargarYrender(true);
   document.getElementById("btnAgregarHijo").onclick = () => mostrarVincular(true);
   const ba = document.getElementById("btnAvisos"); if (ba) ba.onclick = alternarAvisos;
+  const mf = document.getElementById("misionForm"); if (mf) mf.onsubmit = enviarMision;
+  const mc = document.getElementById("misionCancelar"); if (mc) mc.onclick = () => cancelarMision(+mc.dataset.id);
   document.getElementById("btnSalir").onclick = desvincularActivo;
   const sr = document.getElementById("staleRetry"); if (sr) sr.onclick = () => cargarYrender(true);
 }

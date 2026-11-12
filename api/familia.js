@@ -14,7 +14,7 @@
 
 import crypto from "crypto";
 import { esDelAnioEnCurso, esDelGradoActual, inicioAnioEscolar } from "../herramientas/anio-escolar.mjs";
-import { guardarSuscripcion, enviarAvisosDelDia } from "../herramientas/avisos.mjs";
+import { guardarSuscripcion, enviarAvisosDelDia, avisarNino, nombreMateria } from "../herramientas/avisos.mjs";
 
 const BASE = "https://aulacam.uearzobispomendez.edu.ve";
 const ORIGIN = "https://aula-cam.vercel.app";
@@ -203,6 +203,36 @@ export default async function handler(req, res) {
       return res.status(ok ? 200 : 400).json({ ok });
     }
 
+    // ── PADRE: mandar (o cancelar) una misión (MEJORAS 20) ──
+    //    Es lo ÚNICO que el adulto escribe: una sugerencia de qué estudiar. No toca nada más del niño.
+    if (accion === "mision_set" || accion === "mision_cancelar") {
+      const ptoken = String(b.ptoken || "").trim();
+      const vs = ptoken ? await sbGet(cfg, `familia_vinculos?token=eq.${encodeURIComponent(ptoken)}&activo=is.true&select=id,usuario_id,alias&limit=1`) : [];
+      const v = Array.isArray(vs) && vs[0];
+      if (!v) return res.status(401).json({ error: "Acceso no válido." });
+      const H = hdr(cfg, { "Content-Type": "application/json" });
+      if (accion === "mision_cancelar") {
+        const id = parseInt(b.id, 10);
+        if (!id) return res.status(400).json({ error: "Falta id" });
+        await fetch(`${cfg.url}/rest/v1/misiones?id=eq.${id}&usuario_id=eq.${v.usuario_id}`, { method: "PATCH", headers: H, body: JSON.stringify({ activa: false }) });
+        return res.status(200).json({ ok: true });
+      }
+      const materia = String(b.materia || "").trim().slice(0, 120);
+      if (!materia) return res.status(400).json({ error: "Elige una materia." });
+      const tema = String(b.tema || "").trim().slice(0, 200) || null;
+      const modo = ["resumen", "retos", "quiz", "examen"].includes(b.modo) ? b.modo : null;
+      const nota = String(b.nota || "").trim().slice(0, 140) || null;
+      // una misión activa a la vez: la nueva reemplaza a la pendiente
+      await fetch(`${cfg.url}/rest/v1/misiones?usuario_id=eq.${v.usuario_id}&activa=is.true&hecha_en=is.null`, { method: "PATCH", headers: H, body: JSON.stringify({ activa: false }) });
+      const r = await fetch(`${cfg.url}/rest/v1/misiones`, { method: "POST", headers: { ...H, Prefer: "return=minimal" },
+        body: JSON.stringify({ usuario_id: v.usuario_id, vinculo_id: v.id, materia, tema, modo, nota }) });
+      if (!r.ok) return res.status(500).json({ error: "No se pudo guardar la misión." });
+      // aviso al teléfono del niño (si tiene los avisos activos)
+      await avisarNino(cfg, v.usuario_id, { titulo: `${v.alias || "Tu familia"} te mandó una misión`,
+        cuerpo: `${nombreMateria(materia)}${tema ? " · " + tema : ""}${nota ? " — " + nota : ""}`, url: "/?ir=mision", tag: "mision" }).catch(() => 0);
+      return res.status(200).json({ ok: true });
+    }
+
     // ── PADRE: el panel (SOLO LECTURA) ──
     if (accion === "panel") {
       const ptoken = String(b.ptoken || "").trim();
@@ -217,7 +247,7 @@ export default async function handler(req, res) {
       }).catch(() => {});
 
       const desde = inicioAnioEscolar() + "T04:00:00Z";   // 1-sep 00:00 hora de Caracas
-      const [perfilR, actividad, cumbre, notas, tareas, horario, errores, reportes, estudio, aperturas] = await Promise.all([
+      const [perfilR, actividad, cumbre, notas, tareas, horario, errores, reportes, estudio, aperturas, misiones] = await Promise.all([
         sbGet(cfg, `usuarios?id=eq.${uid}&select=nombre,grado,nombre_corto,racha_dias,ultimo_acceso,accesos,ia_gasto_dia_usd,ia_limite_dia_usd,ia_ilimitado,ia_dia,reportes_ia_dia`),
         sbGet(cfg, `actividad?usuario_id=eq.${uid}&creado=gte.${desde}&select=materia,tema,modo,aciertos,total,creado&order=creado.desc&limit=2000`),
         // Cumbre ("adelanta en vacaciones") se guarda aparte en cumbre_notas → se mezcla acá para
@@ -233,6 +263,7 @@ export default async function handler(req, res) {
         // supabase-panel-padres.sql: si las tablas aún no existen, sbGet devuelve [] y el panel sigue
         sbGet(cfg, `estudio?usuario_id=eq.${uid}&creado=gte.${desde}&select=materia,tema,modo,fuente,segundos,items,revelados,pistas,respondidas,aciertos,total,creado&order=creado.desc&limit=3000`),
         sbGet(cfg, `aperturas?usuario_id=eq.${uid}&creado=gte.${desde}&select=creado&order=creado.desc&limit=3000`),
+        sbGet(cfg, `misiones?usuario_id=eq.${uid}&select=id,materia,tema,modo,nota,activa,creada,hecha_en&order=creada.desc&limit=10`),
       ]);
       const perfil = (Array.isArray(perfilR) && perfilR[0]) || {};
       // fusionar actividad del aula + Cumbre (misma forma: materia/tema/modo/aciertos/total/creado)
@@ -257,6 +288,7 @@ export default async function handler(req, res) {
         reportes: (Array.isArray(reportes) ? reportes : []).filter((x) => esDelAnioEnCurso(x)),
         estudio: Array.isArray(estudio) ? estudio : [],
         aperturas: (Array.isArray(aperturas) ? aperturas : []).map((x) => x.creado),
+        misiones: Array.isArray(misiones) ? misiones : [],
         anioDesde: inicioAnioEscolar(),
       });
     }
