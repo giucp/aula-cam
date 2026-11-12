@@ -717,7 +717,10 @@
   var FA={horario:HORARIO,tareas:TAREAS,notas:NOTAS,ia:{limite:300,restante:216,ilimitado:false}};
 
   // progreso: alimenta "Continúa aprendiendo", las barras y "Tu progreso"
-  function P(m,t,modos,q){ return {materia:m,tema:t,modos:modos,quizMejor:q}; }
+  // usa el nombre REAL del tema ("Tema 1 · Fracciones") y el modo real de la práctica ("retos"): la cuenta de progreso
+  // ahora solo suma temas que existen en el aula, como en produccion
+  function P(m,t,modos,q){ var mat=MATERIAS.filter(function(x){return x.nombre===m;})[0]; var te=mat&&mat.temas.filter(function(x){return x.nombre===t;})[0];
+    return {materia:m,tema:te?te.seccion:t,modos:modos.map(function(x){return x==="practica"?"retos":x;}),quizMejor:q,dominado:q!=null&&q>=0.8}; }
   var PROG=[
     P("MATEMÁTICA 6G","Fracciones",["resumen","practica","quiz"],0.90),
     P("MATEMÁTICA 6G","Números decimales",["resumen","practica","quiz"],0.85),

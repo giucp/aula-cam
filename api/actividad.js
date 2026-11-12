@@ -69,15 +69,17 @@ export default async function handler(req, res) {
       for (const row of Array.isArray(rows) ? rows : []) {
         const key = norm(row.materia) + "|" + norm(row.tema);
         let e = map.get(key);
-        if (!e) { e = { materia: row.materia, tema: row.tema, modos: new Set(), quizMejor: null }; map.set(key, e); }
+        if (!e) { e = { materia: row.materia, tema: row.tema, modos: new Set(), quizMejor: null, dominado: false }; map.set(key, e); }
         if (row.modo) e.modos.add(row.modo);
         if (row.modo === "quiz" && Number.isInteger(row.total) && row.total > 0 && Number.isInteger(row.aciertos)) {
           const v = row.aciertos / row.total;
           if (e.quizMejor == null || v > e.quizMejor) e.quizMejor = v;
+          // dominado (2026-11-12): un quiz ≥80% de 5+ preguntas. Uno de 3 no alcanza para decirlo.
+          if (v >= 0.8 && row.total >= 5) e.dominado = true;
         }
       }
       const progreso = [...map.values()].map((e) => ({
-        materia: e.materia, tema: e.tema, modos: [...e.modos], quizMejor: e.quizMejor,
+        materia: e.materia, tema: e.tema, modos: [...e.modos], quizMejor: e.quizMejor, dominado: e.dominado,
       }));
       return res.status(200).json({ ok: true, progreso });
     }

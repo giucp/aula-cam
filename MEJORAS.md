@@ -76,7 +76,7 @@ segundos y el tema cuenta como practicado al revelar la primera.
 - Segunda etapa, opcional: en ejercicios numéricos, campo para escribir el resultado y compararlo.
   Requiere un campo nuevo en el prompt; probar con la IA real antes.
 
-### 4. Progreso honesto y con una sola definición
+### 4. Progreso honesto y con una sola definición — ✅ HECHO 2026-11-12
 Hoy hay tres cuentas distintas:
 - `progresoMateria()` (~1968): un tema cuenta con cualquier modo tocado (basta abrir el resumen). Es el
   "5 de 8 temas" de Materias.
@@ -128,7 +128,7 @@ ve la explicación y se queda en la lista.
 En `mostrarResultadoQuiz()` (~3059), si falló alguna: "Repasar las 2 que fallé", que abre ese repaso
 (punto 8) solo con las de ese quiz. Hoy hay que ir a buscarlo en Materias.
 
-### 10. Estado visible en la lista de temas
+### 10. Estado visible en la lista de temas — ✅ HECHO 2026-11-12
 `marcarChips()` (~1941) solo pone un ícono pequeño sin texto. Con los estados del punto 4, mostrar una
 etiqueta legible por tema: "Nuevo", "Empezado", "Quiz 60%", "Dominado". Marcar también el tema con
 material recién subido por el profesor.

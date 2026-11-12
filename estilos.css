@@ -1989,3 +1989,11 @@ body.quiz-activo #vHome{padding-bottom:calc(28px + env(safe-area-inset-bottom))}
 .dlgBtns button{border:0;border-radius:14px;padding:13px;font-family:"Fredoka";font-weight:600;font-size:1rem;cursor:pointer}
 .dlgNo{background:var(--chispa-primary);color:#fff}
 .dlgSi{background:#fff;color:var(--chispa-coral);border:1.5px solid var(--chispa-line) !important}
+
+/* estado de cada tema en palabras (MEJORAS 10, 2026-11-12) */
+.temaState[class*="ts-"]{min-width:0;padding:4px 9px;border-radius:999px;font:800 .72rem/1 Nunito,system-ui,sans-serif;white-space:nowrap}
+.temaState.ts-dom{background:#EAF8F1;color:#13694A}
+.temaState.ts-prac{background:var(--chispa-primary-soft);color:var(--chispa-primary-deep)}
+.temaState.ts-bajo{background:#FFEDE8;color:#C2410C}
+.temaState.ts-emp{background:#F1F0F6;color:var(--chispa-muted)}
+.temaState.ts-nov{background:#FFF4D6;color:#8A5A00}

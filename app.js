@@ -461,10 +461,10 @@
   }
   function pintarHomeProgreso(){
     const box=$("#homeProgress"); if(!box) return;
-    let total=0; homeMaterias().forEach(m=>{ total+=temasPracticables(m).length; });
-    let dominados=0; PROGRESO.forEach(p=>{ if(p&&typeof p.quizMejor==="number"&&p.quizMejor>=.8) dominados++; });
-    if(total) dominados=Math.min(dominados,total);
-    const pct=total?Math.round(dominados/total*100):0;
+    // misma definición que Materias (progresoMateria), solo con los temas que hoy tiene el aula
+    let total=0, dominados=0, peso=0;
+    homeMaterias().forEach(m=>{ const p=progresoMateria(m); if(!p) return; total+=p.total; dominados+=p.dominado; peso+=p.pct*p.total/100; });
+    const pct=total?Math.round(peso/total*100):0;
     const racha=Number((SESION&&SESION.racha)||0);
     box.innerHTML=`<div class="h2ProgressHead"><h2 id="homeProgresoTit">Tu progreso</h2><span>${total} temas en tu aula</span></div><div class="h3AcademicProgress"><div><b>${dominados}</b><small>temas dominados</small></div><div><b>${racha}</b><small>${racha===1?"día de racha":"días de racha"}</small></div><div><b>${pct}%</b><small>del recorrido</small></div></div><span class="h3AcademicBar"><i style="width:${pct}%"></i></span>`;
   }
@@ -546,8 +546,7 @@
   function temaRecienteDe(m){
     let mejor=null, mx=-1;
     temasPracticables(m).forEach(t=>{
-      const p=PROGRESO.get(norm(m.nombre)+"|"+norm(t.seccion));
-      if(p && typeof p.quizMejor==="number" && p.quizMejor>=.8) return;
+      if(estadoTema(m.nombre, t.seccion).clave==="dominado") return;
       let ts=0; (t.modulos||[]).forEach(mod=>(mod.archivos||[]).forEach(f=>{ if((f.modificado||0)>ts) ts=f.modificado; }));
       if(ts>=mx){ mx=ts; mejor=t; }   // >= : a igual fecha gana el que va más abajo en el aula
     });
@@ -591,7 +590,7 @@
     // 2 · el quiz más flojo (menos de 80%)
     let peor=null;
     PROGRESO.forEach((p,k)=>{
-      if(!p || typeof p.quizMejor!=="number" || p.quizMejor>=.8) return;
+      if(!p || p.dominado || typeof p.quizMejor!=="number" || p.quizMejor>=.8) return;
       const i=k.indexOf("|"), m=materias.find(x=>norm(x.nombre)===k.slice(0,i)); if(!m) return;
       const t=temasPracticables(m).find(x=>norm(x.seccion)===k.slice(i+1)); if(!t) return;
       if(!peor || p.quizMejor<peor.v) peor={m,t,v:p.quizMejor};
@@ -605,7 +604,7 @@
       const t=temaRecienteDe(m); if(t) return arma(m,t.seccion,mat=>`${cuando} tienes ${mat}`);
     }
     // 4 · seguir donde iba (o arrancar por lo más reciente del aula)
-    for(const m of materias){ const p=progresoMateria(m); if(p && p.done>0 && p.done<p.total){ const t=temaRecienteDe(m); if(t) return arma(m,t.seccion,mat=>`Sigue con ${mat}`); } }
+    for(const m of materias){ const p=progresoMateria(m); if(p && p.tocados>0 && p.dominado<p.total){ const t=temaRecienteDe(m); if(t) return arma(m,t.seccion,mat=>`Sigue con ${mat}`); } }
     for(const m of materias){ const t=temaRecienteDe(m); if(t) return arma(m,t.seccion,mat=>`Empieza con ${mat}`); }
     return null;
   }
@@ -1937,7 +1936,7 @@
       const prog=(d&&Array.isArray(d.progreso))?d.progreso:[];
       prog.forEach(row=>{
         PROGRESO.set(norm(row.materia||"")+"|"+norm(row.tema||""),
-          { modos:new Set(row.modos||[]), quizMejor:(typeof row.quizMejor==="number"?row.quizMejor:null) });
+          { modos:new Set(row.modos||[]), quizMejor:(typeof row.quizMejor==="number"?row.quizMejor:null), dominado:!!row.dominado });
       });
     }catch(e){ PROGRESO=new Map(); }
     repintarProgreso();
@@ -1954,10 +1953,11 @@
     const mat=(meta&&meta.materia)||null, tema=(meta&&meta.tema)||null;
     if(!tema) return;
     const key=norm(mat||"")+"|"+norm(tema);
-    let p=PROGRESO.get(key); if(!p){ p={modos:new Set(),quizMejor:null}; PROGRESO.set(key,p); }
+    let p=PROGRESO.get(key); if(!p){ p={modos:new Set(),quizMejor:null,dominado:false}; PROGRESO.set(key,p); }
     p.modos.add(modo);
     if(modo==="quiz" && extra && Number.isInteger(extra.total) && extra.total>0 && Number.isInteger(extra.aciertos)){
       const v=extra.aciertos/extra.total; if(p.quizMejor==null || v>p.quizMejor) p.quizMejor=v;
+      if(v>=.8 && extra.total>=MIN_PREG_DOMINIO) p.dominado=true;
     }
     repintarProgreso();
     const body={accion:"guardar",usuario_id:SESION.id,materia:mat,tema,grado:(meta&&meta.grado)||gradoActivo(),modo};
@@ -2056,17 +2056,25 @@
   function notaCumbre(mat,tema){ const v=CUMBRE_NOTAS.get(norm(mat||"")+"|"+norm(tema||"")); return (typeof v==="number")?v:null; }
 
   // marca ✓ (hecho) / ⭐ (dominado ≥80%) en los chips del panel abierto
+  // ★ 2026-11-12 (MEJORAS 10): cada tema muestra su estado en palabras (antes, un ícono chico sin
+  //   texto). Sin etiqueta = no lo ha tocado (poner "Nuevo" en todos era ruido). "Material nuevo"
+  //   = el profesor subió algo a ese tema.
+  let NOVEDAD_TEMAS=new Set();   // temas con material nuevo de la materia abierta (se toma al abrirla)
   function marcarChips(){
     const mat=(materiaSel&&materiaSel.nombre)||"";
     $("#grupos").querySelectorAll(".temaRow").forEach(row=>{
       const tema=row.dataset.tema||"";
-      const pr=PROGRESO.get(norm(mat)+"|"+norm(tema));
       const st=row.querySelector(".temaState"); if(!st) return;
-      let svg="", lbl="";
-      if(pr && pr.quizMejor!=null && pr.quizMejor>=0.8){ svg=ICON_STAR; lbl="Tema dominado"; }
-      else if(pr){ svg=ICON_CHECK; lbl="Ya lo practicaste"; }
-      else if(temaTieneGuia(mat, tema)){ svg=ICON_GUIA; lbl="Tiene guía revisada"; }
-      st.innerHTML=svg;
+      const e=estadoTema(mat, tema), q=e.p && typeof e.p.quizMejor==="number" ? Math.round(e.p.quizMejor*100) : null;
+      let txt="", cls="", lbl="";
+      if(e.clave==="dominado"){ txt="Dominado"; cls="dom"; lbl="Tema dominado"; }
+      else if(e.clave==="practicado"){ txt= q!=null ? `Quiz ${q}%` : "Practicado"; cls= q!=null && q<60 ? "bajo" : "prac"; lbl= q!=null ? `Mejor quiz: ${q}%` : "Ya lo practicaste"; }
+      else if(e.clave==="empezado"){ txt="Empezado"; cls="emp"; lbl="Leíste el resumen"; }
+      else if(NOVEDAD_TEMAS.has(norm(tema))){ txt="Material nuevo"; cls="nov"; lbl="El profesor subió material nuevo"; }
+      if(txt && NOVEDAD_TEMAS.has(norm(tema)) && e.clave!=="nuevo") lbl+=" · hay material nuevo";
+      if(!txt && temaTieneGuia(mat, tema)){ st.className="temaState"; st.innerHTML=ICON_GUIA; st.title="Tiene guía revisada"; st.setAttribute("aria-label","Tiene guía revisada"); return; }
+      st.className="temaState"+(cls?" ts-"+cls:"");
+      st.innerHTML= txt ? escapeHtml(txt) : "";
       if(lbl){ st.title=lbl; st.setAttribute("aria-label",lbl); } else { st.removeAttribute("title"); st.removeAttribute("aria-label"); }
     });
   }
@@ -2083,21 +2091,41 @@
   // grilla de materias (sirve para las actuales y para las del próximo año)
   // progreso REAL de una materia actual: temas practicados / temas practicables.
   // Devuelve null si no aplica (próximo año / Cumbre no tienen temas practicables acá).
+  // ★ 2026-11-12 (MEJORAS 4): UNA sola definición de estado por tema, usada en TODA la app.
+  //   Antes había tres cuentas distintas: Materias contaba un tema con solo abrir el resumen,
+  //   "dominados" era cualquier quiz ≥80% (aunque fuera de 3 preguntas y de materias que ya no
+  //   están en el aula) y la ruta sugerida usaba otra mezcla.
+  //   nuevo → nada · empezado → solo leyó el resumen · practicado → práctica, quiz o simulacro ·
+  //   dominado → algún quiz ≥80% con 5+ preguntas.
+  const MIN_PREG_DOMINIO=5;
+  const PESO_ESTADO={ nuevo:0, empezado:.25, practicado:.6, dominado:1 };   // para la barra de avance
+  function estadoTema(materia, tema){
+    const p=PROGRESO.get(norm(materia)+"|"+norm(tema));
+    if(!p || !p.modos || !p.modos.size) return { clave:"nuevo", p:null };
+    if(p.dominado) return { clave:"dominado", p };
+    if(p.modos.has("retos") || p.modos.has("quiz") || p.modos.has("examen")) return { clave:"practicado", p };
+    return { clave:"empezado", p };
+  }
+  // Progreso de una materia, contado SOLO sobre los temas que hoy tiene el aula.
   function progresoMateria(m){
-    const total = temasPracticables(m).length;
+    const temas=temasPracticables(m), total=temas.length;
     if(!total) return null;
-    const pref = norm(m.nombre)+"|";
-    let done=0;
-    PROGRESO.forEach((p,k)=>{ if(k.indexOf(pref)===0 && p.modos && p.modos.size>0) done++; });
-    done = Math.min(done, total);
-    return { done, total, pct: Math.round(done/total*100) };
+    const c={ nuevo:0, empezado:0, practicado:0, dominado:0 }; let peso=0;
+    temas.forEach(t=>{ const e=estadoTema(m.nombre, t.seccion).clave; c[e]++; peso+=PESO_ESTADO[e]; });
+    const tocados=total-c.nuevo;
+    return { total, ...c, tocados, done:tocados, pct:Math.round(peso/total*100) };
+  }
+  // "2 de 8 dominados" si ya domina alguno; si no, "3 de 8 empezados"
+  function textoProgreso(p){
+    if(!p) return "";
+    return p.dominado ? `${p.dominado} de ${p.total} dominados` : `${p.tocados} de ${p.total} empezados`;
   }
   // Estado de una materia por su progreso real: "progreso" (empezada, sin terminar),
   // "completada" (todos los temas) o "disponible" (sin empezar / sin temas practicables).
   function estadoMateria(m){
     const p = progresoMateria(m);
     if(!p) return { tipo:"disponible", p:null };
-    if(p.done>=p.total) return { tipo:"completada", p };
+    if(p.dominado>=p.total) return { tipo:"completada", p };
     if(p.done>0) return { tipo:"progreso", p };
     return { tipo:"disponible", p };
   }
@@ -2127,7 +2155,7 @@
       const esquina = nuevo ? `<span class="m2New">Nuevo</span>`
         : `<svg class="m2CardChev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>`;
       let estado;
-      if(e.tipo==="progreso") estado = `<small>${e.p.done} de ${e.p.total} temas</small><span class="m2CardBar"><i style="width:${e.p.pct}%"></i></span>`;
+      if(e.tipo==="progreso") estado = `<small>${textoProgreso(e.p)}</small><span class="m2CardBar"><i style="width:${e.p.pct}%"></i></span>`;
       else if(e.tipo==="completada") estado = `<small class="m2Done">${M2_CHECK}Materia completada</small>`;
       else estado = "";   // "Lista para empezar" se repetía en 13 de 14 tarjetas: no decía nada
       b.innerHTML=`${esquina}<span class="m2CardIcon"><img src="assets/materias/${vis.img}.png" alt="" aria-hidden="true"></span>`
@@ -2150,7 +2178,7 @@
   // Elige la materia protagonista: la EMPEZADA más avanzada. Si ninguna está empezada, null
   // (se muestra "Elige una materia para empezar" — sin inventar recomendaciones, pedido del user).
   function materiaDestacadaElegir(lista){
-    const conProg = lista.map(m=>({m,p:progresoMateria(m)})).filter(x=>x.p&&x.p.done>0&&x.p.done<x.p.total).sort((a,b)=>b.p.pct-a.p.pct);
+    const conProg = lista.map(m=>({m,p:progresoMateria(m)})).filter(x=>x.p&&x.p.tocados>0&&x.p.dominado<x.p.total).sort((a,b)=>b.p.pct-a.p.pct);
     return conProg.length ? conProg[0].m : null;
   }
   function pintarDestacadaMateria(lista){
@@ -2160,7 +2188,7 @@
     const vis=homeMateriaVisual(m.nombre), p=progresoMateria(m), nombre=capMateria(limpiaNombreMateria(m.nombre));
     const b=document.createElement("button"); b.type="button"; b.className="h3ContinuePrimary";
     b.style.setProperty("--subject",vis.color); b.dataset.subjectKind=vis.key;
-    b.innerHTML=`${homeMarcaMateria(m.nombre,"h3ContinueIcon")}<span class="h3ContinueCopy"><small>Continúa donde lo dejaste</small><b>${escapeHtml(nombre)}</b><span>${p?`${p.done} de ${p.total} temas`:"Materia disponible"}</span>${p?`<i><em style="width:${p.pct}%"></em></i>`:""}</span><span class="h3ContinueAction">Continuar ${homeIcono("flecha")}</span>`;
+    b.innerHTML=`${homeMarcaMateria(m.nombre,"h3ContinueIcon")}<span class="h3ContinueCopy"><small>Continúa donde lo dejaste</small><b>${escapeHtml(nombre)}</b><span>${p?(textoProgreso(p)+(p.dominado&&p.tocados>p.dominado?` · ${p.tocados-p.dominado} en curso`:"")):"Materia disponible"}</span>${p?`<i><em style="width:${p.pct}%"></em></i>`:""}</span><span class="h3ContinueAction">Continuar ${homeIcono("flecha")}</span>`;
     b.onclick=()=>irAPractica(m.nombre); cont.appendChild(b);
   }
   function pintarSegMaterias(lista){
@@ -2503,6 +2531,7 @@
     materiaSel=m; temaSel=null; lapsoSel=null; clearOtro(); $("#results").innerHTML="";
     fotos=[]; pintarFotos();
     const esProx = origen==="proximo";
+    NOVEDAD_TEMAS=new Set(!esProx && m.id!=null && NOVEDADES[m.id] ? NOVEDADES[m.id].map(it=>norm(it.tema)) : []);   // antes de marcarlas vistas
     if(!esProx) marcarAulaVista(m);   // abrirla marca las novedades 🆕 como vistas
     // banner de refuerzo: solo si esta materia es la de la nota floja
     if(REFUERZO && norm(m.nombre)!==norm(REFUERZO.materia||"")) limpiarRefuerzo();
@@ -2619,7 +2648,9 @@
     if(!p || !p.modos.size)        return { modo:"resumen", motivo:"Empieza aquí" };
     if(!p.modos.has("retos"))      return { modo:"retos",   motivo:"Te toca practicar" };
     if(!p.modos.has("quiz"))       return { modo:"quiz",    motivo:"Ponte a prueba" };
-    if((p.quizMejor ?? 0) < 0.8)   return { modo:"quiz",    motivo:"Repite y sube tu nota" };
+    if(!p.dominado)                 return (p.quizMejor ?? 0) >= 0.8
+      ? { modo:"quiz", motivo:`Hazlo con ${MIN_PREG_DOMINIO} o más preguntas para dominarlo`, minCant:MIN_PREG_DOMINIO }
+      : { modo:"quiz", motivo:"Repite y sube tu nota", minCant:MIN_PREG_DOMINIO };
     if(!p.modos.has("examen"))     return { modo:"examen",  motivo:"¡Listo para el examen!" };
     return { modo:"examen", motivo:"Tema dominado ⭐" };
   }
@@ -2946,6 +2977,8 @@
     if(MODO_LAB) return;
     const s=siguienteModo(meta, modoActual);
     const mo=s && MODOS.find(m=>m.id===s.modo);
+    // para dominar hace falta un quiz de 5+ preguntas: se preselecciona esa cantidad
+    if(s && s.minCant && cantidad<s.minCant){ cantidad=s.minCant; const cc=$("#count"); if(cc) cc.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(Number(b.dataset.n)===cantidad))); }
     const c=document.createElement("div"); c.className="card sigPaso";
     const flecha=`<svg class="wizArrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
     if(mo){
