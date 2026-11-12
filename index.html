@@ -22,7 +22,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
 <!-- El `?v=` va apareado con el V de sw.js — subir los DOS juntos. Sin él, la 1ª apertura tras un
      deploy mezcla index nuevo + app.js viejo (cache-first) y el arranque muere. Ver sw.js. -->
-<link rel="stylesheet" href="estilos.css?v=123">
+<link rel="stylesheet" href="estilos.css?v=124">
 </head>
 <body>
 <div class="wrap">
@@ -169,6 +169,11 @@
 
   <!-- ╔═══ HOME ═══╗ -->
   <section id="vHome" class="hidden">
+    <!-- aula desconectada (token de Moodle vencido): la app sigue funcionando; solo falta traer material nuevo -->
+    <div class="avisoAula hidden" id="avisoAula" role="status">
+      <span class="avisoAulaTx"><b>Tu aula se desconectó.</b> Puedes seguir estudiando; reconéctala para ver el material nuevo.</span>
+      <button type="button" class="avisoAulaBtn" id="btnReconectarAula">Reconectar</button>
+    </div>
     <div class="topbar">
       <div class="who">
         <span class="avatar" id="avatar">?</span>
@@ -468,7 +473,7 @@
 
         <div class="wizSec" id="pasoCantidad">
           <h2 class="wizSecTit">Personaliza tu actividad</h2>
-          <p class="wizAux">¿Cuántas preguntas quieres?</p>
+          <p class="wizAux" id="countLbl">¿Cuántas preguntas quieres?</p>
           <div class="count" id="count" role="group" aria-label="Cantidad">
             <button data-n="3">3</button>
             <button data-n="5" aria-pressed="true">5</button>
@@ -738,6 +743,6 @@
 
 </div>
 
-<script src="app.js?v=123"></script>
+<script src="app.js?v=124"></script>
 </body>
 </html>

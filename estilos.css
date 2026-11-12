@@ -1952,3 +1952,11 @@
   .famVinNom{display:flex;flex-direction:column;min-width:0}
   .famVinNom small{font-size:.74rem;font-weight:700;color:var(--muted);margin-top:1px}
   .famErr{color:var(--bad);font-weight:700}
+/* aula desconectada (2026-11-12): aviso discreto arriba, la app sigue funcionando */
+.avisoAula{display:flex;align-items:center;gap:12px;margin:12px 16px 0;padding:12px 14px;border-radius:16px;
+  background:#FFF6E6;border:1px solid #F7DFAE;color:var(--chispa-ink);font:600 .86rem/1.35 Nunito,system-ui,sans-serif}
+.avisoAula.hidden{display:none}
+.avisoAulaTx{flex:1;min-width:0}
+.avisoAulaTx b{font-weight:800}
+.avisoAulaBtn{flex:none;border:0;border-radius:12px;padding:9px 12px;background:var(--chispa-primary);color:#fff;
+  font:800 .82rem/1 Nunito,system-ui,sans-serif;cursor:pointer}

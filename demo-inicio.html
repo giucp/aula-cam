@@ -76,6 +76,11 @@
 
   <!-- ╔═══ HOME ═══╗ -->
   <section id="vHome" class="hidden">
+    <!-- aula desconectada (token de Moodle vencido): la app sigue funcionando; solo falta traer material nuevo -->
+    <div class="avisoAula hidden" id="avisoAula" role="status">
+      <span class="avisoAulaTx"><b>Tu aula se desconectó.</b> Puedes seguir estudiando; reconéctala para ver el material nuevo.</span>
+      <button type="button" class="avisoAulaBtn" id="btnReconectarAula">Reconectar</button>
+    </div>
     <div class="topbar">
       <div class="who">
         <span class="avatar" id="avatar">?</span>
@@ -375,7 +380,7 @@
 
         <div class="wizSec" id="pasoCantidad">
           <h2 class="wizSecTit">Personaliza tu actividad</h2>
-          <p class="wizAux">¿Cuántas preguntas quieres?</p>
+          <p class="wizAux" id="countLbl">¿Cuántas preguntas quieres?</p>
           <div class="count" id="count" role="group" aria-label="Cantidad">
             <button data-n="3">3</button>
             <button data-n="5" aria-pressed="true">5</button>
@@ -734,7 +739,14 @@
   window.fetch=function(u,o){
     u=String(u);
     var b={}; try{ b=JSON.parse((o&&o.body)||"{}"); }catch(e){}
-    if(u.indexOf("/api/moodle")>-1) return json(FL);
+    // ?aula=off simula el token del aula vencido: el login entra, pero el refresco responde 401 y la
+    // primera llamada a la agenda pide renovar la firma (asi se dispara el refresco, como en produccion).
+    var AULA_OFF=/[?&]aula=off/.test(location.search);
+    if(u.indexOf("/api/moodle")>-1){
+      if(AULA_OFF && b.token) return Promise.resolve(new Response(JSON.stringify({error:"Tu sesión venció. Entra de nuevo.",code:401}),{status:401,headers:{"Content-Type":"application/json"}}));
+      return json(FL);
+    }
+    if(AULA_OFF && u.indexOf("/api/agenda")>-1 && !window.__agendaPidioFirma){ window.__agendaPidioFirma=true; return Promise.resolve(new Response(JSON.stringify({code:"sesion"}),{status:401,headers:{"Content-Type":"application/json"}})); }
     if(u.indexOf("/api/agenda")>-1) return json(FA);
     if(u.indexOf("/api/actividad")>-1) return json(b.accion==="resumen" ? {progreso:PROG} : {ok:true});
     if(u.indexOf("/api/errores")>-1) return json({errores:[]});

@@ -145,16 +145,32 @@ export default async function handler(req, res) {
       const n = (v, max) => (Number.isInteger(v) && v >= 0 ? Math.min(v, max) : null);
       const segundos = n(b.segundos, 7200);
       if (!segundos || !MODOS_VALIDOS.has(b.modo)) return res.status(200).json({ ok: true });
-      await fetch(`${cfg.url}/rest/v1/estudio`, {
+      const items = n(b.items, 50);
+      const fila = {
+        usuario_id: uid, materia: rec(b.materia, 120) || null, tema: rec(b.tema, 200) || null,
+        modo: b.modo, fuente: ["guia", "ia", "cumbre"].includes(b.fuente) ? b.fuente : null, segundos,
+        items, revelados: n(b.revelados, 50), pistas: n(b.pistas, 50),
+        // nunca más respondidas que preguntas (antes un reporte podía dejar "9 de 8")
+        respondidas: items != null && n(b.respondidas, 50) != null ? Math.min(n(b.respondidas, 50), items) : n(b.respondidas, 50),
+        aciertos: n(b.aciertos, 50), total: n(b.total, 50),
+        // creado = último envío (el cierre), como antes: Familia une la sesión con su actividad por hora
+        creado: new Date().toISOString(),
+      };
+      // ★ 2026-11-12: una actividad = UNA fila. El teléfono manda lo acumulado varias veces (al ir a
+      //   segundo plano y al terminar) con el mismo `sid`, y acá se actualiza esa fila (upsert).
+      //   Si la columna sid todavía no existe (falta correr el SQL), se guarda solo el envío final.
+      const sid = typeof b.sid === "string" && /^[A-Za-z0-9-]{8,40}$/.test(b.sid) ? b.sid : null;
+      const insertar = (cuerpo, extra) => fetch(`${cfg.url}/rest/v1/estudio${extra || ""}`, {
         method: "POST",
-        headers: { ...hdr(cfg), "Content-Type": "application/json" },
-        body: JSON.stringify({
-          usuario_id: uid, materia: rec(b.materia, 120) || null, tema: rec(b.tema, 200) || null,
-          modo: b.modo, fuente: ["guia", "ia", "cumbre"].includes(b.fuente) ? b.fuente : null, segundos,
-          items: n(b.items, 50), revelados: n(b.revelados, 50), pistas: n(b.pistas, 50),
-          respondidas: n(b.respondidas, 50), aciertos: n(b.aciertos, 50), total: n(b.total, 50),
-        }),
-      }).catch(() => {});
+        headers: { ...hdr(cfg), "Content-Type": "application/json", ...(extra ? { Prefer: "resolution=merge-duplicates,return=minimal" } : {}) },
+        body: JSON.stringify(cuerpo),
+      });
+      let guardado = false;
+      if (sid) {
+        const r = await insertar({ ...fila, sid }, "?on_conflict=sid").catch(() => null);
+        guardado = !!(r && r.ok);
+      }
+      if (!guardado && (b.fin !== false || !sid)) await insertar(fila).catch(() => {});
       return res.status(200).json({ ok: true });
     }
     if (b.accion === "abrir") {

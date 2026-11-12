@@ -21,7 +21,7 @@ const KEY_NINOS = "familia_ninos";        // [{token, nombre, grado}]
 const KEY_ACTIVO = "familia_activo";      // índice del hijo que se está viendo
 const KEY_TOKEN_VIEJO = "familia_ptoken"; // migración desde la versión de 1 solo hijo
 const KEY_PERIODO = "familia_periodo";    // "7" | "30" | "anio"
-const FAMILIA_V = "v16";                   // versión visible (footer y errores) para saber qué código corre
+const FAMILIA_V = "v17";                   // versión visible (footer y errores) para saber qué código corre
 const app = document.getElementById("app");
 const PANEL_CACHE = {};                   // token -> data del panel (en memoria, esta sesión)
 let PANEL_ACTUAL = null;                  // { d, ninos, i, staleTs, detalle } para re-pintar al cambiar filtros
@@ -34,6 +34,9 @@ const DIAS_L = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes",
 const DIAS_C = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
 const MESES_C = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
 const TIPO_T = { tarea: "Tarea", trabajo: "Trabajo", examen: "Examen" };
+// examen = tipo "examen" O una tarea que lo dice ("Evaluación de polígonos" anotada como tarea). Misma regla que app.js.
+const RE_EXAMEN = /(ex[aá]men(es)?|evaluaci[oó]n(es)?|prueba|parcial|quiz)/i;
+const esExamen = (t) => !!t && (t.tipo === "examen" || RE_EXAMEN.test(String(t.descripcion || "")));
 const MODO = {
   resumen: { l: "Resumen", v: "Leyó el resumen" },
   retos: { l: "Práctica", v: "Practicó" },
@@ -357,7 +360,21 @@ function construirEventos(act, est) {
     if (mejor >= 0) usados.add(mejor);
     return { ...a, est: mejor >= 0 ? est[mejor] : null };
   });
-  est.forEach((e, idx) => { if (!usados.has(idx)) eventos.push({ materia: e.materia, tema: e.tema, modo: e.modo, creado: e.creado, aciertos: e.aciertos, total: e.total, est: e, soloSesion: true }); });
+  // Sesiones sueltas (sin actividad registrada). Se ignoran las que no dicen nada: menos de 20 s sin
+  // ninguna respuesta, y los pedazos de un quiz que SÍ terminó poco después (hasta el 12-nov-2026 la
+  // app partía un quiz en varias filas al apagarse la pantalla; su tiempo igual se suma al total).
+  const terminados = eventos.filter((x) => x.modo === "quiz" && x.total > 0);
+  est.forEach((e, idx) => {
+    if (usados.has(idx)) return;
+    const hizoAlgo = (e.respondidas || 0) + (e.revelados || 0) + (e.pistas || 0) > 0;
+    if ((e.segundos || 0) < 20 && !hizoAlgo) return;
+    if (e.modo === "quiz" && !(e.total > 0)) {
+      const t = Date.parse(e.creado);
+      const pedazo = terminados.some((q) => clave(q) === clave(e) && Date.parse(q.creado) >= t && Date.parse(q.creado) - t < 45 * 60000);
+      if (pedazo) return;
+    }
+    eventos.push({ materia: e.materia, tema: e.tema, modo: e.modo, creado: e.creado, aciertos: e.aciertos, total: e.total, est: e, soloSesion: true });
+  });
   eventos.sort((a, b) => Date.parse(b.creado) - Date.parse(a.creado));
   return eventos;
 }
@@ -491,14 +508,14 @@ function seccionAtencion(A, d) {
   const tareas = d.tareas || [];
   const venc = tareas.filter((x) => !x.hecha && diasHasta(x.fecha) != null && diasHasta(x.fecha) < 0).sort((a, b) => String(a.fecha).localeCompare(String(b.fecha)));
   venc.forEach((t) => items.push({ cls: "bad", ic: "alerta", tit: `Tarea vencida: ${t.descripcion || TIPO_T[t.tipo] || "Tarea"}`, sub: `${limpiaMateria(t.materia)} · venció ${fechaCorta(t.fecha)} (hace ${-diasHasta(t.fecha)} día${-diasHasta(t.fecha) > 1 ? "s" : ""}) · sin marcar como hecha` }));
-  tareas.filter((x) => !x.hecha && x.tipo === "examen" && diasHasta(x.fecha) != null && diasHasta(x.fecha) >= 0 && diasHasta(x.fecha) <= 7)
+  tareas.filter((x) => !x.hecha && esExamen(x) && diasHasta(x.fecha) != null && diasHasta(x.fecha) >= 0 && diasHasta(x.fecha) <= 7)
     .sort((a, b) => String(a.fecha).localeCompare(String(b.fecha)))
     .forEach((t) => {
       const n = diasHasta(t.fecha), mat = limpiaMateria(t.materia);
       const prep = (d.actividad || []).filter((a) => limpiaMateria(a.materia) === mat && diasEntre(claveDia(a.creado), hoyYMD()) <= 7).length;
       items.push({ cls: "warn", ic: "cal", tit: `Examen de ${mat} ${n === 0 ? "hoy" : n === 1 ? "mañana" : `en ${n} días`} (${fechaCorta(t.fecha)})`, sub: `${t.descripcion ? t.descripcion + " · " : ""}${prep ? `${prep} actividad${prep > 1 ? "es" : ""} de ${mat} esta semana` : `no ha practicado ${mat} esta semana`}` });
     });
-  tareas.filter((x) => !x.hecha && x.tipo !== "examen" && (diasHasta(x.fecha) === 0 || diasHasta(x.fecha) === 1))
+  tareas.filter((x) => !x.hecha && !esExamen(x) && (diasHasta(x.fecha) === 0 || diasHasta(x.fecha) === 1))
     .forEach((t) => items.push({ cls: "warn", ic: "lista", tit: `Para ${diasHasta(t.fecha) === 0 ? "hoy" : "mañana"}: ${t.descripcion || TIPO_T[t.tipo] || "Tarea"}`, sub: limpiaMateria(t.materia) }));
   A.quizzes.filter((q) => pct(q.aciertos, q.total) < 60).slice(0, 4)
     .forEach((q) => items.push({ cls: "warn", ic: "x", tit: `Quiz bajo: ${pct(q.aciertos, q.total)}% en ${limpiaMateria(q.materia)}`, sub: `${limpiaTema(q.tema)} · ${q.aciertos}/${q.total} · ${tituloDia(claveDia(q.creado))}` }));
@@ -667,7 +684,7 @@ function seccionHistorial(A) {
 function filaTarea(t) {
   const n = diasHasta(t.fecha);
   let cuando = n == null ? "sin fecha" : n < 0 ? `venció ${fechaCorta(t.fecha)}` : n === 0 ? "hoy" : n === 1 ? "mañana" : fechaCorta(t.fecha);
-  const cls = t.hecha ? "ok" : n != null && n < 0 ? "bad" : n != null && n <= 1 ? "warn" : t.tipo === "examen" ? "ind" : "";
+  const cls = t.hecha ? "ok" : n != null && n < 0 ? "bad" : n != null && n <= 1 ? "warn" : esExamen(t) ? "ind" : "";
   if (t.hecha) cuando = "hecha";
   return `<div class="tarea${t.hecha ? " hecha" : ""}"><div class="tTx"><b class="clamp">${esc(t.descripcion || TIPO_T[t.tipo] || "Tarea")}</b><span>${esc(TIPO_T[t.tipo] || "Tarea")} · ${esc(limpiaMateria(t.materia))}${t.fecha && !t.hecha ? "" : t.fecha ? " · " + esc(fechaCorta(t.fecha)) : ""}</span></div><span class="pill ${cls}">${esc(cuando)}</span></div>`;
 }

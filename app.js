@@ -131,7 +131,8 @@
       SESION = {
         id: (d.usuario && d.usuario.id!=null) ? d.usuario.id : ("u_"+user.toLowerCase()),
         nombre:(d.usuario&&d.usuario.nombre)||user, token:d.token, materias:d.materias||[],
-        racha:(d.usuario&&d.usuario.racha)||0, fetched: Date.now(), sesion:d.sesion||null
+        racha:(d.usuario&&d.usuario.racha)||0, fetched: Date.now(), sesion:d.sesion||null,
+        usuario:user
       };
       store.set("sesion", SESION);
       $("#user").value=""; $("#pass").value="";
@@ -162,6 +163,7 @@
     // api/familia lo valida (useridDeNino).
     const nativa=!!(SESION && SESION.fuente==="manual");
     const wfam=$("#familiaWrap"); if(wfam) wfam.classList.remove("hidden");
+    pintarAvisoAula();   // aula desconectada → aviso de reconectar
     pintarNavCumbre();   // la pestaña Cumbre solo existe si hay track para el próximo grado
     origen = "actual";
     const primer = (SESION.nombre||"").split(" ")[0] || "";
@@ -551,6 +553,30 @@
     });
     return mejor;
   }
+  // ★ 2026-11-12: examen = tipo "examen" O una tarea cuyo texto lo dice ("Evaluación de polígonos"
+  //   anotada como tarea no activaba nada). Misma regla en familia.js.
+  const RE_EXAMEN=/(ex[aá]men(es)?|evaluaci[oó]n(es)?|prueba|parcial|quiz)/i;
+  function esExamen(t){ return !!t && (t.tipo==="examen" || RE_EXAMEN.test(String(t.descripcion||""))); }
+  // El tema del aula que mejor coincide con un texto (descripción de un examen o de una nota):
+  // palabras en común con el título del tema, sin las genéricas. Empate → el más reciente del aula.
+  const PALABRAS_VACIAS=new Set(["tema","temas","examen","examenes","evaluacion","evaluaciones","prueba","parcial","quiz","de","del","la","las","el","los","y","en","con","para","por","una","uno","sobre","lapso","guia","clase","hoja","trabajo","ejercicios","pagina"]);
+  function palabrasClave(txt){
+    return [...new Set(norm(txt).normalize("NFD").replace(/[̀-ͯ]/g,"").split(/[^a-z0-9ñ]+/)
+      .filter(w=>w.length>=4 && !PALABRAS_VACIAS.has(w)).map(w=>w.replace(/(es|s)$/,"")))];
+  }
+  function temaParaTexto(m, texto){
+    const pc=palabrasClave(texto); if(!m || !pc.length) return null;
+    let mejor=[], max=0;
+    temasPracticables(m).forEach(t=>{
+      const pt=palabrasClave(t.seccion);
+      const n=pc.filter(w=>pt.some(x=>x===w || (w.length>=5 && (x.startsWith(w)||w.startsWith(x))))).length;
+      if(n>max){ max=n; mejor=[t]; } else if(n && n===max) mejor.push(t);
+    });
+    if(!mejor.length) return null;
+    if(mejor.length===1) return mejor[0];
+    const rec=temaRecienteDe({ ...m, temas:(m.temas||[]).filter(t=>mejor.some(x=>x.seccion===t.seccion)) });
+    return rec || mejor[0];
+  }
   function homeMisionTema(){
     const materias=homeMaterias(); if(!materias.length) return null;
     const arma=(m,seccion,titulo,modo)=>{
@@ -586,7 +612,7 @@
   function pintarExamenBanner(){
     const box=$("#examenBanner"); if(!box) return; box.innerHTML="";
     const horaLocal=new Date().getHours();
-    const examenes=TAREAS.filter(t=>t.tipo==="examen" && !t.hecha && t.fecha)
+    const examenes=TAREAS.filter(t=>esExamen(t) && !t.hecha && t.fecha)
       .map(t=>({t,n:diasHasta(t.fecha)}))
       .filter(x=>x.n!==null && x.n>=0 && x.n<=3 && (x.n>0 || horaLocal<CORTE_MANANA))
       .sort((a,b)=>a.n-b.n);
@@ -608,8 +634,19 @@
       const primera=dia[0].t, materia=capMateria(limpiaNombreMateria(primera.materia||""))||"tu materia";
       titulo=dia.length===1?`Prepárate para ${materia}`:`Prepárate para ${dia.length} exámenes`;
       texto=dia.length===1?`El examen es ${cuando}.`:`Los exámenes son ${cuando}.`;
-      accionTexto="Practicar";
-      accion=()=>irAPractica(primera.materia,"examen");
+      // entra DIRECTO al tema del examen (antes dejaba la lista de temas sin nada elegido).
+      // Plan corto: con 2+ días, lo que le toque del camino (resumen → práctica); el día antes o el
+      // mismo día, a comprobar (quiz si no lo hizo o salió flojo, si no simulacro).
+      const mEx=materiaDeSesion(primera.materia);
+      const tEx=mEx && (temaParaTexto(mEx, primera.descripcion) || temaRecienteDe(mEx));
+      let modoEx="examen";
+      if(tEx){
+        const sug=pasoSugerido(mEx.nombre, tEx.seccion).modo;
+        modoEx = min>=2 ? sug : ((sug==="resumen"||sug==="retos") ? "quiz" : sug);
+        if(dia.length===1) texto=`El examen es ${cuando}. ${min>=2?"Hoy repasa":"Ponte a prueba en"}: ${capFrase(tEx.seccion)}.`;
+      }
+      accionTexto=ACCION_MODO[modoEx]||"Practicar";
+      accion=()=>irAPractica(primera.materia, modoEx, tEx&&tEx.seccion);
       materiaArte=primera.materia;
     }else if(m){
       const tema=capFrase(m.tema), materia=capMateria(limpiaNombreMateria(m.materia.nombre));
@@ -671,8 +708,9 @@
     }
   }
   // ir a practicar una materia (desde el horario o el aviso de examen)
+  function materiaDeSesion(nombre){ return ((SESION&&SESION.materias)||[]).find(x=>norm(x.nombre)===norm(nombre||""))||null; }
   function irAPractica(nombreMateria, modo, tema){
-    const m=((SESION&&SESION.materias)||[]).find(x=>norm(x.nombre)===norm(nombreMateria||""));
+    const m=materiaDeSesion(nombreMateria);
     verTab("materias");
     if(!m) return;
     abrirMateria(m);
@@ -783,16 +821,23 @@
   }
   function abrirFormTarea(){
     $("#formTarea").classList.remove("hidden");
-    $("#tDesc").value=""; $("#tFecha").value=hoyISO(); tipoSel="tarea"; tMatSel=""; $("#tMsg").innerHTML="";
+    $("#tDesc").value=""; $("#tFecha").value=hoyISO(); tipoSel="tarea"; tipoTocado=false; tMatSel=""; $("#tMsg").innerHTML="";
     montarSelectorMateria($("#tMaterias"), ()=>tMatSel, v=>{ tMatSel=v; });
     document.querySelectorAll("#tTipos .chip").forEach(c=>c.setAttribute("aria-pressed", String(c.dataset.tipo==="tarea")));
     $("#tDesc").focus();
   }
   // dos entradas al mismo formulario: el + flotante del encabezado y el "Anotar" de la tarjeta
+  // al escribir "examen", "evaluación", "prueba"… el tipo pasa solo a Examen (si no lo cambió a mano)
+  let tipoTocado=false;
+  $("#tDesc").addEventListener("input",()=>{
+    if(tipoTocado) return;
+    const t=RE_EXAMEN.test($("#tDesc").value) ? "examen" : "tarea";
+    if(t!==tipoSel){ tipoSel=t; document.querySelectorAll("#tTipos .chip").forEach(c=>c.setAttribute("aria-pressed", String(c.dataset.tipo===t))); }
+  });
   $("#btnNuevaTarea2").onclick=abrirFormTarea;
   $("#btnCancelarTarea").onclick=()=>$("#formTarea").classList.add("hidden");
   document.querySelectorAll("#tTipos .chip").forEach(b=>{
-    b.onclick=()=>{ tipoSel=b.dataset.tipo;
+    b.onclick=()=>{ tipoSel=b.dataset.tipo; tipoTocado=true;
       document.querySelectorAll("#tTipos .chip").forEach(c=>c.setAttribute("aria-pressed", String(c===b))); };
   });
   $("#btnGuardarTarea").onclick=async()=>{
@@ -1402,7 +1447,7 @@
   };
   $("#btnSalirPend").onclick = ()=>{ tokenPendiente=null; verLanding(); };
   $("#btnEntrarLanding").onclick = ()=>{ $("#loginMsg").innerHTML=""; verLogin(); };
-  $("#btnVolverLanding").onclick = ()=>{ $("#user").value=""; $("#pass").value=""; verLanding(); };
+  $("#btnVolverLanding").onclick = ()=>{ $("#user").value=""; $("#pass").value=""; if(SESION) entrarHome(); else verLanding(); };
 
   // ═══════════ CUENTA PROPIA (nativa, beta con ?beta=1) — via api/cuenta ═══════════
   function ocultarBeta(){ ["#vBeta","#vRegistro","#vRescate","#vLoginNat","#vRecuperar","#vSolicitud"].forEach(id=>{const e=$(id); if(e) e.classList.add("hidden");}); }
@@ -1727,8 +1772,12 @@
     try{
       const r = await fetch(API_MOODLE,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ token: SESION.token })});
       const d = await r.json().catch(()=>null);
-      if(d && d.code===401){ sesionVencida(); return; }
+      // ★ 2026-11-12: el colegio invalida el token de Moodle cada pocos días. Antes eso las sacaba
+      //   al login y perdían la sesión; ahora la app sigue con lo guardado (agenda, progreso, errores y
+      //   estudio usan la firma de Chispa, que dura un año) y solo avisa que falta reconectar el aula.
+      if(d && d.code===401){ marcarAulaDesconectada(true); return; }
       if(d && d.pendiente){ sesionVencida("Tu acceso fue pausado. Habla con el administrador."); return; }
+      if(d && Array.isArray(d.materias)) marcarAulaDesconectada(false);
       if(d && d.sesion){ SESION.sesion = d.sesion; store.set("sesion", SESION); }   // firma renovada
       if(d && Array.isArray(d.materias) && d.materias.length){
         SESION.materias = d.materias;
@@ -1744,12 +1793,29 @@
     }catch(e){ /* sin conexión: seguimos con lo cacheado */ }
   }
 
+  function marcarAulaDesconectada(off){
+    if(!SESION) return;
+    if(!!SESION.aulaOff !== !!off){ SESION.aulaOff = !!off; store.set("sesion", SESION); }
+    pintarAvisoAula();
+  }
+  function pintarAvisoAula(){
+    const a=$("#avisoAula"); if(a) a.classList.toggle("hidden", !(SESION && SESION.aulaOff && SESION.fuente!=="manual"));
+  }
+  // Reconectar: el login del aula, con "Volver" que regresa a la app (no a la portada)
+  function reconectarAula(){
+    verLogin();
+    if(SESION && SESION.usuario) $("#user").value = SESION.usuario;
+    $("#loginMsg").innerHTML = avisoBox("Escribe tu clave del aula para traer el material nuevo. No pierdes nada de lo que has hecho.");
+  }
+  { const br=$("#btnReconectarAula"); if(br) br.onclick = reconectarAula; }
+
   // Refresco al volver al frente. En iOS la PWA standalone no tiene "deslizar para
   // refrescar" (es gesto del navegador) y al reabrir REANUDA la app congelada en vez
   // de recargarla → sin esto los datos quedan viejos hasta cerrar sesión. visibilitychange
   // (y pageshow, por el bfcache) sí disparan al reanudar; con throttle de 60s para no spamear.
   function refrescarAlVolver(){
     if(!SESION || !SESION.token || MODO_LAB) return;
+    if(SESION.aulaOff) return;   // token muerto: no insistir; se reconecta con el botón
     if(Date.now() - (SESION.fetched || 0) < 60000) return;
     refrescarMaterias();
   }
@@ -1866,46 +1932,60 @@
   // suma), cuántas respuestas reveló, cuántas pistas abrió y cuántas preguntas del quiz contestó.
   // Se envía al salir de la actividad (otra actividad, Atrás, otra pestaña, app en segundo plano).
   // Tabla `estudio` (supabase-panel-padres.sql). Nunca bloquea ni rompe la app.
+  // ★ 2026-11-12: una actividad = UNA fila en `estudio`, aunque la pantalla se apague o cambie de app.
+  //   Antes, al pasar a segundo plano se cerraba la sesión y al volver se abría otra con los contadores
+  //   en cero: un quiz quedaba partido en 5-12 filas y Familia decía "empezó un quiz y no lo terminó".
+  //   Ahora cada actividad lleva un `sid`; al ir a segundo plano se ENVÍA lo acumulado (sin cerrar) y al
+  //   volver se sigue con los mismos contadores. El servidor actualiza la fila de ese sid.
   let ESTUDIO=null, ESTUDIO_TICK=null, ULTIMO_TOQUE=Date.now();
   ["pointerdown","keydown","scroll","touchstart"].forEach(ev=>document.addEventListener(ev,()=>{ ULTIMO_TOQUE=Date.now(); },{passive:true,capture:true}));
-  function estudioIniciar(meta, modo, d){
-    estudioCerrar();
-    if(!SESION || SESION.id==null || MODO_LAB || !meta || !meta.tema) return;
-    const items=(d && (d.preguntas||d.ejercicios||[]).length) || null;
-    ESTUDIO={ materia:meta.materia||null, tema:meta.tema, modo, items,
-      fuente: origen==="cumbre" ? "cumbre" : (d && d.curado ? "guia" : "ia"),
-      ms:0, revelados:0, pistas:0, respondidas:0, aciertos:null, total:null };
+  function nuevoSid(){
+    try{ if(window.crypto && crypto.randomUUID) return crypto.randomUUID(); }catch(_){}
+    return Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,12);
+  }
+  function estudioReloj(){
+    if(ESTUDIO_TICK) clearInterval(ESTUDIO_TICK);
     ULTIMO_TOQUE=Date.now();
     ESTUDIO_TICK=setInterval(()=>{
       if(ESTUDIO && !document.hidden && Date.now()-ULTIMO_TOQUE < 120000) ESTUDIO.ms+=5000;
     },5000);
   }
-  function estudioCuenta(campo){ if(ESTUDIO && campo in ESTUDIO) ESTUDIO[campo]++; }
-  function estudioCerrar(){
-    if(ESTUDIO_TICK){ clearInterval(ESTUDIO_TICK); ESTUDIO_TICK=null; }
-    const e=ESTUDIO; ESTUDIO=null;
-    if(!e || !SESION || SESION.id==null) return e;
+  function estudioPararReloj(){ if(ESTUDIO_TICK){ clearInterval(ESTUDIO_TICK); ESTUDIO_TICK=null; } }
+  function estudioIniciar(meta, modo, d){
+    estudioCerrar();
+    if(!SESION || SESION.id==null || MODO_LAB || !meta || !meta.tema) return;
+    const items=(d && (d.preguntas||d.ejercicios||[]).length) || null;
+    ESTUDIO={ sid:nuevoSid(), materia:meta.materia||null, tema:meta.tema, modo, items,
+      fuente: origen==="cumbre" ? "cumbre" : (d && d.curado ? "guia" : "ia"),
+      ms:0, revelados:0, pistas:0, respondidas:0, aciertos:null, total:null };
+    estudioReloj();
+  }
+  function estudioCuenta(campo, delta){ if(ESTUDIO && campo in ESTUDIO) ESTUDIO[campo]=Math.max(0, ESTUDIO[campo]+(delta||1)); }
+  // manda el estado ACUMULADO de la actividad (idempotente: el servidor pisa la fila de ese sid).
+  // fin=true → la actividad terminó (sirve al servidor si todavía no existe la columna sid).
+  function estudioEnviar(e, fin){
+    if(!e || !SESION || SESION.id==null) return;
     const segundos=Math.min(7200, Math.round(e.ms/1000));
-    if(segundos<5) return e;   // abrir y salir al instante no es estudiar
-    const body={ accion:"estudio", usuario_id:SESION.id, materia:e.materia, tema:e.tema, modo:e.modo, fuente:e.fuente,
+    if(segundos<5) return;   // abrir y salir al instante no es estudiar
+    const body={ accion:"estudio", usuario_id:SESION.id, sid:e.sid, fin:!!fin, materia:e.materia, tema:e.tema, modo:e.modo, fuente:e.fuente,
       segundos, items:e.items, revelados:e.revelados, pistas:e.pistas, respondidas:e.respondidas, aciertos:e.aciertos, total:e.total };
     // keepalive: el envío sobrevive aunque la app se cierre o pase a segundo plano
     try{ fetch(API_ACTIVIDAD,{method:"POST",keepalive:true,headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}).catch(()=>{}); }catch(_){}
+  }
+  function estudioCerrar(){
+    estudioPararReloj();
+    const e=ESTUDIO; ESTUDIO=null;
+    estudioEnviar(e, true);
     return e;
   }
-  // segundo plano: se manda lo acumulado (iOS puede matar la app ahí); al volver, sigue una sesión nueva
-  let ESTUDIO_PAUSADO=null;
+  // segundo plano: se guarda lo acumulado (iOS puede matar la app ahí) SIN cerrar; al volver sigue igual
   document.addEventListener("visibilitychange",()=>{
-    if(document.hidden){ const e=estudioCerrar(); if(e) ESTUDIO_PAUSADO=e; }
-    else if(ESTUDIO_PAUSADO){
-      const e=ESTUDIO_PAUSADO; ESTUDIO_PAUSADO=null;
-      if(wizPaso===3 && !$("#results").classList.contains("hidden")){
-        estudioIniciar({materia:e.materia, tema:e.tema}, e.modo, null);
-        if(ESTUDIO){ ESTUDIO.fuente=e.fuente; ESTUDIO.items=e.items; }
-      }
-    }
+    if(!ESTUDIO) return;
+    if(document.hidden){ estudioPararReloj(); estudioEnviar(ESTUDIO, false); }
+    else if(!ESTUDIO_TICK) estudioReloj();
   });
-  window.addEventListener("pagehide",()=>{ estudioCerrar(); });
+  window.addEventListener("pagehide",()=>{ if(ESTUDIO){ estudioPararReloj(); estudioEnviar(ESTUDIO, false); } });
+  window.addEventListener("pageshow",(ev)=>{ if(ev.persisted && ESTUDIO && !ESTUDIO_TICK) estudioReloj(); });
   // Aperturas: cada vez que abre Chispa o vuelve después de 20+ minutos (tabla `aperturas`).
   function registrarApertura(){
     if(!SESION || SESION.id==null || MODO_LAB) return;
@@ -2544,6 +2624,7 @@
     modoSel = id;
     const mo = MODOS.find(m=>m.id===id) || MODOS[0];
     $("#pasoCantidad").classList.toggle("hidden", !mo.conteo);   // el resumen no lleva cantidad
+    const cl=$("#countLbl"); if(cl) cl.textContent=preguntaCantidad(mo.id);
     pintarModos();
     pintarAcciones();   // ajusta los botones "Guía revisada" / "Con IA" según el tema+modo
   }
@@ -2669,7 +2750,7 @@
     mostrarPaso(3);   // a la vista de resultados (arranca con el estado de carga)
     try{
       const body = { materia:mat, tema, grado:gr, cantidad, contexto, modo:modoSel,
-        token:(!esProx && SESION && SESION.token)||null, fotos: esProx?[]:fotos,
+        token:(!esProx && SESION && !SESION.aulaOff && SESION.token)||null, fotos: esProx?[]:fotos,
         usuario_id:(SESION&&SESION.id)||null };
       if(via==="guia"){ body.soloCurado=true; body.vistos=vistosDe(mat,tema,modoSel,gr); }
       else {
@@ -2835,7 +2916,7 @@
         `<small>${escapeHtml(s.motivo||mo.desc)}</small></span></div>`+
         // misma elección de cantidad que en "Personaliza tu actividad" (sin esto el paso salía
         // con la cantidad vieja y la niña no podía elegir)
-        (mo.conteo ? `<p class="wizAux">¿Cuántas preguntas quieres?</p><div class="count sigCount" role="group" aria-label="Cantidad">`+
+        (mo.conteo ? `<p class="wizAux">${escapeHtml(preguntaCantidad(mo.id))}</p><div class="count sigCount" role="group" aria-label="Cantidad">`+
           [3,5,8].map(n=>`<button type="button" data-n="${n}" aria-pressed="${n===cantidad}">${n}</button>`).join("")+`</div>` : "")+
         `<button class="go wizGo sigGo" type="button"><span>${escapeHtml(cta)}</span>${flecha}</button>`+
         `<button class="sigOtra" type="button">Elegir otra actividad</button>`;
@@ -2883,7 +2964,7 @@
   async function regenerarItem(meta, modo){
     const mat=(meta&&meta.materia)||"General", tema=(meta&&meta.tema)||"", gr=(meta&&meta.grado)||gradoActivo();
     const body={ materia:mat, tema, grado:gr, cantidad:1, contexto:ultimoContexto, modo,
-      token:(SESION&&SESION.token)||null, fotos:[], usuario_id:(SESION&&SESION.id)||null,
+      token:(SESION&&!SESION.aulaOff&&SESION.token)||null, fotos:[], usuario_id:(SESION&&SESION.id)||null,
       sinCurado:true, nocache:true, recientes:recientesDe(mat,tema,modo).slice(-12), porReporte:true };
     try{
       const r=await fetch(API_GENERAR,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
@@ -3041,7 +3122,7 @@
         // si no, cambia la pregunta y, si ya estaba respondida, descuenta su aporte.
         const z=zonaReporte(()=>preguntas[i], meta, "quiz", (nuevo)=>{
           if(c.dataset.done){
-            estado.resp--;
+            estado.resp--; estudioCuenta("respondidas", -1);
             const fIdx=estado.fallidas.findIndex(f=>f.i===i);
             if(fIdx>=0) estado.fallidas.splice(fIdx,1); else estado.ok--;
             score.textContent=`Puntaje: ${estado.ok}/${estado.total}`;
@@ -3158,15 +3239,18 @@
     const b=document.createElement("button"); b.className="otros"+(alt?" ia":"");
     b.textContent=txt; b.onclick=fn; return b;
   }
+  // textos claros (antes "Otros con IA" / "¿Cuántas preguntas?" también en la práctica, que son ejercicios)
+  function textoOtros(){ return modoSel==="retos" ? "Dame otros ejercicios" : "Dame otras preguntas"; }
+  function preguntaCantidad(id){ return id==="retos" ? "¿Cuántos ejercicios quieres?" : "¿Cuántas preguntas quieres?"; }
   function renderOtros(res){
     if(origen==="cumbre") return;   // Cumbre es SOLO curado: nada de "otra de la guía" ni "con IA"
     const wrap=document.createElement("div"); wrap.className="otrosWrap";
     if(ultimoCurado){
       // lo mostrado vino de nuestra guía: "otra de la guía" (sin repetir) o pasar a IA
-      wrap.appendChild(botonOtros("Otra de la guía", ()=>generar({via:"guia"})));
-      wrap.appendChild(botonOtros("Con IA", ()=>generar({via:"ia", nocache:true}), true));
+      wrap.appendChild(botonOtros("Más de la guía", ()=>generar({via:"guia"})));
+      wrap.appendChild(botonOtros("Nuevas con IA", ()=>generar({via:"ia", nocache:true}), true));
     }else{
-      wrap.appendChild(botonOtros("Otros con IA", ()=>generar({via:"ia", nocache:true})));
+      wrap.appendChild(botonOtros(textoOtros(), ()=>generar({via:"ia", nocache:true})));
     }
     res.appendChild(wrap);
   }
