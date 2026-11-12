@@ -1225,7 +1225,8 @@ export default async function handler(req, res) {
             const prompt2 = armarPrompt({ modo, material, tienePdf: pdfs.length > 0, tieneFotos, fotosExamen, grado, tema, materia, n: n2, numerica, recientes })
               + `
 IMPORTANTE: el intento anterior se quedó sin tiempo. Piensa poco: elige ejercicios SENCILLOS que puedas verificar de inmediato y responde ya.`;
-            payload2 = { ...payloadDeepSeek, messages: [{ role: "user", content: [{ type: "text", text: prompt2 }, ...contenidoDS.slice(1)] }] };
+            // sin razonamiento: si el primer intento se ahogó pensando, este responde rápido en vez de nada
+            payload2 = { ...payloadDeepSeek, thinking: { type: "disabled" }, messages: [{ role: "user", content: [{ type: "text", text: prompt2 }, ...contenidoDS.slice(1)] }] };
           }
           const r2 = await pedirAGemini(url, payload2, 1, DEADLINE, hdrs); data = r2.data; status = r2.status;
           if (status === 200 && !(data && data.error)) {
@@ -1233,7 +1234,7 @@ IMPORTANTE: el intento anterior se quedó sin tiempo. Piensa poco: elige ejercic
             if (p2 && esValido(modo, p2)) { delete p2._rescatado; parsed = p2; resultadoModelo.set(m, "exito"); console.log(`[generar] ${modo} salió en el reintento con ${n2} ítems: ${materia || ""} · ${tema}`); break buscar; }
             const ch2 = data && data.choices && data.choices[0];
             diagMalformado.push(`reintento:${(ch2 && ch2.finish_reason) || "?"}|${String((ch2 && ch2.message && ch2.message.content) || "").length}|t${Math.round((DEADLINE - Date.now()) / 1000)}`);
-          } else diagMalformado.push(`reintento:http${status}`);
+          } else diagMalformado.push(`reintento:http${status}:${String((data && data.error && (data.error.message || data.error)) || "").slice(0, 80)}`);
         }
       }
       // agotó todas las keys y al menos una dio 503 real → cuenta como fallo del modelo
