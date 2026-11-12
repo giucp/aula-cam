@@ -63,7 +63,7 @@ La app nunca avisa nada (no hay código de notificaciones en `app.js` ni `sw.js`
   en la pantalla donde se activa.
 - Interruptor para apagarlos en el menú ⋮.
 
-### 3. "Practica" y "Examen" tienen que pedir algo — ✅ HECHO 2026-11-12 (etapa 1; la etapa 2, escribir el resultado, sigue pendiente)
+### 3. "Practica" y "Examen" tienen que pedir algo — ✅ HECHO 2026-11-12 (etapas 1 y 2: autoevaluación + escribir el resultado)
 `renderRetos()` (~2927) y `renderExamen()` (~2954) solo tienen "Ver respuesta": se puede tocar todo en
 segundos y el tema cuenta como practicado al revelar la primera.
 

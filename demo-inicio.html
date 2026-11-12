@@ -775,7 +775,7 @@
       var preg=function(i){ return {pregunta:"Pregunta de ejemplo "+(i+1)+" sobre "+b.tema+"?", opciones:["Opción A","Opción B","Opción C","Opción D"], correcta:0, explicacion:"La A es la correcta porque es un ejemplo."}; };
       if(m==="resumen") return json(Object.assign(base,{titulo:b.tema, intro:"Resumen de ejemplo del demo.", idea_clave:"La idea clave del tema.", secciones:[{titulo:"Primera parte",explicacion:"Explicación de ejemplo."},{titulo:"Segunda parte",explicacion:"Otra explicación."}]}));
       if(m==="quiz"||m==="examen") return json(Object.assign(base,{preguntas:[0,1,2].map(preg)}));
-      return json(Object.assign(base,{ejercicios:[0,1,2].map(function(i){ return {enunciado:"Ejercicio de ejemplo "+(i+1), pista:"Una pista.", solucion:"La solución."}; })}));
+      return json(Object.assign(base,{ejercicios:[0,1,2].map(function(i){ return {enunciado:"Ejercicio de ejemplo "+(i+1)+": ¿cuánto es "+(i+1)+" × 12?", pista:"Una pista.", solucion:"La solución: "+((i+1)*12)+".", resultado:i===2?"":String((i+1)*12)}; })}));
     }
     return rf(u,o);
   };

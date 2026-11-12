@@ -3370,15 +3370,37 @@
       limpiar(i){ est[i]=null; actualizar(); },
     };
   }
-  // la pregunta "¿Te salió?" bajo la respuesta revelada
-  function zonaAutoEval(c, i, ae, pregunta){
+  // ★ 2026-11-12 (MEJORAS 3, etapa 2): si la IA trae "resultado" (el valor final, corto), la niña lo
+  //   escribe y la app lo compara sola: números con coma o punto, fracciones, signo, sin espacios ni
+  //   unidades. Si acierta, se muestra la respuesta y queda "Sí, me salió"; si no, puede reintentar o
+  //   ver la respuesta. Ejercicios sin "resultado" (o de bancos viejos) siguen como antes.
+  function numeroDe(txt){
+    let t=String(txt==null?"":txt).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+      .replace(/[−–—]/g,"-").replace(/\s+/g,"").replace(/^[a-z]\w*=/,"");   // "x = 7" → "7"
+    t=t.replace(/[a-z°%$€]+\.?$/,"");                                        // unidades al final
+    if(/^-?\d+\/\d+$/.test(t)){ const [a,b]=t.split("/").map(Number); return b ? a/b : null; }
+    if(/^-?\d{1,3}(\.\d{3})+(,\d+)?$/.test(t)) t=t.replace(/\./g,"").replace(",",".");   // 1.250,5
+    else if(/^-?\d{1,3}(,\d{3})+(\.\d+)?$/.test(t) && !/^-?\d+,\d{1,2}$/.test(t)) t=t.replace(/,/g,"");   // 1,250.5
+    else t=t.replace(",",".");
+    return /^-?\d+(\.\d+)?$/.test(t) ? Number(t) : null;
+  }
+  function textoPlano(txt){ return String(txt==null?"":txt).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[−–—]/g,"-").replace(/[^a-z0-9\-\/.,=]/g,"").replace(/\.$/,""); }
+  function mismoResultado(dado, esperado){
+    const a=numeroDe(dado), b=numeroDe(esperado);
+    if(a!=null && b!=null) return Math.abs(a-b) <= 1e-6*Math.max(1,Math.abs(b));
+    return !!textoPlano(dado) && textoPlano(dado)===textoPlano(esperado);
+  }
+  // la pregunta "¿Te salió?" bajo la respuesta revelada (inicial: "si" si ya lo comprobó la app)
+  function zonaAutoEval(c, i, ae, pregunta, inicial){
     const z=document.createElement("div"); z.className="autoEval";
     z.innerHTML=`<span>${escapeHtml(pregunta)}</span><div class="autoEvalBtns"><button type="button" class="aeSi" aria-pressed="false">Sí</button><button type="button" class="aeNo" aria-pressed="false">Todavía no</button></div>`;
     const si=z.querySelector(".aeSi"), no=z.querySelector(".aeNo");
     const elegir=(v)=>{ si.setAttribute("aria-pressed",String(v==="si")); no.setAttribute("aria-pressed",String(v==="no")); c.dataset.ae=v; ae.marcar(i, v); };
     si.onclick=()=>elegir("si"); no.onclick=()=>elegir("no");
+    if(inicial) elegir(inicial);
     return z;
   }
+  function tieneResultado(e){ return !!(e && typeof e.resultado==="string" && e.resultado.trim() && e.resultado.trim().length<=40); }
   function renderRetos(res, ejercicios, meta){
     if(!ejercicios.length){ res.appendChild(vacio("No llegaron retos. Intenta otra vez.")); return; }
     const fin=document.createElement("div"); fin.className="autoFin hidden";
@@ -3391,6 +3413,7 @@
         c.innerHTML=`<div class="cardTop"><span class="tag">Reto ${i+1}</span></div>
           <p class="q">${escapeHtml(e.enunciado||"")}</p>
           ${figuraHTML(e.figura)}
+          ${tieneResultado(e)?`<div class="respBox"><input class="respIn" type="text" inputmode="text" autocomplete="off" enterkeyhint="done" placeholder="Tu resultado" aria-label="Tu resultado"><button type="button" class="mini comp">Comprobar</button></div><p class="respMsg" aria-live="polite"></p>`:``}
           <div class="reveals">
             ${e.pista?`<button class="mini hint">Pista</button>`:``}
             <button class="mini ans">Ver respuesta</button>
@@ -3399,8 +3422,25 @@
           <div class="reveal ans"><b>Respuesta:</b> ${escapeHtml(e.solucion||"")}</div>`;
         const h=c.querySelector(".mini.hint"), a=c.querySelector(".mini.ans");
         if(h) h.onclick=()=>{ c.querySelector(".reveal.hint").classList.add("show"); h.disabled=true; estudioCuenta("pistas"); };
-        a.onclick=()=>{ const r=c.querySelector(".reveal.ans"); r.classList.add("show"); a.disabled=true; estudioCuenta("revelados");
-          r.appendChild(zonaAutoEval(c, i, ae, "¿Te salió?")); };
+        const revelar=(inicial)=>{ const r=c.querySelector(".reveal.ans"); if(r.classList.contains("show")) return; r.classList.add("show"); a.disabled=true; estudioCuenta("revelados");
+          r.appendChild(zonaAutoEval(c, i, ae, "¿Te salió?", inicial)); };
+        a.onclick=()=>revelar();
+        const inp=c.querySelector(".respIn"), comp=c.querySelector(".mini.comp"), msg=c.querySelector(".respMsg");
+        if(inp){
+          let intentos=0;
+          const comprobar=()=>{
+            const v=inp.value.trim(); if(!v) { inp.focus(); return; }
+            intentos++;
+            if(mismoResultado(v, e.resultado)){
+              msg.className="respMsg ok"; msg.textContent="¡Correcto!"; inp.disabled=true; comp.disabled=true; revelar("si");
+            }else{
+              msg.className="respMsg mal";
+              msg.textContent= intentos>=2 ? "Todavía no. Puedes abrir la pista o ver la respuesta." : "Todavía no. Revisa tu procedimiento y prueba otra vez.";
+            }
+          };
+          comp.onclick=comprobar;
+          inp.addEventListener("keydown",(ev)=>{ if(ev.key==="Enter") comprobar(); });
+        }
         const z=zonaReporte(()=>ejercicios[i], meta, "retos", (nuevo)=>{ ejercicios[i]=nuevo; ae.limpiar(i); llenar(nuevo); });
         if(z) c.querySelector(".cardTop").appendChild(z);
       };

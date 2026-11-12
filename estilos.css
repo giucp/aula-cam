@@ -2042,3 +2042,13 @@ body.ag-form-abierto .agTop .agStar{display:none}
 
 /* sin conexión (MEJORAS 21) */
 .avisoOffline{background:#EEF2FF;border-color:#C7D2FE}
+
+/* "Tu resultado" en la práctica (MEJORAS 3, etapa 2) */
+.respBox{display:flex;gap:8px;margin-top:12px}
+.respIn{flex:1;min-width:0;border:1.5px solid var(--chispa-line);border-radius:12px;padding:10px 12px;font:700 1rem Nunito,system-ui,sans-serif;color:var(--chispa-ink);background:#fff}
+.respIn:focus{outline:none;border-color:var(--chispa-primary)}
+.respIn:disabled{background:#F4FBF7;border-color:#B9E8D0;color:#13694A}
+.respMsg{margin:6px 0 0;font:800 .86rem/1.35 Nunito,system-ui,sans-serif}
+.respMsg:empty{display:none}
+.respMsg.ok{color:#13694A}
+.respMsg.mal{color:#C2410C}

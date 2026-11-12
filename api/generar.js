@@ -249,7 +249,7 @@ const MODOS_VALIDOS = new Set(["retos", "resumen", "examen", "quiz"]);
 // acertijos de deducción (purga del caché los acertijos ambiguos/sin solución previos).
 // retos 5 (2026-07-07): regla de respuesta exacta ampliada (entero cuando se pueda;
 // decimal/fracción EXACTOS en temas de fracciones/decimales/porcentajes/dinero/medidas).
-const PROMPT_VER = { resumen: "3", retos: "5", examen: "5", quiz: "7" };
+const PROMPT_VER = { resumen: "3", retos: "6", examen: "5", quiz: "7" };
 function esNumerica(txt) {
   return /matemát|matemat|lógic|logic|olimpiad/i.test(txt || "");
 }
@@ -373,7 +373,8 @@ ${reglasDeduccion}${noRepetir}${jsonOnly}`;
 - Si el tema es de matemática o lógica: RESUELVE y VERIFICA cada ejercicio antes de entregarlo. Elige los números para que la respuesta sea EXACTA: un entero cuando el tema lo permita, o un decimal o fracción EXACTOS cuando el tema los use de forma natural (fracciones, decimales, porcentajes, dinero, medidas, proporciones/regla de tres) — por ejemplo 7,5 o 3/4 está bien; 7,333… no. La respuesta debe cumplir TODAS las condiciones del enunciado, y el enunciado debe coincidir con la respuesta final.
 - "pista": orienta sin dar la respuesta. "solucion": SOLO el resultado correcto y una explicación breve y clara. NUNCA escribas "Ups", "error", "ajustemos", "revisemos" ni cambies el enunciado dentro de la solución. Si un ejercicio no te cuadra, descártalo y crea otro distinto que SÍ cuadre.
 Forma EXACTA del JSON:
-{"ejercicios":[{"enunciado":"...","pista":"...","solucion":"...","figura":""}]}
+{"ejercicios":[{"enunciado":"...","pista":"...","solucion":"...","resultado":"","figura":""}]}
+- "resultado": SOLO el valor final que el alumno debe obtener, corto y exacto, el MISMO de la solución (ej: "48", "-12", "3/4", "12,5", "x = 7"). Sin explicación ni unidades. Si la respuesta no es un número o una expresión corta (por ejemplo, una explicación o una lista larga), deja "resultado":"".
 ${figuraNota}
 ${reglasDeduccion}${noRepetir}${jsonOnly}`;
 }
