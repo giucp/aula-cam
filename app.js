@@ -3393,6 +3393,17 @@
     if(a!=null && b!=null) return Math.abs(a-b) <= 1e-6*Math.max(1,Math.abs(b));
     if(!textoPlano(dado)) return false;
     if(textoPlano(dado)===textoPlano(esperado)) return true;
+    // varios números ("8, 9 y 10"): vale en cualquier orden y separados por coma, espacio o "y"
+    const lista=(t,re)=>String(t||"").trim().split(re).filter(Boolean).map(numeroDe);
+    const E=lista(esperado, /\s*(?:;|,\s+|\sy\s)\s*/);
+    if(E.length>=2 && E.every(v=>v!=null)){
+      const orden=(l)=>l.slice().sort((x,y)=>x-y).join("|");
+      for(const re of [/\s*(?:;|,\s+|\sy\s|\s+)\s*/, /\s*(?:[;,]|\sy\s|\s+)\s*/]){
+        const D=lista(dado, re);
+        if(D.length===E.length && D.every(v=>v!=null) && orden(D)===orden(E)) return true;
+      }
+      return false;
+    }
     // respuestas en palabras: vale si escribió todas las palabras de la esperada ("hacia abajo" ⊇ "abajo")
     const pal=(t)=>String(t||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").split(/[^a-z0-9ñ]+/).filter(w=>w && !["a","al","el","la","los","las","un","una","de","del","hacia","es","son","cada","uno"].includes(w));
     const esp=pal(esperado), dad=new Set(pal(dado));
