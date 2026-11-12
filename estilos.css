@@ -1960,3 +1960,32 @@
 .avisoAulaTx b{font-weight:800}
 .avisoAulaBtn{flex:none;border:0;border-radius:12px;padding:9px 12px;background:var(--chispa-primary);color:#fff;
   font:800 .82rem/1 Nunito,system-ui,sans-serif;cursor:pointer}
+
+/* ═══ Quiz de a una pregunta + repaso que vuelve a preguntar (MEJORAS 6-9, 2026-11-12) ═══ */
+body.quiz-activo .navbar{display:none}
+body.quiz-activo #vHome{padding-bottom:calc(28px + env(safe-area-inset-bottom))}
+.quizHead{position:sticky;top:0;z-index:5;margin:0 -2px;padding:10px 2px 12px;background:linear-gradient(#FDFBFE 78%,rgba(253,251,254,0))}
+.quizProg{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px}
+.quizPaso{font-family:"Fredoka";font-weight:600;font-size:1rem;color:var(--chispa-ink)}
+.quizOk{font-family:"Nunito";font-weight:800;font-size:.86rem;color:var(--chispa-green)}
+.quizBar{height:8px;border-radius:99px;background:var(--chispa-line);overflow:hidden}
+.quizBar i{display:block;height:100%;width:0;border-radius:99px;background:var(--chispa-primary);transition:width .35s ease}
+.quizSig{margin-top:16px}
+.quizRepasar{margin-top:14px}
+.repasoQuiz{margin-top:16px;text-align:left}
+.repasoTit{font-family:"Fredoka";font-weight:600;font-size:1.05rem;margin:0 0 10px;color:var(--chispa-ink)}
+.repasoFin{text-align:center;font-weight:800;color:var(--chispa-green);margin:6px 0 0}
+.errItem .opts{margin-top:4px}
+.errRes:empty{display:none}
+.errRes{margin-top:10px}
+.errBien{margin:0;padding:10px 13px;border-radius:12px;background:#EAF8F1;border:1px solid #B9E8D0;color:#13694A;font-weight:800}
+.errItem.errHecho{opacity:.55}
+.errItem.errHecho .opts{pointer-events:none}
+.dlgFondo{position:fixed;inset:0;z-index:100;background:rgba(33,27,58,.42);display:flex;align-items:flex-end;justify-content:center;padding:16px 16px calc(16px + env(safe-area-inset-bottom))}
+.dlg{width:100%;max-width:420px;background:#fff;border-radius:22px;padding:20px;box-shadow:var(--shadow);animation:pop .2s ease}
+.dlgTit{margin:0 0 6px;font-family:"Fredoka";font-weight:600;font-size:1.15rem;color:var(--chispa-ink)}
+.dlgTx{margin:0 0 16px;font-weight:600;line-height:1.45;color:var(--chispa-muted)}
+.dlgBtns{display:flex;flex-direction:column;gap:8px}
+.dlgBtns button{border:0;border-radius:14px;padding:13px;font-family:"Fredoka";font-weight:600;font-size:1rem;cursor:pointer}
+.dlgNo{background:var(--chispa-primary);color:#fff}
+.dlgSi{background:#fff;color:var(--chispa-coral);border:1.5px solid var(--chispa-line) !important}

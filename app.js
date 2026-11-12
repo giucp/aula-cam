@@ -210,7 +210,7 @@
     if(b) b.classList.toggle("hidden", !CUMBRE_ACTIVA || !cumbreTrack());
   }
   function verTab(id){
-    estudioCerrar();
+    estudioCerrar(); quizModo(null);
     $("#tabInicio").classList.toggle("hidden", id!=="inicio");
     $("#tabMaterias").classList.toggle("hidden", id!=="materias");
     $("#tabCumbre").classList.toggle("hidden", id!=="cumbre");
@@ -232,7 +232,7 @@
     if(id==="agenda"){ pintarSemana(); pintarTareas(); pintarNotas(); pintarHorarioSemana(); }
     window.scrollTo({top:0});
   }
-  document.querySelectorAll("#navbar .navBtn").forEach(b=>b.onclick=()=>verTab(b.dataset.tab));
+  document.querySelectorAll("#navbar .navBtn").forEach(b=>b.onclick=async()=>{ if(!(await puedeSalirDelQuiz())) return; verTab(b.dataset.tab); });
 
   // ───────── agenda: datos (horario + tareas en Supabase) ─────────
   let HORARIO=[], TAREAS=[], NOTAS=[], IA_ESTADO=null;
@@ -1845,23 +1845,61 @@
   };
   $("#btnBackErr").onclick = ()=>{ $("#paneErrores").classList.add("hidden"); verMaterias(); };
 
-  function renderErrores(){
-    const cont=$("#erroresList"); cont.innerHTML="";
-    if(!MIS_ERRORES.length){ cont.appendChild(vacio("¡No tienes errores para repasar! 🎉")); return; }
-    MIS_ERRORES.forEach(e=>{
-      const opciones=Array.isArray(e.opciones)?e.opciones:[];
-      const correcta=(Number.isInteger(e.correcta)&&opciones[e.correcta]!=null)?opciones[e.correcta]:"";
-      const card=document.createElement("div"); card.className="errItem";
-      const meta=[e.materia,e.tema].filter(Boolean).map(escapeHtml).join(" · ");
+  // ★ 2026-11-12 (MEJORAS 8): repasar = VOLVER A RESPONDER. Si acierta, el error se borra solo; si
+  //   falla, ve cómo se resuelve y puede intentarlo otra vez. Antes solo se leía la respuesta y se
+  //   tocaba "Ya lo entendí". Errores viejos sin opciones guardadas se muestran como antes.
+  function barajarLocal(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+  function tarjetaRepaso(e, alAcertar){
+    const opciones=Array.isArray(e.opciones)?e.opciones:[];
+    const correcta=Number.isInteger(e.correcta)?e.correcta:-1;
+    const card=document.createElement("div"); card.className="errItem";
+    const meta=[e.materia,e.tema].filter(Boolean).map(escapeHtml).join(" · ");
+    const explic=()=>e.explicacion?`<div class="errExp"><b>${e.numerica?"Cómo se resuelve:":"Para recordar:"}</b> ${escapeHtml(e.explicacion)}</div>`:``;
+    const pintar=()=>{
+      const orden=barajarLocal(opciones.map((o,i)=>({o,i})));   // otro orden: que no responda de memoria la posición
       card.innerHTML=`${meta?`<p class="errMeta">${meta}</p>`:``}
         <p class="errQ">${escapeHtml(e.pregunta||"")}</p>
         ${figuraHTML(e.figura)}
-        ${correcta?`<div class="errOk"><b>✅ Respuesta correcta:</b> ${escapeHtml(correcta)}</div>`:``}
-        ${e.explicacion?`<div class="errExp"><b>${e.numerica?"✏️ Cómo se resuelve:":"💡 Para recordar:"}</b> ${escapeHtml(e.explicacion)}</div>`:``}
-        <button class="errListo">✅ Ya lo entendí</button>`;
-      card.querySelector(".errListo").onclick=()=>resolverError(e, card);
-      cont.appendChild(card);
-    });
+        <div class="opts">${orden.map(x=>`<button class="opt" data-i="${x.i}"><span>${escapeHtml(x.o)}</span></button>`).join("")}</div>
+        <div class="errRes"></div>`;
+      const btns=[...card.querySelectorAll(".opt")];
+      btns.forEach(b=>b.onclick=()=>{
+        const j=Number(b.dataset.i);
+        btns.forEach(x=>{ x.disabled=true; if(Number(x.dataset.i)===correcta) x.classList.add("ok"); });
+        const out=card.querySelector(".errRes");
+        if(j===correcta){
+          out.innerHTML=`<p class="errBien">¡Bien! Esta ya la dominas.</p>`;
+          setTimeout(()=>alAcertar(card), 900);
+        }else{
+          b.classList.add("bad");
+          out.innerHTML=explic()+`<button class="errListo" type="button">Intentar de nuevo</button>`;
+          out.querySelector(".errListo").onclick=pintar;
+        }
+      });
+    };
+    if(opciones.length>=2 && correcta>=0 && correcta<opciones.length) pintar();
+    else{
+      card.innerHTML=`${meta?`<p class="errMeta">${meta}</p>`:``}
+        <p class="errQ">${escapeHtml(e.pregunta||"")}</p>
+        ${figuraHTML(e.figura)}
+        ${explic()}
+        <button class="errListo">Ya lo entendí</button>`;
+      card.querySelector(".errListo").onclick=()=>alAcertar(card);
+    }
+    return card;
+  }
+  function renderErrores(){
+    const cont=$("#erroresList"); cont.innerHTML="";
+    if(!MIS_ERRORES.length){ cont.appendChild(vacio("¡No tienes errores para repasar! 🎉")); return; }
+    MIS_ERRORES.forEach(e=>cont.appendChild(tarjetaRepaso(e, (card)=>resolverError(e, card))));
+  }
+  // el repaso al final del quiz no conoce el id del error: lo busca por la pregunta (ya guardado)
+  function resolverErrorPorPregunta(pregunta){
+    const e=MIS_ERRORES.find(x=>x.pregunta===pregunta);
+    if(!e || !SESION) return;
+    try{ fetch(API_ERRORES,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accion:"resolver",usuario_id:SESION.id,id:e.id})}).catch(()=>{}); }catch(_){}
+    MIS_ERRORES=MIS_ERRORES.filter(x=>x.id!==e.id);
+    if(MIS_ERRORES.length) actualizarErrSub(); else { const w=$("#erroresWrap"); if(w) w.classList.add("hidden"); }
   }
   async function resolverError(e, card){
     card.style.opacity=".5";
@@ -2441,7 +2479,8 @@
       res.innerHTML = errBox("No pudimos cargar esto. Intenta de nuevo.", String(e.message||e));
     }finally{ if(btnGen) btnGen.disabled=false; }
   }
-  $("#btnBack").onclick = ()=>{
+  $("#btnBack").onclick = async ()=>{
+    if(wizPaso===3 && !(await puedeSalirDelQuiz())) return;
     if(wizPaso===3){ $("#results").innerHTML=""; mostrarPaso(2); return; }   // resultados → actividad
     if(origen==="cumbre"){                 // en Cumbre la actividad vuelve a la lista de materias de Cumbre
       const pt=$("#paneTemas"); pt.classList.remove("cumbre"); pt.classList.add("hidden");
@@ -2607,7 +2646,7 @@
   // muestra el paso n del asistente (1 tema · 2 actividad · 3 resultados) y ajusta el back
   function mostrarPaso(n){
     wizPaso=n;
-    if(n!==3) estudioCerrar();   // dejó la actividad (Atrás / otra actividad)
+    if(n!==3){ estudioCerrar(); quizModo(null); }   // dejó la actividad (Atrás / otra actividad)
     $("#wizTema").classList.toggle("hidden", n!==1);
     $("#wizActividad").classList.toggle("hidden", n!==2);
     const res=$("#results"); if(res) res.classList.toggle("hidden", n!==3);
@@ -2839,7 +2878,7 @@
   // ───────── RENDER (despacha según el modo) ─────────
   let ultimoCurado=false, ultimoAgotado=false;   // para el botón "otros" (guía vs IA)
   function render(d){
-    ultimoCurado = !!d.curado; ultimoAgotado = !!d.agotado;
+    ultimoCurado = !!d.curado; ultimoAgotado = !!d.agotado; quizModo(null);
     const res=$("#results"); res.innerHTML="";
     const modo = d.modo || modoSel;
     renderBanner(res, d.fuentes, d.basadoEnMaterial, d.apuntes, d.curado, modo);
@@ -3082,29 +3121,55 @@
     res.appendChild(c);
   }
 
+  // ★ 2026-11-12 (MEJORAS 6, 7, 9): el quiz va de a UNA pregunta por pantalla, con barra de avance
+  //   y botón "Siguiente"; la barra de navegación se oculta mientras dura (antes eran todas en una
+  //   lista larga con la barra encima). Salir a medias pide confirmación. Al terminar, "Repasar las
+  //   que fallé" vuelve a preguntarlas ahí mismo.
+  let QUIZ_ACTIVO=null;   // estado del quiz en pantalla (para avisar antes de salir)
+  function quizModo(estado){ QUIZ_ACTIVO=estado||null; document.body.classList.toggle("quiz-activo", !!estado); }
   function renderQuiz(res, preguntas, meta){
     if(!preguntas.length){ res.appendChild(vacio("No llegó el quiz. Intenta otra vez.")); return; }
-    const estado = { resp:0, ok:0, total:preguntas.length, fallidas:[], done:false };
-    const score=document.createElement("div"); score.className="score";
-    score.textContent=`Puntaje: 0/${estado.total}`;
-    res.appendChild(score);
-
+    const total=preguntas.length;
+    const estado = { resp:0, ok:0, total, fallidas:[], done:false, meta, terminar:null };
+    const head=document.createElement("div"); head.className="quizHead";
+    head.innerHTML=`<div class="quizProg"><span class="quizPaso"></span><span class="quizOk"></span></div><div class="quizBar"><i></i></div>`;
+    res.appendChild(head);
+    const cards=[]; let actual=0;
+    const avance=()=>{
+      head.querySelector(".quizPaso").textContent = estado.done ? "Quiz terminado" : `Pregunta ${actual+1} de ${total}`;
+      head.querySelector(".quizOk").textContent = `${estado.ok} ${estado.ok===1?"acierto":"aciertos"}`;
+      head.querySelector(".quizBar i").style.width = Math.round(estado.resp/total*100)+"%";
+    };
+    const mostrar=(i)=>{
+      actual=i; cards.forEach((c,k)=>c.classList.toggle("hidden", k!==i)); avance();
+      try{ head.scrollIntoView({behavior:"smooth",block:"start"}); }catch(_){}
+    };
+    estado.terminar=(mostrarNota)=>{
+      if(estado.done) return; estado.done=true; quizModo(null);
+      cards.forEach(c=>c.classList.remove("hidden"));   // terminado: puede revisar todas
+      avance();
+      if(mostrarNota) mostrarResultadoQuiz(res, estado, meta); else cerrarQuiz(estado, meta);
+    };
     preguntas.forEach((p,i)=>{
-      const c=tarjeta(i);
+      const c=tarjeta(0); c.classList.add("quizCard");
       const llenar=(p)=>{
         const opciones = Array.isArray(p.opciones) ? p.opciones : [];
         const correcta = Number(p.correcta);
         delete c.dataset.done;
         const letras="ABCDE";
+        const ultima = i===total-1;
         c.innerHTML=`<div class="cardTop"><span class="tag">Pregunta ${i+1}</span></div>
           <p class="q">${escapeHtml(p.pregunta||"")}</p>
           ${figuraHTML(p.figura)}
           <div class="opts">${opciones.map((o,j)=>`<button class="opt"><span class="letra">${letras[j]||"•"}</span><span>${escapeHtml(o)}</span></button>`).join("")}</div>
-          ${p.explicacion?`<div class="qexp"><b>¿Por qué?</b> ${escapeHtml(p.explicacion)}</div>`:``}`;
+          ${p.explicacion?`<div class="qexp"><b>¿Por qué?</b> ${escapeHtml(p.explicacion)}</div>`:``}
+          <button class="go quizSig hidden" type="button">${ultima?"Ver mi nota":"Siguiente"}</button>`;
         const btns=[...c.querySelectorAll(".opt")];
+        const sig=c.querySelector(".quizSig");
+        sig.onclick=()=>{ if(estado.done) return; if(ultima || estado.resp===total) estado.terminar(true); else mostrar(i+1); };
         btns.forEach((b,j)=>{
           b.onclick=()=>{
-            if(c.dataset.done) return;
+            if(c.dataset.done || estado.done) return;
             c.dataset.done="1";
             btns.forEach((x,k)=>{ x.disabled=true; if(k===correcta) x.classList.add("ok"); });
             if(j!==correcta){
@@ -3114,8 +3179,9 @@
             const exp=c.querySelector(".qexp"); if(exp) exp.classList.add("show");
             estado.resp++; if(j===correcta) estado.ok++;
             estudioCuenta("respondidas");
-            score.textContent=`Puntaje: ${estado.ok}/${estado.total}`;
-            if(estado.resp===estado.total){ estado.done=true; mostrarResultadoQuiz(res, estado, meta); }
+            sig.classList.remove("hidden");
+            if(estado.resp===total) sig.textContent="Ver mi nota";
+            avance();
           };
         });
         // banderita: si el quiz YA terminó solo guarda el reporte (la nota ya quedó);
@@ -3125,24 +3191,55 @@
             estado.resp--; estudioCuenta("respondidas", -1);
             const fIdx=estado.fallidas.findIndex(f=>f.i===i);
             if(fIdx>=0) estado.fallidas.splice(fIdx,1); else estado.ok--;
-            score.textContent=`Puntaje: ${estado.ok}/${estado.total}`;
           }
-          preguntas[i]=nuevo; llenar(nuevo);
+          preguntas[i]=nuevo; llenar(nuevo); avance();
         }, ()=>estado.done);
         if(z) c.querySelector(".cardTop").appendChild(z);
       };
       llenar(p);
-      res.appendChild(c);
+      cards.push(c); res.appendChild(c);
+    });
+    quizModo(estado);
+    mostrar(0);
+  }
+
+  // Salir con un quiz a medias: confirma. Todo respondido sin ver la nota → se guarda solo.
+  async function puedeSalirDelQuiz(){
+    const q=QUIZ_ACTIVO; if(!q || q.done) return true;
+    if(q.resp>=q.total){ q.terminar(false); return true; }
+    if(q.resp===0){ quizModo(null); return true; }
+    const salir=await preguntar("¿Salir del quiz?", `Respondiste ${q.resp} de ${q.total}. Si sales ahora, no se guarda la nota.`, "Salir", "Seguir con el quiz");
+    if(!salir) return false;
+    if(q.fallidas.length) guardarErrores(q.fallidas, q.meta).then(cargarErrores);   // lo que falló sí sirve para repasar
+    quizModo(null);
+    return true;
+  }
+  // Diálogo propio (el confirm() del navegador se ve mal en la app instalada). Promesa → true/false.
+  function preguntar(titulo, texto, si, no){
+    return new Promise(listo=>{
+      const fondo=document.createElement("div"); fondo.className="dlgFondo";
+      fondo.innerHTML=`<div class="dlg" role="alertdialog" aria-modal="true" aria-labelledby="dlgTit"><p class="dlgTit" id="dlgTit">${escapeHtml(titulo)}</p><p class="dlgTx">${escapeHtml(texto)}</p><div class="dlgBtns"><button type="button" class="dlgNo">${escapeHtml(no)}</button><button type="button" class="dlgSi">${escapeHtml(si)}</button></div></div>`;
+      const cerrar=(v)=>{ fondo.remove(); listo(v); };
+      fondo.querySelector(".dlgSi").onclick=()=>cerrar(true);
+      fondo.querySelector(".dlgNo").onclick=()=>cerrar(false);
+      fondo.onclick=(e)=>{ if(e.target===fondo) cerrar(false); };
+      document.body.appendChild(fondo);
+      fondo.querySelector(".dlgNo").focus();
     });
   }
 
-  // nota (sobre 20) + mensaje de motivación al terminar el quiz
-  function mostrarResultadoQuiz(res, estado, meta){
+  // guarda la nota y lo fallado (sin pintar nada): lo usan la nota en pantalla y el "salir" con todo respondido
+  function cerrarQuiz(estado, meta){
+    if(estado.cerrado) return; estado.cerrado=true;
     // guarda lo que falló para "repasar mis errores" y refresca el contador
     if(estado.fallidas && estado.fallidas.length){ guardarErrores(estado.fallidas, meta).then(cargarErrores); }
     // registra el quiz con su nota (alimenta la ruta de aprendizaje y las marcas ⭐)
     registrarActividad(meta, "quiz", { aciertos:estado.ok, total:estado.total });
     if(ESTUDIO){ ESTUDIO.aciertos=estado.ok; ESTUDIO.total=estado.total; }
+  }
+  // nota (sobre 20) + mensaje de motivación al terminar el quiz
+  function mostrarResultadoQuiz(res, estado, meta){
+    cerrarQuiz(estado, meta);
     const pct = estado.total ? estado.ok/estado.total : 0;
     const nota = Math.max(1, Math.round(pct*20));
     let msg;
@@ -3153,14 +3250,34 @@
     const emo = pct>=0.7 ? "celebrando" : "animando";
     const c=document.createElement("div"); c.className="card quizFin";
     c.style.animationDelay="0.05s";
+    const nf=(estado.fallidas||[]).length;
     c.innerHTML=`<img class="chispaFin" src="${chispaSrc(emo)}" alt="" aria-hidden="true">
       <span class="tag">¡Terminaste!</span>
       <p class="q">Nota: ${nota}/20 · acertaste ${estado.ok} de ${estado.total}</p>
-      <div class="sumKey"><b>${escapeHtml(msg)}</b></div>`;
-    res.appendChild(c);
+      <div class="sumKey"><b>${escapeHtml(msg)}</b></div>
+      ${nf?`<button class="go quizRepasar" type="button">${nf===1?"Repasar la que fallé":`Repasar las ${nf} que fallé`}</button>`:""}`;
+    // al terminar, la nota va ARRIBA (las preguntas quedan debajo para revisarlas)
+    const head=res.querySelector(".quizHead");
+    if(head && head.nextSibling) res.insertBefore(c, head.nextSibling); else res.appendChild(c);
+    const rb=c.querySelector(".quizRepasar");
+    if(rb) rb.onclick=()=>{
+      rb.remove();
+      const cont=document.createElement("div"); cont.className="repasoQuiz";
+      cont.innerHTML=`<p class="repasoTit">Vuelve a intentarlas</p>`;
+      let quedan=nf;
+      estado.fallidas.forEach(f=>{
+        cont.appendChild(tarjetaRepaso({ ...f, materia:null, tema:null }, (card)=>{
+          resolverErrorPorPregunta(f.pregunta);
+          card.classList.add("errHecho"); quedan--;
+          if(!quedan){ const fin=document.createElement("p"); fin.className="repasoFin"; fin.textContent="¡Las repasaste todas!"; cont.appendChild(fin); }
+        }));
+      });
+      c.appendChild(cont);
+      try{ cont.scrollIntoView({behavior:"smooth",block:"start"}); }catch(_){}
+    };
     if(!MODO_LAB) renderOtros(res);   // en el cuarto no hay "generar otros"
     renderSiguientePaso(res, meta, "quiz");
-    c.scrollIntoView({behavior:"smooth",block:"nearest"});
+    try{ c.scrollIntoView({behavior:"smooth",block:"start"}); }catch(_){}
   }
 
   // ───────── vistas auxiliares ─────────

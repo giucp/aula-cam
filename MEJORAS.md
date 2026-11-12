@@ -1,7 +1,7 @@
 # Chispa — lista definitiva de mejoras
 
 Escrita el 2026-11-11 tras revisar toda la app (pantallas en tamaño teléfono + código + datos reales).
-Es la lista aprobada por el dueño. **Nada de esto está hecho todavía.** El orden es el aprobado: no
+Es la lista aprobada por el dueño. Los puntos hechos llevan ✅ en su título. El orden es el aprobado: no
 reordenar según cuánto se haya usado cada función — si algo se usa poco es justamente porque le falta
 lo que aquí se propone.
 
@@ -31,7 +31,7 @@ Los números de línea son de `app.js` al commit `274fd63`; se mueven, buscar po
 
 ## A. Las cinco primeras
 
-### 1. La sesión vencida no debe sacarlas de la app
+### 1. La sesión vencida no debe sacarlas de la app — ✅ HECHO 2026-11-12
 El aula del colegio invalida el token de Moodle cada pocos días. Hoy `refrescarMaterias()` (~1724)
 recibe 401 de `api/moodle.js` (~205) y llama a `sesionVencida()` (~1716), que borra todo y manda al login.
 No hace falta: la firma de Chispa (`herramientas/sesion.mjs`) dura 365 días y es independiente; agenda,
@@ -93,7 +93,7 @@ Crear una sola función de estado por tema y usarla en todas partes:
 
 Contar solo temas de las materias actuales. En Materias mostrar "2 dominados · 3 empezados de 8".
 
-### 5. El examen debe llevar al tema, y detectarse aunque se anote como tarea
+### 5. El examen debe llevar al tema, y detectarse aunque se anote como tarea — ✅ HECHO 2026-11-12
 `pintarExamenBanner()` (~586) solo mira `tipo === "examen"` y llama a `irAPractica(materia, "examen")`
 sin tema: deja en la lista de temas sin nada elegido.
 
@@ -109,22 +109,22 @@ sin tema: deja en la lista de temas sin nada elegido.
 
 ## B. Estudio y quiz
 
-### 6. Quiz de una pregunta por pantalla
+### 6. Quiz de una pregunta por pantalla — ✅ HECHO 2026-11-12
 `renderQuiz()` (~3004) pinta todas en una lista larga con la barra de navegación encima. Pasar a una por
 vez, con barra de avance ("3 de 8"), explicación al responder y botón "Siguiente". Ocultar la barra
 inferior mientras dura. Conservar el botón Reportar y la lógica de `estado`.
 
-### 7. Avisar antes de salir de un quiz a medias
+### 7. Avisar antes de salir de un quiz a medias — ✅ HECHO 2026-11-12
 `verTab()` (~210), el botón Atrás y `mostrarPaso()` (~2528) lo borran sin preguntar. Si hay respuestas
 dadas y no terminó: "¿Salir del quiz? Vas por la 4 de 8" (Seguir / Salir). Si sale, guardar las falladas
 hasta ahí.
 
-### 8. Repasar errores volviendo a preguntar
+### 8. Repasar errores volviendo a preguntar — ✅ HECHO 2026-11-12
 `renderErrores()` (~1782) muestra la respuesta y un botón "Ya lo entendí". Los errores ya guardan
 `opciones` y `correcta`: mostrarlos como pregunta. Si acierta, se borra sola (`resolverError`); si falla,
 ve la explicación y se queda en la lista.
 
-### 9. Botón de repaso al terminar el quiz
+### 9. Botón de repaso al terminar el quiz — ✅ HECHO 2026-11-12
 En `mostrarResultadoQuiz()` (~3059), si falló alguna: "Repasar las 2 que fallé", que abre ese repaso
 (punto 8) solo con las de ese quiz. Hoy hay que ir a buscarlo en Materias.
 
@@ -141,13 +141,13 @@ El error del signo (−30 tomado como 30) se corrigió en `alinearCorrecta()` de
 - Opcional: pedir `explicacion` antes que `correcta` en el JSON, para que la IA resuelva antes de marcar.
   Es cambio de prompt: probar con la IA real y subir `PROMPT_VER`.
 
-### 12. Textos confusos
+### 12. Textos confusos — ✅ HECHO 2026-11-12
 - `renderOtros()` (~3161): "Otros con IA" → "Dame otras preguntas" / "Dame otros ejercicios".
   "Otra de la guía" → "Más de la guía".
 - `renderSiguientePaso()` (~2838): dice "¿Cuántas preguntas quieres?" también para práctica; ahí debe
   decir "ejercicios".
 
-### 23. Error de medición: un quiz se registra partido en varios pedazos
+### 23. Error de medición: un quiz se registra partido en varios pedazos — ✅ HECHO 2026-11-12
 Confirmado con datos del 2026-11-11: una tarde de quiz de Alessandra dejó 12 filas en `estudio`, varias
 de 5 a 15 segundos con 0 respuestas, y una con 9 respondidas de 8. Familia muestra por eso "Empezó un
 quiz y no lo terminó" sin ser cierto.

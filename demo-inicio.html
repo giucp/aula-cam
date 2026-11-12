@@ -335,7 +335,7 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Inicio
         </button>
         <h2 class="m2Title">Repasar mis errores</h2>
-        <p class="m2Sub">Lo que fallaste, para entenderlo bien.</p>
+        <p class="m2Sub">Vuelve a responder lo que fallaste. Si aciertas, sale de la lista.</p>
       </div>
       <div id="erroresList"></div>
     </div>
@@ -749,7 +749,7 @@
     if(AULA_OFF && u.indexOf("/api/agenda")>-1 && !window.__agendaPidioFirma){ window.__agendaPidioFirma=true; return Promise.resolve(new Response(JSON.stringify({code:"sesion"}),{status:401,headers:{"Content-Type":"application/json"}})); }
     if(u.indexOf("/api/agenda")>-1) return json(FA);
     if(u.indexOf("/api/actividad")>-1) return json(b.accion==="resumen" ? {progreso:PROG} : {ok:true});
-    if(u.indexOf("/api/errores")>-1) return json({errores:[]});
+    if(u.indexOf("/api/errores")>-1) return json(b.accion==="listar" ? {errores:[{id:1,materia:"MATEMÁTICAS 6G",tema:"Fracciones",pregunta:"¿Cuánto es 1/2 + 1/4?",opciones:["2/6","3/4","1/6"],correcta:1,elegida:0,explicacion:"Lleva 1/2 a cuartos: 2/4 + 1/4 = 3/4.",numerica:true},{id:2,materia:"LENGUAJE 6G",tema:"El sustantivo",pregunta:"¿Cuál es un sustantivo propio?",opciones:["ciudad","Caracas","río"],correcta:1,elegida:2,explicacion:"Los propios nombran a uno en particular y van con mayúscula."}]} : {ok:true});
     if(u.indexOf("/api/curado-info")>-1) return json({});
     if(u.indexOf("/api/curriculo")>-1) return json({});
     // familia: invitar → código que el panel de demo (/familia.html, datos ficticios) acepta
