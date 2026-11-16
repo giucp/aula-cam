@@ -3391,6 +3391,16 @@
   function mismoResultado(dado, esperado){
     const a=numeroDe(dado), b=numeroDe(esperado);
     if(a!=null && b!=null) return Math.abs(a-b) <= 1e-6*Math.max(1,Math.abs(b));
+    // 2026-11-16 (reporte 12 de Martina): comparar números ("<", ">", "="). textoPlano borra los
+    // símbolos, así que "<" quedaba vacío y NINGUNA respuesta valía. Ahora "<", "menor" y
+    // "menor que" valen lo mismo (igual con mayor e igual).
+    const signo=(t)=>{ const x=String(t==null?"":t).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim();
+      const menor=/<|≤|\bmenor\b/.test(x), mayor=/>|≥|\bmayor\b/.test(x), igual=/=|\bigual(es)?\b/.test(x);
+      return menor+mayor+igual===1 ? (menor?"<":mayor?">":"=") : null; };
+    if(/^\s*(<|>|=|≤|≥|(es\s+)?(menor|mayor)(\s+que)?|(es\s+)?igual(es)?(\s+a)?)\s*\.?\s*$/i.test(String(esperado||""))){
+      const e=signo(esperado), d=signo(dado);
+      return !!e && e===d;
+    }
     if(!textoPlano(dado)) return false;
     if(textoPlano(dado)===textoPlano(esperado)) return true;
     // varios números ("8, 9 y 10"): vale en cualquier orden y separados por coma, espacio o "y"
